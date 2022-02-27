@@ -1,0 +1,380 @@
+\chapter{Esercitazione con \R}
+\label{chapter:esercitazione_irt} 
+
+\section{Regressione e variabili dipendenti dicotomiche}
+
+Per fare un esempio, utilizziamo un campione artificiale di dati per renderci conto delle difficoltà della stima della retta di regressione quando $Y$ è una variable dicotomica.
+
+\begin{lstlisting}
+library("tidyverse")
+X  <- c(1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5)
+Y  <- c(0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1)
+ID <- 1:length(X)
+samp <- data.frame(ID, X, Y)
+ggplot(samp, aes(x = X, y = Y)) + 
+  geom_smooth() +
+  geom_jitter(height = .03, width = .03, color = "blue") + 
+  labs(title="Punteggi dicotomici osservati") +
+  papaja::theme_apa()
+\end{lstlisting} 
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=8cm]{urmss_1}
+    \caption{Regressione non parametrica per una variabile dipendente dicotomica.}
+    \label{fig:nonpar_dic}
+  \end{center}
+\end{figure}
+ 
+Poiché $Y$ è una variabile dipendente binaria, non possiamo adattare un modello di regressione lineare ai dati. 
+Invece, dobbiamo trasformare la scala della variabile dipendente dicotomica in maniera tale che non abbia un limite superiore o inferiore. 
+La nostra nuova scala sarà in unità log-odds, detti anche logit. 
+Per mostrare come si ottengono i logit, iniziamo a stimare la probabilità di $Y = 1$, dato $X$. 
+In altre parole, calcoliamo la probabilità condizionale $P(Y = 1 \mid X)$.
+Un modo per farlo in \R\; è il seguente.
+
+\begin{lstlisting}
+samp <- samp %>% 
+  group_by(X) %>% 
+  mutate(
+    cond_p = mean(Y)
+  ) 
+samp %>% 
+  distinct(X, cond_p) %>% 
+  round(2) 
+#>       X cond_p
+#> 1     1   0.33
+#> 2     2   0.5 
+#> 3     3   0.67
+#> 4     4   0.75
+#> 5     5   0.8 
+\end{lstlisting} 
+Nei dati considerati $X$ ha 5 modalità, quindi ci saranno 5 sottoinsiemi di dati.
+Possiamo calcolare il valore medio della $Y$ all'interno di ogni sottoinsieme e assegnarlo a una nuova colonna, che chiameremo \texttt{cond\_p}, per probabilità condizionale.
+Le probabilità sono comprese tra 0 e 1.  
+Se trasformiamo le probabilità in odds, $\frac{P}{1-P}$, il limite superiore non sarà più 1 ma tenderà a $+\infty$.
+Il limite inferiore resterà però sempre uguale a 0.
+Però, se trasformiamo gli odds in logit, $\log\frac{P}{1-P}$, otteniamo una variabile che varia tra $-\infty$ e $+\infty$.
+
+\begin{lstlisting}
+samp$Odds   <- samp$cond_p/(1 - samp$cond_p)
+samp$Logits <- log(samp$Odds)
+data.frame(
+  samp$X, samp$cond_p, samp$Odds, samp$Logits
+  ) %>% 
+  distinct()
+#>   samp.X samp.cond_p samp.Odds samp.Logits
+#> 1      1   0.3333333       0.5  -0.6931472
+#> 2      2   0.5000000       1.0   0.0000000
+#> 3      3   0.6666667       2.0   0.6931472
+#> 4      4   0.7500000       3.0   1.0986123
+#> 5      5   0.8000000       4.0   1.3862944
+\end{lstlisting} 
+Si noti che quando la probabilità è 0.50, il valore dell'odds è 1.00 e il logit è 0. 
+I logit possono essere negativi o positivi, a seconda che la probabilità sia maggiore o minore a 0.50. 
+Ora possiamo dunque usare i logit come la variabile dipendente. 
+Se rappresentiamo graficamente i nostri dati così trasformati, possiamo noare che l'asse $Y$ non è più dicotomico e la figura rivela un certo grado di linearità tra il predittore e la variabile dipendente (figura~\ref{fig:nonpar_dic2}).
+
+\begin{lstlisting}
+ggplot(samp, aes(x = X, y = Logits)) + 
+  geom_smooth() +   
+  geom_jitter(height = .03, width = .03, color = "blue") + 
+  labs(title="Punteggi dicotomici su una scala logit") +
+  papaja::theme_apa()
+\end{lstlisting} 
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=8cm]{urmss_2}
+    \caption{Relazione tra i logit e un predittore continuo.}
+    \label{fig:nonpar_dic2}
+  \end{center}
+\end{figure}
+
+Dai logit possiamo recuperare le probabilità mediante la funzione:
+$$
+\frac{e^\text{logit}}{1 + e^\text{logit}}.
+$$
+
+Possiamo implementarre in \R\; questa trasformazione inversa nel modo seguente:
+\begin{lstlisting}
+samp <- samp %>% 
+  mutate(
+    p_back = exp(Logits) / (1 + exp(Logits))
+  )
+samp %>% 
+  dplyr::select(-c(ID, Y)) %>% 
+  distinct()
+#>       X cond_p  Odds Logits p_back
+#> 1     1  0.333   0.5 -0.693  0.333
+#> 2     2  0.5     1    0      0.5  
+#> 3     3  0.667   2    0.693  0.667
+#> 4     4  0.75    3    1.10   0.75 
+#> 5     5  0.8     4    1.39   0.8  
+\end{lstlisting} 
+Con la precedente trasformazione della $Y$, il modello di regressione diventa
+
+$$
+\log \Big(\frac{p}{1-p} \Big) = b_0 + b_1 X,
+$$
+oppure, in maniera equivalente,
+
+$$
+P(Y = 1 \mid X) = \frac{e^{b_0 + b_1 X}}{1 + e^{b_0 + b_1 X}}.
+$$
+
+\section{Modello di Rasch e prestazione all'esame}
+
+Il modello di Rasch (Rasch, 1960) è il modello più semplice nella famiglia di modelli IRT (Wright \& Mok, 2004). 
+È stato progettato per essere utilizzato con dati ordinali classificati in due categorie (0 o 1). 
+Il modello di Rasch utilizza la somma dei punteggi ottenuti da queste risposte ordinali per calcolare stime a livello di scala ad intervallo che rappresentano le posizioni dei rispondenti (cioè l'abilità latente) e le posizioni degli item (cioè la difficoltà di fornire una risposta corretta o positiva) su una scala lineare (log-odds o logit) che rappresenta la variabile latente. 
+La differenza tra le posizioni dei rispondenti e degli item ($\theta_n - \delta_i$) può essere utilizzata per calcolare la probabilità di una risposta corretta o positiva ($Y$ = 1), piuttosto che una risposta errata o negativa ($Y$ = 0).
+
+Per fare un esempio, useremo qui i dati del primo parziale di Psicometria L-Z dell'AA 2020/2021.
+L'esame comprendeva 30 quiz e le risposte sono state codificate come ``risposta corretta'' o ``risposta incorretta''.
+Le risposte non date sono state considerate come risposte sbagliate.
+
+Useremo il pacchetto ``Test Analysis Modules'', o ``TAM'' (Robitzsch, Kiefer e Wu, 2020) per eseguire le analisi del modello di Rasch. 
+Sebbene sia possibile utilizzare altri pacchetti \R\; per condurre l'analisi  del modello Rasch, ho scelto di usare TAM per la presente dimostrazione in quanto le funzioni di TAM producono risultati la cui interpretazione è relativamente semplice e con cui è relativamente facile lavorare.
+Il pacchetto TAM utilizza la stima della massima verosimiglianza marginale (MMLE) per stimare i parametri del modello di Rasch. 
+
+\begin{lstlisting}
+library("TAM")
+library("WrightMap")
+\end{lstlisting} 
+Supponiamo che i dati siano contenuti nel data.frame \texttt{dat}.
+Calcoliamo qui la proporzione di riposte corrette per ciascun item:
+
+\begin{lstlisting}
+psych::describe(dat) %>% 
+  dplyr::select(vars, mean)
+  
+     vars mean
+#> i_1     1 0.33
+#> i_2     2 0.09
+#> i_3     3 0.59
+#> i_4     4 0.43
+#> i_5     5 0.68
+#> i_6     6 0.57
+#> i_7     7 0.59
+#> i_8     8 0.20
+#> i_9     9 0.45
+#> i_10   10 0.87
+#> i_11   11 0.77
+#> i_12   12 0.76
+#> i_13   13 0.47
+#> i_14   14 0.56
+#> i_15   15 0.41
+#> i_16   16 0.57
+#> i_17   17 0.84
+#> i_18   18 0.88
+#> i_19   19 0.86
+#> i_20   20 0.76
+#> i_21   21 0.74
+#> i_22   22 0.68
+#> i_23   23 0.63
+#> i_24   24 0.77
+#> i_25   25 0.77
+#> i_26   26 0.63
+#> i_27   27 0.51
+#> i_28   28 0.52
+#> i_29   29 0.68
+#> i_30   30 0.55
+\end{lstlisting} 
+Adattiamo il modello di Rasch ai dati:
+
+\begin{lstlisting} 
+fit <- TAM::tam(dat)
+\end{lstlisting} 
+
+\subsection{Wright Map}
+
+Quando c'è un adattamento accettabile tra il modello e i dati (discusso in dettaglio nel Capitolo 3), usando le stime del modello di Rasch è possibile visualizzare e confrontare le posizioni degli item e dei rispondenti su un unico continuum soggiacente. 
+Una tale rappresentazione è fornita dalle cosiddette Wright Maps.
+
+\begin{lstlisting} 
+TAM::IRT.WrightMap(
+  fit, 
+  show.thr.lab=FALSE, 
+  main.title = "Psicometria 2021 Wright Map"
+)
+\end{lstlisting} 
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=8cm]{urmss_3}
+    \caption{La Wright map per i dati di Psicometria 2021.}
+    \label{fig:nonpar_dic2}
+  \end{center}
+\end{figure}
+
+Il pannello di sinistra del grafico mostra un istogramma delle posizioni dei rispondenti (persone) sulla scala logit che rappresenta la variabile latente. 
+Le unità sulla scala logit sono mostrate sull'asse all'estrema destra del grafico (etichettato Logit).
+Nel pannello con le posizioni delle persone, l'etichetta ``Dim1'' indica che la distribuzione delle posizioni dei rispondenti è specifica all'interno di una dimensione.
+Modelli più complessi possono specificare più di una dimensione.
+
+Il pannello centrale del grafico mostra le posizioni degli item (stime della difficoltà degli item) sulla scala logit che rappresenta la variabile latente. 
+I rombi grigio chiaro mostrano la posizione sulla scala logit di ciascun item, come indicato sull'asse $x$.
+
+Anche se non è appropriato interpretare le posizioni degli oggetti e delle persone sulla scala logit fino a quando non ci sono prove di un adattamento accettabile dei dati del modello, si consiglia di esaminare la mappa di Wright durante le fasi preliminari di un'analisi degli elementi per avere un'idea generale dei risultati del modello e per identificare potenziali errori di scoring o di immissione dei dati.
+
+Una rapida occhiata alla mappa di Wright suggerisce che, in media, le persone si trovano leggermente più in basso sulla scala logit rispetto alle posizioni medie degli item. 
+Inoltre, sembra esserci una dispersione relativamente ampia di posizioni di persone e item sulla scala logit, il che indica che il test di Psicometria sembra essere uno strumento utile per identificare le differenze nelle posizioni dei rispondenti e delle posizioni degli item sulla variabile latente. 
+Torneremo su questa schermata per ulteriori interpretazioni dopo aver verificato l'adattamento  dei dati del modello.
+
+\subsection{Difficoltà degli item}
+
+I parametri di difficoltà (\texttt{xsi}) sono le stime della posizione degli item sulla scala logit che rappresenta la variabile latente. 
+Supponendo che le risposte siano valutate in modo tale che i punteggi più bassi ($Y$ = 0) indichino posizioni più basse sulla variabile latente (per es., risposte errate, negative o assenti), le stime più basse sulla scala logit individueranno gli item più difficili o che richiedono posizioni relativamente più alte sul costrutto per fornire una risposta corretta. 
+D'altra parte, le stime più alte sulla scala logit individuano gli item più facili o che richiedono posizioni relativamente più basse sul costrutto per fornire una risposta corretta. 
+Nella nostra analisi, l'item 18 è l'item più facile (\texttt{xsi} = -2.44) mentre l'item 2 è quello più difficile (\texttt{xsi} = 2.88).
+
+\begin{lstlisting} 
+difficulty <- fit$xsi
+difficulty
+#>              xsi    se.xsi
+#> i_1   0.89653136 0.1758720
+#> i_2   2.88151745 0.2763703
+#> i_3  -0.48486664 0.1672498
+#> i_4   0.34147034 0.1672523
+#> i_5  -0.97921639 0.1749029
+#> i_6  -0.40131618 0.1665439
+#> i_7  -0.48486664 0.1672498
+#> i_8   1.74102278 0.2034095
+#> i_9   0.25791305 0.1665569
+#> i_10 -2.38877190 0.2366825
+#> i_11 -1.54446803 0.1917171
+#> i_12 -1.43650028 0.1877738
+#> i_13  0.11993982 0.1657485
+#> i_14 -0.31838777 0.1660043
+#> i_15  0.42580741 0.1681121
+#> i_16 -0.40131618 0.1665439
+#> i_17 -2.03465818 0.2145407
+#> i_18 -2.44574874 0.2407410
+#> i_19 -2.28024153 0.2293441
+#> i_20 -1.47199523 0.1890299
+#> i_21 -1.33269485 0.1843212
+#> i_22 -0.94873927 0.1742516
+#> i_23 -0.71206438 0.1700115
+#> i_24 -1.54446803 0.1917171
+#> i_25 -1.50797589 0.1903433
+#> i_26 -0.71206438 0.1700115
+#> i_27 -0.07172236 0.1653288
+#> i_28 -0.09905668 0.1653358
+#> i_29 -0.97921639 0.1749029
+#> i_30 -0.26336627 0.1657337
+
+summary(difficulty)
+#>           xsi               se.xsi      
+#>  Min.   :-2.44575   Min.   :0.1653  
+#>  1st Qu.:-1.46312   1st Qu.:0.1667  
+#>  Median :-0.59847   Median :0.1746  
+#>  Mean   :-0.60598   Mean   :0.1858  
+#>  3rd Qu.:-0.07856   3rd Qu.:0.1914  
+#>  Max.   : 2.88152   Max.   :0.2764  
+\end{lstlisting} 
+L'errore standard (\texttt{se.xsi}) degli item è una stima della precisione delle stime di difficoltà, dove errori standard più grandi indicano stime meno precise. 
+Gli errori standard vengono riportati sulla stessa scala logit delle posizioni degli item. 
+Nella nostra analisi, gli errori standard vanno da 0.18 per l'item 28 a 0.28 per l'item 2, che è risultato essere l'item più difficile. 
+\begin{lstlisting} 
+plot(
+  achievement$theta, 
+  PersonPropCorrect,
+  pch = 16,
+  xlab = "Theta",
+  ylab = "Proporzione risposte corrette",
+  main = "Confronto tra stime di abilita' e difficolta'"
+)
+\end{lstlisting} 
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=8cm]{urmss_4}
+    \caption{Difficoltà degli item per l'esame di Psicometria L-Z 2021.}
+    \label{fig:urmss_4}
+  \end{center}
+\end{figure}
+
+\subsubsection{Bontà di adattamento  }
+
+Per calcolare le statistiche di bontà di adattamento degli item useremo la funzione \texttt{TAM::tam.fit()} che prende come argomento l'oggetto \texttt{fit}. 
+Salveremo i risultati di una tale funzione in un nuovo oggetto chiamato \texttt{item\_fit}.
+L'oggetto \texttt{item\_fit} verrà poi manipolato e analizzato.
+
+\begin{lstlisting} 
+item_fit <- TAM::tam.fit(fit) 
+item_fit <- as.data.frame(item_fit$itemfit)
+summary(item_fit)
+  parameter             Outfit          Outfit_t          Outfit_p         Length:30          Min.   :0.6855   Min.   :-3.9352   Min.   :0.0000166   Class :character   1st Qu.:0.8483   1st Qu.:-1.6884   1st Qu.:0.0182257   Mode  :character   Median :0.9462   Median :-0.6816   Median :0.0935161                      Mean   :0.9850   Mean   :-0.2633   Mean   :0.2225829                      3rd Qu.:1.0938   3rd Qu.: 1.3501   3rd Qu.:0.3134174                      Max.   :1.5286   Max.   : 4.3057   Max.   :0.9741492    Outfit_pholm           Infit           Infit_t           Infit_p          Min.   :0.0004994   Min.   :0.8361   Min.   :-2.2762   Min.   :0.0001029   1st Qu.:0.4132265   1st Qu.:0.9318   1st Qu.:-0.7323   1st Qu.:0.2433569   Median :1.0000000   Median :0.9741   Median :-0.3238   Median :0.4047925   Mean   :0.7130349   Mean   :0.9984   Mean   : 0.0693   Mean   :0.4414150   3rd Qu.:1.0000000   3rd Qu.:1.0638   3rd Qu.: 0.9350   3rd Qu.:0.6748500   Max.   :1.0000000   Max.   :1.2714   Max.   : 3.8837   Max.   :0.9666454    Infit_pholm       Min.   :0.003086   1st Qu.:1.000000   Median :1.000000   Mean   :0.941119   3rd Qu.:1.000000   Max.   :1.000000 
+\end{lstlisting} 
+L'oggetto \texttt{item\_fit} include le statistiche mean square error (MSE) e le versioni standardizzate ($t$ di Student) delle statistiche Outfit e Infit per i modelli Rasch, che forniscono delle sintesi dei residui associati a ciascun item. 
+Le statistiche Outfit e Infit forniscono le versioni MSE e le statistiche Outfit\_t e Infit\_t forniscono le versioni standardizzate di tali statistiche. 
+\texttt{TAM} riporta anche un valore-$p$ per le statistiche di adattamento standardizzate (Outfit\_p e Infit\_p), insieme ai valori di significatività \emph{adjusted} (Infit\_pholm e Outfit\_pholm).
+
+In generale, le versioni MSE delle statistiche Outfit e Infit dovrebbero essere vicine a 1.00 e le versioni standardizzate di Outfit e Infit dovrebbero essere intorno a 0.00 quando i dati soddisfano le assunzioni del modello Rasch. 
+
+\subsection{Abilità dei rispondenti}
+
+Stimiamo ora le abilità dei rispondenti:
+
+\begin{lstlisting} 
+achievement <- as.data.frame(TAM::tam.wle(fit))
+\end{lstlisting} 
+
+\noindent
+Tali stime sono rappresentate graficamente nella figura~\ref{fig:urmss_5}.
+
+\begin{lstlisting} 
+hist(
+  achievement$theta, 
+  main = "Istogramma delle stime delle abilita' dei rispondenti",
+  xlab = "Abilita' dei rispondenti sulla scala Logits"
+) 
+\end{lstlisting} 
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=8cm]{urmss_5}
+    \caption{Stime delle abilità dei rispondenti per l'esame di Psicometria L-Z 2021.}
+    \label{fig:urmss_5}
+  \end{center}
+\end{figure}
+
+\subsubsection{Bontà di adattamento}
+
+Calcoliamo gli indici di bontà di adattamento per le stime delle abilità dei rispondenti.
+
+\begin{lstlisting} 
+person_fit <- TAM::tam.personfit(fit)
+summary(person.fit)
+outfitPerson     outfitPerson_t      infitPerson       infitPerson_t     Min.   :0.01551   Min.   :-1.67130   Min.   :0.03124   Min.   :-2.05297  1st Qu.:0.71304   1st Qu.:-0.70642   1st Qu.:0.82747   1st Qu.:-0.75094  Median :0.84298   Median :-0.25805   Median :0.94670   Median :-0.18328  Mean   :0.89702   Mean   :-0.08652   Mean   :0.94027   Mean   :-0.09193  3rd Qu.:1.06481   3rd Qu.: 0.31296   3rd Qu.:1.08703   3rd Qu.: 0.46078  Max.   :2.32533   Max.   : 2.56980   Max.   :1.67831   Max.   : 3.84471  
+\end{lstlisting} 
+
+L'oggetto \texttt{person\_fit} include le statistiche mean square error (MSE) e le versioni standardizzate ($t$) delle statistiche Outfit e Infit per le stime delle abilità dei rispondenti. 
+Come in precedenza, le statistiche Outfit e Infit forniscono le versioni MSE e le statistiche Outfit\_t e Infit\_t forniscono le versioni standardizzate di tali indici di bontà di adattamento. 
+Le soglie per valutare tali indici sono le stesse di quelle per le stime della difficoltà degli item.
+
+Possiamo anche fare un confronto tra i punteggi grezzi, ovvero la proporzione di risposte corrette, e le stime delle abilità latenti.
+
+\begin{lstlisting} 
+PersonPropCorrect <- achievement$PersonScores / achievement$PersonMax
+plot(
+  achievement$theta, 
+  PersonPropCorrect,
+  pch = 16,
+  xlab = "Theta",
+  ylab = "Proporzione risposte corrette",
+  main = "Confronto tra punteggio grezzo e stima dell'abilita'"
+)
+\end{lstlisting} 
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=8cm]{urmss_6}
+    \caption{Stime delle abilità dei rispondenti e punteggi grezzi.}
+    \label{fig:urmss_6}
+  \end{center}
+\end{figure}
+
+Come si può vedere dal grafico, i le stime dell'abilità latente differenziano maggiormente gli estremi della distribuzione dalla tendenza centrale di quanto non lo facciano i punteggi grezzi.
+

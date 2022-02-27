@@ -1,0 +1,602 @@
+% DO NOT COMPILE THIS FILE DIRECTLY!
+% This is included by the other .tex files.
+\chapter{L'interpretazione dei fattori e punteggi fattoriali}
+\label{ch:punteggi_fattoriali}
+
+%\begin{chapquote}{R. A. Fisher}
+%``The best time to plan an experiment is after you've done it.''
+%\end{chapquote}
+
+\vskip40pt
+
+
+\section{Interpretazione dei fattori}
+
+Uno dei momenti più difficili nel processo di sviluppo di un test psicometrico è quello dell'interpretazione dei fattori. La verifica del livello di affidabilità rivela il grado di precisione delle misure ottenute ma non fornisce alcuna informazione sulla natura di ciò che si sta misurando. Non esistono specifiche indicazioni che guidino il lavoro interpretativo. Dipende, perciò, dalla capacità e dall'esperienza del ricercatore cogliere il significato comune delle variabili confluite in un fattore, attenendosi alla realtà delle singole variabili senza fornire interpretazioni fantasiose. È importante rendersi conto che sia la scelta del metodo di estrazione dei fattori, sia il problema del numero dei fattori da estrarre, sia la scelta del metodo con cui effettuare la rotazione, rendono molto arbitraria l'interpretazione della soluzione fattoriale.
+
+I passaggi teorici necessari per interpretare una matrice fattoriale ruotata possono essere descritti nel modo seguente.
+\begin{enumerate}
+\item Si definisce un livello arbitrario per le saturazioni che ci indichi il limite oltre il quale non riteniamo le variabili sufficientemente importanti per caratterizzare quel determinato fattore. Solitamente si sceglie la soglia di .40. In casi particolari è possibile usare valori maggiori o minori di questo, a seconda che si abbia un numero ristretto o troppo ampio di variabili da interpretare.
+\item Si ordinano le saturazioni delle variabili del fattore in ordine decrescente (in valore assoluto), fermandosi al livello prescelto.
+\item Si scrive accanto ad ogni saturazione la denominazione della variabile corrispondente (o il testo dell'item).
+\item Tenendo presente il dominio di indagine, le teorie di riferimento ed eventuali risultati precedenti, si cerca di stabilire quale sia il tratto, caratteristica, aspetto \dots che queste variabili abbiano in comune, in modo da poter in modo da poter ``nominare'' il fattore che definisce questo tratto comune. In questo processo interpretativo gli item con le saturazioni maggiori contribuiscono in misura maggiore alla definizione del carattere comune del fattore e, viceversa, ciò che è stato individuato come tratto comune delle variabili deve comparire in maggior grado nelle variabili più sature.
+\item  Il segno negativo di una saturazione indica solamente un'opposizione rispetto alle saturazioni positive. Il tratto comune alle variabili dovrebbe essere pensato come un continuum che passa dalla sua massima presenza al suo opposto. Per procedere all'interpretazione conviene iniziare dalle variabili il cui segno è più frequente e considerarle come se fossero positive; di conseguenza, le altre (siano esse di segno positivo o negativo) devono essere considerate di segno opposto.
+\item Nel caso in cui non si riesca a riscontrare nessun tratto comune alle variabili del fattore, si dovrà concludere che il fattore non è interpretabile e che le variabili sono state tra loro associate per un errore attribuibile o al campione o alla misurazione delle variabili stesse. Normalmente i ``primi'' fattori estratti sono facilmente interpretabili mentre gli ``ultimi'', soprattutto se ne sono stati estratti molti o se la matrice delle correlazioni iniziale fra le variabili contiene molti valori bassi, sono spesso difficilmente interpretabili o saturi di una sola variabile e quindi fattori specifici di quella variabile. In linea di massima se i fattori non interpretabili sono molti è meglio non considerare affatto i risultati dell'analisi fattoriale.
+\end{enumerate}
+
+
+
+\subsection{Esempio di interpretazione }
+
+ Il WISC-III (Wechsler Intelligence Scale For Children - III) valuta l'abilità intellettiva di soggetti dai 6 ai 16 anni e 11 mesi.  I subtest sono stati selezionati per valutare diverse abilità mentali, che tutte insieme indicano l'abilità intellettiva generale del bambino. Alcuni gli richiedono un ragionamento astratto, altri si focalizzano sulla memoria, altri ancora richiedono certe abilità percettive e così via. 
+
+Si consideri la matrice di correlazione  tra i subtest della scala
+WISC-III riportata dal manuale. 
+
+\begin{lstlisting}
+R[1:5,1:8]
+#>         INFO  SIM ARITH  VOC COMP DIGIT PICTCOM CODING
+#> INFO    1.00 0.66  0.57 0.70 0.56  0.34    0.47   0.21
+#> SIM     0.66 1.00  0.55 0.69 0.59  0.34    0.45   0.20
+#> ARITH   0.57 0.55  1.00 0.54 0.47  0.43    0.39   0.27
+#> VOC     0.70 0.69  0.54 1.00 0.64  0.35    0.45   0.26
+#> COMP    0.56 0.59  0.47 0.64 1.00  0.29    0.38   0.25
+\end{lstlisting}
+
+\noindent
+Eseguiamo l'analisi fattoriale con il metodo delle componenti principali e una rotazione Varimax:
+
+\begin{lstlisting}
+f.pc <- principal(R, nfactors = 3, rotate = "varimax")
+f.pc
+#> 
+#> Uniquenesses:
+#>    INFO     SIM   ARITH     VOC    COMP   DIGIT PICTCOM 
+#>   0.284   0.282   0.433   0.250   0.397   0.661   0.444 
+#>  CODING PICTARG   BLOCK  OBJECT  SYMBOL   MAZES 
+#>   0.211   0.610   0.344   0.383   0.300   0.486 
+#> 
+#> Loadings:
+#>         PC1   PC2   PC3  
+#> INFO     0.80       -0.25
+#> SIM      0.81       -0.25
+#> ARITH    0.65  0.28 -0.26
+#> VOC      0.83  0.13 -0.19
+#> COMP     0.75  0.16 -0.14
+#> DIGIT    0.45  0.36      
+#> PICTCOM  0.43       -0.61
+#> CODING   0.10  0.88      
+#> PICTARG  0.34  0.27 -0.45
+#> BLOCK    0.41  0.22 -0.66
+#> OBJECT   0.31  0.14 -0.71
+#> SYMBOL   0.23  0.74 -0.32
+#> MAZES          0.11 -0.71
+#> 
+#>                  PC1   PC2   PC3
+#> SS loadings    3.804 1.740 2.381
+#> Proportion Var 0.293 0.134 0.183
+#> Cumulative Var 0.293 0.426 0.610
+\end{lstlisting}
+
+\noindent
+Si noti che i primi cinque subtest possiedono saturazioni maggiori di
+$0.6$ sul primo fattore. Dato che questi test sono tutti presentati
+verbalmente e richiedono delle risposte verbali, tale fattore può
+essere denominato \textit{Comprensione Verbale}.
+
+I subtest ``Cifrario'' e ``Ricerca di simboli'' saturano sul secondo
+fattore. Entrambi i subtest misurano la velocità dei processi di
+codifica o ricerca. Questo fattore, dunque, può essere denominato
+\textit{Velocità di elaborazione}.
+
+Infine, i subtest ``Completamento di figure,'' ``Disegno con i cubi,''
+``Riordinamento di storie figurate'' e ``Labirinti'' saturano sul
+terzo fattore.  Tutti questi test condividono una componente geometrica
+o configurazionale: misurano infatti le abilità necessarie per la
+manipolazione o la disposizione di immagini, oggetti, blocchi. Questo
+fattore, dunque, può essere denominato \textit{Organizzazione percettiva}.
+  
+Nel caso di una rotazione ortogonale, la comunalità di ciascuna sottoscala è uguale alla somma dei coefficienti di impatto al quadrato della sottoscala nei fattori.
+Per le 13 sottoscale del WISC-III abbiamo 
+ 
+\begin{lstlisting}
+h2 <- rep(0,13)
+for (i in 1:13) {
+  h2[i] <- sum(f.pc$loadings[i, ]^2)
+}
+round(h2, 2)
+#> [1] 0.71 0.73 0.57 0.74 0.61 0.34 0.56 0.79 0.39 0.65 0.62 0.70 0.52 
+\end{lstlisting}
+
+\noindent
+Questi risultati replicano quelli riportati nel manuale del test  WISC-III.
+
+
+%  \begin{figure}
+%  \centering
+%    \includegraphics[width=9cm]{hWISC}
+%  \end{figure}
+
+%%------------------------------------------------------------
+%\begin{frame}
+%
+%\section{Rotazione obliqua: modello matematico per la struttura fattoriale}
+%
+%  \begin{itemize}
+%  \item Anche nel caso di una rotazione obliqua, è possibile esprimere, nei
+%termini dei parametri del modello, la covarianza teorica tra una
+%variabile manifesta $Y_i$ e uno dei fattori comuni, la covarianza
+%teorica tra due variabili manifeste e la comunalità di ciascuna
+%variabile osservata. 
+%\item  Dato che i fattori risultano correlati, però,
+%l'espressione fattoriale di tali quantità risulta più complessa che
+%nel caso delle rotazioni ortogonali.
+%  \end{itemize}
+%
+%\end{frame}
+%
+%%------------------------------------------------------------
+%\begin{frame}
+%
+%\header{Espressione fattoriale della covarianza tra variabili e
+%  fattori}
+%
+%Essendo $cov(\xi_k, \xi_l) \neq 0$, per $k\neq l$, l'equazione~\ref{eq:cov_multifatt_orto} diventa:
+%\begin{align}
+%  cov(Y_j, \xi_k) &= \mathscr{E}(Y_j \xi_k)\notag\\[8pt]
+%  &=\mathscr{E}\left[(\lambda_{j1} \xi_1 + \dots + \lambda_{jm} \xi_m + U_j)\xi_k \right]\notag\\[10pt]
+%  &= \lambda_{j1}\underbrace{\mathscr{E}(\xi_1\xi_k)}_{\neq 0} + \dots + 
+%\lambda_{jk}\underbrace{\mathscr{E}(\xi_k^2)}_{=1} + \dots \notag\\[8pt]
+%& \; + \lambda_{jm}\underbrace{\mathscr{E}(\xi_m\xi_k)}_{\neq 0} +
+%  \underbrace{\mathscr{E}(U_j \xi_k)}_{=0}\notag\\[8pt]
+%  &= \lambda_{jk} +  \lambda_{j1} cov(\xi_1, \xi_k) + \dots + \lambda_{jm} cov(\xi_m, \xi_k)
+%\end{align}
+%\label{eq:cov_multifatt_obli}
+%\end{frame}
+%
+%
+%%------------------------------------------------------------
+%\begin{frame}
+%\header{Espressione fattoriale della covarianza tra variabili e
+%  fattori}
+%
+%Ad esempio, nel caso di  tre fattori, $\xi_1, \xi_2, \xi_3$, la covarianza tra $Y_1$ e $\xi_{1}$ sarà
+%$$
+%\lambda_{11} + \lambda_{12}cov(\xi_1, \xi_2) + \lambda_{13}cov(\xi_1, \xi_3)
+%$$ 
+%\end{frame}
+%
+%
+%%------------------------------------------------------------
+%\begin{frame}
+%\header{Espressione fattoriale della varianza}
+%
+%Nel caso di una rotazione obliqua, $cov(\xi_k, \xi_l) \neq 0$, per $k\neq l$. Sviluppando il quadrato del polinomio, quindi, i doppi prodotti che includono il termine $\mathscr{E}(\xi_k \xi_l)$ non sono nulli. La varianza di $Y_j$, pertanto, diventa
+%\begin{align}
+%  \mathscr{V}(Y_j) &=
+%\lambda_{j1}^2 + \lambda_{j2}^2 + \dots + \lambda_{jm}^2  + \notag\\[10pt]
+%&+ 2 \lambda_{j1} \lambda_{j2} cov(\xi_1, \xi_2) +  2 \lambda_{j1} \lambda_{j3} cov(\xi_1, \xi_3) + \notag\\[10pt]
+%&+ \dots  + 2 \lambda_{j,m-1} \lambda_{jm} cov(\xi_{m-1}, \xi_m) + \psi_j
+%\end{align}
+%
+%\end{frame}
+%
+%%------------------------------------------------------------
+%\begin{frame}
+%\header{Espressione fattoriale della varianza}
+%
+%Ad esempio, nel caso di  tre fattori, $\xi_1, \xi_2, \xi_3$, la varianza di $Y_1$ sarà
+%\begin{align}
+%\mathscr{V}(Y_1) &=\lambda_{11}^2 + \lambda_{12}^2 +  \lambda_{13}^2 +
+%2 \lambda_{11} \lambda_{12} cov(\xi_1, \xi_2) + \notag\\[10pt]
+%&+ 2 \lambda_{11} \lambda_{13} cov(\xi_1, \xi_3) + 2 \lambda_{12} \lambda_{13} cov(\xi_2, \xi_3) + \psi_1 \notag
+%\end{align}
+%\end{frame}
+%
+%
+%%------------------------------------------------------------
+%\begin{frame}
+%\header{Espressione fattoriale della covarianza tra due variabili}
+%
+%Consideriamo il caso più semplice di due fattori latenti correlati e calcoliamo la covarianza tra $Y_1$ e $Y_2$:
+%\begin{align}
+%\mathscr{E}(Y_1 Y_2) &=\mathscr{E}((\lambda_{11}\xi_1 + \lambda_{12}\xi_2+U_1) (\lambda_{21}\xi_1 + \lambda_{22}\xi_2+U_2))\notag\\[10pt]
+%&=\mathscr{E}( 
+%\lambda_{11}\lambda_{21}\xi_1^2 +
+%\lambda_{11}\lambda_{22}\xi_1\xi_2 +
+%\lambda_{11}\xi_1U_2 +\notag\\[10pt]
+%&+\lambda_{12}\lambda_{21}\xi_1\xi_2 +
+%\lambda_{12}\lambda_{22}\xi_2^2 +
+%\lambda_{12}\xi_2U_2 +\notag\\[10pt]
+%&+\lambda_{21}\xi_1U_1 +
+%\lambda_{22}\xi_2U_1 +
+%U_1U_2)
+%\end{align}
+%\end{frame}
+%
+%%------------------------------------------------------------
+%\begin{frame}
+%\header{Espressione fattoriale della covarianza tra due variabili}
+%
+%Distribuendo l'operatore di valore atteso, e dato che $\mathscr{E}(\xi^2)=1$ e $\mathscr{E}(\xi U)=0$, otteniamo
+%\begin{align}
+%cov(Y_1, Y_2) &=\lambda_{11} \lambda_{21} +
+%\lambda_{12} \lambda_{22} +
+%\lambda_{12} \lambda_{21}cov(\xi_1, \xi_2) +\notag\\[10pt]
+%&+\lambda_{11} \lambda_{22}cov(\xi_1, \xi_2) 
+%\end{align}
+%
+%%In termini matriciali avremo
+%%\begin{align}
+%%\boldsymbol{\Sigma} &=\boldsymbol{\Lambda} \boldsymbol{\Phi} \boldsymbol{\Lambda}^{\ensuremath{\mathsf{T}}} + \boldsymbol{\Psi}
+%%\end{align}
+%%dove $\boldsymbol{\Phi}$ è la matrice di ordine $m \times m$ di varianze e covarianze tra i fattori comuni e $\boldsymbol{\Psi}$ è una matrice diagonale  di ordine $p$ con le specificità delle variabili. 
+%
+%\end{frame}
+
+
+%------------------------------------------------------------
+\section{Punteggi fattoriali}
+
+Fino ad ora abbiamo considerato le strategie di costruzione del modello basate sulla
+stima e sull'interpretazione delle saturazioni fattoriali e delle comunalità. Questo è il primo passo nella costruzione del modello fattoriale. È però possibile compiere un passo ulteriore, ovvero quello della stima dei punteggi fattoriali (\emph{factor
+scores}) i quali risultano utili sia per interpretare i risultati dell'analisi fattoriale che per fare diagnostica. I punteggi fattoriali forniscono le previsioni dei livelli dei fattori latenti  per ogni rispondente. Esistono vari metodi di stima dei punteggi fattoriali.  Tra questi troviamo il metodo di Thomson basato sulla regressione e il metodo di Bartlett basato sulla massima verosimiglianza.  Entrambi questi metodi sono implementati nel software \R.
+
+
+\subsection{Dimostrazione di Thurstone}
+
+Prima di descrivere il metodo della regressione, esaminiamo la dimostrazione che Thurstone (1947) ha fornito per illustrare il significato dei punteggi fattoriali (si veda Loehlin, 1987). L'idea è quella di esaminare la stima dei punteggi fattoriali in una situazione in cui i tali punteggi sono conosciuti, in maniera tale da potere controllare il risultato dell'analisi.
+
+Si consideri un insieme di 1000 scatole di cui conosciamo le dimensioni
+$x, y, z$:
+
+\begin{lstlisting}
+n <- 1000
+x <- rnorm(n, 100, 12)
+y <- rnorm(n, 150, 12)
+z <- rnorm(n, 200, 12)
+head(x)
+#> [1] 121.25849 107.93932 107.69328 106.90105  94.07048
+#> [6] 101.81381
+head(y)
+#> [1] 156.1907 137.0827 155.4717 136.7827 142.5315 130.2196
+head(z)
+#> [1] 212.3709 185.3576 194.0502 214.0867 209.6615 206.7161
+\end{lstlisting}
+Il problema è quello di stimare le dimensioni delle scatole disponendo soltanto di una serie di misure indirette, corrotte dal rumore di misurazione. 
+Thurstone (1947) utilizzò le seguenti trasformazioni delle dimensioni delle scatole (si veda Jennrich, 2007).
+
+\begin{lstlisting}
+s <- 240
+y1 <- rnorm(n, mean(x), s)
+y2 <- rnorm(n, mean(y), s)
+y3 <- rnorm(n, mean(z), s)
+y4 <- x * y + rnorm(n, 0, s)
+y5 <- x * z + rnorm(n, 0, s)
+y6 <- y * z + rnorm(n, 0, s)
+y7 <- x^2 * y + rnorm(n, 0, s)
+y8 <- x * y^2 + rnorm(n, 0, s)
+y9 <- x^2 * z + rnorm(n, 0, s)
+y10 <- x * z^2 + rnorm(n, 0, s)
+y11 <- y^2 * z + rnorm(n, 0, s)
+y12 <- y * z^2 + rnorm(n, 0, s)
+y13 <- y^2 * z + rnorm(n, 0, s)
+y14 <- y * z^2 + rnorm(n, 0, s)
+y15 <- x / y + rnorm(n, 0, s)
+y16 <- y / x + rnorm(n, 0, s)
+y17 <- x / z + rnorm(n, 0, s)
+y18 <- z / x + rnorm(n, 0, s)
+y19 <- y / z + rnorm(n, 0, s)
+y20 <- z / y + rnorm(n, 0, s)
+y21 <- 2 * x + 2*y + rnorm(n, 0, s)
+y22 <- 2 * x + 2*z + rnorm(n, 0, s)
+y23 <- 2 * y + 2*z + rnorm(n, 0, s)
+y24 <- sqrt(x^2 + y^2) + rnorm(n, 0, s)
+y25 <- x * y * z + rnorm(n, 0, s)
+y26 <- sqrt(x^2 + y^2 + z^2)
+\end{lstlisting}
+Eseguiamo l'analisi fattoriale con una soluzione a tre fattori sui
+dati così creati.
+
+\begin{lstlisting}
+Y <- cbind(y1, y2, y3, y4, y5, y6, y7, y8, y9, y10, y11, 
+           y12, y13, y14, y15, y16, y17, y18, y19, y20, 
+           y21, y22, y23, y24, y25, y26)
+fa <- factanal(Y, factors = 3, scores = "regression")
+\end{lstlisting}
+L'opzione {\tt  scores = "regression"} richiede il calcolo dei
+punteggi fattoriali con il metodo della regressione.  
+Nel caso di una rotazione Varimax (default della funzione {\tt factanal()}), i punteggi fattoriali risultano ovviamente incorrelati:
+
+\begin{lstlisting}
+round(cor(cbind(fa$scores[, 1], fa$scores[, 2], fa$scores[, 3])), 3)
+#>       [,1]  [,2]  [,3]
+#> [1,] 1.000 0.000 0.001
+#> [2,] 0.000 1.000 0.001
+#> [3,] 0.001 0.001 1.000
+\end{lstlisting}
+Generiamo ora i diagrammi di dispersione che mettono in relazione le dimensioni originarie delle scatole ($x, y, z$) con i punteggi fattoriali sui tre fattori. 
+Se l'analisi ha successo, ci aspettiamo un'alta correlazione tra i punteggi fattoriali
+di ogni fattore e una sola delle dimensioni delle scatole $x$, $y$, $z$.
+
+\begin{lstlisting}
+par(mar = c(4.5, 4.5, .5, .5), mfrow = c(3, 3), cex.lab = 1, cex = 1.15, bty = "l", cex.axis = 1, cex.main = 1)  
+plot(x, fa$scores[,1], xlab = "x", ylab = "F1")
+plot(y, fa$scores[,1], xlab = "y", ylab = "F1")
+plot(z, fa$scores[,1], xlab = "z", ylab = "F1")
+plot(x, fa$scores[,2], xlab = "x", ylab = "F2")
+plot(y, fa$scores[,2], xlab = "y", ylab = "F2")
+plot(z, fa$scores[,2], xlab = "z", ylab = "F2")
+plot(x, fa$scores[,3], xlab = "x", ylab = "F3")
+plot(y, fa$scores[,3], xlab = "y", ylab = "F3")
+plot(z, fa$scores[,3], xlab = "z", ylab = "F3")
+\end{lstlisting}
+I risultati riportati nella figura~\ref{fig:26boxes} confermano le aspettative.
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=9cm]{RPlot26Boxes}
+    \caption{Dimostrazione mutuata da Thurstone (1947): punteggi
+        fattoriali in funzione delle dimensioni delle scatole.}
+    \label{fig:26boxes}
+  \end{center}
+\end{figure}
+
+
+\subsection{Stima dei punteggi fattoriali}
+
+Si definiscono punteggi fattoriali i valori assunti dai fattori comuni (inosservabili) in corrispondenza delle osservazioni campionarie. 
+Il metodo di Thomson stima i punteggi fattoriali in base all'approccio della regressione multipla, ovvero, impiegando la matrice delle correlazioni tra le variabili e la matrice di struttura (ovvero, la matrice delle correlazioni delle variabili con i fattori). 
+% Per ottenere le stime dei punteggi fattoriali con il metodo di Thomson è necessario specificare  nella funzione {\tt factanal()} l'opzione \texttt{scores = "regression"}.
+Il metodo della regressione pone il problema della stima dei punteggi fattoriali nei termini di una  ideale regressione di ogni fattore rispetto a tutte le variabili osservate. 
+Per il fattore $j$-esimo, si può scrivere un'equazione del tipo:
+\begin{align}
+F_j =& \beta_{1j}y_1 + \dots + \beta_{pm}y_p + \varepsilon_j
+\label{eq:punt_fatt}
+\end{align}
+dove $F_j$ sono i punteggi fattoriali e $y$ sono le variabili osservate
+standardizzate $(Y-\bar{Y})/s$. In forma matriciale, il modello diventa
+\begin{equation}
+\boldsymbol{F} = \boldsymbol{y} \boldsymbol{B} +
+\boldsymbol{\varepsilon}
+\end{equation}
+I coefficienti parziali di regressione \textbf{B} sono ignoti.
+Tuttavia, possono essere calcolati utilizzando i metodi della
+regressione lineare. Nel modello di regressione, infatti, i coefficienti dei minimi quadrati possono essere calcolati utilizzando due matrici di correlazioni: la
+matrice $\textbf{R}_{xx}$ (le correlazioni tra le variabili $X$)  e  la matrice $\textbf{R}_{xy}$ (le correlazioni tra le variabili $X$ e la variabile $Y$:
+\begin{equation}
+\hat{\textbf{B}} = \textbf{R}_{xx}^{-1}\textbf{R}_{xy}
+\label{eq:b_corr}
+\end{equation}
+% Illustriamo tale principio  con un esempio numerico:
+% \begin{lstlisting}
+% x1 <- 10 * runif(100)
+% x2 <- x1 + 15 * runif(100)
+% z1 <- scale(x1)
+% z2 <- scale(x2)
+% y <- 3 + 4 * x1 + 5 * x2 + rnorm(100)
+% zy <- scale(y)
+% fm1 <- lm(zy ~ z1 + z2)
+% round(fm1$coef, 3)
+% #> (Intercept)          z1          z2
+% #>       0.000       0.353       0.807
+% \end{lstlisting}
+% Lo stesso risultato si ottiene utilizzando la formula~\ref{eq:b_corr}:
+% \begin{lstlisting}
+% r.xy <- c(cor(z1, zy), cor(z2, zy))
+% r.xy
+% #> [1] 0.670317 0.945419
+% X <- cbind(z1, z2)
+% r.xx <- cor(X)
+% r.xx
+% #>           [,1]      [,2]
+% #> [1,] 1.0000000 0.3936670
+% #> [2,] 0.3936670 1.0000000
+% round(solve(r.xx) %*% r.xy, 3)
+% #>       [,1]
+% #> [1,] 0.353
+% #> [2,] 0.807
+% \end{lstlisting}
+Nel caso dell'analisi fattoriale, $\textbf{R}_{xx}$ corrisponde alla
+matrice delle correlazioni tra le variabili osservate e
+$\textbf{R}_{xy}$ corrisponde alla matrice di struttura (la matrice
+delle correlazioni tra le variabili osservate e i fattori).
+Se i fattori sono ortogonali, la matrice di struttura coincide con la
+matrice dei pesi fattoriali $\hat{\boldsymbol{\Lambda}}$.
+
+I coefficienti \textbf{B} dell'equazione~\ref{eq:punt_fatt} possono dunque essere trovati nel modo seguente:
+$$
+\hat{\boldsymbol{B}} = \boldsymbol{R}_{yy}^{-1}\boldsymbol{R}_{xf}=
+\boldsymbol{R}^{-1}\hat{\boldsymbol{\Lambda}}
+$$
+Una volta stimati i coefficienti $\hat{\textbf{B}}$, i punteggi
+fattoriali si calcolano allo stesso modo dei punteggi
+teorici del modello di regressione:
+\begin{equation}
+\hat{\textbf{F}} = \textbf{y} \hat{\textbf{B}} = \textbf{y}
+\textbf{R}^{-1}\hat{\boldsymbol{\Lambda}}
+\label{eq:calc_punt_fatt}
+\end{equation}
+dove $\boldsymbol{y}$ è la matrice delle variabili osservate
+standardizzate $(Y-\bar{Y})/s$.
+
+\begin{example}
+
+Utilizziamo dei dati simulati per fornire un esempio di quanto detto sopra.
+
+\begin{lstlisting}
+n <- 100
+F <- rnorm(n)
+Y1 <- scale(15*F + 5*rnorm(n))
+Y2 <- scale(-4*F + 3*rnorm(n))
+Y3 <- scale(-4*F + 7*rnorm(n))
+Y4 <- scale(2.5*F + 4*rnorm(n))
+Y5 <- scale(-10*F + 4*rnorm(n))
+Y <- cbind(Y1, Y2, Y3, Y4, Y5)
+round(cor(Y), 3) 
+#>        [,1]   [,2]   [,3]   [,4]   [,5]
+#> [1,]  1.000 -0.775 -0.498  0.621 -0.878
+#> [2,] -0.775  1.000  0.397 -0.570  0.767
+#> [3,] -0.498  0.397  1.000 -0.166  0.464
+#> [4,]  0.621 -0.570 -0.166  1.000 -0.590
+#> [5,] -0.878  0.767  0.464 -0.590  1.000
+\end{lstlisting}
+
+Con l'argomento {\tt scores=''regression''}, possimo calcolare i punteggi fattoriali mediante la funzione {\tt factanal()}:
+
+\begin{lstlisting}
+fa <- factanal(Y, factors = 1, scores = "regression")
+\end{lstlisting}
+In maneria alternativa, stimiamo i punteggi fattoriali usando la formula~\ref{eq:calc_punt_fatt}:
+
+\begin{lstlisting}
+L <- matrix(fa$loadings[1:5], 5, 1)
+round(L, 3)
+#>        [,1]
+#> [1,] -0.950
+#> [2,]  0.824
+#> [3,]  0.501
+#> [4,] -0.647
+#> [5,]  0.924
+fs <- t(L) %*% solve( fa$cor ) %*% t(Y)
+\end{lstlisting}
+I risultati trovati mediante la formula~\ref{eq:calc_punt_fatt} coincidono con quelli prodotti dalla funzione {\tt factanal()}:
+
+\begin{lstlisting}
+round(head(cbind(t(fs), fa$scores)), 3)
+#>             Factor1
+#> [1,]  0.853   0.853
+#> [2,]  1.515   1.515
+#> [3,] -0.158  -0.158
+#> [4,]  0.170   0.170
+#> [5,]  0.817   0.817
+#> [6,]  0.548   0.548
+\end{lstlisting}
+Nella  procedura per la determinazione dei punteggi fattoriali sono
+possibili diverse opzioni, con risultati non coincidenti. 
+Esaminiamo la soluzione ottenuta con il metodo di Bartlett:
+
+\begin{lstlisting}
+fa1 <- factanal(Y, factors = 1, scores = "Bartlett")
+round(head(fa1$scores), 3)
+#>      Factor1
+#> [1,]   0.900
+#> [2,]   1.598
+#> [3,]  -0.167
+#> [4,]   0.180
+#> [5,]   0.861
+#> [6,]   0.578
+round(head(fa$scores), 3)
+#>      Factor1
+#> [1,]   0.853
+#> [2,]   1.515
+#> [3,]  -0.158
+#> [4,]   0.170
+#> [5,]   0.817
+#> [6,]   0.548
+\end{lstlisting}
+Come si vede, i risultati ottenuti con il metodo di Bartlett sono simili (anche se non identici) a quelli ottenuti con il metodo della regressione.
+
+\end{example}
+
+
+%\section{I dati sono appropriati?}
+%
+%\begin{frame}{I dati sono appropriati?}
+%\begin{itemize}
+%  \item 
+%Concludiamo la discussione dell'analisi fattoriale con alcune
+%considerazioni relative alla numerosità dei dati campionari. 
+%\item  Sono
+%state proposte le seguenti regole euristiche per stabilire quante
+%osservazioni siano necessarie per potere condurre l'analisi
+%fattoriale.
+%\end{itemize}
+%\end{frame}
+%
+%\subsection{Regole euristiche}
+%
+%\begin{frame}{Regole euristiche}
+%\begin{itemize}
+%  \item \textbf{Correlazione}. Non ha senso usare l'analisi fattoriale se
+%le variabili non sono tra loro associate -- perch{\'e} stimare dei
+%fattori comuni se le variabili non hanno niente in comune?
+%
+%\begin{itemize}
+%\item Regola eurisitica: la matrice di correlazione contiene molte
+%correlazioni $> 0.3$.
+%\end{itemize}
+%
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Regole euristiche}
+%\begin{itemize}
+%  \item 
+%\textbf{Normalit{\`a} multivariata}. I dati devono essere
+%multivariati normali se le procedure di stima vengono effettuate
+%con il metodo della massima verosimiglianza.  Questo non {\`e}
+%richiesto per adattare il modello fattoriale con il metodo
+%\emph{Principal Factor}.
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Regole euristiche}
+%\begin{itemize}
+%  \item 
+%\textbf{Dimensioni del campione}. Una regola euristica {\`e} che
+%vi dovrebbero essere almeno 50 osservazioni e che le osservazioni
+%dovrebbero essere almeno 5 volte pi{\`u} numerose delle variabili.
+%Stevens (2002, pg. 395) riporta i risultati di alcune
+%simulazioni in base a cui un fattore risulta attendibile se ha:
+%\begin{itemize}
+%    \item 3 o pi{\`u} variabili con saturazioni $\geq 0.8$ e qualunque $n$;
+%    \item 4 o pi{\`u} variabili con saturazioni $\geq 0.6$ e qualunque $n$;
+%    \item 10 o pi{\`u} variabili con saturazioni $\geq 0.4$ e $n=150$.
+%    \item Fattori definiti da poche saturazioni richiedono $n=300$.
+%\end{itemize}
+%\end{itemize}
+%\end{frame}
+%
+%
+%
+%
+%\section{Analisi fattorialie e PCA}
+%
+%\begin{frame}{Analisi fattorialie e PCA}
+%\begin{itemize}
+%  \item 
+%Se i valori $\sigma_j$ sono uguali,  i risultati dell'analisi
+%fattoriale condotta mediante il metodo della massima verosimiglianza
+%sono essenzialmente simili a quelli dell'analisi delle componenti
+%principali.
+%\item  Invece, se  $\sigma_j$ assumono valori diversi, allora
+%l'analisi fattoriale produce risultati molto diversi dall'analisi
+%delle componenti principali. 
+%\end{itemize}
+%\end{frame}
+%
+%
+%\begin{frame}{Analisi fattorialie e PCA}
+%\begin{itemize}
+%\item A differenza della PCA, l'analisi fattoriale non è sensibile all'unità di misura delle variabili.
+%\item La presenza di una quantità di rumore relativamente grande per una variabile non influenza i risultati dell'analisi fattoriale, eccetto per un aumento di  $\sigma_j$ per quella variabile. In contrasto, una variabile con molto rumore può dominare la prima componente principale, a meno che la variabile non sia standardizzata così da ridurre la quantità di rumore.
+%
+%\end{itemize}
+%\end{frame}
+%
+%
+%
+%
+%\begin{frame}{Analisi fattorialie e PCA}
+%\begin{itemize}
+%\item In generale, le prime $m$ componenti principali sono scelte in maniera tale da spiegare quanta più parte possibile della \emph{varianza} delle variabili originarie; 
+% nell'analisi fattoriale, invece, le $m$ variabili latenti sono scelte in maniera tale da spiegare quanta più parte possibile della \emph{covarianza} delle variabili manifeste.
+%\end{itemize}
+%\end{frame}
+%
+
+
+
+
+

@@ -1,0 +1,113 @@
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+\defaultfontfeatures{Scale=MatchLowercase}
+
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[bf,singlelinecheck=off]{caption}
+
+\usepackage{framed,color}
+\definecolor{shadecolor}{RGB}{248,248,248}
+
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\topfraction}{0.8}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\floatpagefraction}{0.75}
+
+\renewenvironment{quote}{\begin{VF}}{\end{VF}}
+\let\oldhref\href
+\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
+
+\ifxetex
+  \usepackage{letltxmacro}
+  \setlength{\XeTeXLinkMargin}{1pt}
+  \LetLtxMacro\SavedIncludeGraphics\includegraphics
+  \def\includegraphics#1#{% #1 catches optional stuff (star/opt. arg.)
+    \IncludeGraphicsAux{#1}%
+  }%
+  \newcommand*{\IncludeGraphicsAux}[2]{%
+    \XeTeXLinkBox{%
+      \SavedIncludeGraphics#1{#2}%
+    }%
+  }%
+\fi
+
+\makeatletter
+\newenvironment{kframe}{%
+\medskip{}
+\setlength{\fboxsep}{.8em}
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\renewenvironment{Shaded}{\begin{kframe}}{\end{kframe}}
+
+\usepackage{makeidx}
+\makeindex
+
+\urlstyle{tt}
+
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+
+\DeclareMathOperator{\V}{\mathbb{V}} % Define variance operator
+\DeclareMathOperator{\Var}{\mathbb{V}} % Define variance operator
+\DeclareMathOperator{\SD}{SD} % Define sd operator
+\DeclareMathOperator{\Cov}{Cov} % Define covariance operator
+\DeclareMathOperator{\Corr}{Corr} % Define correlation operator
+\DeclareMathOperator{\Me}{Me} % Define mediane operator
+\DeclareMathOperator{\Mo}{Mo} % Define mode operator
+
+\DeclareMathOperator{\Bin}{Binomial} % Define binomial operator
+\DeclareMathOperator{\Bernoulli}{Bernoulli} % Define Bernoulli operator
+\DeclareMathOperator{\Ber}{\mathscr{B}} % Define Bernoulli operator
+\DeclareMathOperator{\Poi}{Poisson} % Define Poisson operator
+\DeclareMathOperator{\Uniform}{Uniform} % Define Uniform operator
+\DeclareMathOperator{\Cauchy}{Cauchy} % Define Cauchy operator
+\DeclareMathOperator{\B}{B} % beta function
+% \mbox{B}(a, b) % beta function
+% \mbox{Beta}(a, b) % beta distribution
+
+\DeclareMathOperator{\elpd}{elpd} % Define elpd operator
+\DeclareMathOperator{\lppd}{lppd} % Define lppd operator
+\DeclareMathOperator{\LOO}{LOO} % Define LOO operator
+\DeclareMathOperator{\argmin}{arg\,min} 
+\DeclareMathOperator{\argmax}{arg\,max} 
+
+\newcommand{\E}{\mathbb{E}} % Define expected value operator
+\newcommand{\R}{\textsf{R}} % Define R programming language symbol
+\newcommand{\Real}{\mathbb{R}} % Define real number operator
+\newcommand{\Prob}{\mathscr{P}}
+\newcommand{\indep}{\perp \!\!\! \perp}
+
+\usepackage[
+ labelfont=bf,
+ font={small, it}
+]{caption}
+\usepackage{upquote} % print correct quotes in verbatim-environments
+\usepackage{empheq}
+\usepackage{xfrac}
+
+\usepackage{polyglossia}
+\setmainlanguage{italian}
+
+\frontmatter

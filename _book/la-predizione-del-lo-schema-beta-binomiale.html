@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.1 La predizione del lo schema beta-binomiale | Data Science per psicologi</title>
+  <meta name="description" content="This document contains the materials of the lessons of Psicometria B000286 (2021/2022) aimed at students of the first year of the Degree Course in Psychological Sciences and Techniques of the University of Florence, Italy." />
+  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.1 La predizione del lo schema beta-binomiale | Data Science per psicologi" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This document contains the materials of the lessons of Psicometria B000286 (2021/2022) aimed at students of the first year of the Degree Course in Psychological Sciences and Techniques of the University of Florence, Italy." />
+  <meta name="github-repo" content="ccaudek/ds4psy" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.1 La predizione del lo schema beta-binomiale | Data Science per psicologi" />
+  
+  <meta name="twitter:description" content="This document contains the materials of the lessons of Psicometria B000286 (2021/2022) aimed at students of the first year of the Degree Course in Psychological Sciences and Techniques of the University of Florence, Italy." />
+  
+
+<meta name="author" content="Corrado Caudek" />
+
+
+<meta name="date" content="2022-02-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ch-prediction.html"/>
+<link rel="next" href="commenti-e-considerazioni-finali-1.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Science per psicologi</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefazione</a>
+<ul>
+<li class="chapter" data-level="" data-path="la-psicologia-e-la-data-science.html"><a href="la-psicologia-e-la-data-science.html"><i class="fa fa-check"></i>La psicologia e la Data science</a></li>
+<li class="chapter" data-level="" data-path="come-studiare.html"><a href="come-studiare.html"><i class="fa fa-check"></i>Come studiare</a></li>
+<li class="chapter" data-level="" data-path="sviluppare-un-metodo-di-studio-efficace.html"><a href="sviluppare-un-metodo-di-studio-efficace.html"><i class="fa fa-check"></i>Sviluppare un metodo di studio efficace</a></li>
+</ul></li>
+<li class="part"><span><b>I Inferenza bayesiana</b></span></li>
+<li class="chapter" data-level="1" data-path="ch:intro-bayes-inference.html"><a href="ch:intro-bayes-inference.html"><i class="fa fa-check"></i><b>1</b> Flusso di lavoro bayesiano</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="modellizzazione-bayesiana.html"><a href="modellizzazione-bayesiana.html"><i class="fa fa-check"></i><b>1.1</b> Modellizzazione bayesiana</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="modellizzazione-bayesiana.html"><a href="modellizzazione-bayesiana.html#notazione"><i class="fa fa-check"></i><b>1.1.1</b> Notazione</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="distribuzioni-a-priori.html"><a href="distribuzioni-a-priori.html"><i class="fa fa-check"></i><b>1.2</b> Distribuzioni a priori</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="distribuzioni-a-priori.html"><a href="distribuzioni-a-priori.html#tipologie-di-distribuzioni-a-priori"><i class="fa fa-check"></i><b>1.2.1</b> Tipologie di distribuzioni a priori</a></li>
+<li class="chapter" data-level="1.2.2" data-path="distribuzioni-a-priori.html"><a href="distribuzioni-a-priori.html#selezione-della-distribuzione-a-priori"><i class="fa fa-check"></i><b>1.2.2</b> Selezione della distribuzione a priori</a></li>
+<li class="chapter" data-level="1.2.3" data-path="distribuzioni-a-priori.html"><a href="distribuzioni-a-priori.html#unapplicazione-empirica"><i class="fa fa-check"></i><b>1.2.3</b> Un’applicazione empirica</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="la-funzione-di-verosimiglianza.html"><a href="la-funzione-di-verosimiglianza.html"><i class="fa fa-check"></i><b>1.3</b> La funzione di verosimiglianza</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="la-funzione-di-verosimiglianza.html"><a href="la-funzione-di-verosimiglianza.html#notazione-1"><i class="fa fa-check"></i><b>1.3.1</b> Notazione</a></li>
+<li class="chapter" data-level="1.3.2" data-path="la-funzione-di-verosimiglianza.html"><a href="la-funzione-di-verosimiglianza.html#la-log-verosimiglianza"><i class="fa fa-check"></i><b>1.3.2</b> La log-verosimiglianza</a></li>
+<li class="chapter" data-level="1.3.3" data-path="la-funzione-di-verosimiglianza.html"><a href="la-funzione-di-verosimiglianza.html#unapplicazione-empirica-1"><i class="fa fa-check"></i><b>1.3.3</b> Un’applicazione empirica</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="sec:const-normaliz-bino23.html"><a href="sec:const-normaliz-bino23.html"><i class="fa fa-check"></i><b>1.4</b> La verosimiglianza marginale</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="sec:const-normaliz-bino23.html"><a href="sec:const-normaliz-bino23.html#unapplicazione-empirica-2"><i class="fa fa-check"></i><b>1.4.1</b> Un’applicazione empirica</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="distribuzione-a-posteriori.html"><a href="distribuzione-a-posteriori.html"><i class="fa fa-check"></i><b>1.5</b> Distribuzione a posteriori</a></li>
+<li class="chapter" data-level="1.6" data-path="distribuzione-predittiva-a-priori.html"><a href="distribuzione-predittiva-a-priori.html"><i class="fa fa-check"></i><b>1.6</b> Distribuzione predittiva a priori</a></li>
+<li class="chapter" data-level="1.7" data-path="distribuzione-predittiva-a-posteriori.html"><a href="distribuzione-predittiva-a-posteriori.html"><i class="fa fa-check"></i><b>1.7</b> Distribuzione predittiva a posteriori</a></li>
+<li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali.html"><a href="commenti-e-considerazioni-finali.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ch-prediction.html"><a href="ch-prediction.html"><i class="fa fa-check"></i><b>2</b> La predizione bayesiana</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="la-predizione-del-lo-schema-beta-binomiale.html"><a href="la-predizione-del-lo-schema-beta-binomiale.html"><i class="fa fa-check"></i><b>2.1</b> La predizione del lo schema beta-binomiale</a></li>
+<li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-1.html"><a href="commenti-e-considerazioni-finali-1.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chapter-ppc.html"><a href="chapter-ppc.html"><i class="fa fa-check"></i><b>3</b> Distribuzione predittiva a posteriori</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="la-distribuzione-dei-possibili-valori-futuri.html"><a href="la-distribuzione-dei-possibili-valori-futuri.html"><i class="fa fa-check"></i><b>3.1</b> La distribuzione dei possibili valori futuri</a></li>
+<li class="chapter" data-level="3.2" data-path="metodi-mcmc-per-la-distribuzione-predittiva-a-posteriori.html"><a href="metodi-mcmc-per-la-distribuzione-predittiva-a-posteriori.html"><i class="fa fa-check"></i><b>3.2</b> Metodi MCMC per la distribuzione predittiva a posteriori</a></li>
+<li class="chapter" data-level="3.3" data-path="posterior-predictive-checks.html"><a href="posterior-predictive-checks.html"><i class="fa fa-check"></i><b>3.3</b> Posterior predictive checks</a></li>
+<li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-2.html"><a href="commenti-e-considerazioni-finali-2.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Science per psicologi</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="la-predizione-del-lo-schema-beta-binomiale" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> La predizione del lo schema beta-binomiale</h2>
+<p>Una volta costruita la distribuzione a posteriori del parametro <span class="math inline">\(\theta\)</span>, potremmo essere interessati a utilizzare il nostro modello statistico allo scopo di prevedere la probabilità di risultati futuri basandosi sui dati storici. L’obiettivo è andare oltre la comprensione di cosa è successo per arrivare a una migliore valutazione di quello che accadrà in futuro. Questo tipo di analisi inferenziale va sotto il nome di <em>analisi predittiva</em>. L’analisi predittiva utilizza dunque i dati che sono già disponibili per sviluppare un modello che può essere utilizzato per prevedere valori di dati diversi o nuovi.</p>
+<p>Consideriamo qui il caso beta-binomiale nel quale la distribuzione a priori per il parametro <span class="math inline">\(\theta\)</span> (probabilità di successo) è una distribuzione Beta, la verosimiglianza è binomiale e i dati sono costituiti dal numero <span class="math inline">\(y\)</span> di successi che è osservato in <span class="math inline">\(n\)</span> prove Bernoulliane indipendenti. Per fare un esempio concreto, useremo nuovamente i dati dello studio di <span class="citation">Zetsche, Bürkner, and Renneberg (<a href="#ref-zetschefuture2019" role="doc-biblioref">2019</a>)</span> in cui sono stati osservati <span class="math inline">\(y = 23\)</span> “successi” in <span class="math inline">\(n = 30\)</span> prove.</p>
+<p>Siamo interessati a predire i risultati che si potrebbero osservare in nuovi campioni di <span class="math inline">\(m\)</span> osservazioni. Denotiamo con <span class="math inline">\(\tilde{y}\)</span> la manifestazione della variabile casuale <span class="math inline">\(\tilde{Y}\)</span>. In un nuovo campione di <span class="math inline">\(m\)</span> osservazioni, <span class="math inline">\(\tilde{y}\)</span> può assumere il valore di <span class="math inline">\(\tilde{y}_1\)</span>, in un altro campione il valore di <span class="math inline">\(\tilde{y}_2\)</span>, e così via. Siamo interessati a descrivere la <em>distribuzione predittiva a posteriori</em> <span class="math inline">\(f(\tilde{Y} = \tilde{y} \mid Y = y)\)</span>. Nel caso dell’esempio in discussione, la distribuzione di <span class="math inline">\(\tilde{Y}\)</span> dipende da <span class="math inline">\(\theta\)</span> e la nostra conoscenza corrente di <span class="math inline">\(\theta\)</span> è fornita dalla distribuzione a posteriori. Usando la regola della catena, possiamo scrivere la distribuzione congiunta di <span class="math inline">\(\tilde{Y}\)</span> e <span class="math inline">\(\theta\)</span> nel modo seguente</p>
+<p><span class="math display">\[\begin{equation}
+f(\tilde{Y} = \tilde{y}, \theta \mid Y = y) = f(\tilde{Y} = \tilde{y} \mid \theta) f(\theta \mid Y = y).
+\end{equation}\]</span></p>
+<p>Integrando su <span class="math inline">\(\theta\)</span> otteniamo la distribuzione predittiva a posteriori:</p>
+<p><span class="math display">\[\begin{equation}
+f(\tilde{y} \mid y) = \int_{\theta} f(\tilde{y} \mid \theta) f(\theta \mid y) \,\operatorname {d}\!\theta.
+\end{equation}\]</span></p>
+<p>La funzione <span class="math inline">\(f(\tilde{y} \mid \theta)\)</span> è binomiale di parametri <span class="math inline">\(n\)</span> e <span class="math inline">\(\theta\)</span>, e la distribuzione a posteriori <span class="math inline">\(f(\theta \mid y)\)</span> è <span class="math inline">\(\mbox{Beta}(\alpha + y, \beta + n - y)\)</span>. <span class="citation">Albert and Hu (<a href="#ref-albert2019probability" role="doc-biblioref">2019</a>)</span> mostrano che, risolvendo l’integrale, la distribuzione predittiva a posteriori diventa uguale a</p>
+<p><span class="math display">\[
+\begin{equation}
+f(\tilde{y} \mid y) = \binom{m}{\tilde{y}} \frac{B(a+ y + \tilde{y}, b + n - y + m - \tilde{y})}{B(a+y, b+n-y)},
+\end{equation}
+\]</span></p>
+<p>ovvero, corrisponde ad una distribuzione di probabilità discreta chiamata <em>distribuzione beta-binomiale</em> di parametri <span class="math inline">\(m\)</span>, <span class="math inline">\(\alpha+y\)</span> e <span class="math inline">\(\beta+n-y\)</span>. La distribuzione beta-binomiale di parametri <span class="math inline">\(N\)</span>, <span class="math inline">\(\alpha\)</span> e <span class="math inline">\(\beta\)</span> è una distribuzione discreta con una funzione di massa di probabilità uguale a</p>
+<p><span class="math display">\[
+BetaBinomial(y \mid N, \alpha, \beta) = \binom{N}{y} \frac{B(y + \alpha, N-y+\beta)}{B(\alpha, \beta)},
+\]</span></p>
+<p>dove la funzione beta è <span class="math inline">\(B(u, v) = \frac{\Gamma(u)\Gamma(v)}{\Gamma(u+v)}\)</span>.</p>
+<p>La distribuzione beta-binomiale è una distribuzione che non abbiamo discusso in precedenza e che useremo solo in questo esempio. Senza entrare nei dettagli, ci accontentiamo di sapere che tale distribuzione discreta è implementata nella funzione <code>dbbinom()</code> del pacchetto <code>extraDistr</code>. Il significato dei parametri è chiarito nell’esempio discusso di seguito.</p>
+<p>Per il parametro <span class="math inline">\(\theta\)</span>, utilizzando i dati di <span class="citation">Zetsche, Bürkner, and Renneberg (<a href="#ref-zetschefuture2019" role="doc-biblioref">2019</a>)</span>, abbiamo trovato una distribuzione a posteriori <span class="math inline">\(\mbox{Beta}(25, 17)\)</span>. Supponiamo di volere calcolare la distribuzione predittiva a posteriori per un campione di <span class="math inline">\(m = 20\)</span> osservazioni. Utilizzando il risultato precedente, la distribuzione predittiva corrisponde ad una distribuzione beta-binomiale di parametri <span class="math inline">\(m = 20\)</span>, <span class="math inline">\(\alpha = 25\)</span>, <span class="math inline">\(\beta = 17\)</span> (si noti che questi sono i parametri della distribuziome Beta che descrive la distribuzione a posteriori di <span class="math inline">\(\theta\)</span>). Usando <span class="math inline">\(\textsf{R}\)</span>, la distribuzione predittiva a posteriori diventa:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="la-predizione-del-lo-schema-beta-binomiale.html#cb1-1" aria-hidden="true" tabindex="-1"></a>prob <span class="ot">&lt;-</span> extraDistr<span class="sc">::</span><span class="fu">dbbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">17</span>)</span></code></pre></div>
+<p>Un grafico è fornito qui sotto:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="la-predizione-del-lo-schema-beta-binomiale.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">Y =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">Probability =</span> prob) <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="la-predizione-del-lo-schema-beta-binomiale.html#cb2-2" aria-hidden="true" tabindex="-1"></a>  ProbBayes<span class="sc">::</span><span class="fu">prob_plot</span>(<span class="at">Color =</span> <span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<p><img src="ds4psy_files/figure-html/unnamed-chunk-2-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>La distribuzione predittiva a posteriori illustrata nella figura ci dice qual è la plausibiità di osservare <span class="math inline">\(0, 1, \dots, 20\)</span> successi su <span class="math inline">\(m = 20\)</span> prove in un futuro campione di osservazioni, alla luce dei dati che abbiamo osservato nel campione corrente (23 successi in 30 prove), e considerate le nostre opinioni a priori sul valore di <span class="math inline">\(\theta\)</span> (ovvero, <span class="math inline">\(\mbox{Beta}(2, 10)\)</span>).</p>
+<p>Esaminando la distribuzione predittiva notiamo che, in campioni di 20 osservazioni, il valore più plausibile per <span class="math inline">\(\tilde{y}\)</span> è 12 – ovvero, ci aspettiamo che, in futuri campioni di 20 osservazioni, il valore più frequente sarà pari a 12. Tuttavia, <span class="math inline">\(\tilde{y}\)</span> può assumere anche altri valori e la distribuzione predittiva ci informa sulla plausibilità relativa di ciascuno di tali possibili valori <span class="math inline">\(\tilde{y}\)</span>.</p>
+<p>La distribuzione predittiva ha un valore atteso pari a</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="la-predizione-del-lo-schema-beta-binomiale.html#cb3-1" aria-hidden="true" tabindex="-1"></a>ep <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">20</span> <span class="sc">*</span> prob)</span>
+<span id="cb3-2"><a href="la-predizione-del-lo-schema-beta-binomiale.html#cb3-2" aria-hidden="true" tabindex="-1"></a>ep</span>
+<span id="cb3-3"><a href="la-predizione-del-lo-schema-beta-binomiale.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 11.90476</span></span></code></pre></div>
+<p>e una varianza pari a</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="la-predizione-del-lo-schema-beta-binomiale.html#cb4-1" aria-hidden="true" tabindex="-1"></a>vp <span class="ot">&lt;-</span> <span class="fu">sum</span>((<span class="dv">0</span><span class="sc">:</span><span class="dv">20</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> prob) <span class="sc">-</span> ep<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb4-2"><a href="la-predizione-del-lo-schema-beta-binomiale.html#cb4-2" aria-hidden="true" tabindex="-1"></a>vp</span>
+<span id="cb4-3"><a href="la-predizione-del-lo-schema-beta-binomiale.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6.94774</span></span></code></pre></div>
+<!-- Denota una nuova osservazione con la variabile casuale. In particolare, se la nuova indagine è rivolta a m studenti, la variabile casuale è il numero di studenti che preferiscono il venerdì a cenare fuori tra gli m intervistati. Se ancora l'indagine è affidata a un campione casuale, la variabile casuale , condizionata a p, segue una distribuzione binomiale con numero fisso di tracce me probabilità di successo p. La propria conoscenza sulla posizione di p è espressa dalla distribuzione a posteriori di p. -->
+<!-- La distribuzione dei possibili valori futuri della variabile di esito può essere predetta da un modello statistico sulla base della distribuzione a posteriori dei parametri, $p(\theta \mid y)$, avendo già osservato $n$ manifestazioni del fenomeno $y$. Una tale distribuzione va sotto il nome di _distribuzione predittiva a posteriori_ (_posterior predictive distribution_, PPD).  -->
+<!-- Quando vengono simulate le osservazioni della distribuzione predittiva a posteriori si usa la notazione $y^{rep}$ (dove $rep$ sta per _replica_) quando, nella simulazione, vengono utilizzate le stesse osservazioni di $X$ che erano state usate per stimare i parametri del modello. Si usa invece la notazione $\tilde{y}$ per fare riferimento a possibili valori $X$ che non sono contenuti nel campione osservato, ovvero, ad un campione di dati che potrebbe essere osservato in qualche futura occasione. -->
+<!-- La distribuzione predittiva a posteriori viene usata per fare inferenze predittive. L'idea è che, se il modello ben si adatta bene ai dati del campione allora, sulla base dei parametri stimati, dovremmo essere in grado di generare nuovi dati non osservati $y^{rep}$ che risultano molto simili ai dati osservati $y$. I dati $y^{rep}$ vengono concepiti come stime di $\tilde{y}$. La distribuzione predittiva a posteriori è data da: -->
+<!-- \begin{equation} -->
+<!-- p(\tilde{y} \mid y) = \int_{\theta} p(\tilde{y}, \theta \mid y) d \theta = \int_{\theta} p(\tilde{y} \mid \theta, y) p(\theta \mid y) d\theta.\notag -->
+<!-- \end{equation} -->
+<!-- Supponendo che le osservazioni passate e future siano condizionalmente indipendenti dato $\theta$, ovvero che $p(\tilde{y} \mid \theta, y) = p(\tilde{y} \mid \theta)$, possiamo scrivere -->
+<!-- \begin{equation} -->
+<!-- p(\tilde{y} \mid y) = \int_{\theta} p(\tilde{y} \mid \theta) p(\theta \mid y) d\theta. -->
+<!-- (\#eq:dist-pred-post) -->
+<!-- \end{equation} -->
+<!-- La \@ref(eq:dist-pred-post) descrive la nostra incertezza sulla distribuzione di future osservazioni di dati, data la distribuzione a posteriori di $\theta$, ovvero tenendo conto della scelta del modello e della stima dei parametri mediante i dati osservati. Si noti che, nella \@ref(eq:dist-pred-post), $\tilde{y}$ è condizionato da $y$ ma non da ciò che è incognito, ovvero $\theta$. La distribuzione predittiva a posteriori è invece ottenuta mediante marginalizzazione sopra le variabili da "scartare", ovvero sopra i parametri incogniti $\theta$.  -->
+<!-- Un esempio formulato mediante il codice Stan può chiarire questo concetto.  -->
+<!-- Consideriamo il codice relativo alla distribuzione predittiva a posteriori nel caso di un modello di regressione lineare classico con un solo predittore $x$. Il blocco _Model_ sarà: -->
+<!-- ```{r eval=FALSE} -->
+<!-- model { -->
+<!--  y ~ normal(x * beta + alpha, sigma); -->
+<!-- } -->
+<!-- ``` -->
+<!-- Quello che è di interesse per la discussione presente è il blocco _Generated Quantities_. Tale blocco avrà questa forma: -->
+<!-- ```{r eval=FALSE} -->
+<!-- generated quantities { -->
+<!--  real y_rep[N]; -->
+<!--  for (n in 1:N) { -->
+<!--    y_rep[n] = normal_rng(x[n] * beta + alpha, sigma); -->
+<!--  } -->
+<!-- } -->
+<!-- ``` -->
+<!-- La variabile `y_rep` è ciò a cui siamo interessati. Nel codice precedente, `x` è il vettore che contiene i valori della variabile indipendente nel campione di osservazioni esaminato. I parametri del modello di regressione sono `alpha` e `beta`; `sigma` è la stima dell'errore standard della regressione. Supponiamo che questi tre parametri siano degli scalari. Se lo fossero, per il valore `x` $n$-esimo, l'istruzione `normal_rng()` ritornerebbe un valore a caso dalla distribuzione normale con media $\alpha + \beta x_n$ e deviazione standard $\sigma$. Il ciclo `for()` ripete questa operazione $N$ volte, ovvero tante volte quanti sono gli elementi del vettore `x` del campione. Quello che è stato detto sopra ci dà un'idea di quello che succederebbe se `alpha`, `beta` e `sigma` fossero degli scalari. Ma non lo sono. Per ciascuno dei tre paramatri abbiamo un numero molto alto di stime, ovvero l'approssimazione MCMC della distribuzione a posteriori. Poniamo che l'ampiezza campionaria $N$ sia 30. Se `alpha`, `beta` e `sigma` fossero degli scalari, la distribuzione predittiva a posteriori sarebbe costituita da 30 valori $y^{rep}$,  ovvero, non sarebbe nient'altro che $\hat{y} = \hat{\alpha} + \hat{\beta} x$. Ma `alpha`, `beta` e `sigma` non sono degli scalari: per ciascuno di questi parametri abbiamo un grande numero di stime, diciamo 2000. Dunque, quando `normal_rng()` estrae un valore a caso dalla distribuzione normale, i parametri della normale non sono fissi: per determinare $\mu$ prendiamo un valore a caso, chiamiamolo `beta'`, dalla distribuzione dei valori `beta` e un valore a caso, chiamiamolo `alpha'`, dalla distribuzione dei valori `alpha`. Avendo questi due valori, calcoliamo il valore $\mu'_n = \alpha' + \beta' x_n$. Lo stesso si può dire per $\sigma'$. A questo punto possiamo  trovare il valore `y_n'` estraendo un valore a caso dalla distribuzione gaussiana di parametri $\mu'$ e $\sigma'$. Per l'$n$-esimo valore $x$ possiamo ripetere questo processo tante volte. Se lo ripetiamo, ad esempio, 2,000 volte, per tutti e 30 i valori $x$ del campione otterremo una matrice $30 \times 2,000$. In questo modo possiamo generare le previsioni del modello, ovvero $y^{rep}$, che includono due fonti di incertezza: -->
+<!-- - la variabilità campionaria, ovvero il fatto che abbiamo osservato uno specifico insieme di valori $(x, y)$; in un altro campione tali valori saranno diversi; -->
+<!-- - la variabilità a posteriori della distribuzione dei parametri, ovvero il fatto che di ciascun parametro non conosciamo il "valore vero" ma solo una distribuzione (a posteriori) di valori. -->
+<!-- Nel caso dell'esempio presente, l'integrale della \@ref(eq:dist-pred-post) può essere interpretato dicendo che, nell'esempio della matrice di dimensioni $30 \times 2,000$, noi marginalizziamo rispetto alle colonne, ovvero, per ciascuna riga facciamo la media dei valori colonna. Otteniamo così un vettore di 30 osservazioni, ovvero $y^{rep}$. -->
+<!-- Quando, con metodi grafici, vengono esaminati i valori della distribuzione predittiva a posteriori, possiamo esaminare un numero arbitrario di previsioni. Per esempio, possiamo rappresentare graficamente 50 rette di regressione predette -- o un qualsiasi altro numero. Questa rappresentazione grafica quantifica la nostra incertezza a posteriori relativamente (in questo esempio) all'orientamento della retta di regressione.  -->
+<!-- ::: {.exercise} -->
+<!-- Illustreremo ora il problema di trovare la distribuzione $p(\tilde{y} \mid y)$ in un caso semplice, ovvero quello dello schema Beta-Binomiale. Nell'esempio, useremo un'altra volta i dati del campione di pazienti clinici depressi di @zetschefuture2019 -- si veda l'Appendice \@ref(es-pratico-zetsche). Supponendo di volere esaminare in futuro altri 30 pazienti clinici, ci chiediamo: quanti di essi manifesteranno una depressione grave? -->
+<!-- Se vogliamo fare predizioni su $\tilde{y}$ (il numero di "successi" previsti futuri) dobbiamo innanzitutto riconoscere che i possibili valori $\tilde{y} \in \{0, 1, \dots, 30\}$ non sono tutti egualmente plausibili. Sappiamo che $\tilde{y}$ è una v.c. binomiale con distribuzione -->
+<!-- \begin{equation} -->
+<!-- p(\tilde{y}\mid \theta) = \binom{30}{\tilde{y}} \theta^{\tilde{y}}(1-\theta)^{30 - \tilde{y}} \; . -->
+<!-- (\#eq:post-yprime) -->
+<!-- \end{equation} -->
+<!-- La v.c. $\tilde{y}$ dipende da $\theta$, ma il parametro $\theta$ è esso stesso una variabile casuale. Avendo osservato $y = 23$ successi in $n = 30$ prove nel campione  (laddove la presenza di una depressione grave è stata considerata un "successo"), e avendo assunto come distribuzione a priori per $\theta$ una $\mbox{Beta}(2, 10)$ (per continuare con l'esempio precedente), la distribuzione a posteriori di $\theta$ sarà una $\mbox{Beta}(25, 17)$: -->
+<!-- ```{r} -->
+<!-- bayesrules::summarize_beta_binomial( -->
+<!--   alpha = 2, beta = 10, y = 23, n = 30 -->
+<!-- ) -->
+<!-- ``` -->
+<!-- Per trovare la distribuzione sui possibili dati previsti futuri $\tilde{y}$ dobbiamo  applicare la \@ref(eq:dist-pred-post): -->
+<!-- \begin{align} -->
+<!-- p(\tilde{y} \mid y = 23) = \int_0^1 p(\tilde{y} \mid \theta) p(\theta \mid y = 23) d\theta \; . -->
+<!-- (\#eq:post-yprime-y17) -->
+<!-- \end{align} -->
+<!-- Per il modello Beta-Binomiale è possibile trovare una soluzione analitica alla \@ref(eq:dist-pred-post). -->
+<!-- Poniamo di avere osservato $y$ successi in $n$ prove e di utilizzare una distribuzione a priori $\mbox{Beta}(a, b)$. Possiamo scrivere -->
+<!-- \begin{align} -->
+<!-- p(\tilde{y} \mid y) &= \int_0^1 p(\tilde{y} \mid \theta) -->
+<!-- p(\theta \mid y)\, d\theta \notag\\ -->
+<!--  &= \int_0^1 \begin{pmatrix}\tilde{n}\\\tilde{y}\end{pmatrix} -->
+<!--  \theta^{\tilde{y}} -->
+<!-- (1-\theta)^{\tilde{n}-\tilde{y}} \mbox{Beta}(a+y,b+n-y) \, d\theta \notag\\ -->
+<!-- &= \begin{pmatrix}{\tilde{n}}\\\tilde{y}\end{pmatrix} \int_0^1 \theta^{\tilde{y}} -->
+<!-- (1-\theta)^{\tilde{n}-\tilde{y}} \frac{1}{B(a+y, b+n-y)}\theta^{a+y-1}(1-\theta)^{b+n-y-1}\notag\\ -->
+<!-- &= \begin{pmatrix}{\tilde{n}}\\\tilde{y}\end{pmatrix} \frac{1}{B(a+y, b+n-y)}\int_0^1 \theta^{\tilde{y}+a+y-1}(1-\theta)^{\tilde{n}-\tilde{y}+b+n-y-1}\notag\\ -->
+<!-- &= \begin{pmatrix}{\tilde{n}}\\\tilde{y}\end{pmatrix} \frac{B(\tilde{y}+a+y,b+n-y+\tilde{n}-\tilde{y})}{B(a+y, b+n-y)} \; . -->
+<!-- (\#eq:post-yprime-an-sol-betabin) -->
+<!-- \end{align} -->
+<!-- Svolgendo i calcoli in $\R$, per i dati dell'esempio otteniamo: -->
+<!-- ```{r} -->
+<!-- beta_binom <- function(rp) { -->
+<!--   val <- choose(np, rp) * -->
+<!--     beta(rp + a + y, b + n - y + np - rp) / -->
+<!--     beta(a + y, b + n - y) -->
+<!--   val -->
+<!-- } -->
+<!-- n <- 30 -->
+<!-- y <- 23 -->
+<!-- a <- 2 -->
+<!-- b <- 10 -->
+<!-- np <- 30 -->
+<!-- data.frame( -->
+<!--   heads = 0:np, -->
+<!--   pmf = beta_binom(0:np) -->
+<!-- ) %>% -->
+<!--   ggplot(aes(x = factor(heads), y = pmf)) + -->
+<!--   geom_col() + -->
+<!--   labs( -->
+<!--     title = "Distribuzione predittiva a posteriori", -->
+<!--     x = "y'", -->
+<!--     y = "P(Y = y' | Data)" -->
+<!--   ) -->
+<!-- ``` -->
+<!-- \noindent -->
+<!-- È facile vedere come, in questo esempio, la distribuzione predittiva a posteriori $p(\tilde{y} \mid y)$ sia diversa dalla binomiale di parametro $\theta = 23/30$: -->
+<!-- ```{r} -->
+<!-- tibble( -->
+<!--   heads = 0:np, -->
+<!--   pmf = dbinom(x = 0:np, size = np, prob = 23 / 30) -->
+<!-- ) %>% -->
+<!--   ggplot(aes(x = factor(heads), y = pmf)) + -->
+<!--   geom_col() + -->
+<!--   labs( -->
+<!--     title = "p(y | theta = 0.77)", -->
+<!--     x = "y", -->
+<!--     y = "Probabilità" -->
+<!--   ) -->
+<!-- ``` -->
+<!-- \noindent -->
+<!-- In particolare, la $p(\tilde{y} \mid y)$ ha una varianza maggiore di $\Bin(y \mid \theta = 0.77, n = 30)$. Questa maggiore varianza riflette le due fonti di incertezza che sono presenti nella \@ref(eq:dist-pred-post): l'incertezza sul valore del parametro (descritta dalla distribuzione a posteriori) e l'incertezza dovuta alla variabilità campionaria (descritta dalla funzione di verosimiglianza). Possiamo concludere la discussione di questo esempio dicendo che, nel caso di 30 nuovi pazienti clinici, alla luce delle nostre credenze precedenti e dei dati osservati nel campione, ci aspettiamo di osservare 18 pazienti con una depressione severa, anche se è ragionevole aspettarci un numero compreso, diciamo, tra 10 e 25. -->
+<!-- Una volta trovata la distribuzione predittiva a posteriori $p(\tilde{y} \mid y)$ diventa possibile rispondere a domande come: qual è la probabilità di depressione grave in almeno 10 dei 30 pazienti futuri? Rispondere a domande di questo tipo è possibile, ma richiede un po' di lavoro. Tuttavia, non è importante imparare scrivere il codice necessario a risolvere problemi di questo tipo perché, in generale, anche per problemi solo leggermente più complessi di quello discusso qui, non sono disponibili espressioni analitiche della distribuzione predittiva a posteriori. Invece, è possibile trovare una approssimazione numerica della $p(\tilde{y} \mid y)$ mediante simulazioni MCMC. Inoltre, se viene utilizzato un tale metodo, risulta facile rispondere a domande simili a quella che abbiamo presentato sopra. -->
+<!-- ::: -->
+<!-- ## Metodi MCMC per la distribuzione predittiva a posteriori -->
+<!-- Se svolgiamo l'analisi bayesiana con il metodo MCMC, le repliche $p(y^{rep} \mid y)$ (ovvero le stime delle possibili osservazioni future $p(\tilde{y} \mid y)$) possono essere ottenute nel modo seguente: -->
+<!-- - campionare $\theta_i \sim p(\theta \mid y)$, ovvero campionare un valore del parametro dalla distribuzione a posteriori; -->
+<!-- - campionare $y^{rep} \sim p(y^{rep} \mid \theta_i)$, ovvero campionare il valore di un'osservazione dalla funzione di verosimiglianza condizionata al valore del parametro definito nel passo precedente. -->
+<!-- \noindent -->
+<!-- Se i due passaggi descritti sopra vengono ripetuti un numero sufficiente di volte, l'istogramma risultante approssimerà la distribuzione predittiva a posteriori che, in teoria (ma non in pratica) potrebbe essere ottenuta per via analitica (si veda il Paragrafo \@ref(schema-beta-bin-distr-pred-post)). -->
+<!-- ::: {.exercise} -->
+<!-- Generiamo ora $p(y^{rep} \mid y)$ nel caso dell'inferenza su una proporzione. -->
+<!-- Riportiamo qui sotto il codice Stan --- si veda il Capitolo \@ref(mod-binom). -->
+<!-- ```{r} -->
+<!-- modelString = " -->
+<!-- data { -->
+<!--   int<lower=0> N; -->
+<!--   int<lower=0, upper=1> y[N]; -->
+<!-- } -->
+<!-- parameters { -->
+<!--   real<lower=0, upper=1> theta; -->
+<!-- } -->
+<!-- model { -->
+<!--   theta ~ beta(2, 10); -->
+<!--   y ~ bernoulli(theta); -->
+<!-- } -->
+<!-- generated quantities { -->
+<!--   int y_rep[N]; -->
+<!--   real log_lik[N]; -->
+<!--   for (n in 1:N) { -->
+<!--     y_rep[n] = bernoulli_rng(theta); -->
+<!--     log_lik[n] = bernoulli_lpmf(y[n] | theta); -->
+<!--   } -->
+<!-- } -->
+<!-- " -->
+<!-- writeLines(modelString, con = "code/betabin23-30-2-10.stan") -->
+<!-- ``` -->
+<!-- \noindent -->
+<!-- Si noti che nel nel blocco `generated quantities` sono state aggiunte le istruzioni necessarie per simulare $y^{rep}$, ovvero, `y_rep[n] = bernoulli_rng(theta)`. I dati dell'esempio sono: -->
+<!-- ```{r} -->
+<!-- data_list <- list( -->
+<!--   N = 30, -->
+<!--   y = c(rep(1, 23), rep(0, 7)) -->
+<!-- ) -->
+<!-- ``` -->
+<!-- \noindent -->
+<!-- Compiliamo il codice Stan -->
+<!-- ```{r, message=FALSE, comment=FALSE, error=FALSE, results='hide'} -->
+<!-- file <- file.path("code", "betabin23-30-2-10.stan") -->
+<!-- mod <- cmdstan_model(file) -->
+<!-- ``` -->
+<!-- \noindent -->
+<!-- ed eseguiamo il campionamento MCMC: -->
+<!-- ```{r, message=FALSE, comment=FALSE, error=FALSE, results='hide'} -->
+<!-- fit <- mod$sample( -->
+<!--   data = data_list, -->
+<!--   iter_sampling = 4000L, -->
+<!--   iter_warmup = 2000L, -->
+<!--   seed = SEED, -->
+<!--   cores = 4L, -->
+<!--   chains = 4L, -->
+<!--   parallel_chains = 4L, -->
+<!--   refresh = 0, -->
+<!--   thin = 1 -->
+<!-- ) -->
+<!-- ``` -->
+<!-- \noindent -->
+<!-- Per comodità, trasformiamo l'oggetto `fit` in un oggetto di classe `stanfit`: -->
+<!-- ```{r} -->
+<!-- stanfit <- rstan::read_stan_csv(fit$output_files()) -->
+<!-- ``` -->
+<!-- \noindent -->
+<!-- Il contenuto dell'oggetto `stanfit` può essere esaminato nel modo seguente: -->
+<!-- ```{r} -->
+<!-- list_of_draws <- extract(stanfit) -->
+<!-- print(names(list_of_draws)) -->
+<!-- ``` -->
+<!-- \noindent -->
+<!-- Dall'oggetto `list_of_draws` recuperiamo `y_rep`: -->
+<!-- ```{r} -->
+<!-- y_bern <- list_of_draws$y_rep -->
+<!-- dim(y_bern) -->
+<!-- head(y_bern) -->
+<!-- ``` -->
+<!-- Dato che il codice Stan definisce un modello per i dati grezzi (ovvero, per ciascuna singola prova Bernoulliana del campione), ogni riga di `y_bern` include 30 colonne, ciascuna delle quali corrisponde ad un campione ($n$ = 16000 in questa simulazione) di possibili valori futuri $y_i \in \{0, 1\}$. Per ottenere una stima della distribuzione predittiva a posteriori `p(y_rep)`, ovvero, una stima della probabilità associata a ciascuno dei possibili numeri di "successi" in $N = 30$ nuove prove future, è sufficiente calcolare la proporzione di valori 1 in ciascuna riga: -->
+<!-- ```{r} -->
+<!-- tibble(y_rep = rowSums(y_bern)) %>% -->
+<!--   ggplot(aes(x = y_rep, after_stat(density))) + -->
+<!--   geom_histogram(binwidth = 1) -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ## Posterior predictive checks -->
+<!-- La distribuzione predittiva a posteriori viene utilizzata per eseguire i cosiddetti _controlli predittivi a posteriori_ (_Posterior Predictive Checks_, PPC). Ricordiamo che la distribuzione predittiva a posteriori corrisponde alla simulazione di un campione di dati generati utilizzando le proprietà del modello adattato. Nei PPC si realizza un confronto grafico tra $p(y^{rep} \mid y)$ e i dati osservati $y$. Confrontando visivamente gli aspetti chiave dei dati previsti futuri $y^{rep}$ e dei dati osservati $y$ possiamo determinare se il modello è adeguato. -->
+<!-- Oltre al confronto tra le distribuzioni $p(y)$ e $p(y^{rep})$ è anche possibile un confronto tra la distribuzione di varie statistiche descrittive, i cui valori sono calcolati su diversi campioni $y^{rep}$, e le corrispondenti statistiche descrittive calcolate sui dati osservati. Vengono solitamente considerate statistiche descrittive quali la media, la varianza, la deviazione standard, il minimo o il massimo. Ma confronti di questo tipo sono possibili per qualunque statistica descrittiva. Questi confronti sono chiamati PPC. -->
+<!-- ::: {.exercise} -->
+<!-- Esaminiamo ora un set di dati che non seguono la distribuzione normale [@gelman2020regression]. I dati corrispondono ad una serie di misurazioni prese da Simon Newcomb nel 1882 come parte di un esperimento per stimare la velocità della luce. A questi dati verrà (inappropriatamente) adattata una distribuzione normale. L'obiettivo dell'esempio è quello di mostrare come i PPC possono rivelare la mancanza di adattamento di un modello ai dati. -->
+<!-- I PPC mostrano che il modo più semplice per verificare l'adattamento del modello è quello di visualizzare $y^{rep}$ insieme ai dati effettivi. Iniziamo a caricare i dati: -->
+<!-- ```{r} -->
+<!-- library("MASS") -->
+<!-- data("newcomb") -->
+<!-- ``` -->
+<!-- Visualizziamo la distribuzione dei dati con un istogramma: -->
+<!-- ```{r} -->
+<!-- tibble(newcomb) %>% -->
+<!--   ggplot(aes(x = newcomb, after_stat(density))) + -->
+<!--   geom_histogram(binwidth = 1) -->
+<!-- ``` -->
+<!-- Creiamo un oggetto di tipo `list` dove inserire i dati: -->
+<!-- ```{r} -->
+<!-- data_list <- list( -->
+<!--   y = newcomb, -->
+<!--   N = length(newcomb) -->
+<!-- ) -->
+<!-- ``` -->
+<!-- Il codice Stan per il modello normale è il seguente: -->
+<!-- ```{r} -->
+<!-- modelString <- " -->
+<!-- data { -->
+<!--   int<lower=0> N; -->
+<!--   vector[N] y; -->
+<!-- } -->
+<!-- parameters { -->
+<!--   real mu; -->
+<!--   real<lower=0> sigma; -->
+<!-- } -->
+<!-- model { -->
+<!--   mu ~ normal(25, 10); -->
+<!--   sigma ~ cauchy(0, 10); -->
+<!--   y ~ normal(mu, sigma); -->
+<!-- } -->
+<!-- generated quantities { -->
+<!--   vector[N] y_rep; -->
+<!--   for (n in 1:N) { -->
+<!--     y_rep[n] = normal_rng(mu, sigma); -->
+<!--   } -->
+<!-- } -->
+<!-- " -->
+<!-- writeLines(modelString, con = "code/newcomb.stan") -->
+<!-- ``` -->
+<!-- Adattando il modello ai dati -->
+<!-- ```{r, results='hide'} -->
+<!-- file <- file.path("code", "newcomb.stan") -->
+<!-- mod <- cmdstan_model(file) -->
+<!-- fit <- mod$sample( -->
+<!--   data = data_list, -->
+<!--   iter_sampling = 4000L, -->
+<!--   iter_warmup = 2000L, -->
+<!--   seed = SEED, -->
+<!--   chains = 4L, -->
+<!--   cores = 4L, -->
+<!--   refresh = 0, -->
+<!--   thin = 1 -->
+<!-- ) -->
+<!-- ``` -->
+<!-- otteniamo le seguenti stime dei parametri $\mu$ e $\sigma$: -->
+<!-- ```{r} -->
+<!-- fit$summary(c("mu", "sigma")) -->
+<!-- ``` -->
+<!-- Trasformiamo `fit` in un oggetto `stanfit`: -->
+<!-- ```{r} -->
+<!-- stanfit <- rstan::read_stan_csv(fit$output_files()) -->
+<!-- ``` -->
+<!-- La distribuzione a posteriori di $\mu$ è -->
+<!-- ```{r} -->
+<!-- mu_draws <- as.matrix(stanfit, pars = "mu") -->
+<!-- mcmc_areas(mu_draws, prob = 0.95) # color 95% interval -->
+<!-- ``` -->
+<!-- Confrontiamo $\mu$ con la media di $y$: -->
+<!-- ```{r} -->
+<!-- mean(newcomb) -->
+<!-- ``` -->
+<!-- Anche se trova la media giusta, il modello non è comunque adeguato a prevedere le altre proprietà della $y$. Estraiamo $y^{rep}$ dall'oggetto `stanfit`: -->
+<!-- ```{r} -->
+<!-- y_rep <- as.matrix(stanfit, pars = "y_rep") -->
+<!-- dim(y_rep) -->
+<!-- ``` -->
+<!-- I valori `y_rep` sono i dati della distribuzione predittiva a posteriori che sono stati simulati usando gli stessi valori $X$ dei predittori utilizzati per adattare il modello. Il confronto tra l'istogramma della $y$ e gli istogrammi di diversi campioni $y^{rep}$ mostra una scarsa corrispondenza tra i due: -->
+<!-- ```{r} -->
+<!-- ppc_hist(data_list$y, y_rep[1:8, ], binwidth = 1) -->
+<!-- ``` -->
+<!-- Alla stessa conclusione si giunge tramite un confronto tra la funzione di densità empirica della $y$ e quella di diversi campioni $y^{rep}$: -->
+<!-- ```{r} -->
+<!-- ppc_dens_overlay(data_list$y, y_rep[1:50, ]) -->
+<!-- ``` -->
+<!-- Generiamo ora i PPC per la media e il minimo della distribuzione: -->
+<!-- ```{r} -->
+<!-- ppc_stat_2d(data_list$y, y_rep, stat = c("mean", "min")) -->
+<!-- ``` -->
+<!-- Mentre la media viene riprodotta accuratamente dal modello (come abbiamo visto sopra), ciò non è vero per il minimo dela distribuzione. L'origine di questa mancanza di adattamento è il fatto che la distribuzione delle misurazioni della velocità della luce è asimmetrica negativa. Dato che ci sono poche osservazioni nella coda negativa della distribuzione, solo per fare un esempio, utilizzeremo ora un secondo modello che ipotizza una distribuzione $t$ di Student: -->
+<!-- ```{r} -->
+<!-- modelString = " -->
+<!-- data { -->
+<!--   int<lower=0> N; -->
+<!--   vector[N] y; -->
+<!-- } -->
+<!-- parameters { -->
+<!--   real mu; -->
+<!--   real<lower=0> sigma; -->
+<!--   real<lower=0> nu; -->
+<!-- } -->
+<!-- model { -->
+<!--   mu ~ normal(25, 10); -->
+<!--   sigma ~ cauchy(0, 10); -->
+<!--   nu ~ cauchy(0, 10); -->
+<!--   y ~ student_t(nu, mu, sigma); -->
+<!-- } -->
+<!-- generated quantities { -->
+<!--   vector[N] y_rep; -->
+<!--   for (n in 1:N) { -->
+<!--     y_rep[n] = student_t_rng(nu, mu, sigma); -->
+<!--   } -->
+<!-- } -->
+<!-- " -->
+<!-- writeLines(modelString, con = "code/newcomb2.stan") -->
+<!-- ``` -->
+<!-- Adattiamo questo secondo modello ai dati. -->
+<!-- ```{r} -->
+<!-- file <- file.path("code", "newcomb2.stan") -->
+<!-- mod <- cmdstan_model(file) -->
+<!-- fit <- mod$sample( -->
+<!--   data = data_list, -->
+<!--   iter_sampling = 4000L, -->
+<!--   iter_warmup = 2000L, -->
+<!--   seed = SEED, -->
+<!--   chains = 4L, -->
+<!--   cores = 4L, -->
+<!--   parallel_chains = 2L, -->
+<!--   refresh = 0, -->
+<!--   thin = 1 -->
+<!-- ) -->
+<!-- ``` -->
+<!-- Per questo secondo modello il confronto tra la funzione di densità empirica della $y$ e quella di diversi campioni $y^{rep}$ risulta adeguato: -->
+<!-- ```{r} -->
+<!-- stanfit <- rstan::read_stan_csv(fit$output_files()) -->
+<!-- y_rep <- as.matrix(stanfit, pars = "y_rep") -->
+<!-- ppc_dens_overlay(data_list$y, y_rep[1:50, ]) -->
+<!-- ``` -->
+<!-- Inoltre, anche la statistica "minimo della distribuzione" viene ben predetta dal modello. -->
+<!-- ```{r} -->
+<!-- ppc_stat_2d(data_list$y, y_rep, stat = c("mean", "min")) -->
+<!-- ``` -->
+<!-- In conclusione, per le misurazioni della velocità della luce di Newcomb l'accuratezza predittiva del modello basato sulla distribuzione $t$ di Student è chiaramente migliore di quella del modello normale. -->
+<!-- ::: -->
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-albert2019probability" class="csl-entry">
+Albert, Jim, and Jingchen Hu. 2019. <em>Probability and Bayesian Modeling</em>. Chapman; Hall/CRC.
+</div>
+<div id="ref-zetschefuture2019" class="csl-entry">
+Zetsche, Ulrike, Paul-Christian Bürkner, and Babette Renneberg. 2019. <span>“Future Expectations in Clinical Depression: <span>Biased</span> or Realistic?”</span> <em>Journal of Abnormal Psychology</em> 128 (7): 678–88.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ch-prediction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="commenti-e-considerazioni-finali-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ccaudek/ds4psy/edit/master/046_bayesian_prediction.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ds4psy.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

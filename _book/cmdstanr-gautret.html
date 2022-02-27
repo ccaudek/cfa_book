@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3.3 Interfaccia cmdstanr | Data Science per psicologi</title>
+  <meta name="description" content="This document contains the materials of the lessons of Psicometria B000286 (2021/2022) aimed at students of the first year of the Degree Course in Psychological Sciences and Techniques of the University of Florence, Italy." />
+  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3.3 Interfaccia cmdstanr | Data Science per psicologi" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This document contains the materials of the lessons of Psicometria B000286 (2021/2022) aimed at students of the first year of the Degree Course in Psychological Sciences and Techniques of the University of Florence, Italy." />
+  <meta name="github-repo" content="ccaudek/ds4psy" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3.3 Interfaccia cmdstanr | Data Science per psicologi" />
+  
+  <meta name="twitter:description" content="This document contains the materials of the lessons of Psicometria B000286 (2021/2022) aimed at students of the first year of the Degree Course in Psychological Sciences and Techniques of the University of Florence, Italy." />
+  
+
+<meta name="author" content="Corrado Caudek" />
+
+
+<meta name="date" content="2022-01-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="una-proporzione.html"/>
+<link rel="next" href="la-critica-di-hulme_2020.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Science per psicologi</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> mainfont: “Palatino nova W1G”</a>
+<ul>
+<li class="chapter" data-level="" data-path="la-psicologia-e-la-data-science.html"><a href="la-psicologia-e-la-data-science.html"><i class="fa fa-check"></i>La psicologia e la Data science</a></li>
+<li class="chapter" data-level="" data-path="come-studiare.html"><a href="come-studiare.html"><i class="fa fa-check"></i>Come studiare</a></li>
+<li class="chapter" data-level="" data-path="sviluppare-un-metodo-di-studio-efficace.html"><a href="sviluppare-un-metodo-di-studio-efficace.html"><i class="fa fa-check"></i>Sviluppare un metodo di studio efficace</a></li>
+</ul></li>
+<li class="part"><span><b>I Inferenza bayesiana</b></span></li>
+<li class="chapter" data-level="2" data-path="ch:intro-bayes-inference.html"><a href="ch:intro-bayes-inference.html"><i class="fa fa-check"></i><b>2</b> Flusso di lavoro bayesiano</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="modellizzazione-bayesiana.html"><a href="modellizzazione-bayesiana.html"><i class="fa fa-check"></i><b>2.1</b> Modellizzazione bayesiana</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="modellizzazione-bayesiana.html"><a href="modellizzazione-bayesiana.html#notazione"><i class="fa fa-check"></i><b>2.1.1</b> Notazione</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="distribuzioni-a-priori.html"><a href="distribuzioni-a-priori.html"><i class="fa fa-check"></i><b>2.2</b> Distribuzioni a priori</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="distribuzioni-a-priori.html"><a href="distribuzioni-a-priori.html#tipologie-di-distribuzioni-a-priori"><i class="fa fa-check"></i><b>2.2.1</b> Tipologie di distribuzioni a priori</a></li>
+<li class="chapter" data-level="2.2.2" data-path="distribuzioni-a-priori.html"><a href="distribuzioni-a-priori.html#selezione-della-distribuzione-a-priori"><i class="fa fa-check"></i><b>2.2.2</b> Selezione della distribuzione a priori</a></li>
+<li class="chapter" data-level="2.2.3" data-path="distribuzioni-a-priori.html"><a href="distribuzioni-a-priori.html#unapplicazione-empirica"><i class="fa fa-check"></i><b>2.2.3</b> Un’applicazione empirica</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="la-funzione-di-verosimiglianza.html"><a href="la-funzione-di-verosimiglianza.html"><i class="fa fa-check"></i><b>2.3</b> La funzione di verosimiglianza</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="la-funzione-di-verosimiglianza.html"><a href="la-funzione-di-verosimiglianza.html#notazione-1"><i class="fa fa-check"></i><b>2.3.1</b> Notazione</a></li>
+<li class="chapter" data-level="2.3.2" data-path="la-funzione-di-verosimiglianza.html"><a href="la-funzione-di-verosimiglianza.html#la-log-verosimiglianza"><i class="fa fa-check"></i><b>2.3.2</b> La log-verosimiglianza</a></li>
+<li class="chapter" data-level="2.3.3" data-path="la-funzione-di-verosimiglianza.html"><a href="la-funzione-di-verosimiglianza.html#unapplicazione-empirica-1"><i class="fa fa-check"></i><b>2.3.3</b> Un’applicazione empirica</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="sec:const-normaliz-bino23.html"><a href="sec:const-normaliz-bino23.html"><i class="fa fa-check"></i><b>2.4</b> La verosimiglianza marginale</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="sec:const-normaliz-bino23.html"><a href="sec:const-normaliz-bino23.html#unapplicazione-empirica-2"><i class="fa fa-check"></i><b>2.4.1</b> Un’applicazione empirica</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="distribuzione-a-posteriori.html"><a href="distribuzione-a-posteriori.html"><i class="fa fa-check"></i><b>2.5</b> Distribuzione a posteriori</a></li>
+<li class="chapter" data-level="2.6" data-path="distribuzione-predittiva-a-priori.html"><a href="distribuzione-predittiva-a-priori.html"><i class="fa fa-check"></i><b>2.6</b> Distribuzione predittiva a priori</a></li>
+<li class="chapter" data-level="2.7" data-path="distribuzione-predittiva-a-posteriori.html"><a href="distribuzione-predittiva-a-posteriori.html"><i class="fa fa-check"></i><b>2.7</b> Distribuzione predittiva a posteriori</a></li>
+<li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali.html"><a href="commenti-e-considerazioni-finali.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="stan-beta-binom.html"><a href="stan-beta-binom.html"><i class="fa fa-check"></i><b>3</b> Il modello beta-binomiale in linguaggio Stan</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="il-presidente-trump-e-lidrossiclorochina.html"><a href="il-presidente-trump-e-lidrossiclorochina.html"><i class="fa fa-check"></i><b>3.1</b> Il presidente Trump e l’idrossiclorochina</a></li>
+<li class="chapter" data-level="3.2" data-path="una-proporzione.html"><a href="una-proporzione.html"><i class="fa fa-check"></i><b>3.2</b> Una proporzione</a></li>
+<li class="chapter" data-level="3.3" data-path="cmdstanr-gautret.html"><a href="cmdstanr-gautret.html"><i class="fa fa-check"></i><b>3.3</b> Interfaccia <code>cmdstanr</code></a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="cmdstanr-gautret.html"><a href="cmdstanr-gautret.html#fase-1"><i class="fa fa-check"></i><b>3.3.1</b> Fase 1</a></li>
+<li class="chapter" data-level="3.3.2" data-path="cmdstanr-gautret.html"><a href="cmdstanr-gautret.html#fase-2"><i class="fa fa-check"></i><b>3.3.2</b> Fase 2</a></li>
+<li class="chapter" data-level="3.3.3" data-path="cmdstanr-gautret.html"><a href="cmdstanr-gautret.html#burn-in"><i class="fa fa-check"></i><b>3.3.3</b> Burn-in</a></li>
+<li class="chapter" data-level="3.3.4" data-path="cmdstanr-gautret.html"><a href="cmdstanr-gautret.html#inferenza"><i class="fa fa-check"></i><b>3.3.4</b> Inferenza</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="la-critica-di-hulme_2020.html"><a href="la-critica-di-hulme_2020.html"><i class="fa fa-check"></i><b>3.4</b> La critica di <span class="citation">Hulme et al. (<span>2020</span>)</span></a></li>
+<li class="chapter" data-level="3.5" data-path="due-proporzioni.html"><a href="due-proporzioni.html"><i class="fa fa-check"></i><b>3.5</b> Due proporzioni</a></li>
+<li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-1.html"><a href="commenti-e-considerazioni-finali-1.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
+</ul></li>
+<li class="part"><span><b>II Appendici</b></span></li>
+<li class="appendix"><span><b>Appendici</b></span></li>
+<li class="chapter" data-level="A" data-path="appendix:intro-stan.html"><a href="appendix:intro-stan.html"><i class="fa fa-check"></i><b>A</b> Programmare in Stan</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="interfacce-e-pacchetti.html"><a href="interfacce-e-pacchetti.html"><i class="fa fa-check"></i><b>A.1</b> Interfacce e pacchetti</a></li>
+<li class="chapter" data-level="A.2" data-path="interfaccia-cmdstanr.html"><a href="interfaccia-cmdstanr.html"><i class="fa fa-check"></i><b>A.2</b> Interfaccia <code>cmdstanr</code></a></li>
+<li class="chapter" data-level="A.3" data-path="codice-stan.html"><a href="codice-stan.html"><i class="fa fa-check"></i><b>A.3</b> Codice Stan</a>
+<ul>
+<li class="chapter" data-level="A.3.1" data-path="codice-stan.html"><a href="codice-stan.html#hello-world-stan"><i class="fa fa-check"></i><b>A.3.1</b> “Hello, world” – Stan</a></li>
+<li class="chapter" data-level="A.3.2" data-path="codice-stan.html"><a href="codice-stan.html#blocco-data"><i class="fa fa-check"></i><b>A.3.2</b> Blocco <code>data</code></a></li>
+<li class="chapter" data-level="A.3.3" data-path="codice-stan.html"><a href="codice-stan.html#blocco-parameters"><i class="fa fa-check"></i><b>A.3.3</b> Blocco <code>parameters</code></a></li>
+<li class="chapter" data-level="A.3.4" data-path="codice-stan.html"><a href="codice-stan.html#blocco-model"><i class="fa fa-check"></i><b>A.3.4</b> Blocco <code>model</code></a></li>
+<li class="chapter" data-level="A.3.5" data-path="codice-stan.html"><a href="codice-stan.html#blocchi-opzionali"><i class="fa fa-check"></i><b>A.3.5</b> Blocchi opzionali</a></li>
+<li class="chapter" data-level="A.3.6" data-path="codice-stan.html"><a href="codice-stan.html#sintassi"><i class="fa fa-check"></i><b>A.3.6</b> Sintassi</a></li>
+</ul></li>
+<li class="chapter" data-level="A.4" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>A.4</b> Workflow</a></li>
+<li class="chapter" data-level="A.5" data-path="ciao-stan.html"><a href="ciao-stan.html"><i class="fa fa-check"></i><b>A.5</b> Ciao, Stan</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Science per psicologi</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="cmdstanr-gautret" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Interfaccia <code>cmdstanr</code></h2>
+<p>I modelli presentati in questo capitolo sono discussi da <span class="citation">Gelman et al. (<a href="#ref-gelman1995bayesian" role="doc-biblioref">1995</a>)</span> mentre il codice è stato ricavato dalla seguente <a href="http://avehtari.github.io/BDA_R_demos/demos_rstan/rstan_demo.html">pagina web</a>. In questo e nei successivi capitoli useremo Stan mediante l’interfaccia <code>cmdstanr</code> di CmdStan.</p>
+<p>Iniziamo con il caricare i pacchetti necessari:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="cmdstanr-gautret.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;cmdstanr&quot;</span>)</span>
+<span id="cb1-2"><a href="cmdstanr-gautret.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;posterior&quot;</span>)</span>
+<span id="cb1-3"><a href="cmdstanr-gautret.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rstan_options</span>(<span class="at">auto_write =</span> <span class="cn">TRUE</span>) <span class="co"># avoid recompilation of models</span></span>
+<span id="cb1-4"><a href="cmdstanr-gautret.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># parallelize across all CPUs</span></span>
+<span id="cb1-5"><a href="cmdstanr-gautret.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">mc.cores =</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>()) </span>
+<span id="cb1-6"><a href="cmdstanr-gautret.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># improve execution time</span></span>
+<span id="cb1-7"><a href="cmdstanr-gautret.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">LOCAL_CPPFLAGS =</span> <span class="st">&#39;-march=native&#39;</span>) </span>
+<span id="cb1-8"><a href="cmdstanr-gautret.html#cb1-8" aria-hidden="true" tabindex="-1"></a>SEED <span class="ot">&lt;-</span> <span class="dv">374237</span> <span class="co"># set random seed for reproducibility</span></span></code></pre></div>
+<p>Per svolgere l’analisi mediante <code>cmdstanr</code> è necessario prima specificare la struttura del modello bayesiano nella notazione Stan e, poi, eseguire il campionamento dalla distribuzione a posteriori. Esaminiamo questi due passaggi per il caso dell’esempio presente.</p>
+<div id="fase-1" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Fase 1</h3>
+<p>Nella prima fase dell’analisi dobbiamo definire i dati, i parametri e il modello. I <em>dati</em> devono essere contenuti in un oggetto di classe <code>list</code>. Per l’esempio presente abbiamo:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="cmdstanr-gautret.html#cb2-1" aria-hidden="true" tabindex="-1"></a>data1_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb2-2"><a href="cmdstanr-gautret.html#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">N =</span> <span class="dv">16</span>,</span>
+<span id="cb2-3"><a href="cmdstanr-gautret.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">14</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">2</span>))</span>
+<span id="cb2-4"><a href="cmdstanr-gautret.html#cb2-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>Il <em>modello</em> è <span class="math inline">\(\mbox{Bin}(n, \theta)\)</span> e, in linguaggio Stan, può essere specificato come</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="cmdstanr-gautret.html#cb3-1" aria-hidden="true" tabindex="-1"></a>y <span class="sc">~</span> <span class="fu">bernoulli</span>(theta);</span></code></pre></div>
+<p>Il modello dipende dal <em>parametro</em> <code>theta</code>. In Stan, dobbiamo specificare che <code>theta</code> può essere un qualsiasi numero reale compreso tra 0 e 1. Inoltre, dobbiamo specificare la distribuzione a priori di <span class="math inline">\(\theta\)</span>. Per questo parametro abbiamo scelto una <span class="math inline">\(\mbox{Beta}(2, 2)\)</span> e, in linguaggio Stan, scriviamo</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="cmdstanr-gautret.html#cb4-1" aria-hidden="true" tabindex="-1"></a>theta <span class="sc">~</span> <span class="fu">beta</span>(<span class="dv">2</span>, <span class="dv">2</span>);</span></code></pre></div>
+<p>Memorizziamo ora il modello beta-binomiale specificato in linguaggio Stan come stringa di caratteri nel file <code>oneprop.stan</code>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="cmdstanr-gautret.html#cb5-1" aria-hidden="true" tabindex="-1"></a>modelString <span class="ot">=</span> <span class="st">&quot;</span></span>
+<span id="cb5-2"><a href="cmdstanr-gautret.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="st">data {</span></span>
+<span id="cb5-3"><a href="cmdstanr-gautret.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="st">  int&lt;lower=0&gt; N;</span></span>
+<span id="cb5-4"><a href="cmdstanr-gautret.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="st">  int&lt;lower=0, upper=1&gt; y[N];</span></span>
+<span id="cb5-5"><a href="cmdstanr-gautret.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb5-6"><a href="cmdstanr-gautret.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="st">parameters {</span></span>
+<span id="cb5-7"><a href="cmdstanr-gautret.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="st">  real&lt;lower=0, upper=1&gt; theta;</span></span>
+<span id="cb5-8"><a href="cmdstanr-gautret.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb5-9"><a href="cmdstanr-gautret.html#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="st">model {</span></span>
+<span id="cb5-10"><a href="cmdstanr-gautret.html#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="st">  theta ~ beta(2, 2);</span></span>
+<span id="cb5-11"><a href="cmdstanr-gautret.html#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="st">  y ~ bernoulli(theta);</span></span>
+<span id="cb5-12"><a href="cmdstanr-gautret.html#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb5-13"><a href="cmdstanr-gautret.html#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb5-14"><a href="cmdstanr-gautret.html#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(modelString, <span class="at">con =</span> <span class="st">&quot;code/oneprop.stan&quot;</span>)</span></code></pre></div>
+</div>
+<div id="fase-2" class="section level3" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Fase 2</h3>
+<p>Per utilizzare il modello specificato, leggiamo l’indirizzo del file che contiene il codice Stan:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="cmdstanr-gautret.html#cb6-1" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">&quot;code&quot;</span>, <span class="st">&quot;oneprop.stan&quot;</span>)</span></code></pre></div>
+<p>Compiliamo il codice</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="cmdstanr-gautret.html#cb7-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">cmdstan_model</span>(file)</span></code></pre></div>
+<p>ed eseguiamo il campionamento MCMC con la chiamata</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="cmdstanr-gautret.html#cb8-1" aria-hidden="true" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> mod<span class="sc">$</span><span class="fu">sample</span>(</span>
+<span id="cb8-2"><a href="cmdstanr-gautret.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data1_list,</span>
+<span id="cb8-3"><a href="cmdstanr-gautret.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_sampling =</span> 4000L,</span>
+<span id="cb8-4"><a href="cmdstanr-gautret.html#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_warmup =</span> 2000L,</span>
+<span id="cb8-5"><a href="cmdstanr-gautret.html#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">84735</span>,</span>
+<span id="cb8-6"><a href="cmdstanr-gautret.html#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> 4L,</span>
+<span id="cb8-7"><a href="cmdstanr-gautret.html#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">parallel_chains =</span> 4L,</span>
+<span id="cb8-8"><a href="cmdstanr-gautret.html#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">refresh =</span> <span class="dv">0</span>,</span>
+<span id="cb8-9"><a href="cmdstanr-gautret.html#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">thin =</span> <span class="dv">1</span></span>
+<span id="cb8-10"><a href="cmdstanr-gautret.html#cb8-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>Avendo assunto una distribuzione a priori per il parametro <span class="math inline">\(\theta\)</span>, l’algoritmo procede in maniera ciclica, correggendo la distribuzione a priori di <span class="math inline">\(\theta\)</span> condizionandola ai valori già generati. Dopo un certo numero di cicli, necessari per portare l’algoritmo a convergenza, i valori estratti possono essere assunti come campionati dalla distribuzione a posteriori di <span class="math inline">\(\theta\)</span>.</p>
+<p>Si noti che <code>$sample()</code> richiede due tipi di informazioni. Innanzitutto, dobbiamo specificare le informazioni sul modello in base a:</p>
+<ul>
+<li><code>mod</code> = la stringa di caratteri che definisce il modello (qui <code>oneprop.stan</code>),</li>
+<li><code>data</code> = i dati in formato lista (<code>data1_list</code>).</li>
+</ul>
+<p>Dobbiamo inoltre specificare le informazioni sul campionamento MCMC utilizzando alcuni argomenti aggiuntivi:</p>
+<ul>
+<li>L’argomento <code>chains</code> specifica quante catene di Markov parallele eseguire. Eseguiamo qui quattro catene, quindi otteniamo quattro campioni distinti di valori <span class="math inline">\(\pi\)</span>.</li>
+<li>L’argomento <code>iter</code> specifica il numero desiderato di iterazioni o la lunghezza di ciascuna catena di Markov. Per impostazione predefinita, la prima metà di queste iterazioni è costituita da campioni “burn-in” o “warm-up” che verranno ignorati. La seconda metà è conservata e costituisce un campione della distribuzione a posteriori.</li>
+<li>L’argomento <code>seed</code> per impostare il numero casuale che genera il seme per una simulazione <code>cmdstanr</code>.</li>
+</ul>
+</div>
+<div id="burn-in" class="section level3" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Burn-in</h3>
+<p>Al crescere del numero di passi della catena, la distribuzione di target viene sempre meglio approssimata. All’inizio del campionamento, però, la distribuzione può essere significativamente lontana da quella stazionaria, e ci vuole un certo tempo prima di raggiungere la distribuzione stazionaria di equilibrio, detto, appunto, periodo di <em>burn-in</em>. I campioni provenienti da tale parte iniziale della catena vanno tipicamente scartati perché possono non rappresentare accuratamente la distribuzione a posteriori.</p>
+</div>
+<div id="inferenza" class="section level3" number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> Inferenza</h3>
+<p>Un sommario della distribuzione a posteriori si ottiene con:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="cmdstanr-gautret.html#cb9-1" aria-hidden="true" tabindex="-1"></a>fit1<span class="sc">$</span><span class="fu">summary</span>(<span class="fu">c</span>(<span class="st">&quot;theta&quot;</span>))</span>
+<span id="cb9-2"><a href="cmdstanr-gautret.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 × 10</span></span>
+<span id="cb9-3"><a href="cmdstanr-gautret.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   variable  mean median     sd    mad    q5   q95  rhat ess_bulk ess_tail</span></span>
+<span id="cb9-4"><a href="cmdstanr-gautret.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb9-5"><a href="cmdstanr-gautret.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 theta    0.798  0.808 0.0876 0.0872 0.638 0.924  1.00    5769.    6359.</span></span></code></pre></div>
+<p>Creiamo un oggetto di classe <code>stanfit</code></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="cmdstanr-gautret.html#cb10-1" aria-hidden="true" tabindex="-1"></a>stanfit1 <span class="ot">&lt;-</span> rstan<span class="sc">::</span><span class="fu">read_stan_csv</span>(fit1<span class="sc">$</span><span class="fu">output_files</span>())</span></code></pre></div>
+<p>di dimensioni</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="cmdstanr-gautret.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(<span class="fu">as.matrix</span>(stanfit1, <span class="at">pars =</span> <span class="st">&quot;theta&quot;</span>))</span>
+<span id="cb11-2"><a href="cmdstanr-gautret.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 16000     1</span></span></code></pre></div>
+<p>I primi 10 valori sono presentati qui di seguito</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="cmdstanr-gautret.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.matrix</span>(stanfit1, <span class="at">pars =</span> <span class="st">&quot;theta&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="cmdstanr-gautret.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="cb12-3"><a href="cmdstanr-gautret.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           parameters</span></span>
+<span id="cb12-4"><a href="cmdstanr-gautret.html#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; iterations    theta</span></span>
+<span id="cb12-5"><a href="cmdstanr-gautret.html#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       [1,] 0.852111</span></span>
+<span id="cb12-6"><a href="cmdstanr-gautret.html#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       [2,] 0.784496</span></span>
+<span id="cb12-7"><a href="cmdstanr-gautret.html#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       [3,] 0.784496</span></span>
+<span id="cb12-8"><a href="cmdstanr-gautret.html#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       [4,] 0.755076</span></span>
+<span id="cb12-9"><a href="cmdstanr-gautret.html#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       [5,] 0.725578</span></span>
+<span id="cb12-10"><a href="cmdstanr-gautret.html#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       [6,] 0.774385</span></span>
+<span id="cb12-11"><a href="cmdstanr-gautret.html#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       [7,] 0.774385</span></span>
+<span id="cb12-12"><a href="cmdstanr-gautret.html#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       [8,] 0.806225</span></span>
+<span id="cb12-13"><a href="cmdstanr-gautret.html#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       [9,] 0.826550</span></span>
+<span id="cb12-14"><a href="cmdstanr-gautret.html#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [10,] 0.849894</span></span></code></pre></div>
+<p>La matrice precedente include i valori assunti dalla catena di Markov, ovvero un insieme di valori plausibili <span class="math inline">\(\theta\)</span> estratti dalla distribuzione a posteriori.
+Un tracciato della catena di Markov illustra questa esplorazione rappresentando il valore <span class="math inline">\(\theta\)</span> sulle ordinate e l’indice progressivo di in ogni iterazione sull’ascissa. Usiamo la funzione <code>mcmc_trace()</code> del pacchetto <code>bayesplot</code> per costruire il grafico che include tutte e quattro le catene di Markov:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="cmdstanr-gautret.html#cb13-1" aria-hidden="true" tabindex="-1"></a>stanfit1 <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="cmdstanr-gautret.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mcmc_trace</span>(<span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;theta&quot;</span>), <span class="at">size =</span> <span class="fl">0.1</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:trace-plot-gautret"></span>
+<img src="ds4psy_files/figure-html/trace-plot-gautret-1.png" alt="Trace-plot per il parametro $\theta$ nel modello Beta-Binomiale." width="2100" />
+<p class="caption">
+FIGURA 3.1: Trace-plot per il parametro <span class="math inline">\(\theta\)</span> nel modello Beta-Binomiale.
+</p>
+</div>
+<p>La figura <a href="cmdstanr-gautret.html#fig:trace-plot-gautret">3.1</a> mostra che le catene esplorano uno spazio compreso approssimativamenre tra 0.5 e 0.95; questa figura descrive il comportamento <em>longitudinale</em> delle catene di Markov.</p>
+<p>Possiamo anche esaminare la distribuzione degli stati della catena di Markov, ovvero, dei valori che queste catene visitano lungo il loro percorso, ignorando l’ordine di queste visite. L’istogramma della figura <a href="cmdstanr-gautret.html#fig:hist-post-gautret">3.2</a> fornisce una rappresentazione grafica di questa distribuzione per i 16000 valori complessivi delle quattro catene, ovvero per 4000 valori provienienti da ciascuna catena.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="cmdstanr-gautret.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mcmc_hist</span>(stanfit1, <span class="at">pars =</span> <span class="st">&quot;theta&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb14-2"><a href="cmdstanr-gautret.html#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">yaxis_text</span>(<span class="cn">TRUE</span>) <span class="sc">+</span> </span>
+<span id="cb14-3"><a href="cmdstanr-gautret.html#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;count&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:hist-post-gautret"></span>
+<img src="ds4psy_files/figure-html/hist-post-gautret-1.png" alt="Istogramma che illustra l'approssimazione della distribuzione a posteriori per il parametro $\theta$ nel modello Beta-Binomiale." width="2100" />
+<p class="caption">
+FIGURA 3.2: Istogramma che illustra l’approssimazione della distribuzione a posteriori per il parametro <span class="math inline">\(\theta\)</span> nel modello Beta-Binomiale.
+</p>
+</div>
+<p>Nello schema beta-binomiale in cui la verosimiglianza è binomiale con 14 successi su 16 prove e in cui assumiamo una distribuzione a priori <span class="math inline">\(\mbox{Beta}(2, 2)\)</span> sul parametro <span class="math inline">\(\theta\)</span>, la distribuzione a posteriori è una distribuzione Beta di parametri <span class="math inline">\(\alpha\)</span> = 2 + 14 e <span class="math inline">\(\beta\)</span> = 2 + 16 - 14. La figura <a href="cmdstanr-gautret.html#fig:hist-post-gautret-plus-correct">3.3</a> riporta un kernel density plot per i valori delle quattro catene di Markov con sovrapposta in nero la densità <span class="math inline">\(\mbox{Beta}(16, 4)\)</span>. Si noti come la distribuzione dei valori delle catene di Markov produca un’eccellente approssimazione alla distribuzione bersaglio.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="cmdstanr-gautret.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mcmc_dens</span>(stanfit1, <span class="at">pars =</span> <span class="st">&quot;theta&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb15-2"><a href="cmdstanr-gautret.html#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">yaxis_text</span>(<span class="cn">TRUE</span>) <span class="sc">+</span> </span>
+<span id="cb15-3"><a href="cmdstanr-gautret.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;density&quot;</span>) <span class="sc">+</span></span>
+<span id="cb15-4"><a href="cmdstanr-gautret.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dbeta, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">shape1 =</span> <span class="dv">16</span>, <span class="at">shape2=</span><span class="dv">4</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:hist-post-gautret-plus-correct"></span>
+<img src="ds4psy_files/figure-html/hist-post-gautret-plus-correct-1.png" alt="Istogramma che illustra l'approssimazione della distribuzione a posteriori per il parametro $\theta$ nel modello Beta-Binomiale. La curva nera rappresenta la corretta distribuzione a posteriori Beta(16, 4)." width="2100" />
+<p class="caption">
+FIGURA 3.3: Istogramma che illustra l’approssimazione della distribuzione a posteriori per il parametro <span class="math inline">\(\theta\)</span> nel modello Beta-Binomiale. La curva nera rappresenta la corretta distribuzione a posteriori Beta(16, 4).
+</p>
+</div>
+<p>Un intervallo di credibilità al 95% per <span class="math inline">\(\theta\)</span> si ottiene con la seguente chiamata:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="cmdstanr-gautret.html#cb16-1" aria-hidden="true" tabindex="-1"></a>posterior1 <span class="ot">&lt;-</span> <span class="fu">extract</span>(stanfit1)</span>
+<span id="cb16-2"><a href="cmdstanr-gautret.html#cb16-2" aria-hidden="true" tabindex="-1"></a>rstantools<span class="sc">::</span><span class="fu">posterior_interval</span>(<span class="fu">as.matrix</span>(stanfit1), <span class="at">prob =</span> <span class="fl">0.95</span>)</span>
+<span id="cb16-3"><a href="cmdstanr-gautret.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;              2.5%       97.5%</span></span>
+<span id="cb16-4"><a href="cmdstanr-gautret.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; theta   0.5990419   0.9376123</span></span>
+<span id="cb16-5"><a href="cmdstanr-gautret.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lp__  -12.5817650 -10.0086000</span></span></code></pre></div>
+<p>Svolgendo un’analisi bayesiana simile a questa, <span class="citation">Gautret et al. (<a href="#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> hanno trovato che gli intervalli di credibilità del gruppo di controllo e del gruppo sperimentale non si sovrappongono. Questo fatto viene interpretato dicendo che il parametro <span class="math inline">\(\theta\)</span> è diverso nei due gruppi. Sulla base di queste evidenza, <span class="citation">Gautret et al. (<a href="#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> hanno concluso, con un grado di certezza soggettiva del 95%, che nel gruppo sperimentale vi è una probabilità più bassa di risultare positivi al SARS-CoV-2 rispetto al gruppo di controllo. In altri termini, l’analisi statistica condotta da <span class="citation">Gautret et al. (<a href="#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> suggerisce che l’idrossiclorochina è una terapia efficace per il Covid-19.</p>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Gautret_2020" class="csl-entry">
+Gautret, P., J. C. Lagier, P. Parola, L. Meddeb, M. Mailhe, B. Doudier, and S. Honoré. 2020. <span>“Hydroxychloroquine and Azithromycin as a Treatment of COVID-19: Results of an Open-Label Non-Randomized Clinical Trial.”</span> <em>International Journal of Antimicrobial Agents</em>.
+</div>
+<div id="ref-gelman1995bayesian" class="csl-entry">
+Gelman, Andrew, John B Carlin, Hal S Stern, and Donald B Rubin. 1995. <em>Bayesian Data Analysis</em>. Chapman; Hall/CRC.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Nel caso presente, il risultato è poco utile dato che è disponibile una soluzione analitica. Tuttavia, questo esercizio mette in evidenza il fatto cruciale che, nei casi in cui possiamo verificarne la soluzione, il campionamento MCMC è in grado di trovare la risposta corretta. Di conseguenza, possiamo essere sicuri che fornirà un’ottima approssimazione alla distribuzione a posteriori anche in quei casi in cui una soluzione analitica non è disponibile.<a href="cmdstanr-gautret.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="una-proporzione.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="la-critica-di-hulme_2020.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ccaudek/ds4psy/edit/master/040_beta_binomial_mod.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ds4psy.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

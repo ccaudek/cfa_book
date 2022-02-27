@@ -1,0 +1,595 @@
+%%----------------------------------------------------------------------
+\chapter*{Soluzioni}
+%%----------------------------------------------------------------------
+
+\addcontentsline{toc}{chapter}{Soluzioni}
+\markboth{Soluzioni}{Soluzioni}
+
+%----------------------------------------------------------------------
+\section*{Problemi del capitolo~\ref{chapter:R_sintassi_base}} % R1
+%----------------------------------------------------------------------
+
+%\begin{sol}{prob_function_roll}
+%Un modo per scrivere una funzione che ritorni la somma prodotta di lanci di due dadi onesti è il seguente \citeA{grolemund2014hands}:
+%\begin{verbatim}
+%> roll <- function() {
+%+   die <- 1:6
+%+   dice <- sample(die, size = 2, replace = TRUE)
+%+   return(sum(dice))
+%+ }
+%\end{verbatim}
+%Il vettore \verb+die+ contiene sei elementi: i numeri da 1 a 6. La funzione \verb+sample()+ con l'argomento \verb+replace = TRUE+ ritorna due numeri, che possono essere considerati come il risultato di due lanci indipendenti di due dadi onesti; questi due numeri sono immagazzinati nel vettore \verb+dice+. La funzione \verb+sum()+ somma i due numeri contenuti nel vettore \verb+dice+. La funzione nel vettore \verb+return()+ ritorna il risultato trovato da \verb+sum()+. Per esempio, abbiamo:
+%\begin{verbatim}
+%> roll()
+%[1] 9
+%> roll()
+%[1] 5
+%> roll()
+%[1] 10
+%\end{verbatim}
+%\end{sol}
+
+
+%----------------------------------------------------------------------
+\section*{Problemi del capitolo~\ref{chapter:ggplot2}} % R5
+%----------------------------------------------------------------------
+
+\begin{sol}{prob_sim_roll_1}
+Usando la funzione
+\begin{verbatim}
+roll <- function() {
+  die <- 1:6
+  dice <- sample(die, size = 2, replace = TRUE)
+  sum(dice)
+}
+\end{verbatim}
+i risultati di 10,000 lanci di due dadi onesti si trovano nel modo seguente:
+\begin{verbatim}
+> rolls <- replicate(10000, roll())
+\end{verbatim}
+Salviamo i risultati in un data.frame e poi usiamo \verb+ggplot()+ per creare un istogramma con le istruzioni seguenti:
+\begin{verbatim}
+> rolls <- data.frame(rolls)
+> ggplot(data=data.frame(rolls),
++        aes(rolls)) +
++        geom_histogram(aes(y=..density..)) +
++        labs(x="Somma del lancio di due dadi",
++             y="Frequenza Relativa") +
++        theme_tufte(base_size=14, base_family="sans", ticks=TRUE) 
+\end{verbatim}
+  \begin{center}
+    \includegraphics[width=5cm]{sol_sim_roll_1.pdf}
+  \end{center}
+\end{sol}
+
+%----------------------------------------------------------------------
+
+\begin{sol}{prob_sim_roll_2}
+La nuova funzione \verb+roll()+ è
+\begin{verbatim}
+> roll <- function() {
++   die <- 1:6
++   dice <- sample(die, size = 2, replace = TRUE,
++                  prob = c(1/8, 1/8, 1/8, 1/8, 1/8, 3/8))
++   return(sum(dice))
++ }
+\end{verbatim}
+Ripetendo il procedimento illustrato nella soluzione del problema~\ref{prob_sim_roll_1}, otteniamo:
+\begin{verbatim}
+> rolls <- replicate(10000, roll())
+> rolls <- data.frame(rolls)
+> ggplot(data=data.frame(rolls),
++        aes(rolls)) +
++        geom_histogram(aes(y=..density..)) +
++        labs(x="Somma del lancio di due dadi",
++             y="Frequenza Relativa") +
++        theme_tufte(base_size=14, base_family="sans", ticks=TRUE)
+\end{verbatim}
+  \begin{center}
+    \includegraphics[width=5cm]{sol_sim_roll_2.pdf}
+  \end{center}
+\end{sol}
+
+
+%%----------------------------------------------------------------------
+\section*{Problemi del capitolo~\ref{chapter:prob1}}
+%%----------------------------------------------------------------------
+
+
+%%----------------------------------------------------------------------
+
+\begin{sol}{prob_siletti4}
+(1) $A = \{(1,\ 1)(2,\ 2)(3,\ 3)(4,\ 4)(5,\ 5)(6,\ 6)\}$, $P(A) = 6/36 = 1/6$\\ 
+(2) $B = \{(1,\ 4) (2,\ 3) (3,\ 2) (4,\ 1)\}$ $P(B) = 4/36 = 1/9$\\ 
+(3) $C = \{(1,\ 2)(2,\ 1)(2,\ 4)(4,\ 2)(3,\ 6)(6,\ 3)\}$, $P(C) = 1/6$.
+\end{sol}
+
+%%----------------------------------------------------------------------
+
+\begin{sol}{ex:dadidisgiunti}
+%   \begin{center}
+%    \includegraphics[width=8cm]{venn.pdf}
+%  \end{center}
+Se disegniamo lo spazio campionario è facile vedere che i due eventi $A$ e $B$ sono disgiunti, ovvero non  hanno alcun elemento in comune).
+\end{sol}
+
+%%----------------------------------------------------------------------
+
+\begin{sol}{ex:dadidisgiunti2}
+I 36 eventi elementari $E_i$ dello spazio campionario  sono  equiprobabili, $P(E_i) = 1/36$. Dunque
+ $P(A) = 12/36 = 1/3$, $P(B) = 3/36 = 1/6$.
+ Inoltre, dato che $A$ e $B$ sono incompatibili (disgiunti)
+$P(A \cup B) = P(A) + P(B)$, 
+ovvero
+$ P(A \cup B) = 15/36 = 5/12$.
+\end{sol}
+
+%%----------------------------------------------------------------------
+
+\begin{sol}{es_siletti5}
+(1) $P($3 pari in 3 lanci$) = P(P_1 \cap P_2 \cap P_3) = P(P_1) P(P_2) P(P_3)$  perché gli eventi sono indipendenti. Dunque, $P(P_1 \cap P_2 \cap P_3) = 3/6 \cdot 3/6 \cdot 3/6 = 1/8$. \\
+(2) $P($la somma è 5$) = 6/216 = 1/36$.
+\end{sol}
+
+%%----------------------------------------------------------------------
+
+\begin{sol}{ex:cityeye}
+Per risolvere il problema è utile disegnare un diagramma di Venn come il seguente:
+  \begin{center}
+    \includegraphics[width=4cm]{palpitazionivenn}
+  \end{center}
+ Esaminando il diagramma di Venn è facile stabilire che 
+$P(P \cup T) = P(P) + P(T) - P(P\cap T) = 0.75 + 0.4 - 0.25 = 0.90$ e 
+   $P(P^c \cap T^c) = 1 - P(P \cup T) = 1 - 0.90 = 0.10$.
+\end{sol}
+
+%%----------------------------------------------------------------------
+
+\begin{sol}{ex:falk_keldig}
+Sapere che il primo lancio produce testa ci dice che entrambi gli eventi TT e TH non sono possibili. La condizione è dunque l'evento \{TT, TC\}, all'interno del quale i due eventi semplici, tra cui TT, sono egualmente possibili. Questo ci conduce alla probabilità condizionata di 1/2 per TT.
+\end{sol}
+
+%%----------------------------------------------------------------------
+
+\begin{sol}{eserc_insonnia}
+(a) $P(I) = (12 + 18)/ (24 + 26) = 0.6$.\\
+(b) $P(I|F) = 12/24 = 0.5$.
+\end{sol}
+
+
+%%----------------------------------------------------------------------
+
+\begin{sol}{es_siletti6}
+(1) Se due eventi $A$ e $B$ non possono verificarsi contemporaneamente (ossia se due insiemi sono disgiunti ), si dicono incompatibili. Non avendo i due insiemi alcun elemento in comune, $A$ e $B$ sono incompatibili.  \\
+(2) Poiché $A \cup B = \mathcal{S}$ e $A \cap B = \emptyset$, $A$ e $B$ sono complementari. (3)  Se due eventi $A$ e $B$ sono indipendenti se e solo se: $P(A \cap B) = P(A) P(B)$. $P(A \cap B) = 0 \neq 3/6 \cdot 3/6$, $A$ e $B$ non sono indipendenti.
+\end{sol}
+
+
+%%----------------------------------------------------------------------
+
+\begin{sol}{ex:riganti_1.1}
+$P\{$figura $\cup$ fiori$\} = P\{$figura$\} + P\{$fiori$\} − P\{$figura $ \cap$ fiori$\}$= 12/52 + 13/52 − 3/52 = 11/26.\\
+L'evento $\{$figura$\}$ non influisce sulla probabilità dell'evento $\{$fiori$\}$, per cui essi sono statisticamente indipendenti. Ne segue:\\
+$P\{$figura $\cap$ fiori$\} = P\{$figura$\} \cdot P\{$fiori$\}$ = 12/52 $\cdot$ 13/52 = 3/52.
+\end{sol}
+
+%%----------------------------------------------------------------------
+
+\begin{sol}{es_siletti7}
+(1) Se $A$ e $B$ sono incompatibili: $P(A \cap B)  = 0$\\
+$P(A \cup B) = P(A) + P(B) − P(A \cap B) = 0.6$\\
+$P(B) = 0.6 − 0.5 = 0.1$. \\
+(2) Se $A$ e $B$ sono eventi indipendenti: $P(A \cap B) = P(A)P(B)$ \\
+$P(A \cup B) = P(A) + P(B) − P(A \cap B) = P(A) + P(B) − P(A) P(B)$ \\
+$P(A \cup B) = 0.6 = 0.5 + P(B) − 0.5 \cdot P(B)$ \\
+$P(B) − 0.5 \cdot P(B) = 0.6 − 0.5$ \\
+$P(B) \cdot (1 − 0.5) = 0.1$ \\
+$P(B) = 0.1/0.5 = 0.2$.\\
+(3) 
+Dalla definizione di probabilità condizionata otteniamo \\
+$P(A \cap B) = P(B) P(A | B)$\\ 
+$P(A \cup B) = P(A) + P(B) − P(B) P(A|B)$\\ 
+$P(B) − 0.4 \cdot P(B) = 0.6 −0.5$\\
+$P(B) \cdot (1 − 0.4) = 0.1$\\ 
+$P(B) = 0.167$. 
+\end{sol}
+
+%%----------------------------------------------------------------------
+
+\begin{sol}{ex:disposizioni1}
+$D_{(5,4)} = 5\times4\times3\times2$.
+\end{sol}
+
+%%----------------------------------------------------------------------
+
+\begin{sol}{ex:combinazioni1}
+Il numero è dato dalle combinazioni di 5 elementi a 2 a 2:
+$C_{(5,2)} = \binom{5}{2} = 10$.
+\end{sol}
+
+
+%%%----------------------------------------------------------------------
+
+\begin{sol}{ex:palindromo}
+Ci sono  27 possibili stringhe di 3 lettere (tre possibilità per ciascuna lettera). Tra queste ci sono i seguenti palindromi: DDD, OOO, GGG, DOD, DGD, ODO, OGO, GDG, and GGG. La probabilità di ottenere un palindromo è dunque uguale a $9/27 = 1/3$.
+\end{sol}
+
+%%----------------------------------------------------------------------
+
+\begin{sol}{ex:dadisomma3}
+(a) $\frac{3}{36}$\\
+(b)  $\frac{1}{6}$.
+\end{sol}
+
+
+%%----------------------------------------------------------------------
+
+\begin{sol}{ex:cond2}
+U: disturbi d'umore; C: difficoltà nella concentrazione\\
+\noindent
+$
+P(C | U) = \frac{P(C \cap U)}{P(U)} = \frac{0.30}{0.60} = 0.50.
+$
+\end{sol}
+
+%%----------------------------------------------------------------------
+
+\begin{sol}{ex:pokerind1}
+$
+P(A | B) = \frac{P(A \cap B)}{P(B)} =  \frac{P(\text{asso di fiori})}{P(\text{asso})} = \frac{1/52}{4/52}= \frac{1}{4} = P(A)
+$. Dunque i  due eventi  $A$ e $B$ sono indipendenti.
+\end{sol}
+
+%%----------------------------------------------------------------------
+
+\begin{sol}{ex:incomp}
+ Se $A$ e $B$ sono incompatibili allora $P(A \cup B) = P(A) + P(B)$.
+     Dunque $P(B) =  P(A \cup B) - P(A) = .8 - .7 = .1$.
+     Se $A$ e $B$ sono indipendenti allora allora $P(A \cap B) = P(A) P(B)$.
+     Inoltre abbiamo che $P(A \cup B) = P(A) + P(B) - P(A \cap  B)$.
+    Utilizzando queste informazioni, possiamo risolvere per $P(B)$:
+    \begin{align}
+    P(A) + P(B) - P(A \cup B) &=  P(A) P(B)\notag\\
+    P(A)- P(A \cup B) &=  - P(B) + P(A) P(B)\notag\\
+    P(A \cup B) - P(A) &=   P(B) - P(A) P(B)\notag\\
+     P(A \cup B) - P(A) &=   P(B) (1 - P(A))\notag\\
+     \frac{P(A \cup B) - P(A)}{1 - P(A)} &=   P(B) = \frac{1}{3}\notag
+    \end{align}
+     In generale, per due eventi associati $A$ e $B$, $P(B|A) \neq
+     P(B)$ e $P(A|B) \neq P(A)$.
+      Nel caso di due eventi indipendenti $A$ e $B$, invece, $P(B|A)
+     = P(B)$ e $P(A|B) = P(A)$, in altri termini, le probabilit{\`a}
+     condizionate e non condizionate sono uguali.
+\end{sol}
+
+%----------------------------------------------------------------------
+
+\begin{sol}{ex:rocco_1}
+La cifra non si può ripetere, le disposizioni semplici sono:
+\begin{verbatim}
+> nsamp(n = 6, k = 3, replace = FALSE, ordered = TRUE)
+[1] 120
+\end{verbatim}
+\end{sol}
+
+%----------------------------------------------------------------------
+
+\begin{sol}{ex:rocco_2}
+Non conta l'ordine della coppia, sono pertanto dobbiamo calcolare le combinazioni di 10 elementi presi 2 a 2:
+\begin{verbatim}
+> nsamp(n = 8, k = 2, replace = FALSE, ordered = FALSE)
+[1] 28
+\end{verbatim}
+\end{sol}
+
+%----------------------------------------------------------------------
+
+\begin{sol}{ex:rocco_3}
+Dobbiamo calcolare il numero di permutazioni con ripetizione, ovvero
+\begin{verbatim}
+> factorial(10) / (factorial(2) * factorial(2))
+[1] 907200
+\end{verbatim}
+\end{sol}
+
+%----------------------------------------------------------------------
+
+\begin{sol}{ex:rocco_4}
+La prima casella è occupata dal numero 3; nella seconda casella possono essere inserite le sei cifre a disposizione, mentre nella terza solo le rimanenti 5 cifre. La risposta è dunque espressa dal prodotto $1 \cdot 6\cdot 5 = 30$.
+\end{sol}
+
+%----------------------------------------------------------------------
+
+\begin{sol}{ex:rocco_5}
+Dobbiamo calcolare le disposizioni con ripetizione:
+\begin{verbatim}
+> nsamp(n = 6, k = 2, replace = TRUE, ordered = TRUE)
+[1] 36
+\end{verbatim}
+\end{sol}
+
+%----------------------------------------------------------------------
+
+\begin{sol}{ex:rocco_6}
+Dobbiamo calcolare le disposizioni con ripetizione:
+\begin{verbatim}
+> nsamp(n = 6, k = 3, replace = TRUE, ordered = TRUE)
+[1] 216
+\end{verbatim}
+\end{sol}
+
+%----------------------------------------------------------------------
+
+\begin{sol}{ex:rocco_7}
+Le coppie sono (6, 5), (5, 6), (6, 6). La probabilità cercata è dunque 3/36 = 0.083, ovvero
+\begin{verbatim}
+> S <- rolldie(2, makespace = TRUE)
+> head(S)
+  X1 X2      probs
+1  1  1 0.02777778
+2  2  1 0.02777778
+3  3  1 0.02777778
+4  4  1 0.02777778
+5  5  1 0.02777778
+6  6  1 0.02777778
+> A <- subset(S, X1 + X2 > 10)
+> A
+   X1 X2      probs
+30  6  5 0.02777778
+35  5  6 0.02777778
+36  6  6 0.02777778
+> Prob(A, given = S)
+[1] 0.08333333
+\end{verbatim}
+\end{sol}
+
+%----------------------------------------------------------------------
+
+\begin{sol}{ex:rocco_8}
+\begin{verbatim}
+> S <- rolldie(4, makespace = TRUE)
+> A <- subset(S, X1 + X2 + X3 + X4 > 22)
+> A
+     X1 X2 X3 X4        probs
+1080  6  6  6  5 0.0007716049
+1260  6  6  5  6 0.0007716049
+1290  6  5  6  6 0.0007716049
+1295  5  6  6  6 0.0007716049
+1296  6  6  6  6 0.0007716049
+> Prob(A, given = S)
+[1] 0.003858025
+\end{verbatim}
+\end{sol}
+
+%----------------------------------------------------------------------
+
+\begin{sol}{ex:rocco_9}
+\begin{verbatim}
+> # (a) non conta l'ordine, dobbiamo calcolare le combinazioni semplici
+> nsamp(n = 52, k = 2, replace = FALSE, ordered = FALSE)
+[1] 1326
+> # (b)  la carta si può ripresentare: disposizioni con ripetizione
+> nsamp(n = 52, k = 2, replace = TRUE, ordered = TRUE)
+[1] 2704
+#  (c)
+> nsamp(n = 52, k = 2, replace = FALSE, ordered = TRUE)
+[1] 2652
+\end{verbatim}
+\end{sol}
+
+%----------------------------------------------------------------------
+
+\begin{sol}{ex:rocco_10}
+\begin{verbatim}
+> is.even <- function(x) x %% 2 == 0
+> S <- rolldie(2, makespace = TRUE)
+> A <- subset(S, is.even(X1) & is.even(X2))
+> A
+   X1 X2      probs
+8   2  2 0.02777778
+10  4  2 0.02777778
+12  6  2 0.02777778
+20  2  4 0.02777778
+22  4  4 0.02777778
+24  6  4 0.02777778
+32  2  6 0.02777778
+34  4  6 0.02777778
+36  6  6 0.02777778
+> Prob(A, given = S)
+[1] 0.25
+> 9/36
+[1] 0.25
+\end{verbatim}
+\end{sol}
+
+%----------------------------------------------------------------------
+
+\begin{sol}{ex:rocco_11}
+Abbiamo T \_ \_ T T. Le due caselle libere rappresentano delle disposizioni con ripetizione: $n=2$, $k=2$,  $D_{2,1} = 4$.
+
+\end{sol}
+
+%----------------------------------------------------------------------
+
+\begin{sol}{ex:rocco_12}
+L'estrazione contemporanea esprime delle combinazioni. 
+$n=5$, $k=2$ $C_{5,2} = 10$.
+\end{sol}
+
+%----------------------------------------------------------------------
+
+\begin{sol}{ex:rocco_13}
+L'estrazione contemporanea esprime delle combinazioni. 
+$n=10$, $k=2$ $C_{10,2} = 45$.
+\end{sol}
+
+%----------------------------------------------------------------------
+
+\begin{sol}{ex:rocco_14}
+BB oppure NN oppure RR somma delle tre possibilità:
+$\binom{5}{2} + \binom{5}{2}  + \binom{10}{2}  = 10+10+45=65$.
+\end{sol}
+
+%----------------------------------------------------------------------
+%
+%\begin{sol}{ex:rocco_15}
+%
+%\end{sol}
+%
+%%----------------------------------------------------------------------
+
+
+
+
+
+%----------------------------------------------------------------------
+\section*{Problemi del capitolo~\ref{chapter:randomvar}}
+%----------------------------------------------------------------------
+
+\begin{sol}{ex:3lanci2monete}
+Lo spazio campionario dell'esperimento casuale è $\{TTT, HTT, THT, TTH, HHT, HTH,\\ THH, HHH \}$. 
+La dipendenza di $X$ dai risultati dell'esperimento casuale si può rappresentare nel modo seguente:
+$$
+X(\omega) =
+\begin{cases}
+  0, \quad \text{se}\quad \omega = TTT\\
+  1, \quad \text{se}\quad \omega = HTT, THT, TTH\\
+  2, \quad \text{se}\quad \omega = HHT, HTH, THH\\
+  3, \quad \text{se}\quad \omega = HHH
+  \end{cases}
+$$ 
+La funzione di massa di probabilità della $X$ è
+\begin{center}
+\begin{tabular}{ ccccc }
+\hline
+  $x_i$      & 0   & 1   & 2   & 3 \\\hline
+  $P(X=x_i)$ & 1/8 & 3/8 & 3/8 & 1/8\\\hline
+\end{tabular}
+\end{center}
+
+%La notazione $\{\omega: \text{proprietà}\}$ descrive l'insieme di tutti gli $\omega$ che soddisfano quella proprietà.
+(a) La probabilità di ottenere due volte testa si scrive $P(X=2)$ che è un modo succinto di scrivere $P(\{\omega: X(\omega) = 2\})$.  
+La probabilità di ottenere due volte testa, ovvero la probabilità di $\{ X = 2 \}$ è  $$ P(X=2) = P(\{ HHT, HTH, THH\}) = \frac{3}{8}$$
+
+(b) La probabilità di ottenere non più di un risultato testa in tre lanci è
+$$
+P(X \le 1) = P(\{ \omega: X(\omega) \le 1 \}) = P(\{TTT, HTT, THT, TTH \}) = \frac{1}{2}
+$$
+\end{sol}
+
+%-----------------------------------------------------------------------------
+
+\begin{sol}{ex:numero50}
+\begin{enumerate}
+\item 1/50.
+\item Ci sono 11 numeri tra 10 e 20 (includendo 10 e 20). Dunque 
+$
+P(10 \le X \le 20 ) = \frac{11}{50}
+$.
+\item Ci sono 15 numeri primi tra 1 e 50.  Dunque 
+$
+P(X \text{è un numero primo}) = \frac{15}{50}
+$.
+\end{enumerate}
+\end{sol}
+
+%-----------------------------------------------------------------------------
+
+\begin{sol}{ex:roulette}
+\begin{align}
+\Ev(X) &= (1) \times P(X=1) + (-1) \times P(X=-1) \notag\\
+&= 1 \times \frac{18}{38} + (-1) \times \frac{20}{38} \notag\\
+&= -\frac{2}{38} = -0.0526\notag
+\end{align}
+In altre parole, per ciascun euro che il giocatore punta sul rosso si aspetta di perdere 5 centesimi.
+Dato che in ciascuna singola puntata sul rosso, il giocatore non può perdere 5 centesimi, il valore $\Ev(X) = -0.0526$ si interpreta come la vincita attesa in un lungo numero di puntate: se si gioca alla roulette per tante volte di seguito, puntando ogni volta 1 euro, allora a lungo andare si finirà per perdere 5.26 centesi.
+Se  ciascuna puntata è pari a 10,000 euro, allora a lungo andare si finisce per perdere 0.0526 $\times$ 10,000, ovvero 526 euro.
+\end{sol}
+
+%-----------------------------------------------------------------------------
+
+\begin{sol}{ex:giococonveniente}
+ La variabile $X$ corrispondente al numero di puntini che si ottengono dal lancio di un dado onesto è una v.c. uniforme, $X \sim \text{unif}\{1, \dots, 6\}$.
+ Il valore atteso di $X$ è
+$$
+\Ev(X) = \frac{n+1}{2} = \frac{6+1}{2} = 3.5
+$$
+A lungo andare, dunque, il giocatore si aspetta di guadagnare 3.5 euro per ogni puntata di 3.6 euro. Evidentemente il gioco non è conveniente.
+\end{sol}
+
+%-----------------------------------------------------------------------------
+
+\begin{sol}{ex:fahrenheit}
+\begin{align}
+\Ev(F) &= \E\left(32^\circ + \frac{5}{9}C\right)\notag\\
+&= 32^\circ + \frac{5}{9}\Ev(C)\notag\\
+&= 32^\circ + \frac{5}{9} 5 = 41^\circ F\notag
+\end{align}
+\end{sol}
+
+%-----------------------------------------------------------------------------
+
+\begin{sol}{ex:expvalvarcoin}
+La funzione di massa di probabilità della v.c. $X$ è
+\begin{center}
+\begin{tabular}{rc}
+  \hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+  $x$ & $P(X=x)$ \\
+  \hline
+  0 & 0.4 \\
+  1 & 0.6\\  \hline
+  somma & 1.0\\
+  \hline
+\end{tabular}
+\end{center}
+
+Il valore atteso di $X$ {\`e}
+    \begin{align}
+    \Ev(X) &= \sum_{i=1}^{2} x_i P(X=x_i) = 0 \times 0.4 + 1 \times 0.6 = 0.6\notag
+    \end{align}
+La varianza di $X$ {\`e}
+    \begin{align}
+    \var(X) &= \sum_{i=1}^{2} (x_i - \Ev(X))^2 P(X=x_i) \notag \\
+    &= (0 - 0.6)^2 \times 0.4 + (1 - 0.6)^2 \times 0.6 = 0.24 \notag
+    \end{align}
+La deviazione standard di $X$ è
+$
+\sd(X) = \sqrt{0.24} = 0.4899
+$.
+\end{sol}
+
+%-----------------------------------------------------------------------------
+
+\begin{sol}{ex:4variances}
+\begin{center}
+  \includegraphics[width=7cm]{var4distr}
+\end{center}
+
+(a) $W$ è una costante con valore 4.  La varianza di $W$ è zero.\\
+(b) La funzione di massa di probabilità di $X$ è
+$$
+P(X=k) =
+\begin{cases}
+  1/25 \quad \text{se}\quad k = 1, 7\\
+  3/25 \quad \text{se}\quad k = 2, 6\\
+  5/25 \quad \text{se}\quad k = 3, 5\\
+  7/25 \quad \text{se}\quad k = 4\\
+  \end{cases}
+$$
+
+$$
+\var(X) = 2 (1-4)^2 \frac{1}{25} + 2(2-4)^2 \frac{3}{25} +  2(3-4)^2 \frac{5}{25} = 2.08
+$$
+
+(c) I risultati dell'esperimento casuale sono egualmente probabili. Dunque
+$$
+\var(Y) = \sum_{k=1}^7 (k - 4)^2 \frac{1}{7} = 4
+$$
+
+(d) Abbiamo che $P(Z=1) =P(Z=7) = \frac{1}{2}$. Dunque
+$$
+\var(Z) = (1-4)^2 \frac{1}{2} + (7-4)^2 \frac{1}{2} = 9
+$$
+\end{sol}
+

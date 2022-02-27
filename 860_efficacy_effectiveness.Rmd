@@ -1,0 +1,101 @@
+# La valutazione dell'intervento psicologico {#ch:effectiveness}
+
+```{r, include = FALSE}
+source("_common.R")
+```
+
+La valutazione neuropsicologica dei pazienti che presentano disturbi
+cognitivi fornisce informazioni cruciali su cui basare la diagnosi e
+valutare se ci sono stati cambiamenti nelle condizioni di un individuo.
+Essa costituisce uno degli strumenti che possono essere usati per la
+valutazione gli effetti di un trattamento.
+
+Ma come si misurano gli effetti di un trattamento psicologico, in
+generale, o neuropsicologico, in particolare? Consideriamo il caso di un
+intervento psicologico. La valutazione di un intervento psicologico è
+molto diversa rispetto alla valutazione sull'effetto dei farmaci, ad
+esempio, perché c'è un numero quasi infinito di fattori che possono
+essere esaminati per decidere se un determinato tipo di intervento
+psicologico ha portato ad un esito positivo, e semplicemente non c'è
+modo di controllarli tutti. I ricercatori non concordano neppure su cosa
+debba essere valutato quando si valutano gli effetti di un trattamento.
+Miglioramento nel benessere soggettivo? Diminuzione dei sintomi?
+Cambiamento di personalità? Miglioramento nei rapporti interpersonali?
+Miglioramento nelle capacità lavorative? Crescita personale,
+realizzazione e miglioramento della persona? Tutti i precedenti?
+
+Molto spesso gli studi sugli effetti del trattamento considerano
+punteggi medi di misure di esito basate sui sintomi. Questo modo di
+quantificare l'esito del trattamento non tiene in considerazione il
+fatto che, in qualunque trattamento, si osserva un cambiamento in alcuni
+pazienti ma non in altri. Ciò è ulteriormente complicato dai problemi
+della comorbidità. È possibile infatti che un trattamento possa produrre
+un esito favorevole rispetto ad alcune dimensioni di un deficit ma, nel
+contempo, un esito negativo per altre. Anche se la maggior parte degli
+studi sugli effetti di un trattamento psicologico esamina la riduzione
+dei sintomi, il fine ultimo del trattamento dovrebbe essere quello di un
+miglioramento del funzionamento dell'individuo in contesti sociali e del
+livello di benessere percepito. Ma non è chiaro come ciò possa essere
+misurato.
+
+## Efficacia dell'intervento ed efficienza clinica
+
+Indipendentemente dal problema di cosa deve essere misurato, è anche
+necessario chiedersi quali siano le finalità della valutazione. La
+letteratura psicologica distingue tra efficacia ed efficienza clinica
+del trattamento, laddove per efficacia (*efficacy*) si intende la
+capacità del trattamento di produrre un cambiamento, mentre l'efficienza
+clinica (*effectiveness*) può essere definita "la capacità di un
+intervento di produrre gli effetti benefici desiderati nella pratica
+clinica corrente" e fa anche riferimento al rapporto costi/benefici
+dell'intervento. Come descritto da Hunsley (2007), "Treatment efficacy studies involve methodological efforts to maximize
+the internal validity of a study. This commonly includes the use of
+design features, such as random assignment to treatment and control
+conditions, training of therapists to a specified level of competence
+in providing the treatment, and ensuring that all participants have
+the condition that the treatment was designed to address. Treatment
+effectiveness studies, on the other hand, strive to maximize external
+validity while maintaining an adequate level of internal validity
+(without which, of course, no viable conclusions could be drawn about
+the impact of the treatment). Most commonly, efforts to enhance
+external validity involve locating the treatment study within clinical
+service sites that provide ongoing health services, thus using
+clinicians who are routinely providing psychological services and
+patients who have been referred to the clinical settings" (p. 117).
+
+I dati degli studi sull'*efficacy* e sull'*effectiveness* sono
+fondamentali per una piena comprensione dell'impatto potenziale di un
+trattamento. Una volta che un trattamento abbia dimostrato la sua
+*efficacy* attraverso la riproducibilità dei dati di un esperimento, il
+passo successivo è determinare l'impatto effettivo del trattamento nella
+pratica clinica. Deve essere infatti dimostrato che i trattamenti
+esaminati nelle condizioni controllate degli studi di ricerca (studi
+sull'*efficacy*) possano anche avere un adeguato impatto clinico quando
+vengono utilizzati nell'effettiva pratica clinica (studi
+sull'*effectiveness*).
+
+Nel concetto di *effectiveness* si possono individuare quattro
+componenti: efficacia del trattamento, tollerabilità e sicurezza del
+trattamento, funzionamento del paziente, accettabilità dell'intervento
+da parte del paziente. Tutte le componenti interagiscono tra di loro e
+forniscono informazioni sull'esito di un determinato intervento. Per
+quanto riguarda l'efficacia del trattamento, le variabili più importanti
+sono la scomparsa dei sintomi, il tasso di ricadute, la comorbidità. Gli
+elementi più importanti che incidono sulla tollerabilità e sicurezza del
+trattamento sono gli effetti collaterali, la sicurezza e la facilità di
+assunzione della terapia. Il funzionamento del paziente, il terzo
+dominio, include le normali attività quotidiane e la qualità della vita,
+elementi che possono essere quantificati e valutati in studi clinici
+randomizzati o in studi osservazionali. L'accettabilità di un intervento
+da parte del paziente infine, è il dominio della compliance, ed è
+strettamente legato alle altre tre componenti.
+
+Sebbene ciascun dominio possa essere quantificabile singolarmente, è
+anche possibile misurare l'*effectiveness* in maniera globale. Uno
+strumento che può essere usato a tale scopo è la scala *Clinical Global
+Impression* (CGI), che rappresenta il modo più semplice per valutare e
+quantificare, in generale, l'*effectiveness* di un intervento. Inoltre,
+la scala della *Valutazione Globale del Funzionamento* (GAF) fornisce un
+punteggio singolo, composito della funzione psicologica, sociale ed
+occupazionale su un ipotetico continuum che va dal benessere mentale al
+funzionamento più deficitario causato dalla malattia.

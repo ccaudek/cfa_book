@@ -1,0 +1,391 @@
+
+
+%%------------------------------------------------------------
+\chapter{Il numero dei fattori}
+\label{ch:numero_fattori}
+%%------------------------------------------------------------
+
+Sono stati proposti quattro criteri per determinare il numero $m$ di
+fattori da estrarre (Rencher, 2002).  
+Tali criteri sono elencati di seguito.
+
+\begin{itemize}
+\item Scegliere $m$ tale per cui la varianza spiegata dal modello
+  fattoriale superi una soglia predeterminata, per esempio l'80\%
+  della varianza totale, $tr(\textbf{S})$ o $tr(\textbf{R})$. 
+\item Scegliere $m$ uguale al numero di autovalori aventi un valore maggiore del valore medio degli autovalori.  Per \textbf{R} il valore medio degli
+  autovalori è $1$; per \textbf{S} è $\sum_{j=1}^p \theta_j/p$. 
+\item Usare lo {\it scree test}.
+\item Valutare l'ipotesi che $m$ sia il numero corretto di fattori,
+  $H_0: \boldsymbol{\Sigma} =  \boldsymbol{\Lambda}
+  \boldsymbol{\Lambda}^{\ensuremath{\mathsf{T}}} +  \boldsymbol{\Psi}$, dove $\boldsymbol{\Lambda}$ è di ordine $p \times m$.
+\end{itemize}
+
+\section{Quota di varianza spiegata}
+
+Il primo criterio si applica soprattutto al metodo  delle
+componenti principali. La proporzione della varianza capionaria spiegata
+dal fattore $j$-esimo estratto da \textbf{S} è uguale a
+\begin{equation}
+\sum_{i=i}^p \hat{\lambda}_{ij}^2 / tr(\textbf{S}).
+\end{equation}
+Nel caso in cui i fattori vengano estratti da \textbf{R} avremo
+\begin{equation}
+\sum_{i=i}^p \hat{\lambda}_{ij}^2 / p.
+\end{equation}
+
+Nel caso di fattori incorrelati, ciascun fattore contribuisce con una quota complessiva
+di varianza spiegata pari alla somma dei quadrati delle saturazioni
+fattoriali contenute nella matrice $\hat{\boldsymbol{\Lambda}}$:
+$\sum_{i=1}^p\sum_{j=1}^m\hat{\lambda}_{ij}^2$.  Nel caso del metodo
+delle componenti principali, tale somma è anche uguale alla somma dei
+primi $m$ autovalori, o alla somma di tutte le $p$ comunalità:
+\begin{equation}
+\sum_{i=1}^p\sum_{j=1}^m\hat{\lambda}_{ij}^2= \sum_{i=1}^p \hat{h}_i^2
+= \sum_{j=1}^m \theta_j
+\end{equation}
+
+Sulla base di queste considerazioni, il numero $m$ di
+fattori viene scelto in modo da spiegare una quota sufficientemente grande
+di \textbf{S} o $p$.
+
+Il numero dei fattori può essere determinato in questo modo anche nel
+caso in cui l'analisi fattoriale venga eseguita con il metodo dei
+fattori principali (ovvero, nel caso in cui vengano usate le stime
+delle comunalità per generare la matrice ridotta $\textbf{S} -
+\hat{\boldsymbol{\Psi}}$ o $\textbf{R} - \hat{\boldsymbol{\Psi}}$).
+ In
+questo caso, però, è possibile che alcuni autovalori della matrice
+$\textbf{S} - \hat{\boldsymbol{\Psi}}$ o $\textbf{R} -
+\hat{\boldsymbol{\Psi}}$ assumano valore negativo. 
+ In tali
+circostanze, è possibile che la proporzione cumulativa della varianza
+$\sum_{j=1}^m \theta_j / \sum_{j=1}^p \theta_j$ assuma un valore
+maggiore di $1.0$ per $j < p$. 
+
+La proporzione cumulativa della
+varianza si riduce poi a $1.0$ quando vengono considerati
+anche i successivi autovalori negativi. 
+ Di conseguenza, può succedere
+che, utilizzando la matrice $\textbf{S} - \hat{\boldsymbol{\Psi}}$ o
+$\textbf{R} - \hat{\boldsymbol{\Psi}}$, il criterio definito in base
+alla quota della varianza spiegata venga raggiunto per un valore $m$
+minore di quello che verrebbe trovato utilizzando la matrice
+\textbf{S} o \textbf{R}.
+
+ Nel caso del metodo dei fattori principali iterato, $m$ viene
+specificato precedentemente a ciascuna iterazione e $\sum_{i}
+\hat{h}^2_i$ viene ottenuto dopo ciascuna iterazione calcolando
+$\text{tr}(\textbf{S} - \hat{\boldsymbol{\Psi}})$. Per scegliere $m$,
+come per il metodo delle componenti principali, possono essere
+usati gli autovalori di \textbf{S} o \textbf{R}.
+
+
+
+%---------------------------------------------------------------------
+\section{Valore medio degli autovalori}
+%---------------------------------------------------------------------
+
+Il calcolo del valore medio degli autovalori è una procedura euristica  implementata in molti software. In una
+variante di tale metodo, $m$ viene scelto in modo tale da uguagliare
+il numero degli autovalori positivi della matrice ridotta  $\textbf{R}
+- \hat{\boldsymbol{\Psi}}$ (in tale matrice vi sono solitamente degli autovalori negativi). Tale
+variante ha però lo svantaggio di produrre solitamente un numero di
+fattori troppo grande.
+  
+
+
+%---------------------------------------------------------------------
+\section{Scree test}
+%---------------------------------------------------------------------
+
+Lo scree test è basato su una rappresentazione grafica degli
+autovalori di \textbf{S} o \textbf{R}.
+ Si costruisce un grafico che
+rappresenta gli autovalori ordinati in maniera decrescente in funzione
+del numero dei fattori.
+ I punti che rappresentano gli autovalori
+vengono collegati con una spezzata.
+ Il valore $m$ viene determinato in
+corrispondenza di quel fattore oltre il quale il dislivello tra
+fattori successivi diventa esiguo e la spezzata tende a diventare
+orizzontale.
+
+
+\section{Parallel analysis}
+
+La Parallel Analysis è un metodo alternativo allo scree test\footnote{ 
+Horn (1965); Humphreys \& Ilgen (1969);
+Montanelli \& Humphreys (1976).}.  Nella Parallel Analysis, il criterio usato per decidere il numero di 
+fattori da estrarre viene determinato dal confronto con  la
+media degli autovalori generati da un campione casuale di
+variabili standardizzate. 
+ Tale confronto ha lo scopo di controllare le variazioni
+dovute agli errori di campionamento.
+  Anche se, nel caso di variabili  incorrelate,  tutti gli autovalori di
+una matrice di correlazione dovrebbero avere un valore pari a uno, come
+conseguenza della variabilità campionaria in qualunque campione finito
+vi sono comunque uno o più autovalori empirici maggiori di uno. 
+
+\bigskip
+
+\textit{Illustrazione}. Tale fatto può essere illustrato mediante la seguente
+    simulazione di Monte Carlo. 
+Si
+consideri una matrice di correlazione calcolata su $p=10$ variabili casuali mutuamente  indipendenti, ciascuna costituita da $n=20$ osservazioni. 
+
+\begin{lstlisting}
+n <- 20 
+nsim <- 1000 
+e1 <- rep(0, nsim) 
+for (i in 1:nsim) { 
+   Y <- cbind(rnorm(n), rnorm(n), rnorm(n), rnorm(n), rnorm(n), 
+              rnorm(n), rnorm(n), rnorm(n), rnorm(n), rnorm(n)) 
+   e <- eigen(cor(Y)) 
+   e1[i] <- e$values[1] 
+}
+max(e1)
+#> [1] 3.530808
+\end{lstlisting}
+
+Per i dati di questa simulazione, l'autovalore maggiore ha un valore
+pari a $3.53$, anche se i dati sono del tutto casuali.
+ La
+Parallel Analysis tiene conto di questo fatto e determina $m$ confrontando  gli autovalori empirici con le loro ``controparti
+casuali.'' 
+ Vanno a determinare $m$ solo gli autovalori empirici che hanno
+  un valore superiore ai corrispondenti autovalori generati da una
+  matrice di dati dello stesso ordine composta da colonne mutualmente
+  incorrelate.
+ Nel caso dell'esempio presente, per esempio, l'autovalore maggiore dovrà
+avere un valore maggiore di $3.53$ (anziché di $1.00$ o del punto di
+flesso della spezzata dello scree test).
+
+
+
+\section{Test di bontà di adattamento}
+%---------------------------------------------------------------------
+
+Se si assume la normalità   distributiva dei dati è possibile valutare la bontà di 
+adattamento attraverso il test del rapporto di verosimiglianze. 
+L'ipotesi nulla postula che la matrice di covarianza delle $Y$ abbia 
+la forma specificata dal modello fattoriale, ossia 
+$$
+H_0: \boldsymbol{\Sigma} =  \boldsymbol{\Lambda}
+  \boldsymbol{\Lambda}^{\ensuremath{\mathsf{T}}} +  \boldsymbol{\Psi},
+$$
+ovvero che $m$ fattori comuni siano sufficienti per spiegare 
+la struttura di interdipendenza della variabile casuale $Y$ oggetto di 
+osservazione campionaria. 
+L'alternativa è che $m$ fattori comuni non siano sufficienti a tale spiegazione
+$$
+H_1: \boldsymbol{\Sigma} \neq  \boldsymbol{\Lambda}
+  \boldsymbol{\Lambda}^{\ensuremath{\mathsf{T}}} +  \boldsymbol{\Psi},
+$$
+dove $\boldsymbol{\Lambda}$ è di ordine $p \times m$. 
+Se l'ipotesi nulla non viene rifiutata vuol dire che il modello
+fornisce un buon adattamento ai dati. 
+
+Sotto l'ipotesi nulla, il test ha una distribuzione asintotica, per $n \rightarrow \infty$, di tipo chi quadrato con  gradi di libertà pari a: 
+\begin{equation}
+\nu=\frac{1}{2}\left[ (p-m)^2 - (p - m) \right].
+\end{equation}
+Tale risultato di natura asintotica, valido per $n$ grande, può essere migliorato, per 
+ottenere una approssimazione migliore, sostituendo $\nu$ con: 
+\begin{equation}
+\nu^* = n - 2 - \frac{2p-1}{6}-\frac{2}{3}m.
+\end{equation}
+ Il rifiuto di $H_0$
+implica che $m$ è troppo piccolo e un numero maggiore di fattori è
+necessario. 
+Solitamente si   inizia l'analisi considerando un numero di fattori molto piccolo: $m^*=1$ e si prende come 
+ipotesi per il  test che il numero di fattori sia $m^*$.
+  Se l'ipotesi
+nulla è accettata il procedimento si arresta, altrimenti si passa a
+considerare $m^* + 1$ fattori e si prosegue con lo stesso
+ragionamento. 
+ Il procedimento si arresta non appena si verifica una delle seguenti situazioni:
+ è stata accettata l'ipotesi $H_0$ per un certo valore di $m$, oppure, 
+ $\nu=\frac{1}{2}\left[ (p-m)^2 - (p - m) \right]=0$, 
+ossia la variabile $\chi^2$ dovrebbe avere zero gradi di libertà, che
+non è possibile. 
+
+ Per poter applicare il test che  determina il buon grado di adattamento del modello fattoriale occorre che i gradi di libertà della statistica del chi-quadrato 
+ siano positivi.
+   Questo sta a significare che il numero di fattori comuni non può superare il più  
+ grande numero intero che soddisfa la seguente equazione: 
+ \begin{equation}
+ m < \frac{1}{2} \left( 2p+1-\sqrt{8p+1} \right)
+ \end{equation}
+ per un numero fissato $p$ di variabili manifeste.
+  In pratica, quando $n$ è grande, il test basato sul rapporto di verosimiglianze rivela un numero di fattori maggiore degli altri metodi descritti in precedenza.
+ Alcuni considerano dunque il valore $m$ indicato dal test quale limite superiore del numero dei fattori che rivestono una qualche importanza pratica.
+  
+ Per alcuni campioni di dati, la scelta di $m$ non è ovvia.
+ Questa indeterminazione costituisce un limite dell'analisi fattoriale.
+ Solitamente, si procede con utilizzando un certo metodo per la scelta di $m$ (diciamo lo scree test) e valuta la proporzione di varianza spiegata di ciascun item e, dopo un'appropriata rotazione, l'interpretabilità della soluzione ottenuta.
+ Se le comunalità o l'interpretabilità dei fattori non sembrano adeguati, si procede con un numero maggiore di fattori. 
+ Tale procedura è certamente soggettiva e i limiti della soluzione che viene ottenuta sono evidenti.
+
+Per altri campioni di dati, la scelta di $m$  consente una maggiore certezza.
+Questo avviene quando tutti i metodi che abbiamo descritto prima forniscono la stessa risposta.
+In questi casi, possiamo essere più certi della soluzione dell'analisi fattoriale.
+
+\begin{figure}[ht!]
+\centering
+    \includegraphics[width=7cm]{PDF_scree}
+    \caption{Scree test per la matrice di correlazioni relativa al test WISC-III.}
+  \label{fig:scree}
+\end{figure}
+
+\begin{exmp}  Per confrontare i quattro metodi discussi per la scelta del numero $m$
+di fattori verrà utilizzata la matrice di correlazione riportata nel
+manuale della Wechsler Intelligence Scale For Children - III
+(1991). 
+La WISC-III è un test di intelligenza generale usato per
+misurare le abilità intellettuali di bambini di età compresa tra i 6 e
+i 16 anni. La scala WISC-III è costituita da 13 test, ciascuno dei
+quali misura un aspetto diverso dell'intelligenza. La matrice delle
+correlazioni qui discussa è stata calcolata su un campione
+di $n = 244$ rispondenti.  La WISC-III è costituita dalle seguenti sottoscale: informazione somiglianze, ragionamento aritmetico, vocabolario, comprensione,
+memoria di cifre, completamento di figure, cifrario, riordinamento di
+storie figurate, disegno con i cubi, ricostruzione di oggetti, ricerca
+di simboli, labirinti. Vengono in questo modo definiti i fattori CV, OP, LD e VE. 
+
+\textbf{Comprensionve verbale (CV)}.  Vocabolario (Vocabulary, {\tt VOC}): il bambino deve definire
+  una serie di parole presentate oralmente.
+ Somiglianze (Similarities, {\tt SIM}): una serie di coppie di
+  parole per le quali vanno spiegate le somiglianze tra gli oggetti
+  quotidiani o i concetti che rappresentano.
+ Comprensione (Comprehension, {\tt COMP}): una serie di domande
+  che richiedono la soluzione di problemi quotidiani.
+ Informazione (Information  {\tt INFO}): una serie di domande che
+  saggiano la conoscenza su eventi o oggetti comuni.
+  
+\textbf{Organizzazione percettiva (OP)}.  Completamento di figure (Picture Concepts, \texttt{PICTCOMP}): una
+  serie di figure colorate di scene e oggetti comuni dove manca un
+  particolare da identificare.
+ Disegno con i cubi (Block Design, \texttt{BLOCK}): una serie di
+  modelli geometrici da riprodurre usando dei cubetti.
+ Riordinamento di storie figurate (Matrix Reasoning, \texttt{PICTARG}): una serie di figurine colorate, presentate in
+  disordine, da riordinare secondo la sequenza logica di una storia. 
+ Labirinti (Mazes, \texttt{MAZES}): una serie di labirinti di
+  difficoltà crescente.
+ Cancellazione (Cancellation \texttt{OBJECT}): i bambini devono
+  cancellare gli oggetti che non appartengono ad un gruppo di oggetti.
+  
+\textbf{Libertà dalla distraibilità (LD)}.  Memoria di cifre (Digit Span, \texttt{DIGIT}): sequenze di numeri da
+  ripeterer nello stesso ordine e nell'ordine inverso.
+ Ragionamento aritmetico (Arithmetic, \texttt{ARITH}): una serie di
+  problemi aritmetici da risolvere mentalmente.
+  
+\textbf{Velocità di elaborazione (VE)}. Cifrario (Coding, \texttt{CODING}): una serie di forme o numeri da
+  associare a un simbolo, secondo una chiave data.
+ Ricerca di simboli (Symbol Search \texttt{SYMBOL}): una serie di
+  gruppi accoppiati di simboli (target e di ricerca); il bambino deve
+  indicare se un simbolo target appare o no nel gruppo di ricerca.
+
+Per eseguire l'analisi usiamo le seguenti istruzioni \R.
+
+\begin{lstlisting}
+R <- read.table("wisc.txt")
+R <- as.matrix(R)
+varlist <- c("INFO", "SIM", "ARITH", "VOC", "COMP", "DIGIT", "PICTCOM", "CODING", "PICTARG", "BLOCK", "OBJECT", "SYMBOL", "MAZES")
+rownames(R) <- varlist 
+colnames(R) <- varlist
+\end{lstlisting}
+
+Il primo metodo per la determinazione di $m$ richiede di estrarre
+tanti fattori quanti sono necessari per spiegare una quota
+predeterminata della varianza totale. 
+ Supponiamo di porre il criterio
+pari all'80\% della varianza totale.
+La soluzione ottenuta in questo
+modo ci porterebbe a mantenere $m=7$ fattori:
+
+\begin{lstlisting}
+out <- eigen(R)
+out$values
+#> [1]  5.6278567 1.2499392 1.0375974 0.8349699 0.7579198 
+#> [6]  0.6405831 0.53646330.5003401 0.4348707 0.4165153 
+#> [11] 0.3556940 0.3326346 0.2746159
+sum(out$val[1:6]) / sum(out$val)
+#> [1] 0.780682
+sum(out$val[1:7]) / sum(out$val)
+#> [1] 0.8219484
+\end{lstlisting}
+
+Il secondo metodo suggerisce di mantenere tutti gli autovalori
+superiori al valore medio degli autovalori (che, nel caso di
+\textbf{R} è uguale a $1$). Nel caso presente, $m=3$:
+\medskip
+\begin{lstlisting}
+round(e$values, 3)
+#> [1]  5.628 1.250 1.038 0.835 0.758 0.641 0.536 0.500 0.435
+#> [10] 0.417 0.356 0.333 0.275
+\end{lstlisting}
+
+Il terzo metodo, lo scree test, può essere eseguito usando la funzione \texttt{VSS.scree()}
+contenuta nel pacchetto \texttt{psych}.
+
+\begin{lstlisting}
+VSS.scree(R)
+\end{lstlisting}
+
+Lo scree test suggerisce una soluzione a $m=3$ fattori, come indicato nella figura~\ref{fig:scree}. 
+Il terzo metodo,  nella versione della Parallel
+Analysis, può essere eseguito usando la funzione \texttt{paran()}
+contenuta nel pacchetto \texttt{paran}. La Parallel Analysis indica una soluzione a $m=1$ fattori (vedi figura~\ref{fig:paran}).
+
+\begin{lstlisting}
+library(paran)
+paran(R, graph = TRUE)
+#> 
+#> Results of Horn's Parallel Analysis for component 
+#> retention 
+#> 390 iterations, using the mean estimate
+#> 
+#> Adjusted eigenvalues > 1 indicate dimensions to retain.
+#> (1 components retained)
+\end{lstlisting}
+
+Il quarto metodo consiste nell'applicazione di un test inferenziale relativo al numero di fattori.  Anche questo metodo indica una soluzione a tre fattori:
+
+\begin{lstlisting}
+fa1 <- factanal(covmat=R, factors=1, n.obs=244)
+fa1
+#> Test of the hypothesis that 1 factor is sufficient. The
+#> chi square statistic is 193.96 on 65 degrees of freedom.
+#> The p-value is 9.21e-15 
+fa2 <- factanal(covmat=R, factors=2, n.obs=244)
+fa2
+#> Test of the hypothesis that 2 factors are sufficient. The 
+#> chi square statistic is 78.38 on 53 degrees of freedom.
+#> The p-value is 0.0133 
+fa3 <- factanal(covmat=R, factors=3, n.obs=244)
+fa3
+#> Test of the hypothesis that 3 factors are sufficient. The 
+#> chi square statistic is 21.28 on 42 degrees of freedom.
+#> The p-value is 0.997 
+\end{lstlisting}
+
+Le differenze tra i risultati ottenuti con i quattro metodi descritti
+sopra suggeriscono la presenza di una componente di arbitrarietà nella
+scelta della soluzione da adottare.   Si tenga conto, però, che i primi
+tre metodi sono eurisitici mentre solo l'ultimo consente lo
+svolgimento di un test statistico. Un test d'ipotesi sul numero di
+fattori comuni, però, può essere svolto solo nel caso in cui le
+saturazioni fattoriali e le comunalità siano state stimate con il
+metodo di massima verosimiglianza. Molti statistici ritengono che, per
+questa ragione, l'estrazione dei fattori dovrebbe essere eseguita in
+base al metodo della massima verosimiglianza.
+
+\end{exmp}
+
+
+\begin{figure}[h!]
+\centering
+    \includegraphics[width=7cm]{PDF_paran}
+    \caption{Parallel Analysis per la matrice di correlazioni relativa al test WISC-III.}
+  \label{fig:paran}
+\end{figure}

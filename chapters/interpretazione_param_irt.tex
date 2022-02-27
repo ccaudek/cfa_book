@@ -1,0 +1,235 @@
+\chapter{Interpretazione dei parametri}
+\label{chapter:interpret_param} 
+
+%% un esempio di analisi è fornito nella pagina
+%% http://wiki.r-project.org/rwiki/doku.php?id=packages:cran:ltm
+%% può essere usato come esempio conclusivo dei modelli irt
+
+\section{La metrica dei costrutti psicologici}
+
+I costrutti psicologici sono solitamente intesi come delle variabili latenti soggiacenti al comportamento osservato; sono delle costruzioni teoriche atte a spiegare le regolarità del comportamento che si manifestano in contesti diversi (Cronbach \& Meehl, 1955). 
+Tale modo di concepire i costrutti psicologici implica, tra le altre cose, che i costrutti non possiedono una metrica naturale. 
+Se vogliamo rappresentare numericamente la posizione di un individuo sul continuum del costrutto latente sarà dunque necessario giustificare la stima del costrutto nei termini di una teoria della misurazione. 
+Attualmente vengono usati due diversi modelli per ottenere misure dei costrutti a partire dalle risposte fornite ai reattivi psicologici: la Teoria Classica dei test e la teoria di risposta all'item. Vi sono sostanziali differenze tra i due approcci per il modo in cui viene definita la metrica del punteggio ottenuto dai rispondenti sul continuum del costrutto.
+%Nel modello di Rasch, alcuni item possono essere rifiniti o modificati. Questa fase di costruzione di un test si chiama ``calibrazione degli item''.  Successivamente, vengono stimati i parametri relativi alle persone. Questa fase si chiama ``misurazione delle persone''. 
+
+%----------------------------------------------------------------------------
+\subsection{La metrica dell'abilità secondo la Teoria Classica e i modelli IRT}
+
+%Lo scopo della somministrazione di un test è quello di stimare il livello di un rispondente nel tratto latente misurato dal test.  
+
+Consideriamo il caso di test che prevedono risposte corrette e sbagliate (ma tale ragionamento si estende a tutti i tipi di test). Secondo la Teoria Classica dei test il punteggio totale $Y$ del rispondente $v$ è dato dalla somma delle risposte corrette agli item: $Y_v = \sum_i X_i$. Secondo la Teoria Classica, questo punteggio fornisce una stima priva di errore sistematico del punteggio vero nel tratto misurato: $\mathscr{E}(Y_v)=\mu_v$.
+
+I modelli IRT, invece, procedono in un modo diverso stimando l'abilità di ciascun rispondente mediante una procedura di massima verosimiglianza. Se viene utilizzato  il metodo di massima verosimiglianza marginale, le stime dei parametri di abilità derivano dall'assunzione che $\theta \sim \mathcal{N}(0, 1)$. Ne segue che le stime dei livelli di abilità latente possono essere interpretate come dei punteggi $z$. Tale \emph{metrica iniziale}, tuttavia, non è necessariamente la più utile, e diverse trasformazioni possono essere usate per trasformarla in una \emph{metrica target}. Tra queste, una delle più intuitive è quella chiamata \emph{metrica del punteggio totale}. 
+
+%----------------------------------------------------------------------------
+\subsubsection{Curva Caratteristica del Test}
+%----------------------------------------------------------------------------
+
+Nei termini della metrica iniziale possiamo trovare, ad esempio, un livello stimato di abilità di un rispondente pari a $\hat{\theta} = 1.1746$. Tale valore di abilità è però poco comprensibile.  Una trasformazione nella ``metrica del punteggio totale'' può essere ottenuta utilizzando la Curva Caratteristica del Test (\emph{Test Characteristic Curve}, in breve TCC), ovvero la rappresentazione grafica della funzione che lega l'abilità degli individui con il punteggio ottenuto nel test:
+\begin{equation}
+\text{TCC}(\theta) = \sum_{i=1}^p P_i(\theta_v),
+\end{equation}
+dove $P_i(\theta_v)$ è la probabilità del rispondente con livello di abilità $\theta_v$ di rispondere correttamente all'item $i$-esimo. La TCC è dunque uguale alla somma delle ICC calcolate su tutti gli item di cui il test è composto e ilustra la relazione che intercorre tra il valore atteso del numero di risposte corrette e il livello dell'abilità latente $\theta$. Nel modello di Rasch, il punteggio ottenuto da ogni individuo costituisce la statistica sufficiente per stimare la sua abilità. La TCC indica dunque quale punteggio ci si aspetta da un certo livello di abilità o quale livello di abilità viene determinato da un determinato punteggio. 
+
+%\emph{funzione caratteristica del test}  ({\it Test Characteristic Function}, TCF):
+%\begin{equation}
+%\text{TCF}(\theta) = \sum_{i=1}^p P_i(\theta_v),
+%\end{equation}
+%dove $P_i(\theta_v)$ è la probabilità del rispondente con livello di abilità $\theta_v$ di rispondere correttamente all'item $i$-esimo. La TCF è dunque uguale alla somma delle ICC calcolata su tutti gli item di cui il test è composto e rappresenta la relazione tra il valore atteso del numero di risposte corrette e il livello dell'abilità latente $\theta$. 
+
+
+%%----------------------------------------------------------------------------
+%\subsubsection{Illustrazione}
+%
+%Nella valutazione delle conoscenze e delle competenze di un individuo a cui viene somministrato un test, lo psicologo vuole stimare il numero \emph{atteso} di risposte corrette al test, per ciascun rispondente.  Piuttosto che riportare i punteggi osservati, lo psicologo calibra il test (per esempio, con il modello 1PL) in maniera tale da stimare i livelli di abilità dei rispondenti. 
+
+Per convertire il livello di abilità stimato nella metrica del punteggio totale si procede come segue. Consideriamo un individuo la cui abilità stimata è pari a $\hat{\theta} = 1.1746$. Supponiamo che il test sia costituito da 5 item.  Per ciascun item, la ICC esprime la probabilità di una risposta corretta in funzione del livello di abilità $\theta$. Supponiamo che, in corrispondenza di $\theta = 1.1746$, la probabilità di risposta corretta per i cinque item sia uguale a $P_1=0.9882$, $P_2=0.9255$, $P_3=0.8878$, $P_4=0.7841$ e $P_5=0.7434$. Nella metrica del punteggio totale, dunque, quando $\hat{\theta} = 1.1746$ il valore atteso di abilità  è
+$$
+T=0.9882 + 0.9255 + 0.8878 + 0.7841 + 0.7434 = 4.3291,
+$$
+ovvero, nei termini della proporzione di risposte corrette, è uguale a
+$$
+p=\frac{4.3291}{5}= 0.87.
+$$
+In altri termini, ci aspettiamo che i rispondenti con un livello di abilità $\hat{\theta} = 1.1746$ rispondano correttamente a $4.33$ item in media, ovvero all'$87\%$ degli item del test (Figura~\ref{fig:tcf5}).
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=7cm]{tcf5}
+    \caption{Curva Caratteristica del Test nel caso di un reattivo con 5 item.}
+    \label{fig:tcf5}
+  \end{center}
+\end{figure}
+
+
+%----------------------------------------------------------------------------
+%\subsubsection{CCT e ``valore vero''}
+
+Nei modelli IRT, il numero atteso di riposte corrette e il livello di tratto latente (vedi la Figura~\ref{fig:tcf5}) sono due modi diversi di esprimere lo stesso concetto, ovvero quello dell'abilità latente (ciò che la Teoria Classica chiama ``valore vero'').  Il numero atteso di riposte corrette e l'abilità $\theta$ rappresentano però il livello del rispondente sul continuum del costrutto latente nei termni di due diverse scale di misura. La scala del tratto latente $\theta$ è espressa nei termini di una variabile gaussiana (se i parametri di abilità sono stimati con il metodo della massima verosimiglianza marginale) ed è indipendente dalle proprietà degli item del test.  Il numero atteso di riposte corrette, invece, è influenzato dalle caratterisriche dagli specifici item di cui il test è composto.  
+
+È importante  notare come, per i modelli IRT, la relazione tra il numero atteso di riposte corrette e l'abilità $\theta$ non sia lineare. Tale relazione viene espressa dalla CCT mediante una funzione simile ala funzione di ripartizione. Se il tasso di crescita della CCT è elevato, allora il test è in grado di distinguere tra rispondenti con diversi livelli di abilità; invece, se il tasso di crescita della CCT è basso, il test non è adatto a distinguere tra rispondenti con livelli diversi di abilità: a valori simili nel numero atteso di riposte corrette (ordinata) corrispondono valori molto diversi dell'abilità latente $\theta$ (ascissa).  
+
+% La quinta assunzione descritta sopra ci informa che, essendo noto il
+% punteggio complessivo che ciascun rispondente ha conseguito nel
+% questionario, nessun'altra informazione sulla sua abilità è contenuta
+% nei vettori delle risposte: a ciascun punteggio totale $r_v$ è
+% associato un unico livello della variabile latente $\theta$,
+% indipendentemente dagli item ai quali i rispondente hanno fornito una
+% risposta corretta o sbagliata.  Ciò non vuol dire, però, che la
+% relazione tra i punteggi totali e le stime dell'abilità sia
+% lineare. Tale relazione definisce la curva caratteristica del test
+% ({\it test characteristic curve, TCC}).  
+
+
+\subsection{Trasformazioni dei punteggi}
+
+In taluni contesti, lo psicologo può trasformare i punteggi di abilità
+$\theta$ per delle finalità applicative. {\`E} facile trasformare i
+punteggi di abilità così da imporre la metrica desiderata, purché ci
+si ricordi che anche i punteggi di difficoltà degli item devono essere
+trasformati nello stesso modo (Embretson e Raise, 2000).
+
+Si supponga che la metrica desiderata sia quella tale che pone uguale a $100$ il cut-off per il superamento del test in corrispondenza del 70\% di item corretti. Supponiamo inoltre che lo psicologo voglia che la deviazione standard dei punteggi trasformati $\theta^*$ sia uguale a $15$. La trasformazione desiderata si ottiene nel modo seguente:
+\begin{equation}
+\theta^* = 100 + \frac{\theta - \theta_0}{\sigma_{\theta}}\times 15,\notag
+\end{equation}
+dove $\theta^*$ sono i punteggi trasformati, $\theta$ sono i punteggi
+originali, $\theta_0$ è il valore di abilità corrispondente ad un
+punteggio grezzo pari al  70\% di item superati correttamente,
+$\sigma_{\theta}$ è la deviazione standard dei punteggi $\theta$
+originari, 100 è il punteggio cut-off che consente il superamento del  test e 15 è la deviazione standard dei punteggi trasformati.
+
+
+\section{Vincoli sui parametri}
+
+Il modello di Rasch può essere parametrizzato in maniera diversa e questo influisce sull'interpretazione che può essere fornita ai parametri di abilità.
+%Abbiamo visto nella simulazione svolta con \R\; che, nel modello di
+%Rasch, i parametri di abilità stimati sono considerati dei ``parametri
+%di disturbo'' in quanto non sono necessari per stimare i parametri di
+%difficoltà degli item.  
+Se i parametri di difficoltà degli item vengono stimati con il metodo della massima verosimiglianza condizionata, è necessario introdurre un vincolo che fissi l'origine della scala. Il vincolo solitamente usato è quello che pone uguale a zero la somma dei parametri di difficoltà\footnote{Altri vincoli sono possibili; ad esempio, quello che pone uguale a zero uno dei parametri di difficoltà degli item.}. Come conseguenza di tale vincolo, i valori dei parametri di abilità sono liberi di variare.
+
+Il vincolo ``somma uguale a zero'' imposto sui parametri di difficoltà consente di
+fornire l'interpretazione seguente alle stime dei parametri di abilità. Poniamo che il parametro di abilità di un rispondente sia uguale a $\theta_v=0.05$. Sulla base di questa informazione lo psicologo può affermare che il rispondente ha una probabilità superiore al 50\% di rispondere correttamente a qualunque item di difficoltà media o inferiore alla media. 
+%Inoltre, la probabilità che risolva correttamente qualunque item di difficoltà superiore alla media è inferiore al 50\%. 
+
+%Adattiamo un modello di Rasch ai dati {\tt raschdat1} contenuti nel pacchetto {\tt eRm}. Il parametro {\tt sum0 = TRUE} impone il vincolo per cui la somma dei parametri di difficoltà è uguale a zero.
+%\begin{lstlisting}
+%library(eRm)
+%res <- RM(raschdat1, sum0 = TRUE)
+%\end{lstlisting}
+%I parametri di difficoltà  possono essere estratti dall'oggetto {\tt res} nel modo seguente:
+%\begin{lstlisting}
+%head(res$betapar)
+%#>     beta I1     beta I2     beta I3     beta I4 
+%#>  1.56526971  0.05117171  0.78219009 -0.65023194 
+%#>     beta I5     beta I6 
+%#> -1.30057892  0.09929630 
+%\end{lstlisting}
+%Verifichiamo la la somma dei parametri $\hat{\boldsymbol{\beta}}$ sia uguale a zero:
+%\begin{lstlisting}
+%sum(res$betapar )
+%#> [1] -5.156466e-16
+%\end{lstlisting}
+%Ripetiamo ora l'analisi senza questo vincolo:
+%\begin{lstlisting}
+%res <- RM(raschdat1, sum0 = FALSE)
+%sum(res$betapar )
+%#> [1] -46.95892
+%\end{lstlisting}
+
+\subsection{Fattore moltiplicativo}
+
+Un'ulteriore fonte di variabilità per le stime dei livelli di tratto riguarda la distinzione tra la metrica logistica e quella Gaussiana.  La convenzione maggiormente accettata è quella di esprimere i parametri dei modelli IRT nei termini di una metrica Gaussiana.  Si confrontino i seguenti modelli:
+
+\begin{tabular}{ll}
+$\text{metrica logistica:}$ & $\log[P(Y_{ij})/(1-P(Y_{ij}))]= \alpha(\theta_i-\beta_j)$\\
+$\text{metrica Gaussiana:}$ & $\log[P(Y_{ij})/(1-P(Y_{ij}))]= 1.7\alpha(\theta_i-\beta_j)$\\
+\end{tabular}
+
+Se la Curva Caratteristica dell'Item è espressa mediante la prima delle due formule precedenti, allora il modello IRT è detto ``logistico'' e i parametri sono espressi nella ``metrica logistica''.  Tali parametri possono essere trasformati nella ``metrica normale'' introducendo la costante moltiplicativa 1.7 nel modello logistico. Nel caso del modello 3PL, per esempio, avremo
+\begin{equation} 
+Pr(Y_{ij}) = \gamma_j + (1-\gamma_j) \frac{\exp[1.7\alpha_j(\theta_i-\beta_j)]}{1+\exp[1.7\alpha_j(\theta_i-\beta_j)]}.
+\end{equation}
+Il modello di Rasch è solitamente espresso nei termini della metrica logistica, mentre i modelli 2PL e 3PL sono solitamente espressi nei termini della metrica gaussiana.
+
+
+%------------------------------------------------------------------------
+\section{Il tipo di scala}
+
+I risultati dei modelli IRT possono essere espressi nei termini di tre diversi tipi di scala: (a) la scala dei logit, (b) la scala degli odds, e (c) la proporzione di risposte corrette. 
+
+\subsection{La scala dei logit}
+
+La scala dei logit consente di esprimere sia l'abilità degli individui sia la difficoltà degli item nei termini di una metrica comune.  È dunque possibile collocare individui e item sullo stesso continuum del tratto latente. Nella scala dei logit, \emph{differenze} tra livelli di abilità o di difficoltà hanno lo stesso significato, indipendentemente dal valore assoluto delle misure su cui tali differenze vengono calcolate. 
+
+Un'illustrazione può essere ottenuta utilizzando i dati contenuti nel data frame {\tt raschdat1} e disponibili nel pacchetto {\tt eRm}.  La Figura~\ref{fig:per_item_map} individua sulla scala dei logit i parametri di difficoltà degli item  (pannello  inferiore) rappresentando nel contempo la distribuzione dei parametri di abilità (pannello  superiore). Gli item dovrebbero idealmente essere distribuiti lungo tutta la gamma della scala per essere in grado di misurare il livello in cui il tratto latente è presente in ciascun rispondente.
+Vengono riportate di seguito le istruzioni \R\; per generare la figura.  
+\begin{lstlisting}
+library(eRm)
+data(raschdat1)
+res <- RM(raschdat1, sum0 = T)
+plotPImap(res, sorted=TRUE)
+\end{lstlisting} 
+%Dopo avere caricato il pacchetto {\tt eRm} e letto i dati {\tt raschdat1}, il modello di Rasch viene adattato mediante la funzione {\tt RM()}.  L'oggetto creato da {\tt RM()} viene utilizzato come argomento dalla funzione {\tt plotPImap()} che crea la Figura~\ref{fig:per_item_map}.
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=9cm]{Rplot_Per_Item_Map}
+    \caption{Scala comune di  abilità e di difficoltà degli item.}
+    \label{fig:per_item_map}
+  \end{center}
+\end{figure}
+
+
+\subsection{La scala dei rapporti degli odds}
+
+La scala dei rapporti degli odds si costruisce esponenziando i valori dei parametri di abilità e di difficoltà espressi sulla scala dei logit: $\exp(\theta_v)$ e $\exp(\beta_i)$. Nel caso del modello di Rasch, gli odds di una risposta corretta sono uguali 
+\begin{align}
+\frac{P(Y_{vi})}{1-P(Y_{vi})}&=\frac{ \frac{e^{\theta_v-\beta_i}}{1+e^{\theta_v-\beta_i}} }{1-\frac{e^{\theta_v-\beta_i}}{1+e^{\theta_v-\beta_i}}}\notag\\
+&=\frac{ \frac{e^{\theta_v-\beta_i}}{1+e^{\theta_v-\beta_i}} }{\frac{ 1+e^{\theta_i-\beta_j} - e^{\theta_v-\beta_i}}{1+e^{\theta_v-\beta_i}}}\notag\\
+&= \exp(\theta_i-\beta_j)
+\end{align}
+alla differenza tra  $\exp(\theta_i)$ e $\exp(\beta_j)$.  
+
+Supponiamo che i parametri di difficoltà degli item siano stati ancorati, sulla scala dei logit, in maniera tale da avere media uguale a zero. L'odds corrispondente ad un logit uguale a zero è pari a uno ($e^0=1$). I livelli di abilità espressi sulla scala degli odds possono  essere utilizzati per specificare l'odds che un rispondente risponda in maniera corretta ad un item sul test. Per esempio, se un rispondente ha un livello di abilità sulla scala dei logit uguale a $1.6$, allora gli odds che risponda correttamente ad un item con livello di difficoltà pari a $0.60$ saranno uguali a $e^{1.0}=2.72$ a 1.
+
+
+\subsection{La proporzione predetta di  risposte corrette}
+
+La \emph{proporzione predetta di risposte corrette} ({\it proportion true score}) è uguale alla media delle probabilità di risposta corretta calcolata su tutti gli item del questionario:
+\begin{equation}
+P_{ts}= \frac{\sum_{i=1}^p P(Y_{vi})}{p}.
+\end{equation}
+Tale valore teorico, diverso dalla proporzione di risposte corrette del rispondente, è meno soggetto alle fluttuazioni dovute agli errori di campionamento del punteggio grezzo.  
+
+
+%\section{Calibrazione dei punteggi}
+%
+%Talvolta i punteggi di abilità sono stati ottenuti da due diversi campioni di rispondenti a cui sono stati somministrati due  questionari diversi che misurano però lo stesso costrutto. Si pone dunque il problema di confrontare le due scale.  Tale problema viene affrontato in maniera molto diversa dalla TCT e dalla teoria IRT.
+%
+%Nei termini della TCT, i punteggi grezzi del test A possono essere
+%confrontati con quelli del test B se e solo se i due test sono
+%equivalenti dal punto di vista psicometrico, ovvero se sono forme
+%parallele dello stesso test. Per i
+%modelli IRT, il problema del confronto tra i punteggi derivanti da due
+%forme diverse di un questionario dà luogo al problema del ``linking''
+%delle due metriche.  Il problema del ``linking'' nei modelli IRT è
+%simile al problema del ``test equating'' della TCT, con alcune
+%importanti differenze. I metodi di ``equating'' della TCT sono basati
+%su statistiche dipendenti dal campione, il che rende il problema molto
+%complesso.  I metodi di ``linking'' della teoria IRT, invece, sono
+%basati su statistiche indipendenti dal campione e ciò rende il
+%problema molto più semplice.
+%
+%Nel caso dei modelli IRT, il problema del ``linking'' trova una semplice soluzione nel caso in cui i due questionari, entrambi misura del medesimo costrutto, siano stati somministrati a due campioni di rispondenti insieme ad un insieme di ``item di ancoramento'' comuni alle due somministrazioni. 
+%
+%Consideriamo un esempio semplice che si riferisce al modello di Rasch (Wright, 1977). Si supponga che due questionari, A e B, siano stati somministrati a due campioni indipendenti di rispondenti, e che i due questionari condividano un sottoinsieme di $K$ item. Siano $\beta_{iA}$ e $\beta_{iB}$ i parametri di difficoltà dei  $K$ item comuni nei due questionari. Allora, la costante necessaria per traslare le difficoltà degli item del questionario B sulla scala del questionario A è uguale a 
+%\begin{equation}
+%t = \sum_{i=1}^K (\beta_{iA} - \beta_{iB}) / K.
+%\end{equation} 
+%Una volta che tale costante sia stata sommata ai punteggi del questionario B, i punteggi di entrambe le somministrazioni saranno espressi nei termini di una metrica comune. 
+%
+
+

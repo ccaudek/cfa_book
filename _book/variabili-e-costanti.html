@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1.2 Variabili e costanti | Data Science per psicologi</title>
+  <meta name="description" content="This document contains the materials of the lessons of Psicometria B000286 (2021/2022) aimed at students of the first year of the Degree Course in Psychological Sciences and Techniques of the University of Florence, Italy." />
+  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1.2 Variabili e costanti | Data Science per psicologi" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This document contains the materials of the lessons of Psicometria B000286 (2021/2022) aimed at students of the first year of the Degree Course in Psychological Sciences and Techniques of the University of Florence, Italy." />
+  <meta name="github-repo" content="ccaudek/ds4psy" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1.2 Variabili e costanti | Data Science per psicologi" />
+  
+  <meta name="twitter:description" content="This document contains the materials of the lessons of Psicometria B000286 (2021/2022) aimed at students of the first year of the Degree Course in Psychological Sciences and Techniques of the University of Florence, Italy." />
+  
+
+<meta name="author" content="Corrado Caudek" />
+
+
+<meta name="date" content="2022-02-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="popolazioni-e-campioni.html"/>
+<link rel="next" href="parametri-e-modelli.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Science per psicologi</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefazione</a>
+<ul>
+<li class="chapter" data-level="" data-path="la-psicologia-e-la-data-science.html"><a href="la-psicologia-e-la-data-science.html"><i class="fa fa-check"></i>La psicologia e la Data science</a></li>
+<li class="chapter" data-level="" data-path="come-studiare.html"><a href="come-studiare.html"><i class="fa fa-check"></i>Come studiare</a></li>
+<li class="chapter" data-level="" data-path="sviluppare-un-metodo-di-studio-efficace.html"><a href="sviluppare-un-metodo-di-studio-efficace.html"><i class="fa fa-check"></i>Sviluppare un metodo di studio efficace</a></li>
+</ul></li>
+<li class="part"><span><b>I Nozioni preliminari</b></span></li>
+<li class="chapter" data-level="1" data-path="concetti-chiave.html"><a href="concetti-chiave.html"><i class="fa fa-check"></i><b>1</b> Concetti chiave</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="popolazioni-e-campioni.html"><a href="popolazioni-e-campioni.html"><i class="fa fa-check"></i><b>1.1</b> Popolazioni e campioni</a></li>
+<li class="chapter" data-level="1.2" data-path="variabili-e-costanti.html"><a href="variabili-e-costanti.html"><i class="fa fa-check"></i><b>1.2</b> Variabili e costanti</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="variabili-e-costanti.html"><a href="variabili-e-costanti.html#variabili-casuali"><i class="fa fa-check"></i><b>1.2.1</b> Variabili casuali</a></li>
+<li class="chapter" data-level="1.2.2" data-path="variabili-e-costanti.html"><a href="variabili-e-costanti.html#variabili-indipendenti-e-variabili-dipendenti"><i class="fa fa-check"></i><b>1.2.2</b> Variabili indipendenti e variabili dipendenti</a></li>
+<li class="chapter" data-level="1.2.3" data-path="variabili-e-costanti.html"><a href="variabili-e-costanti.html#la-matrice-dei-dati"><i class="fa fa-check"></i><b>1.2.3</b> La matrice dei dati</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="parametri-e-modelli.html"><a href="parametri-e-modelli.html"><i class="fa fa-check"></i><b>1.3</b> Parametri e modelli</a></li>
+<li class="chapter" data-level="1.4" data-path="effetto.html"><a href="effetto.html"><i class="fa fa-check"></i><b>1.4</b> Effetto</a></li>
+<li class="chapter" data-level="1.5" data-path="stima-e-inferenza.html"><a href="stima-e-inferenza.html"><i class="fa fa-check"></i><b>1.5</b> Stima e inferenza</a></li>
+<li class="chapter" data-level="1.6" data-path="metodi-e-procedure-della-psicologia.html"><a href="metodi-e-procedure-della-psicologia.html"><i class="fa fa-check"></i><b>1.6</b> Metodi e procedure della psicologia</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Science per psicologi</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="variabili-e-costanti" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Variabili e costanti</h2>
+<p>Definiamo <em>variabile statistica</em> la proprietà (o grandezza) che è
+oggetto di studio nell’analisi dei dati. Una variabile è una proprietà
+di un fenomeno che può essere espressa in più valori sia numerici sia
+categoriali. Il termine “variabile” si contrappone al termine “costante”
+che descrive una proprietà invariante di tutte le unità statistiche.</p>
+<p>Si dice <em>modalità</em> ciascuna delle varianti con cui una variabile
+statistica può presentarsi. Definiamo <em>insieme delle modalità</em> di una
+variabile statistica l’insieme <span class="math inline">\(M\)</span> di tutte le possibili espressioni con
+cui la variabile può manifestarsi. Le modalità osservate e facenti parte
+del campione si chiamano <em>dati</em> (si veda la
+Tabella <a href="#tab:term_st_desc" reference-type="ref" reference="tab:term_st_desc">1.1</a>).</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-1" class="example"><strong>Esempio 1.1  </strong></span>Supponiamo che il fenomeno studiato sia l’intelligenza. In uno studio, la popolazione potrebbe corrispondere all’insieme di tutti gli italiani adulti. La variabile considerata potrebbe essere il punteggio del test standardizzato WAIS-IV. Le modalità di tale variabile potrebbero essere <span class="math inline">\(112, 92, 121, \dots\)</span>. Tale variabile è di tipo quantitativo discreto.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-2" class="example"><strong>Esempio 1.2  </strong></span>Supponiamo che il fenomeno studiato sia il compito Stroop. La popolazione potrebbe corrispondere all’insieme dei bambini dai 6 agli 8 anni. La variabile considerata potrebbe essere il reciproco dei tempi di reazione in secondi. Le modalità di tale variabile potrebbero essere <span class="math inline">\(1 / 2.35, 1/ 1.49, 1/2.93, \dots\)</span>. La variabile è di tipo quantitativo continuo.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-3" class="example"><strong>Esempio 1.3  </strong></span>Supponiamo che il fenomeno studiato sia il disturbo di personalità. La popolazione potrebbe corrispondere all’insieme dei detenuti nelle carceri italiane. La variabile considerata potrebbe essere l’assessment del disturbo di personalità tramite interviste cliniche strutturate. Le modalità di tale variabile potrebbero essere i Cluster A, Cluster B, Cluster C descritti dal DSM-V. Tale variabile è di tipo qualitativo.</p>
+</div>
+<div id="variabili-casuali" class="section level3" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Variabili casuali</h3>
+<p>Il termine <em>variabile</em> usato nella statistica è equivalente al termine <em>variabile casuale</em> usato nella teoria delle probabilità. Lo studio dei risultati degli interventi psicologici è lo studio delle variabili casuali che misurano questi risultati. Una variabile casuale cattura una caratteristica specifica degli individui nella popolazione e i suoi valori variano tipicamente tra gli individui. Ogni variabile casuale può assumere in teoria una gamma di valori sebbene, in pratica, osserviamo un valore specifico per ogni individuo. Quando faremo riferiremo alle variabili casuali considerate in termini generali useremo lettere maiuscole come <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>; quando faremo riferimento ai valori che una variabile casuale assume in determinate circostanze useremo lettere minuscole come <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>.</p>
+</div>
+<div id="variabili-indipendenti-e-variabili-dipendenti" class="section level3" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Variabili indipendenti e variabili dipendenti</h3>
+<p>Un primo compito fondamentale in qualsiasi analisi dei dati è l’identificazione delle variabili dipendenti (<span class="math inline">\(Y\)</span>) e delle variabili indipendenti (<span class="math inline">\(X\)</span>). Le variabili dipendenti sono anche chiamate variabili di esito o di risposta e le variabili indipendenti sono anche chiamate predittori o covariate. Ad esempio, nell’analisi di regressione, che esamineremo in seguito, la domanda centrale è quella di capire come <span class="math inline">\(Y\)</span> cambia al variare di <span class="math inline">\(X\)</span>. Più precisamente, la domanda che viene posta è: se il valore della variabile indipendente <span class="math inline">\(X\)</span> cambia, qual è la conseguenza per la variabile dipendente <span class="math inline">\(Y\)</span>? In parole povere, le variabili indipendenti e dipendenti sono analoghe a “cause” ed “effetti”, laddove le virgolette usate qui sottolineano che questa è solo un’analogia e che la determinazione delle cause può avvenire soltanto mediante l’utilizzo di un appropriato disegno sperimentale e di un’adeguata analisi statistica.</p>
+<p>Se una variabile è una variabile indipendente o dipendente dipende dalla domanda di ricerca. A volte può essere difficile decidere quale variabile è dipendente e quale è indipendente, in particolare quando siamo specificamente interessati ai rapporti di causa/effetto. Ad esempio, supponiamo di indagare l’associazione tra esercizio fisico e insonnia. Vi sono evidenze che l’esercizio fisico (fatto al momento giusto della giornata) può ridurre l’insonnia. Ma l’insonnia può anche ridurre la capacità di una persona di fare esercizio fisico. In questo caso, dunque, non è facile capire quale sia la causa e quale l’effetto, quale sia la variabile dipendente e quale la variabile indipendente. La possibilità di identificare il ruolo delle variabili (dipendente/indipendente) dipende dalla nostra comprensione del fenomeno in esame.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-4" class="example"><strong>Esempio 1.4  </strong></span>Uno psicologo convoca 120 studenti universitari per un test di memoria.
+Prima di iniziare l’esperimento, a metà dei soggetti viene detto che si
+tratta di un compito particolarmente difficile; agli altri soggetti non
+viene data alcuna indicazione. Lo psicologo misura il punteggio nella
+prova di memoria di ciascun soggetto.</p>
+<p>In questo esperimento, la variabile indipendente è l’informazione sulla difficoltà della prova. La variabile indipendente viene manipolata dallo sperimentatore assegnando i soggetti (di solito in maniera causale) o alla condizione (modalità) “informazione assegnata” o “informazione non data”. La
+variabile dipendente è ciò che viene misurato nell’esperimento, ovvero
+il punteggio nella prova di memoria di ciascun soggetto.</p>
+</div>
+</div>
+<div id="la-matrice-dei-dati" class="section level3" number="1.2.3">
+<h3><span class="header-section-number">1.2.3</span> La matrice dei dati</h3>
+<p>Le realizzazioni delle variabili esaminate in una rilevazione statistica
+vengono organizzate in una <em>matrice dei dati</em>. Le colonne della matrice
+dei dati contengono gli insiemi dei dati individuali di ciascuna
+variabile statistica considerata. Ogni riga della matrice contiene tutte
+le informazioni relative alla stessa unità statistica. Una generica
+matrice dei dati ha l’aspetto seguente:</p>
+<p><span class="math display">\[
+D_{m,n} =
+\begin{pmatrix}
+  \omega_1 &amp; a_{1}   &amp; b_{1}   &amp; \cdots &amp; x_{1} &amp; y_{1}\\
+  \omega_2 &amp; a_{2}   &amp; b_{2}   &amp; \cdots &amp; x_{2} &amp; y_{2}\\
+  \vdots   &amp; \vdots  &amp; \vdots  &amp; \ddots &amp; \vdots &amp; \vdots  \\
+\omega_n  &amp; a_{n}   &amp; b_{n}   &amp; \cdots &amp; x_{n} &amp; y_{n}
+\end{pmatrix}
+\]</span></p>
+<p>dove, nel caso presente, la prima colonna contiene il
+nome delle unità statistiche, la seconda e la terza colonna si
+riferiscono a due mutabili statistiche (variabili categoriali; <span class="math inline">\(A\)</span> e
+<span class="math inline">\(B\)</span>) e ne presentano le modalità osservate nel campione mentre le ultime
+due colonne si riferiscono a due variabili statistiche (<span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>) e ne
+presentano le modalità osservate nel campione. Generalmente, tra le
+unità statistiche <span class="math inline">\(\omega_i\)</span> non esiste un ordine progressivo; l’indice
+attribuito alle unità statistiche nella matrice dei dati si riferisce
+semplicemente alla riga che esse occupano.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="popolazioni-e-campioni.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="parametri-e-modelli.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ccaudek/ds4psy/edit/master/001_key_notions.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ds4psy.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

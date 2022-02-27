@@ -1,0 +1,283 @@
+# L'incertezza della misura {#ch:err_stnd_mis}
+
+```{r, include = FALSE}
+source("_common.R")
+```
+
+Lord e Novick (1968) fanno notare come l'errore $E = X - T$ sia la
+variabile aleatoria di primario interesse per la CTT, in quanto lo scopo
+è stimare il punteggio vero di ciascun rispondente e confrontare le
+stime ottenute nel caso di rispondenti diversi. La grandezza dell'errore
+che si commette utilizzando il punteggio osservato quale misura del
+punteggio vero può essere quantificata mediante la deviazione standard
+di $E$, ovvero mediante ciò che viene chiamato l'_errore standard della
+misurazione_, $\sigma_E$ (_Standard Error of Measurement_, _SEM_). Ma come
+è possibile stimare $\sigma_E$?
+
+## La stima dell'errore standard della misurazione
+
+L'errore standard della misurazione quantifica il grado di incertezza
+presente nei punteggi di un test. Può essere dimostrato che una stima
+dell'errore standard della misurazione ($\sigma_E$) è data da:
+
+$$
+\sigma_E = \sigma_X \sqrt{1 -\rho_{XX^\prime}},
+(\#eq:err-stnd-mis)
+$$ 
+
+dove $\sigma_X$ è la deviazione standard dei punteggi ottenuti in un campione di rispondenti e $\rho_{XX^\prime}$ è il coefficiente di attendibilità. Per stimare $\sigma_E$ è dunque necessario sottrarre da uno l'attendibilità del test, prendere la radice quadrata della differenza e moltiplicare la radice quadrata per la
+deviazione standard dei punteggi del test.
+
+Si noti che l'errore standard della misurazione $\sigma_E$ è
+direttamente associato all'attendibilità del test: l'errore standard
+della misurazione diminuisce al crescere dell'attendibilità del test. Se
+l'attendibilità del test è uguale a 0 $\sigma_E$ diventa uguale alla
+deviazione standard del punteggio osservato del test. Se l'attendibilità
+del test è uguale a 1 $\sigma_E$ diventa uguale a zero: se il test è
+perfettamente affidabile non ci sono errori e $\sigma_E$ è uguale a
+zero.
+
+### Interpretazione
+
+McDonald afferma che il termine $E$ segue una *propensity distribution*,
+ovvero rappresenta le fluttuazioni casuali nel tempo di un rispondente,
+che corrispondono a fluttuazioni di umore, motivazione, ecc. L'errore
+standard della misura fornisce una stima della deviazione standard di
+tali punteggi, ovvero una stima della deviazione standard dei punteggi
+che un un singolo individuo otterrebbe nel caso di ipotetiche infinite
+somministrazioni di un test (o di forme parallele di un test) sotto le
+stesse identiche condizioni, se il punteggio vero rimane costante.
+
+La CTT assume i punteggi ottenuti da un individuo, nel caso di
+ipotetiche infinite somministrazioni di un test nelle stesse identiche
+condizioni, abbiano una distribuzione normale centrata sul valore vero.
+L'errore standard della misurazione è la stima della deviazione standard
+di una tale distribuzione di punteggi ipotetici. Maggiore è l'errore
+standard della misurazione, maggiore è l'errore che si compie usando il
+test per valutare l'abilità latente del rispondente.
+
+Il coefficiente di attendibilità, la varianza dell'errore e l'errore
+standard della misurazione sono tutti indicatori diretti o indiretti
+della precisione del test. Tuttavia, questi indici forniscono
+informazioni diverse sul grado di precisione del test:
+
+-   l'errore standard della misurazione ci consente di fare inferenze
+    sulla precisione del punteggio osservato di un singolo rispondente,
+    ma non è possibile assegnare tale interpretazione al coefficiente di
+    attendibilità;
+-   l'errore standard della misurazione è espresso nella stessa unità di
+    misura del punteggio osservato, mentre la varianza di $E$ è espressa
+    nei termini del quadrato del punteggio osservato;
+-   l'attendibilità corrisponde ad un rapporto tra varianze e dunque è
+    un numero puro (privo di unità di misura).
+
+::: {.exmp}
+Supponiamo che un test di intelligenza produca un punteggio medio pari a
+100 con una deviazione standard di 15. Supponiamo inoltre che il test
+abbia una attendibilità pari a 0.73. Si calcoli l'errore standard della
+misurazione.
+
+Applicando la formula dell'errore standard della misurazione, otteniamo 
+
+\begin{equation}
+\begin{aligned}
+\sigma_E &= \sigma_X \sqrt{1 -\rho_{XX^\prime}} \notag\\
+&= 15 \sqrt{1 - 0.73} \notag\\
+&= 7.79.\notag
+\end{aligned}
+\end{equation}
+
+Il valore di 7.79 significa che, se immaginiamo di somministrare molte volte il test ad un rispondente, sotto le stesse identiche condizioni, ci aspettiamo che i valori
+ottenuti differiscano tra loro, in media, di circa 8 punti tra le
+successive somministrazioni del test. Inoltre, se immaginiamo di
+somministrare molte volte il test ad un rispondente, sotto le stesse
+identiche condizioni, ci aspettiamo che il 95% dei punteggi così
+ottenuti sia compreso nell'intervallo
+
+$$
+\text{punteggio vero del rispondente} \pm 1.96 \cdot \text{errore standard della misurazione}. 
+$$
+Questa è una proprietà della distribuzione gaussiana.
+
+Per il caso presente, questo intervallo è uguale a $2 \cdot 1.96 \cdot 7.79 = 30.54$ punti. In altre parole, ci possiamo aspettare che, nel caso di somministrazioni ripetute del test sotto le stesse identiche condizioni, i punteggi del QI di un singolo rispondente
+varino tra loro all'interno di un intervallo di 30 punti. Ciò significa
+che, se il test avesse un'attendibilità pari a 0.73, e se la deviazione
+standard dei punteggi del test nella popolazione fosse pari a 15, la
+somministrazione di un tale test ad un singolo individuo sarebbe di
+scarsa utilità, a causa dell'enorme errore di misurazione. Per fare un
+confronto con i dati di questo esempio, la Full Scale IQ (FSIQ) della
+WAIS-IV [@wechsler2008wechsler] ha un'attendibilità split-half pari a 0.98, con
+errore standard di misurazione pari a 2.16.
+:::
+
+::: {.exmp}
+Continuando con l'esempio precedente, per gli ipotetici dati riportati
+sopra, poniamoci ora la seguente domanda: qual è la probabilità che un
+rispondente ottenga un punteggio minore o uguale a 116 nel test, se il
+suo punteggio vero è uguale a 120?
+
+Il problema si risolve rendendosi conto che i punteggi del
+rispondente si distribuiscono normalmente attorno al punteggio vero di
+120, con una deviazione standard uguale a 7.79. Dobbiamo dunque trovare
+l'area sottesa alla normale $\mathcal{N}(120, 7.79)$ nell'intervallo
+$[-\infty, 116]$. Utilizzando , la soluzione si trova nel modo
+seguente:
+
+```{r}
+pnorm(116, 120, 7.79)
+```
+
+Se la variabile aleatorie corrispondente al punteggio osservato segue
+una distribuzione $\mathcal{N}(120, 7.79)$, la probabilità che il
+rispondente ottenga un punteggio minore o uguale a 116 è dunque uguale a
+0.30.
+:::
+
+::: {.exmp}
+Poniamoci ora la seguente domanda: quale intervallo di valori centrato
+sul punteggio vero contiene, con una probabilità di 0.95, i punteggi che
+il rispondente otterrebbe in ipotetiche somministrazioni ripetute del
+test sotto le stesse identiche condizioni?
+
+Dobbiamo trovare i quantili della distribuzione $\mathcal{N}(120, 7.79)$ a cui sono associate le probabilità di 0.025 e 0.975. La soluzione è dunque data da:
+
+```{r}
+qnorm(c(.025, .975), 120, 7.79)
+```
+
+L'intervallo cercato è dunque $[104.7, 135.3]$.
+:::
+
+### Simulazione
+
+Ritorniamo ora alla simulazione precedente nella quale abbiamo messo in
+relazione il modello della CTT con il modello di regressione lineare. In
+base a tale simulazione, poniamoci lo scopo di chiarire il significato
+dell'errore standard della misurazione.
+
+Impostiamo la simulazione come abbiamo fatto in precedenza. Chiamiamo
+$X$ il valore osservato in un test. Per la CTT, il punteggio osservato
+$X$ è costituito da due componenti, la componente vera $T$ e la
+componente d'errore $E$. Si suppone che gli errori siano gaussiani e
+incorrelati con la componente vera. Immaginiamo di somministrare 200
+volte il test ad un individuo sotto le stesse identiche condizioni.
+
+```{r}
+library("MASS")
+library("arm")
+set.seed(123)
+n <- 200
+Sigma <- matrix(
+    c(11, 0, 
+       0, 4), byrow = TRUE, ncol = 2)
+mu <- c(100, 0)
+Y <- mvrnorm(n, mu, Sigma, empirical=TRUE)
+T <- Y[, 1]
+E <- Y[, 2]
+```
+
+Verifichiamo l'incorrelazione tra $T$ ed $E$:
+
+```{r}
+cor(T, E)
+```
+
+I valori ottenuti sono la somma del valore vero e della componente
+d'errore:
+
+```{r}
+X <- T + E
+```
+
+Per questi dati, il coefficiente di attendibilità è uguale a:
+
+```{r}
+rxx <- cor(X, T)^2
+rxx
+```
+
+Possiamo ora calcolare l'errore standard della misurazione utilizzando
+la \@ref(eq:err-stnd-mis):
+
+```{r}
+sd(X) * sqrt(1 - rxx)
+```
+
+Si noti che tale valore non è altro che la deviazione standard degli
+errori della misurazione:
+
+```{r}
+sd(E)
+```
+
+Ovvero, nei termini del modello di regressione $X = 0 + 1 \cdot T + E$,
+l'errore standard della misurazione corrisponde all'errore standard
+della regressione:
+
+```{r}
+fm <- lm(formula = X ~ T)
+summary(fm)
+```
+
+
+Si noti che, nell'output di $\textsf{R}$ fornito sopra, l'errore standard della
+regressione, ovvero `residual sd`, corrisponde a 2.01 anziché a 2.0. Ciò
+si verifica in quanto $\textsf{R}$ ha calcolato una stima della deviazione standard
+dei residui nella popolazione utilizzando, al denominatore, $n - 2$. Nel
+nostro caso è invece necessario dividere per $n$ in quanto i dati della
+simulazione sono quelli della popolazione, non di un campione.
+
+## Dimostrazione
+
+Poniamoci ora il problema di derivare la formula dell'errore standard
+della misurazione. Per derivare la formula $\sigma_E = \sigma_X \sqrt{1 -\rho_{XX^\prime}}$ sono necessari due passi: prima dobbiamo trovare la varianza del punteggio vero; poi dobbiamo esprimere il punteggio osservato come la somma della varianza del punteggio vero e la varianza dell'errore.
+
+::: {.proof}
+In base alla definizione del coefficiente di attendibilità $\rho_{XX^\prime} = \frac{\sigma^2_T}{\sigma^2_X}$ possiamo scrivere $\sigma^2_T = \rho_{XX^\prime} \sigma^2_X$, dove $X$ e $X^\prime$ sono due forme parallele di un test. Ricordiamo che misurazioni parallele hanno le seguenti proprietà: $\E(X) = \E(X^\prime)$ e $\V(X) = \V(X^\prime)$. Dato che $\sigma_{X}=\sigma_{X^\prime}$, l'equazione precedente diventa $\sigma^2_T = \rho_{XX^\prime} \sigma_X\sigma_{X^\prime}.$ Utilizzando la definizione della covarianza tra $X$ e $X^\prime$, ovvero, $\sigma_{XX^\prime}=\rho_{XX^\prime}\sigma_X\sigma_{X^\prime}$, possiamo concludere che la varianza del punteggio vero è uguale alla covarianza tra due misurazioni parallele:
+
+$$
+\sigma^2_T =  \sigma_{XX^\prime}.
+$$
+
+Essendo l'attendibilità del test il rapporto tra la varianza del punteggio vero e la varianza del punteggio osservato, ed essendo che la varianza del punteggio vero
+uguale alla covarianza tra due misurazioni parallele, possiamo
+concludere che l'attendibilità aumenta all'aumentare della covarianza
+media tra gli item del test. Si noti come questo importante risultato
+della CTT dipenda dall'ipotesi di omogeneità delle varianze degli item
+del test.
+
+Calcoliamo ora la varianza di $E$. La varianza del punteggio osservato è
+uguale a $\sigma^2_X = \sigma^2_T + \sigma^2_E.$ Sulla base della
+definizione di attendibilità $\sigma^2_T = \rho_{XX^\prime} \sigma^2_X$, la
+varianza del punteggio osservato si può scrivere come
+$\sigma^2_X =\rho_{XX^\prime} \sigma^2_X + \sigma^2_E$, da cui
+
+\begin{equation}
+\begin{aligned}
+\sigma^2_E &= \sigma^2_X - \sigma^2_X\rho_{XX^\prime}\notag\\
+&= \sigma^2_X (1 -\rho_{XX^\prime}).
+\end{aligned}
+\end{equation}
+
+La varianza degli errori della misurazione $\sigma^2_E = \sigma^2_X (1 -\rho_{XX^\prime})$ è dunque uguale al prodotto di due fattori: il primo fattore è la varianza
+del punteggio osservato; il secondo fattore è uguale a uno meno la
+correlazione tra due forme parallele del test. Possiamo così calcolare
+una quantità incognita, $\sigma^2_E$, nei termini di due quantità
+osservabili, $\sigma^2_X$ e $\rho_{XX^\prime}$.
+:::
+
+## Intervallo di confidenza per il punteggio vero e $\sigma_E$
+
+Uno degli usi che vengono fatti dell'errore standard della misurazione è
+quello di costruire, con essi, gli intervalli di confidenza per il
+punteggio vero. Tale uso, però, non è corretto [@charter1996revisiting].
+Gli intervalli di confidenza costruiti usando l'errore standard della
+misurazione vengono talvolta incorrettamente interpretati in modo tale
+da suggerire che l'intervallo di confidenza al $(1 - \alpha)\%$
+identifica una gamma di valori, _centrata sul valore osservato_, entro
+il quale cadono i punteggi veri del test nel $(1 - \alpha)\%$ di
+ipotetiche somministrazioni ripetute del test. Ma le cose non stanno
+così. In realtà, come abbiamo detto sopra, l'errore standard della
+misurazione è la deviazione standard, calcolata rispetto al valore
+vero, di ipotetiche misurazioni ripetute dello stesso test. Si può
+ribadire questo concetto nel modo seguente: "In spite of @dudek1979continuing's reminder that the SEM should not be used to construct confidence intervals, many test manuals, computer-scoring programs, and texts in psychology and education continue to do so. Because authors of many textbooks and manuals make these errors, it is understandable that those who learned from and look to these sources for guidance also make these errors. In summary, the SEM should not be used to construct confidence intervals for test scores" (p. 1141). Sembra piuttosto chiaro.

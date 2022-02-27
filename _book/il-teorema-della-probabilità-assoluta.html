@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.4 Il teorema della probabilità assoluta | Data Science per psicologi</title>
+  <meta name="description" content="This document contains the materials of the lessons of Psicometria B000286 (2021/2022) aimed at students of the first year of the Degree Course in Psychological Sciences and Techniques of the University of Florence, Italy." />
+  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.4 Il teorema della probabilità assoluta | Data Science per psicologi" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This document contains the materials of the lessons of Psicometria B000286 (2021/2022) aimed at students of the first year of the Degree Course in Psychological Sciences and Techniques of the University of Florence, Italy." />
+  <meta name="github-repo" content="ccaudek/ds4psy" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.4 Il teorema della probabilità assoluta | Data Science per psicologi" />
+  
+  <meta name="twitter:description" content="This document contains the materials of the lessons of Psicometria B000286 (2021/2022) aimed at students of the first year of the Degree Course in Psychological Sciences and Techniques of the University of Florence, Italy." />
+  
+
+<meta name="author" content="Corrado Caudek" />
+
+
+<meta name="date" content="2022-02-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="lindipendendenza-stocastica.html"/>
+<link rel="next" href="commenti-e-considerazioni-finali-1.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Science per psicologi</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefazione</a>
+<ul>
+<li class="chapter" data-level="" data-path="la-psicologia-e-la-data-science.html"><a href="la-psicologia-e-la-data-science.html"><i class="fa fa-check"></i>La psicologia e la Data science</a></li>
+<li class="chapter" data-level="" data-path="come-studiare.html"><a href="come-studiare.html"><i class="fa fa-check"></i>Come studiare</a></li>
+<li class="chapter" data-level="" data-path="sviluppare-un-metodo-di-studio-efficace.html"><a href="sviluppare-un-metodo-di-studio-efficace.html"><i class="fa fa-check"></i>Sviluppare un metodo di studio efficace</a></li>
+</ul></li>
+<li class="part"><span><b>I Il calcolo delle probabilità</b></span></li>
+<li class="chapter" data-level="1" data-path="intro-prob-1.html"><a href="intro-prob-1.html"><i class="fa fa-check"></i><b>1</b> Ragionamento scientifico e inferenza induttiva</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="che-cosè-la-probabilità.html"><a href="che-cosè-la-probabilità.html"><i class="fa fa-check"></i><b>1.1</b> Che cos’è la probabilità?</a></li>
+<li class="chapter" data-level="1.2" data-path="variabili-casuali-e-probabilità-di-un-evento.html"><a href="variabili-casuali-e-probabilità-di-un-evento.html"><i class="fa fa-check"></i><b>1.2</b> Variabili casuali e probabilità di un evento</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="variabili-casuali-e-probabilità-di-un-evento.html"><a href="variabili-casuali-e-probabilità-di-un-evento.html#eventi-e-probabilità"><i class="fa fa-check"></i><b>1.2.1</b> Eventi e probabilità</a></li>
+<li class="chapter" data-level="1.2.2" data-path="variabili-casuali-e-probabilità-di-un-evento.html"><a href="variabili-casuali-e-probabilità-di-un-evento.html#spazio-campionario-e-risultati-possibili"><i class="fa fa-check"></i><b>1.2.2</b> Spazio campionario e risultati possibili</a></li>
+<li class="chapter" data-level="1.2.3" data-path="variabili-casuali-e-probabilità-di-un-evento.html"><a href="variabili-casuali-e-probabilità-di-un-evento.html#variabili-casuali"><i class="fa fa-check"></i><b>1.2.3</b> Variabili casuali</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="usare-la-simulazione-per-stimare-le-probabilità.html"><a href="usare-la-simulazione-per-stimare-le-probabilità.html"><i class="fa fa-check"></i><b>1.3</b> Usare la simulazione per stimare le probabilità</a></li>
+<li class="chapter" data-level="1.4" data-path="la-legge-dei-grandi-numeri.html"><a href="la-legge-dei-grandi-numeri.html"><i class="fa fa-check"></i><b>1.4</b> La legge dei grandi numeri</a></li>
+<li class="chapter" data-level="1.5" data-path="variabili-casuali-multiple.html"><a href="variabili-casuali-multiple.html"><i class="fa fa-check"></i><b>1.5</b> Variabili casuali multiple</a></li>
+<li class="chapter" data-level="1.6" data-path="sec:fun-mass-prob.html"><a href="sec:fun-mass-prob.html"><i class="fa fa-check"></i><b>1.6</b> Funzione di massa di probabilità</a></li>
+<li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali.html"><a href="commenti-e-considerazioni-finali.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html"><i class="fa fa-check"></i><b>2</b> Probabilità condizionata</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="sec:bayes-cancer.html"><a href="sec:bayes-cancer.html"><i class="fa fa-check"></i><b>2.1</b> Probabilità condizionata su altri eventi</a></li>
+<li class="chapter" data-level="2.2" data-path="legge-delle-probabilità-composte.html"><a href="legge-delle-probabilità-composte.html"><i class="fa fa-check"></i><b>2.2</b> Legge delle probabilità composte</a></li>
+<li class="chapter" data-level="2.3" data-path="lindipendendenza-stocastica.html"><a href="lindipendendenza-stocastica.html"><i class="fa fa-check"></i><b>2.3</b> L’indipendendenza stocastica</a></li>
+<li class="chapter" data-level="2.4" data-path="il-teorema-della-probabilità-assoluta.html"><a href="il-teorema-della-probabilità-assoluta.html"><i class="fa fa-check"></i><b>2.4</b> Il teorema della probabilità assoluta</a></li>
+<li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-1.html"><a href="commenti-e-considerazioni-finali-1.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chapter-teo-bayes.html"><a href="chapter-teo-bayes.html"><i class="fa fa-check"></i><b>3</b> Il teorema di Bayes</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="il-teorema-di-bayes.html"><a href="il-teorema-di-bayes.html"><i class="fa fa-check"></i><b>3.1</b> Il teorema di Bayes</a></li>
+<li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-2.html"><a href="commenti-e-considerazioni-finali-2.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
+</ul></li>
+<li class="part"><span><b>II Inferenza bayesiana</b></span></li>
+<li class="chapter" data-level="4" data-path="ch:intro-bayes-inference.html"><a href="ch:intro-bayes-inference.html"><i class="fa fa-check"></i><b>4</b> Flusso di lavoro bayesiano</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="modellizzazione-bayesiana.html"><a href="modellizzazione-bayesiana.html"><i class="fa fa-check"></i><b>4.1</b> Modellizzazione bayesiana</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="modellizzazione-bayesiana.html"><a href="modellizzazione-bayesiana.html#notazione"><i class="fa fa-check"></i><b>4.1.1</b> Notazione</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="distribuzioni-a-priori.html"><a href="distribuzioni-a-priori.html"><i class="fa fa-check"></i><b>4.2</b> Distribuzioni a priori</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="distribuzioni-a-priori.html"><a href="distribuzioni-a-priori.html#tipologie-di-distribuzioni-a-priori"><i class="fa fa-check"></i><b>4.2.1</b> Tipologie di distribuzioni a priori</a></li>
+<li class="chapter" data-level="4.2.2" data-path="distribuzioni-a-priori.html"><a href="distribuzioni-a-priori.html#selezione-della-distribuzione-a-priori"><i class="fa fa-check"></i><b>4.2.2</b> Selezione della distribuzione a priori</a></li>
+<li class="chapter" data-level="4.2.3" data-path="distribuzioni-a-priori.html"><a href="distribuzioni-a-priori.html#unapplicazione-empirica"><i class="fa fa-check"></i><b>4.2.3</b> Un’applicazione empirica</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="la-funzione-di-verosimiglianza.html"><a href="la-funzione-di-verosimiglianza.html"><i class="fa fa-check"></i><b>4.3</b> La funzione di verosimiglianza</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="la-funzione-di-verosimiglianza.html"><a href="la-funzione-di-verosimiglianza.html#notazione-1"><i class="fa fa-check"></i><b>4.3.1</b> Notazione</a></li>
+<li class="chapter" data-level="4.3.2" data-path="la-funzione-di-verosimiglianza.html"><a href="la-funzione-di-verosimiglianza.html#la-log-verosimiglianza"><i class="fa fa-check"></i><b>4.3.2</b> La log-verosimiglianza</a></li>
+<li class="chapter" data-level="4.3.3" data-path="la-funzione-di-verosimiglianza.html"><a href="la-funzione-di-verosimiglianza.html#unapplicazione-empirica-1"><i class="fa fa-check"></i><b>4.3.3</b> Un’applicazione empirica</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="sec:const-normaliz-bino23.html"><a href="sec:const-normaliz-bino23.html"><i class="fa fa-check"></i><b>4.4</b> La verosimiglianza marginale</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="sec:const-normaliz-bino23.html"><a href="sec:const-normaliz-bino23.html#unapplicazione-empirica-2"><i class="fa fa-check"></i><b>4.4.1</b> Un’applicazione empirica</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="distribuzione-a-posteriori.html"><a href="distribuzione-a-posteriori.html"><i class="fa fa-check"></i><b>4.5</b> Distribuzione a posteriori</a></li>
+<li class="chapter" data-level="4.6" data-path="distribuzione-predittiva-a-priori.html"><a href="distribuzione-predittiva-a-priori.html"><i class="fa fa-check"></i><b>4.6</b> Distribuzione predittiva a priori</a></li>
+<li class="chapter" data-level="4.7" data-path="distribuzione-predittiva-a-posteriori.html"><a href="distribuzione-predittiva-a-posteriori.html"><i class="fa fa-check"></i><b>4.7</b> Distribuzione predittiva a posteriori</a></li>
+<li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-3.html"><a href="commenti-e-considerazioni-finali-3.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Science per psicologi</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="il-teorema-della-probabilità-assoluta" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Il teorema della probabilità assoluta</h2>
+<p>Il teorema della probabilità assoluta è presente al denominatore del teorema di Bayes (che esamineremo nel prossimo capitolo) e verrà qui presentato considerando una partizione dello spazio campionario in tre sottoinsiemi, ma è facile estendere tale discussione al caso di una partizione in un qualunque numero di sottoinsiemi.</p>
+<p><span class="math display" id="eq:prob-total-1a">\[\begin{equation}
+{\mbox{P}}(E) = {\mbox{P}}(E \cap H_1) + {\mbox{P}}(E \cap H_2) + {\mbox{P}}(E \cap H_3) \notag
+\tag{2.5}
+\end{equation}\]</span></p>
+<p>ovvero</p>
+<p><span class="math display" id="eq:prob-total-1b">\[\begin{equation}
+{\mbox{P}}(E) = {\mbox{P}}(E \mid F_1) {\mbox{P}}(F_1) + {\mbox{P}}(E \mid F_2) {\mbox{P}}(F_2) + {\mbox{P}}(E \mid F_3) {\mbox{P}}(F_3).
+\tag{2.6}
+\end{equation}\]</span></p>
+<p>Il teorema della probabilità assoluta afferma che, se l’evento <span class="math inline">\(E\)</span> è
+costituito da tutti gli eventi elementari in <span class="math inline">\(E \cap F_1\)</span>, <span class="math inline">\(E \cap F_2\)</span>
+e <span class="math inline">\(E \cap F_3\)</span>, allora la probabilità <span class="math inline">\({\mbox{P}}(E)\)</span> è data dalla somma delle
+probabilità di questi tre eventi (figura <a href="il-teorema-della-probabilità-assoluta.html#fig:tikz-prob-tot">2.3</a>). La <a href="il-teorema-della-probabilità-assoluta.html#eq:prob-total-1b">(2.6)</a> costituisce il denominatore del teorema di Bayes.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tikz-prob-tot"></span>
+<img src="ds4psy_files/figure-html/tikz-prob-tot-1.png" alt="Partizione dello spazio campionario $\Omega$." width="576" />
+<p class="caption">
+FIGURA 2.3: Partizione dello spazio campionario <span class="math inline">\(\Omega\)</span>.
+</p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-7" class="exercise"><strong>Esercizio 2.5  </strong></span>Si considerino tre urne, ciascuna delle quali contiene 100 palline:</p>
+<ul>
+<li>Urna 1: 75 palline rosse e 25 palline blu,</li>
+<li>Urna 2: 60 palline rosse e 40 palline blu,</li>
+<li>Urna 3: 45 palline rosse e 55 palline blu.</li>
+</ul>
+<p>
+Una pallina viene estratta a caso da un’urna anch’essa scelta a caso.
+Qual è la probabilità che la pallina estratta sia di colore rosso?</p>
+<p>Sia <span class="math inline">\(R\)</span> l’evento “la pallina estratta è rossa” e sia <span class="math inline">\(U_i\)</span> l’evento che
+corrisponde alla scelta dell’<span class="math inline">\(i\)</span>-esima urna. Sappiamo che</p>
+<p><span class="math display">\[
+{\mbox{P}}(R \mid U_1) = 0.75, \quad {\mbox{P}}(R \mid U_2) = 0.60, \quad {\mbox{P}}(R \mid U_3) = 0.45.
+\]</span></p>
+<p>Gli eventi <span class="math inline">\(U_1\)</span>, <span class="math inline">\(U_2\)</span> e <span class="math inline">\(U_3\)</span> costituiscono una partizione dello
+spazio campionario in quanto <span class="math inline">\(U_1\)</span>, <span class="math inline">\(U_2\)</span> e <span class="math inline">\(U_3\)</span> sono eventi
+mutualmente esclusivi ed esaustivi, <span class="math inline">\({\mbox{P}}(U_1 \cup U_2 \cup U_3) = 1.0\)</span>. In
+base al teorema della probabilità assoluta, la probabilità di estrarre una
+pallina rossa è dunque</p>
+<p><span class="math display">\[
+\begin{split}
+{\mbox{P}}(R) &amp;= {\mbox{P}}(R \mid U_1){\mbox{P}}(U_1)+{\mbox{P}}(R \mid U_2){\mbox{P}}(U_2)+{\mbox{P}}(R \mid U_3){\mbox{P}}(U_3) \\
+&amp;= 0.75 \cdot \frac{1}{3}+0.60 \cdot \frac{1}{3}+0.45 \cdot \frac{1}{3} \\
+&amp;=0.60.
+\end{split}
+\]</span></p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lindipendendenza-stocastica.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="commenti-e-considerazioni-finali-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ccaudek/ds4psy/edit/master/016_conditional_prob.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ds4psy.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

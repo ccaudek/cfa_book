@@ -1,0 +1,669 @@
+\chapter{La stima dei parametri}
+\label{chapter:stima_param_irt} 
+
+%% un esempio di analisi è fornito nella pagina
+%% http://wiki.r-project.org/rwiki/doku.php?id=packages:cran:ltm
+%% può essere usato come esempio conclusivo dei modelli irt
+
+%--------------------------------------------------------------
+\section{Abilità latente e difficoltà degli item}
+
+Nel modello di Rasch, che è il più semplice dei modelli IRT, la probabilità di una risposta corretta dipende soltanto dall'abilità latente $\theta_v$ del rispondente e dalla difficoltà $\beta_i$ dell'item $i$-esimo. I valori dei parametri di abilità e difficoltà devono essere stimati. Soltanto la configurazione di risposte agli item del questionario è nota. In un certo senso, il problema della stima del valore $\theta_i$ per ciascun rispondente e del valore $\beta_j$ per ciascun item è simile
+al problema incontrato nell'analisi di regressione. Il problema della
+stima dei parametri del modello di Rasch (e degli altri modelli IRT), però, è diverso da quello incontrato nel modello di regressione per vari motivi.  In primo luogo, il modello di regressione è lineare, mentre i modelli IRT non lo sono. Ciò ci può fare pensare che la stima dei parametri dei modelli IRT sia simile alla stima dei parametri del modello di regressione logistica.  Vi è però un'ulteriore complicazione, ovvero il fatto che, nei modelli IRT, il ``regressore'' $\theta$ non è osservabile. Se $\theta$ fosse conosciuto, il problema della stima dei
+parametri $\beta_j$ si ridurrebbe al problema incontrato nella regressione logistica. Lo stesso si può dire per la stima dell'abilità, se i parametri $\beta$
+fossero conosciuti.
+
+Un'ulteriore considerazione va fatta a proposito della funzione costo
+(detta funzione di perdita o {\it loss function}) che viene
+massimizzata o minimizzata nel processo di stima dei parametri.  Nella
+regressione lineare, il grado di adattamento del modello ai dati viene
+misurato tramite il criterio dei minimi quadrati.  Nel modello di
+Rasch il metodo dei minimi quadrati non può essere usato in quanto è
+difficile determinare le proprietà statistiche degli stimatori dei
+minimi quadrati nel caso di un modello non lineare. I parametri del
+modello di Rasch possono essere invece stimati con il metodo di massima
+verosimiglianza.
+
+Esamineremo di seguito le procedure di stima dei parametri di abilità del modello di Rasch mediante il metodo di massima verosimiglianza in diverse situazioni. Considereremo prima il caso in cui i parametri di difficoltà degli item sono conosciuti; esamineremo poi la stima dei parametri di difficoltà degli item quando i parametri di abilità sono conosciuti. Ci porremo infine il problema della stima congiunta di entrambi i parametri.
+
+\section{Identificazione del modello}\label{identificazione}
+
+Una volta specificato il modello di Rasch è necessario determinare se
+i parametri del modello possano essere stimati.  La possibilità della
+stima dei parametri definisce quello che viene chiamato {\it problema dell'identificazione} del modello.  
+
+Nel modello lineare di regressione con variabili esplicative
+quantitative, per esempio, la {\it matrice disegno} $\boldsymbol{X}$ è
+a rango pieno (ovvero le sue colonne sono linearmente indipendenti) e
+ciò garantisce la possibilità di stimare i parametri (ovvero, i
+coefficienti parziali di regressione). Ricordiamo che, volendo utilizzare una variabile esplicativa qualitativa politomica, è necessario inserire nel modello di regressione un certo
+numero di variabili indicatrici.  Il problema dell'identificazione del
+modello si pone nel momento in cui si voglia utilizzare un numero di
+variabili indicatrici uguale al numero di modalità della variabile
+qualitativa.  Ciò introduce una dipendenza lineare nella matrice
+modello, ovvero rende singolare la matrice $\boldsymbol{X'X}$. In tali condizioni non è possibile risolvere le equazioni normali per stimare i parametri.  Il
+problema si risolve o cancellando una delle colonne di
+$\boldsymbol{X}$ ({\it dummy variable coding}), il che equivale a
+porre uguale a zero uno dei parametri, o imponendo una qualunque
+restrizione lineare sui parametri, come ad esempio il fatto che la
+somma dei parametri sia uguale a zero.
+
+Nel caso del modello di Rasch ci troviamo di fronte ad un problema
+analogo, in quanto il modello risulta indeterminato a meno di una
+costante additiva per cui devono essere introdotti dei vincoli per la
+sua identificazione. Il problema risulta chiaro nel momento in cui ci
+rendiamo conto che, nel modello di Rasch, lo stesso valore logit può
+essere prodotto da un numero infinito di  combinazioni diverse di valori di
+difficoltà degli item e di abilità dei rispondenti. Supponiamo, ad esempio, che un
+logit pari a 1.5 venga predetto dal modello di Rasch avente curve
+caratteristiche degli item a pendenza costante $\alpha$. Ci sono infinite possibilità, alcune delle quali sono elencate qui sotto:
+\begin{align} 
+  \log\left[\frac{Pr(Y_{vi} = 1)}{1-Pr(Y_{vi} = 1)}\right] &=
+  \alpha(\theta_v-\beta_i)\notag\\
+  1.5 &= 1(3-1.5)\notag\\
+  1.5 &= 1(2-0.5)\notag\\
+  1.5 &= 1(1-(-0.5))\notag\\
+  1.5 &= 2(1-0.25).
+\end{align}
+In tali condizioni, è chiaro che sia l'origine della scala sia la costante $\alpha$ sono
+indeterminati. Ai fini dell'identificazione del modello nel processo di stima dei parametri è dunque necessario imporre dei vincoli sui parametri di difficoltà degli item, oppure sui parametri di abilità dei rispondenti.
+
+\section{Vincoli sui parametri}
+\label{vincoli}
+
+\subsection{Vincoli sui parametri di difficoltà degli item}
+
+Una prima soluzione è quella di porre il vincolo di una media pari a zero sui parametri relativi alla difficoltà degli item, fissando nel contempo il potere discriminante degli item in modo tale che assuma sempre il valore di 1 ($\alpha=1$). Utilizzando questo vincolo, ai livelli di abilità può essere assegnata la seguente interpretazione: se il livello stimato di abilità di un rispondente è maggiore di zero sulla scala dei logit, allora il rispondente  manifesta una propensione a rispondere correttamente agli item del questionario; viceversa se il suo livello stimato di abilità è minore di zero. Se il livello stimato di abilità è
+uguale a zero, possiamo concludere che la prestazione del rispondente si situa al livello medio di difficoltà degli item del questionario.
+
+\subsection{Vincoli sui parametri di abilità dei rispondenti}
+
+In maniera alternativa, possiamo scegliere di imporre un vincolo sui
+parametri di abilità dei rispondenti. In questo caso, il vincolo
+che viene utilizzato è quello che fissa  i parametri di abilità in modo tale che abbiano media zero e varianza unitaria. I livelli di abilità, in questo modo, si possono
+interpretare come punteggi $z$: valori positivi o negativi implicano
+una prestazione, rispettivamente, superiore o inferiore alla media dei rispondenti considerati. Se viene utilizzato tale vincolo, sono liberi di variare sia il valore medio dei parametri di difficoltà  degli item sia il
+parametro di discriminazione degli item.
+
+%------------------------------------------------------------------------------
+\section{Stima dei parametri del modello di Rasch}
+%------------------------------------------------------------------------------
+
+% Sia  $\boldsymbol{y}_v = (y_{1}, \dots, y_{j}, \dots, y_{J})$ la configurazione di risposte dell'individuo $v$ ad un questionario composto da $J$ items, dove $y_{j}$ è 1  o 0, a seconda della correttezza della risposta.  In virtù dell'assunzione di indipendenza locale, la probabilità congiunta di osservare la configurazione di risposte $\boldsymbol{y}_v$ è uguale al prodotto della probabilità della risposta a ciascun item:
+
+% \begin{align}
+% Pr(\boldsymbol{y}_v | \theta_v) = Pr(y_{1}=1|\theta_v) \dots  Pr(y_{j}=1|\theta_v) \dots  Pr(y_{J}=1|\theta_v)
+% \end{align}
+% dove $Pr(y_{j}|\theta_v)$ è la probabilità (sconosciuta) che l'individuo $v$ risponda correttamente al $j$-esimo item e $\theta_v$ è il valore del tratto latente per la persona  $v$. 
+% In forma più compatta, l'equazione precedente diventa
+
+% \begin{align}
+% Pr(\boldsymbol{y}_v | \theta_v) = \prod_{j=1}^J  Pr(y_{j}=1|\theta_v) 
+% \end{align}
+
+% \noindent
+% Dal momento che  $y_{j}$ assume solamente i valori di  1  o 0, l'equazione precedente si può riscrivere nel modo seguente:
+
+% \begin{align}
+% Pr(\boldsymbol{y}_v | \theta_v) = \prod_{j=1}^J  Pr(y_{j}=1|\theta_v)^{y_{j}} [1- Pr(y_{j}=1|\theta_v)]^{1-y_{j}}
+% \end{align}
+
+% \noindent
+% Infatti, se la risposta è $y_{j}=1$
+
+% \begin{align}
+%  Pr(y_{j}=1|\theta_v)^1 [1- Pr(y_{j}=1|\theta_v)]^{1-1}&=Pr(y_{j}=1|\theta_v)\notag
+% \end{align}
+
+% \noindent
+% Altrimenti, se  $y_{j}=0$
+
+% \begin{align}
+% Pr(y_{j}=1|\theta_v)^0 [1- Pr(y_{j}=1|\theta_v)]^{1-0} &= 1- Pr(y_{j}=1|\theta_v)\notag
+% \end{align}
+
+% Esprimendo la funzione di probabilità congiunta in funzione dei parametri, si ottiene la funzione di verosimiglianza:
+
+% \begin{align}
+% L(\theta_v  | \boldsymbol{y}_v) = \prod_{j=1}^J  Pr(y_{j}=1|\theta_v)^{y_{j}} [1- Pr(y_{j}=1|\theta_v)]^{1-y_{j}}
+% \end{align}
+
+% Dal momento che $Pr(y_{j}=1|\theta_v)$ sono funzioni che dipendono dai parametri degli item, supponendo che tali valori siano conosciuti in questo esempio, la funzione di verosimiglianza per un determinato valore $\theta$ può essere calcolata.
+
+% Utilizzando le seguenti proprietà dei logaritmi
+
+% $$
+% \log xy = \log x + \log y, \qquad \log x^a=a \log x
+% $$
+
+% \noindent
+% possiamo scrivere la funzione di log-verosimiglianza nel modo seguente:
+
+% % \begin{align}
+% %  \ell (\theta_v  | \boldsymbol{y}_v) 
+% % &= \log \left( \prod_{j=1}^J  Pr(y_{j}=1|\theta_v)^{y_{j}} [1- Pr(y_{j}=1|\theta_v)]^{1-y_{j}} \right)\notag\\
+% % &= \sum_{j=1}^J \{{y_{j}\log  Pr(y_{j}=1|\theta_v) + (1-y_{j})\log[1- Pr(y_{j}=1|\theta_v)]  }\}
+% % \label{likeRasch}
+% % \end{align}
+
+
+
+% \begin{multline}
+%  \ell (\theta_v  | \boldsymbol{y}_v) 
+% = \log  \prod_{j=1}^J  Pr(y_{j}=1|\theta_v)^{y_{j}} [1- Pr(y_{j}=1|\theta_v)]^{1-y_{j}} \\
+% = \sum_{j=1}^J y_{j}\log  Pr(y_{j}=1|\theta_v) + (1-y_{j})\log[1- Pr(y_{j}=1|\theta_v)]    
+% \label{likeRasch}
+% \end{multline}
+
+
+
+% \noindent
+% dove $\boldsymbol{y}_v = (y_{1}, \dots, y_{j}, \dots, y_{J})$ è la configurazione delle risposte fornite a $J$ item e $\theta_v$ è il parametro di abilità del rispondente $v$.  
+
+% In base al modello di Rasch, la funzione logistica viene utilizzata
+% per esprimere la probabilità di osservare un certo pattern di risposte
+% sia in funzione del tratto latente misurato $\theta_i$ sia della
+% difficoltà degli item $\beta_j$:
+
+% \begin{equation*} 
+%   Pr(Y_{ij} = 1|  \theta_i, \beta_j) = \frac{\exp(\theta_i-\beta_j)}{1+\exp(\theta_i-\beta_j)}
+% \label{rasch}
+% \end{equation*}
+
+% \noindent
+% Sostituendo l'equazione precedente nella \ref{likeRasch}, si ottiene
+
+% % {\small
+% % \begin{align}
+% %  \ell (\theta_v, \beta_j | \boldsymbol{y}_v) &=  \sum_{j=1}^J \left\{{y_{j}\log \left( \frac{\exp(\theta_i-\beta_j)}{1+\exp(\theta_i-\beta_j)}\right)+ (1-y_{j})\log\left[1-\left(\frac{\exp(\theta_i-\beta_j)}{1+\exp(\theta_i-\beta_j)}\right)\right]  }\right\}
+% % \end{align}
+% % }
+
+% \begin{multline}
+%  \ell (\theta_v, \beta_j | \boldsymbol{y}_v) =  \sum_{j=1}^J y_{j}\log \left( \frac{\exp(\theta_i-\beta_j)}{1+\exp(\theta_i-\beta_j)}\right)+\\ (1-y_{j})\log\left[1-\left(\frac{\exp(\theta_i-\beta_j)}{1+\exp(\theta_i-\beta_j)}\right)\right]  
+% \label{eq:eq5.8}
+% \end{multline}
+
+% \noindent Considerando contemporaneamente tutti i rispondenti, si ottiene:
+% % {\small
+% % \begin{align}
+% %  \ell (\theta_v, \beta_j | \boldsymbol{y}_v) 
+% % &= \sum_{i=1}^I \sum_{j=1}^J \left\{{y_{ij}\log \left( \frac{\exp(\theta_i-\beta_j)}{1+\exp(\theta_i-\beta_j)}\right) + (1-y_{ij})\log\left[1-\left(\frac{\exp(\theta_i-\beta_j)}{1+\exp(\theta_i-\beta_j)}\right)\right]  }\right\}
+% % \end{align}
+% % }
+
+% \begin{multline} 
+%  \ell (\theta_v, \beta_j | \boldsymbol{y}_v) = \sum_{i=1}^I \sum_{j=1}^J 
+% y_{ij}\log \left( \frac{\exp(\theta_i-\beta_j)}{1+\exp(\theta_i-\beta_j)}\right) +\\ (1-y_{ij})\log\left[1-\left(\frac{\exp(\theta_i-\beta_j)}{1+\exp(\theta_i-\beta_j)}\right)\right]  
+% \end{multline} 
+
+
+Sia  $\boldsymbol{x}_i = (x_{1i}, \dots, x_{vi}, \dots, x_{Ni})$ il vettore delle risposte di $N$ rispondenti all'$i$-esimo item di un questionario,  dove $x_{vi}$ può assumere i valori $1$  o $0$, a seconda che il rispondente $v$ abbia risposto in maniera corretta o errata  all'$i$-esimo item. In virtù dell'assunzione di indipendenza locale, la probabilità congiunta di osservare il vettore di risposte $\boldsymbol{x}_i$ è uguale al prodotto della probabilità di una risposta corretta per ciascuno dei  rispondenti:
+\begin{equation}
+P(\boldsymbol{x}_i \mid \boldsymbol{\theta},  \boldsymbol{\beta}) = P(x_{1i} \mid \boldsymbol{\theta}, \boldsymbol{\beta}) \times \dots \times P(x_{vi} \mid  \boldsymbol{\theta}, \boldsymbol{\beta}) \times \dots \times  P(x_{Ni} \mid \boldsymbol{\theta},  \boldsymbol{\beta}),
+\end{equation}
+dove $P(x_{vi}\mid \boldsymbol{\theta},  \boldsymbol{\beta})$ è la probabilità (incognita) che l'individuo $v$ risponda correttamente all'$i$-esimo item,  $\boldsymbol{\beta}$ è il vettore dei parametri di difficoltà degli item e $\boldsymbol{\theta}$ è il vettore dei parametri di abilità dei rispondenti. 
+In forma più compatta, l'equazione precedente diventa
+\begin{equation}
+P(\boldsymbol{x}_i \mid  \boldsymbol{\theta},  \boldsymbol{\beta}) = \prod_{v=1}^N  P(x_{vi}=1 \mid  \boldsymbol{\theta},  \boldsymbol{\beta}) 
+\end{equation}
+Dal momento che  $x_{vi}$ assume solamente i valori $1$ oppure $0$, l'equazione precedente si può riscrivere nel modo seguente:
+\begin{equation}
+P(\boldsymbol{x}_i \mid \boldsymbol{\theta}, \boldsymbol{\beta})= \prod_{v=1}^N  P(x_{vi}=1 \mid \boldsymbol{\theta}, \boldsymbol{\beta})^{x_{vi}} [1- P(x_{vi}=1 \mid \boldsymbol{\theta}, \boldsymbol{\beta})]^{1-x_{vi}}.
+\end{equation}
+\noindent
+Infatti, se la risposta è $x_{v1}=1$,
+\begin{equation*}
+P(x_{vi}=1\mid \boldsymbol{\theta},  \boldsymbol{\beta})^{1} [1- P(x_{vi}=1 \mid \boldsymbol{\theta}, \boldsymbol{\beta})]^{1-1}= P(x_{vi}=1 \mid \boldsymbol{\theta},  \boldsymbol{\beta}),
+\end{equation*}
+\noindent
+altrimenti, se  $x_{vi}=0$,
+\begin{equation*}
+P(x_{vi}=1 \mid \boldsymbol{\theta}, \boldsymbol{\beta})^{0} [1- P(x_{vi}=1 \mid \boldsymbol{\theta}, \boldsymbol{\beta})]^{1-0} = 1- P(x_{vi}=1 \mid \boldsymbol{\theta},  \boldsymbol{\beta}).
+\end{equation*}
+
+
+%------------------------------------------------------------------------------
+\subsection{Funzione di verosimiglianza}
+
+Esprimendo la funzione di probabilità congiunta in funzione dei parametri, si ottiene la funzione di verosimiglianza:
+\begin{equation}
+\mathcal{L}(\boldsymbol{\theta},  \boldsymbol{\beta} \mid \boldsymbol{x}_i) = \prod_{v=1}^N  P(x_{vi}=1 \mid \boldsymbol{\theta},  \boldsymbol{\beta})^{x_{vi}} [1- P(x_{vi}=1 \mid \boldsymbol{\theta}, \boldsymbol{\beta})]^{1-x_{vi}}.
+\end{equation}
+La probabilità $P(x_{vi}=1 \mid \boldsymbol{\theta}, \boldsymbol{\beta})$ dipende sia dai parametri di difficoltà $\boldsymbol{\beta}$ sia dai parametri di abilità $\boldsymbol{\theta}$. Come vedremo nella sezione~\ref{mv_congiunta}, entrambi i vettori di parametri possono essere stimati simultaneamente con il metodo della massima verosimiglianza  congiunta. Altri metodi di stima, però, semplificano il problema stimando solo uno dei due vettori di parametri e considerando l'altro come noto.  Questo è l'approccio seguito dal metodo della massima verosimiglianza condizionata (\ref{mv_condizionale}).  
+
+%------------------------------------------------------------------------------
+\subsection{Massima verosimiglianza condizionata: stima dei parametri di difficoltà}
+
+Supponiamo che i parametri di abilità siano conosciuti. 
+Utilizzando le seguenti proprietà dei logaritmi
+$$
+\log xy = \log x + \log y, \qquad \log x^a=a \log x,
+$$
+\noindent
+la funzione di log-verosimiglianza per un determinato valore $\theta_v$ può essere espressa nel modo seguente:
+\begin{multline}
+ \ell (\beta_i \mid \boldsymbol{x}_i, \boldsymbol{\theta}) 
+= \log \prod_{v=1}^N  P(x_{vi}=1 \mid \theta_v)^{x_{vi}} [1- P(x_{vi}=1 \mid \theta_v)]^{1-x_{vi}} \\
+= \sum_{v=1}^N x_{vi}\log  P(x_{vi}=1 \mid \theta_v) + (1-x_{vi})\log[1- P(x_{vi}=1 \mid \theta_v)],    
+\label{likeRasch}
+\end{multline}
+\noindent
+dove $\boldsymbol{x}_i = (x_{1i}, \dots, x_{vi}, \dots, x_{Ni})$ è il vettore   delle risposte fornite dagli $N$ rispondenti  all'$i$-esimo item e $\theta_v$ è l'abilità del rispondente $v$-esimo.  
+
+In base al modello di Rasch, la funzione logistica viene usata per mettere in relazione la probabilità di osservare un certo pattern di risposte con il tratto latente $\theta$ tramite il parametro di difficoltà degli item $\beta_i$:
+\begin{equation*} 
+  Pr(x_{vi} = 1\mid  \theta_v, \beta_i) = \frac{e^{(\theta_v-\beta_i)}}{1+e^{(\theta_v-\beta_i)}}
+\label{rasch}
+\end{equation*}
+\noindent
+Sostituendo l'equazione precedente nella \ref{likeRasch}, si ottiene:
+\begin{multline}
+\ell (\beta_i \mid  \boldsymbol{x}_i, \boldsymbol{\theta}) = \sum_{v=1}^N x_{vi}\log \left( \frac{e^{(\theta_v-\beta_i)}}{1+e^{(\theta_v-\beta_i)}}\right)+\\ (1-x_{vi})\log\left[1-\left(\frac{e^{(\theta_v-\beta_i)}}{1+e^{(\theta_v-\beta_i)}}\right)\right]. 
+\label{eq:eq5.8}
+\end{multline}
+Considerando simultaneamente tutti gli item (indicizzati con $i=1, \dots, p$), la funzione di log-verosimiglianza diventa:
+\begin{multline} 
+\ell (\boldsymbol{\beta} \mid  \boldsymbol{x}, \boldsymbol{\theta}) = \sum_{i=1}^p \sum_{v=1}^N x_{vi}\log \left( \frac{e^{(\theta_v-\beta_i)}}{1+e^{(\theta_v-\beta_i)}}\right)+\\ (1-x_{vi})\log\left[1-\left(\frac{e^{(\theta_v-\beta_i)}}{1+e^{(\theta_v-\beta_i)}}\right)\right].   
+\end{multline} 
+
+
+%------------------------------------------------------------------------------
+\section{Simulazione}
+
+Implementiamo ora in \R\, il metodo di stima della massima verosimiglianza condizionata, assumendo nota l'abilità dei rispondenti.  La statistica sufficiente per l'abilità del rispondente $v$ è $r_{v}=\sum_iX_{vi}$,  ovvero il punteggio totale nel questionario.
+%L'idea della massima verosimiglianza condizionata è quella di stimare i ``parametri strutturali'' $\beta_i$ massimizzando la funzione 
+%%$\prod_v (\boldsymbol{x}_v | \sum_{i=1}^I x_{vi})$ 
+%che non include i ``parametri incidentali'' $\theta_v$.  
+Diventa così possibile massimizzare la funzione di log-verosimiglianza condizionata $\ell(\beta_i \mid \boldsymbol{x}_i, \boldsymbol{\theta})$ unicamente rispetto ai parametri $\beta_i$, dato che essa non include i ``parametri incidentali'' $\theta_v$.
+
+
+%------------------------------------------------------------------------------
+\subsection{Stima dei parametri di difficoltà}
+
+Nell'esempio presente, la stima dell'abilità latente $\theta_v$ sarà data  dal punteggio totale nel questionario espresso sulla scala dei logit (Embretson \& Reise, 2000). I dati utilizzati sono contenuti nel data frame {\tt raschdat1} e sono disponibili nel pacchetto {\tt eRm}. Per semplicità, rinomino la matrice dei dati:
+\begin{lstlisting}
+library(eRm)
+data(raschdat1)
+X <- raschdat1
+\end{lstlisting} 
+Il data frame è costituito dalle risposte di 100 rispondenti su 30 item:
+\begin{lstlisting}
+dim(X)
+#> [1] 100  30
+\end{lstlisting} 
+La proporzione di risposte corrette per ciascun rispondente può essere  trovata calcolando la media sulle colonne della matrice dei dati:
+\begin{lstlisting}
+pc.persons <- rowMeans(X)
+print(pc.persons, 2)
+#> [1] 0.033 0.067 0.100 0.133 0.133 0.133 0.167 0.200
+#> [9] 0.200 0.200 0.200 0.200 0.233 0.233 0.233 0.233
+#> [17] 0.233 0.267 0.267 0.267 0.300 0.300 0.300 0.300
+#> [25] 0.300 0.333 0.333 0.333 0.333 0.333 0.333 0.367
+#> [33] 0.367 0.367 0.367 0.400 0.400 0.400 0.400 0.400
+#> [41] 0.400 0.433 0.433 0.433 0.433 0.433 0.433 0.467
+#> [49] 0.467 0.467 0.467 0.467 0.467 0.467 0.500 0.500
+#> [57] 0.500 0.500 0.500 0.500 0.533 0.533 0.533 0.533
+#> [65] 0.533 0.567 0.567 0.567 0.567 0.567 0.567 0.567
+#> [73] 0.567 0.600 0.600 0.600 0.633 0.633 0.667 0.667
+#> [81] 0.667 0.667 0.667 0.700 0.700 0.700 0.700 0.700
+#> [89] 0.700 0.733 0.733 0.733 0.733 0.767 0.800 0.833
+#> [97] 0.867 0.867 0.867 0.867
+\end{lstlisting} 
+Per il primo rispondente, il logaritmo dell'odds (logit) di una risposta corretta è
+\begin{equation*}
+\log\frac{0.0333}{1 - 0.0333} = -3.367
+\end{equation*}
+\noindent Per tutti i 100 rispondenti i logit sono:
+\begin{lstlisting}
+plogits <- log(pc.persons / (1 - pc.persons))
+print(plogits, 3)
+#> [1] -3.367 -2.639 -2.197 -1.872 -1.872 -1.872 -1.609
+#> [8] -1.386 -1.386 -1.386 -1.386 -1.386 -1.190 -1.190
+#> [15] -1.190 -1.190 -1.190 -1.012 -1.012 -1.012 -0.847
+#> [22] -0.847 -0.847 -0.847 -0.847 -0.693 -0.693 -0.693
+#> [29] -0.693 -0.693 -0.693 -0.547 -0.547 -0.547 -0.547
+#> [36] -0.405 -0.405 -0.405 -0.405 -0.405 -0.405 -0.268
+#> [43] -0.268 -0.268 -0.268 -0.268 -0.268 -0.134 -0.134
+#> [50] -0.134 -0.134 -0.134 -0.134 -0.134  0.000  0.000
+#> [57]  0.000  0.000  0.000  0.000  0.134  0.134  0.134
+#> [64]  0.134  0.134  0.268  0.268  0.268  0.268  0.268
+#> [71]  0.268  0.268  0.268  0.405  0.405  0.405  0.547
+#> [78]  0.547  0.693  0.693  0.693  0.693  0.693  0.847
+#> [85]  0.847  0.847  0.847  0.847  0.847  1.012  1.012
+#> [92]  1.012  1.012  1.190  1.386  1.609  1.872  1.872
+#> [99]  1.872  1.872
+\end{lstlisting} 
+Creo ora la funzione {\tt rp()} per calcolare la probabilità di una risposta corretta il base al modello di Rasch, in funzione dei parametri di abilità e di difficoltà:
+\begin{lstlisting}
+rp <- function(theta, beta) {
+  exp(theta - beta) / (1 + exp(theta - beta))
+}
+\end{lstlisting} 
+Fisso i parametri di abilità $\boldsymbol{\theta}$ utilizzando i logit calcolati sul totale delle risposte corrette per ciascun rispondente:
+\begin{lstlisting}
+Theta <- plogits
+\end{lstlisting} 
+Per definire la funzione di log-verosimiglianza per il parametro di difficoltà dell'$i$-esimo item, utilizzo l'equazione~\ref{eq:eq5.8}:
+\begin{equation*}
+ \ell (\beta_i \mid \boldsymbol{x}_i, \boldsymbol{\theta}) = \sum_{v=1}^N \left( x_{vi}\log P(x_{vi} = 1) + (1 - x_{vi}) \log(1- P(x_{vi} = 1)) \right)
+\label{eq:eq5.8}
+\end{equation*}
+La funzione di log-verosimiglianza per il parametro di difficoltà del primo item può essere espressa con \R\; nel modo seguente:
+\begin{lstlisting}
+Beta <- seq(-3, 3, length.out = 5000)
+like <- NULL
+item <- 1 
+for (i in 1:length(Beta)) { 
++    like[i] <- sum( 
++      X[, item] * log(rp(Theta, Beta[i])) + 
++         (1 - X[, item]) * log(1 - rp(Theta, Beta[i])) 
++    ) 
++ } 
+\end{lstlisting} 
+Quando alla variabile {\tt item} viene assegnato il valore 1, l'espressione {\tt X[, item]} estrae dalla matrice $\boldsymbol{X}$ il vettore di risposte dei 100 rispondenti al primo item:
+\begin{lstlisting}
+X[, item]
+#> [1] 0 0 0 1 1 0 1 0 0 0 1 1 1 1 1 1 0 1 0 0 1 1 1 0 1 0
+#> [27] 0 1 1 0 0 0 0 1 0 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+#> [53] 0 1 1 1 0 1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 1 1 0
+#> [79] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+\end{lstlisting}
+Nella figura~\ref{fig:mv_cond} sono rappresentate le funzioni di log-verosimiglianza per i primi tre item della matrice $\boldsymbol{X}$.
+\begin{lstlisting}
+plot(Beta, like, type = 'l', 
+    ylab = "Log-verosimiglianza", xlab = "Beta")
+\end{lstlisting} 
+\begin{figure}[tb]
+  \centering
+    \includegraphics[width=11cm]{Rplot_MV_cond}
+    \caption{{\it Log-verosimiglianza condizionale in funzione della difficoltà dell'item.  Le tre curve si riferiscono a tre item diversi.}}
+    \label{fig:mv_cond}
+\end{figure}
+La stima del parametro di difficoltà $\beta_1$, per il primo item, è il valore {\tt Beta} in corrispondenza del massimo della funzione di log-verosimiglianza: 
+\begin{lstlisting}
+cbind(Beta,like)
+#>                Beta       like
+#> [1221,] -1.53570714  -45.08291
+#> [1222,] -1.53450690  -45.08282
+#> [1223,] -1.53330666  -45.08276
+#> [1224,] -1.53210642  -45.08272
+#> [1225,] -1.53090618  -45.08270
+#> [1226,] -1.52970594  -45.08270
+#> [1227,] -1.52850570  -45.08273
+#> [1228,] -1.52730546  -45.08278
+#> [1229,] -1.52610522  -45.08285
+#> [1230,] -1.52490498  -45.08294
+\end{lstlisting} 
+Creo la funzione {\tt findmax()} per trovare il massimo della funzione di log-verosimiglianza:
+\begin{lstlisting}
+findmax <- function(item) {
++    px <- X[, item]
++    for(i in 1:length(Beta)) {
++        like[i] <- sum(
++        log(
++           px * rp(Theta, Beta[i]) +
++              (1-px)*(1 - rp(Theta, Beta[i]))
++          )
++       )
++    }
++    maxlike <- max(like)
++    for(i in 1:length(Beta)) 
++       if(like[i] == maxlike) return(Beta[i])
++ }
+\end{lstlisting} 
+La stima della difficoltà del primo item è dunque
+\begin{lstlisting}
+findmax(1)
+#> [1] -1.530906
+\end{lstlisting} 
+Per tutti e trenta gli item, le stime di difficoltà sono:
+\begin{lstlisting}
+item.d <- NULL
+for (i in 1:ncol(X)) 
+   item.d[i] <- findmax(i) 
+print(item.d, 2)
+#> [1] -1.531 -0.021 -0.747  0.675  1.321 -0.069 -0.648
+#> [8] -0.697 -0.500  1.129  0.675 -0.355  1.531  2.136
+#> [15] -0.307  0.622 -0.307  0.123  0.783 -0.648 -0.901
+#> [22] -0.954 -0.648  0.027  0.837 -1.172  0.123  0.319
+#> [29]  0.783 -0.697
+\end{lstlisting} 
+I risultati ottenuti possono essere confrontati con quelli prodotti da un software. Ad esempio, è possibile utilizzare la funzione {\tt RM()} del pacchetto {\tt eRm}:
+\begin{lstlisting}
+out <- RM(X, sum0 = FALSE)
+\end{lstlisting} %$
+i parametri di difficoltà si estraggono dall'oggetto creato dalla funzione {\tt RM()} nel modo seguente:
+\begin{lstlisting}
+est.beta <- out$betapar
+\end{lstlisting} %$
+Si noti che la funzione {\tt RM()} ritorna la {\it facilità} degli item:
+\begin{lstlisting}
+betapar	 Estimated item (easiness) parameters.
+\end{lstlisting} %$
+Per rendersi conto di questo, confrontiamo le stime dei parametri $\beta$ prodotte da $\tt RM()$ con le proporzioni di risposte corrette per ciascun item:
+\begin{lstlisting}
+round(cbind(est.beta, pc.items), 3)
+#>          est.beta pc.items
+#> beta I1     0.000     0.76
+#> beta I2    -1.514     0.47
+#> beta I3    -0.783     0.62
+#> beta I4    -2.216     0.33
+#> beta I5    -2.866     0.22
+#> beta I6    -1.466     0.48
+#> beta I7    -0.884     0.60
+#> beta I8    -0.834     0.61
+#> beta I9    -1.032     0.57
+#> beta I10   -2.673     0.25
+#> beta I11   -2.216     0.33
+#> beta I12   -1.177     0.54
+#> beta I13   -3.076     0.19
+#> beta I14   -3.681     0.12
+#> beta I15   -1.226     0.53
+#> beta I16   -2.162     0.34
+#> beta I17   -1.226     0.53
+#> beta I18   -1.659     0.44
+#> beta I19   -2.324     0.31
+#> beta I20   -0.884     0.60
+#> beta I21   -0.629     0.65
+#> beta I22   -0.576     0.66
+#> beta I23   -0.884     0.60
+#> beta I24   -1.562     0.46
+#> beta I25   -2.380     0.30
+#> beta I26   -0.358     0.70
+#> beta I27   -1.659     0.44
+#> beta I28   -1.856     0.40
+#> beta I29   -2.324     0.31
+#> beta I30   -0.834     0.61
+\end{lstlisting} 
+I valori $\hat{\boldsymbol{\beta}}$ sono tanto più grandi quanto maggiore è la proporzione di risposte corrette.  Le stime di $\hat{\boldsymbol{\beta}}$ corrispondono dunque alla ``facilità'' degli item.
+
+Avendo utilizzato {\tt sum0 = FALSE} nella funzione {\tt RM()}, è stato usato il vincolo che pone uguale a zero il parametro $\beta$ del primo item. Per confrontare il risultato prodotto dalla funzione {\tt RM()} con i risultati della simulazione, sottraggo il valore della stima del primo parametro ottenuto dalla simulazione a tutto il vettore delle stime.  Inoltre, cambio il segno alle stime prodotte da {\tt RM()}.  Così facendo, ottengo:
+\begin{lstlisting}
+print(cbind(item.d - item.d[1], -est.beta), 3)
+#>           [,1]  [,2]
+#> beta I1  0.000 0.000
+#> beta I2  1.510 1.514
+#> beta I3  0.784 0.783
+#> beta I4  2.206 2.216
+#> beta I5  2.852 2.866
+#> beta I6  1.462 1.466
+#> beta I7  0.883 0.884
+#> beta I8  0.834 0.834
+#> beta I9  1.031 1.032
+#> beta I10 2.660 2.673
+#> beta I11 2.206 2.216
+#> beta I12 1.176 1.177
+#> beta I13 3.062 3.076
+#> beta I14 3.667 3.681
+#> beta I15 1.224 1.226
+#> beta I16 2.153 2.162
+#> beta I17 1.224 1.226
+#> beta I18 1.654 1.659
+#> beta I19 2.314 2.324
+#> beta I20 0.883 0.884
+#> beta I21 0.630 0.629
+#> beta I22 0.577 0.576
+#> beta I23 0.883 0.884
+#> beta I24 1.558 1.562
+#> beta I25 2.368 2.380
+#> beta I26 0.359 0.358
+#> beta I27 1.654 1.659
+#> beta I28 1.850 1.856
+#> beta I29 2.314 2.324
+#> beta I30 0.834 0.834
+\end{lstlisting} 
+La terza colonna fornisce i risultati della simulazione, la quarta i risultati prodotti dalla funzione {\tt RM()}. Come si può vedere, i valori contenuti nelle ultime due colonne sono molto simili. La differenza potrebbe dipendere dalle approssimazioni numeriche che ho utilizzato nella simulazione. La correlazione è
+\begin{lstlisting}
+cor(item.d-item.d[1], -est.beta)
+#> [1] 0.9999988
+\end{lstlisting} 
+
+% Si noti che i logit degli item sono associati linearmente alle stime dei parametri beta (figura~\ref{fig:ilogit_beta}). 
+% \begin{figure}[tb]
+%   \centering
+%     \includegraphics[width=8cm]{Rplot_ilogit_beta}
+%     \caption{{\it Stime dei parametri $\beta$ in funzione dei logit degli item.}}
+%     \label{fig:ilogit_beta}
+% \end{figure}
+
+\subsection{Stima dei parametri di abilità}
+
+Una volta trovati i parametri di difficoltà degli item è necessario calcolare i parametri di abilità dei rispondenti. Il problema si risolve nuovamente utilizzando la stima di massima verosimiglianza condizionata, questa volta però considerando come noti i parametri $\boldsymbol{\beta}$.  
+
+Ricordiamo, a questo punto, come sia stato necessario fissare un'origine alla scala dei punteggi di difficoltà. Nella simulazione abbiamo usato il vincolo più semplice, ovvero abbiamo fissato al valore zero il primo parametro.  Tale vincolo non è molto sensato; in generale il vincolo utilizzato è quello che pone uguale a zero la somma dei parametri di difficoltà. Tale risultato si ottiene utilizzando l'opzione {\tt sum0 = TRUE} nella funzione {\tt RM()}.
+
+Per l'esercizio presente, per semplicità, continuo come ho fatto in precedenza, ponendo uguale a zero il valore del parametro di difficoltà del primo item. Nella funzione di log-verosimiglianza condizionata verranno dunque usati i valori dei parametri di difficoltà  $\boldsymbol{\beta}$ trovati in precedenza:
+\begin{lstlisting}
+diff <- -res$betapar 
+diff
+#>   beta I1   beta I2   beta I3   beta I4   beta I5 
+#> 0.0000000 1.5141051 0.7831078 2.2155397 2.8659139 
+#>   beta I6   beta I7   beta I8   beta I9  beta I10 
+#> 1.4659838 0.8836070 0.8335667 1.0316468 2.6730411 
+#>  beta I11  beta I12  beta I13  beta I14  beta I15 
+#> 2.2155397 1.1774015 3.0764749 3.6814334 1.2256527 
+#>  beta I16  beta I17  beta I18  beta I19  beta I20 
+#> 2.1624187 1.2256527 1.6592009 2.3240263 0.8836070 
+#>  beta I21  beta I22  beta I23  beta I24  beta I25 
+#> 0.6287418 0.5761170 0.8836070 1.5623249 2.3795308 
+#>  beta I26  beta I27  beta I28  beta I29  beta I30 
+#> 0.3581595 1.6592009 1.8557290 2.3240263 0.8335667 
+\end{lstlisting} 
+Calcoliamo ora la log-verosimiglianza facendo variare $\theta$.  Inizializzo il vettore {\tt Theta} che contiene i valori rispetto ai quali verrà calcolata la log-verosimiglianza;   in questo caso utilizzo una gamma di valori compresi tra -5 e +5. Inizializzo a 0 anche il vettore {\tt like} nel quale verranno salvati i valori della log-verosimiglianza in corrispondenza di ciascun valore $\theta$.
+\begin{lstlisting}
+Theta <- seq(-5, 5, length.out = 5000)
+like <- NULL
+\end{lstlisting} 
+\medskip
+Utilizzando la stessa procedura usata in precedenza, svolgo i calcoli per i 100 rispondenti. Il massimo della funzione di log-verosimiglianza per ciascuno dei 100 rispondenti si calcola nel modo seguente:
+\medskip
+\begin{lstlisting}
+findmax <- function(person) {
++    px <- X[person, ]
++   for(i in 1:length(Theta)) {
++       like[i] <- sum(
++          log(
++             px * rp(Theta[i], diff) +
++             (1 - px) * (1 - rp(Theta[i],diff))
++          )
++       )
++    }
++    maxlike <- max(like)
++    for (i in 1:length(Theta)) 
++       if (like[i] == maxlike) return(Theta[i])
++ }
+theta <- rep(0, 100)
+for (i in 1:100) 
+     theta[i] <- findmax(i)
+\end{lstlisting} 
+Per stabilire se il risultato è corretto, utilizzo i nuovamente la funzione {\tt RM()}:
+\begin{lstlisting}
+res <- RM(raschdat1, sum0 = FALSE)
+\end{lstlisting} 
+I parametri di abilità si trovano nel modo seguente: 
+\begin{lstlisting}
+p.res <- person.parameter(res)
+\end{lstlisting} 
+Consideriamo i valori dei primi cinque rispondenti, insieme ai risultati trovati con la simulazione ({\tt theta}):
+\begin{lstlisting}
+round(cbind(theta, p.res$thetapar$NAgroup1), 3)
+#>       theta       
+#> P1   -2.101 -2.102
+#> P2   -1.355 -1.355
+#> P3   -0.893 -0.894
+#> P4   -0.549 -0.550
+#> P5   -0.549 -0.550
+\end{lstlisting} 
+I risultati della simulazione sono identici a quelli trovati con {\tt RM()}. 
+
+Si noti che i logit delle persone sono associati linearmente alle stime dei parametri $\boldsymbol{\theta}$ (Figura~\ref{fig:plogit_theta}). 
+\begin{figure}[tb]
+  \centering
+    \includegraphics[width=7cm]{Rplot_plogits_theta}
+    \caption{{\it Stime dei parametri $\theta$ in funzione dei logit delle persone.}}
+    \label{fig:plogit_theta}
+\end{figure}
+
+% \section{Punteggi EAP}
+
+% Oltre al metodo descritto in precedenza, i punteggi di abilità possono essere calcolati mediante la procedura detta {\it expected a posteriori} (EAP).  La logica di tale procedura di stima di $\theta$ è la seguente. La stima dei punteggi di abilità mediante il metodo EAP richiede la convoluzione di tutte le ICC di un rispondente, ovvero la 
+%  moltiplicazione di tutte le curve caratteristiche degli item corrispondenti alle risposte di un soggetto a ciascuno degli item del questionario.
+
+% Si consideri un esempio proposto da  Orlando, Sherbourne e  Thissen (2000) \citep{orlando:2000}.  Si consideri un questionario composto da tre item e si supponga che un rispondente abbia fornito una risposta sbagliata ai primi due item e una risposta corretta al terzo item: ``$0 0 1$.''  Si supponga inoltre che questa configurazione di risposte produca le tre ICC rappresentate nel panello superiore della figura~\ref{fig:eap}.  
+
+% \begin{figure}
+%   \begin{center}
+%     \includegraphics[width=11.5cm]{PDF_eap.pdf}
+%     \caption{{\it Pannello superiore: ICC per due risposte sbagliate e una risposta corretta.  Pannello inferiore: funzione a posteriori di probabilità per questa configurazione di risposte (Fig. 1, Orlando, Sherbourne \&  Thissen, 2000).}}
+%     \label{fig:eap}
+%   \end{center}
+% \end{figure}
+
+% La distribuzione a posteriori è formata moltiplicando le 3 ICC insieme ad  una distribuzione a priori (che solitamente è la Gaussiana).  Questo prodotto è rappresentato nel pannello inferiore della figura~\ref{fig:eap} e i punteggi IRT vengono calcolati come la media (o valore atteso a posteriori) di questa distribuzione a posteriori. 
+
+
+\section{Tecniche di stima}
+
+I parametri di un modello IRT possono essere stimati mediante l'utilizzo di quattro tecniche diverse (Johnson, 2007): massima verosmiglianza congiunta ({\it joint maximum likelihood}), massima verosimiglianza condizionata ({\it conditional maximum likelihood}), massima verosimiglianza marginale ({\it marginal maximum likelihood}) e stima Bayesiana con catene di Markov e Monte Carlo ({\it Bayesian estimation with Markov chain Monte Carlo}).  Tutti questi quatto metodi di stima sono basati sull'assunzione che i rispondenti siano tra loro indipendenti e che le risposte agli item di un particolare rispondente $v$ siano tra loro indipendenti subordinatamente al livello di abilità latente $\theta_v$. 
+
+\subsection{Massima verosimiglianza congiunta}\label{mv_congiunta}
+
+% In virtù dell'assunzione di indipendenza condizionale, la probabilità congiunta del vettore di risposte agli item $\boldsymbol{x}_v$ subordinatamente a  $\theta_v$ è
+% \begin{equation}
+% \mathcal{L}(\theta_v | \boldsymbol{x}_v, \boldsymbol{\phi}) = Pr(\boldsymbol{x}_v | \theta_v,  \boldsymbol{\phi})= \prod_{i=1}^IPr\left\{ X_{vi}=x_{vi} | \theta_v,  \boldsymbol{\phi}_i \right\}
+% \label{eq:eq5}
+% \end{equation}
+% dove $\boldsymbol{\phi}_i$ è il vettore di parametri del modello IRT per l'$i$-esimo item.
+La procedura di massima versomiglianza congiunta stima simultaneamente i  parametri di difficoltà $\boldsymbol{\beta}$ e di abilità $\boldsymbol{\theta}$ massimizzando la funzione di log-verosimiglianza  rispetto a $\boldsymbol{\beta}$ e a $\boldsymbol{\theta}$ simultaneamente. Il processo di stima viene eseguito mediante  una procedura iterativa. Dopo avere specificato i valori iniziali, le stime dei parametri di difficoltà e di abilità vengono alternativamente aggiornati fino a trovare i valori dei parametri che massimizzano congiuntamente la funzione di log-verosimiglianza.  
+
+Il modello non è identificato, il che significa che non vi è un'unica soluzione al processo di massimizzazione.  Una soluzione unica può essere trovata se  vengono introdotti dei vincoli sui parametri del modello.  
+Per il modello 2PL sono necessari due vincoli: uno relativo all'origine della scala ({\it location constraint})  e uno relativo alla variabilità della scala ({\it scale constraint}). 
+Il vincolo relativo all'origine della scala può essere imposto forzando un singolo parametro di abilità o di difficoltà ad assumere un particolare valore, oppure facendo in modo che la media dei parametri di abilità o difficoltà assuma un particolare valore (tipicamente zero). Il vincolo relativo alla variabilità della scala può essere imposto forzando il prodotto dei parametri di discriminazione ad assumere il valore 1.
+
+Per il modello di Rasch, un  vincolo sufficiente è quello che fissa un singolo parametro di difficoltà o di abilità a qualche particolare valore, o che forza la media dei parametri di difficoltà o di abilità ad assumere un particolare valore (tipicamente zero). 
+
+Il limite maggiore della procedura di massima verosimiglianza congiunta è che le stime dei parametri non sono consistenti: al tendere a infinito della numerosità del campione le stime non convergono al valore dei parametri ma possono rimanere statisticamente distorte (Andersen, 1970).
+
+
+\subsection{Massima verosimiglianza condizionata}
+\label{mv_condizionale}
+
+Il metodo della massima verosimiglianza condizionata (illustrato nella simulazione precedente) è basato sull'esistenza di una statistica sufficiente per i parametri di abilità. Una statistica sufficiente per la stima dei parametri di abilità $\boldsymbol{\theta}$ è la somma delle risposte corrette: $r_v=\sum_{i=1}^p x_{vi}$. Condizionando la funzione di verosimiglianza al vettore dei punteggi $\boldsymbol{r}$, $\boldsymbol{\theta}$ scompare dall'equazione di verosimiglianza. La verosimiglianza $\mathcal{L}(\boldsymbol{\beta \mid r})$ può quindi essere calcolata senza conoscere $\boldsymbol{\theta}$ che, in questo contesto, viene considerata come un vettore di \emph{parametri di disturbo} ({\it nuisance parameters}).
+
+Benché Andersen (1970)  abbia dimostrato che le stime di massima verosimiglianza condizionata delle difficoltà degli item siano consistenti, questa procedura può essere applicata solo al modello di Rasch.  I modelli IRT più complessi non possiedono semplici statistiche sufficienti.
+
+
+\subsection{Massima verosimiglianza marginale}
+
+Il metodo di massima verosimiglianza marginale viene utilizzato quando il modello di Rasch viene interpretato come un modello multilivello ({\it mixed-effect model}) in cui $\theta$ rappresenta un effetto casuale con una distribuzione $h(\theta, \zeta)$ con parametri sconosciuti $\zeta$. Tipicamente, si assume che la distribuzione dei parametri di abilità sia una gaussiana. I parametri di tale distribuzione sono stimati congiuntamente ai parametri di difficoltà degli item. 
+
+Come nel caso della massima verosimiglianza congiunta, devono essere introdotti dei vincoli sui parametri per identificare il modello.  Vincoli possono essere posti sulla media e sulla deviazione standard della distribuzione dei parametri di abilità, o sui parametri degli item. 
+
+Le stime di massima verosimiglianza marginale sono asintoticamente efficienti (Thissen, 1982).  Inoltre, dato che la massima verosimiglianza marginale non richiede l'esistenza di statistiche sufficienti, questo metodo di stima può essere applicato a qualunque tipo di modello IRT.
+
+
+\subsection{Stima bayesiana}
+
+I metodi Bayesiani per la stima dei modelli IRT sono simili alle tecniche di massima verosimiglianza marginale.  Tuttavia, oltre ad assumere una particolare distribuzione per i parametri di abilità, tali metodi introducono  una distribuzione a priori per ciascun parametro del modello. I metodi di stima bayesiana consentono di stimare simultaneamente le distribuzioni a posteriori dei parametri di abilità dei rispondenti e di difficoltà degli item. 

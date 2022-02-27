@@ -1,0 +1,1595 @@
+% DO NOT COMPILE THIS FILE DIRECTLY!
+% This is included by the other .tex files.
+
+\chapter{Path Analysis}
+\label{ch:path_analysis}
+
+
+\section*{Motivazione}
+
+La \emph{path analysis} è un metodo per decomporre la correlazione (o la covarianza) in componenti differenti al fine di studiare i processi causali sottostanti. 
+La \emph{path analysis} comprende due parti principali: la rappresentazione grafica delle interrelazioni esistenti tra le variabili e  la scomposizione delle correlazioni (o covarianze) nei termini dei parametri del modello.
+
+
+\section{Path diagram}
+
+Il path diagram fornisce una rappresentazione grafica delle relazioni esistenti tra le variabili
+oggetto di interesse.  In tale diagramma, le variabili non osservate o
+latenti sono racchiuse in un cerchio o ellisse; le variabili osservate
+sono racchiuse in un quadrato o rettangolo.
+Due classi di variabili  vengono rappresentate in un path diagram:
+quelle che non ricevono effetti causali da altre variabili e quelle
+che li ricevono. Una variabile \emph{esogena} (cioè esterna) svolge
+sempre e soltanto funzione di variabile indipendente, ovvero di
+variabile che causa un effetto. Una variabile \emph{endogena} (cioè
+interna) può essere effetto di alcune variabili e contemporaneamente
+causa per altre, oppure può svolgere solo il ruolo di variabile
+dipendente.  Le fonti causali delle variabili endogene sono
+interne al path diagram; le fonti causali delle
+variabili esogene sono esterne al path diagram. La distinzione tra variabili esogene e endogene ha delle
+ovvie assonanze con la distinzione tra variabili indipendenti e
+dipendenti propria dei modelli lineari.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[auto,node distance=.5cm,
+    latent/.style={fill=red!20,circle,draw, thick,inner sep=0pt,minimum size=8mm,align=center},
+    observed/.style={fill=blue!20,rectangle,draw, thick,inner sep=0pt,minimum width=8mm,minimum height=8mm,align=center},
+    error/.style={fill=yellow!20,circle,draw, thick,inner sep=0pt,minimum width=8mm,minimum height=8mm,align=center},
+    paths/.style={->,  thick, >=stealth'},
+    paths2/.style={<-,  thick, >=stealth'},
+    twopaths/.style={<->,  thick, >=stealth'}
+]
+%Define observed variables
+\node [latent] (y1) at (0,0) {$\xi_1$};
+\node [latent] (y2) [below=3cm of y1]  {$\xi_2$};
+\node [latent] (y3) [below=3cm of y2]  {$\xi_3$};
+%%%
+\node [observed] (x2) [left=1.8cm of y1]  {$y_2$};
+\node [observed] (x1) [above=of x2]  {$y_1$};
+\node [observed] (x3) [below=of x2]  {$y_3$};
+\node [error] (ex1) [left=0.5cm of x1]  {$\varepsilon_1$};
+\node [error] (ex2) [left=0.5cm of x2]  {$\varepsilon_2$};
+\node [error] (ex3) [left=0.5cm of x3]  {$\varepsilon_3$};
+%%%
+\node [observed] (x5) [left=1.8cm of y2]  {$y_5$};
+\node [observed] (x4) [above=of x5]  {$y_4$};
+\node [observed] (x6) [below=of x5]  {$y_6$};
+\node [error] (ex4) [left=0.5cm of x4]  {$\varepsilon_4$};
+\node [error] (ex5) [left=0.5cm of x5]  {$\varepsilon_5$};
+\node [error] (ex6) [left=0.5cm of x6]  {$\varepsilon_6$};
+%%%
+\node [observed] (x8) [left=1.8cm of y3]  {$y_8$};
+\node [observed] (x7) [above=of x8]  {$y_7$};
+\node [observed] (x9) [below=of x8]  {$y_9$};
+\node [error] (ex7) [left=0.5cm of x7]  {$\varepsilon_7$};
+\node [error] (ex8) [left=0.5cm of x8]  {$\varepsilon_8$};
+\node [error] (ex9) [left=0.5cm of x9]  {$\varepsilon_9$};
+% Draw paths form latent to observed variables
+\foreach \all in {x1,x2,x3}{
+    \draw [paths] (y1.west) to node {} (\all.east);
+}
+\draw [paths] (ex1.east) to (x1.west);
+\draw [paths] (ex2.east) to (x2.west);
+\draw [paths] (ex3.east) to (x3.west);
+%%%
+\foreach \all in {x4,x5,x6}{
+    \draw [paths] (y2.west) to node {} (\all.east);
+}
+\draw [paths]  (ex4.east) to (x4.west);
+\draw [paths]  (ex5.east) to (x5.west);
+\draw [paths]  (ex6.east) to (x6.west);
+%%%
+\foreach \all in {x7,x8,x9}{
+    \draw [paths] (y3.west) to node {} (\all.east);
+}
+\draw [paths] (ex7.east) to (x7.west);
+\draw [paths] (ex8.east) to (x8.west);
+\draw [paths] (ex9.east) to (x9.west);
+%%%
+\draw [twopaths] (y1.east) to [bend left=90] (y2.east);
+\draw [twopaths] (y2.east) to [bend left=90] (y3.east);
+\draw [twopaths] (y1.east) to [bend left=90] (y3.east);
+\end{tikzpicture}
+\caption{Esempio di path diagram.}
+\label{fig:path_digram1}
+
+\end{figure}
+
+Le frecce che connettono le variabili nel diagramma denotano nessi
+causali o mere associazioni. 
+ Una freccia orientata rappresenta un nesso causale tra
+  le variabili implicate: la variabile che riceve la freccia dipende dalla variabile
+da cui parte la freccia.
+ Una freccia curva a due direzioni indica,
+invece, un'associazione non causale tra due variabili.
+Il fatto che due variabili non siano
+collegate nel diagramma equivale ad assumere che tali variabili siano
+incorrelate. 
+Un esempio è fornito nella Figura~\ref{fig:path_digram1} la quale rende esplicite le relazioni tra tre variabili latenti e nove variabili manifeste. 
+
+\section{Path analysis e regressione multipla}
+
+Vi è una stretta relazione tra path analysis e regressione
+multipla, tanto che la regressione può essere considerata un caso
+particolare di path analysis.
+ Per semplicità, si supponga che
+le variabili siano state standardizzate, anche se la stessa analisi
+può essere condotta per variabili grezze. 
+Il path diagram mostra la relazione tra tutte le variabili, comprendendo anche
+i fattori di disturbo, e fornisce dunque la rappresentazione grafica
+di un sistema di equazioni simultanee.  
+Nel caso di due regressori, il modello di regressione multipla può essere rappresentato tramite il path diagram riportato nella Figura~\ref{fig:path_diagram_mr}.
+
+\begin{figure}[h!]
+\centering
+
+\begin{tikzpicture}[auto, node distance=.5cm,
+    latent/.style={fill=red!20,circle,draw, thick,inner sep=0pt,minimum size=8mm,align=center},
+    observed/.style={fill=blue!20,rectangle,draw, thick,inner sep=0pt,minimum width=8mm,minimum height=8mm,align=center},
+    error/.style={fill=yellow!20,circle,draw, thick,inner sep=0pt,minimum width=8mm,minimum height=8mm,align=center},
+    paths/.style={->,  thick, >=stealth'},
+    paths2/.style={<-,  thick, >=stealth'},
+    twopaths/.style={<->,  thick, >=stealth'},
+    label/.style={%
+        postaction={ decorate, transform shape,
+        decoration={ markings, mark=at position .5 with \node #1;}}}
+]
+%Define observed variables
+\node [observed] (x) at (0,0) {$y$};
+\node [observed] (y1) [above left=1.5cm of x]  {$x_1$};
+\node [observed] (y2) [below left=1.5cm of x]  {$x_2$};
+\node [error] (ex) [right=1.0cm of x]  {$e$};
+
+% Draw paths form latent to observed variables
+\foreach \all in {y1,y2}{
+    \draw [paths] (\all.east) to node {} (x.west);
+}
+\draw (-1.45,1.35)  node[below] {$1$};
+\draw (-1.45, -2.45)  node[below] {$1$};
+
+\draw (-0.75, -0.9)  node[below] {$b_2$};
+\draw (-0.75,  1.4)  node[below] {$b_1$};
+
+\draw (3.0,  0.27)  node[below] {$s_e^2$};
+\draw (-3.25,  0.2)  node[below] {$s_{12}$};
+
+\draw [paths] (ex.west) to (x.east);
+\draw [paths, <->] (y1.west) to [bend right] (y2.west);
+%%%
+\draw [twopaths] (y1) to [loop below] (y1);
+\draw [twopaths] (y2) to [loop below] (y2);
+\draw [twopaths] (ex) to [loop right] (ex);
+
+\end{tikzpicture}
+\caption{Path diagram per il modello di regressione multipla con due regressori.}
+\label{fig:path_diagram_mr}
+\end{figure}
+
+
+%------------------------------------------------------------
+
+I coefficienti di percorso associati alle frecce orientate esprimono la portata del nesso
+causale e corrispondono ai pesi beta (ovvero ai coefficienti parziali di regressione standardizzati). Le frecce non orientate esprimono la portata della pura associazione tra variabili e dunque corrispondono alle correlazioni.
+
+Nel caso di due variabili esogene $x_1$ e $x_2$, il modello di regressione
+diventa
+\[
+y = b_{1} x_1 + b_{2} x_2 + 1 \cdot e
+\]
+dove $y$ è la variabile endogena ed $e$ è il fattore di disturbo. 
+Tale modello di regressione può essere rappresentato graficamente come indicato nella figura precedente. 
+
+Nella figura, le frecce dritte indicano un'influenza causale dalla variabile
+da cui parte la freccia a quella a cui la freccia arriva. 
+A tali
+frecce dritte sono associati i coefficienti di percorso $b_1$ e $b_2$
+(ovvero i pesi beta).
+Il coefficiente 1 rappresenta l'effetto del fattore di disturbo $e$ sulla variabile endogena $y$, implicito nelle
+equazioni e reso esplicito nella figura. 
+
+Si noti che si hanno tante equazioni quante sono le variabili endogene. Nel caso presente, c'è un'unica equazione in quanto vi è una sola variabile endogena (ovvero la $y$, le cui cause sono interne al path diagram). All'interno di ciascuna equazione, inoltre, ci saranno tanti termini quante sono le frecce dritte che puntano verso la variabile endogena. Nell'esempio, ci sono tre termini, uno per ciascun freccia dritta.
+
+\section{Effetti diretti e indiretti}
+
+La path analysis fornisce un metodo per distinguere tra i diversi tipi di effetti che influenzano le variabili: 
+l'effetto diretto, 
+l'effetto indiretto e 
+l'effetto totale.
+Gli effetti
+diretti sono quelli non mediati da altre variabili.
+Gli effetti
+indiretti operano attraverso l'intervento di almeno una variabile.
+ L'effetto totale è la somma di tutti gli effetti diretti e indiretti.
+
+Nella Figura~\ref{fig:path_diagram_catena}, la variable $y_1$ ha un effetto
+diretto sulla $y_2$. 
+La variabile $y_1$ ha un effetto indiretto sulla
+$y_3$ in quanto non c'è una freccia causale che colleghi direttamente
+la variabile $y_1$ alla $y_3$. 
+La variabile $y_1$ è una variabile
+esogena e le varibili $y_2$ e $y_3$ sono variabili endogene.
+
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[auto, node distance=.5cm,
+    latent/.style={fill=red!20,circle,draw, thick,inner sep=0pt,minimum size=8mm,align=center},
+    observed/.style={fill=blue!20,rectangle,draw, thick,inner sep=0pt,minimum width=8mm,minimum height=8mm,align=center},
+    error/.style={fill=yellow!20,circle,draw, thick,inner sep=0pt,minimum width=8mm,minimum height=8mm,align=center},
+    paths/.style={->,  thick, >=stealth'},
+    paths2/.style={<-,  thick, >=stealth'},
+    twopaths/.style={<->,  thick, >=stealth'},
+    label/.style={%
+        postaction={ decorate, transform shape,
+        decoration={ markings, mark=at position .5 with \node #1;}}}
+]
+%Define observed variables
+\node [observed] (x2) at (0,0) {$y_2$};
+\node [observed] (x1) [left=1.0cm of x2]  {$y_1$};
+\node [observed] (x3) [right=1.0cm of x2]  {$y_3$};
+\draw [paths] (x1.east) to node {} (x2.west);
+\draw [paths] (x2.east) to node {} (x3.west);
+
+\end{tikzpicture}
+\caption{Path diagram per una relazione a catena.}
+\label{fig:path_diagram_catena}
+\end{figure}
+
+
+Nella Figura~\ref{fig:path_diagram_mr}, la variabile $x_1$ ha un effetto diretto sulla $y$, ma anche un effetto indiretto sulla $y$ derivante dalla correlazione tra $x_1$ e $x_2$. 
+In un path diagram, l'effetto diretto è rappresentato da una freccia dritta (es., $b_{1}$).
+L'effetto indiretto tra due variabili è rappresentato da un percorso composto
+che include una o più frecce dritte e non più di una linea curva --
+per es., $s_{12} b_{2}$.
+
+\section{Le regole di Wright}
+
+Lo scopo della path analysis è quello di decomporre la correlazione (o la
+covarianza) nei termini della somma di tutti i percorsi (diretti e
+indiretti) che legano le due variabili tramite i coefficienti detti
+\emph{path coefficients}.
+Usando il path diagram, Sewall Wright (1921, 1934)
+enunciò le regole che, attraverso le cosiddette \emph{tracing rules},
+legano le correlazioni (o covarianze) delle variabili ai parametri del
+modello. Le tracing rules possono essere espresse nei termini
+seguenti:
+\begin{itemize}
+\item è possibile procedere prima all'indietro lungo una freccia e poi in avanti, seguendo la direzione di una freccia, ma non si può andare prima avanti e poi tornare indietro;
+\item un percorso composto non deve transitare due volte per la stessa
+  variabile (non devono esserci loop);
+\item un percorso non può comprendere più di una linea curva.
+\end{itemize}
+
+Si chiama ``percorso'' il tracciato che unisce due variabili;  è costituito da sequenze di frecce
+direzionali e di curve non direzionali. A ciascun percorso legittimo (ovvero, che soddisfa le regole di Wright)
+viene assegnato un valore numerico pari al prodotto dei
+  coefficienti incontrati sul percorso medesimo.   
+I coefficienti di percorso possono essere o coefficienti
+  parziali di regressione standardizzati, se il legame ha una
+  direzione, oppure coefficienti di correlazione, se il legame è
+  bidirezionale.
+
+\subsection{Scomposizione delle correlazioni (covarianze)}
+
+Il principio di base è stato espresso da Sewall Wright (1934) nel modo
+seguente: 
+
+\begin{quote}
+Any correlation between variables in a network of
+  sequential relations can be analyzed into contributions from all the
+  paths (direct or through common factors) by which the two variables
+  are connected, such that the value of each contribution is the
+  product of the coefficients pertaining to the elementary paths. If
+  residual correlations are present (represented by bidirectional
+  arrows) one (but never more than one) of the coefficients thus
+  multiplied together to give the contribution of the connecting path,
+  may be a correlation coefficient. The others are all path
+  coefficients.
+\end{quote}
+Possiamo così enunciare la regola di scomposizione della correlazione.
+\begin{defn}
+La correlazione fra due variabili può essere decomposta in tanti addendi quanto sono i percorsi che le collegano; 
+ogni addendo è dato dal prodotto dei coefficienti incontrati sul percorso. 
+\end{defn}
+
+Si consideri il diagramma rappresesentato nella Figura~\ref{fig:path_diagram_mr2}. 
+La variabile endogena è la $y$. Le variabili esogene, correlate tra loro, sono $x_1$ e $x_2$. 
+
+
+\begin{figure}[h!]
+\centering
+
+\begin{tikzpicture}[auto, node distance=.5cm,
+    latent/.style={fill=red!20,circle,draw, thick,inner sep=0pt,minimum size=8mm,align=center},
+    observed/.style={fill=blue!20,rectangle,draw, thick,inner sep=0pt,minimum width=8mm,minimum height=8mm,align=center},
+    error/.style={fill=yellow!20,circle,draw, thick,inner sep=0pt,minimum width=8mm,minimum height=8mm,align=center},
+    paths/.style={->,  thick, >=stealth'},
+    paths2/.style={<-,  thick, >=stealth'},
+    twopaths/.style={<->,  thick, >=stealth'},
+    label/.style={%
+        postaction={ decorate, transform shape,
+        decoration={ markings, mark=at position .5 with \node #1;}}}
+]
+%Define observed variables
+\node [observed] (x) at (0,0) {$y$};
+\node [observed] (y1) [above left=1.5cm of x]  {$x_1$};
+\node [observed] (y2) [below left=1.5cm of x]  {$x_2$};
+\node [error] (ex) [right=1.0cm of x]  {$e$};
+% Draw paths form latent to observed variables
+\foreach \all in {y1,y2}{
+    \draw [paths] (\all.east) to node {} (x.west);
+}
+\draw (-1.45,1.35)  node[below] {$1$};
+\draw (-1.45, -2.45)  node[below] {$1$};
+
+\draw (-0.6, -0.9)  node[below] {$0.40$};
+\draw (-0.6,  1.4)  node[below] {$0.50$};
+
+\draw (3.2,  0.27)  node[below] {$0.39$};
+\draw (-3.25,  0.2)  node[below] {$0.50$};
+
+\draw [paths] (ex.west) to (x.east);
+\draw [paths, <->] (y1.west) to [bend right] (y2.west);
+%%%
+\draw [twopaths] (y1) to [loop below] (y1);
+\draw [twopaths] (y2) to [loop below] (y2);
+\draw [twopaths] (ex) to [loop right] (ex);
+
+\end{tikzpicture}
+\caption{Path diagram per il modello di regressione multipla con due regressori.}
+\label{fig:path_diagram_mr2}
+\end{figure}
+
+
+Il diagramma di percorso corrisponde alla seguente equazione:
+$$
+y = 0.50 x_1 + 0.40 x_2 + e
+$$
+dove le variabili $x_1$ e $x_2$ sono incorrelate con $e$.
+
+La correlazione tra $y$ e $x_1$ è uguale alla somma
+dell'effetto diretto che $x_1$ esercita sulla $y$ 
+e dell'effetto indiretto che $x_1$ esercita sulla $y$ tramite la
+correlazione con $x_2$. 
+In base alle regole di Wright, $x_1$ e $y$ risultano collegate da due percorsi legittimi: 
+ il percorso costituito dalla freccia dritta $x_1 \rightarrow 
+ y$;
+ il percorso composto dalla freccia dritta $x_2 \rightarrow 
+ y$ e dalla
+  curva non direzionale $x_1 \leftrightarrow x_2$.
+Il valore numerico del primo percorso è $0.50$.
+Il valore numerico del
+secondo percorso è $0.50\times 0.40$. 
+La correlazione tra le
+variabili $x_1$ e $y$ è dunque uguale alla somma dei valori numerici dei due
+percorsi legittimi che legano $x_1$ alla $y$:
+\begin{align}
+  r_{x_1,y} &= \beta_{y,x_1} + r_{x_1,x_2} \beta_{y,x_2}\notag\\
+  &=   0.50 + 0.50 \times 0.40 = 0.70.\notag
+\end{align}
+
+
+La correlazione tra $x_2$ e $y$ è invece uguale a:
+\begin{align}
+  r_{yx_2} &=\beta_{yx_2} + r_{x_1x_2} \beta_{yx_1}\notag\\
+  &= 0.40 + 0.50 \times 0.50 = 0.65.\notag
+\end{align}
+
+
+%------------------------------------------------------------
+\subsection{Scomposizione della varianza}
+%------------------------------------------------------------
+
+La varianza di una variabile endogena si decompone in una quota
+  di varianza spiegata dalle variabili agenti causalmente su di essa e
+  in una quota di varianza non spiegata. 
+  
+\begin{defn}
+  La varianza spiegata è data dalla somma di tanti addendi
+  quanti sono i percorsi che consentono di collegare la
+    variabile a se 
+  stessa rispettando le tracing rules di Wright.  
+\end{defn}
+
+Facendo riferimento alla Figura~\ref{fig:path_diagram_mr2}, si possono
+individuare quattro percorsi legittimi che collegano $y$ a se stessa:
+
+\bigskip
+
+  \begin{enumerate}
+  \item $0.50 \times 1.00 \times 0.50$,
+\item $0.40 \times 1.00 \times 0.40$,
+\item $0.50 \times 0.50 \times 0.40$,
+\item $0.40 \times 0.50 \times 0.50$.
+  \end{enumerate}
+
+\bigskip
+\noindent
+La varianza della variabile endogena $y$ che viene spiegata dalle
+variabili esogene $x_1$ e $x_2$  è dunque uguale a 
+$$0.25 + 0.16  + 0.10 + 0.10= 0.61.$$ 
+Inoltre, dato che le variabili rappresentate nel diagramma sono  standardizzate, la varianza complessiva della $y$ è uguale a 1.00. La varianza della $y$ non spiegata dalle variabili $x_1$ e $x_2$ è quindi uguale a 
+$$1-0.61 = 0.39.$$
+
+
+%------------------------------------------------------------
+\section{Come calcolare i coefficienti di percorso?}
+\label{sec:how_compute_path_coef}
+%------------------------------------------------------------
+
+
+Data una matrice di correlazione, i coefficienti di percorso possono essere calcolati risolvendo un sistema di equazioni simultanee. 
+Si supponga che, per le tre variabili della figura precedente, vi sia la seguente matrice di correlazione:
+
+\begin{center}
+    \begin{tabular}{cccc}
+          & $y$ & $x_1$ & $x_2$\\
+     $y$  & 1.00 &    &   \\
+     $x_1$ &  0.70 & 1.00 &    \\
+     $x_2$ &  0.65 & 0.50 & 1.00\\
+    \end{tabular}
+\end{center}
+Esprimendo le tre correlazioni nei termini dei coefficienti del path diagram otteniamo:
+\[  
+\begin{cases} 
+r_{x_1x_2} &= 0.50\\ 
+r_{yx_2} &= \beta_{yx_2} + 0.50 \beta_{yx_1} = 0.65\\ 
+r_{x_1y} &= \beta_{yx_1} +   0.50 \beta_{yx_2} = 0.70
+\end{cases} 
+\] 
+Risolvendo il sistema di equazioni simultanee, si ottengono i
+  valori dei coefficienti di percorso: 
+\begin{align} 
+\beta_{yx_1} &= 0.50\notag\\ 
+\beta_{yx_2} &= 0.40\notag
+\end{align} 
+
+
+% %------------------------------------------------------------
+
+% \begin{frame}{Come calcolare i coefficienti di percorso?}
+
+% \begin{itemize}
+% \item Consideriamo qui di seguito la procedura per calcolare $\beta_{yx}$:
+% \[ 
+% \begin{cases} 
+% r_{yz}=\beta_{yz} + r_{xz} \beta_{yx}\\
+% r_{xy} = \beta_{yx} + r_{xz} \beta_{yz} 
+% \end{cases} 
+% \] 
+
+% \[ 
+% \begin{cases} 
+% 0.65=\beta_{yz} + 0.50 \beta_{yx}\\
+% 0.70 = \beta_{yx} + 0.50 \beta_{yz} 
+% \end{cases} 
+% \] 
+
+% \end{itemize}
+
+% \end{frame}
+
+
+% %------------------------------------------------------------
+
+% \begin{frame}{Come calcolare i coefficienti di percorso?}
+
+% \[ 
+% \begin{cases} 
+% \beta_{yz}= 0.65-  0.50 \beta_{yx}\\
+% 0.70 = \beta_{yx} + 0.50 (0.65-  0.50 \beta_{yx}) 
+% \end{cases} 
+% \] 
+% \begin{align}
+% 0.70 &= \beta_{yx} + 0.325 - 0.25 \beta_{yx} \notag\\[12pt]
+% 0.70 -0.325 &=  \beta_{yx} - 0.25 \beta_{yx} \notag\\[12pt]
+% 0.375 &= \beta_{yx} (1-0.25)\notag\\[12pt]
+% \beta_{yx} &= \frac{0.375}{0.75}= 0.50\notag
+% \end{align}
+% In maniera analoga si trova il valore di $\beta_{yz}$.
+
+% \end{frame}
+%
+%------------------------------------------------------------
+\section{Path analysis e software \R}
+%------------------------------------------------------------
+
+
+Vengono simulate 100 osservazioni su tre variabili. Imponendo un effetto causale diretto
+  delle variabili $x_1$ e $x_2$ sulla $y$ e una correlazione $> 0$ tra le
+  variabili $x_1$ e $x_2$, otteniamo i seguenti dati: 
+
+\begin{lstlisting}
+set.seed(3)
+n <- 100
+x1 <- rnorm(n, 100, 9)
+x2 <- x1 + rnorm(n, 0, 10)
+cor(x1, x2)
+#> [1] 0.5346271
+y <- 10 + 3*x1 + 1.5*x2 + rnorm(n, 0, 15)
+# data.frame
+dd <- data.frame(y, x1, x2)
+print(cor(dd), 3)
+#>        y    x1    x2
+#> y  1.000 0.831 0.786
+#> x1 0.831 1.000 0.535
+#> x2 0.786 0.535 1.000
+# entering the correlation matrix "by hand"
+lower <- '
+ 1
+ .831 1
+ .786 .535 1 '
+
+# convert to a full symmetric covariance matrix with names
+library(lavaan)
+dat.cov <- getCov(lower, names=c("y","x1", "x2"))
+dat.cov
+#>        y    x1    x2
+#> y  1.000 0.831 0.786
+#> x1 0.831 1.000 0.535
+#> x2 0.786 0.535 1.000
+\end{lstlisting}
+
+Data una matrice di correlazioni e data la specificazione delle
+  relazioni tra le variabili, la funzione {\tt sem()} contenuta nel
+  pacchetto {\tt lavaan}  consente di stimare i coefficienti di
+  percorso. 
+Le  relazioni tra le variabili sono speficicate con la sintassi
+  descritta nel manuale.
+
+\begin{lstlisting}
+# the model
+mr.model <- 'y ~ x1 + x2'
+# fitting the model
+fit <- sem(mr.model, sample.cov=dat.cov, sample.nobs=n)
+summary(fit, standardized=TRUE)
+#> Regressions:
+#>                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+#>   y ~                                                                   
+#>     x1                0.575    0.045   12.710    0.000    0.575    0.575
+#>     x2                0.478    0.045   10.571    0.000    0.478    0.478
+#> 
+#> Variances:
+#>                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+#>    .y                 0.145    0.020    7.071    0.000    0.145    0.146                 
+#>     
+summary(lm(scale(y) ~ scale(x1) + scale(x2)))
+#> 
+#> Coefficients:
+#>               Estimate Std. Error t value Pr(>|t|)    
+#> (Intercept) -7.472e-16  3.867e-02     0.0        1    
+#> scale(x1)    5.748e-01  4.599e-02    12.5   <2e-16 
+#> scale(x2)    4.785e-01  4.599e-02    10.4   <2e-16 
+#> 
+#> Residual standard error: 0.3867 on 97 degrees of freedom
+#> Multiple R-squared: 0.8535, Adjusted R-squared: 0.8505 
+#> F-statistic: 282.6 on 2 and 97 DF,  p-value: < 2.2e-16 
+1 - .145
+#> [1] 0.855
+\end{lstlisting}
+
+
+\begin{exmp}
+Consideriamo nuovamente la matrice di correlazioni che abbiamo esaminato in nella \ref{sec:how_compute_path_coef}: 
+
+\begin{lstlisting}
+lower <- '
+   1
+   .70 1
+   .65 .50 1 '
+\end{lstlisting}
+Converto tali dati in una matrice simmetrica.
+\begin{lstlisting}
+dat.cov <- getCov(lower, names=c("y","x1", "x2"))
+dat.cov
+#>       y  x1   x2
+#> y  1.00 0.7 0.65
+#> x1 0.70 1.0 0.50
+#> x2 0.65 0.5 1.00
+\end{lstlisting}
+Specifico il modello:
+\begin{lstlisting}
+mr_model <- 'y ~ x1 + x2'
+\end{lstlisting}
+Adatto il modello ai dati:
+\begin{lstlisting}
+fit <- sem(mr_model, sample.cov = dat.cov, sample.nobs = n)
+\end{lstlisting}
+Esamino i risultati:
+\begin{lstlisting}
+summary(fit, standardized=TRUE)
+#> 
+#>                    Estimate  Std.err  Z-value  P(>|z|)    
+#> Regressions:
+#>   y ~
+#>     x1                0.500    0.072    6.934    0.000    
+#>     x2                0.400    0.072    5.547    0.000     
+#> 
+#> Variances:
+#>     y                 0.386    0.055                      
+\end{lstlisting}
+Con la funzione {\tt sem()} del pacchetto {\tt lavaan} abbiamo dunque replicato i risultati ottenuti in precedenza.
+Il valore $0.386$ rappresenta la quota di varianza della $y$ non spiegata dalle variabili esogene.
+\end{exmp}
+
+
+
+\section{Oltre la regressione multipla}
+
+In generale, lo psicologo ha a che fare con diagrammi di percorso nei quali sono presenti variabili non osservabili
+ (latenti) e quindi l'approccio della regressione multipla non può essere applicato. 
+È necessario invece descrivere il diagramma di percorso mediante un insieme di equazioni strutturali, definendo un numero di equazioni almeno altrettanto grande quanto il numero delle
+  incognite. Tale soluzione viene solitamente fornita da un software.
+Consideriamo di seguito alcuni esempi in cui vengono applicate
+  le regole di Wright per diagrammi di percorso che non possono essere
+  descritti nei termini di un modello di regressione multipla.  Un esempio di path diagram che non si riduce al modello di regressione multipla è quello fornito nella Figura~\ref{fig:path_digram1}.
+
+La path analysis è anche usata in quel campo della psicologia interessato alla misurazione dei costrutti psicologici quali i tratti della personalità, le capacità cognitive e i disturbi psicopatologici.
+Questa è la ragione per cui la discutiamo qui.
+
+Consideriamo un esempio facile, quello della misurazione della temperatura.
+Per misurare la temperatura guardiamo un termometro.
+Affinché ciò abbia senso, dobbiamo assumere che:
+\begin{itemize}
+\item la temperatura dell'ambiente causa un cambiamento nelle proprietà fisiche del termometro;
+\item il termometro è dotato di un errore di misurazione relativamente piccolo.
+\end{itemize}
+Questa ipotesi casusale viene espressa nel seguente path diagram.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\textwidth]{path_diagram_temperature_1}
+\end{figure}
+Assumiamo che le variabili manifeste e latenti siano normalmente distribuite e che tutti gli effetti causali siano lineari.
+Senza perdita di generalità centriamo le variabili e assumiamo che abbiano media 0.
+In tali circostanze, il nostro path diagram assumerà la forma seguente.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\textwidth]{path_diagram_temperature_2}
+\end{figure}
+Abbiamo visto come il precedente path diagram corrisponda all'equazione
+\[
+y_{i1} = \lambda_{11} \eta_{i1} + \varepsilon_{i1},
+\]
+laddove si assume che $\eta_1 \sim \mathcal{N}(0, \sqrt{\psi_{11}})$ e $\varepsilon_{1} \sim \mathcal{N}(0, \sqrt{\theta_{11}})$.
+In tali circostanze, 
+\[
+\var(y_1) = \lambda^2_{11} \psi_{11} + \theta_{11}.
+\]
+e la varianza spiegata dalla variabile latente è
+\[
+\frac{\lambda^2_{11} \psi_{11}}{\lambda^2_{11} \psi_{11} + \theta_{11}}.
+\]
+
+Moltiplicare $\lambda_{11}$ per una costante $c$ e dividere $\psi_{11}$ per la costante $c^2$ fa sì che la quota di varianza spiegata rimanga costante.
+Questo significa che i parametri del modello non sono identificati.
+Il problema si risolve fissando la scala della variabile latente, per esempio ponendo $\psi_{11}$ pari a 1, oppure ponendo $\lambda_{11}$ uguale a 1.
+In generale, per potere stimare i parametri del modello abbiamo bisogno di almeno tre indicatori per ciascuna variabile latente, come suggerito dal metodo dell'annullamento delle tetradi discusso in precedenza.
+Tramite opportuni software, possiamo poi stimare i parametri di modelli più complessi, come quello rappresentato nella Figura~\ref{fig:path_digram1}.
+ 
+
+
+
+%%------------------------------------------------------------
+%
+%\begin{frame}{Diagrammi di percorso più complessi}
+%\framesubtitle{Illustrazione}
+%
+%\centering
+%\includegraphics[width=11cm]{loehlin5}
+%
+%\end{frame}
+%
+%%------------------------------------------------------------
+%
+%\begin{frame}{Diagrammi di percorso più complessi}
+%\framesubtitle{Illustrazione}
+%
+%\centering
+%\includegraphics[width=11cm]{loehlin6}
+%
+%\end{frame}
+%
+%%------------------------------------------------------------
+%
+%\begin{frame}{Diagrammi di percorso più complessi}
+%\framesubtitle{Illustrazione}
+%
+%\centering
+%\includegraphics[width=11cm]{loehlin7}
+%
+%\end{frame}
+%
+%%------------------------------------------------------------
+%
+%\begin{frame}{Diagrammi di percorso più complessi}
+%\framesubtitle{Illustrazione}
+%
+%\centering
+%\includegraphics[width=11cm]{loehlin8}
+%
+%\end{frame}
+%
+%%------------------------------------------------------------
+%
+%\begin{frame}{Attendibilità del test}
+%\framesubtitle{Illustrazione}
+%
+%\begin{itemize}
+%\item Si consideri ora il caso di due forme parallele di un test, A e B.
+%\item T rappresenta il punteggio vero.
+%\item  U e V sono le varianze degli errori di misurazione dei due test.
+%\item L'unico termine noto è la correlazione tra i punteggi osservati dei due test.
+%\item Vogliamo calcolare il coefficiente di attendibilità.
+%\end{itemize}
+%
+%\end{frame}
+%
+%%------------------------------------------------------------
+%
+%\begin{frame}{Attendibilità del test}
+%\framesubtitle{Illustrazione}
+%
+%\centering
+%\includegraphics[width=11cm]{loehlin9}
+%
+%\end{frame}
+%
+%%------------------------------------------------------------
+%
+%\begin{frame}{Attendibilità del test}
+%\framesubtitle{Illustrazione}
+%
+%\centering
+%\includegraphics[width=11cm]{loehlin10}
+%
+%\end{frame}
+%
+%%------------------------------------------------------------
+%
+%\begin{frame}{Modello unifattoriale}
+%
+%\begin{itemize}
+%\item I coefficienti del modello unifattoriale di
+%  Spearman possano essere calcolati utilizzando  il
+%  metodo dell'annullamento delle tetradi. 
+%\item Una volta calcolati i coefficienti di percorso ($c=0.97$,
+%  $e=0.84$, $m=0.73$, $p=0.65$), la matrice di correlazione riprodotta
+%  dal modello si calcola facendo il prodotto della coppia di
+%  coefficienti di percorso che collegano due variabili manifeste,
+%  secondo le regole di Wright. 
+%\end{itemize}
+%
+%\end{frame}
+%
+%%------------------------------------------------------------
+%
+%\begin{frame}{Modello unifattoriale}
+%
+%\centering
+%\includegraphics[width=11cm]{loehlin11}
+%
+%\end{frame}
+%
+%
+%
+%
+%
+%
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% %------------------------------------------------------------
+%
+%% \begin{frame}{Path analysis}
+%% \framesubtitle{Illustrazione}
+%
+%% \centering
+%% \includegraphics[width=11cm]{azuma1}
+%
+%% \end{frame}
+%
+%% %------------------------------------------------------------
+%
+%% \begin{frame}{Path analysis}
+%% \framesubtitle{Illustrazione}
+%
+%% \centering
+%% \includegraphics[width=11cm]{azuma2}
+%
+%% \end{frame}
+%
+%% %------------------------------------------------------------
+%
+%% \begin{frame}{Path analysis}
+%% \framesubtitle{Illustrazione}
+%
+%% \centering
+%% \includegraphics[width=11cm]{azuma3}
+%
+%% \end{frame}
+%
+%
+%% %------------------------------------------------------------
+%
+%% \begin{frame}{Path analysis}
+%% \framesubtitle{Illustrazione}
+%
+%% \begin{itemize}
+%% \item  At 3 years of age, 92 children exposed to cocaine and 
+%% other drugs, 25 children exposed to multiple drugs but no 
+%% cocaine, and 45 drug-free controls were evaluated using 
+%% the Stanford-Binet Intelligence Scale (fourth edition), the 
+%% Child Behavioral Checklist, the Home Screening Questionnaire, and a Summative Perseverance Scale. 
+%
+%% \item  Child behavioral characteristics were assessed by both the 
+%% blinded examiner and the caretaker. 
+%
+%
+%% \item The data 
+%% were analyzed using an a priori model and path analytic 
+%% procedures. 
+%
+%
+%% \end{itemize}
+%
+%% \end{frame}
+%
+%% %------------------------------------------------------------
+%
+%% \begin{frame}{Path analysis}
+%% \framesubtitle{Illustrazione}
+%
+%% \centering
+%% \includegraphics[width=11cm]{azuma4}
+%
+%% \end{frame}
+%
+%
+%% %------------------------------------------------------------
+%
+%% \begin{frame}{Path analysis}
+%% \framesubtitle{Illustrazione}
+%
+%% \centering
+%% \includegraphics[width=11cm]{azuma5}
+%
+%% \end{frame}
+%
+%
+%% %------------------------------------------------------------
+%
+%% \begin{frame}{Path analysis}
+%% \framesubtitle{Illustrazione}
+%
+%% \centering
+%% \includegraphics[width=11cm]{azuma6}
+%
+%% \end{frame}
+%
+%
+%% %------------------------------------------------------------
+%
+%% \begin{frame}{Path analysis}
+%% \framesubtitle{Illustrazione}
+%
+%% \centering
+%% \includegraphics[width=11cm]{azuma7}
+%
+%% \end{frame}
+%
+%
+%% %------------------------------------------------------------
+%
+%% \begin{frame}{Path analysis}
+%% \framesubtitle{Illustrazione}
+%
+%% \begin{itemize}
+%% \item  The findings from the present analysis of 3-year 
+%% outcome data indicate that prenatal substance exposure has a significant effect on 3-year cognitive abilities as measured on the Stanfond-Binet scale. 
+%
+%% \end{itemize}
+%
+%% \end{frame}
+%
+%% %------------------------------------------------------------
+%
+%% \begin{frame}{Path analysis}
+%% \framesubtitle{Illustrazione}
+%
+%% \begin{itemize}
+%% \item The 
+%% nature of the effect is complex, however, for drug 
+%% exposure is also indirectly linked to intellectual outcome through its relationships with home environment, child behavior, and head circumference. 
+%% \item These figures outline how the effect of drug 
+%% exposure is mediated through an environmental factor (quality of home setting), a biological factor (head 
+%% growth), and a behavioral factor (perseverance). 
+%% \end{itemize}
+%
+%% \end{frame}
+%
+%% %------------------------------------------------------------
+%
+%% \begin{frame}{Path analysis}
+%% \framesubtitle{Illustrazione}
+%
+%% \begin{itemize}
+%% \item In fact, the most potent factor affecting 3-year cognitive 
+%% ability is the level of perseverance the child demonstrates during testing; the estimated effect of perseverance is approximately twice the size of either prenatal drug exposure or home environment.
+%% \item Overall, 
+%% the combination of the effects of all the variables 
+%% account for 48\% of the total amount of variance in 
+%% 3-year intellectual outcome. 
+%
+%% \end{itemize}
+%
+%% \end{frame}
+%
+%% %------------------------------------------------------------
+%
+%% \begin{frame}{Path analysis}
+%% \framesubtitle{Illustrazione}
+%
+%% \begin{itemize}
+%% \item The results of this study support the hypothesized 
+%% model, but they do not exclude the possibility of 
+%% other causal models.
+%% \item  For example, other important 
+%% factors such as socioeconomic status or current status 
+%% of maternal social support could be included in a 
+%% path model, potentially adding to the total amount of 
+%% variability accounted for as well as further clarifying 
+%% indirect influences on developmental outcome. 
+%% \item Individual domains of behavior on the CBCL such as 
+%% hyperactivity and destructiveness also need to be 
+%% examined to further clarify the effect of behavioral 
+%% characteristics on intelligence. 
+%% \end{itemize}
+%
+%% \end{frame}
+%
+%
+%% %------------------------------------------------------------
+%
+%% \begin{frame}{Path analysis}
+%% \framesubtitle{Illustrazione}
+%
+%% \begin{itemize}
+%% \item In summary, the effect of intrauterine drug expo- 
+%% sure on the 3-year-old child's cognitive ability is dependent in part on the behavioral characteristics of 
+%% the child, head growth, and the quality of home envinonment. 
+%% \item The findings in the present study provide 
+%% specific evidence elucidating the nature of long-term 
+%% developmental risk associated with intrauterine drug 
+%% exposure to drugs.
+%% \end{itemize}
+%
+%% \end{frame}
+%
+%
+%
+%%------------------------------------------------------------
+%\section{Bontà di adattamento}
+%%------------------------------------------------------------
+%
+%%------------------------------------------------------------
+%\subsection{Indici assoluti}
+%%------------------------------------------------------------
+%
+%\begin{frame}{Bontà di adattamento}
+%
+%\begin{itemize}
+%\item Gli indici assoluti forniscono una misura di adattamento del
+%  modello ai dati senza fare confronti con altri modelli.
+%\item I più noti sono $\chi^2$, RMSEA, GFI, AGFI, RMR e SRMR. 
+%
+%\end{itemize}
+%
+%\end{frame}
+%%------------------------------------------------------------
+%
+%\begin{frame}{Test $\chi^2$}
+%
+%\begin{itemize}
+%\item La statistica $\chi^2$, usata quale indice di bontà di
+%  adattamento, ``assesses the magnitude of discrepancy between the
+%  sample and fitted covariances matrices'' (Hu \& Bentler, 1999). 
+%\item Una buona misura di adattamento produce un risultato non
+%  significativo al livello $\alpha$ = .05 (Barrett, 2007), quindi la
+%  statistica $\chi^2$ viene spesso descritta come un misura di
+%  ``badness of fit'' (Kline, 2005) o ``lack of
+%  fit'' (Mulaik et al., 1989).  
+%\item Uno dei suoi limiti maggiori è che è sensibile alle dimensioni
+%  del campione: la statistica $\chi^2$  porta sempre a rigettare il
+%  modello se il campione è sufficientemente grande (Bentler \& Bonnet,
+%  1980; J\"oreskog \& S\"orbom, 1993).  
+%
+%\end{itemize}
+%
+%\end{frame}
+%
+%%------------------------------------------------------------
+%
+%\begin{frame}{Test $\chi^2$}
+%
+%\begin{itemize}
+%
+%\item Per minimizzare l'impatto della grandezza del campione, è stato
+%  messo a punto il ``relative/normed chi-square index''
+%  ($\chi^2$/df). 
+%\item Per questo indice, le raccomandazioni variano da un
+%  limite massimo di 5.0
+%  (Wheaton et al., 1977) ad un limite massimo di 2.0 (Tabachnick \& Fidell, 2007). 
+%\item Inoltre, il test $\chi^2$ richiede l'assunzione di normalità
+%  multivariata: se i dati non hanno questa proprietà, la statistica
+%  $\chi^2$ porta a rigettare anche modelli che sono specificati
+%  correttamente. 
+%\end{itemize}
+%
+%\end{frame}
+%
+%%------------------------------------------------------------
+%
+%\begin{frame}{Root Mean Square Error of Approximation}
+%
+%In statistica, la quantità ``root mean square'' (abbreviated RMS or rms), pure conoscita come la media quadratica, è definita come la radice quadrata della media aritmetica dei quadrati di un insieme di numeri.
+%
+%\bigskip
+%
+%Nel caso presente, i numeri a cui facciamo riferimento sono le correlazioni/covarianze residue -- ovvero la differenza tra le correlazioni/covarianze predette dal modello e le correlazioni/covarianze \emph{nella popolazione}.
+%
+%\end{frame}
+%
+%%------------------------------------------------------------
+%
+%\begin{frame}{Root Mean Square Error of Approximation}
+%
+%\begin{itemize}
+%
+%\item Il RMSEA ci dice come il modello, con parametri ottimali, si
+%  adatterebbe alla matrice di covarianza della popolazione (Byrne,
+%  1998).  È considerato come ``one of the most informative fit indices''
+%  (Diamantopoulos \& Siguaw, 2000).
+%  
+%\item L'indice RMSEA tiene in considerazione il numero di parametri stimati dal modello e  favorisce i modelli più parsimoniosi, ovvero i
+%  modelli con un numero minore di parametri. 
+%\end{itemize}
+%
+%\end{frame}
+%
+%%------------------------------------------------------------
+%
+%\begin{frame}{Root Mean Square Error of Approximation}
+%
+%\begin{itemize}
+%\item Un  cut-off di .06 (Hu and Bentler, 1999) o 0.07
+%  (Steiger, 2007) viene spesso usato come limite superiore per
+%  questo indice per indicare un buon adattamento.
+%\item Un intervallo di confidenza può essere calcolato per RMSEA: un
+%  modello con un buon adattamento ha un limite inferiore vicino a 0 e
+%  un limite superiore non maggiore di 0.08.
+%\end{itemize}
+%
+%\end{frame}
+%
+%
+%%------------------------------------------------------------
+%
+%\begin{frame}{Goodness-of-Fit Index (GFI)}
+%
+%\begin{itemize}
+%
+%\item La statistica Goodness-of-Fit (GFI) è stata creata da J\"oreskog
+%  e S\"orbom come un'alternativa a $\chi^2$ e calcola la proporzione
+%  di varianza  spiegata dal modello nella stima della matrice di
+%  covarianza nella popolazione (Tabachnick \& Fidell, 2007):
+%$$
+%GFI = 1-\frac{\chi^2_t - df_t}{\chi^2_I - df_I}
+%$$
+%dove il pedice $t$ identifica il modello considerato e il pedice $I$
+%si riferisce ad un modello che assume l'indipendenza tra le variabili
+%osservate.  
+%
+%\item Tradizionalmente, viene utilizzato un cut-off di 0.90 anche se
+%  recentemente è stato suggerito un cut-off di 
+%  0.95 (Miles \& Shevlin, 1998).  
+%\end{itemize}
+%
+%\end{frame}
+%
+%%------------------------------------------------------------
+%
+%\begin{frame}{Adjusted Goodness-of-Fit Index (AGFI)}
+%
+%\begin{itemize}
+%
+%\item Associato all'indice GFI è la statistica Adjusted
+%    Goodness-of-Fit Index (AGFI), che introduce un fattore di
+%    correzione nel GFI basato sul numero di parametri stimati dal modello.  Modelli che stimano un numero maggiore di parametri vengono
+%  penalizzati. 
+%\item Anche in questo caso, un cut-off di 0.90 viene spesso usato. 
+%\item Sia il GFI che il AGFI tendono ad aumentare con la grandezza del
+%  campione e questo ne riduce l'utilità.
+%\end{itemize}
+%
+%\end{frame}
+%
+%%------------------------------------------------------------
+%
+%\begin{frame}{GFI e AGFI}
+%
+%\begin{itemize}
+%
+%\item Possono assumere valori al di fuori della gamma di valori 0.0-1.0.
+%\item  GFI and AGFI sono meno utili in presenza di variabili latenti che nel caso di modelli di path analysis. Inoltre, producono troppi errori di I tipo (accettare modelli che dovrebbero essere rigettati) (Hu \& Bentler, 1999).
+%\item Non producono buoni risultati in studi di simulazione (Kline).
+%\item Sono spesso riportati, forse perché sono stati tra i primi indici  di bontà di adattamento che sono stati proposti.
+%\end{itemize}
+%
+%\end{frame}
+%
+%
+%%------------------------------------------------------------
+%
+%\begin{frame}{Root Mean square Residuals (RMR) e Standardized Root
+%    Mean square Residuals (SRMR)}
+%
+%\begin{itemize}
+%\item Gli indici RMR e SRMR sono basati sulla radice quadrata
+%  della differenza tra i residui nella matrice di covarianza del
+%  campione e la matrice di covarianza riprodotta dal modello.
+%\item Il valore di RMR dipende dalla scala degli item (i residui sono
+%  maggiori se gli item variano nell'intervallo 1--7 piuttosto che
+%  1--5).
+%\item L'indice standardizzato SRMR risolve questo problema ed è di più
+%  facile interpretazione.
+%\item Valori SRMR fino a 0.08 sono considerati accettabili (Hu \& Bentler, 1999). 
+%\end{itemize}
+%
+%\end{frame}
+%
+%%------------------------------------------------------------
+%\subsection{Indici relativi}
+%%------------------------------------------------------------
+%
+%\begin{frame}{Indici relativi}
+%
+%\begin{itemize}
+%
+%\item Gli indici relativi (o incrementali) non considerano la
+%  statistica $\chi^2$ per sé, ma confrontano $\chi^2$ del modello
+%  considerato con $\chi^2$ di un modello alternativo.
+%\item Un modello che viene sempre usato come confronto è il modello
+%  baseline, nel quale le correlazioni osservate non vengono spiegate
+%  da nessun fattore latente  (McDonald \& Ho, 2002). 
+%
+%\end{itemize}
+%
+%\end{frame}
+%
+%
+%%------------------------------------------------------------
+%
+%\begin{frame}{Normed-fit index (NFI)}
+%
+%\begin{itemize}
+%\item Il Normed-fit index (NFI) è stato proposto da Bentler e Bonnet
+%  (1980) e confronta il $\chi^2$ del modello considerato con $\chi^2$
+%  del modello baseline.  
+%\item Il NFI varia tra 0 e 1.  Bentler e Bonnet (1980) raccomandano
+%  valori maggiori di  0.90. Più recentemente è
+%  stato suggerito un cut-off di .95 (Hu \& Bentler, 1999).
+%\item Un limite del NFI è la sensibilità all'ampiezza del campione:
+%  il NFI sottostima l'adattamento del modello ai dati per campioni di
+%  numerosità ridotta ($<$ 200) (Mulaik et al., 1989; Bentler, 1990).
+%\end{itemize}
+%
+%\end{frame}
+%
+%
+%%------------------------------------------------------------
+%
+%\begin{frame}{Non-Normed-fit index (NNFI) o Tucker-Lewis
+%  Index (TLI)}
+%
+%\begin{itemize}
+%\item La dipendenza dall'ampiezza del campione è stata ``corretta''
+%  (in parte) 
+%  dal Non-Normed Fit Index (NNFI), pure conosciuto come Tucker-Lewis
+%  Index. 
+%\item Un limite del NNFI è costituito dal fatto che può assumere valori maggiori di 1 e, in tali casi, è di difficile interpretazione.
+%\item Bentler e Hu (1999) hanno suggerito un cut-off $\geq$ 0.95.
+%\end{itemize}
+%
+%\end{frame}
+%
+%
+%%------------------------------------------------------------
+%
+%\begin{frame}{Comparative Fit Index (CFI)}
+%
+%\begin{itemize}
+%
+%\item Il CFI è una variante del NFI che tiene in considerazione la
+%  grandezza del campione (Byrne, 1998) e si è dimostrato adeguato
+%  anche con campioni piccoli (Tabachnick \& Fidell, 2007).
+%\item È stato suggerito un cut-off  $\geq$ 0.95 (Hu e Bentler,
+%  1999). 
+%\item Questo indice è incluso in tutti i maggiori software e
+%  rappresenta uno dei più popolari indici di bontà di adattamento dato
+%  che è uno degli indici meno dipendenti dalla grandezza del campione.
+%\end{itemize}
+%
+%\end{frame}
+%
+%%------------------------------------------------------------
+%
+%\begin{frame}{PGFI e PNFI}
+%
+%\begin{itemize}
+%\item Modelli più complessi, ovvero modelli che stimano un numero maggiore di
+%  parametri, producono un adattamento migliore ai dati.  Per tenere in
+%  considerazione la complessità del modello sono stati proposti due
+%  indici: il PGFI e il PNFI.
+%\item Il Parsimony Goodness-of-Fit Index (PGFI) è basato sull'GFI con
+%  una correzione dei gradi di libertà.
+%\item Il Parsimonious Normed Fit Index (PNFI) è basato sul NFI e
+%  introduce anch'esso una correzione  sui gradi di libertà (Mulaik et al.,
+%  1989).  
+%\item È stato proposto un cut-off di 0.90.
+%\end{itemize}
+%
+%\end{frame}
+%
+%%------------------------------------------------------------
+%
+%\begin{frame}{Akaike Information Criterion (AIC)}
+%
+%\begin{itemize}
+%\item  L'Akaike Information Criterion (AIC) viene usato per confrontare modelli non-nidificati e, a parità di adattamento, premia il modello più semplice.
+%\item Valori minori indicano un adattamento maggiore.
+%\item Questo indice non varia tra 0 e 1 e, per questa ragione, non
+%  possono essere forniti dei valori di cut-off.
+%\item È richiesta una numerosità campionaria di almeno 200
+%  (Diamantopoulos \& Siguaw, 2000). 
+%\end{itemize}
+%
+%\end{frame}
+%
+%
+%
+%
+%% %------------------------------------------------------------
+%
+%% \begin{frame}{Azuma e Chasnoff (1993)}
+%% \framesubtitle{Illustrazione}
+%
+%% \begin{itemize}
+%% \item To assess the overall fit of the data to the model, 
+%% the LISREL procedure also provides  values, goodness-of-fit indices, and squared multiple correlations. 
+%% \item A significant $\chi^2$ may indicate a lack of fit between the 
+%% hypothesized model and the actual data. Goodness-of-fit indices range from 0 to 1 with values close to 1 
+%% indicating good fit.
+%% \item Squared multiple correlations are indications of the amount of variability accounted for by the given equation. 
+%
+%% \end{itemize}
+%
+%% \end{frame}
+%
+%% %------------------------------------------------------------
+%
+%% \begin{frame}{Azuma e Chasnoff (1993)}
+%% \framesubtitle{Illustrazione}
+%
+%% \begin{itemize}
+%% \item The  value for the entire model was 8.67 (df = 2, 
+%% P = .013). 
+%% \item This probability value is significant at the 
+%% .05 level which could be an indication of a lack of fit 
+%% for the hypothesized model. However, the $\chi^2$ value is 
+%% not necessarily an appropriate statistical test in a 
+%% model-fitting situation because significance may be 
+%% a function of the statistic itself, as $\chi^2$ values are sen- 
+%% sitive to nonnormal distributions and sample sizes. 
+%% \item Relatively large samples will produce significant  
+%% values with only trivial differences between the ob- 
+%% served and expected correlations.
+%% \item  Nonnormal distributions can also inflate size of the  $\chi^2$  value. 
+%
+%% \end{itemize}
+%
+%% \end{frame}
+%
+%% %------------------------------------------------------------
+%
+%% \begin{frame}{Azuma e Chasnoff (1993)}
+%% \framesubtitle{Illustrazione}
+%
+%% \begin{itemize}
+%% \item 
+%% A more accurate reflection of fit between the hypothesized model and the actual data are goodness-of-fit indices which are not dependent on the sample 
+%% size.
+%% \item The goodness of fit and the adjusted goodness 
+%% of fit for the present sample are 0.987 and 0.927, 
+%% respectively.
+%% \item  The high level of both indices indicate 
+%% good fit of the model to the actual data. 
+%% \item In addition, 
+%% the root mean square residual is .037. This value 
+%% is relatively small compared with the average 
+%% size of the parameter estimates. This also supports 
+%% the fit of the hypothetical model to the actual 
+%% correlations. 
+%% \end{itemize}
+%
+%% \end{frame}
+%
+% %------------------------------------------------------------
+%
+%% \begin{frame}[fragile]{Azuma e Chasnoff (1993)}
+%%
+%% \begin{lstlisting}
+%% > library(sem)
+%% > 
+%% > KM <- matrix(
+%% + 	c(
+%% +     1, 0, 0, 0, 0, 0,
+%% +     .27, 1, 0, 0, 0, 0, 
+%% +     -.12, -.12, 1, 0, 0, 0, 
+%% +     -.14, -.11, .09, 1, 0, 0, 
+%% +     .38, .22, -.47, .01, 1, 0, 
+%% +     .34, .37, .31, .26, .26, 1
+%% + 	), 
+%% + 	6, 6, byrow=T)
+%% >
+%% > # Providing variable names
+%% > rownames(KM) <- colnames(KM) <- c('HSQ','HC','PP','CBCL','IQ','DE')
+%% \end{lstlisting}
+%% 
+%% \end{frame}
+%%
+%% %------------------------------------------------------------
+%%
+%% \begin{frame}[fragile]{Azuma e Chasnoff (1993)}
+%% \framesubtitle{Illustrazione}
+%%
+%% {\scriptsize
+%% \begin{verbatim}
+%% > KM
+%%        HSQ    HC    PP CBCL   IQ DE
+%% HSQ   1.00  0.00  0.00 0.00 0.00  0
+%% HC    0.27  1.00  0.00 0.00 0.00  0
+%% PP   -0.12 -0.12  1.00 0.00 0.00  0
+%% CBCL -0.14 -0.11  0.09 1.00 0.00  0
+%% IQ    0.38  0.22 -0.47 0.01 1.00  0
+%% DE    0.34  0.37  0.31 0.26 0.26  1
+%% \end{verbatim}
+%% }
+%%
+%% \end{frame}
+%%
+%%
+%% %------------------------------------------------------------
+%%
+%% \begin{frame}[fragile]{Azuma e Chasnoff (1993)}
+%% \framesubtitle{Illustrazione}
+%%
+%% {\scriptsize
+%% \begin{verbatim}
+%% > # Specifying the measurement model
+%% > model1 <- specify.model()
+%% 1: DE -> HSQ,   lam_1,  NA 
+%% 2: DE -> HC,    lam_2,  NA 
+%% 3: DE -> CBCL,  lam_3,  NA 
+%% 4: DE -> IQ,    lam_4,  NA 
+%% 5: DE -> PP,    lam_5,  NA 
+%% 6: HSQ -> HC,   lam_6,  NA 
+%% 7: HSQ -> IQ,   lam_7,  NA 
+%% 8: HSQ -> CBCL, lam_8,  NA 
+%% 9: CBCL -> IQ,  lam_9,  NA 
+%% 10: PP -> IQ,    lam_10, NA 
+%% 11: HC -> CBCL,  lam_11, NA 
+%% 12: HC -> PP,    lam_12, NA 
+%% 13: HC -> IQ,    lam_13, NA 
+%% 14: DE  <-> DE,    theta_1, NA
+%% 15: HSQ <-> HSQ,   theta_2, NA
+%% 16: HC  <-> HC,    theta_3, NA
+%% 17: IQ  <-> IQ,    theta_4, NA
+%% 18: PP  <-> PP,    theta_5, NA
+%% 19: CBCL <-> CBCL, theta_6, NA
+%% 20: 
+%% Read 19 records
+%% \end{verbatim}
+%% }
+%%
+%% \end{frame}
+%%
+%%
+%% %------------------------------------------------------------
+%%
+%% \begin{frame}[fragile]{Azuma e Chasnoff (1993)}
+%%
+%% {\scriptsize
+%% \begin{verbatim}
+%% > #----------------------------------------------------------
+%% > # Running the estimation using sem:
+%% > #----------------------------------------------------------
+%% > 
+%% > sem.out <- sem(model1, KM, N=162)
+%% > 
+%% > #----------------------------------------------------------
+%% > # Looking at the results:
+%% > #----------------------------------------------------------
+%% > 
+%% > summary(sem.out)
+%% \end{verbatim}
+%% }
+%%
+%% \end{frame}
+%%
+%%
+%% %------------------------------------------------------------
+%%
+%% \begin{frame}[fragile]{Azuma e Chasnoff (1993)}
+%%
+%%
+%% {\scriptsize
+%% \begin{verbatim}
+%%  Parameter Estimates
+%%         Estimate  Std Error z value  Pr(>|z|)                 
+%% lam_1    0.340000 0.074116   4.58741 4.4878e-06 HSQ <--- DE   
+%% lam_2    0.314564 0.076788   4.09650 4.1945e-05 HC <--- DE    
+%% lam_3    0.411110 0.080683   5.09538 3.4803e-07 CBCL <--- DE  
+%% lam_4    0.399031 0.079227   5.03655 4.7400e-07 IQ <--- DE    
+%% lam_5    0.410613 0.077753   5.28100 1.2848e-07 PP <--- DE    
+%% lam_6    0.163048 0.076788   2.12335 3.3725e-02 HC <--- HSQ   
+%% lam_7    0.185555 0.067517   2.74828 5.9909e-03 IQ <--- HSQ   
+%% lam_8   -0.225442 0.077848  -2.89592 3.7804e-03 CBCL <--- HSQ 
+%% lam_9   -0.021390 0.065116  -0.32848 7.4255e-01 IQ <--- CBCL  
+%% lam_10  -0.575405 0.066710  -8.62548 0.0000e+00 IQ <--- PP    
+%% lam_11  -0.201241 0.078803  -2.55373 1.0658e-02 CBCL <--- HC  
+%% lam_12  -0.271927 0.077753  -3.49732 4.6996e-04 PP <--- HC    
+%% lam_13  -0.049143 0.068215  -0.72041 4.7127e-01 IQ <--- HC    
+%% theta_1  1.000000 0.111478   8.97038 0.0000e+00 DE <--> DE    
+%% theta_2  0.884400 0.098594   8.97015 0.0000e+00 HSQ <--> HSQ  
+%% theta_3  0.839588 0.093599   8.97004 0.0000e+00 HC <--> HC    
+%% theta_4  0.566326 0.063143   8.96901 0.0000e+00 IQ <--> IQ    
+%% theta_5  0.840079 0.093654   8.97004 0.0000e+00 PP <--> PP    
+%% theta_6  0.839413 0.093580   8.97004 0.0000e+00 CBCL <--> CBCL
+%% \end{verbatim}
+%% }
+%%
+%% \end{frame}
+%%
+%%
+%% %------------------------------------------------------------
+%%
+%% \begin{frame}[fragile]{Azuma e Chasnoff (1993)}
+%%
+%% {\scriptsize
+%% \begin{verbatim}
+%%  Model Chisquare =  9.8094   Df =  2 Pr(>Chisq) = 0.0074116
+%%  Chisquare (null model) =  205.52   Df =  15
+%%  Goodness-of-fit index =  0.98068
+%%  Adjusted goodness-of-fit index =  0.79712
+%%  RMSEA index =  0.15573   90% CI: (0.068577, 0.25886)
+%%  Bentler-Bonnett NFI =  0.95227
+%%  Tucker-Lewis NNFI =  0.69257
+%%  Bentler CFI =  0.95901
+%%  SRMR =  0.049598
+%%  BIC =  -0.36577 
+%% \end{verbatim}
+%% }
+%%
+%% \end{frame}
+%%
+%%
+%% %------------------------------------------------------------
+%
+%% \begin{frame}[fragile]{Azuma e Chasnoff (1993)}
+%% \framesubtitle{Illustrazione}
+%
+%% {\scriptsize
+%% \begin{verbatim}
+%
+%% \end{verbatim}
+%% }
+%
+%% \end{frame}
+%
+%
+%% %------------------------------------------------------------
+%
+%% \begin{frame}[fragile]{Azuma e Chasnoff (1993)}
+%% \framesubtitle{Illustrazione}
+%
+%% {\scriptsize
+%% \begin{verbatim}
+%
+%% \end{verbatim}
+%% }
+%
+%% \end{frame}
+%
+%
+%% %------------------------------------------------------------
+%
+%% \begin{frame}[fragile]{Azuma e Chasnoff (1993)}
+%% \framesubtitle{Illustrazione}
+%
+%% {\scriptsize
+%% \begin{verbatim}
+%
+%% \end{verbatim}
+%% }
+%
+%% \end{frame}
+%
+%
+%% %------------------------------------------------------------
+%
+%% \begin{frame}[fragile]{Azuma e Chasnoff (1993)}
+%% \framesubtitle{Illustrazione}
+%
+%% {\scriptsize
+%% \begin{verbatim}
+%
+%% \end{verbatim}
+%% }
+%
+%% \end{frame}
+%
+%
+%% %------------------------------------------------------------
+%
+%% \begin{frame}[fragile]{Azuma e Chasnoff (1993)}
+%% \framesubtitle{Illustrazione}
+%
+%% {\scriptsize
+%% \begin{verbatim}
+%
+%% \end{verbatim}
+%% }
+%
+%% \end{frame}
+%
+%
+%% %------------------------------------------------------------
+%
+%% \begin{frame}[fragile]{Azuma e Chasnoff (1993)}
+%% \framesubtitle{Illustrazione}
+%
+%% {\scriptsize
+%% \begin{verbatim}
+%
+%% \end{verbatim}
+%% }
+%
+%% \end{frame}
+%
+%
+%
+%% % ----------------------------------------------------------------
+%% \begin{frame}[fragile]{Esercizi per casa}
+%% {Esercizio 5}
+%
+%
+%% Per un particolare campione di rispondenti, la deviazione standard dei punteggi di un test è 6.4.  La stima dell'errore standard di misurazione è 3.2.  Si calcoli il coefficiente di attendibilità.
+%
+%% \pause
+%
+%% \bigskip
+%
+%% $$
+%% \sigma_E = \sigma_X \sqrt{1 -\rho_{XX'}}
+%% $$
+%
+%
+%% \begin{lstlisting}
+%% > (3.2^2-6.4^2)/6.4^2
+%% [1] -0.75
+%% \end{lstlisting}
+%
+%% Il coefficiente di attendibilità è 0.75.
+%
+%% \end{frame}

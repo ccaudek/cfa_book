@@ -1,0 +1,496 @@
+\chapter{Regressione logistica}
+\label{chapter:logistic_regression} 
+
+\section{Modelli di risposta all'item}
+
+I modelli di risposta all'item (IRT; Birnbaum, 1968; Lord, 1953) e il modello di Rasch (Rasch, 1960) sono usati per stimare i punteggi dei rispondenti ai test  costituiti da item dicotomici o politomici (a più livelli). Proprio come abbiamo visto con i modelli CFA, viene modellata una variabile latente che viene immaginata come la causa della variazione delle risposte agli item. 
+Prima di discutere questi modelli è però una buona idea esaminare la regressione logistica che ci aiuterà a comprendere la modellazione IRT.
+
+\section{Modello di regressione per variabili binarie}
+
+Il modello di regressione logistica viene utilizzato quando si è interessati a studiare la relazione tra una variabile dipendente dicotomica e una o più variabili indipendenti quantitative e/o qualitative. Supponiamo che la variabile risposta assuma due sole modalità, convenzionalmente chiamate successo e insuccesso. Indichiamo $Y_i$ l'osservazione $i$-esima ($i=1, \dots, n$) sulla variabile risposta e supponiamo che le risposte siano indipendenti. Spesso ogni unità statistica è associata a un vettore ($x_1, \dots, x_p$) di variabili esplicative. Il nostro obiettivo è quello di studiare la relazione tra la \emph{probabilit\`a di risposta}
+\[
+Pr(Y=1 \mid X=x_i) \equiv Pr(Y_i) \equiv \pi_i
+\]
+e le variabili esplicative $x=x_1, \dots, x_p$. Considereremo qui il caso più semplice in cui vi è una sola variabile indipendente. Dato che il legame tra la $Y$ e la $X$ è probabilistico, la variabile dipendente è una variabile casuale Bernoulliana che assume i valori
+  \begin{displaymath}
+    y_i = \left\{ \begin{array}{ll}
+        1 & \textrm{se l'$i$-esima osservazione corrisponde ad un ``successo''},\\
+        0 & \textrm{altrimenti},
+      \end{array} \right.
+  \end{displaymath}
+  rispettivamente con probabilit\`a $\pi$ e $1-\pi$:
+  \begin{displaymath}
+    \begin{array}{ll}
+      P(Y_i = 1) = \pi,\\
+      P(Y_i = 0) = 1-\pi.
+    \end{array}
+  \end{displaymath}
+
+Introduciamo il modello di regressione logistica considerando un problema rappresentativo e tentando innanzitutto di applicare ad esso il modello della regressione lineare.  
+I dati utilizzati si riferiscono a 100 volontari per cui l'età, \texttt{age}, è la variabile esplicativa, e \texttt{chd} è la variabile risposta che codifica la presenza (\texttt{chd} = 1) o assenza (\texttt{chd} = 0) di sintomi di disturbi cardiaci. 
+I dati sono contenuti nel file \texttt{chdage.dat} (Hosmer e Lemeshow, 2000).
+   
+Se la variabile dipendente è binaria, ha senso pensare alla
+regressione come ad una \emph{media condizionata}, come nel caso della
+regressione lineare? Una media di valori 0 e 1 produce un valore della variabile dipendente che non può essere generato da nessuno degli individui che sono stati intervistati. 
+In riferimento alla popolazione, invece, la media condizionata $\mathbb{E}(Y \mid X=x)$ può essere intesa come la \emph{proporzione} di valori 1 tra gli individui che hanno il punteggio $x$ sulla variabile esplicativa ($X$ = età) -- ovvero, la probabilità condizionata $\pi_i$ di osservare la presenza di sintomi di malattie coronariche in questo gruppo d'età:
+  \[
+  \pi_i \equiv P(Y = 1 \mid X = x).
+  \]
+Di conseguenza, il valore atteso diventa
+  \[
+  \mathbb{E}(Y \mid x) = (1) \pi_i + (0) (1-\pi_i) = \pi_i.
+  \]
+
+Se la variabile $X$ è discreta, condizionatamente a ciascun valore $X=x$, possiamo  calcolare nel campione la proporzione di valori $Y=1$. 
+L'insieme di queste proporzioni condizionate corrisponde alla stima non parametrica della regressione della variabile dicotomica $Y$ sulla $X$. 
+La stima della funzione di regressione può essere ottenuta mediante una tecnica di \emph{smoothing} (cioè di regolarizzazione, di lisciamento), come indicato nella Figura~\ref{fig:hosmer_1}.
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=7cm]{PDF_fig1_1.pdf}
+  \end{center}
+\caption{Proporzioni di presenza di sintomi di malattie coronariche in funzione dell'età (Hosmer e Lemeshow, 2000).}
+\label{fig:hosmer_1}
+\end{figure}
+\noindent
+Per valori bassi della variabile {\tt age} la proporzione condizionata di valori $Y=1$ è prossima allo 0. Per valori alti dell'età la proporzione di valori $Y=1$ è prossima a 1.0. A livelli di età intermedi, la curva di regressione non parametrica gradualmente approssima i valori 0 e 1 seguendo un andamento sigmoidale. Dopo avere letto i dati in \R\;
+\begin{lstlisting}
+chdage <- read.table("chdage_dat.txt", header = TRUE)
+\end{lstlisting}
+la figura si genera con le istruzioni seguenti: 
+\begin{lstlisting}
+library(car) 
+scatterplot(
+  chd ~ age, 
+  data = chdage, 
+  span = 0.35, 
+  reg.line = FALSE, 
+  boxplots = FALSE, 
+  cex = 1.5, 
+  lwd = 2
+  )
+\end{lstlisting}
+Anche se nel caso presente la regressione non parametrica produce un risultato sensato, è utile rappresentare la dipendenza di $Y$ da $X$ con una semplice funzione, in particolare quando ci sono molteplici variabili esplicative.
+
+\section{Modello lineare nelle probabilità}
+
+Iniziamo specificando un modello lineare con le solite assunzioni
+  \[
+  Y_i = \alpha + \beta X_i + \varepsilon_i,
+  \]
+dove $\varepsilon_i \sim \mathcal{N}(0, 1)$ e $\varepsilon_i$ e $\varepsilon_j$ sono indipendenti per $i \neq j$ (Figura~\ref{fig:lin_probmod}). 
+Dato che $\mathbb{E}(Y_i) = \alpha + \beta X_i$, ne segue che
+  \[
+  \pi_i = \alpha + \beta X_i.
+  \]
+Questo modello si dice \emph{modello lineare nelle probabilità} (\emph{linear probability model}). 
+Tale modo di procedere è però insoddisfacente perché non dà alcuna garanzia che i valori predetti siano confacenti a probabilità, cioè compresi tra 0 e 1. 
+Inoltre, non sarebbe opportuno usare il metodo dei minimi quadrati poiché in questo caso la varianza non è costante, ma è funzione della media e quindi funzione della variabile $X$.
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=7cm]{PDF_ModLinProb.pdf}
+  \end{center}
+\caption{Modello lineare nelle probabilità.}
+\label{fig:lin_probmod}
+\end{figure}
+
+\subsection{Normalità}
+
+Dato che $Y_i$ può assumere solo i valori 0 e 1, gli errori sono pure dicotomici e, dunque, non possono essere distribuiti normalmente. 
+Se $Y_i=1$ con probabilità $\pi_i$ allora
+\begin{align}
+\varepsilon_i = 1- \mathbb{E}(Y_i) = 1- (\alpha + \beta X_i) = 1 - \pi_i. \notag 
+\end{align}
+Se $Y_i=0$ con probabilità $1-\pi_i$ allora
+    \begin{align}
+      \varepsilon_i &= 0- \mathbb{E}(Y_i) = 0- (\alpha + \beta X_i) =
+      - \pi_i. \notag
+    \end{align}
+Se la numerosità del campione è sufficientemente grande, comunque, come conseguenza del teorema del limite centrale, l'assunzione di normalità non è critica per le stime dei minimi quadrati.
+
+\subsection{Omoschedasticità}
+
+La varianza di $\varepsilon$ non è costante. Se l'assunzione di linearità è soddisfatta, allora $\mathbb{E}(\varepsilon_i)=0$.
+Utilizzando i risultati precedenti otteniamo
+\begin{align}
+      \mathbb{V}(\varepsilon_i) &=  (1- \pi_i)^2\pi_i + (-\pi_i)^2(1-\pi_i) \notag \\
+      &= (1-\pi_i)\left[ (1-\pi_i) \pi_i + \pi_i^2 \right]\notag\\
+      &= (1 - \pi_i)\pi_i. \notag
+\end{align}
+L'eteroschedasticità degli errori è un problema per le stime dei minimi quadrati del modello lineare, ma solo se le probabilità $\pi_i$ sono prossime a 0 e 1.
+   
+\subsection{Linearità}
+
+Il maggiore inconveniente connesso all'adozione del modello lineare nelle probabilità deriva dal fatto che la stima della probabilità di successo, $P(\hat{Y}_i=1)=\hat{\pi}_i$, non è necessariamente compresa nell'intervallo ($0,1$), ma può essere sia negativa sia maggiore di 1. 
+Questo problema è evidente nella Figura~\ref{fig:lin_probmod}, in cui la retta dei minimi quadrati produce valori attesi $\hat{\pi}$ inferiori a 0 per età basse e valori $\hat{\pi}$ superiori a 1 per età alte.
+
+\section{Constrained linear-probability model}
+
+Una possibile soluzione è quella di forzare $\pi$ nell'intervallo $(0, 1)$:
+\[
+\pi=
+\begin{cases}
+  0                           &\text{per $\alpha + \beta X$} < 0,\\
+  \alpha + \beta X           &\text{per $0 \leq \alpha + \beta X \leq 1$},\\
+  1 &\text{per $\alpha + \beta X > 1$.}
+\end{cases}
+\]
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=7cm]{ConstrLinPrMod}
+  \end{center}
+\caption{Constrained linear-probability model.}
+\label{fig:constrained_linprobmod}
+\end{figure}
+
+\noindent
+Il \emph{constrained linear-probability model} (Figura~\ref{fig:constrained_linprobmod}) è però instabile in quanto dipende criticamente dai valori in cui $\pi$ assume i valori 0 e 1, dato che la retta $\pi = \alpha + \beta X$ è determinata da tali punti.
+La stima del punto in cui $\pi = 0$ {\`e} determinata dal minore dei valori $X$ per cui $Y=1$;  allo stesso modo, la stima del punto in cui $\pi = 1$ è determinata dal maggiore dei valori $X$ per cui $Y=0$. Entrambi questi punti sono valori estremi, e dunque variano in
+maniera sostanziale da campione a campione.  Inoltre, tendono adassumere valori tanto pi{\`u} estremi quanto pi{\`u} cresce la numerosità del campione. Inoltre, è difficile stimare i parametri del modello nel caso di $k \geq 2$ variabili esplicative. Infine, il brusco cambiamento dell'inclinazione della retta di  regressione in corrispondenza di $X=0$ e $X=1$ è poco realistico. Una funzione più ``liscia'' (\emph{smooth}) tra $\pi$ e $X$ è maggiormente plausibile.
+
+\section{Regressione logistica}
+
+Il modo migliore per risolvere il problema del vincolo sulle probabilità consiste nello specificare dei modelli non per le probabilità, ma per delle loro trasformazioni che rimuovano tale vincolo. Se invece di specificare un modello lineare per la probabilità condizionata $\pi_i$ si specifica un modello lineare per il logaritmo degli odds
+  \[
+  \eta_i = \log_e \frac{\pi_i}{1-\pi_i}= \alpha + \beta x_i,
+  \]
+non sussistono problemi perché il logit $\eta$ è sempre un numero reale. Risulta così specificato un modello lineare per una trasformazione di $\pi$. La Figura~\ref{fig:logit_empirici} è stata creata calcolando i \emph{logit empirici}, ovvero il logaritmo degli odds $\log_e(\hat{\pi}_i/(1-\hat{\pi}_i)$) in corrispondenza di 8 intervalli in cui è stata suddivisa la variabile "età". In questo caso è chiaro che vi è una relazione lineare tra i logit empirici e l'età.
+
+\begin{figure}[p!h!b!]
+  \begin{center}
+    \includegraphics*[width=7cm]{PDF_fig1_1b.pdf}
+  \end{center}
+\caption{Logit empirici in funzione dell'età.}
+\label{fig:logit_empirici}
+\end{figure}
+
+La Figura~\ref{fig:logit_empirici} è stata generata con le seguenti istruzioni:
+\begin{lstlisting}
+xc <- c(24.5, 32, 37, 42, 47, 52, 57, 64.5) 
+yc <- c(0.1, 0.13, 0.25, 0.33, 0.46, 0.63, 0.76, 0.8) 
+logit.y <- log(yc / (1 - yc)) 
+fit2 <- lm(logit.y ~ xc) 
+plot(xc, logit.y, 
+  xlab = "Eta'", ylab = "Logit(Y)", 
+  main = "", type = "n") 
+points(xc, logit.y, cex = 2) 
+abline(fit2)
+\end{lstlisting}
+
+\subsection{Probabilità, odds e logit}
+
+La relazione tra probabilità, odds e logit è illustrata nella Tabella~\ref{tab:rel_proboddslogit}. Si noti che, quando la probabilità tende a 0, l'odds tende anch'esso a zero mentre il logit tende a $-\infty$; quando la probabilità si approssima a 1, l'odds tende a $+\infty$ e lo stesso accade al logit. 
+Il logit trasforma dunque le probabilità dall'intervallo (0, 1) all'intera linea dei numeri reali. Si noti che se la probabilità è 0.5, l'odds è 1 e il logit è 0. Logit negativi rappresentano probabilità minori di 0.5 e logit positivi rappresentano probabilità maggiori di 0.5.
+
+  \begin{table}
+  \centering
+    \begin{tabular}{clc}
+      \toprule
+      % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+      Probabilità & Odds & logit \\
+      $\pi$ & $\omega= \frac{\pi}{1-\pi}$ & $ \eta= \ln \frac{\pi}{1-\pi}$ \\
+      \midrule
+      0.01 & 1/99=0.0101 & -4.60 \\[5pt]
+      0.05 & 5/95=0.0526 & -2.94 \\[5pt]
+      0.10 & 1/9=0.1111 & -2.20 \\[5pt]
+      0.30 & 3/7=0.4286 & -0.85 \\[5pt]
+      0.50 & 5/5=1 & 0.00 \\[5pt]
+      0.70 & 7/3 = 2.333 & 0.85 \\[5pt]
+      0.90 & 9/1 = 9 & 2.20 \\[5pt]
+      0.95 & 95/5 = 19 & 2.94 \\[5pt]
+      0.99 & 99/1 = 99 & 4.60 \\[5pt]
+      \bottomrule
+    \end{tabular}
+  \caption{Relazione tra probabilità, odds e logit.}
+  \label{tab:rel_proboddslogit}
+  \end{table}
+
+\subsection{Trasformazione inversa del logit}
+
+La trasformazione inversa del logit, detta \emph{antilogit}, consente di trasformare i logit in probabilità:
+  \[
+  \pi_i =\frac{e^{\eta_i}}{1+e^{\eta_i}}.
+  \]
+Come indicato nella Figura~\ref{fig:antilogit}, logit e probabilità possono essere trasformati gli uni nelle altre.
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=7cm]{logit}
+  \end{center}
+\caption{Funzione antilogit.}
+\label{fig:antilogit}
+\end{figure}
+
+La trasformazione inversa del logit consente di specificare un modello non lineare per le probabilità $\pi_i$. Tale modello non lineare {\`e} detto \emph{logit}, o modello di regressione logistica:
+  \begin{equation}
+  \pi_i = \frac{e^{\eta_i}}{1+e^{\eta_i}} =  \frac{e^{\alpha + \beta x_i}}{1+e^{\alpha + \beta x_i}}.
+  \end{equation}
+
+La funzione logistica ben rappresenta l'andamento sigmoidale delle \emph{proporzioni di casi $Y=1$}, ovvero $\hat{\pi}_i = E(Y \mid x_i)$ (le proporzioni di presenza di disturbi coronarici), in funzione di livelli crescenti della variabile ``età'' {\tt age} (Figura~\ref{fig:prob_sigm_chd}).
+   
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics*[width=7cm]{PDF_fig1_1c.pdf}
+  \caption{Probabilità di disturbi coronarici in funzione dell'età.}
+  \label{fig:prob_sigm_chd}
+  \end{center}
+\end{figure}
+
+La Figura~\ref{fig:prob_sigm_chd} è stata generata mediante le seguenti istruzioni:
+\begin{lstlisting}
+fm <- glm(chd ~ age, family = binomial(link = "logit"), data = chdage)  
+logit.hat <- fm$coef[1] + fm$coef[2] * x 
+pi.hat <- exp(logit.hat) / (1+exp(logit.hat)) 
+plot(x, pi.hat, 
+  xlab = "Eta'",
+  ylab = "P(CHD)", 
+  main = "", type = "n") 
+lines(x, pi.hat) 
+xc <- c(24.5, 32, 37, 42, 47, 52, 57, 64.5) 
+yc <- c(0.1, 0.13, 0.25, 0.33, 0.46, 0.63, 0.76, 0.8) 
+points(xc, yc, cex=2)
+\end{lstlisting}
+
+\subsection{Modelli Lineari Generalizzati}
+
+Il modello classico di regressione lineare non si può applicare nel caso di una variabile riposta binaria perché:
+    \begin{itemize}
+    \item $Y_i$ \`e binomiale con indice $n_i$ eventualmente uguale a
+      uno nel caso individuale.  L'assunzione di normalit\`a
+        va dunque abbandonata.
+    \item Le medie $E(Y_i)$ sono funzione delle probabilit\`a di
+      successo.  Usando la specificazione lineare, $\pi_i= \beta_0 +
+      \beta_1 x_i$ c'è il rischio che si ottengano delle probabilità stimate non comprese tra 0 e 1.
+    \item Le varianze di $\varepsilon$ non sono
+        costanti, ma dipendono dalla specificazione del modello per
+      le probabilità: $V(\varepsilon_i)=\pi_i (1-\pi_i)$.
+  \end{itemize}
+Questo problemi si possono risolvere mediante l'applicazione di un modello lineare generalizzato che fa uso della funzione legame logistica. 
+Il modello di regressione logistica fa parte di una classe più ampia di modelli, detta \emph{Modelli Lineari Generalizzati} (\emph{Genearalized Linear Models, GLMs})\footnote{McCullagh, P. \& Nelder, J. (1989). \emph{Generalized Linear Models}. Chapman \& Hall, New York.} che includono anche il tradizionale modello di regressione lineare, insieme ad altri importanti modelli per  risposte qualitative.
+      
+\begin{itemize}
+\item Il \emph{modello di regressione lineare} viene utilizzato
+      nel caso di una variabile dipendente continua, con variabili
+      esplicative continue e\/o qualitative.  
+    \item Il \emph{modello di regressione logistica} viene
+      utilizzato nel caso di una variabile risposta binaria.
+    \item Il \emph{modello di regressione di Poisson}, detto
+      \emph{modello loglineare}, viene usato per modellare le
+      frequenze di una tavola di contingenza.
+\end{itemize}
+Nei modelli lineari generalizzati vengono attenuate alcune ipotesi fondamentali nel modello lineare generale, ovvero 
+ la \emph{linearit\`a} del modello di dipendenza in media di una variabile
+  risposta da una o pi\`u variabili esplicative, 
+ la \emph{normalit\`a}
+  della componente erratica,
+ l'\emph{omoschedasticit\`a} delle
+  osservazioni. 
+Il GLM \`e costituito da 3 componenti:
+    \begin{enumerate}
+    \item una \emph{componente aleatoria} che identifica il modello
+      distributivo della variabile risposta $Y$;
+    \item una \emph{componente sistematica} che specifica le
+      variabili esplicative usate nella funzione predittiva lineare;
+    \item una \emph{funzione legame} (\emph{link function}) che mette in relazione $\mathbb{E}(Y)$ con la componente sistematica del modello.
+    \end{enumerate}
+
+    \begin{center}
+      \begin{tabular}{llll}
+        \hline%\hline
+        % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+        % & \multicolumn{2}{c}{Cancro ai polmoni}  \\
+        Componente & & Componente & \\
+        aleatoria & Link & sistematica & Modello \\
+        \hline
+        Gaussiana & Identit\`a & Continua & Regressione \\
+        Gaussiana & Identit\`a & Categoriale & Analisi della varianza \\
+        Gaussiana & Identit\`a & Mista & Analisi della covarianza \\
+        Binomiale & Logit & Mista & Regressione logistica \\
+        Poisson & Logaritmo & Mista & Loglineare \\\hline%\hline
+      \end{tabular}
+    \end{center}
+
+\subsection{Componente sistematica}
+
+La componente sistematica mette in relazione un vettore ($\eta_1, \eta_2, \dots, \eta_k$) con le variabili esplicative mediante un modello lineare.
+ Sia $X_{ij}$ il valore della $j$-esima variabile esplicativa
+    ($j=1, 2, \dots, p$) per l'$i$-esima osservazione ($i=1, \dots, k$). Allora 
+  \[
+  \eta_i = \sum_j \beta_j X_{ij}
+  \]
+Questa combinazione lineare di variabili esplicative \`e
+    chiamata il \emph{predittore lineare}.
+ Un $X_{ij}=1, \forall i$ viene utilizzato per il coefficiente
+    dell'intercetta del modello (talvolta denotata da $\alpha$).
+
+\subsection{Componente aleatoria}
+
+La  componente aleatoria del modello suppone l'esistenza di
+  $k$ osservazioni indipendenti $y_1, y_2, \dots, y_k$, ciascuna delle
+  quali viene trattata come la realizzazione di una variabile casuale
+  $Y_i$. Si assume che $Y_i$ abbia una distribuzione binomiale
+    \[
+    Y_i \sim Bin(n_i, \pi_i)
+    \]
+    con parametri $n_i$ e $\pi_i$.
+Per dati individuali (uno per ciascun valore $x_i$), $n_i=1,
+    \forall i$.
+  
+\subsection{Funzione legame}
+
+La  funzione legame $g(\cdot)$  mette in relazione il valore atteso della variabile risposta $Y_i$ con la componente sistematica $\eta_i$ del modello.
+Abbiamo visto che $\mathbb{E}(Y_i)=\pi_i$.
+Che relazione c'è tra $\pi_i$ e il predittore lineare $\eta_i= \alpha + \sum_j  \beta_j X_{ij}$? 
+La risposta a questa domanda è data dalla funzione legame:
+  \[
+  \eta_i = g(\pi_i) = \ln{\frac{\pi_i}{1-\pi_i}}.
+  \]
+Si noti che la funzione legame non trasforma la variabile risposta $Y_i$ ma bensì il suo valore atteso $\pi_i$.
+La funzione legame è invertibile: anziché trasformare il valore atteso nel predittore lineare si può trasformare il predittore lineare nel valore atteso $\pi_i$:
+\[
+\pi_i = \frac{e^{\eta_i}}{1+e^{\eta_i}} =  \frac{e^{\alpha + \sum_j  \beta_j X_{ij}}}{1+e^{\alpha + \sum_j  \beta_j X_{ij}}}.
+\]
+Si ottiene così un modello non lineare per le probabilità $\pi_i$.
+
+\section{Scelta della funzione legame}
+
+La scelta della funzione legame dipende  dalle ipotesi che vengono fatte a proposito della distribuzione della variabile latente. Esaminiamo dunque pi\`u da vicino le funzioni Logit e Probit e chiediamoci quali siano i vantaggi che portano a scegliere una piuttosto che l'altra.
+Nella figura~\ref{fig:logitPlot1} è riportato un grafico della funzione logistica
+$
+\pi_i =
+\frac{e^{\boldsymbol{x}\boldsymbol{\beta}}}{1+e^{\boldsymbol{x}\boldsymbol{\beta}}}.
+$
+Se sommiamo una costante a $\mu$, la funzione si sposta verso destra (figura~\ref{fig:logitPlot2}).
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logitPlot1} 
+        \caption{Funzione logistica.} \label{fig:logitPlot1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logitPlot2} 
+        \caption{La medesima funzione del pannello precedente a cui è stata sommata una costante.} \label{fig:logitPlot2}
+    \end{subfigure}
+    \caption{Cambiamento della funzione logistica come conseguenza della somma di una costante alla componente sistematica del modello lineare.}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logitPlot5} 
+        \caption{Funzioni Logit (rosso) e Probit (blu).} \label{fig:logitPlot5}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logitPlot6} 
+        \caption{Fuzioni Logit e Probit con la stessa varianza.} \label{fig:logitPlot6}
+    \end{subfigure}
+    \caption{Funzioni Logit e Probit con la stessa varianza.}
+\end{figure}
+
+Si confronti ora la funzione cumulativa logistica (Logit) con  la funzione cumulativa Gaussiana (Probit) (figura~\ref{fig:logitPlot5}). 
+Si noti che la funzione logistica ha una varianza maggiore.
+Una volta che le varianze sono state equiparate, però, le due funzioni risultano virtualmente indistinguibili (figura~\ref{fig:logitPlot6}).
+Nonostante questa grande similarità, l'utilizzo della funzione logitstica è comunque vantaggioso per due ragioni.
+\begin{enumerate}
+\item L'equazione della funzione cumulativa logistica, ovvero $\exp(\alpha + \beta x)/(1+\exp(\alpha + \beta x))$, è semplice, mentre la funzione cumulativa Gaussiana $\Phi$ contiene un integrale che non si può risolvere analiticamente.
+\item La trasformazione inversa per il modello Logit, ovvero $\Lambda^{-1}(\pi)$, è direttamente interpretabile come il logaritmo dell'Odds.
+Riarrangiando la funzione Logit possiamo scrivere
+$
+\frac{\pi_i}{1-\pi_i} = \exp(\alpha + \beta X_i).
+$
+Prendendo il logaritmo, otteniamo
+$
+\ln \frac{\pi_i}{1-\pi_i} = \alpha + \beta X_i.
+$
+Il predittore lineare del modello Logit, dunque, corrisponde al logaritmo dell'Odds.
+La trasformazione inversa $\Phi^{-1}(\pi)$, invece, non ha un'interpretazione diretta.
+\end{enumerate}
+
+\section{Regressione logistica con \R}
+
+La stima dei parametri del modello di regressione logistica per i dati relativi alle proporzioni di sintomi di malattie coronariche in funzione dell'età (Hosmer e Lemeshow, 2000) si ottiene utilizzando la funzione {\tt glm()} di \R: 
+
+\begin{lstlisting}
+chdage <- read.table("chdage_dat.txt", header = TRUE)
+fm <- glm(
+  chd ~ age, 
+  family = binomial(link = "logit"), 
+  data = chdage
+)
+\end{lstlisting}
+Si noti che è necessario specificare sia la funzione teorica della componente erratica del modello, sia la funzione legame. 
+L'output della funzione {\tt glm()} può essere visualizzato utilizzando la funzione \texttt{summary()}:
+\begin{lstlisting}
+summary(fm)
+#> 
+#> Coefficients:
+#>             Estimate Std. Error z value Pr(>|z|)    
+#> (Intercept) -5.30945    1.13365  -4.683 2.82e-06 
+#> age          0.11092    0.02406   4.610 4.02e-06 
+\end{lstlisting}
+Per i dati di Hosmer e Lemeshow (2000) le probabilità predette sono uguali a
+$$
+\hat{\pi}(x)=\frac{e^{-5.31 + 0.11 \times {\tt age}}}{1+e^{-5.31 + 0.11 \times {\tt age}}}.
+$$
+I Logit stimati sono dati dall'equazione 
+$$
+\hat{\eta}(x)=-5.31 + 0.11 \times {\tt age}.
+$$
+
+\section*{Conclusioni}
+
+Nel caso di una variabile dipendente binaria $Y_i$, il tradizionale modello di regressione lineare non può essere applicato. 
+Tale problema può essere risolto applicando il modello lineare non direttamente al valore atteso della variabile risposta, ma ad una sua trasformazione, il Logit. 
+La componente sistematica del modello di regressione lineare esprime il valore atteso della variabile dipendente come una funzione lineare dei predittori: $\mu_i = \boldsymbol{\beta x}_i$.
+
+Per il modello di regressione lineare, il valore atteso di $Y$ è la media delle distribuzioni condizionate $Y \mid x_i$ (figura~\ref{fig:func_modlinreg}).
+Per il modello di regressione logistica, invece, il valore atteso della variabile risposta binaria, condizionato ad un determinato valore della variabile esplicativa (o ad un insieme di valori del vettore di variabili esplicative), è uguale alla \emph{probabilità} che $Y$ assuma il valore 1:
+\[
+\mathbb{E}(Y \mid x_i) \equiv Pr(Y=1 \mid X=x_i) \equiv \pi_i.
+\]
+Tale valore atteso può essere interpretato come la proporzione di individui nella popolazione per i quali $Y=1$ in corrispondenza di $X=x_i$.
+
+\begin{figure}[h!]
+    \begin{center}
+      \includegraphics*[width= 7cm]{modProbLin}
+\caption{Modello di regressione lineare.}
+\label{fig:func_modlinreg}
+    \end{center}
+  \end{figure}
+
+La componente sistematica del modello di regressione logistica rappresenta una trasformazione di $\pi_i$ come funzione lineare dei predittori:
+\[
+\ln \frac{\pi_i}{1-\pi_i} = \alpha + \beta X_i.
+\]
+Il modello è dunque lineare nei Logit. 
+Equivalentemente, esponenziando
+$
+\frac{\pi_i}{1-\pi_i} = \exp(\alpha + \beta X_i), 
+$
+l'Odds stimato di $Y_i=1$ diventa uguale a $\exp(\alpha + \beta X_i)$. 
+La funzione antilogit trasforma il predittore lineare $\eta_i = \alpha + \beta X_i$ nelle probabilità:
+\[
+\pi_i = \frac{\exp(\alpha+\beta X_i)}{1 + \exp(\alpha+\beta X_i)}.
+\]
+Il modello di regressione logistica è dunque un modello non lineare nelle probabilità (ovvero, rispetto al valore atteso della variabile risposta).
+
+La funzione logistica
+    \[
+    \Lambda(\eta) = \frac{\exp(\eta)}{1 + \exp(\eta)}
+    \]
+viene  scelta quale funzione legame per trasformare la componente lineare del modello, $\eta_i =\alpha+\beta X_i$, nel valore atteso della variabile dipendente, $\pi_i$.
+Qualunque funzione cumulativa di probabilità potrebbe fungere da funzione legame.  Tuttavia, è conveniente scegliere la funzione logistica per facilità di interpretazione.
+
+La componente aleatoria del modello di regressione logistica, infine, ci porta a considerare la variabile dipendente come una variabile aleatoria binomiale, sia nel caso di dati raggruppati (con denomiatore binomiale uguale alla frequenza delle osservazioni in ciascun gruppo $n_i$ corrispondente a modalità omogenee della/e variabile/i esplicativa/e), sia nel caso di dati individuali (dove $n_i$ = 1, $\forall i$).
+

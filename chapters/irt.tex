@@ -1,0 +1,467 @@
+\chapter{Modelli di risposta all'item}
+\label{chapter:irt} 
+
+%% un esempio di analisi è fornito nella pagina
+%% http://wiki.r-project.org/rwiki/doku.php?id=packages:cran:ltm
+%% e può essere usato come esempio conclusivo dei modelli irt
+\section{La valutazione dell'abilità}
+
+Si supponga che un docente insegni ``Costruzione e Validazione di Strumenti di Misura dell'Efficacia dell'Intervento Psicologico in Neuropsicologia''. 
+Come può valutare gli studenti sulla base della loro comprensione del materiale trattato?  
+Lo strumento a disposizione del docente è la prestazione degli studenti all'esame.  
+Supponiamo che l'esame sia costituito da una serie di domande inerenti agli argomenti trattati durante il corso a cui ogni studente può fornire una risposta   corretta o errata. 
+Un campione ipotetico di risposte fornite dagli studenti al test è fornito nella Tabella~\ref{tab_data_lsat}, dove $1$ denota una risposta corretta e $0$ una risposta sbagliata.  
+
+\begin{table}[h!]
+\caption{\textit{Matrice dei dati.} }
+\label{tab_data_lsat}
+\centering
+\begin{tabular}{ccccc}
+\toprule
+&\multicolumn{4}{c}{Item} \\
+\cmidrule(r){2-5}
+Studente &  1  &   2 &   3  & \dots \\
+\midrule
+1     &  1   &   0   &   1  & 0 \\
+2     &  0   &   1   &   0 & 1 \\
+3     &  0   &   0  &   1  & 1\\
+4     &  1   &   0   &   0 & 1 \\
+\vdots &  1   &   1   &   0 & 0  \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Gli item sono stati costruiti allo scopo di misurare un singolo tratto latente: la competenza degli studenti relativamente al dominio di conoscenze a cui appartengono gli argomenti trattati nell'insegnamento. 
+Ciò che il docente vuole misurare non è direttamente osservabile e può essere caratterizzato come un \emph{tratto latente} posseduto da ciascuno studente.  
+Il test ha lo scopo di misurare la posizione di ciascuno studente sul continuum latente che rappresenta il grado di  competenza legato al dominio di conoscenze considerato.
+
+Siano $\theta \in (-\infty, \infty)$ la competenza latente e $P_i \in (0, 1)$ la probabilità di rispondere correttamente all'item $i$-esimo. 
+Il problema è quello di descrivere la funzione che mette in relazione la probabilità di una risposta corretta con  la competenza latente. 
+Essendo $\theta$ una variabile latente, potremmo pensare di analizzare i dati  utilizzando il modello di analisi fattoriale.  
+Tale modello, però, non risulta appropriato in quanto le variabili osservate sono di tipo binario (o comunque categoriale). 
+Il problema però ha la stessa natura del problema affrontato dall'analisi fattoriale: si tratta di mettere in relazione un insieme di variabili osservabili (qui di tipo dicotomico) con una variabile latente. 
+La classe di modelli che si occupano di questo tipo di analisi statistica va sotto il nome di \emph{modelli a tratto latente}. 
+In maniera simile all'analisi fattoriale, ci chiediamo se le associazioni a coppie tra gli item dicotomici possano essere attribuite a un fattore comune non osservabile.  
+Nel caso presente, tale fattore latente rappresenta la competenza (o  abilità) dei rispondenti. 
+
+\section{Analisi a variabili latenti}
+
+L'analisi fattoriale tradizionale appartiene ad una classe più generale di modelli statistici chiamati modelli a variabili latenti (\textit{latent variable analysis}).  
+L'obiettivo dei modelli a variabili latenti è quello di stabilire se la dipendenza tra le variabili osservate possa essere spiegata da un numero più piccolo di variabili latenti. 
+Esistono vari tipi di modelli a variabili latenti che si distinguono per la natura delle variabili osservate (che possono essere continue o categoriali) e per le assunzioni sulle variabili latenti (le quali, a loro volta, possono essere continue o categoriali).  
+Bartholomew e Knott (1999) propongono la classificazione riportata nella Tabella~\ref{tab:Bartholomew_Knott}. 
+Nell'analisi fattoriale (\textit{Factor Analysis}, FA)  e nell'analisi del tratto latente (\textit{Latent Trait Analysis}, LTA) le variabili latenti sono trattate come variabili continue e normalmente distribuite.
+Nell'analisi del profilo latente (\textit{Latent Profile Analysis}, LPA) e nell'analisi della classe latente (\textit{Latent Class Analysis}, LCA) le variabili latenti sono discrete e seguono la distribuzione multinomiale. 
+Nelle FA e LPA le variabili manifeste sono continue e, nella maggior parte dei casi, seguono la distribuzione normale. 
+Nelle LTA e LCA gli indicatori sono variabili dicotomiche, ordinali o nominali e seguono la distibuzione binomiale o multinomiale.
+
+\begin{table}[h!]
+\caption{Classificazione di Bartholomew e Knott (1999) dei modelli a variabili latenti.}
+\label{tab:Bartholomew_Knott}
+\centering
+\begin{tabular}{ccc}
+\hline
+& \multicolumn{2}{c}{Variabili latenti} \\
+\cline{2-3}
+Var. osservate & Continue & Categoriali \\
+\hline
+Continue     & Analisi fattoriale       & Analisi del profilo latente \\
+Categoriali  & Analisi del tratto latente &  Analisi della classe latente \\
+\hline
+\end{tabular}
+
+\end{table}
+
+I problemi trattati dai modelli a tratto latente sono dunque concettualmente
+simili a quelli dell'analisi fattoriale. 
+Anche in questo caso si definisce un modello probabilistico che mette in relazione
+le variabili osservate con un piccolo insieme di variabili
+latenti.  
+Gli obiettivi sono gli stessi dell'analisi fattoriale:
+\begin{enumerate}
+\item determinare se le relazioni tra le variabili osservate possano essere spiegate da un insieme più piccolo di variabili latenti;
+\item assegnare un punteggio a ogni rispondente sulle variabili latenti.
+\end{enumerate}
+Il modello statistico rilevante per la presente discussione è dunque quello dell'analisi del tratto latente in cui le variabili osservate sono categoriali e la variabile latente è continua.
+
+\section{La matrice dei dati}
+
+Iniziamo considerando il caso più semplice. 
+Si supponga che la variabile risposta abbia due modalità, convenzionalmente chiamate successo (o, comunque, risposta positiva) e insuccesso (o risposta negativa).  
+Un modo conveniente di procedere è quello di indicare con 1 il successo e con 0 l'insuccesso.
+Questa convenzione ha il vantaggio che, sommando i valori di una qualsiasi riga della matrice dei dati si ottiene il numero totale di risposte per le quali si è osservato un successo. 
+La matrice dei dati che riporta le risposte fornite da $n$ rispondenti a $p$ item dicotomici assume dunque la forma indicata nella tabella \ref{tab_dataLSAT}.
+
+\begin{table}[h!]
+\caption{\textit{Selezione casuale di 6 righe della matrice di dati contenuta nel data-frame \texttt{LSAT}.  Le colonne rappresentano  5 item del  Law School Admission Test (LSAT).} }
+\label{tab_dataLSAT}
+\centering
+\begin{tabular}{cccccc}
+\toprule
+&\multicolumn{5}{c}{Item} \\
+\cmidrule(r){2-6}
+ID &  1  &   2 &   3  &  4 & 5 \\
+\midrule
+25     &  0   &   0   &   1   &   1   &   0\\
+50     &  0   &   1   &   0   &   1   &   1\\
+66     &  0   &   1   &   1   &   1   &   1\\
+91     &  1   &   0   &   0   &   0   &   1\\
+104    &  1   &   0   &   0   &   0   &   1\\
+110    &  1   &   0   &   0   &   0   &   1\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Per consentire la riproducibilità dei risultati, utilizzeremo i dati contenuti nel data.frame \texttt{LSAT} disponibile nel pacchetto \R\; \texttt{ltm}. 
+Tale data.frame contiene le risposte di 1000 individui su 5 item del \emph{Law School Admission Test} (LSAT)\footnote{Il questionario è costituito da 5 batterie di domande a scelta multipla selezionate per misurare tre abilità considerate essenziali per il successo nella \textit{Law School}: lettura e comprensione del testo, ragionamento analitico e ragionamento logico.} e costituisce  un sottoinsieme dei dati analizzati da Bock and Lieberman (1970). 
+
+\subsection{Il pattern di risposta}
+
+La matrice di dati contiene tante righe quanti sono i rispondenti. 
+Ognuna di queste righe prende il nome di \emph{pattern di risposta}. 
+Nel caso di $p$ item binari, ci sono $2^p$ pattern di risposta.  
+Con $p = 5$, ad esempio, abbiamo 32 diversi pattern di risposta. 
+Se il numero dei rispondenti è molto più grande di $2^p$, molti pattern di risposta saranno ripetuti. 
+Perciò è più conveniente rappresentare la matrice dei dati come una lista dei possibili pattern di risposta, insieme alle frequenze associate a ciascun pattern. 
+Per i dati contenuti nel data-frame \texttt{LSAT}, abbiamo:
+
+\begin{lstlisting}
+                freq
+ [1,] 0 0 0 0 0    3
+ [2,] 0 0 0 0 1    6
+ [3,] 0 0 0 1 0    2
+ [4,] 0 0 0 1 1   11
+ [5,] 0 0 1 0 0    1
+ [6,] 0 0 1 0 1    1
+ [7,] 0 0 1 1 0    3
+ [8,] 0 0 1 1 1    4
+ [9,] 0 1 0 0 0    1
+[10,] 0 1 0 0 1    8
+[11,] 0 1 0 1 1   16
+[12,] 0 1 1 0 1    3
+[13,] 0 1 1 1 0    2
+[14,] 0 1 1 1 1   15
+[15,] 1 0 0 0 0   10
+[16,] 1 0 0 0 1   29
+[17,] 1 0 0 1 0   14
+[18,] 1 0 0 1 1   81
+[19,] 1 0 1 0 0    3
+[20,] 1 0 1 0 1   28
+[21,] 1 0 1 1 0   15
+[22,] 1 0 1 1 1   80
+[23,] 1 1 0 0 0   16
+[24,] 1 1 0 0 1   56
+[25,] 1 1 0 1 0   21
+[26,] 1 1 0 1 1  173
+[27,] 1 1 1 0 0   11
+[28,] 1 1 1 0 1   61
+[29,] 1 1 1 1 0   28
+[30,] 1 1 1 1 1  298
+\end{lstlisting}
+
+\noindent
+L'ultima colonna esprime quante volte ciascun pattern di risposta ricorre nella matrice dei dati. 
+Alcuni pattern di risposta non sono presenti nella matrice dei dati e quindi non
+compaiono nella tabella. 
+In questo campione, il 92.4\% dei rispondenti ha fornito una risposta corretta al primo item; per gli item 2, 3, 4 e 5, le percentuali di risposte corrette sono pari al 70.9\%, 55.3\%, 76.3\% e 87.0\%.
+
+Nel caso di variabili continue, ci eravamo posti il problema di eseguire l'analisi fattoriale per cercare di spiegare le correlazioni osservate tra le \emph{coppie} di item nei termini di uno o più fattori latenti. 
+Lo stesso approccio può essere seguito anche nel caso di item dicotomici.  
+Anche in questo caso dobbiamo considerare tutte le associazioni a coppie tra gli item, ovvero dobbiamo esaminare, per ciascuna coppia di item, la tabella di contingenza $2 \times 2$.  
+Ad esempio, incrociando i primi due item, otteniamo la seguente tabella di contingenza:
+
+\begin{lstlisting}
+table(LSAT[, 1], LSAT[, 2])
+#>      0   1
+#>  0  31  45
+#>  1 260 664
+\end{lstlisting}
+
+\noindent
+È facile rendersi conto che tali item sono associati.
+Infatti,
+
+\begin{lstlisting}
+chisq.test(LSAT[, 1], LSAT[, 2])
+#>  Pearson's Chi-squared test with Yates' continuity correction
+#>
+#> data:  LSAT[, 1] and LSAT[, 2] 
+#> X-squared = 4.8515, df = 1, p-value = 0.02762
+\end{lstlisting}
+
+\noindent
+Un'analisi simile può essere condotta per tutte le altre coppie di item.
+Analogamente all'analisi fattoriale, ci chiediamo se queste associazioni siano dovute alla presenza di uno o più fattori comuni non misurati. 
+Se è possibile identificare tali fattori comuni, allora diventa anche possibile calcolare i punteggi fattoriali dei rispondenti sulle dimensioni latenti. 
+
+\subsection{Analisi fattoriale classica e variabili binarie}
+
+Iniziamo a chiederci perché, sulla matrice di correlazioni calcolata tra ciascuna coppia di item dicotomici, non sia possibile eseguire l'analisi fattoriale così come l'abbiamo discussa in precedenza. 
+A tale domanda si può rispondere dicendo che, nel caso presente, l'analisi fattoriale non è appropriata perché il modello fattoriale assume una relazione lineare tra le variabili latenti e i punteggi osservati:
+$$
+Y_i - \mu_i = \lambda_{i1}\xi_1 + \lambda_{i2}\xi_2 + \dots + \lambda_{im}\xi_m + \delta_i,
+$$
+dove $\xi_j$ e i $\delta_i$ sono delle variabili continue, indipendenti tra loro, che posso assumere qualsiasi valore. 
+Ne segue che, in base al modello precedente, anche le $Y_i$ potranno  assumere qualsiasi valore. 
+Nel caso di dati binari, invece, la variabile risposta può assumere solo i valori 0 e 1. 
+È facile da capire, quindi, che un modello lineare non può essere utilizzato per modellizzare variabili binarie o, in generale, variabili categoriali. 
+
+\subsection{Modello fattoriale per risposte binarie}
+
+È necessario trovare un modello che consenta di mettere in relazione variabili latenti continue con variabili osservate categoriali. 
+Consideriamo il caso più semplice nel quale abbiamo item dicotomici e un'unica variabile latente (tale variabile latente, nel nostro caso, potrebbe rappresentare l'abilità del rispondente rispetto ai quesiti dell'esame di  ``Costruzione e Validazione di Strumenti di Misura dell'Efficacia dell'Intervento Psicologico in Neuropsicologia''). 
+Tale modello si potrà poi estendere al caso più complesso di due o più variabili latenti e al caso di  variabili manifeste politomiche (con più di due modalità) o ordinali. 
+Il modello statistico desiderato deve mettere in relazione l'abilità latente $\theta \in (-\infty, \infty)$ con la probabilità di rispondere correttamente all'item $i$-esimo $P_i \in (0, 1)$.  
+La funzione che descrive la relazione tra queste due quantità si chiama ``funzione caratteristica dell'item''. 
+La funzione funzione caratteristica dell'item deve dunque mappare l'intervallo $(0, 1)$ nell'intervallo $(-\infty, \infty)$. 
+Inoltre, deve essere monotona, nel senso che un incremento della variabile latente $\xi$ deve determinare un incremento della probabilità di risposta corretta.
+
+Per definire tale funzione, i modelli a tratto latente seguono lo stesso approccio che viene seguito nel modello statistico della regressione logistica (si veda il capitolo~\ref{chapter:logistic_regression}).  
+Nella regressione logistica, infatti, viene utilizzata una funzione legame che possiede le proprietà che abbiamo descritto sopra, ovvero la funzione Logit $$P(\theta) = \frac{e^{f(\theta)}}{1+e^{f(\theta)}}.$$ 
+Si tratta dunque di adattare il modello statistico della regressione logistica in modo tale che sia in grado di rappresentare la regressione di ogni $Y_i$ (dicotomico o politomico) sulla variabile latente.
+
+La regressione di $Y_i$ sulle variabili latenti corrisponde al valore atteso condizionato di $Y_i$ data la variabile latente, $\mathscr{E}(Y_i \mid \xi)$. 
+Dal momento che la variabile $Y_i$ è dicotomica, abbiamo che $\mathscr{E}(Y_i \mid \xi) = P(Y_i=1 \mid \xi)=\pi_i(\xi)$, dove $\pi_i(\xi)$ è la probabilità condizionata di $Y_i = 1$ dato il valore della variabile latente. 
+Il modello Logit è definito come segue:
+\begin{equation}
+\ln \left(\frac{\pi_i(\xi)}{1-\pi_i(\xi)}\right)=\mu_i + \lambda_{i}\xi.
+\label{eq:mod_LTA}
+\end{equation}
+La probabilità $\pi_i(\xi)$ denota la probabilità di ``successo'' e il rapporto $\pi_i(\xi)/[1-\pi_i(\xi)]$ definisce l'Odds di ``successo''.  
+Il logaritmo dell'Odds è il Logit.  
+Utilizzando la trasformazione inversa, possiamo esplicitare l'equazione~\ref{eq:mod_LTA} in funzione di $\pi_i(\xi)$ come segue: 
+\begin{equation}
+\pi_i(\xi) = \frac{ e^{\mu_i +\lambda_{i}\xi} }{1+e^{\mu_i +  \lambda_{i}\xi}}.
+\label{eq:mod_LTA_prob1}
+\end{equation}
+Così facendo, abbiamo espresso la probabilità di successo come funzione non lineare dell'abilità latente $\xi$.
+Tale funzione non lineare definisce la \emph{funzione caratteristica dell'item} nei modelli a tratto latente.
+
+%\subsection{Funzione caratteristica dell'item}
+%
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=7cm]{LN16_6_1}
+%\caption{Ipotetica relazione tra la risposta all'item $g$ e il tratto latente $\theta$.}
+%\label{fig:LN16_6_1}
+%\end{figure}
+%
+%Lord e Novick (1967) forniscono una descrizione dell'equazione~\ref{eq:mod_LTA_prob1}.  
+%Si supponga che per ciascun item $i=1, \dots, p$ vi sia una variabile aleatoria continua $\Gamma_g$. 
+%L'intensità di $\Gamma_g$ determina se la risposta all'item $g$ produrrà un successo o un insuccesso. 
+%La variabile aleatoria $\Gamma_g$ varia sulla popolazione dei rispondenti nel modo seguente:
+%\begin{enumerate}
+%\item la variabile $\Gamma_g$ è linearmente associata all'abilità latente $\theta$;
+%\item la distribuzione condizionata di $\Gamma_g$ dato $\theta$ è normale con media $\mu_{g \mid \theta}$ e varianza $\sigma^2_{g \mid \theta}$;
+%\item se $\Gamma_g$ è maggiore di una costante $\gamma_g$ specifica all'item $g$, allora il rispondente fornirà una risposta corretta all'item $g$ (altrimenti fornirà una risposta sbagliata).
+%\end{enumerate}
+%Tale situazione è illustrata dalla Figura~\ref{fig:LN16_6_1}. 
+%La Figura descrive dunque una situazione simile a quella considerata dalla Teoria Classica dei Test: il parametro $\theta$ dei modelli IRT corrisponde al punteggio vero della CTT e il punteggio $\gamma$ dei modelli IRT corrisponde al punteggio osservato della CTT, ovvero corrisponde al punteggio vero a cui è stata sommata una componente aleatoria di errore di misurazione.
+%
+%La probabilità $P(Y = 1 \mid \theta_v)$ di risposta corretta (o positiva) all'item $g$, per un determinato livello di abilità $\theta$, è uguale alla probabilità $P(\Gamma_g > \gamma_g \mid \theta_v)$. 
+%La Figura~\ref{fig:LN16_6_1} riporta la  probabilità  $P(Y = 1 \mid \theta_v)$ in corrispondenza di due diversi livelli di abilità $\theta$.  
+%Le probabilità $P(Y = 1 \mid \theta_v)$ corrispondono alle aree evidenziate in nero nelle due distribuzioni Normali riportate dalla Figura. 
+%
+%Chiediamoci ora che relazione intercorra tra $P(Y = 1 \mid \theta_v)$  e $\theta$.  
+%Per rispondere a questa domanda calcoliamo  $P(\Gamma_g > \gamma_g \mid \theta_v)$, ovvero l'area della distribuzione Normale evidenziata in nero nella Figura~\ref{fig:LN16_6_1}, per tutti i possibili valori dell'intervallo [$-\infty, \theta$]. 
+%Per la situazione rappresentata nella Figura~\ref{fig:LN16_6_1} otteniamo il risultato rappresentato nella Figura~\ref{fig:LN16_6_1a}.
+%Tale risultato corrisponde a ciò che in precedenza abbiamo chiamato \emph{funzione caratteristica dell'item} (\emph{Item Characteristic Curve}, ICC) $g$, o funzione di risposta all'item. 
+%La funzione caratteristica dell'item mostra dunque come varia la probabilità di una risposta corretta all'item $i$-esimo, $\pi_i(\xi)=P(y_i=1 \mid \xi)$, al variare dell'abilità latente $\theta$ del rispondente. 
+%
+%\begin{figure}[h!]
+%  \centering
+%    \includegraphics[width=7cm]{LN16_6_1a}
+%     \caption{Relazione tra la probabilità $P(Y = 1 \mid \theta)$ di risposta corretta all'item $g$ e il tratto latente $\theta$ per la situazione rappresentata nella Figura~\ref{fig:LN16_6_1}.}
+%     \label{fig:LN16_6_1a}
+%\end{figure}
+
+\subsection{Interpretazione dei parametri}\label{cap:interpr_par_irt}
+
+Nel modello~\ref{eq:mod_LTA_prob1} i coefficienti $\lambda_{i}$ si interpretano allo stesso modo in cui vengono interpretate le saturazioni fattoriali: tanto più grande è $\lambda_{i}$ tanto maggiore è l'effetto causale del fattore latente sulla probabilità di una risposta corretta all'item $i$-esimo. 
+Nel modello~\ref{eq:mod_LTA_prob1}, inoltre, $\xi$ rappresenta il grado in cui il tratto latente è presente in ciascun rispondente e viene perciò inteso come il livello di abilità (o di competenza, \textit{proficiency}) del rispondente. 
+
+Un esempio di curva ICC è fornito dalla Figura~\ref{fig:LTA_plot1}. 
+Il parametro $\lambda$ determina la pendenza della curva. 
+Nella Figura~\ref{fig:LTA_plot1} sono rappresentate le ICC di quattro item aventi parametri $\lambda=4$ (rosso), $\lambda=2$ (blu), $\lambda=1$ (verde) e $\lambda=0.5$ (grigio).  
+La probabilità di risposta corretta in funzione dell'abilità latente varia in maniera più o meno rapida a seconda del valore di $\lambda$. 
+Per tale ragione $\lambda$ viene chiamato \emph{parametro di discriminazione}: gli item a cui corrispondono $\lambda$ più grandi riescono a discriminare meglio tra individui aventi livelli diversi di abilità latente.
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=7cm]{LTA_plot1}
+    \caption{Curva caratteristica dell'item per valori diversi del parametro di discriminazione $\lambda$ e per $\mu=0$.}
+    \label{fig:LTA_plot1}
+  \end{center}
+\end{figure}
+
+Oltre a $\lambda$, il modello~\ref{eq:mod_LTA_prob1} contiene anche il parametro $\mu$.
+%A parità di $\lambda$, se aumenta $\mu$ aumenta anche il livello di abilità che è necessario possedere per ottenere una determinata probabilità di risposta corretta.  
+%Per tale motivo il parametro $\mu$ prende il nome di \emph{parametro di difficoltà}. 
+%Nella figura~\ref{fig:RPlotLTA_2} sono illustrate le curve caratteristiche dell'item per tre valori diversi del parametro di difficoltà, con $\mu=0$ (blu), $\mu=-3$ (rosso) e $\mu=3$ (verde), tenendo costante il valore del parametro di discriminazione ($\lambda = 2$).
+%
+%\begin{figure}
+%  \begin{center}
+%    \includegraphics[width=7cm]{RplotLTA_2}
+%    \caption{Curva caratteristica dell'item per valori diversi del parametro di difficoltà $\mu$ e $\lambda=2$.}
+%    \label{fig:RPlotLTA_2}
+%  \end{center}
+%\end{figure}
+È facile capire quali sono le conseguenze della variazione del parametro $\mu$ se consideriamo un rispondente avente un livello di abilità pari a $\xi = 0$. 
+Dato che $\xi$ ha distribuzione normale standardizzata, questa situazione corrisponde a quella dell'individuo medio nella popolazione.  
+In base al modello~\ref{eq:mod_LTA_prob1}, la probabilità che l'individuo medio risponda correttamente all'$i$-esimo item è: 
+\begin{equation}
+\pi_i(Y_i=1 \mid \xi=0) = \frac{ e^{\mu_i} }{1+e^{\mu_i}}.
+\end{equation}
+In base alla formula precedente, troviamo che la probabilità di risposta corretta è maggiore di $0.50$ per valori $\mu_i > 0$; per valori $\mu_i<0$, invece, la probabilità di risposta corretta è minore di $0.50$.
+In questa formulazione del modello a tratto latente, dunque, all'aumentare del valore del parametro $\mu_i$ aumenta la probabilità di una risposta corretta.
+Potremmo dunque interpretare $\mu_i$ come la \emph{facilità} dell'item $i$-esimo.
+Vedremo in seguito come, nella formulazione usuale del modello a tratto latente,  tale coefficiente viene cambiato di segno in modo tale che codifichi la \emph{difficoltà} di un item.
+
+\subsection{Il principio dell'indipendenza locale}
+
+L'analisi fattoriale è basata sull'idea che vi siano dei fattori non misurati che, se venissero controllati, renderebbero nulle le covarianze (correlazioni) tra ciascuna coppia di variabili manifeste.  
+I modelli a tratto latente si basano su un'assunzione ancora più forte: \emph{subordinatamente al tratto latente, le risposte agli item devono essere condizionalmente indipendenti}.  
+Tale assunzione, dunque, riguarda non soltanto le associazioni bivariate, ma anche le associazioni tra triplette di item, quadruple di item, eccetera.  
+Un'assunzione più debole, implicita nella precedente, è quella dell'incorrelazione tra ciascuna coppia di item, se il tratto latente viene mantenuto costante. 
+
+Nei modelli a tratto latente il fattore sottostante è interpretato come nell'analisi fattoriale, ovvero come la fonte causale che spiega l'associazione tra le variabili manifeste. 
+Anche nei modelli a tratto latente, dunque, il fattore sottostante è interpretato come l'attributo che gli item hanno in comune.  
+Solitamente, anche se sarebbe preferibile sviluppare dei modelli statistici basati sull'assunzione forte dell'indipendenza locale, ci si accontenta di trovare il fattore latente che è in grado di spiegare tutte le associazioni bivariate tra gli item.  
+
+\section{Modello di Rasch}
+
+Il modello a tratto latente più semplice ipotizza curve caratteristiche identiche per tutti gli item. 
+Tale ipotesi è equivalente all'ipotesi di item paralleli nel caso delle variabili continue, ovvero nel caso dell'analisi fattoriale. 
+Un modello avente tali caratteristiche viene detto ``modello di Rasch'', ipotizza la presenza di un solo tratto latente e può essere considerato come l'analogo del modello ad un fattore comune di Spearman.  
+%Come nell'analisi fattoriale, una volta stimati i parametri del modello e stabilito il buon adattamento del modello ai dati, diventa possibile determinare la posizione di ciascun rispondente sul continuum del tratto latente.
+Il modello~\ref{eq:mod_LTA_prob1} è stato introdotto nella letteratura psicometrica da Rasch (1960) e, solitamente, è scritto nel modo seguente:
+\begin{align} 
+Pr(Y_{vi} = 1 \mid \theta_v, \beta_i) &= \frac{\exp(\theta_v-\beta_i)}{1+\exp(\theta_v-\beta_i)}\notag\\
+&=\frac{1}{1+ \exp\left(-(\theta_v-\beta_i)\right)}.
+\label{eq:rasch_model}
+\end{align}
+
+\subsection{Significato dei parametri}
+
+Abbiamo introdotto il modello di Rasch scrivendo il predittore lineare come $\mu_i + \lambda_i \xi$, in analogia con il modello dell'analisi fattoriale (si veda l'eq.~\ref{eq:mod_LTA_prob1}).
+Il modello~\ref{eq:rasch_model} è identico al modello~\ref{eq:mod_LTA_prob1}, eccetto per la notazione.
+Nel modello~\ref{eq:rasch_model}, il parametro $\theta_{\nu}$ (con $\nu= 1, \dots, n$) sostituisce il prodotto $\lambda\xi$ dell'eq.~\ref{eq:mod_LTA_prob1}. 
+Questa nuova parametrizzazione viene preferita perché, in questo modo, $\theta_{\nu}$ specifica direttamente il livello di abilità latente del $\nu$-esimo rispondente.
+Inoltre, dopo averlo cambiato di segno, il parametro $\mu_i$ del modello~\ref{eq:mod_LTA_prob1} viene ora chiamato $\beta_i$.
+Il cambiamento di segno fa in modo che, anziché la facilità, $\beta_i$ rappresenti la \emph{difficoltà} dell'item $i$-esimo (si veda la discussione nella sezione~\ref{cap:interpr_par_irt}). 
+%Il significato del parametro $\beta_i$ è illustrato nella figura~\ref{fig:icc_mental}.  
+%Si supponga che l'item $i$-esimo sia il seguente: ``As a result of any emotional problems (such as feeling depressed or anxious), have you accomplished less than you would like?''
+%Il parametro di difficoltà $\beta_i=-0.34$ indica il livello di salute mentale ($\theta$) di un rispondente per il quale la probabilità di rispondere ``sì'' è uguale a $0.50$.
+
+%\begin{figure}[h!]
+%\begin{center}
+%\includegraphics[width=9cm]{ICC_mental.pdf}
+%\caption{Nella Figura sono rappresentate le probabilità di rispondere ``sì'' oppure ``no'' all'item ``\emph{As a result of any emotional problems (such as feeling depressed or anxious), have you accomplished less than you would like?}'' subordinatamenete al livello della salute mentale dei rispondenti (Figura tratta da: Presser, Rothgeb, Couper, Lessler, Martin, Martin e Singer, 2004).}
+%    \label{fig:icc_mental}
+%\end{center}
+%\end{figure}
+
+\subsection{Modello di Rasch sulla scala dei logit}
+
+Per descrivere la probabilità di una risposta corretta, il modello di Rasch utilizza quale unità di misura i Logit. 
+Ricordiamo che il Logit è il logaritmo naturale dell'Odds: $\ln \left[\frac{P(X=1)}{P(X=0)}\right]$. 
+Descriviamo dunque la probabilità dell'evento $Y=1$ nei termini dell'equazione~\ref{eq:rasch_model}: 
+\begin{align}
+\ln \left[\frac{P(Y_{vi} = 1 \mid  \theta_v, \beta_i)}{1-P(Y_{vi} = 1 \mid \theta_v, \beta_i)} \right] &= \ln \left( \frac{ \frac{e^{\theta_v-\beta_i}}{1+e^{\theta_v-\beta_i}} }{ 1- \frac{e^{\theta_v-\beta_i}}{1+e^{\theta_v-\beta_i}}} \right)  \notag\\ 
+&= \ln \left( \frac{ \frac{e^{\theta_v-\beta_i}}{1+e^{\theta_v-\beta_i}} }{  \frac{ 1+ e^{\theta_v-\beta_i} - e^{\theta_v-\beta_i}}{1+e^{\theta_v-\beta_i}}  } \right)\notag\\
+&= \theta_v-\beta_i.
+\label{eq:rasch_logit}
+\end{align}
+Il risultato precedente indica che la probabilità di una risposta corretta all'$i$-esimo item è uguale, sulla scala dei Logit, alla differenza tra il livello di abilità $\theta_v$ posseduto dal $v$-esimo rispondente e il livello di difficoltà $\beta_i$ dell'$i$-esimo item. 
+Tanto maggiore è il livello di abilità del rispondente rispetto alla difficoltà dell'item, tanto più grande sarà la probabilità di una risposta corretta $P(X_{vi} = 1)$ rispetto alla probabilità di una risposta sbagliata $1-P(X_{vi} = 1)$.
+Al crescere della differenza $\theta_v-\beta_i$ crescerà dunque anche il logaritmo del rapporto tra le due probabilità, ovvero il Logit.
+In conclusione, valori grandi sulla scala dei Logit indicano una differenza via via più grande tra l'abilità del rispondente e la difficoltà dell'item.
+
+\subsection{Assunzioni}
+
+Il modello di Rasch si fonda sulle seguenti assunzioni.
+\begin{enumerate}
+\item Esiste una entità unidimensionale $\theta_{v}$, detta abilità latente, associata ad un generico rispondente $v$, che determina la capacità del rispondente di rispondere correttamente all'item.  
+  \item La probabilità di rispondere correttamente all'$i$-esimo item, $P_i(\theta_v$), aumenta al crescere del livello di abilità latente $\theta_v$.
+  \item La probabilità di  risposta corretta  tende asintoticamente a zero al diminuire dell'abilità del rispondente; allo stesso modo, all'aumentare dell'abilità del rispondente, la probabilità di  risposta corretta tende a uno.
+  \item Subordinatamente  all'abilità $\theta_v$, gli elementi del vettore di risposte agli item, $\boldsymbol{Y}_v=(Y_{v1}, \dots, Y_{vI})^{\intercal}$, sono mutuamente  indipendenti. 
+In altri termini, tenendo costanti le abilità dei rispondenti, le risposte a qualunque coppia di item non risultano in alcun modo associate. 
+Quindi la dipendenza tra gli item è unicamente determinata dal tratto latente.
+  \item La statistica dei punteggi grezzi $r_v = \sum_{i=1}^{I}Y_{vi}$ è una statistica sufficiente per $\theta_v$, nel senso che la configurazione di risposte fornite dal rispondente non contiene alcuna informazione aggiuntiva rispetto a $\theta_v$ oltre a quella fornita da $r_v$. 
+\end{enumerate}
+
+\section{Modello IRT a due parametri}
+
+Nel modello di Rasch le curve caratteristiche degli item sono tra loro parallele. 
+Ricordiamo che ogni item ha la sua curva caratteristica e la pendenza di tale curva descrive la capacità discriminatoria dell'item rispetto alla variabile latente: maggiore è la pendenza, tanto più l'item è in grado di discriminare tra rispondenti con livelli di abilità diversi. 
+
+Il modello a due parametri (2PL) utilizza il parametro $\alpha_i$ di discriminazione degli item, oltre al parametro di difficoltà $\beta_i$.  
+Il parametro $\alpha_i$ consente alle curve caratteristiche di avere pendenze diverse e rappresenta la diversa capacità discriminatoria degli item rispetto alla variabile latente. 
+Le curve caratteristiche del modello a due parametri assumono la seguente forma:
+\begin{equation} 
+  Pr(X_{vi} = 1 \mid \theta_v, \beta_i, \alpha_i) = \frac{\exp(\alpha_i(\theta_v-\beta_i))}{1+ \exp(\alpha_i(\theta_v-\beta_i))}.
+\end{equation}
+
+La Figura ~\ref{fig:icc2} illustra la curva caratteristica di tre item nel modello 2PL, dove i parametri $\beta_1=0$ e $\alpha_1=0.5$ definiscono la ICC rappresentata dalla curva rossa, i
+parametri $\beta_2=2$ e $\alpha_2=1$ definiscono la ICC rappresentata dalla curva verde e i parametri $\beta_3=-2$ e $\alpha_3=3$ definiscono la ICC rappresentata dalla curva blu. 
+Si noti che l'item cui corrisponde la ICC blu possiede una capacità discriminatoria maggiore rispetto all'abilità latente dell'item a cui corrisponde la ICC verde. 
+Il terzo item ha una capacità discriminatoria più bassa rispetto agli altri due item.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=7cm]{Rplot_icc_2.pdf}
+\caption{Curva caratteristica di tre item con diverso potere discriminante nel caso di un modello IRT a due parametri.}
+\label{fig:icc2}
+\end{center}
+\end{figure}
+
+\section{Modello IRT a tre parametri}
+
+Per tenere conto dell'eventuale tendenza del rispondente a tirare ad indovinare, i modelli IRT introducono un ulteriore parametro, ovvero $\gamma_i$. 
+Il modello 3PL assume la forma seguente:
+\begin{equation} 
+Pr(X_{vi} = 1 \mid  \theta_v, \beta_i, \alpha_i, \gamma_i) = \gamma_i + (1-\gamma_i) \frac{\exp(\alpha_i(\theta_v-\beta_i))}{1 + \exp(\alpha_i(\theta_v-\beta_i))}.
+\end{equation}
+Il parametro $\gamma_i$ ha l'effetto di introdurre un asintoto orizzontale maggiore di zero per valori  $\theta_v$ tendenti a $-\infty$. 
+Per item con $\gamma_i = 0.25$, per esempio, la probabilità di successo come conseguenza del caso è almeno pari a 0.25, anche per i livelli di abilità latente più bassi. 
+
+La Figura~\ref{fig:icc3} illustra la curva caratteristica di tre item nel caso del modello 3PL. 
+Il parametro $\gamma_i$ corrisponde all'asintoto inferiore.  
+La Figura~\ref{fig:icc3} è stata generata con i seguenti valori per i parametri del modello 3PL: $\beta_1=1.0$, $\alpha_1=0.5$ e $\gamma_1=0.25$ per la ICC rossa; $\beta_2=2.0$, $\alpha_2=1.0$ e $\gamma_2=0$ per la ICC verde; $\beta_3=-2.0$, $\alpha_3=3.0$ e $\gamma_3=0.1$ per la ICC blu.
+Si noti che il punto di flesso delle ICC è spostato dall'asintoto inferiore.  
+La difficoltà di ciascun item identifica il livello di abilità latente $\theta$ in corrispondenza del flesso della ICC. 
+Essendo l'asintoto inferiore maggiore di zero, la difficoltà di ciascun item è associata ad una probabilità maggiore di 0.5. 
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=7cm]{Rplot_icc_3.pdf}
+\caption{Curve caratteristiche di tre item con diverso potere discriminante e con guessing non sempre nullo nel caso di un modello IRT a tre parametri.}
+\label{fig:icc3}
+\end{center}
+\end{figure}
+
+
+
+\section{Vantaggi dei modelli IRT}
+
+L'abilità di un rispondente viene spesso valutata mediante i risultati ottenuti dalla somministrazione di un questionario a scelta multipla. 
+In base alla teoria classica dei test, una stima dell'abilità del rispondente è data dalla somma dei punteggi ottenuti dai rispondenti agli item del test.  
+Tale approccio, pur essendo molto comune e di facile applicazione, presenta due  limiti.  
+
+\begin{description}
+\item[\emph{La dipendenza dagli item}] supponiamo di volere misurare una specifica abilità in due  gruppi di rispondenti. 
+Se vogliamo confrontare  i risultati ottenuti dai due gruppi è necessario che a ciascun gruppo venga somministrato lo stesso insieme di item.  
+Se gli item variano tra i gruppi, infatti, potrebbe variare anche la difficoltà del test e, di conseguenza, non sarebbe appropriato effettuare un confronto tra i gruppi. 
+Nella teoria classica dei test, dunque, la stima dell'abilità dei rispondenti dipende dagli specifici item che sono stati somministrati. 
+\item[\emph{La dipendenza dai rispondenti}] la dipendenza dai rispondenti riflette il fatto che, nella teoria classica dei test, la qualità degli item può essere valutata soltanto in riferimento allo specifico gruppo di rispondenti a cui il test è stato somministrato. 
+Le proprietà degli item non restano invariate quando gli stessi item vengono somministrati a gruppi di rispondenti aventi livelli diversi di abilità: sia la difficoltà degli item, sia il potere discriminante degli item vengono determinati dal livello di abilità dei rispondenti. 
+Di conseguenza, non è possibile giudicare la qualità degli item (ovvero, la difficoltà e il potere discriminante) indipendentemente dal campione a cui il test è stato somministrato.
+\end{description}
+
+I modelli IRT consentono di superare questi due limiti stimando congiuntamente le proprietà degli item e il livello di abilità dei rispondenti -- nei modelli IRT, sia l'abilità latente sia la difficoltà degli item vengono misurati su un'unica scala latente. 
+I modelli IRT concepiscono il livello di abilità dei rispondenti come una variabile latente e, attraverso i modelli statistici descritti in precedenza, mettono in relazione l'abilità del rispondente con la probabilità di una risposta corretta agli item del test. 
+Il vantaggio di questo approccio statistico è che, una volta che il questionario è stato validato, le caratteristiche degli item risultano essere indipendenti dal campione di rispondenti utilizzato per la costruzione del test. 
+Ciò consente di costruire insiemi di item equivalenti, in termini di capacità di misurazione dell'abilità latente, da cui attingere per la formulazione di questionari standardizzati in funzione del livello di competenza che si vuole misurare. 
+
+
+

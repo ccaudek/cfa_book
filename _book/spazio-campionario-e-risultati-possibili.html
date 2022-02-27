@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.3 Spazio campionario e risultati possibili | Data Science per psicologi</title>
+  <meta name="description" content="This document contains the materials of the lessons of Psicometria B000286 (2021/2022) aimed at students of the first year of the Degree Course in Psychological Sciences and Techniques of the University of Florence, Italy." />
+  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.3 Spazio campionario e risultati possibili | Data Science per psicologi" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This document contains the materials of the lessons of Psicometria B000286 (2021/2022) aimed at students of the first year of the Degree Course in Psychological Sciences and Techniques of the University of Florence, Italy." />
+  <meta name="github-repo" content="ccaudek/ds4psy" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.3 Spazio campionario e risultati possibili | Data Science per psicologi" />
+  
+  <meta name="twitter:description" content="This document contains the materials of the lessons of Psicometria B000286 (2021/2022) aimed at students of the first year of the Degree Course in Psychological Sciences and Techniques of the University of Florence, Italy." />
+  
+
+<meta name="author" content="Corrado Caudek" />
+
+
+<meta name="date" content="2022-02-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="variabili-casuali-e-probabilità-di-un-evento.html"/>
+<link rel="next" href="usare-la-simulazione-per-stimare-le-probabilità.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Science per psicologi</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> mainfont: “Palatino nova W1G”</a>
+<ul>
+<li class="chapter" data-level="" data-path="la-psicologia-e-la-data-science.html"><a href="la-psicologia-e-la-data-science.html"><i class="fa fa-check"></i>La psicologia e la Data science</a></li>
+<li class="chapter" data-level="" data-path="come-studiare.html"><a href="come-studiare.html"><i class="fa fa-check"></i>Come studiare</a></li>
+<li class="chapter" data-level="" data-path="sviluppare-un-metodo-di-studio-efficace.html"><a href="sviluppare-un-metodo-di-studio-efficace.html"><i class="fa fa-check"></i>Sviluppare un metodo di studio efficace</a></li>
+</ul></li>
+<li class="part"><span><b>I Il calcolo delle probabilità</b></span></li>
+<li class="chapter" data-level="2" data-path="intro-prob-1.html"><a href="intro-prob-1.html"><i class="fa fa-check"></i><b>2</b> Nozioni di base</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="che-cosè-la-probabilità.html"><a href="che-cosè-la-probabilità.html"><i class="fa fa-check"></i><b>2.1</b> Che cos’è la probabilità?</a></li>
+<li class="chapter" data-level="2.2" data-path="variabili-casuali-e-probabilità-di-un-evento.html"><a href="variabili-casuali-e-probabilità-di-un-evento.html"><i class="fa fa-check"></i><b>2.2</b> Variabili casuali e probabilità di un evento</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="variabili-casuali-e-probabilità-di-un-evento.html"><a href="variabili-casuali-e-probabilità-di-un-evento.html#eventi-e-probabilità"><i class="fa fa-check"></i><b>2.2.1</b> Eventi e probabilità</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="spazio-campionario-e-risultati-possibili.html"><a href="spazio-campionario-e-risultati-possibili.html"><i class="fa fa-check"></i><b>2.3</b> Spazio campionario e risultati possibili</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="spazio-campionario-e-risultati-possibili.html"><a href="spazio-campionario-e-risultati-possibili.html#variabili-casuali"><i class="fa fa-check"></i><b>2.3.1</b> Variabili casuali</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="usare-la-simulazione-per-stimare-le-probabilità.html"><a href="usare-la-simulazione-per-stimare-le-probabilità.html"><i class="fa fa-check"></i><b>2.4</b> Usare la simulazione per stimare le probabilità</a></li>
+<li class="chapter" data-level="2.5" data-path="la-legge-dei-grandi-numeri.html"><a href="la-legge-dei-grandi-numeri.html"><i class="fa fa-check"></i><b>2.5</b> La legge dei grandi numeri</a></li>
+<li class="chapter" data-level="2.6" data-path="variabili-casuali-multiple.html"><a href="variabili-casuali-multiple.html"><i class="fa fa-check"></i><b>2.6</b> Variabili casuali multiple</a></li>
+<li class="chapter" data-level="2.7" data-path="sec:fun-mass-prob.html"><a href="sec:fun-mass-prob.html"><i class="fa fa-check"></i><b>2.7</b> Funzione di massa di probabilità</a></li>
+<li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali.html"><a href="commenti-e-considerazioni-finali.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html"><i class="fa fa-check"></i><b>3</b> Probabilità condizionata</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="sec:bayes-cancer.html"><a href="sec:bayes-cancer.html"><i class="fa fa-check"></i><b>3.1</b> Probabilità condizionata su altri eventi</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="sec:bayes-cancer.html"><a href="sec:bayes-cancer.html#la-fallacia-del-condizionale-trasposto"><i class="fa fa-check"></i><b>3.1.1</b> La fallacia del condizionale trasposto</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="legge-delle-probabilità-composte.html"><a href="legge-delle-probabilità-composte.html"><i class="fa fa-check"></i><b>3.2</b> Legge delle probabilità composte</a></li>
+<li class="chapter" data-level="3.3" data-path="lindipendendenza-stocastica.html"><a href="lindipendendenza-stocastica.html"><i class="fa fa-check"></i><b>3.3</b> L’indipendendenza stocastica</a></li>
+<li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-1.html"><a href="commenti-e-considerazioni-finali-1.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chapter-teo-bayes.html"><a href="chapter-teo-bayes.html"><i class="fa fa-check"></i><b>4</b> Il teorema di Bayes</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="il-teorema-della-probabilità-assoluta.html"><a href="il-teorema-della-probabilità-assoluta.html"><i class="fa fa-check"></i><b>4.1</b> Il teorema della probabilità assoluta</a></li>
+<li class="chapter" data-level="4.2" data-path="il-teorema-di-bayes.html"><a href="il-teorema-di-bayes.html"><i class="fa fa-check"></i><b>4.2</b> Il teorema di Bayes</a></li>
+<li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-2.html"><a href="commenti-e-considerazioni-finali-2.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chapter-prob-congiunta.html"><a href="chapter-prob-congiunta.html"><i class="fa fa-check"></i><b>5</b> Probabilità congiunta</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="funzione-di-probabilità-congiunta.html"><a href="funzione-di-probabilità-congiunta.html"><i class="fa fa-check"></i><b>5.1</b> Funzione di probabilità congiunta</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="funzione-di-probabilità-congiunta.html"><a href="funzione-di-probabilità-congiunta.html#proprietà"><i class="fa fa-check"></i><b>5.1.1</b> Proprietà</a></li>
+<li class="chapter" data-level="5.1.2" data-path="funzione-di-probabilità-congiunta.html"><a href="funzione-di-probabilità-congiunta.html#eventi"><i class="fa fa-check"></i><b>5.1.2</b> Eventi</a></li>
+<li class="chapter" data-level="5.1.3" data-path="funzione-di-probabilità-congiunta.html"><a href="funzione-di-probabilità-congiunta.html#sec:marg-distr-discr"><i class="fa fa-check"></i><b>5.1.3</b> Funzioni di probabilità marginali</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="indipendenza-stocastica-incondizionata.html"><a href="indipendenza-stocastica-incondizionata.html"><i class="fa fa-check"></i><b>5.2</b> Indipendenza stocastica incondizionata</a></li>
+<li class="chapter" data-level="5.3" data-path="indipendenza-condizionata-tra-eventi.html"><a href="indipendenza-condizionata-tra-eventi.html"><i class="fa fa-check"></i><b>5.3</b> Indipendenza condizionata tra eventi</a></li>
+<li class="chapter" data-level="5.4" data-path="indipendenza-di-variabili-casuali.html"><a href="indipendenza-di-variabili-casuali.html"><i class="fa fa-check"></i><b>5.4</b> Indipendenza di variabili casuali</a></li>
+<li class="chapter" data-level="5.5" data-path="sec:margin-vc-cont.html"><a href="sec:margin-vc-cont.html"><i class="fa fa-check"></i><b>5.5</b> Marginalizzazione di variabili casuali continue</a></li>
+<li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-3.html"><a href="commenti-e-considerazioni-finali-3.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
+</ul></li>
+<li class="part"><span><b>II Appendici</b></span></li>
+<li class="appendix"><span><b>Appendici</b></span></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Science per psicologi</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="spazio-campionario-e-risultati-possibili" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Spazio campionario e risultati possibili</h2>
+<p>Anche se il lancio di una moneta produce sempre uno specifico risultato nel mondo reale, noi possiamo anche immaginare i possibili risultati alternativi che si sarebbero potuti osservare. Quindi, anche se in uno specifico lancio la moneta dà testa (<span class="math inline">\(Y\)</span> = 1), possiamo immaginare la possibilità che il lancio possa avere prodotto croce (<span class="math inline">\(Y\)</span> = 0). Tale ragionamento controfattuale è la chiave per comprendere la teoria delle probabilità e l’inferenza statistica.</p>
+<p>I risultati possibili che si possono osservare come conseguenza del lancio di una moneta determinano i valori possibili che la variabile casuale può assumere. L’insieme di tutti i risultati possibili è chiamato <em>spazio campionario</em>. Lo spazio campionario può essere concettualizzato come un’urna contenente una pallina per ogni possibile risultato del lancio della moneta. Su ogni pallina è scritto il valore della variabile casuale. Uno specifico lancio di una moneta – ovvero, l’osservazione di uno specifico valore di una variabile casuale – è chiamato <em>esperimento casuale</em>.</p>
+<p>Il lancio di un dado ci fornisce l’esempio di un altro esperimento casuale. Supponiamo di essere interessati all’evento “il lancio del dado produce un numero dispari”. Un <em>evento</em> seleziona un sottoinsieme dello spazio campionario: in questo caso, l’insieme dei risultati <span class="math inline">\(\{1, 3, 5\}\)</span>. Se esce 3, per esempio, diciamo che si è verificato l’evento “dispari” (ma l’evento “dispari” si sarebbe anche verificato anche se fosse uscito 1 o 5).</p>
+<div id="variabili-casuali" class="section level3" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Variabili casuali</h3>
+<p>Sia <span class="math inline">\(Y\)</span> il risultato del lancio di moneta equilibrata, non di un generico lancio di una moneta, ma un’istanza specifica del lancio di una specifica moneta in un dato momento. Definita in questo modo, <span class="math inline">\(Y\)</span> è una <em>variabile casuale</em>, ovvero una variabile i cui valori non possono essere previsti con esattezza. Se la moneta è equilibrata, c’è una probabilità del 50% che il lancio della moneta dia come risultato “testa” e una probabilità del 50% che dia come risultato “croce”.</p>
+<p>Per facilitare la trattazione, le variabili casuali assumono solo valori numerici. Per lo specifico lancio della moneta in questione, diciamo, ad esempio, che la variabile casuale <span class="math inline">\(Y\)</span> assume il valore 1 se esce testa e il valore 0 se esce croce.</p>
+<p>Una variabile casuale può essere <em>discreta</em> o <em>continua</em>. Una variabile casuale discreta può assumere un numero finito di valori <span class="math inline">\(x_1, \dots ,x_n\)</span>, in corrispondenza degli eventi <span class="math inline">\(E_i, \dots, E_n\)</span> che si verificano con le rispettive probabilità <span class="math inline">\(p_1, \dots, p_n\)</span>. Un esempio è il punteggio totale di un test psicometrico costituito da item su scala Likert. Invece un esempio di una variabile casuale continua è la distanza tra due punti, che può assumere infiniti valori all’interno di un certo intervallo. L’intervallo dei valori che può assumere la variabile casuale è detto <em>supporto</em> della sua distribuzione di probabilità, che può essere finito (come nel caso di una variabile casuale uniforme di supporto <span class="math inline">\([a, b]\)</span>) o infinito (nel caso di una variabile causale gaussiana il cui supporto coincide con la retta reale).</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="variabili-casuali-e-probabilità-di-un-evento.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="usare-la-simulazione-per-stimare-le-probabilità.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ccaudek/ds4psy/edit/master/015_prob_intro.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ds4psy.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

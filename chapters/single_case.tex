@@ -1,0 +1,342 @@
+\chapter{Lo studio del caso singolo}
+\label{ch:single_case}
+
+
+\section*{Motivazione}
+
+In anni recenti c'è stata una sostanziale ripresa di interesse nei confronti degli studi sul caso singolo in neuropsicologia. 
+Tra le ragioni di ciò vi è la convinzione che la prestazione media di un gruppo di pazienti possa essere considerata come un artefatto statistico privo di significato il quale oscura  differenze teoricamente importanti tra i pazienti. 
+La versione più estrema di questo argomento è stata fatta da Caramazza e colleghi (ad esempio, Caramazza, 1986; Caramazza e McCloskey, 1988), i quali hanno sostenuto che i neuropsicologi dovrebbero studiare solo casi singoli. 
+Vallar (2000) ha fornito un riassunto conciso di questa posizione: 
+\begin{quote}
+[Hence] studies in groups of patients which aim at elucidating the neurological and functional architecture of mental processes are useless and harmful, since they provide misleading results. 
+The only appropriate method is to study individual patients. (p. 334)
+\end{quote}
+Questa è una visione minoritaria (anche se influente).
+Tuttavia, molti altri neuropsicologi hanno sottolineato l'importanza dello studio dei casi singoli (Capitani e Laiacona, 2000; Coltheart, 2001; Ellis \& Young, 1996; Shallice, 1988). 
+Ad esempio, la posizione di Vallar (2000) è meno estrema:
+\begin{quote}
+Single-case studies have a number of advantages, in comparison with group studies. 
+The probability to produce significant theoretical advances is perhaps higher. (p. 332)
+\end{quote}
+
+Gli studi sul caso singolo pongono però al neuropsicologo difficili problemi dal punto di vista statistico.
+Esaminiamo qui alcuni temi di tale discussione: il confronto tra caso singolo e un gruppo di controllo e lo studio delle dissociazioni. 
+
+
+\section{Il confronto tra caso singolo e un gruppo di controllo}
+\label{sec:comparison_single_case_controls}
+
+I neuropsicologi hanno spesso bisogno di confrontare un singolo caso con un piccolo gruppo di controllo. 
+Tuttavia, il test $t$ di Student per due campioni indipendenti non può essere applicato perché un gruppo è costituito da un'unica osservazione. 
+Crawford e Garthwaite (2012) dimostrano che il test $t$ di Student messo a punto da Crawford e Garthwaite (2007) fornisce un approccio migliore (in termini del controllo del tasso di errore di Tipo I) rispetto ad altre alternative comunemente usate.
+
+Crawford e Garthwaite (2012) hanno esaminato il problema dello studio del caso singolo in neuropsicologia nel quale le inferenze riguardanti le prestazioni cognitive di un singolo caso vengono confrontate con un campione di controlli sani appaiati. 
+Fino a poco tempo fa il metodo standard per l'inferenza sulla differenza tra un caso e un gruppo di controlli era quello di convertire il punteggio del caso in un punteggio $z$ utilizzando la media campionaria e la deviazione standard del controllo, per poi valutare tale punteggio $z$ con riferimento alla distribuzione normale.
+
+Il problema di questo approccio è che non tiene in considerazione l'incertezza relativa alla media e alla deviazione standard del gruppo di controllo, trattando la media e la deviazione standard del gruppo di controllo come se fossero la media e la deviazione standard della popolazione del gruppo di controllo. 
+Come conseguenza di ciò, l'errore di I tipo viene inflazionato (in questo contesto si verifica un errore di tipo I quando si conclude che il punteggio del caso non è un'osservazione che appartiene alla popolazione del punteggi dei controlli) e viene sovrastimata l'anormalità del punteggio del caso singolo.
+A tale problema sono state proposte diverse soluzioni.
+
+
+\subsection{Il metodo di Crawford e Howell (1998)}
+\label{sec:Crawford:Howell_1998}
+
+Questo metodo differisce dall'uso del punteggio $z$ descritto sopra perché tratta la media e la deviazione standard del gruppo di controllo per quello che sono, ovvero statistiche campionarie, e poi utilizza il test $t$ di Student per esaminare la differenza tra caso e controlli.
+La formula per il test $t$ di Student da applicare nel caso presente è
+\begin{equation}
+t_{n-1} = \frac{x^* - \bar{x}}{s \sqrt{\frac{n+1}{n}}},
+\label{eq:Crawford_Howell_1998}
+\end{equation}
+dove $x^*$ è il punteggio del paziente, $\bar{x}$ e $s$ sono la media e la deviazione standard del gruppo di controllo, e $n$ è l'ampiezza campionaria del gruppo di controllo.
+
+Se il valore $t$ ottenuto da questo test è minore del quantile $t_{n-1}$ di ordine 0.05, allora si può concludere che il punteggio del caso è sufficientemente basso da consentirci di rifiutare ipotesi nulla che il punteggio del caso singolo appartiene alla popolazione di punteggi dei controlli.
+Se rifiutiamo l'ipotesi nulla possiamo così concludere che il caso esibisce un deficit relativo all'abilità in questione.
+
+Il valore-$p$ del test unidirezionale prodotto dalla~\eqref{eq:Crawford_Howell_1998} (a differenza del valore-$p$ del test $z$ discusso sopra) fornisce anche una stima puntuale statisticamente corretta dell'anormalità del punteggio del caso.
+Quindi se il valore-$p$ è 0.023, allora possiamo affermare che solo il 2.3\% della popolazione di controllo otterrà punteggi più bassi (il che significa che, in questo esempio, il punteggio del caso è anormalmente basso).
+
+\begin{exmp}
+
+Una versione bayesiana di questo test è implementata nella funzione \verb+crawford.test()+ del pacchetto \verb+psycho+.
+Supponiamo che il caso mostri un QI pari a 61 mentre il QI dei controlli è $\{86, 100, 112, 95, 121, 102\}$.
+Ci chiediamo se il QI del caso sia anormalmente basso.
+
+\begin{lstlisting}
+patient <- 61 # The IQ of a patient
+controls <- c(86, 100, 112, 95, 121, 102) # The IQs of a control group
+crawford.test(patient, controls)
+#> The Bayesian test for single case assessment (Crawford, Garthwaite, 2007) suggests that the patient's score (Raw = 61, Z = -3.36, percentile = 0.038) is significantly different from the controls (M = 102.67, SD = 12.39, p < .05*). The patient's score is lower than 98.66% (95% CI [92.79, 100.00]) of the control population.
+\end{lstlisting}
+
+Utilizzando la formula~\eqref{eq:Crawford_Howell_1998} otteniamo un risultato quasi identico:
+
+\begin{lstlisting}
+crawford_howell_test <- function(patient, controls) {
+  n <- length(controls)
+  s <- sd(controls)
+  t <- (patient - mean(controls)) / (s * sqrt((n + 1) / n))
+  
+  list(t, 1- pt(t, n - 1))
+}
+
+crawford_howell_test(patient, controls)
+#> [[1]]
+#> [1] -3.113926
+#> 
+#> [[2]]
+#> [1] 0.9867834
+\end{lstlisting}
+In entrambi i casi la risposta è che il 98.7\% dei controlli ha un QI superiore a quello del caso. 
+In tali circostanze possiamo dunque concludere che siamo in presenza di un deficit.
+
+\end{exmp}
+
+
+\subsection{Il metodo di Barton et al. (2002)}
+\label{sec:barton_2002}
+
+Un metodo equivalente alla~\eqref{eq:Crawford_Howell_1998} è stato proposto da  Barton et al. (2002).
+Questi autori confrontano il valore del caso con l'intervallo di confidenza costruito utilizzando i valori dei controlli:
+\begin{equation}
+\bar{x} \pm t_{n-1; 0.975} \left(s \sqrt{\frac{n+1}{n}} \right),
+\label{eq:Barton_2002}
+\end{equation}
+laddove le quantità nella~\eqref{eq:Barton_2002} hanno lo stesso significato che in precedenza.
+Se il valore del caso singolo cade al di fuori dell'intervallo definito dalla~\eqref{eq:Barton_2002}, allora possiamo concludere che il caso manifesta un deficit.
+
+
+\subsubsection{L'intervallo di confidenza ``tradizionale''}
+
+Alcuni autori utilizzano una procedura simile a quella descritta nella \S~\ref{sec:barton_2002}, ma utilizzando la formula 
+\begin{equation}
+\bar{x} \pm t_{n-1; 0.975} \left(\sqrt{\frac{s^2}{n}} \right),
+\label{eq:Barton_2002_b}
+\end{equation}
+Secondo Crawford e Garthwaite (2012), questo approccio è sbagliato perché, all'aumentare di $n$, si finirebbe per decidere che il caso manifesta un deficit anche quando ci sono piccolissime differenze rispetto alla media dei controlli.
+Questo approccio, dunque, è da rifiutare.
+
+
+\subsubsection{Il test $t$ di Student -- versione 1}
+
+Alcuni autori utilizzano la formula del test $t$ di Student nel modo seguente:
+
+\begin{equation}
+t_{n-1} = \frac{\bar{x} - x^*}{\frac{s}{\sqrt{n}}}.
+\label{eq:ttest_mean_case}
+\end{equation}
+Per esempio, Reinhold and Markowitsch (2007) descrivono tale procedura nel modo seguente:
+\begin{quote}
+Separately for each patient, all comparisons were computed by t-tests for one group with the score of each patient as the tested value (p. 60)
+\end{quote}
+Questo è un uso del tutto bizzarro del test $t$ di Student e non trova giustificazione alcuna.
+
+
+\subsubsection{Il test $t$ di Student -- versione 2}
+
+Altri autori hanno usato la formula del test $t$ di Student scritta nel modo seguente:
+
+\begin{equation}
+t_{n-1} = \frac{x^* - \bar{x}}{\frac{s}{\sqrt{n}}},
+\label{eq:ttest_v2}
+\end{equation}
+laddove, nuovamente, utilizziamo la media del campione dei controlli come se fosse la media della popolazione.
+Questo metodo è stato usato in molti studi sul caso singolo, ma conduce ad una grande inflazione dell'errore di I tipo e ad un'esagerazione dell'anormalità del valore del caso singolo.
+
+
+\section{Lo studio delle dissociazioni}
+
+Parallelamente all'aumento di interesse nei confronti dello studio del caso singolo, le dissociazioni hanno assunto un'importanza sempre maggiore nello sviluppo teorico in neuropsicologia. 
+Ad esempio, Dunn e Kirsner (2003) hanno notato che 
+\begin{quote}
+dissociations play an increasingly crucial role in the methodology of cognitive neuropsychology \dots they have provided critical support for several influential, almost paradigmatic, models in the field. (p. 2)
+\end{quote}
+Ciò è in parte dovuto ai limiti delle strategie alternative. 
+Ad esempio, Vallar (2000) ha notato che le dissociazioni costituiscono ``the most effective paradigm for investigating the modularity of the mental processes and their neural correlates''.
+Lo studio delle dissociazioni in rapporto al caso singolo pone però difficili problemi.
+Come notato da Vallar (2000), un ricercatore che studia un caso singolo può ritenere che 
+\begin{quote}
+given the complex architecture of the cognitive system and the variability of the site and extent of naturally occurring lesions, it is very unlikely that two patients have similar functional deficits. (p. 334)
+\end{quote}
+Di conseguenza, Coltheart (2001) ha posto la domanda retorica: 
+``If every patient is unique, how can you replicate your results?''
+e ha concluso che in alcuni casi potrebbe essere che
+``the result is literally unreplicable, no matter how genuine''.
+
+Storicamente, gran parte degli studi in neuropsicologia si sono posti il problema di   dimostrare l'esistenza di associazioni tra diversi compiti cognitivi. 
+Cioè, è stata posta enfasi sulla rilevazione di gruppi di sintomi cognitivi che si verificano insieme in modo affidabile al fine di identificare sindromi neurologiche o neuropsicologiche. 
+L'insoddisfazione per la scarsa robustezza di tali evidenze è servita quale uno dei fattori trainanti per l'aumento di interesse nei confronti degli studi sul caso singolo. 
+Infatti, indipendentemente dal numero di pazienti che dimostrano la co-occorrenza di deficit in due compiti, l'ipotesi che vi possa essere un processo cognitivo soggiacente comune viene facilmente falsificata dall'osservazione di un singolo paziente che presenta una dissociazione tra i due compiti. 
+Per ritornare al famoso esempio di Karl Popper, l'affermazione ``Tutti i cigni sono bianchi'' può essere falsificata dalla scoperta di un solo cigno nero.
+
+Tuttavia, sebbene i limiti delle prove associative siano ampiamente riconosciuti, è anche chiaro che ci sono difficoltà pratiche nella valutazione delle prove basate sull'osservazione delle dissociazioni. 
+Ad esempio, supponiamo che ci siano evidenze a sostegno del fatto che un insieme di compiti cognitivi risulta associato con una funzione unitaria sottostante. 
+Se tali evidenze devono essere falsificate da un'unica prova di segno contrario, allora dobbiamo essere sicuri della forza dell'evidenza del contro-esempio.
+Per continuare con l'esempio precedente, dobbiamo essere sicuri che il cigno sia effettivamente nero e non piuttosto un cigno bianco che, per qualche ragione, si è sporcato di nero.
+I criteri che ci portano a concludere che vi è una dissociazione nel caso singolo, dunque, devono essere più stringenti di quelli che si usano nello studio di gruppi di pazienti. 
+Ma quali devono essere tali criteri?
+Secondo Shallice (1988) evidenze di una `forte' dissociazione sono fornite quando 
+\begin{quote}
+neither task is performed at normal level, but Task I is performed very much better than Task II.
+\end{quote}
+Coltheart (2001) fornisce una definizione simile:
+\begin{quote}
+One can still speak of dissociations between two tasks even if performance is impaired on both tasks. 
+If a patient is impaired at both Task A and Task B, but is significantly more impaired on the second task than on the first, that can be treated as a dissociation. (p. 12)
+\end{quote}
+
+Nello studio dell'architettura funzionale alla base della cognizione umana, viene dato grande peso alla doppia dissociazione. 
+Per stabilire l'esistenza di una doppia dissociazione occorrono due pazienti che mostrano pattern opposti di funzioni cognitive preservate e compromesse. 
+Come afferma Coltheart (2001) 
+\begin{quote}
+With double dissociations we need two patients: patient A who is impaired on Task X but normal on Task Y, and patient B who is normal on Task X but is impaired on Task Y. (p. 12)
+\end{quote}
+Una singola dissociazione non viene considerata come una prova definitiva della divisione funzionale del sistema cognitivo perché i due compiti coinvolti possono attingere a un singolo processo sottostante ma semplicemente differire nella misura in cui vengono determinati da tale processo; cioè, le singole dissociazioni sono soggette agli artefatti derivanti dalla difficoltà del compito. 
+L'esistenza di una doppia dissociazione, invece, è considerata dalla maggior parte dei ricercatori (ma non da tutti) come prova che esclude la difficoltà del compito come spiegazione alternativa dei risultati.
+
+%\subsection{L'integrazione delle evidenze}
+
+Molti studi su singoli casi usano più misure dei costrutti in esame (cioè usano misure di prestazione in compiti diversi ma correlati per esaminare i costrutti X e Y). 
+In altre parole, il paziente viene confrontato con i controlli su una serie di compiti. 
+Ciò è in linea con il fatto che i ricercatori sono interessati all'esistenza di una dissociazione tra funzioni, non nella dissociazione tra specifiche coppie di misure indirette e imperfette di queste funzioni. 
+Quindi, i ricercatori cercano prove convergenti del deficit o della dissociazione. 
+Tuttavia, l'integrazione di queste molteplici fonti di informazione è un compito estemamente complesso. 
+Su tale aspetto vi è attualmente poca coerenza tra gli studi e i tentativi esistenti tendono ad essere qualitativi piuttosto che quantitativi. 
+Lo sviluppo e la valutazione di un sistema quantitativo, in base al quale le probabilità di una dissociazione potrebbero essere combinate o aggiornate a seconda delle diverse fasi di uno studio, darebbero un contributo significativo alla disciplina. 
+Per la natura di questo problema, l'approccio basato su metodi statistici bayesiani piuttosto che frequentisti sembra essere la scelta più ovvia.
+
+\begin{exmp}
+Concludiamo questa discussione esaminando un caso concreto nel quale è necessario valutare se vi è una dissociazione tra due compiti, nel confronto tra un caso singolo e un piccolo gruppo di confronto.
+Anche in questo caso viene utilizzato il test $t$ di Student nella versione di Crawford e Howell (1998).
+Tale test è implementato nella funzione \verb+crawford_dissociation.test()+ del pacchetto \verb+psycho+.
+\begin{lstlisting}
+case_X <- 132
+case_Y <- 7
+controls_X <- c(100, 125, 89, 105, 109, 99)
+controls_Y <- c(7, 8, 9, 6, 7, 10)
+
+result <- crawford_dissociation.test(
+  case_X, case_Y, controls_X, controls_Y
+)
+#> The Crawford-Howell (1998) t-test suggests no dissociation between test X and test Y (t(5) = 1.62, p > .1). The patient's score on test X is not significantly altered compared to its score on test Y.
+\end{lstlisting}
+\end{exmp}
+
+
+\section{La misura del cambiamento}
+
+Un argomento ricorrente nella storia della psicometria è la misurazione del cambiamento. 
+Ad esempio, ci si pone il problema dell'attendibilità della differenza tra due punteggi dei test, ovvero dell'attendibilità della differenza pre-test / post-test. 
+Anche i metodi per studiare il cambiamento di un singolo partecipante sono stati molto discussi.
+Si possono distinguere studi che valutano le prestazioni di un singolo partecipante in due diversi momenti, oppure studi che esaminano una serie storica con più di due misurazioni.
+
+È importante distinguere tra cambiamenti in un singolo soggetto e cambiamenti nella popolazione.
+In uno studio sul caso singolo, il neuropsicologo si concentra sul cambiamento di un singolo partecipante, mentre quando si esamina una popolazione di partecipanti il focus è su caratteristiche quali la media e la varianza di una popolazione.
+Ciò ci conduce ad una distinzione tra diverse interpretazioni che possono essere assegnate al concetto di precisione della misurazione.
+La teoria classica dei test si basa sul concetto di attendibilità, mentre nei modelli IRT viene usato il concetto di informazione. 
+L'attendibilità è un concetto di precisione della misurazione che dipende dalle proprietà della popolazione. 
+È infatti definita come la correlazione al quadrato dei punteggi osservati nel test e dei punteggi veri in una popolazione di partecipanti (Lord \& Novick, 1968). 
+L'informazione, d'altra parte, è un concetto di precisione indipendente dalla popolazione. 
+In concetto di informazione si applica allo stimatore di massima verosimiglianza del valore del tratto latente in un singolo partecipante.
+La quantità di informazione sul valore del tratto latente di un singolo partecipante è alta se la varianza del valore del tratto latente stimato nel partecipante è piccola, mentre quantità di informazione è bassa se la varianza del valore del tratto latente è grande. 
+Tale concetti si applica anche alle misure di cambiamento.
+
+Quello che è importante notare è che una bassa attendibilità nel test non implica necessariamente una bassa precisione a livello di misurazione del caso singolo.
+Questa affermazione è valida nel senso che una bassa attendibilità dipendente dalla popolazione non implica necessariamente una bassa quantità di informazione a livello del singolo partecipante. 
+Se l'attendibilità del test è bassa ma la quantità di informazione a livello del singolo partecipante è alta, allora le affermazioni sul cambiamento a livello della popolazione sono imprecise ma le affermazioni sul cambiamento a livello del partecipante possono essere precise. 
+Questa distinzione tra attendibilità e informazione è importante per la misurazione del cambiamento. 
+Per fare affermazioni sul cambiamento al livello del caso singolo, l'aspetto importante della precisione della misurazione è quello che riguarda la quantità di informazione, non l'attendibilità del test.
+
+Un aspetto finale riguarda i cambiamenti a livello del punteggio totale o a livello dei singoli item.
+Il punteggio totale del test è uguale alla somma ponderata dei punteggi ai singoli item.
+La teoria classica dei test considera il punteggio totale osservato del test come una variabile continua, mentre il modello IRT considera il punteggio totale del test come una variabile discreta. 
+Il modello IRT si applica agli item con punteggio dicotomico (0 o 1), in cui il punteggio totale del test è dato dalla somma non ponderata dei punteggi dei singoli item.
+
+Consideriamo ora il caso nel quale lo stesso test viene somministrato ad un singolo partecipante in molteplici occasioni.
+Poniamoci il problema di misurare il cambiamento dal punto di vista della teoria classica dei test.
+La teoria classica dei test considera il caso di un punteggio continuo e trae origine da un  \emph{Gedankenexperiment} (Lord \& Novick, 1968, sezione 2.2) nel quale si suppone che il test venga somministrato ripetutamente allo stesso rispondente e che i punteggi così osservati siano tra loro indipendenti. 
+Il  punteggio vero del rispondente è definito come il valore atteso di questa \emph{propensity distribution} (Lord \& Novick, 1968, sezione 2.3). 
+La varianza di tale \emph{propensity distribution} è specifica per il singolo rispondente e indica la precisione della misurazione per l'individuo considerato; l'inverso di questa varianza è la quantità di informazione (Mellenbergh, 1996).
+Il modello classico si può estendere al caso di un cambiamento nella risposta del singolo soggetto. 
+
+Il test viene somministrato ad un rispondente in diverse occasioni e il punteggio vero del rispondente nella $i$-esima occasione è uguale al valore atteso dei punteggi nella $i$-esima \emph{propensity distribution}.
+Si assume che le varianze delle \emph{propensity distribution} del rispondente siano omogenee (vale a dire, si assume una eguale varianza in ciascuna delle occasioni). 
+Inoltre, si assume che i punteggi dei test del rispondente in occasioni consecutive siano distribuiti in modo indipendente le une dalle altre.
+%D'altra parte, però, è ovvio che le misurazioni all'interno di una singola somministrazione devono essere tra loro correlate.
+Si pone dunque il problema di come misurare la varianza dei punteggi in somministrazioni ripetute del test.
+
+Sappiamo che la teoria classica dei test fornisce una risposta a questa domanda nei termini della formula seguente, 
+\begin{equation}
+\sigma^2_E = \sigma^2_X (1 - \rho_{XX'}), \notag
+\end{equation}
+dove $\sigma^2_X$ e $\rho_{XX'}$ sono, rispettivamente, la deviazione standard dei punteggi del test nella popolazione e l'attendibilità del test.
+Una stima dell'errore standard della misurazione $\sigma^2_E$ si ottiene utilizzando i valori campionari anziché quelli della popolazione riportanti nell'equazione precedente.
+Uno svantaggio di tale approssimazione è che la stima di $\sigma^2_E$ risulta essere uguale per ciascun partecipante, mentre quello che in realtà vorremmo conoscere è una stima della variabilità delle misure di uno specifico soggetto.
+
+La teoria classica dei test procede poi valutando il cambiamento (per esempio, post/pre-test) del $k$-esimo partecipante nella $t$-esima occasione nei termini della seguente equazione:
+\begin{equation}
+z_{kt} = \frac{\hat{\gamma}_{kt}}{\hat{\sigma}_E} \sqrt{2}, 
+\label{eq:Lord_Novick_1968_7_4}
+\end{equation}
+laddove 
+\begin{equation}
+\hat{\gamma}_{kt} = x_{kt} - x_{k, t-1}, \notag
+\end{equation}
+è la differenza dei punteggi osservati per il partecipante $k$-esimo in due diverse occasioni.
+
+\begin{exmp}
+Consideriamo un esempio basato sui dati di Meyers (1978).
+Meyers selezionò, da un campione più grande di 500 bambine di 13 anni d'età, un campione di 33 bambine che mostravano segni di ansia sociale.
+Le bambine selezionate furono assegnate in modo casuale a tre diverse condizioni (lista di attesa e due trattamenti diversi). 
+Al pretest e circa 2 mesi dopo, al post-test, fu somministrato alle bambine un test di ansia sociale. 
+Esaminiamo qui un test statistico relativo al cambiamento dei punteggi di una singola bambina.
+Per la bambina considerata, il punteggio al pre-test era pari a 8 e il punteggio post-test era uguale a 2, laddove un punteggio più basso indica un livello di ansia sociale minore. 
+Il manuale del test riporta una stima dell'errore standard di misurazione pari a 2.6, nel caso di un campione casuale di 1.039 ragazze. 
+Una stima del cambiamento dal pretest al post test è $\hat{\gamma}_{kt} = 2 - 8 = -6$.
+Usando l'equazione~\eqref{eq:Lord_Novick_1968_7_4} otteniamo così un punteggio pari a
+\[
+z_{k2} = -6 / 2.6 \sqrt{2} = -1.63,
+\]
+il quale non ci consente di rigettare l'ipotesi nulla di assenza di cambiamento al livello $\alpha = 0.05$ con un test monodirezionale.
+\end{exmp}
+
+
+\subsection{Cambiamento nel caso singolo e confronto con un campione di controllo}
+
+Mellenbergh e van den Brink (1998) hanno sviluppato le considerazioni precedenti allo scopo di mettere a punto un test che consenta di valutare il cambiamento nel caso singolo mediante un confronto con un campione di controllo.
+Tale test è implementato nella funzione \verb+mellenbergh.test()+ contenuto nel pacchetto \verb+psycho+.
+Vediamo qui sotto un esempio di applicazione di tale test.
+
+\begin{exmp}
+Si consideriano i seguenti dati
+\begin{lstlisting}
+set.seed(12345)
+t0 <- 80 # The IQ of a patient at baseline
+t1 <- 100 # The IQ of a patient after the therapy
+controls <- round(rnorm(20, 100, 15))
+controls
+#> [1] 109 111  98  93 109  73 109  96  96  86  98 127 106 108  89 #> [16]  112  87  95 117 104
+\end{lstlisting}
+Il test si svolge come indicato di seguito:
+\begin{lstlisting}
+mellenbergh.test(t0, t1, controls = controls)
+
+#> The Mellenbergh & van den Brink (1998) test suggests that the change is not significant (d = 20, 90% CI [-9.05, 49.05], z = 1.14, p > .1).
+\end{lstlisting}
+\end{exmp}
+
+
+\section*{Considerazioni conclusive}
+
+Crawford e Garthwaite (2012) esaminano il problema del confronto tra caso singolo e un gruppo di controllo e concludono che solo la soluzione discussa nella~\ref{sec:Crawford:Howell_1998}, e quella equivalente discussa nella~\ref{sec:barton_2002} sono appropriate per effettuare il confronto.
+Le altre soluzioni presentate nella~\ref{sec:comparison_single_case_controls} e molto utilizzate in letteratura, sono inappropriate.
+Crawford e Garthwaite (2012) concludono che la maggior parte degli studi a caso singolo in neuro-psicologia rivelano una conoscenza sofisticata della teoria cognitiva da parte dei ricercatori. 
+Inoltre, il disegno della ricerca è spesso basato su un'attenta analisi logica delle domande da affrontare e grande attenzione viene prestata allo sviluppo dei compiti sperimentali e dei materiali stimolo. 
+Tuttavia, un'attenzione molto minore viene dedicata ai metodi statistici che vengono impiegati per rispondere alla domanda della ricerca. 
+Secondo Crawford e Garthwaite (2012), è chiaro invece, anche sulla base di una serie di simulazioni Monte Carlo, che i metodi diversi da quello discusso nella~\ref{sec:Crawford:Howell_1998}, la versione bayesiana equivalente presentata da Crawford e Garthwaite (2007), dovrebbero essere abbandonati perché portano ad un'esagerazione del disturbo.
+La discussione precedente è stata poi estesa all'analisi statistica dei dati raccolti mediante l'uso di compiti diversi per studiare multicomponenzialità dei processi cognitivi nel caso singolo e lo studio del cambiamento pre-test / post-test nel caso singolo. 
+
+
+
+
+

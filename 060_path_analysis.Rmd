@@ -1,0 +1,370 @@
+# Path Analysis {#ch:path_analysis}
+
+```{r, include = FALSE}
+source("_common.R")
+```
+
+La *path analysis* è un metodo per decomporre la correlazione (o la
+covarianza) in componenti differenti al fine di studiare i processi
+causali sottostanti. La *path analysis* comprende due parti principali:
+la rappresentazione grafica delle interrelazioni esistenti tra le
+variabili e la scomposizione delle correlazioni (o covarianze) nei
+termini dei parametri del modello.
+
+## Path diagram
+
+Il path diagram fornisce una rappresentazione grafica delle relazioni
+esistenti tra le variabili oggetto di interesse. In tale diagramma, le
+variabili non osservate o latenti sono racchiuse in un cerchio o
+ellisse; le variabili osservate sono racchiuse in un quadrato o
+rettangolo. Due classi di variabili vengono rappresentate in un path
+diagram: quelle che non ricevono effetti causali da altre variabili e
+quelle che li ricevono. Una variabile *esogena* (cioè esterna) svolge
+sempre e soltanto funzione di variabile indipendente, ovvero di
+variabile che causa un effetto. Una variabile *endogena* (cioè interna)
+può essere effetto di alcune variabili e contemporaneamente causa per
+altre, oppure può svolgere solo il ruolo di variabile dipendente. Le
+fonti causali delle variabili endogene sono interne al path diagram; le
+fonti causali delle variabili esogene sono esterne al path diagram. La
+distinzione tra variabili esogene e endogene ha delle ovvie assonanze
+con la distinzione tra variabili indipendenti e dipendenti propria dei
+modelli lineari.
+
+Le frecce che connettono le variabili nel diagramma denotano nessi
+causali o mere associazioni. Una freccia orientata rappresenta un nesso
+causale tra le variabili implicate: la variabile che riceve la freccia
+dipende dalla variabile da cui parte la freccia. Una freccia curva a due
+direzioni indica, invece, un'associazione non causale tra due variabili.
+Il fatto che due variabili non siano collegate nel diagramma equivale ad
+assumere che tali variabili siano incorrelate. Un esempio è fornito
+nella Figura \@ref(fig:path01) la quale rende esplicite le relazioni tra
+tre variabili latenti e nove variabili manifeste.
+
+```{r path01, echo=FALSE, fig.cap="Esempio di path diagram.", out.width = '60%'}
+knitr::include_graphics("images/path_01.png")
+```
+
+## Path analysis e regressione multipla
+
+Vi è una stretta relazione tra path analysis e regressione multipla,
+tanto che la regressione può essere considerata un caso particolare di
+path analysis. Per semplicità, si supponga che le variabili siano state
+standardizzate, anche se la stessa analisi può essere condotta per
+variabili grezze. Il path diagram mostra la relazione tra tutte le
+variabili, comprendendo anche i fattori di disturbo, e fornisce dunque
+la rappresentazione grafica di un sistema di equazioni simultanee. Nel
+caso di due regressori, il modello di regressione multipla può essere
+rappresentato tramite il path diagram riportato nella
+Figura \@ref(fig:path02).
+
+```{r path02, echo=FALSE, fig.cap="Path diagram per il modello di regressione multipla con due regressori.", out.width = '55%'}
+knitr::include_graphics("images/path_02.png")
+```
+
+I coefficienti di percorso associati alle frecce orientate esprimono la
+portata del nesso causale e corrispondono ai pesi beta (ovvero ai
+coefficienti parziali di regressione standardizzati). Le frecce non
+orientate esprimono la portata della pura associazione tra variabili e
+dunque corrispondono alle correlazioni.
+
+Nel caso di due variabili esogene $x_1$ e $x_2$, il modello di
+regressione diventa 
+
+$$y = b_{1} x_1 + b_{2} x_2 + 1 \cdot e$$ 
+
+dove $y$ è
+la variabile endogena ed $e$ è il fattore di disturbo. Tale modello di
+regressione può essere rappresentato graficamente come indicato nella
+figura precedente.
+
+Nella figura, le frecce dritte indicano un'influenza causale dalla
+variabile da cui parte la freccia a quella a cui la freccia arriva. A
+tali frecce dritte sono associati i coefficienti di percorso $b_1$ e
+$b_2$ (ovvero i pesi beta). Il coefficiente 1 rappresenta l'effetto del
+fattore di disturbo $e$ sulla variabile endogena $y$, implicito nelle
+equazioni e reso esplicito nella figura.
+
+Si noti che si hanno tante equazioni quante sono le variabili endogene.
+Nel caso presente, c'è un'unica equazione in quanto vi è una sola
+variabile endogena (ovvero la $y$, le cui cause sono interne al path
+diagram). All'interno di ciascuna equazione, inoltre, ci saranno tanti
+termini quante sono le frecce dritte che puntano verso la variabile
+endogena. Nell'esempio, ci sono tre termini, uno per ciascun freccia
+dritta.
+
+## Effetti diretti e indiretti
+
+La path analysis fornisce un metodo per distinguere tra i diversi tipi
+di effetti che influenzano le variabili: l'effetto diretto, l'effetto
+indiretto e l'effetto totale. Gli effetti diretti sono quelli non
+mediati da altre variabili. Gli effetti indiretti operano attraverso
+l'intervento di almeno una variabile. L'effetto totale è la somma di
+tutti gli effetti diretti e indiretti.
+
+Nella Figura \@ref(fig:path03) la variable $y_1$ ha un effetto
+diretto sulla $y_2$. La variabile $y_1$ ha un effetto indiretto sulla
+$y_3$ in quanto non c'è una freccia causale che colleghi direttamente la
+variabile $y_1$ alla $y_3$. La variabile $y_1$ è una variabile esogena e
+le varibili $y_2$ e $y_3$ sono variabili endogene.
+
+```{r path03, echo=FALSE, fig.cap="Path diagram per una relazione a catena.", out.width = '40%'}
+knitr::include_graphics("images/path_03.png")
+```
+
+Nella Figura \@ref(fig:path03), la variabile $x_1$ ha un effetto
+diretto sulla $y$, ma anche un effetto indiretto sulla $y$ derivante
+dalla correlazione tra $x_1$ e $x_2$. In un path diagram, l'effetto
+diretto è rappresentato da una freccia dritta (es., $b_{1}$). L'effetto
+indiretto tra due variabili è rappresentato da un percorso composto che
+include una o più frecce dritte e non più di una linea curva -- per es.,
+$s_{12} b_{2}$.
+
+## Le regole di Wright
+
+Lo scopo della path analysis è quello di decomporre la correlazione (o
+la covarianza) nei termini della somma di tutti i percorsi (diretti e
+indiretti) che legano le due variabili tramite i coefficienti detti
+*path coefficients*. Usando il path diagram, Sewall Wright (1921, 1934)
+enunciò le regole che, attraverso le cosiddette *tracing rules*, legano
+le correlazioni (o covarianze) delle variabili ai parametri del modello.
+Le tracing rules possono essere espresse nei termini seguenti:
+
+-   è possibile procedere prima all'indietro lungo una freccia e poi in
+    avanti, seguendo la direzione di una freccia, ma non si può andare
+    prima avanti e poi tornare indietro;
+-   un percorso composto non deve transitare due volte per la stessa
+    variabile (non devono esserci loop);
+-   un percorso non può comprendere più di una linea curva.
+
+Si chiama "percorso" il tracciato che unisce due variabili; è costituito
+da sequenze di frecce direzionali e di curve non direzionali. A ciascun
+percorso legittimo (ovvero, che soddisfa le regole di Wright) viene
+assegnato un valore numerico pari al prodotto dei coefficienti
+incontrati sul percorso medesimo. I coefficienti di percorso possono
+essere o coefficienti parziali di regressione standardizzati, se il
+legame ha una direzione, oppure coefficienti di correlazione, se il
+legame è bidirezionale.
+
+### Scomposizione delle correlazioni (covarianze)
+
+Il principio di base è stato espresso da Sewall Wright (1934) nel modo
+seguente: "Any correlation between variables in a network of sequential relations
+can be analyzed into contributions from all the paths (direct or
+through common factors) by which the two variables are connected, such
+that the value of each contribution is the product of the coefficients
+pertaining to the elementary paths. If residual correlations are
+present (represented by bidirectional arrows) one (but never more than
+one) of the coefficients thus multiplied together to give the
+contribution of the connecting path, may be a correlation coefficient.
+The others are all path coefficients."
+
+Possiamo così enunciare la regola di scomposizione della correlazione.
+
+::: {.definition}
+La correlazione fra due variabili può essere decomposta in tanti addendi
+quanto sono i percorsi che le collegano; ogni addendo è dato dal
+prodotto dei coefficienti incontrati sul percorso.
+:::
+
+Si consideri il diagramma rappresesentato nella Figura \@ref(fig:path02). La variabile endogena è la $y$. Le variabili esogene, correlate tra loro, sono $x_1$ e $x_2$.
+
+Il diagramma di percorso corrisponde alla seguente equazione:
+
+$$y = 0.50 x_1 + 0.40 x_2 + e$$ 
+
+dove le variabili $x_1$ e $x_2$ sono incorrelate con $e$.
+
+La correlazione tra $y$ e $x_1$ è uguale alla somma dell'effetto diretto
+che $x_1$ esercita sulla $y$ e dell'effetto indiretto che $x_1$ esercita
+sulla $y$ tramite la correlazione con $x_2$. In base alle regole di
+Wright, $x_1$ e $y$ risultano collegate da due percorsi legittimi: il
+percorso costituito dalla freccia dritta $x_1 \rightarrow 
+ y$; il percorso composto dalla freccia dritta $x_2 \rightarrow 
+ y$ e dalla curva non direzionale $x_1 \leftrightarrow x_2$. Il valore
+numerico del primo percorso è $0.50$. Il valore numerico del secondo
+percorso è $0.50\times 0.40$. La correlazione tra le variabili $x_1$ e
+$y$ è dunque uguale alla somma dei valori numerici dei due percorsi
+legittimi che legano $x_1$ alla $y$: 
+
+\begin{equation}
+\begin{aligned}
+  r_{x_1,y} &= \beta_{y,x_1} + r_{x_1,x_2} \beta_{y,x_2}\notag\\
+  &=   0.50 + 0.50 \times 0.40 = 0.70.\notag
+\end{aligned}
+\end{equation}
+
+La correlazione tra $x_2$ e $y$ è invece uguale a: 
+
+\begin{equation}
+\begin{aligned}
+  r_{yx_2} &=\beta_{yx_2} + r_{x_1x_2} \beta_{yx_1}\notag\\
+  &= 0.40 + 0.50 \times 0.50 = 0.65.\notag
+\end{aligned}
+\end{equation}
+
+### Scomposizione della varianza
+
+La varianza di una variabile endogena si decompone in una quota di
+varianza spiegata dalle variabili agenti causalmente su di essa e in una
+quota di varianza non spiegata.
+
+::: {.definition}
+La varianza spiegata è data dalla somma di tanti addendi quanti sono i
+percorsi che consentono di collegare la variabile a se stessa
+rispettando le tracing rules di Wright.
+:::
+
+Facendo riferimento alla Figura \@ref(fig:path02), si possono individuare quattro
+percorsi legittimi che collegano $y$ a se stessa:
+
+1.  $0.50 \times 1.00 \times 0.50$,
+2.  $0.40 \times 1.00 \times 0.40$,
+3.  $0.50 \times 0.50 \times 0.40$,
+4.  $0.40 \times 0.50 \times 0.50$.
+
+La varianza della variabile endogena $y$ che viene spiegata dalle
+variabili esogene $x_1$ e $x_2$ è dunque uguale a
+$$0.25 + 0.16  + 0.10 + 0.10= 0.61.$$ Inoltre, dato che le variabili
+rappresentate nel diagramma sono standardizzate, la varianza complessiva
+della $y$ è uguale a 1.00. La varianza della $y$ non spiegata dalle
+variabili $x_1$ e $x_2$ è quindi uguale a $$1-0.61 = 0.39.$$
+
+## Come calcolare i coefficienti di percorso? {#sec:how_compute_path_coef}
+
+Data una matrice di correlazione, i coefficienti di percorso possono
+essere calcolati risolvendo un sistema di equazioni simultanee. Si
+supponga che, per le tre variabili della figura precedente, vi sia la
+seguente matrice di correlazione:
+
+::: center
+  ------- ------ ------- -------
+           $y$    $x_1$   $x_2$
+    $y$    1.00          
+   $x_1$   0.70   1.00   
+   $x_2$   0.65   0.50    1.00
+  ------- ------ ------- -------
+:::
+
+Esprimendo le tre correlazioni nei termini dei coefficienti del path
+diagram otteniamo: 
+
+\begin{equation} 
+\begin{cases} 
+r_{x_1x_2} &= 0.50\\ 
+r_{yx_2} &= \beta_{yx_2} + 0.50 \beta_{yx_1} = 0.65\\ 
+r_{x_1y} &= \beta_{yx_1} +   0.50 \beta_{yx_2} = 0.70
+\end{cases}
+\end{equation} 
+
+Risolvendo il sistema di equazioni simultanee, si ottengono i valori dei coefficienti di percorso: 
+
+\begin{equation}
+\begin{aligned}
+\beta_{yx_1} &= 0.50\notag\\ 
+\beta_{yx_2} &= 0.40\notag
+\end{aligned}
+\end{equation}
+
+## Path analysis e software 
+
+Vengono simulate 100 osservazioni su tre variabili. Imponendo un effetto
+causale diretto delle variabili $x_1$ e $x_2$ sulla $y$ e una
+correlazione $> 0$ tra le variabili $x_1$ e $x_2$, otteniamo i seguenti
+dati:
+
+```{r}
+set.seed(3)
+n <- 100
+x1 <- rnorm(n, 100, 9)
+x2 <- x1 + rnorm(n, 0, 10)
+cor(x1, x2)
+y <- 10 + 3 * x1 + 1.5 * x2 + rnorm(n, 0, 15)
+dd <- data.frame(y, x1, x2)
+print(cor(dd), 3)
+lower <- "
+ 1
+ .831 1
+ .786 .535 1 
+"
+library("lavaan")
+dat.cov <- getCov(lower, names = c("y", "x1", "x2"))
+dat.cov
+```
+
+Data una matrice di correlazioni e data la specificazione delle
+relazioni tra le variabili, la funzione `sem()` contenuta nel pacchetto
+`lavaan` consente di stimare i coefficienti di percorso. Le relazioni
+tra le variabili sono speficicate con la sintassi descritta nel manuale.
+
+```{r}
+# the model
+mr.model <- 'y ~ x1 + x2'
+fit <- sem(mr.model, sample.cov=dat.cov, sample.nobs=n)
+summary(fit, standardized=TRUE)
+summary(lm(scale(y) ~ scale(x1) + scale(x2)))
+1 - .145
+```
+
+
+::: exmp
+Consideriamo nuovamente la seguente matrice di correlazioni:
+
+```{r}
+lower <- '
+  1
+  .70 1
+  .65 .50 1 
+'
+```
+
+Converto tali dati in una matrice simmetrica.
+
+```{r}
+dat.cov <- getCov(lower, names=c("y","x1", "x2"))
+dat.cov
+```
+
+Specifico il modello:
+
+```{r}
+mr_model <- 'y ~ x1 + x2'
+```
+
+Adatto il modello ai dati:
+
+```{r}
+fit <- sem(mr_model, sample.cov = dat.cov, sample.nobs = n)
+```
+
+Esamino i risultati:
+
+```{r}
+summary(fit, standardized=TRUE)
+```
+
+Con la funzione `sem()` del pacchetto `lavaan` abbiamo dunque replicato
+i risultati ottenuti in precedenza. Il valore $0.386$ rappresenta la
+quota di varianza della $y$ non spiegata dalle variabili esogene.
+:::
+
+## Oltre la regressione multipla
+
+In generale, lo psicologo ha a che fare con diagrammi di percorso nei
+quali sono presenti variabili non osservabili (latenti) e quindi
+l'approccio della regressione multipla non può essere applicato. È
+necessario invece descrivere il diagramma di percorso mediante un
+insieme di equazioni strutturali, definendo un numero di equazioni
+almeno altrettanto grande quanto il numero delle incognite. Tale
+soluzione viene solitamente fornita da un software. Consideriamo di
+seguito alcuni esempi in cui vengono applicate le regole di Wright per
+diagrammi di percorso che non possono essere descritti nei termini di un
+modello di regressione multipla. Un esempio di path diagram che non si
+riduce al modello di regressione multipla è quello fornito nella
+Figura \@ref(fig:path01).
+
+La path analysis è anche usata in quel campo della psicologia
+interessato alla misurazione dei costrutti psicologici quali i tratti
+della personalità, le capacità cognitive e i disturbi psicopatologici.
+Questa è la ragione per cui la discutiamo qui.
+
+

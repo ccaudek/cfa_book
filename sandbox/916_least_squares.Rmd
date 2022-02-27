@@ -1,0 +1,70 @@
+# Minimi quadrati  {#least-squares}
+
+Nella trattazione classica del modello di regressione, $y_i = \alpha + \beta x_i + e_i$, i coefficienti $a = \hat{\alpha}$ e $b = \hat{\beta}$ vengono stimati in modo tale da minimizzare i residui 
+
+\begin{equation}
+e_i = y_i - \hat{\alpha} - \hat{\beta} x_i.
+(\#eq:residuals)
+\end{equation}
+
+In altri termini, il residuo $i$-esimo è la differenza fra l'ordinata del punto ($x_i$, $y_i$) e quella del punto di ascissa $x_i$ sulla retta di regressione campionaria. 
+
+Per determinare i coefficienti $a$ e $b$ della retta $y_i = a + b x_i + e_i$ non è sufficiente minimizzare la somma dei residui $\sum_{i=1}^{n}e_i$, in quanto i residui possono essere sia positivi che negativi e la loro somma può essere molto prossima allo zero anche per differenze molto grandi tra i valori osservati e la retta di  regressione. Infatti, ciascuna retta passante per il punto ($\bar{x}, \bar{y}$) ha $\sum_{i=1}^{n}e_i=0$. 
+
+::: {.rmdnote}
+Una retta passante per il punto ($\bar{x}, \bar{y}$) soddisfa l'equazione $\bar{y} = a + b \bar{x}$. 
+Sottraendo tale equazione dall'equazione $y_i = a + b x_i + e_i$ otteniamo
+
+\[
+y_i - \bar{y} =  b (x_i - \bar{x}) + e_i. 
+\]
+
+Sommando su tutte le osservazioni, si ha che
+
+\begin{equation}
+\sum_{i=1}^n e_i = \sum_{i=1}^n (y_i - \bar{y} ) -  b \sum_{i=1}^n (x_i - \bar{x}) = 0 - b(0) = 0. 
+(\#eq:res-sum-zero)
+\end{equation}
+::: 
+
+Questo problema viene risolto scegliendo i coefficienti $a$ e $b$ che minimizzano, non tanto la somma dei residui, ma bensì l'_errore quadratico_, cioè la somma dei quadrati degli errori:
+
+\begin{equation}
+S(a, b) = \sum_{i=1}^{n} e_i^2 = \sum (y_i - a - b x_i)^2.
+\end{equation}
+
+Il metodo più diretto per determinare quelli che vengono chiamati i _coefficienti dei minimi quadrati_ è quello di trovare le derivate parziali della funzione $S(a, b)$ rispetto ai coefficienti $a$ e $b$:
+
+\begin{align}
+\frac{\partial S(a,b)}{\partial a} &= \sum (-1)(2)(y_i - a - b x_i), \notag \\
+\frac{\partial S(a,b)}{\partial b} &= \sum (-x_i)(2)(y_i - a - b x_i).
+\end{align}
+
+Ponendo le derivate uguali a zero e dividendo entrambi i membri per $-2$ si ottengono le _equazioni normali_
+
+\begin{align}
+ an + b \sum x_i &= \sum y_i, \notag \\
+ a \sum x_i + b \sum x_i^2 &= \sum x_i y_i. 
+ (\#eq:form-normali)
+\end{align}
+
+I coefficienti dei minimi quadrati $a$ e $b$ si trovano risolvendo le \@ref(eq:form-normali) e sono uguali a:
+
+\begin{align}
+a &= \bar{y} - b \bar{x},\\
+b &= \frac{\sum (x_i - \bar{x}) (y_i - \bar{y})}{\sum (x_i - \bar{x})^2}.
+(\#eq:minsq-ab)
+\end{align}
+
+## Massima verosimiglianza
+
+Se gli errori del modello lineare sono indipendenti e distribuiti secondo una Normale, così che $y_i \sim \mathcal{N}(\alpha + \beta x, \sigma^2)$ per ciascun $i$, allora le stime dei minimi quadrati di $\alpha$ e $\beta$ corrispondono alla stima di massima verosimiglianza. La funzione di verosimiglianza del modello di regressione è definita come la funzione di densità di probabilità dei dati, dati i parametri e i predittori: 
+
+\begin{equation}
+p(y \mid \alpha, \beta, \sigma, x) = \prod_{i=1}^n \mathcal{N}(y_i \mid \alpha, \beta x_i, \sigma^2). 
+(\#eq:ml-reg)
+\end{equation}
+
+Massimizzare la \@ref(eq:ml-reg) conduce alle stime dei minimi quadrati  \@ref(eq:minsq-ab).
+
+

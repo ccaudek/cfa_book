@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capitolo 4 Indici di posizione e di scala | Data Science per psicologi</title>
+<meta name="author" content="Corrado Caudek">
+<meta name="description" content="L’analisi grafica, esaminata in precedenza, costituisce la base di partenza di qualsivoglia analisi quantitativa dei dati. Tramite opportune rappresentazioni grafiche possiamo individuare alcune...">
+<meta name="generator" content="bookdown 0.24.4 with bs4_book()">
+<meta property="og:title" content="Capitolo 4 Indici di posizione e di scala | Data Science per psicologi">
+<meta property="og:type" content="book">
+<meta property="og:description" content="L’analisi grafica, esaminata in precedenza, costituisce la base di partenza di qualsivoglia analisi quantitativa dei dati. Tramite opportune rappresentazioni grafiche possiamo individuare alcune...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capitolo 4 Indici di posizione e di scala | Data Science per psicologi">
+<meta name="twitter:description" content="L’analisi grafica, esaminata in precedenza, costituisce la base di partenza di qualsivoglia analisi quantitativa dei dati. Tramite opportune rappresentazioni grafiche possiamo individuare alcune...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs/header-attrs.js"></script><script src="libs/jquery/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap/bootstrap.bundle.min.js"></script><script src="libs/bs3compat/transition.js"></script><script src="libs/bs3compat/tabs.js"></script><script src="libs/bs3compat/bs3compat.js"></script><link href="libs/bs4_book/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Data Science per psicologi</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefazione</a></li>
+<li class="book-part">Nozioni preliminari</li>
+<li><a class="" href="concetti-chiave.html"><span class="header-section-number">1</span> Concetti chiave</a></li>
+<li><a class="" href="chapter-misurazione.html"><span class="header-section-number">2</span> La misurazione in psicologia</a></li>
+<li class="book-part">Analisi esplorativa dei dati</li>
+<li><a class="" href="ch:freq-distr.html"><span class="header-section-number">3</span> Variabili e distribuzioni di frequenza</a></li>
+<li><a class="active" href="ch:loc-scale.html"><span class="header-section-number">4</span> Indici di posizione e di scala</a></li>
+<li><a class="" href="ch:correlation.html"><span class="header-section-number">5</span> Le relazioni tra variabili</a></li>
+<li><a class="" href="ch:metropolis.html"><span class="header-section-number">6</span> Approssimazione della distribuzione a posteriori</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="ch:loc-scale" class="section level1" number="4">
+<h1>
+<span class="header-section-number">Capitolo 4</span> Indici di posizione e di scala<a class="anchor" aria-label="anchor" href="#ch:loc-scale"><i class="fas fa-link"></i></a>
+</h1>
+<p>L’analisi grafica, esaminata in precedenza, costituisce la base di partenza di qualsivoglia analisi quantitativa dei dati. Tramite opportune rappresentazioni grafiche possiamo individuare alcune caratteristiche importanti di una distribuzione: per esempio, è possibile capire se la distribuzione è simmetrica o asimmetrica; oppure se è unimodale o multimodale. Successivamente, possiamo calcolare degli indici numerici che descrivono in modo sintetico le caratteristiche di base dei dati esaminati.</p>
+<div id="indici-di-tendenza-centrale" class="section level2" number="4.1">
+<h2>
+<span class="header-section-number">4.1</span> Indici di tendenza centrale<a class="anchor" aria-label="anchor" href="#indici-di-tendenza-centrale"><i class="fas fa-link"></i></a>
+</h2>
+<p>Tra le misure di tendenza centrale, ovvero tra gli indici che forniscono un’idea dei valori attorno ai quali sono prevalentemente concentrati i dati di un campione, quella più comunemente usata è la media.</p>
+<div id="media" class="section level3" number="4.1.1">
+<h3>
+<span class="header-section-number">4.1.1</span> Media<a class="anchor" aria-label="anchor" href="#media"><i class="fas fa-link"></i></a>
+</h3>
+<p>Tutti conosciamo la media aritmetica di <span class="math inline">\(\{x_1, x_2, \dots, x_n\}\)</span>, ovvero il numero reale <span class="math inline">\(\bar{x}\)</span> definito da</p>
+<p><span class="math display" id="eq:mean">\[\begin{equation}
+\bar{x}=\frac{1}{n}\sum_{i=1}^n x_i.
+\tag{4.1}
+\end{equation}\]</span></p>
+<p>Nella <a href="ch:loc-scale.html#eq:mean">(4.1)</a> abbiamo usato la notazione delle sommatorie per descrivere una somma di valori. Questa notazione è molto usata in statistica e viene descritta in Appendice.</p>
+<p>La media gode della seguente importante proprietà: la somma degli scarti tra ciascuna modalità <span class="math inline">\(x_i\)</span> e la media aritmetica <span class="math inline">\(\bar{x}\)</span> è nulla, cioè</p>
+<p><span class="math display">\[\begin{equation}
+\sum_{i=1}^n (x_i - \bar{x}) = 0.\notag
+\label{eq:diffmeansumzero}
+\end{equation}\]</span></p>
+<p>Infatti,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sum_{i=1}^n (x_i - \bar{x}) &amp;= \sum_i x_i - \sum_i \bar{x}\notag\\
+&amp;= \sum_i x_i - n \bar{x}\notag\\
+&amp;= \sum_i x_i - \sum_i x_i = 0.\notag
+\end{aligned}
+\]</span></p>
+<p>Ciò ci consente di pensare alla media come al baricentro della distribuzione.</p>
+<p>Un’altra proprietà della media è la seguente. La somma dei quadrati degli scarti tra ciascuna modalità <span class="math inline">\(x_i\)</span> e una costante arbitraria <span class="math inline">\(a\)</span>, cioè</p>
+<p><span class="math display">\[\begin{equation}
+\varphi(a) = \sum_{i=1}^n (x_i - a)^2,\notag
+\end{equation}\]</span></p>
+<p>è minima per <span class="math inline">\(a = \bar{x}\)</span>.</p>
+<div class="remark">
+<p><span id="unlabeled-div-17" class="remark"><em>Remark</em>. </span>Il concetto statistico di media ha suscitato molte battute. Per esempio,
+il fatto che, in media, ciascuno di noi ha un numero di gambe circa pari
+a 1.9999999. Oppure, il fatto che, in media, ciascuno di noi ha un
+testicolo. Ma la media ha altri problemi, oltre al fatto di ispirare
+battute simili alle precedenti. In particolare, dobbiamo notare che la
+media non è sempre l’indice che meglio rappresenta la tendenza centrale
+di una distribuzione. In particolare, ciò non accade quando la
+distribuzione è asimmetrica, o in presenza di valori anomali (<em>outlier</em>)
+– si veda il pannello di destra della figura <a href="ch:freq-distr.html#fig:violin-zetsche">3.6</a>. In tali circostanze, la tendenza centrale della distribuzione è meglio rappresentata dalla mediana o dalla media spuntata.</p>
+</div>
+<!-- ::: {.exercise} -->
+<!-- Si calcoli la media dei valori BDI-II per i due gruppi di soggetti di @zetschefuture2019. -->
+<!-- ```{r} -->
+<!-- bysubj %>%  -->
+<!--   group_by(group) %>%  -->
+<!--   summarise( -->
+<!--     avg_bdi = mean(bdi) -->
+<!--   ) -->
+<!-- ``` -->
+<!-- ::: -->
+</div>
+<div id="media-spuntata" class="section level3" number="4.1.2">
+<h3>
+<span class="header-section-number">4.1.2</span> Media spuntata<a class="anchor" aria-label="anchor" href="#media-spuntata"><i class="fas fa-link"></i></a>
+</h3>
+<p>La <em>media spuntata</em> <span class="math inline">\(\bar{x}_t\)</span> (<em>trimmed mean</em>) non è altro che la
+media dei dati calcolata considerando solo il 90% (o altra percentuale)
+dei dati centrali. Per calcolare <span class="math inline">\(\bar{x}_t\)</span> si ordinando i dati secondo
+una sequenza crescente, <span class="math inline">\(x_1 \leq x_2 \leq x_3 \leq \dots \leq x_n\)</span>, per
+poi eliminare il primo 5% e l’ultimo 5% dei dati della serie così
+ordinata. La media spuntata è data dalla media aritmetica dei dati rimanenti.</p>
+<!-- ::: {.exercise} -->
+<!-- Si calcoli la media spuntata dei valori BDI-II per i due gruppi di soggetti di @zetschefuture2019 escludendo il 10% dei valori più estremi in ciascun gruppo. -->
+<!-- ```{r} -->
+<!-- bysubj %>% -->
+<!--   group_by(group) %>% -->
+<!--   summarise( -->
+<!--     avg_trim_bdi = mean(bdi, trim = 0.1) -->
+<!--   ) -->
+<!-- ``` -->
+<!-- ::: -->
+</div>
+<div id="moda-e-mediana" class="section level3" number="4.1.3">
+<h3>
+<span class="header-section-number">4.1.3</span> Moda e mediana<a class="anchor" aria-label="anchor" href="#moda-e-mediana"><i class="fas fa-link"></i></a>
+</h3>
+<p>In precedenza abbiamo già incontrato altri due popolari indici di
+tendenza centrale: la <em>moda</em> (<em>Mo</em>), ovvero il valore centrale della
+classe con la frequenza massima (può succedere che una distribuzione
+abbia più mode; in tal caso si dice <em>multimodale</em> e questo operatore
+perde il suo significato di indice di tendenza centrale) e la <em>mediana</em>
+<span class="math inline">\(\tilde{x}\)</span>.</p>
+<!-- ::: {.exercise} -->
+<!-- Si calcolino i quantili di ordine 0.25, 0.5 e 0.75 dei valori BDI-II per i due gruppi di soggetti di @zetschefuture2019. -->
+<!-- ```{r} -->
+<!-- bysubj %>% -->
+<!--   group_by(group) %>% -->
+<!--   summarise( -->
+<!--     q25 = quantile(bdi, probs = 0.25), -->
+<!--     q50 = quantile(bdi, probs = 0.50), -->
+<!--     q75 = quantile(bdi, probs = 0.75) -->
+<!--   ) -->
+<!-- ``` -->
+<!-- ::: -->
+<div class="remark">
+<p><span id="unlabeled-div-18" class="remark"><em>Remark</em>. </span>Si noti che solitamente i software restituiscono un valore <em>interpolato</em> del <span class="math inline">\(p\)</span>-esimo quantile <span class="math inline">\(q_p\)</span> <span class="math inline">\((0 &lt; p &lt; 1)\)</span>, il quale viene calcolato mediante specifiche procedure. Il risultato fornito dai software, dunque, non sarà identico a quello trovato utilizzando la definizione non interpolata di quantile che abbiamo presentato qui. Se, per qualche ragione, vogliamo conoscere l’algoritmo usato per la determinazione dei quantili interpolati, dobbiamo leggere la documentazione del software.</p>
+</div>
+</div>
+</div>
+<div id="indici-di-dispersione" class="section level2" number="4.2">
+<h2>
+<span class="header-section-number">4.2</span> Indici di dispersione<a class="anchor" aria-label="anchor" href="#indici-di-dispersione"><i class="fas fa-link"></i></a>
+</h2>
+<p>Le medie e gli indici di posizione descritti in precedenza forniscono
+delle sintesi dei dati che mettono in evidenza la tendenza centrale
+delle osservazioni. Tali indici, tuttavia, non considerano un aspetto
+importante della distribuzione dei dati, ovvero la variabilità dei
+valori numerici della variabile statistica. È dunque necessario
+sintetizzare la distribuzione di una variabile statistica oltre che con
+le misure di posizione anche tramite l’utilizzo di indicatori che
+valutino la dispersione delle unità statistice.</p>
+<div class="remark">
+<p><span id="unlabeled-div-19" class="remark"><em>Remark</em>. </span>Un’introduzione “soft” al tema degli indici di posizione è fornita nel seguente <a href="https://tinystats.github.io/teacups-giraffes-and-statistics/04_variance.html">link</a>.</p>
+</div>
+<div id="indici-basati-sullordinamento-dei-dati" class="section level3" number="4.2.1">
+<h3>
+<span class="header-section-number">4.2.1</span> Indici basati sull’ordinamento dei dati<a class="anchor" aria-label="anchor" href="#indici-basati-sullordinamento-dei-dati"><i class="fas fa-link"></i></a>
+</h3>
+<p>È possibile calcolare degli indici di variabilità basati
+sull’ordinamento dei dati. L’indice più ovvio è l’intervallo di
+variazione, ovvero la distanza tra il valore massimo e il valore minimo
+di una distribuzione di modalità, mentre in precedenza abbiamo già
+incontrato la differenza interquartile. Questi due indici, però, hanno
+il limite di essere calcolati sulla base di due soli valori della
+distribuzione (<span class="math inline">\(x_{\text{max}}\)</span> e <span class="math inline">\(x_{\text{mini}}\)</span>, oppure <span class="math inline">\(x_{0.25}\)</span> e
+<span class="math inline">\(x_{0.75}\)</span>). Pertanto non utilizzano tutte le informazioni che sono
+disponibili. Inoltre, l’intervallo di variazione ha il limite di essere
+pesantemente influenzato dalla presenza di valori anomali.</p>
+</div>
+<div id="varianza" class="section level3" number="4.2.2">
+<h3>
+<span class="header-section-number">4.2.2</span> Varianza<a class="anchor" aria-label="anchor" href="#varianza"><i class="fas fa-link"></i></a>
+</h3>
+<p>Dati i limiti delle statistiche precedenti è più comune misurare la variabilità di una variabile statistica come la dispersione dei dati attorno ad un indice di tendenza centrale. Infatti, la misura di variabilità di gran lunga più usata per valutare la variabilità di una variabile statistica è senza dubbio la varianza. La varianza</p>
+<p><span class="math display" id="eq:var-descr">\[\begin{equation}
+s^2 = \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^2
+\tag{4.2}
+\end{equation}\]</span></p>
+<p>è la media dei quadrati degli scarti <span class="math inline">\(x_i - \bar{x}\)</span> tra ogni valore e la media della distribuzione. La varianza è una misura di dispersione più complessa di quelle esaminate in precedenza. È appropriata solo nel caso di distribuzioni simmetriche e, anch’essa, è fortemente influenzata dai valori anomali. Inoltre, è espressa in un’unità di misura che è il quadrato dell’unità di misura dei dati originari e quindi ad essa non può essere assegnata un’interpretazione intuitiva.</p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-20" class="exercise"><strong>Esercizio 4.1  </strong></span>Si calcoli la varianza dei valori BDI-II per i dati di <span class="citation">Zetsche, Bürkner, and Renneberg (<a href="ch:metropolis.html#ref-zetschefuture2019" role="doc-biblioref">2019</a>)</span>.</p>
+<p>Applicando la formula precedente, per tutto il campione abbiamo</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">bysubj</span><span class="op">$</span><span class="va">bdi</span><span class="op">)</span>
+<span class="co">#&gt; [1] 241.9</span></code></pre></div>
+</div>
+</div>
+<div id="precisione" class="section level3" number="4.2.3">
+<h3>
+<span class="header-section-number">4.2.3</span> Precisione<a class="anchor" aria-label="anchor" href="#precisione"><i class="fas fa-link"></i></a>
+</h3>
+<p>Si definisce <em>precisione</em> l’inverso della varianza:</p>
+<p><span class="math display" id="eq:precision">\[\begin{equation}
+\tau = \frac{1}{\sigma^2}.
+\tag{4.3}
+\end{equation}\]</span></p>
+<p>Alcuni ritengono che la precisione sia più “intuitiva” della varianza perché dice quanto sono concentrati i valori attorno alla media piuttosto che quanto sono dispersi. In altri termini, si potrebbe argomentare che siamo più interessati a quanto sia precisa una misurazione piuttosto che a quanto sia imprecisa. Più sono dispersi i valori attorno alla media (alta varianza), meno sono precisi (poca precisione); minore è la varianza, maggiore è la precisione.</p>
+<p>La precisione è uno dei due parametri naturali della distribuzione gaussiana. Nei termini della <a href="ch:loc-scale.html#eq:precision">(4.3)</a>, la distribuzione gaussiana (si veda il Capitolo <a href="#distr-rv-cont"><strong>??</strong></a>) può essere espressa nel modo seguente</p>
+<p><span class="math display">\[
+{\displaystyle f(y)=\sqrt{\frac{\tau}{2\pi}} e^{-{\frac {1}{2}}\tau\left({y-\mu }\right)^{2}}},
+\]</span>
+anziché come</p>
+<p><span class="math display">\[
+{\displaystyle f(y)={\frac {1}{\sigma {\sqrt {2\pi }}}}e^{-{\frac {1}{2}}\left({\frac {y-\mu }{\sigma }}\right)^{2}}}.
+\]</span></p>
+</div>
+<div id="scarto-tipo" class="section level3" number="4.2.4">
+<h3>
+<span class="header-section-number">4.2.4</span> Scarto tipo<a class="anchor" aria-label="anchor" href="#scarto-tipo"><i class="fas fa-link"></i></a>
+</h3>
+<p>Per le ragioni espresse sopra, la misura più usata della dispersione di una distribuzione di dati è lo <em>scarto quadratico medio</em> (o <em>scarto tipo</em>, o <em>deviazione standard</em>), ovvero la radice quadrata della varianza<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Il termine &lt;em&gt;standard deviation&lt;/em&gt; è stato introdotto in statistica da Pearson nel 1894 assieme alla lettera greca &lt;span class="math inline"&gt;\(\sigma\)&lt;/span&gt; che lo rappresenta. Il termine italiano “deviazione standard” ne è la traduzione più utilizzata nel linguaggio comune; il termine dell’&lt;a href="https://it.wikipedia.org/wiki/Ente_nazionale_italiano_di_unificazione"&gt;Ente Nazionale Italiano di Unificazione&lt;/a&gt; è tuttavia “scarto tipo”, definito come la radice quadrata positiva della varianza.&lt;/p&gt;'><sup>5</sup></a>. A differenza della varianza, dunque, lo scarto tipo è espresso nella stessa unità di misura dei dati. Come nel caso della varianza, anche lo scarto tipo <span class="math inline">\(s\)</span> dovrebbe essere usato soltanto quando la media è adeguata per misurare il centro della distribuzione, ovvero, nel caso di distribuzioni simmetriche. Come nel caso della media <span class="math inline">\(\bar{x}\)</span>, anche lo scarto tipo è fortemente influenzato dai dati anomali (<em>outlier</em>), ovvero dalla presenza di uno o di pochi dati che sono molto più distanti dalla media rispetto agli altri valori della distribuzione. Quando tutte le osservazioni sono uguali, <span class="math inline">\(s = 0\)</span>, altrimenti <span class="math inline">\(s &gt; 0\)</span>.</p>
+<p>Allo scarto tipo può essere assegnata una semplice interpretazione: lo scarto tipo è <em>simile</em> (ma non identico) allo scarto semplice medio campionario, ovvero alla media aritmetica dei valori assoluti degli scarti dalla media. Lo scarto tipo ci dice, dunque, quanto sono distanti, in media, le singole osservazioni dal centro della distribuzione. Un’interpretazione più precisa del significato dello scarto tipo è fornita nel Paragrafo successivo.</p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-21" class="exercise"><strong>Esercizio 4.2  </strong></span>Si calcoli lo scarto tipo per i valori BDI-II di dati di <span class="citation">Zetsche, Bürkner, and Renneberg (<a href="ch:metropolis.html#ref-zetschefuture2019" role="doc-biblioref">2019</a>)</span>.</p>
+<p>Applicando la formula precedente, per tutto il campione abbiamo</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">bysubj</span><span class="op">$</span><span class="va">bdi</span><span class="op">)</span>
+<span class="co">#&gt; [1] 15.55</span></code></pre></div>
+</div>
+</div>
+<div id="deviazione-mediana-assoluta" class="section level3" number="4.2.5">
+<h3>
+<span class="header-section-number">4.2.5</span> Deviazione mediana assoluta<a class="anchor" aria-label="anchor" href="#deviazione-mediana-assoluta"><i class="fas fa-link"></i></a>
+</h3>
+<p>Una misura robusta della dispersione statistica di un campione è la deviazione mediana assoluta (<em>Median Absolute Deviation</em>, MAD) definita come la mediana del valore assoluto delle deviazioni dei dati dalla mediana, ovvero:</p>
+<p><span class="math display">\[
+{\displaystyle \operatorname {MAD} =\operatorname {median} \left(\ \left|X_{i}-\operatorname {median} (X)\right|\ \right)}
+\]</span>
+Nel caso di una distribuzione dei dati unimodale simmetrica di forma campanulare (ovvero, normale) si ha che</p>
+<p><span class="math display">\[
+{\displaystyle \text{deviazione standard} \approx 1.4826\ \operatorname {MAD} .\,}
+\]</span>
+Pertanto, solitamente i software restituiscono il valore MAD moltiplicato per una tale costante.</p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-22" class="exercise"><strong>Esercizio 4.3  </strong></span>Si calcoli il valore MAD per i valori BDI-II riportati da <span class="citation">Zetsche, Bürkner, and Renneberg (<a href="ch:metropolis.html#ref-zetschefuture2019" role="doc-biblioref">2019</a>)</span>.</p>
+<p>Applicando la formula precedente, per tutto il campione abbiamo</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">1.4826</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">bysubj</span><span class="op">$</span><span class="va">bdi</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">bysubj</span><span class="op">$</span><span class="va">bdi</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] 15.57</span></code></pre></div>
+</div>
+</div>
+<div id="indici-di-variabilità-relativi" class="section level3" number="4.2.6">
+<h3>
+<span class="header-section-number">4.2.6</span> Indici di variabilità relativi<a class="anchor" aria-label="anchor" href="#indici-di-variabilit%C3%A0-relativi"><i class="fas fa-link"></i></a>
+</h3>
+<p>A volte può essere interessante effettuare un confronto fra due misure di variabilità di grandezze incommensurabili, ovvero di caratteri rilevati mediante differenti unità di misura. In questi casi, le misure di variabilità precedentemente descritte si rivelano inadeguate in quanto dipendono dall’unità di misura adottata. Diventa dunque necessario ricorrere a particolari numeri adimensionali detti indici relativi di variabilità. Il più importante di tali indici è il coefficiente di variazione, ovvero il numero puro</p>
+<p><span class="math display">\[
+C_v = \frac{\sigma}{\bar{x}}
+\]</span>
+ottenuto dal rapporto tra la deviazione standard e la media dei dati. Un altro indice relativo di variabilità è la differenza interquartile rapportata al primo quartile oppure al terzo quartile oppure alla mediana, cioè:</p>
+<p><span class="math display">\[
+\frac{x_{0.75} - x_{0.25}}{x_{0.25}}, \qquad \frac{x_{0.75} - x_{0.25}}{x_{0.75}}, \qquad \frac{x_{0.75} - x_{0.25}}{x_{0.50}}.
+\]</span></p>
+</div>
+</div>
+<div id="commenti-e-considerazioni-finali-2" class="section level2 unnumbered">
+<h2>Commenti e considerazioni finali<a class="anchor" aria-label="anchor" href="#commenti-e-considerazioni-finali-2"><i class="fas fa-link"></i></a>
+</h2>
+<p>Le statistiche descrittive ci forniscono degli indici sintetici che riassumono i dati, ovvero le nostre misurazioni dell’intera popolazione o di un campione estratto da una popolazione. Le statistiche descrittive comprendono gli indici di tendenza centrale e gli indici di dispersione. Gli indici di tendenza centrale includono la media, la mediana e la moda, mentre gli indici di dispersione includono lo scarto tipo, la varianza, la curtosi e l’asimmetria.</p>
+
+</div>
+</div>
+
+  <div class="chapter-nav">
+<div class="prev"><a href="ch:freq-distr.html"><span class="header-section-number">3</span> Variabili e distribuzioni di frequenza</a></div>
+<div class="next"><a href="ch:correlation.html"><span class="header-section-number">5</span> Le relazioni tra variabili</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#ch:loc-scale"><span class="header-section-number">4</span> Indici di posizione e di scala</a></li>
+<li>
+<a class="nav-link" href="#indici-di-tendenza-centrale"><span class="header-section-number">4.1</span> Indici di tendenza centrale</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#media"><span class="header-section-number">4.1.1</span> Media</a></li>
+<li><a class="nav-link" href="#media-spuntata"><span class="header-section-number">4.1.2</span> Media spuntata</a></li>
+<li><a class="nav-link" href="#moda-e-mediana"><span class="header-section-number">4.1.3</span> Moda e mediana</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#indici-di-dispersione"><span class="header-section-number">4.2</span> Indici di dispersione</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#indici-basati-sullordinamento-dei-dati"><span class="header-section-number">4.2.1</span> Indici basati sull’ordinamento dei dati</a></li>
+<li><a class="nav-link" href="#varianza"><span class="header-section-number">4.2.2</span> Varianza</a></li>
+<li><a class="nav-link" href="#precisione"><span class="header-section-number">4.2.3</span> Precisione</a></li>
+<li><a class="nav-link" href="#scarto-tipo"><span class="header-section-number">4.2.4</span> Scarto tipo</a></li>
+<li><a class="nav-link" href="#deviazione-mediana-assoluta"><span class="header-section-number">4.2.5</span> Deviazione mediana assoluta</a></li>
+<li><a class="nav-link" href="#indici-di-variabilit%C3%A0-relativi"><span class="header-section-number">4.2.6</span> Indici di variabilità relativi</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#commenti-e-considerazioni-finali-2">Commenti e considerazioni finali</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2022-02-17.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

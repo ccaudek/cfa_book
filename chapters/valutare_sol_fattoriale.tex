@@ -1,0 +1,881 @@
+% DO NOT COMPILE THIS FILE DIRECTLY!
+% This is included by the other .tex files.
+%--------------------------------------------------------------------
+\chapter{Come valutare e rifinire la soluzione fattoriale}
+\label{ch:val_sol_fattoriale}
+%--------------------------------------------------------------------
+
+%\begin{chapquote}{R. A. Fisher}
+%``The best time to plan an experiment is after you've done it.''
+%\end{chapquote}
+
+%------------------------------------------------------------
+\section{Valutazione della matrice pattern}
+%------------------------------------------------------------
+
+La maggior parte di strumenti usati nell'assessment psicologico e neuropsicologico non valuta una singola dimensione psicologica, ma piuttosto misura molteplici aspetti di un costrutto. Di conseguenza, l'analisi fattoriale produce solitamente una soluzione con più di un fattore. Idealmente, dopo la rotazione, ciascun item saturerà fortemente in un singolo fattore e debolmente negli altri. In realtà, anche dopo la rotazione degli assi fattoriali, talvolta si presentano item che saturano debolmente in tutti i fattori, oppure item che saturano fortemente in più di un fattore.
+
+Uno dei primi passi da compiere per valutare e rifinire la soluzione fattoriale è quello di valutare la matrice di struttura in base al criterio della ``struttura semplice'' e poi esaminare gli effetti delle azioni intraprese (es., eliminare alcuni item) nella matrice pattern. Ricordiamo che la matrice di struttura contiene le correlazioni tra item e fattori, mentre la matrice pattern contiene le saturazioni fattoriali. 
+
+%------------------------------------------------------------
+\subsection{Item con basse saturazioni su tutti i fattori}
+%------------------------------------------------------------
+
+Prima di procedere all'analisi fattoriale è auspicabile esaminare la matrice di correlazioni tra gli item ed eliminare quegli item che sono insufficientemente correlati con tutti gli altri item nella matrice. Tuttavia, anche dopo questo screening iniziale, è possibile trovare item con basse saturazioni su tutti i fattori. Dal punto di vista pratico, per basse saturazioni si intendono quelle il cui valore assoluto è minore di 0.30 (Hair et al., 1995). Hair e collaboratori suggeriscono due soluzioni nel caso di item con basse saturazioni su tutti i fattori: (1) eliminare gli item con basse saturazioni, (2) valutare le comunalità degli item problematici e il contributo specifico che forniscono allo strumento. Se un item ha una bassa comunalità, o se il contributo di un item nei confronti del significato generale dello strumento è di poca importanza, allora l'item dovrebbe essere eliminato.  Si procede dunque alla creazione di una nuova soluzione fattoriale e i risultati vengono riesaminati.
+
+Se vi sono degli item con basse saturazioni su tutti i fattori che però contribuiscono in maniera importante a determinare il significato della scala nel suo complesso, allora questi item dovrebbero essere mantenuti.  Alle volte, per tali item è possibile creare delle sottoscale separate dalle altre.
+
+%------------------------------------------------------------
+\subsection{Item con saturazioni evevate su più di un fattore}
+%------------------------------------------------------------
+
+È comune trovare item che saturano su fattori multipli (pesi fattoriali $>$ .30), specialmente nel caso di soluzioni fattoriali ottenuti dopo una rotazione obliqua. 
+Kline (2000) suggerisce di eliminare tali item in quanto rendono difficile da interpretare il significato della scala che così si ottiene.  Hair e collaboratori (1995) ritengono invece che tali item debbano essere mantenuti dato possono chiarire il significato dei fattori che la scala identifica. 
+
+%------------------------------------------------------------
+\section{Valutazione dell'attendibilità}
+%------------------------------------------------------------
+
+All'interno del problema della costruzione di uno strumento vengono esaminati tre aspetti dell'attendibilità: la consistenza interna, la stabilità e l'equivalenza.
+
+%------------------------------------------------------------
+\subsection{La procedura split-half}
+%------------------------------------------------------------
+
+La consistenza interna misura il grado di coerenza tra gli item che costituiscono lo strumento o le sottoscale dello strumento. Se tutti gli item che costituiscono uno strumento o una sua sottoscala misurano la stessa cosa, allora saranno fortemente associati tra loro. 
+La consistenza interna misurata con il metodo dello split-half si determina calcolando la correlazione di Pearson tra i punteggi ottenuti utilizzando ciascuna delle due metà degli item dello strumento.  Usando un software, è meglio trovare la media delle correlazioni inter-item ricavabili a partire da tutte le possibili divisioni a metà dell'insieme di item che costituiscono lo strumento. La correlazione trovata in questo modo viene poi corretta utilizzando la formula ``profetica'' di Spearman-Brown per tenere in considerazione il fatto che l'attendibilità è stata calcolata utilizzando soltanto metà degli item dello strumento.
+
+Si noti che la formula di Spearman-Brown è basata sull'assunzione che le due metà dello strumento siano parallele, ovvero che abbiano identici punteggi veri e uguali varianze d'errore (questa assunzione comporta la conseguenza che le due metà degli item producono punteggi aventi uguali medie e varianze).  Se queste assunzioni molto stringenti non vengono soddisfatte, allora ciò conduce ad una sovrastima dell'attendibilità della scala. 
+
+\paragraph{L'analisi della varianza}
+
+Se tutti gli item di uno strumento o di una sottoscala sono espressione dello stesso costrutto, allora ci dobbiamo aspettare che anche le medie dei punteggi sugli item siano uguali. Come è stato detto sopra, questa è infatti una delle assunzioni delle forme strettamente parallele di un test. È dunque possibile verificare questa assunzione mediante un'ANOVA che, appunto, sottopone a test l'ipotesi nulla dell'uguaglianza delle medie. Nel caso degli item di un test, dato che ciascun soggetto completa tutti gli item che costituiscono lo strumento, è appropriato usare un'ANOVA per misure ripetute che, nella sua declinazione più moderna, corrisponde ad un modello multilivello (\emph{mixed-effect model}).
+
+%------------------------------------------------------------
+\subsection{L'indice $\alpha$ di Cronbach}
+%------------------------------------------------------------
+
+L'indice $\alpha$ di Cronbach è la misura più utilizzata per valutare l'attendibilità quale consistenza interna di uno strumento. L'$\alpha$ di Cronbach è stato interpretato come la proporzione di varianza della scala che può essere attribuita al fattore comune 
+(DeVellis, 1991). Può anche essere interpretato come la correlazione stimata tra i punteggi della scala e un'altro strumento della stessa lunghezza tratto dall'universo degli item possibili che costituiscono il dominio del costrutto (Kline, 1986). La radice quadrata del coefficiente $\alpha$ di Cronbach rappresenta la correlazione stimata tra i punteggi ottenuti tramite lo strumento e i punteggi veri (Nunnally \& Bernstein, 1994).
+
+Nella \ref{sec:violazione_tau} abbiamo descritto una serie di limiti del coefficiente $\alpha$ di Cronbach.  In generale, molti ricercatori suggeriscono di usare al suo posto l'indice $\omega$ di McDonald.
+
+%------------------------------------------------------------
+\subsection{L'attendibilità quale stabilità temporale}
+%------------------------------------------------------------
+
+La stabilità temporale viene valutata attraverso la procedura di test-retest. La correlazione tra le misure ottenute in due momenti negli stessi rispondenti ci fornisce l'attendibilità di test-retest. 
+
+Kline (2000) ha messo in evidenza come l'attendibilità di test-retest sia influenzata da molteplici fattori, tra cui le caratteristiche del campione, la maturità dei rispondenti, i cambiamenti nello stato emozionale, le differenze nelle condizioni di somministrazione del test, la possibilità di ricordare le risposte date in precedenza, la difficoltà degli item, la grandezza del campione e le caratteristiche del costrutto (ad esempio, stato vs. tratto).
+
+Particolare attenzione deve essere rivolta all'intervallo temporale usato nella procedura di test-retest. Se il periodo di tempo che intercorre tra le due somministrazioni è troppo corto, i risultati possono risultare distorti a causa del fatto che i soggetti si ricordano le risposte date in precedenza. Questo può condurre ad una sovrastima dell'attendibilità test-retest (Pedhazur \& Schmelkin, 1991). Un intervallo temporale troppo lungo tra le due somministrazioni ha invece come limite il fatto che, in questo caso, vi è un'alta possibilità che intervengano dei cambiamenti nei rispondenti rispetto al costrutto in esame. Alla luce di queste considerazioni è stato suggerito di utilizzare un intervallo temporale abbastanza breve, ovvero di una o due settimane (Nunnally \& Bernstein, 1994; Pedhazur \& Schmelkin, 1991). Se è necessario valutare la stabilità temporale nel corso di un lungo arco temporale, Nunnally e
+Bernstein (1994) suggeriscono di utilizzare un intervallo di sei mesi o maggiore.
+
+%------------------------------------------------------------------------
+\subsection{Forme parallele}
+%------------------------------------------------------------------------
+
+Per cercare di evitare i problemi associati all'attendibilità quale stabilità temporale, alcuni autori si sono posti il problema di esaminare la correlazione tra forme parallele (o equivalenti) dello strumento. La correlazione tra forme parallele di uno strumento va sotto il nome di coefficiente di equivalenza e fornisce una misura alternativa dell'attendibilità dello strumento (Burns \& Grove, 2001; Pedhazur \& Schmelkin, 1991; Polit \& Hungler, 1999).  
+
+Nunnally e Bernstein (1994) suggeriscono di confrontare i risultati ottenuti con la somministrazione delle forme parallele lo stesso giorno con quelli ottenuti nel caso di un intervallo temporale di due settimane. Kline (2000) ritiene che l'attendibilità tra due forme parallele debba essere di almeno 0.9 perché, per valori inferiori, sarebbe difficile sostenere che le forme sono veramente parallele.
+
+È tuttavia molto oneroso predisporre due forme parallele di uno strumento.  Per questa ragione, il coefficiente di equivalenza viene raramente usato.
+
+%------------------------------------------------------------------------
+\section{Selezione di un sottoinsieme di item}
+%------------------------------------------------------------------------
+
+Tipicamente, la costruzione di un test viene realizzata somministrando un grande numero di item per poi selezionare gli item ``migliori'' che andranno a fare parte del test vero e proprio. Si supponga di somministrare inizialmente $m$ item, quando si desidera che il test finale sia costituito da $p < m$ item.  Un modo di affrontare questo problema potrebbe essere quello di calcolare l'attendibilità del test (coefficiente $\omega$) per tutti i possibili sottoinsiemi di $p$ item, così da individuare  il sottoinsieme migliore. Questo modo di procedere, però, è problematico perché richiede la valutazione di un elevatissimo numero di possibilità. Per esempio, da un insieme iniziale neanche troppo numeroso di 100 item, il numero di sottoinsiemi di 20 item è uguale a 
+$$
+\binom{100}{20} = 5.36 \times 10^{20}
+$$ 
+È dunque necessario trovare metodi alternativi che evitino una tale esplosione combinatoria.
+
+A questo fine è utile calcolare la \emph{quantità di informazione} di ciascun item:
+\begin{equation}
+\frac{\lambda_i^2}{\psi_{ii}}.
+\end{equation}
+McDonald (2013) mostra che l'omissione di uno o più item produce sempre una riduzione dell'attendibilità del test (ovvero, una riduzione nel valore di  $\omega$). 
+Tuttavia, tale riduzione è tanto più piccola quanto più piccola è la quantità di
+informazione degli item omessi. Il processo di selezione degli item può dunque essere guidato da un semplice principio: si selezionano gli item  aventi la  quantità di informazione maggiore. 
+
+\begin{exmp}
+
+Si consideri nuovamente la matrice di varianze e di covarianze SWLS:
+
+\begin{lstlisting}
+SWLS <- matrix(c(
+   2.565, 1.424, 1.481, 1.328, 1.529,
+   1.424, 2.493, 1.267, 1.051, 1.308,
+   1.481, 1.267, 2.462, 1.093, 1.360,
+   1.328, 1.051, 1.093, 2.769, 1.128,
+   1.529, 1.308, 1.360, 1.128, 3.355),
+     ncol = 5, byrow = TRUE)
+SWLS
+#>       [,1]  [,2]  [,3]  [,4]  [,5]
+#> [1,] 2.565 1.424 1.481 1.328 1.529
+#> [2,] 1.424 2.493 1.267 1.051 1.308
+#> [3,] 1.481 1.267 2.462 1.093 1.360
+#> [4,] 1.328 1.051 1.093 2.769 1.128
+#> [5,] 1.529 1.308 1.360 1.128 3.355
+\end{lstlisting}
+Utilizzando la  funzione {\tt sem()} contenuta nel pacchetto {\tt sem} il modello ad un fattore viene definito nel modo seguente:
+\begin{lstlisting}
+library(sem)
+mod.1 <- specify.model() 
+#> 1: F   ->  X1,   lam1,    NA
+#> 2: F   ->  X2,   lam2,    NA
+#> 3: F   ->  X3,   lam3,    NA
+#> 4: F   ->  X4,   lam4,    NA
+#> 5: F   ->  X5,   lam5,    NA
+#> 6: F   <-> F,    NA,      1
+#> 7: X1  <-> X1,   psi11,   NA
+#> 8: X2  <-> X2,   psi22,   NA
+#> 9: X3  <-> X3,   psi33,   NA
+#> 10: X4  <-> X4,  psi44,   NA
+#> 11: X5  <-> X5,  psi55,   NA
+#> 12: 
+Read 11 records
+\end{lstlisting}
+Otteniamo così una stima dei pesi fattoriali e delle varianze specifiche:
+\begin{lstlisting}
+fm <- sem(mod.1, S, N = 215) 
+summary(fm)
+#> 
+#> Model Chisquare = 0.58227   Df = 5 
+#> Pr(>Chisq) = 0.9888
+#> Chisquare (null model) = 349.21   Df = 10
+#> Goodness-of-fit index = 0.99889
+#> Adjusted goodness-of-fit index = 0.99667
+#> RMSEA index = 0   90% CI: (NA, NA)
+#> Bentler-Bonnett NFI = 0.99833
+#> Tucker-Lewis NNFI = 1.0260
+#> Bentler CFI = 1
+#> SRMR = 0.0069501
+#> BIC = -26.271 
+#> 
+#>  Parameter Estimates
+#>       Estimate Std Error z value Pr(>|z|)             
+#> lam1  1.30798  0.09868   13.2547 0.0000e+00 X1 <--- F 
+#> lam2  1.09599  0.10238   10.7047 0.0000e+00 X2 <--- F 
+#> lam3  1.13881  0.10043   11.3393 0.0000e+00 X3 <--- F 
+#> lam4  0.98274  0.11222    8.7569 0.0000e+00 X4 <--- F 
+#> lam5  1.17759  0.12125    9.7124 0.0000e+00 X5 <--- F 
+#> psi11 0.85417  0.13703    6.2333 4.5670e-10 X1 <--> X1
+#> psi22 1.29181  0.15321    8.4317 0.0000e+00 X2 <--> X2
+#> psi33 1.16511  0.14507    8.0316 8.8818e-16 X3 <--> X3
+#> psi44 1.80322  0.19438    9.2769 0.0000e+00 X4 <--> X4
+#> psi55 1.96827  0.22083    8.9130 0.0000e+00 X5 <--> X5
+\end{lstlisting}
+Esaminiamo  la \emph{quantità di informazione} fornita da ciascun
+item. Possiamo calcolare tale quantità facendo il
+rapporto tra ciascun peso fattoriale innalzato al quadrato e la sua
+varianza specifica: 
+\begin{lstlisting}
+for (i in 1:5) {
+    print(fm$coef[i]^2 / fm$coef[i + 5])
+    }
+#> 2.002911 
+#> 0.9298488 
+#> 1.113096 
+#> 0.5355846 
+#> 0.7045388 
+\end{lstlisting}
+Tale risultato indica che il quarto item è il meno informativo e che il  quinto item è il secondo meno informativo. Se un solo item deve essere eliminato, dunque, questo sarà il quarto item. Se devono essere eliminati due item, dunque, andranno eliminati il quarto e il quinto item. 
+\end{exmp}
+
+In conclusione, possiamo dire che l'omissione di un item provoca sempre una riduzione del valore di $\omega$ del test. Tale riduzione è però tanto minore quanto più piccola è la quantità di informazione dell'item omesso. Questo principio può essere usato per selezionare gli item del test. 
+
+%------------------------------------------------------------------------
+\section{Attendibilità e numero di item}
+\label{sec:reliability_number_item}
+%------------------------------------------------------------------------
+
+Di quanto cambia l'attendibilità di uno strumento se viene variato il numero di item? Una risposta a questa domanda può essere fornita dalla formula profetica di Spearman-Brown. Supponiamo che nella formula di Spearman-Brown,
+\begin{align}
+  \rho_p &= \frac{p \rho_1}{(p-1)\rho_1 + 1},
+  \label{eq:spearman_brown}
+\end{align}
+$\rho_1$ rappresenti l'attendibilità di un test costituito da un certo numero di item. Ponendo $p=2$, la formula~\ref{eq:spearman_brown} ci fornisce una stima dell'attendibilità di un test costituito da un numero doppio di item rispetto al test originario. Valori di $p$ minori di $1$, invece, vengono usati per predire le variazioni dell'attendibilità conseguenti ad una diminuzione nel numero degli item del test.
+
+Ricordiamo che le predizioni della formula di Spearman-Brown sono accurate solo se la forma allungata o accorciata del test è parallela al test considerato. Per esempio, se ad un test con un coefficiente di attendibilità molto alto vengono aggiunti item aventi una bassa attendibilità, allora l'attendibilità del test allungato sarà minore di quella predetta dalla formula di Spearman-Brown.
+
+\begin{exmp}
+Si consideri la scala SWLS. Chiediamoci come varia l'attendibilità della scala se il numero di item aumenta da 5 a 20. L'attendibilità della scala SWLS costituita da 5 item è 0.824. Applicando la formula di Spearman-Brown otteniamo:
+
+\begin{lstlisting}
+(4 * 0.824) / ((4 - 1) * 0.824 + 1)
+#> [1] 0.9493088
+\end{lstlisting}
+\end{exmp}
+
+\begin{exmp}
+In maniera alternativa, supponiamo che i 15 item aggiuntivi abbiano le stesse saturazioni fattoriali medie ($\bar{\lambda}$) e le stesse varianze specifiche medie ($\bar{\psi}$) rispetto agli item originali.
+Mediante gli item di cui disponiamo, definiamo l'attendibilità di un ``item medio'' come
+\begin{equation}
+\rho_1 = \frac{\bar{\lambda}^2}{\bar{\lambda}^2 + \bar{\psi}}.
+\end{equation}
+Ovvero
+\begin{lstlisting}
+lam <- fm$coef[1:5] 
+lam
+#>      lam1      lam2      lam3      lam4      lam5 
+#> 1.3079848 1.0959876 1.1388069 0.9827382 1.1775920 
+psi <- fm$coef[6:10]
+psi
+#>    the11    the22    the33    the44    the55 
+#> 0.854169 1.291811 1.165112 1.803216 1.968271 
+rho.1 <- mean(lam)^2 / (mean(lam)^2 + mean(psi)) 
+rho.1
+#> [1] 0.4787496
+\end{lstlisting}
+L'attendibilità predetta di un test costituito da 20 item sarà dunque uguale a
+\begin{lstlisting}
+(20 * rho.1) / ((20 - 1) * rho.1 + 1) 
+#> [1] 0.9483718
+\end{lstlisting}
+il che replica il risultato ottenuto precedentemente.
+\end{exmp}
+
+\begin{exmp}
+Un altro modo ancora per ottenere lo stesso risultato è quello di
+adattare ai dati il modello monofattoriale con item paralleli:
+\begin{lstlisting}
+mod.2 <- specify.model() 
+#> 1: F -> X1, lam, NA 
+#> 2: F -> X2, lam, NA 
+#> 3: F -> X3, lam, NA 
+#> 4: F -> X4, lam, NA 
+#> 5: F -> X5, lam, NA 
+#> 6: F <-> F, NA, 1 
+#> 7: X1 <-> X1, psi, NA 
+#> 8: X2 <-> X2, psi, NA 
+#> 9: X3 <-> X3, psi, NA 
+#> 10: X4 <-> X4, psi, NA 
+#> 11: X5 <-> X5, psi, NA 
+#> 12: 
+Read 11 records
+#> 
+fm2 <- sem(mod.2, SWLS, N=215) 
+summary(fm2)
+#> 
+#> Model Chisquare =  32.397   Df =  13 
+#> Pr(>Chisq) = 0.0020970
+#> Chisquare (null model) =  349.21   Df =  10
+#> Goodness-of-fit index =  0.94322
+#> Adjusted goodness-of-fit index =  0.93449
+#> RMSEA index =  0.083501   90% CI: (0.047781, 0.12008)
+#> Bentler-Bonnett NFI =  0.90723
+#> Tucker-Lewis NNFI =  0.95601
+#> Bentler CFI =  0.94282
+#> SRMR =  0.078603
+#> BIC =  -37.421 
+#>
+#>  Normalized Residuals
+#>     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+#> -1.19e+00 -8.18e-01  5.37e-02 -2.05e-06  6.15e-01  2.37e+00 
+#> 
+#>  Parameter Estimates
+#>       Estimate Std Error z value Pr(>|z|)           
+#> lam   1.1388   0.067488  16.874  0        X1 <--- F 
+#> psi   1.4319   0.069227  20.684  0        X1 <--> X1
+\end{lstlisting}
+da cui
+\begin{lstlisting}
+rho.1 <- fm3$coef[1]^2 / (fm3$coef[1]^2 + fm3$coef[2])
+rho.1 
+#> 0.475264 
+(20 * rho.1) / ((20 - 1) * rho.1 + 1) 
+#> 0.9476834
+\end{lstlisting}  %$
+\end{exmp}
+
+Anche se la formula di Spearman-Brown ha un ruolo centrale nella teoria classica
+dei test, si tenga conto che non rappresenta l'unico strumento che può
+essere utilizzato a questo proposito. La quantità detta
+\emph{informazione dell'item} ({\it item information}), formulata dai
+modelli IRT, consente di predire con maggiore precisione i cambiamenti nella qualità della misura a seguito dell'aggiunta o della cancellazione di un sottoinsieme di item. 
+
+%------------------------------------------------------------------------
+\paragraph{Quanti item dobbiamo aggiungere per arrivare ad un dato livello di  affidabilità?}
+%------------------------------------------------------------------------
+
+La formula di Spearman-Brown può anche essere riarrangiata in maniera tale da consentirci di predire il numero degli item necessari per raggiungere un determinato livello di affidabilità:
+\begin{align}
+p &=  \frac{\rho_p (1-\rho_1)}{\rho_1(1-\rho_p)}, 
+\label{eq:s_b_inv}
+\end{align}
+dove $\rho_1$ è l'attendibilità stimata di un ``item medio,'' $\rho_p$
+è il livello desiderato di attendibilità del test totale e $p$ è il
+numero  di item del test allungato.
+
+\begin{exmp}
+L'attendibilità della scala SWLS costituita da 5 item è  $\omega = 0.824$. Quanti item devono essere aggiunti se si vuole raggiungere un livello di attendibilità pari a $0.95$? 
+
+Ponendo  $\rho_p = 0.95$ e $\rho_1= 0.479$, in base alla formula~\ref{eq:s_b_inv}, si ottiene che
+\begin{lstlisting}
+(.95 * (1 - rho.1)) / (rho.1 * (1 - .95))
+#> [1] 20.68672
+\end{lstlisting}
+il test dovrà essere costituito da 21 item.
+\end{exmp}
+
+
+
+
+%------------------------------------------------------------------------
+\section{Analisi degli item}
+%------------------------------------------------------------------------
+
+L'analisi degli item esamina le risposte fornite ai singoli item del
+questionario allo scopo di valutare la qualità degli item e del
+questionario nel suo complesso.  Sotto al rubrica di
+analisi degli item possiamo raggruppare le procedure che possono essere utilizzate
+per descrivere la difficoltà degli item, le relazioni tra
+coppie di item, il punteggio totale del test, le relazioni tra gli item e il punteggio totale
+del test. Tali procedure vengono utilizzate per la selezione degli
+item al fine di costruire un questionario omogeneo, attendibile e dotato
+di validità predittiva.
+
+L'esame delle caratteristiche psicometriche degli item che compongono il test non può però essere automatizzata ed eseguita solo sulla base dei risultati delle analisi statiche. L'analisi degli item, invece, va integrata con considerazioni di ordine teorico basate sulla centralità dell'item rispetto alla definizione del costrutto, agli scopi della misurazione e al modo in cui l'item è stato formulato e costruito.
+Se alcuni aspetti di un costrutto non vengono rappresentanti da item che soddisfano i criteri descritti sopra, o se c'è un numero insufficiente di item per produrre uno strumento attendibile, allora alcuni item devono essere riscritti. Nello scrivere gli item, risultano utili le intuizioni che si sono guadagnate nello scrivere gli item che non hanno funzionato. 
+
+
+
+%------------------------------------------------------------------------
+\subsection{Difficoltà degli item}
+%------------------------------------------------------------------------
+
+La più ovvia caratteristica psicometrica di un item in un test di prestazione massima è la proporzione di soggetti che risponde correttamente all'item.La proporzione $p_j$ di soggetti che rispondono correttamente all'item $j$-esimo, o si
+    dichiarano in accordo con  l'affermazione espressa dall'item,
+    fornisce una stima di $\pi_j$, ovvero il \emph{livello di
+      difficoltà} dell'item.  In realtà, $p_j$  dovrebbe essere chiamato ``facilità
+      dell'item'' in quanto assume il suo valore maggiore (ovvero $1$)
+    quando tutti i rispondenti rispondono correttamente all'item
+    considerato e il suo valore minimo (ovvero $0$) quando le risposte
+    sono tutte sbagliate.  I valori $p_j$ giocano un ruolo importante nelle procedure di
+    selezione degli item. 
+
+La difficoltà degli item deve essere interpretata in
+    riferimento alla probabilità di indovinare la risposta
+    corretta. Si suppone, infatti, che i rispondenti tirino ad
+    indovinare quando non conoscono la risposta alla domanda di un
+    questionario.  Nel caso di item dicotomici, per esempio, ci
+    possiamo aspettare un  valore $p_j$ pari a $0.50$ sulla base del
+    caso soltanto; nel caso di item a risposta multipla con quattro
+    opzioni di scelta, invece, $p_j$ assume un valore pari a $0.25$
+    quando i rispondenti tirano ad indovinare.  
+
+Se il test è composto, per la maggior
+    parte, da item ``facili,'' allora il test non sarà in grado di
+    discriminare tra rispondenti con livelli di abilità diversi, in
+    quanto quasi tutti i rispondenti saranno in grado di fornire una
+    risposta corretta alla maggioranza degli item.  Lo stesso si può
+    dire per un test composto da item ``difficili.''  
+Se consideriamo
+    un test composto unicamente da item di difficoltà media, è facile
+    rendersi conto che non potrà differenziare i rispondenti di
+    abilità media 
+ da quelli con abilità superiori alla media (dato che
+    non ci sono item ``difficili''), 
+    e neppure da quelli con abilità
+    inferiori alla media (dato che non ci sono item ``facili''). 
+    
+    In generale è buona pratica costruire test composti da item
+    che coprano tutti i livelli di difficoltà.  
+La scelta che viene usualmente fatta è quella di una
+    dispersione moderata e simmetrica del livello di difficoltà
+    attorno ad un valore leggermente superiore al valore che sta a
+    metà tra il livello del caso ($1.0$ diviso per il numero di
+    alternative) e il punteggio pieno ($1.0$). 
+Per item che presentano quattro alternative di risposta, ad
+    esempio, il livello del caso è pari a $1.00/4 = 0.25$.  Il livello 
+    ottimale di difficoltà media è dunque uguale a  $$0.25 +
+    (1.00 - 0.25) / 2 = 0.62$$
+   Per item dicotomici, il livello
+    del caso è $1.00/2 = 0.50$ e il livello ottimale di difficoltà
+    media è $$0.50+(1.00-.50)/2 = 0.75$$ 
+   In generale, item con livelli di difficoltà superiore a $0.90$
+    o inferiore a $0.20$ dovrebbero essere utilizzati con cautela. 
+
+
+%------------------------------------------------------------------------
+\subsection{Correzione per guessing}
+%------------------------------------------------------------------------
+
+Alle volte i valori $p_j$ sono calcolati introducendo una correzione
+per le risposte fornite casualmente dai soggetti (\emph{guessing}). 
+Si consideri un test a scelta multipla composto da  item aventi
+ciascuno $C$ alternative di risposta ed una sola risposta corretta. 
+Si supponga che un rispondente risponda correttamente a $R$ item e
+risponda in maniera sbagliata a $W$ item.  
+
+ La correzione per guessing si ottiene applicando una formula
+  basata sul seguente ragionamento.  
+  Se assumiamo che un rispondente si limita a tirare ad indovinare
+allora, ogni $C$ risposte, ci aspettiamo 1 risposta giusta e $C-1$
+risposte sbagliate.  
+ Per calcolare il punteggio totale del test in modo da eliminare il 
+numero di risposte corrette ottenute tirando ad indovinare è
+necessario sottrarre 1 punto per ogni $C-1$ item a cui è stata fornita
+una risposta corretta. 
+ Questo ragionamento conduce alla seguente formula:
+\begin{equation}
+FS = R - \frac{W}{C - 1},\notag
+\label{eq:guessing}
+\end{equation}
+con  $R$ = \# risposte corrette, 
+ $W$ = \# risposte sbagliate, 
+$C$ = \# alternative di risposta.
+Per esempio, se $C=5$, allora è necessario sottrarre un punto ogni 4, il che è proprio quello che fa l'equazione~\ref{eq:guessing}. 
+
+La formula~\ref{eq:guessing} per la correzione per  guessing
+produce un punteggio totale corretto per il guessing identico a quello che si otterrebbe 
+pesando ciascuna risposta con 1 punto per le risposte corrette e $- \frac{1}{C-1}$ punti per le risposte sbagliate -- senza considerare le risposte non date.
+
+La correzione per  guessing rappresenta il tentativo
+    di scomporre il numero totale di risposte corrette in due
+    componenti: 
+le risposte corrette dovute alle conoscenze del
+    soggetto,
+ le risposte che risultano corrette come effetto del caso. 
+La  stessa formula può anche essere utilizzata per calcolare la
+    difficoltà degli item corretta per guessing. 
+
+
+%------------------------------------------------------------------------
+\subsection{Discriminatività}
+%------------------------------------------------------------------------
+
+La discriminatività è una misura di quanto ogni item è in grado di distinguere i soggetti con elevati livelli nel costrutto da quelli con un livello basso. L'indice di discriminatività $D$ per i test di prestazione massima si trova nel modo seguente. Dopo avere calcolato il punteggio totale al test, si dividono i soggetti in due gruppi: soggetti con basso punteggio e soggetti con alto punteggio. Una volta definiti i due gruppi, l'indice di discriminatività $D$ sarà dato da:
+\[
+D = P(\text{alto} - P(\text{basso}),
+\]
+dove $P(\text{alto}$ è la proporzione di soggetti che ha risposto correttamente all'item nel gruppo con punteggi alti e $P(\text{basso}$ è la proporzione di soggetti che ha risposto correttamente all'item nel gruppo con punteggi bassi. Il valore di $D$ può variare da -1 a +1.  Nella tabella~\ref{tab:ebel_1965} sono fornite le linee guida per l'interpretazione di questo indice (Ebel, 1965).
+
+\begin{table}[h!]
+\caption{Linee guida per l'interpretazione dell'indice di discriminatività $D$.}
+\centering
+\begin{tabular}{ll}
+\hline
+Valore di $D$ & Commento \\ [0.5ex] % inserts table %heading
+\hline
+$D \geq 0.40$ & Ottima, nessuna revision\\
+$0.30 \leq D < 0.40$ & Buona, revisioni minime\\ 
+$0.20 \leq D < 0.30$ & Sufficiente,  revisioni parziali\\ 
+$D < 0.20$ & Insufficiente, riformulazione o eliminazione\\ 
+[1ex]
+\hline
+\end{tabular}
+\label{tab:ebel_1965}
+\end{table}
+
+La discriminatività degli item di tipo Likert viene valutata con la medesima procedura degli item dei testi di prestazione massima, anche se cambiano le procedure statistiche da utilizzare. Si può dividere la distribuzione dei punteggi totali (o punteggi medi) in quartili e confrontare il punteggio medio o mediano del quartile superiore con quello del quartile inferiore, oppure, se il test è orientato al criterio e lo scopo è selezionare gli item che discriminano meglio due gruppi precostituiti di soggetto, eseguire i medesimi confronti tra il gruppo target (ad esempio, pazienti) e quello ``di controllo'' (per esempio, popolazione generale). È consigliabile valutare la dimensione dell'effetto, ad esempio attraverso l'indice $d$ di Cohen. La dimensione dell'effetto dovrebbe essere almeno moderata ($d > |0.50|$).
+
+
+\paragraph{Potere discriminante dell'item e analisi fattoriale}
+
+Secondo McDondald (1999), la nozione di potere discriminante dell'item può essere trattata in maniera più precisa nell'ambito del modello monofattoriale. Se l'insieme di item a disposizione non è eccessivamente grande (200  o meno), infatti,  è possibile procedere alla selezione  degli item migliori tramite l'analisi fattoriale -- ovvero, scegliendo gli item con le saturazioni maggiori.   
+
+
+%------------------------------------------------------------------------
+
+\begin{exmp}
+
+Utilizziamo i dati della scala SWLS e eseguiamo l'analisi fattoriale:
+\begin{lstlisting}
+fa.out <- factanal(dat, factors=1, n.obs=174)
+fa.out
+#> 
+#> Loadings:
+#>    Factor1
+#> Q1 0.859  
+#> Q2 0.802  
+#> Q3 0.895  
+#> Q4 0.758  
+#> Q5 0.605  
+#> 
+#> Test of the hypothesis that 1 factor is sufficient.
+#> The chi square statistic is 10.95 on 5 degrees of freedom.
+#> The p-value is 0.0524 
+\end{lstlisting}
+Le correlazioni tra i singoli item e il punteggio totale della scala SWLS sono uguali a:
+\begin{lstlisting}
+T <- rowSums(dat)
+cor(dat[, 1], T)
+#> [1] 0.8716759
+cor(dat[, 2], T)
+#> [1] 0.83349
+cor(dat[, 3], T)
+#> [1] 0.8805619
+cor(dat[, 4], T)
+#> [1] 0.8165134
+cor(dat[, 5], T)
+#> [1] 0.7530991 
+\end{lstlisting}
+\end{exmp}
+
+Se l'insieme di item a disposizione è troppo grande, invece, McDondald (1999) suggerisce di utilizzare l'approccio tradizionale della teoria classica dei test. 
+McDondald (1999) elenca tre diverse procedure di calcolo del potere discriminante degli item:  
+la covarianza tra il punteggio sull'item $i$-esimo e il  punteggio totale del test;  
+ la covarianza tra il punteggio sull'item $i$-esimo (non standardizzato) e il punteggio del test standardizzato (covarianza semistandardizzata);  la correlazione tra il punteggio dell'item $i$-esimo e il punteggio del test.   
+
+\begin{exmp}
+Nei termini dei dati della ``Satisfaction With Life Scale'',
+    gli indici precedenti si calcolano nel modo seguente: 
+\begin{lstlisting}
+cov(SWLS, rowSums(SWLS))
+#>        [,1]
+#> Q1 8.540629
+#> Q2 8.998871
+#> Q3 9.470866
+#> Q4 8.179390
+#> Q5 9.286891
+cov(SWLS, scale(rowSums(SWLS)))
+#>        [,1]
+#> Q1 1.280630
+#> Q2 1.349342
+#> Q3 1.420115
+#> Q4 1.226464
+#> Q5 1.392529
+cor(SWLS, rowSums(SWLS))
+#>         [,1]
+#> Q1 0.8716759
+#> Q2 0.8334901
+#> Q3 0.8805619
+#> Q4 0.8165134
+#> Q5 0.7530991
+\end{lstlisting}
+
+\end{exmp}
+
+Se gli item sono ben rappresentati dal modello monofattoriale ($Y_i = \mu_i + \lambda_i \xi + \delta_i$, con varianza specifica $\psi_{ii}$), allora al crescere del numero di item la covarianza semistandardizzata e la correlazione tra il punteggio sull'item e il punteggio totale convergono alle saturazioni fattoriali calcolate sugli
+item standardizzati.  McDondald (1999) nota quindi che la covarianza
+    semistandardizzata e la correlazione risultano appropriate per
+    stimare il potere discriminante dell'item se il punteggio totale
+    viene calcolato utilizzando i punteggi standardizzati
+    degli item. 
+   Tuttavia, la pratica usuale questo non succede. 
+È stato osservato, infine, che gli indici discussi sopra sono spuri in
+    quanto il punteggio totale  è calcolato anche nei termini
+    dell'item che viene analizzato. A questo scopo, è possibile procedere ad un aggiustamento che introduce
+    un fattore di correzione. 
+    
+
+%------------------------------------------------------------------------
+\paragraph{Punteggio sull'item e punteggio totale}
+%------------------------------------------------------------------------
+
+Il grado di associazione tra il punteggio sull'item e il
+    punteggio totale  
+    viene considerato dalla teoria classica dei test quale indice del
+    potere discriminante dell'item.  
+  Se il test fornisce una
+    misura attendibile di un unico attributo, e se un item è
+    fortemente associato al punteggio del test, allora l'item medesimo
+    sarà in grado di distinguere tra rispondenti che ottengono un
+    punteggio basso nel test e rispondenti che ottengono un punteggio
+    alto nel test.  
+
+Nel caso di una forte associazione positiva tra il punteggio sull'item e il punteggio totale, la
+probabilità di risposta corretta sull'item è alta per rispondenti che ottengono
+un punteggio totale alto, e bassa per i rispondenti che
+ottengono un punteggio totale basso. Nel caso di una debole
+associazione tra il punteggio sull'item e il punteggio totale, invece,
+la probabilità di risposta corretta all'item non è predittiva del
+punteggio totale. Gli item con un basso potere discriminante dovrebbero dunque essere rimossi dal reattivo. 
+
+È necessario distinguere i casi in cui gli item sono dicotomici dal caso di item continui.  Nel caso di item dicotomici
+ e di un test unidimensionale, il potere discriminante viene  calcolato mediante la correlazione biseriale o punto-biseriale. 
+
+
+%%------------------------------------------------------------------------
+%\paragraph{Punteggio totale e punteggio medio}
+%%------------------------------------------------------------------------
+%
+%Supponiamo che un test sia composto da $p$ item.  
+%   Il
+%    punteggio totale del test per il rispondente $v$ è dato
+%    dalla somma dei punteggi degli item: 
+%\begin{equation}
+%Y_v = \sum_{i=1}^p X_{iv}
+%\end{equation}
+% Il punteggio medio  per il rispondente $v$ è uguale alla media dei punteggi degli item:
+%\begin{equation}
+%\bar{Y}_v = \frac{\sum_{i=1}^p X_{iv}}{p}.
+%\end{equation}
+%La varianza del punteggio totale è uguale alla varianza dei
+%    punteggi $Y$. 
+%   In maniera alternativa, tale varianza può essere
+%    calcolata come la somma degli elementi della matrice di varianze e
+%    covarianze dei punteggi degli item. 
+%
+%
+%\begin{exmp}
+%
+%Consideriamo nuovamente i punteggi della scala SWLS. La
+%    varianza del punteggio totale si può calcolare in due modi.
+%   Possiamo trovare prima il punteggio totale di ogni rispondente per
+%    poi calcolare la varianza di tali punteggi. 
+%   Oppure la somma di
+%    tutti gli elementi della matrice di varianze e di covarianze dei
+%    punteggi grezzi.  Per esempio, 
+%
+%\begin{lstlisting}
+%var( rowSums(SWLS) )
+%#> [1] 44.47665
+%print(cov(SWLS), 3)
+%#>      Q1   Q2   Q3   Q4   Q5
+%#> Q1 2.16 1.61 1.81 1.46 1.50
+%#> Q2 1.61 2.62 1.94 1.37 1.45
+%#> Q3 1.81 1.94 2.60 1.64 1.47
+%#> Q4 1.46 1.37 1.64 2.26 1.44
+%#> Q5 1.50 1.45 1.47 1.44 3.42
+%sum( cov(SWLS) )
+%#> [1] 44.47665
+%\end{lstlisting}
+%
+%\end{exmp}
+%
+
+
+%------------------------------------------------------------------------
+\section{Relazioni tra coppie di item}
+%------------------------------------------------------------------------
+
+Le relazioni tra coppie di item sono importanti sia per la costruzione
+sia per l'analisi dei test. La teoria classica dei test definisce 
+l'attendibilità di un test (o di un item) come il rapporto tra la
+varianza del punteggio vero e la varianza del punteggio osservato.  Il coefficiente di
+attendibilità può però essere calcolato anche trovando la
+correlazione tra due forme parallele di un test (o tra due item).  
+ Inoltre, è possibile interpretare la correlazione tra due forme
+parallele di un test (o tra due item) come il quadrato del
+coefficiente di correlazione tra i punteggi osservati e i punteggi
+veri di un test (o di un item). 
+
+Molti indici sono disponibili per misurare il grado di associazione tra gli item. 
+Per item quantitativi, possiamo usare la correlazione di Pearson o la covarianza. Per item qualitativi politomici ordinali, usiamo la correlazione policorica. Per item ordinali dicotomici, usiamo la correlazione tetracorica. Per item dicotomici usiamo, ad esempio, l'indice $\phi$ (la discussione di tali indici statistici è fornita nell'Appendice~\ref{chapter:appendix2}). 
+
+\paragraph{Ridondanza}
+
+Nel processo di raffinamento del test occorre tenere conto degli item ridondanti, ossia di quelli che sono troppo associati tra loro. La ridondanza può essere valutata con indici statistici quali la correlazione: se due o più item hanno tra loro una correlazione maggiore di $|0.70|$ viene mantenuto nell'item pool solo un item, dato che gli altri apportano la stessa informazione.
+
+
+
+%%------------------------------------------------------------------------
+%\subsection{Item quantitativi}
+%%------------------------------------------------------------------------
+%
+%Nel caso di item quantitativi, il grado di associazione può
+%    essere misurato dalla correlazione o dalla covarianza.
+%   Le matrici di correlazioni o di varianze e covarianze possono
+%    essere calcolate usando le procedure usuali. 
+%
+%\begin{exmp}
+%
+% McDonald (1999) considera, quale esempio, il campione di 174 rispondenti a
+%    cui è stato somministrato il questionario della ``Satisfaction
+%    With Life'' (SWLS).   
+%   I dati sono contenuti nel file {\tt SWLS.questions.txt} e
+%    possono essere scaricati direttamente dal web nel modo  seguente: 
+%\begin{lstlisting}
+%dat <- 
+%read.delim("http://www.unt.edu/rss/SWLS.questions.txt")
+%\end{lstlisting}
+%I 5 item sono a 7 passi con modalità ``Strongly agree'', ``Agree'', ``Slightly agree'', ``Neither agree nor disagree'', ``Slightly disagree'', ``Disagree'', e ``Strongly disagree.''
+%\begin{enumerate}
+%\item In most ways my life is close to my ideal. 
+%\item The conditions of my life are excellent.  
+%\item I am satisfied with my life. 
+%\item So far I have gotten the important things I want in life.  
+%\item If I could live my life over, I would change almost nothing.
+%\end{enumerate}
+%La matrice di correlazioni di Pearson tra i cinque item è
+%\begin{lstlisting}
+%round(cor(dat), 2)
+%#>      Q1   Q2   Q3   Q4   Q5
+%#> Q1 1.00 0.68 0.76 0.66 0.55
+%#> Q2 0.68 1.00 0.74 0.57 0.49
+%#> Q3 0.76 0.74 1.00 0.68 0.49
+%#> Q4 0.66 0.57 0.68 1.00 0.52
+%#> Q5 0.55 0.49 0.49 0.52 1.00
+%\end{lstlisting}
+%\end{exmp}
+
+%
+%%------------------------------------------------------------------------
+%\subsection{Punteggio totale del test}
+%%------------------------------------------------------------------------
+%
+%Nella popolazione di interesse, la media del punteggio totale $Y$ del test è semplicemente la somma delle medie dei punteggi sugli item: 
+%$$
+%\mu_Y=\sum \mu_{X_j}.
+%$$
+%Nel caso di item binari, sarà la media delle probabilità di risposta corretta agli item.   
+%
+%%------------------------------------------------------------------------
+%
+%\begin{exmp}
+%Consideriamo nuovamente il campione di 174 rispondenti a cui è stata somministrata la scala SWLS. La media del punteggio totale per questo campione è
+%\begin{lstlisting}
+%mean( rowSums(SWLS) )
+%#> [1] 14.63218
+%\end{lstlisting}
+%Questo risultato suggerisce che gli studenti di questo campione non sono  troppo soddisfatti della loro vita.
+%Infatti, le norme della scala sono le seguenti:
+%\begin{lstlisting}
+%#>  35 - 31   Extremely satisfied 
+%#>  26 - 30   Satisfied 
+%#>  21 - 25   Slightly satisfied 
+%#>  20        Neutral 
+%#>  15 - 19   Slightly dissatisfied 
+%#>  10 - 14   Dissatisfied 
+%#>  5  -  9   Extremely dissatisfied 
+%\end{lstlisting}
+%
+%\end{exmp}
+%
+%%------------------------------------------------------------------------
+%
+%\begin{exmp}
+%
+%Consideriamo ora il calcolo del punteggio totale del test nel caso di dati binari. 
+%Utilizziamo, quale esempio, i dati contenuti nel dataframe {\tt LSAT} disponibile
+%nel pacchetto {\tt ltm} di \R.   Tale matrice di dati contiene le
+%risposte di 1000 individui su 5 item del Law School Admission Test
+%(LSAT) e costituisce un sottoinsieme dei dati analizzati da Bock and
+%Lieberman (1970). 
+%
+%Il questionario è costituito da 5 batterie di domande a scelta multipla selezionate per misurare tre
+%abilità considerate essenziali per il successo nella {\it Law School}:
+%lettura e comprensione del testo, 
+% ragionamento analitico,
+% ragionamento logico.
+% Statistiche descrittive su questi dati possono essere ottenute utilizzando  la funzione {\tt descript()} contenuta nel pacchetto {\tt ltm}.
+%
+%\begin{lstlisting}
+%library(ltm)
+%descript(LSAT)
+%#> 
+%#> Descriptive statistics for the 'LSAT' data-set
+%#> 
+%#> Sample:
+%#>  5 items and 1000 sample units; 0 missing values
+%#> 
+%#> Proportions for each level of response:
+%#>            0     1  logit
+%#> Item 1 0.076 0.924 2.4980
+%#> Item 2 0.291 0.709 0.8905
+%#> Item 3 0.447 0.553 0.2128
+%#> Item 4 0.237 0.763 1.1692
+%#> Item 5 0.130 0.870 1.9010
+%#> 
+%#> Frequencies of total scores:
+%#>      0  1  2   3   4   5
+%#> Freq 3 20 85 237 357 298
+%\end{lstlisting}
+%Una stima di $\mu_Y$ è data da:
+%$$
+%\hat{\mu}_Y = 0.924 + 0.709+0.553+0.763+0.870=3.819
+%$$
+%ovvero
+%\begin{lstlisting}
+%mean( rowSums(LSAT) )
+%#> [1] 3.819
+%\end{lstlisting}
+% La funzione {\tt rowSums()} ritorna, in questo caso, un
+%    vettore di 1000 elementi; il $v$-esimo di tali elementi
+%    corrisponde alla somma delle 5 colonne della $v$-esima riga della
+%    matrice dei dati. 
+%
+%La varianza del punteggio totale viene calcolata semplicemente
+%    trovando prima il punteggio totale del test per ciascun
+%    rispondente e, poi, calcolando la varianza di tali punteggi: 
+%\begin{lstlisting}
+%T <- rowSums(LSAT)
+%var(T)
+%#> [1] 1.071310
+%\end{lstlisting}
+%
+%\end{exmp}
+
+
+
+%------------------------------------------------------------------------
+\subsection{Massimizzare la varianza del punteggio totale}
+%------------------------------------------------------------------------
+
+Uno dei criteri che possono essere utilizzati per selezionare gli item
+    che andranno a costituire la versione finale di un test è quello
+    di massimizzare la varianza del punteggio totale.
+   Più in particolare, si vuole massimizzare il rapporto tra la
+    varianza del  punteggio totale e la somma delle varianze
+    dei punteggi dei $p$ item. 
+Dato che il coefficiente $\alpha$ di Cronbach ha la seguente forma:
+\begin{equation}
+\alpha = \frac{p}{p-1}\left[1- \frac{\sum \sigma^2_{X_i}}{\sigma^2_T} \right],
+\end{equation}
+la scelta di massimizzare il rapporto definito in precedenza avrà
+anche la conseguenza di massimizzare $\alpha$. 
+
+McDondald (1999) fa notare che una procedura di selezione degli item basata sul principio della  massimizzazione di $\alpha$ ha però dei limiti.  In primo luogo, tale procedura è appropriata solo quando l'insieme di item è troppo
+ grande per selezionare gli item in base all'esame dell saturazioni fattoriali ottenute applicando il modello
+ monofattoriale. 
+Inoltre, anche se il modello monofattoriale non può essere applicato per problemi pratici, a causa del numero di item troppo grande, tale modello deve essere comunque adeguato anche se si procede selezionando gli item sulla base di $\alpha$. Ovviamente, però, tale assunzione non può essere verificata.
+In secondo luogo, McDondald (1999) nota che la procedura di selezione basata sulla massimizzazione di $\alpha$ non è adeguata neanche nel caso in cui il costrutto latente abbia una struttura gerarchica, con un fattore generale ed una serie di fattori subordinati.  In quel caso, infatti, la selezione degli item basata sulla massimizzazione di $\alpha$ può portare all'eliminazione degli item che definiscono tutti i fattori subordinati tranne uno. Nel caso in cui il costrutto abbia una struttura gerarchica, dunque,  la selezione degli item basata sulla  massimizzazione di $\alpha$  deve essere accompagnata da considerazione relative al contenuto del costrutto. 
+
+
+
+%------------------------------------------------------------------------
+%\section{Rifinire la scala attraverso la riduzione del numero di item}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\subsection{Unidimensionalità della struttura fattoriale}
+%------------------------------------------------------------------------
+
+La struttura di un costrutto può essere meglio chiarita svolgendo un'analisi separata nella quale vengono considerati solo gli item che identificano il costrutto in questione. In questo modo si può verificare con maggiore attenzione l'unidimensionalità della struttura fattoriale.  
+
+Sono diversi gli indici che possono essere considerati per valutare se la struttura fattoriale è unidimensionale (Barbaranelli e Natali, 2005).
+Se il test ha una struttura fattoriale unidimensionale gli item dovrebbero dare origine ad un coefficiente $\alpha$ elevato. Il fattore latente deve spiegare una quota consistente della varianza delle variabili manifeste.  Alcuni autori indicano il 40\% come percentuale minima da spiegare, altri suggeriscono il 20\% come soglia (Hattie, 1985). Il rapporto tra il primo e il secondo autovalore fornisce una stima della quota di variabilità che il primo fattore riproduce; se tale rapporto è basso allora i due autovalori sono simili e la soluzione monofattoriale non è accettabile.
+Le saturazioni nel fattore comune dovrebbero essere tutte elevate e superiori ad almeno .40. Il valore della funzione di bontà di adattamento dovrebbe produrre un valore $\chi^2$ non significativo. 
+Oltre al  $\chi^2$ vi sono altri indici di bontà dell’adattamento.  Ne considereremo due: l’indice RMSEA e  l’indice RSSR.
+
+L'indice RMSEA fornisce una stima dell’errore di approssimazione che si commette quando la matrice delle correlazioni osservate viene riprodotta tramite la matrice ricavata dalle saturazioni fattoriali: 
+RMSEA $<$ .05:  l’errore di approssimazione è minimo; 
+ .05 $<$ RMSEA $<$ .08:  l’errore di approssimazione è accettabile; 
+ RMSEA $>$ .08:  l’errore di approssimazione non è accettabile.
+L’indice RMSEA si ottiene dal $\chi^2$ nel modo seguente:
+\[
+RMSEA = \sqrt{ \frac{\chi^2 - df}{n/df} }
+\]
+dove $df$ sono i gradi di liberà e $n$ è il numero di soggetti. Questo indice rappresenta una stima della bontà di adattamento del modello nella popolazione, ponderata per i gradi di liberà e quindi è una misura che tiene in considerazione la parsimonia del modello. Un vantaggio dell’indice RMSEA è che esso risulta meno influenzato del $\chi^2$ dall’ampizza del campione considerato.
+L’indice RMRS viene definito come la radice quadrata della media dei residui al quadrato. L’indice RMRS rappresenta la media della correlazione residua, cioé non spiegata dal modello, ed è ricavabile con la seguente formula:
+\[
+RMRS = \sqrt{ \frac{2 \sum_i\sum_j(r_{ij} - \hat{r}_{ij})^2}{q(q+1)}  }
+\]
+dove $q$ è il numero di variabili manifeste, e $r_{ij}$ e $\hat{r}_{ij}$ sono rispettivamente la correlazione osservata e la correlazione riprodotta tra le variabili $i$ e $j$.
+
+
+%%------------------------------------------------------------------------
+%\subsection{Riduzione degli item}
+%%------------------------------------------------------------------------
+%
+%Un secondo approccio è quello di calcolare l'attendibilità della scala riducendo via via il numero di item.  Per esempio, nel caso di una scala unidimensionale con 25 item, è possibile rappresentare in un grafico il valore di attendibilità in funzione del numero degli item, laddove l'attendibilità corrispondente a 25 item si ottiene usando tutti gli item disponibili, l'attendibilità con 24 item si ottiene dopo avere eliminato l'item avente la minore saturazione fattoriale nella soluzione precedente, e così via fino ad arrivare ad uno strumento con 4 soli item. 
+%
+%Anche se la procedura descritta sopra è di semplice esecuzione, è necessario tenere a mente le necessarie considerazioni relative alla validità dello strumento. Lo scopo non è solo quello di trovare il minimo numero di item che consenta un livello adeguato di attendibilità, ma anche quello di costruire uno strumento valido, ovvero nel quale gli item selezionati siano appropriati per specificare il costrutto di interesse. 
+
+
+
+
+
+
+
+
+
+
+
+
+

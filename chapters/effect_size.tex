@@ -1,0 +1,615 @@
+\chapter{La dimensione dell'effetto}
+\label{ch:effect_size}
+
+
+\section{La dimensione dell'effetto del trattamento}
+
+I risultati degli studi di ricerca sull'\emph{efficacy} e sull'\emph{effectiveness} degli interventi psicologici usano una metrica comune chiamata \emph{dimensione dell'effetto}.
+La dimensione dell'effetto può essere calcolata per quasi tutti i tipi di disegni della ricerca e nel caso di quasi tutte le analisi statistiche. 
+Le analisi statistiche basate sui confronti tra gruppi danno luogo a due tipi di indici che misurano la dimensione dell'effetto. 
+Il primo tipo di dimensione dell'effetto riguarda le differenze tra le medie dei gruppi e si calcola nei termini della differenza tra le medie dei gruppi (per esempio gruppi con il trattamento e senza trattamento) divisa per la stima della deviazione standard raggruppata. 
+Tali indici vanno sotto il nome di $d$, $g$ o $\eta^2$ -- si veda la~\ref{sec:cont_reponse_eff_size}. 
+
+Il secondo tipo di dimensione dell'effetto comporta un confronto di gruppi in termini degli odds o della probabilità di un risultato -- si veda la~\ref{sec:binary_reponse_eff_size}.
+Un \emph{odds ratio} (OR) viene calcolato per determinare l'associazione tra la condizione di gruppo (ad es., trattamento e non trattamento) e una variabile ad esito binario (ad esempio, la presenza o la non insorgenza di un evento, come la ricaduta). 
+Un \emph{rischio relativo} (RR) viene calcolato per confrontare la probabilità che un evento si verifichi in base ai due livelli del fattore di rischio considerato (ad es., trattamento/non trattamento, esposizione/non esposizione ad un fattore di rischio).
+%Sebbene comunemente usati nella ricerca epidemiologica, questi due indici della dimensione dell'effetto sono meno frequentemente utilizzati nella ricerca psicologica. 
+
+Si noti inoltre un punto importante: non è possibile confrontare direttamente la dimensione dell'effetto ottenuta in studi sull'\emph{efficacy} e sull'\emph{effectiveness} del trattamento perché, quasi sempre, tali studi vengono svolti mediante disegni sperimentali molto diversi.
+Gli studi sull'\emph{efficacy} sono generalmente studi randomizzati controllati nei quali i risultati del trattamento vengono confrontati con i risultati di una condizione di controllo (ad esempio, nessun trattamento o una forma alternativa di trattamento). 
+In questo caso, la dimensione dell'effetto si basa sul cambiamento che può essere attribuito all'effetto causale del trattamento. 
+Pochi studi sull'\emph{effectiveness} del trattamento sono invece studi randomizzati controllati: tali studi consistono tipicamente in un'indagine entro i gruppi -- cioè, in un confronto tra la condizione pre-trattamento e la condizione post-trattamento, senza alcuna condizione di controllo. 
+Di conseguenza, la dimensione dell'effetto ottenuta in questo tipo di indagini è basata su un cambiamento dovuto a cause molteplici: oltre agli effetti del trattamento, ci sono agli effetti dovuti alla maturazione, alla regressione verso la media, alla remissione spontanea dei sintomi dovuta al passaggio di tempo e la reattività delle misure. 
+Pertanto, è probabile che gli studi sull'\emph{efficacy} portino ad una stima della dimensione dell'effetto maggiore rispetto ai valori che tipicamente vengono ottenuti negli studi sull'\emph{effectiveness} del trattamento.
+
+
+\subsection{Risposta continua}
+\label{sec:cont_reponse_eff_size}
+
+\subsubsection{Indici $d$ di Cohen e $g$ di Hedges}
+
+Per valutare la dimensione dell'effetto, Cohen (1962, 1988) ha introdotto una misura simile a un punteggio $z$ in cui una di due medie campionarie viene sottratta dall'altra e il risultato è diviso per la deviazione standard della popolazione:
+\begin{equation}
+d = \frac{M_A - M_B}{\sigma},
+\label{eq:d_cohen}
+\end{equation}
+laddove $M_A$ e $M_B$ sono le due medie campionarie e $\sigma$ è la media della popolazione.
+
+Hedges (1982) ha proposto una piccola modifica alla~\eqref{eq:d_cohen} nella quale la deviazione standard raggruppata sostituisce il parametro ignoto $\sigma$, ottenendo in questo modo la statistica $g$:
+\begin{equation}
+g = \frac{M_A - M_B}{s}.
+\label{eq:g_eff_size}
+\end{equation}
+
+Al fine di evitare una sistematica sovrastima della dimensione dell'effetto in piccoli campioni, Borenstein, Hedges, Higgins e Rothstein (2009) hanno proposto la seguente correzione:
+\begin{equation}
+d_{unb} = d \left(1 - \frac{3}{4 \cdot \text{df} - 1} \right).
+\label{eq:d_unbiased}
+\end{equation}
+La correzione è molto piccola quando l'ampiezza campionaria è grande (solo il 3\% per 25 gradi di libertà) ma è sostanziale per piccoli campioni.
+
+\subsection{Risposta binaria}
+\label{sec:binary_reponse_eff_size}
+
+Supponiamo che la variabile risposta  $Y$ abbia due modalità, convenzionalmente chiamate successo ($1$) e insuccesso ($0$).
+Per esempio, un individuo con certi fattori di rischio può ammalarsi oppure no.
+Supponiamo che le osservazioni siano indipendenti e che $P(Y=1) = \pi$ e $P(Y=0) = 1-\pi$.
+Spesso, ogni unità di osservazione è associata a un vettore ($X_1, \dots, X_p$) di variabili esplicative. 
+L'obbiettivo è studiare la relazione tra la probabilità $P(Y=1)$ e le variabili
+esplicative.
+Il caso più semplice si ha quando esiste un solo carattere esplicativo $X$, con $I$  modalità sconnesse (un fattore). 
+In tal caso i dati binari sono raggruppati per modalità della variabile esplicativa e le risposte
+$
+Y_1, \dots, Y_I
+$
+sono il \emph{numero di successi} nelle $n_i$ prove indipendenti dell'$i$-esimo gruppo ($i = 1, \dots, I$).
+Se i dati sono raggruppati si possono  presentare come una tavola di contingenza $I \times 2$:
+
+\begin{center}
+\begin{tabular}{cccc}
+  \hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+    & Successo & Insuccesso & Totale \\
+  \hline
+  1 & $Y_{11}$ & $Y_{12}$ & $Y_{1+}$ \\
+  2 & $Y_{21}$ & $Y_{22}$ & $Y_{2+}$ \\
+  $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+  I & $Y_{I1}$ & $Y_{I2}$ & $Y_{I+}$ \\
+  \hline
+\end{tabular}
+\end{center}
+Nelle applicazioni che considereremo i totali di riga non sono variabili aleatorie, ma costanti fisse per disegno. 
+Pertanto
+\begin{center}
+\begin{tabular}{cccc}
+  \hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+  X & Successo & Insuccesso & Totale \\
+  \hline
+  $x_1$    & $Y_{1}$ & $n_1-Y_1$ & $n_1$ \\
+  $x_2$    & $Y_{2}$ & $n_2-Y_2$ & $n_2$ \\
+  $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+  $x_I$    & $Y_{I}$ & $n_I-Y_{I}$ & $n_I$ \\
+  \hline
+\end{tabular}
+\end{center}
+Le situazioni in cui i totali di riga sono v.a. non saranno qui considerate.
+
+Il caso fondamentale è quello della tavola $2 \times 2$ in cui vi è una sola variabile esplicativa binaria.
+Supponiamo che $X$ sia il trattamento (1: presente; 0: controllo) e $Y$ sia la risposta (1: successo; 0: insuccesso).
+La situazione è riassunta nella tavola seguente:
+
+\begin{center}
+\begin{tabular}{cccc}
+  \hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+    & \multicolumn{2}{c}{Risposta} &   \\
+  \hline
+Trattamento & Successo & Insuccesso  \\\hline
+Presente & $\pi_1$ & $1-\pi_1$  \\
+Controllo & $\pi_2$ & $1-\pi_2$  \\\hline
+\end{tabular}
+\end{center}
+dove $\pi_1$ e $\pi_2$ sono le probabilità condizionate $P(Y = \text{successo} \mid X=\text{trattamento presente})$ e $P(Y = \text{successo} \mid X=\text{controllo})$.
+Le  proporzioni di successi nel campione forniscono delle stime di $\pi_1$ e $\pi_2$:
+\begin{align}
+\hat{\pi}_1 &= Y_1/n_1,\notag\\
+\hat{\pi}_2 & = Y_2/n_2,\notag
+\end{align}
+dove $Y_i$ è il numero ottenuto di successi ed $n_i$ è la numerosità delle prove per $X = x_i$.
+Per studiare l'\emph{efficacy} del trattamento si calcolano i seguenti indici:
+\begin{itemize}
+    \item la \emph{differenza delle probabilità} $D=\pi_{1} -
+    \pi_{2}$;
+    \item il \emph{rapporto delle probabilità}
+    $RR=\pi_{1} / \pi_{2}$, il cosiddetto \emph{rischio relativo};
+    \item il \emph{rapporto delle quote} (odds-ratio) detto anche \emph{rapporto
+    crociato} $\theta = \frac{\pi_1/(1-\pi_1)}{\pi_2/ (1-\pi_2)}$;
+    \item il \emph{logaritmo del rapporto delle quote} $\log_e \theta$.
+\end{itemize}
+
+\begin{exmp}
+Il Physicians' Health Study è stata un'indagine prospettiva svolta per verificare se l'uso regolare di Aspirina riduce la mortalità per malattie cardiovascolari. 
+I partecipanti allo studio (dei medici volontari) venivano assegnati in modo casuale al trattamento (uso regolare di Aspirina, $n_1=11037$) o al placebo ($n_2=11034$). I soggetti non erano a conoscenza del tipo di trattamento cui erano stati assegnati.
+\begin{lstlisting}
+aspirina
+#>           Infarto miocardico
+#> Gruppo      Si    No
+#>   Aspirina 104 10933
+#>   Placebo  189 10845
+\end{lstlisting}
+L'evento chiamato convenzionalmente successo è la presenza di un infarto.
+La tabella precedente è stata generata con le seguenti istruzioni \R:
+\begin{lstlisting}
+aspirina <- matrix(
+  c(104,10933,189,10845),
+  nrow=2, 
+  byrow=TRUE
+)
+dimnames(aspirina) <- list(
+  c("Aspirina","Placebo"),
+  c("Si","No")
+)
+names(dimnames(aspirina)) <- 
+  c("Gruppo","Infarto miocardico")
+
+aspirina
+#>           Infarto miocardico
+#> Gruppo      Si    No
+#>   Aspirina 104 10933
+#>   Placebo  189 10845
+\end{lstlisting}
+Calcolare la grandezza totale del campione e le proporzioni $\hat{\pi}_{ij}$ è facile:
+\begin{lstlisting}
+tot <- sum(aspirina)
+tot
+#> [1] 22071
+aspirina/tot
+#>           Infarto miocardico
+#> Gruppo           Si     No
+#>   Aspirina 0.004712 0.4954
+#>   Placebo  0.008563 0.4914
+\end{lstlisting}
+Le stime delle probabilità condizionate di successo dato $X$ (proporzioni di riga) si ottengono nel modo seguente:
+\begin{lstlisting}
+rowtot <- apply(aspirina, 1, sum)
+rowtot
+#> Aspirina  Placebo
+#>    11037    11034
+rowprop <- sweep(aspirina, 1, rowtot, "/")
+rowprop
+#>           Infarto miocardico
+#> Gruppo           Si     No
+#>   Aspirina 0.009423 0.9906
+#>   Placebo  0.017129 0.9829
+\end{lstlisting}
+quindi $\hat{\pi}_1=0.0094$ e $\hat{\pi}_2=0.0171$.
+\end{exmp}
+
+
+\subsubsection{Differenza tra due proporzioni}
+
+Il modo più semplice per misurare l'effetto del trattamento sulla variabile risposta è la differenza delle probabilità
+\[
+D =\pi_1 - \pi_2.
+\]
+La differenza di probabilità assume valori compresi tra $-1$ e $1$ ed è nulla se la risposta non dipende da $X$, cioè se il trattamento non ha effetto.
+
+\begin{exmp}
+Per l'esempio dell'aspirina, $\hat{\pi}_1=104/11037 = 0.0094$ è la proporzione di attacchi di cuore (successi) tra gli individui trattati con aspirina e $\hat{\pi}_2=189/11034 = 0.0171$
+è la proporzione di attacchi di cuore  tra gli individui trattati
+con il placebo.
+La differenza tra le proporzioni è $\hat{\pi}_1 - \hat{\pi}_2 =  0.0094 - 0.0171  = -0.0077$.
+L'errore standard stimato della differenza tra le proporzioni è
+\[
+\sqrt{\frac{\hat{\pi}_1(1-\hat{\pi}_1)}{n_1} +
+\frac{\hat{\pi}_2(1-\hat{\pi}_2)}{n_2}} = 0.0015.
+\]
+Un intervallo di confidenza al 95\% per la differenza tra le proporzioni è $-0.0077 \pm 1.96(0.0015)$ cioè ($-0.011, -0.005$).
+Poiché l'intervallo contiene solo valori negativi si conclude che $\pi_1 < \pi_2$, per cui il trattamento con aspirina appare ridurre la probabilità di infarto.
+
+Il risultato precedente si ottiene con \R nel modo seguente:
+\begin{lstlisting}
+p1 <- 104 / 11037
+p2 <- 189 / 11034
+n1 <- 11037
+n2 <- 11034
+se <- sqrt((p1 * (1 - p1) / n1) + (p2 * (1 - p2) / n2))
+se
+#> [1] 0.00154
+p1 - p2 + c(-1, 1) * qnorm(0.975) * se
+#> [1] -0.010724 -0.004688
+\end{lstlisting}
+
+\end{exmp}
+
+\subsubsection{Rischio relativo}
+
+La differenza tra due proporzioni può rivestire un'importanza maggiore quando entrambe le proporzioni sono vicine a 0 o a 1 che quando esse sono vicine a 0.5.
+Per esempio, in uno studio che confronta la mortalità
+associata a due trattamenti, la differenza $0.010 - 0.001 = 0.009$
+può essere più importante della differenza tra $0.410 - 0.401 =
+0.009$.
+Infatti, la prima differenza coinvolge due proporzioni che
+stanno in rapporto di 10 a 1, mentre la seconda riguarda due
+proporzioni quasi uguali. Quindi la prima differenza appare di
+maggiore rilevanza.
+Nelle situazioni precedenti è utile calcolare il rischio
+relativo, cioè il rapporto
+\[
+RR = \frac{\pi_1}{\pi_2}.
+\]
+Il $RR$ è sempre un numero non negativo. 
+Se è uguale a 1 la risposta non dipende da $X$.
+
+\begin{exmp}
+Per le proporzioni precedenti, il rischio relativo è $0.010/0.001=10.0$ e $0.410/0.401=1.02$.
+Nell'esempio dell'aspirina il $RR$ campionario è
+\[
+0.0171/0.0094 = 1.82.
+\]
+Quindi la proporzione campionaria di casi di infarto è più grande dell'82\% per il gruppo dei trattati col placebo.
+\end{exmp}
+
+
+\subsubsection{Odds ratio}
+
+Invece del $RR$ si può misurare la dipendenza delle probabilità dal trattamento con il rapporto tra le \emph{quote di scommessa} (gli odds).
+Gli odds di successo $\omega$ sono per definizione il rapporto tra la probabilità di successo ($\pi$) e la probabilità di insuccesso ($1 - \pi$):
+\[
+  \omega = \frac{\pi}{1 - \pi}.
+\]
+La quota di scommessa $\omega$ è un indice non negativo
+che misura quanti successi ci si attendono per ogni insuccesso.
+Nel campo delle scommesse  quando la quota dell'evento $Y =
+    1$ contro $Y = 0$ è $\omega$, scomettendo su $Y = 0$
+    si vince $\omega$ volte la posta.
+Per esempio, se $\pi = 0.75$ la quota è $\omega = 0.75/0.25 = 3$; scommettendo su $Y = 0$ si riceve, in caso di vincita, 3 volte la posta.
+Se la quota è minore di $1$, si può calcolare il reciproco ($1/\omega$) e interpretare il risultato come riferito all'evento complementare.
+Per esempio, se $\omega$ è $0.3333$, uno si aspetta $0.3333$ successi per ogni insuccesso ossia
+$1/0.3333=3$ insuccessi per ogni successo.
+La relazione inversa tra  probabilità di successo e odds
+è
+$
+\pi =\frac{\omega}{1 + \omega}.
+$
+Per esempio, se $\omega =3$, la probabilità di successo sarà
+$
+\pi = \frac{3}{1 + 3} 
+$
+uguale a 0.75.
+
+\begin{exmp}
+Nell'esempio dell'aspirina l'odds di infarto per il gruppo aspirina è
+\[
+\omega_1 = 104/10933 = 0.0095
+\]
+e per il gruppo placebo è 
+\[
+\omega_2 = 189/10845 = 0.0174.
+\]
+Dato l'odds $\omega_1 = 0.0095$, la probabilità di infarto per il gruppo aspirina è
+\[
+\pi_1 =\frac{\omega_1}{1 + \omega_1} = \frac{0.0095}{1 + 0.0095}= 0.0094
+\]
+ ovvero
+\[
+\pi_1 = \frac{104}{104+10933}= 0.0094.
+\]
+\end{exmp}
+
+
+\subsubsection{Logit}
+
+Il logaritmo della quota ($\phi$) o \emph{logit} definito da
+    \[
+    \phi = \log_e \omega = \log_e \frac{\pi}{1 - \pi} = \ln (\pi) - \ln (1-\pi)
+    \]
+trasforma la probabilità $\pi \in (0, 1)$ in un numero $\phi \in \Re$.
+Il logit è simmetrico attorno allo 0 ed è privo di limite superiore e inferiore.
+
+Per esempio, se $\pi = 0.75$ la quota è $\omega = 0.75/0.25 = 3$.
+Il logaritmo della quota (logit) è
+$
+\log_e 3 = 1.0986.
+$
+Vediamo di seguito alcuni valori rappresentativi che illustrano la realzione tra $\pi$ e $\phi$:
+\begin{center}
+\begin{tabular}{clc}
+  \hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+  Probabilità & Odds & logit \\
+  $\pi$ & $\omega= \frac{\pi}{1-\pi}$ & $ \phi = \ln \frac{\pi}{1-\pi}$ \\
+ \hline
+  0.01 & 1/99=0.0101 & -4.60 \\[5pt]
+  0.05 & 5/95=0.0526 & -2.94 \\[5pt]
+  0.10 & 1/9=0.1111 & -2.20 \\[5pt]
+  0.30 & 3/7=0.4286 & -0.85 \\[5pt]
+  0.50 & 5/5=1 & 0.00 \\[5pt]
+  0.70 & 7/3 = 2.333 & 0.85 \\[5pt]
+  0.90 & 9/1 = 9 & 2.20 \\[5pt]
+  0.95 & 95/5 = 19 & 2.94 \\[5pt]
+  0.99 & 99/1 = 99 & 4.60 \\[5pt]
+  \hline
+\end{tabular}
+\end{center}
+
+La trasformazione inversa del logit è
+\[
+\pi = \frac{e^{\phi}}{1+e^{\phi}},
+\]
+dove $e \simeq 2.718$.
+
+A un logit $\phi = 1.0986$, per esempio, corrisponde una probabilità
+\[
+\pi =
+\frac{e^{\phi}}{1+e^{\phi}}=\frac{e^{1.0986}}{1+e^{1.0986}}=0.75
+\]
+uguale a 0.75.
+
+Si noti che il logit della probabilità complementare $1 -\pi = 0.25$ è -1.0986, cioè l'opposto.
+Se $\pi = 0.25$ la quota è $\omega = 0.25/0.75 = 0.3333$.
+Il logit di $\pi = 0.25$ è
+\[
+\log_e (0.25/0.75) = \log_e 0.3333 = -1.0986.
+\]
+
+La distribuzione campionaria della proporzione $\hat{\pi}$ è esattamente una Binomiale.
+Asintoticamente, è normale con media $\pi$ e varianza asintotica stimata $\hat{\pi}(1 - \hat{\pi})/n$.
+Lo stimatore del logit ha una distribuzione asintotica normale con media $\pi/(1 -\pi)$ e varianza asintotica stimata $1/(n \hat{\pi}(1 - \hat{\pi}))$.
+
+\begin{exmp}
+Per il campione di 11037 volontari sottoposti al trattamento aspirina la probabilità stimata di infarto miocardico è
+\[
+\hat{\pi} = 104/11037 = 0.0094
+\]
+Il logit empirico è
+\[
+ln \left( \frac{0.0094}{1- 0.0094} \right) =-4.655
+\]
+con errore standard asintotico
+\[
+\sqrt{\frac{1}{11037 \times 0.0094 \times (1-0.0094)}}= 0.0985.
+\]
+\end{exmp}
+
+
+\subsubsection{Rapporto delle quote}
+
+Una volta chiarito il concetto di odds, consideriamo ora il \emph{rapporto delle quote} (\emph{odds-ratio}) detto anche \emph{rapporto crociato} (\emph{cross-product ratio}).
+In una tabella $2 \times 2$ gli odds di successo nella riga $i$-esima sono $\omega_i = \pi_i / (1-\pi_i)$.
+Il rapporto degli odds $\omega_1$ e $\omega_2$ nelle due righe
+    \[
+     \theta = \frac{\omega_1}{\omega_2}=\frac{\pi_1 / (1-\pi_1)}{\pi_2 / (1-\pi_2)}
+    \]
+è chiamato rapporto delle quote.
+
+Un rapporto delle quote può assumere solo valori non negativi.
+Se è uguale a 1 gli odds sono uguali e quindi sono uguali anche le probabilità, cioè la risposta è indipendente dal trattamento. 
+I rapporti degli odds si valutano in rapporto a 1:
+\begin{itemize}
+    \item se $1 < \theta < \infty$ gli odds sono più grandi nel gruppo 1
+che nel gruppo 2, e quindi anche $\pi_1 > \pi_2$;
+    \item se $0 <  \theta
+< 1$ gli odds sono più piccoli nel gruppo 1 che nel gruppo 2 e
+$\pi_1 < \pi_2$.
+\end{itemize}
+Il rapporto degli odds non cambia se si permutano la variabile risposta e la variabile esplicativa; quindi $\theta$ tratta le variabili in modo simmetrico.
+
+\begin{exmp}
+Nell'esempio dell'aspirina il rapporto degli odds stimato è
+\[
+\hat{\theta} = \frac{189/10845}{104/10933}= 1.832,
+\]
+cioè gli odds a favore dell'infarto sono più grandi dell'83\% per il gruppo placebo.
+Un rapporto degli odds di $1.832$ non significa che $\pi_2$ è 1.832 volte $\pi_1$, ma che gli odds $\pi_2/(1 - \pi_2)$ sono 1.832 volte gli odds $\pi_1/(1 - \pi_1)$.
+Tuttavia,
+\[
+ \theta = RR \frac{1-\pi_1}{1-\pi_2}
+\]
+Perciò quando la proporzione di successi è prossima a zero in entrambi i gruppi $\theta$ e il RR hanno valori simili. 
+Si osservi infatti che il RR nell'esempio dell'aspirina è 1.83.
+\end{exmp}
+
+
+\subsubsection{Logaritmo del rapporto delle quote}
+
+La distribuzione del rapporto degli odds è molto asimmetrica ed è conveniente usare la distribuzione del suo logaritmo $\log_e \theta$. 
+Tale distribuzione è meno asimmetrica e più vicina alla normalità.
+Il logaritmo di $\theta$ è 0 in caso di indipendenza e l'interpretazione è simmetrica rispetto allo zero. 
+Cioè se si invertono le righe o le colonne della tavola $\log_e \theta$ cambia il segno.
+Due valori di $\log_e \theta$ diversi solo per il segno rappresentano due livelli di associazione uguali. 
+Raddoppiando $\log_e \theta$ corrisponde ad elevare al quadrato il rapporto delle quote.
+
+L'errore standard asintotico del logaritmo del rapporto degli odds ha una formula semplice
+\[
+\sqrt{\frac{1}{Y_{11}} + \frac{1}{Y_{12}} + \frac{1}{Y_{21}} +
+\frac{1}{Y_{22}}},
+\]
+dove $Y_{ij}$ sono le frequenze nelle celle della tavola di
+contingenza.
+
+Un intervallo di confidenza al 95\% per $\ln \theta$ è dato dalla stima $\ln \hat{\theta} \pm 1.96$ l'errore standard stimato.
+Per ottenere l'intervallo di confidenza al 95\% per l'odds ratio esponenziamo i limiti $L$ dell'intervallo di confidenza:
+$e^L$.
+
+\begin{exmp}
+Nell'esempio dell'aspirina il rapporto degli odds è
+\[
+\hat{\theta} = \frac{189/10845}{104/10933}= 1.832
+\]
+e il logaritmo del rapporto degli odds è
+\[
+\log_e 1.832 = 0.605.
+\]
+
+Il logaritmo del rapporto delle quote ha la seguente proprietà: se invertiamo l'ordine delle categorie di una delle variabili, il logaritmo del rapporto delle quote cambia semplicemente di segno:
+\[
+\hat{\theta} = \frac{104/10933}{189/10845}= 0.5458
+\]
+e quindi
+\[
+\log_e 0.5458 = -0.605.
+\]
+
+L'errore standard stimato del logaritmo dell'odds ratio è
+\[
+\sqrt{\frac{1}{189} + \frac{1}{10845} + \frac{1}{104} + \frac{1}{10933}} = 0.1228.
+\]
+Un intervallo di confidenza al 95\% per $\log_e \theta$ è
+\begin{lstlisting}
+0.6054377 + c(-1, 1)* 1.96 * se
+#> [1] 0.3646681 0.8462073
+\end{lstlisting}
+e il corrispondente intervallo di confidenza per $\theta$ è
+\begin{lstlisting}
+exp(0.8462073)
+#> [1] 2.33079
+exp(0.3646681)
+#> [1] 1.440036
+\end{lstlisting}
+Poiché non contiene il valore 1, i veri valori degli odds per il gruppo placebo e per il gruppo aspirina sono significativamente diversi: gli odds per l'infarto sono almeno il 44\% in più rispetto al gruppo aspirina.
+
+\end{exmp}
+
+
+\subsection{Tipi fondamentali di indagine}
+
+Si distinguono due tipi fondamentali di indagine: gli esperimenti e gli studi osservazionali.
+Negli esperimenti si studia l'effetto di uno o più trattamenti sulle risposte delle unità sperimentali.
+Negli esperimenti randomizzati ogni unità sperimentale viene assegnata casualmente dal ricercatore a una delle possibili modalità di trattamento.
+L'iportanza della randomizzazione consiste nel produrre dei sottogruppi a seconda dei livelli del trattamento, in cui tutte le altre variabili, anche quelle non misurate, hanno approssimativamente la stessa distribuzione e quindi sono comparabili.
+
+Negli studi osservazionali invece il ricercatore non può assegnare le unità ai trattamenti. 
+Le indagini osservazionali si possono distinguere in studi longitudinali prospettici,  trasversali (cross-sectional) e caso-controllo.
+
+\subsubsection{Studi prospettici}
+
+In un studio prospettico viene seguito un numero fisso di unità per ciascuna modalità della variabile esplicativa ($X = x_1, \dots, X = x_I$) e dopo un periodo prefissato si rilevano le proporzioni di successi negli $I$ gruppi.
+
+\begin{exmp}
+Il Physicians' Health Study è stata un'indagine prospettica svolta per verificare se l'uso regolare di Aspirina riduce la mortalità per malattie cardiovascolari.
+I partecipanti allo studio (dei medici volontari) venivano assegnati in modo casuale al trattamento (uso regolare di Aspirina, $n_1=11037$) o al placebo ($n_2=11034$).
+Per cinque anni, i medici che parteciparono allo studio assunsero giornalmente una pastiglia di aspirina o un placebo.
+Alla fine dello studio l'incidenza di infarti miocardici venne misurata nei due gruppi.
+\end{exmp}
+
+
+\subsubsection{Studi trasversali}
+
+Se si estrae un campione ad un tempo prefissato e si classificano le unità nella tabella $I \times 2$ a seconda delle modalità dei due caratteri si ha uno studio trasversale.
+
+\begin{exmp}
+Sulla base del General Social Survey (1984), 901 individui sono stati classificati in base alla soddisfazione lavorativa (soddisfatto verso insoddisfatto) e a due categorie di reddito ($< \$ 15.000, \geq \$ 15.000$).
+\begin{center}
+\begin{tabular}{ccc}
+  \hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+   & Soddisfatto & Insoddisfatto \\
+  \hline
+ $< \$ 15.000$      & 391 & 104 \\
+  $\geq \$ 15.000$ & 340 & 66 \\
+  \hline
+\end{tabular}
+\end{center}
+Ci si chiede: la soddisfazione lavorativa dipende dal reddito?
+\end{exmp}
+
+
+\subsubsection{Studi longitudinali retrospettivi}
+
+Se si estraggono due campioni per $Y = 0$ e $Y = 1$ e si controlla nel passato se i soggetti appartengono al gruppo $x_1, x_2, \dots, x_I$ allora si ha un studio retrospettivo.
+Un esempio tipico di indagine basata su un disegno retrospettivo è lo studio caso-controllo. 
+Si considerino i dati seguenti:
+\begin{center}
+\begin{tabular}{rcc}
+  \hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+    & \multicolumn{2}{c}{Cancro ai polmoni}  \\
+  \hline
+  Mai fumato? & Casi & Controlli \\
+ S{\`\i} & 688 & 650 \\
+ No & 21 & 59 \\\hline
+  Totale & 709 & 709 \\
+  \hline
+\end{tabular}
+\end{center}
+La prima colonna si riferisce a $709$ pazienti ricoverati in
+20 ospedali londinesi per cancro polmonare.
+Ogni caso è stato appaiato a un controllo, cioè a un
+paziente ricoverato nello stesso ospedale per disturbi diversi dal
+cancro polomonare.
+Casi e controlli sono stati classificati poi a seconda che
+siano o siano stati fumatori oppure no.
+
+Sarebbe naturale considerare il cancro polmonare come variabile risposta  e il comportamento relativo al fumo quale variabile esplicativa, e confrontare le proporzioni di cancro
+polmonare tra fumatori e non fumatori, $P(cancro \mid fumo)$.
+In questo studio, tuttavia, questo non ha senso dato che la distribuzione marginale della variabile risposta è fissa per disegno.
+\begin{itemize}
+    \item Nello studio Aspirina erano i totali di riga a essere fissi -- avevamo cioè un campione indipendente per ciascuna modalità della variabile esplicativa.
+    \item Nel caso presente, invece, sono i totali di colonna ad essere fissi -- ovvero, abbiamo un campione indipendente per ciascuna modalità della variabile risposta.
+\end{itemize}
+Invece è sensato usare le proporzioni nell'altro verso, cioè $688/709 = 0.970$ e $650/709=0.917$ come stime delle probabilità $P(X = fumatore \mid Y = caso)$ e $P(X = fumatore \mid Y = controllo)$.
+Se conoscessimo la proporzione di individui nella popolazione con cancro polmonare, potremmo stimare
+$P(Y = \text{cancro polmonare} \mid X = \text{fumatore})$ e $P(Y = \text{non cancro polmonare} \mid X = \text{fumatore})$.
+Ponendo $C$ = cancro e $F$ = fumatore, con Bayes avremo
+\[
+P(C \mid F)=\frac{P(C)P(F \mid C)}{P(C)P(F \mid C) + P(C^c)P(F \mid C^c)}.
+\]
+Non possiamo però procedere in questo modo, dato che la probabilità $P(C)$ è ignota.
+Con questo disegno, inoltre, dalle probabilità $P( X = \text{fumatore} \mid Y = \text{cancro polmonare})$ e $P(X = \text{fumatore} \mid Y = \text{non cancro polmonare})$ non è neppure possibile  calcolare  il rischio relativo per la risposta $Y$.
+
+Possiamo però stimare il rapporto degli odds
+\[
+\frac{(688/709)/(21/709)}{(650/709)/(59/709)}=\frac{688 \times
+59}{650 \times 21}=  2.97
+\]
+e utilizzarlo per l'interpretazione di interesse (anche se lo studio è retrospettivo): gli odds per il cancro polmonare sono circa 3 volte più grandi tra i fumatori.
+
+Se le probabilità condizionate di $Y = \text{cancro polmonare}$ dato $X = \text{fumatore}$ e $X = \text{non fumatore}$ sono vicine a zero, il $RR$ ha un valore simile a quello di
+$\theta$.
+Nell'esempio possiamo attenderci che tali probabilità siano piccole e quindi possiamo considerare il rapporto degli odds come un indicatore grezzo del $RR$.
+Possiamo perciò concludere dicendo che la frequenza relativa del cancro polmonare è circa 3 volte più grande per gli individui che hanno fumato rispetto a quelli che non hanno mai
+fumato.
+
+Un intervallo di confidenza si calcola come indicato in precedenza.
+\begin{lstlisting}
+se <- sqrt(1 / 688 + 1 / 650 + 1 / 21 + 1 / 59)
+se
+#> [1] 0.2599234
+theta <- (688 * 59) / (650 * 21)
+theta
+#> [1] 2.973773
+log(theta)
+#> [1] 1.089831
+log(theta) + c(-1, 1)* 1.96 * se
+#> [1] 0.5803817 1.5992813
+exp(0.5803817)
+#> [1] 1.786720
+exp(1.5992813)
+#> [1] 4.949474
+\end{lstlisting}
+Poiché non contiene il valore 1, i veri valori degli odds per il gruppo fumatori e per il gruppo non fumatori sono significativamente diversi: gli odds per il cancro ai polmoni sono almeno il 78\% in più rispetto al gruppo non fumatori.
+
+
+\subsection*{Considerazioni conclusive}
+
+Nel caso di una variabile risposta binaria e una variabile esplicativa con due sole modalità i dati si possono rappresentare in una tavola di contingenza $2 \times 2$.
+Negli studi sperimentali l'efficacia del trattamento si può stabilire calcolando
+la differenza tra le proporzioni,
+il rapporto tra le proporzioni,
+il rapporto tra le quote e
+il logaritmo del rapporto tra le quote.
+I dati raccolti mediante un esperimento e mediante un'indagine osservazionale prospettico o trasversale hanno la stessa struttura. 
+Le differenze nella risposta possono dunque essere analizzate mediante gli stessi indici descritti in precedenza.
+Negli studi osservazionali, però, le conclusioni sono molto meno stringenti.
+Nell'esperimento i gruppi sono in tutto confrontabili tranne per la modalità del trattamento e quindi eventuali differenze nella risposta non possono essere dovute ad altro che al trattamento.
+Negli studi osservazionali, invece, la mancanza di controllo sull'assegnazione dei trattamenti fa sì che  i gruppi di unità non siano mai totalmente comparabili.
+Negli studi retrospettivi, come ad esempio i disegni caso-controllo, non ha senso calcolare la differenza tra le proporzioni condizionate alla variabile esplicativa e il rischio relativo.
+Possiamo però calcolare il rapporto tra le quote e, per la proprietà simmetrica di questo indice ($\theta$ non cambia se vengono invertite la variabile sulle righe e quella sulle colonne), procedere poi all'interpretazione nella direzione di interesse.
+Dato che il logaritmo dell'odds ratio ha una distribuzione asintotica normale, un intervallo di confidenza per $\ln \theta$ può essere facilmente calcolato.
+Esponenziando i limiti dell'intervallo di confidenza per $\ln \theta$ si trovano i limiti dell'intervallo di confidenza per $\theta$.
+
+
+
+

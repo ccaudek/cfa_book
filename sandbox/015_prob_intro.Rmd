@@ -1,0 +1,571 @@
+\mainmatter
+
+# (PART) Il calcolo delle probabilità  {-}
+
+# Nozioni di base {#intro-prob-1}
+
+```{r c015, include = FALSE}
+source("_common.R")
+```
+
+Una possibile definizione della teoria delle probabilità è la seguente: la teoria delle probabilità ci fornisce gli strumenti per prendere decisioni razionali in condizioni di incertezza, ovvero per formulare le migliori congetture possibili.
+
+## La probabilità come la logica della scienza {#inf-stat-probl-inv}
+
+La figura \@ref(fig:cycle-of-science) fornisce una rappresentazione schematica del processo dell'indagine scientifica. Possiamo pensare al progresso scientifico come alla ripetizione di questo ciclo, laddove i fenomeni naturali (e, ovviamente psicologici) vengono esplorati e i ricercatori imparano sempre di più sul loro funzionamento. Le caselle della figura descrivono le varie fasi del processo di ingagine scientifica, mentre lungo le frecce sono riportati i compiti che conducono i ricercatori da una fase alla successiva.
+
+```{r cycle-of-science, echo=FALSE, fig.cap="Rappresentazione schematica del processo scientifico (figura adattata dalla Fig. 1.1 di P. Gregory, Bayesian Logical Data Analysis for the Physical Sciences, Cambridge, 2005)."}
+knitr::include_graphics("images/cycle_of_science.pdf")
+```
+
+Consideriamo i compiti e le fasi dell'indagine scientifica. Iniziamo in basso a sinistra.
+
+- *Invenzione e perfezionamento delle ipotesi.* In questa fase del processo scientifico, i ricercatori pensano ai fenomeni naturali, a ciò che è presente nella letteratura scientifica, ai risultati dei loro esperimenti, e formulano ipotesi o teorie che possono essere valutare mediante esperimenti empirici. Questo passaggio richiede innovazione e creatività.
+
+- L'*inferenza deduttiva* procede in maniera deterministica dai fatti alle conclusioni. Ad esempio, se dico che tutti gli uomini sono mortali e che Socrate è un uomo, allora posso concludere deduttivamente che Socrate è mortale. Quando i ricercatori progettano gli esperimenti in base alle teorie, usano la logica deduttiva per dire: "Se A è vero, allora B deve essere vero", dove $A$ è l'ipotesi teorica e $B$ è l'osservazione sperimentale.
+
+- *Esecuzione degli esperimenti.* Questa fase richiede molte risorse (tempo e denaro). Richiede anche innovazione e creatività. Nello specifico, i ricercatori devono pensare attentamente a come costruire l'esperimento necessario per verificare la teoria di interesse. Quale risultato dell'esperimento si ottengono i dati.
+
+- L'*inferenza induttiva* procede dalle osservazioni ai fatti. Se pensiamo ai fatti come a ciò che governa o genera le osservazioni, allora l'induzione è una sorta di inferenza inversa. Supponiamo di avere osservato $B$. Questo rende $A$ vero? Non necessariamente. Ma può rendere $A$ più plausibile. Questo è un sillogismo debole. Ad esempio, si consideri la seguente coppia ipotesi/osservazioni.
+
+  - $A$ = L'iniezione di acque reflue dopo la fratturazione idraulica, nota come fracking, può portare a una maggiore frequenza di terremoti.
+
+  - $B$ = La frequenza dei terremoti in Oklahoma è aumentata di 100 volte dal 2010, quando il fracking è diventato una pratica comune.
+
+  - Poiché $B$ è stato osservato, $A$ è più plausibile. $A$ non è necessariamente vero, ma è più plausibile.
+
+- L'*inferenza statistica* è un tipo di inferenza induttiva che è specificamente formulata come un problema inverso. L'inferenza statistica è quell'insieme di procedure che hanno lo scopo di quantificare quanto più plausibile sia $A$ dopo aver osservato $B$. Per svolgere l'inferenza statistica è dunque necessario quantificare tale plausibilità. Lo strumento che ci consente di fare questo è la teoria delle probabilità.
+
+L'inferenza statistica è l'aspetto del processo dell'indagine scientifica che costituisce il tema centrale di questo insegnamento. Il risultato dell'inferenza statistica è la conoscenza di quanto siano plausibili le ipotesi e le stime dei parametri sotto le ipotesi considerate. Ma l'inferenza statistica richiede una teoria delle probabilità, laddove la teoria delle probabilità può essere vista come una generalizzazione della logica. A causa di questa connessione con la logica, e del suo ruolo cruciale nella scienza, E. T. Jaynes ha dichiarato che "la probabilità è la logica della scienza". Per potere trattare i temi di base dell'inferenza statistica è dunque necessario esaminare preliminarmente alcune nozioni della teoria delle probabilità. 
+
+## Che cos'è la probabilità?
+
+La definizione della probabilità è un problema estremamente dibattuto ed aperto. Sono state fornite due possibili soluzioni al problema di definire il concetto di probabilità. 
+
+(a) La natura della probabilità è "ontologica" (ovvero, basata sulla metafisica): la probabilità è una proprietà della della realtà, del mondo, di come sono le cose, indipendentemente dalla nostra esperienza. È una visione che qualcuno chiama "oggettiva".
+
+(b) La natura della probabilità è "epistemica" (ovvero, basata sulla conoscenza): la probabilità si riferisce alla conoscenza che abbiamo del mondo, non al mondo in sé. Di conseguenza è detta, in contrapposizione alla precedente definizione, "soggettiva".
+
+In termini epistemici, la probabilità fornisce una misura della nostra incertezza sul verificarsi di un fenomeno, alla luce delle informazioni disponibili. Potremmo dire che c'è una "scala" naturale che ha per estremi il vero (1: evento certo) da una parte ed il falso (0: evento impossibile) dall'altra. La probabilità è la quantificazione di questa scala: quantifica lo stato della nostra incertezza rispetto al contenuto di verità di una proposizione (ovvero, quantifica la plausibilità di una proposizione). 
+
+- Nell'interpretazione frequentista della probabilità, la probabilità $P(A)$ rappresenta la frequenza relativa a lungo termine nel caso di un grande numero di ripetizioni di un esperimento casuale sotto le medesime condizioni. L'evento $A$ deve essere una proposizione relativa alle variabili casuali^[Viene stressata qui l'idea che ciò di cui parliamo è qualcosa che emerge nel momento in cui è possibile ripetere l'esperimento casuale tante volte sotto le medesime condizioni. Le variabili casuali, infatti, forniscono una quantificazione dei risultati che si ottengono ripetendo tante volte l'esperimento casuale sotto le medesime condizioni.].
+
+- Nell'interpretazione bayesiana della probabilità $P(A)$ rappresenta il grado di credenza, o plausibilità, a proposito di $A$, dove $A$ può essere qualsiasi proposizione logica.
+
+In questo insegnamento utilizzeremo l'interpretazione bayesiana della probabilità. Possiamo citare De Finetti, ad esempio, il quale ha formulato la seguente definizione "soggettiva" di probabilità la quale risulta applicabile anche ad esperimenti casuali i cui eventi elementari non siano ritenuti ugualmente possibili e che non siano necessariamente ripetibili più volte sotto le stesse condizioni:
+
+::: {.definition}
+La probabilità di un evento $E$ è la quota $p(E)$ che un individuo reputa di dover pagare ad un banco per ricevere "1" ovvero "0" verificandosi o non verificandosi $E$. Le valutazioni di probabilità degli eventi devono rispondere ai pricipi di equità e coerenza.
+:::
+
+I principi di equità e coerenza sono definiti come segue.
+
+::: {.definition}
+Una scommessa risponde ai pricipi di *equità* se il ruolo di banco e giocatore sono scambiabili in ogni momento del gioco e sempre alle stesse condizioni; *coerenza* se non vi sono combinazioni di scommesse che consentano (sia al banco che al giocatore) di realizzare perdite o vincite certe.
+:::
+
+Secondo @definetti1931prob, *"nessuna scienza ci permetterà di dire: il tale fatto accadrà, andrà così e così, perché ciò è conseguenza di tale legge, e tale legge è una verità assoluta, ma tanto meno ci condurrà a concludere scetticamente: la verità assoluta non esiste, e quindi tale fatto può accadere e può non accadere, può andare così e può andare in tutt’altro modo, nulla io ne so. Quel che si potrà dire è questo: io prevedo che il tale fatto avverrà, e avverrà nel tal modo, perché l’esperienza del passato e l’elaborazione scientifica cui il pensiero dell’uomo l’ha sottoposta mi fanno sembrare ragionevole questa previsione."*
+
+In altri termini, de Finetti ritiene che la probabilità debba essere concepita non come una proprietà "oggettiva" dei fenomeni ("la probabilità di un fenomeno ha un valore determinato che dobbiamo solo scoprire"), ma bensì come il "grado di fiducia -- in inglese _degree of belief_ -- di un dato soggetto, in un dato istante e con un dato insieme d'informazioni, riguardo al verificarsi di un evento". Per denotare sia la probabilità (soggettiva) di un evento sia il concetto di _valore atteso_ (che descriveremo in seguito), @definetti1970teoria utilizza il termine "previsione" (e lo stesso simbolo $P$): *"la previsione [$\dots$] consiste nel considerare ponderatamente tutte le alternative possibili per ripartire fra di esse nel modo che parrà più appropriato le proprie aspettative, le proprie sensazioni di probabilità."*
+
+## Variabili casuali e probabilità di un evento
+
+Esaminiamo qui di seguito alcuni concetti di base della teoria delle probabilità.
+
+### Variabili casuali
+
+Sia $Y$ il risultato del lancio di moneta equilibrata, non di un generico lancio di una moneta, ma un'istanza specifica del lancio di una specifica moneta in un dato momento. Definita in questo modo, $Y$ è una _variabile casuale_, ovvero una variabile che assume valori diversi con probabilità diverse. Se la moneta è equilibrata, c'è una probabilità del 50% che il lancio della moneta dia come risultato "testa" e una probabilità del 50% che dia come risultato "croce". 
+
+Per facilitare la trattazione, le variabili casuali assumono solo valori numerici. Per lo specifico lancio della moneta in questione, diciamo, ad esempio, che la variabile casuale $Y$ assume il valore 1 se esce testa e il valore 0 se esce croce.
+
+### Eventi e probabilità
+
+Nella teoria delle probabilità il risultato "testa" nel lancio di una moneta è chiamato _evento_.^[Per un ripasso delle nozioni di base della teoria degli insiemi, si veda l'Appendice \@ref(insiemistica).] Ad esempio, $Y$ = 1 denota l'evento in cui il lancio di una moneta produce come risultato testa. 
+
+Il funzionale $Pr[·]$ definisce la probabilità di un evento. Ad esempio, per il lancio di una moneta equilibrata, la probabilità dell'evento "il risultato del lancio della moneta è testa" è scritta come
+
+$$
+Pr[Y = 1] = 0.5.
+$$
+Se la moneta è equilibrata dobbiamo anche avere $Pr[Y = 0] = 0.5$. I due eventi _Y_ = 1 e $Y$ = 0 sono _mutuamente esclusivi_ nel senso che  non possono entrambi verificarsi contemporaneamente. Nella notazione probabilistica,
+
+$$
+Pr[Y = 1\; e \; Y = 0] = 0.
+$$
+Gli eventi $Y$ = 1 e $Y$ = 0 di dicono _esaustivi_, nel senso che almeno uno di essi deve verificarsi e nessun altro tipo di evento è possibile. Nella notazione probabilistica,
+
+$$
+Pr[Y = 1\; o \; Y = 0] = 1.
+$$
+Il connettivo logico "e" specifica eventi _congiunti_, ovvero eventi che possono verificarsi contemporaneamente (eventi _compatibili_) e per i quali, perciò, la probabilità della loro congiunzione è $Pr(A \; e \; B) > 0$.
+Il connettivo logico "o" specifica eventi _disgiunti_, ovvero eventi che non possono verificarsi contemporaneamente (eventi _incompatibili_) e per i quali, perciò, la probabilità della loro congiunzione è $P(A \; e \; B) = 0$. 
+
+## Spazio campionario e risultati possibili
+
+Anche se il lancio di una moneta produce sempre uno specifico risultato  nel mondo reale, noi possiamo anche immaginare i possibili risultati alternativi che si sarebbero potuti osservare. Quindi, anche se in uno specifico lancio la moneta dà testa ($Y$ = 1), possiamo immaginare la possibilità che il lancio possa avere prodotto croce ($Y$ = 0). Tale ragionamento controfattuale è la chiave per comprendere la teoria delle probabilità e l'inferenza statistica.
+
+I risultati possibili che si possono osservare come conseguenza del lancio di una moneta determinano i valori possibili che la variabile casuale può assumere. L'insieme di tutti i risultati possibili è chiamato _spazio campionario_. Lo spazio campionario può essere concettualizzato come un'urna contenente una pallina per ogni possibile risultato del lancio della moneta. Su ogni pallina è scritto il valore della variabile casuale. Uno specifico lancio di una moneta -- ovvero, l'osservazione di uno specifico valore di una variabile casuale -- è chiamato _esperimento casuale_.
+
+Il lancio di un dado ci fornisce l'esempio di un altro esperimento casuale. Supponiamo di essere interessati all'evento "il lancio del dado produce un numero dispari". Un _evento_ seleziona un sottoinsieme dello spazio campionario: in questo caso, l'insieme dei risultati $\{1, 3, 5\}$. Se esce 3, per esempio, diciamo che si è verificato l'evento "dispari" (ma l'evento "dispari" si sarebbe anche verificato anche se fosse uscito 1 o 5).
+
+## Usare la simulazione per stimare le probabilità
+
+I metodi basati sulla simulazione ci consentono di stimare le probabilità degli eventi in un modo diretto se siamo in grado di generare realizzazioni molteplici e casuali delle variabili casuali coinvolte nelle definizioni degli eventi. Per simulare il lancio di una moneta equilibrata in R iniziamo a definire un vettore che contiene i possibili risultati del lancio della moneta (ovvero i possibili valori della variabile casuale $Y$):
+
+```{r}
+coin <- c(0, 1)
+```
+
+\noindent
+L'estrazione casuale di uno di questi due possibili valori (ovvero, la simulazione di uno specifico lancio di una moneta) si realizza con la funzione `sample()`:
+
+```{r}
+sample(coin, size = 1)
+```
+
+\noindent
+In maniera equivalente, lo stesso risultato si ottiene mediante l'istruzione
+
+```{r}
+rbinom(1, 1, 0.5)
+```
+
+Supponiamo di ripetere questo esperimento casuale 100 volte e di registrare i risultati così ottenuti. La stima della probabilità dell'evento $Pr[Y = 1]$ è data dalla frequenza relativa del numero di volte in cui abbiamo osservato l'evento di interesse ($Y = 1$):
+
+```{r}
+M <- 10
+y <- rep(NA, M)
+for (m in 1:M) {
+  y[m] = rbinom(1, 1, 0.5)
+}
+estimate = sum(y) / M
+
+cat("estimated Pr[Y = 1] =", estimate)
+```
+
+\noindent
+Ripetiamo questa procedura 10 volte.
+
+```{r}
+flip_coin <- function(M) {
+  y <- rep(NA, M)
+  for (m in 1:M) {
+    y[m] = rbinom(1, 1, 0.5)
+  }
+  estimate <- sum(y) / M
+  cat("estimated Pr[Y = 1] =", estimate, "\n")
+}
+```
+
+```{r}
+for(i in 1:10) {
+  flip_coin(10)
+}
+```
+
+\noindent
+Dato che la moneta è equilibrata, la stima delle probabilità dell'evento $Pr[Y = 1]$ è simile a al valore che ci aspettiamo ($Pr[Y = 1]$ = 0.5), ma il risultato ottenuto nelle varie simulazioni non è sempre esatto.  Proviamo ad aumentare il numero di lanci in ciascuna simulazione:
+
+```{r}
+for(i in 1:10) {
+  flip_coin(100)
+}
+```
+
+\noindent
+In questo secondo caso, gli errori tendono ad essere più piccoli della simulazione precedente. Cosa succede se in ciascuna simulazione esaminiamo i risultati di 10,000 lanci della moneta?
+
+```{r}
+for(i in 1:10) {
+  flip_coin(1e4)
+}
+```
+
+\noindent
+Ora le stime ottenute sono molto vicine alla vera probabilità che vogliamo stimare (cioè 0.5, perché la moneta è equilibrata). I risultati delle simulazioni precedenti pongono dunque il problema di determinare quale sia il numero di lanci di cui abbiamo bisogno per assicurarci che le stime siano accurate (ovvero, vicine al valore corretto della probabilità)
+
+## La legge dei grandi numeri
+
+La visualizzazione mediante grafici contribuisce alla comprensione dei concetti della statistica e della teoria delle probabilità. Un modo per descrivere ciò che accade all'aumentare del numero $M$ di ripetizioni del lancio della moneta consiste nel registrare la stima della probabilità dell'evento $Pr[Y = 1]$ in funzione del numero di ripetizioni dell'esperimento casuale per ogni $m \in 1 : M.$ Un grafico dell'andamento della stima di $Pr[Y = 1]$ in funzione di $m$ si ottiene nel modo seguente. 
+
+```{r legge-grandi-n-1, cache=TRUE, fig.cap="Stima della probabilità di successo in funzione del numero di lanci di una moneta."}
+nrep <- 1e4
+estimate <- rep(NA, nrep)
+flip_coin <- function(m) {
+  y <- rbinom(m, 1, 0.5)
+  phat <- sum(y) / m
+  phat
+}
+for(i in 1:nrep) {
+  estimate[i] <- flip_coin(i)
+}
+d <- data.frame(
+  n = 1:nrep, 
+  estimate
+)
+d %>% 
+  ggplot(
+    aes(x = n, y = estimate)
+  ) +
+  geom_line() +
+  theme(legend.title = element_blank()) +
+  labs(
+    x = "Numero di lanci della moneta", 
+    y = "Stima Pr[Y = 1]"
+)
+```
+
+Dato che il grafico \@ref(fig:legge-grandi-n-1) su una scala lineare non rivela chiaramente l'andamento della simulazione, utilizzeremo invece un grafico in cui sull'asse $x$ è stata imposta una scala logaritmica. Con l'asse $x$ su scala logaritmica, i valori tra 1 e 10 vengono tracciati all'incirca con la stessa ampiezza come nel caso dei valori tra 50 e 700, eccetera.
+
+```{r legge-grandi-n-2, fig.cap="Stima della probabilità di successo in funzione del numero di lanci di una moneta -- scala logaritmica."}
+d %>% 
+  ggplot(
+    aes(x = n, y = estimate)
+  ) +
+  geom_line() +
+  scale_x_log10(
+    breaks = c(1, 3, 10, 50, 200, 
+               700, 2500, 10000)
+  ) +
+  theme(legend.title = element_blank()) +
+  labs(
+    x = "Numero di lanci della moneta", 
+    y = "Stima Pr[Y = 1]"
+)
+```
+
+La _legge dei grandi numeri_ ci dice che all'aumentare del numero di ripetizioni dell'esperimento casuale la media dei risultati ottenuti tenderà ad avvicinarsi al valore atteso man mano che verranno eseguite più prove. Nel caso presente, la figura \@ref(fig:legge-grandi-n-2) mostra appunto che, all'aumentare del numero _M_ di lanci della moneta, la stima di $Pr[Y = 1]$ tende a convergere al vero valore di 0.5.
+
+## Variabili casuali multiple
+
+Le variabili casuali non esistono isolatamente. Abbiamo iniziato con una singola variabile casuale _Y_ che rappresenta il risultato di un singolo, specifico lancio di una moneta equlibrata. Ma supponiamo ora di lanciare la moneta tre volte. Ciò suggerisce che possiamo avere le variabili casuali $Y_1 , Y_2 , Y_3$ che rappresentano i risultati di ciascuno dei lanci. Possiamo assumere che ogni lancio sia indipendente, ovvero che non dipenda dal risultato degli altri lanci. Ognuna di queste variabili $Y_n$ per $n \in 1:3$ ha $Pr[Y_n =1]=0.5$ e $Pr[Y_n =0]=0.5$. Possiamo combinare più variabili casuali usando le operazioni aritmetiche. Se $Y_1 , Y_2, Y_3$ sono variabili casuali che rappresentano tre lanci di una moneta equilibrata (o un lancio di tre monete equilibrate), possiamo definire la somma di tali variabili casuali come
+
+$$
+Z = Y_1 + Y_2 + Y_3.
+$$
+\noindent
+Possiamo simulare i valori assunti dalla variabile casuale _Z_ simulando i valori di $Y_1, Y_2, Y_3$ per poi sommarli.
+
+```{r}
+y1 <- rbinom(1, 1, 0.5)
+y2 <- rbinom(1, 1, 0.5)
+y3 <- rbinom(1, 1, 0.5)
+c(y1, y2, y3)
+z <- sum(c(y1, y2, y3))
+cat("z =", z, "\n")
+```
+
+\noindent
+ovvero,
+
+```{r}
+y <- rep(NA, 3)
+for (i in 1:3) {
+  y[i] <- rbinom(1, 1, 0.5)
+}
+y
+z <- sum(y)
+cat("z =", z, "\n")
+```
+
+\noindent
+oppure, ancora più semplicemente:
+
+```{r}
+y <- rbinom(3, 1, 0.5)
+y
+z <- sum(y)
+cat("z =", z, "\n")
+```
+
+\noindent
+Possiamo ripetere questa simulazione $M = 1e5$ volte:
+
+```{r}
+M <- 1e5
+z <- rep(NA, M)
+for(i in 1:M) {
+  y <- rbinom(3, 1, 0.5)
+  z[i] <- sum(y)
+}
+```
+
+\noindent
+e calcolare una stima della probabilità che la variabile casuale $Z$ assuma i valori 0, 1, 2, 3:
+
+```{r}
+table(z) / M
+```
+
+Nel caso di 4 monete equilibrate, avremo:
+
+```{r}
+M <- 1e5
+z <- rep(NA, M)
+for(i in 1:M) {
+  y <- rbinom(4, 1, 0.5)
+  z[i] <- sum(y)
+}
+table(z) / M
+```
+
+Viene detta _variabile casuale discreta_ una variabile casuale le cui modalità possono essere costituite solo da numeri interi:
+
+$$
+\mathbb{Z} = \dots, -2, -1, 0, 1, 2, \dots
+$$
+
+## Funzione di massa di probabilità {#sec:fun-mass-prob}
+
+È conveniente avere una funzione che associa ogni possibile valore di una variabile casuale alla sua probabilità. In generale, ciò è possibile se e solo se la variabile casuale è discreta, così com'è stata definita nel Paragrafo precedente.
+
+Ad esempio, se consideriamo $Z = Y_1 + \dots + Y_4$ come il numero di risultati "testa" in 4 lanci della moneta, allora possiamo definire la seguente funzione:
+
+$$
+\begin{array}{rclll}
+p_Z(0) & = & 1/16 & & \mathrm{TTTT}
+\\
+p_Z(1) & = & 4/16 & & \mathrm{HTTT, THTT, TTHT, TTTH}
+\\
+p_Z(2) & = & 6/16 & & \mathrm{HHTT, HTHT, HTTH, THHT, THTH, TTTH}
+\\
+p_Z(3) & = & 4/16 & & \mathrm{HHHT, HHTH, HTHH, THHH}
+\\
+p_Z(4) & = & 1/16 & & \mathrm{HHHH}
+\end{array}
+$$
+
+Il lancio di quattro monete può produrre sedici possibili risultati. Dato che i lanci sono indipendenti e le monete sono equilibrate, ogni possibile risultato è ugualmente probabile. Nella tabella in alto, le sequenze dei risultati possibili del lancio delle 4 monete sono riportate nella colonna più a destra. Le probabilità si ottengono dividendo il numero di sequenze che producono lo stesso numero di eventi testa per il numero dei risultati possibili.
+
+La funzione $p_Z$ è stata costruita per mappare un valore $u$ per $Z$ alla probabilità dell'evento $Z = u$. Convenzionalmente, queste probabilità sono scritte come
+
+$$
+p_Z(z) = \mbox{Pr}[Z = z].
+$$ 
+
+La parte a destra dell'uguale si può leggere come: "la probabilità che la variabile casuale $Z$ assuma il valore $z$".
+
+Una funzione definita come sopra è detta _funzione di massa di probabilità_ della variabile casuale $Z$. Ad ogni variabile casuale discreta è associata un'unica funzione di massa di probabilità.
+
+Una rappresentazione grafica della stima della funzione di massa di probabilità per l'esperimento casuale del lancio di quattro monete equilibrate è fornita nella figura \@ref(fig:barplot-mdf-4coins).
+
+```{r barplot-mdf-4coins, fig.cap="Grafico di $M = 100\\,000$ simulazioni della funzione di massa di probabilità di una variabile casuale definita come il numero di teste in quattro lanci di una moneta equilibrata."}
+set.seed(1234)
+M <- 1e5
+nflips <- 4
+u <- rbinom(M, nflips, 0.5)
+x <- 0:nflips
+y <- rep(NA, nflips+1)
+for (n in 0:nflips)
+  y[n + 1] <- sum(u == n) / M
+bar_plot <-
+  data.frame(Z = x, count = y) %>% 
+  ggplot(
+    aes(x = Z, y = count)
+  ) +
+  geom_bar(stat = "identity") +
+  scale_x_continuous(
+    breaks = 0:4,
+    labels = c(0, 1, 2, 3, 4)
+  ) +
+  labs(
+    y = "Probabilità stimata Pr[Z = z]"
+)
+bar_plot
+```
+
+Se $A$ è un sottoinsieme della variabile casuale $Z$, allora denotiamo
+con $P_{z}(A)$ la probabilità assegnata ad $A$ dalla distribuzione
+$P_{z}$. Mediante una distribuzione di probabilità $P_{z}$ è dunque
+possibile determinare la probabilità di ciascun sottoinsieme
+$A \subset Z$ come 
+
+$$
+P_{z}(A) = \sum_{z \in A} P_{z}(Z).
+$$
+
+::: {.example}
+Nel caso dell'esempio discusso nella Sezione \@ref(sec:fun-mass-prob), la probabilità che la variabile casuale $Z$ sia un numero dispari è
+$$
+Pr(\text{Z è un numero dispari}) = P_{z}(Z = 1) + P_{z}(Z = 3) = \frac{4}{16} + \frac{4}{16} = \frac{1}{2}.
+$$
+::: 
+
+<!-- Tutte le nozioni che abbiamo discusso in precedenza sono necessarie per potere definire il concetto di "variabile casuale". Le variabili casuali sono un concetto fondamentale della teoria statistica e delle sue applicazioni. Infatti, le variabili casuali sono lo strumento che usiamo per valutare, per esempio, l'efficacia di un intervento psicologico. Un intervento psicologico, infatti, può essere concepito come un "esperimento casuale" e le variabili casuali ci consentono di riassumere i risultati di un esperimento casuale e di quantificare il grado di certezza che possiamo assegnare all'esito osservato, nel contesto di tutti gli esiti possibili che, in linea di principio, sarebbe stato possibile osservare. Il significato di "variabile casuale" è semplice; meno semplice è capire come manipolare le variabili casuali. Ma iniziamo con una definizione. -->
+
+<!-- ```{definition, def-var-casuale} -->
+<!-- Una variabile casuale è una funzione sullo spazio campionario $\Omega$ -->
+<!-- che associa ad ogni evento elementare $\omega_i$ un unico numero -->
+<!-- $X(\omega_i) = x_i$, ovvero $X: \Omega \rightarrow \Re$. -->
+<!-- ``` -->
+
+<!-- Il dominio della variabile casuale $X$ (che è una funzione) è dato dai -->
+<!-- punti dello spazio campionario $\Omega$. Ad ogni evento elementare -->
+<!-- $\omega_i$ attribuiamo il numero $X(\omega_i)$, ovvero il valore che la -->
+<!-- variabile casuale assume sul risultato $\omega_i$ dell'esperimento -->
+<!-- casuale. L'attributo "casuale" si riferisce al fatto che la variabile -->
+<!-- considerata trae origine da un esperimento casuale di cui non siamo in grado di -->
+<!-- prevedere l'esito con certezza. -->
+
+<!-- Mediante una variabile casuale trasformiamo lo spazio campionario -->
+<!-- $\Omega$, che in genere è complesso, in uno spazio campionario più -->
+<!-- semplice formato da un insieme di numeri. Il maggior vantaggio di questa -->
+<!-- sostituzione è che molte variabili casuali, definite su spazi -->
+<!-- campionari anche molto diversi tra loro, danno luogo ad una stessa -->
+<!-- "distribuzione" di probabilità sull'asse reale. Le variabili casuali -->
+<!-- si indicano con le lettere maiuscole ed i valori da esse assunti con le -->
+<!-- lettere minuscole. -->
+
+<!-- Ci sono due classi di variabili casuali: variabili casuali discrete -->
+<!-- e variabili casuali continue. Consideriamo innanzitutto il caso delle -->
+<!-- variabili casuali discrete. -->
+
+<!-- ```{definition, def-var-casuale-discr} -->
+<!-- Una variabile casuale $X$ viene detta discreta se può assumere un -->
+<!-- insieme discreto (finito o numerabile) di numeri reali. -->
+<!-- ``` -->
+
+<!-- Se $X$ è una variabile casuale discreta allora l'insieme dei possibili -->
+<!-- valori $x$, tali per cui $P(X = x) > 0$, viene detto "supporto" di $X$. -->
+
+<!-- Alcuni esempi di variabili casuali discrete sono i seguenti: il numero -->
+<!-- di intrusioni di pensieri, immagini, impulsi indesiderabili in un -->
+<!-- paziente OCD, il voto all'esame di Psicometria, la durata di vita di un -->
+<!-- individuo, il numero dei punti che si osservano nel lancio di due dadi e -->
+<!-- il guadagno (la perdita) che un giocatore realizzerà in $n$ partite. Si -->
+<!-- noti che, in tutti questi casi, la variabile casuale considerata viene -->
+<!-- rappresentata mediante un numero. -->
+
+<!-- ### A cosa servono le variabili casuali? -->
+
+<!-- Facendo riferimento agli esempi elencati sopra, possiamo chiederci -->
+<!-- perché questi numeri vengono considerati come "casuali". È ovvio che -->
+<!-- noi non conosciamo, ad esempio, il voto di Psicometria di Mario Rossi -->
+<!-- prima del momento in cui Mario Rossi avrà fatto l'esame. Le variabili -->
+<!-- casuali si pongono il seguente problema: come possiamo descrivere le -->
+<!-- nostre opinioni rispetto al voto (possibile) di Mario Rossi, prima che -->
+<!-- lui abbia fatto l'esame. Prima dell'esame, il voto di Psicometria di -->
+<!-- Mario Rossi si può solo descrivere facendo riferimento ad un insieme di -->
+<!-- valori possibili. Inoltre, molto spesso, possiamo anche dire che tali -->
+<!-- valori possibili non sono tutti egualmente verosimili: ci aspettiamo di -->
+<!-- osservare più spesso alcuni di questi valori rispetto agli altri. Le -->
+<!-- proprietà delle variabili casuali ci consentono di sistematizzare -->
+<!-- questo tipo di opinioni. Ovviamente, una volta che Mario Rossi avrà -->
+<!-- fatto l'esame, questa materia non avrà più alcuna componente casuale. -->
+
+<!-- ### Funzione di massa di probabilità -->
+
+<!-- Per entrare nel merito di questa discussione, chiediamoci ora come sia -->
+<!-- possibile associare delle probabilità ai valori che vengono assunti -->
+<!-- dalle variabili casuali. Ad esempio, qual è la probabilità che Mario -->
+<!-- Rossi ottenga 29 all'esame? Ci occuperemo qui del caso delle variabili -->
+<!-- casuali discrete. -->
+
+<!-- Alle variabili casuali discrete vengono assegnale le probabilità -->
+<!-- mediante le cosiddette "distribuzioni di probabilità". Una distribuzione -->
+<!-- di probabilità è un modello matematico che collega ciascun valore di una -->
+<!-- variabile casuale discreta alla probabilità di osservare un tale -->
+<!-- valore in un esperimento casuale. In pratica, ad ognuno dei valori che -->
+<!-- possono essere assunti da una variabile casuale discreta viene -->
+<!-- associata una determinata probabilità. La funzione che associa ad ogni -->
+<!-- valore della variabile casuale una probabilità corrispondente si -->
+<!-- chiama "distribuzione di probabilità" oppure "legge di probabilità". -->
+
+<!-- Una descrizione intuitiva del concetto di distribuzione di probabilità -->
+<!-- può essere formulata nei termini seguenti. Possiamo pensare alla -->
+<!-- probabilità come ad una quantità positiva che viene "distribuita" -->
+<!-- sull'insieme dei valori della variabile casuale. Tale "distribuzione" -->
+<!-- (suddivisione, spartizione) viene scalata in maniera tale che ciascun -->
+<!-- elemento di essa corrisponda ad una proporzione del totale, nel senso -->
+<!-- che il valore totale della distribuzione è sempre pari a 1. Una -->
+<!-- distribuzione di probabilità non è dunque altro che un modo per -->
+<!-- suddividere la nostra certezza (cioè 1) tra i valori che la variabile -->
+<!-- casuale può assumere. In modo più formale, possiamo dire quanto segue. -->
+
+<!-- ```{definition, def-distr-prob-va-discr} -->
+<!-- Se $X$ è una variabile casuale discreta, una distribuzione di -->
+<!-- probabilità può essere rappresentata mediante una funzione di massa di -->
+<!-- probabilità che associa a ciascuno dei valori $x$ che la variabile -->
+<!-- casuale $X$ può assumere la corrispondente probabilità $P_{\pi}(X=x)$. -->
+<!-- ``` -->
+
+<!-- In maniera più semplice, una distribuzione di (massa) di probabilità è -->
+<!-- formata dall'elenco di tutti i valori possibili di una variabile -->
+<!-- casuale discreta e dalle probabilità loro associate. Si noti che -->
+<!-- $P_{\pi}(X=x)$ è un numero positivo se il valore $x$ è compreso nel -->
+<!-- supporto di $X$, altrimenti vale 0. -->
+
+<!-- Se $A$ è un sottoinsieme della variabile casuale $X$, allora denotiamo -->
+<!-- con $P_{\pi}(A)$ la probabilità assegnata ad $A$ dalla distribuzione -->
+<!-- $P_{\pi}$. Mediante una distribuzione di probabilità $P_{\pi}$ è -->
+<!-- possibile determinare la probabilità di ciascun sottoinsieme -->
+<!-- $A \subset X$ come $$P_{\pi}(A) = \sum_{x \in A} P_{\pi}(x).$$ Qui non -->
+<!-- facciamo altro che applicare il terzo assioma di Kolmogorov. -->
+
+<!-- ```{exercise, ex-va-discr-2dice} -->
+<!-- Consideriamo nuovamente lo spazio campionario $\Omega$ dell'esercizio precedente e definiamo la variabile casuale $S(\omega)$ come la somma dei puntini che si ottengono dal lancio di due dadi. Per esempio, $S(\{(6, 3)\}) = 6 + 3 = 9$. Iniziamo a chiederci qual è la probabilità dell'evento $S = 7$. -->
+<!-- ``` -->
+
+<!-- ```{solution} -->
+<!-- Per risolvere tale problema iniziamo a considerare il fatto che l'evento $S = 7$ si verifica in corrispondenza di sei punti elementari dello spazio campionario $\Omega$: \{(1, 6), (2, 5), (3, 4), (4, 3), (2, 5), (6, 1)\}. Dunque, -->
+<!-- \begin{equation} -->
+<!-- P(S = 7) = P\{(1, 6)\} + P\{(2, 5)\} + P\{(3, 4)\} + P\{(4, 3)\} + P\{(2, 5)\} + P\{(6, 1)\}. -->
+<!-- \end{equation} -->
+<!-- Se possiamo assumere che i due dadi sono bilanciati, allora ciascun evento elementare dello spazio campionario ha probabilità $\frac{1}{36}$ e la probabilità cercata diventa $\frac{1}{6}$. È facile estendere il ragionamento fatto sopra a tutti i valori che $S$ può assumere. In questo modo giungiamo alla funzione di massa di probabilità $P_0$ riportata nella prima riga della tabella seguente. -->
+
+<!-- ::: {#tab:massa_prob_due_dadi_on_tr} -->
+<!--         s               2                3                4                5                6                 7                8                9                10               11               12 -->
+<!--   -------------- ---------------- ---------------- ---------------- ---------------- ---------------- ----------------- ---------------- ---------------- ---------------- ---------------- ---------------- -->
+<!--    $P_0(S = s)$   $\frac{1}{36}$   $\frac{2}{36}$   $\frac{3}{36}$   $\frac{4}{36}$   $\frac{5}{36}$   $\frac{6}{36}$    $\frac{5}{36}$   $\frac{4}{36}$   $\frac{3}{36}$   $\frac{2}{36}$   $\frac{1}{36}$ -->
+<!--    $P_1(S = s)$   $\frac{4}{64}$   $\frac{4}{64}$   $\frac{5}{64}$   $\frac{6}{64}$   $\frac{7}{64}$   $\frac{12}{64}$   $\frac{7}{64}$   $\frac{6}{64}$   $\frac{5}{64}$   $\frac{4}{64}$   $\frac{4}{64}$ -->
+
+<!--   : Distribuzione di massa di probabilità per la somma dei punti -->
+<!--   prodotti dal lancio di due dadi bilanciati ($P_0$) e di due dadi -->
+<!--   truccati ($P_1$). -->
+<!-- ::: -->
+
+<!-- Per considerare un caso più generale, poniamoci ora il problema di -->
+<!-- trovare la funzione di massa di probabilità di $S$ nel caso di due dadi -->
+<!-- truccati aventi la seguente distribuzione di probabilità: -->
+<!-- $$ -->
+<!-- \begin{aligned} -->
+<!-- P(\{1\}) = P(\{6\}) &= \frac{1}{4};\notag\\ -->
+<!-- P(\{2\}) = P(\{3\}) = P(\{4\}) = P(\{5\}) = \frac{1}{8}\notag. -->
+<!-- \label{eq:loaded_dice} -->
+<!-- \end{aligned} -->
+<!-- $$  -->
+<!-- Nel caso dei due dadi truccati, la probabilità dell'evento elementare (1, 1) è 1/4 1/4. Dunque, *P*(*S* = 2) = 4/64. La probabilità dell'evento elementare (1, 2) è 1/4 1/8. Tale valore è uguale alla probabilità dell'evento elementare (2, 1). La probabilità che *S* sia uguale a 3 è 1/4 1/8 + 1/8 1/4 = 4/64, e così via. Svolgendo i calcoli per tutti i possibili valori di *S* otteniamo la funzione di massa di probabilità $P_1$ riportata nella seconda riga della tabella precedente. -->
+
+<!-- Si noti che, a partire dalla funzione di massa di probabilità di *S*, è possibile calcolare la probabilità di altri eventi. Per esempio, possiamo dire che l'evento *S* > 10 ha una probabilità minore nel caso dei dadi bilanciati, ovvero 3/36 = 1/12, rispetto al caso dei dadi truccati considerati in precedenza dove, per lo stesso evento, abbiamo una probabilità di 8/64 = 1/8. -->
+<!-- ``` -->
+
+
+<!-- ## Notazione -->
+
+<!-- Qui sotto è riportata la notazione che verrà usata per fare riferimento -->
+<!-- ad eventi e probabilità, nel caso discreto e continuo, in maniera tale -->
+<!-- che queste convenzioni siano elencate tutte in un posto solo. -->
+
+<!-- *   Gli eventi sono denotati da lettere maiuscole, es. $A$, $B$, $C$. -->
+<!-- *   Una variabile casuale è denotata da una lettera maiuscola, ad -->
+<!--     esempio $X$, e assume valori denotati dalla stessa lettera -->
+<!--     minuscola, ad esempio $x$. -->
+<!-- *   La connessione tra eventi e valori viene espressa nei termini -->
+<!--     seguenti: "$X = x$" significa che l'evento $X$ assume il valore $x$. -->
+<!-- *   La probabilità di un evento è denotata con $P(A)$. -->
+<!-- *   Una variabile casuale discreta ha una funzione di massa di -->
+<!--     probabilità denotata con $p(x)$. La relazione tra $P$ e $p$ è che -->
+<!--     $P(X=x) = p(x)$. -->
+
+
+## Commenti e considerazioni finali {-}
+
+In questo capitolo abbiamo visto come si costruisce lo spazio
+campionario di un esperimento casuale, quali sono le proprietà di base
+della probabilità e come si assegnano le probabilità agli eventi
+definiti sopra uno spazio campionario discreto. Abbiamo anche introdotto
+le nozioni di "variabile casuale", ovvero di una variabile che prende i suoi valori casualmente. E abbiamo descritto il modo di specificare la probabilità con cui sono presi i differenti valori, ovvero la funzione di distribuzione probabilistica $F(X) = Pr(X < x)$, e la funzione di massa di probabilità. Le procedure di analisi dei dati psicologici che discuteremo in seguito faranno un grande uso di questi concetti e della notazione qui introdotta.
+
+
+
+

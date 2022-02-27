@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capitolo 2 La misurazione in psicologia | Data Science per psicologi</title>
+<meta name="author" content="Corrado Caudek">
+<meta name="description" content="Introduco il problema della misurazione in psicologia parlando dell’intelligenza. In quanto psicologi, siamo abituati a pensare alla misurazione dell’intelligenza, ma anche le persone che non sono...">
+<meta name="generator" content="bookdown 0.24.4 with bs4_book()">
+<meta property="og:title" content="Capitolo 2 La misurazione in psicologia | Data Science per psicologi">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Introduco il problema della misurazione in psicologia parlando dell’intelligenza. In quanto psicologi, siamo abituati a pensare alla misurazione dell’intelligenza, ma anche le persone che non sono...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capitolo 2 La misurazione in psicologia | Data Science per psicologi">
+<meta name="twitter:description" content="Introduco il problema della misurazione in psicologia parlando dell’intelligenza. In quanto psicologi, siamo abituati a pensare alla misurazione dell’intelligenza, ma anche le persone che non sono...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs/header-attrs.js"></script><script src="libs/jquery/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap/bootstrap.bundle.min.js"></script><script src="libs/bs3compat/transition.js"></script><script src="libs/bs3compat/tabs.js"></script><script src="libs/bs3compat/bs3compat.js"></script><link href="libs/bs4_book/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Data Science per psicologi</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefazione</a></li>
+<li class="book-part">Nozioni preliminari</li>
+<li><a class="" href="concetti-chiave.html"><span class="header-section-number">1</span> Concetti chiave</a></li>
+<li><a class="active" href="chapter-misurazione.html"><span class="header-section-number">2</span> La misurazione in psicologia</a></li>
+<li class="book-part">Analisi esplorativa dei dati</li>
+<li><a class="" href="ch:freq-distr.html"><span class="header-section-number">3</span> Variabili e distribuzioni di frequenza</a></li>
+<li><a class="" href="ch:loc-scale.html"><span class="header-section-number">4</span> Indici di posizione e di scala</a></li>
+<li><a class="" href="ch:correlation.html"><span class="header-section-number">5</span> Le relazioni tra variabili</a></li>
+<li><a class="" href="ch:metropolis.html"><span class="header-section-number">6</span> Approssimazione della distribuzione a posteriori</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="chapter-misurazione" class="section level1" number="2">
+<h1>
+<span class="header-section-number">Capitolo 2</span> La misurazione in psicologia<a class="anchor" aria-label="anchor" href="#chapter-misurazione"><i class="fas fa-link"></i></a>
+</h1>
+<p>Introduco il problema della misurazione in psicologia parlando dell’intelligenza. In quanto psicologi, siamo abituati a pensare alla misurazione dell’intelligenza, ma anche le persone che non sono psicologi sono ben familiari con la misurazione dell’intelligenza: tra le misurazioni delle caratteristiche psicologiche, infatti, la misurazione dell’intelligenza è forse la più conosciuta.</p>
+<p>I test di intelligenza consistono in una serie di problemi di carattere verbale, numerico o simbolico. Come ci si può aspettare, alcune persone riescono a risolvere correttamente un numero maggiore di problemi di altre. Possiamo contare il numero di risposte corrette e osservare le differenze individuali nei punteggi calcolati. Scopriamo in questo modo che le differenze individuali nell’abilità di risolvere tali problemi risultano sorprendentemente stabili nell’età adulta. Inoltre, diversi test di intelligenza tendono ad essere correlati positivamente: le persone che risolvono un maggior numero di problemi verbali, in media, tenderanno anche a risolvere correttamente un numero più grande di numerici e simbolici. Esiste quindi una notevole coerenza delle differenze osservate tra le persone, sia nel tempo sia considerando diverse procedure di test e valutazione.</p>
+<p>Avendo stabilito che ci sono differenze individuali tra le persone, è possibile esaminare le associazioni tra i punteggi dei test di intelligenza e altre variabili. Possiamo indagare se le persone con punteggi più alti nei test di intelligenza, rispetto a persone che ottengono punteggi più bassi, hanno più successo sul lavoro; se guadagnano di più; se votano in modo diverso; o se hanno un’aspettativa di vita più alta. Possiamo esaminare le differenze nei punteggi dei test di intelligenza in funzione di variabili come il genere, il gruppo etnico-razziale o lo stato socio-economico. Possiamo fare ricerche sull’associazione tra i punteggi dei test di intelligenza e l’efficienza dell’elaborazione neuronale, i tempi di reazione o la quantità di materia grigia all’interno della scatola cranica. Tutte queste ricerche sono state condotte e gli psicologi hanno scoperto una vasta gamma di associazioni tra le misure dell’intelligenza e altre variabili. Alcune di queste associazioni sono grandi e stabili, altre sono piccole e difficili da replicare. In riferimento all’intelligenza, dunque, gli psicologi hanno condotto un enorme numero di ricerche ponendosi domande diverse. In quali condizioni si verificano determinati effetti? Quali variabili mediano o moderano le relazioni tra i punteggi dei test di intelligenza e altre variabili? Queste relazioni si mantengono stabili in diversi gruppi di persone? Le ricerche sull’intelligenza umana sono un campo in continuo sviluppo.</p>
+<p>Tuttavia, tuttavia una domanda sorge spontanea: i test di intelligenza misurano davvero qualcosa e, in caso affermativo, che cos’è questo qualcosa? Infatti, dopo un secolo di teoria e ricerca sui punteggi dei test di intelligenza e, in generale, sui test psicologici, non sappiamo ancora con precisione cosa effettivamente questi test misurano.
+Queste considerazioni relative ai test di intelligenza ci conducono dunque alla domanda che ha motivato le precedenti considerazioni: cosa significa misurare un attributo psicologico? Questa è una domanda a cui è difficile rispondere, una domanda a cui è dedicata un’intera area di ricerca, quella della teoria della misurazione psicologica.</p>
+<p>Non possiamo qui entrare nel merito delle complessità formali della teoria della misurazione psicologica – questo argomento verrà approfondito nei successivi insegnamenti sulla testistica psicologica. Ci limiteremo invece a presentare alcune nozioni di base su un tema centrale della teoria della misurazione psicologica: il tema delle scale delle misure psicologiche.</p>
+<div id="le-scale-di-misura" class="section level2" number="2.1">
+<h2>
+<span class="header-section-number">2.1</span> Le scale di misura<a class="anchor" aria-label="anchor" href="#le-scale-di-misura"><i class="fas fa-link"></i></a>
+</h2>
+<p>In generale possiamo dire che la teoria della misurazione si occupa dello studio delle relazioni esistenti tra due domini: il “mondo fisico” e il “mondo psicologico”. Secondo la teoria della misurazione, la misurazione è un’attività rappresentativa, cioè è un processo di assegnazione di numeri in modo tale da preservare, all’interno del dominio numerico, le relazioni qualitative che sono state osservate nel mondo empirico. La teoria della misurazione ha lo scopo di specificare le condizioni necessarie per la costruzione di una rappresentazione adeguata delle relazioni empiriche all’interno di un sistema numerico. Da una prospettiva formale, le operazioni descritte dalla teoria della misurazione possono essere concettualizzate in termini di mappatura tra le relazioni esistenti all’interno di due insiemi (quello empirico e quello numerico). Il risultato di questa attività è chiamato “scala di misurazione”.</p>
+<p>Una famosa teoria delle scale di misura è stata proposta da <span class="citation">Stevens (<a href="ch:metropolis.html#ref-stevens46" role="doc-biblioref">1946</a>)</span>. Stevens ci fa notare che, in linea di principio, le variabili psicologiche sono in grado di rappresentare (preservare) con diversi gradi di accuratezza le relazioni qualitative che sono state osservate nei fenomeni psicologici. Secondo la teoria di Stevens, possiamo distinguere tra quattro scale di misura: le scale nominali (<em>nominal scales</em>), ordinali (<em>ordinal scales</em>), a intervalli (<em>interval scales</em>), di rapporti (<em>ratio scales</em>). Tali scale di misura consentono operazioni aritmetiche diverse, come indicato nella tabella successiva, in quanto ciasuna di esse è in grado di “catturare” soltanto alcune delle proprietà dei fenomeni psicologici che intende misurare.</p>
+<div class="inline-figure"><img src="images/misurazione_2.png" style="width:80.0%"></div>
+<div id="scala-nominale" class="section level3" number="2.1.1">
+<h3>
+<span class="header-section-number">2.1.1</span> Scala nominale<a class="anchor" aria-label="anchor" href="#scala-nominale"><i class="fas fa-link"></i></a>
+</h3>
+<p>Il livello di misurazione più semplice è quello della scala nominale. Questa scala di misurazione corrisponde ad una tassonomia. I simoboli o numeri che costituiscono questa scala non sono altro che i nomi delle categorie che utilizziamo per classificare i fenomeni psicologici. In base alle misure fornite da una scala nominale, l’unica cosa che siamo in grado di dire a proposito di una caratteristica psicologica è se essa è uguale o no ad un’altra caratteristica psicologica.</p>
+<p>La scala nominale raggruppa dunque i dati in categorie qualitative <em>mutuamente esclusive</em> (cioè nessun dato si può collocare in più di una categoria).
+Esiste la sola relazione di equivalenza tra le misure delle u.s., cioè
+nella scala nominale gli elementi del campione appartenenti a classi
+diverse sono differenti, mentre tutti quelli della stessa classe sono
+tra loro equivalenti: <span class="math inline">\(x_i = x_j\)</span> oppure <span class="math inline">\(x_i \neq x_j\)</span>.</p>
+<p>L’unica operazione algebrica che possiamo compiere sulle modalità della scala nominale è quella di contare le u.s. che appartengono ad ogni modalità e contare il numero delle modalità (classi di equivalenza). Dunque la descrizione dei dati avviene tramite le frequenze assolute e le frequenze relative.</p>
+<p>A partire da una scala nominale è possibile costruire altre scale nominali che sono equivalenti alla prima trasformando i valori della scala di partenza in modo tale
+da cambiare i nomi delle modalità, ma lasciando però inalterata la suddivisione u.s. nelle medesime classi di equivalenza. Questo significa che prendendo una variabile misurata su scala nominale e cambiando i nomi delle sue categorie otteniamo una nuova variabile esattamente corrispondente alla prima.</p>
+</div>
+<div id="scala-ordinale" class="section level3" number="2.1.2">
+<h3>
+<span class="header-section-number">2.1.2</span> Scala ordinale<a class="anchor" aria-label="anchor" href="#scala-ordinale"><i class="fas fa-link"></i></a>
+</h3>
+<p>La scala ordinale conserva la proprietà della scala nominale di classificare ciascuna u.s. all’interno di una e una sola categoria, ma alla relazione di equivalenza tra elementi di una stessa classe aggiunge la relazione di ordinamento tra le classi di equivalenza. Essendo basata su una relazione d’ordine, una scala ordinale descrive soltanto l’ordine di rango tra le modalità, ma non ci dà alcuna informazione su quanto una modalità sia più grande di un’altra. Non ci dice, per esempio, se la distanza tra le modalità <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> sia uguale, maggiore o minore della distanza tra le modalità <span class="math inline">\(b\)</span> e <span class="math inline">\(c\)</span>.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-5" class="example"><strong>Esempio 2.1  </strong></span>Un esempio classico di scala ordinale è quello della scala Mohs per la
+determinazione della durezza dei minerali. Per stabilire la durezza dei
+minerali si usa il criterio empirico della scalfittura. Vengono
+stabiliti livelli di durezza crescente da 1 a 10 con riferimento a dieci
+minerali: talco, gesso, calcite, fluorite, apatite, ortoclasio, quarzo,
+topazio, corindone e diamante. Un minerale appartenente ad uno di questi
+livelli se scalfisce quello di livello inferiore ed è scalfito da quello
+di livello superiore.</p>
+</div>
+</div>
+<div id="scala-ad-intervalli" class="section level3" number="2.1.3">
+<h3>
+<span class="header-section-number">2.1.3</span> Scala ad intervalli<a class="anchor" aria-label="anchor" href="#scala-ad-intervalli"><i class="fas fa-link"></i></a>
+</h3>
+<p>La scala ad intervalli include le proprietà di quella nominale e di
+quella ordinale, e in più consente di misurare le distanze tra le coppie
+di u.s. nei termini di un intervallo costante, chiamato <em>unità di
+misura</em>, a cui viene attribuito il valore “1”. La posizione dell’origine
+della scala, cioè il punto zero, è scelta arbitrariamente, nel senso che
+non indica l’assenza della quantità che si sta misurando. Avendo uno
+zero arbitrario, questa scala di misura consente valori negativi. Lo
+zero, infatti, <em>non</em> viene attribuito all’u.s. in cui la proprietà
+misurata risulta assente.</p>
+<p>La scala a intervalli equivalenti ci consente di effettuare operazioni
+algebriche basate sulla differenza tra i numeri associati ai diversi
+punti della scala, operazioni algebriche non era possibile eseguire nel
+caso di misure a livello di scala ordinale o nominale. Il limite della
+scala ad intervalli è quello di non consentire il calcolo del rapporto
+tra coppie di misure. Possiamo dire, per esempio, che la distanza tra
+<span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> è la metà della distanza tra <span class="math inline">\(c\)</span> e <span class="math inline">\(d\)</span>. Oppure che la distanza
+tra <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> è uguale alla distanza tra <span class="math inline">\(c\)</span> e <span class="math inline">\(d\)</span>. Non possiamo dire,
+però, che <span class="math inline">\(a\)</span> possiede la proprietà misurata in quantità doppia rispetto
+<span class="math inline">\(b\)</span>. Non possiamo cioè stabilire dei rapporti diretti tra le misure
+ottenute. Solo per le <em>differenze</em> tra le modalità sono dunque permesse
+tutte le operazioni aritmetiche: le differenze possono essere tra loro
+sommate, elevate a potenza oppure divise, determinando così le quantità
+che stanno alla base della statistica inferenziale.</p>
+<p>Nelle scale ad intervalli equivalenti, l’unità di misura è arbitraria,
+ovvero può essere cambiata attraverso una dilatazione, operazione che
+consiste nel moltiplicare tutti i valori della scala per una costante
+positiva. Poiché l’aggiunta di una costante non altera le differenze tra
+i valori della scala, è anche ammessa la traslazione, operazione che
+consiste nel sommare una costante a tutti i valori della scala. Essendo
+la scala invariate rispetto alla traslazione e alla dilatazione, le
+trasformazioni ammissibili sono le <em>trasformazioni lineari</em>:</p>
+<p><span class="math display">\[
+y' = a + by, \quad b &gt; 0.
+\]</span>
+L’aspetto che rimane invariante a seguito di una trasformazione lineare
+è l’uguaglianza dei rapporti fra intervalli.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-6" class="example"><strong>Esempio 2.2  </strong></span>Esempio di scala ad intervalli è la temperatura misurata in gradi
+Celsius o Fahrenheit, ma non Kelvin. Come per la scala nominale, è
+possibile stabilire se due modalità sono uguali o diverse: 30<span class="math inline">\(^\circ\)</span>C
+<span class="math inline">\(\neq\)</span> 20<span class="math inline">\(^\circ\)</span>C. Come per la scala ordinale è possibile mettere due
+modalità in una relazione d’ordine: 30<span class="math inline">\(^\circ\)</span>C <span class="math inline">\(&gt;\)</span> 20<span class="math inline">\(^\circ\)</span>C. In
+aggiunta ai casi precedenti, però, è possibile definire una unità di
+misura per cui è possibile dire che tra 30<span class="math inline">\(^\circ\)</span>C e 20<span class="math inline">\(^\circ\)</span>C c’è
+una differenza di 30<span class="math inline">\(^\circ\)</span> - 20<span class="math inline">\(^\circ\)</span> = 10<span class="math inline">\(^\circ\)</span>C. I valori di
+temperatura, oltre a poter essere ordinati secondo l’intensità del
+fenomeno, godono della proprietà che le differenze tra loro sono
+direttamente confrontabili e quantificabili.</p>
+<p>Il limite della scala ad intervalli è quello di non consentire il
+calcolo del rapporto tra coppie di misure. Ad esempio, una temperatura
+di 80<span class="math inline">\(^\circ\)</span>C non è il doppio di una di 40<span class="math inline">\(^\circ\)</span>C. Se infatti
+esprimiamo le stesse temperature nei termini della scala Fahrenheit,
+allora i due valori non saranno in rapporto di 1 a 2 tra loro. Infatti,
+20<span class="math inline">\(^\circ\)</span>C = 68<span class="math inline">\(^\circ\)</span>F e 40<span class="math inline">\(^\circ\)</span>C = 104<span class="math inline">\(^\circ\)</span>F. Questo significa
+che la relazione “il doppio di” che avevamo individuato in precedenza si
+applicava ai numeri della scala centigrada, ma non alla proprietà
+misurata (cioè la temperatura). La decisione di che scala usare
+(Centigrada vs. Fahrenheit) è arbitraria. Ma questa arbitrarietà non
+deve influenzare le inferenze che traiamo dai dati. Queste inferenze,
+infatti, devono dirci qualcosa a proposito della realtà empirica e non
+possono in nessun modo essere condizionate dalle nostre scelte
+arbitrarie che ci portano a scegliere la scala Centigrada piuttosto che
+quella Fahrenheit.</p>
+<p>Consideriamo ora l’aspetto invariante di una trasformazione lineare, ovvero l’uguaglianza dei rapporti fra intervalli. Prendiamo in esame, ad esempio, tre temperature:
+<span class="math inline">\(20^\circ C = 68^\circ F\)</span>,
+<span class="math inline">\(15^\circ C = 59^\circ F\)</span>,
+<span class="math inline">\(10^\circ C = 50 ^\circ F\)</span>.</p>
+<p>È facile rendersi conto del fatto che i rapporti fra intervalli restano costanti indipendentemente dall’unità di misura che è stata scelta:</p>
+<p><span class="math display">\[
+  \frac{20^\circ C - 10^\circ C}{20^\circ C - 15^\circ C} =
+  \frac{68^\circ F - 50^\circ F}{68^\circ F-59^\circ F} = 2.
+\]</span></p>
+</div>
+</div>
+<div id="scala-di-rapporti" class="section level3" number="2.1.4">
+<h3>
+<span class="header-section-number">2.1.4</span> Scala di rapporti<a class="anchor" aria-label="anchor" href="#scala-di-rapporti"><i class="fas fa-link"></i></a>
+</h3>
+<p>Nella scala a rapporti equivalenti la posizione dello zero non è
+arbitraria, ma corrisponde all’elemento dotato di intensità nulla
+rispetto alla proprietà misurata. Una scala a rapporti equivalenti si
+costruisce associando il numero 0 all’elemento con intensità nulla;
+viene poi scelta un’unità di misura <span class="math inline">\(u\)</span> e, ad ogni elemento, si assegna
+un numero <span class="math inline">\(a\)</span> definito come: <span class="math display">\[a = \frac{d}{u}\]</span> dove <span class="math inline">\(d\)</span> rappresenta la
+distanza dall’origine. Alle u.s. vengono dunque assegnati dei numeri
+tali per cui le differenze e i rapporti tra i numeri riflettono le
+differenze e i rapporti tra le intensità della proprietà misurata.</p>
+<p>Operazioni aritmetiche sono possibili non solo sulle differenze tra i
+valori della scala (come per la scala a intervalli equivalenti), ma
+anche sui valori stessi della scala. L’unica arbitrarietà riguarda
+l’unità di misura che si utilizza. L’unità di misura può cambiare, ma
+qualsiasi unità di misura si scelga, lo zero deve sempre indicare
+l’intensità nulla della proprietà considerata.</p>
+<p>Le trasformazioni ammissibili a questo livello di scala sono dette
+trasformazioni di similarità: <span class="math display">\[y' = by, \quad b &gt; 0.\]</span> A questo livello
+di scala, a seguito delle trasformazioni ammissibili, rimangono
+invariati anche i rapporti: <span class="math display">\[\frac{y_i}{y_j} = \frac{y'_i}{y'_j}.\]</span></p>
+</div>
+</div>
+<div id="gerarchia-dei-livelli-di-scala-di-misura" class="section level2" number="2.2">
+<h2>
+<span class="header-section-number">2.2</span> Gerarchia dei livelli di scala di misura<a class="anchor" aria-label="anchor" href="#gerarchia-dei-livelli-di-scala-di-misura"><i class="fas fa-link"></i></a>
+</h2>
+<p><span class="citation">Stevens (<a href="ch:metropolis.html#ref-stevens46" role="doc-biblioref">1946</a>)</span> parla di <em>livelli di scala</em> poiché i quattro tipi di scala di
+misura stanno in una precisa gerarchia: la scala nominale rappresenta il
+livello più basso della misurazione, la scala a rapporti equivalenti è
+invece il livello più alto.</p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="25%">
+<col width="74%">
+</colgroup>
+<thead><tr class="header">
+<th>Scale di modalità</th>
+<th>Operazioni aritmetiche</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>nominali</td>
+<td>enumerare le classi di equivalenza e/o</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>le frequenze per ciascuna classe di equivalenza</td>
+</tr>
+<tr class="odd">
+<td>ordinali</td>
+<td>enumerare le classi di equivalenza e/o</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>le frequenze per ciascuna classe di equivalenza</td>
+</tr>
+<tr class="odd">
+<td>intervallari</td>
+<td>differenze (rapporti tra differenze)</td>
+</tr>
+<tr class="even">
+<td>di rapporti</td>
+<td>rapporti diretti tra le misure</td>
+</tr>
+</tbody>
+</table></div>
+<p>Passando da un livello di misurazione ad uno più alto aumenta il numero di operazioni aritmetiche che possono essere compiute sui valori della scala, come indicato nella figura seguente.</p>
+<div class="inline-figure"><img src="images/misurazione_1.png" style="width:80.0%"></div>
+<p>Per ciò che riguarda le trasformazioni ammissibili, più il livello di
+scala è basso, più le funzioni sono generali (sono minori cioè i vincoli
+per passare da una rappresentazione numerica ad un’altra equivalente).
+Salendo la gerarchia, la natura delle funzioni di trasformazione si fa
+più restrittiva.</p>
+</div>
+<div id="variabili-discrete-o-continue" class="section level2" number="2.3">
+<h2>
+<span class="header-section-number">2.3</span> Variabili discrete o continue<a class="anchor" aria-label="anchor" href="#variabili-discrete-o-continue"><i class="fas fa-link"></i></a>
+</h2>
+<p>Le variabili a livello di intervalli e di rapporti possono essere
+discrete o continue. Le variabili discrete possono assumere alcuni
+valori ma non altri. Una volta che l’elenco di valori accettabili è
+stato specificato, non ci sono casi che cadono tra questi valori.
+Le variabili discrete di solito assumono valori interi.</p>
+<p>Quando una variabile può assumere qualsiasi valore entro un intervallo
+specificato, allora si dice che la variabile è continua. In teoria, ciò
+significa che frazioni e decimali possono essere utilizzati per
+raggiungere un livello di precisione qualsiasi. In pratica, a un certo
+punto dobbiamo arrotondare i numeri, rendendo tecnicamente la variabile
+discreta. In variabili veramente discrete, tuttavia, non è possibile
+aumentare a piacimento il livello di precisione della misurazione.</p>
+<div class="inline-figure"><img src="images/misurazione_3.png" style="width:80.0%"></div>
+<div class="example">
+<p><span id="exm:unlabeled-div-7" class="example"><strong>Esempio 2.3  </strong></span>Il numero di biciclette possedute da una persona è una variabile discreta poiché tale variabile può assumere come modalità solo i numeri interi non negativi. Frazioni di bicicletta non hanno senso.</p>
+</div>
+</div>
+<div id="alcune-misure-sono-migliori-di-altre" class="section level2" number="2.4">
+<h2>
+<span class="header-section-number">2.4</span> Alcune misure sono migliori di altre<a class="anchor" aria-label="anchor" href="#alcune-misure-sono-migliori-di-altre"><i class="fas fa-link"></i></a>
+</h2>
+<p>In psicologia, ciò che vogliamo misurare non è una caratteristica fisica, ma invece è un concetto teorico inosservabile, ovvero un costrutto. <em>Un costrutto rappresenta il risultato di una fondata riflessione scientifica, non è per definizione accessibile all’osservazione diretta, ma viene inferito dall’osservazione di opportuni indicatori</em> (Sartori, 2005). Ad esempio, supponiamo che un docente voglia valutare quanto bene uno studente comprenda la distinzione tra le quattro diverse scale di misura che sono state descritte sopra. Il docente potrebbe predisporre un test costituito da un insieme di domande e potrebbe contare a quante domande lo studente risponde correttamente. Questo
+test, però, può o può non essere una buona misura del costrutto relativo
+alla conoscenza effettiva delle quattro scale di misura. Per esempio, se
+il docente scrive le domande del test in modo ambiguo o se usa una
+linguaggio troppo tecnico che lo studente non conosce, allora i
+risultati del test potrebbero suggerire che lo studente non conosce la
+materia in questione anche se in realtà questo non è vero. D’altra
+parte, se il docente prepara un test a scelta multipla con risposte
+errate molto ovvie, allora lo studente può ottenere dei buoni risultati
+al test anche senza essere in grado di comprendere adeguatamente le
+proprietà delle quattro scale di misura. In generale non è possibile misurare un costrutto senza una certa quantità di errore. Poniamoci dunque il problema di determinare in che modo una misurazione possa dirsi adeguata.</p>
+<div id="tipologie-di-errori" class="section level3" number="2.4.1">
+<h3>
+<span class="header-section-number">2.4.1</span> Tipologie di errori<a class="anchor" aria-label="anchor" href="#tipologie-di-errori"><i class="fas fa-link"></i></a>
+</h3>
+<p>L’errore è, per definizione, la differenza tra il valore vero e il
+valore misurato della grandezza in esame. Gli errori sono classificati
+come sistematici (o determinati) e casuali (o indeterminati). Gli errori
+casuali sono fluttuazioni, in eccesso o in difetto rispetto al valore
+reale, delle singole determinazioni e sono dovuti alle molte variabili
+incontrollabili che influenzano ogni misura psicologica. Gli errori
+sistematici, invece, influiscono sulla misurazione sempre nello stesso
+senso e, solitamente, per una stessa quantità (possono essere additivi o
+proporzionali).</p>
+<p>Le differenze tra le due tipologie di errori, sistematici e casuali,
+introducono i concetti di accuratezza e di precisione della misura. Una
+misura viene definita:</p>
+<ul>
+<li>
+<em>accurata</em>, quando vi è un accordo tra la misura effettuata ed il
+valore reale;</li>
+<li>
+<em>precisa</em> quando, ripetendo più volte la misura, i risultati
+ottenuti sono concordanti, cioè differiscono in maniera irrilevante
+tra loro.</li>
+</ul>
+<p>La metafora del tiro a bersaglio illustra la relazione tra precisione e accuratezza.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:fig-tiro-bersaglio"></span>
+<img src="images/misurazione_4.png" alt="Metafora del tiro al bersaglio." width="1181"><p class="caption">
+FIGURA 2.1: Metafora del tiro al bersaglio.
+</p>
+</div>
+<p>Per tenere sotto controllo l’incidenza degli errori, sono stati
+introdotti in psicologia i concetti di attendibilità e validità.</p>
+<p>Uno strumento si dice <em>attendibile</em> quando valuta in modo coerente e
+stabile la stessa variabile: i risultati ottenuti si mantengono costanti
+dopo ripetute somministrazione ed in assenza di variazioni psicologiche
+e fisiche dei soggetti sottoposti al test o cambiamenti dell’ambiente in
+cui ha luogo la somministrazione.</p>
+<p>L’attendibilità di uno strumento, però, non è sufficiente: in primo luogo uno
+strumento di misura deve essere <em>valido</em>, laddove la validità rappresenta
+il grado in cui uno strumento misura effettivamente ciò che dovrebbe
+misurare. In genere, si fa riferimento ad almeno quattro tipi di
+validità.</p>
+<ul>
+<li>La <em>validità di costrutto</em> riguarda il grado in cui un test misura
+ciò per cui è stato costruito. Essa si suddivide in: validità
+convergente e validità divergente. La validità convergente fa
+riferimento alla concordanza tra uno strumento e un altro che misura
+lo stesso costrutto. La validità divergente, al contrario, valuta il
+grado di discriminazione tra strumenti che misurano costrutti
+differenti. Senza validità di costrutto le altre forme di validità
+non hanno senso.</li>
+<li>In base alla <em>validità di contenuto</em>, un test fornisce una misura
+valida di un attributo psicologico se il dominio dell’attributo è
+rappresentato in maniera adeguata dagli item del test. Un requisito
+di base della validità di contenuto è la rilevanza e la
+rappresentatività del contenuto degli item in riferimento
+all’attributo che il test intende misurare.</li>
+<li>La <em>validità di criterio</em> valuta il grado di concordanza tra i
+risultati dello strumento considerato e i risultati ottenuti da
+altri strumenti che misurano lo stesso costrutto, o tra i risultati
+dello strumento considerato e un criterio esterno. Nella validità
+concorrente, costrutto e criterio vengono misurati contestualmente,
+consentendo un confronto immediato. Nella validità predittiva, il
+costrutto viene misurato prima e il criterio in un momento
+successivo, consentendo la valutazione della capacità dello
+strumento di predire un evento futuro.</li>
+<li>Infine, la <em>validità di facciata</em> fa riferimento al grado in cui il
+test appare valido ai soggetti a cui esso è diretto. La validità di
+facciata è importante in ambiti particolari, quali ad esempio la
+selezione del personale per una determinata occupazione. In questo
+caso è ovviamente importante che chi si sottopone al test ritenga
+che il test vada a misurare quegli aspetti che sono importanti per
+le mansioni lavorative che dovranno essere svolte, piuttosto che
+altre cose. In generale, la validità di facciata non è utile, tranne
+in casi particolari.</li>
+</ul>
+</div>
+</div>
+<div id="commenti-e-considerazioni-finali" class="section level2 unnumbered">
+<h2>Commenti e considerazioni finali<a class="anchor" aria-label="anchor" href="#commenti-e-considerazioni-finali"><i class="fas fa-link"></i></a>
+</h2>
+<p>Una domanda che uno psicologo spesso si pone è: “sulla base delle
+evidenze osservate, possiamo concludere dicendo che l’intervento
+psicologico è efficace nel trattamento e nella cura del disturbo?” Le
+considerazioni svolte in questo capitolo dovrebbero farci capire che,
+prima di cercare di rispondere a questa domanda con l’analisi statistica
+dei dati, devono essere affrontati i problemi della validità e
+dell’attendibilità delle misure (oltre a stabilire l’appropriato livello
+di scala di misura delle osservazioni). L’attendibilità è un
+prerequisito della validità. Se gli errori di misurazione sono troppo
+grandi, i dati sono inutili. Inoltre, uno strumento di misurazione può
+essere preciso ma non valido. La validità e l’attendibilità delle
+misurazioni sono dunque entrambe necessarie.</p>
+<p>In generale, l’attendibilità e la validità delle misure devono essere
+valutate per capire se i dati raccolti da un ricercatore siano adeguati
+(1) per fornire una risposta alla domanda della ricerca, e (2) per
+giungere alla conclusione proposta dal ricercatore alla luce dei
+risultati dell’analisi statistica che è stata eseguita. È chiaro che le
+informazioni fornite in questo capitolo si limitano a scalfire la
+superficie di questi problemi. I concetti qui introdotti, però, devono
+sempre essere tenuti a mente e costituiscono il fondamento di quanto
+verrà esposto nei capitoli successivi.</p>
+
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="concetti-chiave.html"><span class="header-section-number">1</span> Concetti chiave</a></div>
+<div class="next"><a href="ch:freq-distr.html"><span class="header-section-number">3</span> Variabili e distribuzioni di frequenza</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#chapter-misurazione"><span class="header-section-number">2</span> La misurazione in psicologia</a></li>
+<li>
+<a class="nav-link" href="#le-scale-di-misura"><span class="header-section-number">2.1</span> Le scale di misura</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#scala-nominale"><span class="header-section-number">2.1.1</span> Scala nominale</a></li>
+<li><a class="nav-link" href="#scala-ordinale"><span class="header-section-number">2.1.2</span> Scala ordinale</a></li>
+<li><a class="nav-link" href="#scala-ad-intervalli"><span class="header-section-number">2.1.3</span> Scala ad intervalli</a></li>
+<li><a class="nav-link" href="#scala-di-rapporti"><span class="header-section-number">2.1.4</span> Scala di rapporti</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#gerarchia-dei-livelli-di-scala-di-misura"><span class="header-section-number">2.2</span> Gerarchia dei livelli di scala di misura</a></li>
+<li><a class="nav-link" href="#variabili-discrete-o-continue"><span class="header-section-number">2.3</span> Variabili discrete o continue</a></li>
+<li>
+<a class="nav-link" href="#alcune-misure-sono-migliori-di-altre"><span class="header-section-number">2.4</span> Alcune misure sono migliori di altre</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#tipologie-di-errori"><span class="header-section-number">2.4.1</span> Tipologie di errori</a></li></ul>
+</li>
+<li><a class="nav-link" href="#commenti-e-considerazioni-finali">Commenti e considerazioni finali</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2022-02-17.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

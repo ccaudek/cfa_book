@@ -1,0 +1,133 @@
+\mainmatter
+
+# (PART) La teoria classica dei test  {-}
+
+# Panoramica della valutazione psicometrica {#ch:panoramica}
+
+```{r, include = FALSE}
+source("_common.R")
+```
+
+## Psicometria come ragionamento inferenziale
+
+In apparenza, i test psicometrici sono solo dei test. Somministriamo un
+test, otteniamo un punteggio ed è naturale pensare che sia tutto lì.
+Nonostante le apparenze, la valutazione psicologica e neuropsicologica
+non consiste soltanto nell'assegnare di punteggi: si tratta di ragionare
+su ciò che osserviamo di quello che le persone dicono, fanno o
+producono, in maniera tale da giungere a delle concezioni più ampie di
+tali persone a proposito di aspetti che non abbiamo - e spesso non
+possiamo - osservare. Più specificamente, possiamo considerare la
+valutazione psicologica e neuropsicologica come un esempio di
+ragionamento che fa uso di modelli probabilistici per giungere a delle
+spiegazioni, previsioni o conclusioni.
+
+I dati osservati diventano un'evidenza quando sono ritenuti rilevanti
+per l'inferenza desiderata attraverso l'instaurazione di relazioni tra i
+dati e l'obiettivo dell'inferenza. Spesso utilizziamo dati provenienti
+da più fonti. Queste possono essere di tipo simile (ad esempio, item di
+test aventi lo stesso formato) o di tipo molto diverso (ad esempio, il
+curriculum di un richiedente oltre al colloquio, la storia medica della
+famiglia di un paziente, ...). Le evidenze possono essere
+contraddittorie (ad esempio, uno studente riesce a svolgere un compito
+difficile ma fallisce in un uno facile), e quasi sempre non sono del
+tutto conclusive.
+
+Queste caratteristiche hanno due implicazioni. In primo luogo, è
+difficile capire cosa le evidenze implicano. I processi inferenziali
+sono sempre complessi. In secondo luogo, a causa della natura non
+conclusiva delle evidenze disponibili, non siamo mai del tutto certi
+delle nostre inferenze. Per affrontare tale incertezza, la teoria
+psicometria ci fornisce gli strumenti che ci possono aiutare nel
+processo inferenziale, dai dati disponibili alle decisioni che
+prendiamo.
+
+Un secolo fa, la disconnessione tra prestazioni osservate, da un lato, e
+l'abilità inosservabile del rispondente, dall'altro, iniziò a essere
+formalizzata nei termini dell'*errore di misurazione*. Gulliksen ha
+descritto "il problema centrale della teoria dei test" come "la
+relazione tra l'abilità dell'individuo e il suo punteggio osservato sul
+test" (Gulliksen, 1961, p. 101). Tale caratterizzazione è valida ancora
+oggi, con una definizione opportunamente ampia di "abilità" e di
+"punteggio sul test" che sia in grado di comprendere le diverse forme di
+assessment psicologico e neuropsicologico. Comprendere e essere in grado
+di rappresentare la disconnessione tra le prestazioni osservate e la
+capacità soggiacente è dunque fondamentale per le forme di ragionamento
+che vengono impiegate nella valutazione psicologica e neuropsicologica.
+
+Come risultato dell'errore di misurazione, i ragionamenti che compiamo
+nella valutazione psicologica e neuropsicologica costituiscono un
+esempio di ragionamento in condizioni di incertezza. A causa della
+natura imperfetta della misurazione e dell'incompletezza
+dell'informazione disponibile, le nostre inferenze sono incerte e
+possono essere sempre invalidate o riviste. Ragionare da ciò che è
+parziale (ciò che vediamo uno paziente dire, fare o produrre) a ciò che
+è generale (la "vera" abilità del paziente) è necessariamente incerto, e
+le nostre inferenze o conclusioni sono sempre prone ad errori.
+
+Quali strumenti devono essere impiegati per affrontare la nostra
+incertezza sulla relazione che intercorre tra prestazioni osservate e
+abilità soggiacenti? Secondo Lewis, molti dei progressi nella teoria
+psicometrica sono resi possibili "trattando lo studio della relazione
+tra le risposte agli item di un test e il tratto ipotizzato di un
+individuo come problema di inferenza statistica" (Lewis, 1986, p. 11).
+Una connessione diretta tra errore di misura e approccio probabilistico
+è stata anche proposta da Samejima: "There may be an enormous number of factors eliciting a student's specific overt reactions to a stimulus, and, therefore, it is suitable, even necessary, to handle the situation in terms of the probabilistic relationship between the two (Samejima, 1983, p. 159)."
+
+Questo punto di vista è diventato quello dominante nella psicometria
+moderna e sottolinea l'utilità di utilizzare il linguaggio e gli
+strumenti della teoria della probabilità per comunicare il carattere
+parziale dei dati di cui dispone lo psicologo e l'incertezza delle
+inferenze che ne derivano.
+
+I reattivi psicologici possono essere costruiti e la validati mediante
+vari approcci probabilistici: la Teoria Classica dei test (*classical
+test theory*, in breve CCT) e la teoria di risposta all'item (*item
+response theory*, in breve IRT) sono quelli più noti. Recentemente, il
+problema della valutazione psicologica è stato anche formulato in
+un'ottica bayesiana. In questo insegnamento esamineremo gli approcci
+della TCC e dell'IRT, ma non quello bayesiano.
+
+## La Teoria Classica e i modelli IRT
+
+La Teoria Classica dei test nasce alla fine dell'Ottocento (Alfred Binet
+e altri, 1894) allo scopo di studiare l'attendibilità e la validità dei
+risultati dei questionari utilizzati per valutare le caratteristiche
+psico-sociali, non direttamente osservabili, delle persone esaminate.
+L'impiego su vasta scala e lo sviluppo della Teoria Classica ha inizio
+negli anni Trenta, anche se il modello formale su cui tale teoria si
+basa viene proposta da Spearman all'inizio del Novecento (Spearman
+1904a, 1904b). L'equazione fondamentale alla quale si riconduce questa
+teoria è quella che ipotizza una relazione lineare e additiva tra il
+punteggio osservato di un test ($X$), la misura della variabile latente
+($\theta$) e la componente casuale dell'errore ($\varepsilon$). L'idea
+deriva direttamente dal problema della misurazione nelle scienze
+naturali: "Nessuna quantità fisica (una lunghezza, un tempo, una
+temperatura, ecc.) può essere misurata con assoluta precisione. Operando
+con cura, possiamo essere capaci di ridurre le incertezze fisiche finché
+esse sono estremamente piccole, ma eliminarle del tutto è impossibile"
+(Taylor 1982). Essendo sempre affetta da errore, la misura di una
+variabile latente necessita quindi di tecniche che ne valutino
+l'attendibilità, che ne determinino il livello di confidenza attraverso
+una stima dell'associazione delle misure ottenute con test diversi e
+mediante l'aggregazione di più misurazioni della stessa variabile. La
+Teoria Classica ha cercato di trovare risposte a queste e altre domande.
+
+I limiti della Teoria Classica riguardano, in primo luogo,
+l'impossibilità di tenere separate le caratteristiche dei soggetti (in
+termini di abilità) da quelle degli item (in termini di difficoltà).
+L'abilità stimata di un soggetto dipende quindi dallo specifico test che
+è stato somministrato così come la difficoltà degli item di cui è
+costituito il test dipende dall'abilità del campione di soggetti che è
+stato utilizzato per la costruzione e la validazione del test. In
+secondo luogo, riguardano l'impossibilità di studiare il comportamento
+di un singolo individuo nei confronti di un singolo item, in quanto la
+Teoria Classica si limita a fornire statistiche a livello generale dei
+test.
+
+Questi limiti della Teoria Classica possono essere superati utilizzando
+gli strumenti tipici dei modelli IRT (a uno, a due e a tre parametri),
+nei quali la misurazione delle abilità latenti non dipende dal campione
+cui viene somministrato il test e dalle caratteristiche degli item del
+test. Tra i modelli IRT, quello più noto è il Modello di Rasch in quanto
+gode di specifiche e desiderabili proprietà statistiche.

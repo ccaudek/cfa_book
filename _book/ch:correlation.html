@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capitolo 5 Le relazioni tra variabili | Data Science per psicologi</title>
+<meta name="author" content="Corrado Caudek">
+<meta name="description" content="Nella loro ricerca, Zetsche, Bürkner, and Renneberg (2019) hanno misurato il livello di depressione dei soggetti utilizzando due scale psicometriche: il Beck Depression Inventory II (BDI-II) e la...">
+<meta name="generator" content="bookdown 0.24.4 with bs4_book()">
+<meta property="og:title" content="Capitolo 5 Le relazioni tra variabili | Data Science per psicologi">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Nella loro ricerca, Zetsche, Bürkner, and Renneberg (2019) hanno misurato il livello di depressione dei soggetti utilizzando due scale psicometriche: il Beck Depression Inventory II (BDI-II) e la...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capitolo 5 Le relazioni tra variabili | Data Science per psicologi">
+<meta name="twitter:description" content="Nella loro ricerca, Zetsche, Bürkner, and Renneberg (2019) hanno misurato il livello di depressione dei soggetti utilizzando due scale psicometriche: il Beck Depression Inventory II (BDI-II) e la...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs/header-attrs.js"></script><script src="libs/jquery/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap/bootstrap.bundle.min.js"></script><script src="libs/bs3compat/transition.js"></script><script src="libs/bs3compat/tabs.js"></script><script src="libs/bs3compat/bs3compat.js"></script><link href="libs/bs4_book/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Data Science per psicologi</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefazione</a></li>
+<li class="book-part">Nozioni preliminari</li>
+<li><a class="" href="concetti-chiave.html"><span class="header-section-number">1</span> Concetti chiave</a></li>
+<li><a class="" href="chapter-misurazione.html"><span class="header-section-number">2</span> La misurazione in psicologia</a></li>
+<li class="book-part">Analisi esplorativa dei dati</li>
+<li><a class="" href="ch:freq-distr.html"><span class="header-section-number">3</span> Variabili e distribuzioni di frequenza</a></li>
+<li><a class="" href="ch:loc-scale.html"><span class="header-section-number">4</span> Indici di posizione e di scala</a></li>
+<li><a class="active" href="ch:correlation.html"><span class="header-section-number">5</span> Le relazioni tra variabili</a></li>
+<li><a class="" href="ch:metropolis.html"><span class="header-section-number">6</span> Approssimazione della distribuzione a posteriori</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="ch:correlation" class="section level1" number="5">
+<h1>
+<span class="header-section-number">Capitolo 5</span> Le relazioni tra variabili<a class="anchor" aria-label="anchor" href="#ch:correlation"><i class="fas fa-link"></i></a>
+</h1>
+<p>Nella loro ricerca, <span class="citation">Zetsche, Bürkner, and Renneberg (<a href="ch:metropolis.html#ref-zetschefuture2019" role="doc-biblioref">2019</a>)</span> hanno misurato il livello di depressione dei soggetti utilizzando due scale psicometriche: il Beck Depression Inventory II (BDI-II) e la Center for Epidemiologic Studies Depression Scale (CES-D). Il BDI-II è uno strumento self-report che valutare la presenza e l’intensità di sintomi depressivi in pazienti adulti e adolescenti di almeno 13 anni di età con diagnosi psichiatrica
+mentre la CES-D è una scala self-report progettata per misurare i
+sintomi depressivi che sono stati vissuti nella settimana precedente
+nella popolazione generale, specialmente quella degli
+adolescenti/giovani adulti. Una domanda ovvia che ci può venire in
+mente è: quanto sono simili le misure ottenute mediante queste due
+scale?</p>
+<p>È chiaro che i numeri prodotti dalle scale BDI-II e CES-D non possono
+essere identici, e questo per due motivi: (1) la presenza degli errori
+di misurazione e (2) l’unità di misura delle due variabili. L’errore di
+misurazione corrompe sempre, almeno in parte, qualunque operazione di
+misurazione. E questo è vero specialmente in psicologia dove
+l’<em>attendibilità</em> degli strumenti di misurazione è minore che in altre
+discipline (quali la fisica, ad esempio). Il secondo motivo per cui i
+valori delle scale BDI-II e CES-D non possono essere uguali è che
+l’unità di misura delle due scale è arbitraria. Infatti, qual è l’unità
+di misura della depressione? Chi può dirlo! Ma, al di là delle
+differenze derivanti dall’errore di misurazione e dalla differente unità
+di misura, ci aspettiamo che, se le due scale misurano entrambe lo
+stesso costrutto, allora i valori prodotti dalle due scale dovranno
+essere tra loro <em>linearmente associati</em>. Per capire cosa si intende con
+“associazione lineare” iniziamo a guardare i dati. Per fare questo
+utilizziamo una rappresentazione grafica che va sotto il nome di
+diagramma a dispersione.</p>
+<div id="diagramma-a-dispersione" class="section level3" number="5.0.1">
+<h3>
+<span class="header-section-number">5.0.1</span> Diagramma a dispersione<a class="anchor" aria-label="anchor" href="#diagramma-a-dispersione"><i class="fas fa-link"></i></a>
+</h3>
+<p>Il diagramma di dispersione è la rappresentazione grafica delle coppie di punti individuati da due variabili <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
+<p>Per fare un esempio concreto, consideriamo le variabili BDI-II e CES-D di <span class="citation">Zetsche, Bürkner, and Renneberg (<a href="ch:metropolis.html#ref-zetschefuture2019" role="doc-biblioref">2019</a>)</span>. Il diagramma di dispersione per tali variabili si ottiene ponendo, ad esempio, i valori BDI-II sull’asse delle ascisse e quelli del CES-D sull’asse delle ordinate. In tale grafico, fornito dalla figura <a href="ch:correlation.html#fig:zetsche-scatter">5.1</a>, cascun punto corrisponde ad un individuo del quale, nel caso presente, conosciamo il livello di depressione misurato dalle due scale psicometriche.</p>
+<p>Dalla figura <a href="ch:correlation.html#fig:zetsche-scatter">5.1</a> possiamo vedere che i dati mostrano una tendenza a disporsi attorno ad una retta – nel gergo statistico, questo fatto viene espresso dicendo che i punteggi CES-D tendono ad essere linearmente associati ai punteggi BDI-II. È ovvio, tuttavia, che tale relazione lineare è lungi dall’essere perfetta – se fosse perfetta, tutti i punti del diagramma a dispersione si disporrebbero esattamente lungo una retta.</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">bysubj</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">%&gt;%</span>
+  <span class="fu">group_by</span><span class="op">(</span><span class="va">esm_id</span>, <span class="va">group</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">summarise</span><span class="op">(</span>
+    bdi <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">bdi</span><span class="op">)</span>,
+    cesd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">cesd_sum</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span>
+<span class="va">m_cesd</span> <span class="op">&lt;-</span> <span class="va">bysubj</span> <span class="op">%&gt;%</span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">cesd</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">m_bdi</span> <span class="op">&lt;-</span> <span class="va">bysubj</span> <span class="op">%&gt;%</span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">bdi</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">FONT_SIZE</span> <span class="op">&lt;-</span> <span class="fl">9</span>
+<span class="va">bysubj</span> <span class="op">%&gt;%</span>
+  <span class="fu">ggplot</span><span class="op">(</span>
+    <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">bdi</span>, y <span class="op">=</span> <span class="va">cesd</span>, color <span class="op">=</span> <span class="va">group</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_point</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span>, alpha <span class="op">=</span> <span class="fl">.9</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_hline</span><span class="op">(</span>
+    yintercept <span class="op">=</span> <span class="va">m_cesd</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span>,
+    color <span class="op">=</span> <span class="st">"gray"</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_vline</span><span class="op">(</span>
+    xintercept <span class="op">=</span> <span class="va">m_bdi</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span>,
+    color <span class="op">=</span> <span class="st">"gray"</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_text</span><span class="op">(</span>
+    x <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, y <span class="op">=</span> <span class="fl">16</span>, label <span class="op">=</span> <span class="st">"I"</span>, color <span class="op">=</span> <span class="st">"gray"</span>,
+    size <span class="op">=</span> <span class="va">FONT_SIZE</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_text</span><span class="op">(</span>
+    x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="fl">46</span>, label <span class="op">=</span> <span class="st">"IV"</span>, color <span class="op">=</span> <span class="st">"gray"</span>,
+    size <span class="op">=</span> <span class="va">FONT_SIZE</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_text</span><span class="op">(</span>
+    x <span class="op">=</span> <span class="fl">18</span>, y <span class="op">=</span> <span class="fl">46</span>, label <span class="op">=</span> <span class="st">"III"</span>, color <span class="op">=</span> <span class="st">"gray"</span>,
+    size <span class="op">=</span> <span class="va">FONT_SIZE</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_text</span><span class="op">(</span>
+    x <span class="op">=</span> <span class="fl">18</span>, y <span class="op">=</span> <span class="fl">16</span>, label <span class="op">=</span> <span class="st">"II"</span>, color <span class="op">=</span> <span class="st">"gray"</span>,
+    size <span class="op">=</span> <span class="va">FONT_SIZE</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu">labs</span><span class="op">(</span>
+    x <span class="op">=</span> <span class="st">"BDI-II"</span>,
+    y <span class="op">=</span> <span class="st">"CESD"</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_colour_grey</span><span class="op">(</span>start <span class="op">=</span> <span class="fl">0.7</span>, end <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:zetsche-scatter"></span>
+<img src="ds4psy_files/figure-html/zetsche-scatter-1.png" alt="Associazione tra le variabili BDI-II e CES-D nello studio di Zetsche et al. (2019). In grigio sono rappresentate le osservazioni del gruppo di controllo; in nero quelle dei pazienti." width="576"><p class="caption">
+FIGURA 5.1: Associazione tra le variabili BDI-II e CES-D nello studio di Zetsche et al. (2019). In grigio sono rappresentate le osservazioni del gruppo di controllo; in nero quelle dei pazienti.
+</p>
+</div>
+</div>
+<div id="covarianza" class="section level3" number="5.0.2">
+<h3>
+<span class="header-section-number">5.0.2</span> Covarianza<a class="anchor" aria-label="anchor" href="#covarianza"><i class="fas fa-link"></i></a>
+</h3>
+<p>Il problema che ci poniamo ora è quello di trovare un indice numerico che
+descrive di quanto la nube di punti si discosta da una perfetta
+relazione lineare tra le due variabili, ovvero che descrive la direzione e la
+forza della relazione lineare tra le due variabili. Ci sono vari indici
+statistici che possono essere utilizzati a questo scopo.</p>
+<p>Iniziamo a considerare il più importante di tali indici, chiamato
+<em>covarianza</em>. In realtà la definizione di questo indice non ci
+sorprenderà più di tanto in quanto, in una forma solo apparentemente
+diversa, l’abbiamo già incontrato in precedenza. Ci ricordiamo infatti
+che la varianza di una generica variabile <span class="math inline">\(X\)</span> è definita come la media
+degli scarti quadratici di ciascuna osservazione dalla media:</p>
+<p><span class="math display" id="eq:variance2">\[\begin{equation}
+S_{XX} = \frac{1}{n} \sum_{i=1}^n(X_i - \bar{X}) (X_i - \bar{X}).
+\tag{5.1}
+\end{equation}\]</span></p>
+<p>Infatti, la varianza viene talvolta descritta come la “covarianza di una
+variabile con sé stessa”.</p>
+<p>Adesso facciamo un passo ulteriore. Invece di valutare la dispersione di
+una sola variabile, chiediamoci come due variabili <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> “variano
+insieme” (co-variano). È facile capire come una risposta a tale domanda
+possa essere fornita da una semplice trasformazione della formula
+precedente che diventa:</p>
+<p><span class="math display" id="eq:covariance">\[\begin{equation}
+S_{XY} = \frac{1}{n} \sum_{i=1}^n(X_i - \bar{X}) (Y_i - \bar{Y}).
+\tag{5.2}
+\end{equation}\]</span></p>
+<p>L’eq. <a href="ch:correlation.html#eq:covariance">(5.2)</a> ci fornisce dunque la definizione della covarianza.</p>
+<p>Per capire il significato dell’eq. <a href="ch:correlation.html#eq:covariance">(5.2)</a>, supponiamo di dividere il grafico della figura <a href="ch:correlation.html#fig:zetsche-scatter">5.1</a> in quattro quadranti definiti da una retta verticale passante per la media dei valori BDI-II e da una retta orizzontale passante per la media dei valori CES-D. Numeriamo i quadranti partendo da quello in basso a sinistra e muovendoci in senso antiorario.</p>
+<p>Se prevalgono punti nel I e III quadrante, allora la nuvola di punti
+avrà un andamento crescente (per cui a valori bassi di <span class="math inline">\(X\)</span> tendono ad
+associarsi valori bassi di <span class="math inline">\(Y\)</span> e a valori elevati di <span class="math inline">\(X\)</span> tendono ad
+associarsi valori elevati di <span class="math inline">\(Y\)</span>) e la covarianza segno positivo. Mentre
+se prevalgono punti nel II e IV quadrante la nuvola di punti avrà un
+andamento decrescente (per cui a valori bassi di <span class="math inline">\(X\)</span> tendono ad
+associarsi valori elevati di <span class="math inline">\(Y\)</span> e a valori elevati di <span class="math inline">\(X\)</span> tendono ad
+associarsi valori bassi di <span class="math inline">\(Y\)</span>) e la covarianza segno negativo. Dunque,
+il segno della covarianza ci informa sulla direzione della relazione
+lineare tra due variabili: l’associazione lineare si dice positiva se la
+covarianza è positiva, negativa se la covarianza è negativa.</p>
+<p>Il segno della covarianza ci informa sulla direzione della relazione, ma
+invece il valore assoluto della covarianza ci dice ben poco. Esso,
+infatti, dipende dall’unità di misura delle variabili. Nel caso presente
+questo concetto è difficile da comprendere, dato che le due variabili in
+esame non hanno un’unità di misura (ovvero, hanno un’unità di misura
+arbitraria e priva di significato). Ma quest’idea diventa chiara se
+pensiamo alla relazione lineare tra l’altezza e il peso delle persone,
+ad esempio. La covarianza tra queste due quantità è certamente positiva,
+ma il valore assoluto della covarianza diventa più grande se l’altezza
+viene misurata in millimetri e il peso in grammi, e diventa più piccolo
+l’altezza viene misurata in metri e il peso in chilogrammi. Dunque, il
+valore della covarianza cambia al mutare dell’unità di misura delle
+variabili anche se l’associazione tra le variabili resta costante.</p>
+</div>
+<div id="correlazione" class="section level3" number="5.0.3">
+<h3>
+<span class="header-section-number">5.0.3</span> Correlazione<a class="anchor" aria-label="anchor" href="#correlazione"><i class="fas fa-link"></i></a>
+</h3>
+<p>Dato che il valore assoluto della covarianza è di difficile
+interpretazione – in pratica, non viene mai interpretato – è
+necessario trasformare la covarianza in modo tale da renderla immune
+alle trasformazioni dell’unità di misura delle variabili. Questa
+operazione si dice <em>standardizzazione</em> e corrisponde alla divisione
+della covarianza per le deviazioni standard (<span class="math inline">\(s_X\)</span>, <span class="math inline">\(s_Y\)</span>) delle due
+variabili:</p>
+<p><span class="math display" id="eq:correlation">\[\begin{equation}
+r_{XY} = \frac{S_{XY}}{s_X s_Y}.
+\tag{5.3}
+\end{equation}\]</span></p>
+<p>La quantià che si ottiene in questo modo viene chiamata <em>correlazione</em> di Bravais-Pearson (dal nome degli autori che, indipendentemente l’uno dall’altro, la hanno introdotta).</p>
+<p>Il coefficiente di correlazione ha le seguenti proprietà:</p>
+<ul>
+<li>ha lo stesso segno della covarianza, dato che si ottiene dividendo
+la covarianza per due numeri positivi;</li>
+<li>è un numero puro, cioè non dipende dall’unità di misura delle
+variabili;</li>
+<li>assume valori compresi tra -1 e +1.</li>
+</ul>
+<p>Ad esso possiamo assegnare la seguente interpretazione:</p>
+<ol style="list-style-type: decimal">
+<li>
+<span class="math inline">\(r_{XY} = -1\)</span> <span class="math inline">\(\rightarrow\)</span> perfetta relazione negativa: tutti i
+punti si trovano esattamente su una retta con pendenza negativa (dal
+quadrante in alto a sinistra al quadrante in basso a destra);</li>
+<li>
+<span class="math inline">\(r_{XY} = +1\)</span> <span class="math inline">\(\rightarrow\)</span> perfetta relazione positiva: tutti i
+punti si trovano esattamente su una retta con pendenza positiva (dal
+quadrante in basso a sinistra al quadrante in alto a destra);</li>
+<li>
+<span class="math inline">\(-1 &lt; r_{XY} &lt; +1\)</span> <span class="math inline">\(\rightarrow\)</span> presenza di una relazione lineare
+di intensità diversa;</li>
+<li>
+<span class="math inline">\(r_{XY} = 0\)</span> <span class="math inline">\(\rightarrow\)</span> assenza di relazione lineare tra <span class="math inline">\(X\)</span> e
+<span class="math inline">\(Y\)</span>.</li>
+</ol>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-23" class="exercise"><strong>Esercizio 5.1  </strong></span>Per i dati della figura <a href="ch:correlation.html#fig:zetsche-scatter">5.1</a>, la covarianza è 207.426. Il segno positivo della covarianza ci dice che tra le due variabili c’è un’associazione lineare positiva. Per capire qual è l’intensità della relazione lineare tra le due variabili calcoliamo la correlazione.
+Essendo le deviazioni standard del BDI-II e del CES-D rispettavamente uguali a 15.37 e 14.93, la correlazione diventa uguale a <span class="math inline">\(\frac{207.426}{15.38 \cdot 14.93} = 0.904.\)</span> Tale valore è prossimo a 1.0, il che vuol dire che i punti del diagramma a dispersione non si discostano troppo da una retta con una pendenza positiva.</p>
+</div>
+</div>
+<div id="correlazione-e-causazione" class="section level2" number="5.1">
+<h2>
+<span class="header-section-number">5.1</span> Correlazione e causazione<a class="anchor" aria-label="anchor" href="#correlazione-e-causazione"><i class="fas fa-link"></i></a>
+</h2>
+<p>Facendo riferimento nuovamente alla figura <a href="ch:correlation.html#fig:zetsche-scatter">5.1</a>, possiamo dire che, in molte applicazioni (ma non nel caso presente!) l’asse <span class="math inline">\(x\)</span> rappresenta una quantità nota come <em>variabile indipendente</em> e l’interesse si concentra sulla sua influenza sulla <em>variabile dipendente</em> tracciata sull’asse <span class="math inline">\(y\)</span>. Ciò presuppone però che sia nota la direzione in cui l’influenza causale potrebbe risiedere. È importante tenere bene a mente che la correlazione è soltanto un indice descrittivo della relazione lineare tra due variabili e in nessun caso può essere usata per inferire alcunché sulle relazioni <em>causali</em> che legano le variabili. È ben nota l’espressione: “correlazione non significa causazione”.</p>
+<p>Di opinione diversa era invece Karl Pearson (1911), il quale ha affermato: <em>“Quanto spesso, quando è stato osservato un nuovo fenomeno,
+sentiamo che viene posta la domanda: ‘qual è la sua causa?’. Questa è
+una domanda a cui potrebbe essere assolutamente impossibile rispondere.
+Invece, può essere più facile rispondere alla domanda: ‘in che misura
+altri fenomeni sono associati con esso?’. Dalla risposta a questa
+seconda domanda possono risultare molte preziose conoscenze.”</em></p>
+<p>Che alla seconda domanda posta da Pearson sia facile rispondere è indubbio. Che la nostra comprensione di un fenomeno possa aumentare sulla base delle
+informazioni fornite unicamente dalle correlazioni, invece, è molto dubbio e quasi certamente falso.</p>
+<div id="usi-della-correlazione" class="section level3" number="5.1.1">
+<h3>
+<span class="header-section-number">5.1.1</span> Usi della correlazione<a class="anchor" aria-label="anchor" href="#usi-della-correlazione"><i class="fas fa-link"></i></a>
+</h3>
+<p>Anche se non può essere usata per studiare le relazioni causali, la
+correlazione viene usata per molti altri scopi tra i quali, per esempio,
+quello di misurare la <em>validità concorrente</em> di un test psiologico. Se
+un test psicologico misura effettivamente ciò che ci si aspetta che
+misuri (nel caso dell’esempio presente, la depressione), allora dovremo
+aspettarci che fornisca una correlazione alta con risultati di altri
+test che misurano lo stesso costrutto – come nel caso dei dati di
+<span class="citation">(<a href="ch:metropolis.html#ref-zetschefuture2019" role="doc-biblioref">Zetsche, Bürkner, and Renneberg 2019</a>)</span>. Un’altra proprietà desiderabile di un test
+psicometrico è la <em>validità divergente</em>: i risultati di test
+psicometrici che misurano costrutti diversi dovrebbero essere poco
+associati tra loro. In altre parole, in questo secondo caso dovremmo
+aspettarci che la correlazione sia bassa.</p>
+</div>
+<div id="correlazione-di-spearman" class="section level3" number="5.1.2">
+<h3>
+<span class="header-section-number">5.1.2</span> Correlazione di Spearman<a class="anchor" aria-label="anchor" href="#correlazione-di-spearman"><i class="fas fa-link"></i></a>
+</h3>
+<p>Una misura alternativa della relazione lineare tra due variabili è
+fornita dal coefficiente di correlazione di Spearman e dipende soltanto
+dalla relazione d’ordine dei dati, non dagli specifici valori dei dati.
+Tale misura di associazione è appropriata quando, del fenomeno in esame,
+gli psicologi sono stati in grado di misurare soltanto le relazioni
+d’ordine tra le diverse modalità della risposta dei soggetti, non
+l’intensità della risposta. Le variabili psicologiche che hanno questa
+proprietà si dicono <em>ordinali</em>. Nel caso di variabili ordinali, non è
+possibile sintetizzare i dati mediante le statistiche descrittive che
+abbiamo introdotto in questo capitolo, quali ad esempio la media e la
+varianza, ma è invece solo possibile riassumere i dati mediante una
+distribuzione di frequenze per le varie modalità della risposta.</p>
+</div>
+<div id="correlazione-nulla" class="section level3" number="5.1.3">
+<h3>
+<span class="header-section-number">5.1.3</span> Correlazione nulla<a class="anchor" aria-label="anchor" href="#correlazione-nulla"><i class="fas fa-link"></i></a>
+</h3>
+<p>Un ultimo aspetto da mettere in evidenza a proposito della correlazione riguarda il fatto che la correlazione descrive la direzione e l’intensità della relazione lineare tra due variabili. Relazioni non lineari tra le variabili, anche se sono molto forti, non vengono catturate dalla correlazione. È importante rendersi conto che una correlazione pari a zero non significa che non c’è relazione tra le due variabili, ma solo che tra esse non c’è una relazione <em>lineare</em>.</p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-24" class="exercise"><strong>Esercizio 5.2  </strong></span>La figura <a href="ch:correlation.html#fig:zerocorr">5.2</a> fornisce un esempio di correlazione nulla in presenza di una chiara relazione (non lineare) tra due variabili.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:zerocorr"></span>
+<img src="ds4psy_files/figure-html/zerocorr-1.png" alt="Due insiemi di dati (fittizi) per i quali i coefficienti di correlazione di Pearson sono entrambi 0. Ma questo non significa che non vi sia alcuna relazione tra le variabili." width="576"><p class="caption">
+FIGURA 5.2: Due insiemi di dati (fittizi) per i quali i coefficienti di correlazione di Pearson sono entrambi 0. Ma questo non significa che non vi sia alcuna relazione tra le variabili.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="commenti-e-considerazioni-finali-3" class="section level2 unnumbered">
+<h2>Commenti e considerazioni finali<a class="anchor" aria-label="anchor" href="#commenti-e-considerazioni-finali-3"><i class="fas fa-link"></i></a>
+</h2>
+<p>La prima fase dell’analisi dei dati riassume i dati mediante gli strumenti della statistica descrittiva. Le tipiche domande che vengono affrontate in questa fase sono: qual è la distribuzione delle variabili di interesse? Quali relazioni a coppie si possono osservare nel campione? Ci sono delle osservazioni ‘anomale’, ovvero estremamente discrepanti rispetto alle altre, sia quando si esaminano le statistiche descrittive univariate (ovvero, quelle che riguardano le caratteristiche di una variabile presa singolarmente), sia quando vengono esaminate le statistiche bivariate (ovvero, le statistiche che descrivono l’associazione tra le variabili)? È importante avere ben chiare le idee su questi punti prima di procedere con qualsiasi procedura statistica di tipo inferenziale. Per rispondere alle domande che abbiamo elencato sopra, ed ad altre simili, è molto utile procedere con delle rappresentazioni grafiche dei dati. È chiaro che, quando disponiamo di grandi moli di dati (come è sempre il caso in psicologia), l’analisi descrittiva dei dati deve essere svolta mediante un software statistico.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="ch:loc-scale.html"><span class="header-section-number">4</span> Indici di posizione e di scala</a></div>
+<div class="next"><a href="ch:metropolis.html"><span class="header-section-number">6</span> Approssimazione della distribuzione a posteriori</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li>
+<a class="nav-link" href="#ch:correlation"><span class="header-section-number">5</span> Le relazioni tra variabili</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#diagramma-a-dispersione"><span class="header-section-number">5.0.1</span> Diagramma a dispersione</a></li>
+<li><a class="nav-link" href="#covarianza"><span class="header-section-number">5.0.2</span> Covarianza</a></li>
+<li><a class="nav-link" href="#correlazione"><span class="header-section-number">5.0.3</span> Correlazione</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#correlazione-e-causazione"><span class="header-section-number">5.1</span> Correlazione e causazione</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#usi-della-correlazione"><span class="header-section-number">5.1.1</span> Usi della correlazione</a></li>
+<li><a class="nav-link" href="#correlazione-di-spearman"><span class="header-section-number">5.1.2</span> Correlazione di Spearman</a></li>
+<li><a class="nav-link" href="#correlazione-nulla"><span class="header-section-number">5.1.3</span> Correlazione nulla</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#commenti-e-considerazioni-finali-3">Commenti e considerazioni finali</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2022-02-17.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

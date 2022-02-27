@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3.4 La critica di Hulme et al. (2020) | Data Science per psicologi</title>
+  <meta name="description" content="This document contains the materials of the lessons of Psicometria B000286 (2021/2022) aimed at students of the first year of the Degree Course in Psychological Sciences and Techniques of the University of Florence, Italy." />
+  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3.4 La critica di Hulme et al. (2020) | Data Science per psicologi" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This document contains the materials of the lessons of Psicometria B000286 (2021/2022) aimed at students of the first year of the Degree Course in Psychological Sciences and Techniques of the University of Florence, Italy." />
+  <meta name="github-repo" content="ccaudek/ds4psy" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3.4 La critica di Hulme et al. (2020) | Data Science per psicologi" />
+  
+  <meta name="twitter:description" content="This document contains the materials of the lessons of Psicometria B000286 (2021/2022) aimed at students of the first year of the Degree Course in Psychological Sciences and Techniques of the University of Florence, Italy." />
+  
+
+<meta name="author" content="Corrado Caudek" />
+
+
+<meta name="date" content="2022-01-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="cmdstanr-gautret.html"/>
+<link rel="next" href="due-proporzioni.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Science per psicologi</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> mainfont: “Palatino nova W1G”</a>
+<ul>
+<li class="chapter" data-level="" data-path="la-psicologia-e-la-data-science.html"><a href="la-psicologia-e-la-data-science.html"><i class="fa fa-check"></i>La psicologia e la Data science</a></li>
+<li class="chapter" data-level="" data-path="come-studiare.html"><a href="come-studiare.html"><i class="fa fa-check"></i>Come studiare</a></li>
+<li class="chapter" data-level="" data-path="sviluppare-un-metodo-di-studio-efficace.html"><a href="sviluppare-un-metodo-di-studio-efficace.html"><i class="fa fa-check"></i>Sviluppare un metodo di studio efficace</a></li>
+</ul></li>
+<li class="part"><span><b>I Inferenza bayesiana</b></span></li>
+<li class="chapter" data-level="2" data-path="ch:intro-bayes-inference.html"><a href="ch:intro-bayes-inference.html"><i class="fa fa-check"></i><b>2</b> Flusso di lavoro bayesiano</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="modellizzazione-bayesiana.html"><a href="modellizzazione-bayesiana.html"><i class="fa fa-check"></i><b>2.1</b> Modellizzazione bayesiana</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="modellizzazione-bayesiana.html"><a href="modellizzazione-bayesiana.html#notazione"><i class="fa fa-check"></i><b>2.1.1</b> Notazione</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="distribuzioni-a-priori.html"><a href="distribuzioni-a-priori.html"><i class="fa fa-check"></i><b>2.2</b> Distribuzioni a priori</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="distribuzioni-a-priori.html"><a href="distribuzioni-a-priori.html#tipologie-di-distribuzioni-a-priori"><i class="fa fa-check"></i><b>2.2.1</b> Tipologie di distribuzioni a priori</a></li>
+<li class="chapter" data-level="2.2.2" data-path="distribuzioni-a-priori.html"><a href="distribuzioni-a-priori.html#selezione-della-distribuzione-a-priori"><i class="fa fa-check"></i><b>2.2.2</b> Selezione della distribuzione a priori</a></li>
+<li class="chapter" data-level="2.2.3" data-path="distribuzioni-a-priori.html"><a href="distribuzioni-a-priori.html#unapplicazione-empirica"><i class="fa fa-check"></i><b>2.2.3</b> Un’applicazione empirica</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="la-funzione-di-verosimiglianza.html"><a href="la-funzione-di-verosimiglianza.html"><i class="fa fa-check"></i><b>2.3</b> La funzione di verosimiglianza</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="la-funzione-di-verosimiglianza.html"><a href="la-funzione-di-verosimiglianza.html#notazione-1"><i class="fa fa-check"></i><b>2.3.1</b> Notazione</a></li>
+<li class="chapter" data-level="2.3.2" data-path="la-funzione-di-verosimiglianza.html"><a href="la-funzione-di-verosimiglianza.html#la-log-verosimiglianza"><i class="fa fa-check"></i><b>2.3.2</b> La log-verosimiglianza</a></li>
+<li class="chapter" data-level="2.3.3" data-path="la-funzione-di-verosimiglianza.html"><a href="la-funzione-di-verosimiglianza.html#unapplicazione-empirica-1"><i class="fa fa-check"></i><b>2.3.3</b> Un’applicazione empirica</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="sec:const-normaliz-bino23.html"><a href="sec:const-normaliz-bino23.html"><i class="fa fa-check"></i><b>2.4</b> La verosimiglianza marginale</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="sec:const-normaliz-bino23.html"><a href="sec:const-normaliz-bino23.html#unapplicazione-empirica-2"><i class="fa fa-check"></i><b>2.4.1</b> Un’applicazione empirica</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="distribuzione-a-posteriori.html"><a href="distribuzione-a-posteriori.html"><i class="fa fa-check"></i><b>2.5</b> Distribuzione a posteriori</a></li>
+<li class="chapter" data-level="2.6" data-path="distribuzione-predittiva-a-priori.html"><a href="distribuzione-predittiva-a-priori.html"><i class="fa fa-check"></i><b>2.6</b> Distribuzione predittiva a priori</a></li>
+<li class="chapter" data-level="2.7" data-path="distribuzione-predittiva-a-posteriori.html"><a href="distribuzione-predittiva-a-posteriori.html"><i class="fa fa-check"></i><b>2.7</b> Distribuzione predittiva a posteriori</a></li>
+<li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali.html"><a href="commenti-e-considerazioni-finali.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="stan-beta-binom.html"><a href="stan-beta-binom.html"><i class="fa fa-check"></i><b>3</b> Il modello beta-binomiale in linguaggio Stan</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="il-presidente-trump-e-lidrossiclorochina.html"><a href="il-presidente-trump-e-lidrossiclorochina.html"><i class="fa fa-check"></i><b>3.1</b> Il presidente Trump e l’idrossiclorochina</a></li>
+<li class="chapter" data-level="3.2" data-path="una-proporzione.html"><a href="una-proporzione.html"><i class="fa fa-check"></i><b>3.2</b> Una proporzione</a></li>
+<li class="chapter" data-level="3.3" data-path="cmdstanr-gautret.html"><a href="cmdstanr-gautret.html"><i class="fa fa-check"></i><b>3.3</b> Interfaccia <code>cmdstanr</code></a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="cmdstanr-gautret.html"><a href="cmdstanr-gautret.html#fase-1"><i class="fa fa-check"></i><b>3.3.1</b> Fase 1</a></li>
+<li class="chapter" data-level="3.3.2" data-path="cmdstanr-gautret.html"><a href="cmdstanr-gautret.html#fase-2"><i class="fa fa-check"></i><b>3.3.2</b> Fase 2</a></li>
+<li class="chapter" data-level="3.3.3" data-path="cmdstanr-gautret.html"><a href="cmdstanr-gautret.html#burn-in"><i class="fa fa-check"></i><b>3.3.3</b> Burn-in</a></li>
+<li class="chapter" data-level="3.3.4" data-path="cmdstanr-gautret.html"><a href="cmdstanr-gautret.html#inferenza"><i class="fa fa-check"></i><b>3.3.4</b> Inferenza</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="la-critica-di-hulme_2020.html"><a href="la-critica-di-hulme_2020.html"><i class="fa fa-check"></i><b>3.4</b> La critica di <span class="citation">Hulme et al. (<span>2020</span>)</span></a></li>
+<li class="chapter" data-level="3.5" data-path="due-proporzioni.html"><a href="due-proporzioni.html"><i class="fa fa-check"></i><b>3.5</b> Due proporzioni</a></li>
+<li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-1.html"><a href="commenti-e-considerazioni-finali-1.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
+</ul></li>
+<li class="part"><span><b>II Appendici</b></span></li>
+<li class="appendix"><span><b>Appendici</b></span></li>
+<li class="chapter" data-level="A" data-path="appendix:intro-stan.html"><a href="appendix:intro-stan.html"><i class="fa fa-check"></i><b>A</b> Programmare in Stan</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="interfacce-e-pacchetti.html"><a href="interfacce-e-pacchetti.html"><i class="fa fa-check"></i><b>A.1</b> Interfacce e pacchetti</a></li>
+<li class="chapter" data-level="A.2" data-path="interfaccia-cmdstanr.html"><a href="interfaccia-cmdstanr.html"><i class="fa fa-check"></i><b>A.2</b> Interfaccia <code>cmdstanr</code></a></li>
+<li class="chapter" data-level="A.3" data-path="codice-stan.html"><a href="codice-stan.html"><i class="fa fa-check"></i><b>A.3</b> Codice Stan</a>
+<ul>
+<li class="chapter" data-level="A.3.1" data-path="codice-stan.html"><a href="codice-stan.html#hello-world-stan"><i class="fa fa-check"></i><b>A.3.1</b> “Hello, world” – Stan</a></li>
+<li class="chapter" data-level="A.3.2" data-path="codice-stan.html"><a href="codice-stan.html#blocco-data"><i class="fa fa-check"></i><b>A.3.2</b> Blocco <code>data</code></a></li>
+<li class="chapter" data-level="A.3.3" data-path="codice-stan.html"><a href="codice-stan.html#blocco-parameters"><i class="fa fa-check"></i><b>A.3.3</b> Blocco <code>parameters</code></a></li>
+<li class="chapter" data-level="A.3.4" data-path="codice-stan.html"><a href="codice-stan.html#blocco-model"><i class="fa fa-check"></i><b>A.3.4</b> Blocco <code>model</code></a></li>
+<li class="chapter" data-level="A.3.5" data-path="codice-stan.html"><a href="codice-stan.html#blocchi-opzionali"><i class="fa fa-check"></i><b>A.3.5</b> Blocchi opzionali</a></li>
+<li class="chapter" data-level="A.3.6" data-path="codice-stan.html"><a href="codice-stan.html#sintassi"><i class="fa fa-check"></i><b>A.3.6</b> Sintassi</a></li>
+</ul></li>
+<li class="chapter" data-level="A.4" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>A.4</b> Workflow</a></li>
+<li class="chapter" data-level="A.5" data-path="ciao-stan.html"><a href="ciao-stan.html"><i class="fa fa-check"></i><b>A.5</b> Ciao, Stan</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Science per psicologi</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="la-critica-di-hulme_2020" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> La critica di <span class="citation">Hulme et al. (<a href="#ref-Hulme_2020" role="doc-biblioref">2020</a>)</span></h2>
+<p>Un articolo pubblicato da <span class="citation">Hulme et al. (<a href="#ref-Hulme_2020" role="doc-biblioref">2020</a>)</span> si è posto il problema di rianalizzare i dati di <span class="citation">Gautret et al. (<a href="#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span>.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> Tra gli autori di questo articolo figura anche Eric-Jan Wagenmakers, uno psicologo molto conosciuto per i suoi contributi metodologici. <span class="citation">Hulme et al. (<a href="#ref-Hulme_2020" role="doc-biblioref">2020</a>)</span> osservano che, nelle loro analisi statistiche, <span class="citation">Gautret et al. (<a href="#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> hanno escluso alcuni dati. Nel gruppo sperimentale, infatti, vi erano alcuni pazienti i quali, anziché migliorare, sono in realtà peggiorati. L’analisi statistica di <span class="citation">Gautret et al. (<a href="#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> ha escluso i dati di questi pazienti. Se consideriamo tutti i pazienti — non solo quelli selezionati da <span class="citation">Gautret et al. (<a href="#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> — la situazione diventa la seguente:</p>
+<ul>
+<li>gruppo sperimentale: 10 positivi su 18;</li>
+<li>gruppo di controllo: 14 positivi su 16.</li>
+</ul>
+<p>L’analisi dei dati proposta da <span class="citation">Hulme et al. (<a href="#ref-Hulme_2020" role="doc-biblioref">2020</a>)</span> richiede l’uso di alcuni strumenti statistici che, in queste dispense, non verranno discussi. Ma possiamo giungere alle stesse conclusioni raggiunte da questi ricercatori anche usando le procedure statistiche descritte nel Paragrafo successivo.</p>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Gautret_2020" class="csl-entry">
+Gautret, P., J. C. Lagier, P. Parola, L. Meddeb, M. Mailhe, B. Doudier, and S. Honoré. 2020. <span>“Hydroxychloroquine and Azithromycin as a Treatment of COVID-19: Results of an Open-Label Non-Randomized Clinical Trial.”</span> <em>International Journal of Antimicrobial Agents</em>.
+</div>
+<div id="ref-Hulme_2020" class="csl-entry">
+Hulme, O. J., E. J. Wagenmakers, P. Damkier, C. F. Madelung, H. R. Siebner, J. Helweg-Larsen, and K. H. Madsen. 2020. <span>“Reply to Gautret Et Al. 2020: A Bayesian Reanalysis of the Effects of Hydroxychloroquine and Azithromycin on Viral Carriage in Patients with COVID-19.”</span> <em>medRxiv</em>.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="2">
+<li id="fn2"><p>Si veda <a href="https://osf.io/5dgmx/" class="uri">https://osf.io/5dgmx/</a>.<a href="la-critica-di-hulme_2020.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="cmdstanr-gautret.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="due-proporzioni.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ccaudek/ds4psy/edit/master/040_beta_binomial_mod.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ds4psy.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

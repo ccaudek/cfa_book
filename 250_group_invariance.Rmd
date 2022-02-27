@@ -1,0 +1,151 @@
+# Invarianza di misura {#ch:factorial-invariance}
+
+```{r, include = FALSE}
+source("_common.R")
+library("lavaan")
+library("semTools")
+```
+
+I precedenti esempi di CFA presentati in questa dispensa sono stati stimati all'interno di un singolo gruppo, hanno utilizzato come input un'unica matrice covarianza e hanno portato alla stima dei parametri del modello sui quali non è stata imposta alcuna restrizione. In questo capitolo, le  analisi precedenti verranno estese considerano il problema dell'invarianza di misura. Quello che ci chiediamo è se sia sensato considerare la medesima struttura fattoriale in gruppi diversi.
+
+## Intercette degli item
+
+In generale, i modelli di equazioni strutturali vengono utilizzati per modellare unicamente la matrice di covarianza delle variabili osservate in un set di dati.  Ricordiamo che, quando abbiamo introdotto il modello dell'analisi fattoriale, 
+
+$$
+y_i = \mu + \lambda_j \xi_k + \delta_i,
+$$
+
+per semplicità abbiamo ignorato la media $\mu$ degli indicatori esprimendo i dati osservati nei termini degli scarti dalla media, $y_i -\mu$, in quanto ciò lascia immutate le covarianze. Tuttavia, in alcune applicazioni (quali l'invarianza di misura, ad esempio), è utile considerare anche le medie delle variabili osservate. Per ottenere ciò è possibile fare esplicito riferimento alle intercette delle equazioni precedenti nella sintassi `lavaan` del modello. È possibile fare riferimento all'intercetta di una variabile manifesta nel modo seguente:
+
+```{r, eval=FALSE}
+variable ~ 1
+```
+
+laddove la parte sinistra dell'espressione precedente contiene il nome della variabile osservata a cui si fa riferimento. Per esempio, nel caso di un modello a due fattori comuni, è possibile aggiungere le intercette delle variabili manifeste nel modo seguente:
+
+```{r, eval=FALSE}
+mod <- "
+  # two-factor model
+  f1 =~ x1 + x2 + x3 
+  f2 =~ x4 + x5 + x6 
+  # intercepts
+  x1 ~ 1
+  x2 ~ 1
+  x3 ~ 1
+  x4 ~ 1
+  x5 ~ 1
+  x6 ~ 1
+"
+```
+
+Tuttavia, è più conveniente omettere le intercette nella specificazione del modello e aggiungere l'argomento `meanstructure = TRUE` nella funzione `cfa()`:
+
+```{r, eval=FALSE}
+fit <- cfa(
+  mod,
+  data = d,
+  meanstructure = TRUE
+)
+```
+
+Si noti che la statistica chi-quadrato e il numero di gradi di libertà sono gli stessi in un modello con o senza `meanstructure`. Il motivo è che, nel caso di un modello con `meanstructure`, vengono introdotti nuovi dati (il valore della media per ciascuna delle $p$ variabili osservate) ma vengono anche aggiunti $p$ parametri da stimare (un'intercetta per ciascuna delle $p$ variabili osservate). Il risultato finale è che la bontà dell'adattamento resta immutata. In pratica, l'unico motivo per aggiungere le interecette nella sintassi del modello è quello di stabilire dei vincoli nella stima di tali parametri. 
+
+## Terminologia
+
+La discussione dell'invarianza di misura nel contesto della CFA fa uso della seguente terminologia. 
+
+- L'invarianza configurale (*configural invariance*) indica una struttura fattoriale equivalente di due o più gruppi, ovvero la presenza dello stesso numero di fattori e di un pattern di saturazioni fattoriali simili tra i gruppi.
+- L'uguaglianza delle saturazioni fattoriali definisce l'"invarianza metrica" (*metric invariance*) o "invarianza fattoriale debole" (*weak factorial invariance*). 
+- L'uguaglianza delle intercette degli indicatori definisce l'"invarianza scalare" o "invarianza fattoriale forte". 
+- L'uguaglianza dei residui degli indicatori definisce l'“invarianza fattoriale rigorosa” (*strict factorial invariance*) . 
+
+## Un esempio concreto
+
+Consideriamo qui un esempio discusso da @brown2015confirmatory. Il modello CFA riguarda un modello di misurazione per la depressione maggiore così come definita nel DSM-IV. Ci sono 9 indicatori:
+
+- MDD1, depressed mood; 
+- MDD2, loss of interest in usual activities; 
+- MDD3, weight/appetite change; 
+- MDD4, sleep disturbance; 
+- MDD5, psychomotor agitation/retardation; 
+- MDD6, fatigue/loss of energy; 
+- MDD7, feelings of worthlessness/guilt; 
+- MDD8, concentration difficulties; 
+- MDD9, thoughts of death/suicidality.
+
+Leggiamo i dati:
+
+```{r}
+d <- readRDS(
+  here::here("data", "mdd_sex.RDS")
+)
+```
+
+Il problema riguarda l'invarianza fattoriale in funzione del genere. Consideriamo il seguente modello:
+
+```{r}
+model_mdd <- '
+  MDD =~ mdd1 + mdd2 + mdd3 + mdd4 + mdd5 + mdd6 + mdd7 + mdd8 + 
+         mdd9
+  mdd1 ~~ mdd2
+'
+```
+
+Si noti la presenza di una correlazione residua tra gli indicatori `mdd1` e `mdd2`.
+
+Esaminiamo dunque le varie forme di invarianza fattoriale:
+
+```{r}
+# configural invariance
+fit_ef <- cfa(
+  model_mdd,
+  data = d,
+  group = "sex",
+  meanstructure = TRUE
+)
+# equal factor laodings
+fit_efl <- update(
+  fit_ef,
+  group.equal = c("loadings")
+)
+# equal indicator intercepts
+fit_eii <- update(
+  fit_efl,
+  group.equal = c("loadings", "intercepts")
+)
+# equal indicator error variances
+fit_eir <- update(
+  fit_eii,
+  group.equal = c("loadings", "intercepts", "residuals")
+)
+# equal factor variances
+fit_fv <- update(
+  fit_eir,
+  group.equal = c(
+    "loadings", "intercepts", "residuals",
+    "lv.variances"
+  )
+)
+# equal latent means
+fit_fm <- update(
+  fit_fv,
+  group.equal = c(
+    "loadings", "intercepts", "residuals",
+    "lv.variances", "means"
+  )
+)
+```
+
+Confrontiamo i modelli:
+
+```{r}
+lavTestLRT(fit_ef, fit_efl, fit_eii, fit_eir, fit_fv, fit_fm)
+```
+
+Il confronto tra i precedenti modelli nidificati che introducono vincoli sempre più tringenti sui parametri indica che non vi è una "significativa" perdita di bontà dell'adattamento passando dal modello congenerico al modello che assume l'uguaglianza delle saturazioni fattoriali, delle intercette, delle varianze residue, delle varianze delle variabili latenti e delle medie nei due gruppi. Questi dati, dunque, forniscono forti evidenze di invarianza fattoriale tra maschi e femmine in relazione al costrutto di depressione maggiore.
+
+
+
+
+

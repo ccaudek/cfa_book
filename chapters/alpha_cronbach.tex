@@ -1,0 +1,973 @@
+% DO NOT COMPILE THIS FILE DIRECTLY!
+% This is included by the other .tex files.
+\chapter{Attendibilità e omogeneità}
+\label{ch:cronbach}
+
+McDonald (2013) mostra come la teoria classica dei test possa essere  messa in relazione con il modello dell'analisi fattoriale\footnote{McDonald, R. P. (2013). \emph{Test theory: A unified treatment}. Psychology Press.
+Chicago}.  
+La Figura~\ref{fig:fa_cronbach} descrive nei termini del modello fattoriale la relazione che intercorre tra i punteggi $X$ ottenuti dalla somministrazione di un test e i punteggi veri.
+
+\begin{figure}
+\centering
+
+\begin{tikzpicture}[auto,node distance=.5cm,
+    latent/.style={fill=red!20,circle,draw, thick,inner sep=0pt,minimum size=8mm,align=center},
+    observed/.style={fill=blue!20,rectangle,draw, thick,inner sep=0pt,minimum width=8mm,minimum height=8mm,align=center},
+    error/.style={fill=yellow!20,circle,draw, thick,inner sep=0pt,minimum width=8mm,minimum height=8mm,align=center},
+    paths/.style={->,  thick, >=stealth'},
+    paths2/.style={<-,  thick, >=stealth'},
+    twopaths/.style={<->,  thick, >=stealth'},
+    label/.style={%
+        postaction={ decorate, transform shape,
+        decoration={ markings, mark=at position .5 with \node #1;}}}
+]
+%Define latent and observed variables
+\node [latent] (g) at (0,0) {$\text{Punteggio vero}$};
+\node [observed] (x3) [left=2cm of g]  {$y_3$};
+\node [observed] (x2) [above=of x3]  {$y_2$};
+\node [observed] (x1) [above=of x2]  {$y_1$};
+\node [observed] (x4) [below=of x3]  {$y_4$};
+\node [observed] (x5) [below=of x4]  {$y_5$};
+
+\node [error] (ex1) [left=1.0cm of x1]  {$\varepsilon_1$};
+\node [error] (ex2) [left=1.0cm of x2]  {$\varepsilon_2$};
+\node [error] (ex3) [left=1.0cm of x3]  {$\varepsilon_3$};
+\node [error] (ex4) [left=1.0cm of x4]  {$\varepsilon_4$};
+\node [error] (ex5) [left=1.0cm of x5]  {$\varepsilon_5$};
+\draw (-4.5,0)  node[below] {$1$};
+\draw (-4.5, 1.35)  node[below] {$1$};
+\draw (-4.5,2.65)  node[below] {$1$};
+\draw (-4.5,-1.35)  node[below] {$1$};
+\draw (-4.5,-2.65)  node[below] {$1$};
+%%%
+% Draw paths form latent to observed variables
+\foreach \all in {x1,x2,x3,x4,x5}{
+    \draw [paths] (g.west) to node {} (\all.east);
+}
+\draw [paths] (ex1.east) to (x1.west);
+\draw [paths] (ex2.east) to (x2.west);
+\draw [paths] (ex3.east) to (x3.west);
+\draw [paths] (ex4.east) to (x4.west);
+\draw [paths]  (ex5.east) to (x5.west);
+\draw (-2.15, 0)  node[below] {$\lambda_3$};
+\draw (-2.15, 0.75)  node[below] {$\lambda_2$};
+\draw (-2.15, 1.45)  node[below] {$\lambda_1$};
+\draw (-2.15, -0.75)  node[below] {$\lambda_4$};
+\draw (-2.15, -1.65)  node[below] {$\lambda_5$};
+%%%
+\draw [twopaths] (g) to [loop right] (g);
+\draw (2.5,.25)  node[below] {$1$};
+
+\draw [twopaths] (ex1) to [loop left] (ex1);
+\draw [twopaths] (ex2) to [loop left] (ex2);
+\draw [twopaths] (ex3) to [loop left] (ex3);
+\draw [twopaths] (ex4) to [loop left] (ex4);
+\draw [twopaths] (ex5) to [loop left] (ex5);
+\draw (-6.15,1.3)  node[left] {$\psi_2$};
+\draw (-6.15,2.65)  node[left] {$\psi_1$};
+\draw (-6.15,0)  node[left] {$\psi_3$};
+\draw (-6.15,-1.3)  node[left] {$\psi_4$};
+\draw (-6.15,-2.65)  node[left] {$\psi_5$};
+\end{tikzpicture}
+\caption{Modello fattoriale che mette in relazione i punteggi osservati e i punteggi veri.}
+\label{fig:fa_cronbach}
+\end{figure}
+
+Il metodo delle forme parallele proposto dalla teoria classica dei test fornisce una risposta solo in parte soddisfacente al problema della stima del coefficiente di attendibilità. Ricordiamo che il metodo delle forme parallele consiste nel somministrare due questionari $X$ e $X'$, espressione dello stesso costrutto, nella
+ stessa occasione allo stesso campione di soggetti.  In tali circostanze
+  $\rho^2_{XT} =  \rho_{XX'}$. Affinché la relazione definita dall'equazione precedente sia vera, le due forme del test devono essere parallele, nel senso descritto  della teoria classica dei test
+\footnote{
+Secondo la teoria classica dei test, due test $X=T+E$ e
+  $X'=T'+E'$ si dicono forme parallele dello stesso
+  test  se 
+i punteggi veri delle due versioni $X$ e $X'$ sono uguali, 
+$
+T=T' 
+$, e se
+ le varianze degli errori di misura  delle due versioni $X$ e $X'$ sono uguali,
+$
+\var(E) = \var(E')
+$.
+} 
+In pratica, però, è impossibile somministrare  lo stesso test  due volte agli stessi rispondenti \textit{nelle medesime condizioni}. 
+È dunque necessario basare la stima del coefficiente di
+  attendibilità sui dati acquisiti mediante un'unica somministrazione
+  del test.
+
+Vi sono vari metodi per la stima  dell'attendibilità nel caso di un'unica somministrazione di un test.  Considereremo qui tre metodi che possono essere applicati mediante l'utilizzo  dell'analisi fattoriale: l'$\alpha$ di Cronbach, l'$\omega$ di McDonald e il metodo di Spearman-Brown. Il coefficiente $\alpha$ è la misura più utilizzata per la stima dell'attendibilità quale coerenza interna, o omogeneità.  Vedremo come tale indice  costituisca il limite inferiore  dell'attendibilità di un test, se alcune assunzioni sono soddisfatte, mentre risulta uno stimatore distorto dell'attendibilità se le assunzioni che descriveremo risultano violate.  
+
+Per discutere i diversi metodi di stima dell'attendibilità  quale coerenza interna è prima necessario distinguere tra tre diverse forme che il modello mono-fattoriale può assumere. Queste tre forme sono quelle del modello con indicatori congenerici, $\tau$-equivalenti e paralleli.
+
+\section{Attendibilità e modello fattoriale}
+
+%    necessario distinguere tra diverse forme del modello mono-fattoriale
+%    paralleli, 
+% indicatori $\tau$-equivalenti e
+% indicatori congenerici. Il modello con indicatori congenerici rappresenta   il caso più 
+%  generale, mentre gli indicatori $\tau$-equivalenti e
+%  paralleli sono casi particolari, ovvero impongono restrizioni al
+%  modello con indicatori congenerici.
+% Iniziamo dunque a descrivere questi tre diversi casi del modello mono-fattoriale.   
+%
+Sia $X_1, X_2, \dots, X_p$, con $p>2$, un insieme di item osservati. 
+  I  punteggi ottenuti su tali item sono costituiti da una componente di punteggio vero e da una componente d'errore: 
+  \begin{align}
+X_1 &=T_1+E_1,\notag\\ 
+X_2 &=T_2+E_2,\notag\\ 
+&\dots\notag\\ 
+X_p &=T_p+E_p.\notag
+\end{align}
+Seguendo McDonald (1999), tale scomposizione in una componente vera e in una componente d'errore può essere espressa nei termini dei parametri del modello fattoriale.
+  L'espressione $X_i = T_i + E_i$ può infatti essere riscritta come 
+$$
+X_i = \lambda_i \xi + \delta_i, \quad{i=1, \dots, p},
+$$
+dove $X_i$ denota il punteggio osservato per l'item $i$-esimo,
+$\lambda_i$ è il peso fattoriale $i$-esimo, $\xi$ è il fattore comune e $\delta_i$ è la
+componente erratica del punteggio osservato $i$-esimo. 
+Valgono le assunzioni del modello monofattoriale.
+ Ovvero, si assume che $\xi$ e
+$\delta_i$ siano incorrelati per ciascun item $i$-esimo e che $\delta_i$ e
+$\delta_k$ siano incorrelati per ciascuna coppia $i \neq k$.
+
+Si possono distinguere tre importanti casi del modello mono-fattoriale: 
+il modello con indicatori congenerici, il modello con indicatori  $\tau$-equivalenti e  il modello con indicatori paralleli. 
+Il modello con indicatori congenerici rappresenta   il caso più
+  generale, mentre gli indicatori $\tau$-equivalenti e
+  paralleli sono casi particolari, ovvero impongono restrizioni al
+  modello  con indicatori congenerici.
+
+\subsection{Indicatori congenerici}
+
+Indicatori  \textit{congenerici} misurano lo stesso costrutto, ma
+  non necessariamente nella stessa misura. 
+Nel caso di indicatori congenerici, nel modello mono-fattoriale non
+viene imposto alcun vincolo né sulle saturazioni fattoriali né sulle specificità:
+$$\lambda_1\neq \lambda_2 \neq \dots\neq \lambda_p,$$
+$$\psi_{11}\neq \psi_{22} \neq \dots\neq \psi_{pp}.$$
+   Il modello mono-fattoriale con indicatori congenerici è dunque 
+\begin{equation}
+X_i = \lambda_i \xi + \delta_i.
+\label{eq:mod_tau_eq}
+\end{equation}
+Dalle assunzioni precedenti possiamo derivare la matrice $\boldsymbol{\Sigma}$ riprodotta in base al modello congenerico la quale risulta essere uguale a
+  \begin{equation}
+    \boldsymbol{\Sigma}=\left[
+      \begin{array}{ c c c c }
+        \sigma_{11} & \sigma_{12} & \dots & \sigma_{1p}, \\
+        \sigma_{21} & \sigma_{22} & \dots & \sigma_{2p}. \\
+        \vdots & \vdots & & \vdots\\
+        \sigma_{p1} & \sigma_{p2} & \dots & \sigma_{pp} 
+      \end{array} 
+    \right].
+  \end{equation}
+ Si noti come tutte le varianze e tutte le covarianze siano tra loro diverse.
+
+%------------------------------------------------------------
+\subsection{Indicatori tau-equivalenti}
+%------------------------------------------------------------
+
+Nel caso di indicatori $\tau$-equivalenti\footnote{$\tau$ è tavolta
+  usato per denotare il valore vero, ovvero $\tau = T$.}, si ha
+  che $$\lambda_1=\lambda_2=\dots=\lambda_p=\lambda,$$
+$$\psi_{11}\neq \psi_{22} \neq \dots\neq \psi_{pp}.$$
+ Il modello monofattoriale con indicatori $\tau$-equivalenti diventa dunque 
+\begin{equation}
+X_i = \lambda \xi + \delta_i, 
+\label{eq:mod_tau_eq}
+\end{equation}
+ovvero
+\begin{equation}
+X_i = \tau + \delta_i,
+\label{eq:mod_tau_eq_b}
+\end{equation}
+dove $\tau=\lambda \xi$ è l'attributo comune scalato nell'unità di
+misura dell'indicatore.
+Secondo il modello~\ref{eq:mod_tau_eq}, tutte le $p(p-1)$  covarianze tra gli
+item del test devono essere uguali, ovvero
+\begin{equation}
+\sigma_{ik} = \lambda^2=\sigma^2_T,
+\label{eq:cov_tau_eq}
+\end{equation}
+per $i\neq k$. 
+ Gli elementi sulla diagonale principale della matrice di varianze e covarianze saranno invece 
+\begin{equation}
+\sigma_{ii} = \lambda^2 + \psi_{ii} =\sigma^2_T + \psi_{ii}.
+\label{eq:var_tau}
+\end{equation}
+La matrice  $\boldsymbol{\Sigma}$ riprodotta in base al modello $\tau$-equivalente  è dunque uguale a
+  \begin{equation}
+    \boldsymbol{\Sigma}=\left[
+      \begin{array}{ c c c c }
+        \sigma_{T}^2 + \psi_{11} & \sigma_{T}^2 & \dots & \sigma_{T}^2 \\
+        \sigma_{T}^2 & \sigma_{T}^2 + \psi_{22} & \dots & \sigma_{T}^2 \\
+        \vdots & \vdots & & \vdots\\
+        \sigma_{T}^2 & \sigma_{T}^2 & \dots & \sigma_{T}^2 + \psi_{pp} 
+      \end{array} 
+    \right].
+    \label{eq:sigma_tau_eq}
+  \end{equation}
+  Tutte le covarianze sono uguali, mentre  le varianze sono  tra loro diverse.
+
+
+%------------------------------------------------------------
+\subsection{Indicatori paralleli}
+%------------------------------------------------------------
+
+ Nel caso di indicatori paralleli si ha che
+  $$\lambda_1=\lambda_2=\dots=\lambda_p=\lambda,$$
+  $$\psi_{11}=\psi_{22}=\dots=\psi_{pp}=\psi.$$ 
+ Il modello costituito da indicatori paralleli impone dunque un'ulteriore restrizione che riguarda le varianze degli item, ovvero:
+\begin{equation}
+\sigma_{ii} = \lambda^2 + \psi =\sigma^2_T + \sigma^2.
+\end{equation} 
+La struttura di varianze e covarianze imposta dal modello per
+indicatori paralleli è dunque tale da richiedere l'uguaglianza tra
+tutte le covarianze tra gli item e l'uguaglianza tra tutte le varianze
+degli item. La matrice  $\boldsymbol{\Sigma}$ riprodotta in base al modello con indicatori paralleli è dunque uguale a
+  \begin{equation}
+    \boldsymbol{\Sigma}=\left[
+      \begin{array}{ c c c c }
+        \sigma_{T}^2 + \sigma^2 & \sigma_{T}^2 & \dots & \sigma_{T}^2 \\
+        \sigma_{T}^2 & \sigma_{T}^2 + \sigma^2 & \dots & \sigma_{T}^2 \\
+        \vdots & \vdots & & \vdots\\
+        \sigma_{T}^2 & \sigma_{T}^2 & \dots & \sigma_{T}^2 +\sigma^2 \notag
+      \end{array} 
+    \right].
+  \end{equation}
+
+%------------------------------------------------------------
+\subsection{Indicatori strettamente paralleli}
+%------------------------------------------------------------
+
+ L'aggiunta di un ulteriore vincolo a quelli definiti dal modello costituito da indicatori paralleli, ovvero quello
+  dell'eguaglianza delle medie, definisce gli indicatori detti
+  \textit{strettamente paralleli} (McDonald, 1999).
+  
+
+%------------------------------------------------------------
+\section{Metodo dei  minimi quadrati non pesati}
+%------------------------------------------------------------
+
+Nel modello uni-fattoriale, la varianza di ciascun 
+  indicatore viene scomposta nella somma di due componenti: 
+la componente  $\sigma^2_T$ dovuta all'effetto del fattore latente comune e
+ la   componente $\psi$ dovuta all'effetto del fattore specifico.
+  McDonald (2013)  illustra come sia possibile
+   stimare tali componenti  dai dati osservati.
+  Tali stime vengono poi utilizzate per calcolare la coerenza interna del test tramite le formule degli indici $\alpha$ di Cronbach e $\omega$ di McDonald. 
+
+In precedenza abbiamo visto come 
+la varianza del punteggio vero sia uguale alla covarianza tra due forme
+parallele dello stesso test:
+$
+\sigma^2_T = \sigma_{XX'}
+$. Se gli indicatori sono $\tau$-equivalenti, la matrice la matrice $\boldsymbol{\Sigma}$
+  riprodotta dal modello è uguale a
+  \begin{equation}
+    \boldsymbol{\Sigma}=\left[
+      \begin{array}{ c c c c }
+        \sigma_{T}^2 + \psi_{11} & \sigma_{T}^2 & \dots & \sigma_{T}^2 \\
+        \sigma_{T}^2 & \sigma_{T}^2 + \psi_{22} & \dots & \sigma_{T}^2 \\
+        \vdots & \vdots & & \vdots\\
+        \sigma_{T}^2 & \sigma_{T}^2 & \dots & \sigma_{T}^2 + \psi_{pp} \notag
+      \end{array} 
+    \right],
+  \end{equation}
+ovvero, tutte le covarianze sono tra loro uguali. Nel caso di indicatori
+  $\tau$-equivalenti, dunque, una stima $\hat{\sigma}^2_T$ di $\sigma^2_T$
+ è data dalla media delle covarianze della matrice \textbf{S}:
+\begin{equation}
+\hat{\sigma}_T^2 = \frac{1}{p(p-1)} \sideset{}{} {\sum \sum}_{i \neq k} s_{ik}.
+\label{eq:sigma_t}
+\end{equation}
+Tale medoto di stima di $\sigma^2_T$ viene chiamato  ``metodo dei minimi quadrati non pesati'' (McDonald, 2013).
+
+Inoltre, nel caso di indicatori $\tau$-equivalenti, la stima di
+  $\psi_{ii}$ nell'Eq.~\ref{eq:var_tau}
+%$$
+%\sigma_{ii} = \lambda^2 + \psi_{ii} =\sigma^2_T + \psi_{ii} 
+%$$
+ è data da
+\begin{equation}
+\hat{\psi}_{ii }= s_{ii} - \hat{\sigma}_T^2,
+\end{equation}
+per ciascun item.
+
+Nel caso di \textit{indicatori paralleli}, la stima di
+  $\sigma^2_T$ è ancora data dall'Eq.~\ref{eq:sigma_t}, ovvero dalla media delle
+  covarianze della matrice $\boldsymbol{\Sigma}$.
+ La stima del valore costante $\psi$ è invece data da
+\begin{equation}
+\hat{\psi} = \frac{1}{p} \sum_i (s_{ii} - \hat{\sigma}_T^2)
+\label{eq:psi_par_st}
+\end{equation}
+
+
+%------------------------------------------------------------------------
+\section{Varianza del punteggio totale di un test}
+%------------------------------------------------------------------------
+
+Il punteggio totale $Y$ di un test omogeneo è uguale alla somma dei punteggi $X_i$ sui $p$ item  di cui è composto il test:
+$
+Y  = \sum_{i=1}^p X_i.
+$
+Poniamoci ora il problema di descrivere la varianza del punteggio
+totale del test nei termini dei parametri del modello uni-fattoriale. 
+ Nel caso di un modello congenerico ad un fattore comune,   
+  la varianza del punteggio totale $Y$ del test può essere scomposta in
+  due componenti:   il quadrato della somma delle saturazioni fattoriali,
+    corrispondentente alla varianza attribuibile al punteggio vero
+    (ovvero la quota di varianza derivante dall'attributo di cui gli item sono
+    indicatori) e
+ la somma delle varianze specifiche dei $p$ indicatori, corrispondente alla varianza degli errori della misura del punteggio totale del test, ovvero
+\begin{equation}
+ \var(Y) = \left( \sum_i \lambda_i\right)^2 + \sum_i \psi_{ii}
+  \label{eq:var_y}
+\end{equation}
+
+
+\begin{proof}
+
+Per un modello congenerico, la varianza del punteggio totale $Y$ è uguale a:
+\begin{align}
+  \var(Y) &= \var\left[ \sum_i  \left(\lambda_i \xi + \delta_i\right)  \right]\notag\\
+  &= \var\left[  (\lambda_1 \xi + \delta_1) +   (\lambda_2 \xi + \delta_2) + \dots +  (\lambda_p \xi + \delta_p)  \right]\notag\\
+  &= \var\left[ \left( \sum_i \lambda_i\right) \xi + \sum_i \delta_i\right]\notag\\
+  &=  \left( \sum_i \lambda_i\right)^2 \underbrace{\var(\xi)}_{=1} +  \sum_i  \var(\delta_i)\notag\\
+  &= \left( \sum_i \lambda_i\right)^2 + \sum_i \psi_{ii}\notag
+\end{align}
+
+\end{proof}
+ 
+ 
+%------------------------------------------------------------------------
+\section{Coefficiente omega}
+%------------------------------------------------------------------------
+
+Avendo scomposto la varianza del punteggio totale di un test
+  come indicato nell'Eq.~\ref{eq:var_y}
+$$
+  \var(Y) = \left( \sum_i \lambda_i\right)^2 + \sum_i \psi_{ii}
+$$
+McDonald (1999) definisce il coefficiente di attendibilità $\omega$  come il rapporto tra la varianza ``vera''
+  (attribuibile all'attributo comune) e la varianza totale.
+Nei termini dei parametri del modello uni-fattoriale, il coefficiente $\omega$  diventa:
+\begin{align}
+\omega &= \frac{\left( \sum_{i=1}^p \lambda_i \right)^2}{\sigma_Y^2} \notag\\
+&= \frac{\left( \sum_{i=1}^p \lambda_i \right)^2}{\left( \sum_{i=1}^p \lambda_i \right)^2  + \sum_{i=1}^p \psi_{ii}} 
+\label{eq:omega}
+\end{align} 
+Il coefficiente $\omega$ consente dunque di stimare il coefficiente di attendibilità nei
+termini dei parametri del modello fattoriale congenerico, utilizzando
+i dati ottenuti in un'unica somministrazione del test. 
+
+%------------------------------------------------------------------------
+\subsection{Un esempio concreto}
+
+Per illustrare la procedura per il calcolo del coefficiente $\omega$, 
+McDonald (1999) utilizza i dati derivanti dalla somministrazione del test
+{\it Satisfaction With Life Scale} (SWLS) a 215 rispondenti.  
+Tale test è costituito da 14 item ma, per semplificare la discussione, McDonald ne utilizza solo 5. 
+
+%  \begin{center}
+%    \includegraphics[width=8cm]{tab5_2}
+%  \end{center}
+
+
+\begin{lstlisting}
+SWLS <- matrix(
+    c(
+    2.565, 1.424, 1.481, 1.328, 1.529,
+    1.424, 2.493, 1.267, 1.051, 1.308,
+    1.481, 1.267, 2.462, 1.093, 1.360,
+    1.328, 1.051, 1.093, 2.769, 1.128,
+    1.529, 1.308, 1.360, 1.128, 3.355),
+    ncol = 5, byrow = TRUE)
+SWLS
+#>       [,1]  [,2]  [,3]  [,4]  [,5]
+#> [1,] 2.565 1.424 1.481 1.328 1.529
+#> [2,] 1.424 2.493 1.267 1.051 1.308
+#> [3,] 1.481 1.267 2.462 1.093 1.360
+#> [4,] 1.328 1.051 1.093 2.769 1.128
+#> [5,] 1.529 1.308 1.360 1.128 3.355
+\end{lstlisting}
+ Eseguiamo l'analisi fattoriale con il metodo della massima verosimiglianza:
+\begin{lstlisting}
+fa <- factanal(covmat=SWLS, factors=1, n.obs=215)
+\end{lstlisting}
+Le saturazioni fattoriali sono:
+\begin{lstlisting}
+fa$load
+#> 
+#> Loadings:
+#>      Factor1
+#> [1,] 0.817  
+#> [2,] 0.694  
+#> [3,] 0.726  
+#> [4,] 0.591  
+#> [5,] 0.643 
+\end{lstlisting}
+ Le specificità sono uguali a
+\begin{lstlisting}
+fa$uniq
+#> [1] 0.3330087 0.5181701 0.4732399 0.6512151 0.5866640
+\end{lstlisting}
+Il coefficiente $\omega$ 
+\begin{align}
+\omega &= \frac{\left( \sum_{i=1}^p \lambda_i \right)^2}{\left( \sum_{i=1}^p \lambda_i \right)^2  + \sum_{i=1}^p \psi_{ii}} \notag
+\end{align}
+può essere calcolato nel modo seguente:
+\begin{lstlisting}
+(sum(fa$load))^2 / (sum((fa$load))^2 + sum(fa$uniq))
+#> [1] 0.8245477
+\end{lstlisting}
+Nel caso presente, il coefficiente di attendibilità $\omega=0.82$ ci dice che l'$82$\% della varianza del punteggio totale $Y$ del test viene spiegato dal fattore comune latente.
+
+\subsection{Coefficiente $\omega$ e assunzioni della teoria classica dei test}
+
+Il calcolo di $\omega$ è basato sull'assunzione (tipica della
+   teoria classica dei test) che $\psi_{ik}=0$ per $i\neq k$. 
+  Tale
+   assunzione però potrebbe non essere soddisfatta nel caso di dati empirici. 
+   In tal caso, come indicato da Bollen (1980), la~\ref{eq:omega} diventa
+ \begin{align}
+ \omega &= \frac{\left( \sum_{i=1}^p \lambda_i \right)^2}{\left( \sum_{i=1}^p \lambda_i \right)^2  + \sum_{i=1}^p \psi_{ii} + \sum_{i, k, i\neq k}^p \psi_{ik}} 
+ \label{eq:omega2}
+ \end{align}
+
+L'appropriatezza dell'assunzione dell'incorrelazione dei fattori
+   specifici può essere verificata mediante un'analisi fattoriale
+   confermativa.
+  Se vi sono molte coppie di fattori specifici correlati, allora
+   può essere necessario introdurre nel modello dei fattori aggiuntivi
+   che rendano conto di queste covarianze. 
+   In questo caso,  la scala non sarà più unidimensionale: la
+   presenza di più fattori  indica la presenza di più sottoscale. 
+Il problema presentato sopra, tuttavia, non sempre può essere
+   risolto individuando delle sottoscale perché, anche in tal caso,
+   possono rimanere delle covarianze tra i fattori specifici che non
+   sono spiegate dai fattori che individuano le sottoscale. 
+   In questi casi, per calcolare $\omega$ sarà necessario utilizzare la formula~\ref{eq:omega2}.
+
+McDonald (1999) attribuisce al coefficiente $\omega$ le seguenti interpretazioni: 
+$\omega$ è uguale al quadrato della correlazione tra la $Y$ e il
+  fattore comune $\xi$ o, in maniera equivalente, tra la $Y$ e il
+  punteggio vero (in base alla definizione di attendibilità: $\rho_{XT}^2=\sigma^2_{\tau}/\sigma^2_X$);
+ $\omega$ è uguale  alla correlazione tra due test $Y$ e $Y'$ aventi la stessa somma (o media) delle saturazioni nel modello ad un fattore e la stessa somma (o media) delle varianze specifiche nel modello ad un fattore;
+ $\omega$ è uguale al quadrato della correlazione tra il punteggio totale di $p$ item e il punteggio medio di un insieme infinito di item di un dominio omogeneo di cui i $p$ item costituisciono un sottoinsieme.
+
+\section{Indicatori tau-equivalenti}
+
+\subsection{Coefficiente alpha di Cronbach}
+
+Il coefficiente $\omega$ consente di stimare il coefficiente di attendibilità nel caso di un modello monofattoriale congenerico.
+Invece, il coefficiente $\alpha$ fornisce una stima del coefficiente di attendibilità nel caso di un modello con indicatori $\tau$-equivalenti.
+  
+Se $p$ item soddisfano il modello di $\tau$-equivalenza, la varianza di ciascun item può essere scomposta in una componente attribuibile al valore vero e in una componente d'errore, come indicato nell'equazione~\ref{eq:var_tau}, ovvero,  
+$
+\sigma_{ii} = \lambda^2 + \psi_{ii} =\sigma^2_T + \sigma^2_i
+$. In base al principio di $\tau$-equivalenza, le varianze e covarianze riprodotte 
+ dal modello uni-fattoriale hanno le caratteristiche descritte nella matrice~\ref{eq:sigma_tau_eq}. 
+%  uguale a
+%  \begin{equation}
+%    \boldsymbol{\Sigma}=\left[
+%      \begin{array}{ c c c c }
+%        \sigma_{T}^2 + \psi_{11} & \sigma_{T}^2 & \dots & \sigma_{T}^2 \\
+%        \sigma_{T}^2 & \sigma_{T}^2 + \psi_{22} & \dots & \sigma_{T}^2 \\
+%        \vdots & \vdots & & \vdots\\
+%        \sigma_{T}^2 & \sigma_{T}^2 & \dots & \sigma_{T}^2 + \psi_{pp} \notag
+%      \end{array} 
+%    \right]
+%  \end{equation}
+Dato che tutti gli item hanno la stessa saturazione fattoriale $\lambda$,  la formula per il calcolo del coefficiente $\omega$
+%\begin{align}
+%\omega &= \frac{\left( \sum_i \lambda_i \right)^2}{\left( \sum_i
+%    \lambda_i \right)^2  + \sum_i \psi_{ii}} \notag 
+%\end{align}
+si riduce a
+\begin{equation}
+\omega = \frac{\left( \sum_i \lambda_i \right)^2}{\left( \sum_i
+    \lambda_i \right)^2  + \sum_i \psi_{ii}} = \frac{p^2 \lambda^2}{\sigma^2_Y} = \frac{p^2 \sigma_T^2}{\sigma_Y^2}
+\end{equation}
+%\begin{align}
+%\omega &= \frac{p^2 \lambda^2}{\sigma^2_Y}\notag\\[8pt]
+%&= \frac{p^2 \sigma_T^2}{\sigma_Y^2}
+%\end{align}
+dove $Y$ è il punteggio totale del test.
+
+Usando il metodo dei minimi quadrati non pesati, una stima  di $\omega$ può essere ottenuta nel modo seguente: 
+\begin{align}
+\hat{\omega} &= \frac{p^2 \hat{\sigma}_T^2}{s_Y^2}
+\label{eq:omega_firt_part}
+\end{align}
+dove una stima di $\sigma_T^2$ viene fornita dall'equazione~\ref{eq:sigma_t}, ovvero
+\begin{equation}
+\hat{\sigma}_T^2 = \frac{1}{p(p-1)} \sideset{}{} {\sum \sum}_{i \neq k} s_{ik}
+\label{eq:hat_sigma_tau2}
+\end{equation}
+ Inserendo l'equazione~\ref{eq:hat_sigma_tau2} nella \ref{eq:omega_firt_part}, otteniamo\footnote{
+ Ricordimo che la varianza $s_Y^2$ del punteggio totale di un
+  test, $Y = X_1 + X_2 + \dots + X_p$, è data da
+\begin{align}
+s_Y^2 &= \var(X_1 + X_2 + \dots + X_p)\notag\\[8pt]
+&= \sum_i \sum_k \cov (X_i, X_k)\notag
+\end{align}
+ovvero
+\begin{align}
+s^2_Y &= \sum_{i=1}^p \sum_{k=1}^p s_{ik}\notag
+\end{align}
+Ne segue che
+\begin{align}
+\sideset{}{} {\sum \sum}_{i \neq k} s_{ik} &= s^2_Y - \sum_i s_{ii}\notag
+\end{align}
+ }
+\begin{align}
+\hat{\omega} &= \frac{p}{p-1}\frac{\sideset{}{} {\sum \sum}_{i \neq k} s_{ik}}{s_Y^2}
+\end{align}
+
+%
+%\bigskip
+%
+%\begin{testexample}
+%si considerino tre variabili qualsiasi:
+%\begin{lstlisting}
+%> X1 <- c(2, 1, 3, 2, 7)
+%> X2 <- c(8, 8, 4, 3, 1)
+%> X3 <- c(1, 9, 8, 3, 4)
+%\end{lstlisting}
+%Definiamo il punteggio totale dato dalla somma dei punteggi sulle tre variabili appena definite:
+%\begin{lstlisting}
+%> Y <- X1 + X2 + X3
+%\end{lstlisting}
+%La varianza del punteggio totale $Y$ è uguale a
+%\begin{lstlisting}
+%> var(Y)
+%[1] 14.7
+%\end{lstlisting}
+%Calcoliamo ora la matrice di varianze e covarianze e sommiamo tutti gli elementi della matrice:
+%\begin{lstlisting}
+%> S <- cov(cbind(x1, x2, x3))
+%> sum(S)
+%[1] 14.7
+%\end{lstlisting}
+%Le due procedure producono lo stesso risultato.
+%
+%\end{testexample}
+
+\noindent
+ In conclusione, nel caso di indicatori $\tau$-eqivalenti, una stima del coefficiente $\omega$ è data da
+\begin{align}
+\hat{\omega} 
+%&= \frac{p}{p-1}\frac{\sideset{}{} {\sum \sum}_{i \neq k} s_{ik}}{s_Y^2} \notag\\[10pt]
+ = \frac{p}{p-1}\left(1-\frac{\sum_i s_{ii}}{s_Y^2}\right)
+\label{eq:alpha_camp}
+\end{align}
+La stima dell'attendibilità fornita dall'Eq.~\ref{eq:alpha_camp}
+  trova il suo corrispettivo per i valori della popolazione
+  nell'equazione seguente:
+\begin{align}
+\alpha &= \frac{p}{p-1}\left(1-\frac{\sum_{i=1}^p
+    \sigma_{ii}}{\sigma_Y^2}\right) 
+%=  \frac{p}{p-1}\frac{\sum_{i\neq k}^p Cov(X_i, X_k)}{\var(Y)} 
+\label{eq:alpha_pop}
+\end{align} 
+L'equazione~\ref{eq:alpha_pop} definisce quello che è conosciuto come il
+coefficiente $\alpha$.  
+
+Il coefficiente $\alpha$ fu scoperto da
+Guttman nel 1945 e incorrettamente attribuito a Cronbach. Viene spesso
+chiamato coefficiente $\alpha$ di Guttman-Cronbach, o G-C $\alpha$.
+
+Se gli indicatori soddisfano i requisiti del modello di
+$\tau$-equivalenza, i coefficienti $\alpha$ e $\omega$ sono uguali.
+Se il modello di $\tau$-equivalenza è appropriato, il coefficiente
+$\alpha$ fornisce un limite inferiore del coefficiente
+$\omega$ (ovvero, fornisce una sottostima di $\omega$):
+$
+\omega \geq \alpha
+$. 
+A causa del fatto che fornisce una stima conservativa del
+coefficiente di attendibilità, $\alpha$ viene preferito ad $\omega$ da
+alcuni ricercatori. Si noti però che $\alpha$ possiede tale carattere conservativo solo nel caso in cui le assunzioni del modello $\tau$-equivalente siano soddisfatte. 
+
+
+%------------------------------------------------------------------------
+\subsection{Un esempio concreto}
+
+ consideriamo nuovamente la matrice di varianze e covarianze
+  SWLS. 
+Il coefficiente $\alpha$ si calcola usando l'equazione~\ref{eq:alpha_camp} 
+%\begin{align}
+%\hat{\alpha} &= \frac{p}{p-1}\left(1-\frac{\sum_i s_{ii}}{s_Y^2}\right)\notag
+%\end{align}
+e, per i dati presenti, risulta essere uguale a
+\begin{lstlisting}
+p <- 5
+alpha <- (p / (p - 1)) * (1 - tr(SWLS) / sum(SWLS))   
+alpha
+#> [1] 0.8191223
+\end{lstlisting} 
+Lo stesso risultato si ottiene utilizzando la funzione {\tt alpha()} contenuta nel pacchetto {\tt psych}:
+\begin{lstlisting}
+alpha(SWLS)
+#> 
+#>  raw_alpha std.alpha G6(smc) average_r
+#>       0.82      0.82    0.79      0.48
+\end{lstlisting} 
+
+\subsection{Violazione dell'assunto di tau-equivalenza}
+\label{sec:violazione_tau}
+
+Il coefficiente $\alpha$, la misura di attendibilità maggiormente
+usata in psicometria, è basato sull'\textit{assuzione che il modello di
+misurazione sia $\tau$-equivalente}.
+Come indicato sopra, se tale assunzione è soddisfatta, $\alpha$ fornisce un limite inferiore dell'attendibilità del test.
+Nei casi in cui tale assunzione venga violata, però,  $\alpha$ può perdere tale carattere conservativo e può fornire una \textit{sovrastima}  dell'attendibilità del test (Sijtsma, 2009).
+
+NKano e Azuma (2003) riportano i risultati di una simulazione che mette in evidenza le conseguenze che risultano dalla violazione dell'assunzione di incorrelazione tra le componenti specifiche del modello monofattoriale.
+%Il modello 1 nella figura è il modello
+% uni-fattoriale con saturazioni fattoriali tutte uguali a $0.6$ e
+% covarianze nulle tra i fattori specifici. 
+%   Il modello 1 soddisfa i
+% criteri di $\tau$-equivalenza e, di conseguenza, i coefficienti 
+% $\alpha$ e $\omega$ sono uguali e
+% rappresentano la vera attendibilità di $0.69$.
+%   Il coefficiente $\omega$  nella figura è calcolato in due modi, ovvero mediante le formule~\ref{eq:omega} (il cui risultato è denotato da $\rho$) e \ref{eq:omega2} ($\rho'$).
+% 
+%% \begin{figure}
+%%   \begin{center}
+%%     %\includegraphics[width=11cm]{kano}
+%%     \caption{{\it Correlazioni tra fattori specifici e misure di
+%%         attendibilità. Nella figura sono riportati $\alpha$ di
+%%         Cronbach, $\rho$ (ovvero $\omega$) calcolato
+%%         in base all'Eq.~\ref{eq:omega} e $\rho'$ è calcolato in
+%%         base all'Eq.~\ref{eq:omega2}.}}
+%%     \label{fig:kano}
+%%   \end{center}
+%% \end{figure}
+%Nei modelli 2 e 3 i pesi fattoriali sono uguali tra loro ma una o due
+% coppie di fattori specifici risultano tra loro correlati. 
+% % \item La
+% % figura~\ref{fig:kano} riporta il valore di $\omega$ calcolato in base
+% % all'Eq.~\ref{eq:omega} ($\rho$) e in base all'Eq.~\ref{eq:omega2} ($\rho'$). 
+%  Nei modelli 2 e 3, la stima
+% corretta dell'attendibilità è data dal coefficiente $\omega$ calcolato
+% in base all'Eq.~\ref{eq:omega2} ($\rho'$).
+Questi autori trovano che, quando il principio dell'incorrelazione dei fattori specifici è violato, allora le stime dell'attendibilità ottenute mediante il coefficiente $\alpha$ sono affette da un errore sistematico.
+Tale errore sistematico aumenta all'aumentare del numero di coppie di fattori specifici che risultano tra loro correlati. 
+In queste circostanze, dunque, il coefficiente $\alpha$ non fornisce più una stima conservativa dell'attendibilità.
+
+In conclusione, il coefficiente $\omega$ fornisce una stima adeguata dell'attendibilità nel caso di un modello di misurazione congenerico. 
+L'utilizzo del coefficiente $\alpha$ per la stima dell'attendibilità richiede un modello di misurazione $\tau$-equivalente.
+L'esistenza di fattori specifici correlati invalida sia il coefficiente $\alpha$, sia il coefficiente $\omega$ calcolato in base alla formula~\ref{eq:omega}. 
+In tali circostanze l'attendibilità deve essere stimata utilizzando una diversa equazione (Kano \& Azuma, 2003; Komaroff, 1997).
+
+Questa discussione mette in evidenza un aspetto importante: il coefficiente $\alpha$ fornisce una stima conservativa dell'attendibilità di un test solo se le variabili osservate sono associate alle variabili latenti come indicato dal modello di misurazione $\tau$-equivalente.
+Se le assunzioni del modello $\tau$-equivalente sono violate (per esempio, l'assunzione dell'incorrelazione degli errori), allora $\alpha$ porta ad una sovrastima stima  dell'attendibilità del test.  
+
+Sijtsma (2009), tra gli altri, sconsiglia
+  l'uso di $\alpha$ per la stima dell'attendibilità del test in
+  quanto, nelle applicazioni reali, \textit{le assunzioni di
+  $\tau$-equivalenza e dell'incorrelazione degli errori risultano
+  spesso violate}. 
+ La violazione dell'assunzione di $\tau$-equivalenza porta ad una
+  stima conservativa dell'attendibilità, mentre la violazione
+  dell'assunzione dell'incorrelazione degli errori porta ad una stima
+  liberale dell'attendibilità. 
+ In entrambi i casi, l'errore sistematico può essere sostanziale.
+
+
+Un secondo problema è che $\alpha$ viene spesso preso quale
+  misura della ``struttura interna'' di un test e quindi come evidenza
+  che gli item del test ``misurino la stessa cosa.'' 
+ Tale interpretazione di $\alpha$  è sbagliata, in quanto 
+$\alpha$  non fornisce alcuna informazione a questo proposito.  
+%Sijtsma (2009) nota come la nozione di ``coerenza interna''
+%   sia poco chiara.
+%   Schmitt (1996), per esempio, distingue
+%   \textit{coerenza interna} da \textit{omogeneità} affermando che
+% la ``coerenza interna'' si riferisce alla inter-relazione tra una
+%   serie di item;
+%  l'``omogeneità'' si riferisce alla
+%   ``unidimensionalità'' di un test.
+%Tuttavia, bisogna tenere presente che la nozione di ``unidimensionalità'' ha un significato preciso nel caso di un determinato modello (per esempio, il modello fattoriale o il modello di risposta all'item), ma non è chiara senza fare riferimento ad un determinato modello statistico e assume significati diversi per modelli diversi.  
+%L'interpretazione di $\alpha$ quale indice di coerenza
+%   interna può essere fatta risalire a Nunnally (1978). 
+%   Tale autore, infatti, ha messo in evidenza il fatto che,
+%   tenendo 
+%   costanti le altre variabili, il valore di $\alpha$ dipende soltanto
+%   dalla somma delle covarianze tra gli item.
+%    Quindi, se si tiene a mente il fatto che  $\alpha$ varia con
+%   il numero di item, e ponendo che non vi siano covarianze negative,
+%   Nunnally (1978) interpreta $\alpha$ quale ``inter-relazione'' media
+%   tra gli item di un test. 
+%    Sijtsma (2009) nota però che non risulta chiaro in che modo la  ``inter-relazione'' media descriva la ``coerenza interna'', in qualunque modo essa venga definita. 
+% Il fatto che non vi sia una chiara relazione tra $\alpha$ e la
+%  struttura interna di un test può essere dimostrato in una maniera
+%  semplice.
+%   Primo, può essere mostrato che, per  un test uni-fattoriale,
+%  $\alpha$ può assumere qualunque valore. 
+%  Di conseguenza, $\alpha$ non ci dice nulla
+%  sull'unidimensionalità del test. 
+%  Secondo, può essere mostrato che $\alpha$ può assumere lo
+%  stesso valore per test definiti da diverse strutture fattoriali (ad
+%  uno o a più fattori). 
+%  Di conseguenza, $\alpha$ non ci dice nulla sulla struttura multi-fattoriale di un test.
+%
+% In conclusione, Lord e Novick (1968) hanno discusso la nozione di attendibilità
+%  facendo riferimento alla ripetibilità della somministrazione di
+%  misure parallele dello stesso test allo stesso rispondente. 
+%  Tuttavia, essendo impossibile somministrare ripetutamente lo
+%  stesso test agli stessi rispondenti, è risultato necessario stimare
+%  l'attendibilità sulla base di una singola somministrazione di un
+%  test.
+%  Questa necessità ha portato alla fomulazione dell'indice
+%  $\alpha$ quale misura di attendibilità. 
+%Ci si può però chiedere in che modo i dati di una singola
+%  somministrazione siano rilevanti per descrivere la ``propensione''
+%  di un individuo  a rispondere in un certo modo (Molenaar, 2004). 
+% Allo stesso modo, non c'è ragione di assumere che la
+%  propensione a rispondere in un certo modo sia
+%  identica per individui diversi.
+Non è  semplice fornire ad  $\alpha$ una chiara interpretazione, anche nel caso in cui siano soddisfatte le assunzioni del modello di misurazione su cui si basa. 
+   
+%   Sembra più appropriato, se non si hanno evidenze sulla struttura del modello fattoriale che descrive le inter-correlazioni tra gli item di un test uni-fattoriale, utilizzare $\omega$ quale indice di coerenza interna.
+%
+
+\section{La formula ``profetica'' di Spearman-Brown}
+
+L'attendibilità può essere stimata mediante il coefficiente $\omega$ se il modello di misurazione è congenerico e tramite il coefficiente $\alpha$, se il modello di misurazione è $\tau$-equivalente. 
+Chiediamoci ora come possa essere misurata l'attendibilità nel caso di
+un modello di misurazione costituito da indicatori paralleli.
+
+Si considerino $p$ item paralleli, tali per cui 
+$\lambda_1=\lambda_2=\dots=\lambda_p=\lambda$ e 
+$\psi_{11}=\psi_{22}=\dots=\psi_{pp}=\psi$.
+In tal caso, la quota di varianza del punteggio totale del test che viene spiegata dalla variabile latente  è uguale a
+\begin{equation}
+  \left(\sum_i \lambda_i \right)^2 = (p \lambda)^2 = p^2 \lambda^2.\notag
+\end{equation}
+
+L'attendibilità di un \textit{singolo item} è data da
+ \begin{equation}
+   \rho_1 = \frac{\lambda^2}{\lambda^2 + \psi} = \frac{\sigma_T^2}{\sigma_T^2+ \sigma_E^2}.
+ \end{equation}
+
+Per $p$ item paralleli abbiamo che:
+\begin{align}
+  \rho_p &= \frac{p^2 \lambda^2}{p^2 \lambda^2 + p \psi} \notag\\
+  &= \frac{p^2 \lambda^2}{ p (p \lambda^2 + \psi)} \notag\\
+  &= \frac{p \lambda^2}{ p \lambda^2 + \psi} \notag\\
+  &= \frac{p \lambda^2}{(p-1) \lambda^2 + (\lambda^2 + \psi)} \notag% \\
+%   &= \frac{p \frac{\lambda^2}{\lambda^2+\psi}}{(p-1) \frac{\lambda^2}{\lambda^2+\psi} + \frac{\lambda^2 + \psi}{\lambda^2+\psi}} \notag\\
+%   &= \frac{p \rho_1}{(p-1)\rho_1 + 1}
+%   \label{eq:spearman_brown}
+\end{align}
+Ovvero,
+\begin{align}
+  \rho_p 
+  &= \frac{p \frac{\lambda^2}{\lambda^2+\psi}}{(p-1) \frac{\lambda^2}{\lambda^2+\psi} + \frac{\lambda^2 + \psi}{\lambda^2+\psi}} \notag\\
+  &= \frac{p \rho_1}{(p-1)\rho_1 + 1},
+  \label{eq:spearman_brown_der}
+\end{align}
+ricordando che l'attendibilità di ciascun singolo item è
+$\rho_1 = \frac{\lambda^2}{\lambda^2 + \psi}$.
+
+L'Eq.~\ref{eq:spearman_brown_der} esprime l'attendibilità di un test costituito da $p$ item paralleli nei termini dell'attendibilità di un solo item ed è tradizionalmente conosciuta come la formula di Spearman-Brown ({\it Spearman-Brown prophecy formula}).
+Nel caso di item paralleli si ha che
+\begin{equation}
+  \omega=\alpha=\rho_p
+\end{equation}
+
+\subsection{Un esempio concreto}
+
+Poniamoci ora il problema di calcolare  l'attendibilità del test SWLS ipotizzando che gli item siano paralleli e utilizzando la formula di Spearman-Brown. 
+La matrice di correlazione è: 
+
+\begin{lstlisting}
+R <- cov2cor(SWLS)
+round(R, 3) 
+#>       [,1]  [,2]  [,3]  [,4]  [,5] 
+#> [1,] 1.000 0.563 0.589 0.498 0.521 
+#> [2,] 0.563 1.000 0.511 0.400 0.452
+#> [3,] 0.589 0.511 1.000 0.419 0.473 
+#> [4,] 0.498 0.400 0.419 1.000 0.370 
+#> [5,] 0.521 0.452 0.473 0.370 1.000
+\end{lstlisting}
+Seguendo McDonald (1999), supponiamo di calcolare l'attendibilità di un singolo item ($\rho_1$) come la correlazione media tra gli item: 
+\medskip
+\begin{lstlisting}
+rr <- NULL 
+k <- 1 
+for (i in 1:p) 
+    for (j in 1:p){ 
+       if (j != i)
+          rr[k] <- R[i, j] 
+          k <- k + 1 
+} 
+ro_1 <- mean(rr, na.rm = TRUE)
+ro_1 
+#> [1] 0.4797593
+\end{lstlisting}
+Applicando la formula di Spearman-Brown, la stima dell'attendibilità del test diventa pari a 
+\medskip
+\begin{lstlisting}
+(p * ro_1) / ((p - 1) * ro_1 + 1) 
+#> [1] 0.8217766
+\end{lstlisting}
+
+\section{Attenuazione}
+
+All'aumentare dell'errore di misurazione, la correlazione tra due variabili tende a diminuire. L'errore di misurazione, dunque, ``maschera'' l'associazione esistente tra le variabili. Tale fenomeno va sotto il nome di \emph{attenuazione}. 
+
+Lord e Novick (1967) notano che, volendo determinare la relazione
+esistente tra due costrutti,  uno psicologo può costruire opportune
+scale per misurarli. Se la relazione tra queste scale è lineare,
+allora il grado di associazione tra le scale può essere misurato dal
+coefficiente di correlazione. Le scale, però, contengono una
+componente di errore e, quindi, la correlazione empirica tra le due
+scale assume un valore minore della ``reale'' correlazione tra i costrutti.  
+In tali circostanze, possono essere usate opportune formule per stimare il valore della correlazione disattenuata tra i tratti latenti.
+
+Si può dimostrare che la correlazione tra i punteggi veri di
+    due costrutti, $T_y$ e $T_y$, può essere espressa nei termini
+    della correlazione $\rho_{XY}$ tra i punteggi osservati $X$ e $Y$,
+    e nei termini dei coefficienti di attenibilità $\rho_{XX'}$,
+    $\rho_{YY'}$ dei due test:
+\begin{equation}
+  \rho(T_X, T_Y)  = \frac{\rho_{XY}}{\sqrt{\rho_{XX'} \rho_{YY'}}}   
+  \label{eq:3_9_6}
+\end{equation}
+Inoltre, può essere dimostrato che la correlazione tra i punteggi di un test e i punteggi veri di un secondo test può essere espressa nei termini delle correlazioni tra i punteggi osservati dei due test e del coefficiente di attendibilità del secondo test:
+    \begin{equation}
+      \rho(X, T_Y)  = \frac{\rho_{XY}}{\sqrt{\rho_{YY'}}}.
+      \label{eq:3_9_7}
+    \end{equation}
+
+%------------------------------------------------------------------------
+\subsection{Correlazioni disattenuate}
+%------------------------------------------------------------------------
+
+Le formule~\ref{eq:3_9_6} e \ref{eq:3_9_7} consentono di calcolare le
+cosiddette  \emph{correlazioni disattenuate}.
+  L'idea è che le
+correlazioni tra i punteggi veri di due test sono sottostimate dalle
+correlazioni tra i punteggi osservati dei test, a causa dell'errore di
+misura. 
+  Se le attendibilità dei test sono conosciute,
+le formule~\ref{eq:3_9_6} e \ref{eq:3_9_7} possono essere usate per
+stimare le  correlazioni tra i corrispondenti punteggi veri.
+ La teoria dell'attenuazione costituisce un'ulteriore
+  applicazione del coefficiente di attendibilità nell'ambito della
+  teoria classica dei test.
+
+Le correlazioni disattenuate sono state usate già a partire dal 1904
+da Spearman.
+  Nell'esempio di Spearman, $X$ era una misura di
+discriminazione dell'altezza di un suono ({\it pitch discrimination})
+e $Y$ era una misura di intelligenza fornita da un insegnante. 
+ La
+correlazione tra queste due misure era $\hat{\rho}_{XY}=0.38$. 
+ Le
+attendibilità delle due misure erano pari a, rispettivamente,
+$\hat{\rho}_{XX'}= 0.25$ e  $\hat{\rho}_{YY'}= 0.55$.
+In base all'Eq.~\ref{eq:3_9_7}
+$$
+\rho(X, T_Y)  = \frac{\rho_{XY}}{\sqrt{\rho_{YY'}}} 
+$$
+la correlazione predetta tra i valori veri di pitch discrimination e i
+valori empirici dell'intelligenza è
+$$
+\hat{\rho}(X, T_Y)  =\frac{0.38}{\sqrt{0.25}}=0.76.
+$$
+In base all'Eq.~\ref{eq:3_9_6}
+$$
+\rho(T_X, T_Y)  = \frac{\rho_{XY}}{\sqrt{\rho_{XX'} \rho_{YY'}}} 
+$$
+ la correlazione tra i valori veri di pitch discrimination e i valori
+ veri dell'intelligenza è   
+$$
+\hat{\rho}(T_X, T_Y)  =\frac{0.38}{\sqrt{0.25 \times 0.55}}=1.025.
+$$ 
+Si noti come  i limiti di questa procedura emergano  già dall'esempio fornito da Spearman: le correlazioni disattenuate possono facilmente produrre una sovrastima. 
+
+Questa formula originò una controversia tra Charles Spearman e Karl Pearson.
+ In un suo articolo del 1904 (lo stesso anno dei famosi articoli di
+  Spearman), Pearson riportò diverse correlazioni nell'intorno di 0.5
+  che riguardavano la misurazione empirica di caratteristiche quali la vivacità
+  e l'introspezione.
+   Spearman criticò l'articolo di Pearson affermando che le
+    osservazioni probabilmente contenevano un sostanziale errore di
+    misurazione, il che determinava il fatto che fossero così basse.
+ Le corrispondenti correlazioni disattenuate erano, secondo
+  Spearman, probabilmente molto più alte.
+Tale critica venne del tutto ignorata da Pearson sulla base
+    del fatto che la formula di Spearman poteva condurre a
+    correlazioni maggiori di uno.
+ Inoltre, Pearson non accettava i riferimenti a quantità inosservabili.
+Spearman, d'altra parte, eseguì diversi studi su variabili psicologiche alle quali applicò la sua formula per le correlazioni disattenuate. 
+In molti casi, trovò che le correlazioni disattenuate erano vicine ad uno.
+Questo suggeriva che tali variabili psicologiche erano indicatori dello stesso fenomeno.
+Queste considerazioni spinsero Spearman a procedere in questa direzione, giungendo  ad inventare l'analisi fattoriale così com'è riportata nell'articolo del 1904  \emph{``General intelligence'', objectively determined and measured}.
+
+\bigskip
+
+%In conlusione, la quantità di informazione, definita da McDonald (1999) come
+%    $\lambda_j^2/\psi_{jj}$, fornisce un utile strumento per la
+%    selezione degli item da includere in un test. 
+%In conlusione, il coefficiente di Spearman-Brown può essere utilizzato per
+%  stabilire il numero di item di cui deve essere composto un test
+%  dotato di un determinato livello di attendibilità.
+%  Le formule  \ref{eq:3_9_6} e \ref{eq:3_9_7} consentono di
+%  calcolare le correlazioni disattenuate. 
+McDonald (1999) afferma che le correlazioni disattenuate devono essere usate con cautela.
+Un metodo migliore  per calcolare le correlazioni tra le variabili latenti (ovvero, le correlazioni non ``inquinate'' dagli errori di misura) è quello di costruire un modello di equazioni strutturali nel quale diverse ipotesi possono essere direttamente verificate, compresa quella della correlazione tra le variabili latenti.
+
+
+\section{Attendibilità e scala di misura}
+
+McDonald (2013) fa notare che i coefficienti $\omega$ e $\alpha$, ma non il coefficiente di Spearman-Brown, dipendono dalla scala di misura degli item. Stimare $\omega$ utilizzando una matrice di correlazione anziché una matrice di varianze e di covarianze è equivalente a stimare il coefficiente di attendibilità di una somma di item standardizzati. Il risultato ottenuto mediante $\omega$ e $\alpha$ non si generalizza però al caso in cui si voglia valutare l'attendibilità del punteggio totale di un test calcolato sui valori grezzi degli item. 
+
+Il modello ad un fattore comune non dipende dall'unità di misura degli indicatori e può essere adattato sia ad una matrice di correlazione sia ad una matrice di varianze e di covarianze. Il calcolo dei coefficienti $\omega$ e $\alpha$, invece, deve essere fatto sulla soluzione trovata utilizzando una matrice di varianze e di covarianze.
+
+
+\section{Quale indice usare?}
+
+%Si dice che un test è attendibile (affidabile, fedele) quando i
+%punteggi osservati sono coerenti tra i soggetti e sono stabili nel
+%tempo in assenza di cambiamenti nelle caratteristiche psicologiche
+%degli individui che si sottopongono al test o di cambiamenti
+%dell'ambiente in cui la somministrazione ha luogo.
+%La teoria classica dei test fornisce una definizione formale di tale concetto e chiarisce come sia possibile stimare l'attendibilità utilizzando i coefficienti
+%$\omega$, $\alpha$. 
+%La formula di Spearman-Brown, inoltre, chiarisce la relazione esistente tra l'attendibilità di un test e il numero di item paralleli di cui esso è costituito.
+
+L'indice di attendibilità più diffuso in letteratura è il
+  coefficiente $\alpha$ di Cronbach. 
+ Affinché $\alpha$ fornisca una stima dell'attendibilità del
+  test, però, gli item devono essere $\tau$-equivalenti. 
+  Il modello di $\tau$-equivalenza richiede l'unidimensionalità
+  del tratto latente.
+ In pratica, tale assunzione viene spesso violata, dato che la
+  maggior parte dei test, oltre ad un fattore generale, misurano anche
+  altri fattori.  
+Anche nel caso di un test unidimensionale, le
+  comunalità degli item non sono mai uguali tra loro, violando così
+  l'assunzione di  $\tau$-equivalenza. 
+  In tali circostanze, se risulta soddisfatta l'assunzione di
+  incorrelazione degli errori, il coefficiente $\alpha$ sottostima
+  l'attendibilità del test.
+  Se invece l'assunzione di incorrelazione degli errori non
+  risulta soddisfatta, allora il coefficiente $\alpha$ sovrastima
+  l'attendibilità del test. 
+ Per tali ragioni, l'utilità del coefficiente $\alpha$ di Cronbach è molto limitata e, in generale, è preferibile usare il coefficiente $\omega$ (McDonald, 1999). Altre alternative sono gli indici $glb$ (\textit{Greatest Lower Bound}; si veda, ad esempio, Ten Berge e So\v{c}an, 2004) e $\beta$ (Revelle, 1979).
+
+
+
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+

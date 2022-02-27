@@ -1,0 +1,81 @@
+# Valutazione della matrice di correlazione {#ch:val_matrici}
+
+```{r, include = FALSE}
+source("_common.R")
+```
+
+L'analisi fattoriale, essendo una tecnica di analisi multivariata,
+richiede la comprensione di almeno alcuni concetti di base dell'algebra
+matriciale. A livello minimale è necessario capire che cosa sono i
+vettori e le matrici, che cosa è il determinante di una matrice, e in
+che modo possano essere eseguite le operazioni algebriche su vettori e
+matrici (si veda l'Appendice).
+
+Dopo avere padroneggiato gli aspetti di base dell'algebra matriciale,
+possiamo valutare il determinante della matrice da fattorializzare: se
+il determinante è nullo non si può fare l'analisi. Se invece il
+determinante non è nullo, ci possiamo chiedere se le correlazioni
+campionarie siano sufficientemente grandi da giustificare l'analisi
+fattoriale. Se le correlazioni tra gli item sono di modesta entità,
+allora la soluzione fornita dall'analisi fattoriale non consentirà una
+descrizione parsimoniosa delle informazioni contenute nella matrice
+delle correlazioni. Per rispondere a questa domanda si ricorre
+all'ispezione visiva della matrice di correlazione e si possono svolgere
+due test: il test della sfericità di Bartlett e il Kaiser-Meyer-Olkin
+test.
+
+## Ispezione visiva della matrice di correlazione
+
+L'ispezione visiva della matrice di correlazione viene effettuata per
+vedere che vi siano blocchi di correlazioni alte fra loro e basse con le
+alte.
+
+## Sfericità di Bartlett
+
+Il test della sfericità di Bartlett verifica l'ipotesi
+$H_0 : \boldsymbol{R} = \boldsymbol{I}$ (ovvero che gli item siano tra
+loro incorrelati) tramite la formula:
+
+$$\chi^2 = -\bigg[n -1 -\frac{1}{6} (2p +5)\bigg] \ln |\boldsymbol{R}|,$$
+
+in cui $n$ è il numero dei soggetti, $p$ il numero delle variabili e
+$|\boldsymbol{R}|$ il determinante della matrice di correlazione. La
+statistica del test della sfericità di Bartlett si distribuisce come
+$\chi^2$ con $p(p - 1)/2$ gradi di libertà. Se il risultato del test è
+significativo (ovvero, se il valore della statistica test è
+sufficientemente grande), significa che $\boldsymbol{R}$ ha correlazioni
+sufficientemente elevate da non essere paragonabili a 0; se è non
+significativo le correlazioni sono basse e non si distinguono da 0. Il
+limite di questo test è che dipende dal numero delle variabili e dalla
+numerosità del campione, quindi tende ad essere significativo
+all'aumentare del campione e del numero delle variabili anche se ci sono
+correlazioni basse.
+
+## Test di adeguatezza campionaria di Kaiser-Meyer-Olkin
+
+Henry Kaiser (1970) ha introdotto una misura di adeguatezza campionaria
+per le matrici sottoposte ad analisi fattoriale. In seguito, Kaiser and
+Rice (1974) hanno modificato questo indice che da allora è conosciuto
+come l'indice Kaiser-Meyer-Olkin (KMO). Il test di adeguatezza
+campionaria KMO è dato da
+
+$$\text{KMO} = \frac{\sum_i\sum_j r^2_{ij}}{\sum_i\sum_j r^2_{ij} +\sum_i\sum_jp^2_{ij}},$$
+
+dove $r_{ij}$ sono le correlazioni osservate e $p_{ij}$ sono le
+correlazioni parzializzate su tutte le altre. Se le correlazioni
+parzializzate sono piccole, KMO tende a 1. Secondo Kaiser (1970), se KMO
+\> 0.90, l'adeguatezza campionaria è eccellente, fra .80 e .90 è buona,
+fra .70 e .80 è accettabile, fra .60 e .70 è mediocre, se è inferiore a
+.60 è meglio non fare l'analisi.
+
+### Matrice anti-immagine
+
+La matrice delle correlazioni parzializzate riporta il valore di ogni
+correlazione dopo aver eliminato il contributo di tutte le altre
+variabili non implicate. Una correlazione parzializzata alta significa
+che due variabili sono molto correlate fra loro, ma non hanno legami con
+nessun altra variabile. L'analisi fattoriale richiede invece che ci
+siano più di due variabili per fattore. La matrice anti-immagine
+contiene i complementi a 1 della correlazione parzializzata fra due
+variabili rispetto a tutte e altre. Valori alti indicano correlazioni
+parziali basse e viceversa.

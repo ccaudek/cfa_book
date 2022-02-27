@@ -1,0 +1,161 @@
+%---------------------------------------------------------
+\chapter{Appendice}
+\label{chapter:appendix2} % Fornire sempre un'unica label
+%---------------------------------------------------------
+
+%------------------------------------------------------------------------
+\section{Misure di associazione per variabili nominali e ordinali}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\subsection{Correlazione policorica}
+%------------------------------------------------------------------------
+
+Se le variabili sono a livello di scala ordinale, le correlazioni di Pearson non sono appropriate. 
+È  preferibile invece calcolare  le correlazioni policoriche. Il calcolo delle correlazioni policoriche è basato su tre assunzioni:
+ le modalità delle due variabili sono a livello di scala ordinale;
+ le modalità delle variabili osservate derivano dalla
+  suddivisione di due variabili soggiacenti continue; 
+ le variabili continue seguono la distribuzione normale bivariata. 
+
+\begin{exmp}
+Le correlazioni policoriche possono essere calcolate in R con
+    la funzione {\tt polychor()} contenuta nel pacchetto {\tt
+      polycor}.  
+   Consideriamo il calcolo della correlazione di Pearson tra 
+  il primo e il secondo item della scala SWLS:
+\begin{lstlisting}
+cor(dat[,1], dat[,2])
+#> [1] 0.6754475
+\end{lstlisting}
+Per gli stessi dati, la correlazione policorica è
+\begin{lstlisting}
+library(polycor)
+polychor(dat[,1], dat[,2])
+#> [1] 0.7328114
+\end{lstlisting} 
+\end{exmp}
+
+
+%------------------------------------------------------------------------
+\subsection{Correlazione tetracorica}
+%------------------------------------------------------------------------
+
+Come misura di associazione tra due variabili dicotomiche ordinali, Pearson (1900) ha proposto la correlazione tetracorica.  Sulla base di alcune approssimazioni (Edwards e Edwards, 1984), la correlazione tetracorica può essere calcolata nel modo seguente:
+$$
+r_{t}=\frac{\alpha^{\frac{\pi}{4}} -1}{\alpha^{\frac{\pi}{4}} +1},
+$$
+dove $\alpha=ad/bc$, essendo $a$, $b$, $c$, $d$ le frequenze nelle
+celle della tabella di contingenza indicizzate rispettivamente da
+$(1,1)$, $(1,2)$, $(2,1)$ e $(2,2)$.  
+
+
+%------------------------------------------------------------------------
+\subsection{Coefficiente $\phi$}
+%------------------------------------------------------------------------
+
+Quando entrambe le variabili sono dicotomiche, i dati possono essere rappresentati in una tavola di contingenza $2 \times 2$ e il grado di associazione tra le due variabili può essere espresso da numerosi coefficienti. La più semplice di tali misure di associazione è il coefficiente $\phi$:
+\begin{equation}
+\phi = \sqrt{ \frac{\chi^2}{n} }, 
+\end{equation}
+dove $\chi^2$ è la statistica del test chi-quadrato di Pearson e $n$ è
+il numero totale di osservazioni.  Il coefficiente $\phi$ varia da $0$
+(assenza di associazione) a $1$ (completa associazione). 
+
+%------------------------------------------------------------------------
+
+\begin{exmp}
+
+Il coefficiente $\phi$ può essere calcolato con la funzione {\tt phi()} contenuta nel pacchetto {\tt psych}:
+\begin{lstlisting}
+library(psych) 
+Q1d <- ifelse(dat[,1] < 4, 0, 1)
+Q2d <- ifelse(dat[,2] < 4, 0, 1)
+Tab <- table(Q1d, Q2d)
+Tab
+#>    Q2d
+#> Q1d   0   1
+#>   0 121  22
+#>   1   2  29
+phi( Tab )
+#> [1] 0.66
+chisq.test(Tab, correct=FALSE)
+#> 
+#> 	Pearson Chi-squared test
+#> 
+#> data:  Tab 
+#> X-squared = 75.1247, df = 1, p-value < 2.2e-16
+sqrt( 75.1247 / dim(dat)[1] )
+#> [1] 0.6570777
+\end{lstlisting}
+
+\end{exmp}
+
+
+%------------------------------------------------------------------------
+\subsection{Correlazione biseriale}
+%------------------------------------------------------------------------
+
+La correlazione biseriale è la correlazione tra una variabile
+    dicotomica e una variabile continua sotto l'assunzione che la
+    variabile dicotomica rifletta una variabile normale che è stata
+    discretizzata.  Può essere calcolata nel modo seguente: 
+\begin{equation}
+r_{bs}=\frac{\bar{X}_s - \bar{X}_f}{\sigma}\left( \frac{pq}{z} \right),
+\end{equation}
+dove $\bar{X}_s$ è il punteggio medio sulla variabile continua delle 
+risposte corrette sulla variabile dicotomica, $\bar{X}_f$
+è il punteggio medio sulla variabile continua delle risposte
+sbagliate sulla variabile dicotomica, $\sigma$ è la deviazione
+standard sulla variabile continua di tutte le risposte, $p$ è la
+proporzione di risposte corrette sulla variabile dicotomica, $q=1-p$ e
+$z$ è il quantile della normale standardizzata corrispondente a $p$. 
+
+ La correlazione biseriale può essere calcolata mediante la
+    funzione {\tt polyserial()} contenuta nel pacchetto {\tt polycor}.  
+ In alternativa, può essere utilizzata la funzione {\tt
+      descript()} contenuta nel  pacchetto {\tt ltm}.  
+
+
+%------------------------------------------------------------------------
+
+\begin{exmp}
+
+La correlazione biseriale tra ciascun item e il punteggio
+    totale del test LSAT può  essere calcolata nel modo
+    seguente: 
+
+\begin{lstlisting}
+descript(LSAT)
+#> 
+#> Descriptive statistics for the 'LSAT' data-set
+#> 
+#> Sample:
+#>  5 items and 1000 sample units; 0 missing values
+#> 
+#> Biserial correlation with Total Score:
+#>        Included Excluded
+#> Item 1   0.3618   0.1128
+#> Item 2   0.5665   0.1531
+#> Item 3   0.6181   0.1727
+#> Item 4   0.5342   0.1444
+#> Item 5   0.4351   0.1215
+\end{lstlisting}
+
+\end{exmp}
+
+%------------------------------------------------------------------------
+\subsection{Correlazione punto-biseriale}
+%------------------------------------------------------------------------
+
+La correlazione punto-biseriale è la correlazione di Pearson calcolata nel caso in cui  una delle due variabili sia dicotomica.  Essendo semplicemente la correlazione di Pearson tra una
+    variabile dicotomica e una continua, la correlazione
+    punto-biseriale può essere calcolata in \R\, mediante la funzione
+    {\tt cor()}. 
+
+
+
+
+
+

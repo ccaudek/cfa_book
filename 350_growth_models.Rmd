@@ -1,0 +1,280 @@
+# Curve di crescita latente {#ch:growth_models}
+
+```{r, include = FALSE}
+source("_common.R")
+library("lavaan")
+library("semPlot")
+library("knitr")
+library("markdown")
+library("patchwork")
+```
+
+## Dati longitudinali
+
+Un importante classe di modelli a variabili latenti è quella dei modelli delle curve di crescita latente (*latent growth models*, LGM). I modelli delle curve di crescita latente vengono spesso utilizzati per analizzare dati longitudinali. In questo tipo di dati, una misura di esito viene ottenuta in diversi momenti del tempo e si vuole studiare il cambiamento nel tempo. In molti casi, la traiettoria nel tempo può essere modellata come una semplice funzione lineare o quadratica. Le differenze individuali vengono catturate dagli *effetti random* che sono convenientemente rappresentati da variabili latenti (continue), spesso chiamate *fattori di crescita* (*growth factors*). 
+
+Possiamo pensare ai modelli LGM come ad un'estensione del modello CFA dotato di `meanstructure`.  L'inclusione della `meanstructure` significa che non possiamo usare in input la matrice di covarianza campionaria, ma dobbiamo invece utilizzare i dati grezzi (ovvero, le singole osservazioni per ciascun parecipante). Un'altro requisito degli LGM è che i dati devono essere forniti del formato `wide`, il che significa che ogni colonna rappresenta la variabile di esito in un diverso momento nel tempo. Si presume che ogni osservazione o riga sia indipendente dalle altre; le colonne motrano invece una dipendenza temporale tra loro. 
+
+I modelli LGM sono un caso speciale di CFA e corrispondono un modello CFA a due fattori in cui le saturazioni fattoriali sono fissate a valori predefiniti. Nello specifico, le saturazioni sul fattore che specifica le intercette delle funzioni individuali di crescita sono tutte fissate a 1; le saturazioni sul fattore che specifica le pendenze delle funzioni individuali di crescita sono fissate in modo tale da corrispondere ai diversi momenti del tempo, laddove la saturazione in corrispondenza del momento $t_0$ è uguale a 0 e la progressione procede con incrementi di 1 (ovvvero, $0, 1, \dots, t-1$). 
+
+Si giunge così alla seguente specifiazione del modello fattoriale:
+
+\begin{equation}
+y_{it} = \tau_i + (1) \xi_1 + (t) \xi_2 + \delta_t,
+\end{equation}
+
+con $t = 0, 1, 2, 3$ nel caso di quattro misurazioni temporali. Si noti che, per disegno, $\tau_i = 0$.
+
+
+### Un esempio concreto
+
+L'esempio che discuteremo utilizza i dati di un tutorial `lavaan`, ovvero un campione di dati artificiali chiamato `Demo.growth` in cui un punteggio viene misurato su quattro punti temporali. I dati sono i seguenti:
+
+```{r}
+data(Demo.growth)
+glimpse(Demo.growth)
+```
+
+La variabile dipendente è rappresentata dalle quattro colonne chiamate `t1`, `t2`, `t3` e `t4` che corrispondono alla serie temporale con quattro misurazioni per ciascun soggetto.
+
+Trasformiamo i dati in formato `long`:
+
+```{r}
+demo_growth_long <- Demo.growth %>%
+  dplyr::select(t1, t2, t3, t4) %>%
+  pivot_longer(
+    cols = starts_with("t"),
+    names_to = "t",
+    values_to = "y"
+  ) %>% 
+  as.data.frame()
+demo_growth_long$time <- rep(0:3, 400)
+demo_growth_long$id <- rep(1:400, each = 4)
+```
+
+Esaminiamo un campione casuale di 9 soggetti. È presente una notevole variazione da soggetto a soggetto:
+
+```{r}
+id_sel <- sample(1:400, 9)
+d <- demo_growth_long[demo_growth_long$id %in% id_sel, ]
+d %>% 
+  ggplot(aes(x = time, y = y)) + 
+  geom_line() +
+  facet_wrap(~id)
+```
+Notiamo che un semplce modello lineare è appropriato per rendere conto della variazione temporale della variabile risposta:
+
+```{r}
+d %>% 
+  ggplot(aes(x = time, y = y)) + 
+  geom_point() +
+  stat_smooth(method = "lm", se = FALSE) + 
+  facet_wrap(~id)
+```
+
+Complessivamente, i dati suggeriscono un andamento crescente della variabile risposta in funzione del tempo:
+
+```{r}
+demo_growth_long %>% 
+  ggplot(aes(time, y, group = id)) + 
+  geom_line(alpha = 0.1) + # add individual line with transparency
+  stat_summary( # add average line
+    aes(group = 1),
+    fun = mean,
+    geom = "line",
+    size = 1.5,
+    color = "black"
+  ) +
+  labs(x = "Time", y = "y") 
+```
+
+Per adattare un modello lineare di crescita a questi dati, specifichiamo il seguente modello a variabili latenti
+
+$$
+y_j = \alpha_0 + \alpha_1 \lambda_j + \zeta_{00} + \zeta_{11} \lambda_j + \epsilon_j,
+$$
+dove 
+
+- $y_j$ è la variabile di interesse che cambia nel tempo, $j$.
+- $\alpha_0$ rappresenta l'intercetta della retta di regressione al tempo $t = 0$ (il punto di partenza della linea nera sopra).
+- $\alpha_1 \lambda_j$ è il tasso medio di variazione nel tempo (la pendenza della linea nera nel grafico sopra). Qui $\lambda_j$ è solo l'indice dei punti temporali considerati (0, 1, 2, 3).
+- $\zeta_{00}$ è la varianza tra i soggetti nel punto $t = 0$.
+- $\zeta_{11} \lambda_j$ è la varianza del tasso di variazione tra i soggetti.
+- $\epsilon_j$ è la varianza di ciascun soggetto attorno alla sua retta di regressione.
+
+Tali relazioni statistiche vengono rappresentate dal modello di equazioni strutturali della figura \@ref(fig:growth01). 
+
+```{r growth01, echo=FALSE, fig.cap="Modello di crescita latente.", out.width = '90%'}
+knitr::include_graphics("images/lgm.png")
+```
+
+In altre parole, un lineare di crescita latente corrisponde ad un modello fattoriale con due variabili latenti: un fattore che corrisponde al "punteggio vero" delle intercette individuali e un fattore che corrisponde al "punteggio vero" delle pendenze individuali. Nella sitassi `lavaan` questo diventa:
+
+```{r}
+model <- "
+ i =~ 1*t1 + 1*t2 + 1*t3 + 1*t4
+ s =~ 0*t1 + 1*t2 + 2*t3 + 3*t4
+"
+```
+
+Si noti che, per il fattore $\eta_0$ (che rappresenta le intercette), i valori delle saturazioni fattoriali sono fissate a 1 -- questo è il motivo per cui $\alpha_0$ e $\zeta_{00}$ compaiono da soli nell'equazione precedente: in maniera esplicita sono $1 \cdot \alpha_0$ e $1 \cdot \zeta_{00}$. Le saturazioni per il fattore $\eta_1$ (che specifica le pendenze delle funzioni lineari) sono fissate ai valori dei diversi momenti nel tempo: qui i valori $\lambda_j$ da 0 a 3. Abbiamo anche la correlazione tra $\eta_0$ e $\eta_1$, rappresentata dalla doppia freccia $\zeta_{01}$. Se questo parametro è positivo, questo significa che i partecipanti tendono a diventare sempre più diversi tra loro, al passare del tempo; un'interpretazione opposta si ha se il valore del parametro è negativo.
+
+Adattiamo il modello ai dati:
+
+```{r}
+fit <- growth(model, data = Demo.growth)
+```
+
+Esaminiamo il path diagram:
+
+```{r}
+semPaths(
+  fit,"std",
+  posCol =c("black"),
+  edge.label.cex =0.9,
+  sizeMan =7, 
+  what = "path"
+)
+```
+
+Ci sono 6 tipi di parametri di interesse:
+
+```{r}
+kable(coef(fit), booktabs =TRUE, format = "markdown")
+```
+
+- l'intercetta $i$ = 0.615 è il valore atteso della variabile risposta al momento $t_0$;
+- la pendenza $s$ = 1.006 è il tasso di cambiamento medio della variabile risposta nel tempo. Ad ogni successivo momento temporale, il valore medio della variabile risposta aumenta in media di 1.006 punti;
+- varianza $i$ = 1.932 misura la variazione tra i soggetti al momento $t_0$ (ci dice quanto sono diverse le intercette delle rette di regressione tra i soggetti);
+- varianza $s$ = 0.587 misura la variazione del tasso di crescita tra i soggetti (ci dice quanto sono diverse le pendenze delle rette di regressione tra i soggetti);
+- varianze `t1`, ..., `t4`: i valori da 0.595 a 0.508 ci dicono la variazione tra i soggetti all'interno di ciascun momento del tempo;
+- la covarianza tra `i` e `s` = 0.618 ci dice che i valori della variabile risposta diventano via via più diversi nel tempo tra i rispondenti (un valore negativo avrebbe l'interpretazione opposta).
+
+Le stime dell'intercetta e della pendenza della funzione di crescita per ciascun partecipante si ottengono nel modo seguente:
+
+```{r}
+rand_eff <- as.data.frame(lavPredict(fit))
+head(rand_eff)
+```
+
+Le distribuzione delle stime individuali dell'intercetta e della pendenza della curva di crescita si ottengono nel modo seguente:
+
+```{r}
+gi <- rand_eff %>% 
+  ggplot(aes(x=i)) + 
+  geom_histogram()
+gh <- rand_eff %>% 
+  ggplot(aes(x=s)) + 
+  geom_histogram()
+gi + gh
+```
+
+Un buon modo per capire cosa fa il modello è quello di visualizzare i punteggi previsti. Useremo qui la funzione `predict()` per salvare un nuovo oggetto con i punteggi previsti a livello individuale per l'intercetta e la pendenza;
+
+```{r}
+pred_lgm <- predict(fit) 
+head(pred_lgm)
+```
+
+Questi sono i valori previsti dal modello per ciascun partecipante. Se calcoliamo la media di queste variabili otteniamo gli stessi risultati che sono stati riportati sopra:
+
+```{r}
+# average of the intercepts (first column)
+mean(pred_lgm[, 1]) 
+# average of the slope (second column)
+mean(pred_lgm[, 2])
+```
+
+Il cambiamento nel tempo previsto dal modello per il soggetto $j$-esimo è
+
+$$
+y_j = \eta_0 + \lambda_j \eta_1.
+$$
+
+Il cambiamento previsto per tutti i soggetti può essere visualizzato nel modo seguente:
+
+```{r}
+# create long data for each individual
+pred_lgm_long <- map(
+  0:3, # loop over time
+  function(x) pred_lgm[, 1] + x * pred_lgm[, 2]
+) %>%
+  reduce(cbind) %>% # bring together the wave predictions
+  as.data.frame() %>% # make data frame
+  setNames(str_c("time", 0:3)) %>% # give names to variables
+  mutate(id = row_number()) %>% # make unique id
+  gather(-id, key = time, value = pred) # make long format
+# make graph
+pred_lgm_long %>%
+  ggplot(aes(time, pred, group = id)) + # what variables to plot?
+  geom_line(alpha = 0.1) + # add a transparent line for each person
+  stat_summary( # add average line
+    aes(group = 1),
+    fun = mean,
+    geom = "line",
+    size = 1.5,
+    color = "black"
+  ) +
+  labs(y = "y", x = "time")
+```
+
+La linea nera più spessa rappresenta l'intercetta media e la pendenza media della curva di crescita del modello LGM. Ogni individuo ha una sua specifica intercetta e uno specifico tasso di cambiamento e questa diversità è catturata nelle componenti di varianza del modello
+
+È anche possibile utilizzare le funzionalità di `lavaan` per verificare specifiche ipotesi di interesse relative ai dati longitudinali.  Ad esempio, una possibile domanda riguarda l'ugualianza degli errori nel tempo. Tale domanda può essere affrontata introducendo dei vincoli nella specificazione del modello LGM e, successivamente, confrontanto la bontà dell'adattamento del modello vincolato e del modello generale.
+
+Il modello vincolato è
+
+```{r}
+model_eqerr <- "
+ i =~ 1*t1 + 1*t2 + 1*t3 + 1*t4
+ s =~ 0*t1 + 1*t2 + 2*t3 + 3*t4
+ t1 ~~ a*t1
+ t2 ~~ a*t2
+ t3 ~~ a*t3
+ t4 ~~ a*t4
+"
+```
+
+Adattiamo il modello vincolato:
+
+```{r}
+fit_eqerr <- growth(model_eqerr, data = Demo.growth)
+```
+
+Confrontiamo il modello vincolato con il modello libero:
+
+```{r}
+anova(fit, fit_eqerr)
+```
+
+Il test del rapporto di verosimiglianza (*likelihood ratio*) eseguito dalla funzione `anova()` produce un $p$-valore di 0.6573. Ciò significa che, nei dati esaminati, non si rileva una decremento della bontà dell'adattamento degna di nota nel passare dal modello libero al modello vincolato. Dunque, l'ipotesi dell'equaglianza della varianza degli errori nel tempo sembra ragionevole.
+
+### Un secondo esempio
+
+Un modello leggermente più complesso aggiunge due regressori (`x1` e `x2`) che influenzano i fattori di crescita latenti. Inoltre, è stata aggiunta al modello una covariata `c` variabile nel tempo che influenza la misura del risultato nei quattro punti temporali.
+
+```{r}
+model2 <- '
+  # intercept and slope with fixed coefficients
+    i =~ 1*t1 + 1*t2 + 1*t3 + 1*t4
+    s =~ 0*t1 + 1*t2 + 2*t3 + 3*t4
+  # regressions
+    i ~ x1 + x2
+    s ~ x1 + x2
+  # time-varying covariates
+    t1 ~ c1
+    t2 ~ c2
+    t3 ~ c3
+    t4 ~ c4
+'
+```
+
+```{r}
+fit2 <- growth(model2, data = Demo.growth)
+```
+
+```{r}
+kable(coef(fit2), booktabs =TRUE, format = "markdown")
+```
+
+I risultati mostrano che le due covariate $x$ influenzano sia l'intercetta sia la pendenza della curva di crescita. Inoltre, vi sono evidenze di un effetto della covariata `c`.

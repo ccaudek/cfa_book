@@ -1,0 +1,219 @@
+\chapter{Funzione informativa dell'item e del test}
+\label{chapter:funzione_informativa_item_test} 
+
+%% un esempio di analisi è fornito nella pagina
+%% http://wiki.r-project.org/rwiki/doku.php?id=packages:cran:ltm
+%% può essere usato come esempio conclusivo dei modelli irt
+
+
+%----------------------------------------------------------------------------
+%\section{Attendibilità e modelli IRT}
+
+Il problema dell'attendibilità è trattato in maniera diversa dai modelli IRT e dalla Teoria Classica.  
+%Nei modelli IRT, il problema della consistenza interna viene affrontato mediante lo svolgimento di test statistici che determinano il numero di dimensioni sottostanti. In questo senso, lo studio della dimensionalità del test è trattato in maniera simile nel caso di item dicotomici e politomici, da una parte, e nel caso di item continui, dall'altra. 
+%Il corrispettivo più stretto della nozione di ``attendibilità'' nei modelli IRT può essere trovato nei concetti di \emph{informazione dell'item} e di \emph{informazione del test}.  
+Il problema di determinare la precisione della misurazione ai diversi livelli del tratto $\theta$ viene affrontato dai modelli IRT definendo la \emph{funzione informativa} dell'item e del test.
+
+%----------------------------------------------------------------------------
+\section{Funzione informativa dell'item}
+
+A ciascuna ICC viene associata una \emph{funzione informativa dell'item} ({\it Item Information Function}, in breve IIF), la quale esprime la precisione con cui un item misura una data regione di abilità. La IIF da un'idea sulla posizione rispetto alla scala di abilità dove l'item fornisce più informazione. La IIF è, in ogni punto, proporzionale al quadrato della pendenza della ICC. Dove la ICC ha una pendenza bassa, la quantità di informazione fornita dall'item è bassa; la quantità di informazione è invece alta in corrispondenza del punto di flesso della ICC, dove la pendenza è più grande. Ne deriva che lo stesso item, non essendo informativo allo stesso modo per tutti i livelli di abilità, avrà un errore standard maggiore quanto più la stima interessa un livello di $\theta$ in cui l'item non ha potere informativo. 
+
+L'utilità della IIF è strettamente connessa alla possibilità di selezionare solo item che sono informativi per una regione target di abilità, dove il ricercatore vuole effettuare la misurazione. Nei modelli IRT la IIT riveste grade importanza perché consente di creare test che sono formati da item informativi per quell'area di abilità che è di interesse dello psicologo, minimizzando l'errore di misurazione per quella specifica regione di $\theta$. La IIF ha dunque un ruolo cruciale nella costruzione dei test.
+
+
+% %----------------------------------------------------------------------------
+% \section{Quantità di informazione}
+% %----------------------------------------------------------------------------
+
+% Quanto è precisa la misurazione dell'abilità latente? Questa è la domanda fondamentale a cui deve essere data una risposta da qualunque teoria della valutazione delle abilità mentali. I 
+%  modelli IRT definiscono l'accuratezza della stima del tratto latente nei termini della \emph{funzione informazione del test}.  Prima di  discutere tale concetto è necessario introdurre la nozione di \emph{Informazione di Fisher}. 
+
+
+% % La \emph{funzione informazione dell'item} ({\it item information curve}, ICC)
+% % indica la quantità di \emph{informazione di Fisher} fornita da un
+% % item. Iniziamo a considerare la nozione di Informazione di Fisher.
+
+% %----------------------------------------------------------------------------
+% \subsection{Informazione di Fisher}
+% %----------------------------------------------------------------------------
+
+% L'informazione di Fisher, denotata con $\mathcal{I}(\theta)$,  è uno dei concetti centrali della teoria statistica della stima. $\mathcal{I}(\theta)$ può essere
+% interpretata come la quantità di informazione fornita da una
+% variabile casuale osservabile $X$ sul parametro non
+% osservabile $\theta$, da cui dipende la funzione di verosimiglianza
+% $\mathcal{L}(\theta)= f(X \; | \; \theta)$.   Il suo inverso costituisce un  limite inferiore, detto limite inferiore di Cramér-Rao, alla varianza di uno
+% stimatore corretto $\hat{\theta}$ per il parametro $\theta$:
+% \begin{equation}
+% Var(\hat{\theta}) \geq \frac{1}{\mathcal{I}(\theta)}
+% \end{equation}
+% % \noindent e così limita la precisione con cui il parametro può essere stimato dalle misure statistiche. 
+
+% L'Informazione di Fisher quantifica la precisione statistica con la quale il parametro  $\theta$ di una funzione di probabilità può essere stimato dai dati osservabili e corrisponde alla quantità di curvatura assunta dalla funzione
+% di log-ve\-ro\-si\-mi\-glian\-za  $\mathcal{L}(\theta)$ di $\theta$  
+% in prossimità del suo punto di massimo.
+%  Se la curvatura della funzione di
+% verosimiglianza in prossimità del punto di massimo è grande, è facile
+% intuire il valore ``corretto'' del parametro $\theta$ subordinatamente
+% ai dati; quindi, i dati contengono molte informazioni sul parametro $\theta$. Se invece la curvatura della funzione di
+% verosimiglianza in prossimità del punto di massimo è piccola (il
+% profilo di curvatura è ``piatto''), allora saranno necessari molti
+% campioni di $X$ per stimare il ``vero'' valore del parametro
+% $\theta$. In tali circostanze, i dati contengono meno informazioni sul
+% parametro $\theta$.
+
+% %----------------------------------------------------------------------------
+% \subsection{Funzione informazione dell'item}
+% %----------------------------------------------------------------------------
+
+% Nei modelli IRT, l'Informazione di Fisher viene misurata attraverso la \emph{funzione informazione dell'item} ({\it item information curve, IIC}), che si ottiene da una trasformazione della CCI.  La funzione informazione dell'item consente di stimare  la quantità
+% d'informazioni fornite da un determinato item a proposito delle
+% abilità latenti dei rispondenti e viene 
+% % Attraverso la funzione informazione dell'item, i modelli IRT consentono di stimare la quantità
+% % d'informazioni fornite da un determinato item a proposito delle
+% % abilità latenti dei rispondenti. 
+% % La funzione informazione dell'item 
+% % può essere 
+% utilizzata, per esempio, per selezionare gli item per un questionario o 
+% per la creazione di ``test adattivi'' (cioè adeguati alle capacità del
+% soggetto esaminato) somministrati attraverso il computer.
+
+% Nel modelo 3PL, la funzione informazione dell'item è uguale a
+% \begin{equation}
+% \mathcal{I}_j(\theta)= \left[ \alpha^2_j
+%   \frac{1-P_j(\theta)}{P_j(\theta)}  \right] \left[ \frac{(P_j(\theta)
+% - \gamma_j)^2}{(1-\gamma_j)^2} \right]
+% \end{equation}
+% dove $P_j(\theta)$ è la probabilità di una risposta corretta al
+% $j$-esimo item, $\gamma_i$  rende conto dell'eventuale
+% tendenza del soggetto a ``indovinare a caso'' e  $\alpha$ è il
+% parametro di discriminazione degli item. 
+% Se $\gamma_i=0$, il modello 3PL si riduce ad un modello a due
+% parametri e la formula precedente diventa
+% \begin{equation}
+% \mathcal{I}_j(\theta)=  \alpha^2_j P_j(\theta) [1-P_j(\theta)]
+% \end{equation}
+
+% Ne caso del modello di Rasch, infine, la funzione informazione dell'item si riduce semplicemente a 
+% \begin{equation}
+% \mathcal{I}_j(\theta)= P_j(\theta) [1-P_j(\theta)]
+% \end{equation}
+
+% Le seguenti implicazioni possono essere tratte dalla formule
+% precedenti. Nel caso dei modelli IRT a uno o a due parametri, la
+% funzione informazione dell'item raggiunge il suo massimo intorno al valore
+% del parametro di difficoltà dell'item. Questo significa che sono
+% maggiormente informativi gli item equiparati in difficoltà al
+% livello di abilità latente del rispondente. Nel caso del modello IRT a
+% tre parametri, il massimo della funzione IIC si osserva per valori
+% leggermente inferiori al valore del parametro di difficoltà.  Inoltre,
+% l'effetto dell'introduzione del parametro di {\it guessing} $\gamma_i$
+% ha la conseguenza di diminuire la quantità d'informazione fornita da
+% un item.  A parità delle altre condizioni, dunque, i modelli 3PL sono
+% meno informativi dei modelli IRT a uno o due parametri.
+
+% Un'altra proprietà della funzione IIC è che la quantità d'informazione
+% fornita da un item dipende dal potere discriminante degli item: tanto
+% maggiore è la pendenza delle ICC, tanto maggiore sarà la quantità
+% d'informazione fornita dall'item.
+
+\begin{exmp}
+La funzione {\tt iif()} contenuta nel pacchetto {\tt irtoys} consente di ottenere una rappresentazione grafica della funzione informativa dell'item. Adattiamo il modello di Rasch ai dati contenuti nel data frame {\tt raschdat1} del pacchetto {\tt eRm}:
+\begin{lstlisting}
+library("irtoys")
+p.1pl  <- est(raschdat1, model = "1PL", engine = "ltm")
+plot(iif(p.1pl), co = "red", label = TRUE)
+\end{lstlisting}
+Il risultato è riportato nella figura~\ref{fig:iit_raschdat1}.
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=7cm]{IIF_raschdat1}
+    \caption{{\it Funzione informazione dell'item derivata dal data.frame {\tt raschdat1}. Ai dati è stato adattato un modello di Rasch.}}
+    \label{fig:iit_raschdat1}
+\end{figure}
+Adattiamo ora un modello 2PL agli stessi dati. Le ITF per gli item del questionario sono riportate nella Figura~\ref{fig:iit_raschdat1_a}.
+\begin{lstlisting}
+p.2pl  <- est(raschdat1, model = "2PL", engine = "ltm")
+plot(iif(p.2pl), co = "red", label = TRUE)
+\end{lstlisting}
+
+%\begin{figure}[h!]
+%  \centering
+%    \includegraphics[width=7cm]{IIF_raschdat1_a}
+%    \caption{Funzione informativa dell'item derivata dal data.frame {\tt raschdat1}. Ai dati è stato adattato un modello 2PL.}
+%    \label{fig:iit_raschdat1_a}
+%\end{figure}
+
+\end{exmp}
+
+%----------------------------------------------------------------------------
+\section{Funzione informativa del test}
+
+Sommando le IIF relative a tutti gli item che compongono il test è possibile calcolare la \emph{funzione informativa del test} (\emph{Test Information Function}, in breve TIF). Attraverso il TIF è possibile comprendere se il test nel suo  complesso è in grado di fornire  una buona valutazione del livello di competenza e abilità dei rispondenti.
+%\footnote{C'è una relazione tra la TIF e l'errore standard di misurazione $SE$ della teoria classica dei test.  La TIF è inversamente proporzionale all'errore standard di misura e può essere stimata per  ciascun valore dell'abilità $\theta$.}. 
+Il TIF rivela la precisione con cui un tratto latente $\theta$ viene misurato dal test nel suo complesso. Se il TIF assume valori alti in corrispondenza di uno specifico valore $\theta$, per esempio, questo significa che il test misura in maniera più precisa quello specifico livello di abilità latente rispetto agli altri. Uno dei possibili usi del TIF è il confronto tra due test, entrambi misure dello stesso costrutto. 
+
+Il TIF determina l'\emph{errore standard della stima dell'abilità} del rispondente:
+\begin{equation}
+SE(\hat{\theta}) = \frac{1}{\sqrt{TIF(\theta)}}.
+\label{tot.info}
+\end{equation}
+Quindi conoscendo la funzione informativa di un test, si può calcolare l'errore standard contenuto nella stima di $\theta$ effettuata con il metodo di massima verosimiglianza.
+
+Nella Teoria Classica l'errore standard di misurazione è costante rispetto al campione su cui viene stimato, quindi tutti i soggetti appartenenti ad un unico campione hanno lo stesso livello di errore. Nei modelli IRT, invece, l'errore standard di misurazione varia in funzione del livello di abilità: tende ad essere minimo intorno al valore di $\theta$ in cui l'informazione del test (e quindi la precisione della misurazione) è massima, e al contrario tende ad aumentare per quei valori di abilità in cui l'informazione del test è minima. 
+%Si noti inoltre come, sia per la Teoria Classica sia per i modelli IRT, l'errore standard della stima dell'abilità latente $\theta$ si riduce all'aumentare del numero degli item.  
+
+Nella Teoria Classica la precisione della misurazione viene indicizzata  dall'attendibilità del test e dall'errore standard della misura. Dato che entrambi questi indici dipendono dal calcolo di correlazioni, entrambi dipendono dagli specifici campioni che sono stati esaminati; la possibilità di generalizzazione di tali indici risulta quindi limitata. Inoltre, sia l'attendibilità sia l'errore standard della misura nella Teoria Classica dipendono dall'esistenza di forme parallele del test. Possiamo dunque dire che, mentre la funzione informazione del test nei modelli IRT è una proprietà intrinseca del test, mentre l'attendibilità della Teoria Classica non lo è.
+
+%La capacità  misuratoria di un test è tanto maggiore quanto più sovrapponibili  sono  gli intervalli entro cui, rispettivamente, oscillano il parametro di abilità  dei rispondenti e quello di difficoltà degli item. Per controllare la sovrapponibilità di questi intervalli, oltre al confronto statistico delle distribuzioni per indici (quali la media, la deviazione standard, la curtosi, l'asimmetria, ecc.), è anche possibile costruire  la \emph{mappa di Wright} che scala, graficamente, sia  gli individui (in funzione del livello di abilità) che gli item (in funzione del livello di difficoltà) lungo il medesimo tratto latente.
+
+
+\begin{exmp}
+La funzione informativa del test può essere generata mediante la funzione {\tt tif()} contenuta nel pacchetto {\tt irtoys}. Per i dati dell'esempio precedente, le istruzioni necessarie sono le seguenti: 
+\begin{lstlisting}
+plot(tif(p.1pl))
+plot(tif(p.2pl))
+\end{lstlisting}
+Nel primo esempio, viene adattato ai dati un modello di Rasch; nel secondo esempio, viene adattato ai dati un modello 2PL. I diagrammi prodotti da tali istruzioni sono presentati nella Figura~\ref{fig:tif_raschdat1}. 
+\end{exmp}
+
+\begin{figure}[h!]
+   \centering
+     \includegraphics[width=7cm]{tif_raschdat1}
+     \caption{Funzione informativa del test per i dati {\tt raschdat1}. Ai dati è stato adattato un modello di Rasch.}
+     \label{fig:tif_raschdat1}
+ \end{figure}
+
+
+ \begin{figure}[h!]
+   \centering
+     \includegraphics[width=7cm]{tif_raschdat1_a}
+     \caption{Funzione informativa del test per i dati {\tt raschdat1}. Ai dati è stato adattato un modello 2PL.}
+     \label{fig:tif_raschdat1_a}
+ \end{figure}
+
+
+\begin{exmp}
+La Figura~\ref{fig:luecht}, proposta da Luecht (2006), mostra la funzione informativa di tre test, ciascuno  composto da 25 item. Il problema è quello di confrontare i tre strumenti qualora vengano utilizzati come test attitudinali. Supponiamo di stabilire un punteggio di cut-off che corrisponde al ventesimo percentile della popolazione dei rispondenti (in altri termini, ci aspettiamo che l'80\% dei rispondenti passi il test). Supponiamo che $\theta$ segua una normale standardizzata; il punto di cut-off è duque pari a $\theta_{cut} = -0.84$, come indicato dalla linea verticale nella Figura~\ref{fig:luecht}. 
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=8cm]{fig25_5}
+    \caption{Funzione informativa del test per 3 questionari attitudinali (Luecht, 2006).}
+    \label{fig:luecht}
+  \end{center}
+\end{figure}
+
+La figura mostra che il Test 3 fornisce il TIF più appropriata per un test attitudinale con un valore di cut-off di $-0.84$. Infatti, per tale test, il TIF ha un picco proprio in prossimità del valore del cut-off.  Inoltre, il Test 3 fornisce una quantità sufficientemente grande d'informazione: il valore dell'errore standard in corrispondenza del punto di cut-off è di circa 0.30. In contrasto, il TIF del Test 2, pur raggiungendo anch'esso un picco in prossimità del punteggio di cut-off, offre una quantità d'informazione considerevolmente minore: il corrispondente errore standard, infatti, è pari a 0.55. 
+%Il Test 2, benché abbia un livello adeguato di difficoltà, manca invece di potere discriminante. Il TIF del Test 1, inoltre, indica che questo test sia maggiormente informativo in prossimità della media dei valori di $\theta$, ovvero per $\theta=0$, e la quantità d'informazione che esso fornisce diminuisce in prossimità del punto di cut-off prescelto. 
+\end{exmp}
+
+\section{Vantaggi dei modelli IRT}
+
+La Teoria Classica, per ottenere la maggiore consistenza interna, seleziona gli item con le maggiori correlazioni item-totale. Dopo avere somministrato il questionario ad un grande campione, lo psicologo confronta la distribuzione del punteggio totale del questionario con la distribuzione teorica attesa (per esempio, la Gaussiana). Gli item vengono ulteriormente selezionati per ottenere una maggiore approssimazione alla distribuzione teorica desiderata. Forme parallele del test vengono create in modo che abbiano distribuzioni identiche dei punteggi totali. L'equivalenza delle medie e delle varianze delle distribuzioni dei punteggi è interpretata come evidenza che i test siano paralleli.
+
+Il limite maggiore della procedura seguita dalla Teoria Classica è quello per cui le statistiche ottenute sono dipendenti sia dal campione di soggetti utilizzato per validare il test, sia dall'insieme degli item selezionati. Inoltre, l'errore standard della misurazione viene trovato facendo la media su tutti i livelli di abilità; nessuna informazione è fornita sull'errore di misurazione per uno specifico livello di tratto. 
+
+Rispetto alla Teoria Classica, i punteggi IRT sono invece invarianti rispetto al campione esaminato e non dipendono dallo specifico insieme di item che è stato utilizzato. {\`E} inoltre possibile calcolare l'errore standard della misurazione in corrispondenza di specifici livelli  del tratto latente usando la funzione informazione del test. 
+
+

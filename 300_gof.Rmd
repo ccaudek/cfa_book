@@ -1,0 +1,205 @@
+# Indici di bontà dell'adattamento {#ch:gof}
+
+```{r, include = FALSE}
+source("_common.R")
+library("lavaan")
+library("effectsize")
+```
+
+I passi principali nella CFA e nei modelli SEM comprendono la specificazione del modello, la stima dei parametri, la valutazione del modello e dei parametri e la modificazione del modello. Questa sequenza può essere ripetuta molte volte fino a quando non si trovi un modello considerato accettabile. La valutazione del modello viene eseguita calcolando gli indici di bontà dell'adattamento. In questo capitolo considereremo i principali indici di bontà dell'adattamento utilizzati nella letteratura.
+
+## Stima del modello 
+
+L'obiettivo della CFA è ottenere stime per ogni parametro del modello di misura (vale a dire, saturazioni fattoriali, varianze e covarianze fattoriali, varianze residue ed eventualmente covarianze degli errori) che producano una matrice di covarianza prevista (denotata da $\boldsymbol{\Sigma}$) che assomiglia il più possibile alla matrice di covarianza delle variabili campionarie (denotata da $\boldsymbol{S}$). Questo processo fa riferimento ad una funzione di adattamento che consente di ridurre al minimo la differenza tra $\boldsymbol{\Sigma}$ e $\boldsymbol{S}$. Il metodo di stima più utilizzato nella CFA (e, in generale, nei modelli SEM) è la massima verosimiglianza (ML). 
+
+## Massima verosimiglianza
+
+L'equazione fondamentale dell'analisi fattoriale è
+
+$$
+\boldsymbol y = \boldsymbol \Lambda  \boldsymbol x  + \boldsymbol z, 
+$$
+
+dove $\boldsymbol{y}$ è un vettore di $p$ componenti (i punteggi del test), $\boldsymbol{x}$ è un vettore di $k < p$ componenti (i punteggi dei fattori comuni), $\boldsymbol{z}$ è un vettore di $p$ componenti (la componente unica dei punteggi del test) e $\boldsymbol{\Lambda}$ è una $p \cdot k$ matrice (di saturazioni fattoriali). 
+
+Dalle assunzioni del modello fattoriale deriva che
+
+$$
+\boldsymbol{\Sigma} = \boldsymbol{\Lambda}\boldsymbol{\Lambda}^\prime + \Psi.
+$$
+
+Si assume che il vettore casuale $\boldsymbol{y}$ abbia una distribuzione normale multivariata con matrice di covarianza $\boldsymbol{\Sigma}$ e che da tale distribuzione sia stato estratto un campione casuale di $n$ osservazioni $y_l, y_2, \dots, y_n$. Il logaritmo della funzione di verosimiglianza per il campione è dato da
+
+$$
+\log L = \frac{1}{2}n [\log | \boldsymbol{\Sigma}| + \mbox{tr}(\boldsymbol{\boldsymbol{S} \Sigma}^{-1})].
+$$
+
+L'equazione precedente viene vista come funzione di $\Lambda$ e $\Psi$. Anziché massimizzare $\log L$, è equivalente e più conveniente minimizzare 
+
+$$
+F_{k}(\Lambda, \Psi) = \log |\boldsymbol{\Sigma}| + \mbox{tr}[\boldsymbol{S}\boldsymbol{\Sigma}^{-1}]  - \log|\boldsymbol{S}| – p,
+$$
+
+dove $|\boldsymbol{S}|$ è il determinante della matrice di covarianza tra le variabili osservate, $|\boldsymbol{\Sigma}|$ è il determinante della matrice di covarianza prevista e $p$ è il numero di indicatori. 
+
+L'obiettivo della stima di massima verosimiglianza della CFA è trovare le stime dei parametri che rendono più probabili i dati osservati (o, al contrario, massimizzano la probabilità dei parametri dati i dati). Le stime dei parametri in un modello CFA si ottengono con una procedura iterativa. Cioè, l'algoritmo inizia con una serie iniziale di stime dei parametri (denominate valori iniziali o stime iniziali, che possono essere generate automaticamente dal software o specificate dall'utente) e raffina ripetutamente queste stime nel tentativo di minimizzare la differenza tra $\boldsymbol{\Sigma}$ e $\boldsymbol{S}$. Il programma effettua controlli interni per valutare i suoi progressi nell'ottenere stime dei parametri che al meglio riproducono  $\boldsymbol{S}$. Si raggiunge la convergenza quando l'algoritmo produce una serie di stime dei parametri che non possono essere ulteriormente migliorate per ridurre la differenza tra $\boldsymbol{\Sigma}$ e $\boldsymbol{S}$. 
+
+## Identificabilità del modello
+
+Un modello CFA deve essere formulato in modo tale da garantire la risolvibilità matematica dello stesso, ovvero deve essere tale da consentire una stima univoca dei parametri del modello. Detto in altre parole, la specificazione del modello ne deve garantire l'dentificabilità.
+
+Il problema dell’identificazione richiede, innanzitutto, di chiarire il concetto di gradi di libertà (*degrees of freedom*). Nel presente contesto, per gradi di libertà ($\mbox{df}$) intendiamo
+
+$$
+\mbox{df} = \# (\text{unità di informazione}) - \# (\text{parametri da stimare}).
+$$
+
+I dati che vengono analizzati da un modello CFA sono contenuti in una matrice di covarianza. Per una matrice di covarianza di ordine $p$, il numero di unità di informazione è
+
+$$
+\frac{p (p+1)}{2}.
+$$
+
+Affinché il modello sia identificabile, devono essere soddisfatte le seguenti condizioni.
+
+1. Indipendentemente dalla complessità del modello (ad es. modelli ad un fattore rispetto a più fattori), l'unità di misura delle variabili latenti deve essere specificata (di solito fissandola a un valore di 1);
+2. Indipendentemente dalla complessità del modello, il numero di unità di informazione  (es. la matrice di covarianza degli indicatori) deve essere uguale o superiore al numero di parametri da stimare (es. saturazioni fattoriali, specificità, covarianze degli errori dell'indicatore, covarianze tra i fattori);
+3. Nel caso di modelli ad un fattore è richiesto un minimo di tre indicatori. Quando vengono utilizzati tre indicatori, la soluzione a un fattore si dice "appena identificata" (*just-identified*); in tali condizioni non è possibile valutare la bontà dell'adattamento.
+4. Nel caso di modelli a due o più fattori e due indicatori per costrutto latente, la soluzione è sovraidentificata, a condizione che ogni variabile latente sia correlata con almeno un'altra variabile latente e gli errori tra gli indicatori siano tra loro incorrelati. Tuttavia, poiché tali soluzioni sono suscettibili di scarsa identificazione empirica, viene raccomandato un minimo di tre indicatori per variabile latente.
+
+In conclusione, una semplice e necessaria condizione per l'identificazione di un modello CFA è che vi siano più unità di informazione che parametri da stimare. Dunque, abbiamo che:
+
+- se $\mbox{df} < 0$, il modello *non è identificato* e, in questo caso, non è possibile stimare i parametri;
+- se $\mbox{df} = 0$, il modello è *appena identificato* o "saturo"; in questo caso, la matrice di covarianza riprodotta coincide con la matrice di covarianza delle variabili osservate e, di conseguenza, non esiste un residuo attraverso cui valutare la bontà dell'adattamento del modello;
+- se $\mbox{df} > 0$, il modello è *sovra-identificato* ed esistono le condizioni per valutare la bontà dell'adattamento.
+
+Le considerazioni precedenti ci fanno capire perché non si può fare un'analisi fattoriale con solo due indicatori e un fattore; in tali circostanze, infatti, ci sono $(2 \cdot 3)/2 = 3$ gradi di libertà, ma 4 parametri da stimare (due saturazioni fattoriali e due specificità). Il caso di tre item e un fattore definisce un modello "appena identificato", ovvero, il caso in cui ci sono zero gradi di libertà. In tali circostanze è possibile stimare i parametri (ricordiamo il metodo dell'annullamento della tetrade), ma non è possibile un test di bonta dell'adattamento. Questo vuol dire che, in pratica, è necessario un numero minimo di quattro indicatori per ciascun fattore. 
+
+## Bontà dell'adattamento
+
+### Chi quadrato
+
+L'indice classico di bontà dell'adattamento dei modelli CFA è il $\chi^2$. Sotto determinate condizioni, la funzione di discrepanza $F_{k}(\boldsymbol{\Sigma}, \boldsymbol{S})$ moltiplicata per $n$ o $n-1$ (a seconda dei software)
+
+$$
+n F_{k}(\Lambda, \Psi) \quad \text{oppure}\quad (n-1) F_{k}(\Lambda, \Psi)
+$$
+
+con $n$ uguale alla numerosità campionaria, si distribuisce come una $\chi^2$ con gradi di libertà (*degrees of freedom*)
+
+\begin{equation}
+\mbox{df} = \frac{p (p+1)}{2}-t,
+\end{equation}
+
+dove $p$ è il numero di item (variabili osservate) e $t$ è il numero di parametri da stimare.
+
+Sebbene l'indice $\chi^2$ sia stato il primo indice di adattamento ad essere sviluppato, esso è raramente usato nella ricerca applicata quale unico indice di adattamento del modello. Infatti, 
+
+- in molti casi (es. piccolo N, dati non normali) la distribuzione sottostante non è $\chi^2$ (il che compromette i test di significatività statistica del modello basati su $\chi^2$); 
+- $\chi^2$ dipende fortemente dalla dimensione del campione; soluzioni fattoriali in corrispondenza di valori N grandi vengono regolarmente rifiutate sulla base di $\chi^2$ anche quando differenze tra $\boldsymbol{\Sigma}$ e $\boldsymbol{S}$ sono trascurabili; 
+- $\chi^2$ si basa sull'ipotesi molto stringente $\boldsymbol{\Sigma} = \boldsymbol{S}$. Come discusso di seguito, molti indici di adattamento alternativi si basano su standard meno stringenti come l'adattamento "ragionevole" e l'adattamento relativo a un modello di indipendenza. 
+
+Nonostante questi limiti, la statistica $\chi^2$ viene comunque utilizzata per altri scopi, come il confronto di modelli nidificati, il calcolo di altri indici di adattamento (ad es. l'indice di Tucker–Lewis) e il calcolo del rapporto tra $\chi^2$ e gradi di libertà. 
+
+Sebbene la statistica $\chi^2$ sia riportata di routine nell'output dei software che svolgono la CFA, nella valutazione dell'adattamento del modello si fa solitamente affidamento su altri indici di adattamento. Tali indici possono essere suddivisi in tre categorie:
+
+- *misure di adeguamento assoluto* -- indicano l’abilità del modello di riprodurre i dati osservati;
+- *misure di adeguamento per il confronto o comparative* -- permettono di confrontare fra loro 2 o più modelli e di scegliere il migliore (statisticamente);
+- *misure di adeguamento parsimonioso* -- indici "aggiustati" in base ai gradi di libertà.
+
+## Misure di adeguamento per il confronto
+
+### CFI
+
+Gli indici di adattamento comparativo [indicati anche come indici di adattamento incrementale; ad es. @hu1998fit] valutano l'adattamento di una soluzione specificata dall'utente in relazione a un modello di base nidificato più ristretto. Tipicamente, questo modello di base è un modello "nullo" o "di indipendenza" in cui le covarianze tra tutti gli indicatori di input sono fissate a zero, ma nessun vincolo viene posto sulle varianze degli indicatori. Uno di questi indici, l'*indice di adattamento comparativo* (*comparative fit index*, CFI; Bentler, 1990), è calcolato come segue.
+
+Sia $\delta = \chi^2 - \mbox{df}$, dove $\mbox{df}$ sono i gradi di libertà di un particolare modello. Tanto più $\delta$ è prossimo allo zero tanto maggiore è la bontà dell'adattamento. La formula di CFI è
+
+\begin{equation}
+\mbox{CFI} = \frac{\delta_B - \delta_T}{\delta_B},
+\end{equation}
+
+dove il pedice $T$ denota il modello target (cioè il modello in valutazione) e il pedice $B$ denota il modello baseline (cioè il modello "nullo").
+
+
+## Misure di adeguamento parsimonioso
+
+### TLI 
+
+Un indice che rientra in questa categoria è l'*indice Tucker-Lewis* (*Tucker–Lewis index*, TLI, anche chiamato indice di adattamento non normato). Il TLI si pone il problema di compensare per l'effetto della complessità del modello, ovvero include una funzione di penalizzazione per l'addizione di parametri che non migliorano notevolmente l'adattamento del modello. Il TLI è calcolato con la seguente formula:
+
+\begin{equation}
+\mbox{TLI} = \frac{(\chi^2_B / \mbox{df}_B)–(\chi^2_T / \mbox{df}_T)}{(\chi^2_B / \mbox{df}_B) – 1},
+\end{equation}
+
+dove $\chi^2_T$ è il valore $\chi^2$ del modello target, $\mbox{df}_T$ sono i gradi di libertà del modello target, $\chi^2_B$ è il valore $\chi^2$ del modello baseline e $\mbox{df}_B$ sono i gradi di libertà del modello base.
+
+## Misure di adeguamento assoluto
+
+### RMSEA 
+
+L'errore quadratico medio di approssimazione è una misura assoluta dell'adattamento perché non confronta la discrepanza del modello target rispetto a un modello di base, come CFI o TLI. Invece, RMSEA definisce $\delta$ come parametro di non centralità che misura il grado di errata specificazione. Ricordiamo dal CFI che $\delta = \chi^2 - df$, dove $df$ sono i gradi di libertà del modello; tanto maggiore è $\delta$ tanto più grande è la mancanza di adattamento del modello ai dati. L'indice RMSEA si ottiene nel modo seguente:
+
+\begin{equation}
+\mbox{RMSEA} = \sqrt{\frac{\delta}{\mbox{df}(n-1)}},
+\end{equation}
+
+dove $n$ corrisponde alla numerosità campionaria.
+
+L'indice RMSEA fornisce una stima dell'errore di approssimazione che si
+commette quando la matrice delle correlazioni (o covarianze) osservate viene riprodotta
+tramite la matrice ricavata dalle saturazioni fattoriali. Questo indice rappresenta una stima della bontà di adattamento del modello nella popolazione,
+ponderata per i gradi di liberà e quindi è una misura che tiene in
+considerazione la parsimonia del modello. 
+
+### RMRS
+
+L'indice RMRS viene definito come la radice quadrata della media dei residui al quadrato. L'indice RMRS rappresenta la media della correlazione residua, cioé non spiegata dal modello, ed è ricavabile con la seguente formula:
+
+\begin{equation}
+\mbox{RMRS} = \sqrt{ \frac{2 \sum_i\sum_j(r_{ij} - \hat{r}_{ij})^2}{q(q+1)}},
+\end{equation}
+
+dove $q$ è il numero di variabili manifeste, e $r_{ij}$ e $\hat{r}_{ij}$
+sono rispettivamente la correlazione osservata e la correlazione
+riprodotta tra le variabili $i$ e $j$.
+
+## Interpretazione
+
+Un valore RMSEA < .05 indica un "close fit" e quello < .08 suggerisce un ragionevole adattamento modello-dati. Bentler e Bonett (1980) raccomandano TLI > .90 per un adattamento accettabile.
+
+L'interpretazione degli indici di bontà di adattamento trovati nella CFA o nella modellazione di equazioni strutturali può essere ottenuta usando le funzioni del pacchetto `effectsize`. Ad esempio (dal manuale):
+
+```{r}
+structure <- " ind60 =~ x1 + x2 + x3
+               dem60 =~ y1 + y2 + y3
+               dem60 ~~ ind60 "
+fit <- lavaan::sem(structure, data = lavaan::PoliticalDemocracy)
+effectsize::interpret(fit)
+```
+
+## Una nota di cautela
+
+Nella letteratura SEM sono state sollevate forti argomentazioni contro l'applicazione di RMSEA, CFI e TLI e i loro valori di cutoff convenzionali [ad esempio, @barrett2007structural]. Tuttavia, prima che i ricercatori propongano e accettino alternative migliori, l'applicazione di questi indici di bontà dell'adattamento continuerà nella maggior parte degli studi SEM. @xia2019rmsea fanno notare come, in base alla consuetudine corrente, valori RMSEA più grandi e valori CFI e TLI più piccoli indicano un adattamento peggiore. Ciò spinge i ricercatori a modificare i loro modelli per cercare di ottenere indici migliori. Tuttavia, la pratica attuale si è evoluta in una fase in cui gli indici di adattamento servono come criteri (e gli unici criteri, in molte situazioni) per determinare se accettare o rifiutare un modello ipotizzato: se i valori degli indici di adattamento raggiungono la soglia "di pubblicabilità" (ad es. RMSEA < .06), allora non si ritiene più necessario migliorare il modello. In realtà, un'affermazione come "poiché i valori RMSEA, CFI e TLI suggeriscono un buon adattamento, questo modello è stato scelto come modello finale" non è sufficiente. Il raggiungimento di una serie di soglie desiderate di RMSEA, CFI e TLI è solo uno dei possibili indicatori che devono essere considerati nel processo di selezione di modelli. I ricercatori dovrebbero anche spiegare se esistono altre opzioni per migliorare il modello, perché tali opzioni sono o non sono adottate e quali sono le conseguenze scientifiche della scelta del modello in questione come quello finale.
+
+<!-- La struttura di un costrutto può essere meglio chiarita svolgendo -->
+<!-- un'analisi separata nella quale vengono considerati solo gli item che -->
+<!-- identificano il costrutto in questione. In questo modo si può verificare -->
+<!-- con maggiore attenzione l'unidimensionalità della struttura fattoriale. -->
+
+<!-- Sono diversi gli indici che possono essere considerati per valutare se -->
+<!-- la struttura fattoriale è unidimensionale (Barbaranelli e Natali, 2005). -->
+<!-- Se il test ha una struttura fattoriale unidimensionale gli item -->
+<!-- dovrebbero dare origine ad un coefficiente $\alpha$ elevato. Il fattore -->
+<!-- latente deve spiegare una quota consistente della varianza delle -->
+<!-- variabili manifeste. Alcuni autori indicano il 40% come percentuale -->
+<!-- minima da spiegare, altri suggeriscono il 20% come soglia (Hattie, -->
+<!-- 1985). Il rapporto tra il primo e il secondo autovalore fornisce una -->
+<!-- stima della quota di variabilità che il primo fattore riproduce; se tale -->
+<!-- rapporto è basso allora i due autovalori sono simili e la soluzione -->
+<!-- monofattoriale non è accettabile. Le saturazioni nel fattore comune -->
+<!-- dovrebbero essere tutte elevate e superiori ad almeno .40. Il valore -->
+<!-- della funzione di bontà di adattamento dovrebbe produrre un valore -->
+<!-- $\chi^2$ non significativo. Oltre al $\chi^2$ vi sono altri indici di -->
+<!-- bontà dell'adattamento. Ne considereremo due: l'indice RMSEA e l'indice -->
+<!-- RSSR. -->

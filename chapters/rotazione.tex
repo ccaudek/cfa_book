@@ -1,0 +1,862 @@
+% DO NOT COMPILE THIS FILE DIRECTLY!
+% This is included by the other .tex files.
+
+%%------------------------------------------------------------
+\chapter{La rotazione fattoriale}
+\label{ch:rotazione}
+%%------------------------------------------------------------
+
+Nel capitolo~\ref{ch:estrazione} abbiamo visto come sia possibile ottenere la soluzione fattoriale non ruotata per il numero di fattori comuni che meglio riassume l'informazione contenuta nella matrice di correlazioni (o covarianze). 
+La soluzione non ruotata non garantisce l'identificazione di
+aggregati omogenei e interpretabili di variabili osservate.
+Si tende dunque a ricorrere alla rotazione degli assi fattoriali nella ricerca di una soluzione più facilmente interpretabile di quella ottenuta in prima istanza. 
+
+\section{Indeterminatezza della soluzione fattoriale}
+
+ Il problema della rotazione si pone perché la matrice delle saturazioni non presenta un'unica soluzione e, attraverso la sua trasformazione matematica, si possono ottenere infinite matrici dello stesso ordine. Tale fatto va sotto il nome di ``indeterminatezza della soluzione fattoriale.''
+
+La matrice delle saturazioni fattoriali $\boldsymbol{\Lambda}$ non risulta univocamente definita in quanto non esiste una soluzione unica alla determinazione delle saturazioni fattoriali. Una matrice di correlazioni $\boldsymbol{R}$ consente di determinare soluzioni fattoriali diverse, ovvero matrici aventi lo stesso numero di fattori comuni ma una diversa configurazione di saturazioni fattoriali, oppure matrici di saturazioni fattoriali corrispondenti ad un diverso numero di fattori comuni.
+
+\bigskip
+
+\begin{exmp} 
+Siano $\boldsymbol{\Lambda}_1$ e $\boldsymbol{\Lambda}_2$ due
+matrici  aventi lo stesso numero di righe e colonne, ma contenenti saturazioni fattoriali diverse.  $\boldsymbol{\Lambda}_1$ è definita dai valori seguenti
+\begin{lstlisting}
+l1 <- matrix(c(
+ 0.766,  -0.232,
+ 0.670,  -0.203,
+ 0.574,  -0.174,
+ 0.454,   0.533,
+ 0.389,   0.457,
+ 0.324,   0.381),
+  byrow = TRUE, ncol = 2)
+\end{lstlisting}
+mentre per $\boldsymbol{\Lambda}_2$  abbiamo
+\medskip
+\begin{lstlisting}
+l2 <- matrix(c(
+ 0.783,  0.163,
+ 0.685,  0.143,
+ 0.587,  0.123,
+ 0.143,  0.685,
+ 0.123,  0.587,
+ 0.102,  0.489),
+  byrow = TRUE, ncol = 2)
+\end{lstlisting}
+Esaminiamo la matrice delle correlazioni riprodotte dalle due matrici di pesi fattoriali (con le comunalit{\`a} sulla diagonale di $\boldsymbol{R}$):
+\begin{lstlisting}
+l1 %*% t(l1)
+#>       [,1]  [,2]  [,3]  [,4]  [,5]  [,6]
+#> [1,] 0.641 0.560 0.480 0.224 0.192 0.160
+#> [2,] 0.560 0.490 0.420 0.196 0.168 0.140
+#> [3,] 0.480 0.420 0.360 0.168 0.144 0.120
+#> [4,] 0.224 0.196 0.168 0.490 0.420 0.350
+#> [5,] 0.192 0.168 0.144 0.420 0.360 0.300
+#> [6,] 0.160 0.140 0.120 0.350 0.300 0.250
+\end{lstlisting}
+\begin{lstlisting}
+l2 %*% t(l2)
+#>       [,1]  [,2]  [,3]  [,4]  [,5]  [,6]
+#> [1,] 0.640 0.560 0.480 0.224 0.192 0.160
+#> [2,] 0.560 0.490 0.420 0.196 0.168 0.140
+#> [3,] 0.480 0.420 0.360 0.168 0.144 0.120
+#> [4,] 0.224 0.196 0.168 0.490 0.420 0.350
+#> [5,] 0.192 0.168 0.144 0.420 0.360 0.300
+#> [6,] 0.160 0.140 0.120 0.350 0.300 0.250
+\end{lstlisting}
+Come si vede, viene ottenuto lo stesso risultato utilizzando matrici $\boldsymbol{\Lambda}$ con lo stesso numero $m$ di colonne ma saturazioni
+fattoriali diverse.  
+
+Si consideri ora il caso di matrici $\boldsymbol{\Lambda}$ corrispondenti a soluzioni fattoriali con un diverso numero di fattori comuni. Siano $\boldsymbol{\Lambda}_1$ e
+$\boldsymbol{\Lambda}_2$ due matrici aventi lo stesso numero di righe ma un  numero diverso di colonne:
+\begin{lstlisting}
+l1 <- matrix(c(
+ 0.9,
+ 0.7,
+ 0.5,
+ 0.3),
+  byrow = TRUE, ncol=  1)
+
+l2 <- matrix(c(
+ 0.78, 0.45,
+ 0.61, 0.35,
+ 0.43, 0.25,
+ 0.25, 0.15),
+  byrow = TRUE, ncol = 2)
+\end{lstlisting}
+Si noti che la stessa matrice di 
+correlazioni riprodotte (con le comunalit{\`a} sulla diagonale principale) viene generata dalle saturazioni fattoriali corrispondenti ad un numero diverso di fattori comuni:
+\begin{lstlisting}
+l1 %*% t(l1)
+#>      [,1] [,2] [,3] [,4]
+#> [1,] 0.81 0.63 0.45 0.27
+#> [2,] 0.63 0.49 0.35 0.21
+#> [3,] 0.45 0.35 0.25 0.15
+#> [4,] 0.27 0.21 0.15 0.09
+
+l2 %*% t(l2)
+#>      [,1] [,2] [,3]  [,4]
+#> [1,] 0.81 0.63 0.45 0.263
+#> [2,] 0.63 0.49 0.35 0.205
+#> [3,] 0.45 0.35 0.25 0.145
+#> [4,] 0.26 0.20 0.14 0.085
+\end{lstlisting}
+\end{exmp}
+
+%------------------------------------------------------------
+\section{Parsimonia e semplicità}
+%------------------------------------------------------------
+
+Come si raggiunge allora una qualche certezza sui risultati
+dell'analisi fattoriale? Il problema dell'\textit{indeterminazione fattoriale} si affronta scegliendo la soluzione che soddisfa i seguenti due criteri:
+\textit{criterio della parsimonia}: se sia un modello ad
+un fattore comune sia un modello a due fattori comuni possono
+spiegare la covariazione tra le variabili si deve accettare quello
+ad un fattore;
+ \textit{criterio della semplicit{\`a}}: a parit{\`a} di
+numero di fattori, sono da preferire le strutture pi{\`u} semplici
+della matrice $\boldsymbol{\Lambda}$ (Thurstone, 1947).
+
+ Il criterio della parsimonia è facilmente applicabile: se due
+soluzioni fattoriali aventi un numero diverso di fattori riproducono
+allo stesso modo la matrice \textbf{S} o \textbf{R}, si sceglie la
+soluzione con il numero minore di fattori. 
+ D'altra parte, se vi sono diverse soluzioni fattoriali con lo stesso numero $m$ di fattori, il criterio della semplicità ci
+guida nella scelta della trasformazione più appropriata della matrice
+$\hat{\boldsymbol{\Lambda}}$.
+ La trasformazione della matrice $\hat{\boldsymbol{\Lambda}}$ va sotto il nome di \textit{rotazione}. 
+A seconda che i fattori ruotati risultino o meno incorrelati, si
+distingue tra metodi di rotazione ortogonale o obliqua dei fattori.
+
+\subsection{Il criterio della ``struttura semplice''}
+
+Tramite la rotazione degli assi fattoriali miriamo alla ``struttura semplice'' della matrice delle saturazioni fattoriali: poche ma forti saturazioni diverse da zero e assenza di variabili saturate da più di un fattore. Il criterio della ``struttura semplice'' è stato originariamente proposto da Thurstone (1947) secondo il quale tale criterio viene raggiunto quando:
+\begin{itemize}
+%\item each row of the factor matrix should contain at least one zero;
+\item nella matrice fattoriale ruotata, ogni variabile deve avere almeno un peso nullo;
+%\item if there are m common factors, each column of the factor matrix
+%should have at least m zeros; for example, if there are two common
+%factors, each column should have at least two zeros;
+\item ogni fattore deve avere almeno $m$ saturazioni nulle ($m$: numero dei fattori comuni);
+%\item for every pair of columns of the factor matrix, there should be
+%several variables for which entries approach zero in one column
+%but not in the other;
+\item per ciascuna coppia di fattori vi devono essere saturazioni basse su un fattore e saturazioni alte sull'altro;
+%\item for every pair of columns of the factor matrix, a large proportion
+%of the variables should have entries approaching zero in
+%both columns when there are four or more factors;
+\item nel caso di molti fattori, per ciascuna coppia di fattori una grande proporzione di saturazioni dovrebbe essere nulla;
+%\item for every pair of columns of the factor matrix, there should be
+%only a small number of variables with nonzero entries in both
+%columns (Harman, 1976, p. 98).
+\item  per ciascuna coppia di fattori, vi dovrebbero essere solo poche saturazioni di entità non trascurabile su entrambi i fattori.
+\end{itemize}
+
+%Secondo Thurstone (1947), l'obiettivo della
+%rotazione è quello di ottenere una soluzione che soddisfi i criteri di
+%\textit{struttura semplice}.
+%
+%\begin{defn}[Struttura semplice]
+%Nella matrice fattoriale ruotata, ogni variabile deve avere almeno un peso nullo;
+%  ogni fattore deve avere almeno $m$ saturazioni nulle ($m$: numero dei fattori comuni);
+% per ciascuna coppia di fattori vi devono essere saturazioni basse su un fattore e saturazioni alte sull'altro;
+% nel caso di molti fattori, per ciascuna coppia di fattori una grande proporzione di saturazioni dovrebbe essere nulla;
+% per ciascuna coppia di fattori, vi dovrebbero essere solo poche saturazioni di entità non trascurabile su entrambi i fattori.
+%\end{defn}
+
+Nella pratica, il requisito della struttura semplice viene perseguito, non tanto seguendo le indicazioni di Thursone, quanto bensì cercando di massimizzare il numero di saturazioni nulle o quasi nulle nella matrice  $\hat{\boldsymbol{\Lambda}}$.  Uno dei grandi vantaggi che derivano dall'ottenimento della struttura semplice è la facilitazione nell'interpretazione dei fattori (Cattell, 1978). 
+
+L'esame delle saturazioni fattoriali contenute nella matrice
+$\hat{\boldsymbol{\Lambda}}^*$ ruotata consente infatti di fornire
+un'interpretazione ai fattori. 
+% \item Se viene analizzata una matrice di correlazione, i pesi
+%   fattoriali nel caso di un solo fattore possono essere interpretati
+%   come correlazioni tra i punteggi osservati e i fattori latenti.
+Per poter interpretare un  fattore, dobbiamo chiederci quali sono le variabili
+che risultano maggiormente associate con tale fattore e quanto forti
+siano tali legami. Se i coefficienti di impatto di un fattore  sono positivi e
+piuttosto elevati su un sottoinsieme di variabili osservate, da ciò
+deduciamo che il fattore rappresenta ciò che hanno in comune le
+variabili che saturano sul fattore.  Ovviamente, l'interpretazione si
+complica nel caso di variabili che saturano su più fattori.  
+
+%------------------------------------------------------------
+\section{Rotazione nello spazio geometrico}
+%------------------------------------------------------------
+
+
+%------------------------------------------------------------
+\subsection{Rotazione ortogonale}
+%------------------------------------------------------------
+
+Come è stato notato nella sezione precedente, la matrice
+$\boldsymbol{\Lambda}$ non è \textit{identificabile} poiché non esiste
+una soluzione unica alla determinazione delle saturazioni fattoriali: qualunque
+matrice $\hat{\boldsymbol{\Lambda}}^* = \hat{\boldsymbol{\Lambda}}
+\textbf{T}$, dove \textbf{T} è una matrice ortonormale di ordine $m$,
+è in grado di riprodurre la matrice di varianze-covarianze allo stesso
+modo di $\hat{\boldsymbol{\Lambda}}$. 
+ La matrice
+$\hat{\boldsymbol{\Lambda}}$ è pertanto determinata a meno della
+moltiplicazione per una matrice ortonormale.
+
+\begin{defn}[Interpretazione geometria dei pesi fattoriali]
+Geometricamente, i pesi fattoriali costituiscono le coordinate di un
+punto (ci sono tanti punti quante sono le $p$ variabili manifeste)
+in uno spazio avente un numero di dimensioni pari al numero $m$ dei
+fattori.  
+\end{defn}
+
+Dal punto di vista geometrico, il problema dell'indeterminazione fattoriale si può descrivere facendo riferimento alla rotazione rigida dei punti che rappresentano le saturazioni fattoriali attorno l'origine del sistema
+di coordinate. Tale rotazione rigida lascia invariate le distanze tra i punti (ed è
+equivalente ad una rotazione (contraria) del sistema di assi
+cartesiani) e dà luogo ad un nuovo insieme di valori per i pesi fattoriali.  Ciascuno di questi insiemi di pesi fattoriali così ottenuti produce la medesima matrice di correlazioni riprodotte dal modello fattoriale. L'indeterminazione fattoriale nasce dal fatto che sono possibili infinite rotazioni diverse degli assi.
+
+\subsection{Vincoli alla rotazione}
+
+ Il problema della non identificabilità di $\hat{\boldsymbol{\Lambda}}$ viene
+generalmente risolto imponendo dei vincoli alla rotazione.
+Il criterio che ci guida nella scelta di una delle possibili
+trasformazioni della matrice dei pesi fattoriali è quello della
+\textit{semplicità} della matrice $\hat{\boldsymbol{\Lambda}}$
+(Thurstone, 1947), ovvero la vicinanza dei suoi elementi ai valori 0 e
+1.  Quanto più ciò si verifica tanto più risulta semplice
+l'interpretazione dei fattori comuni nei termini delle
+variabili.  L'identificazione dei fattori risulta infatti semplificata
+se ciascuno di essi è fortemente correlato con un numero limitato di
+variabili ed è poco correlato con le altre.
+
+Le rotazioni ortogonali lasciano immutate le comunalità nel caso di fattori incorrelati. Questo accade perché qualunque rotazione rigida rispetto all'origine preserva le distanze tra i punti identificati dai pesi fattoriali e, nel caso di fattori incorrelati, la comunalità non  è nient'altro che la distanza dall'origine (al quadrato):
+\begin{equation}
+\hat{h}^2_i = \sum_{i=1}^m \hat{\lambda}_{ij}^2\notag
+\end{equation}
+Rotazioni non ortogonali, però, mutano la quota di varianza spiegata da
+ciascun fattore, essendo questa data da 
+\begin{equation}
+\frac{\sum_{i=1}^p \hat{\lambda}_{ij}^2}{\text{tr}(\textbf{S})}\notag
+\end{equation}
+oppure da
+\begin{equation}
+\frac{\sum_{i=1}^p \hat{\lambda}_{ij}^2}{\text{tr}(\textbf{R})}\notag
+\end{equation}
+laddove $\text{tr}(\textbf{R})=p$, con $i=1, \dots, p$ (numero di
+item) e $j=1, \dots, m$ (numero di fattori).
+
+Diversi algoritmi sono stati proposti per la rotazione ortogonale dei fattori.  Inizieremo ad esaminare una possibile soluzione al problema dell'indeterminazione fattoriale mediante il metodo grafico. Esamineremo poi i metodi Quartimax e Varimax.
+
+%------------------------------------------------------------
+\subsection{Metodo grafico}
+%------------------------------------------------------------
+
+Come si può ruotare il sitema degli assi? Se ci sono solo $m=2$ fattori, per ottenere la loro rappresentazione geometrica utilizziamo un sistema di coordinate bidimensionale. L'ispezione visiva del diagramma delle saturazioni fattoriali ci può guidare alla scelta della rotazione più appropriata. Le righe di $\hat{\boldsymbol{\Lambda}}$ corrispondono a coppie di pesi fattoriali ($\hat{\lambda}_{i1}, \hat{\lambda}_{i2}$, con $i=1, \dots, p$) che possono essere interpretate come le coordinate di $p$ punti (tanti quanti le variabili manifeste). Gli assi del diagramma vengono ruotati di un angolo $\phi$ in modo tale da portarli il più vicino possibile ai punti presenti nel grafico. Le nuove coordinate ($\hat{\lambda}_{i1}^*, \hat{\lambda}_{i2}^*$) vengono calcolate come $\hat{\boldsymbol{\Lambda}}^* = \hat{\boldsymbol{\Lambda}} \textbf{T}$, dove
+\begin{equation}
+\textbf{T} = 
+\left[
+  \begin{array}{ c c }
+  \cos{\phi} & - \sin{\phi}\\
+  \sin{\phi} & \cos{\phi}
+  \end{array} 
+\right] \notag
+\end{equation}
+è una matrice ortogonale $2 \times 2$.
+
+\bigskip
+
+\begin{exmp} Si considerino i dati di Brown, Williams e Barlow (1984) discussi da Rencher (2002).  Ad una bambina di dodici anni è stato chiesto di valutare sette dei suoi conoscenti su cinque variabili: {\it kind}, {\it intelligent}, {\it happy}, {\it likeable} e {\it just}. Per queste cinque variabili, la matrice di correlazioni è
+\begin{lstlisting}
+R <- matrix(c( 
+  1.00,  .296,  .881,  .995,  .545, 
+  .296, 1.000, -.022,  .326,  .837, 
+  .881, -.022, 1.000,  .867,  .130, 
+  .995,  .326,  .867, 1.000,  .544, 
+  .545,  .837,  .130,  .544, 1.00), 
+  ncol = 5, byrow = TRUE, dimnames = list( 
+  c("K", "I", "H", "L", "J"), c("K", "I", "H", "L", "J"))) 
+R
+#>       K      I      H     L     J
+#> K 1.000  0.296  0.881 0.995 0.545
+#> I 0.296  1.000 -0.022 0.326 0.837
+#> H 0.881 -0.022  1.000 0.867 0.130
+#> L 0.995  0.326  0.867 1.000 0.544
+#> J 0.545  0.837  0.130 0.544 1.000
+\end{lstlisting}
+Dalla matrice \textbf{R} estraiamo due fattori con il metodo delle componenti principali:
+\begin{lstlisting}
+library(psych)
+f.pc <- principal(R, 2, rotate=FALSE) 
+f.pc
+#> 
+#> Uniquenesses:
+#>     K     I     H     L     J 
+#> 0.007 0.079 0.039 0.013 0.060 
+#> 
+#> Loadings:
+#>   PC1   PC2  
+#> K  0.97 -0.23
+#> I  0.52  0.81
+#> H  0.78 -0.59
+#> L  0.97 -0.21
+#> J  0.70  0.67
+#> 
+#>                  PC1  PC2
+#> SS loadings    3.251 1.55
+#> Proportion Var 0.650 0.31
+#> Cumulative Var 0.650 0.96
+\end{lstlisting}
+Nella figura~\ref{fig:brown}, i punti rappresentano le cinque coppie di pesi
+fattoriali non ruotati.  
+\begin{lstlisting}
+plot(f.pc$load[,1], f.pc$load[,2], bty = 'n', xaxt = 'n', 
+  xlab = "Primo Fattore", ylab = "Secondo Fattore",
+  ylim = c(-.6, 1), xlim = c(0,1), pch = 19)
+axis(1, pos = c(0,0))
+abline(0, 0)  
+\end{lstlisting}
+Rencher (2002) nota che, per questi dati, una rotazione ortogonale  di $-35^{\circ}$ ci porterebbe ad avvicinare gli assi ai punti nel diagramma. Per verificare questo, disegnamo sul diagramma i nuovi assi dopo una rotazione di  $-35^{\circ}$. Le istruzioni \texttt{R} sono le seguenti:
+\begin{lstlisting}
+ar <- matrix(c(
+      0, 0,
+      0, 1,
+      0, 0,
+      1, 0), ncol = 2, byrow = TRUE)
+ar
+#>      [,1] [,2]
+#> [1,]    0    0
+#> [2,]    0    1
+#> [3,]    0    0
+#> [4,]    1    0
+angle <- 35
+rad <- angle * pi / 180
+T <- matrix(c(
+       cos(rad), -sin(rad),
+       sin(rad),  cos(rad)), ncol = 2, byrow = TRUE)    
+round(T, 3)
+#>       [,1]   [,2]
+#> [1,] 0.819 -0.574
+#> [2,] 0.574  0.819
+round(ar %*% T, 3)
+#>       [,1]   [,2]
+#> [1,] 0.000  0.000
+#> [2,] 0.574  0.819
+#> [3,] 0.000  0.000
+#> [4,] 0.819 -0.574
+arrows(0, 0, 0.574,  0.819, lwd = 2)
+arrows(0, 0, 0.819, -0.574, lwd = 2)
+\end{lstlisting}
+Nella figura~\ref{fig:brown} le due frecce rappresentano gli assi
+ruotati.  È chiaro come tale rotazione di $-35^{\circ}$ ha effettivamente l'effetto di avvicinare gli assi ai punti del diagramma. 
+Se usiamo dunque il valore $\phi = -35^{\circ}$ nella matrice di rotazione, possiamo  calcolare le saturazioni fattoriali della soluzione ruotata $\hat{\boldsymbol{\Lambda}}^* = \hat{\boldsymbol{\Lambda}} \textbf{T}$. Le saturazioni fattoriali ruotate non sono altro che la proiezione ortogonale dei punti sugli assi ruotati.
+\begin{lstlisting}
+angle <- -35
+rad <- angle * pi / 180
+T <- matrix(c(
+       cos(rad), -sin(rad),
+       sin(rad),  cos(rad)), ncol = 2, byrow = TRUE)
+round(T, 3)
+#>        [,1]  [,2]
+#> [1,]  0.819 0.574
+#> [2,] -0.574 0.819 
+round(f.pc$load %*% T, 3)
+#>     [,1]   [,2]
+#> K  0.927  0.368
+#> I -0.039  0.962
+#> H  0.977 -0.036
+#> L  0.915  0.384
+#> J  0.189  0.950 
+\end{lstlisting}
+La soluzione ottenuta in questo modo riproduce quella riportata da Rencher (2002).
+\end{exmp}
+
+  \begin{figure}[h!]
+  \centering
+    \includegraphics[width=7cm]{RPlotRencher13_3}
+    \caption{Rotazione di -35$^{\circ}$ per le saturazioni fattoriali calcolate sui dati di Brown, Williams e Barlow (1984).}
+    \label{fig:brown}
+    \end{figure}
+
+%------------------------------------------------------------
+\subsection{Medodi di rotazione ortogonale}
+%------------------------------------------------------------
+
+Una tipo di rotazione ortogonale molto utilizzato è la rotazione Varimax (Kaiser,
+1958). La matrice $\hat{\boldsymbol{\Lambda}}$ è semplificata in modo
+tale che le varianze dei quadrati degli elementi $\lambda_{ij}$
+appartenenti a colonne diverse di $\hat{\boldsymbol{\Lambda}}$ siano
+massime. Se le saturazioni fattoriali in una colonna di
+ $\hat{\boldsymbol{\Lambda}}$ sono simili tra loro, la varianza sarà
+ prossima a zero. 
+Tale varianza è tanto più grande quanto più i
+quadrati degli elementi $\lambda_{ij}$ assumono valori prossimi a
+$0$ e $1$. Amplificando le correlazioni più alte e riducendo quelle
+più basse, la rotazione Varimax agevola l'interpretazione di ciascun
+fattore.
+
+% %------------------------------------------------------------
+
+% \begin{frame}{Metodo Varimax}
+
+%   \begin{itemize}
+%   \item Varimax e Quartimax sono casi speciali di una classe più generale di
+% trasformazioni chiamata Orthomax il cui criterio, seguendo la
+% notazione di Loehlin (1987), può essere scritto nel modo seguente:
+% \begin{equation}
+%   \sum \sum \lambda^4 - w \frac{1}{p} \sum_f\left(\sum_v \lambda^2\right)^2
+% \end{equation}
+% dove $\lambda$ rappresenta i pesi fattoriali, $\sum \sum$ indica che
+% la somma viene eseguita sulle righe e sulle colonne della matrice
+% $\hat{\boldsymbol{\Lambda}}$, $\sum_f$ e $\sum_v$ indica la sommatoria
+% sui fattori e sulle variabili, rispettivamente, $p$ è il numero di
+% variabili e $w$ determina lo specifico criterio. 
+%   \end{itemize}
+
+% \end{frame}
+
+% %------------------------------------------------------------
+
+% \begin{frame}{Metodo Varimax}
+
+%   \begin{itemize}
+% \item Se $w=0$, la seconda
+% parte dell'espressione si cancella e si ottiene il criterio
+% Quartimax.
+% \item  Se $w=1$, il criterio diventa quello Varimax.
+%   \end{itemize}
+
+% \end{frame}
+
+Usando la funzione \texttt{factanal()} del modulo base, la rotazione
+Varimax può essere applicata alla soluzione ottenuta mediante il
+metodo di massima verosimiglianza. Usando  le funzioni \texttt{principal()} e \texttt{factor.pa()} disponibili nel pacchetto \texttt{psych}, la  rotazione Varimax può essere applicata alle soluzioni ottenute mediante il metodo delle componenti principali e il metodo del fattore principale. 
+
+La figura~\ref{fig:brown_varimax} mostra i risultati della rotazione Varimax per la soluzione ottenuta con il metodo delle componenti principali sui dati di Brown et al. (1994): 
+\begin{lstlisting}
+f_pc <- principal(R, 2, n.obs = 7, rotate = "varimax")
+f_pc
+#>    RC1   RC2   h2     u2 com
+#> K 0.95  0.30 0.99 0.0067 1.2
+#> I 0.03  0.96 0.92 0.0792 1.0
+#> H 0.97 -0.10 0.96 0.0391 1.0
+#> L 0.94  0.32 0.99 0.0135 1.2
+#> J 0.26  0.93 0.94 0.0597 1.2
+\end{lstlisting}
+
+\begin{figure}[h!]
+ \centering
+ \includegraphics[width=7cm]{RPlotRencher13_3a}
+ \caption{Saturazioni fattoriali calcolate sui dati di Brown, Williams e Barlow (1984).}
+  \label{fig:brown_varimax}
+\end{figure}
+
+Il metodo Quartimax (Neuhaus e Wringley, 1954) opera una semplificazione della matrice $\hat{\boldsymbol{\Lambda}}$ massimizzando le covarianze tra i quadrati degli elementi $\lambda_{ij}$ appartenenti a righe diverse, subordinatamente alla condizione che la varianza delle righe rimanga inalterata.
+
+\subsection{Metodi di rotazione obliqua}
+
+Parlare di rotazione obliqua significa usare un termine improprio: per definizione, infatti, una rotazione implica una trasformazione ortogonale che preserva le distanze. 
+Secondo Rencher (2002), un termine migliore sarebbe \textit{trasformazione} obliqua. 
+Il termine rotazione obliqua, comunque, fa parte dell'uso corrente.  
+
+Nella rotazione obliqua, gli assi della soluzione ruotata non devono rimanere
+ortogonali e quindi possono più facilmente avvicinarsi ai
+raggruppamenti di punti nello spazio delle saturazioni fattoriali
+(assumendo che dei raggruppamenti esistano). Vari metodi analitici sono
+stati proposti per ottenere una rotazione obliqua.  Qui esamineremo
+brevemente solo uno di essi, il metodo Direct Oblimin.
+
+Il criterio usato nel metodo Direct Oblimin (Jennrich e Sampson, 1966)
+è il seguente:
+\begin{equation}
+\sum_{ij} \left(\sum_v \lambda_i^2 \lambda_j^2 - w \frac{1}{p} \sum_v \lambda_i^2
+\sum_v \lambda_j^2\right)\notag
+\end{equation}
+dove $\sum_{ij}$ si riferisce alla somma su tutte le coppie di fattori
+$ij$. In questo caso si procede ad una minimizzazione piuttosto che a
+una masssimizzazione.
+
+\begin{exmp}
+Con le istruzioni seguenti vengono simulate 100 osservazioni su quattro variabili nel caso di una normale multivarata con le medie e la matrice $\boldsymbol{\Sigma}$ specificata qui sotto:
+\begin{lstlisting}
+library(GPArotation)
+library(MASS)
+library(psych)
+sigma <- matrix(
+  c(
+    1, .8, .6, .7,
+    .8,  1, .6, .7,
+    .6, .6,  1, .9,
+    .7, .7, .9,  1
+  ), 
+  ncol = 4, 
+  byrow = TRUE
+)
+sigma
+#>      [,1] [,2] [,3] [,4]
+#> [1,]  1.0  0.8  0.6  0.7
+#> [2,]  0.8  1.0  0.6  0.7
+#> [3,]  0.6  0.6  1.0  0.9
+#> [4,]  0.7  0.7  0.9  1.0
+mu <- c(9, 16, 24, 32)
+set.seed(24) 
+X <- mvrnorm(
+  n = 100, 
+  mu, 
+  sigma, 
+  empirical = FALSE
+)
+R <- cor(X)
+print(R, 3)
+#>       [,1]  [,2]  [,3]  [,4]
+#> [1,] 1.000 0.755 0.567 0.619
+#> [2,] 0.755 1.000 0.597 0.667
+#> [3,] 0.567 0.597 1.000 0.895
+#> [4,] 0.619 0.667 0.895 1.000
+\end{lstlisting}
+Eseguiamo  l'analisi fattoriale senza rotazione:
+\begin{lstlisting}
+pr_none <- principal(R, 2, rotate = "none")
+pr_none
+#> V  PC1   PC2
+#> 1 0.84  0.44
+#> 2 0.86  0.36
+#> 3 0.88 -0.42
+#> 4 0.92 -0.33
+\end{lstlisting}
+Per usare la rotazione Oblimin (così come molte altre) è necessario caricare il pacchetto \texttt{GPArotation}. Le saturazioni fattoriali calcolate con il metodo delle componenti principali e la rotazione Oblimin si ottengono nel modo seguente:
+\begin{lstlisting}
+pr_oblimin <- principal(R, 2, rotate = "oblimin")
+pr_oblimin
+#>  TC2   TC1   
+#>  0.96 -0.03
+#>  0.88  0.07 
+#> -0.08  1.03 
+#>  0.21  0.82 
+\end{lstlisting}
+Tramite l'algoritmo Oblimin, gli assi vengono ruotati fino a formare l'angolo che separa le due frecce nella figura~\ref{fig:oblimin}.  
+
+Dall'output di \textbf{R} ricaviamo l'informazione secondo cui il coseno di tale angolo è 0.63. 
+\begin{lstlisting}
+#> With component correlations of 
+#>      TC2  TC1
+#> TC2 1.00 0.63
+#> TC1 0.63 1.00
+\end{lstlisting}
+Le istruzioni usate per disegnare il grafico~\ref{fig:oblimin} sono le seguenti:
+\begin{lstlisting}
+plot(
+  pr_none$load[, 1], 
+  pr_none$load[, 2], 
+  bty = "n",  
+  xlab = "Primo Fattore", 
+  ylab = "Secondo Fattore", 
+  xlim = c(0, 1), 
+  ylim = c(-1, 1), 
+  pch = 19, 
+  cex.lab = 2
+) 
+\end{lstlisting} 
+Per disegnare le frecce rappresentate nella figura (che rappresentano i nuovi assi coordinati) procediamo come segue. Si noti che le saturazioni fattoriali sono raggruppate in due cluster distinti. Disegniamo innanzitutto una freccia che rappresenta uno degli assi in modo tale che si avvicini il più possibile a uno dei cluster.  
+\begin{lstlisting} 
+arrows(0, 0, 1, 0.48, lwd = 2)  
+\end{lstlisting}  
+Per disegnare la freccia che rappresenta il secondo asse facciamo uso della correlazione tra i due fattori ($\phi$ = 0.63). 
+Tale correlazione corrisponde al coseno dell'angolo che separa i due assi.  
+\begin{lstlisting} 
+cos.phi <- pr.oblimin$Phi[1, 2] 
+sin.phi <- sqrt(1 - cos.phi^2)
+\end{lstlisting} 
+ La matrice di trasformazione per ruotare un vettore di un angolo prefissato $\phi$ è
+% $$T= \left[
+%   \begin{array}{ c c }
+%      \cos \phi & -\sin \phi \\
+%      \sin \phi & \cos \phi
+%   \end{array} 
+%   \right]$$
+% Ovvero, nel caso presente
+\begin{lstlisting} 
+T <- matrix(c(
+      cos.phi, -sin.phi,
+      sin.phi, cos.phi
+      ), 
+      byrow = TRUE, 
+      ncol = 2)
+\end{lstlisting} 
+Mediante il prodotto tra il vettore che rappresenta l'apice del primo vettore e la matrice di trasformazione troviamo le coordinate del vettore ruotato dell'angolo $\phi$. Per disegnare la freccia che rappresenta il secondo asse usiamo dunque le seguenti istruzioni: 
+\begin{lstlisting}
+P <- c(1, .48)
+P1 <- P %*% T
+arrows(0, 0, P1[1], P1[2], lwd = 2) 
+\end{lstlisting}
+
+\end{exmp}
+
+  \begin{figure}[h!]
+  \centering
+    \includegraphics[width=7cm]{RPlotOblimin.pdf}
+    \caption{Rotazione obliqua.}
+    \label{fig:oblimin}
+  \end{figure}
+
+
+\section{Matrice dei pesi fattoriali e matrice di struttura}
+
+Nella rotazione ortogonale i fattori sono incorrelati. 
+In tali circostanze, le correlazioni tra le variabili e i fattori sono uguali alle saturazioni fattoriali. 
+In un \emph{path diagram}, infatti, vi è un unico percorso legittimo (in base alle regole di Wright) che collega le variabili manifeste ai  fattori. 
+
+Si consideri la situazione presentata nella figura~\ref{fig:2fact_ort}, con due variabili latenti incorrelate ($\xi_1$ e $\xi_2$) e quattro variabili manifeste ($y_1$, $y_2$, $y_3$, $y_4$). 
+Siano $\lambda_{11}$, $\lambda_{12}$, $\lambda_{13}$ e $\lambda_{14}$ le saturazioni fattoriali delle variabili nel primo fattore; siano $\lambda_{21}$, $\lambda_{22}$, $\lambda_{23}$ e $\lambda_{24}$ le saturazioni fattoriali delle variabili nel secondo fattore.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[auto,node distance=.5cm,
+    latent/.style={fill=red!20,circle,draw, thick,inner sep=0pt,minimum size=8mm,align=center},
+    observed/.style={fill=blue!20,rectangle,draw, thick,inner sep=0pt,minimum width=8mm,minimum height=8mm,align=center},
+    error/.style={fill=yellow!20,circle,draw, thick,inner sep=0pt,minimum width=8mm,minimum height=8mm,align=center},
+    paths/.style={->,  thick, >=stealth'},
+    paths2/.style={<-,  thick, >=stealth'},
+    twopaths/.style={<->,  thick, >=stealth'},
+    label/.style={%
+        postaction={ decorate, transform shape,
+        decoration={ markings, mark=at position .5 with \node #1;}}}
+]
+%Define latent and observed variables
+\node [latent] (f1) at (0,0) {$\xi_1$};
+\node [latent] (f2) [below=0.5cm of f1] {$\xi_2$};
+\node [observed] (y2) [left=1.5cm of f1] {$y_2$};
+\node [observed] (y1) [above=of y2]  {$y_1$};
+\node [observed] (y3) [below=of y2]  {$y_3$};
+\node [observed] (y4) [below=of y3]  {$y_4$};
+
+\node [error] (ey1) [left=0.75cm of y1]  {$\varepsilon_1$};
+\node [error] (ey2) [left=0.75cm of y2]  {$\varepsilon_2$};
+\node [error] (ey3) [left=0.75cm of y3]  {$\varepsilon_3$};
+\node [error] (ey4) [left=0.75cm of y4]  {$\varepsilon_4$};
+%\draw (-3.85,0)  node[below] {$1$};
+%\draw (-3.85, 1.35)  node[below] {$1$};
+%\draw (-3.85,2.65)  node[below] {$1$};
+%\draw (-3.85,-1.35)  node[below] {$1$};
+%\draw (-3.85,-2.65)  node[below] {$1$};
+
+%%%
+% Draw paths form latent to observed variables
+\foreach \all in {y1, y2, y3, y4}{
+    \draw [paths] (f1.west) to node {} (\all.east);
+}
+
+\foreach \all in {y1, y2, y3, y4}{
+    \draw [paths] (f2.west) to node {} (\all.east);
+}
+
+\draw [paths] (ey1.east) to (y1.west);
+\draw [paths] (ey2.east) to (y2.west);
+\draw [paths] (ey3.east) to (y3.west);
+\draw [paths] (ey4.east) to (y4.west);
+%\draw (-1.5,0)  node[below] {$\lambda_3$};
+%\draw (-1.5,0.75)  node[below] {$\lambda_2$};
+%\draw (-1.5,1.5)  node[below] {$\lambda_1$};
+%\draw (-1.5,-0.75)  node[below] {$\lambda_4$};
+
+%%%
+\draw [twopaths] (f1) to [loop above] (f1);
+%\draw (1.1,.25)  node[below] {$1$};
+\draw [twopaths] (f2) to [loop below] (f2);
+%\draw (1.1,.25)  node[below] {$1$};
+
+\draw [twopaths] (ey1) to [loop left] (ey1);
+\draw [twopaths] (ey2) to [loop left] (ey2);
+\draw [twopaths] (ey3) to [loop left] (ey3);
+\draw [twopaths] (ey4) to [loop left] (ey4);
+%\draw (-5.5,1.3)  node[left] {$\psi_2$};
+%\draw (-5.5,2.65)  node[left] {$\psi_1$};
+%\draw (-5.5,0)  node[left] {$\psi_3$};
+%\draw (-5.5,-1.3)  node[left] {$\psi_4$};
+%\draw (-5.5,-2.65)  node[left] {$\psi_5$};
+
+\end{tikzpicture}
+
+    \caption{Modello fattoriale con due fattori comuni ortogonali.}
+    \label{fig:2fact_ort}
+ \end{figure}
+
+In un diagramma di percorso, la correlazione tra due variabili contenute è uguale alla somma dei valori numerici di tutti i percorsi legittimi che collegano le   variabili. 
+Se i fattori comuni sono incorrelati (come nella figura~\ref{fig:2fact_ort}), allora c'è un unico percorso che collega ciascuna variabile manifesta a ciascun fattore comune. 
+Le correlazioni tra variabili manifeste e fattori comuni sono dunque uguali ai pesi fattoriali.
+ 
+In queste circostanze, la soluzione fattoriale contenuta nella matrice delle saturazioni fattoriali rappresenta le correlazioni fra variabili e fattori. Tale matrice viene detta  matrice ``di struttura.''  
+Le saturazioni possono essere interpretate in maniera equivalente ai pesi beta del modello di regressione multipla, i quali stimano il contributo specifico di ciascun fattore comune nel determinare la varianza spiegata degli item (Tabachnick \& Fidell, 2001).
+
+Invece, nel caso della rotazione obliqua, la soluzione fattoriale ruotata produce un insieme di fattori comuni fra loro correlati. 
+Di conseguenza, i pesi contenuti nella matrice delle saturazioni fattoriali non rappresentano le correlazioni fra variabili e fattori. 
+Nel caso di una rotazione obliqua è perciò necessario specificare tre matrici diverse: 
+\begin{itemize}
+\item la matrice dei pesi fattoriali $\hat{\boldsymbol{\Lambda}}$, detta \emph{matrice pattern} (\emph{factor pattern matrix}, o ``configurazione,'' o ``matrice dei modelli''), 
+\item la \emph{matrice di struttura} (\textit{factor structure matrix}), che è la matrice delle correlazioni tra variabili manifeste e fattori, 
+\item la \emph{matrice di intercorrelazione fattoriale} $\hat{\boldsymbol{\Phi}}$ (\textit{factor intercorrelation matrix}), che è la matrice che esprime le correlazioni tra i fattori. 
+\end{itemize}
+
+La matrice pattern rappresenta i coefficienti parziali di regressione della variabile sul fattore, al netto degli altri fattori. 
+Nel caso della rotazione obliqua, è la matrice che viene usata per determinare in che grado viene raggiunta la ``struttura semplice''.
+
+Esaminiamo ora più in dettaglio la soluzione fattoriale prodotta da una rotazione obliqua. 
+Gli assi che rappresentano i fattori non sono ortogonali (ovvero, i fattori sono correlati) e, in un diagramma di percorso, le variabili manifeste sono collegate ai fattori attraverso due percorsi distinti. 
+Tali percorsi rappresentano l'effetto ``diretto'' e ``indiretto'' dei fattori sulle variabili. 
+Nel caso di una rotazione obliqua, come abbiamo detto sopra, le saturazioni fattoriali non coincidono con le correlazioni tra variabili e fattori.
+
+Si consideri la figura~\ref{fig:2fact_obli}. 
+Nel caso di una rotazione obliqua, la correlazione tra i due fattori comuni viene rappresentata mediante la freccia non direzionata $\phi_{12}$ che collega $\xi_1$ e $\xi_2$. 
+In tali circostanze, ci sono due percorsi legittimi (in base alle regole di Wright) che consentono di collegare ciascuna variabile manifesta ad un fattore comune. 
+Nel caso della variabile $y_1$ e il fattore $\xi_1$, ad esempio, i percorsi sono: la freccia causale $\lambda_{11}$ che rappresenta l'effetto diretto di $\xi_1$ su $y_1$ e  il percorso composto che rappresenta l'effetto indiretto di $\xi_1$ su $y_1$. 
+Il valore numerico di tale percorso composto è uguale al prodotto $\lambda_{21}\phi_{12}$. 
+Nei termini dell'analisi dei percorsi, dunque, la correlazione tra $\xi_1$ e $y_1$ è uguale alla somma dei valori numerici dei percorsi legittimi che collegano $y_1$ a $\xi_1$, ovvero $\lambda_{11} + \lambda_{21} \phi_{12}$.
+
+\begin{figure}[h!]
+\centering
+
+\begin{tikzpicture}[auto,node distance=.5cm,
+    latent/.style={fill=red!20,circle,draw, thick,inner sep=0pt,minimum size=8mm,align=center},
+    observed/.style={fill=blue!20,rectangle,draw, thick,inner sep=0pt,minimum width=8mm,minimum height=8mm,align=center},
+    error/.style={fill=yellow!20,circle,draw, thick,inner sep=0pt,minimum width=8mm,minimum height=8mm,align=center},
+    paths/.style={->,  thick, >=stealth'},
+    paths2/.style={<-,  thick, >=stealth'},
+    twopaths/.style={<->,  thick, >=stealth'},
+    label/.style={%
+        postaction={ decorate, transform shape,
+        decoration={ markings, mark=at position .5 with \node #1;}}}
+]
+%Define latent and observed variables
+\node [latent] (f1) at (0,0) {$\xi_1$};
+\node [latent] (f2) [below=0.5cm of f1] {$\xi_2$};
+\node [observed] (y2) [left=1.5cm of f1] {$y_2$};
+\node [observed] (y1) [above=of y2]  {$y_1$};
+\node [observed] (y3) [below=of y2]  {$y_3$};
+\node [observed] (y4) [below=of y3]  {$y_4$};
+
+\node [error] (ey1) [left=0.75cm of y1]  {$\varepsilon_1$};
+\node [error] (ey2) [left=0.75cm of y2]  {$\varepsilon_2$};
+\node [error] (ey3) [left=0.75cm of y3]  {$\varepsilon_3$};
+\node [error] (ey4) [left=0.75cm of y4]  {$\varepsilon_4$};
+
+%%%
+% Draw paths form latent to observed variables
+\foreach \all in {y1, y2, y3, y4}{
+    \draw [paths] (f1.west) to node {} (\all.east);
+}
+
+\foreach \all in {y1, y2, y3, y4}{
+    \draw [paths] (f2.west) to node {} (\all.east);
+}
+
+\draw [paths] (ey1.east) to (y1.west);
+\draw [paths] (ey2.east) to (y2.west);
+\draw [paths] (ey3.east) to (y3.west);
+\draw [paths] (ey4.east) to (y4.west);
+
+%%%
+\draw [twopaths] (f1) to [loop above] (f1);
+\draw [twopaths] (f2) to [loop below] (f2);
+\draw [twopaths] (f1.east) to [out=9000,in=1] (f2.east);
+\draw (1.2, -0.32)  node[below] {$\phi_{12}$};
+
+\draw [twopaths] (ey1) to [loop left] (ey1);
+\draw [twopaths] (ey2) to [loop left] (ey2);
+\draw [twopaths] (ey3) to [loop left] (ey3);
+\draw [twopaths] (ey4) to [loop left] (ey4);
+
+\end{tikzpicture}
+
+    \caption{Modello fattoriale con due fattori comuni dopo una rotazione obliqua.}
+    \label{fig:2fact_obli}
+ \end{figure}
+
+\bigskip
+
+Per illustrare la rotazione obliqua, utilizziamo i dati presentati da Rencher (2002). Si consideri la seguente matrice di correlazione:
+\begin{lstlisting}
+R <- matrix(
+  c( 
+    1.00,  0.735, 0.711, 0.704,
+    0.735, 1.00,  0.693, 0.709,
+    0.711, 0.693, 1.00,  0.839,
+    0.704, 0.709, 0.839, 1.00
+  ), 
+  ncol = 4, 
+  byrow = TRUE
+) 
+R
+#>        [,1]  [,2]  [,3]  [,4]
+#>  [1,] 1.000 0.735 0.711 0.704
+#>  [2,] 0.735 1.000 0.693 0.709
+#>  [3,] 0.711 0.693 1.000 0.839
+#>  [4,] 0.704 0.709 0.839 1.000
+ \end{lstlisting}
+Iniziamo a calcolare una soluzione a due fattori usando il metodo delle componenti principali e una rotazione Varimax. 
+I pesi fattoriali sono:
+\begin{lstlisting}
+f1_pc <- principal(R, 2, rotate = "varimax") 
+f1_pc
+#>        PC1  PC2 
+#>  [1,] 0.50 0.78
+#>  [2,] 0.47 0.81
+#>  [3,] 0.90 0.33
+#>  [4,] 0.89 0.35
+\end{lstlisting}
+Si noti che i due fattori non sono molto distinti.
+
+Se usiamo invece l'algoritmo Oblimin, gli assi vengono ruotati fino a formare l'angolo che separa le due frecce nella figura~\ref{fig:rencher13_4}. 
+La soluzione prodotta da una rotazione obliqua si ottiene nel modo seguente: 
+ \medskip
+\begin{lstlisting}
+pr_oblimin <- principal(R, 2, rotate = "oblimin")     
+\end{lstlisting}
+La matrice $\hat{\boldsymbol{\Lambda}}$ dei pesi fattoriali si ricava nel modo seguente:
+\begin{lstlisting}
+cbind(pr_oblimin$load[, 1], pr_oblimin$load[, 2])
+#>       [,1]  [,2]
+#> [1,] -0.04  0.97
+#> [2,]  0.07  0.89
+#> [3,]  1.01 -0.05
+#> [4,]  0.92  0.08
+\end{lstlisting}
+
+ \begin{figure}[h!]
+ \centering
+   \includegraphics[width=7cm]{RPlotRencher13_4}
+   \caption{Diagramma dei pesi fattoriali per una rotazione obliqua.}
+   \label{fig:rencher13_4}
+\end{figure}
+
+\noindent
+La matrice $\hat{\boldsymbol{\Phi}}$ di intercorrelazione fattoriale è
+\begin{lstlisting}
+pr_oblimin$Phi
+#>           [,1]      [,2]
+#> [1,] 1.0000000 0.6564617
+#> [2,] 0.6564617 1.0000000
+\end{lstlisting}
+
+La matrice di struttura si ottiene premoltiplicando la matrice $\boldsymbol{\Lambda}$ dei pesi fattoriali alla matrice  $\boldsymbol{\Phi}$ di intercorrelazione fattoriale:
+$$
+\text{matrice di struttura} = \boldsymbol{\Lambda}\boldsymbol{\Phi}.
+$$
+Per esempio, la correlazione tra la prima variabile e il primo
+fattore è 
+\begin{lstlisting}
+pr_oblimin$load[1, 1] + pr_oblimin$load[1, 2] * pr_oblimin$Phi[2, 1]
+#> 0.5967679 
+\end{lstlisting}
+L'intera matrice di struttura si trova nel modo seguente:
+\begin{lstlisting}
+round(pr_oblimin$load %*% pr_oblimin$Phi, 3)
+#>       [,1]  [,2]
+#> [1,] 0.597 0.944
+#> [2,] 0.654 0.936
+#> [3,] 0.977 0.613
+#> [4,] 0.973 0.684
+\end{lstlisting}
+
+
+
+
+
+
+
