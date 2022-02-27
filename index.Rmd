@@ -15,7 +15,7 @@ monofont: "MesloLGS NF"
 monofontoptions: "Scale=0.775"
 site: bookdown::bookdown_site
 description: "This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell'efficacia dell'intervento psicologico in neuropsicologia -- B020881 (B213) (2021/2022) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy."
-github-repo: ccaudek/ds4psy
+github-repo: ccaudek/cfa_book
 ---
 
 ```{r setup, include=FALSE}
