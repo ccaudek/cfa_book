@@ -24,36 +24,38 @@ language:
 rmd_files:
     - "index.Rmd"
     ## PART I
-    - "035_ctt.Rmd"
-    - "037_err_standard_misura.Rmd"
-    - "038_err_standard_stima.Rmd"
+    - "010_regression.Rmd"
     ## PART II
-
-    ## PART III
-    - "050_sviluppo_strumento.Rmd"
-    - "055_analisi_fattoriale_1.Rmd"
-    - "056_analisi_fattoriale_2.Rmd"
-    - "057_analisi_fattoriale_3.Rmd"
-    - "060_path_analysis.Rmd"
-    - "062_constraints_on_parms.Rmd"
-    - "070_cfa_mod_comp.Rmd"
-    ## PART IV
-    - "200_problema_strumento.Rmd"
-    - "201_valutare_le_matrici.Rmd"
-    - "202_estrazione.Rmd"
-    - "203_numero_fattori.Rmd"
-    - "205_rotazione.Rmd"
-    - "206_valutare_sol_fattoriale.Rmd"
-    ## PART V
-    - "250_group_invariance.Rmd"
-    ## PART V
-    - "300_gof.Rmd"
-    - "350_growth_models.Rmd"
-    ## APPENDIX
-    - "800_appendix.Rmd"
-    - "801_math_symbols.Rmd"
-    - "850_single_case.Rmd"
-    - "860_efficacy_effectiveness.Rmd"
-    - "865_effect_size.Rmd"
+    - "035_ctt.Rmd"
+    # - "037_err_standard_misura.Rmd"
+    # - "038_err_standard_stima.Rmd"
+    # ## PART III
+    # - "050_sviluppo_strumento.Rmd"
+    # - "055_analisi_fattoriale_1.Rmd"
+    # - "056_analisi_fattoriale_2.Rmd"
+    # - "057_analisi_fattoriale_3.Rmd"
+    # - "060_path_analysis.Rmd"
+    # - "062_constraints_on_parms.Rmd"
+    # - "070_cfa_mod_comp.Rmd"
+    # ## PART IV
+    # - "200_problema_strumento.Rmd"
+    # - "201_valutare_le_matrici.Rmd"
+    # - "202_estrazione.Rmd"
+    # - "203_numero_fattori.Rmd"
+    # - "205_rotazione.Rmd"
+    # - "206_valutare_sol_fattoriale.Rmd"
+    # ## PART V
+    # - "250_group_invariance.Rmd"
+    # ## PART V
+    # - "300_gof.Rmd"
+    # - "350_growth_models.Rmd"
+    - "400_missing_data.Rmd"
+    - "500_cat_data.Rmd"
+    # ## APPENDIX
+    # - "800_appendix.Rmd"
+    # - "801_math_symbols.Rmd"
+    # - "850_single_case.Rmd"
+    # - "860_efficacy_effectiveness.Rmd"
+    # - "865_effect_size.Rmd"
 
 delete_merged_file: true

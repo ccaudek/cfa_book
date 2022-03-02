@@ -1,0 +1,119 @@
+# Dati non gaussiani e categoriali {#ch:cat_data}
+
+```{r, include = FALSE}
+source("_common.R")
+library("lavaan")
+library("semPlot")
+library("knitr")
+library("markdown")
+library("patchwork")
+library("here")
+```
+
+## Dati non gaussiani
+
+Negli esempi precedenti di questa dispensa è stato utilizzato lo stimatore di massima verosimiglianza (ML). Molti dei modelli CFA e SEM riportati nella letteratura di ricerca applicata utilizzano stime di ML. Tuttavia, ML è appropriata solo per dati multivariati normali, a livello di scala a intervalli (cioè, quando la distribuzione congiunta delle variabili continue è distribuita normalmente). Quando i dati continui si discostano marcatamente dalla normalità (cioè, forti asimmetria o curtosi), o quando alcuni degli indicatori non sono a livello di cala a intervalli (cioè, dati binari, politomici o ordinali), allora dovrebbe essere utilizzato uno stimatore diverso dalla ML.
+
+La ricerca ha dimostrato che ML è robusta nel caso di lievi deviazioni nella normalità. Tuttavia, quando la non normalità è più pronunciata, è necessario utilizzare uno stimatore diverso da ML per ottenere risultati statistici affidabili (vale a dire, statistiche accurate sulla bontà dell'adattamento ed errori standard delle stime dei parametri). ML è particolarmente sensibile ad una eccessiva curtosi.
+
+Le conseguenze dell'uso del ML in condizioni di grave non normalità includono 
+
+- valori eccessivi della statistica $\chi^2$ del modello; 
+- sottostima degli indici di bontà dell'adattamento come TLI e CFI;
+- sottostima degli errori standard delle stime dei parametri.
+
+Questi effetti deleteri sono esacerbati con la diminuzione della dimensione del campione. 
+
+I due stimatori più comunemente usati per dati continui non normali sono 
+
+- ML robusto,
+- minimi quadrati ponderati. 
+
+L'uso di WLS non è, in generale, raccomandato, a meno che le dimensioni del campione non siano molto grandi. Al contrario, la ricerca ha dimostrato che il metodo ML robusto fornisce uno stimatore adeguato rispetto a diversi livelli di non normalità. 
+
+Esaminiamo qui un esempio che usa gli stessi dati utilizzati da @brown2015confirmatory nelle tabelle 9.5 -- 9.7. 
+
+```{r}
+d <- readRDS(here::here("data", "brown_table_9_5_data.RDS"))
+head(d)
+```
+
+Le statistiche descrittive dei dati dell'esempio mostrano valori eccessivi di asimmetria e di curtosi.
+
+```{r}
+psych::describe(d)
+```
+
+Definiamo un modello ad un fattore e, seguendo @brown2015confirmatory, aggiungiamo una correlazione residua tra gli indicatori `X1` e `X3`:
+
+```{r}
+model <- '
+  f1 =~ x1 + x2 + x3 + x4 + x5
+  x1 ~~ x3 
+'
+```
+
+Procediamo alla stima dei parametri utilizzando uno stimatore di ML robusto. La sintassi `lavaan` è la seguente:
+
+```{r}
+fit <- cfa(model, data = d, mimic = "MPLUS", estimator = "MLM")
+```
+
+Possiamo esaminare la soluzione ottenuta con i soliti metodi:
+
+```{r}
+standardizedSolution(fit)
+```
+
+```{r}
+effectsize::interpret(fit)
+```
+
+
+## Dati categoriali
+
+Quando almeno un indicatore è categoriale (cioè binario, politomico o ordinale), il metodo ML ordinario non dovrebbe essere utilizzato per stimare i modelli CFA. Le potenziali conseguenze del trattamento delle variabili categoriali come variabili continue in un'analisi CFA sono molteplici, incluso il fatto che può tale scelta può 
+
+- produrre stime attenuate delle relazioni tra indicatori, specialmente quando ci sono effetti pavimento o soffitto;
+- portare ad individuare "pseudofattori" che sono solo artefatti del metodo statistico;  
+- produrre distorsioni negli indici di bontà dell'adattamento e nella stima degli errori standard;
+- produrre stime errate dei parametri.
+
+Esistono vari stimatori che possono essere utilizzati con indicatori categoriali; ad esempio, minimi quadrati ponderati (WLS), minimi quadrati ponderati robusti (WLSMV) e minimi quadrati non ponderati (ULS).
+
+### Un esempio concreto
+
+Nell'esempio discusso da @brown2015confirmatory, i ricercatori desiderano verificare un modello unifattoriale di dipendenza da alcol in un campione di 750 pazienti ambulatoriali. Gli indicatori di alcolismo sono item binari che riflettono la presenza/assenza di sei criteri diagnostici per l'alcolismo (0 = criterio non soddisfatto, 1 = criterio soddisfatto). I dati sono i seguenti:
+
+```{r}
+d1 <- readRDS(here::here("data", "brown_table_9_9_data.RDS"))
+head(d1)
+```
+
+Il modello viene specificato nel modo seguente:
+
+```{r}
+model1 <- '
+  etoh =~ y1 + y2 + y3 + y4 + y5 + y6
+'
+```
+
+Adattiamo il modello specificando che i dati sono a livello di scala ordinale:
+
+```{r}
+fit1 <- cfa(
+  model1, 
+  data = d1, 
+  ordered = names(d1), 
+  estimator = "WLSMVS", 
+  mimic = "mplus"
+)
+```
+
+Esaminiamo la soluzione ottenuta:
+
+```{r}
+summary(fit1, fit.measures = TRUE)
+```
+
+

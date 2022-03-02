@@ -1,0 +1,207 @@
+# Potere statistico {#ch:power}
+
+```{r, include = FALSE}
+source("_common.R")
+library("lavaan")
+library("semPlot")
+library("knitr")
+library("markdown")
+library("patchwork")
+library("here")
+library("semTools")
+```
+
+## Potere statistico
+
+La prima domanda è per cosa desideri ottenere il potere. SSpower() è progettato per valutare la potenza statistica per rifiutare l'ipotesi nulla che un dato parametro (o insieme di parametri) sia uguale a un valore specifico (ad esempio zero) nella popolazione. Se non è quello che vuoi, potresti avere la funzione sbagliata. Se è quello che vuoi, allora devi decidere per quale parametro o parametri vuoi valutare la potenza.
+
+  Gli ingredienti chiave in qualsiasi analisi di potenza sono il valore del parametro stimato (ovvero la dimensione dell'effetto), il livello alfa e la dimensione del campione. Gli ultimi due di questi sono specificati nella chiamata SSpower() usando i parametri n e alpha.
+
+  Lo scopo del modello di popolazione è di specificare i valori dei parametri di popolazione. Proprio come se stessi usando simulaData(), dovresti specificare i valori di tutti i parametri nel modello. Non dovrebbero esserci parametri liberi perché il valore della potenza potrebbe variare in funzione di qualsiasi parametro. Stai essenzialmente valutando il controfattuale: quanto potere avrei per un dato (insieme di) parametri se il mondo funzionasse in un certo modo. Il tuo modello di popolazione sta specificando il modo in cui funziona il mondo in base all'antecedente (cioè, la condizione) di questo condizionale.
+
+  Lo scopo del modello di potenza (o modello di analisi) è di specificare tre cose: (a) il modello che si intende adattare ai dati, (b) il parametro o i parametri per i quali si desidera condurre l'analisi di potenza e ( c) i valori posti dall'ipotesi nulla. Puoi eseguire gli ultimi due fissando il parametro o i parametri di interesse ai valori desiderati (ad es. Zero per un test di ipotesi nullo). Parametri diversi da quelli valutati e quelli fissati nell'analisi prevista possono essere lasciati liberi nel modello di potenza.
+
+  Se sei interessato alla potenza di più di un parametro, ovvero un calcolo della potenza per un insieme di parametri, specifica il numero di parametri utilizzando il parametro nparam nella funzione SSpower().
+
+  Il risultato dell'esecuzione della chiamata di funzione dovrebbe essere un singolo valore che rappresenta la potenza statistica per le specifiche di cui sopra. Potrebbe essere utile confrontare la descrizione di cui sopra con l'esempio fornito nel file della guida prima di tentare la propria analisi. La funzione SSpower può anche gestire vettori di valori, almeno per il parametro n.
+
+```{r}
+## Step 1: generate population covariance matrix from H1 model
+
+covs <- matrix(c(
+  1, 0, 0, 0, 0, 0,
+  0, 1, 0, 0, 0, 0,
+  0, 0, 1, 0, 0, 0,
+  0, 0, 0, 1, 0, 0,
+  0, 0, 0, 0, 1, 0,
+  0, 0, 0, 0, 0, 1), nrow = 6)
+
+colnames(covs) <- rownames(covs) <- paste("x", 1:6, sep = "")
+
+model <- '
+  esteem  =~ .65*x1 + .70*x2 + .72*x3
+  depress =~ .60*x4 + .70*x5 + .65*x6
+  
+  esteem ~~ 1*esteem
+  depress ~~ 1*depress
+  
+  x1 ~~ .5775*x1
+  x2 ~~ .51*x2
+  x3 ~~ .4816*x3
+  x4 ~~ .64*x4
+  x5 ~~ .51*x5
+  x6 ~~ .5775*x6
+  
+  esteem ~~ .35*depress
+'
+fit <- cfa(model, sample.cov = covs, sample.nobs = 500)
+
+covs.pop <- fitted(fit)$cov
+
+## Step 2: analyze residual covariance matrix to ensure that population values are recovered
+
+model <- '
+  esteem  =~ x1 + x2 + x3
+  depress =~ x4 + x5 + x6
+'
+
+fit <- cfa(model, sample.cov = covs.pop, sample.nobs = 500)
+residuals(fit)$cov
+
+## Step 3: fit H0 model that contains the misspecified parameter and target sample size
+
+model <- '
+  esteem  =~ x1 + x2 + x3
+  depress =~ x4 + x5 + x6
+  
+  esteem ~~ 0*depress
+'
+
+fit <- cfa(model, sample.cov = covs.pop, sample.nobs = 100)
+
+
+## Step 4: use X2 from step 3 as noncentrality parameter to estimate power at targeted sample sizes
+dfs <- 1
+alfa <- 0.05
+crit <- qchisq(1-alfa,dfs)
+lamba <- inspect(fit, "fit")[1]
+power <- 1-pchisq(crit, 1, lamba)
+power
+
+```
+
+
+
+
+
+
+
+```{r}
+## Specify population values. Note every parameter has a fixed value.
+modelP <- '
+  f1 =~ .7*V1 + .7*V2 + .7*V3 + .7*V4
+  f2 =~ .7*V5 + .7*V6 + .7*V7 + .7*V8
+  f1 ~~ .3*f2
+  f1 ~~ 1*f1
+  f2 ~~ 1*f2
+  V1 ~~ .51*V1
+  V2 ~~ .51*V2
+  V3 ~~ .51*V3
+  V4 ~~ .51*V4
+  V5 ~~ .51*V5
+  V6 ~~ .51*V6
+  V7 ~~ .51*V7
+  V8 ~~ .51*V8
+'
+## Specify analysis model. Note parameter of interest f1~~f2 is fixed to 0.
+modelA <- '
+  f1 =~ V1 + V2 + V3 + V4
+  f2 =~ V5 + V6 + V7 + V8
+  f1 ~~ 0*f2
+'
+## Calculate power
+SSpower(powerModel = modelA, popModel = modelP, n = 150, nparam = 1,
+        std.lv = TRUE)
+
+## Get power for a range of sample sizes
+Ns <- seq(100, 500, 40)
+Power <- rep(NA, length(Ns))
+for(i in 1:length(Ns)) {
+  Power[i] <- SSpower(powerModel = modelA, popModel = modelP,
+                      n = Ns[i], nparam = 1, std.lv = TRUE)
+}
+plot(x = Ns, y = Power, type = "l", xlab = "Sample Size")
+
+
+## Optionally specify different values for multiple populations
+
+modelP2 <- '
+  f1 =~ .7*V1 + .7*V2 + .7*V3 + .7*V4
+  f2 =~ .7*V5 + .7*V6 + .7*V7 + .7*V8
+  f1 ~~ c(-.3, .3)*f2                  # DIFFERENT ACROSS GROUPS
+  f1 ~~ 1*f1
+  f2 ~~ 1*f2
+  V1 ~~ .51*V1
+  V2 ~~ .51*V2
+  V3 ~~ .51*V3
+  V4 ~~ .51*V4
+  V5 ~~ .51*V5
+  V6 ~~ .51*V6
+  V7 ~~ .51*V7
+  V8 ~~ .51*V8
+'
+modelA2 <- '
+  f1 =~ V1 + V2 + V3 + V4
+  f2 =~ V5 + V6 + V7 + V8
+  f1 ~~ c(psi21, psi21)*f2        # EQUALITY CONSTRAINT ACROSS GROUPS
+'
+## Calculate power
+SSpower(powerModel = modelA2, popModel = modelP2, n = c(100, 100), nparam = 1,
+        std.lv = TRUE)
+## Get power for a range of sample sizes
+Ns2 <- cbind(Group1 = seq(10, 100, 10), Group2 = seq(10, 100, 10))
+Power2 <- apply(Ns2, MARGIN = 1, FUN = function(nn) {
+  SSpower(powerModel = modelA2, popModel = modelP2, n = nn,
+          nparam = 1, std.lv = TRUE)
+})
+plot(x = rowSums(Ns2), y = Power2, type = "l", xlab = "Total Sample Size",
+     ylim = 0:1)
+abline(h = c(.8, .9), lty = c("dotted","dashed"))
+legend("bottomright", c("80% Power","90% Power"), lty = c("dotted","dashed"))
+```
+
+```{r}
+loading <- matrix(0, 6, 2) #create a matrix of all 0s
+loading[1:3, 1] <- NA #specify free parameters with NA
+loading[4:6, 2] <- NA
+
+loading <- matrix(0, 6, 2) #create a matrix of all 0s
+loading[1:3, 1] <- c("a1", "a2", "a3") #specify free parameters with texts
+loading[4:6, 2] <- c("a4", "a5", "a6")
+
+loadingValues <- matrix(0, 6, 2)  
+loadingValues[1:3, 1] <- 0.7  
+loadingValues[4:6, 2] <- 0.7
+
+LY <- bind(loading, loadingValues)
+error.cor <- matrix(0, 6, 6)
+diag(error.cor) <- 1
+RTE <- binds(error.cor)
+
+latent.cor <- matrix(NA, 2, 2) #specify a 2x2 matrix of NAs
+diag(latent.cor) <- 1 #set the diagonal of the matrix to 1
+
+RPS <- binds(latent.cor, 0.5) #Defaults to making all NA values in the matrix .5
+
+CFA.Model <- model(LY = LY, RPS = RPS, RTE = RTE, modelType="CFA")
+summary(CFA.Model)
+
+CFA.Model <- model.cfa(LY = LY, RPS = RPS, RTE = RTE)
+dat <- generate(CFA.Model, 200)
+```
+
+```{r}
+Output <- sim(1000, n=200, CFA.Model)
+```
+
+

@@ -1,0 +1,113 @@
+# Dati mancanti {#ch:missing_data}
+
+```{r, include = FALSE}
+source("_common.R")
+library("lavaan")
+library("semPlot")
+library("knitr")
+library("markdown")
+library("patchwork")
+library("here")
+```
+
+Raramente un ricercatore si trova nella situazione fortunata nella quale un'analisi statistica (CFA o altro) può essere condotta utilizzando un set di dati in cui tutte le variabili sono presenti per tutte le osservazioni: i dati mancanti sono la norma piuttosto che l'eccezione nella pratica della ricerca.
+
+## Tipologie di dati mancanti
+
+I dati mancanti possono verificarsi per una serie di motivi. Ad esempio, i dati possono mancare per disegno dello studio ("mancanza pianificata"), come ad esempio nei progetti di ricerca in cui i partecipanti al campione vengono selezionati casualmente per completare vari sottoinsiemi della batteria di valutazione completa (a causa di considerazioni pratiche come vincoli di tempo). In tali condizioni, si presume che i dati mancanti si distribuiscano in un modo completamente casuale rispetto a tutte le altre variabili nello studio. In generale, i meccanismi che determinano la presenza di dati mancanti possono essere classificati in tre categorie:
+
+1. *valori mancanti completamente casuali* (*Missing Completely At Random*, MCAR). La probabilità di dati mancanti su una variabile non è collegata né al valore mancante sulla variabile, né al valore di ogni altra variabile presente nella matrice dati che si sta analizzando;
+2. *valori mancanti casuali* (*Missing At Random*, MAR). I valori mancanti sono indipendenti dal valore che viene a mancare, ma dipendono da altre variabili, cioè i dati sulla variabile sono mancanti per categorie di partecipanti che potrebbero essere identificati da valori su altre variabili;
+3. *valori mancanti non ignorabili* (*Missing Not At Random*, MNAR). La mancanza di un dato può dipendere sia dal valore del dato stesso che dalle altre variabili. Per esempio, se si studia la salute mentale e le persone depresse riferiscono meno volentieri informazioni riguardanti il loro stato di salute, allora i dati non sono mancanti per caso.
+
+## La gestione dei dati mancanti
+
+Il passo successivo dopo la definizione dei meccanismi è quello della gestione dei dati mancanti. Sostanzialmente le scelte possibili sono due: l'eliminazione dei casi o la sostituzione dei dati mancanti. Un metodo semplice, indicato solo nel caso in cui l'ammontare dei dati mancanti è limitato e questi sono mancanti completamente a caso (MCAR), è quello di cancellare i casi (*case deletion*). 
+
+I modi per eliminare i casi sono due: *listwise deletion* e *pairwise deletion*. Nel primo caso si elimina dal campione ogni caso che ha dati mancanti. Le analisi avverranno quindi solo sui casi che hanno valori validi per tutte le variabili in esame. Si ha una maggiore semplicità di trattazione, tuttavia non si utilizza tutta l'informazione osservata (si riduce la numerosità campionaria e, quindi, l'informazione). Il secondo metodo è la pairwise deletion, che utilizza tutti i casi che hanno i dati validi su due variabili volta per volta. In questo modo si riesce a massimizzare la numerosità del campione da utilizzare, ma si tratta comunque di un metodo che presenta dei problemi, per esempio il fatto che con questo approccio i parametri del modello saranno basati su differenti insiemi di dati, con differenti numerosità campionarie e differenti errori standard.
+
+Quando i dati non sono MCAR è opportuno sostituirli con appropriate funzioni dei dati effettivamente osservati (*imputation*). Di seguito sono indicati alcuni metodi.
+
+1. *Mean Imputation*. Il dato mancante viene sostituito con la media della
+variabile. Questo metodo, utilizzato troppo spesso per la sua semplicità, riducendo la variabilità dei dati, ha invece effetti importanti su molte analisi dei dati e generalmente dovrebbe essere evitato.
+2. *Regression Imputation*. Si tratta di un approccio basato sulle informazioni disponibili per le altre variabili. Si stima una equazione di regressione lineare per ogni variabile utilizzando le altre come predittori. Questo metodo offre il vantaggio di poter utilizzare dei rapporti esistenti tra le variabili per effettuare le valutazioni dei dati mancanti; tuttavia esso è usato raramente, in quanto amplifica i rapporti di correllazione tra le variabili; quindi se le analisi si baseranno su regressioni, questo metodo è sconsigliato.
+3. *Multiple Imputation*. La tecnica multiple imputation, applicabile in caso di MAR, prevede che un dato mancante su una variabile sia sostituito, sulla base dei dati esistenti anche sulle altre variabili, con un valore che però comprende anche una componente di errore ricavata dalla distribuzione dei residui della variabile. 
+4. *Expectation-Maximization*. Un altro approccio moderno del trattamento dei dati mancanti è l’applicazione dell’algoritmo Expectation Maximization (EM). La tecnica è quella di stimare i parametri sulla base dei dati osservati, e di stimare poi i dati mancanti sulla base di questi parametri (fase E). Poi i parametri vengono nuovamente stimati sulla base della nuova matrice di dati (fase M), e così via. Questo processo viene iterato fino a quando i valori stimati convergono. Tuttavia, una limitazione fondamentale dell'utilizzo dell'algoritmo EM per calcolare le matrici di input per le analisi CFA/SEM è che gli errori standard risultanti delle stime dei parametri non sono consistenti. Pertanto, gli intervalli di confidenza e i test di significatività possono essere compromessi. 
+
+### Metodo Direct ML
+
+Benché vengano talvolta usati, i metodi precedenti sono stati presentati solo per ragioni storiche. Nella pratica concreta è meglio usare il metodo *Direct ML*, conosciuto anche come "raw ML" o "full information ML" (FIML), in quanto è generalmente considerano come il metodo migliore per gestire i dati mancanti nella maggior parte delle applicazioni CFA e SEM. Direct ML è esente dai problemi associati all'utilizzo dell'algoritmo EM e produce stime consistenti sotto l'ipotesi di normalità multivariata per dati mancanti MAR. 
+
+Intuitivamente, l'approccio utilizza la relazione tra le variabili per dedurre quali siano i valori mancanti con maggiore probabilità. Ad esempio, se due variabili, $X$ e $Y$, sono correlate positivamente, allora se, per alcuni $i$, $X_i$ è il valore più alto nella variabile, è probabile che anche il valore mancante $Y_i$ sia un valore alto. FIML utilizza queste informazioni senza procedere all'imputazione dei valori mancanti, ma invece basandosi sulle stime più verosimili dei parametri della popolazione, ovvero massimizzando direttamente la verosimiglianza del modello specificato. Sotto l'assunzione di normalità multivariata, la funzione di verosimiglianza diventa
+
+$$
+L(\mu, \Sigma) = \prod_i f(y_i \mid \mu_i, \Sigma_i),
+$$
+laddove $y_i$ sono i dati, $\mu_i$ e $\Sigma_i$ sono i parametri della popolazione se gli elementi mancanti in $y_i$ vengono rimossi. Si cercano i valori $\mu$ e $\Sigma$ che massimizzano la verosimiglianza.
+
+In `lavaan` l'applicazione di tale metodo si ottiene specificando l'argomento `missing = "ml"`.
+
+### Un esempio concreto
+
+Per applicare il metodo *direct ML*, @brown2015confirmatory prende in esame i dati reali di un questionario (un singolo fattore, quattro item, una covarianza di errore) con dati mancanti (N = 650). Leggiamo i dati dell'esempio:
+
+```{r}
+d <- readRDS(here::here("data", "brown_table_9_1.RDS"))
+head(d)
+```
+
+Il modello viene specificato come segue [seguiamo @brown2015confirmatory]:
+
+```{r}
+model <- '
+  esteem =~ s1 + s2 + s3 + s4
+  s2 ~~ s4
+'
+```
+
+Adattiamo il modello ai dati:
+
+```{r}
+fit <- cfa(model, data = d, missing = "ml")
+```
+
+È possibile identificare le configurazioni di risposte agli item che contengono dati mancanti:
+
+```{r}
+fit@Data@Mp[[1]]$npatterns
+```
+
+```{r}
+pats <- fit@Data@Mp[[1]]$pat * 1L
+colnames(pats) <- fit@Data@ov.names[[1]]
+print(pats)
+```
+
+Possiamo ora esaminare la copertura della covarianza nei dati, ovvero la proporzione di dati disponibili per ciascun indicatore e per ciascuna coppia di indicatori: 
+
+```{r}
+coverage <- fit@Data@Mp[[1]]$coverage
+colnames(coverage) <- rownames(coverage) <- fit@Data@ov.names[[1]]
+print(coverage)
+```
+
+Ad esempio, consideriamo l'item `s1`; se moltiplichiamo la copertura di questo elemento per la numerosità campionaria 
+
+```{r}
+650 * 0.9615385
+```
+
+possiamo concludere che questa variabile contiene 25 osservazioni mancanti; e così via.
+
+Procediamo poi come sempre per esaminare la soluzione ottentua.
+
+```{r}
+effectsize::interpret(fit)
+```
+
+```{r}
+standardizedSolution(fit)
+```
+
+
+

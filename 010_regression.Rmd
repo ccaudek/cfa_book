@@ -1,0 +1,374 @@
+\mainmatter
+
+# (PART) Il modello lineare {-}
+
+# L'analisi di regressione
+
+```{r, include = FALSE}
+source("_common.R")
+library("rio")
+library("car")
+library("knitr")
+library("markdown")
+library("lavaan")
+library("semPlot")
+```
+
+Conoscere l'analisi di regressione aiuta a capire la teoria classica dei test, l'analisi fattoriale e i modelli di equazioni strutturali. Sebbene le tecniche dell'analisi di regressione analizzino solo le variabili osservate, i principi  della regressione costituiscono la base delle tecniche più avanzate che includono anche le variabili latenti.
+
+## Regressione bivariata
+
+Il modello di regressione bivariata descrive l'associazione tra il valore atteso di $Y \mid x_i$ e $x$ nei termini di una relazione lineare:
+
+$$
+\mathbb{E}(Y \mid x_i) = \alpha + \beta x_i,
+$$
+dove i valori $x_i$ sono considerati fissi per disegno. Nel modello "classico", si assume che le distribuzioni $Y \mid x_i$ siano Normali con deviazione standard $\sigma_\varepsilon$. 
+
+Il significato dei coefficienti di regressione è semplice:
+
+- $\alpha$ è il valore atteso di $Y$ quando $X = 0$;
+- $\beta$ è l'incremento atteso nel valore atteso di $Y$ quando $X$ aumenta di un'unità.
+
+Per fare un esempio, consideriamo i dati dell'antropologo Sahlins, il quale si è chiesto se esiste un'associazione tra l'ampiezza del clan (`consumers`) e l'area occupata da quel clan (`acres`) in una popolazione di cacciatori-raccoglitori. I dati sono i seguenti:
+
+```{r}
+data(Sahlins)
+head(Sahlins) 
+```
+
+```{r}
+Sahlins %>% 
+  ggplot(aes(x = consumers, y = acres)) +
+  geom_point() +
+  geom_smooth(method=lm, se=FALSE)
+```
+
+```{r}
+fm <- lm(acres ~ consumers, data = Sahlins)
+fm$coef
+```
+
+Dalla figura notiamo che, se `consumers` aumenta di un'unità (da 1.2 a 2.2), allora la retta di regressione (ovvero, il valore atteso di $Y$) aumenta di circa 0.5 punti -- esattamente, aumenta di 0.5163 punti, come indicato dalla stima del coefficiente $\beta$. L'interpretazione del coefficiente $\alpha$ è più problematica, perché non ha senso pensare ad un clan di ampiezza 0. Per affrontare questo problema, centriamo il predittore.
+
+### Regressori centrati
+
+Esprimiamo la variabile `consumers` nei termini degli scarti dalla media:
+
+```{r}
+Sahlins <- Sahlins %>% 
+  mutate(
+    xc = consumers - mean(consumers)
+  )
+```
+
+Svolgiamo nuovamente l'analisi di regressione con il nuovo predittore:
+
+```{r}
+fm1 <- lm(acres ~ xc, data = Sahlins)
+fm1$coef
+```
+
+```{r}
+Sahlins %>% 
+  ggplot(aes(x = xc, y = acres)) +
+  geom_point() +
+  geom_smooth(method=lm, se=FALSE)
+```
+
+La stima di $\beta$ è rimasta invariata ma ora possiamo attribuire un significato alla stima di $\alpha$: questo coefficiente indica il valore atteso della $Y$ quando $X$ assume il suo valore medio.
+
+### Minimi quadrati
+
+La stima dei coefficienti del modello di regressione può essere effettuata in modi diversi: massima verosimiglianza o metodi bayesiani. Se ci limitiamo qui alla massima verosimiglianza possiamo semplificare il problema assumento che le distribuzioni condizionate $Y \mid x$ siano Normali. In tali circostanze, la stima dei coefficienti del modello di regressione può essere trovata con il metodo dei minimi quadrati.
+
+In pratica, questo significa trovare i coefficienti $a$ e $b$ che minimizzano 
+
+$$
+SS_{\text{res}} = \sum(y_i - \hat{y}_i)^2,
+$$
+con $\hat{y}_i = a + b x_i$.
+
+Per fornire un'idea di come questo viene fatto, usiamo una simulazione. Per semplicità, supponiamo di conoscere $a = 1.3756445$ e di volere stimare $b$.
+
+```{r}
+x <- Sahlins$consumers
+y <- Sahlins$acres
+a <- 1.3756445
+
+nrep <- 1e3
+b <- seq(0, 1, length.out = nrep)
+
+ssres <- rep(NA, nrep)
+for (i in 1:nrep) {
+  yhat <- a + b[i] * x
+  ssres[i] <- sum((y - yhat)^2)
+}
+```
+
+Un grafico di $SS_{\text{res}}$ in funzione di $b$ mostra che il valore $b$ che minimizza $SS_{\text{res}}$ corrisponde, appunto, a 0.5163.
+
+```{r}
+tibble(b, ssres) %>% 
+  ggplot(aes(x = b, y = ssres)) +
+  geom_line() 
+```
+
+
+### Relazione tra $b$ e $r$
+
+Un altro modo per interpretare $b$ è quello di considerare la relazione tra la pendenza della retta di regressione e il coefficiente di correlazione:
+
+$$
+b_X = r_{XY} \frac{S_X}{S_Y}
+$$
+
+L'equazione precedente rende chiaro che, se i dati sono standardizzati, $b = r$.
+
+Verifichiamo:
+
+```{r}
+Sahlins %>% 
+  dplyr::select(acres, consumers) %>% 
+  cor()
+```
+
+```{r}
+fm2 <- lm(scale(acres) ~ scale(consumers), data = Sahlins)
+fm2$coef
+```
+
+
+### Attenuazione
+
+Il fenomeno dell'attenuazione si verifica quando $X$ viene misurato con una componente di errore. Esaminiamo la seguente simulazione.
+
+```{r}
+set.seed(1234)
+n <- 100
+x <- rnorm(n, 10, 1.5)
+y <- 1.5 * x + rnorm(n, 0, 2)
+tibble(x, y) %>% 
+  ggplot(aes(x, y)) +
+  geom_point()
+```
+
+```{r}
+sim_dat <- tibble(x, y)
+fm <- lm(y ~ x, sim_dat)
+fm$coef
+```
+
+Questi sono i coefficienti di regressione quando $X$ è misurata senza errori.
+
+```{r}
+sim_dat <- sim_dat %>% 
+  mutate(
+    x1 = x + rnorm(n, 0, 2)
+  )
+
+fm1 <- lm(y ~ x1, sim_dat)
+fm1$coef
+```
+
+Aggiungendo una componente d'errore su $X$, la grandezza del coefficiente $b$ diminuisce.
+
+### Coefficiente di determinazione
+
+Tecnicamente, il coefficiente di determinazione è dato da:
+
+$$
+R^2 = \frac{\sum(\hat{y} - \bar{y})^2}{\sum(y_i - \bar{y})^2}
+$$
+
+Al denominatore abbiamo la _devianza totale_, ovvero una misura della dispersione di $y_i$ rispetto alla media $\bar{y}$. Al numeratore abbiamo una misura della dispersione del valore atteso della $Y$ rispetto alla sua media. Il rapporto, dunque, ci dice qual è la quota della variabilità totale di $Y$ che può essere predetta in base al modello lineare.
+
+Per i dati di Sahlins abbiamo:
+
+```{r}
+mod <- lm(acres ~ consumers, data = Sahlins)
+a <- mod$coef[1]
+b <- mod$coef[2]
+yhat <- a + b * Sahlins$consumers
+ss_tot <- sum((Sahlins$acres - mean(Sahlins$acres))^2)
+ss_reg <- sum((yhat - mean(Sahlins$acres))^2)
+r2 <- ss_reg / ss_tot
+r2
+```
+
+Verifichiamo:
+
+```{r}
+summary(mod)
+```
+
+Da cui deriva che $R^2$ è uguale al quadrato del coefficiente di correlazione:
+
+```{r}
+cor(Sahlins$acres, Sahlins$consumers)^2
+```
+
+### Errore standard della regressione
+
+L'errore standard della regressione è una stima della dispersione di $y \mid x_i$ nella popolazione.  Non è altro che la deviazione standard dei residui
+
+$$
+e = y_i - \hat{y}_i
+$$
+
+che, al denominatore, riporta $n-2$. La ragione è che, per calcolare $\hat{y}$, vengono "perduti" due gradi di libertà -- il calcolo di $\hat{y}$ è basato sulla stima di due coefficienti: $a$ e $b$.
+
+```{r}
+e <- yhat - Sahlins$acres
+(sum(e^2) / (length(Sahlins$acres) - 2)) %>% 
+  sqrt()
+```
+
+Il valore trovato corrisponde a quello riportato nell'output di `lm()`. 
+
+
+## Regressione multipla
+
+Nella regressione multipla vengono utilizzati $k > 1$ predittori:
+
+$$
+y_i = \alpha + \sum_{j=1}^k \beta_j x_i + \varepsilon_i.
+$$
+L'interpretazione geometrica è simile a quella del modello bivariato. Nel caso di due predittori, il valore atteso della $y$ può essere rappresentato da un piano; nel caso di $k > 2$ predittori, da un iper-piano. Nel caso di $k=2$, tale piano è posto in uno spazio di dimensioni $x_1$, $x_2$ (che possiamo immaginare definire un piano orizzontale) e $y$ (ortogonale a tale piano). La superficie piana che rappresenta $\mathbb{E}(y)$ è inclinata in maniera tale che l'angolo tra il piano e l'asse $x_1$ corrisponde a $\beta_1$ e l'angolo tra il piano e l'asse $x_2$ corrisponde a $\beta_2$.
+
+### Significato coefficienti parziali di regressione
+
+Ai coefficienti parziali del modello di regressione multipla possiamo assegnare la seguente interpretazione:
+
+_Il coefficiente parziale di regressione $\beta_j$ rappresenta l'incremento atteso della $y$ se $x_j$ viene incrementata di un'unità, tenendo costante il valore delle altre variabili indipendenti._
+
+Un modo per interpretare la locuzione "al netto dell'effetto delle altre variabili indipendenti" è quello di esaminare la relazione tra la $y$ parzializzata e la $x_j$ parzializzata. In questo contesto, parzializzare significa decomporre una variabile di due componenti: una componente che è linearmente predicibile da una o più altre variabili e una componente che è linearmente incorrelata con tali varibili "terze".
+
+Eseguiamo questa "depurazione" dell'effetto delle variabili "terze" sia sulla $y$ sia su $x_j$. A questo punto possiamo esaminare la relazione bivariata che intercorre tra la componente della $y$ linearmente indipendente dalle variabili "terze" e la componente della $x_j$ linearmente indipendente dalle variabili "terze". Il coefficiente di regressione bivariato così ottenuto è identico al coefficiente parziale di regressione nel modello di regressione multipla. Possiamo così ottenere un'interpretazione di $\beta_j$.
+
+Esaminiamo un caso concreto.
+
+```{r}
+d <- rio::import(
+  here::here("data", "kidiq.dta")
+  )
+glimpse(d)
+```
+
+
+```{r}
+fm <- lm(kid_score ~ mom_iq + mom_work + mom_age + mom_hs, data = d)
+fm$coef
+```
+
+Eseguiamo la parzializzazione di $y$ in funzione delle variabili `mom_work`, `mom_age` e `mom_hs`:
+
+```{r}
+fm_y <- lm(kid_score ~ mom_work + mom_age + mom_hs, data = d)
+```
+
+Lo stesso per `mom_iq`:
+
+```{r}
+fm_x <- lm(mom_iq ~ mom_work + mom_age + mom_hs, data = d)
+```
+
+Esaminiamo ora la regressione bivariata tra le componenti parzializzate della $y$ e di $x_j$:
+
+```{r}
+mod <- lm(fm_y$residuals ~ fm_x$residuals)
+mod$coef
+```
+
+Si vede come il coefficiente di regressione bivariato risulta identico al corrispondente coefficiente parziale di regressione.
+
+### Relazioni causali
+
+Un altro modo per interpretare i coefficienti parziali di regressione è nell'ambito dei quelli che vengono chiamati i _path diagrams_. I diagrammi di percorso, che tratteremo in seguito e qui solo anticipiamo, descrivono le relazioni "causali" tra variabili: le variabili a monte del diagramma di percorso indicono le "cause" esogene e le variabili a valle indicano gli effetti, ovvero le variabili endogene. I coefficienti di percorso rappresentati graficamente come frecce orientate corrispondono all'effetto _diretto_ sulla variabile verso cui punta la freccia della variabile a monte della freccia. Tali coefficienti di percorso non sono altro che i coefficienti parziali di regressione del modello di regressione multipla. In questo contesto, indicano l'effetto atteso _diretto_ sulla variabile endogena dell'incremento di un'unità della variabile esogena, lasciano immutate tutte le altre relazioni strutturali del modello.
+
+Usiamo la funzione `sem()` del pacchetto `lavaan` per definire il modello rappresentato nel successivo diagramma di percorso:
+
+```{r}
+model <- "
+  kid_score ~ mom_hs + mom_iq + mom_work + mom_age
+"
+```
+
+Adattiamo il modello ai dati
+
+```{r}
+fit <- sem(model, data = d)
+```
+
+Il diagramma di percorso si ottiene con le seguenti istruzioni:
+
+```{r}
+semPaths(
+  fit, "est",
+  posCol = c("black"),
+  edge.label.cex = 0.9,
+  sizeMan = 7, 
+  what = "path"
+)
+```
+
+Come indicato nel diagramma, l'effetto diretto di `mom_iq` su `kid_score` è identico al corrispondente coefficiente parziale di regressione.  
+
+### Errore di specificazione
+
+Spiritosamente chiamato "heartbreak of L.O.V.E." (Left-Out Variable Error; @mauro1990understanding), l'errore di specificazione è una caratteristica fondamentale dei modelli di regressione che deve sempre essere tenuta a mente quando interpretiamo i risultati di questa analisi statistica. L'errore di specificazione si verifica quando escludiamo dal modello di regressione una variabile che
+
+- è associata con altre variabili nel modello,
+- ha un effetto diretto sulla $y$.
+
+Come conseguenza dell'errore di specificazione, la direzione e il segno dei coefficienti parziali di regressione risultano sistematicamente distorti.
+
+Consideriamo un esempio con dati simulati nei quali immaginiamo che la prestazione sia positivamente associata alla motivazione e negativamente associata all'ansia. Immaginiamo inoltre che vi sia una correlazione positiva tra ansia a motivazione. Ci chiediamo cosa succede al coefficiente parziale della variabile "motivazione" se la variabile "ansia" viene esclusa dal modello di regressione.
+
+```{r}
+set.seed(123)
+anxiety <- rnorm(n, 10, 1.5)
+motivation <- 4.0 * anxiety + rnorm(n, 0, 3.5)
+cor(anxiety, motivation)
+```
+
+```{r}
+performance <-  0.5 * motivation - 5.0 * anxiety + rnorm(n, 0, 3)
+```
+
+```{r}
+sim_dat2 <- tibble(performance, motivation, anxiety)
+fm1 <- lm(performance ~ motivation + anxiety, sim_dat2)
+coef(fm1)
+```
+
+```{r}
+fm2 <- lm(performance ~ motivation, sim_dat2)
+summary(fm2)
+```
+
+Il risultato prodotto dal modello di regressione è sbagliato: come conseguenza dell'errore di specificazione, il segno del coefficiente parziale di regressione della variabile "motivazione" è negativo, anche se nel vero modello di regressione tale coefficiente ha il segno opposto. Quindi, se noi interpretassimo il coefficiente parziale ottenuto in termini casuali, saremmo portati a concludere che la motivazione fa diminuire la prestazione anche se, in realtà (nel modello generatore dei dati), è vero l'opposto.
+
+
+### Soppressione
+
+Le conseguenze dell'errore di specificazione sono chiamate "soppressione" (_suppression_). In generale, si ha soppressione quando (1) il valore assoluto del peso beta di un predittore è maggiore di quello della sua correlazione bivariata con il criterio o (2) i due hanno segni opposti. 
+
+- L'esempio descritto sopra è un caso di _soppressione negativa_, dove il predittore ha correlazioni bivariate positive con il criterio, ma si riceve un peso beta negativo nell'analisi di regressione multipla. 
+- Un secondo tipo di soppressione è la _soppressione classica_, in cui un predittore non è correlato al criterio ma riceve un peso beta diverso da zero se un altro predittore viene controllato. 
+- C'è anche la _soppressione reciproca_ che può verificarsi quando due variabili sono correlate positivamente con il criterio ma negativamente tra loro.
+
+
+### Stepwise regression 
+
+Un'implicazione della soppressione è che i predittori non dovrebbero essere selezionati in base ai valori delle correlazioni bivariate con il criterio. Queste associazioni di ordine zero non controllano gli effetti degli altri predittori, quindi i loro valori possono essere fuorvianti rispetto ai coefficienti di regressione parziale per le stesse variabili. Per lo stesso motivo, il fatto che le correlazioni bivariate con il criterio siano statisticamente significative o meno è irrilevante per quanto riguarda la selezione dei predittori. Sebbene le procedure informatiche di regressione  rendano facile tali processi di selezione dei predittori, i ricercatori dovrebbero evitare di usare tali metodi. Il rischio è che anche piccole, ma non rilevate, non-linearità o effetti indiretti tra i predittori possano seriamente distocere i coefficienti di regressione parziale. È meglio selezionare giudiziosamente il minor numero di predittori sulla base di ragioni teoriche o dei risultati di ricerche precedenti.
+
+Una volta selezionati, ci sono due modi di base per inserire i predittori nell'equazione di regressione: uno consiste nell'inserire tutti i predittori contemporaneamente. L'altro è inserirli nel corso di una serie di passaggi, ovvero mediante usando una procedura sequenziale. L'ordine di ingresso può essere determinato in base a uno di due diversi standard: teorici (razionali) o empirici (statistici). Lo standard razionale corrisponde alla regressione gerarchica, in cui si comunica al computer un ordine fisso per inserire i predittori. Ad esempio, a volte le variabili demografiche vengono inserite nel primo passaggio, quindi nel secondo passaggio viene inserita una variabile psicologica di interesse. Questo ordine non solo controlla le variabili demografiche ma permette anche di valutare il potere predittivo della variabile psicologica, al di là di quello delle semplici variabili demografiche. Quest'ultimo può essere stimato come l'aumento della correlazione multipla al quadrato, o $\Delta R^2$, da quella della fase 1 con solo predittori demografici a quella della fase 2 con tutti i predittori nell'equazione di regressione.
+
+Un esempio di standard statistico è la regressione _stepwise_, in cui il computer seleziona l'inserimento dei predittori in base esclusivamente alla significatività statistica; cioè, viene chiesto: quale predittore, se inserito nell'equazione, avrebbe il valore_$p$ più piccolo per il test del suo coefficiente di regressione parziale? Dopo la selezione, i predittori in una fase successiva possono essere rimossi dall'equazione di regressione in base ai loro valori-$p$ (ad esempio, se $p \geq$ .05). Il processo stepwise si interrompe quando, aggiungendo più predittori, $\Delta R^2$ non migliora. Varianti della regressione stepwise includono _forward inclusion_, in cui i predittori selezionati non vengono successivamente rimossi dal modello, e _backward elimination_, che inizia con tutti i predittori nel modello per poi rimuoverne alcuni in passi successivi. 
+I problemi relativi ai metodi stepwise sono così gravi da essere effettivamente banditi in alcuni giornali. Un problema è che fanno leva su risultati che si ottengono per caso, in dipendenza delle idiosincrasie del campione (quindi, non replicabili). 
+
+In secondo luogo, una volta che un insieme finale di predittori selezionati razionalmente è stato inserito nell'equazione di regressione, tali predittori non dovrebbero essere successivamente rimossi se i loro coefficienti di regressione non sono statisticamente significativi: il ricercatore non dovrebbe sentirsi in dovere di lasciar perdere ogni predittore che non risulta statisticamente significativo. In campioni piccoli, la potenza dei test di significatività è  bassa e la rimozione di un predittore non significativo può alterare sostanzialmente la soluzione. Se c'è una buona ragione per includere un predittore, allora è meglio lasciarlo nel modello, fino a prova contraria. 
+
+
+
