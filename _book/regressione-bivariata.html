@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1.1 Regressione bivariata | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)</title>
+  <meta name="description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2021/2022) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
+  <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1.1 Regressione bivariata | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2021/2022) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
+  <meta name="github-repo" content="ccaudek/cfa_book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1.1 Regressione bivariata | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
+  
+  <meta name="twitter:description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2021/2022) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
+  
+
+<meta name="author" content="Corrado Caudek" />
+
+
+<meta name="date" content="2022-03-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="lanalisi-di-regressione.html"/>
+<link rel="next" href="regressione-multipla.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Appunti di Costruzione e valutazione di test psicometrici</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefazione</a></li>
+<li class="part"><span><b>I Il modello lineare</b></span></li>
+<li class="chapter" data-level="1" data-path="lanalisi-di-regressione.html"><a href="lanalisi-di-regressione.html"><i class="fa fa-check"></i><b>1</b> L’analisi di regressione</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="regressione-bivariata.html"><a href="regressione-bivariata.html"><i class="fa fa-check"></i><b>1.1</b> Regressione bivariata</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="regressione-bivariata.html"><a href="regressione-bivariata.html#regressori-centrati"><i class="fa fa-check"></i><b>1.1.1</b> Regressori centrati</a></li>
+<li class="chapter" data-level="1.1.2" data-path="regressione-bivariata.html"><a href="regressione-bivariata.html#minimi-quadrati"><i class="fa fa-check"></i><b>1.1.2</b> Minimi quadrati</a></li>
+<li class="chapter" data-level="1.1.3" data-path="regressione-bivariata.html"><a href="regressione-bivariata.html#relazione-tra-b-e-r"><i class="fa fa-check"></i><b>1.1.3</b> Relazione tra <span class="math inline">\(b\)</span> e <span class="math inline">\(r\)</span></a></li>
+<li class="chapter" data-level="1.1.4" data-path="regressione-bivariata.html"><a href="regressione-bivariata.html#attenuazione"><i class="fa fa-check"></i><b>1.1.4</b> Attenuazione</a></li>
+<li class="chapter" data-level="1.1.5" data-path="regressione-bivariata.html"><a href="regressione-bivariata.html#coefficiente-di-determinazione"><i class="fa fa-check"></i><b>1.1.5</b> Coefficiente di determinazione</a></li>
+<li class="chapter" data-level="1.1.6" data-path="regressione-bivariata.html"><a href="regressione-bivariata.html#errore-standard-della-regressione"><i class="fa fa-check"></i><b>1.1.6</b> Errore standard della regressione</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="regressione-multipla.html"><a href="regressione-multipla.html"><i class="fa fa-check"></i><b>1.2</b> Regressione multipla</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="regressione-multipla.html"><a href="regressione-multipla.html#significato-coefficienti-parziali-di-regressione"><i class="fa fa-check"></i><b>1.2.1</b> Significato coefficienti parziali di regressione</a></li>
+<li class="chapter" data-level="1.2.2" data-path="regressione-multipla.html"><a href="regressione-multipla.html#relazioni-causali"><i class="fa fa-check"></i><b>1.2.2</b> Relazioni causali</a></li>
+<li class="chapter" data-level="1.2.3" data-path="regressione-multipla.html"><a href="regressione-multipla.html#errore-di-specificazione"><i class="fa fa-check"></i><b>1.2.3</b> Errore di specificazione</a></li>
+<li class="chapter" data-level="1.2.4" data-path="regressione-multipla.html"><a href="regressione-multipla.html#soppressione"><i class="fa fa-check"></i><b>1.2.4</b> Soppressione</a></li>
+<li class="chapter" data-level="1.2.5" data-path="regressione-multipla.html"><a href="regressione-multipla.html#stepwise-regression"><i class="fa fa-check"></i><b>1.2.5</b> Stepwise regression</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II La teoria classica dei test</b></span></li>
+<li class="chapter" data-level="2" data-path="ch:teoria_classica.html"><a href="ch:teoria_classica.html"><i class="fa fa-check"></i><b>2</b> Fondamenti teorici</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="valutazione-psicometrica-come-ragionamento-inferenziale.html"><a href="valutazione-psicometrica-come-ragionamento-inferenziale.html"><i class="fa fa-check"></i><b>2.1</b> Valutazione psicometrica come ragionamento inferenziale</a></li>
+<li class="chapter" data-level="2.2" data-path="la-teoria-classica.html"><a href="la-teoria-classica.html"><i class="fa fa-check"></i><b>2.2</b> La Teoria Classica</a></li>
+<li class="chapter" data-level="2.3" data-path="le-due-componenti-del-punteggio-osservato.html"><a href="le-due-componenti-del-punteggio-osservato.html"><i class="fa fa-check"></i><b>2.3</b> Le due componenti del punteggio osservato</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="le-due-componenti-del-punteggio-osservato.html"><a href="le-due-componenti-del-punteggio-osservato.html#il-punteggio-vero"><i class="fa fa-check"></i><b>2.3.1</b> Il punteggio vero</a></li>
+<li class="chapter" data-level="2.3.2" data-path="le-due-componenti-del-punteggio-osservato.html"><a href="le-due-componenti-del-punteggio-osservato.html#somministrazioni-ripetute"><i class="fa fa-check"></i><b>2.3.2</b> Somministrazioni ripetute</a></li>
+<li class="chapter" data-level="2.3.3" data-path="le-due-componenti-del-punteggio-osservato.html"><a href="le-due-componenti-del-punteggio-osservato.html#le-assunzioni-sul-punteggio-ottenuto"><i class="fa fa-check"></i><b>2.3.3</b> Le assunzioni sul punteggio ottenuto</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="lerrore-standard-della-misurazione-sigma_e.html"><a href="lerrore-standard-della-misurazione-sigma_e.html"><i class="fa fa-check"></i><b>2.4</b> L’errore standard della misurazione <span class="math inline">\(\sigma_E\)</span></a></li>
+<li class="chapter" data-level="2.5" data-path="assiomi-della-teoria-classica.html"><a href="assiomi-della-teoria-classica.html"><i class="fa fa-check"></i><b>2.5</b> Assiomi della Teoria Classica</a></li>
+<li class="chapter" data-level="2.6" data-path="lattendibilità-del-test.html"><a href="lattendibilità-del-test.html"><i class="fa fa-check"></i><b>2.6</b> L’attendibilità del test</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="lattendibilità-del-test.html"><a href="lattendibilità-del-test.html#la-varianza-del-punteggio-osservato"><i class="fa fa-check"></i><b>2.6.1</b> La varianza del punteggio osservato</a></li>
+<li class="chapter" data-level="2.6.2" data-path="lattendibilità-del-test.html"><a href="lattendibilità-del-test.html#la-covarianza-tra-punteggio-osservato-e-punteggio-vero"><i class="fa fa-check"></i><b>2.6.2</b> La covarianza tra punteggio osservato e punteggio vero</a></li>
+<li class="chapter" data-level="2.6.3" data-path="lattendibilità-del-test.html"><a href="lattendibilità-del-test.html#definizione-e-significato-dellattendibilità"><i class="fa fa-check"></i><b>2.6.3</b> Definizione e significato dell’attendibilità</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="attendibilità-e-modello-di-regressione-lineare.html"><a href="attendibilità-e-modello-di-regressione-lineare.html"><i class="fa fa-check"></i><b>2.7</b> Attendibilità e modello di regressione lineare</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="attendibilità-e-modello-di-regressione-lineare.html"><a href="attendibilità-e-modello-di-regressione-lineare.html#simulazione"><i class="fa fa-check"></i><b>2.7.1</b> Simulazione</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="misurazioni-parallele-e-affidabilità.html"><a href="misurazioni-parallele-e-affidabilità.html"><i class="fa fa-check"></i><b>2.8</b> Misurazioni parallele e affidabilità</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="misurazioni-parallele-e-affidabilità.html"><a href="misurazioni-parallele-e-affidabilità.html#la-correlazione-tra-misurazioni-parallele"><i class="fa fa-check"></i><b>2.8.1</b> La correlazione tra misurazioni parallele</a></li>
+<li class="chapter" data-level="2.8.2" data-path="misurazioni-parallele-e-affidabilità.html"><a href="misurazioni-parallele-e-affidabilità.html#la-correlazione-tra-due-forme-parallele-del-test"><i class="fa fa-check"></i><b>2.8.2</b> La correlazione tra due forme parallele del test</a></li>
+<li class="chapter" data-level="2.8.3" data-path="misurazioni-parallele-e-affidabilità.html"><a href="misurazioni-parallele-e-affidabilità.html#la-correlazione-tra-punteggio-osservato-e-punteggio-vero"><i class="fa fa-check"></i><b>2.8.3</b> La correlazione tra punteggio osservato e punteggio vero</a></li>
+<li class="chapter" data-level="2.8.4" data-path="misurazioni-parallele-e-affidabilità.html"><a href="misurazioni-parallele-e-affidabilità.html#i-fattori-che-influenzano-lattendibilità"><i class="fa fa-check"></i><b>2.8.4</b> I fattori che influenzano l’attendibilità</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><a href="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><i class="fa fa-check"></i><b>2.9</b> Metodi alternativi per la stima del coefficiente di attendibilità</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ch:missing_data.html"><a href="ch:missing_data.html"><i class="fa fa-check"></i><b>3</b> Dati mancanti</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="tipologie-di-dati-mancanti.html"><a href="tipologie-di-dati-mancanti.html"><i class="fa fa-check"></i><b>3.1</b> Tipologie di dati mancanti</a></li>
+<li class="chapter" data-level="3.2" data-path="la-gestione-dei-dati-mancanti.html"><a href="la-gestione-dei-dati-mancanti.html"><i class="fa fa-check"></i><b>3.2</b> La gestione dei dati mancanti</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="la-gestione-dei-dati-mancanti.html"><a href="la-gestione-dei-dati-mancanti.html#metodo-direct-ml"><i class="fa fa-check"></i><b>3.2.1</b> Metodo Direct ML</a></li>
+<li class="chapter" data-level="3.2.2" data-path="la-gestione-dei-dati-mancanti.html"><a href="la-gestione-dei-dati-mancanti.html#un-esempio-concreto"><i class="fa fa-check"></i><b>3.2.2</b> Un esempio concreto</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ch:cat_data.html"><a href="ch:cat_data.html"><i class="fa fa-check"></i><b>4</b> Dati non gaussiani e categoriali</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="dati-non-gaussiani.html"><a href="dati-non-gaussiani.html"><i class="fa fa-check"></i><b>4.1</b> Dati non gaussiani</a></li>
+<li class="chapter" data-level="4.2" data-path="dati-categoriali.html"><a href="dati-categoriali.html"><i class="fa fa-check"></i><b>4.2</b> Dati categoriali</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="dati-categoriali.html"><a href="dati-categoriali.html#un-esempio-concreto-1"><i class="fa fa-check"></i><b>4.2.1</b> Un esempio concreto</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="regressione-bivariata" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Regressione bivariata</h2>
+<p>Il modello di regressione bivariata descrive l’associazione tra il valore atteso di <span class="math inline">\(Y \mid x_i\)</span> e <span class="math inline">\(x\)</span> nei termini di una relazione lineare:</p>
+<p><span class="math display">\[
+\mathbb{E}(Y \mid x_i) = \alpha + \beta x_i,
+\]</span>
+dove i valori <span class="math inline">\(x_i\)</span> sono considerati fissi per disegno. Nel modello “classico”, si assume che le distribuzioni <span class="math inline">\(Y \mid x_i\)</span> siano Normali con deviazione standard <span class="math inline">\(\sigma_\varepsilon\)</span>.</p>
+<p>Il significato dei coefficienti di regressione è semplice:</p>
+<ul>
+<li><span class="math inline">\(\alpha\)</span> è il valore atteso di <span class="math inline">\(Y\)</span> quando <span class="math inline">\(X = 0\)</span>;</li>
+<li><span class="math inline">\(\beta\)</span> è l’incremento atteso nel valore atteso di <span class="math inline">\(Y\)</span> quando <span class="math inline">\(X\)</span> aumenta di un’unità.</li>
+</ul>
+<p>Per fare un esempio, consideriamo i dati dell’antropologo Sahlins, il quale si è chiesto se esiste un’associazione tra l’ampiezza del clan (<code>consumers</code>) e l’area occupata da quel clan (<code>acres</code>) in una popolazione di cacciatori-raccoglitori. I dati sono i seguenti:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="regressione-bivariata.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Sahlins)</span>
+<span id="cb1-2"><a href="regressione-bivariata.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Sahlins)</span>
+<span id="cb1-3"><a href="regressione-bivariata.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   consumers acres</span></span>
+<span id="cb1-4"><a href="regressione-bivariata.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      1.00  1.71</span></span>
+<span id="cb1-5"><a href="regressione-bivariata.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      1.08  1.52</span></span>
+<span id="cb1-6"><a href="regressione-bivariata.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      1.15  1.29</span></span>
+<span id="cb1-7"><a href="regressione-bivariata.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      1.15  3.09</span></span>
+<span id="cb1-8"><a href="regressione-bivariata.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5      1.20  2.21</span></span>
+<span id="cb1-9"><a href="regressione-bivariata.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6      1.30  2.26</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="regressione-bivariata.html#cb2-1" aria-hidden="true" tabindex="-1"></a>Sahlins <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="regressione-bivariata.html#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> consumers, <span class="at">y =</span> acres)) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="regressione-bivariata.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb2-4"><a href="regressione-bivariata.html#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="cfa_book_files/figure-html/unnamed-chunk-3-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="regressione-bivariata.html#cb3-1" aria-hidden="true" tabindex="-1"></a>fm <span class="ot">&lt;-</span> <span class="fu">lm</span>(acres <span class="sc">~</span> consumers, <span class="at">data =</span> Sahlins)</span>
+<span id="cb3-2"><a href="regressione-bivariata.html#cb3-2" aria-hidden="true" tabindex="-1"></a>fm<span class="sc">$</span>coef</span>
+<span id="cb3-3"><a href="regressione-bivariata.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)   consumers </span></span>
+<span id="cb3-4"><a href="regressione-bivariata.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   1.3756445   0.5163201</span></span></code></pre></div>
+<p>Dalla figura notiamo che, se <code>consumers</code> aumenta di un’unità (da 1.2 a 2.2), allora la retta di regressione (ovvero, il valore atteso di <span class="math inline">\(Y\)</span>) aumenta di circa 0.5 punti – esattamente, aumenta di 0.5163 punti, come indicato dalla stima del coefficiente <span class="math inline">\(\beta\)</span>. L’interpretazione del coefficiente <span class="math inline">\(\alpha\)</span> è più problematica, perché non ha senso pensare ad un clan di ampiezza 0. Per affrontare questo problema, centriamo il predittore.</p>
+<div id="regressori-centrati" class="section level3" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> Regressori centrati</h3>
+<p>Esprimiamo la variabile <code>consumers</code> nei termini degli scarti dalla media:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="regressione-bivariata.html#cb4-1" aria-hidden="true" tabindex="-1"></a>Sahlins <span class="ot">&lt;-</span> Sahlins <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="regressione-bivariata.html#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb4-3"><a href="regressione-bivariata.html#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">xc =</span> consumers <span class="sc">-</span> <span class="fu">mean</span>(consumers)</span>
+<span id="cb4-4"><a href="regressione-bivariata.html#cb4-4" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p>Svolgiamo nuovamente l’analisi di regressione con il nuovo predittore:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="regressione-bivariata.html#cb5-1" aria-hidden="true" tabindex="-1"></a>fm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(acres <span class="sc">~</span> xc, <span class="at">data =</span> Sahlins)</span>
+<span id="cb5-2"><a href="regressione-bivariata.html#cb5-2" aria-hidden="true" tabindex="-1"></a>fm1<span class="sc">$</span>coef</span>
+<span id="cb5-3"><a href="regressione-bivariata.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)          xc </span></span>
+<span id="cb5-4"><a href="regressione-bivariata.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   2.1620000   0.5163201</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="regressione-bivariata.html#cb6-1" aria-hidden="true" tabindex="-1"></a>Sahlins <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="regressione-bivariata.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> xc, <span class="at">y =</span> acres)) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="regressione-bivariata.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb6-4"><a href="regressione-bivariata.html#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="cfa_book_files/figure-html/unnamed-chunk-7-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>La stima di <span class="math inline">\(\beta\)</span> è rimasta invariata ma ora possiamo attribuire un significato alla stima di <span class="math inline">\(\alpha\)</span>: questo coefficiente indica il valore atteso della <span class="math inline">\(Y\)</span> quando <span class="math inline">\(X\)</span> assume il suo valore medio.</p>
+</div>
+<div id="minimi-quadrati" class="section level3" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> Minimi quadrati</h3>
+<p>La stima dei coefficienti del modello di regressione può essere effettuata in modi diversi: massima verosimiglianza o metodi bayesiani. Se ci limitiamo qui alla massima verosimiglianza possiamo semplificare il problema assumento che le distribuzioni condizionate <span class="math inline">\(Y \mid x\)</span> siano Normali. In tali circostanze, la stima dei coefficienti del modello di regressione può essere trovata con il metodo dei minimi quadrati.</p>
+<p>In pratica, questo significa trovare i coefficienti <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> che minimizzano</p>
+<p><span class="math display">\[
+SS_{\text{res}} = \sum(y_i - \hat{y}_i)^2,
+\]</span>
+con <span class="math inline">\(\hat{y}_i = a + b x_i\)</span>.</p>
+<p>Per fornire un’idea di come questo viene fatto, usiamo una simulazione. Per semplicità, supponiamo di conoscere <span class="math inline">\(a = 1.3756445\)</span> e di volere stimare <span class="math inline">\(b\)</span>.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="regressione-bivariata.html#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> Sahlins<span class="sc">$</span>consumers</span>
+<span id="cb7-2"><a href="regressione-bivariata.html#cb7-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> Sahlins<span class="sc">$</span>acres</span>
+<span id="cb7-3"><a href="regressione-bivariata.html#cb7-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fl">1.3756445</span></span>
+<span id="cb7-4"><a href="regressione-bivariata.html#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="regressione-bivariata.html#cb7-5" aria-hidden="true" tabindex="-1"></a>nrep <span class="ot">&lt;-</span> <span class="fl">1e3</span></span>
+<span id="cb7-6"><a href="regressione-bivariata.html#cb7-6" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> nrep)</span>
+<span id="cb7-7"><a href="regressione-bivariata.html#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="regressione-bivariata.html#cb7-8" aria-hidden="true" tabindex="-1"></a>ssres <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, nrep)</span>
+<span id="cb7-9"><a href="regressione-bivariata.html#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nrep) {</span>
+<span id="cb7-10"><a href="regressione-bivariata.html#cb7-10" aria-hidden="true" tabindex="-1"></a>  yhat <span class="ot">&lt;-</span> a <span class="sc">+</span> b[i] <span class="sc">*</span> x</span>
+<span id="cb7-11"><a href="regressione-bivariata.html#cb7-11" aria-hidden="true" tabindex="-1"></a>  ssres[i] <span class="ot">&lt;-</span> <span class="fu">sum</span>((y <span class="sc">-</span> yhat)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb7-12"><a href="regressione-bivariata.html#cb7-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Un grafico di <span class="math inline">\(SS_{\text{res}}\)</span> in funzione di <span class="math inline">\(b\)</span> mostra che il valore <span class="math inline">\(b\)</span> che minimizza <span class="math inline">\(SS_{\text{res}}\)</span> corrisponde, appunto, a 0.5163.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="regressione-bivariata.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(b, ssres) <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="regressione-bivariata.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> b, <span class="at">y =</span> ssres)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="regressione-bivariata.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="cfa_book_files/figure-html/unnamed-chunk-9-1.png" width="576" style="display: block; margin: auto;" /></p>
+</div>
+<div id="relazione-tra-b-e-r" class="section level3" number="1.1.3">
+<h3><span class="header-section-number">1.1.3</span> Relazione tra <span class="math inline">\(b\)</span> e <span class="math inline">\(r\)</span></h3>
+<p>Un altro modo per interpretare <span class="math inline">\(b\)</span> è quello di considerare la relazione tra la pendenza della retta di regressione e il coefficiente di correlazione:</p>
+<p><span class="math display">\[
+b_X = r_{XY} \frac{S_X}{S_Y}
+\]</span></p>
+<p>L’equazione precedente rende chiaro che, se i dati sono standardizzati, <span class="math inline">\(b = r\)</span>.</p>
+<p>Verifichiamo:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="regressione-bivariata.html#cb9-1" aria-hidden="true" tabindex="-1"></a>Sahlins <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="regressione-bivariata.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(acres, consumers) <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="regressione-bivariata.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span>
+<span id="cb9-4"><a href="regressione-bivariata.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               acres consumers</span></span>
+<span id="cb9-5"><a href="regressione-bivariata.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; acres     1.0000000 0.3756561</span></span>
+<span id="cb9-6"><a href="regressione-bivariata.html#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; consumers 0.3756561 1.0000000</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="regressione-bivariata.html#cb10-1" aria-hidden="true" tabindex="-1"></a>fm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">scale</span>(acres) <span class="sc">~</span> <span class="fu">scale</span>(consumers), <span class="at">data =</span> Sahlins)</span>
+<span id="cb10-2"><a href="regressione-bivariata.html#cb10-2" aria-hidden="true" tabindex="-1"></a>fm2<span class="sc">$</span>coef</span>
+<span id="cb10-3"><a href="regressione-bivariata.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      (Intercept) scale(consumers) </span></span>
+<span id="cb10-4"><a href="regressione-bivariata.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     9.917106e-17     3.756561e-01</span></span></code></pre></div>
+</div>
+<div id="attenuazione" class="section level3" number="1.1.4">
+<h3><span class="header-section-number">1.1.4</span> Attenuazione</h3>
+<p>Il fenomeno dell’attenuazione si verifica quando <span class="math inline">\(X\)</span> viene misurato con una componente di errore. Esaminiamo la seguente simulazione.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="regressione-bivariata.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb11-2"><a href="regressione-bivariata.html#cb11-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb11-3"><a href="regressione-bivariata.html#cb11-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="dv">10</span>, <span class="fl">1.5</span>)</span>
+<span id="cb11-4"><a href="regressione-bivariata.html#cb11-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fl">1.5</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb11-5"><a href="regressione-bivariata.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(x, y) <span class="sc">%&gt;%</span></span>
+<span id="cb11-6"><a href="regressione-bivariata.html#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb11-7"><a href="regressione-bivariata.html#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="cfa_book_files/figure-html/unnamed-chunk-12-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="regressione-bivariata.html#cb12-1" aria-hidden="true" tabindex="-1"></a>sim_dat <span class="ot">&lt;-</span> <span class="fu">tibble</span>(x, y)</span>
+<span id="cb12-2"><a href="regressione-bivariata.html#cb12-2" aria-hidden="true" tabindex="-1"></a>fm <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, sim_dat)</span>
+<span id="cb12-3"><a href="regressione-bivariata.html#cb12-3" aria-hidden="true" tabindex="-1"></a>fm<span class="sc">$</span>coef</span>
+<span id="cb12-4"><a href="regressione-bivariata.html#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)           x </span></span>
+<span id="cb12-5"><a href="regressione-bivariata.html#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0.4221074   1.4652201</span></span></code></pre></div>
+<p>Questi sono i coefficienti di regressione quando <span class="math inline">\(X\)</span> è misurata senza errori.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="regressione-bivariata.html#cb13-1" aria-hidden="true" tabindex="-1"></a>sim_dat <span class="ot">&lt;-</span> sim_dat <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="regressione-bivariata.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb13-3"><a href="regressione-bivariata.html#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1 =</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb13-4"><a href="regressione-bivariata.html#cb13-4" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb13-5"><a href="regressione-bivariata.html#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="regressione-bivariata.html#cb13-6" aria-hidden="true" tabindex="-1"></a>fm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1, sim_dat)</span>
+<span id="cb13-7"><a href="regressione-bivariata.html#cb13-7" aria-hidden="true" tabindex="-1"></a>fm1<span class="sc">$</span>coef</span>
+<span id="cb13-8"><a href="regressione-bivariata.html#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)          x1 </span></span>
+<span id="cb13-9"><a href="regressione-bivariata.html#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   8.3872176   0.6295924</span></span></code></pre></div>
+<p>Aggiungendo una componente d’errore su <span class="math inline">\(X\)</span>, la grandezza del coefficiente <span class="math inline">\(b\)</span> diminuisce.</p>
+</div>
+<div id="coefficiente-di-determinazione" class="section level3" number="1.1.5">
+<h3><span class="header-section-number">1.1.5</span> Coefficiente di determinazione</h3>
+<p>Tecnicamente, il coefficiente di determinazione è dato da:</p>
+<p><span class="math display">\[
+R^2 = \frac{\sum(\hat{y} - \bar{y})^2}{\sum(y_i - \bar{y})^2}
+\]</span></p>
+<p>Al denominatore abbiamo la <em>devianza totale</em>, ovvero una misura della dispersione di <span class="math inline">\(y_i\)</span> rispetto alla media <span class="math inline">\(\bar{y}\)</span>. Al numeratore abbiamo una misura della dispersione del valore atteso della <span class="math inline">\(Y\)</span> rispetto alla sua media. Il rapporto, dunque, ci dice qual è la quota della variabilità totale di <span class="math inline">\(Y\)</span> che può essere predetta in base al modello lineare.</p>
+<p>Per i dati di Sahlins abbiamo:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="regressione-bivariata.html#cb14-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(acres <span class="sc">~</span> consumers, <span class="at">data =</span> Sahlins)</span>
+<span id="cb14-2"><a href="regressione-bivariata.html#cb14-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> mod<span class="sc">$</span>coef[<span class="dv">1</span>]</span>
+<span id="cb14-3"><a href="regressione-bivariata.html#cb14-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> mod<span class="sc">$</span>coef[<span class="dv">2</span>]</span>
+<span id="cb14-4"><a href="regressione-bivariata.html#cb14-4" aria-hidden="true" tabindex="-1"></a>yhat <span class="ot">&lt;-</span> a <span class="sc">+</span> b <span class="sc">*</span> Sahlins<span class="sc">$</span>consumers</span>
+<span id="cb14-5"><a href="regressione-bivariata.html#cb14-5" aria-hidden="true" tabindex="-1"></a>ss_tot <span class="ot">&lt;-</span> <span class="fu">sum</span>((Sahlins<span class="sc">$</span>acres <span class="sc">-</span> <span class="fu">mean</span>(Sahlins<span class="sc">$</span>acres))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb14-6"><a href="regressione-bivariata.html#cb14-6" aria-hidden="true" tabindex="-1"></a>ss_reg <span class="ot">&lt;-</span> <span class="fu">sum</span>((yhat <span class="sc">-</span> <span class="fu">mean</span>(Sahlins<span class="sc">$</span>acres))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb14-7"><a href="regressione-bivariata.html#cb14-7" aria-hidden="true" tabindex="-1"></a>r2 <span class="ot">&lt;-</span> ss_reg <span class="sc">/</span> ss_tot</span>
+<span id="cb14-8"><a href="regressione-bivariata.html#cb14-8" aria-hidden="true" tabindex="-1"></a>r2</span>
+<span id="cb14-9"><a href="regressione-bivariata.html#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.1411175</span></span></code></pre></div>
+<p>Verifichiamo:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="regressione-bivariata.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span>
+<span id="cb15-2"><a href="regressione-bivariata.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb15-3"><a href="regressione-bivariata.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb15-4"><a href="regressione-bivariata.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lm(formula = acres ~ consumers, data = Sahlins)</span></span>
+<span id="cb15-5"><a href="regressione-bivariata.html#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb15-6"><a href="regressione-bivariata.html#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
+<span id="cb15-7"><a href="regressione-bivariata.html#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></span>
+<span id="cb15-8"><a href="regressione-bivariata.html#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -0.8763 -0.1873 -0.0211  0.2135  1.1206 </span></span>
+<span id="cb15-9"><a href="regressione-bivariata.html#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb15-10"><a href="regressione-bivariata.html#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb15-11"><a href="regressione-bivariata.html#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)   </span></span>
+<span id="cb15-12"><a href="regressione-bivariata.html#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)   1.3756     0.4684   2.937  0.00881 **</span></span>
+<span id="cb15-13"><a href="regressione-bivariata.html#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; consumers     0.5163     0.3002   1.720  0.10263   </span></span>
+<span id="cb15-14"><a href="regressione-bivariata.html#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb15-15"><a href="regressione-bivariata.html#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb15-16"><a href="regressione-bivariata.html#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb15-17"><a href="regressione-bivariata.html#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.4543 on 18 degrees of freedom</span></span>
+<span id="cb15-18"><a href="regressione-bivariata.html#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.1411, Adjusted R-squared:  0.0934 </span></span>
+<span id="cb15-19"><a href="regressione-bivariata.html#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 2.957 on 1 and 18 DF,  p-value: 0.1026</span></span></code></pre></div>
+<p>Da cui deriva che <span class="math inline">\(R^2\)</span> è uguale al quadrato del coefficiente di correlazione:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="regressione-bivariata.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(Sahlins<span class="sc">$</span>acres, Sahlins<span class="sc">$</span>consumers)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb16-2"><a href="regressione-bivariata.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.1411175</span></span></code></pre></div>
+</div>
+<div id="errore-standard-della-regressione" class="section level3" number="1.1.6">
+<h3><span class="header-section-number">1.1.6</span> Errore standard della regressione</h3>
+<p>L’errore standard della regressione è una stima della dispersione di <span class="math inline">\(y \mid x_i\)</span> nella popolazione. Non è altro che la deviazione standard dei residui</p>
+<p><span class="math display">\[
+e = y_i - \hat{y}_i
+\]</span></p>
+<p>che, al denominatore, riporta <span class="math inline">\(n-2\)</span>. La ragione è che, per calcolare <span class="math inline">\(\hat{y}\)</span>, vengono “perduti” due gradi di libertà – il calcolo di <span class="math inline">\(\hat{y}\)</span> è basato sulla stima di due coefficienti: <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span>.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="regressione-bivariata.html#cb17-1" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> yhat <span class="sc">-</span> Sahlins<span class="sc">$</span>acres</span>
+<span id="cb17-2"><a href="regressione-bivariata.html#cb17-2" aria-hidden="true" tabindex="-1"></a>(<span class="fu">sum</span>(e<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (<span class="fu">length</span>(Sahlins<span class="sc">$</span>acres) <span class="sc">-</span> <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="regressione-bivariata.html#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>()</span>
+<span id="cb17-4"><a href="regressione-bivariata.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.4543179</span></span></code></pre></div>
+<p>Il valore trovato corrisponde a quello riportato nell’output di <code>lm()</code>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lanalisi-di-regressione.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="regressione-multipla.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ccaudek/ds4psy/edit/master/010_regression.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["cfa_book.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

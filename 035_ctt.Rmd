@@ -42,8 +42,7 @@ prendiamo.
 
 Un secolo fa, la relazione tra prestazioni osservate, da un lato, e
 l'abilità inosservabile del rispondente, dall'altro, iniziò a essere
-formalizzata nei termini dell'*errore di misurazione*. @gulliksen1961measurement ha
-descritto "il problema centrale della teoria dei test" come "la
+formalizzata nei termini dell'*errore di misurazione*. @gulliksen1961measurement ha descritto "il problema centrale della teoria dei test" come "la
 relazione tra l'abilità dell'individuo e il suo punteggio osservato sul
 test" (p. 101). Tale caratterizzazione è valida ancora
 oggi, con una definizione opportunamente ampia di "abilità" e di
@@ -83,8 +82,7 @@ vari approcci probabilistici: la Teoria Classica dei test (_classical
 test theory_, in breve CTT) e la teoria di risposta all'item (_item
 response theory_, in breve IRT) sono quelli più noti. Recentemente, il
 problema della valutazione psicologica è stato anche formulato in
-un'ottica bayesiana. In questo insegnamento esamineremo gli approcci
-della CTT e dell'IRT, ma non quello bayesiano.
+un'ottica bayesiana. In questo insegnamento esamineremo la CTT e i suoi sviluppi più recenti.
 
 ## La Teoria Classica
 
@@ -98,14 +96,9 @@ Spearman all'inizio del Novecento [@ch1904general]. La tecnica dell'analisi fatt
 
 Iniziamo qui ad esaminare queste tecniche psicometriche prendendo in esame, per prima, la teoria classica dei test. Seguiremo la trattazione proposta da @lord1968statistical.
 
-L'equazione fondamentale alla quale si riconduce la teoria classica dei test è quella
-che ipotizza una relazione lineare e additiva tra il punteggio osservato
+L'equazione fondamentale alla quale si riconduce la teoria classica dei test è quella che ipotizza una relazione lineare e additiva tra il punteggio osservato
 di un test ($X$), la misura della variabile latente ($T$) e la
-componente casuale dell'errore ($E$). Un punto cruciale nella CTT è
-l'entità della varianza dell'errore. Minore è la varianza dell'errore,
-più accuratamente il punteggio reale viene riflesso dai nostri punteggi
-osservati. In un mondo perfetto, tutti i valori di errore sarebbero uguali a 0. Cioè,
-ogni partecipante otterrebbe il punteggio esatto. Questo però non è possibile. Pertanto, abbiamo una certa varianza negli errori. La corrispondente deviazione standard di tali errori ha il un nome: si chiama *errore standard di misurazione*, indicato da $\sigma_E$. Uno dei principali obiettivi della CTT è quello di ottenere una stima di $\sigma_E$.
+componente casuale dell'errore ($E$). L'aspetto cruciale nella CTT riguarda la varianza dell'errore. Minore è la varianza dell'errore, più accuratamente il punteggio reale viene riflesso dai nostri punteggi osservati. In un mondo perfetto, tutti i valori di errore sarebbero uguali a 0. Cioè, ogni partecipante otterrebbe il punteggio esatto. Questo però non è possibile. Pertanto, abbiamo una certa varianza negli errori. La corrispondente deviazione standard di tali errori ha il un nome: si chiama *errore standard di misurazione*, indicato da $\sigma_E$. Uno dei principali obiettivi della CTT è quello di ottenere una stima di $\sigma_E$ in modo da potere valutare la qualità di una scala psicometrica.
 
 ## Le due componenti del punteggio osservato
 

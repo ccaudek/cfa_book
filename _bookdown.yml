@@ -25,8 +25,8 @@ rmd_files:
     - "index.Rmd"
     ## PART I
     - "010_regression.Rmd"
-    ## PART II
-    - "035_ctt.Rmd"
+    # ## PART II
+    # - "035_ctt.Rmd"
     # - "037_err_standard_misura.Rmd"
     # - "038_err_standard_stima.Rmd"
     # ## PART III
@@ -34,6 +34,7 @@ rmd_files:
     # - "055_analisi_fattoriale_1.Rmd"
     # - "056_analisi_fattoriale_2.Rmd"
     # - "057_analisi_fattoriale_3.Rmd"
+    - "058_factor_scores.Rmd"
     # - "060_path_analysis.Rmd"
     # - "062_constraints_on_parms.Rmd"
     # - "070_cfa_mod_comp.Rmd"
@@ -49,13 +50,14 @@ rmd_files:
     # ## PART V
     # - "300_gof.Rmd"
     # - "350_growth_models.Rmd"
-    - "400_missing_data.Rmd"
-    - "500_cat_data.Rmd"
+    # - "400_missing_data.Rmd"
+    # - "500_cat_data.Rmd"
     # ## APPENDIX
     # - "800_appendix.Rmd"
     # - "801_math_symbols.Rmd"
     # - "850_single_case.Rmd"
     # - "860_efficacy_effectiveness.Rmd"
     # - "865_effect_size.Rmd"
+    # - "900_lin_alg.Rmd"
 
 delete_merged_file: true

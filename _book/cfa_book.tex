@@ -228,6 +228,20 @@
 \setmainlanguage{italian}
 
 \frontmatter
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -236,25 +250,8 @@
 
 \title{Appunti di Costruzione e validazione di strumenti di misura dell'efficacia dell'intervento psicologico in neuropsicologia -- B020881 (B213)}
 \author{Corrado Caudek}
-\date{2022-03-02}
+\date{2022-03-03}
 
-\usepackage{amsthm}
-\newtheorem{theorem}{Teorema}[chapter]
-\newtheorem{lemma}{Lemma}[chapter]
-\newtheorem{corollary}{Corollario}[chapter]
-\newtheorem{proposition}{Proposizione}[chapter]
-\newtheorem{conjecture}{Congettura}[chapter]
-\theoremstyle{definition}
-\newtheorem{definition}{Definizione}[chapter]
-\theoremstyle{definition}
-\newtheorem{example}{Esempio}[chapter]
-\theoremstyle{definition}
-\newtheorem{exercise}{Esercizio}[chapter]
-\theoremstyle{definition}
-\newtheorem{hypothesis}{Hypothesis}[chapter]
-\theoremstyle{remark}
-\newtheorem*{remark}{Osservazione}
-\newtheorem*{solution}{Soluzione}
 \begin{document}
 \maketitle
 
@@ -625,8 +622,8 @@ Nella regressione multipla vengono utilizzati \(k > 1\) predittori:
 y_i = \alpha + \sum_{j=1}^k \beta_j x_i + \varepsilon_i.
 \] L'interpretazione geometrica è simile a quella del modello bivariato. Nel caso di due predittori, il valore atteso della \(y\) può essere rappresentato da un piano; nel caso di \(k > 2\) predittori, da un iper-piano. Nel caso di \(k=2\), tale piano è posto in uno spazio di dimensioni \(x_1\), \(x_2\) (che possiamo immaginare definire un piano orizzontale) e \(y\) (ortogonale a tale piano). La superficie piana che rappresenta \(\mathbb{E}(y)\) è inclinata in maniera tale che l'angolo tra il piano e l'asse \(x_1\) corrisponde a \(\beta_1\) e l'angolo tra il piano e l'asse \(x_2\) corrisponde a \(\beta_2\).
 
-\hypertarget{significato-coefficienti-parziali-di-regressione}{%
-\subsection{Significato coefficienti parziali di regressione}\label{significato-coefficienti-parziali-di-regressione}}
+\hypertarget{significato-dei-coefficienti-parziali-di-regressione}{%
+\subsection{Significato dei coefficienti parziali di regressione}\label{significato-dei-coefficienti-parziali-di-regressione}}
 
 Ai coefficienti parziali del modello di regressione multipla possiamo assegnare la seguente interpretazione:
 
@@ -656,7 +653,10 @@ Esaminiamo un caso concreto.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{fm }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(kid\_score }\SpecialCharTok{\textasciitilde{}}\NormalTok{ mom\_iq }\SpecialCharTok{+}\NormalTok{ mom\_work }\SpecialCharTok{+}\NormalTok{ mom\_age }\SpecialCharTok{+}\NormalTok{ mom\_hs, }\AttributeTok{data =}\NormalTok{ d)}
+\NormalTok{fm }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(}
+\NormalTok{  kid\_score }\SpecialCharTok{\textasciitilde{}}\NormalTok{ mom\_iq }\SpecialCharTok{+}\NormalTok{ mom\_work }\SpecialCharTok{+}\NormalTok{ mom\_age }\SpecialCharTok{+}\NormalTok{ mom\_hs,}
+  \AttributeTok{data =}\NormalTok{ d}
+\NormalTok{)}
 \NormalTok{fm}\SpecialCharTok{$}\NormalTok{coef}
 \CommentTok{\#\textgreater{} (Intercept)      mom\_iq    mom\_work     mom\_age }
 \CommentTok{\#\textgreater{}     20.8226      0.5621      0.1337      0.2199 }
@@ -755,10 +755,11 @@ Consideriamo un esempio con dati simulati nei quali immaginiamo che la prestazio
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{400}
 \NormalTok{anxiety }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{10}\NormalTok{, }\FloatTok{1.5}\NormalTok{)}
 \NormalTok{motivation }\OtherTok{\textless{}{-}} \FloatTok{4.0} \SpecialCharTok{*}\NormalTok{ anxiety }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, }\FloatTok{3.5}\NormalTok{)}
 \FunctionTok{cor}\NormalTok{(anxiety, motivation)}
-\CommentTok{\#\textgreater{} [1] 0.8435}
+\CommentTok{\#\textgreater{} [1] 0.8618}
 \end{Highlighting}
 \end{Shaded}
 
@@ -774,7 +775,7 @@ Consideriamo un esempio con dati simulati nei quali immaginiamo che la prestazio
 \NormalTok{fm1 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(performance }\SpecialCharTok{\textasciitilde{}}\NormalTok{ motivation }\SpecialCharTok{+}\NormalTok{ anxiety, sim\_dat2)}
 \FunctionTok{coef}\NormalTok{(fm1)}
 \CommentTok{\#\textgreater{} (Intercept)  motivation     anxiety }
-\CommentTok{\#\textgreater{}      3.0686      0.5204     {-}5.3480}
+\CommentTok{\#\textgreater{}      1.3712      0.4954     {-}5.1052}
 \end{Highlighting}
 \end{Shaded}
 
@@ -788,23 +789,83 @@ Consideriamo un esempio con dati simulati nei quali immaginiamo che la prestazio
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Residuals:}
 \CommentTok{\#\textgreater{}     Min      1Q  Median      3Q     Max }
-\CommentTok{\#\textgreater{} {-}12.110  {-}3.509   0.334   2.940  16.725 }
+\CommentTok{\#\textgreater{} {-}13.501  {-}3.409   0.005   3.311  12.616 }
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Coefficients:}
 \CommentTok{\#\textgreater{}             Estimate Std. Error t value Pr(\textgreater{}|t|)    }
-\CommentTok{\#\textgreater{} (Intercept) {-}11.7178     3.1592   {-}3.71  0.00034 ***}
-\CommentTok{\#\textgreater{} motivation   {-}0.4610     0.0777   {-}5.93  4.5e{-}08 ***}
+\CommentTok{\#\textgreater{} (Intercept) {-}12.3972     1.4459   {-}8.57  2.2e{-}16 ***}
+\CommentTok{\#\textgreater{} motivation   {-}0.4372     0.0355  {-}12.31  \textless{} 2e{-}16 ***}
 \CommentTok{\#\textgreater{} {-}{-}{-}}
 \CommentTok{\#\textgreater{} Signif. codes:  }
 \CommentTok{\#\textgreater{} 0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
 \CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} Residual standard error: 4.87 on 98 degrees of freedom}
-\CommentTok{\#\textgreater{} Multiple R{-}squared:  0.264,  Adjusted R{-}squared:  0.257 }
-\CommentTok{\#\textgreater{} F{-}statistic: 35.2 on 1 and 98 DF,  p{-}value: 4.51e{-}08}
+\CommentTok{\#\textgreater{} Residual standard error: 4.87 on 398 degrees of freedom}
+\CommentTok{\#\textgreater{} Multiple R{-}squared:  0.276,  Adjusted R{-}squared:  0.274 }
+\CommentTok{\#\textgreater{} F{-}statistic:  151 on 1 and 398 DF,  p{-}value: \textless{}2e{-}16}
 \end{Highlighting}
 \end{Shaded}
 
 Il risultato prodotto dal modello di regressione è sbagliato: come conseguenza dell'errore di specificazione, il segno del coefficiente parziale di regressione della variabile ``motivazione'' è negativo, anche se nel vero modello di regressione tale coefficiente ha il segno opposto. Quindi, se noi interpretassimo il coefficiente parziale ottenuto in termini casuali, saremmo portati a concludere che la motivazione fa diminuire la prestazione anche se, in realtà (nel modello generatore dei dati), è vero l'opposto.
+
+È facile vedere perché questo si verifica. Supponiamo che il vero modello sia
+
+\[
+y = \alpha + \beta_1 X_1 + \beta_2 X_2 + \varepsilon
+\] che verrebbe stimato con
+
+\[
+y = a + b_1 X_1 + b_2 X_2 + e.
+\] Supponiamo che il ricercatore creda invece che
+
+\[
+y = \alpha^\prime + \beta_1^\prime X_1 + \varepsilon^\prime
+\]
+
+e quindi stimi
+
+\[
+y = a^\prime + b_1^\prime X_1 + e^\prime
+\]
+
+omettendo \(X_2\) dal modello. Ci chiediamo che relazione ci sia tra \(b_1^\prime\) e \(b_1\).
+
+La formula per \(b_1^\prime\) è
+
+\begin{equation}
+\begin{aligned}
+b_1^\prime &= \frac{\mbox{Cov}(X_1, Y)}{\mbox{Var}(X_1)}\notag\\
+&= \frac{\mbox{Cov}(X_1, a + b_1 X_1 + b_2 X_2 + e)}{\mbox{Var}(X_1)}\notag\\
+&= \frac{\mbox{Cov}(X_1, a)+b_1 \mbox{Cov}(X_1, X_1) + b_2 \mbox{Cov}(X_1, X_2) + \mbox{Cov}(X_1, e)}{\mbox{Var}(X_1)}\notag\\
+&= \frac{0 + b_1 \mbox{Var}(X_1) + b_2 \mbox{Cov}(X_1, X_2) + 0}{\mbox{Var}(X_1)}\notag\\
+&= b_1 + b_2 \frac{\mbox{Cov}(X_1, X_2)}{\mbox{Var}(X_1)}.
+\end{aligned}
+\end{equation}
+
+Quindi, se \(X_2\) viene erroneamente omesso dal modello, abbiamo che
+
+\[
+\mathbb{E}(b_1^\prime) = \beta_1 + \beta_2 \frac{\sigma_{12}}{\sigma_1^2}.
+\] Verifichiamo per i dati dell'esempio che stiamo discutendo. Nel caso presente, \(X_1\) è \texttt{motivation} e \(X_2\) + \texttt{anxiety}. Dunque, applicando la formula precedente, otteniamo lo stesso valore per il coefficiente di regressione associato a \texttt{motivation} che era stato ottenuto adattando ai dati il modello \texttt{performance\ \textasciitilde{}\ motivation}, ovvero:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fm1}\SpecialCharTok{$}\NormalTok{coef[}\DecValTok{2}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ fm1}\SpecialCharTok{$}\NormalTok{coef[}\DecValTok{3}\NormalTok{] }\SpecialCharTok{*}
+  \FunctionTok{cov}\NormalTok{(sim\_dat2}\SpecialCharTok{$}\NormalTok{motivation, sim\_dat2}\SpecialCharTok{$}\NormalTok{anxiety) }\SpecialCharTok{/}
+  \FunctionTok{var}\NormalTok{(sim\_dat2}\SpecialCharTok{$}\NormalTok{motivation)}
+\CommentTok{\#\textgreater{} motivation }
+\CommentTok{\#\textgreater{}    {-}0.4372}
+\end{Highlighting}
+\end{Shaded}
+
+In conclusione, \(b_1^\prime\) è uno stimatore distorto di \(\beta_1\). Si noti che questa distorsione non scomparirà all'aumentare della numerosità campionaria, il che (in termini statistici) ci porta a concludere che un tale stimatore è \emph{inconsistente}. Quello che succede in pratica è che alla variabile \(X_1\) vengono attribuiti gli effetti delle variabili che sono state omesse dal modello. Si noti che una tale distorsione sistematica di \(b_1^\prime\) può essere evitata solo se si verificano due condizioni:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\beta_2 = 0\). Questo è ovvio, dato che, se \(\beta_2 = 0\), ciò significa che il modello non è specificato in modo errato, cioè \(X_2\) non appartiene al modello perché non ha un effetto diretto sulla \(Y\).
+\item
+  \(\sigma_{12} = 0\). Cioè, se \(X_1\) e \(X_2\) sono incorrelate, allora l'omissione di una delle due variabili non comporta stime distorte dell'effetto dell'altra.
+\end{itemize}
 
 \hypertarget{soppressione}{%
 \subsection{Soppressione}\label{soppressione}}
@@ -832,1130 +893,308 @@ Un esempio di standard statistico è la regressione \emph{stepwise}, in cui il c
 
 In secondo luogo, una volta che un insieme finale di predittori selezionati razionalmente è stato inserito nell'equazione di regressione, tali predittori non dovrebbero essere successivamente rimossi se i loro coefficienti di regressione non sono statisticamente significativi: il ricercatore non dovrebbe sentirsi in dovere di lasciar perdere ogni predittore che non risulta statisticamente significativo. In campioni piccoli, la potenza dei test di significatività è bassa e la rimozione di un predittore non significativo può alterare sostanzialmente la soluzione. Se c'è una buona ragione per includere un predittore, allora è meglio lasciarlo nel modello, fino a prova contraria.
 
-\hypertarget{part-la-teoria-classica-dei-test}{%
-\part{La teoria classica dei test}\label{part-la-teoria-classica-dei-test}}
+\hypertarget{ch:factor-scores}{%
+\chapter{I punteggi fattoriali}\label{ch:factor-scores}}
 
-\hypertarget{ch:teoria_classica}{%
-\chapter{Fondamenti teorici}\label{ch:teoria_classica}}
+Uno dei momenti più difficili nel processo di sviluppo di un test psicometrico è quello dell'interpretazione dei fattori. La verifica del livello di affidabilità rivela il grado di precisione delle misure ottenute ma non fornisce alcuna informazione sulla natura di ciò che si sta misurando. Non esistono specifiche indicazioni che guidino il lavoro interpretativo. Dipende, perciò, dalla capacità e dall'esperienza del ricercatore cogliere il significato comune delle variabili confluite in un fattore, attenendosi alla realtà delle singole variabili senza fornire interpretazioni fantasiose. È importante rendersi conto che sia la scelta del metodo di estrazione dei fattori, sia il problema del numero dei fattori da estrarre, sia la scelta del metodo con cui effettuare la rotazione, rendono molto arbitraria l'interpretazione della soluzione fattoriale.
 
-\hypertarget{valutazione-psicometrica-come-ragionamento-inferenziale}{%
-\section{Valutazione psicometrica come ragionamento inferenziale}\label{valutazione-psicometrica-come-ragionamento-inferenziale}}
-
-In apparenza, i test psicometrici sono solo dei test. Somministriamo un test, otteniamo un punteggio ed è naturale pensare che sia tutto lì. Nonostante le apparenze, la valutazione psicologica e neuropsicologica non consiste soltanto nell'assegnare di punteggi: si tratta di ragionare su ciò che osserviamo di quello che le persone dicono, fanno o producono, in maniera tale da giungere a delle concezioni più ampie di tali persone a proposito di aspetti che non abbiamo -- e spesso non possiamo -- osservare. Più specificamente, possiamo considerare la valutazione psicologica e neuropsicologica come un esempio di ragionamento che fa uso di modelli probabilistici per giungere a delle spiegazioni, previsioni o conclusioni.
-
-I dati osservati diventano un'evidenza quando sono ritenuti rilevanti per l'inferenza desiderata attraverso l'instaurazione di relazioni tra i dati e l'obiettivo dell'inferenza. Spesso utilizziamo dati provenienti da più fonti. Queste possono essere di tipo simile (ad esempio, item di test aventi lo stesso formato) o di tipo molto diverso (ad esempio, il curriculum di un richiedente oltre al colloquio, la storia medica della famiglia di un paziente, \(\dots\)). Le evidenze possono essere contraddittorie (ad esempio, uno studente riesce a svolgere un compito difficile ma fallisce in un uno facile) e quasi sempre non sono del tutto conclusive.
-
-Queste caratteristiche hanno due implicazioni. In primo luogo, è difficile capire cosa le evidenze implicano. I processi inferenziali sono sempre complessi. In secondo luogo, a causa della natura non conclusiva delle evidenze disponibili, non siamo mai del tutto certi delle nostre inferenze. Per affrontare tale incertezza, la teoria psicometria ci fornisce gli strumenti che ci possono aiutare nel processo inferenziale, dai dati disponibili alle decisioni che prendiamo.
-
-Un secolo fa, la relazione tra prestazioni osservate, da un lato, e l'abilità inosservabile del rispondente, dall'altro, iniziò a essere formalizzata nei termini dell'\emph{errore di misurazione}. \citet{gulliksen1961measurement} ha descritto ``il problema centrale della teoria dei test'' come ``la relazione tra l'abilità dell'individuo e il suo punteggio osservato sul test'' (p.~101). Tale caratterizzazione è valida ancora oggi, con una definizione opportunamente ampia di ``abilità'' e di ``punteggio sul test'' che sia in grado di comprendere le diverse forme di assessment psicologico e neuropsicologico. Comprendere e essere in grado di rappresentare la relazione tra le prestazioni osservate e la capacità soggiacente è dunque fondamentale per le forme di ragionamento che vengono impiegate nella valutazione psicologica e neuropsicologica.
-
-Come risultato dell'errore di misurazione, i ragionamenti che compiamo nella valutazione psicologica e neuropsicologica costituiscono un esempio di ragionamento in condizioni di incertezza. A causa della natura imperfetta della misurazione e dell'incompletezza dell'informazione disponibile, le nostre inferenze sono incerte e possono essere sempre invalidate o riviste. Ragionare da ciò che è parziale (ciò che vediamo uno paziente dire, fare o produrre) a ciò che è generale (la ``vera'' abilità del paziente) è necessariamente incerto, e le nostre inferenze o conclusioni sono sempre prone ad errori.
-
-Quali strumenti devono essere impiegati per affrontare la nostra incertezza sulla relazione che intercorre tra prestazioni osservate e abilità soggiacenti? Secondo Lewis, molti dei progressi nella teoria psicometrica sono resi possibili ``trattando lo studio della relazione tra le risposte agli item di un test e il tratto ipotizzato di un individuo come problema di inferenza statistica'' \citep{lewis1986test}. Una connessione diretta tra errore di misura e approccio probabilistico è stata anche proposta da Samejima: ``There may be an enormous number of factors eliciting a student's specific overt reactions to a stimulus, and, therefore, it is suitable, even necessary, to handle the situation in terms of the probabilistic relationship between the two'' \citep{samejima1983constant}.
-
-Questo punto di vista è diventato quello dominante nella psicometria moderna e sottolinea l'utilità di utilizzare il linguaggio e gli strumenti della teoria della probabilità per comunicare il carattere parziale dei dati di cui dispone lo psicologo e l'incertezza delle inferenze che ne derivano.
-
-I reattivi psicologici possono essere costruiti e la validati mediante vari approcci probabilistici: la Teoria Classica dei test (\emph{classical test theory}, in breve CTT) e la teoria di risposta all'item (\emph{item response theory}, in breve IRT) sono quelli più noti. Recentemente, il problema della valutazione psicologica è stato anche formulato in un'ottica bayesiana. In questo insegnamento esamineremo gli approcci della CTT e dell'IRT, ma non quello bayesiano.
-
-\hypertarget{la-teoria-classica}{%
-\section{La Teoria Classica}\label{la-teoria-classica}}
-
-La CTT nasce alla fine dell'Ottocento (Alfred Binet e altri, 1894) allo scopo di studiare l'attendibilità e la validità dei risultati dei questionari utilizzati per valutare le caratteristiche psico-sociali, non direttamente osservabili, delle persone esaminate. L'impiego su vasta scala e lo sviluppo della CTT ha inizio negli anni Trenta, anche se il modello formale su cui tale teoria si basa viene proposta da Spearman all'inizio del Novecento \citep{ch1904general}. La tecnica dell'analisi fattoriale esplorativa (\emph{Exploratory Factor Analysis}, EFA), verrà poi affinata da \citet{thurstone1947multiple} alla fine della seconda guerra mondiale. Tra la fine degli anni '60 e gli inizi degli anni '70, \citet{joreskog1969general} sviluppa l'analisi fattoriale confermativa (\emph{Confirmatory Factor Analysis}, CFA). Negli anni '70, l'analisi fattoriale viene integrata con la path analysis nel lavoro di \citet{joreskog1978structural} che dà origine ai modelli di equazioni strutturali (\emph{Structural Equation Modeling}, SEM).
-
-Iniziamo qui ad esaminare queste tecniche psicometriche prendendo in esame, per prima, la teoria classica dei test. Seguiremo la trattazione proposta da \citet{lord1968statistical}.
-
-L'equazione fondamentale alla quale si riconduce la teoria classica dei test è quella che ipotizza una relazione lineare e additiva tra il punteggio osservato di un test (\(X\)), la misura della variabile latente (\(T\)) e la componente casuale dell'errore (\(E\)). Un punto cruciale nella CTT è l'entità della varianza dell'errore. Minore è la varianza dell'errore, più accuratamente il punteggio reale viene riflesso dai nostri punteggi osservati. In un mondo perfetto, tutti i valori di errore sarebbero uguali a 0. Cioè, ogni partecipante otterrebbe il punteggio esatto. Questo però non è possibile. Pertanto, abbiamo una certa varianza negli errori. La corrispondente deviazione standard di tali errori ha il un nome: si chiama \emph{errore standard di misurazione}, indicato da \(\sigma_E\). Uno dei principali obiettivi della CTT è quello di ottenere una stima di \(\sigma_E\).
-
-\hypertarget{le-due-componenti-del-punteggio-osservato}{%
-\section{Le due componenti del punteggio osservato}\label{le-due-componenti-del-punteggio-osservato}}
-
-CTT si occupa delle relazioni tra \(X\), \(T\) ed \(E\). La CTT si basa su un modello relativamente semplice in cui il punteggio osservato, il punteggio vero (cioè l'abilità inosservabile del rispondente) e l'errore aleatoria di misurazione sono legati da una relazione lineare. Indicati con \(T_{\nu j}\) (\emph{true score}) l'abilità latente da misurare dell'individuo \(\nu\) nella prova \(j\), con \(X_{\nu j}\) la variabile osservata (\emph{observed score}) per l'individuo \(\nu\) nella prova \(j\) e con \(E_{\nu j}\) l'errore aleatorio di misurazione, il modello si rappresenta con
-
-\[
-X_{\nu j} = T_{\nu} + E_{\nu j}. 
-\label{eq:observed-true-plus-error}
-\]
-
-Dunque, in base alla \eqref{eq:observed-true-plus-error} il punteggio osservato \(X_{\nu j}\) differisce da quello vero \(T_{\nu j}\) a causa di una componente di errore aleatoria \(E_{\nu j}\). Uno degli obiettivi centrali della CTT è quello di quantificare l'entità di tale errore. Vedremo come questa quantificazione verrà fornita nei termini dell'attendibilità del test. L'attendibilità (o affidabilità) rappresenta l'accuratezza con cui un test può misurare il punteggio vero (Coaley, 2014):
-
-\begin{itemize}
-\tightlist
-\item
-  Se l'attendibilità è grande, \(\sigma_E\) è piccolo: \(X\) ha un piccolo errore di misurazione e sarà vicino a \(T\).
-\item
-  Se l'attendibilità è piccola, \(\sigma_E\) è grande: \(X\) presenta un grande errore di misurazione e si discosterà molto da \(T\).
-\end{itemize}
-
-\hypertarget{il-punteggio-vero}{%
-\subsection{Il punteggio vero}\label{il-punteggio-vero}}
-
-La @ref(eq:observed-true\_plus-error) ci dice che il punteggio osservato è dato dalla somma di due componenti: una componente sistematica (il punteggio vero) e una componente aleatoria (l'errore di misurazione). Ma che cos'è il punteggio vero? La CTT considera un reattivo psicologico come una selezione aleatoria di item da un universo/popolazione di item attinenti al costrutto da misurare \citep{nunnally1994psychometric, kline2013handbook}. Se il reattivo psicologico viene concepito in questo modo, il punteggio vero diventa il punteggio che un rispondente otterrebbe se fosse misurato su tutto l'universo degli item proprio del costrutto in esame. L'errore di misurazione riflette dunque il grado in cui gli item che costituiscono il test non riescono a rappresentare l'intero universo degli item attinenti al costrutto.
-
-In maniera equivalente, il punteggio vero può essere concepito come il punteggio non ``distorto'' da componenti estranee al costrutto, ovvero da effetti di apprendimento, fatica, memoria, motivazione, eccetera. Essendo concepita come del tutto aleatoria (ovvero, priva di qualunque natura sistematica), la componente aleatoria non introduce dei bias nella tendenza centrale della misurazione.
-
-Il punteggio vero è concepito come un punteggio inosservabile che corrisponde al valore atteso di infinite realizzazioni del punteggio ottenuto:
-
-\[
-T = \E(X) \equiv \mu_X \equiv \mu_{T}.
-\]
-
-In altri termini, secondo la definizione di Lord e Novick (1968), e facendo riferimento a alla seconda definizione presentata sopra, il punteggio vero è concepito come la media dei punteggi che un soggetto otterrebbe se il test venisse somministrato ripetutamente nelle stesse condizioni, in assenza di effetti di apprendimento e/o fatica.
-
-\hypertarget{somministrazioni-ripetute}{%
-\subsection{Somministrazioni ripetute}\label{somministrazioni-ripetute}}
-
-Nella formulazione del modello della CTT si possono distinguere due tipi di esperimenti aleatori: uno che considera l'unità di osservazione (l'individuo) come campionaria, l'altro che considera il punteggio, per un determinato individuo, come campionario. Un importante risultato è dato dall'unione dei due esperimenti, ovvero dalla dimostrazione che i risultati della CTT, la quale è stata sviluppata ipotizzando ipotetiche somministrazioni ripetute del test allo stesso individuo sotto le medesime condizioni, si generalizzano al caso di una singola somministrazione del test ad un campione di individui \citep{allen2001introduction}. In base a questo risultato, se consideriamo la somministrazione del test ad una popolazione di individui, allora diventa più facile dare un contenuto empirico alle quantità della CTT:
-
-\begin{itemize}
-\tightlist
-\item
-  \(\sigma^2_X\) è la varianza del punteggio osservato nella popolazione,
-\item
-  \(\sigma^2_T\) è la varianza dei punteggio vero nella popolazione,
-\item
-  \(\sigma^2_E\) è la varianza della componente d'errore nella popolazione.
-\end{itemize}
-
-\hypertarget{le-assunzioni-sul-punteggio-ottenuto}{%
-\subsection{Le assunzioni sul punteggio ottenuto}\label{le-assunzioni-sul-punteggio-ottenuto}}
-
-La CTT \emph{assume} che la media del punteggio osservato \(X\) sia uguale alla media del punteggio vero,
-
-\[
-\mu_X \equiv \mu_{T},
-\label{eq:assunzione-media-x-media-t}
-\]
-
-in altri termini, assume che il punteggio osservato fornisca una stima statisticamente corretta dell'abilità latente (punteggio vero). In pratica, il punteggio osservato non sarà mai uguale all'abilità latente, ma corrisponde solo ad uno dei possibili punteggi che il soggetto può ottenere, subordinatamente alla sua abilità latente. L'errore della misura è la differenza tra il punteggio osservato e il punteggio vero: \(E \equiv X - T.\)
-
-In base all'assunzione secondo cui il valore atteso dei punteggi è uguale alla media del valore vero, segue che
-
-\[
-\E(E) = \E(X - T) = \E(X) - \E(T) = \mu_{T} - \mu_{T} = 0,
-\]
-
-ovvero, il valore atteso degli errori è uguale a zero.
-
-\hypertarget{lerrore-standard-della-misurazione-sigma_e}{%
-\section{\texorpdfstring{L'errore standard della misurazione \(\sigma_E\)}{L'errore standard della misurazione \textbackslash sigma\_E}}\label{lerrore-standard-della-misurazione-sigma_e}}
-
-La radice quadrata di \(\sigma^2_E\), ovvero la deviazione standard degli errori, è la quantità fondamentale della CTT ed è chiamata \emph{errore standard della misurazione}. La stima dell'errore standard della misurazione costituisce uno degli obiettivi più importanti della CTT. Ricordiamo che la deviazione standard è simile (non identica) alla media del valore assoluto degli scarti dei valori di una distribuzione dalla media. Possiamo dunque utilizzare questa proprietà per descrivere il modo in cui la CTT interpreta \(\sigma_E\).
-
-L'\emph{errore standard della misurazione} \(\sigma_E\) ci dice qual è, approssimativamente, la variazione attesa del punteggio osservato, se il test venisse somministrato un'altra volta al rispondente nelle stesse condizioni.
-
-\hypertarget{assiomi-della-teoria-classica}{%
-\section{Assiomi della Teoria Classica}\label{assiomi-della-teoria-classica}}
-
-La CTT \emph{assume} che gli errori siano delle variabili aleatorie incorrelate tra loro
-
-\[
-\rho(E_i, E_k \mid T) = 0, \qquad\text{con}\; i \neq k,
-\]
-
-e incorrelate con il punteggio vero,
-
-\[
-\rho(E, T) = 0,
-\]
-
-le quali seguono una distribuzione gaussiana con media zero e deviazione standard pari a \(\sigma_E\):
-
-\[
-E \sim \mathcal{N}(0, \sigma_E).
-\]
-
-La quantità \(\sigma_E\) è detta errore standard della misurazione.
-
-Sulla base di tali assunzioni la CTT deriva la formula dell'attendibilità di un test. Si noti che le assunzioni della CTT hanno una corrispondenza puntuale con le assunzioni su cui si basa il modello di regressione lineare.
-
-\hypertarget{lattendibilituxe0-del-test}{%
-\section{L'attendibilità del test}\label{lattendibilituxe0-del-test}}
-
-Il concetto di attendibilità è strettamente legato alla riproducibilità della misurazione: si riferisce al grado di stabilità, di coerenza interna e di precisione di una procedura di misurazione. Affinché una misurazione psicologica sia utile, deve produrre lo stesso risultato se viene applicata ripetutamente un determinato rispondente. Altri termini che vengono usati sono: affidabilità, costanza e credibilità.
-
-Vedremo nel seguito come il coefficiente di attendibilità fornisce una stima della quota della varianza del punteggio osservato che può essere attribuita all'abilità latente (``punteggio vero'', cioè privo di errore di misurazione). In generale, un coefficiente di attendibilità maggiore di 0.80 viene ritenuto soddisfacente perché indica che l'80\% o più della varianza dei punteggi ottenuti è causata da ciò che il test intende misurare, anziché dall'errore di misurazione.
-
-Per definire l'attendibilità, la CTT si serve di due quantità:
-
-\begin{itemize}
-\tightlist
-\item
-  la varianza del punteggio osservato,
-\item
-  la correlazione tra punteggio osservato e punteggio vero.
-\end{itemize}
-
-Vediamo come queste quantità possano essere ottenute sulla base delle assunzioni del modello statistico che sta alla base della CTT.
-
-\hypertarget{la-varianza-del-punteggio-osservato}{%
-\subsection{La varianza del punteggio osservato}\label{la-varianza-del-punteggio-osservato}}
-
-La varianza del punteggio osservato \(X\) è uguale alla somma della varianza del punteggio vero e della varianza dell'errore di misurazione.
-
-\begin{proof}
-La varianza del punteggio osservato è uguale a
-
-\[
-\sigma^2_X =  \V(T+E) =  \sigma_T^2 + \sigma_E^2 + 2 \sigma_{TE}.
-\label{eq:3-2-4}
-\]
-
-Dato che \(\sigma_{TE}=\rho_{TE}\sigma_T \sigma_E=0\), in quanto \(\rho_{TE}=0\), ne segue che
-
-\[
-\sigma^2_X =   \sigma_T^2 + \sigma_E^2.
-\label{eq:var-sum}
-\]
-\end{proof}
-
-\hypertarget{la-covarianza-tra-punteggio-osservato-e-punteggio-vero}{%
-\subsection{La covarianza tra punteggio osservato e punteggio vero}\label{la-covarianza-tra-punteggio-osservato-e-punteggio-vero}}
-
-La covarianza tra punteggio osservato \(X\) e punteggio vero \(T\) è uguale alla varianza del punteggio vero.
-
-\begin{proof}
-\begin{equation}
-\begin{aligned}
-\sigma_{X T} &= \E(XT) - \E(X)\E(T)\notag\\
-&=  \E[(T+E)T] - \E(T+E)\E(T)\notag\\
-&=  \E(T^2) + \underbrace{\E(ET)}_{=0} - [\E(T)]^2 -  \underbrace{\E(E)}_{=0} \E(T)\notag\\
-&=\E(T^2) - [\E(T)]^2\notag \\
-&= \sigma_T^2.
-\end{aligned}
-\end{equation}
-\end{proof}
-
-Da ciò segue che la correlazione tra punteggio osservato \(X\) e punteggio vero \(T\) è uguale al rapporto tra la deviazione standard del punteggio vero e la deviazione standard del punteggio osservato:
-
-\begin{equation}
-\begin{aligned}
-\rho_{XT} &= \frac{\sigma_{XT}}{\sigma_X \sigma_T} = \frac{\sigma^2_{T}}{\sigma_X \sigma_T} = \frac{\sigma_{T}}{\sigma_X}.
-\label{eq:sd-ratio}
-\end{aligned}
-\end{equation}
-
-\hypertarget{definizione-e-significato-dellattendibilituxe0}{%
-\subsection{Definizione e significato dell'attendibilità}\label{definizione-e-significato-dellattendibilituxe0}}
-
-La CTT definisce attendibilità di un test (o di un item) come il quadrato della correlazione tra punteggio osservato \(X\) e punteggio vero \(T\), ovvero come il rapporto tra la varianza del punteggio vero e la varianza del punteggio osservato:
-
-\[
-\rho_{XT}^2 = \frac{\sigma_{T}^2}{\sigma_X^2}.
-\label{eq:reliability-1}
-\]
-
-Questa è la quantità fondamentale della CTT e misura il grado di variazione del punteggio vero rispetto alla variazione del punteggio osservato{[}\^{}2{]}.
-
-Dato che \(\sigma^2_X = \sigma_T^2 + \sigma_E^2\), in base alla \eqref{eq:reliability-1} possiamo scrivere
-
-\begin{equation}
-\begin{aligned}
-\rho_{XT}^2 &= \frac{\sigma_{T}^2}{\sigma_X^2} =\frac{\sigma_{X}^2 - \sigma^2_E}{\sigma_X^2}
- = 1-\frac{\sigma_{E}^2}{\sigma_X^2}.
- \label{eq:3-2-6}
-\end{aligned}
-\end{equation}
-
-Questo significa che il coefficiente di attendibilità assume valore \(1\) se la varianza degli errori \(\sigma_{E}^2\) è nulla e assume valore \(0\) se la varianza degli errori è uguale alla varianza del punteggio osservato. Ciò significa che il coefficiente di attendibilità è un numero contenuto nell'intervallo compreso tra \(0\) e \(1\).
-
-\hypertarget{attendibilituxe0-e-modello-di-regressione-lineare}{%
-\section{Attendibilità e modello di regressione lineare}\label{attendibilituxe0-e-modello-di-regressione-lineare}}
-
-Il modello di regressione lineare sta alla base della CTT. Infatti si può dire che tutte le proprietà della CTT che abbiamo discusso in precedenza non sono altro che le caratteristiche di un modello di regressione lineare nel quale
-
-\begin{itemize}
-\tightlist
-\item
-  la variabile dipendente è costituita dai punteggi osservati \(X\), e
-\item
-  la variabile indipendente corrisponde ai punteggi veri \(T\).
-\end{itemize}
-
-Se rappresentiamo la CTT in questo modo, il coefficiente di attendibilità \(\rho_{XT}^2 = \frac{\sigma_{T}^2}{\sigma_X^2}\) non diventa altro che la quota di varianza del punteggio osservato \(X\) che viene spiegata dal punteggio vero \(T\) in base ad un modello lineare con pendenza unitaria e intercetta nulla. Nei termini di una tale rappresentazione, il coefficiente di attendibilità misura la forza della relazione lineare tra \(X\) e \(T\) e corrisponde al coefficiente di determinazione del seguente modello di regressione:
-
-\[
-X = 0 + 1 \cdot T + E.
-\]
-
-\hypertarget{simulazione}{%
-\subsection{Simulazione}\label{simulazione}}
-
-Per dare un contenuto concreto alle affermazioni precedenti, consideriamo la seguente simulazione svolta in . In tale simulazione il punteggio vero \(T\) e l'errore \(E\) verranno creati in modo tale da soddisfare i due vincoli della CTT: \(T\) e \(E\) saranno delle variabili gaussiane e tra loro incorrelate. Nella simulazione generiamo 100 coppie di valori \(X\) e \(T\) con i seguenti parametri: \(T \sim \mathcal{N}(\mu_T = 12, \sigma^2_T = 6)\), \(E \sim \mathcal{N}(\mu_E = 0, \sigma^2_T = 3)\). A tale fine usiamo le seguenti istruzioni:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
-\FunctionTok{library}\NormalTok{(}\StringTok{"MASS"}\NormalTok{)}
-\NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{100}
-\NormalTok{Sigma }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{6}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{3}\NormalTok{), }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{)}
-\NormalTok{Sigma}
-\CommentTok{\#\textgreater{}      [,1] [,2]}
-\CommentTok{\#\textgreater{} [1,]    6    0}
-\CommentTok{\#\textgreater{} [2,]    0    3}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{mu }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{12}\NormalTok{, }\DecValTok{0}\NormalTok{)}
-\NormalTok{mu}
-\CommentTok{\#\textgreater{} [1] 12  0}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{Y }\OtherTok{\textless{}{-}} \FunctionTok{mvrnorm}\NormalTok{(n, mu, Sigma, }\AttributeTok{empirical =} \ConstantTok{TRUE}\NormalTok{)}
-\NormalTok{T }\OtherTok{\textless{}{-}}\NormalTok{ Y[, }\DecValTok{1}\NormalTok{]}
-\NormalTok{E }\OtherTok{\textless{}{-}}\NormalTok{ Y[, }\DecValTok{2}\NormalTok{]}
-\end{Highlighting}
-\end{Shaded}
-
-Le istruzioni precedenti creano un insieme di valori tali per cui le medie e la matrice di varianze-covarianze assumono esattamente i valori indicati. Possiamo dunque immaginare tale insieme di dati come la nostra ``popolazione''.
-
-Secondo la CTT, il punteggio osservato è \(X = T + E\). Simuliamo dunque il punteggio osservato \(X\) nel modo seguente:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{X }\OtherTok{\textless{}{-}}\NormalTok{ T }\SpecialCharTok{+}\NormalTok{ E}
-\end{Highlighting}
-\end{Shaded}
-
-Le prime 6 osservazioni così ottenute sono:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{head}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(T, E, X))}
-\CommentTok{\#\textgreater{}           T       E      X}
-\CommentTok{\#\textgreater{} [1,] 11.148 {-}1.5708  9.577}
-\CommentTok{\#\textgreater{} [2,] 13.138 {-}0.3335 12.804}
-\CommentTok{\#\textgreater{} [3,] 10.391  2.5457 12.937}
-\CommentTok{\#\textgreater{} [4,] 11.452 {-}0.1955 11.257}
-\CommentTok{\#\textgreater{} [5,]  9.978 {-}0.4920  9.486}
-\CommentTok{\#\textgreater{} [6,] 10.730  2.9609 13.691}
-\end{Highlighting}
-\end{Shaded}
-
-Un diagramma di dispersione è fornito nella figura seguente:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{tibble}\NormalTok{(X, T) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(X, T)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-
-{\centering \includegraphics{cfa_book_files/figure-latex/unnamed-chunk-38-1} 
-
-}
-
-\caption{Simulazione della relazione tra punteggio osservato e punteggio vero per 100 individui in base alle assunzioni della CTT.}\label{fig:unnamed-chunk-38}
-\end{figure}
-
-Secondo la CTT, il valore atteso di \(T\) è uguale al valore atteso di \(X\). Verifichiamo questa assunzione della CTT nei nostri dati:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{mean}\NormalTok{(T)}
-\CommentTok{\#\textgreater{} [1] 12}
-\FunctionTok{mean}\NormalTok{(X)}
-\CommentTok{\#\textgreater{} [1] 12}
-\end{Highlighting}
-\end{Shaded}
-
-L'errore deve avere media zero, varianza \(\sigma_E^2\) e deve essere incorrelato con \(T\):
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{mean}\NormalTok{(E)}
-\CommentTok{\#\textgreater{} [1] 4.061e{-}18}
-\FunctionTok{var}\NormalTok{(E)}
-\CommentTok{\#\textgreater{} [1] 3}
-\FunctionTok{cor}\NormalTok{(T, E)}
-\CommentTok{\#\textgreater{} [1] {-}1.947e{-}16}
-\end{Highlighting}
-\end{Shaded}
-
-Ricordiamo che la radice quadrata della varianza degli errori è chiamata errore standard della misurazione, \(\sigma_E\). La quantità \(\sqrt{\sigma_E^2}\) fornisce una misura della dispersione del punteggio osservato attorno al valore vero, nella condizione ipotetica di effettuare ripetute somministrazioni del test.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{sqrt}\NormalTok{(}\DecValTok{3}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1] 1.732}
-\end{Highlighting}
-\end{Shaded}
-
-Dato che \(T\) e \(E\) sono incorrelati, ne segue che la varianza del punteggio osservato \(X\) è uguale alla somma della varianza del punteggio vero \(T\) e della varianza degli errori \(E\):
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{var}\NormalTok{(X)}
-\CommentTok{\#\textgreater{} [1] 9}
-\FunctionTok{var}\NormalTok{(T) }\SpecialCharTok{+} \FunctionTok{var}\NormalTok{(E)}
-\CommentTok{\#\textgreater{} [1] 9}
-\end{Highlighting}
-\end{Shaded}
-
-La varianza del punteggio vero \(T\) è uguale alla covarianza tra il punteggio vero \(T\) e il punteggio osservato \(X\):
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{cov}\NormalTok{(T, X)}
-\CommentTok{\#\textgreater{} [1] 6}
-\FunctionTok{var}\NormalTok{(T)}
-\CommentTok{\#\textgreater{} [1] 6}
-\end{Highlighting}
-\end{Shaded}
-
-La correlazione tra il punteggio osservato e il punteggio vero è uguale al rapporto tra la deviazione standard del punteggio vero e la deviazione standard del punteggio osservato:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{cor}\NormalTok{(X, T)}
-\CommentTok{\#\textgreater{} [1] 0.8165}
-\FunctionTok{sd}\NormalTok{(T) }\SpecialCharTok{/} \FunctionTok{sd}\NormalTok{(X)}
-\CommentTok{\#\textgreater{} [1] 0.8165}
-\end{Highlighting}
-\end{Shaded}
-
-Focalizziamoci ora sull'attendibiiltà. Per la CTT, l'attendibilità è uguale al quadrato del coefficiente di correlazione tra il punteggio vero \(T\) e il punteggio osservato \(X\):
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{cor}\NormalTok{(X, T)}\SpecialCharTok{\^{}}\DecValTok{2}
-\CommentTok{\#\textgreater{} [1] 0.6667}
-\end{Highlighting}
-\end{Shaded}
-
-La motivazione di questa simulazione è quella di mettere in relazione il coefficiente di attendibilità, calcolato con le formule della CTT, con il modello di regressione lineare. Analizziamo dunque i dati della simulazione mediante il seguente modello di regressione lineare:
-
-\[
-X = a + b T + E
-\]
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{fm }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(X }\SpecialCharTok{\textasciitilde{}}\NormalTok{ T)}
-\FunctionTok{summary}\NormalTok{(fm)}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} Call:}
-\CommentTok{\#\textgreater{} lm(formula = X \textasciitilde{} T)}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} Residuals:}
-\CommentTok{\#\textgreater{}    Min     1Q Median     3Q    Max }
-\CommentTok{\#\textgreater{} {-}4.197 {-}1.101  0.052  1.155  4.239 }
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} Coefficients:}
-\CommentTok{\#\textgreater{}             Estimate Std. Error t value Pr(\textgreater{}|t|)    }
-\CommentTok{\#\textgreater{} (Intercept) 8.53e{-}15   8.75e{-}01       0        1    }
-\CommentTok{\#\textgreater{} T           1.00e+00   7.14e{-}02      14   \textless{}2e{-}16 ***}
-\CommentTok{\#\textgreater{} {-}{-}{-}}
-\CommentTok{\#\textgreater{} Signif. codes:  }
-\CommentTok{\#\textgreater{} 0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} Residual standard error: 1.74 on 98 degrees of freedom}
-\CommentTok{\#\textgreater{} Multiple R{-}squared:  0.667,  Adjusted R{-}squared:  0.663 }
-\CommentTok{\#\textgreater{} F{-}statistic:  196 on 1 and 98 DF,  p{-}value: \textless{}2e{-}16}
-\end{Highlighting}
-\end{Shaded}
-
-Si noti che la retta di regressione ha intercetta 0 e pendenza 1. Questo è coerente con l'assunzione \(\E(X) = \E(T)\). Ma il risultato più importante di questa simulazione è il seguente: il coefficiente di determinazione (\(R^2\) = 0.67) del modello di regressione \(X = 0 + 1 \times T + E\) è identico al coefficiente di attendibilità che abbiamo calcolato con la formula \(\rho_{XT}^2 = \frac{\sigma_{T}^2}{\sigma_X^2}\):
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{var}\NormalTok{(T) }\SpecialCharTok{/} \FunctionTok{var}\NormalTok{(X)}
-\CommentTok{\#\textgreater{} [1] 0.6667}
-\end{Highlighting}
-\end{Shaded}
-
-Ciò ci consente di attribuire al coefficiente di attendibilità la seguente interpretazione: l'attendibilità di un test non è altro che la quota di varianza del punteggio osservato \(X\) che viene spiegata dalla regressione di \(X\) sul punteggio vero \(T\) in un modello di regressione dove \(\alpha\) = 0 e \(\beta\) = 1.
-
-Che cosa si può concludere dai risultati di questa simulazione? Possiamo dire che, in base alla CTT,
-
-\begin{itemize}
-\tightlist
-\item
-  c'è una relazione lineare tra il punteggio osservato \(X\) e il punteggio vero \(T\); tale relazione lineare ha pendenza unitaria e intercetta zero.
-\item
-  La CTT fa proprie le assunzioni del modello di regressione lineare: incorrelazione tra variabile esplicativa \(T\) ed errore \(E\), e indipendenza e gaussianità degli errori.
-\item
-  Come conseguenza di tali assunzioni, il coefficiente di attendibilità non è altro che la quota di varianza del punteggio osservato \(X\) che viene spiegata dal punteggio vero tramite una regressione lineare, ovvero non è altro che il coefficiente di determinazione del modello di regressione \(X = \alpha + \beta T + E,\) dove \(\alpha\) = 0 e \(\beta\) = 1.
-\end{itemize}
-
-Vedremo in seguito come sia possibile formulare la CTT nei termini del modello statistico dell'analisi fattoriale. Nel linguaggio dell'analisi fattoriale, la varianza dell'errore \(\sigma^2_E\) viene chiamata \emph{specificità} (\emph{uniqueness}).
-
-\hypertarget{misurazioni-parallele-e-affidabilituxe0}{%
-\section{Misurazioni parallele e affidabilità}\label{misurazioni-parallele-e-affidabilituxe0}}
-
-L'equazione \(\rho_{XT}^2 = \frac{\sigma_{T}^2}{\sigma_X^2}\) definisce il coefficiente di attendibilità ma non fornisce gli strumenti per calcolarlo, dato che la varianza del punteggio vero \(\sigma_{T}^2\) è una quantità incognita. Il metodo utilizzato dalla CTT per ottenere una stima (empirica) dell'attendibilità è quello delle forme parallele del test. Se è possibile elaborare versioni alternative dello stesso test che risultino equivalenti tra loro in termini di contenuto, modalità di risposta e caratteristiche statistiche, allora diventa anche possibile stimare il coefficiente di attendibilità.
-
-Secondo la CTT, due test \(X=T+E\) e \(X^\prime=T^\prime+E^\prime\) si dicono misurazioni parallele della stessa abilità latente se il punteggio vero \(T\) è uguale al punteggio vero \(T^\prime\) e se la varianza degli errori \(\V(E)\) è uguale alla varianza degli errori \(\V(E^\prime)\).
-
-Se il punteggio vero è uguale al valore atteso del punteggio osservato, \(T = \E(X)\), allora devono essere uguali anche le medie dei punteggi osservati delle due forme parallele del test, \(\E(X) = \E(X^\prime)\).
-
-\begin{proof}
-Consideriamo l'eguaglianza dei valori attesi dei punteggi osservati in due forme parallele del test: \(\E(X) = \E(X^\prime)\). Risulta immediato che
-
-\[
-\E(X) = \E(T + E) = \E(T) + \E(E) = T,
-\]
-
-dato che \(\E(E)=0\) e \(T\) non è una variabile aleatoria. Inoltre, \(\E(X^\prime)=T\), dato che \(T=T^\prime\). Ne segue che \(\E(X) =\E(X^\prime)\).
-\end{proof}
-
-In maniera corrispondente, anche le varianze dei punteggi osservati di due misurazioni parallele devono essere uguali, \(\V(X) = \V(X^\prime)\).
-
-\begin{proof}
-Per la misurazione parallela \(X\) abbiamo
-
-\[
-\V(X) = \V(T + E)=  \V(T) +  \V(E);
-\]
-
-per la misurazione parallela \(X^\prime\) abbiamo
-
-\[
-\V(X^\prime) = \V(T^\prime + E^\prime) =  \V(T^\prime) +  \V(E^\prime).
-\]
-
-Dato che \(\V(E)=\V(E^\prime)\) e che \(T=T^\prime\), ne segue che \(\V(X) =\V(X^\prime)\).
-\end{proof}
-
-Per costruzione, inoltre, gli errori \(E\) e \(E^\prime\) devono essere incorrelati con \(T\) e tra loro.
-
-\hypertarget{la-correlazione-tra-misurazioni-parallele}{%
-\subsection{La correlazione tra misurazioni parallele}\label{la-correlazione-tra-misurazioni-parallele}}
-
-Un'ulteriore assunzione della CTT è la seguente. La CTT assume che, data una serie di misurazioni parallele \(X_1, X_2, X_3, \dots\) e un arbitrario test \(Z\), si ha
-
-\[
-\rho(X_1, X_2) = \rho(X_1, X_3) = \rho(X_2, X_3) = \dots
-\]
-
-e
-
-\[
-\rho(X_1, Z) = \rho(X_2,Z) = \rho(X_3, Z) = \dots
-\]
-
-ovvero, tutte le misurazioni parallele sono correlate tra loro nella stessa misura e ciascuna misurazione parallela correla nella stessa misura con qualunque altro test.
-
-L'assunzione precedente può essere espressa, in maniera equivalente, come segue. Si consideri la matrice di correlazioni calcolata su tutto il dominio degli item (ovvero, la matrice delle correlazioni tra ciascuna coppia di item nel dominio del costrutto). La correlazione media di questa matrice quantifica la capacità media di ciascun item di rappresentare il costrutto. La CTT assume che la correlazione di ciascun item con ciascuno degli altri sia costante (ovvero, uguale per qualunque coppia di item). Detto in altri termini: secondo la CTT ciascun item rappresenta il costrutto nella stessa misura. Questa è un'assunzione molto forte che si riflette, come vedremo, nella formula del coefficiente \(\alpha\) di Cronbach utilizzata per misurare l'attendibilità come consistenza interna. È un'assunzione molto forte che raramente viene soddisfatta in pratica.
-
-Secondo la CTT, dunque, forme parallele del test devono avere lo stesso valore atteso e la stessa varianza. Inoltre, ciascuna forma parallela deve correlare nella stessa misura con qualunque altro test. In che modo si differenziano allora le forme parallele del test? L'unica differenza tra le forme parallele del test riguarda il punteggio osservato: a causa dell'errore di misurazione \(X \neq X^\prime\).
-
-Il concetto di forme parallele del test è estremamente importante per la CTT perché attraverso tale nozione diventa possibile giungere ad una stima empirica dell'attendibilità. Prima di presentare questo ultimo passaggio algebrico è però necessario calcolare la correlazione tra due misurazioni parallele.
-
-\hypertarget{la-correlazione-tra-due-forme-parallele-del-test}{%
-\subsection{La correlazione tra due forme parallele del test}\label{la-correlazione-tra-due-forme-parallele-del-test}}
-
-Secondo la CTT, la correlazione tra due misurazioni parallele è uguale al rapporto tra la varianza del punteggio vero e la varianza del punteggio osservato. Ricordiamo che la varianza del punteggio osservato è uguale nelle due forme parallele del test: \(\V(X) = \V(X^\prime)\).
-
-\begin{proof}
-Assumendo, senza perdita di generalità, che \(\E(X)=\E(X')=\E(T)=0\), possiamo scrivere
-
-\begin{equation}
-\begin{aligned}
-\rho_{X X^\prime} &= \frac{\sigma(X, X^\prime)}{\sigma(X) \sigma(X^\prime)}\notag\\
-&= \frac{\E(XX^\prime)}{\sigma(X) \sigma(X^\prime)}\notag\\
-&=\frac{\E[(T+E)(T+E^\prime)]}{\sigma(X) \sigma(X^\prime)}\notag\\
-&=\frac{\E(T^2)+\E(TE^\prime)+\E(TE)+ \E(EE^\prime)}{\sigma(X) \sigma(X^\prime)}.\notag
-\end{aligned}
-\end{equation}
-
-Ma \(\E(TE) = \E(TE^\prime) = \E(EE^\prime)=0\); inoltre, \(\sigma(X) =\sigma(X^\prime)= \sigma_X\). Dunque,
-
-\begin{equation}
-\rho_{X X^\prime} =\frac{\E(T^2)}{\sigma_X \sigma_X} = \frac{\sigma^2_T}{\sigma^2_X}.
-\label{eq:3-3-5}
-\end{equation}
-\end{proof}
-
-Si noti come la \eqref{eq:3-3-5} e l'equazione che definisce il coefficiente di attendibilità, ovvero \(\rho_{XT}^2 = \frac{\sigma_{T}^2}{\sigma_X^2}\), riportano tutte e due la stessa quantità a destra dell'uguale. Otteniamo così un importante risultato. Il coefficiente di attendibilità, ovvero il quadrato del coefficiente di correlazione tra il punteggio osservato e il punteggio vero, è uguale alla correlazione tra il valore osservato di due misurazioni parallele:
-
-\begin{equation}
-\rho^2_{XT} =  \rho_{XX^\prime}.
-\label{eq:rho2xt-rhoxx}
-\end{equation}
-
-Tale risultato è importante perché consente di esprimere la quantità inosservabile \(\rho^2_{XT}\) nei termini della quantità \(\rho_{XX^\prime}\) che può essere calcolata sulla base del punteggio osservato. Quindi, la stima di \(\rho^2_{XT}\) si riduce alla stima di \(\rho^2_{XX^\prime}\). Per questa ragione, la \eqref{eq:rho2xt-rhoxx} è forse la formula più importante della CTT.
-
-\hypertarget{la-correlazione-tra-punteggio-osservato-e-punteggio-vero}{%
-\subsection{La correlazione tra punteggio osservato e punteggio vero}\label{la-correlazione-tra-punteggio-osservato-e-punteggio-vero}}
-
-Consideriamo ora la correlazione tra punteggio osservato e punteggio vero. La \eqref{eq:rho2xt-rhoxx} si può scrivere come
-
-\[
-\rho_{XT} = \sqrt{\rho_{XX^\prime}}.
-\]
-
-Tale risultato si può interpretare dicendo che la correlazione tra punteggio osservato e punteggio vero è uguale alla radice quadrata del coefficiente di attendibilità.
-
-\hypertarget{i-fattori-che-influenzano-lattendibilituxe0}{%
-\subsection{I fattori che influenzano l'attendibilità}\label{i-fattori-che-influenzano-lattendibilituxe0}}
-
-Considerando le precedenti tre equazioni
-
-\[
-\rho^2_{XT} = \rho_{XX'},\quad
-\rho_{XT}^2 = \frac{\sigma_{T}^2}{\sigma_X^2}, \quad
-\rho_{XT}^2 = 1-\frac{\sigma_{E}^2}{\sigma_X^2},
-\]
-
-possiamo dire che ci sono tre modi equivalenti per concludere che l'attendibilità di un test è alta. L'attendibilità di un test è alta
+I passaggi teorici necessari per interpretare una matrice fattoriale ruotata possono essere descritti nel modo seguente.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\tightlist
 \item
-  quando la correlazione tra misurazioni parallele è alta,
+  Si definisce un livello arbitrario per le saturazioni che ci indichi il limite oltre il quale non riteniamo le variabili sufficientemente importanti per caratterizzare quel determinato fattore. Solitamente si sceglie la soglia di .40. In casi particolari è possibile usare valori maggiori o minori di questo, a seconda che si abbia un numero ristretto o troppo ampio di variabili da interpretare.
 \item
-  quando la varianza del punteggio vero è grande relativamente alla varianza del punteggio osservato,
+  Si ordinano le saturazioni delle variabili del fattore in ordine decrescente (in valore assoluto), fermandosi al livello prescelto.
 \item
-  quando la varianza dell'errore di misura è piccola relativamente alla varianza del punteggio osservato.
+  Si scrive accanto ad ogni saturazione la denominazione della variabile corrispondente (o il testo dell'item).
+\item
+  Tenendo presente il dominio di indagine, le teorie di riferimento ed eventuali risultati precedenti, si cerca di stabilire quale sia il tratto, caratteristica, aspetto \ldots che queste variabili abbiano in comune, in modo da poter in modo da poter ``nominare'' il fattore che definisce questo tratto comune. In questo processo interpretativo gli item con le saturazioni maggiori contribuiscono in misura maggiore alla definizione del carattere comune del fattore e, viceversa, ciò che è stato individuato come tratto comune delle variabili deve comparire in maggior grado nelle variabili più sature.
+\item
+  Il segno negativo di una saturazione indica solamente un'opposizione rispetto alle saturazioni positive. Il tratto comune alle variabili dovrebbe essere pensato come un continuum che passa dalla sua massima presenza al suo opposto. Per procedere all'interpretazione conviene iniziare dalle variabili il cui segno è più frequente e considerarle come se fossero positive; di conseguenza, le altre (siano esse di segno positivo o negativo) devono essere considerate di segno opposto.
+\item
+  Nel caso in cui non si riesca a riscontrare nessun tratto comune alle variabili del fattore, si dovrà concludere che il fattore non è interpretabile e che le variabili sono state tra loro associate per un errore attribuibile o al campione o alla misurazione delle variabili stesse. Normalmente i ``primi'' fattori estratti sono facilmente interpretabili mentre gli ``ultimi'', soprattutto se ne sono stati estratti molti o se la matrice delle correlazioni iniziale fra le variabili contiene molti valori bassi, sono spesso difficilmente interpretabili o saturi di una sola variabile e quindi fattori specifici di quella variabile. In linea di massima se i fattori non interpretabili sono molti è meglio non considerare affatto i risultati dell'analisi fattoriale.
 \end{enumerate}
 
-Tali considerazioni hanno importanti implicazioni per le scelte che devono guidare la costruzione di un test. Si consideri, in particolare, l'equazione \(\rho^2_{XT} = \rho_{XX'}\). Se interpretiamo \(\rho_{XX'}\) come la correlazione tra due item, allora tale equazione ci fornisce un criterio per la scelta degli item da includere in un test: dobbiamo includere nel test gli item che correlano maggiormente tra loro. In questo modo, infatti, l'attendibilità del test aumenterà perché gli item inclusi nel test risultano maggiormente correlati con il punteggio vero.
+\hypertarget{esempio-di-interpretazione}{%
+\subsection{Esempio di interpretazione}\label{esempio-di-interpretazione}}
 
-\hypertarget{metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilituxe0}{%
-\section{Metodi alternativi per la stima del coefficiente di attendibilità}\label{metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilituxe0}}
+Il WISC-III (Wechsler Intelligence Scale For Children - III) valuta l'abilità intellettiva di soggetti dai 6 ai 16 anni e 11 mesi. I subtest sono stati selezionati per valutare diverse abilità mentali, che tutte insieme indicano l'abilità intellettiva generale del bambino. Alcuni gli richiedono un ragionamento astratto, altri si focalizzano sulla memoria, altri ancora richiedono certe abilità percettive e così via.
 
-Come si stima in pratica l'affidabilità? Un modo grossolano (e molto impreciso) consiste nel somministrare allo stesso gruppo di individui lo stesso test in due differenti momenti e di calcolare il coefficiente di correlazione dei punteggi totali (\emph{test-retest reliability}). \citet{mcdonald2013test} afferma che tale procedura può essere giustificata in due modi diversi. La prima giustificazione è basata sull'assunzione che il valore vero non varia tra le due somministrazioni del test. Se le cose stanno in questo modo, gli errori saranno indipendenti e la correlazione tra il punteggio osservato nelle due somministrazioni ci fornirà una stima di \(\rho_{XX^\prime}\). Il problema è che non disponiamo di nessuno strumento per distinguere questa situazione ideale dal caso in cui viene violata l'assunzione dell'invarianza del punteggio vero. Una seconda giustificazione del metodo test-retest ci porta a definire il punteggio vero di retest come la componente del punteggio osservato che non varia tra le due somministrazioni. Il tal senso, il coefficiente di attendibilità viene concepito come un coefficiente di stabilità temporale. In generale, maggiore è l'intervallo temporale tra le due somministrazioni, minore sarà il valore del coefficiente di stabilità temporale. Uno dei problemi del metodo test-retest è che due somministrazioni successive di un test ci forniscono soltanto un sottoinsieme delle possibili informazioni che verrebbero raccolte da uno studio longitudinale che copre un periodo temporale maggiore. Se tale studio longitudinale venisse eseguito, potremmo trovare la funzione che descrive la variazione del punteggio osservato in funzione del tempo. In generale, tale funzione non può essere descritta da un singolo parametro. Resta aperta la domanda di quale sia relazione tra questa funzione e il coefficiente di attendibilità.
-
-Se sono disponibili due forme parallele dello stesso test, l'affidabilità può essere calcolata mediante il coefficiente di correlazione dei punteggi totali dei due test (\emph{parallel-forms reliability}), valendo l'uguaglianza \(\rho_{XX^\prime} = \rho^2_{XT}\). Anche questo metodo, come il metodo del test-retest, non è esente da errori.
-
-Il metodo di stima più diffuso è quello conosciuto come Cronbach's alpha (\emph{internal consistency reliability}) originariamente ricavato da \citet{kuder1937theory} per item dicotomici e poi generalizzato da \citet{cronbach1951coefficient} per item a risposte ordinali di qualunque tipo. L'idea su cui si basa consiste nel fatto che ogni singolo item del test, se confrontato con tutti gli altri, può essere usato per stimarne l'affidabilità. L'analisi degli item viene utilizzata per ottenere una stima della consistenza interna del test e valuta la misura in cui gli item del test sono espressione dello stesso costrutto.
-
-\hypertarget{ch:missing_data}{%
-\chapter{Dati mancanti}\label{ch:missing_data}}
-
-Raramente un ricercatore si trova nella situazione fortunata nella quale un'analisi statistica (CFA o altro) può essere condotta utilizzando un set di dati in cui tutte le variabili sono presenti per tutte le osservazioni: i dati mancanti sono la norma piuttosto che l'eccezione nella pratica della ricerca.
-
-\hypertarget{tipologie-di-dati-mancanti}{%
-\section{Tipologie di dati mancanti}\label{tipologie-di-dati-mancanti}}
-
-I dati mancanti possono verificarsi per una serie di motivi. Ad esempio, i dati possono mancare per disegno dello studio (``mancanza pianificata''), come ad esempio nei progetti di ricerca in cui i partecipanti al campione vengono selezionati casualmente per completare vari sottoinsiemi della batteria di valutazione completa (a causa di considerazioni pratiche come vincoli di tempo). In tali condizioni, si presume che i dati mancanti si distribuiscano in un modo completamente casuale rispetto a tutte le altre variabili nello studio. In generale, i meccanismi che determinano la presenza di dati mancanti possono essere classificati in tre categorie:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \emph{valori mancanti completamente casuali} (\emph{Missing Completely At Random}, MCAR). La probabilità di dati mancanti su una variabile non è collegata né al valore mancante sulla variabile, né al valore di ogni altra variabile presente nella matrice dati che si sta analizzando;
-\item
-  \emph{valori mancanti casuali} (\emph{Missing At Random}, MAR). I valori mancanti sono indipendenti dal valore che viene a mancare, ma dipendono da altre variabili, cioè i dati sulla variabile sono mancanti per categorie di partecipanti che potrebbero essere identificati da valori su altre variabili;
-\item
-  \emph{valori mancanti non ignorabili} (\emph{Missing Not At Random}, MNAR). La mancanza di un dato può dipendere sia dal valore del dato stesso che dalle altre variabili. Per esempio, se si studia la salute mentale e le persone depresse riferiscono meno volentieri informazioni riguardanti il loro stato di salute, allora i dati non sono mancanti per caso.
-\end{enumerate}
-
-\hypertarget{la-gestione-dei-dati-mancanti}{%
-\section{La gestione dei dati mancanti}\label{la-gestione-dei-dati-mancanti}}
-
-Il passo successivo dopo la definizione dei meccanismi è quello della gestione dei dati mancanti. Sostanzialmente le scelte possibili sono due: l'eliminazione dei casi o la sostituzione dei dati mancanti. Un metodo semplice, indicato solo nel caso in cui l'ammontare dei dati mancanti è limitato e questi sono mancanti completamente a caso (MCAR), è quello di cancellare i casi (\emph{case deletion}).
-
-I modi per eliminare i casi sono due: \emph{listwise deletion} e \emph{pairwise deletion}. Nel primo caso si elimina dal campione ogni caso che ha dati mancanti. Le analisi avverranno quindi solo sui casi che hanno valori validi per tutte le variabili in esame. Si ha una maggiore semplicità di trattazione, tuttavia non si utilizza tutta l'informazione osservata (si riduce la numerosità campionaria e, quindi, l'informazione). Il secondo metodo è la pairwise deletion, che utilizza tutti i casi che hanno i dati validi su due variabili volta per volta. In questo modo si riesce a massimizzare la numerosità del campione da utilizzare, ma si tratta comunque di un metodo che presenta dei problemi, per esempio il fatto che con questo approccio i parametri del modello saranno basati su differenti insiemi di dati, con differenti numerosità campionarie e differenti errori standard.
-
-Quando i dati non sono MCAR è opportuno sostituirli con appropriate funzioni dei dati effettivamente osservati (\emph{imputation}). Di seguito sono indicati alcuni metodi.
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \emph{Mean Imputation}. Il dato mancante viene sostituito con la media della variabile. Questo metodo, utilizzato troppo spesso per la sua semplicità, riducendo la variabilità dei dati, ha invece effetti importanti su molte analisi dei dati e generalmente dovrebbe essere evitato.
-\item
-  \emph{Regression Imputation}. Si tratta di un approccio basato sulle informazioni disponibili per le altre variabili. Si stima una equazione di regressione lineare per ogni variabile utilizzando le altre come predittori. Questo metodo offre il vantaggio di poter utilizzare dei rapporti esistenti tra le variabili per effettuare le valutazioni dei dati mancanti; tuttavia esso è usato raramente, in quanto amplifica i rapporti di correllazione tra le variabili; quindi se le analisi si baseranno su regressioni, questo metodo è sconsigliato.
-\item
-  \emph{Multiple Imputation}. La tecnica multiple imputation, applicabile in caso di MAR, prevede che un dato mancante su una variabile sia sostituito, sulla base dei dati esistenti anche sulle altre variabili, con un valore che però comprende anche una componente di errore ricavata dalla distribuzione dei residui della variabile.
-\item
-  \emph{Expectation-Maximization}. Un altro approccio moderno del trattamento dei dati mancanti è l'applicazione dell'algoritmo Expectation Maximization (EM). La tecnica è quella di stimare i parametri sulla base dei dati osservati, e di stimare poi i dati mancanti sulla base di questi parametri (fase E). Poi i parametri vengono nuovamente stimati sulla base della nuova matrice di dati (fase M), e così via. Questo processo viene iterato fino a quando i valori stimati convergono. Tuttavia, una limitazione fondamentale dell'utilizzo dell'algoritmo EM per calcolare le matrici di input per le analisi CFA/SEM è che gli errori standard risultanti delle stime dei parametri non sono consistenti. Pertanto, gli intervalli di confidenza e i test di significatività possono essere compromessi.
-\end{enumerate}
-
-\hypertarget{metodo-direct-ml}{%
-\subsection{Metodo Direct ML}\label{metodo-direct-ml}}
-
-Benché vengano talvolta usati, i metodi precedenti sono stati presentati solo per ragioni storiche. Nella pratica concreta è meglio usare il metodo \emph{Direct ML}, conosciuto anche come ``raw ML'' o ``full information ML'' (FIML), in quanto è generalmente considerano come il metodo migliore per gestire i dati mancanti nella maggior parte delle applicazioni CFA e SEM. Direct ML è esente dai problemi associati all'utilizzo dell'algoritmo EM e produce stime consistenti sotto l'ipotesi di normalità multivariata per dati mancanti MAR.
-
-Intuitivamente, l'approccio utilizza la relazione tra le variabili per dedurre quali siano i valori mancanti con maggiore probabilità. Ad esempio, se due variabili, \(X\) e \(Y\), sono correlate positivamente, allora se, per alcuni \(i\), \(X_i\) è il valore più alto nella variabile, è probabile che anche il valore mancante \(Y_i\) sia un valore alto. FIML utilizza queste informazioni senza procedere all'imputazione dei valori mancanti, ma invece basandosi sulle stime più verosimili dei parametri della popolazione, ovvero massimizzando direttamente la verosimiglianza del modello specificato. Sotto l'assunzione di normalità multivariata, la funzione di verosimiglianza diventa
-
-\[
-L(\mu, \Sigma) = \prod_i f(y_i \mid \mu_i, \Sigma_i),
-\] laddove \(y_i\) sono i dati, \(\mu_i\) e \(\Sigma_i\) sono i parametri della popolazione se gli elementi mancanti in \(y_i\) vengono rimossi. Si cercano i valori \(\mu\) e \(\Sigma\) che massimizzano la verosimiglianza.
-
-In \texttt{lavaan} l'applicazione di tale metodo si ottiene specificando l'argomento \texttt{missing\ =\ "ml"}.
-
-\hypertarget{un-esempio-concreto}{%
-\subsection{Un esempio concreto}\label{un-esempio-concreto}}
-
-Per applicare il metodo \emph{direct ML}, \citet{brown2015confirmatory} prende in esame i dati reali di un questionario (un singolo fattore, quattro item, una covarianza di errore) con dati mancanti (N = 650). Leggiamo i dati dell'esempio:
+Si consideri la matrice di correlazione tra i subtest della scala WISC-III riportata dal manuale.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{d }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(here}\SpecialCharTok{::}\FunctionTok{here}\NormalTok{(}\StringTok{"data"}\NormalTok{, }\StringTok{"brown\_table\_9\_1.RDS"}\NormalTok{))}
-\FunctionTok{head}\NormalTok{(d)}
-\CommentTok{\#\textgreater{}   subject s1 s2 s3 s4}
-\CommentTok{\#\textgreater{} 1    5760  2  0  1 NA}
-\CommentTok{\#\textgreater{} 2    5761  3  3  3 NA}
-\CommentTok{\#\textgreater{} 3    5763  2  4  4 NA}
-\CommentTok{\#\textgreater{} 4    5761  2  0  0 NA}
-\CommentTok{\#\textgreater{} 5    5769  2  1  1 NA}
-\CommentTok{\#\textgreater{} 6    5771  4  3  3 NA}
-\end{Highlighting}
-\end{Shaded}
-
-Il modello viene specificato come segue \citep[seguiamo][]{brown2015confirmatory}:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{model }\OtherTok{\textless{}{-}} \StringTok{"}
-\StringTok{  esteem =\textasciitilde{} s1 + s2 + s3 + s4}
-\StringTok{  s2 \textasciitilde{}\textasciitilde{} s4}
+\NormalTok{lower }\OtherTok{\textless{}{-}} \StringTok{"}
+\StringTok{1}
+\StringTok{.66      1}
+\StringTok{.57 .55      1}
+\StringTok{.70 .69 .54       1}
+\StringTok{.56 .59 .47 .64      1}
+\StringTok{.34 .34 .43 .35 .29      1}
+\StringTok{.47 .45 .39 .45 .38 .25      1}
+\StringTok{.21 .20 .27 .26 .25 .23 .18      1}
+\StringTok{.40 .39 .35 .40 .35 .20 .37 .28      1}
+\StringTok{.48 .49 .52 .46 .40 .32 .52 .27 .41      1}
+\StringTok{.41 .42 .39 .41 .34 .26 .49 .24 .37 .61      1}
+\StringTok{.35 .35 .41 .35 .34 .28 .33 .53 .36 .45 .38      1}
+\StringTok{.18 .18 .22 .17 .17 .14 .24 .15 .23 .31 .29 .24     1}
 \StringTok{"}
 \end{Highlighting}
 \end{Shaded}
 
-Adattiamo il modello ai dati:
-
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{fit }\OtherTok{\textless{}{-}} \FunctionTok{cfa}\NormalTok{(model, }\AttributeTok{data =}\NormalTok{ d, }\AttributeTok{missing =} \StringTok{"ml"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-È possibile identificare le configurazioni di risposte agli item che contengono dati mancanti:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{fit}\SpecialCharTok{@}\NormalTok{Data}\SpecialCharTok{@}\NormalTok{Mp[[}\DecValTok{1}\NormalTok{]]}\SpecialCharTok{$}\NormalTok{npatterns}
-\CommentTok{\#\textgreater{} [1] 5}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{pats }\OtherTok{\textless{}{-}}\NormalTok{ fit}\SpecialCharTok{@}\NormalTok{Data}\SpecialCharTok{@}\NormalTok{Mp[[}\DecValTok{1}\NormalTok{]]}\SpecialCharTok{$}\NormalTok{pat }\SpecialCharTok{*}\NormalTok{ 1L}
-\FunctionTok{colnames}\NormalTok{(pats) }\OtherTok{\textless{}{-}}\NormalTok{ fit}\SpecialCharTok{@}\NormalTok{Data}\SpecialCharTok{@}\NormalTok{ov.names[[}\DecValTok{1}\NormalTok{]]}
-\FunctionTok{print}\NormalTok{(pats)}
-\CommentTok{\#\textgreater{}      s1 s2 s3 s4}
-\CommentTok{\#\textgreater{} [1,]  1  1  1  1}
-\CommentTok{\#\textgreater{} [2,]  1  1  1  0}
-\CommentTok{\#\textgreater{} [3,]  0  1  1  1}
-\CommentTok{\#\textgreater{} [4,]  1  0  1  1}
-\CommentTok{\#\textgreater{} [5,]  1  1  0  1}
-\end{Highlighting}
-\end{Shaded}
-
-Possiamo ora esaminare la copertura della covarianza nei dati, ovvero la proporzione di dati disponibili per ciascun indicatore e per ciascuna coppia di indicatori:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{coverage }\OtherTok{\textless{}{-}}\NormalTok{ fit}\SpecialCharTok{@}\NormalTok{Data}\SpecialCharTok{@}\NormalTok{Mp[[}\DecValTok{1}\NormalTok{]]}\SpecialCharTok{$}\NormalTok{coverage}
-\FunctionTok{colnames}\NormalTok{(coverage) }\OtherTok{\textless{}{-}} \FunctionTok{rownames}\NormalTok{(coverage) }\OtherTok{\textless{}{-}}\NormalTok{ fit}\SpecialCharTok{@}\NormalTok{Data}\SpecialCharTok{@}\NormalTok{ov.names[[}\DecValTok{1}\NormalTok{]]}
-\FunctionTok{print}\NormalTok{(coverage)}
-\CommentTok{\#\textgreater{}        s1     s2     s3     s4}
-\CommentTok{\#\textgreater{} s1 0.9615 0.9231 0.9231 0.6692}
-\CommentTok{\#\textgreater{} s2 0.9231 0.9615 0.9231 0.6692}
-\CommentTok{\#\textgreater{} s3 0.9231 0.9231 0.9615 0.6692}
-\CommentTok{\#\textgreater{} s4 0.6692 0.6692 0.6692 0.7077}
-\end{Highlighting}
-\end{Shaded}
-
-Ad esempio, consideriamo l'item \texttt{s1}; se moltiplichiamo la copertura di questo elemento per la numerosità campionaria
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\DecValTok{650} \SpecialCharTok{*} \FloatTok{0.9615385}
-\CommentTok{\#\textgreater{} [1] 625}
-\end{Highlighting}
-\end{Shaded}
-
-possiamo concludere che questa variabile contiene 25 osservazioni mancanti; e così via.
-
-Procediamo poi come sempre per esaminare la soluzione ottentua.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{effectsize}\SpecialCharTok{::}\FunctionTok{interpret}\NormalTok{(fit)}
-\CommentTok{\#\textgreater{}     Name    Value Interpretation}
-\CommentTok{\#\textgreater{} 1    GFI 0.999449   satisfactory}
-\CommentTok{\#\textgreater{} 2   AGFI 0.992292   satisfactory}
-\CommentTok{\#\textgreater{} 3    NFI 0.999193   satisfactory}
-\CommentTok{\#\textgreater{} 4   NNFI 0.998978   satisfactory}
-\CommentTok{\#\textgreater{} 5    CFI 0.999830   satisfactory}
-\CommentTok{\#\textgreater{} 6  RMSEA 0.020238   satisfactory}
-\CommentTok{\#\textgreater{} 7   SRMR 0.004853   satisfactory}
-\CommentTok{\#\textgreater{} 8    RFI 0.995155   satisfactory}
-\CommentTok{\#\textgreater{} 9   PNFI 0.166532           poor}
-\CommentTok{\#\textgreater{} 10   IFI 0.999830   satisfactory}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{standardizedSolution}\NormalTok{(fit)}
-\CommentTok{\#\textgreater{}       lhs op    rhs est.std    se      z pvalue}
-\CommentTok{\#\textgreater{} 1  esteem =\textasciitilde{}     s1   0.737 0.020 37.086      0}
-\CommentTok{\#\textgreater{} 2  esteem =\textasciitilde{}     s2   0.920 0.013 68.651      0}
-\CommentTok{\#\textgreater{} 3  esteem =\textasciitilde{}     s3   0.880 0.013 66.432      0}
-\CommentTok{\#\textgreater{} 4  esteem =\textasciitilde{}     s4   0.905 0.016 55.400      0}
-\CommentTok{\#\textgreater{} 5      s2 \textasciitilde{}\textasciitilde{}     s4  {-}0.886 0.216 {-}4.109      0}
-\CommentTok{\#\textgreater{} 6      s1 \textasciitilde{}\textasciitilde{}     s1   0.456 0.029 15.554      0}
-\CommentTok{\#\textgreater{} 7      s2 \textasciitilde{}\textasciitilde{}     s2   0.153 0.025  6.190      0}
-\CommentTok{\#\textgreater{} 8      s3 \textasciitilde{}\textasciitilde{}     s3   0.225 0.023  9.636      0}
-\CommentTok{\#\textgreater{} 9      s4 \textasciitilde{}\textasciitilde{}     s4   0.182 0.030  6.151      0}
-\CommentTok{\#\textgreater{} 10 esteem \textasciitilde{}\textasciitilde{} esteem   1.000 0.000     NA     NA}
-\CommentTok{\#\textgreater{} 11     s1 \textasciitilde{}1          2.375 0.078 30.610      0}
-\CommentTok{\#\textgreater{} 12     s2 \textasciitilde{}1          1.881 0.066 28.592      0}
-\CommentTok{\#\textgreater{} 13     s3 \textasciitilde{}1          1.584 0.059 26.781      0}
-\CommentTok{\#\textgreater{} 14     s4 \textasciitilde{}1          1.850 0.071 26.048      0}
-\CommentTok{\#\textgreater{} 15 esteem \textasciitilde{}1          0.000 0.000     NA     NA}
-\CommentTok{\#\textgreater{}    ci.lower ci.upper}
-\CommentTok{\#\textgreater{} 1     0.698    0.776}
-\CommentTok{\#\textgreater{} 2     0.894    0.947}
-\CommentTok{\#\textgreater{} 3     0.854    0.906}
-\CommentTok{\#\textgreater{} 4     0.873    0.937}
-\CommentTok{\#\textgreater{} 5    {-}1.309   {-}0.463}
-\CommentTok{\#\textgreater{} 6     0.399    0.514}
-\CommentTok{\#\textgreater{} 7     0.104    0.201}
-\CommentTok{\#\textgreater{} 8     0.179    0.271}
-\CommentTok{\#\textgreater{} 9     0.124    0.240}
-\CommentTok{\#\textgreater{} 10    1.000    1.000}
-\CommentTok{\#\textgreater{} 11    2.223    2.527}
-\CommentTok{\#\textgreater{} 12    1.752    2.010}
-\CommentTok{\#\textgreater{} 13    1.468    1.700}
-\CommentTok{\#\textgreater{} 14    1.710    1.989}
-\CommentTok{\#\textgreater{} 15    0.000    0.000}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{ch:cat_data}{%
-\chapter{Dati non gaussiani e categoriali}\label{ch:cat_data}}
-
-\hypertarget{dati-non-gaussiani}{%
-\section{Dati non gaussiani}\label{dati-non-gaussiani}}
-
-Negli esempi precedenti di questa dispensa è stato utilizzato lo stimatore di massima verosimiglianza (ML). Molti dei modelli CFA e SEM riportati nella letteratura di ricerca applicata utilizzano stime di ML. Tuttavia, ML è appropriata solo per dati multivariati normali, a livello di scala a intervalli (cioè, quando la distribuzione congiunta delle variabili continue è distribuita normalmente). Quando i dati continui si discostano marcatamente dalla normalità (cioè, forti asimmetria o curtosi), o quando alcuni degli indicatori non sono a livello di cala a intervalli (cioè, dati binari, politomici o ordinali), allora dovrebbe essere utilizzato uno stimatore diverso dalla ML.
-
-La ricerca ha dimostrato che ML è robusta nel caso di lievi deviazioni nella normalità. Tuttavia, quando la non normalità è più pronunciata, è necessario utilizzare uno stimatore diverso da ML per ottenere risultati statistici affidabili (vale a dire, statistiche accurate sulla bontà dell'adattamento ed errori standard delle stime dei parametri). ML è particolarmente sensibile ad una eccessiva curtosi.
-
-Le conseguenze dell'uso del ML in condizioni di grave non normalità includono
-
-\begin{itemize}
-\tightlist
-\item
-  valori eccessivi della statistica \(\chi^2\) del modello;
-\item
-  sottostima degli indici di bontà dell'adattamento come TLI e CFI;
-\item
-  sottostima degli errori standard delle stime dei parametri.
-\end{itemize}
-
-Questi effetti deleteri sono esacerbati con la diminuzione della dimensione del campione.
-
-I due stimatori più comunemente usati per dati continui non normali sono
-
-\begin{itemize}
-\tightlist
-\item
-  ML robusto,
-\item
-  minimi quadrati ponderati.
-\end{itemize}
-
-L'uso di WLS non è, in generale, raccomandato, a meno che le dimensioni del campione non siano molto grandi. Al contrario, la ricerca ha dimostrato che il metodo ML robusto fornisce uno stimatore adeguato rispetto a diversi livelli di non normalità.
-
-Esaminiamo qui un esempio che usa gli stessi dati utilizzati da \citet{brown2015confirmatory} nelle tabelle 9.5 -- 9.7.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{d }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(here}\SpecialCharTok{::}\FunctionTok{here}\NormalTok{(}\StringTok{"data"}\NormalTok{, }\StringTok{"brown\_table\_9\_5\_data.RDS"}\NormalTok{))}
-\FunctionTok{head}\NormalTok{(d)}
-\CommentTok{\#\textgreater{}   x1 x2 x3 x4 x5}
-\CommentTok{\#\textgreater{} 1  0  0  0  0  0}
-\CommentTok{\#\textgreater{} 2  0  0  0  0  0}
-\CommentTok{\#\textgreater{} 3  0  0  0  0  0}
-\CommentTok{\#\textgreater{} 4  4  2  2  1  1}
-\CommentTok{\#\textgreater{} 5  1  0  1  6  0}
-\CommentTok{\#\textgreater{} 6  0  0  0  0  0}
-\end{Highlighting}
-\end{Shaded}
-
-Le statistiche descrittive dei dati dell'esempio mostrano valori eccessivi di asimmetria e di curtosi.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{psych}\SpecialCharTok{::}\FunctionTok{describe}\NormalTok{(d)}
-\CommentTok{\#\textgreater{}    vars   n mean   sd median trimmed mad min max range}
-\CommentTok{\#\textgreater{} x1    1 870 1.47 2.17      0    1.01   0   0   8     8}
-\CommentTok{\#\textgreater{} x2    2 870 0.82 1.60      0    0.42   0   0   8     8}
-\CommentTok{\#\textgreater{} x3    3 870 1.27 2.07      0    0.78   0   0   8     8}
-\CommentTok{\#\textgreater{} x4    4 870 1.03 1.93      0    0.54   0   0   8     8}
-\CommentTok{\#\textgreater{} x5    5 870 0.61 1.52      0    0.18   0   0   8     8}
-\CommentTok{\#\textgreater{}    skew kurtosis   se}
-\CommentTok{\#\textgreater{} x1 1.51     1.25 0.07}
-\CommentTok{\#\textgreater{} x2 2.40     5.67 0.05}
-\CommentTok{\#\textgreater{} x3 1.80     2.34 0.07}
-\CommentTok{\#\textgreater{} x4 2.16     3.98 0.07}
-\CommentTok{\#\textgreater{} x5 3.10     9.37 0.05}
-\end{Highlighting}
-\end{Shaded}
-
-Definiamo un modello ad un fattore e, seguendo \citet{brown2015confirmatory}, aggiungiamo una correlazione residua tra gli indicatori \texttt{X1} e \texttt{X3}:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{model }\OtherTok{\textless{}{-}} \StringTok{"}
-\StringTok{  f1 =\textasciitilde{} x1 + x2 + x3 + x4 + x5}
-\StringTok{  x1 \textasciitilde{}\textasciitilde{} x3}
-\StringTok{"}
-\end{Highlighting}
-\end{Shaded}
-
-Procediamo alla stima dei parametri utilizzando uno stimatore di ML robusto. La sintassi \texttt{lavaan} è la seguente:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{fit }\OtherTok{\textless{}{-}} \FunctionTok{cfa}\NormalTok{(model, }\AttributeTok{data =}\NormalTok{ d, }\AttributeTok{mimic =} \StringTok{"MPLUS"}\NormalTok{, }\AttributeTok{estimator =} \StringTok{"MLM"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-Possiamo esaminare la soluzione ottenuta con i soliti metodi:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{standardizedSolution}\NormalTok{(fit)}
-\CommentTok{\#\textgreater{}    lhs op rhs est.std    se      z pvalue ci.lower}
-\CommentTok{\#\textgreater{} 1   f1 =\textasciitilde{}  x1   0.753 0.030 25.226      0    0.695}
-\CommentTok{\#\textgreater{} 2   f1 =\textasciitilde{}  x2   0.718 0.035 20.495      0    0.649}
-\CommentTok{\#\textgreater{} 3   f1 =\textasciitilde{}  x3   0.845 0.022 38.183      0    0.801}
-\CommentTok{\#\textgreater{} 4   f1 =\textasciitilde{}  x4   0.779 0.031 25.377      0    0.719}
-\CommentTok{\#\textgreater{} 5   f1 =\textasciitilde{}  x5   0.806 0.027 29.651      0    0.753}
-\CommentTok{\#\textgreater{} 6   x1 \textasciitilde{}\textasciitilde{}  x3   0.414 0.061  6.777      0    0.294}
-\CommentTok{\#\textgreater{} 7   x1 \textasciitilde{}\textasciitilde{}  x1   0.433 0.045  9.619      0    0.344}
-\CommentTok{\#\textgreater{} 8   x2 \textasciitilde{}\textasciitilde{}  x2   0.484 0.050  9.623      0    0.386}
-\CommentTok{\#\textgreater{} 9   x3 \textasciitilde{}\textasciitilde{}  x3   0.287 0.037  7.674      0    0.213}
-\CommentTok{\#\textgreater{} 10  x4 \textasciitilde{}\textasciitilde{}  x4   0.393 0.048  8.202      0    0.299}
-\CommentTok{\#\textgreater{} 11  x5 \textasciitilde{}\textasciitilde{}  x5   0.350 0.044  7.987      0    0.264}
-\CommentTok{\#\textgreater{} 12  f1 \textasciitilde{}\textasciitilde{}  f1   1.000 0.000     NA     NA    1.000}
-\CommentTok{\#\textgreater{} 13  x1 \textasciitilde{}1       0.677 0.020 33.542      0    0.637}
-\CommentTok{\#\textgreater{} 14  x2 \textasciitilde{}1       0.514 0.018 28.848      0    0.479}
-\CommentTok{\#\textgreater{} 15  x3 \textasciitilde{}1       0.612 0.019 32.539      0    0.575}
-\CommentTok{\#\textgreater{} 16  x4 \textasciitilde{}1       0.533 0.018 29.758      0    0.498}
-\CommentTok{\#\textgreater{} 17  x5 \textasciitilde{}1       0.400 0.016 25.596      0    0.369}
-\CommentTok{\#\textgreater{} 18  f1 \textasciitilde{}1       0.000 0.000     NA     NA    0.000}
-\CommentTok{\#\textgreater{}    ci.upper}
-\CommentTok{\#\textgreater{} 1     0.812}
-\CommentTok{\#\textgreater{} 2     0.787}
-\CommentTok{\#\textgreater{} 3     0.888}
-\CommentTok{\#\textgreater{} 4     0.840}
-\CommentTok{\#\textgreater{} 5     0.859}
-\CommentTok{\#\textgreater{} 6     0.534}
-\CommentTok{\#\textgreater{} 7     0.521}
-\CommentTok{\#\textgreater{} 8     0.583}
-\CommentTok{\#\textgreater{} 9     0.360}
-\CommentTok{\#\textgreater{} 10    0.486}
-\CommentTok{\#\textgreater{} 11    0.436}
-\CommentTok{\#\textgreater{} 12    1.000}
-\CommentTok{\#\textgreater{} 13    0.717}
-\CommentTok{\#\textgreater{} 14    0.549}
-\CommentTok{\#\textgreater{} 15    0.649}
-\CommentTok{\#\textgreater{} 16    0.568}
-\CommentTok{\#\textgreater{} 17    0.430}
-\CommentTok{\#\textgreater{} 18    0.000}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{effectsize}\SpecialCharTok{::}\FunctionTok{interpret}\NormalTok{(fit)}
-\CommentTok{\#\textgreater{}     Name   Value Interpretation}
-\CommentTok{\#\textgreater{} 1    GFI 0.99084   satisfactory}
-\CommentTok{\#\textgreater{} 2   AGFI 0.95420   satisfactory}
-\CommentTok{\#\textgreater{} 3    NFI 0.98975   satisfactory}
-\CommentTok{\#\textgreater{} 4   NNFI 0.97823   satisfactory}
-\CommentTok{\#\textgreater{} 5    CFI 0.99129   satisfactory}
-\CommentTok{\#\textgreater{} 6  RMSEA 0.07935           poor}
-\CommentTok{\#\textgreater{} 7   SRMR 0.01595   satisfactory}
-\CommentTok{\#\textgreater{} 8    RFI 0.97436   satisfactory}
-\CommentTok{\#\textgreater{} 9   PNFI 0.39590           poor}
-\CommentTok{\#\textgreater{} 10   IFI 0.99131   satisfactory}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{dati-categoriali}{%
-\section{Dati categoriali}\label{dati-categoriali}}
-
-Quando almeno un indicatore è categoriale (cioè binario, politomico o ordinale), il metodo ML ordinario non dovrebbe essere utilizzato per stimare i modelli CFA. Le potenziali conseguenze del trattamento delle variabili categoriali come variabili continue in un'analisi CFA sono molteplici, incluso il fatto che può tale scelta può
-
-\begin{itemize}
-\tightlist
-\item
-  produrre stime attenuate delle relazioni tra indicatori, specialmente quando ci sono effetti pavimento o soffitto;
-\item
-  portare ad individuare ``pseudofattori'' che sono solo artefatti del metodo statistico;\\
-\item
-  produrre distorsioni negli indici di bontà dell'adattamento e nella stima degli errori standard;
-\item
-  produrre stime errate dei parametri.
-\end{itemize}
-
-Esistono vari stimatori che possono essere utilizzati con indicatori categoriali; ad esempio, minimi quadrati ponderati (WLS), minimi quadrati ponderati robusti (WLSMV) e minimi quadrati non ponderati (ULS).
-
-\hypertarget{un-esempio-concreto-1}{%
-\subsection{Un esempio concreto}\label{un-esempio-concreto-1}}
-
-Nell'esempio discusso da \citet{brown2015confirmatory}, i ricercatori desiderano verificare un modello unifattoriale di dipendenza da alcol in un campione di 750 pazienti ambulatoriali. Gli indicatori di alcolismo sono item binari che riflettono la presenza/assenza di sei criteri diagnostici per l'alcolismo (0 = criterio non soddisfatto, 1 = criterio soddisfatto). I dati sono i seguenti:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{d1 }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(here}\SpecialCharTok{::}\FunctionTok{here}\NormalTok{(}\StringTok{"data"}\NormalTok{, }\StringTok{"brown\_table\_9\_9\_data.RDS"}\NormalTok{))}
-\FunctionTok{head}\NormalTok{(d1)}
-\CommentTok{\#\textgreater{}   y1 y2 y3 y4 y5 y6}
-\CommentTok{\#\textgreater{} 1  1  1  1  1  1  1}
-\CommentTok{\#\textgreater{} 2  1  1  1  1  1  1}
-\CommentTok{\#\textgreater{} 3  1  1  1  1  1  0}
-\CommentTok{\#\textgreater{} 4  1  1  1  1  1  1}
-\CommentTok{\#\textgreater{} 5  0  0  0  0  0  0}
-\CommentTok{\#\textgreater{} 6  1  1  0  1  1  1}
-\end{Highlighting}
-\end{Shaded}
-
-Il modello viene specificato nel modo seguente:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{model1 }\OtherTok{\textless{}{-}} \StringTok{"}
-\StringTok{  etoh =\textasciitilde{} y1 + y2 + y3 + y4 + y5 + y6}
-\StringTok{"}
-\end{Highlighting}
-\end{Shaded}
-
-Adattiamo il modello specificando che i dati sono a livello di scala ordinale:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{fit1 }\OtherTok{\textless{}{-}} \FunctionTok{cfa}\NormalTok{(}
-\NormalTok{  model1,}
-  \AttributeTok{data =}\NormalTok{ d1,}
-  \AttributeTok{ordered =} \FunctionTok{names}\NormalTok{(d1),}
-  \AttributeTok{estimator =} \StringTok{"WLSMVS"}\NormalTok{,}
-  \AttributeTok{mimic =} \StringTok{"mplus"}
+\NormalTok{wisc\_III\_cov }\OtherTok{\textless{}{-}} \FunctionTok{getCov}\NormalTok{(}
+\NormalTok{  lower,}
+  \AttributeTok{names =} \FunctionTok{c}\NormalTok{(}
+    \StringTok{"INFO"}\NormalTok{, }\StringTok{"SIM"}\NormalTok{, }\StringTok{"ARITH"}\NormalTok{, }\StringTok{"VOC"}\NormalTok{, }\StringTok{"COMP"}\NormalTok{, }\StringTok{"DIGIT"}\NormalTok{, }\StringTok{"PICTCOM"}\NormalTok{,}
+    \StringTok{"CODING"}\NormalTok{, }\StringTok{"PICTARG"}\NormalTok{, }\StringTok{"BLOCK"}\NormalTok{, }\StringTok{"OBJECT"}\NormalTok{, }\StringTok{"SYMBOL"}\NormalTok{, }\StringTok{"MAZES"}
+\NormalTok{  )}
 \NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-Esaminiamo la soluzione ottenuta:
+Eseguiamo l'analisi fattoriale con il metodo delle componenti principali e una rotazione Varimax:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{summary}\NormalTok{(fit1, }\AttributeTok{fit.measures =} \ConstantTok{TRUE}\NormalTok{)}
-\CommentTok{\#\textgreater{} lavaan 0.6{-}10 ended normally after 16 iterations}
+\NormalTok{f\_pc }\OtherTok{\textless{}{-}}\NormalTok{ psych}\SpecialCharTok{::}\FunctionTok{principal}\NormalTok{(wisc\_III\_cov, }\AttributeTok{nfactors =} \DecValTok{3}\NormalTok{, }\AttributeTok{rotate =} \StringTok{"varimax"}\NormalTok{)}
+\NormalTok{f\_pc}
+\CommentTok{\#\textgreater{} Principal Components Analysis}
+\CommentTok{\#\textgreater{} Call: psych::principal(r = wisc\_III\_cov, nfactors = 3, rotate = "varimax")}
+\CommentTok{\#\textgreater{} Standardized loadings (pattern matrix) based upon correlation matrix}
+\CommentTok{\#\textgreater{}           RC1  RC3  RC2   h2   u2 com}
+\CommentTok{\#\textgreater{} INFO     0.80 0.25 0.09 0.72 0.28 1.2}
+\CommentTok{\#\textgreater{} SIM      0.81 0.25 0.08 0.72 0.28 1.2}
+\CommentTok{\#\textgreater{} ARITH    0.65 0.26 0.28 0.57 0.43 1.7}
+\CommentTok{\#\textgreater{} VOC      0.83 0.19 0.13 0.75 0.25 1.2}
+\CommentTok{\#\textgreater{} COMP     0.75 0.14 0.16 0.60 0.40 1.2}
+\CommentTok{\#\textgreater{} DIGIT    0.45 0.06 0.36 0.34 0.66 2.0}
+\CommentTok{\#\textgreater{} PICTCOM  0.43 0.61 0.02 0.56 0.44 1.8}
+\CommentTok{\#\textgreater{} CODING   0.10 0.09 0.88 0.79 0.21 1.0}
+\CommentTok{\#\textgreater{} PICTARG  0.34 0.45 0.27 0.39 0.61 2.6}
+\CommentTok{\#\textgreater{} BLOCK    0.41 0.66 0.22 0.66 0.34 1.9}
+\CommentTok{\#\textgreater{} OBJECT   0.31 0.71 0.14 0.62 0.38 1.5}
+\CommentTok{\#\textgreater{} SYMBOL   0.23 0.32 0.74 0.70 0.30 1.6}
+\CommentTok{\#\textgreater{} MAZES   {-}0.06 0.71 0.11 0.51 0.49 1.1}
 \CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{}   Estimator                                       DWLS}
-\CommentTok{\#\textgreater{}   Optimization method                           NLMINB}
-\CommentTok{\#\textgreater{}   Number of model parameters                        12}
-\CommentTok{\#\textgreater{}                                                       }
-\CommentTok{\#\textgreater{}   Number of observations                           750}
-\CommentTok{\#\textgreater{}                                                       }
-\CommentTok{\#\textgreater{} Model Test User Model:}
-\CommentTok{\#\textgreater{}                                                      Standard      Robust}
-\CommentTok{\#\textgreater{}   Test Statistic                                        5.651       9.540}
-\CommentTok{\#\textgreater{}   Degrees of freedom                                        9           9}
-\CommentTok{\#\textgreater{}   P{-}value (Chi{-}square)                                  0.774       0.389}
-\CommentTok{\#\textgreater{}   Scaling correction factor                                         0.592}
-\CommentTok{\#\textgreater{}        mean and variance adjusted correction (WLSMV)                     }
+\CommentTok{\#\textgreater{}                        RC1  RC3  RC2}
+\CommentTok{\#\textgreater{} SS loadings           3.80 2.37 1.74}
+\CommentTok{\#\textgreater{} Proportion Var        0.29 0.18 0.13}
+\CommentTok{\#\textgreater{} Cumulative Var        0.29 0.47 0.61}
+\CommentTok{\#\textgreater{} Proportion Explained  0.48 0.30 0.22}
+\CommentTok{\#\textgreater{} Cumulative Proportion 0.48 0.78 1.00}
 \CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} Model Test Baseline Model:}
+\CommentTok{\#\textgreater{} Mean item complexity =  1.5}
+\CommentTok{\#\textgreater{} Test of the hypothesis that 3 components are sufficient.}
 \CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{}   Test statistic                              1155.845     694.433}
-\CommentTok{\#\textgreater{}   Degrees of freedom                                15           9}
-\CommentTok{\#\textgreater{}   P{-}value                                        0.000       0.000}
-\CommentTok{\#\textgreater{}   Scaling correction factor                                  1.664}
+\CommentTok{\#\textgreater{} The root mean square of the residuals (RMSR) is  0.07 }
 \CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} User Model versus Baseline Model:}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{}   Comparative Fit Index (CFI)                    1.000       0.999}
-\CommentTok{\#\textgreater{}   Tucker{-}Lewis Index (TLI)                       1.005       0.999}
-\CommentTok{\#\textgreater{}                                                                   }
-\CommentTok{\#\textgreater{}   Robust Comparative Fit Index (CFI)                            NA}
-\CommentTok{\#\textgreater{}   Robust Tucker{-}Lewis Index (TLI)                               NA}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} Root Mean Square Error of Approximation:}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{}   RMSEA                                          0.000       0.009}
-\CommentTok{\#\textgreater{}   90 Percent confidence interval {-} lower         0.000       0.000}
-\CommentTok{\#\textgreater{}   90 Percent confidence interval {-} upper         0.028       0.051}
-\CommentTok{\#\textgreater{}   P{-}value RMSEA \textless{}= 0.05                          0.999       0.944}
-\CommentTok{\#\textgreater{}                                                                   }
-\CommentTok{\#\textgreater{}   Robust RMSEA                                                  NA}
-\CommentTok{\#\textgreater{}   90 Percent confidence interval {-} lower                     0.000}
-\CommentTok{\#\textgreater{}   90 Percent confidence interval {-} upper                        NA}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} Standardized Root Mean Square Residual:}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{}   SRMR                                           0.031       0.031}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} Weighted Root Mean Square Residual:}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{}   WRMR                                           0.519       0.519}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} Parameter Estimates:}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{}   Standard errors                           Robust.sem}
-\CommentTok{\#\textgreater{}   Information                                 Expected}
-\CommentTok{\#\textgreater{}   Information saturated (h1) model        Unstructured}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} Latent Variables:}
-\CommentTok{\#\textgreater{}                    Estimate  Std.Err  z{-}value  P(\textgreater{}|z|)}
-\CommentTok{\#\textgreater{}   etoh =\textasciitilde{}                                             }
-\CommentTok{\#\textgreater{}     y1                1.000                           }
-\CommentTok{\#\textgreater{}     y2                0.822    0.072   11.392    0.000}
-\CommentTok{\#\textgreater{}     y3                0.653    0.092    7.097    0.000}
-\CommentTok{\#\textgreater{}     y4                1.031    0.075   13.703    0.000}
-\CommentTok{\#\textgreater{}     y5                1.002    0.072   13.861    0.000}
-\CommentTok{\#\textgreater{}     y6                0.759    0.076   10.011    0.000}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} Intercepts:}
-\CommentTok{\#\textgreater{}                    Estimate  Std.Err  z{-}value  P(\textgreater{}|z|)}
-\CommentTok{\#\textgreater{}    .y1                0.000                           }
-\CommentTok{\#\textgreater{}    .y2                0.000                           }
-\CommentTok{\#\textgreater{}    .y3                0.000                           }
-\CommentTok{\#\textgreater{}    .y4                0.000                           }
-\CommentTok{\#\textgreater{}    .y5                0.000                           }
-\CommentTok{\#\textgreater{}    .y6                0.000                           }
-\CommentTok{\#\textgreater{}     etoh              0.000                           }
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} Thresholds:}
-\CommentTok{\#\textgreater{}                    Estimate  Std.Err  z{-}value  P(\textgreater{}|z|)}
-\CommentTok{\#\textgreater{}     y1|t1            {-}0.759    0.051  {-}14.890    0.000}
-\CommentTok{\#\textgreater{}     y2|t1            {-}0.398    0.047   {-}8.437    0.000}
-\CommentTok{\#\textgreater{}     y3|t1            {-}1.244    0.061  {-}20.278    0.000}
-\CommentTok{\#\textgreater{}     y4|t1            {-}0.795    0.051  {-}15.436    0.000}
-\CommentTok{\#\textgreater{}     y5|t1            {-}0.384    0.047   {-}8.148    0.000}
-\CommentTok{\#\textgreater{}     y6|t1            {-}0.818    0.052  {-}15.775    0.000}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} Variances:}
-\CommentTok{\#\textgreater{}                    Estimate  Std.Err  z{-}value  P(\textgreater{}|z|)}
-\CommentTok{\#\textgreater{}    .y1                0.399                           }
-\CommentTok{\#\textgreater{}    .y2                0.594                           }
-\CommentTok{\#\textgreater{}    .y3                0.744                           }
-\CommentTok{\#\textgreater{}    .y4                0.361                           }
-\CommentTok{\#\textgreater{}    .y5                0.397                           }
-\CommentTok{\#\textgreater{}    .y6                0.653                           }
-\CommentTok{\#\textgreater{}     etoh              0.601    0.063    9.596    0.000}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} Scales y*:}
-\CommentTok{\#\textgreater{}                    Estimate  Std.Err  z{-}value  P(\textgreater{}|z|)}
-\CommentTok{\#\textgreater{}     y1                1.000                           }
-\CommentTok{\#\textgreater{}     y2                1.000                           }
-\CommentTok{\#\textgreater{}     y3                1.000                           }
-\CommentTok{\#\textgreater{}     y4                1.000                           }
-\CommentTok{\#\textgreater{}     y5                1.000                           }
-\CommentTok{\#\textgreater{}     y6                1.000}
+\CommentTok{\#\textgreater{} Fit based upon off diagonal values = 0.97}
 \end{Highlighting}
 \end{Shaded}
 
+Si noti che i primi cinque subtest possiedono saturazioni maggiori di \(0.6\) sul primo fattore. Dato che questi test sono tutti presentati verbalmente e richiedono delle risposte verbali, tale fattore può essere denominato \emph{Comprensione Verbale}.
+
+I subtest ``Cifrario'' e ``Ricerca di simboli'' saturano sul secondo fattore. Entrambi i subtest misurano la velocità dei processi di codifica o ricerca. Questo fattore, dunque, può essere denominato \emph{Velocità di elaborazione}.
+
+Infine, i subtest ``Completamento di figure,'' ``Disegno con i cubi,'' ``Riordinamento di storie figurate'' e ``Labirinti'' saturano sul terzo fattore. Tutti questi test condividono una componente geometrica o configurazionale: misurano infatti le abilità necessarie per la manipolazione o la disposizione di immagini, oggetti, blocchi. Questo fattore, dunque, può essere denominato \emph{Organizzazione percettiva}.
+
+Nel caso di una rotazione ortogonale, la comunalità di ciascuna sottoscala è uguale alla somma dei coefficienti di impatto al quadrato della sottoscala nei fattori. Per le 13 sottoscale del WISC-III abbiamo dunque
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{h2 }\OtherTok{\textless{}{-}} \FunctionTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{13}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{13}\NormalTok{) \{}
+\NormalTok{  h2[i] }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(f\_pc}\SpecialCharTok{$}\NormalTok{loadings[i, ]}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\NormalTok{\}}
+\FunctionTok{round}\NormalTok{(h2, }\DecValTok{2}\NormalTok{)}
+\CommentTok{\#\textgreater{}  [1] 0.72 0.72 0.57 0.75 0.60 0.34 0.56 0.79 0.39 0.66}
+\CommentTok{\#\textgreater{} [11] 0.62 0.70 0.51}
+\end{Highlighting}
+\end{Shaded}
+
+Questi risultati replicano quelli riportati nel manuale del test WISC-III.
+
+\hypertarget{punteggi-fattoriali}{%
+\section{Punteggi fattoriali}\label{punteggi-fattoriali}}
+
+Fino ad ora abbiamo considerato le strategie di costruzione del modello basate sulla stima e sull'interpretazione delle saturazioni fattoriali e delle comunalità. Questo è il primo passo nella costruzione del modello fattoriale. È però possibile compiere un passo ulteriore, ovvero quello della stima dei punteggi fattoriali (\emph{factor scores}) i quali risultano utili sia per interpretare i risultati dell'analisi fattoriale che per fare diagnostica. I punteggi fattoriali forniscono le previsioni dei livelli dei fattori latenti per ogni rispondente. Esistono vari metodi di stima dei punteggi fattoriali. Tra questi troviamo il metodo di Thomson basato sulla regressione e il metodo di Bartlett basato sulla massima verosimiglianza. Entrambi questi metodi sono implementati nel software .
+
+\hypertarget{stima-dei-punteggi-fattoriali}{%
+\subsection{Stima dei punteggi fattoriali}\label{stima-dei-punteggi-fattoriali}}
+
+Si definiscono punteggi fattoriali i valori assunti dai fattori comuni (inosservabili) in corrispondenza delle osservazioni campionarie. Il metodo di Thomson stima i punteggi fattoriali in base all'approccio della regressione multipla, ovvero, impiegando la matrice delle correlazioni tra le variabili e la matrice di struttura (ovvero, la matrice delle correlazioni delle variabili con i fattori). Per ottenere le stime dei punteggi fattoriali con il metodo di Thomson è necessario specificare nella funzione \texttt{factanal()} l'opzione \texttt{scores\ =\ "regression"}.
+
+\hypertarget{dimostrazione-di-thurstone}{%
+\subsection{Dimostrazione di Thurstone}\label{dimostrazione-di-thurstone}}
+
+Prima di descrivere il metodo della regressione, esaminiamo la dimostrazione che Thurstone (1947) ha fornito per illustrare il significato dei punteggi fattoriali (si veda Loehlin, 1987). L'idea è quella di esaminare la stima dei punteggi fattoriali in una situazione in cui i tali punteggi sono conosciuti, in maniera tale da potere controllare il risultato dell'analisi.
+
+Si consideri un insieme di 1000 scatole di cui conosciamo le dimensioni \(x, y, z\):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{n }\OtherTok{\textless{}{-}} \FloatTok{1e3}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{100}\NormalTok{, }\FloatTok{1.5}\NormalTok{)}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{200}\NormalTok{, }\FloatTok{1.5}\NormalTok{)}
+\NormalTok{z }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{300}\NormalTok{, }\FloatTok{1.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Il problema è quello di stimare le dimensioni delle scatole disponendo soltanto di una serie di misure indirette, corrotte dal rumore di misura. Thurstone (1947) utilizzò le seguenti trasformazioni delle dimensioni delle scatole (si veda Jennrich, 2007).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s }\OtherTok{\textless{}{-}} \DecValTok{40}
+\NormalTok{y1 }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n, }\FunctionTok{mean}\NormalTok{(x), s)}
+\NormalTok{y2 }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n, }\FunctionTok{mean}\NormalTok{(y), s)}
+\NormalTok{y3 }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n, }\FunctionTok{mean}\NormalTok{(z), s)}
+\NormalTok{y4 }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{*}\NormalTok{ y }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
+\NormalTok{y5 }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{*}\NormalTok{ z }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
+\NormalTok{y6 }\OtherTok{\textless{}{-}}\NormalTok{ y }\SpecialCharTok{*}\NormalTok{ z }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
+\NormalTok{y7 }\OtherTok{\textless{}{-}}\NormalTok{ x}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ y }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
+\NormalTok{y8 }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{*}\NormalTok{ y}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
+\NormalTok{y9 }\OtherTok{\textless{}{-}}\NormalTok{ x}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ z }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
+\NormalTok{y10 }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{*}\NormalTok{ z}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
+\NormalTok{y11 }\OtherTok{\textless{}{-}}\NormalTok{ y}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ z }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
+\NormalTok{y12 }\OtherTok{\textless{}{-}}\NormalTok{ y }\SpecialCharTok{*}\NormalTok{ z}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
+\NormalTok{y13 }\OtherTok{\textless{}{-}}\NormalTok{ y}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ z }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
+\NormalTok{y14 }\OtherTok{\textless{}{-}}\NormalTok{ y }\SpecialCharTok{*}\NormalTok{ z}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
+\NormalTok{y15 }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{/}\NormalTok{ y }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
+\NormalTok{y16 }\OtherTok{\textless{}{-}}\NormalTok{ y }\SpecialCharTok{/}\NormalTok{ x }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
+\NormalTok{y17 }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{/}\NormalTok{ z }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
+\NormalTok{y18 }\OtherTok{\textless{}{-}}\NormalTok{ z }\SpecialCharTok{/}\NormalTok{ x }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
+\NormalTok{y19 }\OtherTok{\textless{}{-}}\NormalTok{ y }\SpecialCharTok{/}\NormalTok{ z }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
+\NormalTok{y20 }\OtherTok{\textless{}{-}}\NormalTok{ z }\SpecialCharTok{/}\NormalTok{ y }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
+\NormalTok{y21 }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ x }\SpecialCharTok{+} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ y }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
+\NormalTok{y22 }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ x }\SpecialCharTok{+} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ z }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
+\NormalTok{y23 }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ y }\SpecialCharTok{+} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ z }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
+\end{Highlighting}
+\end{Shaded}
+
+Eseguiamo l'analisi fattoriale con una soluzione a tre fattori sui dati così creati.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Y }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(}
+\NormalTok{  y1, y2, y3, y4, y5, y6, y7, y8, y9,}
+\NormalTok{  y10, y11, y12, y13, y14, y15, y16,}
+\NormalTok{  y17, y18, y19, y20, y21, y22, y23}
+\NormalTok{)}
+
+\NormalTok{fa }\OtherTok{\textless{}{-}} \FunctionTok{factanal}\NormalTok{(}
+\NormalTok{  Y,}
+  \AttributeTok{factors =} \DecValTok{3}\NormalTok{,}
+  \AttributeTok{scores =} \StringTok{"regression"}\NormalTok{,}
+  \AttributeTok{lower =} \FloatTok{0.01}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+L'opzione \texttt{scores\ =\ "regression"} richiede il calcolo dei punteggi fattoriali con il metodo della regressione. Nel caso di una rotazione Varimax (default della funzione \texttt{factanal()}), i punteggi fattoriali risultano ovviamente incorrelati:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(}
+  \FunctionTok{cbind}\NormalTok{(fa}\SpecialCharTok{$}\NormalTok{scores[, }\DecValTok{1}\NormalTok{], fa}\SpecialCharTok{$}\NormalTok{scores[, }\DecValTok{2}\NormalTok{], fa}\SpecialCharTok{$}\NormalTok{scores[, }\DecValTok{3}\NormalTok{])}
+\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{round}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\CommentTok{\#\textgreater{}        [,1]  [,2]   [,3]}
+\CommentTok{\#\textgreater{} [1,]  1.000 0.002 {-}0.001}
+\CommentTok{\#\textgreater{} [2,]  0.002 1.000  0.005}
+\CommentTok{\#\textgreater{} [3,] {-}0.001 0.005  1.000}
+\end{Highlighting}
+\end{Shaded}
+
+Generiamo ora i diagrammi di dispersione che mettono in relazione le dimensioni originarie delle scatole (\(x, y, z\)) con i punteggi fattoriali sui tre fattori. Se l'analisi ha successo, ci aspettiamo un'alta correlazione tra i punteggi fattoriali di ogni fattore e una sola delle dimensioni delle scatole \(x\), \(y\), \(z\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p1 }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(x, }\AttributeTok{fs1 =}\NormalTok{ fa}\SpecialCharTok{$}\NormalTok{scores[, }\DecValTok{1}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(x, fs1)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.2}\NormalTok{)}
+\NormalTok{p2 }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(y, }\AttributeTok{fs1 =}\NormalTok{ fa}\SpecialCharTok{$}\NormalTok{scores[, }\DecValTok{1}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(y, fs1)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.2}\NormalTok{)}
+\NormalTok{p3 }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(z, }\AttributeTok{fs1 =}\NormalTok{ fa}\SpecialCharTok{$}\NormalTok{scores[, }\DecValTok{1}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(z, fs1)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.2}\NormalTok{)}
+
+\NormalTok{p4 }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(x, }\AttributeTok{fs2 =}\NormalTok{ fa}\SpecialCharTok{$}\NormalTok{scores[, }\DecValTok{2}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(x, fs2)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.2}\NormalTok{)}
+\NormalTok{p5 }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(y, }\AttributeTok{fs2 =}\NormalTok{ fa}\SpecialCharTok{$}\NormalTok{scores[, }\DecValTok{2}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(y, fs2)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.2}\NormalTok{)}
+\NormalTok{p6 }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(z, }\AttributeTok{fs2 =}\NormalTok{ fa}\SpecialCharTok{$}\NormalTok{scores[, }\DecValTok{2}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(z, fs2)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.2}\NormalTok{)}
+
+\NormalTok{p7 }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(x, }\AttributeTok{fs3 =}\NormalTok{ fa}\SpecialCharTok{$}\NormalTok{scores[, }\DecValTok{3}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(x, fs3)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.2}\NormalTok{)}
+\NormalTok{p8 }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(y, }\AttributeTok{fs3 =}\NormalTok{ fa}\SpecialCharTok{$}\NormalTok{scores[, }\DecValTok{3}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(y, fs3)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.2}\NormalTok{)}
+\NormalTok{p9 }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(z, }\AttributeTok{fs3 =}\NormalTok{ fa}\SpecialCharTok{$}\NormalTok{scores[, }\DecValTok{3}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(z, fs3)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(p1 }\SpecialCharTok{|}\NormalTok{ p2 }\SpecialCharTok{|}\NormalTok{ p3) }\SpecialCharTok{/}
+\NormalTok{  (p4 }\SpecialCharTok{|}\NormalTok{ p5 }\SpecialCharTok{|}\NormalTok{ p6) }\SpecialCharTok{/}
+\NormalTok{  (p7 }\SpecialCharTok{|}\NormalTok{ p8 }\SpecialCharTok{|}\NormalTok{ p9)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-43-1} \end{center}
+
+I risultati riportati nella figura confermano le aspettative.
+
+Il metodo della regressione pone il problema della stima dei punteggi fattoriali nei termini di una ideale regressione di ogni fattore rispetto a tutte le variabili osservate. Per il fattore \(j\)-esimo, si può scrivere la seguente equazione:
+
+\[
+\begin{aligned}
+F_j =& \beta_{1j}y_1 + \dots + \beta_{pm}y_p + \varepsilon_j
+\end{aligned}
+\]
+
+dove \(F_j\) sono i punteggi fattoriali e \(y\) sono le variabili osservate standardizzate \((Y-\bar{Y})/s\). In forma matriciale, il modello diventa
+
+\[
+\textbf{F} = \textbf{y} \textbf{B} +
+\boldsymbol{\varepsilon}
+\]
+
+I coefficienti parziali di regressione \textbf{B} sono ignoti. Tuttavia, possono essere calcolati utilizzando i metodi della regressione lineare. Nel modello di regressione, infatti, i coefficienti dei minimi quadrati possono essere calcolati utilizzando due matrici di correlazioni: la matrice \(\textbf{R}_{xx}\) (le correlazioni tra le variabili \(X\)) e la matrice \(\textbf{R}_{xy}\) (le correlazioni tra le variabili \(X\) e la variabile \(Y\):
+
+\[
+\hat{\textbf{B}} = \textbf{R}_{xx}^{-1}\textbf{R}_{xy}
+\]
+
+Nel caso dell'analisi fattoriale, \(\textbf{R}_{xx}\) corrisponde alla matrice delle correlazioni tra le variabili osservate e \(\textbf{R}_{xy}\) corrisponde alla matrice di struttura (la matrice delle correlazioni tra le variabili osservate e i fattori). Se i fattori sono ortogonali, la matrice di struttura coincide con la matrice dei pesi fattoriali \(\hat{\boldsymbol{\Lambda}}\).
+
+I coefficienti \textbf{B} dell'equazione precedente possono dunque essere trovati nel modo seguente:
+
+\begin{equation}
+\hat{\textbf{B}} = \textbf{R}_{yy}^{-1}\textbf{R}_{xf}=
+\textbf{R}^{-1}\hat{\boldsymbol{\Lambda}}
+\end{equation}
+
+Una volta stimati i coefficienti \(\hat{\textbf{B}}\), i punteggi fattoriali si calcolano allo stesso modo dei punteggi teorici del modello di regressione:
+
+\begin{equation}
+\hat{\textbf{F}} = \textbf{y} \hat{\textbf{B}} = \textbf{y}
+\textbf{R}^{-1}\hat{\boldsymbol{\Lambda}},
+\end{equation}
+
+dove \(\textbf{y}\) è la matrice delle variabili osservate standardizzate \((Y-\bar{Y})/s\).
 
   \bibliography{refs.bib,book.bib,packages.bib}
 

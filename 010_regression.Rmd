@@ -226,7 +226,6 @@ e <- yhat - Sahlins$acres
 
 Il valore trovato corrisponde a quello riportato nell'output di `lm()`. 
 
-
 ## Regressione multipla
 
 Nella regressione multipla vengono utilizzati $k > 1$ predittori:
@@ -236,7 +235,7 @@ y_i = \alpha + \sum_{j=1}^k \beta_j x_i + \varepsilon_i.
 $$
 L'interpretazione geometrica è simile a quella del modello bivariato. Nel caso di due predittori, il valore atteso della $y$ può essere rappresentato da un piano; nel caso di $k > 2$ predittori, da un iper-piano. Nel caso di $k=2$, tale piano è posto in uno spazio di dimensioni $x_1$, $x_2$ (che possiamo immaginare definire un piano orizzontale) e $y$ (ortogonale a tale piano). La superficie piana che rappresenta $\mathbb{E}(y)$ è inclinata in maniera tale che l'angolo tra il piano e l'asse $x_1$ corrisponde a $\beta_1$ e l'angolo tra il piano e l'asse $x_2$ corrisponde a $\beta_2$.
 
-### Significato coefficienti parziali di regressione
+### Significato dei coefficienti parziali di regressione
 
 Ai coefficienti parziali del modello di regressione multipla possiamo assegnare la seguente interpretazione:
 
@@ -255,9 +254,10 @@ d <- rio::import(
 glimpse(d)
 ```
 
-
 ```{r}
-fm <- lm(kid_score ~ mom_iq + mom_work + mom_age + mom_hs, data = d)
+fm <- lm(
+  kid_score ~ mom_iq + mom_work + mom_age + mom_hs, data = d
+)
 fm$coef
 ```
 
@@ -327,6 +327,7 @@ Consideriamo un esempio con dati simulati nei quali immaginiamo che la prestazio
 
 ```{r}
 set.seed(123)
+n <- 400
 anxiety <- rnorm(n, 10, 1.5)
 motivation <- 4.0 * anxiety + rnorm(n, 0, 3.5)
 cor(anxiety, motivation)
@@ -349,6 +350,60 @@ summary(fm2)
 
 Il risultato prodotto dal modello di regressione è sbagliato: come conseguenza dell'errore di specificazione, il segno del coefficiente parziale di regressione della variabile "motivazione" è negativo, anche se nel vero modello di regressione tale coefficiente ha il segno opposto. Quindi, se noi interpretassimo il coefficiente parziale ottenuto in termini casuali, saremmo portati a concludere che la motivazione fa diminuire la prestazione anche se, in realtà (nel modello generatore dei dati), è vero l'opposto.
 
+È facile vedere perché questo si verifica. Supponiamo che il vero modello sia
+
+$$
+y = \alpha + \beta_1 X_1 + \beta_2 X_2 + \varepsilon
+$$
+che verrebbe stimato con
+
+$$
+y = a + b_1 X_1 + b_2 X_2 + e.
+$$
+Supponiamo che il ricercatore creda invece che
+
+$$
+y = \alpha^\prime + \beta_1^\prime X_1 + \varepsilon^\prime
+$$
+
+e quindi stimi
+
+
+$$
+y = a^\prime + b_1^\prime X_1 + e^\prime
+$$
+
+omettendo $X_2$ dal modello. Ci chiediamo che relazione ci sia tra $b_1^\prime$ e $b_1$.
+
+La formula per $b_1^\prime$ è
+
+\begin{equation}
+\begin{aligned}
+b_1^\prime &= \frac{\mbox{Cov}(X_1, Y)}{\mbox{Var}(X_1)}\notag\\
+&= \frac{\mbox{Cov}(X_1, a + b_1 X_1 + b_2 X_2 + e)}{\mbox{Var}(X_1)}\notag\\
+&= \frac{\mbox{Cov}(X_1, a)+b_1 \mbox{Cov}(X_1, X_1) + b_2 \mbox{Cov}(X_1, X_2) + \mbox{Cov}(X_1, e)}{\mbox{Var}(X_1)}\notag\\
+&= \frac{0 + b_1 \mbox{Var}(X_1) + b_2 \mbox{Cov}(X_1, X_2) + 0}{\mbox{Var}(X_1)}\notag\\
+&= b_1 + b_2 \frac{\mbox{Cov}(X_1, X_2)}{\mbox{Var}(X_1)}.
+\end{aligned}
+\end{equation}
+
+Quindi, se $X_2$ viene erroneamente omesso dal modello, abbiamo che
+
+$$
+\mathbb{E}(b_1^\prime) = \beta_1 + \beta_2 \frac{\sigma_{12}}{\sigma_1^2}.
+$$
+Verifichiamo per i dati dell'esempio che stiamo discutendo. Nel caso presente, $X_1$ è `motivation` e $X_2$ + `anxiety`. Dunque, applicando la formula precedente, otteniamo lo stesso valore per il coefficiente di regressione associato a `motivation` che era stato ottenuto adattando ai dati il modello `performance ~ motivation`, ovvero:
+
+```{r}
+fm1$coef[2] +  fm1$coef[3] * 
+  cov(sim_dat2$motivation, sim_dat2$anxiety) / 
+  var(sim_dat2$motivation)
+```
+
+In conclusione, $b_1^\prime$ è uno stimatore distorto di $\beta_1$. Si noti che questa distorsione non scomparirà all'aumentare della numerosità campionaria, il che (in termini statistici) ci porta a concludere che un tale stimatore è _inconsistente_. Quello che succede in pratica è che alla variabile $X_1$ vengono attribuiti gli effetti delle variabili che sono state omesse dal modello. Si noti che una tale distorsione sistematica di $b_1^\prime$ può essere evitata solo se si verificano due condizioni:
+
+- $\beta_2 = 0$. Questo è ovvio, dato che, se $\beta_2 = 0$, ciò significa che il modello non è specificato in modo errato, cioè $X_2$ non appartiene al modello perché non ha un effetto diretto sulla $Y$.
+-  $\sigma_{12} = 0$. Cioè, se $X_1$ e $X_2$ sono incorrelate, allora l'omissione di una delle due variabili non comporta stime distorte dell'effetto dell'altra.
 
 ### Soppressione
 
@@ -357,7 +412,6 @@ Le conseguenze dell'errore di specificazione sono chiamate "soppressione" (_supp
 - L'esempio descritto sopra è un caso di _soppressione negativa_, dove il predittore ha correlazioni bivariate positive con il criterio, ma si riceve un peso beta negativo nell'analisi di regressione multipla. 
 - Un secondo tipo di soppressione è la _soppressione classica_, in cui un predittore non è correlato al criterio ma riceve un peso beta diverso da zero se un altro predittore viene controllato. 
 - C'è anche la _soppressione reciproca_ che può verificarsi quando due variabili sono correlate positivamente con il criterio ma negativamente tra loro.
-
 
 ### Stepwise regression 
 
@@ -369,6 +423,4 @@ Un esempio di standard statistico è la regressione _stepwise_, in cui il comput
 I problemi relativi ai metodi stepwise sono così gravi da essere effettivamente banditi in alcuni giornali. Un problema è che fanno leva su risultati che si ottengono per caso, in dipendenza delle idiosincrasie del campione (quindi, non replicabili). 
 
 In secondo luogo, una volta che un insieme finale di predittori selezionati razionalmente è stato inserito nell'equazione di regressione, tali predittori non dovrebbero essere successivamente rimossi se i loro coefficienti di regressione non sono statisticamente significativi: il ricercatore non dovrebbe sentirsi in dovere di lasciar perdere ogni predittore che non risulta statisticamente significativo. In campioni piccoli, la potenza dei test di significatività è  bassa e la rimozione di un predittore non significativo può alterare sostanzialmente la soluzione. Se c'è una buona ragione per includere un predittore, allora è meglio lasciarlo nel modello, fino a prova contraria. 
-
-
 

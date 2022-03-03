@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)</title>
+  <title>3.2 Operazioni sui vettori | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)</title>
   <meta name="description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2021/2022) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
   <meta name="generator" content="bookdown 0.24.4 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
+  <meta property="og:title" content="3.2 Operazioni sui vettori | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ccaudek/cfa_book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
+  <meta name="twitter:title" content="3.2 Operazioni sui vettori | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
   
   <meta name="twitter:description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2021/2022) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="vettori-nello-spazio-euclideo.html"/>
+<link rel="next" href="matrici.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -141,19 +141,61 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="operazioni-sui-vettori" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Operazioni sui vettori</h2>
+<div id="somma-e-differenza-di-vettori" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Somma e differenza di vettori</h3>
+<p>La somma di due vettori è definita come</p>
+<p><span class="math display">\[(a_1, a_2) + (b_1, b_2) = (a_1 + b_1, a_2 + b_2).\]</span></p>
+<p>La differenza di due vettori è</p>
+<p><span class="math display">\[(a_1, a_2) - (b_1, b_2) = (a_1 - b_1, b_2 - b_2).\]</span></p>
+</div>
+<div id="moltiplicazione-scalare" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Moltiplicazione scalare</h3>
+<p>La moltiplicazione scalare di un vettore per un numero reale (o scalare) è data da</p>
+<p><span class="math display">\[
+\rho (a_1, a_2) = (\rho a_1, \rho a_2)
+\]</span></p>
+<p>Dal punto di vista geometrico, la moltiplicazione scalare effettua una estensione o contrazione del vettore <span class="math inline">\(\boldsymbol{a}\)</span>, preservandone la direzione.</p>
+</div>
+<div id="combinazione-lineare" class="section level3" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Combinazione lineare</h3>
+<p>Dati due scalari <span class="math inline">\(\rho_1\)</span> e <span class="math inline">\(\rho_2\)</span> e due vettori <span class="math inline">\(\boldsymbol{a}\)</span>, <span class="math inline">\(\boldsymbol{b}\)</span>,</p>
+<p><span class="math display">\[
+\rho_1 \boldsymbol{a}_1 + \rho_2 \boldsymbol{a}_2
+\]</span></p>
+<p>rappresenta la combinazione lineare dei vettori <span class="math inline">\(\boldsymbol{a}\)</span> e
+<span class="math inline">\(\boldsymbol{b}\)</span> con coefficienti <span class="math inline">\(\rho_1\)</span> e <span class="math inline">\(\rho_2\)</span>. Dati due vettori
+<span class="math inline">\(\boldsymbol{a}\)</span> e <span class="math inline">\(\boldsymbol{b}\)</span> di dimensione <span class="math inline">\(n\)</span> definiamo il loro
+prodotto scalare come la somma dei prodotti degli elementi che occupano
+la stessa posizione:</p>
+<p><span class="math display">\[(a_1, a_2) \cdot (b_1, b_2) = a_1 b_1 + a_2 b_2,\]</span></p>
+<p><span class="math display">\[\boldsymbol{a}&#39;\boldsymbol{b} = \sum_{i=1}^{n}a_i b_i.\]</span></p>
+</div>
+<div id="ortogonalità-tra-vettori" class="section level3" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Ortogonalità tra vettori</h3>
+<p>Due vettori si dicono ortogonali, e si scrive <span class="math inline">\(\boldsymbol{a} \bot \boldsymbol{b}\)</span>, se e solo se il loro prodotto scalare è nullo:</p>
+<p><span class="math display">\[\boldsymbol{a}&#39;\boldsymbol{b} = 0.\]</span></p>
+</div>
+<div id="norma-o-lunghezza-di-un-vettore" class="section level3" number="3.2.5">
+<h3><span class="header-section-number">3.2.5</span> Norma o lunghezza di un vettore</h3>
+<p>Per il teorema di Pitagora, la norma di un vettore <span class="math inline">\((a_1, a_2)\)</span> è <span class="math inline">\(\sqrt{a_1^2 + a_2^2}\)</span> ed è denotata da <span class="math inline">\(\| (a_1, a_2) \|\)</span>. Infatti, se un vettore <span class="math inline">\(\boldsymbol{a}\)</span> (l’ipotenusa) è la
+somma di due vettori ortogonali <span class="math inline">\(\boldsymbol{a}_1\)</span> e <span class="math inline">\(\boldsymbol{a}_2\)</span>
+(i cateti), allora la lunghezza al quadrato di <span class="math inline">\(\boldsymbol{a}\)</span> è uguale
+alla somma dei quadrati delle lunghezze di <span class="math inline">\(\boldsymbol{a}_1\)</span> e
+<span class="math inline">\(\boldsymbol{a}_2\)</span>.</p>
+<p>Viene detta norma di <span class="math inline">\(\boldsymbol{a}\)</span> la radice del prodotto scalare di
+un vettore per se stesso:</p>
+<p><span class="math display">\[\| \boldsymbol{a} \| = \sqrt{\boldsymbol{a}&#39;\boldsymbol{a}}.\]</span></p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="vettori-nello-spazio-euclideo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="matrici.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -184,7 +226,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ccaudek/ds4psy/edit/master/%s",
+"link": "https://github.com/ccaudek/ds4psy/edit/master/900_lin_alg.Rmd",
 "text": "Edit"
 },
 "history": {
