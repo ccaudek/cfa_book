@@ -6,9 +6,11 @@ library("lavaan")
 library("semTools")
 ```
 
-I precedenti esempi di CFA presentati in questa dispensa sono stati stimati all'interno di un singolo gruppo, hanno utilizzato come input un'unica matrice covarianza e hanno portato alla stima dei parametri del modello sui quali non è stata imposta alcuna restrizione. In questo capitolo, le  analisi precedenti verranno estese considerano il problema dell'invarianza di misura. Quello che ci chiediamo è se sia sensato considerare la medesima struttura fattoriale in gruppi diversi.
+I precedenti esempi di CFA presentati in questa dispensa sono stati stimati all'interno di un singolo gruppo, hanno utilizzato come input un'unica matrice covarianza e hanno portato alla stima dei parametri del modello sui quali non è stata imposta alcuna restrizione. In questo capitolo, le  analisi precedenti verranno estese considerano il problema dell'invarianza di misura. Quello che ci chiediamo è se sia sensato considerare la medesima struttura fattoriale in gruppi diversi. In altre parole, ci chiediamo se viene misurata la stessa variabile latente tra gruppi diversi. Questa proprietà è chiamata _invarianza di misura_ [@meredith1993measurement]. L'approccio che viene utilizzato per stabilire l'evidenze dell'invarianza di misura è attraverso l'analisi fattoriale confermativa a gruppi multipli (_multiple-group confirmatory factor analysis_, MG-CFA). È solo nella misura in cui viene dimostrata l'equivalenza di misura che sono possibili i confronti tra gruppi. Nel presente capitolo, verrà affrontato il invarianza di misura considerando prima il caso di indicatori continui e poi il caso di indicatori categoriali.
 
-## Intercette degli item
+## Indicatori continui
+
+### Intercette degli item
 
 In generale, i modelli di equazioni strutturali vengono utilizzati per modellare unicamente la matrice di covarianza delle variabili osservate in un set di dati.  Ricordiamo che, quando abbiamo introdotto il modello dell'analisi fattoriale, 
 
@@ -27,8 +29,8 @@ laddove la parte sinistra dell'espressione precedente contiene il nome della var
 ```{r, eval=FALSE}
 mod <- "
   # two-factor model
-  f1 =~ x1 + x2 + x3 
-  f2 =~ x4 + x5 + x6 
+  f1 =~ x1 + x2 + x3
+  f2 =~ x4 + x5 + x6
   # intercepts
   x1 ~ 1
   x2 ~ 1
@@ -51,16 +53,16 @@ fit <- cfa(
 
 Si noti che la statistica chi-quadrato e il numero di gradi di libertà sono gli stessi in un modello con o senza `meanstructure`. Il motivo è che, nel caso di un modello con `meanstructure`, vengono introdotti nuovi dati (il valore della media per ciascuna delle $p$ variabili osservate) ma vengono anche aggiunti $p$ parametri da stimare (un'intercetta per ciascuna delle $p$ variabili osservate). Il risultato finale è che la bontà dell'adattamento resta immutata. In pratica, l'unico motivo per aggiungere le interecette nella sintassi del modello è quello di stabilire dei vincoli nella stima di tali parametri. 
 
-## Terminologia
+### Terminologia
 
 La discussione dell'invarianza di misura nel contesto della CFA fa uso della seguente terminologia. 
 
-- L'invarianza configurale (*configural invariance*) indica una struttura fattoriale equivalente di due o più gruppi, ovvero la presenza dello stesso numero di fattori e di un pattern di saturazioni fattoriali simili tra i gruppi.
-- L'uguaglianza delle saturazioni fattoriali definisce l'"invarianza metrica" (*metric invariance*) o "invarianza fattoriale debole" (*weak factorial invariance*). 
-- L'uguaglianza delle intercette degli indicatori definisce l'"invarianza scalare" o "invarianza fattoriale forte". 
-- L'uguaglianza dei residui degli indicatori definisce l'“invarianza fattoriale rigorosa” (*strict factorial invariance*) . 
+- L'invarianza configurale (*configural invariance*) verifica se la struttura dei fattori è la stessa tra i gruppi, ovvero verifica la presenza dello stesso numero di fattori e di pattern di saturazioni fattoriali simili tra gruppi.
+- L'invarianza metrica (*metric invariance*) o "invarianza fattoriale debole" (*weak factorial invariance*) verifica se i carichi fattoriali degli elementi sono gli stessi tra i gruppi. 
+Invarianza scalare (*scalar invariance*) o "invarianza fattoriale forte" verifica se le intercette sono le stesse tra i gruppi. 
+- L'invarianza fattoriale rigorosa (*strict factorial invariance*), infine, verifica se i residui degli indicatori sono gli stessi tra i gruppi.
 
-## Un esempio concreto
+### Un esempio concreto
 
 Consideriamo qui un esempio discusso da @brown2015confirmatory. Il modello CFA riguarda un modello di misurazione per la depressione maggiore così come definita nel DSM-IV. Ci sono 9 indicatori:
 
@@ -85,11 +87,11 @@ d <- readRDS(
 Il problema riguarda l'invarianza fattoriale in funzione del genere. Consideriamo il seguente modello:
 
 ```{r}
-model_mdd <- '
-  MDD =~ mdd1 + mdd2 + mdd3 + mdd4 + mdd5 + mdd6 + mdd7 + mdd8 + 
+model_mdd <- "
+  MDD =~ mdd1 + mdd2 + mdd3 + mdd4 + mdd5 + mdd6 + mdd7 + mdd8 +
          mdd9
   mdd1 ~~ mdd2
-'
+"
 ```
 
 Si noti la presenza di una correlazione residua tra gli indicatori `mdd1` e `mdd2`.
@@ -146,6 +148,261 @@ lavTestLRT(fit_ef, fit_efl, fit_eii, fit_eir, fit_fv, fit_fm)
 Il confronto tra i precedenti modelli nidificati che introducono vincoli sempre più tringenti sui parametri indica che non vi è una "significativa" perdita di bontà dell'adattamento passando dal modello congenerico al modello che assume l'uguaglianza delle saturazioni fattoriali, delle intercette, delle varianze residue, delle varianze delle variabili latenti e delle medie nei due gruppi. Questi dati, dunque, forniscono forti evidenze di invarianza fattoriale tra maschi e femmine in relazione al costrutto di depressione maggiore.
 
 
+## Variabili a livello ordinale
+
+I test di invarianza per i dati ordinali sono diversi da quelli utilizzati con continuo variabili in termini dello stimatore che viene utilizzato e del tipo di analisi statistica che viene svolta. Le variabili ordinali hanno opzioni di risposta che hanno un ordine logico, come come la gamma da fortemente in disaccordo a fortemente d'accordo; o da mai, a volte, spesso, a sempre. Queste opzioni possono essere ordinate logicamente e per convenzione ad esse venono assegnati valori numerici interi. Tuttavia, poiché le risposte ordinali non corrispondono a veri valori quantitativi (come 0 volte a settimana, 5 volte a settimana e 10 volte a settimana), l'assegnazione di numeri alle risposte ordinali da utilizzare nelle analisi è arbitraria. Ad esempio, le stesse cinque opzioni di risposta ordinate potrebbero essere assegnati valori da 0 a 4, da 1 a 5 o da 5 a 1. Pertanto, i dati ordinali non possono essere analizzati come
+se fossero continui. “Le medie, le varianze e le covarianze delle variabili ordinali non hanno significato” ( Jöreskog, p. 1). Tuttavia, l'ordinamento delle risposte può essere analizzato tramite apposite procedure speficiche ai dati ordinali. Abbiamo visto in precedenza come lo stimatore attualmente consigliato per i dati ordinali è quello dei minimi quadrati ponderati. Consideriamo qui il problema dell'invarianza di misura.
+
+Oltre alla stima WLS, nell'analisi di dati ordinali viene utilizzata una matrice di correlazione policorica invece della solita matrice di covarianza. Per ciascuna coppia di variabili ordinali viene calcolata una correlazione policorica sulla base dell'ipotesi che una variabile continua latente normalmente distribuita sia responsabile delle frequenze osservate delle risposte ordinali in ciascuna variabile. Secondo questa ipotesi, ogni valore di risposta ordinale osservato corrisponde a un intervallo di valori normalizzati tra soglie, o cutoff, sulla variabile continua latente sottostante. Tali soglie ($\tau_1, \tau_2, \dots, \tau_k$) sono dei margini verticali che suddividono l'area sottesa alla funzione di densità della distribuzione normale sottostante in $k$ sezioni, ciascuna delle quali corrisponde alla frequenza del punteggio ordinale che è stato osservato in quella categoria di risposta. L'invarianza delle soglie (_treshold invariance_) assume che tali soglie necessarie per definire le correlazioni policoriche siano invarianti tra gruppi. 
+
+@wu2016identification mostrano come la procedura per la valutazione dell'invarianza di misura che è stata descritta in precedenza debba essere modificata nel caso di indicatori categoriali. La procedura usuale consiste nel definire prima un modello di riferimento e successivamente di imporre restrizioni crescenti ai parametri. Secondo @wu2016identification, tale approccio non è ottimale nel caso di dati categoriali perché dipende fortemente dal modo in cui vengono definite le soglie rispetto alle scale delle risposte continue latenti nel modello di base. Dunque, secondo @wu2016identification, è prima necessario valutare l'equivalenza delle soglie tra gruppi (_threshold model_) e poi valutare il modello che ipotizza l'equivalenza tra i gruppi delle saturazioni fattoriali.
+
+Per illutrare tale procedura, replichiamo qui il tutorial messo a punto da @svetina2020multiple. Questi autori utilizzano quattro item dei una scala del bullismo per tre paesi (31 = Azerbaigian; 40 = Austria; 246 = Finlandia). Tutti gli item sono misurati su una scala di tipo Likert a 4 punti, che va da 0 (mai) a 3 (almeno una volta alla settimana). Gli item di questa scala chiedono agli studenti quante volte durante l'anno è successo loro a scuola uno degli episodi in questione; per esempio: "mi prendevano in giro o mi insultavano". Le dimensioni del campione per l'Azerbaigian, l'Austria e la Finlandia sono rispettivamente 3808, 4457 e 4520. Leggiamo in dati in $\textsf{R}$:
+
+```{r}
+dat <- read.table("data/BULLY.dat", header = FALSE)
+names(dat) <- c("IDCNTRY", "R09A", "R09B", "R09C", "R09D")
+head(dat)
+```
+
+Viene creata la matrice `all.results` per immagazzinare i risultati dei diversi modelli che verranno confrontati, chiamati _baseline_ (nessun vincolo tra gruppi), _proposition 4_ (equivalenza delle soglie tra gruppi), e _proposition 7_ (equivalenza delle soglie e delle saturazioni fattoriali tra gruppi). Gli indici di bontà dell'adattamento che verranno considerati sono: chi-square, df, p, RMSEA, CFI, e TLI. 
+
+```{r}
+all.results <- matrix(NA, ncol = 6, nrow = 3)
+```
+
+### Baseline model
+
+Nel _baseline model_ non viene posto alcun vincolo tra i gruppi o le misure ripetute:
+
+```{r}
+mod.cat <- "F1 =~ R09A + R09B + R09C + R09D"
+```
+
+```{r}
+baseline <- measEq.syntax(
+  configural.model = mod.cat,
+  data = dat,
+  ordered = c("R09A", "R09B", "R09C", "R09D"),
+  parameterization = "delta",
+  ID.fac = "std.lv",
+  ID.cat = "Wu.Estabrook.2016",
+  group = "IDCNTRY",
+  group.equal = "configural"
+)
+```
+
+Informazioni sul modello baseline si ottengono nel modo seguente:
+
+```{r, eval=FALSE}
+summary(baseline)
+```
+
+Le proprietà del modello possono essere esplicitate con la seguente istruzione:
+
+```{r, eval=FALSE}
+cat(as.character(baseline))
+```
+
+Per potere essere passato a `lavaan`, l'oggetto `baseline` deve essere in formato `char`:
+
+```{r}
+model.baseline <- as.character(baseline)
+```
+
+Adattiamo il modello ai dati:
+
+```{r}
+fit.baseline <- cfa(
+  model.baseline, 
+  data = dat, 
+  group = "IDCNTRY", 
+  ordered = c("R09A", "R09B", "R09C", "R09D")
+)
+```
+
+Salviamo i risultati:
+
+```{r}
+all.results[1, ] <-
+  round(data.matrix(
+    fitmeasures(fit.baseline, fit.measures = c(
+      "chisq.scaled", "df.scaled", "pvalue.scaled",
+      "rmsea.scaled", "cfi.scaled", "tli.scaled"
+    ))
+  ),
+  digits = 3
+  )
+```
+
+
+### Invarianza delle soglie
+
+Consideriamo ora il modello _threshold invariance_ [chiamata _Proposition 4_ da @wu2016identification]. 
+
+```{r}
+prop4 <- measEq.syntax(
+  configural.model = mod.cat,
+  data = dat,
+  ordered = c("R09A", "R09B", "R09C", "R09D"),
+  parameterization = "delta",
+  ID.fac = "std.lv",
+  ID.cat = "Wu.Estabrook.2016",
+  group = "IDCNTRY",
+  group.equal = c("thresholds")
+)
+```
+
+Adattiamo il modello ai dati:
+
+```{r}
+model.prop4 <- as.character(prop4)
+fit.prop4 <- cfa(
+  model.prop4,
+  data = dat,
+  group = "IDCNTRY",
+  ordered = c("R09A", "R09B", "R09C", "R09D")
+)
+```
+
+Salviamo i risulati
+
+```{r}
+#store model fit information for proposition 4
+all.results[2, ] <-
+  round(data.matrix(
+  fitmeasures(fit.prop4,fit.measures = c(
+    "chisq.scaled","df.scaled","pvalue.scaled", 
+    "rmsea.scaled", "cfi.scaled", "tli.scaled"))), 
+  digits=3
+  )
+```
+
+Eseguiamo il confronto tra il modello di _threshold invariance_ e il modello di _baseline_:
+
+```{r}
+lavTestLRT(fit.baseline, fit.prop4)
+```
+
+### Threshold and loading invariance
+
+Consideriamo ora il modello _threshold and loading invariance_ [chiamato _Proposition 7_ da @wu2016identification]. 
+
+```{r}
+prop7 <- measEq.syntax(
+  configural.model = mod.cat,
+  data = dat,
+  ordered = c("R09A", "R09B", "R09C", "R09D"),
+  parameterization = "delta",
+  ID.fac = "std.lv",
+  ID.cat = "Wu.Estabrook.2016",
+  group = "IDCNTRY",
+  group.equal = c("thresholds", "loadings")
+)
+```
+
+Adattiamo il modello ai dati:
+
+```{r}
+model.prop7 <- as.character(prop7)
+fit.prop7 <- cfa(
+  model.prop7, 
+  data = dat, group = "IDCNTRY", 
+  ordered = c("R09A", "R09B", "R09C", "R09D")
+  )
+```
+
+Salviamo i risultati:
+
+```{r}
+all.results[3, ] <-
+  round(data.matrix(
+    fitmeasures(fit.prop7, fit.measures = c(
+      "chisq.scaled", "df.scaled", "pvalue.scaled",
+      "rmsea.scaled", "cfi.scaled", "tli.scaled"
+    ))
+  ), digits = 3)
+
+column.names <-
+  c(
+    "chisq.scaled", "df.scaled", "pvalue.scaled", "rmsea.scaled",
+    "cfi.scaled", "tli.scaled"
+  )
+
+row.names <- c("baseline", "prop4", "prop7")
+
+colnames(all.results) <- column.names
+rownames(all.results) <- row.names
+```
+
+Eseguiamo i confronti tra modelli:
+
+```{r}
+lavTestLRT(fit.prop4, fit.prop7)
+```
+
+```{r}
+lavTestLRT(fit.prop7, fit.baseline)
+```
+
+Un confronto tra gli indici di bontà di adattamento dei tre modelli è fornito di seguito:
+
+```{r}
+all.results
+```
+
+In conclusione, nel caso presente, il test del rapporto di verosimiglianza indica che non viene rispettata neppure l'invarianza delle soglie tra gruppi. Gli altri confronti, dunque, al di là dei presenti scopi didattici, sono superflui.
+
+<!-- ### Invarianza parziale -->
+
+<!-- Viene introdotto il vincolo dell'eguaglianza delle soglie mentre viene liberamente stimata  la saturazione fattoriale R09C, come conseguenza delle indicazioni derivate dagli indici di modificazione (_modification indices_). -->
+
+<!-- ```{r} -->
+<!-- fit.prop7 <- cfa( -->
+<!--   model.prop7, -->
+<!--   data = dat, -->
+<!--   group = "IDCNTRY", -->
+<!--   ordered = c("R09A", "R09B", "R09C", "R09D") -->
+<!-- ) -->
+
+<!-- mi <- modindices(fit.prop7, free.remove = FALSE) -->
+<!-- mi[mi$op == "=~", ] -->
+<!-- ``` -->
+
+<!-- Definiamo il modello: -->
+
+<!-- ```{r} -->
+<!-- prop7.part <- measEq.syntax( -->
+<!--   configural.model = mod.cat, -->
+<!--   data = dat, -->
+<!--   ordered = c("R09A", "R09B", "R09C", "R09D"), -->
+<!--   parameterization = "delta", -->
+<!--   ID.fac = "std.lv", -->
+<!--   ID.cat = "Wu.Estabrook.2016", -->
+<!--   group = "IDCNTRY", -->
+<!--   group.equal = c("thresholds", "loadings"), -->
+<!--   group.partial = "F1 =~ R09C" -->
+<!-- ) -->
+<!-- ``` -->
+
+<!-- Adattiamo il modello ai dati: -->
+
+<!-- ```{r} -->
+<!-- model.prop7.part <- as.character(prop7.part) -->
+<!-- fit.prop7.part <- cfa( -->
+<!--   model.prop7.part,  -->
+<!--   data = dat,  -->
+<!--   group = "IDCNTRY",  -->
+<!--   ordered = c("R09A", "R09B", "R09C", "R09D") -->
+<!-- ) -->
+<!-- ``` -->
+
+<!-- Eseguiamo i confronto con il modello di _threshold invariance_: -->
+
+<!-- ```{r} -->
+<!-- ## Test of model fit between prop4 and prop 7 with one loading freed -->
+<!-- lavTestLRT(fit.prop7.part, fit.prop4) -->
+<!-- ``` -->
 
 
 

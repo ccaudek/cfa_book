@@ -34,7 +34,7 @@ rmd_files:
     # - "055_analisi_fattoriale_1.Rmd"
     # - "056_analisi_fattoriale_2.Rmd"
     # - "057_analisi_fattoriale_3.Rmd"
-    - "058_factor_scores.Rmd"
+    # - "058_factor_scores.Rmd"
     # - "060_path_analysis.Rmd"
     # - "062_constraints_on_parms.Rmd"
     # - "070_cfa_mod_comp.Rmd"
@@ -46,7 +46,7 @@ rmd_files:
     # - "205_rotazione.Rmd"
     # - "206_valutare_sol_fattoriale.Rmd"
     # ## PART V
-    # - "250_group_invariance.Rmd"
+    - "250_group_invariance.Rmd"
     # ## PART V
     # - "300_gof.Rmd"
     # - "350_growth_models.Rmd"

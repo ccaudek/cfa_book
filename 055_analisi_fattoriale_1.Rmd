@@ -564,7 +564,27 @@ Specifichiamo l'ampiezza campionaria:
 n <- 33
 ```
 
-Definiamo il modello unifattoriale con la sintassi di `lavaan`, laddove l'operatore `=~` si può leggere dicendo che la variabile latente a sinistra dell'operatore è definita dalle variabili manifeste elencate a destra dell'operatore e separate dal segno `+`.
+Esaminiamo la sintassi usata da `lavaan` a livello degli item:
+
+```{r, eval=FALSE}
+# Regression
+y ~ f1 + f2 + x1 + x2
+f1 ~ f2 + f3
+f2 ~ f3 + x1 + x2
+# Latent variables
+f1 =~ y1 + y2 + y3
+f2 =~ y4 + y5 + y6
+f3 =~ y7 + y8 + y9 + y10
+# Variances and covariances
+y1 ~~ y1
+y1 ~~ y2
+f1 ~~ f2
+# Intercepts
+y1 ~ 1
+f1 ~ 1
+```
+
+Definiamo il modello unifattoriale in `lavaan`. L'operatore `=~` si può leggere dicendo che la variabile latente a sinistra dell'operatore viene identificata dalle variabili manifeste elencate a destra dell'operatore e separate dal segno `+`:
 
 ```{r}
 spearman_mod <- "
@@ -572,7 +592,7 @@ spearman_mod <- "
 "
 ```
 
-Adattiamo il modello ai dati:
+Adattiamo il modello ai dati con la funzione `cfa()`:
 
 ```{r}
 fit1 <- lavaan::cfa(
@@ -583,9 +603,7 @@ fit1 <- lavaan::cfa(
 )
 ```
 
-Il parametro `std.lv = TRUE` specifica che imponiamo una varianza pari a 1 a tutte le variabili latenti comuni (nel caso presente, solo una). Ciò consente di potere stimare le saturazioni fattoriali.
-
-Possiamo esaminare la soluzione ottenuta con la seguente istruzione:
+L'argomento `std.lv = TRUE` specifica che imponiamo una varianza pari a 1 a tutte le variabili latenti comuni (nel caso presente, solo una). Ciò consente di  stimare le saturazioni fattoriali. Possiamo esaminare la soluzione ottenuta con la seguente istruzione:
 
 ```{r}
 summary(
@@ -649,6 +667,7 @@ tibble(v2) %>%
   stat_qq() + 
   stat_qq_line()
 ```
+
 Il pacchetto `semPlot` consente di disegnare diagrammi di percorso per vari modelli SEM. La funzione `semPaths` prende in input un oggetto creato da `lavaan` e disegna il diagramma, con diverse opzioni disponibili. Il diagramma qui prodotto controlla le dimensioni dei caratteri/etichette, la visualizzazione dei residui e il colore dei percorsi/coefficienti. Sono disponibili queste e molte altre opzioni di controllo. 
 
 ```{r}
@@ -662,6 +681,7 @@ semPaths(
   layout = "circle2"
 )
 ```
+
 In una versione alternativa del diagramma di percorso aggiungiamo anche le specificità:
 
 ```{r}

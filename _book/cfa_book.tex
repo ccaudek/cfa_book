@@ -228,20 +228,6 @@
 \setmainlanguage{italian}
 
 \frontmatter
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{float}
-\usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
-\usepackage{makecell}
-\usepackage{xcolor}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -250,7 +236,7 @@
 
 \title{Appunti di Costruzione e validazione di strumenti di misura dell'efficacia dell'intervento psicologico in neuropsicologia -- B020881 (B213)}
 \author{Corrado Caudek}
-\date{2022-03-03}
+\date{2022-03-04}
 
 \begin{document}
 \maketitle
@@ -893,308 +879,510 @@ Un esempio di standard statistico è la regressione \emph{stepwise}, in cui il c
 
 In secondo luogo, una volta che un insieme finale di predittori selezionati razionalmente è stato inserito nell'equazione di regressione, tali predittori non dovrebbero essere successivamente rimossi se i loro coefficienti di regressione non sono statisticamente significativi: il ricercatore non dovrebbe sentirsi in dovere di lasciar perdere ogni predittore che non risulta statisticamente significativo. In campioni piccoli, la potenza dei test di significatività è bassa e la rimozione di un predittore non significativo può alterare sostanzialmente la soluzione. Se c'è una buona ragione per includere un predittore, allora è meglio lasciarlo nel modello, fino a prova contraria.
 
-\hypertarget{ch:factor-scores}{%
-\chapter{I punteggi fattoriali}\label{ch:factor-scores}}
+\hypertarget{ch:factorial-invariance}{%
+\chapter{Invarianza di misura}\label{ch:factorial-invariance}}
 
-Uno dei momenti più difficili nel processo di sviluppo di un test psicometrico è quello dell'interpretazione dei fattori. La verifica del livello di affidabilità rivela il grado di precisione delle misure ottenute ma non fornisce alcuna informazione sulla natura di ciò che si sta misurando. Non esistono specifiche indicazioni che guidino il lavoro interpretativo. Dipende, perciò, dalla capacità e dall'esperienza del ricercatore cogliere il significato comune delle variabili confluite in un fattore, attenendosi alla realtà delle singole variabili senza fornire interpretazioni fantasiose. È importante rendersi conto che sia la scelta del metodo di estrazione dei fattori, sia il problema del numero dei fattori da estrarre, sia la scelta del metodo con cui effettuare la rotazione, rendono molto arbitraria l'interpretazione della soluzione fattoriale.
+I precedenti esempi di CFA presentati in questa dispensa sono stati stimati all'interno di un singolo gruppo, hanno utilizzato come input un'unica matrice covarianza e hanno portato alla stima dei parametri del modello sui quali non è stata imposta alcuna restrizione. In questo capitolo, le analisi precedenti verranno estese considerano il problema dell'invarianza di misura. Quello che ci chiediamo è se sia sensato considerare la medesima struttura fattoriale in gruppi diversi. In altre parole, ci chiediamo se viene misurata la stessa variabile latente tra gruppi diversi. Questa proprietà è chiamata \emph{invarianza di misura} \citep{meredith1993measurement}. L'approccio che viene utilizzato per stabilire l'evidenze dell'invarianza di misura è attraverso l'analisi fattoriale confermativa a gruppi multipli (\emph{multiple-group confirmatory factor analysis}, MG-CFA). È solo nella misura in cui viene dimostrata l'equivalenza di misura che sono possibili i confronti tra gruppi. Nel presente capitolo, verrà affrontato il invarianza di misura considerando prima il caso di indicatori continui e poi il caso di indicatori categoriali.
 
-I passaggi teorici necessari per interpretare una matrice fattoriale ruotata possono essere descritti nel modo seguente.
+\hypertarget{indicatori-continui}{%
+\section{Indicatori continui}\label{indicatori-continui}}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Si definisce un livello arbitrario per le saturazioni che ci indichi il limite oltre il quale non riteniamo le variabili sufficientemente importanti per caratterizzare quel determinato fattore. Solitamente si sceglie la soglia di .40. In casi particolari è possibile usare valori maggiori o minori di questo, a seconda che si abbia un numero ristretto o troppo ampio di variabili da interpretare.
-\item
-  Si ordinano le saturazioni delle variabili del fattore in ordine decrescente (in valore assoluto), fermandosi al livello prescelto.
-\item
-  Si scrive accanto ad ogni saturazione la denominazione della variabile corrispondente (o il testo dell'item).
-\item
-  Tenendo presente il dominio di indagine, le teorie di riferimento ed eventuali risultati precedenti, si cerca di stabilire quale sia il tratto, caratteristica, aspetto \ldots che queste variabili abbiano in comune, in modo da poter in modo da poter ``nominare'' il fattore che definisce questo tratto comune. In questo processo interpretativo gli item con le saturazioni maggiori contribuiscono in misura maggiore alla definizione del carattere comune del fattore e, viceversa, ciò che è stato individuato come tratto comune delle variabili deve comparire in maggior grado nelle variabili più sature.
-\item
-  Il segno negativo di una saturazione indica solamente un'opposizione rispetto alle saturazioni positive. Il tratto comune alle variabili dovrebbe essere pensato come un continuum che passa dalla sua massima presenza al suo opposto. Per procedere all'interpretazione conviene iniziare dalle variabili il cui segno è più frequente e considerarle come se fossero positive; di conseguenza, le altre (siano esse di segno positivo o negativo) devono essere considerate di segno opposto.
-\item
-  Nel caso in cui non si riesca a riscontrare nessun tratto comune alle variabili del fattore, si dovrà concludere che il fattore non è interpretabile e che le variabili sono state tra loro associate per un errore attribuibile o al campione o alla misurazione delle variabili stesse. Normalmente i ``primi'' fattori estratti sono facilmente interpretabili mentre gli ``ultimi'', soprattutto se ne sono stati estratti molti o se la matrice delle correlazioni iniziale fra le variabili contiene molti valori bassi, sono spesso difficilmente interpretabili o saturi di una sola variabile e quindi fattori specifici di quella variabile. In linea di massima se i fattori non interpretabili sono molti è meglio non considerare affatto i risultati dell'analisi fattoriale.
-\end{enumerate}
+\hypertarget{intercette-degli-item}{%
+\subsection{Intercette degli item}\label{intercette-degli-item}}
 
-\hypertarget{esempio-di-interpretazione}{%
-\subsection{Esempio di interpretazione}\label{esempio-di-interpretazione}}
+In generale, i modelli di equazioni strutturali vengono utilizzati per modellare unicamente la matrice di covarianza delle variabili osservate in un set di dati. Ricordiamo che, quando abbiamo introdotto il modello dell'analisi fattoriale,
 
-Il WISC-III (Wechsler Intelligence Scale For Children - III) valuta l'abilità intellettiva di soggetti dai 6 ai 16 anni e 11 mesi. I subtest sono stati selezionati per valutare diverse abilità mentali, che tutte insieme indicano l'abilità intellettiva generale del bambino. Alcuni gli richiedono un ragionamento astratto, altri si focalizzano sulla memoria, altri ancora richiedono certe abilità percettive e così via.
+\[
+y_i = \mu + \lambda_j \xi_k + \delta_i,
+\]
 
-Si consideri la matrice di correlazione tra i subtest della scala WISC-III riportata dal manuale.
+per semplicità abbiamo ignorato la media \(\mu\) degli indicatori esprimendo i dati osservati nei termini degli scarti dalla media, \(y_i -\mu\), in quanto ciò lascia immutate le covarianze. Tuttavia, in alcune applicazioni (quali l'invarianza di misura, ad esempio), è utile considerare anche le medie delle variabili osservate. Per ottenere ciò è possibile fare esplicito riferimento alle intercette delle equazioni precedenti nella sintassi \texttt{lavaan} del modello. È possibile fare riferimento all'intercetta di una variabile manifesta nel modo seguente:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{lower }\OtherTok{\textless{}{-}} \StringTok{"}
-\StringTok{1}
-\StringTok{.66      1}
-\StringTok{.57 .55      1}
-\StringTok{.70 .69 .54       1}
-\StringTok{.56 .59 .47 .64      1}
-\StringTok{.34 .34 .43 .35 .29      1}
-\StringTok{.47 .45 .39 .45 .38 .25      1}
-\StringTok{.21 .20 .27 .26 .25 .23 .18      1}
-\StringTok{.40 .39 .35 .40 .35 .20 .37 .28      1}
-\StringTok{.48 .49 .52 .46 .40 .32 .52 .27 .41      1}
-\StringTok{.41 .42 .39 .41 .34 .26 .49 .24 .37 .61      1}
-\StringTok{.35 .35 .41 .35 .34 .28 .33 .53 .36 .45 .38      1}
-\StringTok{.18 .18 .22 .17 .17 .14 .24 .15 .23 .31 .29 .24     1}
+\NormalTok{variable }\SpecialCharTok{\textasciitilde{}} \DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+laddove la parte sinistra dell'espressione precedente contiene il nome della variabile osservata a cui si fa riferimento. Per esempio, nel caso di un modello a due fattori comuni, è possibile aggiungere le intercette delle variabili manifeste nel modo seguente:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mod }\OtherTok{\textless{}{-}} \StringTok{"}
+\StringTok{  \# two{-}factor model}
+\StringTok{  f1 =\textasciitilde{} x1 + x2 + x3}
+\StringTok{  f2 =\textasciitilde{} x4 + x5 + x6}
+\StringTok{  \# intercepts}
+\StringTok{  x1 \textasciitilde{} 1}
+\StringTok{  x2 \textasciitilde{} 1}
+\StringTok{  x3 \textasciitilde{} 1}
+\StringTok{  x4 \textasciitilde{} 1}
+\StringTok{  x5 \textasciitilde{} 1}
+\StringTok{  x6 \textasciitilde{} 1}
 \StringTok{"}
 \end{Highlighting}
 \end{Shaded}
 
+Tuttavia, è più conveniente omettere le intercette nella specificazione del modello e aggiungere l'argomento \texttt{meanstructure\ =\ TRUE} nella funzione \texttt{cfa()}:
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{wisc\_III\_cov }\OtherTok{\textless{}{-}} \FunctionTok{getCov}\NormalTok{(}
-\NormalTok{  lower,}
-  \AttributeTok{names =} \FunctionTok{c}\NormalTok{(}
-    \StringTok{"INFO"}\NormalTok{, }\StringTok{"SIM"}\NormalTok{, }\StringTok{"ARITH"}\NormalTok{, }\StringTok{"VOC"}\NormalTok{, }\StringTok{"COMP"}\NormalTok{, }\StringTok{"DIGIT"}\NormalTok{, }\StringTok{"PICTCOM"}\NormalTok{,}
-    \StringTok{"CODING"}\NormalTok{, }\StringTok{"PICTARG"}\NormalTok{, }\StringTok{"BLOCK"}\NormalTok{, }\StringTok{"OBJECT"}\NormalTok{, }\StringTok{"SYMBOL"}\NormalTok{, }\StringTok{"MAZES"}
+\NormalTok{fit }\OtherTok{\textless{}{-}} \FunctionTok{cfa}\NormalTok{(}
+\NormalTok{  mod,}
+  \AttributeTok{data =}\NormalTok{ d,}
+  \AttributeTok{meanstructure =} \ConstantTok{TRUE}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Si noti che la statistica chi-quadrato e il numero di gradi di libertà sono gli stessi in un modello con o senza \texttt{meanstructure}. Il motivo è che, nel caso di un modello con \texttt{meanstructure}, vengono introdotti nuovi dati (il valore della media per ciascuna delle \(p\) variabili osservate) ma vengono anche aggiunti \(p\) parametri da stimare (un'intercetta per ciascuna delle \(p\) variabili osservate). Il risultato finale è che la bontà dell'adattamento resta immutata. In pratica, l'unico motivo per aggiungere le interecette nella sintassi del modello è quello di stabilire dei vincoli nella stima di tali parametri.
+
+\hypertarget{terminologia}{%
+\subsection{Terminologia}\label{terminologia}}
+
+La discussione dell'invarianza di misura nel contesto della CFA fa uso della seguente terminologia.
+
+\begin{itemize}
+\tightlist
+\item
+  L'invarianza configurale (\emph{configural invariance}) verifica se la struttura dei fattori è la stessa tra i gruppi, ovvero verifica la presenza dello stesso numero di fattori e di pattern di saturazioni fattoriali simili tra gruppi.
+\item
+  L'invarianza metrica (\emph{metric invariance}) o ``invarianza fattoriale debole'' (\emph{weak factorial invariance}) verifica se i carichi fattoriali degli elementi sono gli stessi tra i gruppi. Invarianza scalare (\emph{scalar invariance}) o ``invarianza fattoriale forte'' verifica se le intercette sono le stesse tra i gruppi.
+\item
+  L'invarianza fattoriale rigorosa (\emph{strict factorial invariance}), infine, verifica se i residui degli indicatori sono gli stessi tra i gruppi.
+\end{itemize}
+
+\hypertarget{un-esempio-concreto}{%
+\subsection{Un esempio concreto}\label{un-esempio-concreto}}
+
+Consideriamo qui un esempio discusso da \citet{brown2015confirmatory}. Il modello CFA riguarda un modello di misurazione per la depressione maggiore così come definita nel DSM-IV. Ci sono 9 indicatori:
+
+\begin{itemize}
+\tightlist
+\item
+  MDD1, depressed mood;
+\item
+  MDD2, loss of interest in usual activities;
+\item
+  MDD3, weight/appetite change;
+\item
+  MDD4, sleep disturbance;
+\item
+  MDD5, psychomotor agitation/retardation;
+\item
+  MDD6, fatigue/loss of energy;
+\item
+  MDD7, feelings of worthlessness/guilt;
+\item
+  MDD8, concentration difficulties;
+\item
+  MDD9, thoughts of death/suicidality.
+\end{itemize}
+
+Leggiamo i dati:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{d }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(}
+\NormalTok{  here}\SpecialCharTok{::}\FunctionTok{here}\NormalTok{(}\StringTok{"data"}\NormalTok{, }\StringTok{"mdd\_sex.RDS"}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Il problema riguarda l'invarianza fattoriale in funzione del genere. Consideriamo il seguente modello:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model\_mdd }\OtherTok{\textless{}{-}} \StringTok{"}
+\StringTok{  MDD =\textasciitilde{} mdd1 + mdd2 + mdd3 + mdd4 + mdd5 + mdd6 + mdd7 + mdd8 +}
+\StringTok{         mdd9}
+\StringTok{  mdd1 \textasciitilde{}\textasciitilde{} mdd2}
+\StringTok{"}
+\end{Highlighting}
+\end{Shaded}
+
+Si noti la presenza di una correlazione residua tra gli indicatori \texttt{mdd1} e \texttt{mdd2}.
+
+Esaminiamo dunque le varie forme di invarianza fattoriale:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# configural invariance}
+\NormalTok{fit\_ef }\OtherTok{\textless{}{-}} \FunctionTok{cfa}\NormalTok{(}
+\NormalTok{  model\_mdd,}
+  \AttributeTok{data =}\NormalTok{ d,}
+  \AttributeTok{group =} \StringTok{"sex"}\NormalTok{,}
+  \AttributeTok{meanstructure =} \ConstantTok{TRUE}
+\NormalTok{)}
+\CommentTok{\# equal factor laodings}
+\NormalTok{fit\_efl }\OtherTok{\textless{}{-}} \FunctionTok{update}\NormalTok{(}
+\NormalTok{  fit\_ef,}
+  \AttributeTok{group.equal =} \FunctionTok{c}\NormalTok{(}\StringTok{"loadings"}\NormalTok{)}
+\NormalTok{)}
+\CommentTok{\# equal indicator intercepts}
+\NormalTok{fit\_eii }\OtherTok{\textless{}{-}} \FunctionTok{update}\NormalTok{(}
+\NormalTok{  fit\_efl,}
+  \AttributeTok{group.equal =} \FunctionTok{c}\NormalTok{(}\StringTok{"loadings"}\NormalTok{, }\StringTok{"intercepts"}\NormalTok{)}
+\NormalTok{)}
+\CommentTok{\# equal indicator error variances}
+\NormalTok{fit\_eir }\OtherTok{\textless{}{-}} \FunctionTok{update}\NormalTok{(}
+\NormalTok{  fit\_eii,}
+  \AttributeTok{group.equal =} \FunctionTok{c}\NormalTok{(}\StringTok{"loadings"}\NormalTok{, }\StringTok{"intercepts"}\NormalTok{, }\StringTok{"residuals"}\NormalTok{)}
+\NormalTok{)}
+\CommentTok{\# equal factor variances}
+\NormalTok{fit\_fv }\OtherTok{\textless{}{-}} \FunctionTok{update}\NormalTok{(}
+\NormalTok{  fit\_eir,}
+  \AttributeTok{group.equal =} \FunctionTok{c}\NormalTok{(}
+    \StringTok{"loadings"}\NormalTok{, }\StringTok{"intercepts"}\NormalTok{, }\StringTok{"residuals"}\NormalTok{,}
+    \StringTok{"lv.variances"}
+\NormalTok{  )}
+\NormalTok{)}
+\CommentTok{\# equal latent means}
+\NormalTok{fit\_fm }\OtherTok{\textless{}{-}} \FunctionTok{update}\NormalTok{(}
+\NormalTok{  fit\_fv,}
+  \AttributeTok{group.equal =} \FunctionTok{c}\NormalTok{(}
+    \StringTok{"loadings"}\NormalTok{, }\StringTok{"intercepts"}\NormalTok{, }\StringTok{"residuals"}\NormalTok{,}
+    \StringTok{"lv.variances"}\NormalTok{, }\StringTok{"means"}
 \NormalTok{  )}
 \NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-Eseguiamo l'analisi fattoriale con il metodo delle componenti principali e una rotazione Varimax:
+Confrontiamo i modelli:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{f\_pc }\OtherTok{\textless{}{-}}\NormalTok{ psych}\SpecialCharTok{::}\FunctionTok{principal}\NormalTok{(wisc\_III\_cov, }\AttributeTok{nfactors =} \DecValTok{3}\NormalTok{, }\AttributeTok{rotate =} \StringTok{"varimax"}\NormalTok{)}
-\NormalTok{f\_pc}
-\CommentTok{\#\textgreater{} Principal Components Analysis}
-\CommentTok{\#\textgreater{} Call: psych::principal(r = wisc\_III\_cov, nfactors = 3, rotate = "varimax")}
-\CommentTok{\#\textgreater{} Standardized loadings (pattern matrix) based upon correlation matrix}
-\CommentTok{\#\textgreater{}           RC1  RC3  RC2   h2   u2 com}
-\CommentTok{\#\textgreater{} INFO     0.80 0.25 0.09 0.72 0.28 1.2}
-\CommentTok{\#\textgreater{} SIM      0.81 0.25 0.08 0.72 0.28 1.2}
-\CommentTok{\#\textgreater{} ARITH    0.65 0.26 0.28 0.57 0.43 1.7}
-\CommentTok{\#\textgreater{} VOC      0.83 0.19 0.13 0.75 0.25 1.2}
-\CommentTok{\#\textgreater{} COMP     0.75 0.14 0.16 0.60 0.40 1.2}
-\CommentTok{\#\textgreater{} DIGIT    0.45 0.06 0.36 0.34 0.66 2.0}
-\CommentTok{\#\textgreater{} PICTCOM  0.43 0.61 0.02 0.56 0.44 1.8}
-\CommentTok{\#\textgreater{} CODING   0.10 0.09 0.88 0.79 0.21 1.0}
-\CommentTok{\#\textgreater{} PICTARG  0.34 0.45 0.27 0.39 0.61 2.6}
-\CommentTok{\#\textgreater{} BLOCK    0.41 0.66 0.22 0.66 0.34 1.9}
-\CommentTok{\#\textgreater{} OBJECT   0.31 0.71 0.14 0.62 0.38 1.5}
-\CommentTok{\#\textgreater{} SYMBOL   0.23 0.32 0.74 0.70 0.30 1.6}
-\CommentTok{\#\textgreater{} MAZES   {-}0.06 0.71 0.11 0.51 0.49 1.1}
+\FunctionTok{lavTestLRT}\NormalTok{(fit\_ef, fit\_efl, fit\_eii, fit\_eir, fit\_fv, fit\_fm)}
+\CommentTok{\#\textgreater{} Chi{-}Squared Difference Test}
 \CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{}                        RC1  RC3  RC2}
-\CommentTok{\#\textgreater{} SS loadings           3.80 2.37 1.74}
-\CommentTok{\#\textgreater{} Proportion Var        0.29 0.18 0.13}
-\CommentTok{\#\textgreater{} Cumulative Var        0.29 0.47 0.61}
-\CommentTok{\#\textgreater{} Proportion Explained  0.48 0.30 0.22}
-\CommentTok{\#\textgreater{} Cumulative Proportion 0.48 0.78 1.00}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} Mean item complexity =  1.5}
-\CommentTok{\#\textgreater{} Test of the hypothesis that 3 components are sufficient.}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} The root mean square of the residuals (RMSR) is  0.07 }
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} Fit based upon off diagonal values = 0.97}
+\CommentTok{\#\textgreater{}         Df   AIC   BIC Chisq Chisq diff Df diff}
+\CommentTok{\#\textgreater{} fit\_ef  52 27526 27785  98.9                   }
+\CommentTok{\#\textgreater{} fit\_efl 60 27514 27735 102.8       3.93       8}
+\CommentTok{\#\textgreater{} fit\_eii 68 27510 27695 115.3      12.47       8}
+\CommentTok{\#\textgreater{} fit\_eir 77 27502 27645 125.0       9.71       9}
+\CommentTok{\#\textgreater{} fit\_fv  78 27501 27639 125.8       0.79       1}
+\CommentTok{\#\textgreater{} fit\_fm  79 27501 27635 127.7       1.92       1}
+\CommentTok{\#\textgreater{}         Pr(\textgreater{}Chisq)}
+\CommentTok{\#\textgreater{} fit\_ef            }
+\CommentTok{\#\textgreater{} fit\_efl       0.86}
+\CommentTok{\#\textgreater{} fit\_eii       0.13}
+\CommentTok{\#\textgreater{} fit\_eir       0.37}
+\CommentTok{\#\textgreater{} fit\_fv        0.37}
+\CommentTok{\#\textgreater{} fit\_fm        0.17}
 \end{Highlighting}
 \end{Shaded}
 
-Si noti che i primi cinque subtest possiedono saturazioni maggiori di \(0.6\) sul primo fattore. Dato che questi test sono tutti presentati verbalmente e richiedono delle risposte verbali, tale fattore può essere denominato \emph{Comprensione Verbale}.
+Il confronto tra i precedenti modelli nidificati che introducono vincoli sempre più tringenti sui parametri indica che non vi è una ``significativa'' perdita di bontà dell'adattamento passando dal modello congenerico al modello che assume l'uguaglianza delle saturazioni fattoriali, delle intercette, delle varianze residue, delle varianze delle variabili latenti e delle medie nei due gruppi. Questi dati, dunque, forniscono forti evidenze di invarianza fattoriale tra maschi e femmine in relazione al costrutto di depressione maggiore.
 
-I subtest ``Cifrario'' e ``Ricerca di simboli'' saturano sul secondo fattore. Entrambi i subtest misurano la velocità dei processi di codifica o ricerca. Questo fattore, dunque, può essere denominato \emph{Velocità di elaborazione}.
+\hypertarget{variabili-a-livello-ordinale}{%
+\section{Variabili a livello ordinale}\label{variabili-a-livello-ordinale}}
 
-Infine, i subtest ``Completamento di figure,'' ``Disegno con i cubi,'' ``Riordinamento di storie figurate'' e ``Labirinti'' saturano sul terzo fattore. Tutti questi test condividono una componente geometrica o configurazionale: misurano infatti le abilità necessarie per la manipolazione o la disposizione di immagini, oggetti, blocchi. Questo fattore, dunque, può essere denominato \emph{Organizzazione percettiva}.
+I test di invarianza per i dati ordinali sono diversi da quelli utilizzati con continuo variabili in termini dello stimatore che viene utilizzato e del tipo di analisi statistica che viene svolta. Le variabili ordinali hanno opzioni di risposta che hanno un ordine logico, come come la gamma da fortemente in disaccordo a fortemente d'accordo; o da mai, a volte, spesso, a sempre. Queste opzioni possono essere ordinate logicamente e per convenzione ad esse venono assegnati valori numerici interi. Tuttavia, poiché le risposte ordinali non corrispondono a veri valori quantitativi (come 0 volte a settimana, 5 volte a settimana e 10 volte a settimana), l'assegnazione di numeri alle risposte ordinali da utilizzare nelle analisi è arbitraria. Ad esempio, le stesse cinque opzioni di risposta ordinate potrebbero essere assegnati valori da 0 a 4, da 1 a 5 o da 5 a 1. Pertanto, i dati ordinali non possono essere analizzati come se fossero continui. ``Le medie, le varianze e le covarianze delle variabili ordinali non hanno significato'' ( Jöreskog, p.~1). Tuttavia, l'ordinamento delle risposte può essere analizzato tramite apposite procedure speficiche ai dati ordinali. Abbiamo visto in precedenza come lo stimatore attualmente consigliato per i dati ordinali è quello dei minimi quadrati ponderati. Consideriamo qui il problema dell'invarianza di misura.
 
-Nel caso di una rotazione ortogonale, la comunalità di ciascuna sottoscala è uguale alla somma dei coefficienti di impatto al quadrato della sottoscala nei fattori. Per le 13 sottoscale del WISC-III abbiamo dunque
+Oltre alla stima WLS, nell'analisi di dati ordinali viene utilizzata una matrice di correlazione policorica invece della solita matrice di covarianza. Per ciascuna coppia di variabili ordinali viene calcolata una correlazione policorica sulla base dell'ipotesi che una variabile continua latente normalmente distribuita sia responsabile delle frequenze osservate delle risposte ordinali in ciascuna variabile. Secondo questa ipotesi, ogni valore di risposta ordinale osservato corrisponde a un intervallo di valori normalizzati tra soglie, o cutoff, sulla variabile continua latente sottostante. Tali soglie (\(\tau_1, \tau_2, \dots, \tau_k\)) sono dei margini verticali che suddividono l'area sottesa alla funzione di densità della distribuzione normale sottostante in \(k\) sezioni, ciascuna delle quali corrisponde alla frequenza del punteggio ordinale che è stato osservato in quella categoria di risposta. L'invarianza delle soglie (\emph{treshold invariance}) assume che tali soglie necessarie per definire le correlazioni policoriche siano invarianti tra gruppi.
+
+\citet{wu2016identification} mostrano come la procedura per la valutazione dell'invarianza di misura che è stata descritta in precedenza debba essere modificata nel caso di indicatori categoriali. La procedura usuale consiste nel definire prima un modello di riferimento e successivamente di imporre restrizioni crescenti ai parametri. Secondo \citet{wu2016identification}, tale approccio non è ottimale nel caso di dati categoriali perché dipende fortemente dal modo in cui vengono definite le soglie rispetto alle scale delle risposte continue latenti nel modello di base. Dunque, secondo \citet{wu2016identification}, è prima necessario valutare l'equivalenza delle soglie tra gruppi (\emph{threshold model}) e poi valutare il modello che ipotizza l'equivalenza tra i gruppi delle saturazioni fattoriali.
+
+Per illutrare tale procedura, replichiamo qui il tutorial messo a punto da \citet{svetina2020multiple}. Questi autori utilizzano quattro item dei una scala del bullismo per tre paesi (31 = Azerbaigian; 40 = Austria; 246 = Finlandia). Tutti gli item sono misurati su una scala di tipo Likert a 4 punti, che va da 0 (mai) a 3 (almeno una volta alla settimana). Gli item di questa scala chiedono agli studenti quante volte durante l'anno è successo loro a scuola uno degli episodi in questione; per esempio: ``mi prendevano in giro o mi insultavano''. Le dimensioni del campione per l'Azerbaigian, l'Austria e la Finlandia sono rispettivamente 3808, 4457 e 4520. Leggiamo in dati in \(\textsf{R}\):
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{h2 }\OtherTok{\textless{}{-}} \FunctionTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{13}\NormalTok{)}
-\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{13}\NormalTok{) \{}
-\NormalTok{  h2[i] }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(f\_pc}\SpecialCharTok{$}\NormalTok{loadings[i, ]}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
-\NormalTok{\}}
-\FunctionTok{round}\NormalTok{(h2, }\DecValTok{2}\NormalTok{)}
-\CommentTok{\#\textgreater{}  [1] 0.72 0.72 0.57 0.75 0.60 0.34 0.56 0.79 0.39 0.66}
-\CommentTok{\#\textgreater{} [11] 0.62 0.70 0.51}
+\NormalTok{dat }\OtherTok{\textless{}{-}} \FunctionTok{read.table}\NormalTok{(}\StringTok{"data/BULLY.dat"}\NormalTok{, }\AttributeTok{header =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{names}\NormalTok{(dat) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"IDCNTRY"}\NormalTok{, }\StringTok{"R09A"}\NormalTok{, }\StringTok{"R09B"}\NormalTok{, }\StringTok{"R09C"}\NormalTok{, }\StringTok{"R09D"}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(dat)}
+\CommentTok{\#\textgreater{}   IDCNTRY R09A R09B R09C R09D}
+\CommentTok{\#\textgreater{} 1      31    3    3    0    0}
+\CommentTok{\#\textgreater{} 2      31    0    0    0    0}
+\CommentTok{\#\textgreater{} 3      31    3    2    1    3}
+\CommentTok{\#\textgreater{} 4      31    0    0    3    0}
+\CommentTok{\#\textgreater{} 5      31    0    0    0    0}
+\CommentTok{\#\textgreater{} 6      31    0    0    0    0}
 \end{Highlighting}
 \end{Shaded}
 
-Questi risultati replicano quelli riportati nel manuale del test WISC-III.
-
-\hypertarget{punteggi-fattoriali}{%
-\section{Punteggi fattoriali}\label{punteggi-fattoriali}}
-
-Fino ad ora abbiamo considerato le strategie di costruzione del modello basate sulla stima e sull'interpretazione delle saturazioni fattoriali e delle comunalità. Questo è il primo passo nella costruzione del modello fattoriale. È però possibile compiere un passo ulteriore, ovvero quello della stima dei punteggi fattoriali (\emph{factor scores}) i quali risultano utili sia per interpretare i risultati dell'analisi fattoriale che per fare diagnostica. I punteggi fattoriali forniscono le previsioni dei livelli dei fattori latenti per ogni rispondente. Esistono vari metodi di stima dei punteggi fattoriali. Tra questi troviamo il metodo di Thomson basato sulla regressione e il metodo di Bartlett basato sulla massima verosimiglianza. Entrambi questi metodi sono implementati nel software .
-
-\hypertarget{stima-dei-punteggi-fattoriali}{%
-\subsection{Stima dei punteggi fattoriali}\label{stima-dei-punteggi-fattoriali}}
-
-Si definiscono punteggi fattoriali i valori assunti dai fattori comuni (inosservabili) in corrispondenza delle osservazioni campionarie. Il metodo di Thomson stima i punteggi fattoriali in base all'approccio della regressione multipla, ovvero, impiegando la matrice delle correlazioni tra le variabili e la matrice di struttura (ovvero, la matrice delle correlazioni delle variabili con i fattori). Per ottenere le stime dei punteggi fattoriali con il metodo di Thomson è necessario specificare nella funzione \texttt{factanal()} l'opzione \texttt{scores\ =\ "regression"}.
-
-\hypertarget{dimostrazione-di-thurstone}{%
-\subsection{Dimostrazione di Thurstone}\label{dimostrazione-di-thurstone}}
-
-Prima di descrivere il metodo della regressione, esaminiamo la dimostrazione che Thurstone (1947) ha fornito per illustrare il significato dei punteggi fattoriali (si veda Loehlin, 1987). L'idea è quella di esaminare la stima dei punteggi fattoriali in una situazione in cui i tali punteggi sono conosciuti, in maniera tale da potere controllare il risultato dell'analisi.
-
-Si consideri un insieme di 1000 scatole di cui conosciamo le dimensioni \(x, y, z\):
+Viene creata la matrice \texttt{all.results} per immagazzinare i risultati dei diversi modelli che verranno confrontati, chiamati \emph{baseline} (nessun vincolo tra gruppi), \emph{proposition 4} (equivalenza delle soglie tra gruppi), e \emph{proposition 7} (equivalenza delle soglie e delle saturazioni fattoriali tra gruppi). Gli indici di bontà dell'adattamento che verranno considerati sono: chi-square, df, p, RMSEA, CFI, e TLI.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
-\NormalTok{n }\OtherTok{\textless{}{-}} \FloatTok{1e3}
-\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{100}\NormalTok{, }\FloatTok{1.5}\NormalTok{)}
-\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{200}\NormalTok{, }\FloatTok{1.5}\NormalTok{)}
-\NormalTok{z }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{300}\NormalTok{, }\FloatTok{1.5}\NormalTok{)}
+\NormalTok{all.results }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\ConstantTok{NA}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{6}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-Il problema è quello di stimare le dimensioni delle scatole disponendo soltanto di una serie di misure indirette, corrotte dal rumore di misura. Thurstone (1947) utilizzò le seguenti trasformazioni delle dimensioni delle scatole (si veda Jennrich, 2007).
+\hypertarget{baseline-model}{%
+\subsection{Baseline model}\label{baseline-model}}
+
+Nel \emph{baseline model} non viene posto alcun vincolo tra i gruppi o le misure ripetute:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{s }\OtherTok{\textless{}{-}} \DecValTok{40}
-\NormalTok{y1 }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n, }\FunctionTok{mean}\NormalTok{(x), s)}
-\NormalTok{y2 }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n, }\FunctionTok{mean}\NormalTok{(y), s)}
-\NormalTok{y3 }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n, }\FunctionTok{mean}\NormalTok{(z), s)}
-\NormalTok{y4 }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{*}\NormalTok{ y }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
-\NormalTok{y5 }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{*}\NormalTok{ z }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
-\NormalTok{y6 }\OtherTok{\textless{}{-}}\NormalTok{ y }\SpecialCharTok{*}\NormalTok{ z }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
-\NormalTok{y7 }\OtherTok{\textless{}{-}}\NormalTok{ x}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ y }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
-\NormalTok{y8 }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{*}\NormalTok{ y}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
-\NormalTok{y9 }\OtherTok{\textless{}{-}}\NormalTok{ x}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ z }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
-\NormalTok{y10 }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{*}\NormalTok{ z}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
-\NormalTok{y11 }\OtherTok{\textless{}{-}}\NormalTok{ y}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ z }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
-\NormalTok{y12 }\OtherTok{\textless{}{-}}\NormalTok{ y }\SpecialCharTok{*}\NormalTok{ z}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
-\NormalTok{y13 }\OtherTok{\textless{}{-}}\NormalTok{ y}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ z }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
-\NormalTok{y14 }\OtherTok{\textless{}{-}}\NormalTok{ y }\SpecialCharTok{*}\NormalTok{ z}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
-\NormalTok{y15 }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{/}\NormalTok{ y }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
-\NormalTok{y16 }\OtherTok{\textless{}{-}}\NormalTok{ y }\SpecialCharTok{/}\NormalTok{ x }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
-\NormalTok{y17 }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{/}\NormalTok{ z }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
-\NormalTok{y18 }\OtherTok{\textless{}{-}}\NormalTok{ z }\SpecialCharTok{/}\NormalTok{ x }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
-\NormalTok{y19 }\OtherTok{\textless{}{-}}\NormalTok{ y }\SpecialCharTok{/}\NormalTok{ z }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
-\NormalTok{y20 }\OtherTok{\textless{}{-}}\NormalTok{ z }\SpecialCharTok{/}\NormalTok{ y }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
-\NormalTok{y21 }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ x }\SpecialCharTok{+} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ y }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
-\NormalTok{y22 }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ x }\SpecialCharTok{+} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ z }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
-\NormalTok{y23 }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ y }\SpecialCharTok{+} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ z }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, s)}
+\NormalTok{mod.cat }\OtherTok{\textless{}{-}} \StringTok{"F1 =\textasciitilde{} R09A + R09B + R09C + R09D"}
 \end{Highlighting}
 \end{Shaded}
 
-Eseguiamo l'analisi fattoriale con una soluzione a tre fattori sui dati così creati.
-
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{Y }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(}
-\NormalTok{  y1, y2, y3, y4, y5, y6, y7, y8, y9,}
-\NormalTok{  y10, y11, y12, y13, y14, y15, y16,}
-\NormalTok{  y17, y18, y19, y20, y21, y22, y23}
-\NormalTok{)}
-
-\NormalTok{fa }\OtherTok{\textless{}{-}} \FunctionTok{factanal}\NormalTok{(}
-\NormalTok{  Y,}
-  \AttributeTok{factors =} \DecValTok{3}\NormalTok{,}
-  \AttributeTok{scores =} \StringTok{"regression"}\NormalTok{,}
-  \AttributeTok{lower =} \FloatTok{0.01}
+\NormalTok{baseline }\OtherTok{\textless{}{-}} \FunctionTok{measEq.syntax}\NormalTok{(}
+  \AttributeTok{configural.model =}\NormalTok{ mod.cat,}
+  \AttributeTok{data =}\NormalTok{ dat,}
+  \AttributeTok{ordered =} \FunctionTok{c}\NormalTok{(}\StringTok{"R09A"}\NormalTok{, }\StringTok{"R09B"}\NormalTok{, }\StringTok{"R09C"}\NormalTok{, }\StringTok{"R09D"}\NormalTok{),}
+  \AttributeTok{parameterization =} \StringTok{"delta"}\NormalTok{,}
+  \AttributeTok{ID.fac =} \StringTok{"std.lv"}\NormalTok{,}
+  \AttributeTok{ID.cat =} \StringTok{"Wu.Estabrook.2016"}\NormalTok{,}
+  \AttributeTok{group =} \StringTok{"IDCNTRY"}\NormalTok{,}
+  \AttributeTok{group.equal =} \StringTok{"configural"}
 \NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-L'opzione \texttt{scores\ =\ "regression"} richiede il calcolo dei punteggi fattoriali con il metodo della regressione. Nel caso di una rotazione Varimax (default della funzione \texttt{factanal()}), i punteggi fattoriali risultano ovviamente incorrelati:
+Informazioni sul modello baseline si ottengono nel modo seguente:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{cor}\NormalTok{(}
-  \FunctionTok{cbind}\NormalTok{(fa}\SpecialCharTok{$}\NormalTok{scores[, }\DecValTok{1}\NormalTok{], fa}\SpecialCharTok{$}\NormalTok{scores[, }\DecValTok{2}\NormalTok{], fa}\SpecialCharTok{$}\NormalTok{scores[, }\DecValTok{3}\NormalTok{])}
-\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{round}\NormalTok{(}\DecValTok{3}\NormalTok{)}
-\CommentTok{\#\textgreater{}        [,1]  [,2]   [,3]}
-\CommentTok{\#\textgreater{} [1,]  1.000 0.002 {-}0.001}
-\CommentTok{\#\textgreater{} [2,]  0.002 1.000  0.005}
-\CommentTok{\#\textgreater{} [3,] {-}0.001 0.005  1.000}
+\FunctionTok{summary}\NormalTok{(baseline)}
 \end{Highlighting}
 \end{Shaded}
 
-Generiamo ora i diagrammi di dispersione che mettono in relazione le dimensioni originarie delle scatole (\(x, y, z\)) con i punteggi fattoriali sui tre fattori. Se l'analisi ha successo, ci aspettiamo un'alta correlazione tra i punteggi fattoriali di ogni fattore e una sola delle dimensioni delle scatole \(x\), \(y\), \(z\).
+Le proprietà del modello possono essere esplicitate con la seguente istruzione:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{p1 }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(x, }\AttributeTok{fs1 =}\NormalTok{ fa}\SpecialCharTok{$}\NormalTok{scores[, }\DecValTok{1}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(x, fs1)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.2}\NormalTok{)}
-\NormalTok{p2 }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(y, }\AttributeTok{fs1 =}\NormalTok{ fa}\SpecialCharTok{$}\NormalTok{scores[, }\DecValTok{1}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(y, fs1)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.2}\NormalTok{)}
-\NormalTok{p3 }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(z, }\AttributeTok{fs1 =}\NormalTok{ fa}\SpecialCharTok{$}\NormalTok{scores[, }\DecValTok{1}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(z, fs1)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.2}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\FunctionTok{as.character}\NormalTok{(baseline))}
+\end{Highlighting}
+\end{Shaded}
 
-\NormalTok{p4 }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(x, }\AttributeTok{fs2 =}\NormalTok{ fa}\SpecialCharTok{$}\NormalTok{scores[, }\DecValTok{2}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(x, fs2)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.2}\NormalTok{)}
-\NormalTok{p5 }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(y, }\AttributeTok{fs2 =}\NormalTok{ fa}\SpecialCharTok{$}\NormalTok{scores[, }\DecValTok{2}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(y, fs2)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.2}\NormalTok{)}
-\NormalTok{p6 }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(z, }\AttributeTok{fs2 =}\NormalTok{ fa}\SpecialCharTok{$}\NormalTok{scores[, }\DecValTok{2}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(z, fs2)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.2}\NormalTok{)}
+Per potere essere passato a \texttt{lavaan}, l'oggetto \texttt{baseline} deve essere in formato \texttt{char}:
 
-\NormalTok{p7 }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(x, }\AttributeTok{fs3 =}\NormalTok{ fa}\SpecialCharTok{$}\NormalTok{scores[, }\DecValTok{3}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(x, fs3)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.2}\NormalTok{)}
-\NormalTok{p8 }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(y, }\AttributeTok{fs3 =}\NormalTok{ fa}\SpecialCharTok{$}\NormalTok{scores[, }\DecValTok{3}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(y, fs3)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.2}\NormalTok{)}
-\NormalTok{p9 }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(z, }\AttributeTok{fs3 =}\NormalTok{ fa}\SpecialCharTok{$}\NormalTok{scores[, }\DecValTok{3}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(z, fs3)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.2}\NormalTok{)}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model.baseline }\OtherTok{\textless{}{-}} \FunctionTok{as.character}\NormalTok{(baseline)}
+\end{Highlighting}
+\end{Shaded}
+
+Adattiamo il modello ai dati:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit.baseline }\OtherTok{\textless{}{-}} \FunctionTok{cfa}\NormalTok{(}
+\NormalTok{  model.baseline,}
+  \AttributeTok{data =}\NormalTok{ dat,}
+  \AttributeTok{group =} \StringTok{"IDCNTRY"}\NormalTok{,}
+  \AttributeTok{ordered =} \FunctionTok{c}\NormalTok{(}\StringTok{"R09A"}\NormalTok{, }\StringTok{"R09B"}\NormalTok{, }\StringTok{"R09C"}\NormalTok{, }\StringTok{"R09D"}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Salviamo i risultati:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{all.results[}\DecValTok{1}\NormalTok{, ] }\OtherTok{\textless{}{-}}
+  \FunctionTok{round}\NormalTok{(}\FunctionTok{data.matrix}\NormalTok{(}
+    \FunctionTok{fitmeasures}\NormalTok{(fit.baseline, }\AttributeTok{fit.measures =} \FunctionTok{c}\NormalTok{(}
+      \StringTok{"chisq.scaled"}\NormalTok{, }\StringTok{"df.scaled"}\NormalTok{, }\StringTok{"pvalue.scaled"}\NormalTok{,}
+      \StringTok{"rmsea.scaled"}\NormalTok{, }\StringTok{"cfi.scaled"}\NormalTok{, }\StringTok{"tli.scaled"}
+\NormalTok{    ))}
+\NormalTok{  ),}
+  \AttributeTok{digits =} \DecValTok{3}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{invarianza-delle-soglie}{%
+\subsection{Invarianza delle soglie}\label{invarianza-delle-soglie}}
+
+Consideriamo ora il modello \emph{threshold invariance} \citep[chiamata \emph{Proposition 4} da][]{wu2016identification}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{prop4 }\OtherTok{\textless{}{-}} \FunctionTok{measEq.syntax}\NormalTok{(}
+  \AttributeTok{configural.model =}\NormalTok{ mod.cat,}
+  \AttributeTok{data =}\NormalTok{ dat,}
+  \AttributeTok{ordered =} \FunctionTok{c}\NormalTok{(}\StringTok{"R09A"}\NormalTok{, }\StringTok{"R09B"}\NormalTok{, }\StringTok{"R09C"}\NormalTok{, }\StringTok{"R09D"}\NormalTok{),}
+  \AttributeTok{parameterization =} \StringTok{"delta"}\NormalTok{,}
+  \AttributeTok{ID.fac =} \StringTok{"std.lv"}\NormalTok{,}
+  \AttributeTok{ID.cat =} \StringTok{"Wu.Estabrook.2016"}\NormalTok{,}
+  \AttributeTok{group =} \StringTok{"IDCNTRY"}\NormalTok{,}
+  \AttributeTok{group.equal =} \FunctionTok{c}\NormalTok{(}\StringTok{"thresholds"}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Adattiamo il modello ai dati:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model.prop4 }\OtherTok{\textless{}{-}} \FunctionTok{as.character}\NormalTok{(prop4)}
+\NormalTok{fit.prop4 }\OtherTok{\textless{}{-}} \FunctionTok{cfa}\NormalTok{(}
+\NormalTok{  model.prop4,}
+  \AttributeTok{data =}\NormalTok{ dat,}
+  \AttributeTok{group =} \StringTok{"IDCNTRY"}\NormalTok{,}
+  \AttributeTok{ordered =} \FunctionTok{c}\NormalTok{(}\StringTok{"R09A"}\NormalTok{, }\StringTok{"R09B"}\NormalTok{, }\StringTok{"R09C"}\NormalTok{, }\StringTok{"R09D"}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Salviamo i risulati
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# store model fit information for proposition 4}
+\NormalTok{all.results[}\DecValTok{2}\NormalTok{, ] }\OtherTok{\textless{}{-}}
+  \FunctionTok{round}\NormalTok{(}\FunctionTok{data.matrix}\NormalTok{(}
+    \FunctionTok{fitmeasures}\NormalTok{(fit.prop4, }\AttributeTok{fit.measures =} \FunctionTok{c}\NormalTok{(}
+      \StringTok{"chisq.scaled"}\NormalTok{, }\StringTok{"df.scaled"}\NormalTok{, }\StringTok{"pvalue.scaled"}\NormalTok{,}
+      \StringTok{"rmsea.scaled"}\NormalTok{, }\StringTok{"cfi.scaled"}\NormalTok{, }\StringTok{"tli.scaled"}
+\NormalTok{    ))}
+\NormalTok{  ),}
+  \AttributeTok{digits =} \DecValTok{3}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+Eseguiamo il confronto tra il modello di \emph{threshold invariance} e il modello di \emph{baseline}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{lavTestLRT}\NormalTok{(fit.baseline, fit.prop4)}
+\CommentTok{\#\textgreater{} Scaled Chi{-}Squared Difference Test (method = "satorra.2000")}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} lavaan }\AlertTok{NOTE}\CommentTok{:}
+\CommentTok{\#\textgreater{}     The "Chisq" column contains standard test statistics, not the}
+\CommentTok{\#\textgreater{}     robust test that should be reported per model. A robust difference}
+\CommentTok{\#\textgreater{}     test is a function of two standard (not robust) statistics.}
+\CommentTok{\#\textgreater{}  }
+\CommentTok{\#\textgreater{}              Df AIC BIC Chisq Chisq diff Df diff}
+\CommentTok{\#\textgreater{} fit.baseline  6          26.9                   }
+\CommentTok{\#\textgreater{} fit.prop4    14          42.2       46.1       8}
+\CommentTok{\#\textgreater{}              Pr(\textgreater{}Chisq)    }
+\CommentTok{\#\textgreater{} fit.baseline               }
+\CommentTok{\#\textgreater{} fit.prop4       2.2e{-}07 ***}
+\CommentTok{\#\textgreater{} {-}{-}{-}}
+\CommentTok{\#\textgreater{} Signif. codes:  }
+\CommentTok{\#\textgreater{} 0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{threshold-and-loading-invariance}{%
+\subsection{Threshold and loading invariance}\label{threshold-and-loading-invariance}}
+
+Consideriamo ora il modello \emph{threshold and loading invariance} \citep[chiamato \emph{Proposition 7} da][]{wu2016identification}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{prop7 }\OtherTok{\textless{}{-}} \FunctionTok{measEq.syntax}\NormalTok{(}
+  \AttributeTok{configural.model =}\NormalTok{ mod.cat,}
+  \AttributeTok{data =}\NormalTok{ dat,}
+  \AttributeTok{ordered =} \FunctionTok{c}\NormalTok{(}\StringTok{"R09A"}\NormalTok{, }\StringTok{"R09B"}\NormalTok{, }\StringTok{"R09C"}\NormalTok{, }\StringTok{"R09D"}\NormalTok{),}
+  \AttributeTok{parameterization =} \StringTok{"delta"}\NormalTok{,}
+  \AttributeTok{ID.fac =} \StringTok{"std.lv"}\NormalTok{,}
+  \AttributeTok{ID.cat =} \StringTok{"Wu.Estabrook.2016"}\NormalTok{,}
+  \AttributeTok{group =} \StringTok{"IDCNTRY"}\NormalTok{,}
+  \AttributeTok{group.equal =} \FunctionTok{c}\NormalTok{(}\StringTok{"thresholds"}\NormalTok{, }\StringTok{"loadings"}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Adattiamo il modello ai dati:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model.prop7 }\OtherTok{\textless{}{-}} \FunctionTok{as.character}\NormalTok{(prop7)}
+\NormalTok{fit.prop7 }\OtherTok{\textless{}{-}} \FunctionTok{cfa}\NormalTok{(}
+\NormalTok{  model.prop7,}
+  \AttributeTok{data =}\NormalTok{ dat, }\AttributeTok{group =} \StringTok{"IDCNTRY"}\NormalTok{,}
+  \AttributeTok{ordered =} \FunctionTok{c}\NormalTok{(}\StringTok{"R09A"}\NormalTok{, }\StringTok{"R09B"}\NormalTok{, }\StringTok{"R09C"}\NormalTok{, }\StringTok{"R09D"}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Salviamo i risultati:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{all.results[}\DecValTok{3}\NormalTok{, ] }\OtherTok{\textless{}{-}}
+  \FunctionTok{round}\NormalTok{(}\FunctionTok{data.matrix}\NormalTok{(}
+    \FunctionTok{fitmeasures}\NormalTok{(fit.prop7, }\AttributeTok{fit.measures =} \FunctionTok{c}\NormalTok{(}
+      \StringTok{"chisq.scaled"}\NormalTok{, }\StringTok{"df.scaled"}\NormalTok{, }\StringTok{"pvalue.scaled"}\NormalTok{,}
+      \StringTok{"rmsea.scaled"}\NormalTok{, }\StringTok{"cfi.scaled"}\NormalTok{, }\StringTok{"tli.scaled"}
+\NormalTok{    ))}
+\NormalTok{  ), }\AttributeTok{digits =} \DecValTok{3}\NormalTok{)}
+
+\NormalTok{column.names }\OtherTok{\textless{}{-}}
+  \FunctionTok{c}\NormalTok{(}
+    \StringTok{"chisq.scaled"}\NormalTok{, }\StringTok{"df.scaled"}\NormalTok{, }\StringTok{"pvalue.scaled"}\NormalTok{, }\StringTok{"rmsea.scaled"}\NormalTok{,}
+    \StringTok{"cfi.scaled"}\NormalTok{, }\StringTok{"tli.scaled"}
+\NormalTok{  )}
+
+\NormalTok{row.names }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"baseline"}\NormalTok{, }\StringTok{"prop4"}\NormalTok{, }\StringTok{"prop7"}\NormalTok{)}
+
+\FunctionTok{colnames}\NormalTok{(all.results) }\OtherTok{\textless{}{-}}\NormalTok{ column.names}
+\FunctionTok{rownames}\NormalTok{(all.results) }\OtherTok{\textless{}{-}}\NormalTok{ row.names}
+\end{Highlighting}
+\end{Shaded}
+
+Eseguiamo i confronti tra modelli:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{lavTestLRT}\NormalTok{(fit.prop4, fit.prop7)}
+\CommentTok{\#\textgreater{} Scaled Chi{-}Squared Difference Test (method = "satorra.2000")}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} lavaan }\AlertTok{NOTE}\CommentTok{:}
+\CommentTok{\#\textgreater{}     The "Chisq" column contains standard test statistics, not the}
+\CommentTok{\#\textgreater{}     robust test that should be reported per model. A robust difference}
+\CommentTok{\#\textgreater{}     test is a function of two standard (not robust) statistics.}
+\CommentTok{\#\textgreater{}  }
+\CommentTok{\#\textgreater{}           Df AIC BIC Chisq Chisq diff Df diff}
+\CommentTok{\#\textgreater{} fit.prop4 14          42.2                   }
+\CommentTok{\#\textgreater{} fit.prop7 20          93.1       54.7       6}
+\CommentTok{\#\textgreater{}           Pr(\textgreater{}Chisq)    }
+\CommentTok{\#\textgreater{} fit.prop4               }
+\CommentTok{\#\textgreater{} fit.prop7    5.4e{-}10 ***}
+\CommentTok{\#\textgreater{} {-}{-}{-}}
+\CommentTok{\#\textgreater{} Signif. codes:  }
+\CommentTok{\#\textgreater{} 0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{(p1 }\SpecialCharTok{|}\NormalTok{ p2 }\SpecialCharTok{|}\NormalTok{ p3) }\SpecialCharTok{/}
-\NormalTok{  (p4 }\SpecialCharTok{|}\NormalTok{ p5 }\SpecialCharTok{|}\NormalTok{ p6) }\SpecialCharTok{/}
-\NormalTok{  (p7 }\SpecialCharTok{|}\NormalTok{ p8 }\SpecialCharTok{|}\NormalTok{ p9)}
+\FunctionTok{lavTestLRT}\NormalTok{(fit.prop7, fit.baseline)}
+\CommentTok{\#\textgreater{} Scaled Chi{-}Squared Difference Test (method = "satorra.2000")}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} lavaan }\AlertTok{NOTE}\CommentTok{:}
+\CommentTok{\#\textgreater{}     The "Chisq" column contains standard test statistics, not the}
+\CommentTok{\#\textgreater{}     robust test that should be reported per model. A robust difference}
+\CommentTok{\#\textgreater{}     test is a function of two standard (not robust) statistics.}
+\CommentTok{\#\textgreater{}  }
+\CommentTok{\#\textgreater{}              Df AIC BIC Chisq Chisq diff Df diff}
+\CommentTok{\#\textgreater{} fit.baseline  6          26.9                   }
+\CommentTok{\#\textgreater{} fit.prop7    20          93.1        102      14}
+\CommentTok{\#\textgreater{}              Pr(\textgreater{}Chisq)    }
+\CommentTok{\#\textgreater{} fit.baseline               }
+\CommentTok{\#\textgreater{} fit.prop7       2.3e{-}15 ***}
+\CommentTok{\#\textgreater{} {-}{-}{-}}
+\CommentTok{\#\textgreater{} Signif. codes:  }
+\CommentTok{\#\textgreater{} 0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-43-1} \end{center}
+Un confronto tra gli indici di bontà di adattamento dei tre modelli è fornito di seguito:
 
-I risultati riportati nella figura confermano le aspettative.
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{all.results}
+\CommentTok{\#\textgreater{}          chisq.scaled df.scaled pvalue.scaled}
+\CommentTok{\#\textgreater{} baseline        50.94         6             0}
+\CommentTok{\#\textgreater{} prop4          111.98        14             0}
+\CommentTok{\#\textgreater{} prop7          210.64        20             0}
+\CommentTok{\#\textgreater{}          rmsea.scaled cfi.scaled tli.scaled}
+\CommentTok{\#\textgreater{} baseline        0.042      0.997      0.991}
+\CommentTok{\#\textgreater{} prop4           0.041      0.993      0.992}
+\CommentTok{\#\textgreater{} prop7           0.047      0.987      0.989}
+\end{Highlighting}
+\end{Shaded}
 
-Il metodo della regressione pone il problema della stima dei punteggi fattoriali nei termini di una ideale regressione di ogni fattore rispetto a tutte le variabili osservate. Per il fattore \(j\)-esimo, si può scrivere la seguente equazione:
-
-\[
-\begin{aligned}
-F_j =& \beta_{1j}y_1 + \dots + \beta_{pm}y_p + \varepsilon_j
-\end{aligned}
-\]
-
-dove \(F_j\) sono i punteggi fattoriali e \(y\) sono le variabili osservate standardizzate \((Y-\bar{Y})/s\). In forma matriciale, il modello diventa
-
-\[
-\textbf{F} = \textbf{y} \textbf{B} +
-\boldsymbol{\varepsilon}
-\]
-
-I coefficienti parziali di regressione \textbf{B} sono ignoti. Tuttavia, possono essere calcolati utilizzando i metodi della regressione lineare. Nel modello di regressione, infatti, i coefficienti dei minimi quadrati possono essere calcolati utilizzando due matrici di correlazioni: la matrice \(\textbf{R}_{xx}\) (le correlazioni tra le variabili \(X\)) e la matrice \(\textbf{R}_{xy}\) (le correlazioni tra le variabili \(X\) e la variabile \(Y\):
-
-\[
-\hat{\textbf{B}} = \textbf{R}_{xx}^{-1}\textbf{R}_{xy}
-\]
-
-Nel caso dell'analisi fattoriale, \(\textbf{R}_{xx}\) corrisponde alla matrice delle correlazioni tra le variabili osservate e \(\textbf{R}_{xy}\) corrisponde alla matrice di struttura (la matrice delle correlazioni tra le variabili osservate e i fattori). Se i fattori sono ortogonali, la matrice di struttura coincide con la matrice dei pesi fattoriali \(\hat{\boldsymbol{\Lambda}}\).
-
-I coefficienti \textbf{B} dell'equazione precedente possono dunque essere trovati nel modo seguente:
-
-\begin{equation}
-\hat{\textbf{B}} = \textbf{R}_{yy}^{-1}\textbf{R}_{xf}=
-\textbf{R}^{-1}\hat{\boldsymbol{\Lambda}}
-\end{equation}
-
-Una volta stimati i coefficienti \(\hat{\textbf{B}}\), i punteggi fattoriali si calcolano allo stesso modo dei punteggi teorici del modello di regressione:
-
-\begin{equation}
-\hat{\textbf{F}} = \textbf{y} \hat{\textbf{B}} = \textbf{y}
-\textbf{R}^{-1}\hat{\boldsymbol{\Lambda}},
-\end{equation}
-
-dove \(\textbf{y}\) è la matrice delle variabili osservate standardizzate \((Y-\bar{Y})/s\).
+In conclusione, nel caso presente, il test del rapporto di verosimiglianza indica che non viene rispettata neppure l'invarianza delle soglie tra gruppi. Gli altri confronti, dunque, sono superflui.
 
   \bibliography{refs.bib,book.bib,packages.bib}
 
