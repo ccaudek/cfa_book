@@ -34,7 +34,9 @@ latente su ciascuna variabile osservata. Si suole assumere per comodità
 che $\mu=0$, il che corrisponde a considerare le variabili $Y_i$ come
 ottenute dagli scarti dalle medie $\mu_i$ per $i = 1, \dots, p$:
 
-$$Y_i -\mu_i = \lambda_i \xi + \delta_i.$$
+$$
+Y_i -\mu_i = \lambda_i \xi + \delta_i.
+$$
 
 Si assume che il fattore comune abbia media zero, $\E(\xi)=0$, e
 varianza unitaria, $\V(\xi)=1$, che i fattori specifici abbiano media
@@ -79,7 +81,7 @@ $\lambda_i$ corrisponde alla correlazione tra $Y_i$ e $\xi$.
 Nell'ipotesi che le variabili $Y_i$ abbiano media nulla, la varianza di $Y_i$
 
 \begin{equation}
-  \V(Y_i) = \E(Y_i^2) -[\E(Y_i)]^2 = \E(Y_i^2)\notag\
+  \V(Y_i) = \E(Y_i^2) -[\E(Y_i)]^2 = \E(Y_i^2)\notag
 \end{equation}
 
 è data da
@@ -97,13 +99,17 @@ manifesta e corrisponde alla quota della varianza della $Y_i$ spiegata
 dal fattore comune. Di conseguenza $\psi_{i}$ è la parte residua della
 varianza di $Y_i$ non spiegata dal fattore comune ed è denominata
 *unicità* di $Y_i$. Nel caso di variabili standardizzate, l'unicità
-diventa uguale a $$\psi_{i}=1-\lambda^2_i.$$ In definitiva, la varianza
-totale di una variabile osservata può essere divisa in una parte che che
-ciascuna variabile condivide con le altre variabili e che è spiegata dal
-fattore comune (questa parte è chiamata *comunalità* ed è uguale uguale
+diventa uguale a 
+
+$$
+\psi_{i}=1-\lambda^2_i.
+$$ 
+
+In definitiva, la varianza totale di una variabile osservata può essere divisa in una quota che ciascuna variabile condivide con le altre variabili ed è spiegata dal
+fattore comune (questa quota è chiamata *comunalità* ed è uguale uguale
 al quadrato della saturazione della variabile osservata nel fattore
-comune, ovvero $h^2_i = \lambda_i^2$) e in una parte che è spiegata dal
-fattore specifico e di errore (questa parte è chiamata *unicità* ed è
+comune, ovvero $h^2_i = \lambda_i^2$), e in una quota che è spiegata dal
+fattore specifico (questa parte è chiamata *unicità* ed è
 uguale a $u_i = \psi_{i}$).
 
 ::: {.exercise}
@@ -114,12 +120,7 @@ quantità denominata `SS loadings`.
 Tale quantità indica la porzione della varianza totale delle 4 variabili
 manifeste che viene spiegata dal fattore comune. Ciascuna variabile
 standardizzata contribuisce con un'unità di varianza; nel caso presente,
-dunque la varianza totale sarà uguale a 4. Si ricordi che per *varianza
-totale* si intende la somma delle varianze delle variabili manifeste,
-ovvero la *traccia* della matrice di varianze e covarianze. La quota
-della varianza totale spiegata dal modello è data dalla somma delle
-comunalità delle quattro variabili, ovvero dalla somma delle saturazioni
-fattoriali innalzate al quadrato.
+dunque la varianza totale è uguale a 4. Si ricordi che, nella statistica multivariata, per *varianza totale* si intende la somma delle varianze delle variabili manifeste (nel linguaggio dell'algebra matriciale questa quantità corrisponde alla *traccia* della matrice di covarianze). La quota della varianza totale spiegata dal modello, invece, è data dalla somma delle comunalità delle quattro variabili, ovvero dalla somma delle saturazioni fattoriali innalzate al quadrato.
 
 ```{r}
 Spearman <- matrix(c(
@@ -155,26 +156,29 @@ Facendo il prodotto interno otteniamo:
 t(L) %*% L
 ```
 
-In termini proporzionali, la quota della varianza spiegata è uguale a
-$2.587 / 4 = 0.647$. Questa quantità è indicata nell'output con la
-denominazione `Proportion Var`.
+In termini proporzionali, la quota della varianza totale delle variabile manifeste che viene spiegata dal modello ad un fattore comune è dunque uguale a $2.587 / 4 = 0.647$. Questa quantità è indicata nell'output con la denominazione `Proportion Var`.
 :::
 
-Quale quota di varianza delle variabile manifeste viene spiegata dal
-modello ad un fattore comune? Ciascuna variabile manifesta ha un'unità
-di varianza. L'unicità (*uniqueness*) indica la proporzione della
-varianza della variabile considerata che non viene spiegata dalla
-soluzione fattoriale. La comunalità è uguale a:
+Si dice unicità (*uniqueness*) la quota della varianza della variabile considerata che non viene spiegata dalla soluzione fattoriale:
+
+```{r}
+round(fm$uniqueness, 3)
+```
+
+La comunalità (ovvero, la quota di varianza di ciascuna variabile manifesta che viene spiegata dal fattore comune) può essere trovata come:
 
 ```{r}
 round(1 - fm$uniqueness, 3)
 ```
 
-La componente di varianza non spiegata, o unicità, è invece uguale a:
+oppure con
 
 ```{r}
-round(fm$uniqueness, 3)
+L^2
 ```
+
+
+
 
 ## Covarianza tra due variabili manifeste
 
@@ -190,9 +194,10 @@ $$
 
 \begin{equation}
 \begin{aligned}
- \mbox{Cov}(Y_i, Y_k) &= \E(Y_i Y_k)=\E[(\lambda_i \xi + \delta_i)(\lambda_k \xi +  \delta_k)]\notag\\
+ \mbox{Cov}(Y_i, Y_k) &= \E(Y_i Y_k) \notag\\
+  & =\E[(\lambda_i \xi + \delta_i)(\lambda_k \xi +  \delta_k)]\notag\\
   &=\E(\lambda_i\lambda_k\xi^2 + \lambda_i  \xi \delta_k + \lambda_k \delta_i \xi + \delta_i \delta_k)\notag\\
-&=\lambda_i\lambda_k\underbrace{\E(\xi^2)}_{\V(\xi)=1}+\lambda_i\underbrace{\E(\xi \delta_k)}_{\mbox{Cov}(\xi, \delta_k) =0}+\notag\\ \;&+\lambda_k\underbrace{\E(\delta_i \xi)}_{\mbox{Cov}(\delta_i, \xi) =0} +\underbrace{\E(\delta_i \delta_k)}_{\mbox{Cov}(\delta_i, \delta_k)=0}\notag\\
+  &=\lambda_i\lambda_k\underbrace{\E(\xi^2)}_{\V(\xi)=1}+\lambda_i\underbrace{\E(\xi \delta_k)}_{\mbox{Cov}(\xi, \delta_k) =0}+\notag\\ \;&+\lambda_k\underbrace{\E(\delta_i \xi)}_{\mbox{Cov}(\delta_i, \xi) =0} +\underbrace{\E(\delta_i \delta_k)}_{\mbox{Cov}(\delta_i, \delta_k)=0}\notag\\
   &=\lambda_i\lambda_k
 \end{aligned}
 \end{equation}
@@ -257,37 +262,23 @@ $$
 
 dove $p$ è il numero di variabili manifeste e
 $q$ è il numero di parametri stimati dal modello fattoriale (ovvero,
-$\lambda$ e $\psi$). La statistica $v$ assume valore 0 se i parametri
-del modello riproducono esattamente la matrice di correlazioni tra le
-variabili nella popolazione. Tanto maggiore è la statistica $v$ tanto
-maggiore è la discrepanza tra le correlazioni osservate e quelle
-predette dal modello fattoriale. Un risultato statisticamente
-significativo (es., $p$ \< .05) rivela una discrepanza tra il modello e
-i dati. Il test del modello fattoriale mediante la statistica $\chi^2$
+$\lambda$ e $\psi$). 
+
+La statistica $v$ assume valore 0 se i parametri del modello riproducono esattamente la matrice di correlazioni tra le variabili nella popolazione. Tanto maggiore è la statistica $v$ tanto maggiore è la discrepanza tra le correlazioni osservate e quelle
+predette dal modello fattoriale. 
+
+Un risultato statisticamente significativo (es., $p$ \< .05) -- il quale suggerisce che una tale differenza *non* è uguale a zero -- rivela dunque una discrepanza tra il modello e i dati. Il test del modello fattoriale mediante la statistica $\chi^2$
 segue dunque una logica diversa da quella utilizzata nei normali test di
-ipotesi statistiche: *un risultato statisticamente significativo indica
-una mancanza di adattamento del modello ai dati*.
+ipotesi statistiche: *un risultato statisticamente significativo indica una mancanza di adattamento del modello ai dati*.
 
-L'applicazione del test $\chi^2$ per valutare la bontà di adattamento
-del modello ai dati richiede che ciascuna variabile manifesta sia
-distribuita normalmente (più precisamente, richiede che le variabili
-manifeste siano un campione casuale che deriva da una normale
-multivariata).
+L'applicazione del test $\chi^2$ per valutare la bontà di adattamento del modello ai dati richiede che ciascuna variabile manifesta sia distribuita normalmente -- più precisamente, richiede che le variabili manifeste siano un campione casuale che deriva da una normale
+multivariata. Questo requisito non è facile da rispettare in pratica.
 
-Il limite principale della statistica $v$ è che essa dipende dalle
-dimensioni del campione: al crescere delle dimensioni campionarie è più
-facile ottenere un risultato statisticamente significativo (ovvero,
-concludere che vi è un cattivo adattamento del modello ai dati). Per
-questa ragione, la bontà di adattamento del modello ai dati viene
-valutata da molteplici indici, non soltanto dalla statistica $v$.
+Tuttavia, il limite principale della statistica $\chi^2$ è che essa dipende fortemente dalle dimensioni del campione: al crescere delle dimensioni campionarie è più facile ottenere un risultato statisticamente significativo (ovvero, concludere che vi è un cattivo adattamento del modello ai dati). Per questa ragione, la bontà di adattamento del modello ai dati viene valutata da molteplici indici, non soltanto dalla statistica $\chi^2$. Più comune è calcolare il rapporto $\chi^2 / \nu$ e usare tale rapporto per valutare la bontà dell'adattamento. Valori minori di 3 o 4 suggeriscono che il modello ben si adatta ai dati.
 
 ## L'errore standard della misurazione e il modello fattoriale
 
-Per concludere, prendiamo nuovamente in esame la nozione dell'errore
-standard della misurazione, uno dei concetti centrali della CTT, e
-vediamo come tale concetto possa essere \"ripensato\" nel contesto del
-modello statistico dell'analisi fattoriale. Iniziamo con una
-dimostrazione.
+Per concludere, prendiamo nuovamente in esame la nozione dell'errore standard della misurazione, uno dei concetti centrali della CTT, e vediamo come tale concetto possa essere "ripensato" in riferimento al modello statistico dell'analisi fattoriale. Iniziamo con una dimostrazione.
 
 ::: {.proof}
 Secondo la CTT, il punteggio $X$ ottenuto dalla somministrazione del test è uguale a $X = T + E$, dove $E$ è una variabile aleatorie indipendente da $T$. Se consideriamo il rispondente $i$-esimo, il modello diventa $X_i = T_i + E_i$, dove $T_i$ è il valore
@@ -433,7 +424,7 @@ Per trovare $\sigma$ calcoliamo prima il punteggio totale:
 tot_score <- rowSums(csq)
 ```
 
-La deviazione standard di `tot_score` ci fornisce una stima di $\sigma$:
+La deviazione standard di `tot_score` ci fornisce una stima di $\sigma_X$:
 
 ```{r}
 sigma <- sd(tot_score)

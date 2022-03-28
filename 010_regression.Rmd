@@ -30,7 +30,39 @@ Il significato dei coefficienti di regressione è semplice:
 - $\alpha$ è il valore atteso di $Y$ quando $X = 0$;
 - $\beta$ è l'incremento atteso nel valore atteso di $Y$ quando $X$ aumenta di un'unità.
 
-Per fare un esempio, consideriamo i dati dell'antropologo Sahlins, il quale si è chiesto se esiste un'associazione tra l'ampiezza del clan (`consumers`) e l'area occupata da quel clan (`acres`) in una popolazione di cacciatori-raccoglitori. I dati sono i seguenti:
+Il modello statistico della regressione bivariata è rappresentato nella figura seguente.
+
+```{r, echo=FALSE}
+opar <- par(no.readonly = TRUE) # copy of current settings
+par(mar=c(2, 14, 2, 1), las = 1)
+DF <- data.frame(x = c(1, 4, 9), y = c(1, 4, 9))
+plot(y~x, data = DF, xaxt = "n", yaxt = "n", 
+     xlim = c(0, 12), ylim = c(-2, 12),
+     xlab = "", ylab = "", type = "n")
+abline(lm(y~x, data = DF), lwd = 2)
+axis(side =1, at =c(1, 4, 10), 
+     labels = c("x_1", "x_2", "x_3"))
+axis(side =2, at =c(1, 4, 10),
+     labels = c("E(Y | x_1) = beta_0 + beta_1x_1",
+                "E(Y | x_1) = beta_0 + beta_1x_1",
+                "E(Y | x_1) = beta_0 + beta_1x_1") )
+segments(1, -2, 1, 2.5, lty = "dashed")
+segments(0, 1, 1 + 0.75, 1, lty = "dashed")
+segments(4, -2, 4, 5.5, lty = "dashed")
+segments(0, 4, 4 + 0.75, 4, lty = "dashed")
+segments(10, -2, 10, 11.5, lty = "dashed")
+segments(0, 10, 10 + 0.75, 10, lty = "dashed")
+ys <- seq(-1.5, 1.5, length = 200)
+xs <- dnorm(ys, 0, 0.5)
+lines(xs + 1, ys + 1, type = "l",lwd = 2)
+lines(xs + 4, ys + 4, type = "l",lwd = 2)
+lines(xs + 10, ys + 10, type = "l",lwd = 2)
+text(7.8, 5.5, "E(Y | x) = beta_0 + beta_1x")
+arrows(8, 5.7, 7, 7, length = 0.1, lwd = 2)
+par(opar)
+```
+
+Per fare un esempio pratico, consideriamo i dati dell'antropologo Sahlins, il quale si è chiesto se esiste un'associazione tra l'ampiezza del clan (`consumers`) e l'area occupata da quel clan (`acres`) in una popolazione di cacciatori-raccoglitori. I dati sono i seguenti:
 
 ```{r}
 data(Sahlins)
@@ -233,6 +265,7 @@ Nella regressione multipla vengono utilizzati $k > 1$ predittori:
 $$
 y_i = \alpha + \sum_{j=1}^k \beta_j x_i + \varepsilon_i.
 $$
+
 L'interpretazione geometrica è simile a quella del modello bivariato. Nel caso di due predittori, il valore atteso della $y$ può essere rappresentato da un piano; nel caso di $k > 2$ predittori, da un iper-piano. Nel caso di $k=2$, tale piano è posto in uno spazio di dimensioni $x_1$, $x_2$ (che possiamo immaginare definire un piano orizzontale) e $y$ (ortogonale a tale piano). La superficie piana che rappresenta $\mathbb{E}(y)$ è inclinata in maniera tale che l'angolo tra il piano e l'asse $x_1$ corrisponde a $\beta_1$ e l'angolo tra il piano e l'asse $x_2$ corrisponde a $\beta_2$.
 
 ### Significato dei coefficienti parziali di regressione
@@ -243,7 +276,7 @@ _Il coefficiente parziale di regressione $\beta_j$ rappresenta l'incremento atte
 
 Un modo per interpretare la locuzione "al netto dell'effetto delle altre variabili indipendenti" è quello di esaminare la relazione tra la $y$ parzializzata e la $x_j$ parzializzata. In questo contesto, parzializzare significa decomporre una variabile di due componenti: una componente che è linearmente predicibile da una o più altre variabili e una componente che è linearmente incorrelata con tali varibili "terze".
 
-Eseguiamo questa "depurazione" dell'effetto delle variabili "terze" sia sulla $y$ sia su $x_j$. A questo punto possiamo esaminare la relazione bivariata che intercorre tra la componente della $y$ linearmente indipendente dalle variabili "terze" e la componente della $x_j$ linearmente indipendente dalle variabili "terze". Il coefficiente di regressione bivariato così ottenuto è identico al coefficiente parziale di regressione nel modello di regressione multipla. Possiamo così ottenere un'interpretazione di $\beta_j$.
+Se eseguiamo questa "depurazione" dell'effetto delle variabili "terze" sia sulla $y$ sia su $x_j$, possiamo poi esaminare la relazione bivariata che intercorre tra la componente della $y$ linearmente indipendente dalle variabili "terze" e la componente della $x_j$ linearmente indipendente dalle variabili "terze". Il coefficiente di regressione bivariato così ottenuto sarà identico al coefficiente parziale di regressione nel modello di regressione multipla. Questa procedura ci consente di assegnare un'interpretazione "intuitiva" al coefficiente parziale di regressione $\beta_j$.
 
 Esaminiamo un caso concreto.
 
@@ -284,7 +317,7 @@ Si vede come il coefficiente di regressione bivariato risulta identico al corris
 
 ### Relazioni causali
 
-Un altro modo per interpretare i coefficienti parziali di regressione è nell'ambito dei quelli che vengono chiamati i _path diagrams_. I diagrammi di percorso, che tratteremo in seguito e qui solo anticipiamo, descrivono le relazioni "causali" tra variabili: le variabili a monte del diagramma di percorso indicono le "cause" esogene e le variabili a valle indicano gli effetti, ovvero le variabili endogene. I coefficienti di percorso rappresentati graficamente come frecce orientate corrispondono all'effetto _diretto_ sulla variabile verso cui punta la freccia della variabile a monte della freccia. Tali coefficienti di percorso non sono altro che i coefficienti parziali di regressione del modello di regressione multipla. In questo contesto, indicano l'effetto atteso _diretto_ sulla variabile endogena dell'incremento di un'unità della variabile esogena, lasciano immutate tutte le altre relazioni strutturali del modello.
+Un altro modo per interpretare i coefficienti parziali di regressione è nell'ambito dei quelli che vengono chiamati i _path diagrams_. I diagrammi di percorso, che tratteremo in seguito e qui solo anticipiamo, descrivono le relazioni "causali" tra variabili: le variabili a monte del diagramma di percorso rappresentano le "cause" esogene e le variabili a valle indicano gli effetti, ovvero le variabili endogene. I coefficienti di percorso vengono rappresentati graficamente come frecce orientate e corrispondono all'effetto _diretto_ sulla variabile verso cui punta la freccia della variabile a monte della freccia. In tale rappresentazione grafica, i coefficienti di percorso non sono altro che i coefficienti parziali di regressione del modello di regressione multipla. In questo contesto, indicano l'effetto _diretto_ atteso sulla variabile endogena in conseguenza dell'incremento di un'unità della variabile esogena, *lasciano immutate tutte le altre relazioni strutturali* del modello.
 
 Usiamo la funzione `sem()` del pacchetto `lavaan` per definire il modello rappresentato nel successivo diagramma di percorso:
 
@@ -314,14 +347,18 @@ semPaths(
 
 Come indicato nel diagramma, l'effetto diretto di `mom_iq` su `kid_score` è identico al corrispondente coefficiente parziale di regressione.  
 
+Il problema di capire se sia appropriato utilizzare un modello di regressione per descrivere le relazioni causali tra le variabili è affrontato nel prossimo paragrafo in riferimento all'errore di specificazione.
+
 ### Errore di specificazione
 
-Spiritosamente chiamato "heartbreak of L.O.V.E." (Left-Out Variable Error; @mauro1990understanding), l'errore di specificazione è una caratteristica fondamentale dei modelli di regressione che deve sempre essere tenuta a mente quando interpretiamo i risultati di questa analisi statistica. L'errore di specificazione si verifica quando escludiamo dal modello di regressione una variabile che
+Spiritosamente chiamato "heartbreak of L.O.V.E." [Left-Out Variable Error; @mauro1990understanding], l'errore di specificazione è una caratteristica fondamentale dei modelli di regressione che deve sempre essere tenuta a mente quando interpretiamo i risultati di questa tecnica di analisi statistica. 
 
-- è associata con altre variabili nel modello,
+L'errore di specificazione si verifica quando escludiamo dal modello di regressione una variabile che ha due caratteristiche:
+
+- è associata con altre variabili inserite nel modello,
 - ha un effetto diretto sulla $y$.
 
-Come conseguenza dell'errore di specificazione, la direzione e il segno dei coefficienti parziali di regressione risultano sistematicamente distorti.
+Come conseguenza dell'errore di specificazione, l'intensità e il segno dei coefficienti parziali di regressione risultano sistematicamente distorti.
 
 Consideriamo un esempio con dati simulati nei quali immaginiamo che la prestazione sia positivamente associata alla motivazione e negativamente associata all'ansia. Immaginiamo inoltre che vi sia una correlazione positiva tra ansia a motivazione. Ci chiediamo cosa succede al coefficiente parziale della variabile "motivazione" se la variabile "ansia" viene esclusa dal modello di regressione.
 
@@ -333,34 +370,54 @@ motivation <- 4.0 * anxiety + rnorm(n, 0, 3.5)
 cor(anxiety, motivation)
 ```
 
+Creo la variabile `performance` come una combinazione lineare di motivazione e ansia nella quale la motivazione ha un effetto piccolo, ma positivo, sulla prestazione, e l'ansia ha un grande effetto negativo sulla prestazione:
+
 ```{r}
 performance <-  0.5 * motivation - 5.0 * anxiety + rnorm(n, 0, 3)
 ```
 
+Salvo i dati in un DataFrame:
+
 ```{r}
 sim_dat2 <- tibble(performance, motivation, anxiety)
+```
+
+Eseguo l'analisi di regressione specificando in maniera corretta il modello, ovvero usando come predittori sia l'ansia che la depressione:
+
+```{r}
 fm1 <- lm(performance ~ motivation + anxiety, sim_dat2)
+```
+
+Le stime dei coefficienti parziali di regressione recuperano correttamente l'intensità e il segno dei coefficienti utilizzati nel modello generatore dei dati:
+
+```{r}
 coef(fm1)
 ```
+
+Eseguo ora l'analisi di regressione ignorando il predittore `anxiety` che ha le due caratteristiche di essere associato a `motivation` e di avere un effetto diretto sulla prestazione:
 
 ```{r}
 fm2 <- lm(performance ~ motivation, sim_dat2)
 summary(fm2)
 ```
 
-Il risultato prodotto dal modello di regressione è sbagliato: come conseguenza dell'errore di specificazione, il segno del coefficiente parziale di regressione della variabile "motivazione" è negativo, anche se nel vero modello di regressione tale coefficiente ha il segno opposto. Quindi, se noi interpretassimo il coefficiente parziale ottenuto in termini casuali, saremmo portati a concludere che la motivazione fa diminuire la prestazione anche se, in realtà (nel modello generatore dei dati), è vero l'opposto.
+Si noti che, al di là della "significatività statistica" (si vedano le considerazioni fornite nel paragrafo sulla stepwise regression), il risultato prodotto dal modello di regressione è totalmente sbagliato: come conseguenza dell'errore di specificazione, il segno del coefficiente parziale di regressione della variabile "motivazione" è negativo, anche se nel modello generatore dei dati tale coefficiente aveva il segno opposto. 
 
-È facile vedere perché questo si verifica. Supponiamo che il vero modello sia
+Quindi, se interpretiamo il coefficiente parziale ottenuto in termini casuali, siamo portati a concludere che la motivazione fa diminuire la prestazione. Ma in realtà è vero l'opposto.
+
+È facile vedere perché si verifica l'errore di specificazione. Supponiamo che il vero modello sia
 
 $$
 y = \alpha + \beta_1 X_1 + \beta_2 X_2 + \varepsilon
 $$
-che verrebbe stimato con
+
+il quale verrebbe stimato da
 
 $$
 y = a + b_1 X_1 + b_2 X_2 + e.
 $$
-Supponiamo che il ricercatore creda invece che
+
+Supponiamo però che il ricercatore creda invece che
 
 $$
 y = \alpha^\prime + \beta_1^\prime X_1 + \varepsilon^\prime
@@ -373,26 +430,33 @@ $$
 y = a^\prime + b_1^\prime X_1 + e^\prime
 $$
 
-omettendo $X_2$ dal modello. Ci chiediamo che relazione ci sia tra $b_1^\prime$ e $b_1$.
+omettendo $X_2$ dal modello. 
 
-La formula per $b_1^\prime$ è
+Per capire che relazione intercorre tra $b_1^\prime$ e $b_1$, iniziamo a scrivere la formula per $b_1^\prime$:
+
+\begin{equation}
+b_1^\prime = \frac{\mbox{Cov}(X_1, Y)}{\mbox{Var}(X_1)}.
+\end{equation}
+
+Sviluppando, otteniamo
 
 \begin{equation}
 \begin{aligned}
-b_1^\prime &= \frac{\mbox{Cov}(X_1, Y)}{\mbox{Var}(X_1)}\notag\\
-&= \frac{\mbox{Cov}(X_1, a + b_1 X_1 + b_2 X_2 + e)}{\mbox{Var}(X_1)}\notag\\
+b_1^\prime &= \frac{\mbox{Cov}(X_1, a + b_1 X_1 + b_2 X_2 + e)}{\mbox{Var}(X_1)}\notag\\
 &= \frac{\mbox{Cov}(X_1, a)+b_1 \mbox{Cov}(X_1, X_1) + b_2 \mbox{Cov}(X_1, X_2) + \mbox{Cov}(X_1, e)}{\mbox{Var}(X_1)}\notag\\
 &= \frac{0 + b_1 \mbox{Var}(X_1) + b_2 \mbox{Cov}(X_1, X_2) + 0}{\mbox{Var}(X_1)}\notag\\
 &= b_1 + b_2 \frac{\mbox{Cov}(X_1, X_2)}{\mbox{Var}(X_1)}.
 \end{aligned}
 \end{equation}
 
-Quindi, se $X_2$ viene erroneamente omesso dal modello, abbiamo che
+Quindi, se erroneamente omettiamo $X_2$ dal modello, abbiamo che
 
-$$
+\begin{equation}
 \mathbb{E}(b_1^\prime) = \beta_1 + \beta_2 \frac{\sigma_{12}}{\sigma_1^2}.
-$$
-Verifichiamo per i dati dell'esempio che stiamo discutendo. Nel caso presente, $X_1$ è `motivation` e $X_2$ + `anxiety`. Dunque, applicando la formula precedente, otteniamo lo stesso valore per il coefficiente di regressione associato a `motivation` che era stato ottenuto adattando ai dati il modello `performance ~ motivation`, ovvero:
+(\#eq:specific-err)
+\end{equation}
+
+Verifichiamo tale conclusione per i dati dell'esempio che stiamo discutendo. Nel caso presente, $X_1$ è `motivation` e $X_2$ è `anxiety`. Applicando la \@ref(eq:specific-err) otteniamo lo stesso valore per il coefficiente di regressione associato a `motivation` che era stato ottenuto adattando ai dati il modello `performance ~ motivation`:
 
 ```{r}
 fm1$coef[2] +  fm1$coef[3] * 
@@ -400,7 +464,7 @@ fm1$coef[2] +  fm1$coef[3] *
   var(sim_dat2$motivation)
 ```
 
-In conclusione, $b_1^\prime$ è uno stimatore distorto di $\beta_1$. Si noti che questa distorsione non scomparirà all'aumentare della numerosità campionaria, il che (in termini statistici) ci porta a concludere che un tale stimatore è _inconsistente_. Quello che succede in pratica è che alla variabile $X_1$ vengono attribuiti gli effetti delle variabili che sono state omesse dal modello. Si noti che una tale distorsione sistematica di $b_1^\prime$ può essere evitata solo se si verificano due condizioni:
+Possiamo dunque concludere che $b_1^\prime$ è uno stimatore distorto di $\beta_1$. Si noti che questa distorsione non scompare all'aumentare della numerosità campionaria, il che (in termini statistici) significa che un tale stimatore è _inconsistente_. Quello che succede in pratica è che alla variabile $X_1$ vengono attribuiti gli effetti delle variabili che sono state omesse dal modello. Si noti che una tale distorsione sistematica di $b_1^\prime$ può essere evitata solo se si verificano due condizioni:
 
 - $\beta_2 = 0$. Questo è ovvio, dato che, se $\beta_2 = 0$, ciò significa che il modello non è specificato in modo errato, cioè $X_2$ non appartiene al modello perché non ha un effetto diretto sulla $Y$.
 -  $\sigma_{12} = 0$. Cioè, se $X_1$ e $X_2$ sono incorrelate, allora l'omissione di una delle due variabili non comporta stime distorte dell'effetto dell'altra.
@@ -410,17 +474,22 @@ In conclusione, $b_1^\prime$ è uno stimatore distorto di $\beta_1$. Si noti che
 Le conseguenze dell'errore di specificazione sono chiamate "soppressione" (_suppression_). In generale, si ha soppressione quando (1) il valore assoluto del peso beta di un predittore è maggiore di quello della sua correlazione bivariata con il criterio o (2) i due hanno segni opposti. 
 
 - L'esempio descritto sopra è un caso di _soppressione negativa_, dove il predittore ha correlazioni bivariate positive con il criterio, ma si riceve un peso beta negativo nell'analisi di regressione multipla. 
-- Un secondo tipo di soppressione è la _soppressione classica_, in cui un predittore non è correlato al criterio ma riceve un peso beta diverso da zero se un altro predittore viene controllato. 
+- Un secondo tipo di soppressione è la _soppressione classica_, in cui un predittore non è correlato al criterio ma riceve un peso beta diverso da zero. 
 - C'è anche la _soppressione reciproca_ che può verificarsi quando due variabili sono correlate positivamente con il criterio ma negativamente tra loro.
 
 ### Stepwise regression 
 
-Un'implicazione della soppressione è che i predittori non dovrebbero essere selezionati in base ai valori delle correlazioni bivariate con il criterio. Queste associazioni di ordine zero non controllano gli effetti degli altri predittori, quindi i loro valori possono essere fuorvianti rispetto ai coefficienti di regressione parziale per le stesse variabili. Per lo stesso motivo, il fatto che le correlazioni bivariate con il criterio siano statisticamente significative o meno è irrilevante per quanto riguarda la selezione dei predittori. Sebbene le procedure informatiche di regressione  rendano facile tali processi di selezione dei predittori, i ricercatori dovrebbero evitare di usare tali metodi. Il rischio è che anche piccole, ma non rilevate, non-linearità o effetti indiretti tra i predittori possano seriamente distocere i coefficienti di regressione parziale. È meglio selezionare giudiziosamente il minor numero di predittori sulla base di ragioni teoriche o dei risultati di ricerche precedenti.
+Un'implicazione della soppressione è che i predittori non dovrebbero essere selezionati in base ai valori delle correlazioni bivariate con il criterio. Queste associazioni, dette di ordine zero, non controllano gli effetti degli altri predittori, quindi i loro valori possono essere fuorvianti rispetto ai coefficienti di regressione parziale per le stesse variabili. Per lo stesso motivo, il fatto che le correlazioni bivariate con il criterio siano statisticamente significative o meno è irrilevante per quanto riguarda la selezione dei predittori. Sebbene le procedure informatiche di regressione  rendano facile i processi di selezione dei predittori in base a tali criteri, tali procedure sono da evitare. Il rischio è che anche piccole, ma non rilevate, non-linearità o effetti indiretti tra i predittori possano seriamente distocere i coefficienti di regressione parziale. È meglio selezionare giudiziosamente il minor numero di predittori sulla base di ragioni teoriche o dei risultati di ricerche precedenti. In altri termini, le procedure di stepwise regression non dovrebbero mai essere usate.
 
-Una volta selezionati, ci sono due modi di base per inserire i predittori nell'equazione di regressione: uno consiste nell'inserire tutti i predittori contemporaneamente. L'altro è inserirli nel corso di una serie di passaggi, ovvero mediante usando una procedura sequenziale. L'ordine di ingresso può essere determinato in base a uno di due diversi standard: teorici (razionali) o empirici (statistici). Lo standard razionale corrisponde alla regressione gerarchica, in cui si comunica al computer un ordine fisso per inserire i predittori. Ad esempio, a volte le variabili demografiche vengono inserite nel primo passaggio, quindi nel secondo passaggio viene inserita una variabile psicologica di interesse. Questo ordine non solo controlla le variabili demografiche ma permette anche di valutare il potere predittivo della variabile psicologica, al di là di quello delle semplici variabili demografiche. Quest'ultimo può essere stimato come l'aumento della correlazione multipla al quadrato, o $\Delta R^2$, da quella della fase 1 con solo predittori demografici a quella della fase 2 con tutti i predittori nell'equazione di regressione.
+Una volta che sono stati selezionati, i predittori possono essere inseriti nell'equazione di regressione in due modi diversi: 
 
-Un esempio di standard statistico è la regressione _stepwise_, in cui il computer seleziona l'inserimento dei predittori in base esclusivamente alla significatività statistica; cioè, viene chiesto: quale predittore, se inserito nell'equazione, avrebbe il valore_$p$ più piccolo per il test del suo coefficiente di regressione parziale? Dopo la selezione, i predittori in una fase successiva possono essere rimossi dall'equazione di regressione in base ai loro valori-$p$ (ad esempio, se $p \geq$ .05). Il processo stepwise si interrompe quando, aggiungendo più predittori, $\Delta R^2$ non migliora. Varianti della regressione stepwise includono _forward inclusion_, in cui i predittori selezionati non vengono successivamente rimossi dal modello, e _backward elimination_, che inizia con tutti i predittori nel modello per poi rimuoverne alcuni in passi successivi. 
-I problemi relativi ai metodi stepwise sono così gravi da essere effettivamente banditi in alcuni giornali. Un problema è che fanno leva su risultati che si ottengono per caso, in dipendenza delle idiosincrasie del campione (quindi, non replicabili). 
+- tutti i predittori possono essere inseriti nel modello contemporaneamente;
+- i predittori possono essere inseriti nel modello sequenzialmente, mediante una serie di passaggi. 
 
-In secondo luogo, una volta che un insieme finale di predittori selezionati razionalmente è stato inserito nell'equazione di regressione, tali predittori non dovrebbero essere successivamente rimossi se i loro coefficienti di regressione non sono statisticamente significativi: il ricercatore non dovrebbe sentirsi in dovere di lasciar perdere ogni predittore che non risulta statisticamente significativo. In campioni piccoli, la potenza dei test di significatività è  bassa e la rimozione di un predittore non significativo può alterare sostanzialmente la soluzione. Se c'è una buona ragione per includere un predittore, allora è meglio lasciarlo nel modello, fino a prova contraria. 
+L'ordine di ingresso può essere determinato in base a standard: teorici (razionali) o empirici (statistici). Lo standard razionale corrisponde alla *regressione gerarchica*, in cui si comunica al computer un ordine fisso per inserire i predittori. Ad esempio, a volte le variabili demografiche vengono inserite nel primo passaggio, quindi nel secondo passaggio viene inserita una variabile psicologica di interesse. Questo ordine non solo controlla le variabili demografiche ma permette anche di valutare il potere predittivo della variabile psicologica, al di là di quello delle semplici variabili demografiche. Quest'ultimo può essere stimato come l'aumento della correlazione multipla al quadrato, o $\Delta R^2$, da quella della fase 1 con solo predittori demografici a quella della fase 2 con tutti i predittori nell'equazione di regressione.
+
+Un esempio di standard statistico è la regressione _stepwise_, in cui il computer seleziona l'inserimento dei predittori in base esclusivamente alla significatività statistica; cioè, viene chiesto: quale predittore, se inserito nell'equazione, avrebbe il valore_$p$ più piccolo per il test del suo coefficiente di regressione parziale? Dopo la selezione, i predittori in una fase successiva possono essere rimossi dall'equazione di regressione in base ai loro valori-$p$ (ad esempio, se $p \geq$ .05). Il processo stepwise si interrompe quando, aggiungendo più predittori, $\Delta R^2$ non migliora. Varianti della regressione stepwise includono _forward inclusion_, in cui i predittori selezionati non vengono successivamente rimossi dal modello, e _backward elimination_, che inizia con tutti i predittori nel modello per poi rimuoverne alcuni in passi successivi. Per le ragioni descritte nel paragrafo sull'errore di specificazione, i metodi basati sulle procedure di stepwise regression non dovrebbero mai essere usati. Infatti, i problemi relativi a tale procedura sono così gravi che varie riviste non accettano studi che fanno uso di una tale tecnica statistica. I risultati ottenuti con tali metodi, infatti, sono quasi certamente non replicabili in campioni diversi.
+
+Una considerazione finale riguarda l'idea di rimuovere i predittori "non significativi" dal modello di regressione. Questa è una cattiva idea. Il ricercatore non deve sentirsi in dovere di trascurare quei predittore che non risultano "statisticamente significativi". In campioni piccoli, la potenza dei test di significatività è  bassa e la rimozione di un predittore non significativo può alterare sostanzialmente la soluzione. Se c'è una buona ragione per includere un predittore, allora è meglio lasciarlo nel modello, fino a prova contraria. In termini generali, qualsiasi considerazione basata sulla "significatività statistia" è fuorviante.
+
 

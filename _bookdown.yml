@@ -61,3 +61,7 @@ rmd_files:
     - "900_lin_alg.Rmd"
 
 delete_merged_file: true
+
+header-includes:
+  - \usepackage{tikz}
+  - \usepackage{pgfplots}

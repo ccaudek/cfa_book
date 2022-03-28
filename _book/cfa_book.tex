@@ -250,7 +250,7 @@
 
 \title{Appunti di Costruzione e validazione di strumenti di misura dell'efficacia dell'intervento psicologico in neuropsicologia -- B020881 (B213)}
 \author{Corrado Caudek}
-\date{2022-03-07}
+\date{2022-03-28}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Teorema}[chapter]
@@ -347,7 +347,11 @@ Il significato dei coefficienti di regressione è semplice:
   \(\beta\) è l'incremento atteso nel valore atteso di \(Y\) quando \(X\) aumenta di un'unità.
 \end{itemize}
 
-Per fare un esempio, consideriamo i dati dell'antropologo Sahlins, il quale si è chiesto se esiste un'associazione tra l'ampiezza del clan (\texttt{consumers}) e l'area occupata da quel clan (\texttt{acres}) in una popolazione di cacciatori-raccoglitori. I dati sono i seguenti:
+Il modello statistico della regressione bivariata è rappresentato nella figura seguente.
+
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-3-1} \end{center}
+
+Per fare un esempio pratico, consideriamo i dati dell'antropologo Sahlins, il quale si è chiesto se esiste un'associazione tra l'ampiezza del clan (\texttt{consumers}) e l'area occupata da quel clan (\texttt{acres}) in una popolazione di cacciatori-raccoglitori. I dati sono i seguenti:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -372,7 +376,7 @@ Per fare un esempio, consideriamo i dati dell'antropologo Sahlins, il quale si �
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-4-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-5-1} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -419,7 +423,7 @@ Svolgiamo nuovamente l'analisi di regressione con il nuovo predittore:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-8-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-9-1} \end{center}
 
 La stima di \(\beta\) è rimasta invariata ma ora possiamo attribuire un significato alla stima di \(\alpha\): questo coefficiente indica il valore atteso della \(Y\) quando \(X\) assume il suo valore medio.
 
@@ -463,7 +467,7 @@ Un grafico di \(SS_{\text{res}}\) in funzione di \(b\) mostra che il valore \(b\
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-10-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-11-1} \end{center}
 
 \hypertarget{relazione-tra-b-e-r}{%
 \subsection{\texorpdfstring{Relazione tra \(b\) e \(r\)}{Relazione tra b e r}}\label{relazione-tra-b-e-r}}
@@ -515,7 +519,7 @@ Il fenomeno dell'attenuazione si verifica quando \(X\) viene misurato con una co
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-13-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-14-1} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -637,7 +641,9 @@ Nella regressione multipla vengono utilizzati \(k > 1\) predittori:
 
 \[
 y_i = \alpha + \sum_{j=1}^k \beta_j x_i + \varepsilon_i.
-\] L'interpretazione geometrica è simile a quella del modello bivariato. Nel caso di due predittori, il valore atteso della \(y\) può essere rappresentato da un piano; nel caso di \(k > 2\) predittori, da un iper-piano. Nel caso di \(k=2\), tale piano è posto in uno spazio di dimensioni \(x_1\), \(x_2\) (che possiamo immaginare definire un piano orizzontale) e \(y\) (ortogonale a tale piano). La superficie piana che rappresenta \(\mathbb{E}(y)\) è inclinata in maniera tale che l'angolo tra il piano e l'asse \(x_1\) corrisponde a \(\beta_1\) e l'angolo tra il piano e l'asse \(x_2\) corrisponde a \(\beta_2\).
+\]
+
+L'interpretazione geometrica è simile a quella del modello bivariato. Nel caso di due predittori, il valore atteso della \(y\) può essere rappresentato da un piano; nel caso di \(k > 2\) predittori, da un iper-piano. Nel caso di \(k=2\), tale piano è posto in uno spazio di dimensioni \(x_1\), \(x_2\) (che possiamo immaginare definire un piano orizzontale) e \(y\) (ortogonale a tale piano). La superficie piana che rappresenta \(\mathbb{E}(y)\) è inclinata in maniera tale che l'angolo tra il piano e l'asse \(x_1\) corrisponde a \(\beta_1\) e l'angolo tra il piano e l'asse \(x_2\) corrisponde a \(\beta_2\).
 
 \hypertarget{significato-dei-coefficienti-parziali-di-regressione}{%
 \subsection{Significato dei coefficienti parziali di regressione}\label{significato-dei-coefficienti-parziali-di-regressione}}
@@ -648,7 +654,7 @@ Ai coefficienti parziali del modello di regressione multipla possiamo assegnare 
 
 Un modo per interpretare la locuzione ``al netto dell'effetto delle altre variabili indipendenti'' è quello di esaminare la relazione tra la \(y\) parzializzata e la \(x_j\) parzializzata. In questo contesto, parzializzare significa decomporre una variabile di due componenti: una componente che è linearmente predicibile da una o più altre variabili e una componente che è linearmente incorrelata con tali varibili ``terze''.
 
-Eseguiamo questa ``depurazione'' dell'effetto delle variabili ``terze'' sia sulla \(y\) sia su \(x_j\). A questo punto possiamo esaminare la relazione bivariata che intercorre tra la componente della \(y\) linearmente indipendente dalle variabili ``terze'' e la componente della \(x_j\) linearmente indipendente dalle variabili ``terze''. Il coefficiente di regressione bivariato così ottenuto è identico al coefficiente parziale di regressione nel modello di regressione multipla. Possiamo così ottenere un'interpretazione di \(\beta_j\).
+Se eseguiamo questa ``depurazione'' dell'effetto delle variabili ``terze'' sia sulla \(y\) sia su \(x_j\), possiamo poi esaminare la relazione bivariata che intercorre tra la componente della \(y\) linearmente indipendente dalle variabili ``terze'' e la componente della \(x_j\) linearmente indipendente dalle variabili ``terze''. Il coefficiente di regressione bivariato così ottenuto sarà identico al coefficiente parziale di regressione nel modello di regressione multipla. Questa procedura ci consente di assegnare un'interpretazione ``intuitiva'' al coefficiente parziale di regressione \(\beta_j\).
 
 Esaminiamo un caso concreto.
 
@@ -714,7 +720,7 @@ Si vede come il coefficiente di regressione bivariato risulta identico al corris
 \hypertarget{relazioni-causali}{%
 \subsection{Relazioni causali}\label{relazioni-causali}}
 
-Un altro modo per interpretare i coefficienti parziali di regressione è nell'ambito dei quelli che vengono chiamati i \emph{path diagrams}. I diagrammi di percorso, che tratteremo in seguito e qui solo anticipiamo, descrivono le relazioni ``causali'' tra variabili: le variabili a monte del diagramma di percorso indicono le ``cause'' esogene e le variabili a valle indicano gli effetti, ovvero le variabili endogene. I coefficienti di percorso rappresentati graficamente come frecce orientate corrispondono all'effetto \emph{diretto} sulla variabile verso cui punta la freccia della variabile a monte della freccia. Tali coefficienti di percorso non sono altro che i coefficienti parziali di regressione del modello di regressione multipla. In questo contesto, indicano l'effetto atteso \emph{diretto} sulla variabile endogena dell'incremento di un'unità della variabile esogena, lasciano immutate tutte le altre relazioni strutturali del modello.
+Un altro modo per interpretare i coefficienti parziali di regressione è nell'ambito dei quelli che vengono chiamati i \emph{path diagrams}. I diagrammi di percorso, che tratteremo in seguito e qui solo anticipiamo, descrivono le relazioni ``causali'' tra variabili: le variabili a monte del diagramma di percorso rappresentano le ``cause'' esogene e le variabili a valle indicano gli effetti, ovvero le variabili endogene. I coefficienti di percorso vengono rappresentati graficamente come frecce orientate e corrispondono all'effetto \emph{diretto} sulla variabile verso cui punta la freccia della variabile a monte della freccia. In tale rappresentazione grafica, i coefficienti di percorso non sono altro che i coefficienti parziali di regressione del modello di regressione multipla. In questo contesto, indicano l'effetto \emph{diretto} atteso sulla variabile endogena in conseguenza dell'incremento di un'unità della variabile esogena, \emph{lasciano immutate tutte le altre relazioni strutturali} del modello.
 
 Usiamo la funzione \texttt{sem()} del pacchetto \texttt{lavaan} per definire il modello rappresentato nel successivo diagramma di percorso:
 
@@ -748,24 +754,28 @@ Il diagramma di percorso si ottiene con le seguenti istruzioni:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-27-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-28-1} \end{center}
 
 Come indicato nel diagramma, l'effetto diretto di \texttt{mom\_iq} su \texttt{kid\_score} è identico al corrispondente coefficiente parziale di regressione.
+
+Il problema di capire se sia appropriato utilizzare un modello di regressione per descrivere le relazioni causali tra le variabili è affrontato nel prossimo paragrafo in riferimento all'errore di specificazione.
 
 \hypertarget{errore-di-specificazione}{%
 \subsection{Errore di specificazione}\label{errore-di-specificazione}}
 
-Spiritosamente chiamato ``heartbreak of L.O.V.E.'' (Left-Out Variable Error; \citet{mauro1990understanding}), l'errore di specificazione è una caratteristica fondamentale dei modelli di regressione che deve sempre essere tenuta a mente quando interpretiamo i risultati di questa analisi statistica. L'errore di specificazione si verifica quando escludiamo dal modello di regressione una variabile che
+Spiritosamente chiamato ``heartbreak of L.O.V.E.'' {[}Left-Out Variable Error; \citet{mauro1990understanding}{]}, l'errore di specificazione è una caratteristica fondamentale dei modelli di regressione che deve sempre essere tenuta a mente quando interpretiamo i risultati di questa tecnica di analisi statistica.
+
+L'errore di specificazione si verifica quando escludiamo dal modello di regressione una variabile che ha due caratteristiche:
 
 \begin{itemize}
 \tightlist
 \item
-  è associata con altre variabili nel modello,
+  è associata con altre variabili inserite nel modello,
 \item
   ha un effetto diretto sulla \(y\).
 \end{itemize}
 
-Come conseguenza dell'errore di specificazione, la direzione e il segno dei coefficienti parziali di regressione risultano sistematicamente distorti.
+Come conseguenza dell'errore di specificazione, l'intensità e il segno dei coefficienti parziali di regressione risultano sistematicamente distorti.
 
 Consideriamo un esempio con dati simulati nei quali immaginiamo che la prestazione sia positivamente associata alla motivazione e negativamente associata all'ansia. Immaginiamo inoltre che vi sia una correlazione positiva tra ansia a motivazione. Ci chiediamo cosa succede al coefficiente parziale della variabile ``motivazione'' se la variabile ``ansia'' viene esclusa dal modello di regressione.
 
@@ -780,21 +790,41 @@ Consideriamo un esempio con dati simulati nei quali immaginiamo che la prestazio
 \end{Highlighting}
 \end{Shaded}
 
+Creo la variabile \texttt{performance} come una combinazione lineare di motivazione e ansia nella quale la motivazione ha un effetto piccolo, ma positivo, sulla prestazione, e l'ansia ha un grande effetto negativo sulla prestazione:
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{performance }\OtherTok{\textless{}{-}} \FloatTok{0.5} \SpecialCharTok{*}\NormalTok{ motivation }\SpecialCharTok{{-}} \FloatTok{5.0} \SpecialCharTok{*}\NormalTok{ anxiety }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, }\DecValTok{3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
+Salvo i dati in un DataFrame:
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{sim\_dat2 }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(performance, motivation, anxiety)}
+\end{Highlighting}
+\end{Shaded}
+
+Eseguo l'analisi di regressione specificando in maniera corretta il modello, ovvero usando come predittori sia l'ansia che la depressione:
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \NormalTok{fm1 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(performance }\SpecialCharTok{\textasciitilde{}}\NormalTok{ motivation }\SpecialCharTok{+}\NormalTok{ anxiety, sim\_dat2)}
+\end{Highlighting}
+\end{Shaded}
+
+Le stime dei coefficienti parziali di regressione recuperano correttamente l'intensità e il segno dei coefficienti utilizzati nel modello generatore dei dati:
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \FunctionTok{coef}\NormalTok{(fm1)}
 \CommentTok{\#\textgreater{} (Intercept)  motivation     anxiety }
 \CommentTok{\#\textgreater{}      1.3712      0.4954     {-}5.1052}
 \end{Highlighting}
 \end{Shaded}
+
+Eseguo ora l'analisi di regressione ignorando il predittore \texttt{anxiety} che ha le due caratteristiche di essere associato a \texttt{motivation} e di avere un effetto diretto sulla prestazione:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -822,17 +852,23 @@ Consideriamo un esempio con dati simulati nei quali immaginiamo che la prestazio
 \end{Highlighting}
 \end{Shaded}
 
-Il risultato prodotto dal modello di regressione è sbagliato: come conseguenza dell'errore di specificazione, il segno del coefficiente parziale di regressione della variabile ``motivazione'' è negativo, anche se nel vero modello di regressione tale coefficiente ha il segno opposto. Quindi, se noi interpretassimo il coefficiente parziale ottenuto in termini casuali, saremmo portati a concludere che la motivazione fa diminuire la prestazione anche se, in realtà (nel modello generatore dei dati), è vero l'opposto.
+Si noti che, al di là della ``significatività statistica'' (si vedano le considerazioni fornite nel paragrafo sulla stepwise regression), il risultato prodotto dal modello di regressione è totalmente sbagliato: come conseguenza dell'errore di specificazione, il segno del coefficiente parziale di regressione della variabile ``motivazione'' è negativo, anche se nel modello generatore dei dati tale coefficiente aveva il segno opposto.
 
-È facile vedere perché questo si verifica. Supponiamo che il vero modello sia
+Quindi, se interpretiamo il coefficiente parziale ottenuto in termini casuali, siamo portati a concludere che la motivazione fa diminuire la prestazione. Ma in realtà è vero l'opposto.
+
+È facile vedere perché si verifica l'errore di specificazione. Supponiamo che il vero modello sia
 
 \[
 y = \alpha + \beta_1 X_1 + \beta_2 X_2 + \varepsilon
-\] che verrebbe stimato con
+\]
+
+il quale verrebbe stimato da
 
 \[
 y = a + b_1 X_1 + b_2 X_2 + e.
-\] Supponiamo che il ricercatore creda invece che
+\]
+
+Supponiamo però che il ricercatore creda invece che
 
 \[
 y = \alpha^\prime + \beta_1^\prime X_1 + \varepsilon^\prime
@@ -844,25 +880,33 @@ e quindi stimi
 y = a^\prime + b_1^\prime X_1 + e^\prime
 \]
 
-omettendo \(X_2\) dal modello. Ci chiediamo che relazione ci sia tra \(b_1^\prime\) e \(b_1\).
+omettendo \(X_2\) dal modello.
 
-La formula per \(b_1^\prime\) è
+Per capire che relazione intercorre tra \(b_1^\prime\) e \(b_1\), iniziamo a scrivere la formula per \(b_1^\prime\):
+
+\begin{equation}
+b_1^\prime = \frac{\mbox{Cov}(X_1, Y)}{\mbox{Var}(X_1)}.
+\end{equation}
+
+Sviluppando, otteniamo
 
 \begin{equation}
 \begin{aligned}
-b_1^\prime &= \frac{\mbox{Cov}(X_1, Y)}{\mbox{Var}(X_1)}\notag\\
-&= \frac{\mbox{Cov}(X_1, a + b_1 X_1 + b_2 X_2 + e)}{\mbox{Var}(X_1)}\notag\\
+b_1^\prime &= \frac{\mbox{Cov}(X_1, a + b_1 X_1 + b_2 X_2 + e)}{\mbox{Var}(X_1)}\notag\\
 &= \frac{\mbox{Cov}(X_1, a)+b_1 \mbox{Cov}(X_1, X_1) + b_2 \mbox{Cov}(X_1, X_2) + \mbox{Cov}(X_1, e)}{\mbox{Var}(X_1)}\notag\\
 &= \frac{0 + b_1 \mbox{Var}(X_1) + b_2 \mbox{Cov}(X_1, X_2) + 0}{\mbox{Var}(X_1)}\notag\\
 &= b_1 + b_2 \frac{\mbox{Cov}(X_1, X_2)}{\mbox{Var}(X_1)}.
 \end{aligned}
 \end{equation}
 
-Quindi, se \(X_2\) viene erroneamente omesso dal modello, abbiamo che
+Quindi, se erroneamente omettiamo \(X_2\) dal modello, abbiamo che
 
-\[
+\begin{equation}
 \mathbb{E}(b_1^\prime) = \beta_1 + \beta_2 \frac{\sigma_{12}}{\sigma_1^2}.
-\] Verifichiamo per i dati dell'esempio che stiamo discutendo. Nel caso presente, \(X_1\) è \texttt{motivation} e \(X_2\) + \texttt{anxiety}. Dunque, applicando la formula precedente, otteniamo lo stesso valore per il coefficiente di regressione associato a \texttt{motivation} che era stato ottenuto adattando ai dati il modello \texttt{performance\ \textasciitilde{}\ motivation}, ovvero:
+\label{eq:specific-err}
+\end{equation}
+
+Verifichiamo tale conclusione per i dati dell'esempio che stiamo discutendo. Nel caso presente, \(X_1\) è \texttt{motivation} e \(X_2\) è \texttt{anxiety}. Applicando la \eqref{eq:specific-err} otteniamo lo stesso valore per il coefficiente di regressione associato a \texttt{motivation} che era stato ottenuto adattando ai dati il modello \texttt{performance\ \textasciitilde{}\ motivation}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -874,7 +918,7 @@ Quindi, se \(X_2\) viene erroneamente omesso dal modello, abbiamo che
 \end{Highlighting}
 \end{Shaded}
 
-In conclusione, \(b_1^\prime\) è uno stimatore distorto di \(\beta_1\). Si noti che questa distorsione non scomparirà all'aumentare della numerosità campionaria, il che (in termini statistici) ci porta a concludere che un tale stimatore è \emph{inconsistente}. Quello che succede in pratica è che alla variabile \(X_1\) vengono attribuiti gli effetti delle variabili che sono state omesse dal modello. Si noti che una tale distorsione sistematica di \(b_1^\prime\) può essere evitata solo se si verificano due condizioni:
+Possiamo dunque concludere che \(b_1^\prime\) è uno stimatore distorto di \(\beta_1\). Si noti che questa distorsione non scompare all'aumentare della numerosità campionaria, il che (in termini statistici) significa che un tale stimatore è \emph{inconsistente}. Quello che succede in pratica è che alla variabile \(X_1\) vengono attribuiti gli effetti delle variabili che sono state omesse dal modello. Si noti che una tale distorsione sistematica di \(b_1^\prime\) può essere evitata solo se si verificano due condizioni:
 
 \begin{itemize}
 \tightlist
@@ -894,7 +938,7 @@ Le conseguenze dell'errore di specificazione sono chiamate ``soppressione'' (\em
 \item
   L'esempio descritto sopra è un caso di \emph{soppressione negativa}, dove il predittore ha correlazioni bivariate positive con il criterio, ma si riceve un peso beta negativo nell'analisi di regressione multipla.
 \item
-  Un secondo tipo di soppressione è la \emph{soppressione classica}, in cui un predittore non è correlato al criterio ma riceve un peso beta diverso da zero se un altro predittore viene controllato.
+  Un secondo tipo di soppressione è la \emph{soppressione classica}, in cui un predittore non è correlato al criterio ma riceve un peso beta diverso da zero.
 \item
   C'è anche la \emph{soppressione reciproca} che può verificarsi quando due variabili sono correlate positivamente con il criterio ma negativamente tra loro.
 \end{itemize}
@@ -902,13 +946,23 @@ Le conseguenze dell'errore di specificazione sono chiamate ``soppressione'' (\em
 \hypertarget{stepwise-regression}{%
 \subsection{Stepwise regression}\label{stepwise-regression}}
 
-Un'implicazione della soppressione è che i predittori non dovrebbero essere selezionati in base ai valori delle correlazioni bivariate con il criterio. Queste associazioni di ordine zero non controllano gli effetti degli altri predittori, quindi i loro valori possono essere fuorvianti rispetto ai coefficienti di regressione parziale per le stesse variabili. Per lo stesso motivo, il fatto che le correlazioni bivariate con il criterio siano statisticamente significative o meno è irrilevante per quanto riguarda la selezione dei predittori. Sebbene le procedure informatiche di regressione rendano facile tali processi di selezione dei predittori, i ricercatori dovrebbero evitare di usare tali metodi. Il rischio è che anche piccole, ma non rilevate, non-linearità o effetti indiretti tra i predittori possano seriamente distocere i coefficienti di regressione parziale. È meglio selezionare giudiziosamente il minor numero di predittori sulla base di ragioni teoriche o dei risultati di ricerche precedenti.
+Un'implicazione della soppressione è che i predittori non dovrebbero essere selezionati in base ai valori delle correlazioni bivariate con il criterio. Queste associazioni, dette di ordine zero, non controllano gli effetti degli altri predittori, quindi i loro valori possono essere fuorvianti rispetto ai coefficienti di regressione parziale per le stesse variabili. Per lo stesso motivo, il fatto che le correlazioni bivariate con il criterio siano statisticamente significative o meno è irrilevante per quanto riguarda la selezione dei predittori. Sebbene le procedure informatiche di regressione rendano facile i processi di selezione dei predittori in base a tali criteri, tali procedure sono da evitare. Il rischio è che anche piccole, ma non rilevate, non-linearità o effetti indiretti tra i predittori possano seriamente distocere i coefficienti di regressione parziale. È meglio selezionare giudiziosamente il minor numero di predittori sulla base di ragioni teoriche o dei risultati di ricerche precedenti. In altri termini, le procedure di stepwise regression non dovrebbero mai essere usate.
 
-Una volta selezionati, ci sono due modi di base per inserire i predittori nell'equazione di regressione: uno consiste nell'inserire tutti i predittori contemporaneamente. L'altro è inserirli nel corso di una serie di passaggi, ovvero mediante usando una procedura sequenziale. L'ordine di ingresso può essere determinato in base a uno di due diversi standard: teorici (razionali) o empirici (statistici). Lo standard razionale corrisponde alla regressione gerarchica, in cui si comunica al computer un ordine fisso per inserire i predittori. Ad esempio, a volte le variabili demografiche vengono inserite nel primo passaggio, quindi nel secondo passaggio viene inserita una variabile psicologica di interesse. Questo ordine non solo controlla le variabili demografiche ma permette anche di valutare il potere predittivo della variabile psicologica, al di là di quello delle semplici variabili demografiche. Quest'ultimo può essere stimato come l'aumento della correlazione multipla al quadrato, o \(\Delta R^2\), da quella della fase 1 con solo predittori demografici a quella della fase 2 con tutti i predittori nell'equazione di regressione.
+Una volta che sono stati selezionati, i predittori possono essere inseriti nell'equazione di regressione in due modi diversi:
 
-Un esempio di standard statistico è la regressione \emph{stepwise}, in cui il computer seleziona l'inserimento dei predittori in base esclusivamente alla significatività statistica; cioè, viene chiesto: quale predittore, se inserito nell'equazione, avrebbe il valore\_\(p\) più piccolo per il test del suo coefficiente di regressione parziale? Dopo la selezione, i predittori in una fase successiva possono essere rimossi dall'equazione di regressione in base ai loro valori-\(p\) (ad esempio, se \(p \geq\) .05). Il processo stepwise si interrompe quando, aggiungendo più predittori, \(\Delta R^2\) non migliora. Varianti della regressione stepwise includono \emph{forward inclusion}, in cui i predittori selezionati non vengono successivamente rimossi dal modello, e \emph{backward elimination}, che inizia con tutti i predittori nel modello per poi rimuoverne alcuni in passi successivi. I problemi relativi ai metodi stepwise sono così gravi da essere effettivamente banditi in alcuni giornali. Un problema è che fanno leva su risultati che si ottengono per caso, in dipendenza delle idiosincrasie del campione (quindi, non replicabili).
+\begin{itemize}
+\tightlist
+\item
+  tutti i predittori possono essere inseriti nel modello contemporaneamente;
+\item
+  i predittori possono essere inseriti nel modello sequenzialmente, mediante una serie di passaggi.
+\end{itemize}
 
-In secondo luogo, una volta che un insieme finale di predittori selezionati razionalmente è stato inserito nell'equazione di regressione, tali predittori non dovrebbero essere successivamente rimossi se i loro coefficienti di regressione non sono statisticamente significativi: il ricercatore non dovrebbe sentirsi in dovere di lasciar perdere ogni predittore che non risulta statisticamente significativo. In campioni piccoli, la potenza dei test di significatività è bassa e la rimozione di un predittore non significativo può alterare sostanzialmente la soluzione. Se c'è una buona ragione per includere un predittore, allora è meglio lasciarlo nel modello, fino a prova contraria.
+L'ordine di ingresso può essere determinato in base a standard: teorici (razionali) o empirici (statistici). Lo standard razionale corrisponde alla \emph{regressione gerarchica}, in cui si comunica al computer un ordine fisso per inserire i predittori. Ad esempio, a volte le variabili demografiche vengono inserite nel primo passaggio, quindi nel secondo passaggio viene inserita una variabile psicologica di interesse. Questo ordine non solo controlla le variabili demografiche ma permette anche di valutare il potere predittivo della variabile psicologica, al di là di quello delle semplici variabili demografiche. Quest'ultimo può essere stimato come l'aumento della correlazione multipla al quadrato, o \(\Delta R^2\), da quella della fase 1 con solo predittori demografici a quella della fase 2 con tutti i predittori nell'equazione di regressione.
+
+Un esempio di standard statistico è la regressione \emph{stepwise}, in cui il computer seleziona l'inserimento dei predittori in base esclusivamente alla significatività statistica; cioè, viene chiesto: quale predittore, se inserito nell'equazione, avrebbe il valore\_\(p\) più piccolo per il test del suo coefficiente di regressione parziale? Dopo la selezione, i predittori in una fase successiva possono essere rimossi dall'equazione di regressione in base ai loro valori-\(p\) (ad esempio, se \(p \geq\) .05). Il processo stepwise si interrompe quando, aggiungendo più predittori, \(\Delta R^2\) non migliora. Varianti della regressione stepwise includono \emph{forward inclusion}, in cui i predittori selezionati non vengono successivamente rimossi dal modello, e \emph{backward elimination}, che inizia con tutti i predittori nel modello per poi rimuoverne alcuni in passi successivi. Per le ragioni descritte nel paragrafo sull'errore di specificazione, i metodi basati sulle procedure di stepwise regression non dovrebbero mai essere usati. Infatti, i problemi relativi a tale procedura sono così gravi che varie riviste non accettano studi che fanno uso di una tale tecnica statistica. I risultati ottenuti con tali metodi, infatti, sono quasi certamente non replicabili in campioni diversi.
+
+Una considerazione finale riguarda l'idea di rimuovere i predittori ``non significativi'' dal modello di regressione. Questa è una cattiva idea. Il ricercatore non deve sentirsi in dovere di trascurare quei predittore che non risultano ``statisticamente significativi''. In campioni piccoli, la potenza dei test di significatività è bassa e la rimozione di un predittore non significativo può alterare sostanzialmente la soluzione. Se c'è una buona ragione per includere un predittore, allora è meglio lasciarlo nel modello, fino a prova contraria. In termini generali, qualsiasi considerazione basata sulla ``significatività statistia'' è fuorviante.
 
 \hypertarget{part-la-teoria-classica-dei-test}{%
 \part{La teoria classica dei test}\label{part-la-teoria-classica-dei-test}}
@@ -947,42 +1001,56 @@ L'equazione fondamentale alla quale si riconduce la teoria classica dei test è 
 \hypertarget{le-due-componenti-del-punteggio-osservato}{%
 \section{Le due componenti del punteggio osservato}\label{le-due-componenti-del-punteggio-osservato}}
 
-CTT si occupa delle relazioni tra \(X\), \(T\) ed \(E\). La CTT si basa su un modello relativamente semplice in cui il punteggio osservato, il punteggio vero (cioè l'abilità inosservabile del rispondente) e l'errore aleatoria di misurazione sono legati da una relazione lineare. Indicati con \(T_{\nu j}\) (\emph{true score}) l'abilità latente da misurare dell'individuo \(\nu\) nella prova \(j\), con \(X_{\nu j}\) la variabile osservata (\emph{observed score}) per l'individuo \(\nu\) nella prova \(j\) e con \(E_{\nu j}\) l'errore aleatorio di misurazione, il modello si rappresenta con
+CTT si occupa delle relazioni tra \(X\), \(T\) ed \(E\). La CTT si basa su un modello relativamente semplice in cui il punteggio osservato, nel quale il punteggio vero (cioè l'abilità inosservabile del rispondente) e l'errore aleatorio di misurazione sono legati da una relazione lineare. Indicati con \(T_{\nu j}\) (\emph{true score}) l'abilità latente da misurare dell'individuo \(\nu\) nella prova \(j\), con \(X_{\nu j}\) la variabile osservata (\emph{observed score}) per l'individuo \(\nu\) nella prova \(j\) e con \(E_{\nu j}\) l'errore aleatorio di misurazione, il modello è
 
-\[
+\begin{equation}
 X_{\nu j} = T_{\nu} + E_{\nu j}. 
 \label{eq:observed-true-plus-error}
-\]
+\end{equation}
 
-Dunque, in base alla \eqref{eq:observed-true-plus-error} il punteggio osservato \(X_{\nu j}\) differisce da quello vero \(T_{\nu j}\) a causa di una componente di errore aleatoria \(E_{\nu j}\). Uno degli obiettivi centrali della CTT è quello di quantificare l'entità di tale errore. Vedremo come questa quantificazione verrà fornita nei termini dell'attendibilità del test. L'attendibilità (o affidabilità) rappresenta l'accuratezza con cui un test può misurare il punteggio vero (Coaley, 2014):
+Dunque, in base alla \eqref{eq:observed-true-plus-error} il punteggio osservato \(X_{\nu j}\) differisce da quello vero \(T_{\nu j}\) a causa di una componente di errore casuale la quale viene assunta essere \(E_{\nu j} \sim \mathcal{N}(0, \sigma_E)\). Uno degli obiettivi centrali della CTT è quello di quantificare l'entità di tale errore (ovvero, di stimare \(\sigma_E\)). Vedremo come questa quantificazione verrà fornita in due forme: l'attendibilità del test e la stima dell'errore standard della misurazione.
 
 \begin{itemize}
 \tightlist
 \item
-  Se l'attendibilità è grande, \(\sigma_E\) è piccolo: \(X\) ha un piccolo errore di misurazione e sarà vicino a \(T\).
+  L'attendibilità (o affidabilità) rappresenta l'accuratezza con cui un test può misurare il punteggio vero (Coaley, 2014) e corrisponde al rapporto tra la varianza dei punteggi veri e la varianza dei punteggi osservati:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    se l'attendibilità è grande, \(\sigma_E\) è piccolo -- \(X\) ha un piccolo errore di misurazione e sarà vicino a \(T\).
+  \item
+    se l'attendibilità è piccola, \(\sigma_E\) è grande -- \(X\) presenta un grande errore di misurazione e si discosterà molto da \(T\).
+  \end{itemize}
 \item
-  Se l'attendibilità è piccola, \(\sigma_E\) è grande: \(X\) presenta un grande errore di misurazione e si discosterà molto da \(T\).
+  La stima dell'errore standard della misurazione è appunto una stima della deviazione standard della variabile casuale \(E\) (ovvero \(\sigma_E\)) che corrompe i punteggi veri.
 \end{itemize}
 
 \hypertarget{il-punteggio-vero}{%
 \subsection{Il punteggio vero}\label{il-punteggio-vero}}
 
-La @ref(eq:observed-true\_plus-error) ci dice che il punteggio osservato è dato dalla somma di due componenti: una componente sistematica (il punteggio vero) e una componente aleatoria (l'errore di misurazione). Ma che cos'è il punteggio vero? La CTT considera un reattivo psicologico come una selezione aleatoria di item da un universo/popolazione di item attinenti al costrutto da misurare \citep{nunnally1994psychometric, kline2013handbook}. Se il reattivo psicologico viene concepito in questo modo, il punteggio vero diventa il punteggio che un rispondente otterrebbe se fosse misurato su tutto l'universo degli item proprio del costrutto in esame. L'errore di misurazione riflette dunque il grado in cui gli item che costituiscono il test non riescono a rappresentare l'intero universo degli item attinenti al costrutto.
+La \eqref{eq:observed-true-plus-error} ci dice che il punteggio osservato è dato dalla somma di due componenti: una componente sistematica (il punteggio vero) e una componente casuale (l'errore di misurazione). Ma che cos'è il punteggio vero? CTT attribuisce diverse interpretazioni al punteggio vero.
 
-In maniera equivalente, il punteggio vero può essere concepito come il punteggio non ``distorto'' da componenti estranee al costrutto, ovvero da effetti di apprendimento, fatica, memoria, motivazione, eccetera. Essendo concepita come del tutto aleatoria (ovvero, priva di qualunque natura sistematica), la componente aleatoria non introduce dei bias nella tendenza centrale della misurazione.
-
-Il punteggio vero è concepito come un punteggio inosservabile che corrisponde al valore atteso di infinite realizzazioni del punteggio ottenuto:
+\begin{itemize}
+\tightlist
+\item
+  La CTT considera un reattivo psicologico come una selezione casuale di item da un universo/popolazione di item attinenti al costrutto da misurare \citep{nunnally1994psychometric, kline2013handbook}. Se il reattivo psicologico viene concepito in questo modo, il punteggio vero diventa il punteggio che un rispondente otterrebbe se fosse misurato su tutto l'universo degli item proprio del costrutto in esame. L'errore di misurazione riflette dunque il grado in cui gli item che costituiscono il test non riescono a rappresentare l'intero universo degli item attinenti al costrutto.
+\item
+  In maniera equivalente, il punteggio vero può essere concepito come il punteggio non ``distorto'' da componenti estranee al costrutto, ovvero da effetti di apprendimento, fatica, memoria, motivazione, eccetera. Essendo concepita come del tutto casuale (ovvero, priva di qualunque natura sistematica), la componente casuale non introduce alcun bias nella tendenza centrale della misurazione (la media di \(E\) viene assunta essere uguale a 0).
+\item
+  In termini puramente statistici, il punteggio vero è un punteggio inosservabile che corrisponde al valore atteso di infinite realizzazioni del punteggio ottenuto:
+\end{itemize}
 
 \[
 T = \E(X) \equiv \mu_X \equiv \mu_{T}.
 \]
 
-In altri termini, secondo la definizione di Lord e Novick (1968), e facendo riferimento a alla seconda definizione presentata sopra, il punteggio vero è concepito come la media dei punteggi che un soggetto otterrebbe se il test venisse somministrato ripetutamente nelle stesse condizioni, in assenza di effetti di apprendimento e/o fatica.
+Combinando la seconda e la terza definizione presentate sopra, \citet{lord1968statistical} concepiscono il punteggio vero come la media dei punteggi che un soggetto otterrebbe se il test venisse somministrato ripetutamente nelle stesse condizioni, in assenza di effetti di apprendimento e/o fatica.
 
 \hypertarget{somministrazioni-ripetute}{%
 \subsection{Somministrazioni ripetute}\label{somministrazioni-ripetute}}
 
-Nella formulazione del modello della CTT si possono distinguere due tipi di esperimenti aleatori: uno che considera l'unità di osservazione (l'individuo) come campionaria, l'altro che considera il punteggio, per un determinato individuo, come campionario. Un importante risultato è dato dall'unione dei due esperimenti, ovvero dalla dimostrazione che i risultati della CTT, la quale è stata sviluppata ipotizzando ipotetiche somministrazioni ripetute del test allo stesso individuo sotto le medesime condizioni, si generalizzano al caso di una singola somministrazione del test ad un campione di individui \citep{allen2001introduction}. In base a questo risultato, se consideriamo la somministrazione del test ad una popolazione di individui, allora diventa più facile dare un contenuto empirico alle quantità della CTT:
+Nella formulazione del modello della CTT si possono distinguere due tipi di esperimenti aleatori: uno che considera l'unità di osservazione (l'individuo) come campionaria, l'altro che considera il punteggio, per un determinato individuo, come una variabile casuale. Un importante risultato è dato dall'unione dei due esperimenti casuali, ovvero dalla dimostrazione che i risultati della CTT, la quale è stata sviluppata ipotizzando ipotetiche somministrazioni ripetute del test allo stesso individuo sotto le medesime condizioni, si generalizzano al caso di una singola somministrazione del test ad un campione di individui \citep{allen2001introduction}. In base a questo risultato, se consideriamo la somministrazione del test ad una popolazione di individui, allora diventa più facile assegnare un contenuto empirico alle quantità della CTT:
 
 \begin{itemize}
 \tightlist
@@ -1004,7 +1072,11 @@ La CTT \emph{assume} che la media del punteggio osservato \(X\) sia uguale alla 
 \label{eq:assunzione-media-x-media-t}
 \]
 
-in altri termini, assume che il punteggio osservato fornisca una stima statisticamente corretta dell'abilità latente (punteggio vero). In pratica, il punteggio osservato non sarà mai uguale all'abilità latente, ma corrisponde solo ad uno dei possibili punteggi che il soggetto può ottenere, subordinatamente alla sua abilità latente. L'errore della misura è la differenza tra il punteggio osservato e il punteggio vero: \(E \equiv X - T.\)
+in altri termini, assume che il punteggio osservato fornisca una stima statisticamente corretta dell'abilità latente (punteggio vero).
+
+In pratica, il punteggio osservato non sarà mai uguale all'abilità latente, ma corrisponde solo ad uno dei possibili punteggi che il soggetto può ottenere, subordinatamente alla sua abilità latente. L'errore della misura è la differenza tra il punteggio osservato e il punteggio vero:
+
+\[E \equiv X - T.\]
 
 In base all'assunzione secondo cui il valore atteso dei punteggi è uguale alla media del valore vero, segue che
 
@@ -1017,14 +1089,14 @@ ovvero, il valore atteso degli errori è uguale a zero.
 \hypertarget{lerrore-standard-della-misurazione-sigma_e}{%
 \section{\texorpdfstring{L'errore standard della misurazione \(\sigma_E\)}{L'errore standard della misurazione \textbackslash sigma\_E}}\label{lerrore-standard-della-misurazione-sigma_e}}
 
-La radice quadrata di \(\sigma^2_E\), ovvero la deviazione standard degli errori, è la quantità fondamentale della CTT ed è chiamata \emph{errore standard della misurazione}. La stima dell'errore standard della misurazione costituisce uno degli obiettivi più importanti della CTT. Ricordiamo che la deviazione standard è simile (non identica) alla media del valore assoluto degli scarti dei valori di una distribuzione dalla media. Possiamo dunque utilizzare questa proprietà per descrivere il modo in cui la CTT interpreta \(\sigma_E\).
+La radice quadrata della varianza degli errori di misurazione, ovvero la deviazione standard degli errori, \(\sigma_E\), è la quantità fondamentale della CTT ed è chiamata \emph{errore standard della misurazione}. La stima dell'errore standard della misurazione costituisce uno degli obiettivi più importanti della CTT.
 
-L'\emph{errore standard della misurazione} \(\sigma_E\) ci dice qual è, approssimativamente, la variazione attesa del punteggio osservato, se il test venisse somministrato un'altra volta al rispondente nelle stesse condizioni.
+Ricordiamo che la deviazione standard è simile (ma non identica) alla media del valore assoluto degli scarti dei valori di una distribuzione dalla media. Possiamo dunque utilizzare questa proprietà per descrivere il modo in cui la CTT interpreta \(\sigma_E\). In altre parole, l'errore standard della misurazione \(\sigma_E\) ci dice qual è, approssimativamente, la variazione attesa del punteggio osservato, se il test venisse somministrato ripetute volte al rispondente sotto le stesse condizioni (in assenza di effetti di apprendimento o di fatica).
 
 \hypertarget{assiomi-della-teoria-classica}{%
 \section{Assiomi della Teoria Classica}\label{assiomi-della-teoria-classica}}
 
-La CTT \emph{assume} che gli errori siano delle variabili aleatorie incorrelate tra loro
+La CTT \emph{assume} che gli errori siano delle variabili casuali incorrelate tra loro
 
 \[
 \rho(E_i, E_k \mid T) = 0, \qquad\text{con}\; i \neq k,
@@ -1042,16 +1114,12 @@ le quali seguono una distribuzione gaussiana con media zero e deviazione standar
 E \sim \mathcal{N}(0, \sigma_E).
 \]
 
-La quantità \(\sigma_E\) è detta errore standard della misurazione.
-
-Sulla base di tali assunzioni la CTT deriva la formula dell'attendibilità di un test. Si noti che le assunzioni della CTT hanno una corrispondenza puntuale con le assunzioni su cui si basa il modello di regressione lineare.
+La quantità \(\sigma_E\) è appunto chiamata errore standard della misurazione. Sulla base di tali assunzioni la CTT deriva la formula dell'attendibilità di un test. Si noti che le assunzioni della CTT hanno una corrispondenza puntuale con le assunzioni su cui si basa il modello di regressione lineare.
 
 \hypertarget{lattendibilituxe0-del-test}{%
 \section{L'attendibilità del test}\label{lattendibilituxe0-del-test}}
 
-Il concetto di attendibilità è strettamente legato alla riproducibilità della misurazione: si riferisce al grado di stabilità, di coerenza interna e di precisione di una procedura di misurazione. Affinché una misurazione psicologica sia utile, deve produrre lo stesso risultato se viene applicata ripetutamente un determinato rispondente. Altri termini che vengono usati sono: affidabilità, costanza e credibilità.
-
-Vedremo nel seguito come il coefficiente di attendibilità fornisce una stima della quota della varianza del punteggio osservato che può essere attribuita all'abilità latente (``punteggio vero'', cioè privo di errore di misurazione). In generale, un coefficiente di attendibilità maggiore di 0.80 viene ritenuto soddisfacente perché indica che l'80\% o più della varianza dei punteggi ottenuti è causata da ciò che il test intende misurare, anziché dall'errore di misurazione.
+In questo paragrafo vedremo come il coefficiente di attendibilità (altri termini che vengono usati sono: affidabilità, costanza, credibilità) fornisce una stima della quota della varianza del punteggio osservato che può essere attribuita all'abilità latente (``punteggio vero'', cioè privo di errore di misurazione). In generale, un coefficiente di attendibilità maggiore di 0.80 viene ritenuto soddisfacente perché indica che l'80\% o più della varianza dei punteggi ottenuti è causata da ciò che il test intende misurare, anziché dall'errore di misurazione.
 
 Per definire l'attendibilità, la CTT si serve di due quantità:
 
@@ -1092,7 +1160,9 @@ Dato che \(\sigma_{TE}=\rho_{TE}\sigma_T \sigma_E=0\), in quanto \(\rho_{TE}=0\)
 La covarianza tra punteggio osservato \(X\) e punteggio vero \(T\) è uguale alla varianza del punteggio vero.
 
 \begin{proof}
-\begin{equation}
+La covarianza tra punteggio osservato e punteggio vero è uguale a
+
+\[
 \begin{aligned}
 \sigma_{X T} &= \E(XT) - \E(X)\E(T)\notag\\
 &=  \E[(T+E)T] - \E(T+E)\E(T)\notag\\
@@ -1100,10 +1170,13 @@ La covarianza tra punteggio osservato \(X\) e punteggio vero \(T\) è uguale all
 &=\E(T^2) - [\E(T)]^2\notag \\
 &= \sigma_T^2.
 \end{aligned}
-\end{equation}
+\]
 \end{proof}
 
-Da ciò segue che la correlazione tra punteggio osservato \(X\) e punteggio vero \(T\) è uguale al rapporto tra la deviazione standard del punteggio vero e la deviazione standard del punteggio osservato:
+\hypertarget{correlazione-tra-punteggio-osservato-e-punteggio-vero}{%
+\subsection{Correlazione tra punteggio osservato e punteggio vero}\label{correlazione-tra-punteggio-osservato-e-punteggio-vero}}
+
+La correlazione tra punteggio osservato \(X\) e punteggio vero \(T\) è uguale al rapporto tra la covarianza tra \(X\) e \(T\) divisa per il prodotto delle due deviazioni standard:
 
 \begin{equation}
 \begin{aligned}
@@ -1115,16 +1188,14 @@ Da ciò segue che la correlazione tra punteggio osservato \(X\) e punteggio vero
 \hypertarget{definizione-e-significato-dellattendibilituxe0}{%
 \subsection{Definizione e significato dell'attendibilità}\label{definizione-e-significato-dellattendibilituxe0}}
 
-La CTT definisce attendibilità di un test (o di un item) come il quadrato della correlazione tra punteggio osservato \(X\) e punteggio vero \(T\), ovvero come il rapporto tra la varianza del punteggio vero e la varianza del punteggio osservato:
+Sulla base della \eqref{eq:sd-ratio} giungiamo alla definizione dell'attendibilità. La CTT definisce attendibilità di un test (o di un item) come il quadrato della correlazione tra punteggio osservato \(X\) e punteggio vero \(T\), ovvero come il rapporto tra la varianza del punteggio vero e la varianza del punteggio osservato:
 
-\[
+\begin{equation}
 \rho_{XT}^2 = \frac{\sigma_{T}^2}{\sigma_X^2}.
 \label{eq:reliability-1}
-\]
+\end{equation}
 
-Questa è la quantità fondamentale della CTT e misura il grado di variazione del punteggio vero rispetto alla variazione del punteggio osservato{[}\^{}2{]}.
-
-Dato che \(\sigma^2_X = \sigma_T^2 + \sigma_E^2\), in base alla \eqref{eq:reliability-1} possiamo scrivere
+Questa è la quantità fondamentale della CTT e misura il grado di variazione del punteggio vero rispetto alla variazione del punteggio osservato. Dato che \(\sigma^2_X = \sigma_T^2 + \sigma_E^2\), in base alla \eqref{eq:reliability-1} possiamo scrivere
 
 \begin{equation}
 \begin{aligned}
@@ -1134,7 +1205,7 @@ Dato che \(\sigma^2_X = \sigma_T^2 + \sigma_E^2\), in base alla \eqref{eq:reliab
 \end{aligned}
 \end{equation}
 
-Questo significa che il coefficiente di attendibilità assume valore \(1\) se la varianza degli errori \(\sigma_{E}^2\) è nulla e assume valore \(0\) se la varianza degli errori è uguale alla varianza del punteggio osservato. Ciò significa che il coefficiente di attendibilità è un numero contenuto nell'intervallo compreso tra \(0\) e \(1\).
+Questo significa che il coefficiente di attendibilità assume valore \(1\) se la varianza degli errori \(\sigma_{E}^2\) è nulla e assume valore \(0\) se la varianza degli errori è uguale alla varianza del punteggio osservato. Il coefficiente di attendibilità è dunque un numero puro contenuto nell'intervallo compreso tra \(0\) e \(1\).
 
 \hypertarget{attendibilituxe0-e-modello-di-regressione-lineare}{%
 \section{Attendibilità e modello di regressione lineare}\label{attendibilituxe0-e-modello-di-regressione-lineare}}
@@ -1144,21 +1215,23 @@ Il modello di regressione lineare sta alla base della CTT. Infatti si può dire 
 \begin{itemize}
 \tightlist
 \item
-  la variabile dipendente è costituita dai punteggi osservati \(X\), e
+  i punteggi osservati \(X\) sono la variabile dipendente,
 \item
-  la variabile indipendente corrisponde ai punteggi veri \(T\).
+  i punteggi veri \(T\) sono la variabile indipendente.
 \end{itemize}
 
-Se rappresentiamo la CTT in questo modo, il coefficiente di attendibilità \(\rho_{XT}^2 = \frac{\sigma_{T}^2}{\sigma_X^2}\) non diventa altro che la quota di varianza del punteggio osservato \(X\) che viene spiegata dal punteggio vero \(T\) in base ad un modello lineare con pendenza unitaria e intercetta nulla. Nei termini di una tale rappresentazione, il coefficiente di attendibilità misura la forza della relazione lineare tra \(X\) e \(T\) e corrisponde al coefficiente di determinazione del seguente modello di regressione:
+Se rappresentiamo la CTT in questo modo, il coefficiente di attendibilità \(\rho_{XT}^2 = \frac{\sigma_{T}^2}{\sigma_X^2}\) non diventa altro che la quota di varianza del punteggio osservato \(X\) che viene spiegata dal punteggio vero \(T\) in base ad un modello lineare con pendenza unitaria e intercetta nulla:
 
 \[
 X = 0 + 1 \cdot T + E.
 \]
 
+Nei termini di una tale rappresentazione, il coefficiente di attendibilità è uguale al coefficiente di determinazione del modello di regressione.
+
 \hypertarget{simulazione}{%
 \subsection{Simulazione}\label{simulazione}}
 
-Per dare un contenuto concreto alle affermazioni precedenti, consideriamo la seguente simulazione svolta in . In tale simulazione il punteggio vero \(T\) e l'errore \(E\) verranno creati in modo tale da soddisfare i due vincoli della CTT: \(T\) e \(E\) saranno delle variabili gaussiane e tra loro incorrelate. Nella simulazione generiamo 100 coppie di valori \(X\) e \(T\) con i seguenti parametri: \(T \sim \mathcal{N}(\mu_T = 12, \sigma^2_T = 6)\), \(E \sim \mathcal{N}(\mu_E = 0, \sigma^2_T = 3)\). A tale fine usiamo le seguenti istruzioni:
+Per dare un contenuto concreto alle affermazioni precedenti, consideriamo la seguente simulazione svolta in \(\textsf{R}\). In tale simulazione il punteggio vero \(T\) e l'errore \(E\) sono creati in modo tale da soddisfare i vincoli della CTT: \(T\) e \(E\) sono variabili casuali gaussiane tra loro incorrelate. Nella simulazione generiamo 100 coppie di valori \(X\) e \(T\) con i seguenti parametri: \(T \sim \mathcal{N}(\mu_T = 12, \sigma^2_T = 6)\), \(E \sim \mathcal{N}(\mu_E = 0, \sigma^2_T = 3)\):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1170,28 +1243,18 @@ Per dare un contenuto concreto alle affermazioni precedenti, consideriamo la seg
 \CommentTok{\#\textgreater{}      [,1] [,2]}
 \CommentTok{\#\textgreater{} [1,]    6    0}
 \CommentTok{\#\textgreater{} [2,]    0    3}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{mu }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{12}\NormalTok{, }\DecValTok{0}\NormalTok{)}
 \NormalTok{mu}
 \CommentTok{\#\textgreater{} [1] 12  0}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{Y }\OtherTok{\textless{}{-}} \FunctionTok{mvrnorm}\NormalTok{(n, mu, Sigma, }\AttributeTok{empirical =} \ConstantTok{TRUE}\NormalTok{)}
 \NormalTok{T }\OtherTok{\textless{}{-}}\NormalTok{ Y[, }\DecValTok{1}\NormalTok{]}
 \NormalTok{E }\OtherTok{\textless{}{-}}\NormalTok{ Y[, }\DecValTok{2}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
-Le istruzioni precedenti creano un insieme di valori tali per cui le medie e la matrice di varianze-covarianze assumono esattamente i valori indicati. Possiamo dunque immaginare tale insieme di dati come la nostra ``popolazione''.
+Le istruzioni precedenti (\texttt{empirical\ =\ TRUE}) creano un campione di valori nei quali le medie e la matrice di covarianze assumono esattamente i valori richiesti. Possiamo dunque immaginare tale insieme di dati come la ``popolazione''.
 
-Secondo la CTT, il punteggio osservato è \(X = T + E\). Simuliamo dunque il punteggio osservato \(X\) nel modo seguente:
+Secondo la CTT, il punteggio osservato è \(X = T + E\). Simuliamo dunque il punteggio osservato \(X\) come:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1226,14 +1289,14 @@ Un diagramma di dispersione è fornito nella figura seguente:
 
 \begin{figure}
 
-{\centering \includegraphics{cfa_book_files/figure-latex/unnamed-chunk-39-1} 
+{\centering \includegraphics{cfa_book_files/figure-latex/unnamed-chunk-40-1} 
 
 }
 
-\caption{Simulazione della relazione tra punteggio osservato e punteggio vero per 100 individui in base alle assunzioni della CTT.}\label{fig:unnamed-chunk-39}
+\caption{Simulazione della relazione tra punteggio osservato e punteggio vero per 100 individui in base alle assunzioni della CTT.}\label{fig:unnamed-chunk-40}
 \end{figure}
 
-Secondo la CTT, il valore atteso di \(T\) è uguale al valore atteso di \(X\). Verifichiamo questa assunzione della CTT nei nostri dati:
+Secondo la CTT, il valore atteso di \(T\) è uguale al valore atteso di \(X\). Verifichiamo questa assunzione nei nostri dati:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1257,7 +1320,7 @@ L'errore deve avere media zero, varianza \(\sigma_E^2\) e deve essere incorrelat
 \end{Highlighting}
 \end{Shaded}
 
-Ricordiamo che la radice quadrata della varianza degli errori è chiamata errore standard della misurazione, \(\sigma_E\). La quantità \(\sqrt{\sigma_E^2}\) fornisce una misura della dispersione del punteggio osservato attorno al valore vero, nella condizione ipotetica di effettuare ripetute somministrazioni del test.
+Ricordiamo che la radice quadrata della varianza degli errori è l'errore standard della misurazione, \(\sigma_E\). La quantità \(\sqrt{\sigma_E^2}\) fornisce una misura della dispersione del punteggio osservato attorno al valore vero, nella condizione ipotetica di ripetute somministrazioni del test:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1281,14 +1344,14 @@ La varianza del punteggio vero \(T\) è uguale alla covarianza tra il punteggio 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{cov}\NormalTok{(T, X)}
-\CommentTok{\#\textgreater{} [1] 6}
 \FunctionTok{var}\NormalTok{(T)}
+\CommentTok{\#\textgreater{} [1] 6}
+\FunctionTok{cov}\NormalTok{(T, X)}
 \CommentTok{\#\textgreater{} [1] 6}
 \end{Highlighting}
 \end{Shaded}
 
-La correlazione tra il punteggio osservato e il punteggio vero è uguale al rapporto tra la deviazione standard del punteggio vero e la deviazione standard del punteggio osservato:
+La correlazione tra punteggio osservato e punteggio vero è uguale al rapporto tra la deviazione standard del punteggio vero e la deviazione standard del punteggio osservato:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1299,7 +1362,7 @@ La correlazione tra il punteggio osservato e il punteggio vero è uguale al rapp
 \end{Highlighting}
 \end{Shaded}
 
-Focalizziamoci ora sull'attendibiiltà. Per la CTT, l'attendibilità è uguale al quadrato del coefficiente di correlazione tra il punteggio vero \(T\) e il punteggio osservato \(X\):
+Per la CTT, l'attendibilità è uguale al quadrato del coefficiente di correlazione tra il punteggio vero \(T\) e il punteggio osservato \(X\), ovvero:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1308,11 +1371,13 @@ Focalizziamoci ora sull'attendibiiltà. Per la CTT, l'attendibilità è uguale a
 \end{Highlighting}
 \end{Shaded}
 
-La motivazione di questa simulazione è quella di mettere in relazione il coefficiente di attendibilità, calcolato con le formule della CTT, con il modello di regressione lineare. Analizziamo dunque i dati della simulazione mediante il seguente modello di regressione lineare:
+La motivazione di questa simulazione è quella di mettere in relazione il coefficiente di attendibilità, calcolato con la formula della CTT (come abbiamo fatto sopra), con il modello di regressione lineare. Analizziamo dunque i dati della simulazione mediante il seguente modello di regressione lineare:
 
 \[
-X = a + b T + E
+X = a + b T + E.
 \]
+
+Usando \(\textsf{R}\) otteniamo:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1340,7 +1405,7 @@ X = a + b T + E
 \end{Highlighting}
 \end{Shaded}
 
-Si noti che la retta di regressione ha intercetta 0 e pendenza 1. Questo è coerente con l'assunzione \(\E(X) = \E(T)\). Ma il risultato più importante di questa simulazione è il seguente: il coefficiente di determinazione (\(R^2\) = 0.67) del modello di regressione \(X = 0 + 1 \times T + E\) è identico al coefficiente di attendibilità che abbiamo calcolato con la formula \(\rho_{XT}^2 = \frac{\sigma_{T}^2}{\sigma_X^2}\):
+Si noti che la retta di regressione ha intercetta 0 e pendenza 1. Questo è coerente con l'assunzione \(\E(X) = \E(T)\). Ma il risultato più importante di questa simulazione è che il coefficiente di determinazione (\(R^2\) = 0.67) del modello di regressione \(X = 0 + 1 \times T + E\) è identico al coefficiente di attendibilità che si può calcolare con la formula \(\rho_{XT}^2 = \frac{\sigma_{T}^2}{\sigma_X^2}\):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1349,88 +1414,41 @@ Si noti che la retta di regressione ha intercetta 0 e pendenza 1. Questo è coer
 \end{Highlighting}
 \end{Shaded}
 
-Ciò ci consente di attribuire al coefficiente di attendibilità la seguente interpretazione: l'attendibilità di un test non è altro che la quota di varianza del punteggio osservato \(X\) che viene spiegata dalla regressione di \(X\) sul punteggio vero \(T\) in un modello di regressione dove \(\alpha\) = 0 e \(\beta\) = 1.
-
-Che cosa si può concludere dai risultati di questa simulazione? Possiamo dire che, in base alla CTT,
-
-\begin{itemize}
-\tightlist
-\item
-  c'è una relazione lineare tra il punteggio osservato \(X\) e il punteggio vero \(T\); tale relazione lineare ha pendenza unitaria e intercetta zero.
-\item
-  La CTT fa proprie le assunzioni del modello di regressione lineare: incorrelazione tra variabile esplicativa \(T\) ed errore \(E\), e indipendenza e gaussianità degli errori.
-\item
-  Come conseguenza di tali assunzioni, il coefficiente di attendibilità non è altro che la quota di varianza del punteggio osservato \(X\) che viene spiegata dal punteggio vero tramite una regressione lineare, ovvero non è altro che il coefficiente di determinazione del modello di regressione \(X = \alpha + \beta T + E,\) dove \(\alpha\) = 0 e \(\beta\) = 1.
-\end{itemize}
-
-Vedremo in seguito come sia possibile formulare la CTT nei termini del modello statistico dell'analisi fattoriale. Nel linguaggio dell'analisi fattoriale, la varianza dell'errore \(\sigma^2_E\) viene chiamata \emph{specificità} (\emph{uniqueness}).
+Ciò ci consente di interpretare il coefficiente di attendibilità nel modo seguente: l'attendibilità di un test non è altro che la quota di varianza del punteggio osservato \(X\) che viene spiegata dalla regressione di \(X\) sul punteggio vero \(T\) in un modello di regressione lineare dove \(\alpha\) = 0 e \(\beta\) = 1.
 
 \hypertarget{misurazioni-parallele-e-affidabilituxe0}{%
 \section{Misurazioni parallele e affidabilità}\label{misurazioni-parallele-e-affidabilituxe0}}
 
-L'equazione \(\rho_{XT}^2 = \frac{\sigma_{T}^2}{\sigma_X^2}\) definisce il coefficiente di attendibilità ma non fornisce gli strumenti per calcolarlo, dato che la varianza del punteggio vero \(\sigma_{T}^2\) è una quantità incognita. Il metodo utilizzato dalla CTT per ottenere una stima (empirica) dell'attendibilità è quello delle forme parallele del test. Se è possibile elaborare versioni alternative dello stesso test che risultino equivalenti tra loro in termini di contenuto, modalità di risposta e caratteristiche statistiche, allora diventa anche possibile stimare il coefficiente di attendibilità.
+L'equazione \(\rho_{XT}^2 = \frac{\sigma_{T}^2}{\sigma_X^2}\) definisce il coefficiente di attendibilità ma non ci fornisce gli strumenti per calcolarlo in pratica, dato che la varianza del punteggio vero \(\sigma_{T}^2\) è una quantità incognita. Il metodo utilizzato dalla CTT per ottenere una stima empirica dell'attendibilità è quello delle \emph{forme parallele} del test: se è possibile elaborare versioni alternative dello stesso test che risultino equivalenti tra loro in termini di contenuto, modalità di risposta e caratteristiche statistiche, allora diventa anche possibile stimare il coefficiente di attendibilità.
 
-Secondo la CTT, due test \(X=T+E\) e \(X^\prime=T^\prime+E^\prime\) si dicono misurazioni parallele della stessa abilità latente se il punteggio vero \(T\) è uguale al punteggio vero \(T^\prime\) e se la varianza degli errori \(\V(E)\) è uguale alla varianza degli errori \(\V(E^\prime)\).
+Secondo la CTT, due test \(X=T+E\) e \(X^\prime=T^\prime+E^\prime\) si dicono misurazioni parallele della stessa abilità latente se
 
-Se il punteggio vero è uguale al valore atteso del punteggio osservato, \(T = \E(X)\), allora devono essere uguali anche le medie dei punteggi osservati delle due forme parallele del test, \(\E(X) = \E(X^\prime)\).
+\begin{itemize}
+\tightlist
+\item
+  \(T = T^\prime\),
+\item
+  \(\V(E) = \V(E^\prime)\).
+\end{itemize}
+
+Da tali assunzioni segue che \(\E(X) = \E(X^\prime)\).
 
 \begin{proof}
-Consideriamo l'eguaglianza dei valori attesi dei punteggi osservati in due forme parallele del test: \(\E(X) = \E(X^\prime)\). Risulta immediato che
-
-\[
-\E(X) = \E(T + E) = \E(T) + \E(E) = T,
-\]
-
-dato che \(\E(E)=0\) e \(T\) non è una variabile aleatoria. Inoltre, \(\E(X^\prime)=T\), dato che \(T=T^\prime\). Ne segue che \(\E(X) =\E(X^\prime)\).
+Dato che \(\E(X) = T\) e che \(\E(X^\prime) = T\), è immediato vedere che \(\E(X) =\E(X^\prime)\) in quanto \(\E(E) = \E(E^\prime) = 0\).
 \end{proof}
 
 In maniera corrispondente, anche le varianze dei punteggi osservati di due misurazioni parallele devono essere uguali, \(\V(X) = \V(X^\prime)\).
 
 \begin{proof}
-Per la misurazione parallela \(X\) abbiamo
-
-\[
-\V(X) = \V(T + E)=  \V(T) +  \V(E);
-\]
-
-per la misurazione parallela \(X^\prime\) abbiamo
-
-\[
-\V(X^\prime) = \V(T^\prime + E^\prime) =  \V(T^\prime) +  \V(E^\prime).
-\]
-
-Dato che \(\V(E)=\V(E^\prime)\) e che \(T=T^\prime\), ne segue che \(\V(X) =\V(X^\prime)\).
+Per \(X\) abbiamo che \(\V(X) = \V(T + E) = \V(T) + \V(E)\); per \(X^\prime\) abbiamo che \(\V(X^\prime) = \V(T^\prime + E^\prime) = \V(T^\prime) + \V(E^\prime)\). Dato che \(\V(E) = \V(E^\prime)\) e che \(T = T^\prime\), ne segue che \(\V(X) = \V(X^\prime)\).
 \end{proof}
 
 Per costruzione, inoltre, gli errori \(E\) e \(E^\prime\) devono essere incorrelati con \(T\) e tra loro.
 
-\hypertarget{la-correlazione-tra-misurazioni-parallele}{%
-\subsection{La correlazione tra misurazioni parallele}\label{la-correlazione-tra-misurazioni-parallele}}
-
-Un'ulteriore assunzione della CTT è la seguente. La CTT assume che, data una serie di misurazioni parallele \(X_1, X_2, X_3, \dots\) e un arbitrario test \(Z\), si ha
-
-\[
-\rho(X_1, X_2) = \rho(X_1, X_3) = \rho(X_2, X_3) = \dots
-\]
-
-e
-
-\[
-\rho(X_1, Z) = \rho(X_2,Z) = \rho(X_3, Z) = \dots
-\]
-
-ovvero, tutte le misurazioni parallele sono correlate tra loro nella stessa misura e ciascuna misurazione parallela correla nella stessa misura con qualunque altro test.
-
-L'assunzione precedente può essere espressa, in maniera equivalente, come segue. Si consideri la matrice di correlazioni calcolata su tutto il dominio degli item (ovvero, la matrice delle correlazioni tra ciascuna coppia di item nel dominio del costrutto). La correlazione media di questa matrice quantifica la capacità media di ciascun item di rappresentare il costrutto. La CTT assume che la correlazione di ciascun item con ciascuno degli altri sia costante (ovvero, uguale per qualunque coppia di item). Detto in altri termini: secondo la CTT ciascun item rappresenta il costrutto nella stessa misura. Questa è un'assunzione molto forte che si riflette, come vedremo, nella formula del coefficiente \(\alpha\) di Cronbach utilizzata per misurare l'attendibilità come consistenza interna. È un'assunzione molto forte che raramente viene soddisfatta in pratica.
-
-Secondo la CTT, dunque, forme parallele del test devono avere lo stesso valore atteso e la stessa varianza. Inoltre, ciascuna forma parallela deve correlare nella stessa misura con qualunque altro test. In che modo si differenziano allora le forme parallele del test? L'unica differenza tra le forme parallele del test riguarda il punteggio osservato: a causa dell'errore di misurazione \(X \neq X^\prime\).
-
-Il concetto di forme parallele del test è estremamente importante per la CTT perché attraverso tale nozione diventa possibile giungere ad una stima empirica dell'attendibilità. Prima di presentare questo ultimo passaggio algebrico è però necessario calcolare la correlazione tra due misurazioni parallele.
-
 \hypertarget{la-correlazione-tra-due-forme-parallele-del-test}{%
 \subsection{La correlazione tra due forme parallele del test}\label{la-correlazione-tra-due-forme-parallele-del-test}}
 
-Secondo la CTT, la correlazione tra due misurazioni parallele è uguale al rapporto tra la varianza del punteggio vero e la varianza del punteggio osservato. Ricordiamo che la varianza del punteggio osservato è uguale nelle due forme parallele del test: \(\V(X) = \V(X^\prime)\).
+Dimostriamo ora che, in base alle assunzioni della CTT, la correlazione tra due forme parallele del test è uguale al rapporto tra la varianza del punteggio vero e la varianza del punteggio osservato.
 
 \begin{proof}
 Assumendo, senza perdita di generalità, che \(\E(X)=\E(X')=\E(T)=0\), possiamo scrivere
@@ -1444,7 +1462,7 @@ Assumendo, senza perdita di generalità, che \(\E(X)=\E(X')=\E(T)=0\), possiamo 
 \end{aligned}
 \end{equation}
 
-Ma \(\E(TE) = \E(TE^\prime) = \E(EE^\prime)=0\); inoltre, \(\sigma(X) =\sigma(X^\prime)= \sigma_X\). Dunque,
+Ma \(\E(TE) = \E(TE^\prime) = \E(EE^\prime)=0\). Inoltre, \(\sigma(X) =\sigma(X^\prime)= \sigma_X\). Dunque,
 
 \begin{equation}
 \rho_{X X^\prime} =\frac{\E(T^2)}{\sigma_X \sigma_X} = \frac{\sigma^2_T}{\sigma^2_X}.
@@ -1452,14 +1470,14 @@ Ma \(\E(TE) = \E(TE^\prime) = \E(EE^\prime)=0\); inoltre, \(\sigma(X) =\sigma(X^
 \end{equation}
 \end{proof}
 
-Si noti come la \eqref{eq:3-3-5} e l'equazione che definisce il coefficiente di attendibilità, ovvero \(\rho_{XT}^2 = \frac{\sigma_{T}^2}{\sigma_X^2}\), riportano tutte e due la stessa quantità a destra dell'uguale. Otteniamo così un importante risultato. Il coefficiente di attendibilità, ovvero il quadrato del coefficiente di correlazione tra il punteggio osservato e il punteggio vero, è uguale alla correlazione tra il valore osservato di due misurazioni parallele:
+Si noti come la \eqref{eq:3-3-5} e l'equazione che definisce il coefficiente di attendibilità, ovvero \(\rho_{XT}^2 = \frac{\sigma_{T}^2}{\sigma_X^2}\), riportano tutte e due la stessa quantità a destra dell'uguale. Otteniamo così un importante risultato: il coefficiente di attendibilità, ovvero il quadrato del coefficiente di correlazione tra il punteggio osservato e il punteggio vero, è uguale alla correlazione tra il valore osservato di due misurazioni parallele:
 
 \begin{equation}
 \rho^2_{XT} =  \rho_{XX^\prime}.
 \label{eq:rho2xt-rhoxx}
 \end{equation}
 
-Tale risultato è importante perché consente di esprimere la quantità inosservabile \(\rho^2_{XT}\) nei termini della quantità \(\rho_{XX^\prime}\) che può essere calcolata sulla base del punteggio osservato. Quindi, la stima di \(\rho^2_{XT}\) si riduce alla stima di \(\rho^2_{XX^\prime}\). Per questa ragione, la \eqref{eq:rho2xt-rhoxx} è forse la formula più importante della CTT.
+Tale risultato è importante perché consente di esprimere la quantità inosservabile \(\rho^2_{XT}\) nei termini della quantità \(\rho_{XX^\prime}\) che può essere calcolata sulla base dei punteggi osservati di due forme parallele del test. Quindi, la stima di \(\rho^2_{XT}\) si riduce alla stima di \(\rho^2_{XX^\prime}\). Per questa ragione, la \eqref{eq:rho2xt-rhoxx} è forse la formula più importante della CTT.
 
 \hypertarget{la-correlazione-tra-punteggio-osservato-e-punteggio-vero}{%
 \subsection{La correlazione tra punteggio osservato e punteggio vero}\label{la-correlazione-tra-punteggio-osservato-e-punteggio-vero}}
@@ -1470,12 +1488,12 @@ Consideriamo ora la correlazione tra punteggio osservato e punteggio vero. La \e
 \rho_{XT} = \sqrt{\rho_{XX^\prime}}.
 \]
 
-Tale risultato si può interpretare dicendo che la correlazione tra punteggio osservato e punteggio vero è uguale alla radice quadrata del coefficiente di attendibilità.
+In altri termini: la radice quadrata del coefficiente di attendibilità è uguale alla correlazione tra il punteggio osservato e il punteggio vero.
 
 \hypertarget{i-fattori-che-influenzano-lattendibilituxe0}{%
 \subsection{I fattori che influenzano l'attendibilità}\label{i-fattori-che-influenzano-lattendibilituxe0}}
 
-Considerando le precedenti tre equazioni
+Considerando le tre equazioni
 
 \[
 \rho^2_{XT} = \rho_{XX'},\quad
@@ -1489,14 +1507,14 @@ possiamo dire che ci sono tre modi equivalenti per concludere che l'attendibilit
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  quando la correlazione tra misurazioni parallele è alta,
+  se è alta la correlazione tra le forme parallele del test,
 \item
-  quando la varianza del punteggio vero è grande relativamente alla varianza del punteggio osservato,
+  se è grande la varianza del punteggio vero relativamente alla varianza del punteggio osservato,
 \item
-  quando la varianza dell'errore di misura è piccola relativamente alla varianza del punteggio osservato.
+  se è piccola la varianza dell'errore di misura relativamente alla varianza del punteggio osservato.
 \end{enumerate}
 
-Tali considerazioni hanno importanti implicazioni per le scelte che devono guidare la costruzione di un test. Si consideri, in particolare, l'equazione \(\rho^2_{XT} = \rho_{XX'}\). Se interpretiamo \(\rho_{XX'}\) come la correlazione tra due item, allora tale equazione ci fornisce un criterio per la scelta degli item da includere in un test: dobbiamo includere nel test gli item che correlano maggiormente tra loro. In questo modo, infatti, l'attendibilità del test aumenterà perché gli item inclusi nel test risultano maggiormente correlati con il punteggio vero.
+Tali considerazioni hanno importanti implicazioni per le scelte che devono guidare la costruzione di un test. Si consideri, in particolare, l'equazione \(\rho^2_{XT} = \rho_{XX'}\). Se interpretiamo \(\rho_{XX'}\) come la correlazione tra due item, allora tale equazione ci fornisce un criterio per la scelta degli item da includere in un test: devono essere inclusi nel test gli item che correlano maggiormente tra loro. In questo modo, infatti, l'attendibilità del test aumenterà perché gli item inclusi nel test sono maggiormente correlati con il punteggio vero.
 
 \hypertarget{metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilituxe0}{%
 \section{Metodi alternativi per la stima del coefficiente di attendibilità}\label{metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilituxe0}}
@@ -1505,7 +1523,7 @@ Come si stima in pratica l'affidabilità? Un modo grossolano (e molto impreciso)
 
 Se sono disponibili due forme parallele dello stesso test, l'affidabilità può essere calcolata mediante il coefficiente di correlazione dei punteggi totali dei due test (\emph{parallel-forms reliability}), valendo l'uguaglianza \(\rho_{XX^\prime} = \rho^2_{XT}\). Anche questo metodo, come il metodo del test-retest, non è esente da errori.
 
-Il metodo di stima più diffuso è quello conosciuto come Cronbach's alpha (\emph{internal consistency reliability}) originariamente ricavato da \citet{kuder1937theory} per item dicotomici e poi generalizzato da \citet{cronbach1951coefficient} per item a risposte ordinali di qualunque tipo. L'idea su cui si basa consiste nel fatto che ogni singolo item del test, se confrontato con tutti gli altri, può essere usato per stimarne l'affidabilità. L'analisi degli item viene utilizzata per ottenere una stima della consistenza interna del test e valuta la misura in cui gli item del test sono espressione dello stesso costrutto.
+Il metodo di stima più diffuso è quello dell'attendibilità come consistenza interna (\emph{internal consistency reliability}), originariamente ricavato da \citet{kuder1937theory} per item dicotomici e poi generalizzato da \citet{cronbach1951coefficient} per item a risposte ordinali. L'idea su cui si basa consiste nel fatto che ogni singolo item del test, se confrontato con tutti gli altri, può essere usato per stimare l'affidabilità del test. L'analisi degli item valuta dunque la misura in cui gli item del test sono espressione dello stesso costrutto.
 
 \hypertarget{ch:err_stnd_mis}{%
 \chapter{L'incertezza della misura}\label{ch:err_stnd_mis}}
@@ -2815,7 +2833,7 @@ Se invece usiamo \texttt{kable}, con gli opportuni parametri, otteniamo:
 \end{Shaded}
 
 \begin{longtable}[]{@{}llrrrrr@{}}
-\caption{\label{tab:unnamed-chunk-83}Factor Loadings}\tabularnewline
+\caption{\label{tab:unnamed-chunk-84}Factor Loadings}\tabularnewline
 \toprule
 Latent Factor & Indicator & B & SE & Z & p-value & Beta \\
 \midrule
@@ -2877,7 +2895,7 @@ Creiamo un qq-plot dei residui:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-85-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-86-1} \end{center}
 
 Il pacchetto \texttt{semPlot} consente di disegnare diagrammi di percorso per vari modelli SEM. La funzione \texttt{semPaths} prende in input un oggetto creato da \texttt{lavaan} e disegna il diagramma, con diverse opzioni disponibili. Il diagramma qui prodotto controlla le dimensioni dei caratteri/etichette, la visualizzazione dei residui e il colore dei percorsi/coefficienti. Sono disponibili queste e molte altre opzioni di controllo.
 
@@ -2895,7 +2913,7 @@ Il pacchetto \texttt{semPlot} consente di disegnare diagrammi di percorso per va
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-86-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-87-1} \end{center}
 
 In una versione alternativa del diagramma di percorso aggiungiamo anche le specificità:
 
@@ -2911,7 +2929,7 @@ In una versione alternativa del diagramma di percorso aggiungiamo anche le speci
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-87-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-88-1} \end{center}
 
 Il calcolo delle saturazioni fattoriali con il metodo del centroide aveva prodotto il risultato: \(\boldsymbol{\hat{\Lambda}}'= (0.97, 0.84, 0.73, 0.65)\). Si noti la somiglianza con i valori ottenuti mediante il metodo di massima verosimiglianza.
 
@@ -2939,7 +2957,9 @@ Y_i = \mu_i + \lambda_{i} \xi + \delta_i \qquad i=1, \dots, p
 
 dove \(\xi\) rappresenta il fattore latente, chiamato anche \emph{fattore comune}, poiché è comune a tutte le \(Y_i\), i \(\delta_i\) sono invece specifici di ogni variabile osservata e per tale ragione vengono chiamati \emph{fattori specifici} o \emph{unici}, e infine i \(\lambda_i\) sono detti \emph{saturazioni} (o \emph{pesi}) fattoriali poiché consentono di valutare il peso del fattore latente su ciascuna variabile osservata. Si suole assumere per comodità che \(\mu=0\), il che corrisponde a considerare le variabili \(Y_i\) come ottenute dagli scarti dalle medie \(\mu_i\) per \(i = 1, \dots, p\):
 
-\[Y_i -\mu_i = \lambda_i \xi + \delta_i.\]
+\[
+Y_i -\mu_i = \lambda_i \xi + \delta_i.
+\]
 
 Si assume che il fattore comune abbia media zero, \(\E(\xi)=0\), e varianza unitaria, \(\V(\xi)=1\), che i fattori specifici abbiano media zero, \(\E(\delta_j)=0\), e varianza \(\V(\delta_j)=\psi_{i}\), che i fattori specifici siano incorrelati tra loro, \(\E(\delta_i \delta_k)=0\), e che i fattori specifici siano incorrelati con il fattore comune, \(\E(\delta_i \xi)=0\).
 
@@ -2973,8 +2993,8 @@ Nel modello a un solo fattore, dunque, la saturazione \(\lambda_j\) rappresenta 
 Nell'ipotesi che le variabili \(Y_i\) abbiano media nulla, la varianza di \(Y_i\)
 
 \begin{equation}
-  \V(Y_i) = \E(Y_i^2) -[\E(Y_i)]^2 = \E(Y_i^2)\notag\
-\end{equation}\textbackslash end\{equation\}
+  \V(Y_i) = \E(Y_i^2) -[\E(Y_i)]^2 = \E(Y_i^2)\notag
+\end{equation}
 
 è data da
 
@@ -2986,12 +3006,18 @@ Nell'ipotesi che le variabili \(Y_i\) abbiano media nulla, la varianza di \(Y_i\
 \end{aligned}
 \end{equation}
 
-La quantità \(\lambda^2_i\) è denominata \emph{comunalità} della \(i\)-esima variabile manifesta e corrisponde alla quota della varianza della \(Y_i\) spiegata dal fattore comune. Di conseguenza \(\psi_{i}\) è la parte residua della varianza di \(Y_i\) non spiegata dal fattore comune ed è denominata \emph{unicità} di \(Y_i\). Nel caso di variabili standardizzate, l'unicità diventa uguale a \[\psi_{i}=1-\lambda^2_i.\] In definitiva, la varianza totale di una variabile osservata può essere divisa in una parte che che ciascuna variabile condivide con le altre variabili e che è spiegata dal fattore comune (questa parte è chiamata \emph{comunalità} ed è uguale uguale al quadrato della saturazione della variabile osservata nel fattore comune, ovvero \(h^2_i = \lambda_i^2\)) e in una parte che è spiegata dal fattore specifico e di errore (questa parte è chiamata \emph{unicità} ed è uguale a \(u_i = \psi_{i}\)).
+La quantità \(\lambda^2_i\) è denominata \emph{comunalità} della \(i\)-esima variabile manifesta e corrisponde alla quota della varianza della \(Y_i\) spiegata dal fattore comune. Di conseguenza \(\psi_{i}\) è la parte residua della varianza di \(Y_i\) non spiegata dal fattore comune ed è denominata \emph{unicità} di \(Y_i\). Nel caso di variabili standardizzate, l'unicità diventa uguale a
+
+\[
+\psi_{i}=1-\lambda^2_i.
+\]
+
+In definitiva, la varianza totale di una variabile osservata può essere divisa in una quota che ciascuna variabile condivide con le altre variabili ed è spiegata dal fattore comune (questa quota è chiamata \emph{comunalità} ed è uguale uguale al quadrato della saturazione della variabile osservata nel fattore comune, ovvero \(h^2_i = \lambda_i^2\)), e in una quota che è spiegata dal fattore specifico (questa parte è chiamata \emph{unicità} ed è uguale a \(u_i = \psi_{i}\)).
 
 \begin{exercise}
 Riprendiamo l'analisi della matrice di correlazioni di Spearman. Nell'output prodotto dalla funzione \texttt{factanal()} viene riportata la quantità denominata \texttt{SS\ loadings}.
 
-Tale quantità indica la porzione della varianza totale delle 4 variabili manifeste che viene spiegata dal fattore comune. Ciascuna variabile standardizzata contribuisce con un'unità di varianza; nel caso presente, dunque la varianza totale sarà uguale a 4. Si ricordi che per \emph{varianza totale} si intende la somma delle varianze delle variabili manifeste, ovvero la \emph{traccia} della matrice di varianze e covarianze. La quota della varianza totale spiegata dal modello è data dalla somma delle comunalità delle quattro variabili, ovvero dalla somma delle saturazioni fattoriali innalzate al quadrato.
+Tale quantità indica la porzione della varianza totale delle 4 variabili manifeste che viene spiegata dal fattore comune. Ciascuna variabile standardizzata contribuisce con un'unità di varianza; nel caso presente, dunque la varianza totale è uguale a 4. Si ricordi che, nella statistica multivariata, per \emph{varianza totale} si intende la somma delle varianze delle variabili manifeste (nel linguaggio dell'algebra matriciale questa quantità corrisponde alla \emph{traccia} della matrice di covarianze). La quota della varianza totale spiegata dal modello, invece, è data dalla somma delle comunalità delle quattro variabili, ovvero dalla somma delle saturazioni fattoriali innalzate al quadrato.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3063,10 +3089,20 @@ Facendo il prodotto interno otteniamo:
 \end{Highlighting}
 \end{Shaded}
 
-In termini proporzionali, la quota della varianza spiegata è uguale a \(2.587 / 4 = 0.647\). Questa quantità è indicata nell'output con la denominazione \texttt{Proportion\ Var}.
+In termini proporzionali, la quota della varianza totale delle variabile manifeste che viene spiegata dal modello ad un fattore comune è dunque uguale a \(2.587 / 4 = 0.647\). Questa quantità è indicata nell'output con la denominazione \texttt{Proportion\ Var}.
 \end{exercise}
 
-Quale quota di varianza delle variabile manifeste viene spiegata dal modello ad un fattore comune? Ciascuna variabile manifesta ha un'unità di varianza. L'unicità (\emph{uniqueness}) indica la proporzione della varianza della variabile considerata che non viene spiegata dalla soluzione fattoriale. La comunalità è uguale a:
+Si dice unicità (\emph{uniqueness}) la quota della varianza della variabile considerata che non viene spiegata dalla soluzione fattoriale:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{round}\NormalTok{(fm}\SpecialCharTok{$}\NormalTok{uniqueness, }\DecValTok{3}\NormalTok{)}
+\CommentTok{\#\textgreater{}     C     E     M     P }
+\CommentTok{\#\textgreater{} 0.086 0.329 0.460 0.539}
+\end{Highlighting}
+\end{Shaded}
+
+La comunalità (ovvero, la quota di varianza di ciascuna variabile manifesta che viene spiegata dal fattore comune) può essere trovata come:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3076,13 +3112,12 @@ Quale quota di varianza delle variabile manifeste viene spiegata dal modello ad 
 \end{Highlighting}
 \end{Shaded}
 
-La componente di varianza non spiegata, o unicità, è invece uguale a:
+oppure con
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{round}\NormalTok{(fm}\SpecialCharTok{$}\NormalTok{uniqueness, }\DecValTok{3}\NormalTok{)}
-\CommentTok{\#\textgreater{}     C     E     M     P }
-\CommentTok{\#\textgreater{} 0.086 0.329 0.460 0.539}
+\NormalTok{L}\SpecialCharTok{\^{}}\DecValTok{2}
+\CommentTok{\#\textgreater{} [1] 0.9144 0.6714 0.5403 0.4611}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3100,9 +3135,10 @@ Nell'ipotesi che le variabili \(Y_i\) abbiano media nulla, la covarianza tra \(Y
 
 \begin{equation}
 \begin{aligned}
- \mbox{Cov}(Y_i, Y_k) &= \E(Y_i Y_k)=\E[(\lambda_i \xi + \delta_i)(\lambda_k \xi +  \delta_k)]\notag\\
+ \mbox{Cov}(Y_i, Y_k) &= \E(Y_i Y_k) \notag\\
+  & =\E[(\lambda_i \xi + \delta_i)(\lambda_k \xi +  \delta_k)]\notag\\
   &=\E(\lambda_i\lambda_k\xi^2 + \lambda_i  \xi \delta_k + \lambda_k \delta_i \xi + \delta_i \delta_k)\notag\\
-&=\lambda_i\lambda_k\underbrace{\E(\xi^2)}_{\V(\xi)=1}+\lambda_i\underbrace{\E(\xi \delta_k)}_{\mbox{Cov}(\xi, \delta_k) =0}+\notag\\ \;&+\lambda_k\underbrace{\E(\delta_i \xi)}_{\mbox{Cov}(\delta_i, \xi) =0} +\underbrace{\E(\delta_i \delta_k)}_{\mbox{Cov}(\delta_i, \delta_k)=0}\notag\\
+  &=\lambda_i\lambda_k\underbrace{\E(\xi^2)}_{\V(\xi)=1}+\lambda_i\underbrace{\E(\xi \delta_k)}_{\mbox{Cov}(\xi, \delta_k) =0}+\notag\\ \;&+\lambda_k\underbrace{\E(\delta_i \xi)}_{\mbox{Cov}(\delta_i, \xi) =0} +\underbrace{\E(\delta_i \delta_k)}_{\mbox{Cov}(\delta_i, \delta_k)=0}\notag\\
   &=\lambda_i\lambda_k
 \end{aligned}
 \end{equation}
@@ -3161,16 +3197,20 @@ e si distribuisce come una \(\chi^2\) con \(\nu\) gradi di libertà
 \nu = p(p+1)/ 2 - q,
 \]
 
-dove \(p\) è il numero di variabili manifeste e \(q\) è il numero di parametri stimati dal modello fattoriale (ovvero, \(\lambda\) e \(\psi\)). La statistica \(v\) assume valore 0 se i parametri del modello riproducono esattamente la matrice di correlazioni tra le variabili nella popolazione. Tanto maggiore è la statistica \(v\) tanto maggiore è la discrepanza tra le correlazioni osservate e quelle predette dal modello fattoriale. Un risultato statisticamente significativo (es., \(p\) \textless{} .05) rivela una discrepanza tra il modello e i dati. Il test del modello fattoriale mediante la statistica \(\chi^2\) segue dunque una logica diversa da quella utilizzata nei normali test di ipotesi statistiche: \emph{un risultato statisticamente significativo indica una mancanza di adattamento del modello ai dati}.
+dove \(p\) è il numero di variabili manifeste e \(q\) è il numero di parametri stimati dal modello fattoriale (ovvero, \(\lambda\) e \(\psi\)).
 
-L'applicazione del test \(\chi^2\) per valutare la bontà di adattamento del modello ai dati richiede che ciascuna variabile manifesta sia distribuita normalmente (più precisamente, richiede che le variabili manifeste siano un campione casuale che deriva da una normale multivariata).
+La statistica \(v\) assume valore 0 se i parametri del modello riproducono esattamente la matrice di correlazioni tra le variabili nella popolazione. Tanto maggiore è la statistica \(v\) tanto maggiore è la discrepanza tra le correlazioni osservate e quelle predette dal modello fattoriale.
 
-Il limite principale della statistica \(v\) è che essa dipende dalle dimensioni del campione: al crescere delle dimensioni campionarie è più facile ottenere un risultato statisticamente significativo (ovvero, concludere che vi è un cattivo adattamento del modello ai dati). Per questa ragione, la bontà di adattamento del modello ai dati viene valutata da molteplici indici, non soltanto dalla statistica \(v\).
+Un risultato statisticamente significativo (es., \(p\) \textless{} .05) -- il quale suggerisce che una tale differenza \emph{non} è uguale a zero -- rivela dunque una discrepanza tra il modello e i dati. Il test del modello fattoriale mediante la statistica \(\chi^2\) segue dunque una logica diversa da quella utilizzata nei normali test di ipotesi statistiche: \emph{un risultato statisticamente significativo indica una mancanza di adattamento del modello ai dati}.
+
+L'applicazione del test \(\chi^2\) per valutare la bontà di adattamento del modello ai dati richiede che ciascuna variabile manifesta sia distribuita normalmente -- più precisamente, richiede che le variabili manifeste siano un campione casuale che deriva da una normale multivariata. Questo requisito non è facile da rispettare in pratica.
+
+Tuttavia, il limite principale della statistica \(\chi^2\) è che essa dipende fortemente dalle dimensioni del campione: al crescere delle dimensioni campionarie è più facile ottenere un risultato statisticamente significativo (ovvero, concludere che vi è un cattivo adattamento del modello ai dati). Per questa ragione, la bontà di adattamento del modello ai dati viene valutata da molteplici indici, non soltanto dalla statistica \(\chi^2\). Più comune è calcolare il rapporto \(\chi^2 / \nu\) e usare tale rapporto per valutare la bontà dell'adattamento. Valori minori di 3 o 4 suggeriscono che il modello ben si adatta ai dati.
 
 \hypertarget{lerrore-standard-della-misurazione-e-il-modello-fattoriale}{%
 \section{L'errore standard della misurazione e il modello fattoriale}\label{lerrore-standard-della-misurazione-e-il-modello-fattoriale}}
 
-Per concludere, prendiamo nuovamente in esame la nozione dell'errore standard della misurazione, uno dei concetti centrali della CTT, e vediamo come tale concetto possa essere "ripensato" nel contesto del modello statistico dell'analisi fattoriale. Iniziamo con una dimostrazione.
+Per concludere, prendiamo nuovamente in esame la nozione dell'errore standard della misurazione, uno dei concetti centrali della CTT, e vediamo come tale concetto possa essere ``ripensato'' in riferimento al modello statistico dell'analisi fattoriale. Iniziamo con una dimostrazione.
 
 \begin{proof}
 Secondo la CTT, il punteggio \(X\) ottenuto dalla somministrazione del test è uguale a \(X = T + E\), dove \(E\) è una variabile aleatorie indipendente da \(T\). Se consideriamo il rispondente \(i\)-esimo, il modello diventa \(X_i = T_i + E_i\), dove \(T_i\) è il valore vero ed \(E_i\) è una variabile aleatoria con media 0.
@@ -3274,7 +3314,7 @@ Esaminiamo la matrice di correlazione:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-100-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-102-1} \end{center}
 
 Specifichiamo il modello unifattoriale nella sintassi di \texttt{lavaan}:
 
@@ -3425,7 +3465,7 @@ Per trovare \(\sigma\) calcoliamo prima il punteggio totale:
 \end{Highlighting}
 \end{Shaded}
 
-La deviazione standard di \texttt{tot\_score} ci fornisce una stima di \(\sigma\):
+La deviazione standard di \texttt{tot\_score} ci fornisce una stima di \(\sigma_X\):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3806,7 +3846,7 @@ Il path diagram si ottiene nel modo seguente:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-119-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-121-1} \end{center}
 
 Esaminiamo le saturazioni fattoriali:
 
@@ -3831,7 +3871,7 @@ Esaminiamo le saturazioni fattoriali:
 \end{Shaded}
 
 \begin{longtable}[]{@{}llrrrrr@{}}
-\caption{\label{tab:unnamed-chunk-120}Factor Loadings}\tabularnewline
+\caption{\label{tab:unnamed-chunk-122}Factor Loadings}\tabularnewline
 \toprule
 Latent Factor & Indicator & B & SE & Z & p-value & Beta \\
 \midrule
@@ -4015,7 +4055,7 @@ Visualizziamo il modello nel modo seguente:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-123-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-125-1} \end{center}
 
 Esaminiamo le saturazioni fattoriali:
 
@@ -4040,7 +4080,7 @@ Esaminiamo le saturazioni fattoriali:
 \end{Shaded}
 
 \begin{longtable}[]{@{}llrrrrr@{}}
-\caption{\label{tab:unnamed-chunk-124}Factor Loadings}\tabularnewline
+\caption{\label{tab:unnamed-chunk-126}Factor Loadings}\tabularnewline
 \toprule
 Latent Factor & Indicator & B & SE & Z & p-value & Beta \\
 \midrule
@@ -4907,7 +4947,7 @@ Generiamo ora i diagrammi di dispersione che mettono in relazione le dimensioni 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-152-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-154-1} \end{center}
 
 I risultati riportati nella figura confermano le aspettative.
 
@@ -5781,6 +5821,10 @@ Lo stesso risultato si ottiene utilizzando la funzione \texttt{alpha()} contenut
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{}   raw\_alpha std.alpha G6(smc) average\_r S/N median\_r}
 \CommentTok{\#\textgreater{}       0.82      0.82    0.79      0.48 4.6     0.49}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}     95\% confidence boundaries }
+\CommentTok{\#\textgreater{}       lower alpha upper}
+\CommentTok{\#\textgreater{} Feldt  0.33  0.82  0.98}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{}  Reliability if an item is dropped:}
 \CommentTok{\#\textgreater{}    raw\_alpha std.alpha G6(smc) average\_r S/N  var.r}
@@ -7126,7 +7170,7 @@ Il terzo metodo, lo scree test, può essere eseguito usando la funzione \texttt{
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-206-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-208-1} \end{center}
 
 Lo scree test suggerisce una soluzione a \(m=1\) fattori, come indicato nella figura precedente. Il terzo metodo, nella versione della Parallel Analysis, può essere eseguito usando la funzione \texttt{paran()} contenuta nel pacchetto \texttt{paran}. La Parallel Analysis indica una soluzione a \(m=1\) fattore.
 
@@ -7154,7 +7198,7 @@ Lo scree test suggerisce una soluzione a \(m=1\) fattori, come indicato nella fi
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-207-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-209-1} \end{center}
 
 Il quarto metodo consiste nell'applicazione di un test inferenziale relativo al numero di fattori. Anche questo metodo indica una soluzione a sei fattori:
 
@@ -7464,7 +7508,7 @@ Nella seguente figura, i punti rappresentano le cinque coppie di pesi fattoriali
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-218-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-220-1} \end{center}
 
 Rencher (2002) nota che, per questi dati, una rotazione ortogonale di \(-35^{\circ}\) ci porterebbe ad avvicinare gli assi ai punti nel diagramma. Per verificare questo, disegnamo sul diagramma i nuovi assi dopo una rotazione di \(-35^{\circ}\). Le istruzioni \texttt{R} sono le seguenti:
 
@@ -7505,7 +7549,7 @@ Rencher (2002) nota che, per questi dati, una rotazione ortogonale di \(-35^{\ci
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-219-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-221-1} \end{center}
 
 Nella figura precedente, le due frecce rappresentano gli assi ruotati. È chiaro come tale rotazione di \(-35^{\circ}\) ha effettivamente l'effetto di avvicinare gli assi ai punti del diagramma. Se usiamo dunque il valore \(\phi = -35^{\circ}\) nella matrice di rotazione, possiamo calcolare le saturazioni fattoriali della soluzione ruotata \(\hat{\boldsymbol{\Lambda}}^* = \hat{\boldsymbol{\Lambda}} \textbf{T}\). Le saturazioni fattoriali ruotate non sono altro che la proiezione ortogonale dei punti sugli assi ruotati:
 
@@ -7638,9 +7682,9 @@ Per illustrare la rotazione obliqua, utilizziamo i dati presentati da Rencher (2
 \begin{Highlighting}[]
 \NormalTok{R }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}
   \FunctionTok{c}\NormalTok{(}
-    \FloatTok{1.00}\NormalTok{,  }\FloatTok{0.735}\NormalTok{, }\FloatTok{0.711}\NormalTok{, }\FloatTok{0.704}\NormalTok{,}
-    \FloatTok{0.735}\NormalTok{, }\FloatTok{1.00}\NormalTok{,  }\FloatTok{0.693}\NormalTok{, }\FloatTok{0.709}\NormalTok{,}
-    \FloatTok{0.711}\NormalTok{, }\FloatTok{0.693}\NormalTok{, }\FloatTok{1.00}\NormalTok{,  }\FloatTok{0.839}\NormalTok{,}
+    \FloatTok{1.00}\NormalTok{, }\FloatTok{0.735}\NormalTok{, }\FloatTok{0.711}\NormalTok{, }\FloatTok{0.704}\NormalTok{,}
+    \FloatTok{0.735}\NormalTok{, }\FloatTok{1.00}\NormalTok{, }\FloatTok{0.693}\NormalTok{, }\FloatTok{0.709}\NormalTok{,}
+    \FloatTok{0.711}\NormalTok{, }\FloatTok{0.693}\NormalTok{, }\FloatTok{1.00}\NormalTok{, }\FloatTok{0.839}\NormalTok{,}
     \FloatTok{0.704}\NormalTok{, }\FloatTok{0.709}\NormalTok{, }\FloatTok{0.839}\NormalTok{, }\FloatTok{1.00}
 \NormalTok{  ),}
   \AttributeTok{ncol =} \DecValTok{4}\NormalTok{,}
@@ -8985,7 +9029,7 @@ Esaminiamo un campione casuale di 9 soggetti. È presente una notevole variazion
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-278-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-280-1} \end{center}
 
 Notiamo che un semplce modello lineare è appropriato per rendere conto della variazione temporale della variabile risposta:
 
@@ -8999,7 +9043,7 @@ Notiamo che un semplce modello lineare è appropriato per rendere conto della va
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-279-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-281-1} \end{center}
 
 Complessivamente, i dati suggeriscono un andamento crescente della variabile risposta in funzione del tempo:
 
@@ -9019,7 +9063,7 @@ Complessivamente, i dati suggeriscono un andamento crescente della variabile ris
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-280-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-282-1} \end{center}
 
 Per adattare un modello lineare di crescita a questi dati, specifichiamo il seguente modello a variabili latenti
 
@@ -9089,7 +9133,7 @@ Esaminiamo il path diagram:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-283-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-285-1} \end{center}
 
 Ci sono 6 tipi di parametri di interesse:
 
@@ -9162,7 +9206,7 @@ Le distribuzione delle stime individuali dell'intercetta e della pendenza della 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-286-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-288-1} \end{center}
 
 Un buon modo per capire cosa fa il modello è quello di visualizzare i punteggi previsti. Useremo qui la funzione \texttt{predict()} per salvare un nuovo oggetto con i punteggi previsti a livello individuale per l'intercetta e la pendenza;
 
@@ -9228,7 +9272,7 @@ Il cambiamento previsto per tutti i soggetti può essere visualizzato nel modo s
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-289-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-291-1} \end{center}
 
 La linea nera più spessa rappresenta l'intercetta media e la pendenza media della curva di crescita del modello LGM. Ogni individuo ha una sua specifica intercetta e uno specifico tasso di cambiamento e questa diversità è catturata nelle componenti di varianza del modello
 
@@ -11504,7 +11548,7 @@ Disegnamo il diagramma di dispersione con un ellisse che contiene la nube di pun
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-335-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-337-1} \end{center}
 
 Se racchiudiamo le osservazioni (\(v_1, v_2\)) con un'ellisse, allora la lunghezza dei semiassi maggiori e minori dell'ellisse sarà proporzionale a \(\sqrt{\lambda_1}\) e \(\sqrt{\lambda_2}\). L'asse maggiore è la linea passante per il punto (\(\bar{v_1}, \bar{v_2}\)) nella direzione determinata dal primo autovettore \(\boldsymbol{a}_1'\) con pendenza uguale a \(a_{12}/a_{11}\). L'asse minore è la linea passante per il punto (\(\bar{v_1}, \bar{v_2}\)) nella direzione determinata dal secondo autovettore \(\boldsymbol{a}_2\).
 
@@ -11548,7 +11592,7 @@ Disegniamo gli assi dell'ellisse:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-337-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-339-1} \end{center}
 
 Tale analisi si può estendere a qualunque numero di variabili. Per esempio, nel caso di tre variabili, possiamo pensare di disegnare un ellisoide attorno ad una nube di punti nello spazio tridimensionale. Anche in questo caso, gli autovalori e gli associati autovettori corrisponderanno agli assi dell'elissoide.
 
