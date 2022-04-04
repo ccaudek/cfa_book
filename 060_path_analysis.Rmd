@@ -2,6 +2,8 @@
 
 ```{r, include = FALSE}
 source("_common.R")
+library("lavaan")
+library("semPlot")
 ```
 
 La *path analysis* è un metodo per decomporre la correlazione (o la
@@ -70,7 +72,9 @@ dunque corrispondono alle correlazioni.
 Nel caso di due variabili esogene $x_1$ e $x_2$, il modello di
 regressione diventa 
 
-$$y = b_{1} x_1 + b_{2} x_2 + 1 \cdot e$$ 
+$$
+y = b_{1} x_1 + b_{2} x_2 + 1 \cdot e,
+$$ 
 
 dove $y$ è
 la variabile endogena ed $e$ è il fattore di disturbo. Tale modello di
@@ -170,7 +174,9 @@ Si consideri il diagramma rappresesentato nella Figura \@ref(fig:path02). La var
 
 Il diagramma di percorso corrisponde alla seguente equazione:
 
-$$y = 0.50 x_1 + 0.40 x_2 + e$$ 
+$$
+y = 0.50 x_1 + 0.40 x_2 + e,
+$$ 
 
 dove le variabili $x_1$ e $x_2$ sono incorrelate con $e$.
 
@@ -224,10 +230,19 @@ percorsi legittimi che collegano $y$ a se stessa:
 
 La varianza della variabile endogena $y$ che viene spiegata dalle
 variabili esogene $x_1$ e $x_2$ è dunque uguale a
-$$0.25 + 0.16  + 0.10 + 0.10= 0.61.$$ Inoltre, dato che le variabili
+
+$$
+0.25 + 0.16  + 0.10 + 0.10= 0.61.
+$$ 
+
+Inoltre, dato che le variabili
 rappresentate nel diagramma sono standardizzate, la varianza complessiva
 della $y$ è uguale a 1.00. La varianza della $y$ non spiegata dalle
-variabili $x_1$ e $x_2$ è quindi uguale a $$1-0.61 = 0.39.$$
+variabili $x_1$ e $x_2$ è quindi uguale a 
+
+$$
+1-0.61 = 0.39.
+$$
 
 ## Come calcolare i coefficienti di percorso? {#sec:how_compute_path_coef}
 
@@ -267,47 +282,10 @@ Risolvendo il sistema di equazioni simultanee, si ottengono i valori dei coeffic
 
 ## Path analysis e software 
 
-Vengono simulate 100 osservazioni su tre variabili. Imponendo un effetto
-causale diretto delle variabili $x_1$ e $x_2$ sulla $y$ e una
-correlazione $> 0$ tra le variabili $x_1$ e $x_2$, otteniamo i seguenti
-dati:
+Usiamo `lavaan` per svolgere l'analisi statistica descritta nell'esempio precedente.
 
-```{r}
-set.seed(3)
-n <- 100
-x1 <- rnorm(n, 100, 9)
-x2 <- x1 + rnorm(n, 0, 10)
-cor(x1, x2)
-y <- 10 + 3 * x1 + 1.5 * x2 + rnorm(n, 0, 15)
-dd <- data.frame(y, x1, x2)
-print(cor(dd), 3)
-lower <- "
- 1
- .831 1
- .786 .535 1 
-"
-library("lavaan")
-dat.cov <- getCov(lower, names = c("y", "x1", "x2"))
-dat.cov
-```
-
-Data una matrice di correlazioni e data la specificazione delle
-relazioni tra le variabili, la funzione `sem()` contenuta nel pacchetto
-`lavaan` consente di stimare i coefficienti di percorso. Le relazioni
-tra le variabili sono speficicate con la sintassi descritta nel manuale.
-
-```{r}
-# the model
-mr.model <- 'y ~ x1 + x2'
-fit <- sem(mr.model, sample.cov=dat.cov, sample.nobs=n)
-summary(fit, standardized=TRUE)
-summary(lm(scale(y) ~ scale(x1) + scale(x2)))
-1 - .145
-```
-
-
-::: exmp
-Consideriamo nuovamente la seguente matrice di correlazioni:
+::: exercise
+La matrice di correlazioni di partenza è:
 
 ```{r}
 lower <- '
@@ -324,19 +302,19 @@ dat.cov <- getCov(lower, names=c("y","x1", "x2"))
 dat.cov
 ```
 
-Specifico il modello:
+Specifico il modello con la sintassi di `lavaan`.
 
 ```{r}
 mr_model <- 'y ~ x1 + x2'
 ```
 
-Adatto il modello ai dati:
+Adatto il modello ai dati.
 
 ```{r}
-fit <- sem(mr_model, sample.cov = dat.cov, sample.nobs = n)
+fit <- sem(mr_model, sample.cov = dat.cov, sample.nobs = 100)
 ```
 
-Esamino i risultati:
+Esamino i risultati.
 
 ```{r}
 summary(fit, standardized=TRUE)
@@ -345,6 +323,65 @@ summary(fit, standardized=TRUE)
 Con la funzione `sem()` del pacchetto `lavaan` abbiamo dunque replicato
 i risultati ottenuti in precedenza. Il valore $0.386$ rappresenta la
 quota di varianza della $y$ non spiegata dalle variabili esogene.
+:::
+
+
+
+::: exercise
+
+Ripeto ora la stessa procedura simulando 100 osservazioni su tre variabili, in maniera tale da avere a disposizione i dati grezzi. Imponendo un effetto
+causale diretto delle variabili $x_1$ e $x_2$ sulla $y$ e una
+correlazione $> 0$ tra le variabili $x_1$ e $x_2$, otteniamo i dati seguenti.
+
+```{r}
+set.seed(3)
+n <- 100
+x1 <- rnorm(n, 100, 9)
+x2 <- x1 + rnorm(n, 0, 10)
+cor(x1, x2)
+y <- 10 + 3 * x1 + 1.5 * x2 + rnorm(n, 0, 15)
+dd <- data.frame(y, x1, x2)
+print(cor(dd), 3)
+```
+
+Per fare un esempio, immaginiamo che queste correlazioni siano state ricavate da qualche fonte e dunque le leggiamo nella memoria di lavoro di $\mathsf{R}$ nel modo seguente.
+
+```{r}
+lower <- "
+ 1
+ .831 1
+ .786 .535 1 
+"
+dat.cov <- getCov(lower, names = c("y", "x1", "x2"))
+dat.cov
+```
+
+Data una matrice di correlazioni e data la specificazione delle
+relazioni tra le variabili, la funzione `sem()` contenuta nel pacchetto
+`lavaan` consente di stimare i coefficienti di percorso. 
+
+```{r}
+mr.model <- 'y ~ x1 + x2'
+fit <- sem(mr.model, sample.cov = dat.cov, sample.nobs = 100)
+```
+
+Esaminiamo i risultati con la funzione `summary()`.
+
+```{r}
+summary(fit, standardized=TRUE)
+```
+
+Ora calcoliamo i coefficienti del modello di regressione multipla usando i dati grezzi (standardizzati). Si noti che i risultati ottenuti da `lavaan` sono identici a quelli prodotti dal modello di regressione multipla -- nel caso presente, infatti, il modello statistico esaminato da `sem()` non era altro che il modello di regressione multipla.
+
+```{r}
+summary(lm(scale(y) ~ scale(x1) + scale(x2)))
+```
+
+La quota di varianza non spiegata della variabile endogena è:
+
+```{r}
+1 - .145
+```
 :::
 
 ## Oltre la regressione multipla
@@ -367,4 +404,112 @@ interessato alla misurazione dei costrutti psicologici quali i tratti
 della personalità, le capacità cognitive e i disturbi psicopatologici.
 Questa è la ragione per cui la discutiamo qui.
 
+::: exercise
 
+Weiss,  Forkus,  Contractor, e Schick (2018) esaminano con una path analisi la relazione tra la difficiltà di regolare le emozioni positive e l'abuso di alcol e di sostanze. 
+
+- La difficoltà di regolare le emozioni positive viene misurata con la  *Difficulties in Emotion Regulation Scale – Positive* (DERS-P; Weiss, Gratz, & Lavender, 2015), che comprende le sottoscale di Acceptance, Impulse, e Goals.
+- L'abuso di sostanze viene misurato con la *Drug Abuse Screening Test* (DAST; Skinner, 1982).
+- L'abuso di alcol viene misurato con la *Alcohol Use Disorder Identification Test* (AUDIT; Saunders, Aasland, Babor, De la Fuente, & Grant, 1993), con le sottoscale di Hazardous Consumption, Dependence, e Consequences. 
+
+I dati di un campione di 284 partecipanti sono riportati nella forma di una matrice di correlazione.
+
+```{r}
+lower <- '
+   1
+   .38 1
+   .41 .64 1
+   .34 .44 .30 1
+   .29 .12 .27 .06 1
+   .29 .22 .20 .17 .54 1
+   .30 .15 .23 .09 .73 .69 1
+'
+```
+
+```{r}
+dat_cov <- lavaan::getCov(
+  lower, 
+  names=c("dmis","con", "dep", "consu", "acc", "goal", "imp"))
+dat_cov
+```
+
+I dati vengono analizzati con due modelli di path analysis. Nel primo modello si ipotizza che la difficoltà di regolare le emozioni positive sia una variabile esogena che influenza sia l'abuso di sostanze sia l'abuso di alcol. Si ipotizza inoltre che abuso di sostanze e abuso di alcol siano correlate.
+
+La difficoltà di regolare le emozioni positive è indicata da `drpe`; l'abuso di alcolo è denotato da `amis`; l'abuso di sostanze è denotato da `dmis`. 
+
+```{r}
+mod <- '
+  drpe =~ NA*acc + goal + imp
+  amis =~ NA*con + dep + consu
+  amis ~ drpe
+  dmis ~ drpe
+  dmis ~~ amis
+  drpe ~~ 1*drpe
+  amis ~~ 1*amis
+'
+```
+
+Svolgiamo l'analisi statistica con `sem()`.
+
+```{r}
+fit <- lavaan::sem(mod, sample.cov = dat_cov, sample.nobs = 284)
+```
+
+Esaminiamo i risultati.
+
+```{r}
+summary(fit, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)
+```
+
+Creiamo un path diagram.
+
+```{r}
+semPaths(
+  fit,
+  "std",
+  posCol = c("black"),
+  edge.label.cex =1.2,
+  sizeMan = 7
+)
+```
+
+Gli autori esplorano un modello alternativo nel quale le relazioni causali vengono rovesciate: in questo caso è la difficoltà di regolazione delle emozioni positive ad essere la variabile esogena, e l'abuso di sostanze e l'abuso di alcol sono le variabili esogene.
+
+```{r}
+mod_alt <- '
+  drpe =~ NA*acc + goal + imp
+  amis =~ NA*con + dep + consu
+  drpe ~ amis + dmis
+  dmis ~~ amis
+  drpe ~~ 1*drpe
+  amis ~~ 1*amis
+'
+```
+
+Adattiamo il modello ai dati.
+
+```{r}
+fit_alt <- sem(mod_alt, sample.cov = dat_cov, sample.nobs = 311)
+```
+
+Esaminiamo i risultati.
+
+```{r}
+summary(fit_alt, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)
+```
+
+Creiamo il diagramma di percorso.
+
+```{r}
+semPaths(
+  fit_alt,
+  "std",
+  posCol = c("black"),
+  edge.label.cex =1.2,
+  sizeMan = 7
+)
+```
+
+
+In entrambi i casi i risultati replicano quanto riportato dagli autori.
+:::

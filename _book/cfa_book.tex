@@ -250,7 +250,7 @@
 
 \title{Appunti di Costruzione e validazione di strumenti di misura dell'efficacia dell'intervento psicologico in neuropsicologia -- B020881 (B213)}
 \author{Corrado Caudek}
-\date{2022-03-28}
+\date{2022-04-04}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Teorema}[chapter]
@@ -2657,7 +2657,7 @@ L'argomento \texttt{std.lv\ =\ TRUE} specifica che imponiamo una varianza pari a
   \AttributeTok{fit.measures =} \ConstantTok{TRUE}\NormalTok{,}
   \AttributeTok{standardized =} \ConstantTok{TRUE}
 \NormalTok{)}
-\CommentTok{\#\textgreater{} lavaan 0.6{-}10 ended normally after 23 iterations}
+\CommentTok{\#\textgreater{} lavaan 0.6{-}11 ended normally after 23 iterations}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{}   Estimator                                         ML}
 \CommentTok{\#\textgreater{}   Optimization method                           NLMINB}
@@ -3347,7 +3347,7 @@ Esaminiamo i risultati:
   \AttributeTok{standardized =} \ConstantTok{TRUE}\NormalTok{,}
   \AttributeTok{fit.measures =} \ConstantTok{TRUE}
 \NormalTok{)}
-\CommentTok{\#\textgreater{} lavaan 0.6{-}10 ended normally after 26 iterations}
+\CommentTok{\#\textgreater{} lavaan 0.6{-}11 ended normally after 26 iterations}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{}   Estimator                                         ML}
 \CommentTok{\#\textgreater{}   Optimization method                           NLMINB}
@@ -4384,7 +4384,7 @@ Una funzionalità sperimentale di \texttt{lavaan} (ancora non ufficiale) è quel
   \AttributeTok{standardized =} \ConstantTok{TRUE}\NormalTok{,}
   \AttributeTok{rsquare =} \ConstantTok{TRUE}
 \NormalTok{)}
-\CommentTok{\#\textgreater{} lavaan 0.6{-}10 ended normally after 2 iterations}
+\CommentTok{\#\textgreater{} lavaan 0.6{-}11 ended normally after 2 iterations}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{}   Estimator                                         ML}
 \CommentTok{\#\textgreater{}   Optimization method                           NLMINB}
@@ -4518,7 +4518,7 @@ Una funzionalità sperimentale di \texttt{lavaan} (ancora non ufficiale) è quel
   \AttributeTok{standardized =} \ConstantTok{TRUE}\NormalTok{,}
   \AttributeTok{rsquare =} \ConstantTok{TRUE}
 \NormalTok{)}
-\CommentTok{\#\textgreater{} lavaan 0.6{-}10 ended normally after 1 iterations}
+\CommentTok{\#\textgreater{} lavaan 0.6{-}11 ended normally after 1 iterations}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{}   Estimator                                         ML}
 \CommentTok{\#\textgreater{}   Optimization method                           NLMINB}
@@ -5031,7 +5031,9 @@ I coefficienti di percorso associati alle frecce orientate esprimono la portata 
 
 Nel caso di due variabili esogene \(x_1\) e \(x_2\), il modello di regressione diventa
 
-\[y = b_{1} x_1 + b_{2} x_2 + 1 \cdot e\]
+\[
+y = b_{1} x_1 + b_{2} x_2 + 1 \cdot e,
+\]
 
 dove \(y\) è la variabile endogena ed \(e\) è il fattore di disturbo. Tale modello di regressione può essere rappresentato graficamente come indicato nella figura precedente.
 
@@ -5089,7 +5091,9 @@ Si consideri il diagramma rappresesentato nella Figura \ref{fig:path02}. La vari
 
 Il diagramma di percorso corrisponde alla seguente equazione:
 
-\[y = 0.50 x_1 + 0.40 x_2 + e\]
+\[
+y = 0.50 x_1 + 0.40 x_2 + e,
+\]
 
 dove le variabili \(x_1\) e \(x_2\) sono incorrelate con \(e\).
 
@@ -5135,7 +5139,17 @@ Facendo riferimento alla Figura \ref{fig:path02}, si possono individuare quattro
   \(0.40 \times 0.50 \times 0.50\).
 \end{enumerate}
 
-La varianza della variabile endogena \(y\) che viene spiegata dalle variabili esogene \(x_1\) e \(x_2\) è dunque uguale a \[0.25 + 0.16  + 0.10 + 0.10= 0.61.\] Inoltre, dato che le variabili rappresentate nel diagramma sono standardizzate, la varianza complessiva della \(y\) è uguale a 1.00. La varianza della \(y\) non spiegata dalle variabili \(x_1\) e \(x_2\) è quindi uguale a \[1-0.61 = 0.39.\]
+La varianza della variabile endogena \(y\) che viene spiegata dalle variabili esogene \(x_1\) e \(x_2\) è dunque uguale a
+
+\[
+0.25 + 0.16  + 0.10 + 0.10= 0.61.
+\]
+
+Inoltre, dato che le variabili rappresentate nel diagramma sono standardizzate, la varianza complessiva della \(y\) è uguale a 1.00. La varianza della \(y\) non spiegata dalle variabili \(x_1\) e \(x_2\) è quindi uguale a
+
+\[
+1-0.61 = 0.39.
+\]
 
 \hypertarget{sec:how_compute_path_coef}{%
 \section{Come calcolare i coefficienti di percorso?}\label{sec:how_compute_path_coef}}
@@ -5174,107 +5188,10 @@ Risolvendo il sistema di equazioni simultanee, si ottengono i valori dei coeffic
 \hypertarget{path-analysis-e-software}{%
 \section{Path analysis e software}\label{path-analysis-e-software}}
 
-Vengono simulate 100 osservazioni su tre variabili. Imponendo un effetto causale diretto delle variabili \(x_1\) e \(x_2\) sulla \(y\) e una correlazione \(> 0\) tra le variabili \(x_1\) e \(x_2\), otteniamo i seguenti dati:
+Usiamo \texttt{lavaan} per svolgere l'analisi statistica descritta nell'esempio precedente.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{set.seed}\NormalTok{(}\DecValTok{3}\NormalTok{)}
-\NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{100}
-\NormalTok{x1 }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{100}\NormalTok{, }\DecValTok{9}\NormalTok{)}
-\NormalTok{x2 }\OtherTok{\textless{}{-}}\NormalTok{ x1 }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{)}
-\FunctionTok{cor}\NormalTok{(x1, x2)}
-\CommentTok{\#\textgreater{} [1] 0.5346}
-\NormalTok{y }\OtherTok{\textless{}{-}} \DecValTok{10} \SpecialCharTok{+} \DecValTok{3} \SpecialCharTok{*}\NormalTok{ x1 }\SpecialCharTok{+} \FloatTok{1.5} \SpecialCharTok{*}\NormalTok{ x2 }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, }\DecValTok{15}\NormalTok{)}
-\NormalTok{dd }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(y, x1, x2)}
-\FunctionTok{print}\NormalTok{(}\FunctionTok{cor}\NormalTok{(dd), }\DecValTok{3}\NormalTok{)}
-\CommentTok{\#\textgreater{}        y    x1    x2}
-\CommentTok{\#\textgreater{} y  1.000 0.831 0.786}
-\CommentTok{\#\textgreater{} x1 0.831 1.000 0.535}
-\CommentTok{\#\textgreater{} x2 0.786 0.535 1.000}
-\NormalTok{lower }\OtherTok{\textless{}{-}} \StringTok{"}
-\StringTok{ 1}
-\StringTok{ .831 1}
-\StringTok{ .786 .535 1}
-\StringTok{"}
-\FunctionTok{library}\NormalTok{(}\StringTok{"lavaan"}\NormalTok{)}
-\NormalTok{dat.cov }\OtherTok{\textless{}{-}} \FunctionTok{getCov}\NormalTok{(lower, }\AttributeTok{names =} \FunctionTok{c}\NormalTok{(}\StringTok{"y"}\NormalTok{, }\StringTok{"x1"}\NormalTok{, }\StringTok{"x2"}\NormalTok{))}
-\NormalTok{dat.cov}
-\CommentTok{\#\textgreater{}        y    x1    x2}
-\CommentTok{\#\textgreater{} y  1.000 0.831 0.786}
-\CommentTok{\#\textgreater{} x1 0.831 1.000 0.535}
-\CommentTok{\#\textgreater{} x2 0.786 0.535 1.000}
-\end{Highlighting}
-\end{Shaded}
-
-Data una matrice di correlazioni e data la specificazione delle relazioni tra le variabili, la funzione \texttt{sem()} contenuta nel pacchetto \texttt{lavaan} consente di stimare i coefficienti di percorso. Le relazioni tra le variabili sono speficicate con la sintassi descritta nel manuale.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# the model}
-\NormalTok{mr.model }\OtherTok{\textless{}{-}} \StringTok{"y \textasciitilde{} x1 + x2"}
-\NormalTok{fit }\OtherTok{\textless{}{-}} \FunctionTok{sem}\NormalTok{(mr.model, }\AttributeTok{sample.cov =}\NormalTok{ dat.cov, }\AttributeTok{sample.nobs =}\NormalTok{ n)}
-\FunctionTok{summary}\NormalTok{(fit, }\AttributeTok{standardized =} \ConstantTok{TRUE}\NormalTok{)}
-\CommentTok{\#\textgreater{} lavaan 0.6{-}10 ended normally after 1 iterations}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{}   Estimator                                         ML}
-\CommentTok{\#\textgreater{}   Optimization method                           NLMINB}
-\CommentTok{\#\textgreater{}   Number of model parameters                         3}
-\CommentTok{\#\textgreater{}                                                       }
-\CommentTok{\#\textgreater{}   Number of observations                           100}
-\CommentTok{\#\textgreater{}                                                       }
-\CommentTok{\#\textgreater{} Model Test User Model:}
-\CommentTok{\#\textgreater{}                                                       }
-\CommentTok{\#\textgreater{}   Test statistic                                 0.000}
-\CommentTok{\#\textgreater{}   Degrees of freedom                                 0}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} Parameter Estimates:}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{}   Standard errors                             Standard}
-\CommentTok{\#\textgreater{}   Information                                 Expected}
-\CommentTok{\#\textgreater{}   Information saturated (h1) model          Structured}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} Regressions:}
-\CommentTok{\#\textgreater{}                    Estimate  Std.Err  z{-}value  P(\textgreater{}|z|)}
-\CommentTok{\#\textgreater{}   y \textasciitilde{}                                                 }
-\CommentTok{\#\textgreater{}     x1                0.575    0.045   12.710    0.000}
-\CommentTok{\#\textgreater{}     x2                0.478    0.045   10.571    0.000}
-\CommentTok{\#\textgreater{}    Std.lv  Std.all}
-\CommentTok{\#\textgreater{}                   }
-\CommentTok{\#\textgreater{}     0.575    0.575}
-\CommentTok{\#\textgreater{}     0.478    0.478}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} Variances:}
-\CommentTok{\#\textgreater{}                    Estimate  Std.Err  z{-}value  P(\textgreater{}|z|)}
-\CommentTok{\#\textgreater{}    .y                 0.145    0.020    7.071    0.000}
-\CommentTok{\#\textgreater{}    Std.lv  Std.all}
-\CommentTok{\#\textgreater{}     0.145    0.146}
-\FunctionTok{summary}\NormalTok{(}\FunctionTok{lm}\NormalTok{(}\FunctionTok{scale}\NormalTok{(y) }\SpecialCharTok{\textasciitilde{}} \FunctionTok{scale}\NormalTok{(x1) }\SpecialCharTok{+} \FunctionTok{scale}\NormalTok{(x2)))}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} Call:}
-\CommentTok{\#\textgreater{} lm(formula = scale(y) \textasciitilde{} scale(x1) + scale(x2))}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} Residuals:}
-\CommentTok{\#\textgreater{}     Min      1Q  Median      3Q     Max }
-\CommentTok{\#\textgreater{} {-}0.8720 {-}0.2462  0.0163  0.2571  0.9038 }
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} Coefficients:}
-\CommentTok{\#\textgreater{}              Estimate Std. Error t value Pr(\textgreater{}|t|)    }
-\CommentTok{\#\textgreater{} (Intercept) {-}7.47e{-}16   3.87e{-}02     0.0        1    }
-\CommentTok{\#\textgreater{} scale(x1)    5.75e{-}01   4.60e{-}02    12.5   \textless{}2e{-}16 ***}
-\CommentTok{\#\textgreater{} scale(x2)    4.79e{-}01   4.60e{-}02    10.4   \textless{}2e{-}16 ***}
-\CommentTok{\#\textgreater{} {-}{-}{-}}
-\CommentTok{\#\textgreater{} Signif. codes:  }
-\CommentTok{\#\textgreater{} 0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} Residual standard error: 0.387 on 97 degrees of freedom}
-\CommentTok{\#\textgreater{} Multiple R{-}squared:  0.853,  Adjusted R{-}squared:  0.85 }
-\CommentTok{\#\textgreater{} F{-}statistic:  283 on 2 and 97 DF,  p{-}value: \textless{}2e{-}16}
-\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ .}\DecValTok{145}
-\CommentTok{\#\textgreater{} [1] 0.855}
-\end{Highlighting}
-\end{Shaded}
-
-Consideriamo nuovamente la seguente matrice di correlazioni:
+\begin{exercise}
+La matrice di correlazioni di partenza è:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5299,7 +5216,7 @@ Converto tali dati in una matrice simmetrica.
 \end{Highlighting}
 \end{Shaded}
 
-Specifico il modello:
+Specifico il modello con la sintassi di \texttt{lavaan}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5307,20 +5224,20 @@ Specifico il modello:
 \end{Highlighting}
 \end{Shaded}
 
-Adatto il modello ai dati:
+Adatto il modello ai dati.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{fit }\OtherTok{\textless{}{-}} \FunctionTok{sem}\NormalTok{(mr\_model, }\AttributeTok{sample.cov =}\NormalTok{ dat.cov, }\AttributeTok{sample.nobs =}\NormalTok{ n)}
+\NormalTok{fit }\OtherTok{\textless{}{-}} \FunctionTok{sem}\NormalTok{(mr\_model, }\AttributeTok{sample.cov =}\NormalTok{ dat.cov, }\AttributeTok{sample.nobs =} \DecValTok{100}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-Esamino i risultati:
+Esamino i risultati.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{summary}\NormalTok{(fit, }\AttributeTok{standardized =} \ConstantTok{TRUE}\NormalTok{)}
-\CommentTok{\#\textgreater{} lavaan 0.6{-}10 ended normally after 1 iterations}
+\CommentTok{\#\textgreater{} lavaan 0.6{-}11 ended normally after 1 iterations}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{}   Estimator                                         ML}
 \CommentTok{\#\textgreater{}   Optimization method                           NLMINB}
@@ -5358,6 +5275,137 @@ Esamino i risultati:
 \end{Shaded}
 
 Con la funzione \texttt{sem()} del pacchetto \texttt{lavaan} abbiamo dunque replicato i risultati ottenuti in precedenza. Il valore \(0.386\) rappresenta la quota di varianza della \(y\) non spiegata dalle variabili esogene.
+\end{exercise}
+
+\begin{exercise}
+
+Ripeto ora la stessa procedura simulando 100 osservazioni su tre variabili, in maniera tale da avere a disposizione i dati grezzi. Imponendo un effetto causale diretto delle variabili \(x_1\) e \(x_2\) sulla \(y\) e una correlazione \(> 0\) tra le variabili \(x_1\) e \(x_2\), otteniamo i dati seguenti.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{100}
+\NormalTok{x1 }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{100}\NormalTok{, }\DecValTok{9}\NormalTok{)}
+\NormalTok{x2 }\OtherTok{\textless{}{-}}\NormalTok{ x1 }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{)}
+\FunctionTok{cor}\NormalTok{(x1, x2)}
+\CommentTok{\#\textgreater{} [1] 0.5346}
+\NormalTok{y }\OtherTok{\textless{}{-}} \DecValTok{10} \SpecialCharTok{+} \DecValTok{3} \SpecialCharTok{*}\NormalTok{ x1 }\SpecialCharTok{+} \FloatTok{1.5} \SpecialCharTok{*}\NormalTok{ x2 }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, }\DecValTok{15}\NormalTok{)}
+\NormalTok{dd }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(y, x1, x2)}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{cor}\NormalTok{(dd), }\DecValTok{3}\NormalTok{)}
+\CommentTok{\#\textgreater{}        y    x1    x2}
+\CommentTok{\#\textgreater{} y  1.000 0.831 0.786}
+\CommentTok{\#\textgreater{} x1 0.831 1.000 0.535}
+\CommentTok{\#\textgreater{} x2 0.786 0.535 1.000}
+\end{Highlighting}
+\end{Shaded}
+
+Per fare un esempio, immaginiamo che queste correlazioni siano state ricavate da qualche fonte e dunque le leggiamo nella memoria di lavoro di \(\mathsf{R}\) nel modo seguente.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lower }\OtherTok{\textless{}{-}} \StringTok{"}
+\StringTok{ 1}
+\StringTok{ .831 1}
+\StringTok{ .786 .535 1}
+\StringTok{"}
+\NormalTok{dat.cov }\OtherTok{\textless{}{-}} \FunctionTok{getCov}\NormalTok{(lower, }\AttributeTok{names =} \FunctionTok{c}\NormalTok{(}\StringTok{"y"}\NormalTok{, }\StringTok{"x1"}\NormalTok{, }\StringTok{"x2"}\NormalTok{))}
+\NormalTok{dat.cov}
+\CommentTok{\#\textgreater{}        y    x1    x2}
+\CommentTok{\#\textgreater{} y  1.000 0.831 0.786}
+\CommentTok{\#\textgreater{} x1 0.831 1.000 0.535}
+\CommentTok{\#\textgreater{} x2 0.786 0.535 1.000}
+\end{Highlighting}
+\end{Shaded}
+
+Data una matrice di correlazioni e data la specificazione delle relazioni tra le variabili, la funzione \texttt{sem()} contenuta nel pacchetto \texttt{lavaan} consente di stimare i coefficienti di percorso.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mr.model }\OtherTok{\textless{}{-}} \StringTok{"y \textasciitilde{} x1 + x2"}
+\NormalTok{fit }\OtherTok{\textless{}{-}} \FunctionTok{sem}\NormalTok{(mr.model, }\AttributeTok{sample.cov =}\NormalTok{ dat.cov, }\AttributeTok{sample.nobs =} \DecValTok{100}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Esaminiamo i risultati con la funzione \texttt{summary()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(fit, }\AttributeTok{standardized =} \ConstantTok{TRUE}\NormalTok{)}
+\CommentTok{\#\textgreater{} lavaan 0.6{-}11 ended normally after 1 iterations}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}   Estimator                                         ML}
+\CommentTok{\#\textgreater{}   Optimization method                           NLMINB}
+\CommentTok{\#\textgreater{}   Number of model parameters                         3}
+\CommentTok{\#\textgreater{}                                                       }
+\CommentTok{\#\textgreater{}   Number of observations                           100}
+\CommentTok{\#\textgreater{}                                                       }
+\CommentTok{\#\textgreater{} Model Test User Model:}
+\CommentTok{\#\textgreater{}                                                       }
+\CommentTok{\#\textgreater{}   Test statistic                                 0.000}
+\CommentTok{\#\textgreater{}   Degrees of freedom                                 0}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Parameter Estimates:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}   Standard errors                             Standard}
+\CommentTok{\#\textgreater{}   Information                                 Expected}
+\CommentTok{\#\textgreater{}   Information saturated (h1) model          Structured}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Regressions:}
+\CommentTok{\#\textgreater{}                    Estimate  Std.Err  z{-}value  P(\textgreater{}|z|)}
+\CommentTok{\#\textgreater{}   y \textasciitilde{}                                                 }
+\CommentTok{\#\textgreater{}     x1                0.575    0.045   12.710    0.000}
+\CommentTok{\#\textgreater{}     x2                0.478    0.045   10.571    0.000}
+\CommentTok{\#\textgreater{}    Std.lv  Std.all}
+\CommentTok{\#\textgreater{}                   }
+\CommentTok{\#\textgreater{}     0.575    0.575}
+\CommentTok{\#\textgreater{}     0.478    0.478}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Variances:}
+\CommentTok{\#\textgreater{}                    Estimate  Std.Err  z{-}value  P(\textgreater{}|z|)}
+\CommentTok{\#\textgreater{}    .y                 0.145    0.020    7.071    0.000}
+\CommentTok{\#\textgreater{}    Std.lv  Std.all}
+\CommentTok{\#\textgreater{}     0.145    0.146}
+\end{Highlighting}
+\end{Shaded}
+
+Ora calcoliamo i coefficienti del modello di regressione multipla usando i dati grezzi (standardizzati). Si noti che i risultati ottenuti da \texttt{lavaan} sono identici a quelli prodotti dal modello di regressione multipla -- nel caso presente, infatti, il modello statistico esaminato da \texttt{sem()} non era altro che il modello di regressione multipla.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(}\FunctionTok{lm}\NormalTok{(}\FunctionTok{scale}\NormalTok{(y) }\SpecialCharTok{\textasciitilde{}} \FunctionTok{scale}\NormalTok{(x1) }\SpecialCharTok{+} \FunctionTok{scale}\NormalTok{(x2)))}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Call:}
+\CommentTok{\#\textgreater{} lm(formula = scale(y) \textasciitilde{} scale(x1) + scale(x2))}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Residuals:}
+\CommentTok{\#\textgreater{}     Min      1Q  Median      3Q     Max }
+\CommentTok{\#\textgreater{} {-}0.8720 {-}0.2462  0.0163  0.2571  0.9038 }
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Coefficients:}
+\CommentTok{\#\textgreater{}              Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\textgreater{} (Intercept) {-}7.47e{-}16   3.87e{-}02     0.0        1    }
+\CommentTok{\#\textgreater{} scale(x1)    5.75e{-}01   4.60e{-}02    12.5   \textless{}2e{-}16 ***}
+\CommentTok{\#\textgreater{} scale(x2)    4.79e{-}01   4.60e{-}02    10.4   \textless{}2e{-}16 ***}
+\CommentTok{\#\textgreater{} {-}{-}{-}}
+\CommentTok{\#\textgreater{} Signif. codes:  }
+\CommentTok{\#\textgreater{} 0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Residual standard error: 0.387 on 97 degrees of freedom}
+\CommentTok{\#\textgreater{} Multiple R{-}squared:  0.853,  Adjusted R{-}squared:  0.85 }
+\CommentTok{\#\textgreater{} F{-}statistic:  283 on 2 and 97 DF,  p{-}value: \textless{}2e{-}16}
+\end{Highlighting}
+\end{Shaded}
+
+La quota di varianza non spiegata della variabile endogena è:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ .}\DecValTok{145}
+\CommentTok{\#\textgreater{} [1] 0.855}
+\end{Highlighting}
+\end{Shaded}
+
+\end{exercise}
 
 \hypertarget{oltre-la-regressione-multipla}{%
 \section{Oltre la regressione multipla}\label{oltre-la-regressione-multipla}}
@@ -5365,6 +5413,396 @@ Con la funzione \texttt{sem()} del pacchetto \texttt{lavaan} abbiamo dunque repl
 In generale, lo psicologo ha a che fare con diagrammi di percorso nei quali sono presenti variabili non osservabili (latenti) e quindi l'approccio della regressione multipla non può essere applicato. È necessario invece descrivere il diagramma di percorso mediante un insieme di equazioni strutturali, definendo un numero di equazioni almeno altrettanto grande quanto il numero delle incognite. Tale soluzione viene solitamente fornita da un software. Consideriamo di seguito alcuni esempi in cui vengono applicate le regole di Wright per diagrammi di percorso che non possono essere descritti nei termini di un modello di regressione multipla. Un esempio di path diagram che non si riduce al modello di regressione multipla è quello fornito nella Figura \ref{fig:path01}.
 
 La path analysis è anche usata in quel campo della psicologia interessato alla misurazione dei costrutti psicologici quali i tratti della personalità, le capacità cognitive e i disturbi psicopatologici. Questa è la ragione per cui la discutiamo qui.
+
+\begin{exercise}
+Weiss, Forkus, Contractor, e Schick (2018) esaminano con una path analisi la relazione tra la difficiltà di regolare le emozioni positive e l'abuso di alcol e di sostanze.
+
+\begin{itemize}
+\tightlist
+\item
+  La difficoltà di regolare le emozioni positive viene misurata con la \emph{Difficulties in Emotion Regulation Scale -- Positive} (DERS-P; Weiss, Gratz, \& Lavender, 2015), che comprende le sottoscale di Acceptance, Impulse, e Goals.
+\item
+  L'abuso di sostanze viene misurato con la \emph{Drug Abuse Screening Test} (DAST; Skinner, 1982).
+\item
+  L'abuso di alcol viene misurato con la \emph{Alcohol Use Disorder Identification Test} (AUDIT; Saunders, Aasland, Babor, De la Fuente, \& Grant, 1993), con le sottoscale di Hazardous Consumption, Dependence, e Consequences.
+\end{itemize}
+
+I dati di un campione di 284 partecipanti sono riportati nella forma di una matrice di correlazione.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lower }\OtherTok{\textless{}{-}} \StringTok{"}
+\StringTok{   1}
+\StringTok{   .38 1}
+\StringTok{   .41 .64 1}
+\StringTok{   .34 .44 .30 1}
+\StringTok{   .29 .12 .27 .06 1}
+\StringTok{   .29 .22 .20 .17 .54 1}
+\StringTok{   .30 .15 .23 .09 .73 .69 1}
+\StringTok{"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dat\_cov }\OtherTok{\textless{}{-}}\NormalTok{ lavaan}\SpecialCharTok{::}\FunctionTok{getCov}\NormalTok{(}
+\NormalTok{  lower,}
+  \AttributeTok{names =} \FunctionTok{c}\NormalTok{(}\StringTok{"dmis"}\NormalTok{, }\StringTok{"con"}\NormalTok{, }\StringTok{"dep"}\NormalTok{, }\StringTok{"consu"}\NormalTok{, }\StringTok{"acc"}\NormalTok{, }\StringTok{"goal"}\NormalTok{, }\StringTok{"imp"}\NormalTok{)}
+\NormalTok{)}
+\NormalTok{dat\_cov}
+\CommentTok{\#\textgreater{}       dmis  con  dep consu  acc goal  imp}
+\CommentTok{\#\textgreater{} dmis  1.00 0.38 0.41  0.34 0.29 0.29 0.30}
+\CommentTok{\#\textgreater{} con   0.38 1.00 0.64  0.44 0.12 0.22 0.15}
+\CommentTok{\#\textgreater{} dep   0.41 0.64 1.00  0.30 0.27 0.20 0.23}
+\CommentTok{\#\textgreater{} consu 0.34 0.44 0.30  1.00 0.06 0.17 0.09}
+\CommentTok{\#\textgreater{} acc   0.29 0.12 0.27  0.06 1.00 0.54 0.73}
+\CommentTok{\#\textgreater{} goal  0.29 0.22 0.20  0.17 0.54 1.00 0.69}
+\CommentTok{\#\textgreater{} imp   0.30 0.15 0.23  0.09 0.73 0.69 1.00}
+\end{Highlighting}
+\end{Shaded}
+
+I dati vengono analizzati con due modelli di path analysis. Nel primo modello si ipotizza che la difficoltà di regolare le emozioni positive sia una variabile esogena che influenza sia l'abuso di sostanze sia l'abuso di alcol. Si ipotizza inoltre che abuso di sostanze e abuso di alcol siano correlate.
+
+La difficoltà di regolare le emozioni positive è indicata da \texttt{drpe}; l'abuso di alcolo è denotato da \texttt{amis}; l'abuso di sostanze è denotato da \texttt{dmis}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mod }\OtherTok{\textless{}{-}} \StringTok{"}
+\StringTok{  drpe =\textasciitilde{} NA*acc + goal + imp}
+\StringTok{  amis =\textasciitilde{} NA*con + dep + consu}
+\StringTok{  amis \textasciitilde{} drpe}
+\StringTok{  dmis \textasciitilde{} drpe}
+\StringTok{  dmis \textasciitilde{}\textasciitilde{} amis}
+\StringTok{  drpe \textasciitilde{}\textasciitilde{} 1*drpe}
+\StringTok{  amis \textasciitilde{}\textasciitilde{} 1*amis}
+\StringTok{"}
+\end{Highlighting}
+\end{Shaded}
+
+Svolgiamo l'analisi statistica con \texttt{sem()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit }\OtherTok{\textless{}{-}}\NormalTok{ lavaan}\SpecialCharTok{::}\FunctionTok{sem}\NormalTok{(mod, }\AttributeTok{sample.cov =}\NormalTok{ dat\_cov, }\AttributeTok{sample.nobs =} \DecValTok{284}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Esaminiamo i risultati.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(fit, }\AttributeTok{fit.measures =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{standardized =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{rsquare =} \ConstantTok{TRUE}\NormalTok{)}
+\CommentTok{\#\textgreater{} lavaan 0.6{-}11 ended normally after 18 iterations}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}   Estimator                                         ML}
+\CommentTok{\#\textgreater{}   Optimization method                           NLMINB}
+\CommentTok{\#\textgreater{}   Number of model parameters                        16}
+\CommentTok{\#\textgreater{}                                                       }
+\CommentTok{\#\textgreater{}   Number of observations                           284}
+\CommentTok{\#\textgreater{}                                                       }
+\CommentTok{\#\textgreater{} Model Test User Model:}
+\CommentTok{\#\textgreater{}                                                       }
+\CommentTok{\#\textgreater{}   Test statistic                                38.211}
+\CommentTok{\#\textgreater{}   Degrees of freedom                                12}
+\CommentTok{\#\textgreater{}   P{-}value (Chi{-}square)                           0.000}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Model Test Baseline Model:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}   Test statistic                               741.324}
+\CommentTok{\#\textgreater{}   Degrees of freedom                                21}
+\CommentTok{\#\textgreater{}   P{-}value                                        0.000}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} User Model versus Baseline Model:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}   Comparative Fit Index (CFI)                    0.964}
+\CommentTok{\#\textgreater{}   Tucker{-}Lewis Index (TLI)                       0.936}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Loglikelihood and Information Criteria:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}   Loglikelihood user model (H0)              {-}2465.787}
+\CommentTok{\#\textgreater{}   Loglikelihood unrestricted model (H1)      {-}2446.682}
+\CommentTok{\#\textgreater{}                                                       }
+\CommentTok{\#\textgreater{}   Akaike (AIC)                                4963.574}
+\CommentTok{\#\textgreater{}   Bayesian (BIC)                              5021.958}
+\CommentTok{\#\textgreater{}   Sample{-}size adjusted Bayesian (BIC)         4971.221}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Root Mean Square Error of Approximation:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}   RMSEA                                          0.088}
+\CommentTok{\#\textgreater{}   90 Percent confidence interval {-} lower         0.057}
+\CommentTok{\#\textgreater{}   90 Percent confidence interval {-} upper         0.120}
+\CommentTok{\#\textgreater{}   P{-}value RMSEA \textless{}= 0.05                          0.023}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Standardized Root Mean Square Residual:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}   SRMR                                           0.046}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Parameter Estimates:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}   Standard errors                             Standard}
+\CommentTok{\#\textgreater{}   Information                                 Expected}
+\CommentTok{\#\textgreater{}   Information saturated (h1) model          Structured}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Latent Variables:}
+\CommentTok{\#\textgreater{}                    Estimate  Std.Err  z{-}value  P(\textgreater{}|z|)}
+\CommentTok{\#\textgreater{}   drpe =\textasciitilde{}                                             }
+\CommentTok{\#\textgreater{}     acc               0.769    0.053   14.440    0.000}
+\CommentTok{\#\textgreater{}     goal              0.727    0.054   13.473    0.000}
+\CommentTok{\#\textgreater{}     imp               0.943    0.050   18.956    0.000}
+\CommentTok{\#\textgreater{}   amis =\textasciitilde{}                                             }
+\CommentTok{\#\textgreater{}     con               0.808    0.058   13.855    0.000}
+\CommentTok{\#\textgreater{}     dep               0.730    0.058   12.607    0.000}
+\CommentTok{\#\textgreater{}     consu             0.477    0.060    7.973    0.000}
+\CommentTok{\#\textgreater{}    Std.lv  Std.all}
+\CommentTok{\#\textgreater{}                   }
+\CommentTok{\#\textgreater{}     0.769    0.770}
+\CommentTok{\#\textgreater{}     0.727    0.728}
+\CommentTok{\#\textgreater{}     0.943    0.945}
+\CommentTok{\#\textgreater{}                   }
+\CommentTok{\#\textgreater{}     0.835    0.837}
+\CommentTok{\#\textgreater{}     0.755    0.756}
+\CommentTok{\#\textgreater{}     0.493    0.494}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Regressions:}
+\CommentTok{\#\textgreater{}                    Estimate  Std.Err  z{-}value  P(\textgreater{}|z|)}
+\CommentTok{\#\textgreater{}   amis \textasciitilde{}                                              }
+\CommentTok{\#\textgreater{}     drpe              0.263    0.073    3.614    0.000}
+\CommentTok{\#\textgreater{}   dmis \textasciitilde{}                                              }
+\CommentTok{\#\textgreater{}     drpe              0.333    0.060    5.534    0.000}
+\CommentTok{\#\textgreater{}    Std.lv  Std.all}
+\CommentTok{\#\textgreater{}                   }
+\CommentTok{\#\textgreater{}     0.254    0.254}
+\CommentTok{\#\textgreater{}                   }
+\CommentTok{\#\textgreater{}     0.333    0.334}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Covariances:}
+\CommentTok{\#\textgreater{}                    Estimate  Std.Err  z{-}value  P(\textgreater{}|z|)}
+\CommentTok{\#\textgreater{}  .amis \textasciitilde{}\textasciitilde{}                                             }
+\CommentTok{\#\textgreater{}    .dmis              0.431    0.060    7.216    0.000}
+\CommentTok{\#\textgreater{}    Std.lv  Std.all}
+\CommentTok{\#\textgreater{}                   }
+\CommentTok{\#\textgreater{}     0.431    0.458}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Variances:}
+\CommentTok{\#\textgreater{}                    Estimate  Std.Err  z{-}value  P(\textgreater{}|z|)}
+\CommentTok{\#\textgreater{}     drpe              1.000                           }
+\CommentTok{\#\textgreater{}    .amis              1.000                           }
+\CommentTok{\#\textgreater{}    .acc               0.406    0.045    9.020    0.000}
+\CommentTok{\#\textgreater{}    .goal              0.468    0.047    9.876    0.000}
+\CommentTok{\#\textgreater{}    .imp               0.106    0.045    2.385    0.017}
+\CommentTok{\#\textgreater{}    .con               0.299    0.064    4.690    0.000}
+\CommentTok{\#\textgreater{}    .dep               0.427    0.060    7.072    0.000}
+\CommentTok{\#\textgreater{}    .consu             0.753    0.069   10.979    0.000}
+\CommentTok{\#\textgreater{}    .dmis              0.886    0.075   11.771    0.000}
+\CommentTok{\#\textgreater{}    Std.lv  Std.all}
+\CommentTok{\#\textgreater{}     1.000    1.000}
+\CommentTok{\#\textgreater{}     0.936    0.936}
+\CommentTok{\#\textgreater{}     0.406    0.407}
+\CommentTok{\#\textgreater{}     0.468    0.470}
+\CommentTok{\#\textgreater{}     0.106    0.107}
+\CommentTok{\#\textgreater{}     0.299    0.300}
+\CommentTok{\#\textgreater{}     0.427    0.428}
+\CommentTok{\#\textgreater{}     0.753    0.756}
+\CommentTok{\#\textgreater{}     0.886    0.889}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} R{-}Square:}
+\CommentTok{\#\textgreater{}                    Estimate}
+\CommentTok{\#\textgreater{}     amis              0.064}
+\CommentTok{\#\textgreater{}     acc               0.593}
+\CommentTok{\#\textgreater{}     goal              0.530}
+\CommentTok{\#\textgreater{}     imp               0.893}
+\CommentTok{\#\textgreater{}     con               0.700}
+\CommentTok{\#\textgreater{}     dep               0.572}
+\CommentTok{\#\textgreater{}     consu             0.244}
+\CommentTok{\#\textgreater{}     dmis              0.111}
+\end{Highlighting}
+\end{Shaded}
+
+Creiamo un path diagram.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{semPaths}\NormalTok{(}
+\NormalTok{  fit,}
+  \StringTok{"std"}\NormalTok{,}
+  \AttributeTok{posCol =} \FunctionTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{),}
+  \AttributeTok{edge.label.cex =} \FloatTok{1.2}\NormalTok{,}
+  \AttributeTok{sizeMan =} \DecValTok{7}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-172-1} \end{center}
+
+Gli autori esplorano un modello alternativo nel quale le relazioni causali vengono rovesciate: in questo caso è la difficoltà di regolazione delle emozioni positive ad essere la variabile esogena, e l'abuso di sostanze e l'abuso di alcol sono le variabili esogene.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mod\_alt }\OtherTok{\textless{}{-}} \StringTok{"}
+\StringTok{  drpe =\textasciitilde{} NA*acc + goal + imp}
+\StringTok{  amis =\textasciitilde{} NA*con + dep + consu}
+\StringTok{  drpe \textasciitilde{} amis + dmis}
+\StringTok{  dmis \textasciitilde{}\textasciitilde{} amis}
+\StringTok{  drpe \textasciitilde{}\textasciitilde{} 1*drpe}
+\StringTok{  amis \textasciitilde{}\textasciitilde{} 1*amis}
+\StringTok{"}
+\end{Highlighting}
+\end{Shaded}
+
+Adattiamo il modello ai dati.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit\_alt }\OtherTok{\textless{}{-}} \FunctionTok{sem}\NormalTok{(mod\_alt, }\AttributeTok{sample.cov =}\NormalTok{ dat\_cov, }\AttributeTok{sample.nobs =} \DecValTok{311}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Esaminiamo i risultati.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(fit\_alt, }\AttributeTok{fit.measures =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{standardized =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{rsquare =} \ConstantTok{TRUE}\NormalTok{)}
+\CommentTok{\#\textgreater{} lavaan 0.6{-}11 ended normally after 19 iterations}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}   Estimator                                         ML}
+\CommentTok{\#\textgreater{}   Optimization method                           NLMINB}
+\CommentTok{\#\textgreater{}   Number of model parameters                        16}
+\CommentTok{\#\textgreater{}                                                       }
+\CommentTok{\#\textgreater{}   Number of observations                           311}
+\CommentTok{\#\textgreater{}                                                       }
+\CommentTok{\#\textgreater{} Model Test User Model:}
+\CommentTok{\#\textgreater{}                                                       }
+\CommentTok{\#\textgreater{}   Test statistic                                41.844}
+\CommentTok{\#\textgreater{}   Degrees of freedom                                12}
+\CommentTok{\#\textgreater{}   P{-}value (Chi{-}square)                           0.000}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Model Test Baseline Model:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}   Test statistic                               811.802}
+\CommentTok{\#\textgreater{}   Degrees of freedom                                21}
+\CommentTok{\#\textgreater{}   P{-}value                                        0.000}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} User Model versus Baseline Model:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}   Comparative Fit Index (CFI)                    0.962}
+\CommentTok{\#\textgreater{}   Tucker{-}Lewis Index (TLI)                       0.934}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Loglikelihood and Information Criteria:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}   Loglikelihood user model (H0)              {-}2700.544}
+\CommentTok{\#\textgreater{}   Loglikelihood unrestricted model (H1)      {-}2679.623}
+\CommentTok{\#\textgreater{}                                                       }
+\CommentTok{\#\textgreater{}   Akaike (AIC)                                5433.089}
+\CommentTok{\#\textgreater{}   Bayesian (BIC)                              5492.925}
+\CommentTok{\#\textgreater{}   Sample{-}size adjusted Bayesian (BIC)         5442.179}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Root Mean Square Error of Approximation:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}   RMSEA                                          0.089}
+\CommentTok{\#\textgreater{}   90 Percent confidence interval {-} lower         0.061}
+\CommentTok{\#\textgreater{}   90 Percent confidence interval {-} upper         0.120}
+\CommentTok{\#\textgreater{}   P{-}value RMSEA \textless{}= 0.05                          0.014}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Standardized Root Mean Square Residual:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}   SRMR                                           0.046}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Parameter Estimates:}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}   Standard errors                             Standard}
+\CommentTok{\#\textgreater{}   Information                                 Expected}
+\CommentTok{\#\textgreater{}   Information saturated (h1) model          Structured}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Latent Variables:}
+\CommentTok{\#\textgreater{}                    Estimate  Std.Err  z{-}value  P(\textgreater{}|z|)}
+\CommentTok{\#\textgreater{}   drpe =\textasciitilde{}                                             }
+\CommentTok{\#\textgreater{}     acc               0.721    0.048   15.117    0.000}
+\CommentTok{\#\textgreater{}     goal              0.682    0.048   14.097    0.000}
+\CommentTok{\#\textgreater{}     imp               0.885    0.046   19.287    0.000}
+\CommentTok{\#\textgreater{}   amis =\textasciitilde{}                                             }
+\CommentTok{\#\textgreater{}     con               0.835    0.057   14.742    0.000}
+\CommentTok{\#\textgreater{}     dep               0.755    0.057   13.273    0.000}
+\CommentTok{\#\textgreater{}     consu             0.494    0.059    8.366    0.000}
+\CommentTok{\#\textgreater{}    Std.lv  Std.all}
+\CommentTok{\#\textgreater{}                   }
+\CommentTok{\#\textgreater{}     0.769    0.770}
+\CommentTok{\#\textgreater{}     0.727    0.728}
+\CommentTok{\#\textgreater{}     0.944    0.945}
+\CommentTok{\#\textgreater{}                   }
+\CommentTok{\#\textgreater{}     0.835    0.837}
+\CommentTok{\#\textgreater{}     0.755    0.756}
+\CommentTok{\#\textgreater{}     0.494    0.494}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Regressions:}
+\CommentTok{\#\textgreater{}                    Estimate  Std.Err  z{-}value  P(\textgreater{}|z|)}
+\CommentTok{\#\textgreater{}   drpe \textasciitilde{}                                              }
+\CommentTok{\#\textgreater{}     amis              0.123    0.080    1.532    0.125}
+\CommentTok{\#\textgreater{}     dmis              0.294    0.073    4.030    0.000}
+\CommentTok{\#\textgreater{}    Std.lv  Std.all}
+\CommentTok{\#\textgreater{}                   }
+\CommentTok{\#\textgreater{}     0.115    0.115}
+\CommentTok{\#\textgreater{}     0.276    0.276}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Covariances:}
+\CommentTok{\#\textgreater{}                    Estimate  Std.Err  z{-}value  P(\textgreater{}|z|)}
+\CommentTok{\#\textgreater{}   amis \textasciitilde{}\textasciitilde{}                                             }
+\CommentTok{\#\textgreater{}     dmis              0.502    0.059    8.521    0.000}
+\CommentTok{\#\textgreater{}    Std.lv  Std.all}
+\CommentTok{\#\textgreater{}                   }
+\CommentTok{\#\textgreater{}     0.502    0.503}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} Variances:}
+\CommentTok{\#\textgreater{}                    Estimate  Std.Err  z{-}value  P(\textgreater{}|z|)}
+\CommentTok{\#\textgreater{}    .drpe              1.000                           }
+\CommentTok{\#\textgreater{}     amis              1.000                           }
+\CommentTok{\#\textgreater{}    .acc               0.406    0.043    9.439    0.000}
+\CommentTok{\#\textgreater{}    .goal              0.468    0.045   10.335    0.000}
+\CommentTok{\#\textgreater{}    .imp               0.106    0.043    2.496    0.013}
+\CommentTok{\#\textgreater{}    .con               0.299    0.061    4.908    0.000}
+\CommentTok{\#\textgreater{}    .dep               0.427    0.058    7.401    0.000}
+\CommentTok{\#\textgreater{}    .consu             0.753    0.066   11.489    0.000}
+\CommentTok{\#\textgreater{}     dmis              0.997    0.080   12.470    0.000}
+\CommentTok{\#\textgreater{}    Std.lv  Std.all}
+\CommentTok{\#\textgreater{}     0.879    0.879}
+\CommentTok{\#\textgreater{}     1.000    1.000}
+\CommentTok{\#\textgreater{}     0.406    0.407}
+\CommentTok{\#\textgreater{}     0.468    0.470}
+\CommentTok{\#\textgreater{}     0.106    0.107}
+\CommentTok{\#\textgreater{}     0.299    0.300}
+\CommentTok{\#\textgreater{}     0.427    0.428}
+\CommentTok{\#\textgreater{}     0.753    0.756}
+\CommentTok{\#\textgreater{}     0.997    1.000}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} R{-}Square:}
+\CommentTok{\#\textgreater{}                    Estimate}
+\CommentTok{\#\textgreater{}     drpe              0.121}
+\CommentTok{\#\textgreater{}     acc               0.593}
+\CommentTok{\#\textgreater{}     goal              0.530}
+\CommentTok{\#\textgreater{}     imp               0.893}
+\CommentTok{\#\textgreater{}     con               0.700}
+\CommentTok{\#\textgreater{}     dep               0.572}
+\CommentTok{\#\textgreater{}     consu             0.244}
+\end{Highlighting}
+\end{Shaded}
+
+Creiamo il diagramma di percorso.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{semPaths}\NormalTok{(}
+\NormalTok{  fit\_alt,}
+  \StringTok{"std"}\NormalTok{,}
+  \AttributeTok{posCol =} \FunctionTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{),}
+  \AttributeTok{edge.label.cex =} \FloatTok{1.2}\NormalTok{,}
+  \AttributeTok{sizeMan =} \DecValTok{7}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-176-1} \end{center}
+
+In entrambi i casi i risultati replicano quanto riportato dagli autori.
+\end{exercise}
 
 \hypertarget{ch:cronbach}{%
 \chapter{Attendibilità e modello fattoriale}\label{ch:cronbach}}
@@ -7172,7 +7610,7 @@ Il terzo metodo, lo scree test, può essere eseguito usando la funzione \texttt{
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-208-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-222-1} \end{center}
 
 Lo scree test suggerisce una soluzione a \(m=1\) fattori, come indicato nella figura precedente. Il terzo metodo, nella versione della Parallel Analysis, può essere eseguito usando la funzione \texttt{paran()} contenuta nel pacchetto \texttt{paran}. La Parallel Analysis indica una soluzione a \(m=1\) fattore.
 
@@ -7200,7 +7638,7 @@ Lo scree test suggerisce una soluzione a \(m=1\) fattori, come indicato nella fi
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-209-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-223-1} \end{center}
 
 Il quarto metodo consiste nell'applicazione di un test inferenziale relativo al numero di fattori. Anche questo metodo indica una soluzione a sei fattori:
 
@@ -7510,7 +7948,7 @@ Nella seguente figura, i punti rappresentano le cinque coppie di pesi fattoriali
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-220-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-234-1} \end{center}
 
 Rencher (2002) nota che, per questi dati, una rotazione ortogonale di \(-35^{\circ}\) ci porterebbe ad avvicinare gli assi ai punti nel diagramma. Per verificare questo, disegnamo sul diagramma i nuovi assi dopo una rotazione di \(-35^{\circ}\). Le istruzioni \texttt{R} sono le seguenti:
 
@@ -7551,7 +7989,7 @@ Rencher (2002) nota che, per questi dati, una rotazione ortogonale di \(-35^{\ci
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-221-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-235-1} \end{center}
 
 Nella figura precedente, le due frecce rappresentano gli assi ruotati. È chiaro come tale rotazione di \(-35^{\circ}\) ha effettivamente l'effetto di avvicinare gli assi ai punti del diagramma. Se usiamo dunque il valore \(\phi = -35^{\circ}\) nella matrice di rotazione, possiamo calcolare le saturazioni fattoriali della soluzione ruotata \(\hat{\boldsymbol{\Lambda}}^* = \hat{\boldsymbol{\Lambda}} \textbf{T}\). Le saturazioni fattoriali ruotate non sono altro che la proiezione ortogonale dei punti sugli assi ruotati:
 
@@ -9031,7 +9469,7 @@ Esaminiamo un campione casuale di 9 soggetti. È presente una notevole variazion
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-280-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-294-1} \end{center}
 
 Notiamo che un semplce modello lineare è appropriato per rendere conto della variazione temporale della variabile risposta:
 
@@ -9045,7 +9483,7 @@ Notiamo che un semplce modello lineare è appropriato per rendere conto della va
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-281-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-295-1} \end{center}
 
 Complessivamente, i dati suggeriscono un andamento crescente della variabile risposta in funzione del tempo:
 
@@ -9065,7 +9503,7 @@ Complessivamente, i dati suggeriscono un andamento crescente della variabile ris
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-282-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-296-1} \end{center}
 
 Per adattare un modello lineare di crescita a questi dati, specifichiamo il seguente modello a variabili latenti
 
@@ -9135,7 +9573,7 @@ Esaminiamo il path diagram:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-285-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-299-1} \end{center}
 
 Ci sono 6 tipi di parametri di interesse:
 
@@ -9208,7 +9646,7 @@ Le distribuzione delle stime individuali dell'intercetta e della pendenza della 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-288-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-302-1} \end{center}
 
 Un buon modo per capire cosa fa il modello è quello di visualizzare i punteggi previsti. Useremo qui la funzione \texttt{predict()} per salvare un nuovo oggetto con i punteggi previsti a livello individuale per l'intercetta e la pendenza;
 
@@ -9274,7 +9712,7 @@ Il cambiamento previsto per tutti i soggetti può essere visualizzato nel modo s
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-291-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-305-1} \end{center}
 
 La linea nera più spessa rappresenta l'intercetta media e la pendenza media della curva di crescita del modello LGM. Ogni individuo ha una sua specifica intercetta e uno specifico tasso di cambiamento e questa diversità è catturata nelle componenti di varianza del modello
 
@@ -9804,7 +10242,7 @@ Esaminiamo la soluzione ottenuta:
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{summary}\NormalTok{(fit1, }\AttributeTok{fit.measures =} \ConstantTok{TRUE}\NormalTok{)}
-\CommentTok{\#\textgreater{} lavaan 0.6{-}10 ended normally after 16 iterations}
+\CommentTok{\#\textgreater{} lavaan 0.6{-}11 ended normally after 16 iterations}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{}   Estimator                                       DWLS}
 \CommentTok{\#\textgreater{}   Optimization method                           NLMINB}
@@ -11550,7 +11988,7 @@ Disegnamo il diagramma di dispersione con un ellisse che contiene la nube di pun
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-337-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-351-1} \end{center}
 
 Se racchiudiamo le osservazioni (\(v_1, v_2\)) con un'ellisse, allora la lunghezza dei semiassi maggiori e minori dell'ellisse sarà proporzionale a \(\sqrt{\lambda_1}\) e \(\sqrt{\lambda_2}\). L'asse maggiore è la linea passante per il punto (\(\bar{v_1}, \bar{v_2}\)) nella direzione determinata dal primo autovettore \(\boldsymbol{a}_1'\) con pendenza uguale a \(a_{12}/a_{11}\). L'asse minore è la linea passante per il punto (\(\bar{v_1}, \bar{v_2}\)) nella direzione determinata dal secondo autovettore \(\boldsymbol{a}_2\).
 
@@ -11594,7 +12032,7 @@ Disegniamo gli assi dell'ellisse:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-339-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-353-1} \end{center}
 
 Tale analisi si può estendere a qualunque numero di variabili. Per esempio, nel caso di tre variabili, possiamo pensare di disegnare un ellisoide attorno ad una nube di punti nello spazio tridimensionale. Anche in questo caso, gli autovalori e gli associati autovettori corrisponderanno agli assi dell'elissoide.
 
