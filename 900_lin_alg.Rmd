@@ -55,15 +55,45 @@ v_n
  
 Dal punto di vista geometrico, dunque, un vettore rappresenta un punto in uno spazio $n$-dimensionale.
 
+In $\mathsf{R}$, un vettore è definito come
+
+```{r}
+a <- c(1, 3, 2) 
+a
+```
+
+
 ### Somma e differenza di vettori
 
 La somma di due vettori è definita come
 
-$$(a_1, a_2) + (b_1, b_2) = (a_1 + b_1, a_2 + b_2).$$
+$$
+(a_1, a_2) + (b_1, b_2) = (a_1 + b_1, a_2 + b_2).
+$$
+
+In $\mathsf{R}$ abbiamo
+
+```{r}
+a <- c(1, 3, 2) 
+b <- c(2, 8, 9) 
+a + b
+```
+
 
 La differenza di due vettori è
 
-$$(a_1, a_2) - (b_1, b_2) = (a_1 - b_1, b_2 - b_2).$$
+$$
+(a_1, a_2) - (b_1, b_2) = (a_1 - b_1, b_2 - b_2).
+$$
+
+In $\mathsf{R}$ abbiamo
+
+```{r}
+a <- c(1, 3, 2) 
+b <- c(2, 8, 9) 
+a - b
+```
+
 
 ### Moltiplicazione scalare
 
@@ -75,29 +105,92 @@ $$
 
 Dal punto di vista geometrico, la moltiplicazione scalare effettua una estensione o contrazione del vettore $\boldsymbol{a}$, preservandone la direzione.
 
+In $\mathsf{R}$ abbiamo
+
+```{r}
+a <- 2
+x <- c(2, 8, 9) 
+a * x
+```
+
 ### Combinazione lineare
 
-Dati due scalari $\rho_1$ e $\rho_2$ e due vettori $\boldsymbol{a}$, $\boldsymbol{b}$, 
+Se $\mathbf{v}_{1}, \dots, \mathbf{v}_{n}$ sono vettori e $a_1, \dots, a_n$ sono scalari, allora la combinazione lineare di questi vettori con questi coefficienti scalari è data da
 
 $$
-\rho_1 \boldsymbol{a}_1 + \rho_2 \boldsymbol{a}_2
+{\displaystyle a_{1}\mathbf {v} _{1}+a_{2}\mathbf {v} _{2}+a_{3}\mathbf {v} _{3}+\cdots +a_{n}\mathbf {v} _{n}.}
 $$
+Per esempio, in $\mathsf{R}$ possiamo aver
 
-rappresenta la combinazione lineare dei vettori $\boldsymbol{a}$ e
-$\boldsymbol{b}$ con coefficienti $\rho_1$ e $\rho_2$. Dati due vettori
-$\boldsymbol{a}$ e $\boldsymbol{b}$ di dimensione $n$ definiamo il loro
-prodotto scalare come la somma dei prodotti degli elementi che occupano
-la stessa posizione:
+```{r}
+a <- c(2, 3, 4)
+v1 <- c(2, 8, 3) 
+v2 <- c(4, 5, 1) 
+v3 <- c(1, 3, 2) 
+y <- a[1] * v1 + a[2] * v2 + a[3] * v3
+y
+```
 
-$$(a_1, a_2) \cdot (b_1, b_2) = a_1 b_1 + a_2 b_2,$$
+### Vettore 0 e vettore 1
 
-$$\boldsymbol{a}'\boldsymbol{b} = \sum_{i=1}^{n}a_i b_i.$$
+Il vettore 0 è costituito da $n$ elementi, tutti uguali a 0. Il vettore 1 è costituito da $n$ elementi, tutti uguali a 1. 
+
+In $\mathsf{R}$ abbiamo
+
+```{r}
+x <- rep(0, 5) 
+x
+y <- rep(1, 5)
+y
+```
+
 
 ### Ortogonalità tra vettori
 
 Due vettori si dicono ortogonali, e si scrive $\boldsymbol{a} \bot \boldsymbol{b}$, se e solo se il loro prodotto scalare è nullo:
 
-$$\boldsymbol{a}'\boldsymbol{b} = 0.$$
+$$
+\boldsymbol{a}'\boldsymbol{b} = 0.
+$$
+
+In $\mathsf{R}$ abbiamo
+
+```{r}
+v1 <- c(1, 1)
+v2 <- c(-1, 1)
+sum(v1 * v2)
+```
+
+### Trasposta di un vettore
+
+In un vettore trasposto gli indici delle righe prendono il posto degli indici delle colonne, e viceversa.
+
+In $\mathsf{R}$ abbiamo
+
+```{r}
+v1 <- c(1, 3, 7) %>% 
+  as.matrix()
+v1
+```
+
+Le dimensioni di `v1` sono
+
+```{r}
+dim(v1)
+```
+
+La trasposta di `v1` è
+
+```{r}
+v2 <- t(v1)
+v2
+```
+
+e ha dimensioni
+
+```{r}
+dim(v2)
+```
 
 ### Norma o lunghezza di un vettore
 
@@ -112,7 +205,15 @@ $\boldsymbol{a}_2$.
 Viene detta norma di $\boldsymbol{a}$ la radice del prodotto scalare di
 un vettore per se stesso:
 
-$$\| \boldsymbol{a} \| = \sqrt{\boldsymbol{a}'\boldsymbol{a}}.$$
+$$
+\| \boldsymbol{a} \| = \sqrt{\boldsymbol{a}'\boldsymbol{a}}.
+$$
+
+In $\mathsf{R}$ abbiamo
+
+```{r}
+sqrt(t(v1) %*% v1)
+```
 
 ## Matrici {#matrici}
 
@@ -121,9 +222,21 @@ riga e colonna. Può anche essere vista come la raccolta di $m$ vettori
 colonna di dimensione $n$ o come la raccolta di $n$ vettori riga di
 dimensione $m$. Per esempio:
 
-$$\boldsymbol{A} =  \left[ \begin{array}{c c c}
+$$
+\boldsymbol{A} =  \left[ \begin{array}{c c c}
 a_{11} & a_{12} & a_{13}\\
-a_{21} & a_{22} & a_{23} \end{array} \right]$$
+a_{21} & a_{22} & a_{23} \end{array} \right]
+$$
+
+In $\mathsf{R}$ abbiamo
+
+```{r}
+M <- matrix(
+  c(1, 2, 3, 4, 5, 6), 
+  ncol = 3, 
+  byrow = TRUE)
+M
+```
 
 ### Dimensioni della matrice
 
@@ -132,14 +245,67 @@ $\boldsymbol{A}$ si dice matrice di dimensioni $m \times n$ o di ordine
 $m \times n$. Nel caso presente, la matrice $\boldsymbol{A}$ ha
 dimensioni $2 \times 3$.
 
+```{r}
+dim(M)
+```
+
+### Matrice trasposta
+
+Si definisce *matrice trasposta* di $\boldsymbol{A}$, e si denota con
+$\boldsymbol{A}'$ oppure $\boldsymbol{A}'$, la matrice
+$\boldsymbol{B} = \boldsymbol{A}'$ di ordine $n \times m$ cui elementi
+sono: 
+
+$$
+b_{ij} = a_{ji},  \quad        i = 1 \dots m, j = 1 \dots n
+$$
+
+Per esempio, 
+
+$$
+\left[ \begin{array}{c c}
+-2 & 5\\
+3 & 1\\
+7 & -6
+\end{array}
+ \right]'=
+\left[ \begin{array}{c c c}
+-2 & 3 & 7\\
+5 & 1 & -6
+\end{array}
+ \right]
+ $$
+ 
+
+### Matrice simmetrica
+
+Se accade che $\boldsymbol{A} = \boldsymbol{A}'$ allora la matrice è
+detta *simmetrica*.
+
+$$
+\boldsymbol{A} =  \left[ \begin{array}{c c c}
+7 & 1 & 2\\
+1 & 8 & 3\\
+2 & 3 & 9 \end{array} \right]
+$$
+
+-   $(\boldsymbol{A} + \boldsymbol{B})' = (\boldsymbol{A})' +
+    (\boldsymbol{B})'$
+
+-   $(\boldsymbol{A} - \boldsymbol{B})' = (\boldsymbol{A})' -
+    (\boldsymbol{B})'$
+
+-   $(\boldsymbol{a} + \boldsymbol{b})' = (\boldsymbol{a})' +
+    (\boldsymbol{b})'$
+
+-   $(\boldsymbol{a} - \boldsymbol{b})' = (\boldsymbol{a})' -
+    (\boldsymbol{b})'$
+
 ### Matrice quadrata o rettangolare
 
 Se $m = n$ allora la matrice $\boldsymbol{A}$ si dice quadrata di
 dimensione $n$ o di ordine $n$ altrimenti si dice rettangolare. Le righe
-di $\boldsymbol{A}$ sono $[a_{11}\
-a_{12}\ a_{13}]$ e $[a_{21}\ a_{22}\ a_{23}]$. Le colonne di
-$\boldsymbol{A}$ sono $\left[
-\begin{array}{c} a_{11} \\ a_{21} \end{array} \right]$, $\left[
+di $\boldsymbol{A}$ sono $[a_{11}\ a_{12}\ a_{13}]$ e $[a_{21}\ a_{22}\ a_{23}]$. Le colonne di $\boldsymbol{A}$ sono $\left[\begin{array}{c} a_{11} \\ a_{21} \end{array} \right]$, $\left[
 \begin{array}{c} a_{12} \\ a_{22} \end{array} \right]$ e $\left[
 \begin{array}{c} a_{13} \\ a_{23} \end{array} \right]$.
 
@@ -153,10 +319,12 @@ di ordine $n$ tali che $i = j$ sono detti elementi principali o
 diagonali e formano la cosiddetta *diagonale principale* di
 $\boldsymbol{A}$.
 
-$$\boldsymbol{A} =  \left[ \begin{array}{c c c}
+$$
+\boldsymbol{A} =  \left[ \begin{array}{c c c}
 a_{11} & a_{12} & a_{13}\\
 a_{21} &  a_{22} & a_{23}\\
-a_{31} & a_{32} & a_{33} \end{array} \right]$$
+a_{31} & a_{32} & a_{33} \end{array} \right]
+$$
 
 ### Matrice diagonale
 
@@ -164,10 +332,12 @@ Se gli elementi $a_{ij}$ di una matrice quadrata $\boldsymbol{A}$ sono
 tali che $a_{ij} =0$ e $a_{ii} \neq 0$, allora la matrice
 $\boldsymbol{A}$ viene detta *matrice diagonale*.
 
-$$\boldsymbol{A} =  \left[ \begin{array}{c c c}
+$$
+\boldsymbol{A} =  \left[ \begin{array}{c c c}
 a_{11} & 0 & 0\\
 0 & a_{22} & 0\\
-0 & 0 & a_{33} \end{array} \right]$$
+0 & 0 & a_{33} \end{array} \right]
+$$
 
 ### Matrice identità
 
@@ -175,10 +345,12 @@ Si definisce *matrice identità* di ordine $n$ la matrice quadrata
 diagonale $\boldsymbol{I}_n$ avente tutti gli elementi principali uguali
 a $1$:
 
-$$\boldsymbol{I}_3 =  \left[ \begin{array}{c c c}
+$$
+\boldsymbol{I}_3 =  \left[ \begin{array}{c c c}
 1 & 0 & 0\\
 0 & 1 & 0\\
-0 & 0 & 1 \end{array} \right]$$ 
+0 & 0 & 1 \end{array} \right]
+$$ 
 
 La matrice identità ha la stessa funzione del numero "1" nel sistema dei numeri reali.
 
@@ -202,7 +374,8 @@ corrispondenti. Si noti che queste operazioni hanno senso solo se le due
 matrici hanno *le stesse dimensioni* (altrimenti queste operazioni non
 sono definite). Per esempio, 
 
-$$\left[ \begin{array}{c c}
+$$
+\left[ \begin{array}{c c}
 -2 & 5\\
 3 & 1\\
 7 & -6
@@ -219,9 +392,31 @@ $$\left[ \begin{array}{c c}
 7 & 6\\
 17 & -9
 \end{array}
- \right]$$
+ \right]
+ $$
 
-$$\left[ \begin{array}{c c}
+
+```{r}
+A <- matrix(
+  c(-2, 5, 3, 1, 7, -6), nrow = 3, byrow = TRUE
+)
+A
+```
+
+```{r}
+B <- matrix(
+  c(3, -2, 4, 5, 10, -3), nrow = 3, byrow = TRUE
+)
+B
+```
+
+```{r}
+A + B
+```
+
+
+$$
+\left[ \begin{array}{c c}
 -2 & 5\\
 3 & 1\\
 7 & -6
@@ -238,7 +433,13 @@ $$\left[ \begin{array}{c c}
 -1 & -4\\
 -3 & -3
 \end{array}
- \right]$$
+ \right]
+ $$
+
+```{r}
+A - B
+```
+
 
 ### Moltiplicazione di scalari e matrici
 
@@ -248,7 +449,8 @@ moltiplicare ciascun elemento in $\boldsymbol{A}$ per *b*. Questo è
 equivalente a sommare $\boldsymbol{A}$ a se stessa *b* volte. Per
 esempio,
 
-$$3 \left[ \begin{array}{c c}
+$$
+3 \left[ \begin{array}{c c}
 -2 & 5\\
 3 & 1\\
 7 & -6
@@ -259,7 +461,13 @@ $$3 \left[ \begin{array}{c c}
 9 & 3\\
 21 & -18
 \end{array}
- \right]$$
+ \right]
+ $$
+
+
+```{r}
+3 * A
+```
 
 ### Proprietà della somma e differenza
 
@@ -269,62 +477,14 @@ $B$ due matrici aventi le stesse dimensioni. Allora
 
 -   $\boldsymbol{A}+ \boldsymbol{B} = \boldsymbol{B} +
     \boldsymbol{A}$(Proprietà commutativa)
-
 -   $\boldsymbol{A} + (\boldsymbol{B} + \boldsymbol{C}) =
     (\boldsymbol{A} + \boldsymbol{B}) + \boldsymbol{C}$ (Proprietà
     associativa)
-
 -   $k(l\boldsymbol{A}) = (kl)\boldsymbol{A}$
-
 -   $k(\boldsymbol{A} + \boldsymbol{B}) = k\boldsymbol{A} +
     k\boldsymbol{B}$(Proprietà distributiva)
-
 -   $(k+l)\boldsymbol{A} = k\boldsymbol{A} + l\boldsymbol{A}$
-
 -   $1\boldsymbol{A} = \boldsymbol{A}$
-
-### Matrice trasposta
-
-Si definisce *matrice trasposta* di $\boldsymbol{A}$, e si denota con
-$\boldsymbol{A}'$ oppure $\boldsymbol{A}'$, la matrice
-$\boldsymbol{B} = \boldsymbol{A}'$ di ordine $n \times m$ cui elementi
-sono: $$b_{ij} = a_{ji},  \quad        i = 1 \dots m, j = 1 \dots n$$
-Per esempio, 
-
-$$\left[ \begin{array}{c c}
--2 & 5\\
-3 & 1\\
-7 & -6
-\end{array}
- \right]'=
-\left[ \begin{array}{c c c}
--2 & 3 & 7\\
-5 & 1 & -6
-\end{array}
- \right]$$
- 
-
-### Matrice simmetrica
-
-Se accade che $\boldsymbol{A} = \boldsymbol{A}'$ allora la matrice è
-detta *simmetrica*.
-
-$$\boldsymbol{A} =  \left[ \begin{array}{c c c}
-7 & 1 & 2\\
-1 & 8 & 3\\
-2 & 3 & 9 \end{array} \right]$$
-
--   $(\boldsymbol{A} + \boldsymbol{B})' = (\boldsymbol{A})' +
-    (\boldsymbol{B})'$
-
--   $(\boldsymbol{A} - \boldsymbol{B})' = (\boldsymbol{A})' -
-    (\boldsymbol{B})'$
-
--   $(\boldsymbol{a} + \boldsymbol{b})' = (\boldsymbol{a})' +
-    (\boldsymbol{b})'$
-
--   $(\boldsymbol{a} - \boldsymbol{b})' = (\boldsymbol{a})' -
-    (\boldsymbol{b})'$
 
 ### Prodotto di matrici
 
@@ -341,20 +501,25 @@ matrice $p \times n$. Il prodotto tra le due matrici
 $\boldsymbol{C} = \boldsymbol{AB}$ è la matrice di ordine $m
 \times n$ il cui elemento generico è
 
-$$c_{ij} = \sum_{k=1}^{p} a_{ik}a_{kj},  \quad        i = 1 \dots m,
-j = 1 \dots n$$ 
+$$
+c_{ij} = \sum_{k=1}^{p} a_{ik}a_{kj},  \quad        i = 1 \dots m,
+j = 1 \dots n
+$$ 
 
 Pertanto, il prodotto si effettua riga per colonna. È
 facile verificare che il prodotto tra matrici gode della proprietà
 associativa ma in generale non di quella commutativa. Vale invece la
 seguente proprietà:
 
-$$(\boldsymbol{AB})' = \boldsymbol{B}'\boldsymbol{A}'$$
+$$
+(\boldsymbol{AB})' = \boldsymbol{B}'\boldsymbol{A}'
+$$
 
 Ad esempio, siano $\boldsymbol{A}$ e $\boldsymbol{B}$ le seguenti
 matrici
 
-$$\left[ \begin{array}{c c c}
+$$
+\left[ \begin{array}{c c c}
 -2 & 1 & 1\\
 1 & 1 & 4\\
 2 & -3 & 2
@@ -365,7 +530,8 @@ $$\left[ \begin{array}{c c c}
 4 & 5 & 0\\
 1 & -3 & 1
 \end{array}
- \right]$$ 
+ \right]
+ $$ 
  
 Calcoliamo la matrice $\boldsymbol{C} = \boldsymbol{AB}$.
 L'elemento $c_{ij}$ è uguale alla somma dei prodotti degli elementi
@@ -392,36 +558,65 @@ $c_{33} = 2 \cdot 1 + (-3) \cdot 0 + 2 \cdot 1 = 4$
 
 In definitiva 
 
-$$\boldsymbol{C} =  \left[ \begin{array}{c c c}
+$$
+\boldsymbol{C} =  \left[ \begin{array}{c c c}
 -1 & 6 & -1\\
 11 & -9 & 5\\
 -4 & -25 & 4
 \end{array}
- \right]$$
+ \right]
+ $$
+
+```{r}
+A = matrix(
+  c(-2, 1, 1, 1, 1, 4, 2, -3, 2), 
+  nrow = 3,
+  byrow = TRUE
+)
+A
+```
+
+```{r}
+B = matrix(
+  c(3, -2, 1, 4, 5, 0, 1, -3, 1), 
+  nrow = 3,
+  byrow = TRUE
+)
+B
+```
+
+
+```{r}
+A %*% B
+```
 
 Calcolando il prodotto $\boldsymbol{D} = \boldsymbol{BA}$ si trova
 invece: 
 
-$$\boldsymbol{D} =  \left[ \begin{array}{c c c}
+$$
+\boldsymbol{D} =  \left[ \begin{array}{c c c}
 -6 & -2 & -3\\
 -3 & 9 & 24\\
 -3 & -5 & -9
 \end{array}
- \right]$$ 
+ \right]
+ $$ 
  
 da cui risulta evidente che $\boldsymbol{AB} \neq \boldsymbol{BA}$.
+
+```{r}
+B %*% A
+```
+
 
 ### Proprietà del prodotto di matrici
 
 -   $\boldsymbol{A}(\boldsymbol{B} + \boldsymbol{C}) = \boldsymbol{AB} +
         \boldsymbol{AC}$
-
 -   $(\boldsymbol{A} + \boldsymbol{B})\boldsymbol{C} = \boldsymbol{AC} +
         \boldsymbol{BC}$
-
 -   Per qualunque matrice $\boldsymbol{A}$,
     $\boldsymbol{A}'\boldsymbol{A}$ sarà una matrice quadrata.
-
 -   $(\boldsymbol{AB})' = \boldsymbol{B}'\boldsymbol{A}'$
 
 ### Casi particolari
@@ -429,12 +624,15 @@ da cui risulta evidente che $\boldsymbol{AB} \neq \boldsymbol{BA}$.
 La matrice identità è l'elemento neutro per il prodotto, cioè se
 $\boldsymbol{I}$ è una matrice $n \times n$ si ha
 
-$$\boldsymbol{A} \boldsymbol{I}_n = \boldsymbol{I}_n \boldsymbol{A}
-= \boldsymbol{A}.$$ 
+$$
+\boldsymbol{A} \boldsymbol{I}_n = \boldsymbol{I}_n \boldsymbol{A}
+= \boldsymbol{A}.
+$$ 
 
 Per esempio, 
 
-$$\boldsymbol{IA} = \left(%
+$$
+\boldsymbol{IA} = \left(%
 \begin{array}{cc}
   1 & 0 \\
   0 & 1 \\
@@ -451,7 +649,33 @@ $$\boldsymbol{IA} = \left(%
   2 & 3 & -1 \\
   1 & 4 & 7 \\
 \end{array}%
-\right)$$
+\right)
+$$
+
+In R la matrice identità si crea nel modo seguente.
+
+```{r}
+diag(2)
+```
+
+Dunque
+
+```{r}
+A <- matrix(
+  c(2, 3, -1, 1, 4, 7),
+  nrow = 2, byrow = TRUE
+)
+A
+```
+
+```{r}
+diag(2) %*% A
+```
+
+```{r}
+A %*% diag(3)
+```
+
 
 Un secondo caso particolare si verifica quando una matrice è costituita
 da un'unica colonna o un'unica riga. Se la matrice $\boldsymbol{A}$ si
@@ -474,7 +698,9 @@ Il *prodotto interno* (o scalare) di un vettore $\boldsymbol{a}'$
 $1 \times n$ che premoltiplica un vettore $\boldsymbol{b}$ $n \times 1$
 produce uno scalare:
 
-$$\boldsymbol{a}'\boldsymbol{b} = \sum_{i=1}^{n}a_i b_i$$
+$$
+\boldsymbol{a}'\boldsymbol{b} = \sum_{i=1}^{n}a_i b_i
+$$
 
 Dati due vettori $\boldsymbol{a}$, $\boldsymbol{b}$ di ordini $n
 \times 1$ e $m \times 1$, il *prodotto esterno* 
@@ -485,7 +711,8 @@ elementi $c_{ij} = a_i b_j$.
 
 Siano $\boldsymbol{a}$ e $\boldsymbol{b}$ i seguenti vettori:
 
-$$\left[ \begin{array}{c}
+$$
+\left[ \begin{array}{c}
 1 \\
 2 \\
 3
@@ -496,35 +723,75 @@ $$\left[ \begin{array}{c}
 -2 \\
 4
 \end{array}
- \right]$$
+ \right]
+ $$
 
 Il prodotto interno è:
 
-$$\boldsymbol{a}'\boldsymbol{b}= 1 \cdot (-1) + 2 \cdot (-2) + 3
-\cdot 4 = 7$$ Osserviamo che tale operazione gode della proprietà
+$$
+\boldsymbol{a}'\boldsymbol{b}= 1 \cdot (-1) + 2 \cdot (-2) + 3
+\cdot 4 = 7
+$$ 
+
+Osserviamo che tale operazione gode della proprietà
 commutativa, poichè $\boldsymbol{b}'\boldsymbol{a}=7$.
+
+```{r}
+a <- matrix(
+  c(1, 2, 3), 
+  nrow = 3, 
+  byrow = TRUE
+)
+a
+```
+
+```{r}
+b <- matrix(
+  c(-1, -2, 4), 
+  nrow = 3, 
+  byrow = TRUE
+)
+b
+```
+
+```{r}
+t(a) %*% b
+```
 
 ### Prodotto esterno
 
 Il prodotto esterno è la matrice
 
-$$\boldsymbol{C} = \boldsymbol{a}\boldsymbol{b}'= \left[
+$$
+\boldsymbol{C} = \boldsymbol{a}\boldsymbol{b}'= \left[
 \begin{array}{c c c}
 -1 & -2 & 4\\
 -2 & -4 & 8\\
 -3 & -6 & 12
 \end{array}
- \right]$$ 
+ \right]
+ $$ 
+
+```{r}
+a %*% t(b)
+```
+
  
 Tale prodotto non gode della proprietà commutativa, infatti:
 
-$$\boldsymbol{D} = \boldsymbol{b}\boldsymbol{a}'= \left[
+$$
+\boldsymbol{D} = \boldsymbol{b}\boldsymbol{a}'= \left[
 \begin{array}{c c c}
 -1 & -2 & -3\\
 -2 & -4 & -6\\
 4 & 8 & 12
 \end{array}
- \right]$$
+ \right]
+$$
+
+```{r}
+b %*% t(a)
+```
 
 ### Traccia di una matrice
 
@@ -532,45 +799,70 @@ Si definisce *traccia* di una matrice quadrata $\boldsymbol{A}$
 $n \times n$, e si denota con $tr(\boldsymbol{A})$ la somma degli
 elementi sulla diagonale principale di $\boldsymbol{A}$:
 
-$$tr(\boldsymbol{A}) = \sum_{i=1}^{n} a_{ii}$$
+$$
+tr(\boldsymbol{A}) = \sum_{i=1}^{n} a_{ii}
+$$
 
 La traccia gode delle seguenti proprietà: 
 
-$$\begin{aligned}
+$$
+\begin{aligned}
 &tr(\rho \boldsymbol{A}) = \rho tr( \boldsymbol{A}) \notag \\
 &tr(\boldsymbol{A} + \boldsymbol{B}) =  tr( \boldsymbol{A})+tr( \boldsymbol{B}) \notag \\
 &tr(\boldsymbol{A}') =  tr( \boldsymbol{A}) \notag \\
-&tr(\boldsymbol{AB}) =  tr( \boldsymbol{BA}) \notag\end{aligned}$$ 
+&tr(\boldsymbol{AB}) =  tr( \boldsymbol{BA}) \notag\end{aligned}
+$$ 
 
 Per esempio, sia 
 
-$$\boldsymbol{A} =  \left[ \begin{array}{c c c}
+$$
+\boldsymbol{A} =  \left[ \begin{array}{c c c}
 7 & 1 & 2\\
 1 & 8 & 3\\
-2 & 3 & 9 \end{array} \right]$$ 
+2 & 3 & 9 \end{array} \right]
+$$ 
 
 allora
 
-$$tr(\boldsymbol{A}) = 7 + 8 + 9 = 24.$$
+$$
+tr(\boldsymbol{A}) = 7 + 8 + 9 = 24.
+$$
+
+```{r}
+A <- matrix(
+  c(7,1, 2, 1, 8, 3, 2, 3, 9),
+  nrow = 3,
+  byrow = TRUE
+)
+A
+```
+
+```{r}
+sum(diag(A))
+```
 
 ##### Dipendenza lineare
 
 Si consideri la matrice 
 
-$$\boldsymbol{A}=
+$$
+\boldsymbol{A}=
 \left(%
 \begin{array}{ccc}
   1 & 1 & 1 \\
   3 & 1 & 5 \\
   2 & 3 & 1 \\
 \end{array}%
-\right)$$ 
+\right)
+$$ 
 
 Siano $\boldsymbol{c}_1$, $\boldsymbol{c}_2$,
 $\boldsymbol{c}_3$ le colonne di $\boldsymbol{A}$. Si noti che
 
-$$2\boldsymbol{c}_1 + -\boldsymbol{c}_2 + - \boldsymbol{c}_3 =
-\boldsymbol{0}$$ 
+$$
+2\boldsymbol{c}_1 + -\boldsymbol{c}_2 + - \boldsymbol{c}_3 =
+\boldsymbol{0}
+$$ 
 
 dove $\boldsymbol{0}$ è un vettore ($3 \times 1$) di
 zeri.
@@ -585,15 +877,19 @@ dice che $k$ colonne $\boldsymbol{c}_1, \boldsymbol{c}_2,
 esiste un insieme di valori scalari $\lambda_1,
 \dots, \lambda_k$ tale per cui
 
-$$\lambda_1 \boldsymbol{c}_1 + \dots + \lambda_k \boldsymbol{c}_k=\boldsymbol{0}$$
+$$
+\lambda_1 \boldsymbol{c}_1 + \dots + \lambda_k \boldsymbol{c}_k=\boldsymbol{0}
+$$
 
 e almeno uno dei valori $\lambda_i$ non è uguale a 0.
 
 La dipendenza lineare implica che ciascun vettore colonna è una
 combinazione degli altri. Per esempio
 
-$$\boldsymbol{c}_k= -(\lambda_1 \boldsymbol{c}_1 + \dots + \lambda_{k-1}
-   \boldsymbol{c}_{k-1})/\lambda_k$$ 
+$$
+\boldsymbol{c}_k= -(\lambda_1 \boldsymbol{c}_1 + \dots + \lambda_{k-1}
+   \boldsymbol{c}_{k-1})/\lambda_k
+$$ 
    
 Questo implica che tutta "l'informazione" della matrice è contenuta in un sottoinsieme delle colonne -- se $k-1$ colonne sono conosciute, l'ultima resta determinata. È in questo senso che abbiamo detto che l'informazione della matrice
 veniva "duplicata".
@@ -601,7 +897,9 @@ veniva "duplicata".
 Se l'unico insieme di valori scalari $\lambda_i$ che soddisfa
 l'equazione
 
-$$\lambda_1 \boldsymbol{c}_1 + \dots + \lambda_k \boldsymbol{c}_k=\boldsymbol{0}$$
+$$
+\lambda_1 \boldsymbol{c}_1 + \dots + \lambda_k \boldsymbol{c}_k=\boldsymbol{0}
+$$
 
 è un vettore di zeri, allora questo significa che non vi è alcuna
 relazione tra le colonne della matrice. Le colonne si dicono
@@ -623,7 +921,9 @@ da vettori tutti indipendenti tra di loro, allora il suo rango è $n$.
 Se, invece, la matrice è rettangolare, $\boldsymbol{A}_{m \times n}$, allora il suo rango può essere al massimo il più piccolo tra
 i due valori *m* ed *n*, cioè:
 
-$$r(\boldsymbol{A}_{m \times n}) \leq min(m,n)$$
+$$
+r(\boldsymbol{A}_{m \times n}) \leq min(m,n)
+$$
 
 ### Matrice inversa
 
@@ -638,7 +938,9 @@ definisce *matrice inversa* la matrice, denotata con
 $\boldsymbol{A}^{-1}$, che premoltiplicata o postmoltiplicata per
 $\boldsymbol{A}$ fornisce la matrice identità:
 
-$$\boldsymbol{A}\boldsymbol{A}^{-1}=\boldsymbol{A}^{-1}\boldsymbol{A}=\boldsymbol{I}$$
+$$
+\boldsymbol{A}\boldsymbol{A}^{-1}=\boldsymbol{A}^{-1}\boldsymbol{A}=\boldsymbol{I}
+$$
 
 La condizione per l'esistenza e l'unicità di $\boldsymbol{A}^{-1}$ è che
 le colonne di $\boldsymbol{A}$ siano linearmente indipendenti.
@@ -652,23 +954,28 @@ matrice inversa.
 
 Per esempio, sia 
 
-$$\boldsymbol{A} =  \left[ \begin{array}{c c}
+$$
+\boldsymbol{A} =  \left[ \begin{array}{c c}
 3 & 4 \\
 2 & 6
 \end{array}
- \right]$$ 
+ \right]
+$$ 
  
 allora 
 
-$$\boldsymbol{A}^{-1} =  \left[ \begin{array}{c c}
+$$
+\boldsymbol{A}^{-1} =  \left[ \begin{array}{c c}
 .6 & -.4 \\
 -.2 & .3
 \end{array}
- \right]$$ 
+ \right]
+$$ 
  
 e
  
-$$\boldsymbol{A}\boldsymbol{A}^{-1} =\left[ \begin{array}{c c}
+$$
+\boldsymbol{A}\boldsymbol{A}^{-1} =\left[ \begin{array}{c c}
 3 & 4 \\
 2 & 6
 \end{array}
@@ -682,18 +989,70 @@ $$\boldsymbol{A}\boldsymbol{A}^{-1} =\left[ \begin{array}{c c}
 1 & 0 \\
 0 & 1
 \end{array}
- \right]$$
+ \right]
+$$
+
+```{r}
+A <- matrix(
+  c(3, 4, 2, 6),
+  nrow = 2,
+  byrow = TRUE
+)
+A
+```
+
+```{r}
+solve(A)
+```
+
+```{r}
+A %*% solve(A)
+```
+
+```{r}
+solve(A) %*% A
+```
 
 Se $\boldsymbol{A}$ e $\boldsymbol{B}$ sono due matrici non singolari
 aventi le stesse dimensioni, allora l'inversa del loro prodotto è uguale
 al prodotto delle loro inverse nella sequenza opposta:
 
-$$(\boldsymbol{AB})^{-1}=\boldsymbol{B}^{-1}\boldsymbol{A}^{-1}$$
+$$
+(\boldsymbol{AB})^{-1}=\boldsymbol{B}^{-1}\boldsymbol{A}^{-1}
+$$
+
+```{r}
+B <- matrix(
+  c(1, 2, 9, 7),
+  nrow = 2,
+  byrow = TRUE
+)
+B
+```
+
+```{r}
+solve(A %*% B)
+```
+
+```{r}
+solve(B) %*% solve(A)
+```
+
 
 L'inversa della trasposta di una matrice non singolare è uguale alla
 trasposta dell'inversa:
 
-$$(\boldsymbol{A}')^{-1}=(\boldsymbol{A}^{-1})'$$
+$$
+(\boldsymbol{A}')^{-1}=(\boldsymbol{A}^{-1})'
+$$
+
+```{r}
+solve(t(A))
+```
+
+```{r}
+t(solve(A))
+```
 
 ### Determinante di una matrice
 
@@ -705,41 +1064,64 @@ di $\boldsymbol{A}$. Nel caso della matrice identità il volume è pari a
 $\boldsymbol{D} = diag(d_1, \dots,
 d_n)$ si ha
 
-$$|\boldsymbol{D}| =  d_1 \cdot d_2, \dots, d_n = \prod_{i=1}^{n}d_i$$
+$$
+|\boldsymbol{D}| =  d_1 \cdot d_2, \dots, d_n = \prod_{i=1}^{n}d_i
+$$
 
 Per una matrice $2 \times 2$
 
-$$\boldsymbol{A} =  \left[ \begin{array}{c c}
+$$
+\boldsymbol{A} =  \left[ \begin{array}{c c}
 a_{11}& a_{12} \\
-a_{21} & a_{22} \end{array} \right]$$ 
+a_{21} & a_{22} \end{array} \right]
+$$ 
 
 il determinante di $\boldsymbol{A}$ vale: 
 
-$$|\boldsymbol{A}| =  a_{11}a_{22}-a_{12}a_{21}$$
+$$
+|\boldsymbol{A}| =  a_{11}a_{22}-a_{12}a_{21}
+$$
 
 Per esempio: 
 
-$$\boldsymbol{A} = \left[ \begin{array}{c c}
+$$
+\boldsymbol{A} = \left[ \begin{array}{c c}
 1 & -2 \\
 3 & 9
 \end{array}
- \right] \quad |\boldsymbol{A}| = 1\cdot 9 - (-2) \cdot  3 = 15$$
+ \right] \quad |\boldsymbol{A}| = 1\cdot 9 - (-2) \cdot  3 = 15
+$$
 
 Il determinante è definito anche per matrici di dimensioni superiori
 anche se, in quel caso, i calcoli sono molto più complessi (una volta
 ancora, si usi il computer!).
+
+```{r}
+A <- matrix(
+  c(1, -2, 3, 9),
+  nrow = 2, 
+  byrow = TRUE
+)
+A
+```
+
+```{r}
+det(A)
+```
 
 ### Determinante e inversa
 
 Vi è una relazione tra il determinante e l'inversa di una matrice. Se la
 matrice $\boldsymbol{A}$ ha dimensioni $2 \times 2$ l'inversa di $\boldsymbol{A}$ si trova nel modo seguente
 
-$$\boldsymbol{A}^{-1} = \frac{1}{|\boldsymbol{A}|} \left[
+$$
+\boldsymbol{A}^{-1} = \frac{1}{|\boldsymbol{A}|} \left[
 \begin{array}{c c}
 a_{22} & -a_{12} \\
 -a_{21} & a_{11}
 \end{array}
- \right]$$ 
+ \right]
+ $$ 
  
 Anche per le matrici di dimensioni maggiori la matrice
 inversa è definita nei termini del determinante, ma le formule di
@@ -747,15 +1129,18 @@ calcolo sono molto più complesse.
 
 Per esempio, sia 
 
-$$\boldsymbol{A} = \left[ \begin{array}{c c}
+$$
+\boldsymbol{A} = \left[ \begin{array}{c c}
 3 & 4 \\
 2 & 6
 \end{array}
-\right]$$ 
+\right]
+$$ 
 
 allora 
 
-$$\boldsymbol{A}^{-1} = \frac{1}{10} \left[
+$$
+\boldsymbol{A}^{-1} = \frac{1}{10} \left[
 \begin{array}{c c}
 6 & -4 \\
 -2 & 3
@@ -764,7 +1149,8 @@ $$\boldsymbol{A}^{-1} = \frac{1}{10} \left[
 .6 & -.4 \\
 -.2 & .3
 \end{array}
- \right]$$ 
+ \right]
+ $$ 
  
 In precedenza abbiamo detto che, in alcuni casi, una matrice
 "si comporta come lo 0." Il *determinante* di una matrice è ci dice
@@ -774,13 +1160,16 @@ infatti, se una riga (o una colonna) è una combinazione lineare di due
 
 Per esempio, nel caso di una matrice ($2 \times 2$)
 
-$$\boldsymbol{A} =  \left( \begin{array}{c c}
+$$
+\boldsymbol{A} =  \left( \begin{array}{c c}
 a_{11}& a_{12} \\
-a_{21} & a_{22} \end{array} \right)$$ 
+a_{21} & a_{22} \end{array} \right)
+$$ 
 
 supponiamo che 
 
-$$\left(%
+$$
+\left(%
 \begin{array}{c}
   a_{11} \\
   a_{21} \\
@@ -795,35 +1184,48 @@ $$\left(%
 
 Allora 
 
-$$\boldsymbol{A} =  \left( \begin{array}{c c}
+$$
+\boldsymbol{A} =  \left( \begin{array}{c c}
 2a_{12}& a_{12} \\
-2a_{22} & a_{22} \end{array} \right)$$ 
+2a_{22} & a_{22} \end{array} \right)
+$$ 
 
 e
 
-$$|\boldsymbol{A}| = 2a_{12}a_{22}-2a_{12}a_{22}=0$$ 
+$$
+|\boldsymbol{A}| = 2a_{12}a_{22}-2a_{12}a_{22}=0
+$$ 
 
-In conclusione, se il determinante è uguale a zero, allora la matrice inversa non esiste. Nel caso di una matrice ($2 \times 2$), infatti, la formula dell'inversa
-richiede la divisione per $a_{11}a_{22}-a_{12}a_{21}$ che, nel caso di
-una matrice singolare, è uguale a zero.
+In conclusione, se il determinante è uguale a zero, allora la matrice inversa non esiste. Nel caso di una matrice ($2 \times 2$), infatti, la formula dell'inversa richiede la divisione per $a_{11}a_{22}-a_{12}a_{21}$ che, nel caso di una matrice singolare, è uguale a zero.
+
+```{r}
+A <- matrix(
+  c(2, 4, 3, 6),
+  nrow = 2,
+  byrow = TRUE
+)
+A
+```
+
+```{r}
+det(A)
+```
+
+```{r}
+# solve(A)
+```
 
 ### Proprietà del determinante
 
 -   $|\boldsymbol{A}'| = |\boldsymbol{A}|$.
-
 -   Se $\boldsymbol{A}$ contiene una colonna o una riga i cui elementi
     sono tutti 0, allora $|\boldsymbol{A}|=0$.
-
 -   Se $\boldsymbol{A}$ contiene due colonne (o righe) identiche, allora
     $|\boldsymbol{A}|=0$.
-
 -   $|\boldsymbol{A}| = 0$ se una riga (o una colonna) è combinazione
     lineare di due (o più) righe (o colonne) di $\boldsymbol{A}$.
-
 -   $|\boldsymbol{A}| = 1/|\boldsymbol{A}^{-1}|$.
-
 -   $|\boldsymbol{I}| = 1$.
-
 -   $|\boldsymbol{A} \boldsymbol{B}| = |\boldsymbol{A}| |\boldsymbol{B}|$.
 
 Per una matrice quadrata $\boldsymbol{A}$, le seguenti affermazioni sono
@@ -1010,4 +1412,8 @@ out$values[1] * out$values[2]
 
 Gli autovalori di $\boldsymbol{A}^{-1}$ sono i reciproci degli
 autovalori di $\boldsymbol{A}$; gli autovettori sono coincidenti.
+
+
+<!--chapter:end:900_lin_alg.Rmd-->
+
 

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2022.3.21)  4 APR 2022 08:00
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2022.3.21)  4 APR 2022 15:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -4933,13 +4933,13 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [41
 
-] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53] [54] [55] [56]
-File: cfa_book_files/figure-latex/unnamed-chunk-351-1.pdf Graphic file (type pdf)
-<use cfa_book_files/figure-latex/unnamed-chunk-351-1.pdf>
-[57]
-File: cfa_book_files/figure-latex/unnamed-chunk-353-1.pdf Graphic file (type pdf)
-<use cfa_book_files/figure-latex/unnamed-chunk-353-1.pdf>
-[58] [59] [60] [61] (./cfa_book.bbl [62]
+] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53] [54] [55] [56] [57] [58] [59] [60] [61] [62] [63] [64] [65]
+File: cfa_book_files/figure-latex/unnamed-chunk-399-1.pdf Graphic file (type pdf)
+<use cfa_book_files/figure-latex/unnamed-chunk-399-1.pdf>
+[66] [67]
+File: cfa_book_files/figure-latex/unnamed-chunk-401-1.pdf Graphic file (type pdf)
+<use cfa_book_files/figure-latex/unnamed-chunk-401-1.pdf>
+[68] [69] [70] [71] (./cfa_book.bbl [72]
 Underfull \vbox (badness 10000) detected at line 1
  []
 
@@ -4985,10 +4985,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[63
+[73
 
 
-] [64]) (./cfa_book.ind)
+] [74]) (./cfa_book.ind)
 The property list \polyglossia@langsetup contains the pairs (without outer
 braces):
 >  {latex/script}  =>  {latin}
@@ -5023,7 +5023,7 @@ braces):
 >  {italian/babelname}  =>  {italian}
 >  {italian/localnumeral}  =>  {polyglossia@C@localnumeral}
 >  {italian/Localnumeral}  =>  {polyglossia@C@localnumeral}.
-[65] (./cfa_book.aux
+[75] (./cfa_book.aux
 LaTeX Info: Redefining \rmfamily on input line 21.
 LaTeX Info: Redefining \sffamily on input line 21.
 LaTeX Info: Redefining \ttfamily on input line 21.
@@ -5033,12 +5033,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 26562 strings out of 478164
- 508023 string characters out of 5852710
- 1038325 words of memory out of 5000000
- 46654 multiletter control sequences out of 15000+600000
+ 26566 strings out of 478164
+ 508085 string characters out of 5852710
+ 1038439 words of memory out of 5000000
+ 46658 multiletter control sequences out of 15000+600000
  480473 words of font info for 147 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  86i,15n,123p,1903b,704s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on cfa_book.pdf (427 pages).
+Output written on cfa_book.pdf (437 pages).

@@ -11301,16 +11301,52 @@ v_n
 
 Dal punto di vista geometrico, dunque, un vettore rappresenta un punto in uno spazio \(n\)-dimensionale.
 
+In \(\mathsf{R}\), un vettore è definito come
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{a}
+\CommentTok{\#\textgreater{} [1] 1 3 2}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{somma-e-differenza-di-vettori}{%
 \subsection{Somma e differenza di vettori}\label{somma-e-differenza-di-vettori}}
 
 La somma di due vettori è definita come
 
-\[(a_1, a_2) + (b_1, b_2) = (a_1 + b_1, a_2 + b_2).\]
+\[
+(a_1, a_2) + (b_1, b_2) = (a_1 + b_1, a_2 + b_2).
+\]
+
+In \(\mathsf{R}\) abbiamo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{b }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{)}
+\NormalTok{a }\SpecialCharTok{+}\NormalTok{ b}
+\CommentTok{\#\textgreater{} [1]  3 11 11}
+\end{Highlighting}
+\end{Shaded}
 
 La differenza di due vettori è
 
-\[(a_1, a_2) - (b_1, b_2) = (a_1 - b_1, b_2 - b_2).\]
+\[
+(a_1, a_2) - (b_1, b_2) = (a_1 - b_1, b_2 - b_2).
+\]
+
+In \(\mathsf{R}\) abbiamo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{b }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{)}
+\NormalTok{a }\SpecialCharTok{{-}}\NormalTok{ b}
+\CommentTok{\#\textgreater{} [1] {-}1 {-}5 {-}7}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{moltiplicazione-scalare}{%
 \subsection{Moltiplicazione scalare}\label{moltiplicazione-scalare}}
@@ -11323,27 +11359,123 @@ La moltiplicazione scalare di un vettore per un numero reale (o scalare) è data
 
 Dal punto di vista geometrico, la moltiplicazione scalare effettua una estensione o contrazione del vettore \(\boldsymbol{a}\), preservandone la direzione.
 
+In \(\mathsf{R}\) abbiamo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{\textless{}{-}} \DecValTok{2}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{)}
+\NormalTok{a }\SpecialCharTok{*}\NormalTok{ x}
+\CommentTok{\#\textgreater{} [1]  4 16 18}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{combinazione-lineare}{%
 \subsection{Combinazione lineare}\label{combinazione-lineare}}
 
-Dati due scalari \(\rho_1\) e \(\rho_2\) e due vettori \(\boldsymbol{a}\), \(\boldsymbol{b}\),
+Se \(\mathbf{v}_{1}, \dots, \mathbf{v}_{n}\) sono vettori e \(a_1, \dots, a_n\) sono scalari, allora la combinazione lineare di questi vettori con questi coefficienti scalari è data da
 
 \[
-\rho_1 \boldsymbol{a}_1 + \rho_2 \boldsymbol{a}_2
-\]
+{\displaystyle a_{1}\mathbf {v} _{1}+a_{2}\mathbf {v} _{2}+a_{3}\mathbf {v} _{3}+\cdots +a_{n}\mathbf {v} _{n}.}
+\] Per esempio, in \(\mathsf{R}\) possiamo aver
 
-rappresenta la combinazione lineare dei vettori \(\boldsymbol{a}\) e \(\boldsymbol{b}\) con coefficienti \(\rho_1\) e \(\rho_2\). Dati due vettori \(\boldsymbol{a}\) e \(\boldsymbol{b}\) di dimensione \(n\) definiamo il loro prodotto scalare come la somma dei prodotti degli elementi che occupano la stessa posizione:
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{)}
+\NormalTok{v1 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{v2 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{v3 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{y }\OtherTok{\textless{}{-}}\NormalTok{ a[}\DecValTok{1}\NormalTok{] }\SpecialCharTok{*}\NormalTok{ v1 }\SpecialCharTok{+}\NormalTok{ a[}\DecValTok{2}\NormalTok{] }\SpecialCharTok{*}\NormalTok{ v2 }\SpecialCharTok{+}\NormalTok{ a[}\DecValTok{3}\NormalTok{] }\SpecialCharTok{*}\NormalTok{ v3}
+\NormalTok{y}
+\CommentTok{\#\textgreater{} [1] 20 43 17}
+\end{Highlighting}
+\end{Shaded}
 
-\[(a_1, a_2) \cdot (b_1, b_2) = a_1 b_1 + a_2 b_2,\]
+\hypertarget{vettore-0-e-vettore-1}{%
+\subsection{Vettore 0 e vettore 1}\label{vettore-0-e-vettore-1}}
 
-\[\boldsymbol{a}'\boldsymbol{b} = \sum_{i=1}^{n}a_i b_i.\]
+Il vettore 0 è costituito da \(n\) elementi, tutti uguali a 0. Il vettore 1 è costituito da \(n\) elementi, tutti uguali a 1.
+
+In \(\mathsf{R}\) abbiamo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\textgreater{} [1] 0 0 0 0 0}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+\NormalTok{y}
+\CommentTok{\#\textgreater{} [1] 1 1 1 1 1}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{ortogonalituxe0-tra-vettori}{%
 \subsection{Ortogonalità tra vettori}\label{ortogonalituxe0-tra-vettori}}
 
 Due vettori si dicono ortogonali, e si scrive \(\boldsymbol{a} \bot \boldsymbol{b}\), se e solo se il loro prodotto scalare è nullo:
 
-\[\boldsymbol{a}'\boldsymbol{b} = 0.\]
+\[
+\boldsymbol{a}'\boldsymbol{b} = 0.
+\]
+
+In \(\mathsf{R}\) abbiamo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{v1 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{v2 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\FunctionTok{sum}\NormalTok{(v1 }\SpecialCharTok{*}\NormalTok{ v2)}
+\CommentTok{\#\textgreater{} [1] 0}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{trasposta-di-un-vettore}{%
+\subsection{Trasposta di un vettore}\label{trasposta-di-un-vettore}}
+
+In un vettore trasposto gli indici delle righe prendono il posto degli indici delle colonne, e viceversa.
+
+In \(\mathsf{R}\) abbiamo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{v1 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{7}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{as.matrix}\NormalTok{()}
+\NormalTok{v1}
+\CommentTok{\#\textgreater{}      [,1]}
+\CommentTok{\#\textgreater{} [1,]    1}
+\CommentTok{\#\textgreater{} [2,]    3}
+\CommentTok{\#\textgreater{} [3,]    7}
+\end{Highlighting}
+\end{Shaded}
+
+Le dimensioni di \texttt{v1} sono
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(v1)}
+\CommentTok{\#\textgreater{} [1] 3 1}
+\end{Highlighting}
+\end{Shaded}
+
+La trasposta di \texttt{v1} è
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{v2 }\OtherTok{\textless{}{-}} \FunctionTok{t}\NormalTok{(v1)}
+\NormalTok{v2}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3]}
+\CommentTok{\#\textgreater{} [1,]    1    3    7}
+\end{Highlighting}
+\end{Shaded}
+
+e ha dimensioni
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(v2)}
+\CommentTok{\#\textgreater{} [1] 1 3}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{norma-o-lunghezza-di-un-vettore}{%
 \subsection{Norma o lunghezza di un vettore}\label{norma-o-lunghezza-di-un-vettore}}
@@ -11352,57 +11484,147 @@ Per il teorema di Pitagora, la norma di un vettore \((a_1, a_2)\) è \(\sqrt{a_1
 
 Viene detta norma di \(\boldsymbol{a}\) la radice del prodotto scalare di un vettore per se stesso:
 
-\[\| \boldsymbol{a} \| = \sqrt{\boldsymbol{a}'\boldsymbol{a}}.\]
+\[
+\| \boldsymbol{a} \| = \sqrt{\boldsymbol{a}'\boldsymbol{a}}.
+\]
+
+In \(\mathsf{R}\) abbiamo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sqrt}\NormalTok{(}\FunctionTok{t}\NormalTok{(v1) }\SpecialCharTok{\%*\%}\NormalTok{ v1)}
+\CommentTok{\#\textgreater{}       [,1]}
+\CommentTok{\#\textgreater{} [1,] 7.681}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{matrici}{%
 \section{Matrici}\label{matrici}}
 
 Una matrice costituisce un insieme rettangolare di scalari ordinati per riga e colonna. Può anche essere vista come la raccolta di \(m\) vettori colonna di dimensione \(n\) o come la raccolta di \(n\) vettori riga di dimensione \(m\). Per esempio:
 
-\[\boldsymbol{A} =  \left[ \begin{array}{c c c}
+\[
+\boldsymbol{A} =  \left[ \begin{array}{c c c}
 a_{11} & a_{12} & a_{13}\\
-a_{21} & a_{22} & a_{23} \end{array} \right]\]
+a_{21} & a_{22} & a_{23} \end{array} \right]
+\]
+
+In \(\mathsf{R}\) abbiamo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{M }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}
+  \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{),}
+  \AttributeTok{ncol =} \DecValTok{3}\NormalTok{,}
+  \AttributeTok{byrow =} \ConstantTok{TRUE}
+\NormalTok{)}
+\NormalTok{M}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3]}
+\CommentTok{\#\textgreater{} [1,]    1    2    3}
+\CommentTok{\#\textgreater{} [2,]    4    5    6}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{dimensioni-della-matrice}{%
 \subsection{Dimensioni della matrice}\label{dimensioni-della-matrice}}
 
 I numeri interi \(m\) ed \(n\) si dicono dimensioni della matrice, ovvero \(\boldsymbol{A}\) si dice matrice di dimensioni \(m \times n\) o di ordine \(m \times n\). Nel caso presente, la matrice \(\boldsymbol{A}\) ha dimensioni \(2 \times 3\).
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(M)}
+\CommentTok{\#\textgreater{} [1] 2 3}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{matrice-trasposta}{%
+\subsection{Matrice trasposta}\label{matrice-trasposta}}
+
+Si definisce \emph{matrice trasposta} di \(\boldsymbol{A}\), e si denota con \(\boldsymbol{A}'\) oppure \(\boldsymbol{A}'\), la matrice \(\boldsymbol{B} = \boldsymbol{A}'\) di ordine \(n \times m\) cui elementi sono:
+
+\[
+b_{ij} = a_{ji},  \quad        i = 1 \dots m, j = 1 \dots n
+\]
+
+Per esempio,
+
+\[
+\left[ \begin{array}{c c}
+-2 & 5\\
+3 & 1\\
+7 & -6
+\end{array}
+ \right]'=
+\left[ \begin{array}{c c c}
+-2 & 3 & 7\\
+5 & 1 & -6
+\end{array}
+ \right]
+ \]
+
+\hypertarget{matrice-simmetrica}{%
+\subsection{Matrice simmetrica}\label{matrice-simmetrica}}
+
+Se accade che \(\boldsymbol{A} = \boldsymbol{A}'\) allora la matrice è detta \emph{simmetrica}.
+
+\[
+\boldsymbol{A} =  \left[ \begin{array}{c c c}
+7 & 1 & 2\\
+1 & 8 & 3\\
+2 & 3 & 9 \end{array} \right]
+\]
+
+\begin{itemize}
+\item
+  \((\boldsymbol{A} + \boldsymbol{B})' = (\boldsymbol{A})' + (\boldsymbol{B})'\)
+\item
+  \((\boldsymbol{A} - \boldsymbol{B})' = (\boldsymbol{A})' - (\boldsymbol{B})'\)
+\item
+  \((\boldsymbol{a} + \boldsymbol{b})' = (\boldsymbol{a})' + (\boldsymbol{b})'\)
+\item
+  \((\boldsymbol{a} - \boldsymbol{b})' = (\boldsymbol{a})' - (\boldsymbol{b})'\)
+\end{itemize}
+
 \hypertarget{matrice-quadrata-o-rettangolare}{%
 \subsection{Matrice quadrata o rettangolare}\label{matrice-quadrata-o-rettangolare}}
 
-Se \(m = n\) allora la matrice \(\boldsymbol{A}\) si dice quadrata di dimensione \(n\) o di ordine \(n\) altrimenti si dice rettangolare. Le righe di \(\boldsymbol{A}\) sono \([a_{11}\
-a_{12}\ a_{13}]\) e \([a_{21}\ a_{22}\ a_{23}]\). Le colonne di \(\boldsymbol{A}\) sono \(\left[ \begin{array}{c} a_{11} \\ a_{21} \end{array} \right]\), \(\left[ \begin{array}{c} a_{12} \\ a_{22} \end{array} \right]\) e \(\left[ \begin{array}{c} a_{13} \\ a_{23} \end{array} \right]\).
+Se \(m = n\) allora la matrice \(\boldsymbol{A}\) si dice quadrata di dimensione \(n\) o di ordine \(n\) altrimenti si dice rettangolare. Le righe di \(\boldsymbol{A}\) sono \([a_{11}\ a_{12}\ a_{13}]\) e \([a_{21}\ a_{22}\ a_{23}]\). Le colonne di \(\boldsymbol{A}\) sono \(\left[\begin{array}{c} a_{11} \\ a_{21} \end{array} \right]\), \(\left[ \begin{array}{c} a_{12} \\ a_{22} \end{array} \right]\) e \(\left[ \begin{array}{c} a_{13} \\ a_{23} \end{array} \right]\).
 
 \hypertarget{diagonale-principale}{%
 \subsection{Diagonale principale}\label{diagonale-principale}}
 
 Se \(i\) e \(j\) sono numeri interi con \(1 \leq i \leq m\) e \(1 \leq j \leq n\) allora l'elemento della matrice \(\boldsymbol{A}\) di dimensione \(m \times n\) che si trova in posizione (\(i, j\)) viene indicato con \(a_{ij}\). Gli elementi \(a_{ij}\) di una matrice quadrata \(\boldsymbol{A}\) di ordine \(n\) tali che \(i = j\) sono detti elementi principali o diagonali e formano la cosiddetta \emph{diagonale principale} di \(\boldsymbol{A}\).
 
-\[\boldsymbol{A} =  \left[ \begin{array}{c c c}
+\[
+\boldsymbol{A} =  \left[ \begin{array}{c c c}
 a_{11} & a_{12} & a_{13}\\
 a_{21} &  a_{22} & a_{23}\\
-a_{31} & a_{32} & a_{33} \end{array} \right]\]
+a_{31} & a_{32} & a_{33} \end{array} \right]
+\]
 
 \hypertarget{matrice-diagonale}{%
 \subsection{Matrice diagonale}\label{matrice-diagonale}}
 
 Se gli elementi \(a_{ij}\) di una matrice quadrata \(\boldsymbol{A}\) sono tali che \(a_{ij} =0\) e \(a_{ii} \neq 0\), allora la matrice \(\boldsymbol{A}\) viene detta \emph{matrice diagonale}.
 
-\[\boldsymbol{A} =  \left[ \begin{array}{c c c}
+\[
+\boldsymbol{A} =  \left[ \begin{array}{c c c}
 a_{11} & 0 & 0\\
 0 & a_{22} & 0\\
-0 & 0 & a_{33} \end{array} \right]\]
+0 & 0 & a_{33} \end{array} \right]
+\]
 
 \hypertarget{matrice-identituxe0}{%
 \subsection{Matrice identità}\label{matrice-identituxe0}}
 
 Si definisce \emph{matrice identità} di ordine \(n\) la matrice quadrata diagonale \(\boldsymbol{I}_n\) avente tutti gli elementi principali uguali a \(1\):
 
-\[\boldsymbol{I}_3 =  \left[ \begin{array}{c c c}
+\[
+\boldsymbol{I}_3 =  \left[ \begin{array}{c c c}
 1 & 0 & 0\\
 0 & 1 & 0\\
-0 & 0 & 1 \end{array} \right]\]
+0 & 0 & 1 \end{array} \right]
+\]
 
 La matrice identità ha la stessa funzione del numero ``1'' nel sistema dei numeri reali.
 
@@ -11416,7 +11638,8 @@ Gli elementi di una matrice che si trovano al di sopra della diagonale principal
 
 La somma e la sottrazione di due matrici sono operazioni definite \emph{elemento per elemento}. Per sommare due matrici sommiamo gli elementi corrispondenti. Per sottrarre due matrici sottraiamo gli elementi corrispondenti. Si noti che queste operazioni hanno senso solo se le due matrici hanno \emph{le stesse dimensioni} (altrimenti queste operazioni non sono definite). Per esempio,
 
-\[\left[ \begin{array}{c c}
+\[
+\left[ \begin{array}{c c}
 -2 & 5\\
 3 & 1\\
 7 & -6
@@ -11433,9 +11656,49 @@ La somma e la sottrazione di due matrici sono operazioni definite \emph{elemento
 7 & 6\\
 17 & -9
 \end{array}
- \right]\]
+ \right]
+ \]
 
-\[\left[ \begin{array}{c c}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}
+  \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{7}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{6}\NormalTok{),}
+  \AttributeTok{nrow =} \DecValTok{3}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}
+\NormalTok{)}
+\NormalTok{A}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]   {-}2    5}
+\CommentTok{\#\textgreater{} [2,]    3    1}
+\CommentTok{\#\textgreater{} [3,]    7   {-}6}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}
+  \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{10}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{3}\NormalTok{),}
+  \AttributeTok{nrow =} \DecValTok{3}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}
+\NormalTok{)}
+\NormalTok{B}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]    3   {-}2}
+\CommentTok{\#\textgreater{} [2,]    4    5}
+\CommentTok{\#\textgreater{} [3,]   10   {-}3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\SpecialCharTok{+}\NormalTok{ B}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]    1    3}
+\CommentTok{\#\textgreater{} [2,]    7    6}
+\CommentTok{\#\textgreater{} [3,]   17   {-}9}
+\end{Highlighting}
+\end{Shaded}
+
+\[
+\left[ \begin{array}{c c}
 -2 & 5\\
 3 & 1\\
 7 & -6
@@ -11452,14 +11715,26 @@ La somma e la sottrazione di due matrici sono operazioni definite \emph{elemento
 -1 & -4\\
 -3 & -3
 \end{array}
- \right]\]
+ \right]
+ \]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\SpecialCharTok{{-}}\NormalTok{ B}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]   {-}5    7}
+\CommentTok{\#\textgreater{} [2,]   {-}1   {-}4}
+\CommentTok{\#\textgreater{} [3,]   {-}3   {-}3}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{moltiplicazione-di-scalari-e-matrici}{%
 \subsection{Moltiplicazione di scalari e matrici}\label{moltiplicazione-di-scalari-e-matrici}}
 
 L'effetto della moltiplicazione di una matrice \(\boldsymbol{A}\) di qualsiasi dimensione per un numero reale \emph{b} (scalare) è quello di moltiplicare ciascun elemento in \(\boldsymbol{A}\) per \emph{b}. Questo è equivalente a sommare \(\boldsymbol{A}\) a se stessa \emph{b} volte. Per esempio,
 
-\[3 \left[ \begin{array}{c c}
+\[
+3 \left[ \begin{array}{c c}
 -2 & 5\\
 3 & 1\\
 7 & -6
@@ -11470,7 +11745,18 @@ L'effetto della moltiplicazione di una matrice \(\boldsymbol{A}\) di qualsiasi d
 9 & 3\\
 21 & -18
 \end{array}
- \right]\]
+ \right]
+ \]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{3} \SpecialCharTok{*}\NormalTok{ A}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]   {-}6   15}
+\CommentTok{\#\textgreater{} [2,]    9    3}
+\CommentTok{\#\textgreater{} [3,]   21  {-}18}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{proprietuxe0-della-somma-e-differenza}{%
 \subsection{Proprietà della somma e differenza}\label{proprietuxe0-della-somma-e-differenza}}
@@ -11478,6 +11764,7 @@ L'effetto della moltiplicazione di una matrice \(\boldsymbol{A}\) di qualsiasi d
 È facile verificare che la somma e la differenza cosı̀ definite godono delle proprietà commutativa e associativa. Siano \(k\) uno scalare e \(A\) e \(B\) due matrici aventi le stesse dimensioni. Allora
 
 \begin{itemize}
+\tightlist
 \item
   \(\boldsymbol{A}+ \boldsymbol{B} = \boldsymbol{B} + \boldsymbol{A}\)(Proprietà commutativa)
 \item
@@ -11492,44 +11779,6 @@ L'effetto della moltiplicazione di una matrice \(\boldsymbol{A}\) di qualsiasi d
   \(1\boldsymbol{A} = \boldsymbol{A}\)
 \end{itemize}
 
-\hypertarget{matrice-trasposta}{%
-\subsection{Matrice trasposta}\label{matrice-trasposta}}
-
-Si definisce \emph{matrice trasposta} di \(\boldsymbol{A}\), e si denota con \(\boldsymbol{A}'\) oppure \(\boldsymbol{A}'\), la matrice \(\boldsymbol{B} = \boldsymbol{A}'\) di ordine \(n \times m\) cui elementi sono: \[b_{ij} = a_{ji},  \quad        i = 1 \dots m, j = 1 \dots n\] Per esempio,
-
-\[\left[ \begin{array}{c c}
--2 & 5\\
-3 & 1\\
-7 & -6
-\end{array}
- \right]'=
-\left[ \begin{array}{c c c}
--2 & 3 & 7\\
-5 & 1 & -6
-\end{array}
- \right]\]
-
-\hypertarget{matrice-simmetrica}{%
-\subsection{Matrice simmetrica}\label{matrice-simmetrica}}
-
-Se accade che \(\boldsymbol{A} = \boldsymbol{A}'\) allora la matrice è detta \emph{simmetrica}.
-
-\[\boldsymbol{A} =  \left[ \begin{array}{c c c}
-7 & 1 & 2\\
-1 & 8 & 3\\
-2 & 3 & 9 \end{array} \right]\]
-
-\begin{itemize}
-\item
-  \((\boldsymbol{A} + \boldsymbol{B})' = (\boldsymbol{A})' + (\boldsymbol{B})'\)
-\item
-  \((\boldsymbol{A} - \boldsymbol{B})' = (\boldsymbol{A})' - (\boldsymbol{B})'\)
-\item
-  \((\boldsymbol{a} + \boldsymbol{b})' = (\boldsymbol{a})' + (\boldsymbol{b})'\)
-\item
-  \((\boldsymbol{a} - \boldsymbol{b})' = (\boldsymbol{a})' - (\boldsymbol{b})'\)
-\end{itemize}
-
 \hypertarget{prodotto-di-matrici}{%
 \subsection{Prodotto di matrici}\label{prodotto-di-matrici}}
 
@@ -11537,16 +11786,21 @@ La moltiplicazione di matrici non è un'operazione intuitiva come la somma e la 
 
 Sia \(\boldsymbol{A}\) una matrice \(m \times p\) e \(\boldsymbol{B}\) una matrice \(p \times n\). Il prodotto tra le due matrici \(\boldsymbol{C} = \boldsymbol{AB}\) è la matrice di ordine \(m \times n\) il cui elemento generico è
 
-\[c_{ij} = \sum_{k=1}^{p} a_{ik}a_{kj},  \quad        i = 1 \dots m,
-j = 1 \dots n\]
+\[
+c_{ij} = \sum_{k=1}^{p} a_{ik}a_{kj},  \quad        i = 1 \dots m,
+j = 1 \dots n
+\]
 
 Pertanto, il prodotto si effettua riga per colonna. È facile verificare che il prodotto tra matrici gode della proprietà associativa ma in generale non di quella commutativa. Vale invece la seguente proprietà:
 
-\[(\boldsymbol{AB})' = \boldsymbol{B}'\boldsymbol{A}'\]
+\[
+(\boldsymbol{AB})' = \boldsymbol{B}'\boldsymbol{A}'
+\]
 
 Ad esempio, siano \(\boldsymbol{A}\) e \(\boldsymbol{B}\) le seguenti matrici
 
-\[\left[ \begin{array}{c c c}
+\[
+\left[ \begin{array}{c c c}
 -2 & 1 & 1\\
 1 & 1 & 4\\
 2 & -3 & 2
@@ -11557,7 +11811,8 @@ Ad esempio, siano \(\boldsymbol{A}\) e \(\boldsymbol{B}\) le seguenti matrici
 4 & 5 & 0\\
 1 & -3 & 1
 \end{array}
- \right]\]
+ \right]
+ \]
 
 Calcoliamo la matrice \(\boldsymbol{C} = \boldsymbol{AB}\). L'elemento \(c_{ij}\) è uguale alla somma dei prodotti degli elementi della \emph{i}-esima riga di \(\boldsymbol{A}\) per la \emph{j}-esima colonna di \(\boldsymbol{B}\).
 
@@ -11581,28 +11836,83 @@ Calcoliamo la matrice \(\boldsymbol{C} = \boldsymbol{AB}\). L'elemento \(c_{ij}\
 
 In definitiva
 
-\[\boldsymbol{C} =  \left[ \begin{array}{c c c}
+\[
+\boldsymbol{C} =  \left[ \begin{array}{c c c}
 -1 & 6 & -1\\
 11 & -9 & 5\\
 -4 & -25 & 4
 \end{array}
- \right]\]
+ \right]
+ \]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}
+  \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{),}
+  \AttributeTok{nrow =} \DecValTok{3}\NormalTok{,}
+  \AttributeTok{byrow =} \ConstantTok{TRUE}
+\NormalTok{)}
+\NormalTok{A}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3]}
+\CommentTok{\#\textgreater{} [1,]   {-}2    1    1}
+\CommentTok{\#\textgreater{} [2,]    1    1    4}
+\CommentTok{\#\textgreater{} [3,]    2   {-}3    2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}
+  \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{),}
+  \AttributeTok{nrow =} \DecValTok{3}\NormalTok{,}
+  \AttributeTok{byrow =} \ConstantTok{TRUE}
+\NormalTok{)}
+\NormalTok{B}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3]}
+\CommentTok{\#\textgreater{} [1,]    3   {-}2    1}
+\CommentTok{\#\textgreater{} [2,]    4    5    0}
+\CommentTok{\#\textgreater{} [3,]    1   {-}3    1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\SpecialCharTok{\%*\%}\NormalTok{ B}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3]}
+\CommentTok{\#\textgreater{} [1,]   {-}1    6   {-}1}
+\CommentTok{\#\textgreater{} [2,]   11   {-}9    5}
+\CommentTok{\#\textgreater{} [3,]   {-}4  {-}25    4}
+\end{Highlighting}
+\end{Shaded}
 
 Calcolando il prodotto \(\boldsymbol{D} = \boldsymbol{BA}\) si trova invece:
 
-\[\boldsymbol{D} =  \left[ \begin{array}{c c c}
+\[
+\boldsymbol{D} =  \left[ \begin{array}{c c c}
 -6 & -2 & -3\\
 -3 & 9 & 24\\
 -3 & -5 & -9
 \end{array}
- \right]\]
+ \right]
+ \]
 
 da cui risulta evidente che \(\boldsymbol{AB} \neq \boldsymbol{BA}\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B }\SpecialCharTok{\%*\%}\NormalTok{ A}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3]}
+\CommentTok{\#\textgreater{} [1,]   {-}6   {-}2   {-}3}
+\CommentTok{\#\textgreater{} [2,]   {-}3    9   24}
+\CommentTok{\#\textgreater{} [3,]   {-}3   {-}5   {-}9}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{proprietuxe0-del-prodotto-di-matrici}{%
 \subsection{Proprietà del prodotto di matrici}\label{proprietuxe0-del-prodotto-di-matrici}}
 
 \begin{itemize}
+\tightlist
 \item
   \(\boldsymbol{A}(\boldsymbol{B} + \boldsymbol{C}) = \boldsymbol{AB} +  \boldsymbol{AC}\)
 \item
@@ -11618,12 +11928,15 @@ da cui risulta evidente che \(\boldsymbol{AB} \neq \boldsymbol{BA}\).
 
 La matrice identità è l'elemento neutro per il prodotto, cioè se \(\boldsymbol{I}\) è una matrice \(n \times n\) si ha
 
-\[\boldsymbol{A} \boldsymbol{I}_n = \boldsymbol{I}_n \boldsymbol{A}
-= \boldsymbol{A}.\]
+\[
+\boldsymbol{A} \boldsymbol{I}_n = \boldsymbol{I}_n \boldsymbol{A}
+= \boldsymbol{A}.
+\]
 
 Per esempio,
 
-\[\boldsymbol{IA} = \left(%
+\[
+\boldsymbol{IA} = \left(%
 \begin{array}{cc}
   1 & 0 \\
   0 & 1 \\
@@ -11640,7 +11953,52 @@ Per esempio,
   2 & 3 & -1 \\
   1 & 4 & 7 \\
 \end{array}%
-\right)\]
+\right)
+\]
+
+In R la matrice identità si crea nel modo seguente.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{diag}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]    1    0}
+\CommentTok{\#\textgreater{} [2,]    0    1}
+\end{Highlighting}
+\end{Shaded}
+
+Dunque
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}
+  \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{7}\NormalTok{),}
+  \AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}
+\NormalTok{)}
+\NormalTok{A}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3]}
+\CommentTok{\#\textgreater{} [1,]    2    3   {-}1}
+\CommentTok{\#\textgreater{} [2,]    1    4    7}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{diag}\NormalTok{(}\DecValTok{2}\NormalTok{) }\SpecialCharTok{\%*\%}\NormalTok{ A}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3]}
+\CommentTok{\#\textgreater{} [1,]    2    3   {-}1}
+\CommentTok{\#\textgreater{} [2,]    1    4    7}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\SpecialCharTok{\%*\%} \FunctionTok{diag}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3]}
+\CommentTok{\#\textgreater{} [1,]    2    3   {-}1}
+\CommentTok{\#\textgreater{} [2,]    1    4    7}
+\end{Highlighting}
+\end{Shaded}
 
 Un secondo caso particolare si verifica quando una matrice è costituita da un'unica colonna o un'unica riga. Se la matrice \(\boldsymbol{A}\) si riduce ad una sola colonna (o una sola riga) e viene detta vettore colonna (o riga) ad \(m\) elementi o componenti. Un vettore colonna è una matrice \(n \times 1\); un vettore riga è una matrice \(1 \times m\). Se \(\boldsymbol{a}\) è un vettore colonna di \(m\) elementi allora \(\boldsymbol{a}'\) è un vettore riga sempre di \(m\) elementi.
 
@@ -11651,7 +12009,9 @@ Per le operazioni tra vettori valgono le stesse regole viste per le matrici, cio
 
 Il \emph{prodotto interno} (o scalare) di un vettore \(\boldsymbol{a}'\) \(1 \times n\) che premoltiplica un vettore \(\boldsymbol{b}\) \(n \times 1\) produce uno scalare:
 
-\[\boldsymbol{a}'\boldsymbol{b} = \sum_{i=1}^{n}a_i b_i\]
+\[
+\boldsymbol{a}'\boldsymbol{b} = \sum_{i=1}^{n}a_i b_i
+\]
 
 Dati due vettori \(\boldsymbol{a}\), \(\boldsymbol{b}\) di ordini \(n \times 1\) e \(m \times 1\), il \emph{prodotto esterno} \(\boldsymbol{C} = \boldsymbol{ab}'\) è una matrice \(n \times m\) di elementi \(c_{ij} = a_i b_j\).
 
@@ -11660,7 +12020,8 @@ Dati due vettori \(\boldsymbol{a}\), \(\boldsymbol{b}\) di ordini \(n \times 1\)
 
 Siano \(\boldsymbol{a}\) e \(\boldsymbol{b}\) i seguenti vettori:
 
-\[\left[ \begin{array}{c}
+\[
+\left[ \begin{array}{c}
 1 \\
 2 \\
 3
@@ -11671,99 +12032,206 @@ Siano \(\boldsymbol{a}\) e \(\boldsymbol{b}\) i seguenti vettori:
 -2 \\
 4
 \end{array}
- \right]\]
+ \right]
+ \]
 
 Il prodotto interno è:
 
-\[\boldsymbol{a}'\boldsymbol{b}= 1 \cdot (-1) + 2 \cdot (-2) + 3
-\cdot 4 = 7\] Osserviamo che tale operazione gode della proprietà commutativa, poichè \(\boldsymbol{b}'\boldsymbol{a}=7\).
+\[
+\boldsymbol{a}'\boldsymbol{b}= 1 \cdot (-1) + 2 \cdot (-2) + 3
+\cdot 4 = 7
+\]
+
+Osserviamo che tale operazione gode della proprietà commutativa, poichè \(\boldsymbol{b}'\boldsymbol{a}=7\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}
+  \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{),}
+  \AttributeTok{nrow =} \DecValTok{3}\NormalTok{,}
+  \AttributeTok{byrow =} \ConstantTok{TRUE}
+\NormalTok{)}
+\NormalTok{a}
+\CommentTok{\#\textgreater{}      [,1]}
+\CommentTok{\#\textgreater{} [1,]    1}
+\CommentTok{\#\textgreater{} [2,]    2}
+\CommentTok{\#\textgreater{} [3,]    3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{b }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}
+  \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{),}
+  \AttributeTok{nrow =} \DecValTok{3}\NormalTok{,}
+  \AttributeTok{byrow =} \ConstantTok{TRUE}
+\NormalTok{)}
+\NormalTok{b}
+\CommentTok{\#\textgreater{}      [,1]}
+\CommentTok{\#\textgreater{} [1,]   {-}1}
+\CommentTok{\#\textgreater{} [2,]   {-}2}
+\CommentTok{\#\textgreater{} [3,]    4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t}\NormalTok{(a) }\SpecialCharTok{\%*\%}\NormalTok{ b}
+\CommentTok{\#\textgreater{}      [,1]}
+\CommentTok{\#\textgreater{} [1,]    7}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{prodotto-esterno}{%
 \subsection{Prodotto esterno}\label{prodotto-esterno}}
 
 Il prodotto esterno è la matrice
 
-\[\boldsymbol{C} = \boldsymbol{a}\boldsymbol{b}'= \left[
+\[
+\boldsymbol{C} = \boldsymbol{a}\boldsymbol{b}'= \left[
 \begin{array}{c c c}
 -1 & -2 & 4\\
 -2 & -4 & 8\\
 -3 & -6 & 12
 \end{array}
- \right]\]
+ \right]
+ \]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\SpecialCharTok{\%*\%} \FunctionTok{t}\NormalTok{(b)}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3]}
+\CommentTok{\#\textgreater{} [1,]   {-}1   {-}2    4}
+\CommentTok{\#\textgreater{} [2,]   {-}2   {-}4    8}
+\CommentTok{\#\textgreater{} [3,]   {-}3   {-}6   12}
+\end{Highlighting}
+\end{Shaded}
 
 Tale prodotto non gode della proprietà commutativa, infatti:
 
-\[\boldsymbol{D} = \boldsymbol{b}\boldsymbol{a}'= \left[
+\[
+\boldsymbol{D} = \boldsymbol{b}\boldsymbol{a}'= \left[
 \begin{array}{c c c}
 -1 & -2 & -3\\
 -2 & -4 & -6\\
 4 & 8 & 12
 \end{array}
- \right]\]
+ \right]
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{b }\SpecialCharTok{\%*\%} \FunctionTok{t}\NormalTok{(a)}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3]}
+\CommentTok{\#\textgreater{} [1,]   {-}1   {-}2   {-}3}
+\CommentTok{\#\textgreater{} [2,]   {-}2   {-}4   {-}6}
+\CommentTok{\#\textgreater{} [3,]    4    8   12}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{traccia-di-una-matrice}{%
 \subsection{Traccia di una matrice}\label{traccia-di-una-matrice}}
 
 Si definisce \emph{traccia} di una matrice quadrata \(\boldsymbol{A}\) \(n \times n\), e si denota con \(tr(\boldsymbol{A})\) la somma degli elementi sulla diagonale principale di \(\boldsymbol{A}\):
 
-\[tr(\boldsymbol{A}) = \sum_{i=1}^{n} a_{ii}\]
+\[
+tr(\boldsymbol{A}) = \sum_{i=1}^{n} a_{ii}
+\]
 
 La traccia gode delle seguenti proprietà:
 
-\[\begin{aligned}
+\[
+\begin{aligned}
 &tr(\rho \boldsymbol{A}) = \rho tr( \boldsymbol{A}) \notag \\
 &tr(\boldsymbol{A} + \boldsymbol{B}) =  tr( \boldsymbol{A})+tr( \boldsymbol{B}) \notag \\
 &tr(\boldsymbol{A}') =  tr( \boldsymbol{A}) \notag \\
-&tr(\boldsymbol{AB}) =  tr( \boldsymbol{BA}) \notag\end{aligned}\]
+&tr(\boldsymbol{AB}) =  tr( \boldsymbol{BA}) \notag\end{aligned}
+\]
 
 Per esempio, sia
 
-\[\boldsymbol{A} =  \left[ \begin{array}{c c c}
+\[
+\boldsymbol{A} =  \left[ \begin{array}{c c c}
 7 & 1 & 2\\
 1 & 8 & 3\\
-2 & 3 & 9 \end{array} \right]\]
+2 & 3 & 9 \end{array} \right]
+\]
 
 allora
 
-\[tr(\boldsymbol{A}) = 7 + 8 + 9 = 24.\]
+\[
+tr(\boldsymbol{A}) = 7 + 8 + 9 = 24.
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}
+  \FunctionTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{9}\NormalTok{),}
+  \AttributeTok{nrow =} \DecValTok{3}\NormalTok{,}
+  \AttributeTok{byrow =} \ConstantTok{TRUE}
+\NormalTok{)}
+\NormalTok{A}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3]}
+\CommentTok{\#\textgreater{} [1,]    7    1    2}
+\CommentTok{\#\textgreater{} [2,]    1    8    3}
+\CommentTok{\#\textgreater{} [3,]    2    3    9}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sum}\NormalTok{(}\FunctionTok{diag}\NormalTok{(A))}
+\CommentTok{\#\textgreater{} [1] 24}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{dipendenza-lineare}{%
 \paragraph{Dipendenza lineare}\label{dipendenza-lineare}}
 
 Si consideri la matrice
 
-\[\boldsymbol{A}=
+\[
+\boldsymbol{A}=
 \left(%
 \begin{array}{ccc}
   1 & 1 & 1 \\
   3 & 1 & 5 \\
   2 & 3 & 1 \\
 \end{array}%
-\right)\]
+\right)
+\]
 
 Siano \(\boldsymbol{c}_1\), \(\boldsymbol{c}_2\), \(\boldsymbol{c}_3\) le colonne di \(\boldsymbol{A}\). Si noti che
 
-\[2\boldsymbol{c}_1 + -\boldsymbol{c}_2 + - \boldsymbol{c}_3 =
-\boldsymbol{0}\]
+\[
+2\boldsymbol{c}_1 + -\boldsymbol{c}_2 + - \boldsymbol{c}_3 =
+\boldsymbol{0}
+\]
 
 dove \(\boldsymbol{0}\) è un vettore (\(3 \times 1\)) di zeri.
 
 Dato che le 3 colonne di \(\boldsymbol{A}\) possono essere combinate linearmente in modo da produrre un vettore \(\boldsymbol{0}\) vi è chiaramente una qualche forma di relazione, o dipendenza, tra le informazioni nelle colonne. Detto in un altro modo, sembra esserci una qualche duplicazione delle informazione nelle colonne. In generale, si dice che \(k\) colonne \(\boldsymbol{c}_1, \boldsymbol{c}_2, \dots \boldsymbol{c}_k\) di una matrice sono \emph{linearmente dipendenti} se esiste un insieme di valori scalari \(\lambda_1, \dots, \lambda_k\) tale per cui
 
-\[\lambda_1 \boldsymbol{c}_1 + \dots + \lambda_k \boldsymbol{c}_k=\boldsymbol{0}\]
+\[
+\lambda_1 \boldsymbol{c}_1 + \dots + \lambda_k \boldsymbol{c}_k=\boldsymbol{0}
+\]
 
 e almeno uno dei valori \(\lambda_i\) non è uguale a 0.
 
 La dipendenza lineare implica che ciascun vettore colonna è una combinazione degli altri. Per esempio
 
-\[\boldsymbol{c}_k= -(\lambda_1 \boldsymbol{c}_1 + \dots + \lambda_{k-1}
-   \boldsymbol{c}_{k-1})/\lambda_k\]
+\[
+\boldsymbol{c}_k= -(\lambda_1 \boldsymbol{c}_1 + \dots + \lambda_{k-1}
+   \boldsymbol{c}_{k-1})/\lambda_k
+\]
 
 Questo implica che tutta ``l'informazione'' della matrice è contenuta in un sottoinsieme delle colonne -- se \(k-1\) colonne sono conosciute, l'ultima resta determinata. È in questo senso che abbiamo detto che l'informazione della matrice veniva ``duplicata''.
 
 Se l'unico insieme di valori scalari \(\lambda_i\) che soddisfa l'equazione
 
-\[\lambda_1 \boldsymbol{c}_1 + \dots + \lambda_k \boldsymbol{c}_k=\boldsymbol{0}\]
+\[
+\lambda_1 \boldsymbol{c}_1 + \dots + \lambda_k \boldsymbol{c}_k=\boldsymbol{0}
+\]
 
 è un vettore di zeri, allora questo significa che non vi è alcuna relazione tra le colonne della matrice. Le colonne si dicono \emph{linearmente indipendenti}, nel senso che non contengono alcuna ``duplicazione'' di informazione.
 
@@ -11774,7 +12242,9 @@ Il \emph{rango della matrice} è il massimo numero di vettori colonna linearment
 
 Se la matrice è quadrata, \(\boldsymbol{A}_{n \times n}\), ed è costituita da vettori tutti indipendenti tra di loro, allora il suo rango è \(n\). Se, invece, la matrice è rettangolare, \(\boldsymbol{A}_{m \times n}\), allora il suo rango può essere al massimo il più piccolo tra i due valori \emph{m} ed \emph{n}, cioè:
 
-\[r(\boldsymbol{A}_{m \times n}) \leq min(m,n)\]
+\[
+r(\boldsymbol{A}_{m \times n}) \leq min(m,n)
+\]
 
 \hypertarget{matrice-inversa}{%
 \subsection{Matrice inversa}\label{matrice-inversa}}
@@ -11783,7 +12253,9 @@ L'inversa di una matrice quadrata è l'analogo del reciproco per gli scalari. Se
 
 Sia \(\boldsymbol{A}\) una matrice quadrata di dimensione \(n\). Si definisce \emph{matrice inversa} la matrice, denotata con \(\boldsymbol{A}^{-1}\), che premoltiplicata o postmoltiplicata per \(\boldsymbol{A}\) fornisce la matrice identità:
 
-\[\boldsymbol{A}\boldsymbol{A}^{-1}=\boldsymbol{A}^{-1}\boldsymbol{A}=\boldsymbol{I}\]
+\[
+\boldsymbol{A}\boldsymbol{A}^{-1}=\boldsymbol{A}^{-1}\boldsymbol{A}=\boldsymbol{I}
+\]
 
 La condizione per l'esistenza e l'unicità di \(\boldsymbol{A}^{-1}\) è che le colonne di \(\boldsymbol{A}\) siano linearmente indipendenti.
 
@@ -11791,23 +12263,28 @@ Nel caso di una matrice diagonale la determinazione della matrice inversa risult
 
 Per esempio, sia
 
-\[\boldsymbol{A} =  \left[ \begin{array}{c c}
+\[
+\boldsymbol{A} =  \left[ \begin{array}{c c}
 3 & 4 \\
 2 & 6
 \end{array}
- \right]\]
+ \right]
+\]
 
 allora
 
-\[\boldsymbol{A}^{-1} =  \left[ \begin{array}{c c}
+\[
+\boldsymbol{A}^{-1} =  \left[ \begin{array}{c c}
 .6 & -.4 \\
 -.2 & .3
 \end{array}
- \right]\]
+ \right]
+\]
 
 e
 
-\[\boldsymbol{A}\boldsymbol{A}^{-1} =\left[ \begin{array}{c c}
+\[
+\boldsymbol{A}\boldsymbol{A}^{-1} =\left[ \begin{array}{c c}
 3 & 4 \\
 2 & 6
 \end{array}
@@ -11821,68 +12298,198 @@ e
 1 & 0 \\
 0 & 1
 \end{array}
- \right]\]
+ \right]
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}
+  \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{6}\NormalTok{),}
+  \AttributeTok{nrow =} \DecValTok{2}\NormalTok{,}
+  \AttributeTok{byrow =} \ConstantTok{TRUE}
+\NormalTok{)}
+\NormalTok{A}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]    3    4}
+\CommentTok{\#\textgreater{} [2,]    2    6}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{solve}\NormalTok{(A)}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]  0.6 {-}0.4}
+\CommentTok{\#\textgreater{} [2,] {-}0.2  0.3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\SpecialCharTok{\%*\%} \FunctionTok{solve}\NormalTok{(A)}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]    1    0}
+\CommentTok{\#\textgreater{} [2,]    0    1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{solve}\NormalTok{(A) }\SpecialCharTok{\%*\%}\NormalTok{ A}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]    1    0}
+\CommentTok{\#\textgreater{} [2,]    0    1}
+\end{Highlighting}
+\end{Shaded}
 
 Se \(\boldsymbol{A}\) e \(\boldsymbol{B}\) sono due matrici non singolari aventi le stesse dimensioni, allora l'inversa del loro prodotto è uguale al prodotto delle loro inverse nella sequenza opposta:
 
-\[(\boldsymbol{AB})^{-1}=\boldsymbol{B}^{-1}\boldsymbol{A}^{-1}\]
+\[
+(\boldsymbol{AB})^{-1}=\boldsymbol{B}^{-1}\boldsymbol{A}^{-1}
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}
+  \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{7}\NormalTok{),}
+  \AttributeTok{nrow =} \DecValTok{2}\NormalTok{,}
+  \AttributeTok{byrow =} \ConstantTok{TRUE}
+\NormalTok{)}
+\NormalTok{B}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]    1    2}
+\CommentTok{\#\textgreater{} [2,]    9    7}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{solve}\NormalTok{(A }\SpecialCharTok{\%*\%}\NormalTok{ B)}
+\CommentTok{\#\textgreater{}         [,1]    [,2]}
+\CommentTok{\#\textgreater{} [1,] {-}0.4182  0.3091}
+\CommentTok{\#\textgreater{} [2,]  0.5091 {-}0.3545}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{solve}\NormalTok{(B) }\SpecialCharTok{\%*\%} \FunctionTok{solve}\NormalTok{(A)}
+\CommentTok{\#\textgreater{}         [,1]    [,2]}
+\CommentTok{\#\textgreater{} [1,] {-}0.4182  0.3091}
+\CommentTok{\#\textgreater{} [2,]  0.5091 {-}0.3545}
+\end{Highlighting}
+\end{Shaded}
 
 L'inversa della trasposta di una matrice non singolare è uguale alla trasposta dell'inversa:
 
-\[(\boldsymbol{A}')^{-1}=(\boldsymbol{A}^{-1})'\]
+\[
+(\boldsymbol{A}')^{-1}=(\boldsymbol{A}^{-1})'
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{solve}\NormalTok{(}\FunctionTok{t}\NormalTok{(A))}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]  0.6 {-}0.2}
+\CommentTok{\#\textgreater{} [2,] {-}0.4  0.3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t}\NormalTok{(}\FunctionTok{solve}\NormalTok{(A))}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]  0.6 {-}0.2}
+\CommentTok{\#\textgreater{} [2,] {-}0.4  0.3}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{determinante-di-una-matrice}{%
 \subsection{Determinante di una matrice}\label{determinante-di-una-matrice}}
 
 Sia \(\boldsymbol{A}\) una matrice quadrata. Il determinante di \(\boldsymbol{A}\) è uno scalare, \(|\boldsymbol{A}|\), il cui valore assoluto misura il volume del parallelepipedo delimitato dalle colonne di \(\boldsymbol{A}\). Nel caso della matrice identità il volume è pari a 1, per cui \(|\boldsymbol{I}| =1\). Per una matrice diagonale \(\boldsymbol{D} = diag(d_1, \dots, d_n)\) si ha
 
-\[|\boldsymbol{D}| =  d_1 \cdot d_2, \dots, d_n = \prod_{i=1}^{n}d_i\]
+\[
+|\boldsymbol{D}| =  d_1 \cdot d_2, \dots, d_n = \prod_{i=1}^{n}d_i
+\]
 
 Per una matrice \(2 \times 2\)
 
-\[\boldsymbol{A} =  \left[ \begin{array}{c c}
+\[
+\boldsymbol{A} =  \left[ \begin{array}{c c}
 a_{11}& a_{12} \\
-a_{21} & a_{22} \end{array} \right]\]
+a_{21} & a_{22} \end{array} \right]
+\]
 
 il determinante di \(\boldsymbol{A}\) vale:
 
-\[|\boldsymbol{A}| =  a_{11}a_{22}-a_{12}a_{21}\]
+\[
+|\boldsymbol{A}| =  a_{11}a_{22}-a_{12}a_{21}
+\]
 
 Per esempio:
 
-\[\boldsymbol{A} = \left[ \begin{array}{c c}
+\[
+\boldsymbol{A} = \left[ \begin{array}{c c}
 1 & -2 \\
 3 & 9
 \end{array}
- \right] \quad |\boldsymbol{A}| = 1\cdot 9 - (-2) \cdot  3 = 15\]
+ \right] \quad |\boldsymbol{A}| = 1\cdot 9 - (-2) \cdot  3 = 15
+\]
 
 Il determinante è definito anche per matrici di dimensioni superiori anche se, in quel caso, i calcoli sono molto più complessi (una volta ancora, si usi il computer!).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}
+  \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{9}\NormalTok{),}
+  \AttributeTok{nrow =} \DecValTok{2}\NormalTok{,}
+  \AttributeTok{byrow =} \ConstantTok{TRUE}
+\NormalTok{)}
+\NormalTok{A}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]    1   {-}2}
+\CommentTok{\#\textgreater{} [2,]    3    9}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{det}\NormalTok{(A)}
+\CommentTok{\#\textgreater{} [1] 15}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{determinante-e-inversa}{%
 \subsection{Determinante e inversa}\label{determinante-e-inversa}}
 
 Vi è una relazione tra il determinante e l'inversa di una matrice. Se la matrice \(\boldsymbol{A}\) ha dimensioni \(2 \times 2\) l'inversa di \(\boldsymbol{A}\) si trova nel modo seguente
 
-\[\boldsymbol{A}^{-1} = \frac{1}{|\boldsymbol{A}|} \left[
+\[
+\boldsymbol{A}^{-1} = \frac{1}{|\boldsymbol{A}|} \left[
 \begin{array}{c c}
 a_{22} & -a_{12} \\
 -a_{21} & a_{11}
 \end{array}
- \right]\]
+ \right]
+ \]
 
 Anche per le matrici di dimensioni maggiori la matrice inversa è definita nei termini del determinante, ma le formule di calcolo sono molto più complesse.
 
 Per esempio, sia
 
-\[\boldsymbol{A} = \left[ \begin{array}{c c}
+\[
+\boldsymbol{A} = \left[ \begin{array}{c c}
 3 & 4 \\
 2 & 6
 \end{array}
-\right]\]
+\right]
+\]
 
 allora
 
-\[\boldsymbol{A}^{-1} = \frac{1}{10} \left[
+\[
+\boldsymbol{A}^{-1} = \frac{1}{10} \left[
 \begin{array}{c c}
 6 & -4 \\
 -2 & 3
@@ -11891,19 +12498,23 @@ allora
 .6 & -.4 \\
 -.2 & .3
 \end{array}
- \right]\]
+ \right]
+ \]
 
 In precedenza abbiamo detto che, in alcuni casi, una matrice ``si comporta come lo 0.'' Il \emph{determinante} di una matrice è ci dice quando una matrice ``si comporta come lo 0.'' \(|\boldsymbol{A}| = 0\), infatti, se una riga (o una colonna) è una combinazione lineare di due (o più) righe (o colonne) di \(\boldsymbol{A}\).
 
 Per esempio, nel caso di una matrice (\(2 \times 2\))
 
-\[\boldsymbol{A} =  \left( \begin{array}{c c}
+\[
+\boldsymbol{A} =  \left( \begin{array}{c c}
 a_{11}& a_{12} \\
-a_{21} & a_{22} \end{array} \right)\]
+a_{21} & a_{22} \end{array} \right)
+\]
 
 supponiamo che
 
-\[\left(%
+\[
+\left(%
 \begin{array}{c}
   a_{11} \\
   a_{21} \\
@@ -11918,20 +12529,52 @@ supponiamo che
 
 Allora
 
-\[\boldsymbol{A} =  \left( \begin{array}{c c}
+\[
+\boldsymbol{A} =  \left( \begin{array}{c c}
 2a_{12}& a_{12} \\
-2a_{22} & a_{22} \end{array} \right)\]
+2a_{22} & a_{22} \end{array} \right)
+\]
 
 e
 
-\[|\boldsymbol{A}| = 2a_{12}a_{22}-2a_{12}a_{22}=0\]
+\[
+|\boldsymbol{A}| = 2a_{12}a_{22}-2a_{12}a_{22}=0
+\]
 
 In conclusione, se il determinante è uguale a zero, allora la matrice inversa non esiste. Nel caso di una matrice (\(2 \times 2\)), infatti, la formula dell'inversa richiede la divisione per \(a_{11}a_{22}-a_{12}a_{21}\) che, nel caso di una matrice singolare, è uguale a zero.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}
+  \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{6}\NormalTok{),}
+  \AttributeTok{nrow =} \DecValTok{2}\NormalTok{,}
+  \AttributeTok{byrow =} \ConstantTok{TRUE}
+\NormalTok{)}
+\NormalTok{A}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]    2    4}
+\CommentTok{\#\textgreater{} [2,]    3    6}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{det}\NormalTok{(A)}
+\CommentTok{\#\textgreater{} [1] 0}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# solve(A)}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{proprietuxe0-del-determinante}{%
 \subsection{Proprietà del determinante}\label{proprietuxe0-del-determinante}}
 
 \begin{itemize}
+\tightlist
 \item
   \(|\boldsymbol{A}'| = |\boldsymbol{A}|\).
 \item
@@ -11988,7 +12631,7 @@ Disegnamo il diagramma di dispersione con un ellisse che contiene la nube di pun
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-351-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-399-1} \end{center}
 
 Se racchiudiamo le osservazioni (\(v_1, v_2\)) con un'ellisse, allora la lunghezza dei semiassi maggiori e minori dell'ellisse sarà proporzionale a \(\sqrt{\lambda_1}\) e \(\sqrt{\lambda_2}\). L'asse maggiore è la linea passante per il punto (\(\bar{v_1}, \bar{v_2}\)) nella direzione determinata dal primo autovettore \(\boldsymbol{a}_1'\) con pendenza uguale a \(a_{12}/a_{11}\). L'asse minore è la linea passante per il punto (\(\bar{v_1}, \bar{v_2}\)) nella direzione determinata dal secondo autovettore \(\boldsymbol{a}_2\).
 
@@ -12032,7 +12675,7 @@ Disegniamo gli assi dell'ellisse:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-353-1} \end{center}
+\begin{center}\includegraphics{cfa_book_files/figure-latex/unnamed-chunk-401-1} \end{center}
 
 Tale analisi si può estendere a qualunque numero di variabili. Per esempio, nel caso di tre variabili, possiamo pensare di disegnare un ellisoide attorno ad una nube di punti nello spazio tridimensionale. Anche in questo caso, gli autovalori e gli associati autovettori corrisponderanno agli assi dell'elissoide.
 
