@@ -1,4 +1,4 @@
-# Come valutare e rifinire la soluzione fattoriale {#ch:val_sol_fattoriale}
+# Come valutare e rifinire la soluzione fattoriale 
 
 ```{r, include = FALSE}
 source("_common.R")

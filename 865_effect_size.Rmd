@@ -1,4 +1,4 @@
-# La dimensione dell'effetto del trattamento {#ch:effect_size}
+# La dimensione dell'effetto del trattamento 
 
 ```{r, include = FALSE}
 source("_common.R")

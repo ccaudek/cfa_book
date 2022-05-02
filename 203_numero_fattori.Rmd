@@ -1,4 +1,4 @@
-# Il numero dei fattori {#ch:numero_fattori}
+# Il numero dei fattori 
 
 ```{r, include = FALSE}
 source("_common.R")

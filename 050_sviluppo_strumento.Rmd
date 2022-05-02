@@ -1,6 +1,6 @@
 # (PART) L'analisi fattoriale {-} 
 
-# Utilizzo e costruzione di test psicometrici {#ch:sviluppo}
+# Utilizzo e costruzione di test psicometrici 
 
 ```{r, include = FALSE}
 source("_common.R")

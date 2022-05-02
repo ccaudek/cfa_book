@@ -1,4 +1,4 @@
-# La rotazione fattoriale {#ch:rotazione}
+# La rotazione fattoriale 
 
 ```{r, include = FALSE}
 source("_common.R")

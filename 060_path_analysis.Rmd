@@ -1,4 +1,4 @@
-# Path Analysis {#ch:path_analysis}
+# Path Analysis 
 
 ```{r, include = FALSE}
 source("_common.R")

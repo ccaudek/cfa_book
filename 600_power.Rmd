@@ -1,4 +1,4 @@
-# Potere statistico {#ch:power}
+# Potere statistico 
 
 ```{r, include = FALSE}
 source("_common.R")

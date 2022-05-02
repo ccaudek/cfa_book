@@ -1,4 +1,4 @@
-# La stima del punteggio vero {#ch:err_stnd_stima}
+# La stima del punteggio vero 
 
 ```{r, include = FALSE}
 source("_common.R")

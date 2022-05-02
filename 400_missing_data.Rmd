@@ -1,4 +1,4 @@
-# Dati mancanti {#ch:missing_data}
+# Dati mancanti 
 
 ```{r, include = FALSE}
 source("_common.R")

@@ -1,6 +1,6 @@
-# Lo studio del caso singolo {#ch:single_case}
+# Lo studio del caso singolo 
 
-## Motivazione {#sec:motivazione}
+## Motivazione 
 
 ```{r, include = FALSE}
 source("_common.R")

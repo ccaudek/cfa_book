@@ -1,4 +1,4 @@
-# L'estrazione dei fattori {#ch:estrazione}
+# L'estrazione dei fattori 
 
 ```{r, include = FALSE}
 source("_common.R")

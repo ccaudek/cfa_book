@@ -1,4 +1,4 @@
-# I punteggi fattoriali {#ch:factor-scores}
+# I punteggi fattoriali 
 
 ```{r, include = FALSE}
 source("_common.R")

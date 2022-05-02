@@ -1,10 +1,10 @@
-# Il modello unifattoriale {#ch:spearman}
+# Il modello unifattoriale 
 
 ```{r, include = FALSE}
 source("_common.R")
 ```
 
-In questo capitolo verranno presentate le basi teoriche dell'analisi
+In questo Capitolo verranno presentate le basi teoriche dell'analisi
 fattoriale, ovvero di quel modello statistico che offre la possibilità
 di ricostruire le correlazioni osservate tra le variabili manifeste
 considerando le saturazioni delle variabili in uno o più fattori

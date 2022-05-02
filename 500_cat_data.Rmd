@@ -1,4 +1,4 @@
-# Dati non gaussiani e categoriali {#ch:cat_data}
+# Dati non gaussiani e categoriali
 
 ```{r, include = FALSE}
 source("_common.R")

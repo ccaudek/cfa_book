@@ -1,20 +1,17 @@
-# Elementi di algebra lineare {#ch:lin-alg}
+# Elementi di algebra lineare 
 
 ```{r, include = FALSE}
 source("_common.R")
 ```
 
-Un aspetto che rende difficile la comprensione dell'analisi fattoriale è il fatto che l'analisi fattoriale sia una tecnica di analisi multivariata e, come tutte le tecniche di analisi multivariata, richiede la comprensione di almeno alcuni concetti di base dell'algebra lineare. A livello minimale è necessario capire che cosa sono i vettori e le matrici, che cosa è il determinante di una matrice, e in che modo possano essere eseguite le operazioni algebriche su vettori e matrici. Questo capitolo si pone l'obiettivo di chiarire le nozioni elencate sopra.
+L'analisi fattoriale è una tecnica di analisi multivariata e, perciò, richiede la comprensione di almeno alcuni concetti di base dell'algebra lineare. A livello minimale è necessario capire che cosa sono i vettori e le matrici, che cosa è il determinante di una matrice, e in che modo possano essere eseguite le operazioni algebriche su vettori e matrici. Questo Capitolo si pone l'obiettivo di chiarire le nozioni elencate sopra.
 
 ## Vettori 
 
 ### Vettori nello spazio euclideo
 
-Un vettore geometrico è un segmento orientato dotato di una lunghezza, una direzione e un verso. Spesso viene rappresentato con una freccia. Dato che i vettori non hanno posizione (ma solo direzione, verso e
-intensità), sono possibili rappresentazioni multiple dello
-stesso vettore. Nella discussione seguente, considereremo soltanto vettori che
-hanno origine nel punto (0, 0).  Questo verr{\`a} chiarito
-dall'esempio seguente. La posizione di un punto nel piano pu{\`o} essere espressa nei termini di una coppia ordinata di numeri ($x, y$), le coordinate
+Un vettore geometrico è un segmento orientato dotato di una lunghezza, una direzione e un verso. Spesso viene rappresentato con una freccia. Dato che i vettori non hanno posizione (ma solo direzione, verso e intensità), sono possibili rappresentazioni multiple dello stesso vettore. Nella discussione seguente, considereremo soltanto vettori che hanno origine nel punto (0, 0).  Questo verrà chiarito
+dall'esempio seguente. La posizione di un punto nel piano può essere espressa nei termini di una coppia ordinata di numeri ($x, y$), le coordinate
 di quel punto. Tale coppia di valori rappresenta la distanza verticale
 dal punto a ciascuno degli assi coordinati.
 
@@ -45,13 +42,15 @@ $$
  
 In generale, un punto $P$ in uno spazio a $n$-dimensioni sarà specificato da: 
 
-$$\overrightarrow{OP} = \left[ \begin{array}{c}
+$$
+\overrightarrow{OP} = \left[ \begin{array}{c}
 v_1\\
 v_2\\
 \dots\\
 v_n
 \end{array}
- \right]$$ 
+\right]
+$$ 
  
 Dal punto di vista geometrico, dunque, un vettore rappresenta un punto in uno spazio $n$-dimensionale.
 

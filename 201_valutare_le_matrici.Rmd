@@ -1,4 +1,4 @@
-# Valutazione della matrice di correlazione {#ch:val_matrici}
+# Valutazione della matrice di correlazione 
 
 ```{r, include = FALSE}
 source("_common.R")

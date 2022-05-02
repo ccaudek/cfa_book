@@ -1,4 +1,4 @@
-# Indici di bontà dell'adattamento {#ch:gof}
+# Indici di bontà dell'adattamento 
 
 ```{r, include = FALSE}
 source("_common.R")
