@@ -1,4 +1,4 @@
-# Invarianza di misura {#ch:factorial-invariance}
+# Invarianza di misura 
 
 ```{r, include = FALSE}
 source("_common.R")
@@ -6,7 +6,9 @@ library("lavaan")
 library("semTools")
 ```
 
-I precedenti esempi di CFA presentati in questa dispensa sono stati stimati all'interno di un singolo gruppo, hanno utilizzato come input un'unica matrice covarianza e hanno portato alla stima dei parametri del modello sui quali non è stata imposta alcuna restrizione. In questo capitolo, le  analisi precedenti verranno estese considerano il problema dell'invarianza di misura. Quello che ci chiediamo è se sia sensato considerare la medesima struttura fattoriale in gruppi diversi. In altre parole, ci chiediamo se viene misurata la stessa variabile latente tra gruppi diversi. Questa proprietà è chiamata _invarianza di misura_ [@meredith1993measurement]. L'approccio che viene utilizzato per stabilire l'evidenze dell'invarianza di misura è attraverso l'analisi fattoriale confermativa a gruppi multipli (_multiple-group confirmatory factor analysis_, MG-CFA). È solo nella misura in cui viene dimostrata l'equivalenza di misura che sono possibili i confronti tra gruppi. Nel presente capitolo, verrà affrontato il invarianza di misura considerando prima il caso di indicatori continui e poi il caso di indicatori categoriali.
+I precedenti esempi di CFA presentati in questa dispensa sono stati stimati all'interno di un singolo gruppo, hanno utilizzato come input un'unica matrice covarianza e hanno portato alla stima dei parametri del modello sui quali non è stata imposta alcuna restrizione. In questo capitolo, le  analisi precedenti verranno estese considerando il problema dell'invarianza di misura. Quello che ci chiediamo è se sia sensato considerare la medesima struttura fattoriale in gruppi diversi. In altre parole, ci chiediamo se viene misurata la stessa variabile latente tra gruppi diversi. Questa proprietà è chiamata *invarianza di misura*  [@meredith1993measurement]. 
+
+L'approccio che viene utilizzato per valutare l'invarianza di misura è quello dell'analisi fattoriale confermativa a gruppi multipli (*multiple-group confirmatory factor analysis*, MG-CFA). Questa verifica è importante perché i confronti tra le medie dei gruppi sono possibili solo se viene dimostrata l'equivalenza di misura: se lo stesso reattivo misura dimensioni diverse in gruppi diversi, i confronti tra gruppi nei termini di quella misura non sono ovviamente possibili. Nel presente Capitolo, verrà affrontato il problema dell'invarianza di misura considerando prima il caso degli indicatori continui e poi il caso ddeli indicatori categoriali.
 
 ## Indicatori continui
 
@@ -18,13 +20,15 @@ $$
 y_i = \mu + \lambda_j \xi_k + \delta_i,
 $$
 
-per semplicità abbiamo ignorato la media $\mu$ degli indicatori esprimendo i dati osservati nei termini degli scarti dalla media, $y_i -\mu$, in quanto ciò lascia immutate le covarianze. Tuttavia, in alcune applicazioni (quali l'invarianza di misura, ad esempio), è utile considerare anche le medie delle variabili osservate. Per ottenere ciò è possibile fare esplicito riferimento alle intercette delle equazioni precedenti nella sintassi `lavaan` del modello. È possibile fare riferimento all'intercetta di una variabile manifesta nel modo seguente:
+per semplicità abbiamo ignorato la media $\mu$ degli indicatori esprimendo i dati osservati nei termini degli scarti dalla media, $y_i -\mu$, in quanto ciò lascia immutate le covarianze. Tuttavia, in alcune applicazioni (quali, appunto, l'invarianza di misura), è utile considerare anche le medie delle variabili osservate. Per includere nel modello fattoriale le informazioni sulle medie facciamo esplicito riferimento all'intercetta della precedente equazione. Usando la sintassi `lavaan`, la media di una variabile manifesta viene inserita nel modello specificando l'intercetta dell'equazione precedente come segue
 
 ```{r, eval=FALSE}
-variable ~ 1
+my_item ~ 1
 ```
 
-laddove la parte sinistra dell'espressione precedente contiene il nome della variabile osservata a cui si fa riferimento. Per esempio, nel caso di un modello a due fattori comuni, è possibile aggiungere le intercette delle variabili manifeste nel modo seguente:
+La parte sinistra dell'espressione precedente contiene il nome della variabile manifesta a cui si fa riferimento; la parte destra dell'espressione precedente specifica la presenza dell'intercetta. 
+
+Per esempio, nella specificazione di un modello a due fattori comuni, è possibile aggiungere al modello le medie delle variabili manifeste nel modo seguente:
 
 ```{r, eval=FALSE}
 mod <- "
@@ -51,20 +55,20 @@ fit <- cfa(
 )
 ```
 
-Si noti che la statistica chi-quadrato e il numero di gradi di libertà sono gli stessi in un modello con o senza `meanstructure`. Il motivo è che, nel caso di un modello con `meanstructure`, vengono introdotti nuovi dati (il valore della media per ciascuna delle $p$ variabili osservate) ma vengono anche aggiunti $p$ parametri da stimare (un'intercetta per ciascuna delle $p$ variabili osservate). Il risultato finale è che la bontà dell'adattamento resta immutata. In pratica, l'unico motivo per aggiungere le interecette nella sintassi del modello è quello di stabilire dei vincoli nella stima di tali parametri. 
+Si noti che modelli con o senza `meanstructure` avranno la stessa statistica chi-quadrato e lo stesso numero di gradi di libertà. Il motivo è che, nel caso di un modello con `meanstructure`, vengono introdotti $p$ nuovi dati (ovvero, il valore della media per ciascuno dei $p$ indicatori) ma vengono anche stimati ulteriori $p$ parametri (ovvero, un'intercetta per ciascuno dei $p$ indicatori). Il risultato finale è che la bontà dell'adattamento resta immutata. In pratica, l'unico motivo per aggiungere le intercette nella sintassi del modello è quello di introdurre dei vincoli nella stima di tali parametri. 
 
 ### Terminologia
 
 La discussione dell'invarianza di misura nel contesto della CFA fa uso della seguente terminologia. 
 
-- L'invarianza configurale (*configural invariance*) verifica se la struttura dei fattori è la stessa tra i gruppi, ovvero verifica la presenza dello stesso numero di fattori e di pattern di saturazioni fattoriali simili tra gruppi.
-- L'invarianza metrica (*metric invariance*) o "invarianza fattoriale debole" (*weak factorial invariance*) verifica se i carichi fattoriali degli elementi sono gli stessi tra i gruppi. 
-Invarianza scalare (*scalar invariance*) o "invarianza fattoriale forte" verifica se le intercette sono le stesse tra i gruppi. 
-- L'invarianza fattoriale rigorosa (*strict factorial invariance*), infine, verifica se i residui degli indicatori sono gli stessi tra i gruppi.
+- L'*invarianza configurale* (*configural invariance*) verifica se la struttura dei fattori sia la stessa tra i gruppi, ovvero verifica la presenza dello stesso numero di fattori e di pattern di saturazioni fattoriali simili tra gruppi.
+- L'*invarianza metrica* (*metric invariance*) o *invarianza fattoriale debole* (*weak factorial invariance*) verifica se le saturazioni fattoriali rimangono invariante tra i gruppi. 
+- L'*invarianza scalare* (*scalar invariance*) o *invarianza fattoriale forte* verifica l'invarianza delle intercette (medie) tra i gruppi. 
+- L'*invarianza fattoriale rigorosa* (*strict factorial invariance*) verifica se i residui degli indicatori sono invarianti tra i gruppi.
 
 ### Un esempio concreto
 
-Consideriamo qui un esempio discusso da @brown2015confirmatory. Il modello CFA riguarda un modello di misurazione per la depressione maggiore così come definita nel DSM-IV. Ci sono 9 indicatori:
+Consideriamo qui un esempio discusso da @brown2015confirmatory. Il modello CFA riguarda un modello di misurazione per la depressione maggiore così come è definita nel DSM-IV. Il campione include 9 indicatori:
 
 - MDD1, depressed mood; 
 - MDD2, loss of interest in usual activities; 
@@ -76,7 +80,7 @@ Consideriamo qui un esempio discusso da @brown2015confirmatory. Il modello CFA r
 - MDD8, concentration difficulties; 
 - MDD9, thoughts of death/suicidality.
 
-Leggiamo i dati:
+Leggiamo i dati in $\mathsf{R}$:
 
 ```{r}
 d <- readRDS(
@@ -84,7 +88,7 @@ d <- readRDS(
 )
 ```
 
-Il problema riguarda l'invarianza fattoriale in funzione del genere. Consideriamo il seguente modello:
+I due gruppi considerati corrispondono al genere. Il problema riguarda l'invarianza fattoriale in funzione del genere. Consideriamo il seguente modello:
 
 ```{r}
 model_mdd <- "
@@ -96,7 +100,7 @@ model_mdd <- "
 
 Si noti la presenza di una correlazione residua tra gli indicatori `mdd1` e `mdd2`.
 
-Esaminiamo dunque le varie forme di invarianza fattoriale:
+Esaminiamo dunque di seguito le varie forme di invarianza fattoriale. Si notino i vincoli che vengono via via introdotti quando vengono specificati modelli via via più restrittivi. Nella sintassi `lavaan` i vincoli vengono specificati dall'argomento `group.equal`.
 
 ```{r}
 # configural invariance
@@ -145,15 +149,20 @@ Confrontiamo i modelli:
 lavTestLRT(fit_ef, fit_efl, fit_eii, fit_eir, fit_fv, fit_fm)
 ```
 
-Il confronto tra i precedenti modelli nidificati che introducono vincoli sempre più tringenti sui parametri indica che non vi è una "significativa" perdita di bontà dell'adattamento passando dal modello congenerico al modello che assume l'uguaglianza delle saturazioni fattoriali, delle intercette, delle varianze residue, delle varianze delle variabili latenti e delle medie nei due gruppi. Questi dati, dunque, forniscono forti evidenze di invarianza fattoriale tra maschi e femmine in relazione al costrutto di depressione maggiore.
-
+Il confronto tra i precedenti modelli nidificati che introducono vincoli sempre più stringenti sui parametri indica che non vi è una "significativa" perdita di bontà dell'adattamento passando dal modello congenerico al modello che assume l'uguaglianza delle saturazioni fattoriali, delle intercette, delle varianze residue, delle varianze delle variabili latenti e delle medie dei due gruppi. Per i dati discussi da @brown2015confirmatory, dunque, possiamo concludere che vi sono forti evidenze di invarianza fattoriale tra maschi e femmine in relazione al costrutto di depressione maggiore.
 
 ## Variabili a livello ordinale
 
-I test di invarianza per i dati ordinali sono diversi da quelli utilizzati con continuo variabili in termini dello stimatore che viene utilizzato e del tipo di analisi statistica che viene svolta. Le variabili ordinali hanno opzioni di risposta che hanno un ordine logico, come come la gamma da fortemente in disaccordo a fortemente d'accordo; o da mai, a volte, spesso, a sempre. Queste opzioni possono essere ordinate logicamente e per convenzione ad esse venono assegnati valori numerici interi. Tuttavia, poiché le risposte ordinali non corrispondono a veri valori quantitativi (come 0 volte a settimana, 5 volte a settimana e 10 volte a settimana), l'assegnazione di numeri alle risposte ordinali da utilizzare nelle analisi è arbitraria. Ad esempio, le stesse cinque opzioni di risposta ordinate potrebbero essere assegnati valori da 0 a 4, da 1 a 5 o da 5 a 1. Pertanto, i dati ordinali non possono essere analizzati come
-se fossero continui. “Le medie, le varianze e le covarianze delle variabili ordinali non hanno significato” ( Jöreskog, p. 1). Tuttavia, l'ordinamento delle risposte può essere analizzato tramite apposite procedure speficiche ai dati ordinali. Abbiamo visto in precedenza come lo stimatore attualmente consigliato per i dati ordinali è quello dei minimi quadrati ponderati. Consideriamo qui il problema dell'invarianza di misura.
+I test di invarianza per i dati ordinali sono diversi da quelli utilizzati con le variabili continue in due aspetti: differiscono sia lo stimatore che viene utilizzato per le saturazioni fattoriali sia il tipo di analisi statistica che vengono svolte. 
 
-Oltre alla stima WLS, nell'analisi di dati ordinali viene utilizzata una matrice di correlazione policorica invece della solita matrice di covarianza. Per ciascuna coppia di variabili ordinali viene calcolata una correlazione policorica sulla base dell'ipotesi che una variabile continua latente normalmente distribuita sia responsabile delle frequenze osservate delle risposte ordinali in ciascuna variabile. Secondo questa ipotesi, ogni valore di risposta ordinale osservato corrisponde a un intervallo di valori normalizzati tra soglie, o cutoff, sulla variabile continua latente sottostante. Tali soglie ($\tau_1, \tau_2, \dots, \tau_k$) sono dei margini verticali che suddividono l'area sottesa alla funzione di densità della distribuzione normale sottostante in $k$ sezioni, ciascuna delle quali corrisponde alla frequenza del punteggio ordinale che è stato osservato in quella categoria di risposta. L'invarianza delle soglie (_treshold invariance_) assume che tali soglie necessarie per definire le correlazioni policoriche siano invarianti tra gruppi. 
+Le variabili ordinali sono costituite da una serie di modalità (opzioni di risposta) caratterizzate da un ordine logico; ad esempio, le modalità "fortemente in disaccordo" fino a "fortemente d'accordo"; oppure le modalità "mai", "a volte", "spesso", "sempre". Queste opzioni di risposta sono logicamente ordinate e, per convenzione, ad esse vengono assegnati valori numerici interi. Tuttavia, poiché le risposte ordinali non corrispondono all'intensità della presenza di un attributo, l'assegnazione di numeri alle risposte ordinali è arbitraria. Ad esempio, alle stesse cinque opzioni di risposta ordinate possiamo assegnare valori da 0 a 4, da 1 a 5 o da 5 a 1. Pertanto, i dati ordinali non possono essere analizzati come
+se fossero continui. 
+
+> Le medie, le varianze e le covarianze delle variabili ordinali non hanno significato ( Jöreskog, p. 1). 
+
+Tuttavia, l'ordinamento delle risposte può essere analizzato tramite apposite procedure che sono specifiche per i dati ordinali. Lo stimatore attualmente consigliato per i dati ordinali è quello dei *minimi quadrati ponderati* (*Weighted least squares, WLS*). Consideriamo qui il problema dell'invarianza di misura.
+
+Oltre alla stima WLS, nell'analisi di dati ordinali viene utilizzata una matrice di correlazione policorica invece dell'usuale matrice di covarianza. Per ciascuna coppia di variabili ordinali viene calcolata una correlazione policorica sulla base dell'ipotesi che una variabile continua latente normalmente distribuita sia responsabile delle frequenze osservate delle risposte ordinali in ciascuna variabile. Secondo questa ipotesi, ogni valore di risposta ordinale osservato corrisponde a un intervallo di valori normalizzati tra soglie, o cutoff, sulla variabile continua latente sottostante. Tali soglie ($\tau_1, \tau_2, \dots, \tau_k$) sono dei margini verticali che suddividono l'area sottesa alla funzione di densità della distribuzione normale sottostante in $k$ sezioni, ciascuna delle quali corrisponde alla frequenza del punteggio ordinale che è stato osservato in quella categoria di risposta. L'invarianza delle soglie (*treshold invariance*) assume che le soglie necessarie per definire le correlazioni policoriche siano invarianti tra gruppi. 
 
 @wu2016identification mostrano come la procedura per la valutazione dell'invarianza di misura che è stata descritta in precedenza debba essere modificata nel caso di indicatori categoriali. La procedura usuale consiste nel definire prima un modello di riferimento e successivamente di imporre restrizioni crescenti ai parametri. Secondo @wu2016identification, tale approccio non è ottimale nel caso di dati categoriali perché dipende fortemente dal modo in cui vengono definite le soglie rispetto alle scale delle risposte continue latenti nel modello di base. Dunque, secondo @wu2016identification, è prima necessario valutare l'equivalenza delle soglie tra gruppi (_threshold model_) e poi valutare il modello che ipotizza l'equivalenza tra i gruppi delle saturazioni fattoriali.
 

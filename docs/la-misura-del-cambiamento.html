@@ -448,7 +448,7 @@ div.csl-indent {
 <li class="chapter" data-level="18.4.8" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#massimizzazione-della-varianza-del-punteggio-totale"><i class="fa fa-check"></i><b>18.4.8</b> Massimizzazione della varianza del punteggio totale</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="ch:factorial-invariance.html"><a href="ch:factorial-invariance.html"><i class="fa fa-check"></i><b>19</b> Invarianza di misura</a>
+<li class="chapter" data-level="19" data-path="invarianza-di-misura.html"><a href="invarianza-di-misura.html"><i class="fa fa-check"></i><b>19</b> Invarianza di misura</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="indicatori-continui.html"><a href="indicatori-continui.html"><i class="fa fa-check"></i><b>19.1</b> Indicatori continui</a>
 <ul>
@@ -723,7 +723,7 @@ z_{kt} = \frac{\hat{\gamma}_{kt}}{\hat{\sigma}_E} \sqrt{2},
 <p>è la differenza dei punteggi osservati per il partecipante <span class="math inline">\(k\)</span>-esimo in due diverse
 occasioni.</p>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-38" class="exercise"><strong>Esercizio B.3  </strong></span>Consideriamo un esempio basato sui dati di Meyers (1978). Meyers
+<p><span id="exr:unlabeled-div-41" class="exercise"><strong>Esercizio B.3  </strong></span>Consideriamo un esempio basato sui dati di Meyers (1978). Meyers
 selezionò, da un campione più grande di 500 bambine di 13 anni d’età, un
 campione di 33 bambine che mostravano segni di ansia sociale. Le bambine
 selezionate furono assegnate in modo casuale a tre diverse condizioni
@@ -752,17 +752,17 @@ campione di controllo. Tale test è implementato nella funzione
 <code>mellenbergh.test()</code> contenuto nel pacchetto <code>psycho</code>. Vediamo qui sotto
 un esempio di applicazione di tale test.</p>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-39" class="exercise"><strong>Esercizio B.4  </strong></span>Si consideriano i seguenti dati</p>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="la-misura-del-cambiamento.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
-<span id="cb318-2"><a href="la-misura-del-cambiamento.html#cb318-2" aria-hidden="true" tabindex="-1"></a>t0 <span class="ot">&lt;-</span> <span class="dv">80</span> <span class="co"># The IQ of a patient at baseline</span></span>
-<span id="cb318-3"><a href="la-misura-del-cambiamento.html#cb318-3" aria-hidden="true" tabindex="-1"></a>t1 <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="co"># The IQ of a patient after the therapy</span></span>
-<span id="cb318-4"><a href="la-misura-del-cambiamento.html#cb318-4" aria-hidden="true" tabindex="-1"></a>controls <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">100</span>, <span class="dv">15</span>))</span>
-<span id="cb318-5"><a href="la-misura-del-cambiamento.html#cb318-5" aria-hidden="true" tabindex="-1"></a>controls</span>
-<span id="cb318-6"><a href="la-misura-del-cambiamento.html#cb318-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 109 111  98  93 109  73 109  96  96  86  98 127 106 108  89 112  87  95 117</span></span>
-<span id="cb318-7"><a href="la-misura-del-cambiamento.html#cb318-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [20] 104</span></span></code></pre></div>
+<p><span id="exr:unlabeled-div-42" class="exercise"><strong>Esercizio B.4  </strong></span>Si consideriano i seguenti dati</p>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="la-misura-del-cambiamento.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb322-2"><a href="la-misura-del-cambiamento.html#cb322-2" aria-hidden="true" tabindex="-1"></a>t0 <span class="ot">&lt;-</span> <span class="dv">80</span> <span class="co"># The IQ of a patient at baseline</span></span>
+<span id="cb322-3"><a href="la-misura-del-cambiamento.html#cb322-3" aria-hidden="true" tabindex="-1"></a>t1 <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="co"># The IQ of a patient after the therapy</span></span>
+<span id="cb322-4"><a href="la-misura-del-cambiamento.html#cb322-4" aria-hidden="true" tabindex="-1"></a>controls <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">100</span>, <span class="dv">15</span>))</span>
+<span id="cb322-5"><a href="la-misura-del-cambiamento.html#cb322-5" aria-hidden="true" tabindex="-1"></a>controls</span>
+<span id="cb322-6"><a href="la-misura-del-cambiamento.html#cb322-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 109 111  98  93 109  73 109  96  96  86  98 127 106 108  89 112  87  95 117</span></span>
+<span id="cb322-7"><a href="la-misura-del-cambiamento.html#cb322-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [20] 104</span></span></code></pre></div>
 <p>Il test si svolge come indicato di seguito:</p>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="la-misura-del-cambiamento.html#cb319-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mellenbergh.test</span>(t0, t1, <span class="at">controls =</span> controls)</span>
-<span id="cb319-2"><a href="la-misura-del-cambiamento.html#cb319-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The Mellenbergh &amp; van den Brink (1998) test suggests that the change is not significant (d = 20.00, 90% CI [-9.05, 49.05], z = 1.14, p p = 0.256).</span></span></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="la-misura-del-cambiamento.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mellenbergh.test</span>(t0, t1, <span class="at">controls =</span> controls)</span>
+<span id="cb323-2"><a href="la-misura-del-cambiamento.html#cb323-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The Mellenbergh &amp; van den Brink (1998) test suggests that the change is not significant (d = 20.00, 90% CI [-9.05, 49.05], z = 1.14, p p = 0.256).</span></span></code></pre></div>
 </div>
 </div>
 </div>

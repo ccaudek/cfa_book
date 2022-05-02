@@ -448,7 +448,7 @@ div.csl-indent {
 <li class="chapter" data-level="18.4.8" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#massimizzazione-della-varianza-del-punteggio-totale"><i class="fa fa-check"></i><b>18.4.8</b> Massimizzazione della varianza del punteggio totale</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="ch:factorial-invariance.html"><a href="ch:factorial-invariance.html"><i class="fa fa-check"></i><b>19</b> Invarianza di misura</a>
+<li class="chapter" data-level="19" data-path="invarianza-di-misura.html"><a href="invarianza-di-misura.html"><i class="fa fa-check"></i><b>19</b> Invarianza di misura</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="indicatori-continui.html"><a href="indicatori-continui.html"><i class="fa fa-check"></i><b>19.1</b> Indicatori continui</a>
 <ul>
@@ -643,7 +643,7 @@ ciascuna modalità della variabile esplicativa
 (<span class="math inline">\(X = x_1, \dots, X = x_I\)</span>) e dopo un periodo prefissato si rilevano le
 proporzioni di successi negli <span class="math inline">\(I\)</span> gruppi.</p>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-47" class="exercise"><strong>Esercizio D.8  </strong></span>Il Physicians’ Health Study è stata un’indagine prospettica svolta per
+<p><span id="exr:unlabeled-div-50" class="exercise"><strong>Esercizio D.8  </strong></span>Il Physicians’ Health Study è stata un’indagine prospettica svolta per
 verificare se l’uso regolare di Aspirina riduce la mortalità per
 malattie cardiovascolari. I partecipanti allo studio (dei medici
 volontari) venivano assegnati in modo casuale al trattamento (uso
@@ -659,7 +659,7 @@ studio l’incidenza di infarti miocardici venne misurata nei due gruppi.</p>
 unità nella tabella <span class="math inline">\(I \times 2\)</span> a seconda delle modalità dei due
 caratteri si ha uno studio trasversale.</p>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-48" class="exercise"><strong>Esercizio D.9  </strong></span>Sulla base del General Social Survey (1984), 901 individui sono stati
+<p><span id="exr:unlabeled-div-51" class="exercise"><strong>Esercizio D.9  </strong></span>Sulla base del General Social Survey (1984), 901 individui sono stati
 classificati in base alla soddisfazione lavorativa (soddisfatto verso
 insoddisfatto) e a due categorie di reddito
 (<span class="math inline">\(&lt; \$ 15.000, \geq \$ 15.000\)</span>).</p>
@@ -781,20 +781,20 @@ Possiamo perciò concludere dicendo che la frequenza relativa del cancro
 polmonare è circa 3 volte più grande per gli individui che hanno fumato
 rispetto a quelli che non hanno mai fumato.</p>
 <p>Un intervallo di confidenza si calcola come indicato in precedenza.</p>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="tipi-fondamentali-di-indagine.html#cb327-1" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="dv">688</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">650</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">21</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">59</span>)</span>
-<span id="cb327-2"><a href="tipi-fondamentali-di-indagine.html#cb327-2" aria-hidden="true" tabindex="-1"></a>se</span>
-<span id="cb327-3"><a href="tipi-fondamentali-di-indagine.html#cb327-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.2599234</span></span>
-<span id="cb327-4"><a href="tipi-fondamentali-di-indagine.html#cb327-4" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> (<span class="dv">688</span> <span class="sc">*</span> <span class="dv">59</span>) <span class="sc">/</span> (<span class="dv">650</span> <span class="sc">*</span> <span class="dv">21</span>)</span>
-<span id="cb327-5"><a href="tipi-fondamentali-di-indagine.html#cb327-5" aria-hidden="true" tabindex="-1"></a>theta</span>
-<span id="cb327-6"><a href="tipi-fondamentali-di-indagine.html#cb327-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2.973773</span></span>
-<span id="cb327-7"><a href="tipi-fondamentali-di-indagine.html#cb327-7" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(theta)</span>
-<span id="cb327-8"><a href="tipi-fondamentali-di-indagine.html#cb327-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.089831</span></span>
-<span id="cb327-9"><a href="tipi-fondamentali-di-indagine.html#cb327-9" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(theta) <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">*</span> <span class="fl">1.96</span> <span class="sc">*</span> se</span>
-<span id="cb327-10"><a href="tipi-fondamentali-di-indagine.html#cb327-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.5803817 1.5992813</span></span>
-<span id="cb327-11"><a href="tipi-fondamentali-di-indagine.html#cb327-11" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fl">0.5803817</span>)</span>
-<span id="cb327-12"><a href="tipi-fondamentali-di-indagine.html#cb327-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.78672</span></span>
-<span id="cb327-13"><a href="tipi-fondamentali-di-indagine.html#cb327-13" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fl">1.5992813</span>)</span>
-<span id="cb327-14"><a href="tipi-fondamentali-di-indagine.html#cb327-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.949474</span></span></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="tipi-fondamentali-di-indagine.html#cb331-1" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="dv">688</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">650</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">21</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">59</span>)</span>
+<span id="cb331-2"><a href="tipi-fondamentali-di-indagine.html#cb331-2" aria-hidden="true" tabindex="-1"></a>se</span>
+<span id="cb331-3"><a href="tipi-fondamentali-di-indagine.html#cb331-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.2599234</span></span>
+<span id="cb331-4"><a href="tipi-fondamentali-di-indagine.html#cb331-4" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> (<span class="dv">688</span> <span class="sc">*</span> <span class="dv">59</span>) <span class="sc">/</span> (<span class="dv">650</span> <span class="sc">*</span> <span class="dv">21</span>)</span>
+<span id="cb331-5"><a href="tipi-fondamentali-di-indagine.html#cb331-5" aria-hidden="true" tabindex="-1"></a>theta</span>
+<span id="cb331-6"><a href="tipi-fondamentali-di-indagine.html#cb331-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2.973773</span></span>
+<span id="cb331-7"><a href="tipi-fondamentali-di-indagine.html#cb331-7" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(theta)</span>
+<span id="cb331-8"><a href="tipi-fondamentali-di-indagine.html#cb331-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.089831</span></span>
+<span id="cb331-9"><a href="tipi-fondamentali-di-indagine.html#cb331-9" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(theta) <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">*</span> <span class="fl">1.96</span> <span class="sc">*</span> se</span>
+<span id="cb331-10"><a href="tipi-fondamentali-di-indagine.html#cb331-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.5803817 1.5992813</span></span>
+<span id="cb331-11"><a href="tipi-fondamentali-di-indagine.html#cb331-11" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fl">0.5803817</span>)</span>
+<span id="cb331-12"><a href="tipi-fondamentali-di-indagine.html#cb331-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.78672</span></span>
+<span id="cb331-13"><a href="tipi-fondamentali-di-indagine.html#cb331-13" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fl">1.5992813</span>)</span>
+<span id="cb331-14"><a href="tipi-fondamentali-di-indagine.html#cb331-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.949474</span></span></code></pre></div>
 <p>Poiché non contiene il valore 1, i veri valori degli odds per il gruppo
 fumatori e per il gruppo non fumatori sono significativamente diversi:
 gli odds per il cancro ai polmoni sono almeno il 78% in più rispetto al

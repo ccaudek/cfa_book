@@ -448,7 +448,7 @@ div.csl-indent {
 <li class="chapter" data-level="18.4.8" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#massimizzazione-della-varianza-del-punteggio-totale"><i class="fa fa-check"></i><b>18.4.8</b> Massimizzazione della varianza del punteggio totale</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="ch:factorial-invariance.html"><a href="ch:factorial-invariance.html"><i class="fa fa-check"></i><b>19</b> Invarianza di misura</a>
+<li class="chapter" data-level="19" data-path="invarianza-di-misura.html"><a href="invarianza-di-misura.html"><i class="fa fa-check"></i><b>19</b> Invarianza di misura</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="indicatori-continui.html"><a href="indicatori-continui.html"><i class="fa fa-check"></i><b>19.1</b> Indicatori continui</a>
 <ul>
@@ -635,132 +635,132 @@ div.csl-indent {
 <div id="un-esempio-concreto-6" class="section level3 hasAnchor" number="23.2.1">
 <h3><span class="header-section-number">23.2.1</span> Un esempio concreto<a href="dati-categoriali.html#un-esempio-concreto-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Nell’esempio discusso da <span class="citation">Brown (<a href="#ref-brown2015confirmatory" role="doc-biblioref">2015</a>)</span>, i ricercatori desiderano verificare un modello unifattoriale di dipendenza da alcol in un campione di 750 pazienti ambulatoriali. Gli indicatori di alcolismo sono item binari che riflettono la presenza/assenza di sei criteri diagnostici per l’alcolismo (0 = criterio non soddisfatto, 1 = criterio soddisfatto). I dati sono i seguenti:</p>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="dati-categoriali.html#cb311-1" aria-hidden="true" tabindex="-1"></a>d1 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;brown_table_9_9_data.RDS&quot;</span>))</span>
-<span id="cb311-2"><a href="dati-categoriali.html#cb311-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d1)</span>
-<span id="cb311-3"><a href="dati-categoriali.html#cb311-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   y1 y2 y3 y4 y5 y6</span></span>
-<span id="cb311-4"><a href="dati-categoriali.html#cb311-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  1  1  1  1  1  1</span></span>
-<span id="cb311-5"><a href="dati-categoriali.html#cb311-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  1  1  1  1  1  1</span></span>
-<span id="cb311-6"><a href="dati-categoriali.html#cb311-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  1  1  1  1  1  0</span></span>
-<span id="cb311-7"><a href="dati-categoriali.html#cb311-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  1  1  1  1  1  1</span></span>
-<span id="cb311-8"><a href="dati-categoriali.html#cb311-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  0  0  0  0  0  0</span></span>
-<span id="cb311-9"><a href="dati-categoriali.html#cb311-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  1  1  0  1  1  1</span></span></code></pre></div>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="dati-categoriali.html#cb315-1" aria-hidden="true" tabindex="-1"></a>d1 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;brown_table_9_9_data.RDS&quot;</span>))</span>
+<span id="cb315-2"><a href="dati-categoriali.html#cb315-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d1)</span>
+<span id="cb315-3"><a href="dati-categoriali.html#cb315-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   y1 y2 y3 y4 y5 y6</span></span>
+<span id="cb315-4"><a href="dati-categoriali.html#cb315-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  1  1  1  1  1  1</span></span>
+<span id="cb315-5"><a href="dati-categoriali.html#cb315-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  1  1  1  1  1  1</span></span>
+<span id="cb315-6"><a href="dati-categoriali.html#cb315-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  1  1  1  1  1  0</span></span>
+<span id="cb315-7"><a href="dati-categoriali.html#cb315-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  1  1  1  1  1  1</span></span>
+<span id="cb315-8"><a href="dati-categoriali.html#cb315-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  0  0  0  0  0  0</span></span>
+<span id="cb315-9"><a href="dati-categoriali.html#cb315-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  1  1  0  1  1  1</span></span></code></pre></div>
 <p>Il modello viene specificato nel modo seguente:</p>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="dati-categoriali.html#cb312-1" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb312-2"><a href="dati-categoriali.html#cb312-2" aria-hidden="true" tabindex="-1"></a><span class="st">  etoh =~ y1 + y2 + y3 + y4 + y5 + y6</span></span>
-<span id="cb312-3"><a href="dati-categoriali.html#cb312-3" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="dati-categoriali.html#cb316-1" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb316-2"><a href="dati-categoriali.html#cb316-2" aria-hidden="true" tabindex="-1"></a><span class="st">  etoh =~ y1 + y2 + y3 + y4 + y5 + y6</span></span>
+<span id="cb316-3"><a href="dati-categoriali.html#cb316-3" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
 <p>Adattiamo il modello specificando che i dati sono a livello di scala ordinale:</p>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="dati-categoriali.html#cb313-1" aria-hidden="true" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
-<span id="cb313-2"><a href="dati-categoriali.html#cb313-2" aria-hidden="true" tabindex="-1"></a>  model1,</span>
-<span id="cb313-3"><a href="dati-categoriali.html#cb313-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> d1,</span>
-<span id="cb313-4"><a href="dati-categoriali.html#cb313-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ordered =</span> <span class="fu">names</span>(d1),</span>
-<span id="cb313-5"><a href="dati-categoriali.html#cb313-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">estimator =</span> <span class="st">&quot;WLSMVS&quot;</span>,</span>
-<span id="cb313-6"><a href="dati-categoriali.html#cb313-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">mimic =</span> <span class="st">&quot;mplus&quot;</span></span>
-<span id="cb313-7"><a href="dati-categoriali.html#cb313-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="dati-categoriali.html#cb317-1" aria-hidden="true" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
+<span id="cb317-2"><a href="dati-categoriali.html#cb317-2" aria-hidden="true" tabindex="-1"></a>  model1,</span>
+<span id="cb317-3"><a href="dati-categoriali.html#cb317-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> d1,</span>
+<span id="cb317-4"><a href="dati-categoriali.html#cb317-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ordered =</span> <span class="fu">names</span>(d1),</span>
+<span id="cb317-5"><a href="dati-categoriali.html#cb317-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">estimator =</span> <span class="st">&quot;WLSMVS&quot;</span>,</span>
+<span id="cb317-6"><a href="dati-categoriali.html#cb317-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">mimic =</span> <span class="st">&quot;mplus&quot;</span></span>
+<span id="cb317-7"><a href="dati-categoriali.html#cb317-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>Esaminiamo la soluzione ottenuta:</p>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="dati-categoriali.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit1, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb314-2"><a href="dati-categoriali.html#cb314-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6-11 ended normally after 16 iterations</span></span>
-<span id="cb314-3"><a href="dati-categoriali.html#cb314-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb314-4"><a href="dati-categoriali.html#cb314-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Estimator                                       DWLS</span></span>
-<span id="cb314-5"><a href="dati-categoriali.html#cb314-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
-<span id="cb314-6"><a href="dati-categoriali.html#cb314-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                        12</span></span>
-<span id="cb314-7"><a href="dati-categoriali.html#cb314-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb314-8"><a href="dati-categoriali.html#cb314-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Number of observations                           750</span></span>
-<span id="cb314-9"><a href="dati-categoriali.html#cb314-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb314-10"><a href="dati-categoriali.html#cb314-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
-<span id="cb314-11"><a href="dati-categoriali.html#cb314-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                      Standard      Robust</span></span>
-<span id="cb314-12"><a href="dati-categoriali.html#cb314-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Test Statistic                                        5.651       9.540</span></span>
-<span id="cb314-13"><a href="dati-categoriali.html#cb314-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                        9           9</span></span>
-<span id="cb314-14"><a href="dati-categoriali.html#cb314-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                                  0.774       0.389</span></span>
-<span id="cb314-15"><a href="dati-categoriali.html#cb314-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Scaling correction factor                                         0.592</span></span>
-<span id="cb314-16"><a href="dati-categoriali.html#cb314-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        mean and variance adjusted correction (WLSMV)                     </span></span>
-<span id="cb314-17"><a href="dati-categoriali.html#cb314-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb314-18"><a href="dati-categoriali.html#cb314-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Model Test Baseline Model:</span></span>
-<span id="cb314-19"><a href="dati-categoriali.html#cb314-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb314-20"><a href="dati-categoriali.html#cb314-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Test statistic                              1155.845     694.433</span></span>
-<span id="cb314-21"><a href="dati-categoriali.html#cb314-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                15           9</span></span>
-<span id="cb314-22"><a href="dati-categoriali.html#cb314-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value                                        0.000       0.000</span></span>
-<span id="cb314-23"><a href="dati-categoriali.html#cb314-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Scaling correction factor                                  1.664</span></span>
-<span id="cb314-24"><a href="dati-categoriali.html#cb314-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb314-25"><a href="dati-categoriali.html#cb314-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; User Model versus Baseline Model:</span></span>
-<span id="cb314-26"><a href="dati-categoriali.html#cb314-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb314-27"><a href="dati-categoriali.html#cb314-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Comparative Fit Index (CFI)                    1.000       0.999</span></span>
-<span id="cb314-28"><a href="dati-categoriali.html#cb314-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Tucker-Lewis Index (TLI)                       1.005       0.999</span></span>
-<span id="cb314-29"><a href="dati-categoriali.html#cb314-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                                   </span></span>
-<span id="cb314-30"><a href="dati-categoriali.html#cb314-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Robust Comparative Fit Index (CFI)                            NA</span></span>
-<span id="cb314-31"><a href="dati-categoriali.html#cb314-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Robust Tucker-Lewis Index (TLI)                               NA</span></span>
-<span id="cb314-32"><a href="dati-categoriali.html#cb314-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb314-33"><a href="dati-categoriali.html#cb314-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Root Mean Square Error of Approximation:</span></span>
-<span id="cb314-34"><a href="dati-categoriali.html#cb314-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb314-35"><a href="dati-categoriali.html#cb314-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   RMSEA                                          0.000       0.009</span></span>
-<span id="cb314-36"><a href="dati-categoriali.html#cb314-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - lower         0.000       0.000</span></span>
-<span id="cb314-37"><a href="dati-categoriali.html#cb314-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - upper         0.028       0.051</span></span>
-<span id="cb314-38"><a href="dati-categoriali.html#cb314-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value RMSEA &lt;= 0.05                          0.999       0.944</span></span>
-<span id="cb314-39"><a href="dati-categoriali.html#cb314-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                                   </span></span>
-<span id="cb314-40"><a href="dati-categoriali.html#cb314-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Robust RMSEA                                                  NA</span></span>
-<span id="cb314-41"><a href="dati-categoriali.html#cb314-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - lower                     0.000</span></span>
-<span id="cb314-42"><a href="dati-categoriali.html#cb314-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - upper                        NA</span></span>
-<span id="cb314-43"><a href="dati-categoriali.html#cb314-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb314-44"><a href="dati-categoriali.html#cb314-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Standardized Root Mean Square Residual:</span></span>
-<span id="cb314-45"><a href="dati-categoriali.html#cb314-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb314-46"><a href="dati-categoriali.html#cb314-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   SRMR                                           0.031       0.031</span></span>
-<span id="cb314-47"><a href="dati-categoriali.html#cb314-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb314-48"><a href="dati-categoriali.html#cb314-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Weighted Root Mean Square Residual:</span></span>
-<span id="cb314-49"><a href="dati-categoriali.html#cb314-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb314-50"><a href="dati-categoriali.html#cb314-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   WRMR                                           0.519       0.519</span></span>
-<span id="cb314-51"><a href="dati-categoriali.html#cb314-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb314-52"><a href="dati-categoriali.html#cb314-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
-<span id="cb314-53"><a href="dati-categoriali.html#cb314-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb314-54"><a href="dati-categoriali.html#cb314-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Standard errors                           Robust.sem</span></span>
-<span id="cb314-55"><a href="dati-categoriali.html#cb314-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Information                                 Expected</span></span>
-<span id="cb314-56"><a href="dati-categoriali.html#cb314-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Information saturated (h1) model        Unstructured</span></span>
-<span id="cb314-57"><a href="dati-categoriali.html#cb314-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb314-58"><a href="dati-categoriali.html#cb314-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
-<span id="cb314-59"><a href="dati-categoriali.html#cb314-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb314-60"><a href="dati-categoriali.html#cb314-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   etoh =~                                             </span></span>
-<span id="cb314-61"><a href="dati-categoriali.html#cb314-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y1                1.000                           </span></span>
-<span id="cb314-62"><a href="dati-categoriali.html#cb314-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y2                0.822    0.072   11.392    0.000</span></span>
-<span id="cb314-63"><a href="dati-categoriali.html#cb314-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y3                0.653    0.092    7.097    0.000</span></span>
-<span id="cb314-64"><a href="dati-categoriali.html#cb314-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y4                1.031    0.075   13.703    0.000</span></span>
-<span id="cb314-65"><a href="dati-categoriali.html#cb314-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y5                1.002    0.072   13.861    0.000</span></span>
-<span id="cb314-66"><a href="dati-categoriali.html#cb314-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y6                0.759    0.076   10.011    0.000</span></span>
-<span id="cb314-67"><a href="dati-categoriali.html#cb314-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb314-68"><a href="dati-categoriali.html#cb314-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Intercepts:</span></span>
-<span id="cb314-69"><a href="dati-categoriali.html#cb314-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb314-70"><a href="dati-categoriali.html#cb314-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .y1                0.000                           </span></span>
-<span id="cb314-71"><a href="dati-categoriali.html#cb314-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .y2                0.000                           </span></span>
-<span id="cb314-72"><a href="dati-categoriali.html#cb314-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .y3                0.000                           </span></span>
-<span id="cb314-73"><a href="dati-categoriali.html#cb314-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .y4                0.000                           </span></span>
-<span id="cb314-74"><a href="dati-categoriali.html#cb314-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .y5                0.000                           </span></span>
-<span id="cb314-75"><a href="dati-categoriali.html#cb314-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .y6                0.000                           </span></span>
-<span id="cb314-76"><a href="dati-categoriali.html#cb314-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     etoh              0.000                           </span></span>
-<span id="cb314-77"><a href="dati-categoriali.html#cb314-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb314-78"><a href="dati-categoriali.html#cb314-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Thresholds:</span></span>
-<span id="cb314-79"><a href="dati-categoriali.html#cb314-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb314-80"><a href="dati-categoriali.html#cb314-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y1|t1            -0.759    0.051  -14.890    0.000</span></span>
-<span id="cb314-81"><a href="dati-categoriali.html#cb314-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y2|t1            -0.398    0.047   -8.437    0.000</span></span>
-<span id="cb314-82"><a href="dati-categoriali.html#cb314-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y3|t1            -1.244    0.061  -20.278    0.000</span></span>
-<span id="cb314-83"><a href="dati-categoriali.html#cb314-83" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y4|t1            -0.795    0.051  -15.436    0.000</span></span>
-<span id="cb314-84"><a href="dati-categoriali.html#cb314-84" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y5|t1            -0.384    0.047   -8.148    0.000</span></span>
-<span id="cb314-85"><a href="dati-categoriali.html#cb314-85" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y6|t1            -0.818    0.052  -15.775    0.000</span></span>
-<span id="cb314-86"><a href="dati-categoriali.html#cb314-86" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb314-87"><a href="dati-categoriali.html#cb314-87" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
-<span id="cb314-88"><a href="dati-categoriali.html#cb314-88" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb314-89"><a href="dati-categoriali.html#cb314-89" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .y1                0.399                           </span></span>
-<span id="cb314-90"><a href="dati-categoriali.html#cb314-90" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .y2                0.594                           </span></span>
-<span id="cb314-91"><a href="dati-categoriali.html#cb314-91" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .y3                0.744                           </span></span>
-<span id="cb314-92"><a href="dati-categoriali.html#cb314-92" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .y4                0.361                           </span></span>
-<span id="cb314-93"><a href="dati-categoriali.html#cb314-93" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .y5                0.397                           </span></span>
-<span id="cb314-94"><a href="dati-categoriali.html#cb314-94" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .y6                0.653                           </span></span>
-<span id="cb314-95"><a href="dati-categoriali.html#cb314-95" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     etoh              0.601    0.063    9.596    0.000</span></span>
-<span id="cb314-96"><a href="dati-categoriali.html#cb314-96" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb314-97"><a href="dati-categoriali.html#cb314-97" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Scales y*:</span></span>
-<span id="cb314-98"><a href="dati-categoriali.html#cb314-98" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb314-99"><a href="dati-categoriali.html#cb314-99" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y1                1.000                           </span></span>
-<span id="cb314-100"><a href="dati-categoriali.html#cb314-100" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y2                1.000                           </span></span>
-<span id="cb314-101"><a href="dati-categoriali.html#cb314-101" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y3                1.000                           </span></span>
-<span id="cb314-102"><a href="dati-categoriali.html#cb314-102" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y4                1.000                           </span></span>
-<span id="cb314-103"><a href="dati-categoriali.html#cb314-103" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y5                1.000                           </span></span>
-<span id="cb314-104"><a href="dati-categoriali.html#cb314-104" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y6                1.000</span></span></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="dati-categoriali.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit1, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb318-2"><a href="dati-categoriali.html#cb318-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6-11 ended normally after 16 iterations</span></span>
+<span id="cb318-3"><a href="dati-categoriali.html#cb318-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb318-4"><a href="dati-categoriali.html#cb318-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Estimator                                       DWLS</span></span>
+<span id="cb318-5"><a href="dati-categoriali.html#cb318-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
+<span id="cb318-6"><a href="dati-categoriali.html#cb318-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                        12</span></span>
+<span id="cb318-7"><a href="dati-categoriali.html#cb318-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
+<span id="cb318-8"><a href="dati-categoriali.html#cb318-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Number of observations                           750</span></span>
+<span id="cb318-9"><a href="dati-categoriali.html#cb318-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
+<span id="cb318-10"><a href="dati-categoriali.html#cb318-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
+<span id="cb318-11"><a href="dati-categoriali.html#cb318-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                      Standard      Robust</span></span>
+<span id="cb318-12"><a href="dati-categoriali.html#cb318-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Test Statistic                                        5.651       9.540</span></span>
+<span id="cb318-13"><a href="dati-categoriali.html#cb318-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                        9           9</span></span>
+<span id="cb318-14"><a href="dati-categoriali.html#cb318-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                                  0.774       0.389</span></span>
+<span id="cb318-15"><a href="dati-categoriali.html#cb318-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Scaling correction factor                                         0.592</span></span>
+<span id="cb318-16"><a href="dati-categoriali.html#cb318-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        mean and variance adjusted correction (WLSMV)                     </span></span>
+<span id="cb318-17"><a href="dati-categoriali.html#cb318-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb318-18"><a href="dati-categoriali.html#cb318-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Model Test Baseline Model:</span></span>
+<span id="cb318-19"><a href="dati-categoriali.html#cb318-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb318-20"><a href="dati-categoriali.html#cb318-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Test statistic                              1155.845     694.433</span></span>
+<span id="cb318-21"><a href="dati-categoriali.html#cb318-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                15           9</span></span>
+<span id="cb318-22"><a href="dati-categoriali.html#cb318-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value                                        0.000       0.000</span></span>
+<span id="cb318-23"><a href="dati-categoriali.html#cb318-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Scaling correction factor                                  1.664</span></span>
+<span id="cb318-24"><a href="dati-categoriali.html#cb318-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb318-25"><a href="dati-categoriali.html#cb318-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; User Model versus Baseline Model:</span></span>
+<span id="cb318-26"><a href="dati-categoriali.html#cb318-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb318-27"><a href="dati-categoriali.html#cb318-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Comparative Fit Index (CFI)                    1.000       0.999</span></span>
+<span id="cb318-28"><a href="dati-categoriali.html#cb318-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Tucker-Lewis Index (TLI)                       1.005       0.999</span></span>
+<span id="cb318-29"><a href="dati-categoriali.html#cb318-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                                   </span></span>
+<span id="cb318-30"><a href="dati-categoriali.html#cb318-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Robust Comparative Fit Index (CFI)                            NA</span></span>
+<span id="cb318-31"><a href="dati-categoriali.html#cb318-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Robust Tucker-Lewis Index (TLI)                               NA</span></span>
+<span id="cb318-32"><a href="dati-categoriali.html#cb318-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb318-33"><a href="dati-categoriali.html#cb318-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Root Mean Square Error of Approximation:</span></span>
+<span id="cb318-34"><a href="dati-categoriali.html#cb318-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb318-35"><a href="dati-categoriali.html#cb318-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   RMSEA                                          0.000       0.009</span></span>
+<span id="cb318-36"><a href="dati-categoriali.html#cb318-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - lower         0.000       0.000</span></span>
+<span id="cb318-37"><a href="dati-categoriali.html#cb318-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - upper         0.028       0.051</span></span>
+<span id="cb318-38"><a href="dati-categoriali.html#cb318-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value RMSEA &lt;= 0.05                          0.999       0.944</span></span>
+<span id="cb318-39"><a href="dati-categoriali.html#cb318-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                                   </span></span>
+<span id="cb318-40"><a href="dati-categoriali.html#cb318-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Robust RMSEA                                                  NA</span></span>
+<span id="cb318-41"><a href="dati-categoriali.html#cb318-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - lower                     0.000</span></span>
+<span id="cb318-42"><a href="dati-categoriali.html#cb318-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - upper                        NA</span></span>
+<span id="cb318-43"><a href="dati-categoriali.html#cb318-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb318-44"><a href="dati-categoriali.html#cb318-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Standardized Root Mean Square Residual:</span></span>
+<span id="cb318-45"><a href="dati-categoriali.html#cb318-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb318-46"><a href="dati-categoriali.html#cb318-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   SRMR                                           0.031       0.031</span></span>
+<span id="cb318-47"><a href="dati-categoriali.html#cb318-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb318-48"><a href="dati-categoriali.html#cb318-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Weighted Root Mean Square Residual:</span></span>
+<span id="cb318-49"><a href="dati-categoriali.html#cb318-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb318-50"><a href="dati-categoriali.html#cb318-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   WRMR                                           0.519       0.519</span></span>
+<span id="cb318-51"><a href="dati-categoriali.html#cb318-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb318-52"><a href="dati-categoriali.html#cb318-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
+<span id="cb318-53"><a href="dati-categoriali.html#cb318-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb318-54"><a href="dati-categoriali.html#cb318-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Standard errors                           Robust.sem</span></span>
+<span id="cb318-55"><a href="dati-categoriali.html#cb318-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Information                                 Expected</span></span>
+<span id="cb318-56"><a href="dati-categoriali.html#cb318-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Information saturated (h1) model        Unstructured</span></span>
+<span id="cb318-57"><a href="dati-categoriali.html#cb318-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb318-58"><a href="dati-categoriali.html#cb318-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
+<span id="cb318-59"><a href="dati-categoriali.html#cb318-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb318-60"><a href="dati-categoriali.html#cb318-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   etoh =~                                             </span></span>
+<span id="cb318-61"><a href="dati-categoriali.html#cb318-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y1                1.000                           </span></span>
+<span id="cb318-62"><a href="dati-categoriali.html#cb318-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y2                0.822    0.072   11.392    0.000</span></span>
+<span id="cb318-63"><a href="dati-categoriali.html#cb318-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y3                0.653    0.092    7.097    0.000</span></span>
+<span id="cb318-64"><a href="dati-categoriali.html#cb318-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y4                1.031    0.075   13.703    0.000</span></span>
+<span id="cb318-65"><a href="dati-categoriali.html#cb318-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y5                1.002    0.072   13.861    0.000</span></span>
+<span id="cb318-66"><a href="dati-categoriali.html#cb318-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y6                0.759    0.076   10.011    0.000</span></span>
+<span id="cb318-67"><a href="dati-categoriali.html#cb318-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb318-68"><a href="dati-categoriali.html#cb318-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Intercepts:</span></span>
+<span id="cb318-69"><a href="dati-categoriali.html#cb318-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb318-70"><a href="dati-categoriali.html#cb318-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .y1                0.000                           </span></span>
+<span id="cb318-71"><a href="dati-categoriali.html#cb318-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .y2                0.000                           </span></span>
+<span id="cb318-72"><a href="dati-categoriali.html#cb318-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .y3                0.000                           </span></span>
+<span id="cb318-73"><a href="dati-categoriali.html#cb318-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .y4                0.000                           </span></span>
+<span id="cb318-74"><a href="dati-categoriali.html#cb318-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .y5                0.000                           </span></span>
+<span id="cb318-75"><a href="dati-categoriali.html#cb318-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .y6                0.000                           </span></span>
+<span id="cb318-76"><a href="dati-categoriali.html#cb318-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     etoh              0.000                           </span></span>
+<span id="cb318-77"><a href="dati-categoriali.html#cb318-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb318-78"><a href="dati-categoriali.html#cb318-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Thresholds:</span></span>
+<span id="cb318-79"><a href="dati-categoriali.html#cb318-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb318-80"><a href="dati-categoriali.html#cb318-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y1|t1            -0.759    0.051  -14.890    0.000</span></span>
+<span id="cb318-81"><a href="dati-categoriali.html#cb318-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y2|t1            -0.398    0.047   -8.437    0.000</span></span>
+<span id="cb318-82"><a href="dati-categoriali.html#cb318-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y3|t1            -1.244    0.061  -20.278    0.000</span></span>
+<span id="cb318-83"><a href="dati-categoriali.html#cb318-83" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y4|t1            -0.795    0.051  -15.436    0.000</span></span>
+<span id="cb318-84"><a href="dati-categoriali.html#cb318-84" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y5|t1            -0.384    0.047   -8.148    0.000</span></span>
+<span id="cb318-85"><a href="dati-categoriali.html#cb318-85" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y6|t1            -0.818    0.052  -15.775    0.000</span></span>
+<span id="cb318-86"><a href="dati-categoriali.html#cb318-86" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb318-87"><a href="dati-categoriali.html#cb318-87" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
+<span id="cb318-88"><a href="dati-categoriali.html#cb318-88" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb318-89"><a href="dati-categoriali.html#cb318-89" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .y1                0.399                           </span></span>
+<span id="cb318-90"><a href="dati-categoriali.html#cb318-90" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .y2                0.594                           </span></span>
+<span id="cb318-91"><a href="dati-categoriali.html#cb318-91" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .y3                0.744                           </span></span>
+<span id="cb318-92"><a href="dati-categoriali.html#cb318-92" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .y4                0.361                           </span></span>
+<span id="cb318-93"><a href="dati-categoriali.html#cb318-93" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .y5                0.397                           </span></span>
+<span id="cb318-94"><a href="dati-categoriali.html#cb318-94" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .y6                0.653                           </span></span>
+<span id="cb318-95"><a href="dati-categoriali.html#cb318-95" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     etoh              0.601    0.063    9.596    0.000</span></span>
+<span id="cb318-96"><a href="dati-categoriali.html#cb318-96" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb318-97"><a href="dati-categoriali.html#cb318-97" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Scales y*:</span></span>
+<span id="cb318-98"><a href="dati-categoriali.html#cb318-98" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb318-99"><a href="dati-categoriali.html#cb318-99" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y1                1.000                           </span></span>
+<span id="cb318-100"><a href="dati-categoriali.html#cb318-100" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y2                1.000                           </span></span>
+<span id="cb318-101"><a href="dati-categoriali.html#cb318-101" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y3                1.000                           </span></span>
+<span id="cb318-102"><a href="dati-categoriali.html#cb318-102" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y4                1.000                           </span></span>
+<span id="cb318-103"><a href="dati-categoriali.html#cb318-103" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y5                1.000                           </span></span>
+<span id="cb318-104"><a href="dati-categoriali.html#cb318-104" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     y6                1.000</span></span></code></pre></div>
 
 </div>
 </div>

@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="ch:factorial-invariance.html"/>
+<link rel="prev" href="invarianza-di-misura.html"/>
 <link rel="next" href="variabili-a-livello-ordinale.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -448,7 +448,7 @@ div.csl-indent {
 <li class="chapter" data-level="18.4.8" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#massimizzazione-della-varianza-del-punteggio-totale"><i class="fa fa-check"></i><b>18.4.8</b> Massimizzazione della varianza del punteggio totale</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="ch:factorial-invariance.html"><a href="ch:factorial-invariance.html"><i class="fa fa-check"></i><b>19</b> Invarianza di misura</a>
+<li class="chapter" data-level="19" data-path="invarianza-di-misura.html"><a href="invarianza-di-misura.html"><i class="fa fa-check"></i><b>19</b> Invarianza di misura</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="indicatori-continui.html"><a href="indicatori-continui.html"><i class="fa fa-check"></i><b>19.1</b> Indicatori continui</a>
 <ul>
@@ -629,42 +629,43 @@ div.csl-indent {
 <p><span class="math display">\[
 y_i = \mu + \lambda_j \xi_k + \delta_i,
 \]</span></p>
-<p>per semplicità abbiamo ignorato la media <span class="math inline">\(\mu\)</span> degli indicatori esprimendo i dati osservati nei termini degli scarti dalla media, <span class="math inline">\(y_i -\mu\)</span>, in quanto ciò lascia immutate le covarianze. Tuttavia, in alcune applicazioni (quali l’invarianza di misura, ad esempio), è utile considerare anche le medie delle variabili osservate. Per ottenere ciò è possibile fare esplicito riferimento alle intercette delle equazioni precedenti nella sintassi <code>lavaan</code> del modello. È possibile fare riferimento all’intercetta di una variabile manifesta nel modo seguente:</p>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="indicatori-continui.html#cb249-1" aria-hidden="true" tabindex="-1"></a>variable <span class="sc">~</span> <span class="dv">1</span></span></code></pre></div>
-<p>laddove la parte sinistra dell’espressione precedente contiene il nome della variabile osservata a cui si fa riferimento. Per esempio, nel caso di un modello a due fattori comuni, è possibile aggiungere le intercette delle variabili manifeste nel modo seguente:</p>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="indicatori-continui.html#cb250-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb250-2"><a href="indicatori-continui.html#cb250-2" aria-hidden="true" tabindex="-1"></a><span class="st">  # two-factor model</span></span>
-<span id="cb250-3"><a href="indicatori-continui.html#cb250-3" aria-hidden="true" tabindex="-1"></a><span class="st">  f1 =~ x1 + x2 + x3</span></span>
-<span id="cb250-4"><a href="indicatori-continui.html#cb250-4" aria-hidden="true" tabindex="-1"></a><span class="st">  f2 =~ x4 + x5 + x6</span></span>
-<span id="cb250-5"><a href="indicatori-continui.html#cb250-5" aria-hidden="true" tabindex="-1"></a><span class="st">  # intercepts</span></span>
-<span id="cb250-6"><a href="indicatori-continui.html#cb250-6" aria-hidden="true" tabindex="-1"></a><span class="st">  x1 ~ 1</span></span>
-<span id="cb250-7"><a href="indicatori-continui.html#cb250-7" aria-hidden="true" tabindex="-1"></a><span class="st">  x2 ~ 1</span></span>
-<span id="cb250-8"><a href="indicatori-continui.html#cb250-8" aria-hidden="true" tabindex="-1"></a><span class="st">  x3 ~ 1</span></span>
-<span id="cb250-9"><a href="indicatori-continui.html#cb250-9" aria-hidden="true" tabindex="-1"></a><span class="st">  x4 ~ 1</span></span>
-<span id="cb250-10"><a href="indicatori-continui.html#cb250-10" aria-hidden="true" tabindex="-1"></a><span class="st">  x5 ~ 1</span></span>
-<span id="cb250-11"><a href="indicatori-continui.html#cb250-11" aria-hidden="true" tabindex="-1"></a><span class="st">  x6 ~ 1</span></span>
-<span id="cb250-12"><a href="indicatori-continui.html#cb250-12" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<p>per semplicità abbiamo ignorato la media <span class="math inline">\(\mu\)</span> degli indicatori esprimendo i dati osservati nei termini degli scarti dalla media, <span class="math inline">\(y_i -\mu\)</span>, in quanto ciò lascia immutate le covarianze. Tuttavia, in alcune applicazioni (quali, appunto, l’invarianza di misura), è utile considerare anche le medie delle variabili osservate. Per includere nel modello fattoriale le informazioni sulle medie facciamo esplicito riferimento all’intercetta della precedente equazione. Usando la sintassi <code>lavaan</code>, la media di una variabile manifesta viene inserita nel modello specificando l’intercetta dell’equazione precedente come segue</p>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="indicatori-continui.html#cb253-1" aria-hidden="true" tabindex="-1"></a>my_item <span class="sc">~</span> <span class="dv">1</span></span></code></pre></div>
+<p>La parte sinistra dell’espressione precedente contiene il nome della variabile manifesta a cui si fa riferimento; la parte destra dell’espressione precedente specifica la presenza dell’intercetta.</p>
+<p>Per esempio, nella specificazione di un modello a due fattori comuni, è possibile aggiungere al modello le medie delle variabili manifeste nel modo seguente:</p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="indicatori-continui.html#cb254-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb254-2"><a href="indicatori-continui.html#cb254-2" aria-hidden="true" tabindex="-1"></a><span class="st">  # two-factor model</span></span>
+<span id="cb254-3"><a href="indicatori-continui.html#cb254-3" aria-hidden="true" tabindex="-1"></a><span class="st">  f1 =~ x1 + x2 + x3</span></span>
+<span id="cb254-4"><a href="indicatori-continui.html#cb254-4" aria-hidden="true" tabindex="-1"></a><span class="st">  f2 =~ x4 + x5 + x6</span></span>
+<span id="cb254-5"><a href="indicatori-continui.html#cb254-5" aria-hidden="true" tabindex="-1"></a><span class="st">  # intercepts</span></span>
+<span id="cb254-6"><a href="indicatori-continui.html#cb254-6" aria-hidden="true" tabindex="-1"></a><span class="st">  x1 ~ 1</span></span>
+<span id="cb254-7"><a href="indicatori-continui.html#cb254-7" aria-hidden="true" tabindex="-1"></a><span class="st">  x2 ~ 1</span></span>
+<span id="cb254-8"><a href="indicatori-continui.html#cb254-8" aria-hidden="true" tabindex="-1"></a><span class="st">  x3 ~ 1</span></span>
+<span id="cb254-9"><a href="indicatori-continui.html#cb254-9" aria-hidden="true" tabindex="-1"></a><span class="st">  x4 ~ 1</span></span>
+<span id="cb254-10"><a href="indicatori-continui.html#cb254-10" aria-hidden="true" tabindex="-1"></a><span class="st">  x5 ~ 1</span></span>
+<span id="cb254-11"><a href="indicatori-continui.html#cb254-11" aria-hidden="true" tabindex="-1"></a><span class="st">  x6 ~ 1</span></span>
+<span id="cb254-12"><a href="indicatori-continui.html#cb254-12" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
 <p>Tuttavia, è più conveniente omettere le intercette nella specificazione del modello e aggiungere l’argomento <code>meanstructure = TRUE</code> nella funzione <code>cfa()</code>:</p>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="indicatori-continui.html#cb251-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
-<span id="cb251-2"><a href="indicatori-continui.html#cb251-2" aria-hidden="true" tabindex="-1"></a>  mod,</span>
-<span id="cb251-3"><a href="indicatori-continui.html#cb251-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> d,</span>
-<span id="cb251-4"><a href="indicatori-continui.html#cb251-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">meanstructure =</span> <span class="cn">TRUE</span></span>
-<span id="cb251-5"><a href="indicatori-continui.html#cb251-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p>Si noti che la statistica chi-quadrato e il numero di gradi di libertà sono gli stessi in un modello con o senza <code>meanstructure</code>. Il motivo è che, nel caso di un modello con <code>meanstructure</code>, vengono introdotti nuovi dati (il valore della media per ciascuna delle <span class="math inline">\(p\)</span> variabili osservate) ma vengono anche aggiunti <span class="math inline">\(p\)</span> parametri da stimare (un’intercetta per ciascuna delle <span class="math inline">\(p\)</span> variabili osservate). Il risultato finale è che la bontà dell’adattamento resta immutata. In pratica, l’unico motivo per aggiungere le interecette nella sintassi del modello è quello di stabilire dei vincoli nella stima di tali parametri.</p>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="indicatori-continui.html#cb255-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
+<span id="cb255-2"><a href="indicatori-continui.html#cb255-2" aria-hidden="true" tabindex="-1"></a>  mod,</span>
+<span id="cb255-3"><a href="indicatori-continui.html#cb255-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> d,</span>
+<span id="cb255-4"><a href="indicatori-continui.html#cb255-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">meanstructure =</span> <span class="cn">TRUE</span></span>
+<span id="cb255-5"><a href="indicatori-continui.html#cb255-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>Si noti che modelli con o senza <code>meanstructure</code> avranno la stessa statistica chi-quadrato e lo stesso numero di gradi di libertà. Il motivo è che, nel caso di un modello con <code>meanstructure</code>, vengono introdotti <span class="math inline">\(p\)</span> nuovi dati (ovvero, il valore della media per ciascuno dei <span class="math inline">\(p\)</span> indicatori) ma vengono anche stimati ulteriori <span class="math inline">\(p\)</span> parametri (ovvero, un’intercetta per ciascuno dei <span class="math inline">\(p\)</span> indicatori). Il risultato finale è che la bontà dell’adattamento resta immutata. In pratica, l’unico motivo per aggiungere le intercette nella sintassi del modello è quello di introdurre dei vincoli nella stima di tali parametri.</p>
 </div>
 <div id="terminologia" class="section level3 hasAnchor" number="19.1.2">
 <h3><span class="header-section-number">19.1.2</span> Terminologia<a href="indicatori-continui.html#terminologia" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La discussione dell’invarianza di misura nel contesto della CFA fa uso della seguente terminologia.</p>
 <ul>
-<li>L’invarianza configurale (<em>configural invariance</em>) verifica se la struttura dei fattori è la stessa tra i gruppi, ovvero verifica la presenza dello stesso numero di fattori e di pattern di saturazioni fattoriali simili tra gruppi.</li>
-<li>L’invarianza metrica (<em>metric invariance</em>) o “invarianza fattoriale debole” (<em>weak factorial invariance</em>) verifica se i carichi fattoriali degli elementi sono gli stessi tra i gruppi.
-Invarianza scalare (<em>scalar invariance</em>) o “invarianza fattoriale forte” verifica se le intercette sono le stesse tra i gruppi.</li>
-<li>L’invarianza fattoriale rigorosa (<em>strict factorial invariance</em>), infine, verifica se i residui degli indicatori sono gli stessi tra i gruppi.</li>
+<li>L’<em>invarianza configurale</em> (<em>configural invariance</em>) verifica se la struttura dei fattori sia la stessa tra i gruppi, ovvero verifica la presenza dello stesso numero di fattori e di pattern di saturazioni fattoriali simili tra gruppi.</li>
+<li>L’<em>invarianza metrica</em> (<em>metric invariance</em>) o <em>invarianza fattoriale debole</em> (<em>weak factorial invariance</em>) verifica se le saturazioni fattoriali rimangono invariante tra i gruppi.</li>
+<li>L’<em>invarianza scalare</em> (<em>scalar invariance</em>) o <em>invarianza fattoriale forte</em> verifica l’invarianza delle intercette (medie) tra i gruppi.</li>
+<li>L’<em>invarianza fattoriale rigorosa</em> (<em>strict factorial invariance</em>) verifica se i residui degli indicatori sono invarianti tra i gruppi.</li>
 </ul>
 </div>
 <div id="un-esempio-concreto-3" class="section level3 hasAnchor" number="19.1.3">
 <h3><span class="header-section-number">19.1.3</span> Un esempio concreto<a href="indicatori-continui.html#un-esempio-concreto-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Consideriamo qui un esempio discusso da <span class="citation">Brown (<a href="#ref-brown2015confirmatory" role="doc-biblioref">2015</a>)</span>. Il modello CFA riguarda un modello di misurazione per la depressione maggiore così come definita nel DSM-IV. Ci sono 9 indicatori:</p>
+<p>Consideriamo qui un esempio discusso da <span class="citation">Brown (<a href="#ref-brown2015confirmatory" role="doc-biblioref">2015</a>)</span>. Il modello CFA riguarda un modello di misurazione per la depressione maggiore così come è definita nel DSM-IV. Il campione include 9 indicatori:</p>
 <ul>
 <li>MDD1, depressed mood;</li>
 <li>MDD2, loss of interest in usual activities;</li>
@@ -676,68 +677,68 @@ Invarianza scalare (<em>scalar invariance</em>) o “invarianza fattoriale forte
 <li>MDD8, concentration difficulties;</li>
 <li>MDD9, thoughts of death/suicidality.</li>
 </ul>
-<p>Leggiamo i dati:</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="indicatori-continui.html#cb252-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(</span>
-<span id="cb252-2"><a href="indicatori-continui.html#cb252-2" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;mdd_sex.RDS&quot;</span>)</span>
-<span id="cb252-3"><a href="indicatori-continui.html#cb252-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p>Il problema riguarda l’invarianza fattoriale in funzione del genere. Consideriamo il seguente modello:</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="indicatori-continui.html#cb253-1" aria-hidden="true" tabindex="-1"></a>model_mdd <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb253-2"><a href="indicatori-continui.html#cb253-2" aria-hidden="true" tabindex="-1"></a><span class="st">  MDD =~ mdd1 + mdd2 + mdd3 + mdd4 + mdd5 + mdd6 + mdd7 + mdd8 +</span></span>
-<span id="cb253-3"><a href="indicatori-continui.html#cb253-3" aria-hidden="true" tabindex="-1"></a><span class="st">         mdd9</span></span>
-<span id="cb253-4"><a href="indicatori-continui.html#cb253-4" aria-hidden="true" tabindex="-1"></a><span class="st">  mdd1 ~~ mdd2</span></span>
-<span id="cb253-5"><a href="indicatori-continui.html#cb253-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<p>Leggiamo i dati in <span class="math inline">\(\mathsf{R}\)</span>:</p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="indicatori-continui.html#cb256-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(</span>
+<span id="cb256-2"><a href="indicatori-continui.html#cb256-2" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;mdd_sex.RDS&quot;</span>)</span>
+<span id="cb256-3"><a href="indicatori-continui.html#cb256-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>I due gruppi considerati corrispondono al genere. Il problema riguarda l’invarianza fattoriale in funzione del genere. Consideriamo il seguente modello:</p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="indicatori-continui.html#cb257-1" aria-hidden="true" tabindex="-1"></a>model_mdd <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb257-2"><a href="indicatori-continui.html#cb257-2" aria-hidden="true" tabindex="-1"></a><span class="st">  MDD =~ mdd1 + mdd2 + mdd3 + mdd4 + mdd5 + mdd6 + mdd7 + mdd8 +</span></span>
+<span id="cb257-3"><a href="indicatori-continui.html#cb257-3" aria-hidden="true" tabindex="-1"></a><span class="st">         mdd9</span></span>
+<span id="cb257-4"><a href="indicatori-continui.html#cb257-4" aria-hidden="true" tabindex="-1"></a><span class="st">  mdd1 ~~ mdd2</span></span>
+<span id="cb257-5"><a href="indicatori-continui.html#cb257-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
 <p>Si noti la presenza di una correlazione residua tra gli indicatori <code>mdd1</code> e <code>mdd2</code>.</p>
-<p>Esaminiamo dunque le varie forme di invarianza fattoriale:</p>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="indicatori-continui.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="co"># configural invariance</span></span>
-<span id="cb254-2"><a href="indicatori-continui.html#cb254-2" aria-hidden="true" tabindex="-1"></a>fit_ef <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
-<span id="cb254-3"><a href="indicatori-continui.html#cb254-3" aria-hidden="true" tabindex="-1"></a>  model_mdd,</span>
-<span id="cb254-4"><a href="indicatori-continui.html#cb254-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> d,</span>
-<span id="cb254-5"><a href="indicatori-continui.html#cb254-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> <span class="st">&quot;sex&quot;</span>,</span>
-<span id="cb254-6"><a href="indicatori-continui.html#cb254-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">meanstructure =</span> <span class="cn">TRUE</span></span>
-<span id="cb254-7"><a href="indicatori-continui.html#cb254-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb254-8"><a href="indicatori-continui.html#cb254-8" aria-hidden="true" tabindex="-1"></a><span class="co"># equal factor laodings</span></span>
-<span id="cb254-9"><a href="indicatori-continui.html#cb254-9" aria-hidden="true" tabindex="-1"></a>fit_efl <span class="ot">&lt;-</span> <span class="fu">update</span>(</span>
-<span id="cb254-10"><a href="indicatori-continui.html#cb254-10" aria-hidden="true" tabindex="-1"></a>  fit_ef,</span>
-<span id="cb254-11"><a href="indicatori-continui.html#cb254-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">group.equal =</span> <span class="fu">c</span>(<span class="st">&quot;loadings&quot;</span>)</span>
-<span id="cb254-12"><a href="indicatori-continui.html#cb254-12" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb254-13"><a href="indicatori-continui.html#cb254-13" aria-hidden="true" tabindex="-1"></a><span class="co"># equal indicator intercepts</span></span>
-<span id="cb254-14"><a href="indicatori-continui.html#cb254-14" aria-hidden="true" tabindex="-1"></a>fit_eii <span class="ot">&lt;-</span> <span class="fu">update</span>(</span>
-<span id="cb254-15"><a href="indicatori-continui.html#cb254-15" aria-hidden="true" tabindex="-1"></a>  fit_efl,</span>
-<span id="cb254-16"><a href="indicatori-continui.html#cb254-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">group.equal =</span> <span class="fu">c</span>(<span class="st">&quot;loadings&quot;</span>, <span class="st">&quot;intercepts&quot;</span>)</span>
-<span id="cb254-17"><a href="indicatori-continui.html#cb254-17" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb254-18"><a href="indicatori-continui.html#cb254-18" aria-hidden="true" tabindex="-1"></a><span class="co"># equal indicator error variances</span></span>
-<span id="cb254-19"><a href="indicatori-continui.html#cb254-19" aria-hidden="true" tabindex="-1"></a>fit_eir <span class="ot">&lt;-</span> <span class="fu">update</span>(</span>
-<span id="cb254-20"><a href="indicatori-continui.html#cb254-20" aria-hidden="true" tabindex="-1"></a>  fit_eii,</span>
-<span id="cb254-21"><a href="indicatori-continui.html#cb254-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">group.equal =</span> <span class="fu">c</span>(<span class="st">&quot;loadings&quot;</span>, <span class="st">&quot;intercepts&quot;</span>, <span class="st">&quot;residuals&quot;</span>)</span>
-<span id="cb254-22"><a href="indicatori-continui.html#cb254-22" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb254-23"><a href="indicatori-continui.html#cb254-23" aria-hidden="true" tabindex="-1"></a><span class="co"># equal factor variances</span></span>
-<span id="cb254-24"><a href="indicatori-continui.html#cb254-24" aria-hidden="true" tabindex="-1"></a>fit_fv <span class="ot">&lt;-</span> <span class="fu">update</span>(</span>
-<span id="cb254-25"><a href="indicatori-continui.html#cb254-25" aria-hidden="true" tabindex="-1"></a>  fit_eir,</span>
-<span id="cb254-26"><a href="indicatori-continui.html#cb254-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">group.equal =</span> <span class="fu">c</span>(</span>
-<span id="cb254-27"><a href="indicatori-continui.html#cb254-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;loadings&quot;</span>, <span class="st">&quot;intercepts&quot;</span>, <span class="st">&quot;residuals&quot;</span>,</span>
-<span id="cb254-28"><a href="indicatori-continui.html#cb254-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;lv.variances&quot;</span></span>
-<span id="cb254-29"><a href="indicatori-continui.html#cb254-29" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb254-30"><a href="indicatori-continui.html#cb254-30" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb254-31"><a href="indicatori-continui.html#cb254-31" aria-hidden="true" tabindex="-1"></a><span class="co"># equal latent means</span></span>
-<span id="cb254-32"><a href="indicatori-continui.html#cb254-32" aria-hidden="true" tabindex="-1"></a>fit_fm <span class="ot">&lt;-</span> <span class="fu">update</span>(</span>
-<span id="cb254-33"><a href="indicatori-continui.html#cb254-33" aria-hidden="true" tabindex="-1"></a>  fit_fv,</span>
-<span id="cb254-34"><a href="indicatori-continui.html#cb254-34" aria-hidden="true" tabindex="-1"></a>  <span class="at">group.equal =</span> <span class="fu">c</span>(</span>
-<span id="cb254-35"><a href="indicatori-continui.html#cb254-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;loadings&quot;</span>, <span class="st">&quot;intercepts&quot;</span>, <span class="st">&quot;residuals&quot;</span>,</span>
-<span id="cb254-36"><a href="indicatori-continui.html#cb254-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;lv.variances&quot;</span>, <span class="st">&quot;means&quot;</span></span>
-<span id="cb254-37"><a href="indicatori-continui.html#cb254-37" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb254-38"><a href="indicatori-continui.html#cb254-38" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>Esaminiamo dunque di seguito le varie forme di invarianza fattoriale. Si notino i vincoli che vengono via via introdotti quando vengono specificati modelli via via più restrittivi. Nella sintassi <code>lavaan</code> i vincoli vengono specificati dall’argomento <code>group.equal</code>.</p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="indicatori-continui.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="co"># configural invariance</span></span>
+<span id="cb258-2"><a href="indicatori-continui.html#cb258-2" aria-hidden="true" tabindex="-1"></a>fit_ef <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
+<span id="cb258-3"><a href="indicatori-continui.html#cb258-3" aria-hidden="true" tabindex="-1"></a>  model_mdd,</span>
+<span id="cb258-4"><a href="indicatori-continui.html#cb258-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> d,</span>
+<span id="cb258-5"><a href="indicatori-continui.html#cb258-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> <span class="st">&quot;sex&quot;</span>,</span>
+<span id="cb258-6"><a href="indicatori-continui.html#cb258-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">meanstructure =</span> <span class="cn">TRUE</span></span>
+<span id="cb258-7"><a href="indicatori-continui.html#cb258-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb258-8"><a href="indicatori-continui.html#cb258-8" aria-hidden="true" tabindex="-1"></a><span class="co"># equal factor laodings</span></span>
+<span id="cb258-9"><a href="indicatori-continui.html#cb258-9" aria-hidden="true" tabindex="-1"></a>fit_efl <span class="ot">&lt;-</span> <span class="fu">update</span>(</span>
+<span id="cb258-10"><a href="indicatori-continui.html#cb258-10" aria-hidden="true" tabindex="-1"></a>  fit_ef,</span>
+<span id="cb258-11"><a href="indicatori-continui.html#cb258-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">group.equal =</span> <span class="fu">c</span>(<span class="st">&quot;loadings&quot;</span>)</span>
+<span id="cb258-12"><a href="indicatori-continui.html#cb258-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb258-13"><a href="indicatori-continui.html#cb258-13" aria-hidden="true" tabindex="-1"></a><span class="co"># equal indicator intercepts</span></span>
+<span id="cb258-14"><a href="indicatori-continui.html#cb258-14" aria-hidden="true" tabindex="-1"></a>fit_eii <span class="ot">&lt;-</span> <span class="fu">update</span>(</span>
+<span id="cb258-15"><a href="indicatori-continui.html#cb258-15" aria-hidden="true" tabindex="-1"></a>  fit_efl,</span>
+<span id="cb258-16"><a href="indicatori-continui.html#cb258-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">group.equal =</span> <span class="fu">c</span>(<span class="st">&quot;loadings&quot;</span>, <span class="st">&quot;intercepts&quot;</span>)</span>
+<span id="cb258-17"><a href="indicatori-continui.html#cb258-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb258-18"><a href="indicatori-continui.html#cb258-18" aria-hidden="true" tabindex="-1"></a><span class="co"># equal indicator error variances</span></span>
+<span id="cb258-19"><a href="indicatori-continui.html#cb258-19" aria-hidden="true" tabindex="-1"></a>fit_eir <span class="ot">&lt;-</span> <span class="fu">update</span>(</span>
+<span id="cb258-20"><a href="indicatori-continui.html#cb258-20" aria-hidden="true" tabindex="-1"></a>  fit_eii,</span>
+<span id="cb258-21"><a href="indicatori-continui.html#cb258-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">group.equal =</span> <span class="fu">c</span>(<span class="st">&quot;loadings&quot;</span>, <span class="st">&quot;intercepts&quot;</span>, <span class="st">&quot;residuals&quot;</span>)</span>
+<span id="cb258-22"><a href="indicatori-continui.html#cb258-22" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb258-23"><a href="indicatori-continui.html#cb258-23" aria-hidden="true" tabindex="-1"></a><span class="co"># equal factor variances</span></span>
+<span id="cb258-24"><a href="indicatori-continui.html#cb258-24" aria-hidden="true" tabindex="-1"></a>fit_fv <span class="ot">&lt;-</span> <span class="fu">update</span>(</span>
+<span id="cb258-25"><a href="indicatori-continui.html#cb258-25" aria-hidden="true" tabindex="-1"></a>  fit_eir,</span>
+<span id="cb258-26"><a href="indicatori-continui.html#cb258-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">group.equal =</span> <span class="fu">c</span>(</span>
+<span id="cb258-27"><a href="indicatori-continui.html#cb258-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;loadings&quot;</span>, <span class="st">&quot;intercepts&quot;</span>, <span class="st">&quot;residuals&quot;</span>,</span>
+<span id="cb258-28"><a href="indicatori-continui.html#cb258-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;lv.variances&quot;</span></span>
+<span id="cb258-29"><a href="indicatori-continui.html#cb258-29" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb258-30"><a href="indicatori-continui.html#cb258-30" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb258-31"><a href="indicatori-continui.html#cb258-31" aria-hidden="true" tabindex="-1"></a><span class="co"># equal latent means</span></span>
+<span id="cb258-32"><a href="indicatori-continui.html#cb258-32" aria-hidden="true" tabindex="-1"></a>fit_fm <span class="ot">&lt;-</span> <span class="fu">update</span>(</span>
+<span id="cb258-33"><a href="indicatori-continui.html#cb258-33" aria-hidden="true" tabindex="-1"></a>  fit_fv,</span>
+<span id="cb258-34"><a href="indicatori-continui.html#cb258-34" aria-hidden="true" tabindex="-1"></a>  <span class="at">group.equal =</span> <span class="fu">c</span>(</span>
+<span id="cb258-35"><a href="indicatori-continui.html#cb258-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;loadings&quot;</span>, <span class="st">&quot;intercepts&quot;</span>, <span class="st">&quot;residuals&quot;</span>,</span>
+<span id="cb258-36"><a href="indicatori-continui.html#cb258-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;lv.variances&quot;</span>, <span class="st">&quot;means&quot;</span></span>
+<span id="cb258-37"><a href="indicatori-continui.html#cb258-37" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb258-38"><a href="indicatori-continui.html#cb258-38" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>Confrontiamo i modelli:</p>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="indicatori-continui.html#cb255-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lavTestLRT</span>(fit_ef, fit_efl, fit_eii, fit_eir, fit_fv, fit_fm)</span>
-<span id="cb255-2"><a href="indicatori-continui.html#cb255-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Chi-Squared Difference Test</span></span>
-<span id="cb255-3"><a href="indicatori-continui.html#cb255-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb255-4"><a href="indicatori-continui.html#cb255-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         Df   AIC   BIC   Chisq Chisq diff Df diff Pr(&gt;Chisq)</span></span>
-<span id="cb255-5"><a href="indicatori-continui.html#cb255-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; fit_ef  52 27526 27784  98.911                              </span></span>
-<span id="cb255-6"><a href="indicatori-continui.html#cb255-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; fit_efl 60 27514 27736 102.839     3.9286       8     0.8635</span></span>
-<span id="cb255-7"><a href="indicatori-continui.html#cb255-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; fit_eii 68 27510 27695 115.309    12.4699       8     0.1314</span></span>
-<span id="cb255-8"><a href="indicatori-continui.html#cb255-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; fit_eir 77 27502 27645 125.021     9.7115       9     0.3743</span></span>
-<span id="cb255-9"><a href="indicatori-continui.html#cb255-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; fit_fv  78 27501 27639 125.814     0.7931       1     0.3732</span></span>
-<span id="cb255-10"><a href="indicatori-continui.html#cb255-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; fit_fm  79 27501 27635 127.734     1.9201       1     0.1659</span></span></code></pre></div>
-<p>Il confronto tra i precedenti modelli nidificati che introducono vincoli sempre più tringenti sui parametri indica che non vi è una “significativa” perdita di bontà dell’adattamento passando dal modello congenerico al modello che assume l’uguaglianza delle saturazioni fattoriali, delle intercette, delle varianze residue, delle varianze delle variabili latenti e delle medie nei due gruppi. Questi dati, dunque, forniscono forti evidenze di invarianza fattoriale tra maschi e femmine in relazione al costrutto di depressione maggiore.</p>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="indicatori-continui.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lavTestLRT</span>(fit_ef, fit_efl, fit_eii, fit_eir, fit_fv, fit_fm)</span>
+<span id="cb259-2"><a href="indicatori-continui.html#cb259-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Chi-Squared Difference Test</span></span>
+<span id="cb259-3"><a href="indicatori-continui.html#cb259-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb259-4"><a href="indicatori-continui.html#cb259-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         Df   AIC   BIC   Chisq Chisq diff Df diff Pr(&gt;Chisq)</span></span>
+<span id="cb259-5"><a href="indicatori-continui.html#cb259-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; fit_ef  52 27526 27784  98.911                              </span></span>
+<span id="cb259-6"><a href="indicatori-continui.html#cb259-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; fit_efl 60 27514 27736 102.839     3.9286       8     0.8635</span></span>
+<span id="cb259-7"><a href="indicatori-continui.html#cb259-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; fit_eii 68 27510 27695 115.309    12.4699       8     0.1314</span></span>
+<span id="cb259-8"><a href="indicatori-continui.html#cb259-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; fit_eir 77 27502 27645 125.021     9.7115       9     0.3743</span></span>
+<span id="cb259-9"><a href="indicatori-continui.html#cb259-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; fit_fv  78 27501 27639 125.814     0.7931       1     0.3732</span></span>
+<span id="cb259-10"><a href="indicatori-continui.html#cb259-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; fit_fm  79 27501 27635 127.734     1.9201       1     0.1659</span></span></code></pre></div>
+<p>Il confronto tra i precedenti modelli nidificati che introducono vincoli sempre più stringenti sui parametri indica che non vi è una “significativa” perdita di bontà dell’adattamento passando dal modello congenerico al modello che assume l’uguaglianza delle saturazioni fattoriali, delle intercette, delle varianze residue, delle varianze delle variabili latenti e delle medie dei due gruppi. Per i dati discussi da <span class="citation">Brown (<a href="#ref-brown2015confirmatory" role="doc-biblioref">2015</a>)</span>, dunque, possiamo concludere che vi sono forti evidenze di invarianza fattoriale tra maschi e femmine in relazione al costrutto di depressione maggiore.</p>
 </div>
 </div>
 <h3>References</h3>
@@ -751,7 +752,7 @@ Brown, Timothy A. 2015. <em>Confirmatory Factor Analysis for Applied Research</e
           </div>
         </div>
       </div>
-<a href="ch:factorial-invariance.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="invarianza-di-misura.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="variabili-a-livello-ordinale.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

@@ -409,38 +409,26 @@ questionario nel suo complesso. Sotto al rubrica di analisi degli item
 possiamo raggruppare le procedure che possono essere utilizzate per
 descrivere la difficoltà degli item, le relazioni tra coppie di item, il
 punteggio totale del test, le relazioni tra gli item e il punteggio
-totale del test. Tali procedure vengono utilizzate per la selezione
+totale del test. Tali analisi statistiche vengono usate per la selezione
 degli item al fine di costruire un questionario omogeneo, attendibile e
 dotato di validità predittiva.
 
-L'esame delle caratteristiche psicometriche degli item che compongono il
-test non può però essere automatizzata ed eseguita solo sulla base dei
-risultati delle analisi statiche. L'analisi degli item, invece, va
-integrata con considerazioni di ordine teorico basate sulla centralità
-dell'item rispetto alla definizione del costrutto, agli scopi della
-misurazione e al modo in cui l'item è stato formulato e costruito. Se
-alcuni aspetti di un costrutto non vengono rappresentanti da item che
-soddisfano i criteri descritti sopra, o se c'è un numero insufficiente
+La selezione degli item di un test, però, non può essere svolta in maniera automatica usando soltanto criteri statistici quali quelli elencati sopra. La selezione degli item, invece, deve anche tenere includere considerazioni di ordine teorico basate sulla centralità degli item rispetto alla definizione del costrutto e considerazioni relative agli scopi della misurazione e al modo in cui l'item è stato formulato e costruito. Se alcuni aspetti di un costrutto non vengono rappresentanti da item che
+soddisfano i criteri statistici descritti sopra, o se c'è un numero insufficiente
 di item per produrre uno strumento attendibile, allora alcuni item
-devono essere riscritti. Nello scrivere gli item, risultano utili le
-intuizioni che si sono guadagnate nello scrivere gli item che non hanno
-funzionato.
+dovranno essere riscritti. Nella riformulazione degli item, risultano utili le
+intuizioni che si sono guadagnate dalle analisi statistiche degli item che si sono dovuti scartare.
 
 ### Difficoltà degli item
 
-La più ovvia caratteristica psicometrica di un item in un test di
-prestazione massima è la proporzione di soggetti che risponde
-correttamente all'item.La proporzione $p_j$ di soggetti che rispondono
-correttamente all'item $j$-esimo, o si dichiarano in accordo con
-l'affermazione espressa dall'item, fornisce una stima di $\pi_j$, ovvero
-il *livello di difficoltà* dell'item. In realtà, $p_j$ dovrebbe essere
-chiamato "facilità dell'item" in quanto assume il suo valore maggiore
-(ovvero $1$) quando tutti i rispondenti rispondono correttamente
-all'item considerato e il suo valore minimo (ovvero $0$) quando le
-risposte sono tutte sbagliate. I valori $p_j$ giocano un ruolo
-importante nelle procedure di selezione degli item.
+Se consideriamo un test di prestazione massima, la caratteristica psicometrica più ovvia che deve essere valutata negli item è la proporzione di soggetti che rispondono correttamente agli item. La proporzione $p_j$ di partecipanti che rispondono
+correttamente all'item $j$-esimo, o proporzione di partecipanti che si dichiarano in accordo con l'affermazione espressa dall'item, se il test non è di prestazione, fornisce una stima del *livello di difficoltà* $\pi_j$ dell'item. 
 
-La difficoltà degli item deve essere interpretata in riferimento alla
+In realtà, $p_j$ dovrebbe essere chiamato "facilità dell'item" in quanto assume il suo valore maggiore (ovvero $1$) quando tutti i rispondenti rispondono correttamente
+all'item e il suo valore minimo (ovvero $0$) quando le
+risposte sono tutte sbagliate. 
+
+I valori $p_j$ giocano un ruolo importante nelle procedure di selezione degli item. La difficoltà degli item deve essere interpretata in riferimento alla
 probabilità di indovinare la risposta corretta. Si suppone, infatti, che
 i rispondenti tirino ad indovinare quando non conoscono la risposta alla
 domanda di un questionario. Nel caso di item dicotomici, per esempio, ci
@@ -449,34 +437,59 @@ soltanto; nel caso di item a risposta multipla con quattro opzioni di
 scelta, invece, $p_j$ assume un valore pari a $0.25$ quando i
 rispondenti tirano ad indovinare.
 
-Se il test è composto, per la maggior parte, da item "facili," allora il
-test non sarà in grado di discriminare tra rispondenti con livelli di
-abilità diversi, in quanto quasi tutti i rispondenti saranno in grado di
+Se il test è composto per la maggior parte da item "facili", allora il
+test non sarà in grado di discriminare tra rispondenti con diversi livelli di
+abilità, in quanto quasi tutti i rispondenti saranno in grado di
 fornire una risposta corretta alla maggioranza degli item. Lo stesso si
-può dire per un test composto da item "difficili." Se consideriamo un
-test composto unicamente da item di difficoltà media, è facile rendersi
-conto che non potrà differenziare i rispondenti di abilità media da
-quelli con abilità superiori alla media (dato che non ci sono item
-"difficili"), e neppure da quelli con abilità inferiori alla media (dato
-che non ci sono item "facili").
+può dire per un test composto da item "difficili". Se il test è composto unicamente da item di difficoltà media, non potrà differenziare i rispondenti che hanno un grado di abilità media da quelli con abilità superiori alla media, dato che non ci sono item "difficili", e neppure da quelli con abilità inferiori alla media, dato
+che non ci sono item "facili". 
 
-In generale è buona pratica costruire test composti da item che coprano
+In generale, dunque, è buona pratica costruire test composti da item che coprano
 tutti i livelli di difficoltà. La scelta che viene usualmente fatta è
 quella di una dispersione moderata e simmetrica del livello di
 difficoltà attorno ad un valore leggermente superiore al valore che sta
 a metà tra il livello del caso ($1.0$ diviso per il numero di
-alternative) e il punteggio pieno ($1.0$). Per item che presentano
-quattro alternative di risposta, ad esempio, il livello del caso è pari
-a $1.00/4 = 0.25$. Il livello ottimale di difficoltà media è dunque
-uguale a 
+alternative) e il punteggio pieno ($1.0$). 
 
-$$0.25 + (1.00 - 0.25) / 2 = 0.62.$$ 
+Per item che presentano cinque alternative di risposta, ad esempio, il livello del caso è pari a $1.0 / 5 = 0.20$. Il livello ottimale di difficoltà è uguale a 
+
+$$
+0.20 + (1.0 - 0.20) / 2 = 0.60.
+$$ 
     
-Per item dicotomici, il livello del caso è $1.00/2 = 0.50$ e il livello ottimale di difficoltà media è
+Per item dicotomici, il livello del caso è $1.0 / 2 = 0.50$ e il livello ottimale di difficoltà è uguale a 
 
-$$0.50+(1.00-.50)/2 = 0.75.$$ 
+$$
+0.50 + (1.00 - 0.50) / 2 = 0.75.
+$$ 
 
 In generale, item con livelli di difficoltà superiore a $0.90$ o inferiore a $0.20$ dovrebbero essere utilizzati con cautela.
+
+::: {.example}
+
+Riporto qui sotto le proporzioni di risposte corrette (usando la correzione per il guessing) di 192 studenti di Psicometria nel primo parziale dell'AA 2021/2022. Il test aveva 16 item con 5 alternative di risposta ciascuno. Dunque la difficoltà media ottimale è pari a 0.6.
+
+```{r}
+item_par_1 <- c(
+  0.54255319, 0.76063830, 0.64361702, 0.65957447, 0.67021277, 0.12234043,
+  0.14361702, 0.18085106, 0.76063830, 0.82978723, 0.81914894, 0.84042553,
+  0.07978723, 0.07978723, 0.76063830, 0.79255319
+)
+```
+
+Nel compito, la difficoltà media è risultata essere un po' inferiore.
+
+```{r}
+mean(item_par_1) %>% 
+  round(2)
+```
+
+La distribuzione dei livelli di difficoltà degli item suggerisce che forse alcuni item "difficili" si sarebbero potuti sostituire con item di difficoltà media.
+
+```{r}
+plot(density(item_par_1))
+```
+:::
 
 ### Correzione per guessing
 
@@ -504,16 +517,15 @@ FS = R - \frac{W}{C - 1},
 con $R$ = \# risposte corrette, $W$ = \# risposte
 sbagliate, $C$ = \# alternative di risposta. Per esempio, se $C=5$,
 allora è necessario sottrarre un punto ogni 4, il che è proprio quello
-che fa la \@ref(eq:guessing). La \@ref(eq:guessing) per la correzione per guessing produce un punteggio totale corretto per il guessing identico a quello che si
-otterrebbe pesando ciascuna risposta con 1 punto per le risposte
-corrette e $- \frac{1}{C-1}$ punti per le risposte sbagliate -- senza
-considerare le risposte non date.
+che fa la \@ref(eq:guessing). 
+
+La \@ref(eq:guessing) produce un punteggio totale corretto per il guessing identico a quello che si otterrebbe assegnando 1 punto a ciascuna risposta corretta e assegnando $- \frac{1}{C-1}$ punti alle risposte sbagliate; le risposte non date non vengono considerate.
 
 La correzione per guessing rappresenta il tentativo di scomporre il
 numero totale di risposte corrette in due componenti: le risposte
 corrette dovute alle conoscenze del soggetto, le risposte che risultano
 corrette come effetto del caso. La stessa formula può anche essere
-utilizzata per calcolare la difficoltà degli item corretta per guessing.
+utilizzata per calcolare la difficoltà degli item corretta per il guessing (come è stato fatto nell'esempio del parziale di Psicometria).
 
 ### Discriminatività
 
@@ -534,7 +546,7 @@ valore di $D$ può variare da -1 a +1. Nella tabella seguente sono fornite le li
 ::: {#tab:ebel_1965}
   Valore di $D$          Commento
   ---------------------- ----------------------------------------------
-  $D \geq 0.40$          Ottima, nessuna revision
+  $D \geq 0.40$          Ottima, nessuna revisione
   $0.30 \leq D < 0.40$   Buona, revisioni minime
   $0.20 \leq D < 0.30$   Sufficiente, revisioni parziali
   $D < 0.20$             Insufficiente, riformulazione o eliminazione
@@ -554,9 +566,14 @@ quello del quartile inferiore, oppure, se il test è orientato al
 criterio e lo scopo è selezionare gli item che discriminano meglio due
 gruppi precostituiti di soggetto, eseguire i medesimi confronti tra il
 gruppo target (ad esempio, pazienti) e quello "di controllo" (per
-esempio, popolazione generale). È consigliabile valutare la dimensione
-dell'effetto, ad esempio attraverso l'indice $d$ di Cohen. La dimensione
-dell'effetto dovrebbe essere almeno moderata ($d > |0.50|$).
+esempio, popolazione generale). 
+
+È consigliabile valutare la dimensione dell'effetto, ad esempio attraverso l'indice $d$ di Cohen. La dimensione dell'effetto dovrebbe essere almeno moderata ($d > |0.50|$).
+
+::: {.example}
+Per il primo parziale di Psicometria AA 2021/2022, l'indice $d$ di Cohen calcolato sulla proporzione di risposte corrette per il gruppo di studenti con i punteggi più bassi (primo quartile) e il gruppo di studenti con i punteggi più alti (ultimo quartile) è stato di 4.76, 95% CI [4.0, 5.51]. L'indice *complessivo* di discriminatività sembra dunque adeguato. Sarebbe però necessario calcolare questo indice item per item.
+:::
+
 
 ### Potere discriminante dell'item e analisi fattoriale
 
@@ -567,28 +584,40 @@ grande (200 o meno), infatti, è possibile procedere alla selezione degli
 item migliori tramite l'analisi fattoriale -- ovvero, scegliendo gli
 item con le saturazioni maggiori.
 
-<!-- Se gli item sono ben rappresentati dal modello monofattoriale -->
-<!-- ($Y_i = \mu_i + \lambda_i \xi + \delta_i$, con varianza specifica -->
-<!-- $\psi_{ii}$), allora al crescere del numero di item la covarianza -->
-<!-- semistandardizzata e la correlazione tra il punteggio sull'item e il -->
-<!-- punteggio totale convergono alle saturazioni fattoriali calcolate sugli -->
-<!-- item standardizzati. McDondald (1999) nota quindi che la covarianza -->
-<!-- semistandardizzata e la correlazione risultano appropriate per stimare -->
-<!-- il potere discriminante dell'item se il punteggio totale viene calcolato -->
-<!-- utilizzando i punteggi standardizzati degli item. Tuttavia, la pratica -->
-<!-- usuale questo non succede. È stato osservato, infine, che gli indici -->
-<!-- discussi sopra sono spuri in quanto il punteggio totale è calcolato -->
-<!-- anche nei termini dell'item che viene analizzato. A questo scopo, è -->
-<!-- possibile procedere ad un aggiustamento che introduce un fattore di -->
-<!-- correzione. -->
+::: {.example}
+Per il primo parziale di Psicometria AA 2021/2022 si ottiene la seguente soluzione fattoriale a due fattori. Questa soluzione sembra suggerire che gli item 1 e 5 forse andrebbero sostituiti, mentre gli altri item sembrano adeguati.
+
+```{r, eval=FALSE}
+faT1 <- fa(r=cormat, nfactors=2, n.obs=192, rotate="oblimin")
+faT1$loadings
+
+Loadings:
+    MR1    MR2   
+i1   0.132       
+i2   0.270  0.107
+i3   0.489       
+i4   0.343  0.365
+i5   0.130  0.105
+i6   0.565 -0.497
+i7   0.527       
+i8          0.792
+i9   0.363       
+i10  0.467  0.250
+i11  0.459  0.190
+i12  0.111  0.497
+i13  0.401       
+i14  0.511  0.173
+i15  0.206  0.252
+i16  0.247  0.365
+```
+:::
 
 ### Punteggio sull'item e punteggio totale
 
 Il grado di associazione tra il punteggio sull'item e il punteggio
-totale viene considerato dalla teoria classica dei test quale indice del
-potere discriminante dell'item. Se il test fornisce una misura
+totale viene considerato dalla teoria classica dei test come un indice che descrive il potere discriminante dell'item. Se il test fornisce una misura
 attendibile di un unico attributo, e se un item è fortemente associato
-al punteggio del test, allora l'item medesimo sarà in grado di
+al punteggio del test, allora l'item sarà in grado di
 distinguere tra rispondenti che ottengono un punteggio basso nel test e
 rispondenti che ottengono un punteggio alto nel test.
 
@@ -609,7 +638,7 @@ correlazione biseriale o punto-biseriale.
 ### Relazioni tra coppie di item
 
 Le relazioni tra coppie di item sono importanti sia per la costruzione
-sia per l'analisi dei test. La teoria classica dei test definisce
+sia per la validazione dei test psicometrici. La teoria classica dei test definisce
 l'attendibilità di un test (o di un item) come il rapporto tra la
 varianza del punteggio vero e la varianza del punteggio osservato. Il
 coefficiente di attendibilità può però essere calcolato anche trovando
@@ -619,32 +648,23 @@ parallele di un test (o tra due item) come il quadrato del coefficiente
 di correlazione tra i punteggi osservati e i punteggi veri di un test (o
 di un item).
 
-Molti indici sono disponibili per misurare il grado di associazione tra
-gli item. Per item quantitativi, possiamo usare la correlazione di
-Pearson o la covarianza. Per item qualitativi politomici ordinali,
-usiamo la correlazione policorica. Per item ordinali dicotomici, usiamo
-la correlazione tetracorica. Per item dicotomici usiamo, ad esempio,
-l'indice $\phi$.
+Molti indici sono disponibili per misurare il grado di associazione tra item. Per item quantitativi, possiamo usare la correlazione di Pearson o la covarianza. Per item qualitativi politomici ordinali, usiamo la correlazione policorica. Per item ordinali dicotomici, usiamo la correlazione tetracorica. Per item dicotomici usiamo, ad esempio, l'indice $\phi$.
 
 ### Ridondanza
 
-Nel processo di raffinamento del test occorre tenere conto degli item
-ridondanti, ossia di quelli che sono troppo associati tra loro. La
+Nel processo di raffinamento del test occorre anche tenere conto degli item
+ridondanti, ossia degli item che sono troppo associati tra loro. La
 ridondanza può essere valutata con indici statistici quali la
 correlazione: se due o più item hanno tra loro una correlazione maggiore
-di $|0.70|$ viene mantenuto nell'item pool solo un item, dato che gli
-altri apportano la stessa informazione.
+di $|0.70|$ viene mantenuto nell'item pool solo uno di essi, dato che gli
+altri item forniscono la stessa informazione.
 
 ### Massimizzazione della varianza del punteggio totale
 
-Uno dei criteri che possono essere utilizzati per selezionare gli item
-che andranno a costituire la versione finale di un test è quello di
-massimizzare la varianza del punteggio totale. Più in particolare, si
-vuole massimizzare il rapporto tra la varianza del punteggio totale e la
-somma delle varianze dei punteggi dei $p$ item. Dato che il coefficiente
-$\alpha$ di Cronbach ha la seguente forma:
+Uno dei criteri che possono essere utilizzati per la selezionare degli item
+che andranno a costituire la versione finale di un test è la massimizzazione della varianza del punteggio totale. Più in particolare, si vuole massimizzare il rapporto tra la varianza del punteggio totale e la somma delle varianze dei punteggi dei $p$ item. Dato che il coefficiente $\alpha$ di Cronbach ha la seguente forma:
 
-$$\alpha = \frac{p}{p-1}\left[1- \frac{\sum \sigma^2_{X_i}}{\sigma^2_T} \right],$$
+$$\alpha = \frac{p}{p-1}\left[1- \frac{\sum \sigma^2_{Y_i}}{\sigma^2_T} \right],$$
 
 la scelta di massimizzare il rapporto definito in precedenza avrà anche
 la conseguenza di massimizzare $\alpha$.
@@ -653,22 +673,6 @@ la conseguenza di massimizzare $\alpha$.
 basata sul principio della massimizzazione di $\alpha$ ha però dei
 limiti. In primo luogo, tale procedura è appropriata solo quando
 l'insieme di item è troppo grande per selezionare gli item in base
-all'esame dell saturazioni fattoriali ottenute applicando il modello
-mono-fattoriale. Inoltre, anche se il modello mono-fattoriale non può
-essere applicato per problemi pratici, a causa del numero di item troppo
-grande, tale modello deve essere comunque adeguato anche se si procede
-selezionando gli item sulla base di $\alpha$. Ovviamente, però, tale
-assunzione non può essere verificata. In secondo luogo, @mcdonald2013test
-nota che la procedura di selezione basata sulla massimizzazione di
-$\alpha$ non è adeguata neanche nel caso in cui il costrutto latente
-abbia una struttura gerarchica, con un fattore generale ed una serie di
-fattori subordinati. In quel caso, infatti, la selezione degli item
-basata sulla massimizzazione di $\alpha$ può portare all'eliminazione
-degli item che definiscono tutti i fattori subordinati tranne uno. Nel
-caso in cui il costrutto abbia una struttura gerarchica, dunque, la
-selezione degli item basata sulla massimizzazione di $\alpha$ deve
-essere accompagnata da considerazione relative al contenuto del
-costrutto.
-
-
+all'esame delle saturazioni fattoriali ottenute applicando il modello
+mono-fattoriale. In secondo luogo, @mcdonald2013test nota che la procedura di selezione basata sulla massimizzazione di $\alpha$ è adeguata solo nel caso di una struttura mono-fattoriale. La selezione degli item basata sulla massimizzazione di $\alpha$  deve dunque essere accompagnata da considerazione relative al contenuto e alla struttura del costrutto.
 

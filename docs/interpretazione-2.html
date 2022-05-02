@@ -448,7 +448,7 @@ div.csl-indent {
 <li class="chapter" data-level="18.4.8" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#massimizzazione-della-varianza-del-punteggio-totale"><i class="fa fa-check"></i><b>18.4.8</b> Massimizzazione della varianza del punteggio totale</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="ch:factorial-invariance.html"><a href="ch:factorial-invariance.html"><i class="fa fa-check"></i><b>19</b> Invarianza di misura</a>
+<li class="chapter" data-level="19" data-path="invarianza-di-misura.html"><a href="invarianza-di-misura.html"><i class="fa fa-check"></i><b>19</b> Invarianza di misura</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="indicatori-continui.html"><a href="indicatori-continui.html"><i class="fa fa-check"></i><b>19.1</b> Indicatori continui</a>
 <ul>
@@ -625,22 +625,22 @@ div.csl-indent {
 <h2><span class="header-section-number">20.8</span> Interpretazione<a href="interpretazione-2.html#interpretazione-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Un valore RMSEA &lt; .05 indica un “close fit” e quello &lt; .08 suggerisce un ragionevole adattamento modello-dati. Bentler e Bonett (1980) raccomandano TLI &gt; .90 per un adattamento accettabile.</p>
 <p>L’interpretazione degli indici di bontà di adattamento trovati nella CFA o nella modellazione di equazioni strutturali può essere ottenuta usando le funzioni del pacchetto <code>effectsize</code>. Ad esempio (dal manuale):</p>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="interpretazione-2.html#cb275-1" aria-hidden="true" tabindex="-1"></a>structure <span class="ot">&lt;-</span> <span class="st">&quot; ind60 =~ x1 + x2 + x3</span></span>
-<span id="cb275-2"><a href="interpretazione-2.html#cb275-2" aria-hidden="true" tabindex="-1"></a><span class="st">               dem60 =~ y1 + y2 + y3</span></span>
-<span id="cb275-3"><a href="interpretazione-2.html#cb275-3" aria-hidden="true" tabindex="-1"></a><span class="st">               dem60 ~~ ind60 &quot;</span></span>
-<span id="cb275-4"><a href="interpretazione-2.html#cb275-4" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> lavaan<span class="sc">::</span><span class="fu">sem</span>(structure, <span class="at">data =</span> lavaan<span class="sc">::</span>PoliticalDemocracy)</span>
-<span id="cb275-5"><a href="interpretazione-2.html#cb275-5" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">interpret</span>(fit)</span>
-<span id="cb275-6"><a href="interpretazione-2.html#cb275-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Name      Value Interpretation</span></span>
-<span id="cb275-7"><a href="interpretazione-2.html#cb275-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    GFI 0.96664121   satisfactory</span></span>
-<span id="cb275-8"><a href="interpretazione-2.html#cb275-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2   AGFI 0.91243318   satisfactory</span></span>
-<span id="cb275-9"><a href="interpretazione-2.html#cb275-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    NFI 0.97486324   satisfactory</span></span>
-<span id="cb275-10"><a href="interpretazione-2.html#cb275-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4   NNFI 1.00010307   satisfactory</span></span>
-<span id="cb275-11"><a href="interpretazione-2.html#cb275-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    CFI 1.00000000   satisfactory</span></span>
-<span id="cb275-12"><a href="interpretazione-2.html#cb275-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  RMSEA 0.00000000   satisfactory</span></span>
-<span id="cb275-13"><a href="interpretazione-2.html#cb275-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7   SRMR 0.02726216   satisfactory</span></span>
-<span id="cb275-14"><a href="interpretazione-2.html#cb275-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8    RFI 0.95286858   satisfactory</span></span>
-<span id="cb275-15"><a href="interpretazione-2.html#cb275-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9   PNFI 0.51992706   satisfactory</span></span>
-<span id="cb275-16"><a href="interpretazione-2.html#cb275-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10   IFI 1.00005373   satisfactory</span></span></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="interpretazione-2.html#cb279-1" aria-hidden="true" tabindex="-1"></a>structure <span class="ot">&lt;-</span> <span class="st">&quot; ind60 =~ x1 + x2 + x3</span></span>
+<span id="cb279-2"><a href="interpretazione-2.html#cb279-2" aria-hidden="true" tabindex="-1"></a><span class="st">               dem60 =~ y1 + y2 + y3</span></span>
+<span id="cb279-3"><a href="interpretazione-2.html#cb279-3" aria-hidden="true" tabindex="-1"></a><span class="st">               dem60 ~~ ind60 &quot;</span></span>
+<span id="cb279-4"><a href="interpretazione-2.html#cb279-4" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> lavaan<span class="sc">::</span><span class="fu">sem</span>(structure, <span class="at">data =</span> lavaan<span class="sc">::</span>PoliticalDemocracy)</span>
+<span id="cb279-5"><a href="interpretazione-2.html#cb279-5" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">interpret</span>(fit)</span>
+<span id="cb279-6"><a href="interpretazione-2.html#cb279-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Name      Value Interpretation</span></span>
+<span id="cb279-7"><a href="interpretazione-2.html#cb279-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    GFI 0.96664121   satisfactory</span></span>
+<span id="cb279-8"><a href="interpretazione-2.html#cb279-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2   AGFI 0.91243318   satisfactory</span></span>
+<span id="cb279-9"><a href="interpretazione-2.html#cb279-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    NFI 0.97486324   satisfactory</span></span>
+<span id="cb279-10"><a href="interpretazione-2.html#cb279-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4   NNFI 1.00010307   satisfactory</span></span>
+<span id="cb279-11"><a href="interpretazione-2.html#cb279-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    CFI 1.00000000   satisfactory</span></span>
+<span id="cb279-12"><a href="interpretazione-2.html#cb279-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  RMSEA 0.00000000   satisfactory</span></span>
+<span id="cb279-13"><a href="interpretazione-2.html#cb279-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7   SRMR 0.02726216   satisfactory</span></span>
+<span id="cb279-14"><a href="interpretazione-2.html#cb279-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8    RFI 0.95286858   satisfactory</span></span>
+<span id="cb279-15"><a href="interpretazione-2.html#cb279-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9   PNFI 0.51992706   satisfactory</span></span>
+<span id="cb279-16"><a href="interpretazione-2.html#cb279-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10   IFI 1.00005373   satisfactory</span></span></code></pre></div>
 </div>
             </section>
 
