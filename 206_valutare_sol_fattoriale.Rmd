@@ -10,37 +10,35 @@ library("lavaan")
 La maggior parte di strumenti usati nell'assessment psicologico e
 neuropsicologico non valuta una singola dimensione psicologica, ma
 piuttosto misura molteplici aspetti di un costrutto. Di conseguenza,
-l'analisi fattoriale produce solitamente una soluzione con più di un
-fattore. Idealmente, dopo la rotazione, ciascun item saturerà fortemente
-in un singolo fattore e debolmente negli altri. In realtà, anche dopo la
-rotazione degli assi fattoriali, talvolta si presentano item che
-saturano debolmente in tutti i fattori, oppure item che saturano
-fortemente in più di un fattore.
+l'analisi fattoriale produce solitamente una soluzione a più 
+fattori. Idealmente, dopo la rotazione, ciascun item saturerà fortemente
+su un singolo fattore e debolmente sugli altri. In realtà, anche dopo la
+rotazione degli assi fattoriali, spesso si presentano item che
+saturano debolmente su tutti i fattori, oppure item che saturano
+fortemente su più di un fattore.
 
-Uno dei primi passi da compiere per valutare e rifinire la soluzione
-fattoriale è quello di valutare la matrice di struttura in base al
-criterio della "struttura semplice" e poi esaminare gli effetti delle
-azioni intraprese (es., eliminare alcuni item) nella matrice pattern.
-Ricordiamo che la matrice di struttura contiene le correlazioni tra item
+Uno dei primi passi da compiere per  rifinire la soluzione
+fattoriale è quello di valutare la matrice struttura e intervenire utilizzando il 
+criterio della "struttura semplice", per poi valutare gli effetti delle
+azioni intraprese (es., eliminazione di alcuni item) nella matrice pattern.
+Ricordiamo che la matrice struttura contiene le correlazioni tra item
 e fattori, mentre la matrice pattern contiene le saturazioni fattoriali.
 
 ### Item con basse saturazioni su tutti i fattori
 
-Prima di procedere all'analisi fattoriale è auspicabile esaminare la
+Prima di procedere con l'analisi fattoriale è auspicabile esaminare la
 matrice di correlazioni tra gli item ed eliminare quegli item che sono
-insufficientemente correlati con tutti gli altri item nella matrice.
-Tuttavia, anche dopo questo screening iniziale, è possibile trovare item
-con basse saturazioni su tutti i fattori. Dal punto di vista pratico,
-per basse saturazioni si intendono quelle il cui valore assoluto è
+insufficientemente correlati con gli altri item della matrice.
+Tuttavia, anche dopo questo screening iniziale, è possibile che vi siano item
+caratterizzati da saturazioni basse su tutti i fattori. Dal punto di vista pratico,
+si considerano "basse" le saturazioni il cui valore assoluto è
 minore di 0.30 (Hair et al., 1995). Hair e collaboratori suggeriscono
-due soluzioni nel caso di item con basse saturazioni su tutti i fattori:
-(1) eliminare gli item con basse saturazioni, (2) valutare le comunalità
-degli item problematici e il contributo specifico che forniscono allo
-strumento. Se un item ha una bassa comunalità, o se il contributo di un
-item nei confronti del significato generale dello strumento è di poca
-importanza, allora l'item dovrebbe essere eliminato. Si procede dunque
-alla creazione di una nuova soluzione fattoriale e i risultati vengono
-riesaminati.
+due soluzioni nel caso di item con  saturazioni basse su tutti i fattori:
+
+- eliminare gli item con basse saturazioni, 
+- valutare le comunalità degli item problematici e il contributo specifico che forniscono allo strumento. 
+
+Se un item ha una bassa comunalità, o se il contributo di un item nei confronti del significato generale dello strumento è di poca importanza, allora l'item dovrebbe essere eliminato. Dopo l'eliminazione degli item critici, si procede calcolando una nuova soluzione fattoriale e si esaminano i risultati ottenuti.
 
 Se vi sono degli item con basse saturazioni su tutti i fattori che però
 contribuiscono in maniera importante a determinare il significato della
@@ -50,12 +48,8 @@ dalle altre.
 
 ### Item con saturazioni evevate su più di un fattore
 
-È comune trovare item che saturano su fattori multipli (pesi fattoriali
-$>$ .30), specialmente nel caso di soluzioni fattoriali ottenuti dopo
-una rotazione obliqua. Kline (2000) suggerisce di eliminare tali item in
-quanto rendono difficile da interpretare il significato della scala che
-così si ottiene. Hair e collaboratori (1995) ritengono invece che tali
-item debbano essere mantenuti dato possono chiarire il significato dei
+È comune anche il caso opposto, ovvero quello nel quale ci sono item che saturano su fattori multipli (con saturazioni fattoriali $>$ .30), specialmente nel caso di soluzioni fattoriali ottenutie dopo una rotazione obliqua. Kline (2000) suggerisce di eliminare tali item in quanto rendono difficile da interpretare il significato della scala che così si ottiene. Hair e collaboratori (1995) ritengono invece che tali
+item dovrebbero essere mantenuti, dato possono chiarire il significato dei
 fattori che la scala identifica.
 
 ## Valutazione dell'attendibilità
@@ -64,14 +58,16 @@ All'interno del problema della costruzione di uno strumento vengono
 esaminati tre aspetti dell'attendibilità: la consistenza interna, la
 stabilità e l'equivalenza.
 
-### La procedura split-half
+### Consistenza interna
+
+#### La procedura split-half
 
 La consistenza interna misura il grado di coerenza tra gli item che
 costituiscono lo strumento o le sottoscale dello strumento. Se tutti gli
 item che costituiscono uno strumento o una sua sottoscala misurano la
-stessa cosa, allora saranno fortemente associati tra loro. La
-consistenza interna misurata con il metodo dello split-half si determina
-calcolando la correlazione di Pearson tra i punteggi ottenuti
+stessa cosa, allora saranno fortemente associati tra loro. 
+
+È possibile misurare la consistenza interna con il metodo dello split-half, ovvero mediante la correlazione di Pearson tra i punteggi ottenuti
 utilizzando ciascuna delle due metà degli item dello strumento. Usando
 un software, è meglio trovare la media delle correlazioni inter-item
 ricavabili a partire da tutte le possibili divisioni a metà dell'insieme
@@ -83,27 +79,25 @@ Spearman-Brown per tenere in considerazione il fatto che l'attendibilità
 Si noti che la formula di Spearman-Brown è basata sull'assunzione che le
 due metà dello strumento siano parallele, ovvero che abbiano identici
 punteggi veri e uguali varianze d'errore (questa assunzione comporta la
-conseguenza che le due metà degli item producono punteggi aventi uguali
-medie e varianze). Se queste assunzioni molto stringenti non vengono
-soddisfatte, allora ciò conduce ad una sovrastima dell'attendibilità
-della scala.
+conseguenza per cui le due metà degli item devono producono punteggi aventi la stessa media e la stessa varianza). Se queste assunzioni molto stringenti non vengono
+soddisfatte, allora la procedura descritta sopra conduce ad una sovrastima dell'attendibilità quale consisenza interna della scala.
 
-##### L'analisi della varianza
+#### L'analisi della varianza
 
 Se tutti gli item di uno strumento o di una sottoscala sono espressione
 dello stesso costrutto, allora ci dobbiamo aspettare che anche le medie
 dei punteggi sugli item siano uguali. Come è stato detto sopra, questa è
 infatti una delle assunzioni delle forme strettamente parallele di un
 test. È dunque possibile verificare questa assunzione mediante un'ANOVA
-che, appunto, sottopone a test l'ipotesi nulla dell'uguaglianza delle
-medie. Nel caso degli item di un test, dato che ciascun soggetto
+che sottopone a test l'ipotesi nulla dell'uguaglianza delle
+medie di gruppi. Nel caso degli item di un test, dato che ciascun soggetto
 completa tutti gli item che costituiscono lo strumento, è appropriato
 usare un'ANOVA per misure ripetute che, nella sua declinazione più
-moderna, corrisponde ad un modello multilivello (*mixed-effect model*).
+moderna, corrisponde ad un modello multi-livello (*mixed-effect model*).
 
-### L'indice $\alpha$ di Cronbach
+#### L'indice $\alpha$ di Cronbach
 
-L'indice $\alpha$ di Cronbach è la misura più utilizzata per valutare
+L'indice $\alpha$ di Cronbach è comunque la misura più utilizzata per valutare
 l'attendibilità quale consistenza interna di uno strumento. L'$\alpha$
 di Cronbach è stato interpretato come la proporzione di varianza della
 scala che può essere attribuita al fattore comune (DeVellis, 1991). Può
@@ -114,11 +108,9 @@ costrutto (Kline, 1986). La radice quadrata del coefficiente $\alpha$ di
 Cronbach rappresenta la correlazione stimata tra i punteggi ottenuti
 tramite lo strumento e i punteggi veri (Nunnally & Bernstein, 1994).
 
-In precedenza abbiamo descritto una serie di limiti
-del coefficiente $\alpha$ di Cronbach. In generale, molti ricercatori
-suggeriscono di usare al suo posto l'indice $\omega$ di McDonald.
+In precedenza abbiamo descritto una serie di limiti del coefficiente $\alpha$ di Cronbach. In generale, molti ricercatori suggeriscono di usare al suo posto l'indice $\omega$ di McDonald.
 
-### L'attendibilità quale stabilità temporale
+### Stabilità temporale
 
 La stabilità temporale viene valutata attraverso la procedura di
 test-retest. La correlazione tra le misure ottenute in due momenti negli
@@ -148,7 +140,7 @@ necessario valutare la stabilità temporale nel corso di un lungo arco
 temporale, Nunnally e Bernstein (1994) suggeriscono di utilizzare un
 intervallo di sei mesi o maggiore.
 
-### Forme parallele
+### Equivalenza
 
 Per cercare di evitare i problemi associati all'attendibilità quale
 stabilità temporale, alcuni autori si sono posti il problema di
@@ -184,27 +176,23 @@ numero di possibilità. Per esempio, da un insieme iniziale neanche
 troppo numeroso di 100 item, il numero di sottoinsiemi di 20 item è
 uguale a 
 
-$$\binom{100}{20} = 5.36 \times 10^{20}$$ 
+$$
+\binom{100}{20} = 5.36 \times 10^{20}.
+$$ 
 
-È dunque necessario
-trovare metodi alternativi che evitino una tale esplosione combinatoria.
-
-A questo fine è utile calcolare la *quantità di informazione* di ciascun
-item: 
+È dunque necessario trovare metodi alternativi che evitino una tale esplosione combinatoria. A questo fine, ovvero per procedere alla selezione del sottoinsieme dei  "migliori" item, @mcdonald2013test suggerisce di calcolare la *quantità di informazione* di ciascun item. La quantità di informazione di un item è definita come rapporto tra segnale/rumore, in relazione alla scomposizione della varianza dell'item:
 
 $$
 \frac{\lambda_i^2}{\psi_{ii}}.
 $$ 
 
-McDonald (2013) mostra che l'omissione di uno o più item produce sempre una riduzione
-dell'attendibilità del test (ovvero, una riduzione nel valore di
-$\omega$). Tuttavia, tale riduzione è tanto più piccola quanto più
+@mcdonald2013test mostra come l'omissione di uno o più item produce sempre una riduzione dell'attendibilità del test (ovvero, una riduzione nel valore del coefficiente $\omega$). Tuttavia, tale riduzione è tanto più piccola quanto più
 piccola è la quantità di informazione degli item omessi. Il processo di
 selezione degli item può dunque essere guidato da un semplice principio:
-si selezionano gli item aventi la quantità di informazione maggiore.
+si selezionano gli item aventi la quantità di informazione maggiore. Ovvero, in altre parole, si rimuovono gli item aventi la quantità di informazione più bassa.
 
 ::: {.example}
-Si consideri nuovamente la matrice di varianze e di covarianze SWLS:
+Per fare un esempio, consideriamo nuovamente la matrice di varianze e di covarianze della scala SWLS.
 
 ```{r}
 varnames <- c("Y1", "Y2", "Y3", "Y4", "Y5")
@@ -221,8 +209,8 @@ dimnames = list(varnames, varnames)
 SWLS
 ```
 
-Utilizzando la funzione `sem()` contenuta nel pacchetto `sem` il modello
-ad un fattore viene definito nel modo seguente:
+Utilizzando la funzione `cfa()` contenuta nel pacchetto `lavaan`, il modello
+ad un fattore viene definito nel modo seguente.
 
 ```{r}
 mod_1 <- "
@@ -230,8 +218,7 @@ mod_1 <- "
 "
 ```
 
-Otteniamo così una stima dei pesi fattoriali e delle varianze
-specifiche:
+Otteniamo così una stima dei pesi fattoriali e delle unicità.
 
 ```{r}
 fit <- lavaan::cfa(
@@ -242,20 +229,21 @@ fit <- lavaan::cfa(
 )
 ```
 
-Esaminiamo la *quantità di informazione* fornita da ciascun item.
+Calcoliamo la quantità di informazione fornita da ciascun item. Iniziamo a estrarre dall'oggetto `fit` la matrice delle saturazioni fattoriali.
 
 ```{r}
 lambda <- inspect(fit, what="std")$lambda
 lambda
 ```
 
+Estraiamo da `fit` le specificità.
+
 ```{r}
 theta <- diag(inspect(fit, what="std")$theta)
 theta
 ```
 
-Possiamo calcolare tale quantità facendo il rapporto tra ciascun peso
-fattoriale innalzato al quadrato e la sua varianza specifica:
+Possiamo ora calcolare quantità di informazione degli item facendo il rapporto tra ciascuna saturazione fattoriale innalzata al quadrato e la corrispondente specificità.
 
 ```{r}
 for (i in 1:5) {
@@ -263,20 +251,14 @@ for (i in 1:5) {
 }
 ```
 
-Tale risultato indica che il quarto item è il meno informativo e che il
+Il risultato ottenuto indica che il quarto item è il meno informativo e che il
 quinto item è il secondo meno informativo. Se un solo item deve essere
-eliminato, dunque, questo sarà il quarto item. Se devono essere
-eliminati due item, dunque, andranno eliminati il quarto e il quinto
+eliminato, dunque, elimineremo il quarto item. Se devono essere
+eliminati due item, andranno eliminati il quarto e il quinto
 item.
 :::
 
-In conclusione, possiamo dire che l'omissione di un item provoca sempre
-una riduzione del valore di $\omega$ del test. Tale riduzione è però
-tanto minore quanto più piccola è la quantità di informazione dell'item
-omesso. Questo principio può essere usato per selezionare gli item del
-test.
-
-## Attendibilità e numero di item {#sec:reliability_number_item}
+### Attendibilità e numero di item 
 
 Di quanto cambia l'attendibilità di uno strumento se viene variato il
 numero di item? Una risposta a questa domanda può essere fornita dalla
@@ -288,41 +270,40 @@ Spearman-Brown,
   (\#eq:spearman-brown)
 \end{equation}
  
-$\rho_1$ rappresenti l'attendibilità di un test costituito da un certo numero di item.
-Ponendo $p=2$, la \@ref(eq:spearman-brown) ci fornisce una stima dell'attendibilità
-di un test costituito da un numero doppio di item rispetto al test
-originario. Valori di $p$ minori di $1$, invece, vengono usati per
-predire le variazioni dell'attendibilità conseguenti ad una diminuzione
-nel numero degli item del test.
+$\rho_1$ rappresenti l'attendibilità di un test costituito da un certo numero di item. Se poniamo $p=2$, la \@ref(eq:spearman-brown) ci fornisce una stima dell'attendibilità che si otterrebbe raddoppiando il numero di item nel test. Valori di $p$ minori di $1$, invece, vengono usati per predire la diminuizione dell'attendibilità conseguente ad una diminuzione nel numero degli item del test.
 
-Ricordiamo che le predizioni della formula di Spearman-Brown sono
-accurate solo se la forma allungata o accorciata del test è parallela al
+Ricordiamo però che le predizioni della formula di Spearman-Brown sono
+accurate solo se la forma allungata o accorciata del test è parallela rispetto al
 test considerato. Per esempio, se ad un test con un coefficiente di
 attendibilità molto alto vengono aggiunti item aventi una bassa
 attendibilità, allora l'attendibilità del test allungato sarà minore di
 quella predetta dalla formula di Spearman-Brown.
 
-::: exmp
+Anche se la formula di Spearman-Brown ha un ruolo centrale nella teoria
+classica dei test, si tenga conto che non rappresenta l'unico strumento
+che può essere utilizzato per valutare la relazione tra attendibilità e numero degli item del test. La quantità detta *informazione dell'item* (*item information*), formulata dai modelli IRT, consente di predire i cambiamenti nella qualità della misura a seguito dell'aggiunta o della cancellazione di un sottoinsieme di item.
+
+::: {.example}
 Si consideri la scala SWLS. Chiediamoci come varia l'attendibilità della
-scala se il numero di item aumenta da 5 a 20. L'attendibilità della
-scala SWLS costituita da 5 item è 0.824. Applicando la formula di
-Spearman-Brown otteniamo:
+scala se il numero di item aumenta da 5 a 20. Poniamo che l'attendibilità della
+scala SWLS costituita da 5 item sia uguale a 0.824. Applicando la formula di
+Spearman-Brown otteniamo la stima seguente.
 
 ```{r}
 (4 * 0.824) / ((4 - 1) * 0.824 + 1)
 ```
 :::
 
-::: exmp
-In maniera alternativa, supponiamo che i 15 item aggiuntivi abbiano le
-stesse saturazioni fattoriali medie ($\bar{\lambda}$) e le stesse
-varianze specifiche medie ($\bar{\psi}$) rispetto agli item originali.
-Mediante gli item di cui disponiamo, definiamo l'attendibilità di un
-"item medio" come
+::: {.example}
+Possiamo giungere al risultato precedente in un altro modo. Supponiamo che i 15 item aggiuntivi abbiano le stesse saturazioni fattoriali medie ($\bar{\lambda}$) e le stesse varianze specifiche medie ($\bar{\psi}$) rispetto agli item originali.
+Mediante gli item di cui disponiamo, stimiamo l'attendibilità di un
+"item medio" nel modo seguente
 
-$$\rho_1 = \frac{\bar{\lambda}^2}{\bar{\lambda}^2 + \bar{\psi}}.$$
+$$
+\rho_1 = \frac{\bar{\lambda}^2}{\bar{\lambda}^2 + \bar{\psi}},
+$$
 
-Ovvero
+ovvero otteniamo la stima di 0.48:
 
 ```{r}
 rho_1 <- mean(lambda)^2 / (mean(lambda)^2 + mean(theta)) 
@@ -339,9 +320,9 @@ uguale a
 il che replica il risultato ottenuto precedentemente.
 :::
 
-::: exmp
-Un altro modo ancora per ottenere lo stesso risultato è quello di
-adattare ai dati il modello monofattoriale con item paralleli:
+::: {.example}
+Un altro modo ancora per ottenere lo stesso risultato è quello di utilizzare 
+un modello mono-fattoriale per item paralleli.
 
 ```{r}
 mod_2 <- "
@@ -354,6 +335,8 @@ mod_2 <- "
 "
 ```
 
+Adattiamo il modello ai dati.
+
 ```{r}
 fit2 <- lavaan::cfa(
   mod_2,
@@ -363,35 +346,35 @@ fit2 <- lavaan::cfa(
 )
 ```
 
-da cui
+Estraiamo dall'oggetto `fit2` le saturazioni fattoriali.
 
 ```{r}
 lambda <- inspect(fit2, what="std")$lambda
 lambda
 ```
 
+Estraiamo da `fit2` le specificità.
+
 ```{r}
 theta <- diag(inspect(fit2, what="std")$theta)
 theta
 ```
+
+Calcoliamo l'attendibilità dell'item "medio" usando $\lambda$ e $\psi$ (chiamato `theta` da `lavaan`).
 
 ```{r}
 rho_1 <- lambda[1]^2 / (lambda[1]^2 + theta[2])
 rho_1 
 ```
 
+Posso ora applicare la formula di Spearman-Brown.
+
 ```{r}
 (20 * rho_1) / ((20 - 1) * rho_1 + 1) 
 ```
-:::
 
-Anche se la formula di Spearman-Brown ha un ruolo centrale nella teoria
-classica dei test, si tenga conto che non rappresenta l'unico strumento
-che può essere utilizzato a questo proposito. La quantità detta
-*informazione dell'item* (*item information*), formulata dai modelli
-IRT, consente di predire con maggiore precisione i cambiamenti nella
-qualità della misura a seguito dell'aggiunta o della cancellazione di un
-sottoinsieme di item.
+Il risultato è praticamente identico a quelli trovati in precedenza.
+:::
 
 ### Numero di item e affidabilità
 
@@ -402,9 +385,9 @@ p = \frac{\rho_p (1-\rho_1)}{\rho_1(1-\rho_p)},
 (\#eq:s-b-inv)
 \end{equation}
 
-dove $\rho_1$ è l'attendibilità stimata di un "item medio," $\rho_p$ è il livello desiderato di attendibilità del test totale e $p$ è il numero di item del test allungato.
+dove $\rho_1$ è l'attendibilità stimata di un "item medio," $\rho_p$ è il livello desiderato di attendibilità del test allungato e $p$ è il numero di item del test allungato.
 
-::: exmp
+::: {.example}
 L'attendibilità della scala SWLS costituita da 5 item è
 $\omega = 0.824$. Quanti item devono essere aggiunti se si vuole
 raggiungere un livello di attendibilità pari a $0.95$?
@@ -666,16 +649,16 @@ $$\alpha = \frac{p}{p-1}\left[1- \frac{\sum \sigma^2_{X_i}}{\sigma^2_T} \right],
 la scelta di massimizzare il rapporto definito in precedenza avrà anche
 la conseguenza di massimizzare $\alpha$.
 
-McDondald (1999) fa notare che una procedura di selezione degli item
+@mcdonald2013test fa notare che una procedura di selezione degli item
 basata sul principio della massimizzazione di $\alpha$ ha però dei
 limiti. In primo luogo, tale procedura è appropriata solo quando
 l'insieme di item è troppo grande per selezionare gli item in base
 all'esame dell saturazioni fattoriali ottenute applicando il modello
-monofattoriale. Inoltre, anche se il modello monofattoriale non può
+mono-fattoriale. Inoltre, anche se il modello mono-fattoriale non può
 essere applicato per problemi pratici, a causa del numero di item troppo
 grande, tale modello deve essere comunque adeguato anche se si procede
 selezionando gli item sulla base di $\alpha$. Ovviamente, però, tale
-assunzione non può essere verificata. In secondo luogo, McDondald (1999)
+assunzione non può essere verificata. In secondo luogo, @mcdonald2013test
 nota che la procedura di selezione basata sulla massimizzazione di
 $\alpha$ non è adeguata neanche nel caso in cui il costrutto latente
 abbia una struttura gerarchica, con un fattore generale ed una serie di

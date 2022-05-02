@@ -447,15 +447,15 @@ $$
 :::
 
 
-Lo stesso risultato si ottiene con la funzione `CI.tscore()` del
-pacchetto `psychometric` che richiede i seguenti argomenti: il punteggio
-osservato, la media del campione, la deviazione standard del campione e
-l'attendibilità del test:
+<!-- Lo stesso risultato si ottiene con la funzione `CI.tscore()` del -->
+<!-- pacchetto `psychometric` che richiede i seguenti argomenti: il punteggio -->
+<!-- osservato, la media del campione, la deviazione standard del campione e -->
+<!-- l'attendibilità del test: -->
 
-```{r}
-library("psychometric")
-CI.tscore(120, 100, 15, 0.65)
-```
+<!-- ```{r} -->
+<!-- library("psychometric") -->
+<!-- CI.tscore(120, 100, 15, 0.65) -->
+<!-- ``` -->
 
 ## Cut-off
 

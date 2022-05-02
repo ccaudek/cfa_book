@@ -1,7 +1,5 @@
-book_filename: cfa_book
-repo: https://github.com/ccaudek/ds4psy/
-output_dir: _book
-clean: [packages.bib]
+book_filename: cfa
+output_dir: docs
 language:
   label:
     fig: "FIGURA "
@@ -59,9 +57,5 @@ rmd_files:
     - "860_efficacy_effectiveness.Rmd"
     - "865_effect_size.Rmd"
     - "900_lin_alg.Rmd"
-
 delete_merged_file: true
 
-header-includes:
-  - \usepackage{tikz}
-  - \usepackage{pgfplots}

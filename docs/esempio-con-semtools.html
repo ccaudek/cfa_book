@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>17.5 Esempio con semTools | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)</title>
+  <meta name="description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2021/2022) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="17.5 Esempio con semTools | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2021/2022) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
+  <meta name="github-repo" content="ccaudek/cfa_book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="17.5 Esempio con semTools | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
+  
+  <meta name="twitter:description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2021/2022) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
+  
+
+<meta name="author" content="Corrado Caudek" />
+
+
+<meta name="date" content="2022-05-02" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="matrice-dei-pesi-fattoriali-e-matrice-di-struttura.html"/>
+<link rel="next" href="interpretazione-1.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Appunti di Costruzione e valutazione di test psicometrici</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefazione</a></li>
+<li class="part"><span><b>I Il modello lineare</b></span></li>
+<li class="chapter" data-level="1" data-path="lanalisi-di-regressione.html"><a href="lanalisi-di-regressione.html"><i class="fa fa-check"></i><b>1</b> L’analisi di regressione</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="regressione-bivariata.html"><a href="regressione-bivariata.html"><i class="fa fa-check"></i><b>1.1</b> Regressione bivariata</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="regressione-bivariata.html"><a href="regressione-bivariata.html#regressori-centrati"><i class="fa fa-check"></i><b>1.1.1</b> Regressori centrati</a></li>
+<li class="chapter" data-level="1.1.2" data-path="regressione-bivariata.html"><a href="regressione-bivariata.html#minimi-quadrati"><i class="fa fa-check"></i><b>1.1.2</b> Minimi quadrati</a></li>
+<li class="chapter" data-level="1.1.3" data-path="regressione-bivariata.html"><a href="regressione-bivariata.html#relazione-tra-b-e-r"><i class="fa fa-check"></i><b>1.1.3</b> Relazione tra <span class="math inline">\(b\)</span> e <span class="math inline">\(r\)</span></a></li>
+<li class="chapter" data-level="1.1.4" data-path="regressione-bivariata.html"><a href="regressione-bivariata.html#attenuazione"><i class="fa fa-check"></i><b>1.1.4</b> Attenuazione</a></li>
+<li class="chapter" data-level="1.1.5" data-path="regressione-bivariata.html"><a href="regressione-bivariata.html#coefficiente-di-determinazione"><i class="fa fa-check"></i><b>1.1.5</b> Coefficiente di determinazione</a></li>
+<li class="chapter" data-level="1.1.6" data-path="regressione-bivariata.html"><a href="regressione-bivariata.html#errore-standard-della-regressione"><i class="fa fa-check"></i><b>1.1.6</b> Errore standard della regressione</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="regressione-multipla.html"><a href="regressione-multipla.html"><i class="fa fa-check"></i><b>1.2</b> Regressione multipla</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="regressione-multipla.html"><a href="regressione-multipla.html#significato-dei-coefficienti-parziali-di-regressione"><i class="fa fa-check"></i><b>1.2.1</b> Significato dei coefficienti parziali di regressione</a></li>
+<li class="chapter" data-level="1.2.2" data-path="regressione-multipla.html"><a href="regressione-multipla.html#relazioni-causali"><i class="fa fa-check"></i><b>1.2.2</b> Relazioni causali</a></li>
+<li class="chapter" data-level="1.2.3" data-path="regressione-multipla.html"><a href="regressione-multipla.html#errore-di-specificazione"><i class="fa fa-check"></i><b>1.2.3</b> Errore di specificazione</a></li>
+<li class="chapter" data-level="1.2.4" data-path="regressione-multipla.html"><a href="regressione-multipla.html#soppressione"><i class="fa fa-check"></i><b>1.2.4</b> Soppressione</a></li>
+<li class="chapter" data-level="1.2.5" data-path="regressione-multipla.html"><a href="regressione-multipla.html#stepwise-regression"><i class="fa fa-check"></i><b>1.2.5</b> Stepwise regression</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II La teoria classica dei test</b></span></li>
+<li class="chapter" data-level="2" data-path="ch:teoria_classica.html"><a href="ch:teoria_classica.html"><i class="fa fa-check"></i><b>2</b> Fondamenti teorici</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="valutazione-psicometrica-come-ragionamento-inferenziale.html"><a href="valutazione-psicometrica-come-ragionamento-inferenziale.html"><i class="fa fa-check"></i><b>2.1</b> Valutazione psicometrica come ragionamento inferenziale</a></li>
+<li class="chapter" data-level="2.2" data-path="la-teoria-classica.html"><a href="la-teoria-classica.html"><i class="fa fa-check"></i><b>2.2</b> La Teoria Classica</a></li>
+<li class="chapter" data-level="2.3" data-path="le-due-componenti-del-punteggio-osservato.html"><a href="le-due-componenti-del-punteggio-osservato.html"><i class="fa fa-check"></i><b>2.3</b> Le due componenti del punteggio osservato</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="le-due-componenti-del-punteggio-osservato.html"><a href="le-due-componenti-del-punteggio-osservato.html#il-punteggio-vero"><i class="fa fa-check"></i><b>2.3.1</b> Il punteggio vero</a></li>
+<li class="chapter" data-level="2.3.2" data-path="le-due-componenti-del-punteggio-osservato.html"><a href="le-due-componenti-del-punteggio-osservato.html#somministrazioni-ripetute"><i class="fa fa-check"></i><b>2.3.2</b> Somministrazioni ripetute</a></li>
+<li class="chapter" data-level="2.3.3" data-path="le-due-componenti-del-punteggio-osservato.html"><a href="le-due-componenti-del-punteggio-osservato.html#le-assunzioni-sul-punteggio-ottenuto"><i class="fa fa-check"></i><b>2.3.3</b> Le assunzioni sul punteggio ottenuto</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="lerrore-standard-della-misurazione-sigma_e.html"><a href="lerrore-standard-della-misurazione-sigma_e.html"><i class="fa fa-check"></i><b>2.4</b> L’errore standard della misurazione <span class="math inline">\(\sigma_E\)</span></a></li>
+<li class="chapter" data-level="2.5" data-path="assiomi-della-teoria-classica.html"><a href="assiomi-della-teoria-classica.html"><i class="fa fa-check"></i><b>2.5</b> Assiomi della Teoria Classica</a></li>
+<li class="chapter" data-level="2.6" data-path="lattendibilità-del-test.html"><a href="lattendibilità-del-test.html"><i class="fa fa-check"></i><b>2.6</b> L’attendibilità del test</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="lattendibilità-del-test.html"><a href="lattendibilità-del-test.html#la-varianza-del-punteggio-osservato"><i class="fa fa-check"></i><b>2.6.1</b> La varianza del punteggio osservato</a></li>
+<li class="chapter" data-level="2.6.2" data-path="lattendibilità-del-test.html"><a href="lattendibilità-del-test.html#la-covarianza-tra-punteggio-osservato-e-punteggio-vero"><i class="fa fa-check"></i><b>2.6.2</b> La covarianza tra punteggio osservato e punteggio vero</a></li>
+<li class="chapter" data-level="2.6.3" data-path="lattendibilità-del-test.html"><a href="lattendibilità-del-test.html#correlazione-tra-punteggio-osservato-e-punteggio-vero"><i class="fa fa-check"></i><b>2.6.3</b> Correlazione tra punteggio osservato e punteggio vero</a></li>
+<li class="chapter" data-level="2.6.4" data-path="lattendibilità-del-test.html"><a href="lattendibilità-del-test.html#definizione-e-significato-dellattendibilità"><i class="fa fa-check"></i><b>2.6.4</b> Definizione e significato dell’attendibilità</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="attendibilità-e-modello-di-regressione-lineare.html"><a href="attendibilità-e-modello-di-regressione-lineare.html"><i class="fa fa-check"></i><b>2.7</b> Attendibilità e modello di regressione lineare</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="attendibilità-e-modello-di-regressione-lineare.html"><a href="attendibilità-e-modello-di-regressione-lineare.html#simulazione"><i class="fa fa-check"></i><b>2.7.1</b> Simulazione</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="misurazioni-parallele-e-affidabilità.html"><a href="misurazioni-parallele-e-affidabilità.html"><i class="fa fa-check"></i><b>2.8</b> Misurazioni parallele e affidabilità</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="misurazioni-parallele-e-affidabilità.html"><a href="misurazioni-parallele-e-affidabilità.html#la-correlazione-tra-due-forme-parallele-del-test"><i class="fa fa-check"></i><b>2.8.1</b> La correlazione tra due forme parallele del test</a></li>
+<li class="chapter" data-level="2.8.2" data-path="misurazioni-parallele-e-affidabilità.html"><a href="misurazioni-parallele-e-affidabilità.html#la-correlazione-tra-punteggio-osservato-e-punteggio-vero"><i class="fa fa-check"></i><b>2.8.2</b> La correlazione tra punteggio osservato e punteggio vero</a></li>
+<li class="chapter" data-level="2.8.3" data-path="misurazioni-parallele-e-affidabilità.html"><a href="misurazioni-parallele-e-affidabilità.html#i-fattori-che-influenzano-lattendibilità"><i class="fa fa-check"></i><b>2.8.3</b> I fattori che influenzano l’attendibilità</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><a href="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><i class="fa fa-check"></i><b>2.9</b> Metodi alternativi per la stima del coefficiente di attendibilità</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ch:err_stnd_mis.html"><a href="ch:err_stnd_mis.html"><i class="fa fa-check"></i><b>3</b> L’incertezza della misura</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>3.1</b> La stima dell’errore standard della misurazione</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#interpretazione"><i class="fa fa-check"></i><b>3.1.1</b> Interpretazione</a></li>
+<li class="chapter" data-level="3.1.2" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#simulazione-1"><i class="fa fa-check"></i><b>3.1.2</b> Simulazione</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="dimostrazione.html"><a href="dimostrazione.html"><i class="fa fa-check"></i><b>3.2</b> Dimostrazione</a></li>
+<li class="chapter" data-level="3.3" data-path="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><a href="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><i class="fa fa-check"></i><b>3.3</b> Intervallo di confidenza per il punteggio vero e <span class="math inline">\(\sigma_E\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ch:err_stnd_stima.html"><a href="ch:err_stnd_stima.html"><i class="fa fa-check"></i><b>4</b> La stima del punteggio vero</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="il-paradosso-di-kelley.html"><a href="il-paradosso-di-kelley.html"><i class="fa fa-check"></i><b>4.1</b> Il paradosso di Kelley</a></li>
+<li class="chapter" data-level="4.2" data-path="lerrore-standard-della-stima.html"><a href="lerrore-standard-della-stima.html"><i class="fa fa-check"></i><b>4.2</b> L’errore standard della stima</a></li>
+<li class="chapter" data-level="4.3" data-path="intervallo-di-confidenza-per-il-punteggio-vero.html"><a href="intervallo-di-confidenza-per-il-punteggio-vero.html"><i class="fa fa-check"></i><b>4.3</b> Intervallo di confidenza per il punteggio vero</a></li>
+<li class="chapter" data-level="4.4" data-path="cut-off.html"><a href="cut-off.html"><i class="fa fa-check"></i><b>4.4</b> Cut-off</a></li>
+<li class="chapter" data-level="4.5" data-path="procedure-alternative.html"><a href="procedure-alternative.html"><i class="fa fa-check"></i><b>4.5</b> Procedure alternative</a></li>
+</ul></li>
+<li class="part"><span><b>III L’analisi fattoriale</b></span></li>
+<li class="chapter" data-level="5" data-path="ch:sviluppo.html"><a href="ch:sviluppo.html"><i class="fa fa-check"></i><b>5</b> Utilizzo e costruzione di test psicometrici</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="caratteristiche-dellanalisi-fattoriale.html"><a href="caratteristiche-dellanalisi-fattoriale.html"><i class="fa fa-check"></i><b>5.1</b> Caratteristiche dell’analisi fattoriale</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="caratteristiche-dellanalisi-fattoriale.html"><a href="caratteristiche-dellanalisi-fattoriale.html#lanalisi-fattoriale-esplorativa-e-confermativa"><i class="fa fa-check"></i><b>5.1.1</b> L’analisi fattoriale esplorativa e confermativa</a></li>
+<li class="chapter" data-level="5.1.2" data-path="caratteristiche-dellanalisi-fattoriale.html"><a href="caratteristiche-dellanalisi-fattoriale.html#assunzioni-dellanalisi-fattoriale"><i class="fa fa-check"></i><b>5.1.2</b> Assunzioni dell’analisi fattoriale</a></li>
+<li class="chapter" data-level="5.1.3" data-path="caratteristiche-dellanalisi-fattoriale.html"><a href="caratteristiche-dellanalisi-fattoriale.html#sviluppo-storico-dellanalisi-fattoriale"><i class="fa fa-check"></i><b>5.1.3</b> Sviluppo storico dell’analisi fattoriale</a></li>
+<li class="chapter" data-level="5.1.4" data-path="caratteristiche-dellanalisi-fattoriale.html"><a href="caratteristiche-dellanalisi-fattoriale.html#fasi-dellanalisi-fattoriale"><i class="fa fa-check"></i><b>5.1.4</b> Fasi dell’analisi fattoriale</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ch:spearman.html"><a href="ch:spearman.html"><i class="fa fa-check"></i><b>6</b> Il modello unifattoriale</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="modello-monofattoriale.html"><a href="modello-monofattoriale.html"><i class="fa fa-check"></i><b>6.1</b> Modello monofattoriale</a></li>
+<li class="chapter" data-level="6.2" data-path="correlazione-parziale.html"><a href="correlazione-parziale.html"><i class="fa fa-check"></i><b>6.2</b> Correlazione parziale</a></li>
+<li class="chapter" data-level="6.3" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html"><i class="fa fa-check"></i><b>6.3</b> Principio base dell’analisi fattoriale</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html#vincoli-sulle-correlazioni"><i class="fa fa-check"></i><b>6.3.1</b> Vincoli sulle correlazioni</a></li>
+<li class="chapter" data-level="6.3.2" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html#teoria-dei-due-fattori"><i class="fa fa-check"></i><b>6.3.2</b> Teoria dei Due Fattori</a></li>
+<li class="chapter" data-level="6.3.3" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html#annullamento-della-tetrade"><i class="fa fa-check"></i><b>6.3.3</b> Annullamento della tetrade</a></li>
+<li class="chapter" data-level="6.3.4" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html#metodo-del-centroide"><i class="fa fa-check"></i><b>6.3.4</b> Metodo del centroide</a></li>
+<li class="chapter" data-level="6.3.5" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html#introduzione-a-lavaan"><i class="fa fa-check"></i><b>6.3.5</b> Introduzione a <code>lavaan</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="conclusioni.html"><a href="conclusioni.html"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ch:mod_unifattoriale.html"><a href="ch:mod_unifattoriale.html"><i class="fa fa-check"></i><b>7</b> Il modello statistico dell’analisi fattoriale</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="modello-monofattoriale-1.html"><a href="modello-monofattoriale-1.html"><i class="fa fa-check"></i><b>7.1</b> Modello monofattoriale</a></li>
+<li class="chapter" data-level="7.2" data-path="covarianza-tra-un-indicatore-e-il-fattore-comune.html"><a href="covarianza-tra-un-indicatore-e-il-fattore-comune.html"><i class="fa fa-check"></i><b>7.2</b> Covarianza tra un indicatore e il fattore comune</a></li>
+<li class="chapter" data-level="7.3" data-path="espressione-fattoriale-della-varianza.html"><a href="espressione-fattoriale-della-varianza.html"><i class="fa fa-check"></i><b>7.3</b> Espressione fattoriale della varianza</a></li>
+<li class="chapter" data-level="7.4" data-path="covarianza-tra-due-variabili-manifeste.html"><a href="covarianza-tra-due-variabili-manifeste.html"><i class="fa fa-check"></i><b>7.4</b> Covarianza tra due variabili manifeste</a></li>
+<li class="chapter" data-level="7.5" data-path="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html"><i class="fa fa-check"></i><b>7.5</b> Correlazioni osservate e correlazioni riprodotte dal modello</a></li>
+<li class="chapter" data-level="7.6" data-path="bontà-di-adattamento-del-modello-ai-dati.html"><a href="bontà-di-adattamento-del-modello-ai-dati.html"><i class="fa fa-check"></i><b>7.6</b> Bontà di adattamento del modello ai dati</a></li>
+<li class="chapter" data-level="7.7" data-path="lerrore-standard-della-misurazione-e-il-modello-fattoriale.html"><a href="lerrore-standard-della-misurazione-e-il-modello-fattoriale.html"><i class="fa fa-check"></i><b>7.7</b> L’errore standard della misurazione e il modello fattoriale</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="lerrore-standard-della-misurazione-e-il-modello-fattoriale.html"><a href="lerrore-standard-della-misurazione-e-il-modello-fattoriale.html#un-caso-concreto"><i class="fa fa-check"></i><b>7.7.1</b> Un caso concreto</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ch:mod_multifattoriale.html"><a href="ch:mod_multifattoriale.html"><i class="fa fa-check"></i><b>8</b> Il modello multifattoriale</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html"><i class="fa fa-check"></i><b>8.1</b> Modello multifattoriale: fattori ortogonali</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html#assunzioni-del-modello-multifattoriale"><i class="fa fa-check"></i><b>8.1.1</b> Assunzioni del modello multifattoriale</a></li>
+<li class="chapter" data-level="8.1.2" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html#interpretazione-dei-parametri-del-modello"><i class="fa fa-check"></i><b>8.1.2</b> Interpretazione dei parametri del modello</a></li>
+<li class="chapter" data-level="8.1.3" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html#covarianza-tra-variabili-e-fattori"><i class="fa fa-check"></i><b>8.1.3</b> Covarianza tra variabili e fattori</a></li>
+<li class="chapter" data-level="8.1.4" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html#espressione-fattoriale-della-varianza-1"><i class="fa fa-check"></i><b>8.1.4</b> Espressione fattoriale della varianza</a></li>
+<li class="chapter" data-level="8.1.5" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html#espressione-fattoriale-della-covarianza"><i class="fa fa-check"></i><b>8.1.5</b> Espressione fattoriale della covarianza</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="modello-fattoriale-fattori-obliqui.html"><a href="modello-fattoriale-fattori-obliqui.html"><i class="fa fa-check"></i><b>8.2</b> Modello fattoriale: Fattori obliqui</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="modello-fattoriale-fattori-obliqui.html"><a href="modello-fattoriale-fattori-obliqui.html#covarianza-teorica-tra-variabili-e-fattori"><i class="fa fa-check"></i><b>8.2.1</b> Covarianza teorica tra variabili e fattori</a></li>
+<li class="chapter" data-level="8.2.2" data-path="modello-fattoriale-fattori-obliqui.html"><a href="modello-fattoriale-fattori-obliqui.html#espressione-fattoriale-della-varianza-2"><i class="fa fa-check"></i><b>8.2.2</b> Espressione fattoriale della varianza</a></li>
+<li class="chapter" data-level="8.2.3" data-path="modello-fattoriale-fattori-obliqui.html"><a href="modello-fattoriale-fattori-obliqui.html#covarianza-teorica-tra-due-variabili"><i class="fa fa-check"></i><b>8.2.3</b> Covarianza teorica tra due variabili</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="efa-con-lavaan.html"><a href="efa-con-lavaan.html"><i class="fa fa-check"></i><b>8.3</b> EFA con <code>lavaan</code></a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="ch:factor-scores.html"><a href="ch:factor-scores.html"><i class="fa fa-check"></i><b>9</b> I punteggi fattoriali</a>
+<ul>
+<li class="chapter" data-level="9.0.1" data-path="ch:factor-scores.html"><a href="ch:factor-scores.html#esempio-di-interpretazione"><i class="fa fa-check"></i><b>9.0.1</b> Esempio di interpretazione</a></li>
+<li class="chapter" data-level="9.1" data-path="punteggi-fattoriali.html"><a href="punteggi-fattoriali.html"><i class="fa fa-check"></i><b>9.1</b> Punteggi fattoriali</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="punteggi-fattoriali.html"><a href="punteggi-fattoriali.html#stima-dei-punteggi-fattoriali"><i class="fa fa-check"></i><b>9.1.1</b> Stima dei punteggi fattoriali</a></li>
+<li class="chapter" data-level="9.1.2" data-path="punteggi-fattoriali.html"><a href="punteggi-fattoriali.html#dimostrazione-di-thurstone"><i class="fa fa-check"></i><b>9.1.2</b> Dimostrazione di Thurstone</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="ch:path_analysis.html"><a href="ch:path_analysis.html"><i class="fa fa-check"></i><b>10</b> Path Analysis</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="path-diagram.html"><a href="path-diagram.html"><i class="fa fa-check"></i><b>10.1</b> Path diagram</a></li>
+<li class="chapter" data-level="10.2" data-path="path-analysis-e-regressione-multipla.html"><a href="path-analysis-e-regressione-multipla.html"><i class="fa fa-check"></i><b>10.2</b> Path analysis e regressione multipla</a></li>
+<li class="chapter" data-level="10.3" data-path="effetti-diretti-e-indiretti.html"><a href="effetti-diretti-e-indiretti.html"><i class="fa fa-check"></i><b>10.3</b> Effetti diretti e indiretti</a></li>
+<li class="chapter" data-level="10.4" data-path="le-regole-di-wright.html"><a href="le-regole-di-wright.html"><i class="fa fa-check"></i><b>10.4</b> Le regole di Wright</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="le-regole-di-wright.html"><a href="le-regole-di-wright.html#scomposizione-delle-correlazioni-covarianze"><i class="fa fa-check"></i><b>10.4.1</b> Scomposizione delle correlazioni (covarianze)</a></li>
+<li class="chapter" data-level="10.4.2" data-path="le-regole-di-wright.html"><a href="le-regole-di-wright.html#scomposizione-della-varianza"><i class="fa fa-check"></i><b>10.4.2</b> Scomposizione della varianza</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="sec:how_compute_path_coef.html"><a href="sec:how_compute_path_coef.html"><i class="fa fa-check"></i><b>10.5</b> Come calcolare i coefficienti di percorso?</a></li>
+<li class="chapter" data-level="10.6" data-path="path-analysis-e-software.html"><a href="path-analysis-e-software.html"><i class="fa fa-check"></i><b>10.6</b> Path analysis e software</a></li>
+<li class="chapter" data-level="10.7" data-path="oltre-la-regressione-multipla.html"><a href="oltre-la-regressione-multipla.html"><i class="fa fa-check"></i><b>10.7</b> Oltre la regressione multipla</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="ch:cronbach.html"><a href="ch:cronbach.html"><i class="fa fa-check"></i><b>11</b> Attendibilità e modello fattoriale</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="modello-fattoriale-e-ctt.html"><a href="modello-fattoriale-e-ctt.html"><i class="fa fa-check"></i><b>11.1</b> Modello fattoriale e CTT</a></li>
+<li class="chapter" data-level="11.2" data-path="classi-di-modelli.html"><a href="classi-di-modelli.html"><i class="fa fa-check"></i><b>11.2</b> Classi di modelli</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="classi-di-modelli.html"><a href="classi-di-modelli.html#indicatori-congenerici"><i class="fa fa-check"></i><b>11.2.1</b> Indicatori congenerici</a></li>
+<li class="chapter" data-level="11.2.2" data-path="classi-di-modelli.html"><a href="classi-di-modelli.html#indicatori-tau-equivalenti"><i class="fa fa-check"></i><b>11.2.2</b> Indicatori tau-equivalenti</a></li>
+<li class="chapter" data-level="11.2.3" data-path="classi-di-modelli.html"><a href="classi-di-modelli.html#indicatori-paralleli"><i class="fa fa-check"></i><b>11.2.3</b> Indicatori paralleli</a></li>
+<li class="chapter" data-level="11.2.4" data-path="classi-di-modelli.html"><a href="classi-di-modelli.html#indicatori-strettamente-paralleli"><i class="fa fa-check"></i><b>11.2.4</b> Indicatori strettamente paralleli</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="metodo-dei-minimi-quadrati-non-pesati.html"><a href="metodo-dei-minimi-quadrati-non-pesati.html"><i class="fa fa-check"></i><b>11.3</b> Metodo dei minimi quadrati non pesati</a></li>
+<li class="chapter" data-level="11.4" data-path="varianza-del-punteggio-totale-di-un-test.html"><a href="varianza-del-punteggio-totale-di-un-test.html"><i class="fa fa-check"></i><b>11.4</b> Varianza del punteggio totale di un test</a></li>
+<li class="chapter" data-level="11.5" data-path="stima-dellattendibilità.html"><a href="stima-dellattendibilità.html"><i class="fa fa-check"></i><b>11.5</b> Stima dell’attendibilità</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="stima-dellattendibilità.html"><a href="stima-dellattendibilità.html#coefficiente-omega"><i class="fa fa-check"></i><b>11.5.1</b> Coefficiente omega</a></li>
+<li class="chapter" data-level="11.5.2" data-path="stima-dellattendibilità.html"><a href="stima-dellattendibilità.html#coefficiente-alpha-di-cronbach"><i class="fa fa-check"></i><b>11.5.2</b> Coefficiente <span class="math inline">\(\alpha\)</span> di Cronbach</a></li>
+<li class="chapter" data-level="11.5.3" data-path="stima-dellattendibilità.html"><a href="stima-dellattendibilità.html#la-formula-profetica-di-spearman-brown"><i class="fa fa-check"></i><b>11.5.3</b> La formula “profetica” di Spearman-Brown</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="attendibilità-e-scala-di-misura.html"><a href="attendibilità-e-scala-di-misura.html"><i class="fa fa-check"></i><b>11.6</b> Attendibilità e scala di misura</a></li>
+<li class="chapter" data-level="11.7" data-path="quale-indice-usare.html"><a href="quale-indice-usare.html"><i class="fa fa-check"></i><b>11.7</b> Quale indice usare?</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="ch:cfa-cong-parall.html"><a href="ch:cfa-cong-parall.html"><i class="fa fa-check"></i><b>12</b> CFA: confronto tra modelli</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="modello-congenerico.html"><a href="modello-congenerico.html"><i class="fa fa-check"></i><b>12.1</b> Modello congenerico</a></li>
+<li class="chapter" data-level="12.2" data-path="modello-tau-equivalente.html"><a href="modello-tau-equivalente.html"><i class="fa fa-check"></i><b>12.2</b> Modello tau-equivalente</a></li>
+<li class="chapter" data-level="12.3" data-path="modello-parallelo.html"><a href="modello-parallelo.html"><i class="fa fa-check"></i><b>12.3</b> Modello parallelo</a></li>
+<li class="chapter" data-level="12.4" data-path="il-test-del-chi2.html"><a href="il-test-del-chi2.html"><i class="fa fa-check"></i><b>12.4</b> Il test del <span class="math inline">\(\chi^2\)</span></a></li>
+</ul></li>
+<li class="part"><span><b>IV Costruzione di strumenti psicometrici</b></span></li>
+<li class="chapter" data-level="13" data-path="ch:problema.html"><a href="ch:problema.html"><i class="fa fa-check"></i><b>13</b> Tipologie dei test psicometrici</a>
+<ul>
+<li class="chapter" data-level="13.0.1" data-path="ch:problema.html"><a href="ch:problema.html#test-orientati-al-criterio"><i class="fa fa-check"></i><b>13.0.1</b> Test orientati al criterio</a></li>
+<li class="chapter" data-level="13.0.2" data-path="ch:problema.html"><a href="ch:problema.html#test-basati-sulla-norma"><i class="fa fa-check"></i><b>13.0.2</b> Test basati sulla norma</a></li>
+<li class="chapter" data-level="13.1" data-path="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><a href="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><i class="fa fa-check"></i><b>13.1</b> Variabili latenti e sviluppo di uno strumento psicometrico</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><a href="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html#chiarificazione-del-costrutto-di-interesse"><i class="fa fa-check"></i><b>13.1.1</b> Chiarificazione del costrutto di interesse</a></li>
+<li class="chapter" data-level="13.1.2" data-path="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><a href="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html#operazionalizzazione-del-costrutto-di-interesse"><i class="fa fa-check"></i><b>13.1.2</b> Operazionalizzazione del costrutto di interesse</a></li>
+<li class="chapter" data-level="13.1.3" data-path="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><a href="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html#rassegna-della-letteratura-rilevante"><i class="fa fa-check"></i><b>13.1.3</b> Rassegna della letteratura rilevante</a></li>
+<li class="chapter" data-level="13.1.4" data-path="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><a href="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html#analisi-concettuale-del-costrutto"><i class="fa fa-check"></i><b>13.1.4</b> Analisi concettuale del costrutto</a></li>
+<li class="chapter" data-level="13.1.5" data-path="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><a href="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html#metodi-di-ricerca-qualitativi"><i class="fa fa-check"></i><b>13.1.5</b> Metodi di ricerca qualitativi</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="lo-sviluppo-dello-strumento.html"><a href="lo-sviluppo-dello-strumento.html"><i class="fa fa-check"></i><b>13.2</b> Lo sviluppo dello strumento</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="lo-sviluppo-dello-strumento.html"><a href="lo-sviluppo-dello-strumento.html#formato"><i class="fa fa-check"></i><b>13.2.1</b> Formato</a></li>
+<li class="chapter" data-level="13.2.2" data-path="lo-sviluppo-dello-strumento.html"><a href="lo-sviluppo-dello-strumento.html#composizione-tipografica"><i class="fa fa-check"></i><b>13.2.2</b> Composizione tipografica</a></li>
+<li class="chapter" data-level="13.2.3" data-path="lo-sviluppo-dello-strumento.html"><a href="lo-sviluppo-dello-strumento.html#istruzioni-ai-soggetti"><i class="fa fa-check"></i><b>13.2.3</b> Istruzioni ai soggetti</a></li>
+<li class="chapter" data-level="13.2.4" data-path="lo-sviluppo-dello-strumento.html"><a href="lo-sviluppo-dello-strumento.html#la-costruzione-degli-item"><i class="fa fa-check"></i><b>13.2.4</b> La costruzione degli item</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="numero-delle-opzioni-di-risposta.html"><a href="numero-delle-opzioni-di-risposta.html"><i class="fa fa-check"></i><b>13.3</b> Numero delle opzioni di risposta</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="numero-delle-opzioni-di-risposta.html"><a href="numero-delle-opzioni-di-risposta.html#item-a-codifica-inversa"><i class="fa fa-check"></i><b>13.3.1</b> Item a codifica inversa</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="numero-di-item.html"><a href="numero-di-item.html"><i class="fa fa-check"></i><b>13.4</b> Numero di item</a></li>
+<li class="chapter" data-level="13.5" data-path="numero-di-soggetti.html"><a href="numero-di-soggetti.html"><i class="fa fa-check"></i><b>13.5</b> Numero di soggetti</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="ch:val_matrici.html"><a href="ch:val_matrici.html"><i class="fa fa-check"></i><b>14</b> Valutazione della matrice di correlazione</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="ispezione-visiva-della-matrice-di-correlazione.html"><a href="ispezione-visiva-della-matrice-di-correlazione.html"><i class="fa fa-check"></i><b>14.1</b> Ispezione visiva della matrice di correlazione</a></li>
+<li class="chapter" data-level="14.2" data-path="sfericità-di-bartlett.html"><a href="sfericità-di-bartlett.html"><i class="fa fa-check"></i><b>14.2</b> Sfericità di Bartlett</a></li>
+<li class="chapter" data-level="14.3" data-path="test-di-adeguatezza-campionaria-di-kaiser-meyer-olkin.html"><a href="test-di-adeguatezza-campionaria-di-kaiser-meyer-olkin.html"><i class="fa fa-check"></i><b>14.3</b> Test di adeguatezza campionaria di Kaiser-Meyer-Olkin</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="test-di-adeguatezza-campionaria-di-kaiser-meyer-olkin.html"><a href="test-di-adeguatezza-campionaria-di-kaiser-meyer-olkin.html#matrice-anti-immagine"><i class="fa fa-check"></i><b>14.3.1</b> Matrice anti-immagine</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="ch:estrazione.html"><a href="ch:estrazione.html"><i class="fa fa-check"></i><b>15</b> L’estrazione dei fattori</a>
+<ul>
+<li class="chapter" data-level="" data-path="motivazione.html"><a href="motivazione.html"><i class="fa fa-check"></i>Motivazione</a></li>
+<li class="chapter" data-level="15.1" data-path="metodo-delle-componenti-principali.html"><a href="metodo-delle-componenti-principali.html"><i class="fa fa-check"></i><b>15.1</b> Metodo delle componenti principali</a></li>
+<li class="chapter" data-level="15.2" data-path="metodo-dei-fattori-principali.html"><a href="metodo-dei-fattori-principali.html"><i class="fa fa-check"></i><b>15.2</b> Metodo dei fattori principali</a></li>
+<li class="chapter" data-level="15.3" data-path="metodo-dei-fattori-principali-iterato.html"><a href="metodo-dei-fattori-principali-iterato.html"><i class="fa fa-check"></i><b>15.3</b> Metodo dei fattori principali iterato</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="metodo-dei-fattori-principali-iterato.html"><a href="metodo-dei-fattori-principali-iterato.html#casi-di-heywood"><i class="fa fa-check"></i><b>15.3.1</b> Casi di Heywood</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="metodo-di-massima-verosimiglianza.html"><a href="metodo-di-massima-verosimiglianza.html"><i class="fa fa-check"></i><b>15.4</b> Metodo di massima verosimiglianza</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="ch:numero_fattori.html"><a href="ch:numero_fattori.html"><i class="fa fa-check"></i><b>16</b> Il numero dei fattori</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="quota-di-varianza-spiegata.html"><a href="quota-di-varianza-spiegata.html"><i class="fa fa-check"></i><b>16.1</b> Quota di varianza spiegata</a></li>
+<li class="chapter" data-level="16.2" data-path="valore-medio-degli-autovalori.html"><a href="valore-medio-degli-autovalori.html"><i class="fa fa-check"></i><b>16.2</b> Valore medio degli autovalori</a></li>
+<li class="chapter" data-level="16.3" data-path="scree-test.html"><a href="scree-test.html"><i class="fa fa-check"></i><b>16.3</b> Scree test</a></li>
+<li class="chapter" data-level="16.4" data-path="parallel-analysis.html"><a href="parallel-analysis.html"><i class="fa fa-check"></i><b>16.4</b> Parallel analysis</a></li>
+<li class="chapter" data-level="16.5" data-path="test-di-bontà-di-adattamento.html"><a href="test-di-bontà-di-adattamento.html"><i class="fa fa-check"></i><b>16.5</b> Test di bontà di adattamento</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="ch:rotazione.html"><a href="ch:rotazione.html"><i class="fa fa-check"></i><b>17</b> La rotazione fattoriale</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="indeterminatezza-della-soluzione-fattoriale.html"><a href="indeterminatezza-della-soluzione-fattoriale.html"><i class="fa fa-check"></i><b>17.1</b> Indeterminatezza della soluzione fattoriale</a></li>
+<li class="chapter" data-level="17.2" data-path="parsimonia-e-semplicità.html"><a href="parsimonia-e-semplicità.html"><i class="fa fa-check"></i><b>17.2</b> Parsimonia e semplicità</a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="parsimonia-e-semplicità.html"><a href="parsimonia-e-semplicità.html#il-criterio-della-struttura-semplice"><i class="fa fa-check"></i><b>17.2.1</b> Il criterio della “struttura semplice”</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="rotazione-nello-spazio-geometrico.html"><a href="rotazione-nello-spazio-geometrico.html"><i class="fa fa-check"></i><b>17.3</b> Rotazione nello spazio geometrico</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="rotazione-nello-spazio-geometrico.html"><a href="rotazione-nello-spazio-geometrico.html#rotazione-ortogonale"><i class="fa fa-check"></i><b>17.3.1</b> Rotazione ortogonale</a></li>
+<li class="chapter" data-level="17.3.2" data-path="rotazione-nello-spazio-geometrico.html"><a href="rotazione-nello-spazio-geometrico.html#vincoli-alla-rotazione"><i class="fa fa-check"></i><b>17.3.2</b> Vincoli alla rotazione</a></li>
+<li class="chapter" data-level="17.3.3" data-path="rotazione-nello-spazio-geometrico.html"><a href="rotazione-nello-spazio-geometrico.html#metodo-grafico"><i class="fa fa-check"></i><b>17.3.3</b> Metodo grafico</a></li>
+<li class="chapter" data-level="17.3.4" data-path="rotazione-nello-spazio-geometrico.html"><a href="rotazione-nello-spazio-geometrico.html#medodi-di-rotazione-ortogonale"><i class="fa fa-check"></i><b>17.3.4</b> Medodi di rotazione ortogonale</a></li>
+<li class="chapter" data-level="17.3.5" data-path="rotazione-nello-spazio-geometrico.html"><a href="rotazione-nello-spazio-geometrico.html#metodi-di-rotazione-obliqua"><i class="fa fa-check"></i><b>17.3.5</b> Metodi di rotazione obliqua</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="matrice-dei-pesi-fattoriali-e-matrice-di-struttura.html"><a href="matrice-dei-pesi-fattoriali-e-matrice-di-struttura.html"><i class="fa fa-check"></i><b>17.4</b> Matrice dei pesi fattoriali e matrice di struttura</a></li>
+<li class="chapter" data-level="17.5" data-path="esempio-con-semtools.html"><a href="esempio-con-semtools.html"><i class="fa fa-check"></i><b>17.5</b> Esempio con <code>semTools</code></a>
+<ul>
+<li class="chapter" data-level="17.5.1" data-path="esempio-con-semtools.html"><a href="esempio-con-semtools.html#orthogonal-varimax"><i class="fa fa-check"></i><b>17.5.1</b> Orthogonal varimax</a></li>
+<li class="chapter" data-level="17.5.2" data-path="esempio-con-semtools.html"><a href="esempio-con-semtools.html#orthogonal-quartimin"><i class="fa fa-check"></i><b>17.5.2</b> Orthogonal Quartimin</a></li>
+<li class="chapter" data-level="17.5.3" data-path="esempio-con-semtools.html"><a href="esempio-con-semtools.html#oblique-quartimin"><i class="fa fa-check"></i><b>17.5.3</b> Oblique Quartimin</a></li>
+<li class="chapter" data-level="17.5.4" data-path="esempio-con-semtools.html"><a href="esempio-con-semtools.html#orthogonal-geomin"><i class="fa fa-check"></i><b>17.5.4</b> Orthogonal Geomin</a></li>
+<li class="chapter" data-level="17.5.5" data-path="esempio-con-semtools.html"><a href="esempio-con-semtools.html#oblique-geomin"><i class="fa fa-check"></i><b>17.5.5</b> Oblique Geomin</a></li>
+</ul></li>
+<li class="chapter" data-level="17.6" data-path="interpretazione-1.html"><a href="interpretazione-1.html"><i class="fa fa-check"></i><b>17.6</b> Interpretazione</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="ch:val_sol_fattoriale.html"><a href="ch:val_sol_fattoriale.html"><i class="fa fa-check"></i><b>18</b> Come valutare e rifinire la soluzione fattoriale</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="valutazione-della-matrice-pattern.html"><a href="valutazione-della-matrice-pattern.html"><i class="fa fa-check"></i><b>18.1</b> Valutazione della matrice pattern</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="valutazione-della-matrice-pattern.html"><a href="valutazione-della-matrice-pattern.html#item-con-basse-saturazioni-su-tutti-i-fattori"><i class="fa fa-check"></i><b>18.1.1</b> Item con basse saturazioni su tutti i fattori</a></li>
+<li class="chapter" data-level="18.1.2" data-path="valutazione-della-matrice-pattern.html"><a href="valutazione-della-matrice-pattern.html#item-con-saturazioni-evevate-su-più-di-un-fattore"><i class="fa fa-check"></i><b>18.1.2</b> Item con saturazioni evevate su più di un fattore</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="valutazione-dellattendibilità.html"><a href="valutazione-dellattendibilità.html"><i class="fa fa-check"></i><b>18.2</b> Valutazione dell’attendibilità</a>
+<ul>
+<li class="chapter" data-level="18.2.1" data-path="valutazione-dellattendibilità.html"><a href="valutazione-dellattendibilità.html#consistenza-interna"><i class="fa fa-check"></i><b>18.2.1</b> Consistenza interna</a></li>
+<li class="chapter" data-level="18.2.2" data-path="valutazione-dellattendibilità.html"><a href="valutazione-dellattendibilità.html#stabilità-temporale"><i class="fa fa-check"></i><b>18.2.2</b> Stabilità temporale</a></li>
+<li class="chapter" data-level="18.2.3" data-path="valutazione-dellattendibilità.html"><a href="valutazione-dellattendibilità.html#equivalenza"><i class="fa fa-check"></i><b>18.2.3</b> Equivalenza</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="selezione-di-un-sottoinsieme-di-item.html"><a href="selezione-di-un-sottoinsieme-di-item.html"><i class="fa fa-check"></i><b>18.3</b> Selezione di un sottoinsieme di item</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="selezione-di-un-sottoinsieme-di-item.html"><a href="selezione-di-un-sottoinsieme-di-item.html#attendibilità-e-numero-di-item"><i class="fa fa-check"></i><b>18.3.1</b> Attendibilità e numero di item</a></li>
+<li class="chapter" data-level="18.3.2" data-path="selezione-di-un-sottoinsieme-di-item.html"><a href="selezione-di-un-sottoinsieme-di-item.html#numero-di-item-e-affidabilità"><i class="fa fa-check"></i><b>18.3.2</b> Numero di item e affidabilità</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html"><i class="fa fa-check"></i><b>18.4</b> Analisi degli item</a>
+<ul>
+<li class="chapter" data-level="18.4.1" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#difficoltà-degli-item"><i class="fa fa-check"></i><b>18.4.1</b> Difficoltà degli item</a></li>
+<li class="chapter" data-level="18.4.2" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#correzione-per-guessing"><i class="fa fa-check"></i><b>18.4.2</b> Correzione per guessing</a></li>
+<li class="chapter" data-level="18.4.3" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#discriminatività"><i class="fa fa-check"></i><b>18.4.3</b> Discriminatività</a></li>
+<li class="chapter" data-level="18.4.4" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#potere-discriminante-dellitem-e-analisi-fattoriale"><i class="fa fa-check"></i><b>18.4.4</b> Potere discriminante dell’item e analisi fattoriale</a></li>
+<li class="chapter" data-level="18.4.5" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#punteggio-sullitem-e-punteggio-totale"><i class="fa fa-check"></i><b>18.4.5</b> Punteggio sull’item e punteggio totale</a></li>
+<li class="chapter" data-level="18.4.6" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#relazioni-tra-coppie-di-item"><i class="fa fa-check"></i><b>18.4.6</b> Relazioni tra coppie di item</a></li>
+<li class="chapter" data-level="18.4.7" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#ridondanza"><i class="fa fa-check"></i><b>18.4.7</b> Ridondanza</a></li>
+<li class="chapter" data-level="18.4.8" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#massimizzazione-della-varianza-del-punteggio-totale"><i class="fa fa-check"></i><b>18.4.8</b> Massimizzazione della varianza del punteggio totale</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="ch:factorial-invariance.html"><a href="ch:factorial-invariance.html"><i class="fa fa-check"></i><b>19</b> Invarianza di misura</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="indicatori-continui.html"><a href="indicatori-continui.html"><i class="fa fa-check"></i><b>19.1</b> Indicatori continui</a>
+<ul>
+<li class="chapter" data-level="19.1.1" data-path="indicatori-continui.html"><a href="indicatori-continui.html#intercette-degli-item"><i class="fa fa-check"></i><b>19.1.1</b> Intercette degli item</a></li>
+<li class="chapter" data-level="19.1.2" data-path="indicatori-continui.html"><a href="indicatori-continui.html#terminologia"><i class="fa fa-check"></i><b>19.1.2</b> Terminologia</a></li>
+<li class="chapter" data-level="19.1.3" data-path="indicatori-continui.html"><a href="indicatori-continui.html#un-esempio-concreto-3"><i class="fa fa-check"></i><b>19.1.3</b> Un esempio concreto</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="variabili-a-livello-ordinale.html"><a href="variabili-a-livello-ordinale.html"><i class="fa fa-check"></i><b>19.2</b> Variabili a livello ordinale</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="variabili-a-livello-ordinale.html"><a href="variabili-a-livello-ordinale.html#baseline-model"><i class="fa fa-check"></i><b>19.2.1</b> Baseline model</a></li>
+<li class="chapter" data-level="19.2.2" data-path="variabili-a-livello-ordinale.html"><a href="variabili-a-livello-ordinale.html#invarianza-delle-soglie"><i class="fa fa-check"></i><b>19.2.2</b> Invarianza delle soglie</a></li>
+<li class="chapter" data-level="19.2.3" data-path="variabili-a-livello-ordinale.html"><a href="variabili-a-livello-ordinale.html#threshold-and-loading-invariance"><i class="fa fa-check"></i><b>19.2.3</b> Threshold and loading invariance</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="ch:gof.html"><a href="ch:gof.html"><i class="fa fa-check"></i><b>20</b> Indici di bontà dell’adattamento</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="stima-del-modello.html"><a href="stima-del-modello.html"><i class="fa fa-check"></i><b>20.1</b> Stima del modello</a></li>
+<li class="chapter" data-level="20.2" data-path="massima-verosimiglianza.html"><a href="massima-verosimiglianza.html"><i class="fa fa-check"></i><b>20.2</b> Massima verosimiglianza</a></li>
+<li class="chapter" data-level="20.3" data-path="identificabilità-del-modello.html"><a href="identificabilità-del-modello.html"><i class="fa fa-check"></i><b>20.3</b> Identificabilità del modello</a></li>
+<li class="chapter" data-level="20.4" data-path="bontà-delladattamento.html"><a href="bontà-delladattamento.html"><i class="fa fa-check"></i><b>20.4</b> Bontà dell’adattamento</a>
+<ul>
+<li class="chapter" data-level="20.4.1" data-path="bontà-delladattamento.html"><a href="bontà-delladattamento.html#chi-quadrato"><i class="fa fa-check"></i><b>20.4.1</b> Chi quadrato</a></li>
+</ul></li>
+<li class="chapter" data-level="20.5" data-path="misure-di-adeguamento-per-il-confronto.html"><a href="misure-di-adeguamento-per-il-confronto.html"><i class="fa fa-check"></i><b>20.5</b> Misure di adeguamento per il confronto</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="misure-di-adeguamento-per-il-confronto.html"><a href="misure-di-adeguamento-per-il-confronto.html#cfi"><i class="fa fa-check"></i><b>20.5.1</b> CFI</a></li>
+</ul></li>
+<li class="chapter" data-level="20.6" data-path="misure-di-adeguamento-parsimonioso.html"><a href="misure-di-adeguamento-parsimonioso.html"><i class="fa fa-check"></i><b>20.6</b> Misure di adeguamento parsimonioso</a>
+<ul>
+<li class="chapter" data-level="20.6.1" data-path="misure-di-adeguamento-parsimonioso.html"><a href="misure-di-adeguamento-parsimonioso.html#tli"><i class="fa fa-check"></i><b>20.6.1</b> TLI</a></li>
+</ul></li>
+<li class="chapter" data-level="20.7" data-path="misure-di-adeguamento-assoluto.html"><a href="misure-di-adeguamento-assoluto.html"><i class="fa fa-check"></i><b>20.7</b> Misure di adeguamento assoluto</a>
+<ul>
+<li class="chapter" data-level="20.7.1" data-path="misure-di-adeguamento-assoluto.html"><a href="misure-di-adeguamento-assoluto.html#rmsea"><i class="fa fa-check"></i><b>20.7.1</b> RMSEA</a></li>
+<li class="chapter" data-level="20.7.2" data-path="misure-di-adeguamento-assoluto.html"><a href="misure-di-adeguamento-assoluto.html#rmrs"><i class="fa fa-check"></i><b>20.7.2</b> RMRS</a></li>
+</ul></li>
+<li class="chapter" data-level="20.8" data-path="interpretazione-2.html"><a href="interpretazione-2.html"><i class="fa fa-check"></i><b>20.8</b> Interpretazione</a></li>
+<li class="chapter" data-level="20.9" data-path="una-nota-di-cautela.html"><a href="una-nota-di-cautela.html"><i class="fa fa-check"></i><b>20.9</b> Una nota di cautela</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="ch:growth_models.html"><a href="ch:growth_models.html"><i class="fa fa-check"></i><b>21</b> Curve di crescita latente</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html"><i class="fa fa-check"></i><b>21.1</b> Dati longitudinali</a>
+<ul>
+<li class="chapter" data-level="21.1.1" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#un-esempio-concreto-4"><i class="fa fa-check"></i><b>21.1.1</b> Un esempio concreto</a></li>
+<li class="chapter" data-level="21.1.2" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#un-secondo-esempio"><i class="fa fa-check"></i><b>21.1.2</b> Un secondo esempio</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="ch:missing_data.html"><a href="ch:missing_data.html"><i class="fa fa-check"></i><b>22</b> Dati mancanti</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="tipologie-di-dati-mancanti.html"><a href="tipologie-di-dati-mancanti.html"><i class="fa fa-check"></i><b>22.1</b> Tipologie di dati mancanti</a></li>
+<li class="chapter" data-level="22.2" data-path="la-gestione-dei-dati-mancanti.html"><a href="la-gestione-dei-dati-mancanti.html"><i class="fa fa-check"></i><b>22.2</b> La gestione dei dati mancanti</a>
+<ul>
+<li class="chapter" data-level="22.2.1" data-path="la-gestione-dei-dati-mancanti.html"><a href="la-gestione-dei-dati-mancanti.html#metodo-direct-ml"><i class="fa fa-check"></i><b>22.2.1</b> Metodo Direct ML</a></li>
+<li class="chapter" data-level="22.2.2" data-path="la-gestione-dei-dati-mancanti.html"><a href="la-gestione-dei-dati-mancanti.html#un-esempio-concreto-5"><i class="fa fa-check"></i><b>22.2.2</b> Un esempio concreto</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="ch:cat_data.html"><a href="ch:cat_data.html"><i class="fa fa-check"></i><b>23</b> Dati non gaussiani e categoriali</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="dati-non-gaussiani.html"><a href="dati-non-gaussiani.html"><i class="fa fa-check"></i><b>23.1</b> Dati non gaussiani</a></li>
+<li class="chapter" data-level="23.2" data-path="dati-categoriali.html"><a href="dati-categoriali.html"><i class="fa fa-check"></i><b>23.2</b> Dati categoriali</a>
+<ul>
+<li class="chapter" data-level="23.2.1" data-path="dati-categoriali.html"><a href="dati-categoriali.html#un-esempio-concreto-6"><i class="fa fa-check"></i><b>23.2.1</b> Un esempio concreto</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>V Appendici</b></span></li>
+<li class="appendix"><span><b>Appendici</b></span></li>
+<li class="chapter" data-level="A" data-path="simbologia-di-base.html"><a href="simbologia-di-base.html"><i class="fa fa-check"></i><b>A</b> Simbologia di base</a></li>
+<li class="chapter" data-level="B" data-path="ch:single_case.html"><a href="ch:single_case.html"><i class="fa fa-check"></i><b>B</b> Lo studio del caso singolo</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="sec:motivazione.html"><a href="sec:motivazione.html"><i class="fa fa-check"></i><b>B.1</b> Motivazione</a></li>
+<li class="chapter" data-level="B.2" data-path="sec:comparison-single-case-controls.html"><a href="sec:comparison-single-case-controls.html"><i class="fa fa-check"></i><b>B.2</b> Il confronto tra caso singolo e un gruppo di controllo</a>
+<ul>
+<li class="chapter" data-level="B.2.1" data-path="sec:comparison-single-case-controls.html"><a href="sec:comparison-single-case-controls.html#sec:Crawford-Howell-1998"><i class="fa fa-check"></i><b>B.2.1</b> Il metodo di Crawford e Howell (1998)</a></li>
+<li class="chapter" data-level="B.2.2" data-path="sec:comparison-single-case-controls.html"><a href="sec:comparison-single-case-controls.html#sec:barton-2002"><i class="fa fa-check"></i><b>B.2.2</b> Il metodo di Barton et al. (2002)</a></li>
+</ul></li>
+<li class="chapter" data-level="B.3" data-path="lo-studio-delle-dissociazioni.html"><a href="lo-studio-delle-dissociazioni.html"><i class="fa fa-check"></i><b>B.3</b> Lo studio delle dissociazioni</a></li>
+<li class="chapter" data-level="B.4" data-path="la-misura-del-cambiamento.html"><a href="la-misura-del-cambiamento.html"><i class="fa fa-check"></i><b>B.4</b> La misura del cambiamento</a>
+<ul>
+<li class="chapter" data-level="B.4.1" data-path="la-misura-del-cambiamento.html"><a href="la-misura-del-cambiamento.html#cambiamento-nel-caso-singolo-e-confronto-con-un-campione-di-controllo"><i class="fa fa-check"></i><b>B.4.1</b> Cambiamento nel caso singolo e confronto con un campione di controllo</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="considerazioni-conclusive.html"><a href="considerazioni-conclusive.html"><i class="fa fa-check"></i>Considerazioni conclusive</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="ch:effectiveness.html"><a href="ch:effectiveness.html"><i class="fa fa-check"></i><b>C</b> La valutazione dell’intervento psicologico</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="efficacia-dellintervento-ed-efficienza-clinica.html"><a href="efficacia-dellintervento-ed-efficienza-clinica.html"><i class="fa fa-check"></i><b>C.1</b> Efficacia dell’intervento ed efficienza clinica</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="ch:effect_size.html"><a href="ch:effect_size.html"><i class="fa fa-check"></i><b>D</b> La dimensione dell’effetto del trattamento</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="sec:cont_reponse_eff_size.html"><a href="sec:cont_reponse_eff_size.html"><i class="fa fa-check"></i><b>D.1</b> Risposta continua</a>
+<ul>
+<li class="chapter" data-level="D.1.1" data-path="sec:cont_reponse_eff_size.html"><a href="sec:cont_reponse_eff_size.html#indici-d-di-cohen-e-g-di-hedges"><i class="fa fa-check"></i><b>D.1.1</b> Indici <span class="math inline">\(d\)</span> di Cohen e <span class="math inline">\(g\)</span> di Hedges</a></li>
+</ul></li>
+<li class="chapter" data-level="D.2" data-path="sec:binary_reponse_eff_size.html"><a href="sec:binary_reponse_eff_size.html"><i class="fa fa-check"></i><b>D.2</b> Risposta binaria</a>
+<ul>
+<li class="chapter" data-level="D.2.1" data-path="sec:binary_reponse_eff_size.html"><a href="sec:binary_reponse_eff_size.html#differenza-tra-due-proporzioni"><i class="fa fa-check"></i><b>D.2.1</b> Differenza tra due proporzioni</a></li>
+<li class="chapter" data-level="D.2.2" data-path="sec:binary_reponse_eff_size.html"><a href="sec:binary_reponse_eff_size.html#rischio-relativo"><i class="fa fa-check"></i><b>D.2.2</b> Rischio relativo</a></li>
+<li class="chapter" data-level="D.2.3" data-path="sec:binary_reponse_eff_size.html"><a href="sec:binary_reponse_eff_size.html#odds-ratio"><i class="fa fa-check"></i><b>D.2.3</b> Odds ratio</a></li>
+<li class="chapter" data-level="D.2.4" data-path="sec:binary_reponse_eff_size.html"><a href="sec:binary_reponse_eff_size.html#logit"><i class="fa fa-check"></i><b>D.2.4</b> Logit</a></li>
+<li class="chapter" data-level="D.2.5" data-path="sec:binary_reponse_eff_size.html"><a href="sec:binary_reponse_eff_size.html#rapporto-delle-quote"><i class="fa fa-check"></i><b>D.2.5</b> Rapporto delle quote</a></li>
+<li class="chapter" data-level="D.2.6" data-path="sec:binary_reponse_eff_size.html"><a href="sec:binary_reponse_eff_size.html#logaritmo-del-rapporto-delle-quote"><i class="fa fa-check"></i><b>D.2.6</b> Logaritmo del rapporto delle quote</a></li>
+</ul></li>
+<li class="chapter" data-level="D.3" data-path="tipi-fondamentali-di-indagine.html"><a href="tipi-fondamentali-di-indagine.html"><i class="fa fa-check"></i><b>D.3</b> Tipi fondamentali di indagine</a>
+<ul>
+<li class="chapter" data-level="D.3.1" data-path="tipi-fondamentali-di-indagine.html"><a href="tipi-fondamentali-di-indagine.html#studi-prospettici"><i class="fa fa-check"></i><b>D.3.1</b> Studi prospettici</a></li>
+<li class="chapter" data-level="D.3.2" data-path="tipi-fondamentali-di-indagine.html"><a href="tipi-fondamentali-di-indagine.html#studi-trasversali"><i class="fa fa-check"></i><b>D.3.2</b> Studi trasversali</a></li>
+<li class="chapter" data-level="D.3.3" data-path="tipi-fondamentali-di-indagine.html"><a href="tipi-fondamentali-di-indagine.html#studi-longitudinali-retrospettivi"><i class="fa fa-check"></i><b>D.3.3</b> Studi longitudinali retrospettivi</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="considerazioni-conclusive-1.html"><a href="considerazioni-conclusive-1.html"><i class="fa fa-check"></i>Considerazioni conclusive</a></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="ch:lin-alg.html"><a href="ch:lin-alg.html"><i class="fa fa-check"></i><b>E</b> Elementi di algebra lineare</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="vettori.html"><a href="vettori.html"><i class="fa fa-check"></i><b>E.1</b> Vettori</a>
+<ul>
+<li class="chapter" data-level="E.1.1" data-path="vettori.html"><a href="vettori.html#vettori-nello-spazio-euclideo"><i class="fa fa-check"></i><b>E.1.1</b> Vettori nello spazio euclideo</a></li>
+<li class="chapter" data-level="E.1.2" data-path="vettori.html"><a href="vettori.html#somma-e-differenza-di-vettori"><i class="fa fa-check"></i><b>E.1.2</b> Somma e differenza di vettori</a></li>
+<li class="chapter" data-level="E.1.3" data-path="vettori.html"><a href="vettori.html#moltiplicazione-scalare"><i class="fa fa-check"></i><b>E.1.3</b> Moltiplicazione scalare</a></li>
+<li class="chapter" data-level="E.1.4" data-path="vettori.html"><a href="vettori.html#combinazione-lineare"><i class="fa fa-check"></i><b>E.1.4</b> Combinazione lineare</a></li>
+<li class="chapter" data-level="E.1.5" data-path="vettori.html"><a href="vettori.html#vettore-0-e-vettore-1"><i class="fa fa-check"></i><b>E.1.5</b> Vettore 0 e vettore 1</a></li>
+<li class="chapter" data-level="E.1.6" data-path="vettori.html"><a href="vettori.html#ortogonalità-tra-vettori"><i class="fa fa-check"></i><b>E.1.6</b> Ortogonalità tra vettori</a></li>
+<li class="chapter" data-level="E.1.7" data-path="vettori.html"><a href="vettori.html#trasposta-di-un-vettore"><i class="fa fa-check"></i><b>E.1.7</b> Trasposta di un vettore</a></li>
+<li class="chapter" data-level="E.1.8" data-path="vettori.html"><a href="vettori.html#norma-o-lunghezza-di-un-vettore"><i class="fa fa-check"></i><b>E.1.8</b> Norma o lunghezza di un vettore</a></li>
+</ul></li>
+<li class="chapter" data-level="E.2" data-path="matrici.html"><a href="matrici.html"><i class="fa fa-check"></i><b>E.2</b> Matrici</a>
+<ul>
+<li class="chapter" data-level="E.2.1" data-path="matrici.html"><a href="matrici.html#dimensioni-della-matrice"><i class="fa fa-check"></i><b>E.2.1</b> Dimensioni della matrice</a></li>
+<li class="chapter" data-level="E.2.2" data-path="matrici.html"><a href="matrici.html#matrice-trasposta"><i class="fa fa-check"></i><b>E.2.2</b> Matrice trasposta</a></li>
+<li class="chapter" data-level="E.2.3" data-path="matrici.html"><a href="matrici.html#matrice-simmetrica"><i class="fa fa-check"></i><b>E.2.3</b> Matrice simmetrica</a></li>
+<li class="chapter" data-level="E.2.4" data-path="matrici.html"><a href="matrici.html#matrice-quadrata-o-rettangolare"><i class="fa fa-check"></i><b>E.2.4</b> Matrice quadrata o rettangolare</a></li>
+<li class="chapter" data-level="E.2.5" data-path="matrici.html"><a href="matrici.html#diagonale-principale"><i class="fa fa-check"></i><b>E.2.5</b> Diagonale principale</a></li>
+<li class="chapter" data-level="E.2.6" data-path="matrici.html"><a href="matrici.html#matrice-diagonale"><i class="fa fa-check"></i><b>E.2.6</b> Matrice diagonale</a></li>
+<li class="chapter" data-level="E.2.7" data-path="matrici.html"><a href="matrici.html#matrice-identità"><i class="fa fa-check"></i><b>E.2.7</b> Matrice identità</a></li>
+<li class="chapter" data-level="E.2.8" data-path="matrici.html"><a href="matrici.html#matrici-diagonali-e-triangolari"><i class="fa fa-check"></i><b>E.2.8</b> Matrici diagonali e triangolari</a></li>
+<li class="chapter" data-level="E.2.9" data-path="matrici.html"><a href="matrici.html#somma-e-sottrazione"><i class="fa fa-check"></i><b>E.2.9</b> Somma e sottrazione</a></li>
+<li class="chapter" data-level="E.2.10" data-path="matrici.html"><a href="matrici.html#moltiplicazione-di-scalari-e-matrici"><i class="fa fa-check"></i><b>E.2.10</b> Moltiplicazione di scalari e matrici</a></li>
+<li class="chapter" data-level="E.2.11" data-path="matrici.html"><a href="matrici.html#proprietà-della-somma-e-differenza"><i class="fa fa-check"></i><b>E.2.11</b> Proprietà della somma e differenza</a></li>
+<li class="chapter" data-level="E.2.12" data-path="matrici.html"><a href="matrici.html#prodotto-di-matrici"><i class="fa fa-check"></i><b>E.2.12</b> Prodotto di matrici</a></li>
+<li class="chapter" data-level="E.2.13" data-path="matrici.html"><a href="matrici.html#proprietà-del-prodotto-di-matrici"><i class="fa fa-check"></i><b>E.2.13</b> Proprietà del prodotto di matrici</a></li>
+<li class="chapter" data-level="E.2.14" data-path="matrici.html"><a href="matrici.html#casi-particolari"><i class="fa fa-check"></i><b>E.2.14</b> Casi particolari</a></li>
+<li class="chapter" data-level="E.2.15" data-path="matrici.html"><a href="matrici.html#operazioni-tra-vettori"><i class="fa fa-check"></i><b>E.2.15</b> Operazioni tra vettori</a></li>
+<li class="chapter" data-level="E.2.16" data-path="matrici.html"><a href="matrici.html#prodotto-interno"><i class="fa fa-check"></i><b>E.2.16</b> Prodotto interno</a></li>
+<li class="chapter" data-level="E.2.17" data-path="matrici.html"><a href="matrici.html#prodotto-esterno"><i class="fa fa-check"></i><b>E.2.17</b> Prodotto esterno</a></li>
+<li class="chapter" data-level="E.2.18" data-path="matrici.html"><a href="matrici.html#traccia-di-una-matrice"><i class="fa fa-check"></i><b>E.2.18</b> Traccia di una matrice</a></li>
+<li class="chapter" data-level="E.2.19" data-path="matrici.html"><a href="matrici.html#rango-di-una-matrice"><i class="fa fa-check"></i><b>E.2.19</b> Rango di una matrice</a></li>
+<li class="chapter" data-level="E.2.20" data-path="matrici.html"><a href="matrici.html#matrice-inversa"><i class="fa fa-check"></i><b>E.2.20</b> Matrice inversa</a></li>
+<li class="chapter" data-level="E.2.21" data-path="matrici.html"><a href="matrici.html#determinante-di-una-matrice"><i class="fa fa-check"></i><b>E.2.21</b> Determinante di una matrice</a></li>
+<li class="chapter" data-level="E.2.22" data-path="matrici.html"><a href="matrici.html#determinante-e-inversa"><i class="fa fa-check"></i><b>E.2.22</b> Determinante e inversa</a></li>
+<li class="chapter" data-level="E.2.23" data-path="matrici.html"><a href="matrici.html#proprietà-del-determinante"><i class="fa fa-check"></i><b>E.2.23</b> Proprietà del determinante</a></li>
+<li class="chapter" data-level="E.2.24" data-path="matrici.html"><a href="matrici.html#radici-e-vettori-latenti"><i class="fa fa-check"></i><b>E.2.24</b> Radici e vettori latenti</a></li>
+<li class="chapter" data-level="E.2.25" data-path="matrici.html"><a href="matrici.html#scomposizione-spettrale-di-una-matrice"><i class="fa fa-check"></i><b>E.2.25</b> Scomposizione spettrale di una matrice</a></li>
+<li class="chapter" data-level="E.2.26" data-path="matrici.html"><a href="matrici.html#autovalori-e-determinante"><i class="fa fa-check"></i><b>E.2.26</b> Autovalori e determinante</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="esempio-con-semtools" class="section level2 hasAnchor" number="17.5">
+<h2><span class="header-section-number">17.5</span> Esempio con <code>semTools</code><a href="esempio-con-semtools.html#esempio-con-semtools" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Presento qui un esempio di uso di vari metodi di estrazione fattoriale. Tra tali metodi, la rotazione obliqua Geomin è molto popolare ed è il default di M-Plus.</p>
+<p>Iniziamo a caricare il pacchetto <code>semTools</code>.</p>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="esempio-con-semtools.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(<span class="st">&quot;semTools&quot;</span>))</span></code></pre></div>
+<p>Eseguiamo l’analisi fattoriale esplorativa del classico set di dati di Holzinger e Swineford (1939) il quale è costituito dai punteggi dei test di abilità mentale di bambini di seconda e terza media di due scuole diverse (Pasteur e Grant-White). Nel set di dati originale (disponibile nel pacchetto <code>MBESS</code>), sono forniti i punteggi di 26 test. Tuttavia, un sottoinsieme più piccolo con 9 variabili è più ampiamente utilizzato in letteratura. Questi sono i dati qui usati.</p>
+<p>Nel presente esempio, verrà eseguita l’analisi fattoriale esplorativa con l’estrazione di tre fattori. Il metodo di estrazione è <code>mlr</code>:</p>
+<blockquote>
+<p>maximum likelihood estimation with robust (Huber-White) standard errors and a scaled test statistic that is (asymptotically) equal to the Yuan-Bentler test statistic. For both complete and incomplete data.</p>
+</blockquote>
+<p>La soluzione iniziale non è ruotata.</p>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="esempio-con-semtools.html#cb227-1" aria-hidden="true" tabindex="-1"></a>unrotated <span class="ot">&lt;-</span> <span class="fu">efaUnrotate</span>(HolzingerSwineford1939, <span class="at">nf =</span> <span class="dv">3</span>, <span class="at">varList =</span> <span class="fu">paste0</span>(<span class="st">&quot;x&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>), <span class="at">estimator =</span> <span class="st">&quot;mlr&quot;</span>)</span>
+<span id="cb227-2"><a href="esempio-con-semtools.html#cb227-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(unrotated)</span>
+<span id="cb227-3"><a href="esempio-con-semtools.html#cb227-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6-11 ended normally after 203 iterations</span></span>
+<span id="cb227-4"><a href="esempio-con-semtools.html#cb227-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb227-5"><a href="esempio-con-semtools.html#cb227-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Estimator                                         ML</span></span>
+<span id="cb227-6"><a href="esempio-con-semtools.html#cb227-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
+<span id="cb227-7"><a href="esempio-con-semtools.html#cb227-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                        36</span></span>
+<span id="cb227-8"><a href="esempio-con-semtools.html#cb227-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
+<span id="cb227-9"><a href="esempio-con-semtools.html#cb227-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Number of observations                           301</span></span>
+<span id="cb227-10"><a href="esempio-con-semtools.html#cb227-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
+<span id="cb227-11"><a href="esempio-con-semtools.html#cb227-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
+<span id="cb227-12"><a href="esempio-con-semtools.html#cb227-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                Standard      Robust</span></span>
+<span id="cb227-13"><a href="esempio-con-semtools.html#cb227-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Test Statistic                                 22.897      23.864</span></span>
+<span id="cb227-14"><a href="esempio-con-semtools.html#cb227-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                 12          12</span></span>
+<span id="cb227-15"><a href="esempio-con-semtools.html#cb227-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                            0.029       0.021</span></span>
+<span id="cb227-16"><a href="esempio-con-semtools.html#cb227-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Scaling correction factor                                   0.959</span></span>
+<span id="cb227-17"><a href="esempio-con-semtools.html#cb227-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        Yuan-Bentler correction (Mplus variant)                     </span></span>
+<span id="cb227-18"><a href="esempio-con-semtools.html#cb227-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb227-19"><a href="esempio-con-semtools.html#cb227-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
+<span id="cb227-20"><a href="esempio-con-semtools.html#cb227-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb227-21"><a href="esempio-con-semtools.html#cb227-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Standard errors                             Sandwich</span></span>
+<span id="cb227-22"><a href="esempio-con-semtools.html#cb227-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Information bread                           Observed</span></span>
+<span id="cb227-23"><a href="esempio-con-semtools.html#cb227-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Observed information based on                Hessian</span></span>
+<span id="cb227-24"><a href="esempio-con-semtools.html#cb227-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb227-25"><a href="esempio-con-semtools.html#cb227-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
+<span id="cb227-26"><a href="esempio-con-semtools.html#cb227-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb227-27"><a href="esempio-con-semtools.html#cb227-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   factor1 =~                                          </span></span>
+<span id="cb227-28"><a href="esempio-con-semtools.html#cb227-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x1      (l1_1)    0.653    0.083    7.909    0.000</span></span>
+<span id="cb227-29"><a href="esempio-con-semtools.html#cb227-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x2      (l2_1)    0.353    0.079    4.481    0.000</span></span>
+<span id="cb227-30"><a href="esempio-con-semtools.html#cb227-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x3      (l3_1)    0.415    0.086    4.832    0.000</span></span>
+<span id="cb227-31"><a href="esempio-con-semtools.html#cb227-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x4      (l4_1)    0.926    0.067   13.762    0.000</span></span>
+<span id="cb227-32"><a href="esempio-con-semtools.html#cb227-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x5      (l5_1)    1.014    0.067   15.176    0.000</span></span>
+<span id="cb227-33"><a href="esempio-con-semtools.html#cb227-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x6      (l6_1)    0.868    0.062   13.886    0.000</span></span>
+<span id="cb227-34"><a href="esempio-con-semtools.html#cb227-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x7      (l7_1)    0.283    0.091    3.113    0.002</span></span>
+<span id="cb227-35"><a href="esempio-con-semtools.html#cb227-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x8      (l8_1)    0.340    0.083    4.096    0.000</span></span>
+<span id="cb227-36"><a href="esempio-con-semtools.html#cb227-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x9      (l9_1)    0.460    0.078    5.881    0.000</span></span>
+<span id="cb227-37"><a href="esempio-con-semtools.html#cb227-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   factor2 =~                                          </span></span>
+<span id="cb227-38"><a href="esempio-con-semtools.html#cb227-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x1      (l1_2)    0.349    0.124    2.814    0.005</span></span>
+<span id="cb227-39"><a href="esempio-con-semtools.html#cb227-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x2      (l2_2)    0.242    0.159    1.523    0.128</span></span>
+<span id="cb227-40"><a href="esempio-con-semtools.html#cb227-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x3      (l3_2)    0.497    0.132    3.767    0.000</span></span>
+<span id="cb227-41"><a href="esempio-con-semtools.html#cb227-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x4      (l4_2)   -0.337    0.067   -5.058    0.000</span></span>
+<span id="cb227-42"><a href="esempio-con-semtools.html#cb227-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x5      (l5_2)   -0.461    0.077   -6.009    0.000</span></span>
+<span id="cb227-43"><a href="esempio-con-semtools.html#cb227-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x6      (l6_2)   -0.280    0.057   -4.908    0.000</span></span>
+<span id="cb227-44"><a href="esempio-con-semtools.html#cb227-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x7      (l7_2)    0.372    0.188    1.976    0.048</span></span>
+<span id="cb227-45"><a href="esempio-con-semtools.html#cb227-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x8      (l8_2)    0.510    0.133    3.830    0.000</span></span>
+<span id="cb227-46"><a href="esempio-con-semtools.html#cb227-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x9      (l9_2)    0.489    0.066    7.416    0.000</span></span>
+<span id="cb227-47"><a href="esempio-con-semtools.html#cb227-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   factor3 =~                                          </span></span>
+<span id="cb227-48"><a href="esempio-con-semtools.html#cb227-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x1      (l1_3)   -0.338    0.103   -3.275    0.001</span></span>
+<span id="cb227-49"><a href="esempio-con-semtools.html#cb227-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x2      (l2_3)   -0.405    0.092   -4.401    0.000</span></span>
+<span id="cb227-50"><a href="esempio-con-semtools.html#cb227-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x3      (l3_3)   -0.404    0.120   -3.355    0.001</span></span>
+<span id="cb227-51"><a href="esempio-con-semtools.html#cb227-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x4      (l4_3)    0.049    0.098    0.503    0.615</span></span>
+<span id="cb227-52"><a href="esempio-con-semtools.html#cb227-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x5      (l5_3)    0.122    0.105    1.154    0.248</span></span>
+<span id="cb227-53"><a href="esempio-con-semtools.html#cb227-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x6      (l6_3)   -0.000    0.076   -0.003    0.998</span></span>
+<span id="cb227-54"><a href="esempio-con-semtools.html#cb227-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x7      (l7_3)    0.609    0.125    4.863    0.000</span></span>
+<span id="cb227-55"><a href="esempio-con-semtools.html#cb227-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x8      (l8_3)    0.409    0.143    2.853    0.004</span></span>
+<span id="cb227-56"><a href="esempio-con-semtools.html#cb227-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x9      (l9_3)    0.112    0.123    0.915    0.360</span></span>
+<span id="cb227-57"><a href="esempio-con-semtools.html#cb227-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb227-58"><a href="esempio-con-semtools.html#cb227-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Covariances:</span></span>
+<span id="cb227-59"><a href="esempio-con-semtools.html#cb227-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb227-60"><a href="esempio-con-semtools.html#cb227-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   factor1 ~~                                          </span></span>
+<span id="cb227-61"><a href="esempio-con-semtools.html#cb227-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     factor2           0.000                           </span></span>
+<span id="cb227-62"><a href="esempio-con-semtools.html#cb227-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     factor3           0.000                           </span></span>
+<span id="cb227-63"><a href="esempio-con-semtools.html#cb227-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   factor2 ~~                                          </span></span>
+<span id="cb227-64"><a href="esempio-con-semtools.html#cb227-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     factor3           0.000                           </span></span>
+<span id="cb227-65"><a href="esempio-con-semtools.html#cb227-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb227-66"><a href="esempio-con-semtools.html#cb227-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
+<span id="cb227-67"><a href="esempio-con-semtools.html#cb227-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb227-68"><a href="esempio-con-semtools.html#cb227-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     factor1           1.000                           </span></span>
+<span id="cb227-69"><a href="esempio-con-semtools.html#cb227-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     factor2           1.000                           </span></span>
+<span id="cb227-70"><a href="esempio-con-semtools.html#cb227-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     factor3           1.000                           </span></span>
+<span id="cb227-71"><a href="esempio-con-semtools.html#cb227-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x1                0.696    0.113    6.184    0.000</span></span>
+<span id="cb227-72"><a href="esempio-con-semtools.html#cb227-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x2                1.035    0.106    9.803    0.000</span></span>
+<span id="cb227-73"><a href="esempio-con-semtools.html#cb227-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x3                0.692    0.097    7.133    0.000</span></span>
+<span id="cb227-74"><a href="esempio-con-semtools.html#cb227-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x4                0.377    0.053    7.170    0.000</span></span>
+<span id="cb227-75"><a href="esempio-con-semtools.html#cb227-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x5                0.403    0.064    6.303    0.000</span></span>
+<span id="cb227-76"><a href="esempio-con-semtools.html#cb227-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x6                0.365    0.046    7.984    0.000</span></span>
+<span id="cb227-77"><a href="esempio-con-semtools.html#cb227-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x7                0.594    0.148    4.014    0.000</span></span>
+<span id="cb227-78"><a href="esempio-con-semtools.html#cb227-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x8                0.479    0.099    4.842    0.000</span></span>
+<span id="cb227-79"><a href="esempio-con-semtools.html#cb227-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x9                0.551    0.065    8.518    0.000</span></span>
+<span id="cb227-80"><a href="esempio-con-semtools.html#cb227-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb227-81"><a href="esempio-con-semtools.html#cb227-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Constraints:</span></span>
+<span id="cb227-82"><a href="esempio-con-semtools.html#cb227-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                |Slack|</span></span>
+<span id="cb227-83"><a href="esempio-con-semtools.html#cb227-83" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     0-(1_2*1_1+2_2*2_1+3_2*3_1+4_2*4_1+5_2*5_    0.000</span></span>
+<span id="cb227-84"><a href="esempio-con-semtools.html#cb227-84" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     0-(1_3*1_1+2_3*2_1+3_3*3_1+4_3*4_1+5_3*5_    0.000</span></span>
+<span id="cb227-85"><a href="esempio-con-semtools.html#cb227-85" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     0-(1_3*1_2+2_3*2_2+3_3*3_2+4_3*4_2+5_3*5_    0.000</span></span></code></pre></div>
+<p>Si noti che, in assenza di rotazione, è impossibile assegnare un significato ai fattori comuni.</p>
+<div id="orthogonal-varimax" class="section level3 hasAnchor" number="17.5.1">
+<h3><span class="header-section-number">17.5.1</span> Orthogonal varimax<a href="esempio-con-semtools.html#orthogonal-varimax" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Utilizziamo ora la rotazione ortogonale Varimax.</p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="esempio-con-semtools.html#cb228-1" aria-hidden="true" tabindex="-1"></a>out_varimax <span class="ot">&lt;-</span> <span class="fu">orthRotate</span>(unrotated, <span class="at">method =</span> <span class="st">&quot;varimax&quot;</span>)</span>
+<span id="cb228-2"><a href="esempio-con-semtools.html#cb228-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(out_varimax, <span class="at">sort =</span> <span class="cn">FALSE</span>, <span class="at">suppress =</span> <span class="fl">0.3</span>)</span>
+<span id="cb228-3"><a href="esempio-con-semtools.html#cb228-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Standardized Rotated Factor Loadings</span></span>
+<span id="cb228-4"><a href="esempio-con-semtools.html#cb228-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    factor1 factor2 factor3</span></span>
+<span id="cb228-5"><a href="esempio-con-semtools.html#cb228-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x1  0.320*  0.607*        </span></span>
+<span id="cb228-6"><a href="esempio-con-semtools.html#cb228-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x2          0.481*        </span></span>
+<span id="cb228-7"><a href="esempio-con-semtools.html#cb228-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x3          0.662*        </span></span>
+<span id="cb228-8"><a href="esempio-con-semtools.html#cb228-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x4  0.838*                </span></span>
+<span id="cb228-9"><a href="esempio-con-semtools.html#cb228-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x5  0.867*                </span></span>
+<span id="cb228-10"><a href="esempio-con-semtools.html#cb228-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x6  0.815*                </span></span>
+<span id="cb228-11"><a href="esempio-con-semtools.html#cb228-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x7                  0.695*</span></span>
+<span id="cb228-12"><a href="esempio-con-semtools.html#cb228-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x8                  0.704*</span></span>
+<span id="cb228-13"><a href="esempio-con-semtools.html#cb228-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x9          0.409*  0.511*</span></span>
+<span id="cb228-14"><a href="esempio-con-semtools.html#cb228-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb228-15"><a href="esempio-con-semtools.html#cb228-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Factor Correlation</span></span>
+<span id="cb228-16"><a href="esempio-con-semtools.html#cb228-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         factor1 factor2 factor3</span></span>
+<span id="cb228-17"><a href="esempio-con-semtools.html#cb228-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; factor1       1       0       0</span></span>
+<span id="cb228-18"><a href="esempio-con-semtools.html#cb228-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; factor2       0       1       0</span></span>
+<span id="cb228-19"><a href="esempio-con-semtools.html#cb228-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; factor3       0       0       1</span></span>
+<span id="cb228-20"><a href="esempio-con-semtools.html#cb228-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb228-21"><a href="esempio-con-semtools.html#cb228-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Method of rotation:  varimax </span></span>
+<span id="cb228-22"><a href="esempio-con-semtools.html#cb228-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb228-23"><a href="esempio-con-semtools.html#cb228-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Test Statistics for Standardized Rotated Factor Loadings</span></span>
+<span id="cb228-24"><a href="esempio-con-semtools.html#cb228-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        lhs op rhs std.loading    se      z     p ci.lower ci.upper</span></span>
+<span id="cb228-25"><a href="esempio-con-semtools.html#cb228-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  factor1 =~  x1       0.320 0.055  5.799 0.000    0.212    0.428</span></span>
+<span id="cb228-26"><a href="esempio-con-semtools.html#cb228-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  factor1 =~  x2       0.135 0.063  2.151 0.031    0.012    0.259</span></span>
+<span id="cb228-27"><a href="esempio-con-semtools.html#cb228-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  factor1 =~  x3       0.080 0.049  1.622 0.105   -0.017    0.176</span></span>
+<span id="cb228-28"><a href="esempio-con-semtools.html#cb228-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  factor1 =~  x4       0.838 0.028 30.193 0.000    0.784    0.892</span></span>
+<span id="cb228-29"><a href="esempio-con-semtools.html#cb228-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  factor1 =~  x5       0.867 0.024 36.188 0.000    0.820    0.914</span></span>
+<span id="cb228-30"><a href="esempio-con-semtools.html#cb228-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  factor1 =~  x6       0.815 0.024 33.939 0.000    0.768    0.862</span></span>
+<span id="cb228-31"><a href="esempio-con-semtools.html#cb228-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7  factor1 =~  x7       0.102 0.049  2.059 0.040    0.005    0.199</span></span>
+<span id="cb228-32"><a href="esempio-con-semtools.html#cb228-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8  factor1 =~  x8       0.078 0.048  1.618 0.106   -0.016    0.172</span></span>
+<span id="cb228-33"><a href="esempio-con-semtools.html#cb228-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9  factor1 =~  x9       0.170 0.053  3.222 0.001    0.067    0.273</span></span>
+<span id="cb228-34"><a href="esempio-con-semtools.html#cb228-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 factor2 =~  x1       0.607 0.075  8.138 0.000    0.461    0.753</span></span>
+<span id="cb228-35"><a href="esempio-con-semtools.html#cb228-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 factor2 =~  x2       0.481 0.067  7.184 0.000    0.350    0.612</span></span>
+<span id="cb228-36"><a href="esempio-con-semtools.html#cb228-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 factor2 =~  x3       0.662 0.058 11.499 0.000    0.549    0.775</span></span>
+<span id="cb228-37"><a href="esempio-con-semtools.html#cb228-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13 factor2 =~  x4       0.113 0.043  2.615 0.009    0.028    0.198</span></span>
+<span id="cb228-38"><a href="esempio-con-semtools.html#cb228-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14 factor2 =~  x5       0.032 0.040  0.802 0.422   -0.047    0.111</span></span>
+<span id="cb228-39"><a href="esempio-con-semtools.html#cb228-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15 factor2 =~  x6       0.162 0.042  3.855 0.000    0.079    0.244</span></span>
+<span id="cb228-40"><a href="esempio-con-semtools.html#cb228-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16 factor2 =~  x7      -0.062 0.047 -1.341 0.180   -0.154    0.029</span></span>
+<span id="cb228-41"><a href="esempio-con-semtools.html#cb228-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17 factor2 =~  x8       0.174 0.082  2.117 0.034    0.013    0.336</span></span>
+<span id="cb228-42"><a href="esempio-con-semtools.html#cb228-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18 factor2 =~  x9       0.409 0.079  5.173 0.000    0.254    0.564</span></span>
+<span id="cb228-43"><a href="esempio-con-semtools.html#cb228-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19 factor3 =~  x1       0.130 0.066  1.978 0.048    0.001    0.259</span></span>
+<span id="cb228-44"><a href="esempio-con-semtools.html#cb228-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20 factor3 =~  x2      -0.041 0.071 -0.578 0.563   -0.179    0.098</span></span>
+<span id="cb228-45"><a href="esempio-con-semtools.html#cb228-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21 factor3 =~  x3       0.113 0.049  2.324 0.020    0.018    0.209</span></span>
+<span id="cb228-46"><a href="esempio-con-semtools.html#cb228-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22 factor3 =~  x4       0.077 0.040  1.916 0.055   -0.002    0.155</span></span>
+<span id="cb228-47"><a href="esempio-con-semtools.html#cb228-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23 factor3 =~  x5       0.070 0.042  1.669 0.095   -0.012    0.153</span></span>
+<span id="cb228-48"><a href="esempio-con-semtools.html#cb228-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24 factor3 =~  x6       0.066 0.038  1.715 0.086   -0.009    0.141</span></span>
+<span id="cb228-49"><a href="esempio-con-semtools.html#cb228-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25 factor3 =~  x7       0.695 0.092  7.591 0.000    0.516    0.875</span></span>
+<span id="cb228-50"><a href="esempio-con-semtools.html#cb228-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26 factor3 =~  x8       0.704 0.083  8.520 0.000    0.542    0.865</span></span>
+<span id="cb228-51"><a href="esempio-con-semtools.html#cb228-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 27 factor3 =~  x9       0.511 0.065  7.884 0.000    0.384    0.638</span></span></code></pre></div>
+</div>
+<div id="orthogonal-quartimin" class="section level3 hasAnchor" number="17.5.2">
+<h3><span class="header-section-number">17.5.2</span> Orthogonal Quartimin<a href="esempio-con-semtools.html#orthogonal-quartimin" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Un metodo alternativo per la rotazione ortogonale è Quartimin.</p>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="esempio-con-semtools.html#cb229-1" aria-hidden="true" tabindex="-1"></a>out_quartimin <span class="ot">&lt;-</span> <span class="fu">orthRotate</span>(unrotated, <span class="at">method =</span> <span class="st">&quot;quartimin&quot;</span>)</span>
+<span id="cb229-2"><a href="esempio-con-semtools.html#cb229-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(out_quartimin, <span class="at">sort =</span> <span class="cn">FALSE</span>, <span class="at">suppress =</span> <span class="fl">0.3</span>)</span>
+<span id="cb229-3"><a href="esempio-con-semtools.html#cb229-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Standardized Rotated Factor Loadings</span></span>
+<span id="cb229-4"><a href="esempio-con-semtools.html#cb229-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    factor1 factor2 factor3</span></span>
+<span id="cb229-5"><a href="esempio-con-semtools.html#cb229-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x1  0.353*  0.590*        </span></span>
+<span id="cb229-6"><a href="esempio-con-semtools.html#cb229-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x2          0.474*        </span></span>
+<span id="cb229-7"><a href="esempio-con-semtools.html#cb229-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x3          0.657*        </span></span>
+<span id="cb229-8"><a href="esempio-con-semtools.html#cb229-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x4  0.844*                </span></span>
+<span id="cb229-9"><a href="esempio-con-semtools.html#cb229-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x5  0.869*                </span></span>
+<span id="cb229-10"><a href="esempio-con-semtools.html#cb229-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x6  0.823*                </span></span>
+<span id="cb229-11"><a href="esempio-con-semtools.html#cb229-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x7                  0.692*</span></span>
+<span id="cb229-12"><a href="esempio-con-semtools.html#cb229-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x8                  0.702*</span></span>
+<span id="cb229-13"><a href="esempio-con-semtools.html#cb229-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x9          0.397*  0.508*</span></span>
+<span id="cb229-14"><a href="esempio-con-semtools.html#cb229-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb229-15"><a href="esempio-con-semtools.html#cb229-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Factor Correlation</span></span>
+<span id="cb229-16"><a href="esempio-con-semtools.html#cb229-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         factor1 factor2 factor3</span></span>
+<span id="cb229-17"><a href="esempio-con-semtools.html#cb229-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; factor1       1       0       0</span></span>
+<span id="cb229-18"><a href="esempio-con-semtools.html#cb229-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; factor2       0       1       0</span></span>
+<span id="cb229-19"><a href="esempio-con-semtools.html#cb229-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; factor3       0       0       1</span></span>
+<span id="cb229-20"><a href="esempio-con-semtools.html#cb229-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb229-21"><a href="esempio-con-semtools.html#cb229-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Method of rotation:  Quartimin </span></span>
+<span id="cb229-22"><a href="esempio-con-semtools.html#cb229-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb229-23"><a href="esempio-con-semtools.html#cb229-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Test Statistics for Standardized Rotated Factor Loadings</span></span>
+<span id="cb229-24"><a href="esempio-con-semtools.html#cb229-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        lhs op rhs std.loading    se      z     p ci.lower ci.upper</span></span>
+<span id="cb229-25"><a href="esempio-con-semtools.html#cb229-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  factor1 =~  x1       0.353 0.062  5.720 0.000    0.232    0.473</span></span>
+<span id="cb229-26"><a href="esempio-con-semtools.html#cb229-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  factor1 =~  x2       0.158 0.066  2.375 0.018    0.028    0.288</span></span>
+<span id="cb229-27"><a href="esempio-con-semtools.html#cb229-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  factor1 =~  x3       0.115 0.057  2.015 0.044    0.003    0.226</span></span>
+<span id="cb229-28"><a href="esempio-con-semtools.html#cb229-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  factor1 =~  x4       0.844 0.027 30.814 0.000    0.790    0.898</span></span>
+<span id="cb229-29"><a href="esempio-con-semtools.html#cb229-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  factor1 =~  x5       0.869 0.023 37.224 0.000    0.823    0.914</span></span>
+<span id="cb229-30"><a href="esempio-con-semtools.html#cb229-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  factor1 =~  x6       0.823 0.024 35.026 0.000    0.777    0.869</span></span>
+<span id="cb229-31"><a href="esempio-con-semtools.html#cb229-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7  factor1 =~  x7       0.116 0.054  2.161 0.031    0.011    0.222</span></span>
+<span id="cb229-32"><a href="esempio-con-semtools.html#cb229-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8  factor1 =~  x8       0.104 0.054  1.914 0.056   -0.003    0.210</span></span>
+<span id="cb229-33"><a href="esempio-con-semtools.html#cb229-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9  factor1 =~  x9       0.202 0.059  3.403 0.001    0.086    0.319</span></span>
+<span id="cb229-34"><a href="esempio-con-semtools.html#cb229-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 factor2 =~  x1       0.590 0.078  7.523 0.000    0.436    0.743</span></span>
+<span id="cb229-35"><a href="esempio-con-semtools.html#cb229-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 factor2 =~  x2       0.474 0.068  6.935 0.000    0.340    0.608</span></span>
+<span id="cb229-36"><a href="esempio-con-semtools.html#cb229-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 factor2 =~  x3       0.657 0.059 11.204 0.000    0.542    0.771</span></span>
+<span id="cb229-37"><a href="esempio-con-semtools.html#cb229-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13 factor2 =~  x4       0.072 0.041  1.748 0.080   -0.009    0.152</span></span>
+<span id="cb229-38"><a href="esempio-con-semtools.html#cb229-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14 factor2 =~  x5      -0.010 0.039 -0.263 0.793   -0.087    0.066</span></span>
+<span id="cb229-39"><a href="esempio-con-semtools.html#cb229-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15 factor2 =~  x6       0.122 0.040  3.008 0.003    0.042    0.201</span></span>
+<span id="cb229-40"><a href="esempio-con-semtools.html#cb229-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16 factor2 =~  x7      -0.071 0.048 -1.465 0.143   -0.166    0.024</span></span>
+<span id="cb229-41"><a href="esempio-con-semtools.html#cb229-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17 factor2 =~  x8       0.167 0.090  1.849 0.064   -0.010    0.343</span></span>
+<span id="cb229-42"><a href="esempio-con-semtools.html#cb229-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18 factor2 =~  x9       0.397 0.087  4.581 0.000    0.227    0.567</span></span>
+<span id="cb229-43"><a href="esempio-con-semtools.html#cb229-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19 factor3 =~  x1       0.124 0.071  1.740 0.082   -0.016    0.264</span></span>
+<span id="cb229-44"><a href="esempio-con-semtools.html#cb229-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20 factor3 =~  x2      -0.042 0.074 -0.574 0.566   -0.187    0.102</span></span>
+<span id="cb229-45"><a href="esempio-con-semtools.html#cb229-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21 factor3 =~  x3       0.114 0.054  2.093 0.036    0.007    0.221</span></span>
+<span id="cb229-46"><a href="esempio-con-semtools.html#cb229-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22 factor3 =~  x4       0.056 0.037  1.503 0.133   -0.017    0.128</span></span>
+<span id="cb229-47"><a href="esempio-con-semtools.html#cb229-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23 factor3 =~  x5       0.048 0.038  1.263 0.206   -0.027    0.123</span></span>
+<span id="cb229-48"><a href="esempio-con-semtools.html#cb229-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24 factor3 =~  x6       0.046 0.034  1.347 0.178   -0.021    0.112</span></span>
+<span id="cb229-49"><a href="esempio-con-semtools.html#cb229-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25 factor3 =~  x7       0.692 0.093  7.477 0.000    0.511    0.874</span></span>
+<span id="cb229-50"><a href="esempio-con-semtools.html#cb229-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26 factor3 =~  x8       0.702 0.084  8.331 0.000    0.537    0.867</span></span>
+<span id="cb229-51"><a href="esempio-con-semtools.html#cb229-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 27 factor3 =~  x9       0.508 0.070  7.298 0.000    0.371    0.644</span></span></code></pre></div>
+</div>
+<div id="oblique-quartimin" class="section level3 hasAnchor" number="17.5.3">
+<h3><span class="header-section-number">17.5.3</span> Oblique Quartimin<a href="esempio-con-semtools.html#oblique-quartimin" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>L’algoritmo Quartimin può anche essere usato per una soluzione obliqua.</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="esempio-con-semtools.html#cb230-1" aria-hidden="true" tabindex="-1"></a>out_oblq <span class="ot">&lt;-</span> <span class="fu">oblqRotate</span>(unrotated, <span class="at">method =</span> <span class="st">&quot;quartimin&quot;</span>)</span>
+<span id="cb230-2"><a href="esempio-con-semtools.html#cb230-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(out_oblq, <span class="at">sort =</span> <span class="cn">FALSE</span>, <span class="at">suppress =</span> <span class="fl">0.3</span>)</span>
+<span id="cb230-3"><a href="esempio-con-semtools.html#cb230-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Standardized Rotated Factor Loadings</span></span>
+<span id="cb230-4"><a href="esempio-con-semtools.html#cb230-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    factor1 factor2 factor3</span></span>
+<span id="cb230-5"><a href="esempio-con-semtools.html#cb230-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x1          0.602*        </span></span>
+<span id="cb230-6"><a href="esempio-con-semtools.html#cb230-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x2          0.505*        </span></span>
+<span id="cb230-7"><a href="esempio-con-semtools.html#cb230-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x3          0.689*        </span></span>
+<span id="cb230-8"><a href="esempio-con-semtools.html#cb230-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x4  0.840*                </span></span>
+<span id="cb230-9"><a href="esempio-con-semtools.html#cb230-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x5  0.888*                </span></span>
+<span id="cb230-10"><a href="esempio-con-semtools.html#cb230-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x6  0.808*                </span></span>
+<span id="cb230-11"><a href="esempio-con-semtools.html#cb230-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x7                  0.723*</span></span>
+<span id="cb230-12"><a href="esempio-con-semtools.html#cb230-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x8                  0.701*</span></span>
+<span id="cb230-13"><a href="esempio-con-semtools.html#cb230-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x9          0.366*  0.463*</span></span>
+<span id="cb230-14"><a href="esempio-con-semtools.html#cb230-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb230-15"><a href="esempio-con-semtools.html#cb230-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Factor Correlation</span></span>
+<span id="cb230-16"><a href="esempio-con-semtools.html#cb230-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           factor1   factor2   factor3</span></span>
+<span id="cb230-17"><a href="esempio-con-semtools.html#cb230-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; factor1 1.0000000 0.3257784 0.2164388</span></span>
+<span id="cb230-18"><a href="esempio-con-semtools.html#cb230-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; factor2 0.3257784 1.0000000 0.2704753</span></span>
+<span id="cb230-19"><a href="esempio-con-semtools.html#cb230-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; factor3 0.2164388 0.2704753 1.0000000</span></span>
+<span id="cb230-20"><a href="esempio-con-semtools.html#cb230-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb230-21"><a href="esempio-con-semtools.html#cb230-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Method of rotation:  Quartimin </span></span>
+<span id="cb230-22"><a href="esempio-con-semtools.html#cb230-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb230-23"><a href="esempio-con-semtools.html#cb230-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Test Statistics for Standardized Rotated Factor Loadings</span></span>
+<span id="cb230-24"><a href="esempio-con-semtools.html#cb230-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        lhs op rhs std.loading    se      z     p ci.lower ci.upper</span></span>
+<span id="cb230-25"><a href="esempio-con-semtools.html#cb230-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  factor1 =~  x1       0.191 0.064  2.965 0.003    0.065    0.317</span></span>
+<span id="cb230-26"><a href="esempio-con-semtools.html#cb230-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  factor1 =~  x2       0.044 0.066  0.665 0.506   -0.085    0.172</span></span>
+<span id="cb230-27"><a href="esempio-con-semtools.html#cb230-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  factor1 =~  x3      -0.069 0.034 -2.031 0.042   -0.137   -0.002</span></span>
+<span id="cb230-28"><a href="esempio-con-semtools.html#cb230-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  factor1 =~  x4       0.840 0.033 25.622 0.000    0.776    0.905</span></span>
+<span id="cb230-29"><a href="esempio-con-semtools.html#cb230-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  factor1 =~  x5       0.888 0.027 32.583 0.000    0.835    0.942</span></span>
+<span id="cb230-30"><a href="esempio-con-semtools.html#cb230-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  factor1 =~  x6       0.808 0.028 28.441 0.000    0.752    0.863</span></span>
+<span id="cb230-31"><a href="esempio-con-semtools.html#cb230-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7  factor1 =~  x7       0.044 0.037  1.179 0.238   -0.029    0.116</span></span>
+<span id="cb230-32"><a href="esempio-con-semtools.html#cb230-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8  factor1 =~  x8      -0.033 0.036 -0.916 0.360   -0.103    0.037</span></span>
+<span id="cb230-33"><a href="esempio-con-semtools.html#cb230-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9  factor1 =~  x9       0.035 0.048  0.728 0.467   -0.059    0.129</span></span>
+<span id="cb230-34"><a href="esempio-con-semtools.html#cb230-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 factor2 =~  x1       0.602 0.086  7.003 0.000    0.434    0.771</span></span>
+<span id="cb230-35"><a href="esempio-con-semtools.html#cb230-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 factor2 =~  x2       0.505 0.071  7.163 0.000    0.367    0.644</span></span>
+<span id="cb230-36"><a href="esempio-con-semtools.html#cb230-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 factor2 =~  x3       0.689 0.056 12.344 0.000    0.580    0.799</span></span>
+<span id="cb230-37"><a href="esempio-con-semtools.html#cb230-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13 factor2 =~  x4       0.022 0.045  0.483 0.629   -0.067    0.110</span></span>
+<span id="cb230-38"><a href="esempio-con-semtools.html#cb230-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14 factor2 =~  x5      -0.067 0.036 -1.890 0.059   -0.137    0.002</span></span>
+<span id="cb230-39"><a href="esempio-con-semtools.html#cb230-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15 factor2 =~  x6       0.078 0.041  1.887 0.059   -0.003    0.158</span></span>
+<span id="cb230-40"><a href="esempio-con-semtools.html#cb230-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16 factor2 =~  x7      -0.152 0.037 -4.058 0.000   -0.225   -0.078</span></span>
+<span id="cb230-41"><a href="esempio-con-semtools.html#cb230-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17 factor2 =~  x8       0.104 0.109  0.960 0.337   -0.109    0.317</span></span>
+<span id="cb230-42"><a href="esempio-con-semtools.html#cb230-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18 factor2 =~  x9       0.366 0.097  3.780 0.000    0.176    0.556</span></span>
+<span id="cb230-43"><a href="esempio-con-semtools.html#cb230-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19 factor3 =~  x1       0.031 0.062  0.500 0.617   -0.090    0.152</span></span>
+<span id="cb230-44"><a href="esempio-con-semtools.html#cb230-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20 factor3 =~  x2      -0.117 0.066 -1.776 0.076   -0.245    0.012</span></span>
+<span id="cb230-45"><a href="esempio-con-semtools.html#cb230-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21 factor3 =~  x3       0.023 0.039  0.587 0.557   -0.054    0.100</span></span>
+<span id="cb230-46"><a href="esempio-con-semtools.html#cb230-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22 factor3 =~  x4       0.005 0.042  0.128 0.898   -0.076    0.087</span></span>
+<span id="cb230-47"><a href="esempio-con-semtools.html#cb230-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23 factor3 =~  x5       0.008 0.035  0.216 0.829   -0.061    0.076</span></span>
+<span id="cb230-48"><a href="esempio-con-semtools.html#cb230-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24 factor3 =~  x6      -0.011 0.030 -0.362 0.717   -0.070    0.048</span></span>
+<span id="cb230-49"><a href="esempio-con-semtools.html#cb230-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25 factor3 =~  x7       0.723 0.087  8.328 0.000    0.553    0.893</span></span>
+<span id="cb230-50"><a href="esempio-con-semtools.html#cb230-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26 factor3 =~  x8       0.701 0.098  7.137 0.000    0.509    0.894</span></span>
+<span id="cb230-51"><a href="esempio-con-semtools.html#cb230-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 27 factor3 =~  x9       0.463 0.075  6.211 0.000    0.317    0.609</span></span></code></pre></div>
+</div>
+<div id="orthogonal-geomin" class="section level3 hasAnchor" number="17.5.4">
+<h3><span class="header-section-number">17.5.4</span> Orthogonal Geomin<a href="esempio-con-semtools.html#orthogonal-geomin" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Consideriamo ora la rotazione Geomin. L’algoritmo Geomin fornisce un metodo di rotazione che riduce al minimo la media geometrica delle saturazioni fattoriali innalzate al quadrato. Qui è usato per ottenere una soluzione ortogonale.</p>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="esempio-con-semtools.html#cb231-1" aria-hidden="true" tabindex="-1"></a>out_geomin_orh <span class="ot">&lt;-</span> <span class="fu">orthRotate</span>(unrotated, <span class="at">method =</span> <span class="st">&quot;geomin&quot;</span>)</span>
+<span id="cb231-2"><a href="esempio-con-semtools.html#cb231-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(out_geomin_orh, <span class="at">sort =</span> <span class="cn">FALSE</span>, <span class="at">suppress =</span> <span class="fl">0.3</span>)</span>
+<span id="cb231-3"><a href="esempio-con-semtools.html#cb231-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Standardized Rotated Factor Loadings</span></span>
+<span id="cb231-4"><a href="esempio-con-semtools.html#cb231-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    factor1 factor2 factor3</span></span>
+<span id="cb231-5"><a href="esempio-con-semtools.html#cb231-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x1  0.315          -0.621 </span></span>
+<span id="cb231-6"><a href="esempio-con-semtools.html#cb231-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x2                 -0.474*</span></span>
+<span id="cb231-7"><a href="esempio-con-semtools.html#cb231-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x3                 -0.671*</span></span>
+<span id="cb231-8"><a href="esempio-con-semtools.html#cb231-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x4  0.838*                </span></span>
+<span id="cb231-9"><a href="esempio-con-semtools.html#cb231-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x5  0.867*                </span></span>
+<span id="cb231-10"><a href="esempio-con-semtools.html#cb231-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x6  0.814*                </span></span>
+<span id="cb231-11"><a href="esempio-con-semtools.html#cb231-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x7          0.696*        </span></span>
+<span id="cb231-12"><a href="esempio-con-semtools.html#cb231-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x8          0.677*        </span></span>
+<span id="cb231-13"><a href="esempio-con-semtools.html#cb231-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x9          0.456* -0.468 </span></span>
+<span id="cb231-14"><a href="esempio-con-semtools.html#cb231-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb231-15"><a href="esempio-con-semtools.html#cb231-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Factor Correlation</span></span>
+<span id="cb231-16"><a href="esempio-con-semtools.html#cb231-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         factor1 factor2 factor3</span></span>
+<span id="cb231-17"><a href="esempio-con-semtools.html#cb231-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; factor1       1       0       0</span></span>
+<span id="cb231-18"><a href="esempio-con-semtools.html#cb231-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; factor2       0       1       0</span></span>
+<span id="cb231-19"><a href="esempio-con-semtools.html#cb231-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; factor3       0       0       1</span></span>
+<span id="cb231-20"><a href="esempio-con-semtools.html#cb231-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb231-21"><a href="esempio-con-semtools.html#cb231-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Method of rotation:  Geomin </span></span>
+<span id="cb231-22"><a href="esempio-con-semtools.html#cb231-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb231-23"><a href="esempio-con-semtools.html#cb231-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Test Statistics for Standardized Rotated Factor Loadings</span></span>
+<span id="cb231-24"><a href="esempio-con-semtools.html#cb231-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        lhs op rhs std.loading    se      z     p ci.lower ci.upper</span></span>
+<span id="cb231-25"><a href="esempio-con-semtools.html#cb231-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  factor1 =~  x1       0.315 0.633  0.499 0.618   -0.925    1.555</span></span>
+<span id="cb231-26"><a href="esempio-con-semtools.html#cb231-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  factor1 =~  x2       0.130 0.509  0.255 0.799   -0.868    1.128</span></span>
+<span id="cb231-27"><a href="esempio-con-semtools.html#cb231-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  factor1 =~  x3       0.074 0.672  0.110 0.912   -1.244    1.392</span></span>
+<span id="cb231-28"><a href="esempio-con-semtools.html#cb231-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  factor1 =~  x4       0.838 0.126  6.644 0.000    0.591    1.085</span></span>
+<span id="cb231-29"><a href="esempio-con-semtools.html#cb231-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  factor1 =~  x5       0.867 0.047 18.395 0.000    0.775    0.960</span></span>
+<span id="cb231-30"><a href="esempio-con-semtools.html#cb231-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  factor1 =~  x6       0.814 0.176  4.623 0.000    0.469    1.159</span></span>
+<span id="cb231-31"><a href="esempio-con-semtools.html#cb231-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7  factor1 =~  x7       0.112 0.112  0.993 0.321   -0.109    0.332</span></span>
+<span id="cb231-32"><a href="esempio-con-semtools.html#cb231-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8  factor1 =~  x8       0.085 0.157  0.542 0.588   -0.222    0.392</span></span>
+<span id="cb231-33"><a href="esempio-con-semtools.html#cb231-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9  factor1 =~  x9       0.172 0.409  0.421 0.674   -0.629    0.973</span></span>
+<span id="cb231-34"><a href="esempio-con-semtools.html#cb231-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 factor2 =~  x1       0.053 0.112  0.475 0.635   -0.166    0.272</span></span>
+<span id="cb231-35"><a href="esempio-con-semtools.html#cb231-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 factor2 =~  x2      -0.099 0.087 -1.142 0.254   -0.269    0.071</span></span>
+<span id="cb231-36"><a href="esempio-con-semtools.html#cb231-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 factor2 =~  x3       0.033 0.069  0.482 0.630   -0.103    0.169</span></span>
+<span id="cb231-37"><a href="esempio-con-semtools.html#cb231-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13 factor2 =~  x4       0.051 0.136  0.374 0.708   -0.215    0.317</span></span>
+<span id="cb231-38"><a href="esempio-con-semtools.html#cb231-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14 factor2 =~  x5       0.054 0.158  0.340 0.734   -0.256    0.363</span></span>
+<span id="cb231-39"><a href="esempio-con-semtools.html#cb231-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15 factor2 =~  x6       0.035 0.133  0.260 0.795   -0.226    0.296</span></span>
+<span id="cb231-40"><a href="esempio-con-semtools.html#cb231-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16 factor2 =~  x7       0.696 0.089  7.863 0.000    0.523    0.870</span></span>
+<span id="cb231-41"><a href="esempio-con-semtools.html#cb231-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17 factor2 =~  x8       0.677 0.098  6.897 0.000    0.485    0.869</span></span>
+<span id="cb231-42"><a href="esempio-con-semtools.html#cb231-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18 factor2 =~  x9       0.456 0.109  4.175 0.000    0.242    0.671</span></span>
+<span id="cb231-43"><a href="esempio-con-semtools.html#cb231-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19 factor3 =~  x1      -0.621 0.345 -1.797 0.072   -1.298    0.056</span></span>
+<span id="cb231-44"><a href="esempio-con-semtools.html#cb231-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20 factor3 =~  x2      -0.474 0.151 -3.144 0.002   -0.769   -0.179</span></span>
+<span id="cb231-45"><a href="esempio-con-semtools.html#cb231-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21 factor3 =~  x3      -0.671 0.090 -7.499 0.000   -0.847   -0.496</span></span>
+<span id="cb231-46"><a href="esempio-con-semtools.html#cb231-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22 factor3 =~  x4      -0.129 0.861 -0.150 0.881   -1.816    1.558</span></span>
+<span id="cb231-47"><a href="esempio-con-semtools.html#cb231-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23 factor3 =~  x5      -0.048 0.905 -0.053 0.958   -1.822    1.725</span></span>
+<span id="cb231-48"><a href="esempio-con-semtools.html#cb231-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24 factor3 =~  x6      -0.176 0.840 -0.209 0.834   -1.823    1.471</span></span>
+<span id="cb231-49"><a href="esempio-con-semtools.html#cb231-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25 factor3 =~  x7      -0.021 0.170 -0.123 0.902   -0.354    0.312</span></span>
+<span id="cb231-50"><a href="esempio-con-semtools.html#cb231-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26 factor3 =~  x8      -0.257 0.173 -1.481 0.139   -0.597    0.083</span></span>
+<span id="cb231-51"><a href="esempio-con-semtools.html#cb231-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 27 factor3 =~  x9      -0.468 0.263 -1.776 0.076   -0.984    0.048</span></span></code></pre></div>
+</div>
+<div id="oblique-geomin" class="section level3 hasAnchor" number="17.5.5">
+<h3><span class="header-section-number">17.5.5</span> Oblique Geomin<a href="esempio-con-semtools.html#oblique-geomin" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La rotazione Geomin può anche essere usata per ottenere una soluzione obliqua.</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="esempio-con-semtools.html#cb232-1" aria-hidden="true" tabindex="-1"></a>out_geomin_obl <span class="ot">&lt;-</span> <span class="fu">oblqRotate</span>(unrotated, <span class="at">method =</span> <span class="st">&quot;geomin&quot;</span>)</span>
+<span id="cb232-2"><a href="esempio-con-semtools.html#cb232-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(out_geomin_obl, <span class="at">sort =</span> <span class="cn">FALSE</span>, <span class="at">suppress =</span> <span class="fl">0.3</span>)</span>
+<span id="cb232-3"><a href="esempio-con-semtools.html#cb232-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Standardized Rotated Factor Loadings</span></span>
+<span id="cb232-4"><a href="esempio-con-semtools.html#cb232-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    factor1 factor2 factor3</span></span>
+<span id="cb232-5"><a href="esempio-con-semtools.html#cb232-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x1                 -0.604*</span></span>
+<span id="cb232-6"><a href="esempio-con-semtools.html#cb232-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x2                 -0.507*</span></span>
+<span id="cb232-7"><a href="esempio-con-semtools.html#cb232-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x3                 -0.691*</span></span>
+<span id="cb232-8"><a href="esempio-con-semtools.html#cb232-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x4  0.839*                </span></span>
+<span id="cb232-9"><a href="esempio-con-semtools.html#cb232-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x5  0.887*                </span></span>
+<span id="cb232-10"><a href="esempio-con-semtools.html#cb232-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x6  0.806*                </span></span>
+<span id="cb232-11"><a href="esempio-con-semtools.html#cb232-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x7          0.726*        </span></span>
+<span id="cb232-12"><a href="esempio-con-semtools.html#cb232-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x8          0.703*        </span></span>
+<span id="cb232-13"><a href="esempio-con-semtools.html#cb232-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x9          0.463* -0.368*</span></span>
+<span id="cb232-14"><a href="esempio-con-semtools.html#cb232-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb232-15"><a href="esempio-con-semtools.html#cb232-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Factor Correlation</span></span>
+<span id="cb232-16"><a href="esempio-con-semtools.html#cb232-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            factor1    factor2    factor3</span></span>
+<span id="cb232-17"><a href="esempio-con-semtools.html#cb232-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; factor1  1.0000000  0.2296197 -0.3271561</span></span>
+<span id="cb232-18"><a href="esempio-con-semtools.html#cb232-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; factor2  0.2296197  1.0000000 -0.2776935</span></span>
+<span id="cb232-19"><a href="esempio-con-semtools.html#cb232-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; factor3 -0.3271561 -0.2776935  1.0000000</span></span>
+<span id="cb232-20"><a href="esempio-con-semtools.html#cb232-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb232-21"><a href="esempio-con-semtools.html#cb232-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Method of rotation:  Geomin </span></span>
+<span id="cb232-22"><a href="esempio-con-semtools.html#cb232-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb232-23"><a href="esempio-con-semtools.html#cb232-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Test Statistics for Standardized Rotated Factor Loadings</span></span>
+<span id="cb232-24"><a href="esempio-con-semtools.html#cb232-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        lhs op rhs std.loading    se       z     p ci.lower ci.upper</span></span>
+<span id="cb232-25"><a href="esempio-con-semtools.html#cb232-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  factor1 =~  x1       0.188 0.070   2.670 0.008    0.050    0.326</span></span>
+<span id="cb232-26"><a href="esempio-con-semtools.html#cb232-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  factor1 =~  x2       0.044 0.054   0.806 0.420   -0.062    0.150</span></span>
+<span id="cb232-27"><a href="esempio-con-semtools.html#cb232-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  factor1 =~  x3      -0.073 0.050  -1.466 0.143   -0.170    0.024</span></span>
+<span id="cb232-28"><a href="esempio-con-semtools.html#cb232-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  factor1 =~  x4       0.839 0.032  26.467 0.000    0.777    0.901</span></span>
+<span id="cb232-29"><a href="esempio-con-semtools.html#cb232-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  factor1 =~  x5       0.887 0.029  30.078 0.000    0.829    0.945</span></span>
+<span id="cb232-30"><a href="esempio-con-semtools.html#cb232-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  factor1 =~  x6       0.806 0.030  26.717 0.000    0.747    0.865</span></span>
+<span id="cb232-31"><a href="esempio-con-semtools.html#cb232-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7  factor1 =~  x7       0.031 0.034   0.914 0.361   -0.036    0.099</span></span>
+<span id="cb232-32"><a href="esempio-con-semtools.html#cb232-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8  factor1 =~  x8      -0.045 0.048  -0.949 0.343   -0.139    0.048</span></span>
+<span id="cb232-33"><a href="esempio-con-semtools.html#cb232-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9  factor1 =~  x9       0.025 0.034   0.746 0.455   -0.041    0.091</span></span>
+<span id="cb232-34"><a href="esempio-con-semtools.html#cb232-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 factor2 =~  x1       0.029 0.051   0.566 0.571   -0.071    0.129</span></span>
+<span id="cb232-35"><a href="esempio-con-semtools.html#cb232-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 factor2 =~  x2      -0.119 0.072  -1.663 0.096   -0.260    0.021</span></span>
+<span id="cb232-36"><a href="esempio-con-semtools.html#cb232-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 factor2 =~  x3       0.020 0.037   0.538 0.590   -0.052    0.092</span></span>
+<span id="cb232-37"><a href="esempio-con-semtools.html#cb232-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13 factor2 =~  x4       0.007 0.043   0.174 0.862   -0.076    0.091</span></span>
+<span id="cb232-38"><a href="esempio-con-semtools.html#cb232-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14 factor2 =~  x5       0.010 0.036   0.285 0.775   -0.060    0.080</span></span>
+<span id="cb232-39"><a href="esempio-con-semtools.html#cb232-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15 factor2 =~  x6      -0.009 0.030  -0.309 0.758   -0.068    0.049</span></span>
+<span id="cb232-40"><a href="esempio-con-semtools.html#cb232-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16 factor2 =~  x7       0.726 0.072  10.089 0.000    0.585    0.867</span></span>
+<span id="cb232-41"><a href="esempio-con-semtools.html#cb232-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17 factor2 =~  x8       0.703 0.118   5.966 0.000    0.472    0.934</span></span>
+<span id="cb232-42"><a href="esempio-con-semtools.html#cb232-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18 factor2 =~  x9       0.463 0.080   5.820 0.000    0.307    0.619</span></span>
+<span id="cb232-43"><a href="esempio-con-semtools.html#cb232-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19 factor3 =~  x1      -0.604 0.081  -7.442 0.000   -0.763   -0.445</span></span>
+<span id="cb232-44"><a href="esempio-con-semtools.html#cb232-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20 factor3 =~  x2      -0.507 0.073  -6.972 0.000   -0.649   -0.364</span></span>
+<span id="cb232-45"><a href="esempio-con-semtools.html#cb232-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21 factor3 =~  x3      -0.691 0.061 -11.384 0.000   -0.810   -0.572</span></span>
+<span id="cb232-46"><a href="esempio-con-semtools.html#cb232-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22 factor3 =~  x4      -0.024 0.034  -0.702 0.483   -0.091    0.043</span></span>
+<span id="cb232-47"><a href="esempio-con-semtools.html#cb232-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23 factor3 =~  x5       0.065 0.045   1.459 0.145   -0.022    0.153</span></span>
+<span id="cb232-48"><a href="esempio-con-semtools.html#cb232-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24 factor3 =~  x6      -0.080 0.048  -1.679 0.093   -0.173    0.013</span></span>
+<span id="cb232-49"><a href="esempio-con-semtools.html#cb232-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25 factor3 =~  x7       0.150 0.108   1.396 0.163   -0.061    0.361</span></span>
+<span id="cb232-50"><a href="esempio-con-semtools.html#cb232-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26 factor3 =~  x8      -0.106 0.165  -0.645 0.519   -0.428    0.216</span></span>
+<span id="cb232-51"><a href="esempio-con-semtools.html#cb232-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 27 factor3 =~  x9      -0.368 0.133  -2.772 0.006   -0.628   -0.108</span></span></code></pre></div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="matrice-dei-pesi-fattoriali-e-matrice-di-struttura.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="interpretazione-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ccaudek/ds4psy/edit/master/205_rotazione.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["cfa.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

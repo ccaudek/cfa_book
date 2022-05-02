@@ -295,7 +295,7 @@ indicatori, corrispondente alla varianza degli errori della misura del
 punteggio totale del test, ovvero
 
 \begin{equation}
- \V(Y) = \left( \sum_i \lambda_i\right)^2 + \sum_i \psi_{ii}
+ \mathbb{V}(Y) = \left( \sum_i \lambda_i\right)^2 + \sum_i \psi_{ii}
   (\#eq:var-y)
 \end{equation}
 
@@ -304,7 +304,7 @@ Per un modello congenerico, la varianza del punteggio totale $Y$ è uguale a:
 
 \begin{equation}
 \begin{aligned}
-  \V(Y) &= \V\left[ \sum_i  \left(\lambda_i \xi + \delta_i\right)  \right]\notag\\
+  \mathbb{V}(Y) &= \V\left[ \sum_i  \left(\lambda_i \xi + \delta_i\right)  \right]\notag\\
   &= \V\left[  (\lambda_1 \xi + \delta_1) + (\lambda_2 \xi + \delta_2) + \dots +  (\lambda_p \xi + \delta_p)  \right]\notag\\
   &= \V\left[ \left( \sum_i \lambda_i\right) \xi + \sum_i \delta_i\right]\notag\\
   &=  \left(\sum_i \lambda_i\right)^2 \underbrace{\V(\xi)}_{=1} +  \sum_i  \V(\delta_i)\notag\\
@@ -321,7 +321,7 @@ Avendo scomposto la varianza del punteggio totale di un test come
 indicato nella \@ref(eq:var-y)
 
 $$
-\V(Y) = \left( \sum_i \lambda_i\right)^2 + \sum_i \psi_{ii}.
+\mathbb{V}(Y) = \left( \sum_i \lambda_i\right)^2 + \sum_i \psi_{ii}.
 $$
 
 McDonald (1999) definisce il coefficiente di attendibilità $\omega$ come
@@ -484,11 +484,10 @@ coefficiente $\omega$ è data da
 
 \begin{equation}
 \begin{aligned}
-\hat{\omega}
-%&= \frac{p}{p-1}\frac{\sideset{}{} {\sum \sum}_{i \neq k} s_{ik}}{s_Y^2} \notag\\
- = \frac{p}{p-1}\left(1-\frac{\sum_i s_{ii}}{s_Y^2}\right)
-(\#eq:alpha-camp)
+\hat{\omega} &= \frac{p}{p-1}\frac{\sideset{}{} {\sum \sum}_{i \neq k} s_{ik}}{s_Y^2} \notag\\
+ &= \frac{p}{p-1}\left(1-\frac{\sum_i s_{ii}}{s_Y^2}\right)
 \end{aligned}
+(\#eq:alpha-camp)
 \end{equation}
 
 La stima dell'attendibilità fornita dalla \@ref(eq:alpha-camp) trova il suo corrispettivo per i valori della popolazione nell'equazione seguente:
@@ -497,8 +496,8 @@ La stima dell'attendibilità fornita dalla \@ref(eq:alpha-camp) trova il suo cor
 \begin{aligned}
 \alpha &= \frac{p}{p-1}\left(1-\frac{\sum_{i=1}^p \sigma_{ii}}{\sigma_Y^2}\right)
 &= \frac{p}{p-1}\frac{\sum_{i\neq k}^p \mbox{Cov}(X_i, X_k)}{\V(Y)}
-(\#eq:alpha-pop)
 \end{aligned}
+(\#eq:alpha-pop)
 \end{equation}
 
 La \@ref(eq:alpha-pop) definisce quello che è conosciuto come il coefficiente $\alpha$.
@@ -589,45 +588,40 @@ del modello di misurazione su cui si basa.
 
 ### La formula "profetica" di Spearman-Brown
 
-L'attendibilità può essere stimata mediante il coefficiente $\omega$ se il modello di misurazione è congenerico e tramite il coefficiente $\alpha$, se il modello di misurazione è $\tau$-equivalente. Chiediamoci ora come possa essere misurata l'attendibilità nel caso di un modello di misurazione costituito da indicatori paralleli.
-
-Si considerino $p$ item paralleli, tali per cui $\lambda_1=\lambda_2=\dots=\lambda_p=\lambda$ e $\psi_{11}=\psi_{22}=\dots=\psi_{pp}=\psi$. In tal caso, la quota di varianza del punteggio totale del test che viene spiegata dalla variabile latente è uguale a
+La formula "profetica" di Spearman-Brown viene usata per misurare l'attendibilità nel caso di un modello di misurazione costituito da indicatori paralleli. Si considerino $p$ item paralleli, tali per cui $\lambda_1=\lambda_2=\dots=\lambda_p=\lambda$ e $\psi_{11}=\psi_{22}=\dots=\psi_{pp}=\psi$. In tal caso, la quota di varianza del punteggio totale del test che viene spiegata dalla variabile latente è uguale a
 
 $$
 \left(\sum_i \lambda_i \right)^2 = (p \lambda)^2 = p^2 \lambda^2.
 $$
 
-L'attendibilità di un singolo item è data da
+L'attendibilità di un singolo item, che chiamerò $\rho_1$, è data da
 
 $$
-\rho_1 = \frac{\lambda^2}{\lambda^2 + \psi} = \frac{\sigma_T^2}{\sigma_T^2+ \sigma_E^2}.
+\rho_1 = \frac{\sigma_T^2}{\sigma_T^2+ \sigma_E^2} = \frac{\lambda^2}{\lambda^2 + \psi}.
 $$
 
-Per $p$ item paralleli abbiamo 
+Per $p$ item paralleli avremo che 
 
 \begin{equation}
 \begin{aligned}
   \rho_p &= \frac{p^2 \lambda^2}{p^2 \lambda^2 + p \psi} \notag\\
          &= \frac{p^2 \lambda^2}{ p (p \lambda^2 + \psi)} \notag\\
          &= \frac{p \lambda^2}{ p \lambda^2 + \psi} \notag\\
-         &= \frac{p \lambda^2}{(p-1) \lambda^2 + (\lambda^2 + \psi)} \notag
+         &= \frac{p \lambda^2}{(p-1) \lambda^2 + (\lambda^2 + \psi)}. \notag
 \end{aligned}
 \end{equation}
 
-ovvero,
+Ricordando che l'attendibilità di ciascun singolo item è $\rho_1 = \frac{\lambda^2}{\lambda^2 + \psi}$, abbiamo che
 
 \begin{equation}
 \begin{aligned}
   \rho_p &= \frac{p \frac{\lambda^2}{\lambda^2+\psi}}{(p-1) \frac{\lambda^2}{\lambda^2+\psi} + \frac{\lambda^2 + \psi}{\lambda^2+\psi}} \notag\\
-  &= \frac{p \rho_1}{(p-1)\rho_1 + 1},
+  &= \frac{p \rho_1}{(p-1)\rho_1 + 1}.
 \end{aligned}
 (\#eq:spearman-brown-der)
 \end{equation}
 
-ricordando che l'attendibilità di ciascun singolo item è $\rho_1 = \frac{\lambda^2}{\lambda^2 + \psi}$.
-
-La \@ref(eq:spearman-brown-der) esprime l'attendibilità di un test costituito da $p$ item paralleli nei termini dell'attendibilità di un solo item ed è tradizionalmente conosciuta come la formula di Spearman-Brown (*Spearman-Brown prophecy formula*). Nel caso di item
-paralleli si ha che
+La \@ref(eq:spearman-brown-der) esprime l'attendibilità $\rho_p$ di un test costituito da $p$ item paralleli come funzione dell'attendibilità che caratterizza un singolo item. La \@ref(eq:spearman-brown-der) è tradizionalmente conosciuta con il nome di formula "profetica" di Spearman-Brown (*Spearman-Brown prophecy formula*). Nel caso di item paralleli si ha che
 
 $$
 \omega=\alpha=\rho_p.
@@ -635,17 +629,18 @@ $$
 
 #### Un esempio concreto
 
-Poniamoci ora il problema di calcolare l'attendibilità del test SWLS ipotizzando che gli item siano paralleli e utilizzando la formula di Spearman-Brown. La matrice di correlazione è:
+Poniamoci il problema di calcolare l'attendibilità del test SWLS utilizzando la formula di Spearman-Brown. Ipotizziamo dunque che gli item della scala SWLS siano paralleli. La matrice di correlazione è:
 
 ```{r}
 R <- cov2cor(SWLS)
 round(R, 3)
 ```
 
-Seguendo McDonald (1999), supponiamo di calcolare l'attendibilità di un singolo item ($\rho_1$) come la correlazione media tra gli item:
+Seguendo @mcdonald2013test, supponiamo di calcolare l'attendibilità di un singolo item ($\rho_1$) come la correlazione media tra gli item:
 
 ```{r}
 rr <- NULL
+p <- 5
 k <- 1
 for (i in 1:p) {
   for (j in 1:p) {

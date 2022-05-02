@@ -432,14 +432,7 @@ dove $\sum_{ij}$ si riferisce alla somma su tutte le coppie di fattori $ij$. In 
 
 ## Matrice dei pesi fattoriali e matrice di struttura
 
-Nella rotazione ortogonale i fattori sono incorrelati. In tali
-circostanze, le correlazioni tra le variabili e i fattori sono uguali
-alle saturazioni fattoriali. In un *path diagram*, infatti, vi è un
-unico percorso legittimo (in base alle regole di Wright) che collega le
-variabili manifeste ai fattori.
-
-Si consideri la situazione presentata nella
-figura \@ref(fig:fact-rot4), con due variabili latenti incorrelate
+Nella rotazione ortogonale i fattori sono incorrelati. Si consideri la situazione presentata nella figura \@ref(fig:fact-rot4), con due variabili latenti incorrelate
 ($\xi_1$ e $\xi_2$) e quattro variabili manifeste ($y_1$, $y_2$, $y_3$,
 $y_4$). Siano $\lambda_{11}$, $\lambda_{12}$, $\lambda_{13}$ e
 $\lambda_{14}$ le saturazioni fattoriali delle variabili nel primo
@@ -454,56 +447,33 @@ knitr::include_graphics("images/rot_4.png")
 In un diagramma di percorso, la correlazione tra due variabili contenute
 è uguale alla somma dei valori numerici di tutti i percorsi legittimi
 che collegano le variabili. Se i fattori comuni sono incorrelati (come
-nella figura \@ref(fig:fact-rot4), allora c'è un unico percorso che collega
-ciascuna variabile manifesta a ciascun fattore comune. Le correlazioni
-tra variabili manifeste e fattori comuni sono dunque uguali ai pesi
-fattoriali.
+nella figura \@ref(fig:fact-rot4), allora in un *path diagram* c'è un unico percorso legittimo che collega ciascuna variabile manifesta a ciascun fattore comune in base alle regole di Wright. Le correlazioni tra variabili manifeste e fattori comuni sono dunque uguali alle saturazioni fattoriali. Nel caso di fattori comuni sono incorrelati, dunque, la matrice delle saturazioni fattoriali descrive le correlazioni fra variabili e fattori. Si ricordi che le saturazioni fattoriali possono essere interpretate in maniera equivalente ai pesi beta del modello di regressione multipla, ovvero come la stima del contributo specifico di ciascun fattore comune nella determinazione della varianza spiegata degli item (Tabachnick & Fidell, 2001).
 
-In queste circostanze, la soluzione fattoriale contenuta nella matrice
-delle saturazioni fattoriali rappresenta le correlazioni fra variabili e
-fattori. Tale matrice viene detta matrice "di struttura." Le saturazioni
-possono essere interpretate in maniera equivalente ai pesi beta del
-modello di regressione multipla, i quali stimano il contributo specifico
-di ciascun fattore comune nel determinare la varianza spiegata degli
-item (Tabachnick & Fidell, 2001).
-
-Invece, nel caso della rotazione obliqua, la soluzione fattoriale
+Nel caso della rotazione obliqua, invece, la soluzione fattoriale
 ruotata produce un insieme di fattori comuni fra loro correlati. Di
-conseguenza, i pesi contenuti nella matrice delle saturazioni fattoriali
-non rappresentano le correlazioni fra variabili e fattori. Nel caso di
-una rotazione obliqua è perciò necessario specificare tre matrici
-diverse:
+conseguenza, la matrice delle saturazioni fattoriali non descrive le correlazioni fra variabili e fattori. Infatti, in un *path diagram* ci sono almeno due percorsi legittimi che collegano ciascuna variabile manifesta a ciascun fattore comune in base alle regole di Wright. Nel caso di una rotazione obliqua è quindi necessario specificare tre diverse matrici:
 
--   la matrice dei pesi fattoriali $\hat{\boldsymbol{\Lambda}}$, detta
+-   la matrice delle saturazioni fattoriali, $\hat{\boldsymbol{\Lambda}}$, detta
     *matrice pattern* (*factor pattern matrix*, o "configurazione," o
-    "matrice dei modelli"),
--   la *matrice di struttura* (*factor structure matrix*), che è la
-    matrice delle correlazioni tra variabili manifeste e fattori,
--   la *matrice di intercorrelazione fattoriale*
-    $\hat{\boldsymbol{\Phi}}$ (*factor intercorrelation matrix*), che è
-    la matrice che esprime le correlazioni tra i fattori.
+    "matrice dei modelli");
+-   la matrice delle correlazioni tra variabili manifeste e fattori, detta *matrice di struttura* (*factor structure matrix*);
+-   la  matrice che esprime le correlazioni tra i fattori, $\hat{\boldsymbol{\Phi}}$, detta *matrice di intercorrelazione fattoriale*.
 
-La matrice pattern rappresenta i coefficienti parziali di regressione
-della variabile sul fattore, al netto degli altri fattori. Nel caso
+In questo caso, la matrice pattern rappresenta l'analogo dei coefficienti parziali di regressione della variabile sul fattore, al netto degli altri fattori. Nel caso
 della rotazione obliqua, è la matrice che viene usata per determinare in
-che grado viene raggiunta la "struttura semplice".
+che grado è stata raggiunta la "struttura semplice".
 
-Esaminiamo ora più in dettaglio la soluzione fattoriale prodotta da una
-rotazione obliqua. Gli assi che rappresentano i fattori non sono
+Esaminiamo in dettaglio la soluzione fattoriale che viene prodotta da una
+rotazione obliqua. In tali circostanze, gli assi che rappresentano i fattori non sono
 ortogonali (ovvero, i fattori sono correlati) e, in un diagramma di
 percorso, le variabili manifeste sono collegate ai fattori attraverso
-due percorsi distinti. Tali percorsi rappresentano l'effetto "diretto" e
+due tipi distinti di percorsi. Tali percorsi rappresentano l'effetto "diretto" e
 "indiretto" dei fattori sulle variabili. Nel caso di una rotazione
 obliqua, come abbiamo detto sopra, le saturazioni fattoriali non
-coincidono con le correlazioni tra variabili e fattori.
-
-Si consideri la figura \@ref(fig:fact-rot5). Nel caso di una rotazione obliqua, la
+coincidono con le correlazioni tra variabili e fattori. Si consideri la figura \@ref(fig:fact-rot5). Nel caso di una rotazione obliqua, la
 correlazione tra i due fattori comuni viene rappresentata mediante la
-freccia non direzionata $\phi_{12}$ che collega $\xi_1$ e $\xi_2$. In
-tali circostanze, ci sono due percorsi legittimi (in base alle regole di
-Wright) che consentono di collegare ciascuna variabile manifesta ad un
-fattore comune. Nel caso della variabile $y_1$ e il fattore $\xi_1$, ad
-esempio, i percorsi sono: la freccia causale $\lambda_{11}$ che
+freccia non direzionata $\phi_{12}$ che collega $\xi_1$ e $\xi_2$. Nel diagramma di percorso della figura \@ref(fig:fact-rot5) ci sono due percorsi legittimi che, in base alle regole di Wright, consentono di collegare ciascuna variabile manifesta ad un
+fattore comune. Ad esempio, nel caso della variabile $y_1$ e il fattore $\xi_1$, i percorsi sono: la freccia causale $\lambda_{11}$ che
 rappresenta l'effetto diretto di $\xi_1$ su $y_1$ e il percorso composto
 che rappresenta l'effetto indiretto di $\xi_1$ su $y_1$. Il valore
 numerico di tale percorso composto è uguale al prodotto
@@ -516,8 +486,8 @@ $\lambda_{11} + \lambda_{21} \phi_{12}$.
 knitr::include_graphics("images/rot_5.png")
 ```
 
-Per illustrare la rotazione obliqua, utilizziamo i dati presentati da
-Rencher (2002). Si consideri la seguente matrice di correlazione:
+Per illustrare la rotazione obliqua, utilizziamo i dati discussi da
+Rencher (2002). Si consideri la matrice di correlazione presentata qui sotto.
 
 ```{r}
 R <- matrix(
@@ -533,48 +503,126 @@ R <- matrix(
 R
 ```
 
-Iniziamo a calcolare una soluzione a due fattori usando il metodo delle
-componenti principali e una rotazione Varimax. I pesi fattoriali sono:
+Iniziamo calcolando la soluzione a due fattori mediante il metodo delle
+componenti principali e una rotazione Varimax (ovvero, ortogonale). Otteniamo le seguenti saturazioni fattoriali.
 
 ```{r}
 f1_pc <- principal(R, 2, rotate = "varimax") 
 f1_pc
 ```
 
-Si noti che i due fattori non sono molto distinti. La soluzione prodotta da una rotazione obliqua si ottiene nel modo seguente:
+Si noti che i due fattori non sono molto distinti. Consideriamo dunque la soluzione  prodotta da una rotazione obliqua. Usiamo qui l'algoritmo Oblimin.
 
 ```{r}
 pr_oblimin <- principal(R, 2, rotate = "oblimin")
 ```
      
-La matrice $\hat{\boldsymbol{\Lambda}}$ dei pesi fattoriali si ricava
-nel modo seguente:
+La matrice $\hat{\boldsymbol{\Lambda}}$ delle saturazioni fattoriali si ricava come indicato di seguito.
 
 ```{r}
 cbind(pr_oblimin$load[, 1], pr_oblimin$load[, 2])
 ```
 
-La matrice $\hat{\boldsymbol{\Phi}}$ di intercorrelazione fattoriale è
+La matrice $\hat{\boldsymbol{\Phi}}$ di inter-correlazione fattoriale è la seguente.
 
 ```{r}
 pr_oblimin$Phi
 ```
 
-La matrice di struttura si ottiene premoltiplicando la matrice $\boldsymbol{\Lambda}$ dei pesi fattoriali alla matrice $\boldsymbol{\Phi}$ di intercorrelazione fattoriale:
+La matrice di struttura, che riporta le correlazioni tra indicatori e fattori comuni, si ottiene pre-moltiplicando la matrice $\boldsymbol{\Lambda}$ delle saturazioni fattoriali alla matrice $\boldsymbol{\Phi}$ di inter-correlazione fattoriale.
 
 $$
 \text{matrice di struttura} = \boldsymbol{\Lambda}\boldsymbol{\Phi}.
 $$
 
-Per esempio, la correlazione tra la prima variabile e il primo fattore è
+Per esempio, la correlazione tra la prima variabile manifesta e il primo fattore si ottiene nel modo seguente.
 
 ```{r}
 pr_oblimin$load[1, 1] + pr_oblimin$load[1, 2] * pr_oblimin$Phi[2, 1]
 ```
 
-L'intera matrice di struttura si trova nel modo seguente:
+L'intera matrice di struttura si può trovare eseguendo la moltiplicazione  $\boldsymbol{\Lambda}\boldsymbol{\Phi}$.
 
 ```{r}
-round(pr_oblimin$load %*% pr_oblimin$Phi, 3)
+pr_oblimin$load %*% pr_oblimin$Phi %>% 
+  round(3)
 ```
+
+## Esempio con `semTools`
+
+Presento qui un esempio di uso di vari metodi di estrazione fattoriale. Tra tali  metodi, la rotazione obliqua Geomin è molto popolare ed è il default di M-Plus. 
+
+Iniziamo a caricare il pacchetto `semTools`.
+
+```{r}
+suppressPackageStartupMessages(library("semTools")) 
+```
+
+Eseguiamo l'analisi fattoriale esplorativa del classico set di dati di Holzinger e Swineford (1939) il quale è costituito dai punteggi dei test di abilità mentale di bambini di seconda e terza media di due scuole diverse (Pasteur e Grant-White). Nel set di dati originale (disponibile nel pacchetto `MBESS`), sono forniti i punteggi di 26 test. Tuttavia, un sottoinsieme più piccolo con 9 variabili è più ampiamente utilizzato in letteratura. Questi sono i dati qui usati. 
+
+Nel presente esempio, verrà eseguita l'analisi fattoriale esplorativa con l'estrazione di tre fattori. Il metodo di estrazione è `mlr`:
+
+> maximum likelihood estimation with robust (Huber-White) standard errors and a scaled test statistic that is (asymptotically) equal to the Yuan-Bentler test statistic. For both complete and incomplete data.
+
+La soluzione iniziale non è ruotata. 
+
+```{r}
+unrotated <- efaUnrotate(HolzingerSwineford1939, nf=3, varList=paste0("x", 1:9), estimator="mlr")
+summary(unrotated)
+```
+
+Si noti che, in assenza di rotazione, è impossibile assegnare un significato ai fattori comuni.
+
+### Orthogonal varimax
+
+Utilizziamo ora la rotazione ortogonale Varimax.
+
+```{r}
+out_varimax <- orthRotate(unrotated, method="varimax")
+summary(out_varimax, sort=FALSE, suppress=0.3)
+```
+
+### Orthogonal Quartimin
+
+Un metodo alternativo per la rotazione ortogonale è Quartimin.
+
+```{r}
+out_quartimin <- orthRotate(unrotated, method="quartimin")
+summary(out_quartimin, sort=FALSE, suppress=0.3)
+```
+
+### Oblique Quartimin
+
+L'algoritmo Quartimin può anche essere usato per una soluzione obliqua.
+
+```{r}
+out_oblq <- oblqRotate(unrotated, method="quartimin")
+summary(out_oblq, sort=FALSE, suppress=0.3)
+```
+
+### Orthogonal Geomin
+
+Consideriamo ora la rotazione Geomin. L'algoritmo Geomin fornisce un metodo di rotazione che riduce al minimo la media geometrica delle saturazioni fattoriali innalzate al quadrato. Qui è usato per ottenere una soluzione ortogonale.
+
+```{r}
+out_geomin_orh <- orthRotate(unrotated, method="geomin")
+summary(out_geomin_orh, sort=FALSE, suppress=0.3)
+```
+
+### Oblique Geomin
+
+La rotazione Geomin può anche essere usata per ottenere una soluzione obliqua.
+
+```{r}
+out_geomin_obl <- oblqRotate(unrotated, method="geomin")
+summary(out_geomin_obl, sort=FALSE, suppress=0.3)
+```
+
+## Interpretazione 
+
+Possiamo chiederci se, per fornire un'interpretazione ai fattori comuni latenti, sia più opportuno usare la matrice pattern o la matrice struttura.  Teoricamente, il fattore individuato dall'analisi fattoriale è una caratteristica latente univariata (una sorta di qualità che esprime l'"essenza" di un fenomeno psicologico). Poiché il fattore è una sorta di "essenza" univariata, dovrebbe essere interpretato come il significato (relativamente semplice) che giace sopra (o "dietro") l'intersezione dei significati/contenuti delle variabili che saturano nel fattore. Nella rotazione obliqua i fattori sono correlati. Vogliamo comunque interpretarli come dimensioni psicologiche distinte. L'etichetta che assegniamo al fattore $F_1$ dovrebbe contribuire a dissociare, in termini teorici, il fenomeno psicologico corrispondente a $F_1$ dal fenomeno denotato dall'etichetta del fattore $F_2$, anche in presenza di una correlazione tra i due, per sottolineare l'individualità di entrambi i fattori, pur riconoscendo il fatto che "nella realtà esterna" i due corrispondenti fenomeni psicologici tendono a covariare. 
+
+Se è questa la strategia interpretativa, allora lo strumento principale per l'interpretazione corrisponde alla matrice pattern. Infatti, i coefficienti della matrice  pattern, in quanto interpretabili come coefficienti parziali di regressione, rivelano l'influenza "causale" del fattore comune nella determinazione delle variabili manifeste. La matrice struttura, invece, descrive le correlazioni tra variabili e fattori. Abbiamo visto che, all'interno di un diagramma di percorso, la correlazione dipende sia dai percorsi diretti ("relazioni causali") sia dai percorsi indiretti (che dipendono dalle correlazioni tra i fattori). Dunque la matrice struttura non descrive gli "effetti diretti", cioè "causali" dei fattori comuni latenti sulle variabili manifeste ma solo, appunto, la covariazione tra i fattori comuni e le variabili manifeste.
+
+Il punto debole della matrice pattern è che è meno stabile da un campione all'altro, come lo sono di solito i coefficienti di regressione rispetto ai coefficienti di correlazione. Di conseguenza, fare affidamento sulla matrice pattern per l'interpretazione richiede  uno studio ben pianificato e un'adeguata dimensione campionaria. Per uno studio pilota e un'interpretazione provvisoria, invece, la matrice struttura potrebbe essere la scelta migliore.
 

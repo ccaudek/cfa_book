@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Appendice E Elementi di algebra lineare | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)</title>
+  <meta name="description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2021/2022) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Appendice E Elementi di algebra lineare | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2021/2022) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
+  <meta name="github-repo" content="ccaudek/cfa_book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Appendice E Elementi di algebra lineare | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
+  
+  <meta name="twitter:description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2021/2022) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
+  
+
+<meta name="author" content="Corrado Caudek" />
+
+
+<meta name="date" content="2022-05-02" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="considerazioni-conclusive-1.html"/>
+<link rel="next" href="vettori.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Appunti di Costruzione e valutazione di test psicometrici</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefazione</a></li>
+<li class="part"><span><b>I Il modello lineare</b></span></li>
+<li class="chapter" data-level="1" data-path="lanalisi-di-regressione.html"><a href="lanalisi-di-regressione.html"><i class="fa fa-check"></i><b>1</b> L’analisi di regressione</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="regressione-bivariata.html"><a href="regressione-bivariata.html"><i class="fa fa-check"></i><b>1.1</b> Regressione bivariata</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="regressione-bivariata.html"><a href="regressione-bivariata.html#regressori-centrati"><i class="fa fa-check"></i><b>1.1.1</b> Regressori centrati</a></li>
+<li class="chapter" data-level="1.1.2" data-path="regressione-bivariata.html"><a href="regressione-bivariata.html#minimi-quadrati"><i class="fa fa-check"></i><b>1.1.2</b> Minimi quadrati</a></li>
+<li class="chapter" data-level="1.1.3" data-path="regressione-bivariata.html"><a href="regressione-bivariata.html#relazione-tra-b-e-r"><i class="fa fa-check"></i><b>1.1.3</b> Relazione tra <span class="math inline">\(b\)</span> e <span class="math inline">\(r\)</span></a></li>
+<li class="chapter" data-level="1.1.4" data-path="regressione-bivariata.html"><a href="regressione-bivariata.html#attenuazione"><i class="fa fa-check"></i><b>1.1.4</b> Attenuazione</a></li>
+<li class="chapter" data-level="1.1.5" data-path="regressione-bivariata.html"><a href="regressione-bivariata.html#coefficiente-di-determinazione"><i class="fa fa-check"></i><b>1.1.5</b> Coefficiente di determinazione</a></li>
+<li class="chapter" data-level="1.1.6" data-path="regressione-bivariata.html"><a href="regressione-bivariata.html#errore-standard-della-regressione"><i class="fa fa-check"></i><b>1.1.6</b> Errore standard della regressione</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="regressione-multipla.html"><a href="regressione-multipla.html"><i class="fa fa-check"></i><b>1.2</b> Regressione multipla</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="regressione-multipla.html"><a href="regressione-multipla.html#significato-dei-coefficienti-parziali-di-regressione"><i class="fa fa-check"></i><b>1.2.1</b> Significato dei coefficienti parziali di regressione</a></li>
+<li class="chapter" data-level="1.2.2" data-path="regressione-multipla.html"><a href="regressione-multipla.html#relazioni-causali"><i class="fa fa-check"></i><b>1.2.2</b> Relazioni causali</a></li>
+<li class="chapter" data-level="1.2.3" data-path="regressione-multipla.html"><a href="regressione-multipla.html#errore-di-specificazione"><i class="fa fa-check"></i><b>1.2.3</b> Errore di specificazione</a></li>
+<li class="chapter" data-level="1.2.4" data-path="regressione-multipla.html"><a href="regressione-multipla.html#soppressione"><i class="fa fa-check"></i><b>1.2.4</b> Soppressione</a></li>
+<li class="chapter" data-level="1.2.5" data-path="regressione-multipla.html"><a href="regressione-multipla.html#stepwise-regression"><i class="fa fa-check"></i><b>1.2.5</b> Stepwise regression</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II La teoria classica dei test</b></span></li>
+<li class="chapter" data-level="2" data-path="ch:teoria_classica.html"><a href="ch:teoria_classica.html"><i class="fa fa-check"></i><b>2</b> Fondamenti teorici</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="valutazione-psicometrica-come-ragionamento-inferenziale.html"><a href="valutazione-psicometrica-come-ragionamento-inferenziale.html"><i class="fa fa-check"></i><b>2.1</b> Valutazione psicometrica come ragionamento inferenziale</a></li>
+<li class="chapter" data-level="2.2" data-path="la-teoria-classica.html"><a href="la-teoria-classica.html"><i class="fa fa-check"></i><b>2.2</b> La Teoria Classica</a></li>
+<li class="chapter" data-level="2.3" data-path="le-due-componenti-del-punteggio-osservato.html"><a href="le-due-componenti-del-punteggio-osservato.html"><i class="fa fa-check"></i><b>2.3</b> Le due componenti del punteggio osservato</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="le-due-componenti-del-punteggio-osservato.html"><a href="le-due-componenti-del-punteggio-osservato.html#il-punteggio-vero"><i class="fa fa-check"></i><b>2.3.1</b> Il punteggio vero</a></li>
+<li class="chapter" data-level="2.3.2" data-path="le-due-componenti-del-punteggio-osservato.html"><a href="le-due-componenti-del-punteggio-osservato.html#somministrazioni-ripetute"><i class="fa fa-check"></i><b>2.3.2</b> Somministrazioni ripetute</a></li>
+<li class="chapter" data-level="2.3.3" data-path="le-due-componenti-del-punteggio-osservato.html"><a href="le-due-componenti-del-punteggio-osservato.html#le-assunzioni-sul-punteggio-ottenuto"><i class="fa fa-check"></i><b>2.3.3</b> Le assunzioni sul punteggio ottenuto</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="lerrore-standard-della-misurazione-sigma_e.html"><a href="lerrore-standard-della-misurazione-sigma_e.html"><i class="fa fa-check"></i><b>2.4</b> L’errore standard della misurazione <span class="math inline">\(\sigma_E\)</span></a></li>
+<li class="chapter" data-level="2.5" data-path="assiomi-della-teoria-classica.html"><a href="assiomi-della-teoria-classica.html"><i class="fa fa-check"></i><b>2.5</b> Assiomi della Teoria Classica</a></li>
+<li class="chapter" data-level="2.6" data-path="lattendibilità-del-test.html"><a href="lattendibilità-del-test.html"><i class="fa fa-check"></i><b>2.6</b> L’attendibilità del test</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="lattendibilità-del-test.html"><a href="lattendibilità-del-test.html#la-varianza-del-punteggio-osservato"><i class="fa fa-check"></i><b>2.6.1</b> La varianza del punteggio osservato</a></li>
+<li class="chapter" data-level="2.6.2" data-path="lattendibilità-del-test.html"><a href="lattendibilità-del-test.html#la-covarianza-tra-punteggio-osservato-e-punteggio-vero"><i class="fa fa-check"></i><b>2.6.2</b> La covarianza tra punteggio osservato e punteggio vero</a></li>
+<li class="chapter" data-level="2.6.3" data-path="lattendibilità-del-test.html"><a href="lattendibilità-del-test.html#correlazione-tra-punteggio-osservato-e-punteggio-vero"><i class="fa fa-check"></i><b>2.6.3</b> Correlazione tra punteggio osservato e punteggio vero</a></li>
+<li class="chapter" data-level="2.6.4" data-path="lattendibilità-del-test.html"><a href="lattendibilità-del-test.html#definizione-e-significato-dellattendibilità"><i class="fa fa-check"></i><b>2.6.4</b> Definizione e significato dell’attendibilità</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="attendibilità-e-modello-di-regressione-lineare.html"><a href="attendibilità-e-modello-di-regressione-lineare.html"><i class="fa fa-check"></i><b>2.7</b> Attendibilità e modello di regressione lineare</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="attendibilità-e-modello-di-regressione-lineare.html"><a href="attendibilità-e-modello-di-regressione-lineare.html#simulazione"><i class="fa fa-check"></i><b>2.7.1</b> Simulazione</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="misurazioni-parallele-e-affidabilità.html"><a href="misurazioni-parallele-e-affidabilità.html"><i class="fa fa-check"></i><b>2.8</b> Misurazioni parallele e affidabilità</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="misurazioni-parallele-e-affidabilità.html"><a href="misurazioni-parallele-e-affidabilità.html#la-correlazione-tra-due-forme-parallele-del-test"><i class="fa fa-check"></i><b>2.8.1</b> La correlazione tra due forme parallele del test</a></li>
+<li class="chapter" data-level="2.8.2" data-path="misurazioni-parallele-e-affidabilità.html"><a href="misurazioni-parallele-e-affidabilità.html#la-correlazione-tra-punteggio-osservato-e-punteggio-vero"><i class="fa fa-check"></i><b>2.8.2</b> La correlazione tra punteggio osservato e punteggio vero</a></li>
+<li class="chapter" data-level="2.8.3" data-path="misurazioni-parallele-e-affidabilità.html"><a href="misurazioni-parallele-e-affidabilità.html#i-fattori-che-influenzano-lattendibilità"><i class="fa fa-check"></i><b>2.8.3</b> I fattori che influenzano l’attendibilità</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><a href="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><i class="fa fa-check"></i><b>2.9</b> Metodi alternativi per la stima del coefficiente di attendibilità</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ch:err_stnd_mis.html"><a href="ch:err_stnd_mis.html"><i class="fa fa-check"></i><b>3</b> L’incertezza della misura</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>3.1</b> La stima dell’errore standard della misurazione</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#interpretazione"><i class="fa fa-check"></i><b>3.1.1</b> Interpretazione</a></li>
+<li class="chapter" data-level="3.1.2" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#simulazione-1"><i class="fa fa-check"></i><b>3.1.2</b> Simulazione</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="dimostrazione.html"><a href="dimostrazione.html"><i class="fa fa-check"></i><b>3.2</b> Dimostrazione</a></li>
+<li class="chapter" data-level="3.3" data-path="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><a href="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><i class="fa fa-check"></i><b>3.3</b> Intervallo di confidenza per il punteggio vero e <span class="math inline">\(\sigma_E\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ch:err_stnd_stima.html"><a href="ch:err_stnd_stima.html"><i class="fa fa-check"></i><b>4</b> La stima del punteggio vero</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="il-paradosso-di-kelley.html"><a href="il-paradosso-di-kelley.html"><i class="fa fa-check"></i><b>4.1</b> Il paradosso di Kelley</a></li>
+<li class="chapter" data-level="4.2" data-path="lerrore-standard-della-stima.html"><a href="lerrore-standard-della-stima.html"><i class="fa fa-check"></i><b>4.2</b> L’errore standard della stima</a></li>
+<li class="chapter" data-level="4.3" data-path="intervallo-di-confidenza-per-il-punteggio-vero.html"><a href="intervallo-di-confidenza-per-il-punteggio-vero.html"><i class="fa fa-check"></i><b>4.3</b> Intervallo di confidenza per il punteggio vero</a></li>
+<li class="chapter" data-level="4.4" data-path="cut-off.html"><a href="cut-off.html"><i class="fa fa-check"></i><b>4.4</b> Cut-off</a></li>
+<li class="chapter" data-level="4.5" data-path="procedure-alternative.html"><a href="procedure-alternative.html"><i class="fa fa-check"></i><b>4.5</b> Procedure alternative</a></li>
+</ul></li>
+<li class="part"><span><b>III L’analisi fattoriale</b></span></li>
+<li class="chapter" data-level="5" data-path="ch:sviluppo.html"><a href="ch:sviluppo.html"><i class="fa fa-check"></i><b>5</b> Utilizzo e costruzione di test psicometrici</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="caratteristiche-dellanalisi-fattoriale.html"><a href="caratteristiche-dellanalisi-fattoriale.html"><i class="fa fa-check"></i><b>5.1</b> Caratteristiche dell’analisi fattoriale</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="caratteristiche-dellanalisi-fattoriale.html"><a href="caratteristiche-dellanalisi-fattoriale.html#lanalisi-fattoriale-esplorativa-e-confermativa"><i class="fa fa-check"></i><b>5.1.1</b> L’analisi fattoriale esplorativa e confermativa</a></li>
+<li class="chapter" data-level="5.1.2" data-path="caratteristiche-dellanalisi-fattoriale.html"><a href="caratteristiche-dellanalisi-fattoriale.html#assunzioni-dellanalisi-fattoriale"><i class="fa fa-check"></i><b>5.1.2</b> Assunzioni dell’analisi fattoriale</a></li>
+<li class="chapter" data-level="5.1.3" data-path="caratteristiche-dellanalisi-fattoriale.html"><a href="caratteristiche-dellanalisi-fattoriale.html#sviluppo-storico-dellanalisi-fattoriale"><i class="fa fa-check"></i><b>5.1.3</b> Sviluppo storico dell’analisi fattoriale</a></li>
+<li class="chapter" data-level="5.1.4" data-path="caratteristiche-dellanalisi-fattoriale.html"><a href="caratteristiche-dellanalisi-fattoriale.html#fasi-dellanalisi-fattoriale"><i class="fa fa-check"></i><b>5.1.4</b> Fasi dell’analisi fattoriale</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ch:spearman.html"><a href="ch:spearman.html"><i class="fa fa-check"></i><b>6</b> Il modello unifattoriale</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="modello-monofattoriale.html"><a href="modello-monofattoriale.html"><i class="fa fa-check"></i><b>6.1</b> Modello monofattoriale</a></li>
+<li class="chapter" data-level="6.2" data-path="correlazione-parziale.html"><a href="correlazione-parziale.html"><i class="fa fa-check"></i><b>6.2</b> Correlazione parziale</a></li>
+<li class="chapter" data-level="6.3" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html"><i class="fa fa-check"></i><b>6.3</b> Principio base dell’analisi fattoriale</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html#vincoli-sulle-correlazioni"><i class="fa fa-check"></i><b>6.3.1</b> Vincoli sulle correlazioni</a></li>
+<li class="chapter" data-level="6.3.2" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html#teoria-dei-due-fattori"><i class="fa fa-check"></i><b>6.3.2</b> Teoria dei Due Fattori</a></li>
+<li class="chapter" data-level="6.3.3" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html#annullamento-della-tetrade"><i class="fa fa-check"></i><b>6.3.3</b> Annullamento della tetrade</a></li>
+<li class="chapter" data-level="6.3.4" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html#metodo-del-centroide"><i class="fa fa-check"></i><b>6.3.4</b> Metodo del centroide</a></li>
+<li class="chapter" data-level="6.3.5" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html#introduzione-a-lavaan"><i class="fa fa-check"></i><b>6.3.5</b> Introduzione a <code>lavaan</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="conclusioni.html"><a href="conclusioni.html"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ch:mod_unifattoriale.html"><a href="ch:mod_unifattoriale.html"><i class="fa fa-check"></i><b>7</b> Il modello statistico dell’analisi fattoriale</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="modello-monofattoriale-1.html"><a href="modello-monofattoriale-1.html"><i class="fa fa-check"></i><b>7.1</b> Modello monofattoriale</a></li>
+<li class="chapter" data-level="7.2" data-path="covarianza-tra-un-indicatore-e-il-fattore-comune.html"><a href="covarianza-tra-un-indicatore-e-il-fattore-comune.html"><i class="fa fa-check"></i><b>7.2</b> Covarianza tra un indicatore e il fattore comune</a></li>
+<li class="chapter" data-level="7.3" data-path="espressione-fattoriale-della-varianza.html"><a href="espressione-fattoriale-della-varianza.html"><i class="fa fa-check"></i><b>7.3</b> Espressione fattoriale della varianza</a></li>
+<li class="chapter" data-level="7.4" data-path="covarianza-tra-due-variabili-manifeste.html"><a href="covarianza-tra-due-variabili-manifeste.html"><i class="fa fa-check"></i><b>7.4</b> Covarianza tra due variabili manifeste</a></li>
+<li class="chapter" data-level="7.5" data-path="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html"><i class="fa fa-check"></i><b>7.5</b> Correlazioni osservate e correlazioni riprodotte dal modello</a></li>
+<li class="chapter" data-level="7.6" data-path="bontà-di-adattamento-del-modello-ai-dati.html"><a href="bontà-di-adattamento-del-modello-ai-dati.html"><i class="fa fa-check"></i><b>7.6</b> Bontà di adattamento del modello ai dati</a></li>
+<li class="chapter" data-level="7.7" data-path="lerrore-standard-della-misurazione-e-il-modello-fattoriale.html"><a href="lerrore-standard-della-misurazione-e-il-modello-fattoriale.html"><i class="fa fa-check"></i><b>7.7</b> L’errore standard della misurazione e il modello fattoriale</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="lerrore-standard-della-misurazione-e-il-modello-fattoriale.html"><a href="lerrore-standard-della-misurazione-e-il-modello-fattoriale.html#un-caso-concreto"><i class="fa fa-check"></i><b>7.7.1</b> Un caso concreto</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ch:mod_multifattoriale.html"><a href="ch:mod_multifattoriale.html"><i class="fa fa-check"></i><b>8</b> Il modello multifattoriale</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html"><i class="fa fa-check"></i><b>8.1</b> Modello multifattoriale: fattori ortogonali</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html#assunzioni-del-modello-multifattoriale"><i class="fa fa-check"></i><b>8.1.1</b> Assunzioni del modello multifattoriale</a></li>
+<li class="chapter" data-level="8.1.2" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html#interpretazione-dei-parametri-del-modello"><i class="fa fa-check"></i><b>8.1.2</b> Interpretazione dei parametri del modello</a></li>
+<li class="chapter" data-level="8.1.3" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html#covarianza-tra-variabili-e-fattori"><i class="fa fa-check"></i><b>8.1.3</b> Covarianza tra variabili e fattori</a></li>
+<li class="chapter" data-level="8.1.4" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html#espressione-fattoriale-della-varianza-1"><i class="fa fa-check"></i><b>8.1.4</b> Espressione fattoriale della varianza</a></li>
+<li class="chapter" data-level="8.1.5" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html#espressione-fattoriale-della-covarianza"><i class="fa fa-check"></i><b>8.1.5</b> Espressione fattoriale della covarianza</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="modello-fattoriale-fattori-obliqui.html"><a href="modello-fattoriale-fattori-obliqui.html"><i class="fa fa-check"></i><b>8.2</b> Modello fattoriale: Fattori obliqui</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="modello-fattoriale-fattori-obliqui.html"><a href="modello-fattoriale-fattori-obliqui.html#covarianza-teorica-tra-variabili-e-fattori"><i class="fa fa-check"></i><b>8.2.1</b> Covarianza teorica tra variabili e fattori</a></li>
+<li class="chapter" data-level="8.2.2" data-path="modello-fattoriale-fattori-obliqui.html"><a href="modello-fattoriale-fattori-obliqui.html#espressione-fattoriale-della-varianza-2"><i class="fa fa-check"></i><b>8.2.2</b> Espressione fattoriale della varianza</a></li>
+<li class="chapter" data-level="8.2.3" data-path="modello-fattoriale-fattori-obliqui.html"><a href="modello-fattoriale-fattori-obliqui.html#covarianza-teorica-tra-due-variabili"><i class="fa fa-check"></i><b>8.2.3</b> Covarianza teorica tra due variabili</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="efa-con-lavaan.html"><a href="efa-con-lavaan.html"><i class="fa fa-check"></i><b>8.3</b> EFA con <code>lavaan</code></a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="ch:factor-scores.html"><a href="ch:factor-scores.html"><i class="fa fa-check"></i><b>9</b> I punteggi fattoriali</a>
+<ul>
+<li class="chapter" data-level="9.0.1" data-path="ch:factor-scores.html"><a href="ch:factor-scores.html#esempio-di-interpretazione"><i class="fa fa-check"></i><b>9.0.1</b> Esempio di interpretazione</a></li>
+<li class="chapter" data-level="9.1" data-path="punteggi-fattoriali.html"><a href="punteggi-fattoriali.html"><i class="fa fa-check"></i><b>9.1</b> Punteggi fattoriali</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="punteggi-fattoriali.html"><a href="punteggi-fattoriali.html#stima-dei-punteggi-fattoriali"><i class="fa fa-check"></i><b>9.1.1</b> Stima dei punteggi fattoriali</a></li>
+<li class="chapter" data-level="9.1.2" data-path="punteggi-fattoriali.html"><a href="punteggi-fattoriali.html#dimostrazione-di-thurstone"><i class="fa fa-check"></i><b>9.1.2</b> Dimostrazione di Thurstone</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="ch:path_analysis.html"><a href="ch:path_analysis.html"><i class="fa fa-check"></i><b>10</b> Path Analysis</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="path-diagram.html"><a href="path-diagram.html"><i class="fa fa-check"></i><b>10.1</b> Path diagram</a></li>
+<li class="chapter" data-level="10.2" data-path="path-analysis-e-regressione-multipla.html"><a href="path-analysis-e-regressione-multipla.html"><i class="fa fa-check"></i><b>10.2</b> Path analysis e regressione multipla</a></li>
+<li class="chapter" data-level="10.3" data-path="effetti-diretti-e-indiretti.html"><a href="effetti-diretti-e-indiretti.html"><i class="fa fa-check"></i><b>10.3</b> Effetti diretti e indiretti</a></li>
+<li class="chapter" data-level="10.4" data-path="le-regole-di-wright.html"><a href="le-regole-di-wright.html"><i class="fa fa-check"></i><b>10.4</b> Le regole di Wright</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="le-regole-di-wright.html"><a href="le-regole-di-wright.html#scomposizione-delle-correlazioni-covarianze"><i class="fa fa-check"></i><b>10.4.1</b> Scomposizione delle correlazioni (covarianze)</a></li>
+<li class="chapter" data-level="10.4.2" data-path="le-regole-di-wright.html"><a href="le-regole-di-wright.html#scomposizione-della-varianza"><i class="fa fa-check"></i><b>10.4.2</b> Scomposizione della varianza</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="sec:how_compute_path_coef.html"><a href="sec:how_compute_path_coef.html"><i class="fa fa-check"></i><b>10.5</b> Come calcolare i coefficienti di percorso?</a></li>
+<li class="chapter" data-level="10.6" data-path="path-analysis-e-software.html"><a href="path-analysis-e-software.html"><i class="fa fa-check"></i><b>10.6</b> Path analysis e software</a></li>
+<li class="chapter" data-level="10.7" data-path="oltre-la-regressione-multipla.html"><a href="oltre-la-regressione-multipla.html"><i class="fa fa-check"></i><b>10.7</b> Oltre la regressione multipla</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="ch:cronbach.html"><a href="ch:cronbach.html"><i class="fa fa-check"></i><b>11</b> Attendibilità e modello fattoriale</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="modello-fattoriale-e-ctt.html"><a href="modello-fattoriale-e-ctt.html"><i class="fa fa-check"></i><b>11.1</b> Modello fattoriale e CTT</a></li>
+<li class="chapter" data-level="11.2" data-path="classi-di-modelli.html"><a href="classi-di-modelli.html"><i class="fa fa-check"></i><b>11.2</b> Classi di modelli</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="classi-di-modelli.html"><a href="classi-di-modelli.html#indicatori-congenerici"><i class="fa fa-check"></i><b>11.2.1</b> Indicatori congenerici</a></li>
+<li class="chapter" data-level="11.2.2" data-path="classi-di-modelli.html"><a href="classi-di-modelli.html#indicatori-tau-equivalenti"><i class="fa fa-check"></i><b>11.2.2</b> Indicatori tau-equivalenti</a></li>
+<li class="chapter" data-level="11.2.3" data-path="classi-di-modelli.html"><a href="classi-di-modelli.html#indicatori-paralleli"><i class="fa fa-check"></i><b>11.2.3</b> Indicatori paralleli</a></li>
+<li class="chapter" data-level="11.2.4" data-path="classi-di-modelli.html"><a href="classi-di-modelli.html#indicatori-strettamente-paralleli"><i class="fa fa-check"></i><b>11.2.4</b> Indicatori strettamente paralleli</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="metodo-dei-minimi-quadrati-non-pesati.html"><a href="metodo-dei-minimi-quadrati-non-pesati.html"><i class="fa fa-check"></i><b>11.3</b> Metodo dei minimi quadrati non pesati</a></li>
+<li class="chapter" data-level="11.4" data-path="varianza-del-punteggio-totale-di-un-test.html"><a href="varianza-del-punteggio-totale-di-un-test.html"><i class="fa fa-check"></i><b>11.4</b> Varianza del punteggio totale di un test</a></li>
+<li class="chapter" data-level="11.5" data-path="stima-dellattendibilità.html"><a href="stima-dellattendibilità.html"><i class="fa fa-check"></i><b>11.5</b> Stima dell’attendibilità</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="stima-dellattendibilità.html"><a href="stima-dellattendibilità.html#coefficiente-omega"><i class="fa fa-check"></i><b>11.5.1</b> Coefficiente omega</a></li>
+<li class="chapter" data-level="11.5.2" data-path="stima-dellattendibilità.html"><a href="stima-dellattendibilità.html#coefficiente-alpha-di-cronbach"><i class="fa fa-check"></i><b>11.5.2</b> Coefficiente <span class="math inline">\(\alpha\)</span> di Cronbach</a></li>
+<li class="chapter" data-level="11.5.3" data-path="stima-dellattendibilità.html"><a href="stima-dellattendibilità.html#la-formula-profetica-di-spearman-brown"><i class="fa fa-check"></i><b>11.5.3</b> La formula “profetica” di Spearman-Brown</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="attendibilità-e-scala-di-misura.html"><a href="attendibilità-e-scala-di-misura.html"><i class="fa fa-check"></i><b>11.6</b> Attendibilità e scala di misura</a></li>
+<li class="chapter" data-level="11.7" data-path="quale-indice-usare.html"><a href="quale-indice-usare.html"><i class="fa fa-check"></i><b>11.7</b> Quale indice usare?</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="ch:cfa-cong-parall.html"><a href="ch:cfa-cong-parall.html"><i class="fa fa-check"></i><b>12</b> CFA: confronto tra modelli</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="modello-congenerico.html"><a href="modello-congenerico.html"><i class="fa fa-check"></i><b>12.1</b> Modello congenerico</a></li>
+<li class="chapter" data-level="12.2" data-path="modello-tau-equivalente.html"><a href="modello-tau-equivalente.html"><i class="fa fa-check"></i><b>12.2</b> Modello tau-equivalente</a></li>
+<li class="chapter" data-level="12.3" data-path="modello-parallelo.html"><a href="modello-parallelo.html"><i class="fa fa-check"></i><b>12.3</b> Modello parallelo</a></li>
+<li class="chapter" data-level="12.4" data-path="il-test-del-chi2.html"><a href="il-test-del-chi2.html"><i class="fa fa-check"></i><b>12.4</b> Il test del <span class="math inline">\(\chi^2\)</span></a></li>
+</ul></li>
+<li class="part"><span><b>IV Costruzione di strumenti psicometrici</b></span></li>
+<li class="chapter" data-level="13" data-path="ch:problema.html"><a href="ch:problema.html"><i class="fa fa-check"></i><b>13</b> Tipologie dei test psicometrici</a>
+<ul>
+<li class="chapter" data-level="13.0.1" data-path="ch:problema.html"><a href="ch:problema.html#test-orientati-al-criterio"><i class="fa fa-check"></i><b>13.0.1</b> Test orientati al criterio</a></li>
+<li class="chapter" data-level="13.0.2" data-path="ch:problema.html"><a href="ch:problema.html#test-basati-sulla-norma"><i class="fa fa-check"></i><b>13.0.2</b> Test basati sulla norma</a></li>
+<li class="chapter" data-level="13.1" data-path="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><a href="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><i class="fa fa-check"></i><b>13.1</b> Variabili latenti e sviluppo di uno strumento psicometrico</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><a href="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html#chiarificazione-del-costrutto-di-interesse"><i class="fa fa-check"></i><b>13.1.1</b> Chiarificazione del costrutto di interesse</a></li>
+<li class="chapter" data-level="13.1.2" data-path="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><a href="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html#operazionalizzazione-del-costrutto-di-interesse"><i class="fa fa-check"></i><b>13.1.2</b> Operazionalizzazione del costrutto di interesse</a></li>
+<li class="chapter" data-level="13.1.3" data-path="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><a href="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html#rassegna-della-letteratura-rilevante"><i class="fa fa-check"></i><b>13.1.3</b> Rassegna della letteratura rilevante</a></li>
+<li class="chapter" data-level="13.1.4" data-path="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><a href="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html#analisi-concettuale-del-costrutto"><i class="fa fa-check"></i><b>13.1.4</b> Analisi concettuale del costrutto</a></li>
+<li class="chapter" data-level="13.1.5" data-path="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><a href="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html#metodi-di-ricerca-qualitativi"><i class="fa fa-check"></i><b>13.1.5</b> Metodi di ricerca qualitativi</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="lo-sviluppo-dello-strumento.html"><a href="lo-sviluppo-dello-strumento.html"><i class="fa fa-check"></i><b>13.2</b> Lo sviluppo dello strumento</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="lo-sviluppo-dello-strumento.html"><a href="lo-sviluppo-dello-strumento.html#formato"><i class="fa fa-check"></i><b>13.2.1</b> Formato</a></li>
+<li class="chapter" data-level="13.2.2" data-path="lo-sviluppo-dello-strumento.html"><a href="lo-sviluppo-dello-strumento.html#composizione-tipografica"><i class="fa fa-check"></i><b>13.2.2</b> Composizione tipografica</a></li>
+<li class="chapter" data-level="13.2.3" data-path="lo-sviluppo-dello-strumento.html"><a href="lo-sviluppo-dello-strumento.html#istruzioni-ai-soggetti"><i class="fa fa-check"></i><b>13.2.3</b> Istruzioni ai soggetti</a></li>
+<li class="chapter" data-level="13.2.4" data-path="lo-sviluppo-dello-strumento.html"><a href="lo-sviluppo-dello-strumento.html#la-costruzione-degli-item"><i class="fa fa-check"></i><b>13.2.4</b> La costruzione degli item</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="numero-delle-opzioni-di-risposta.html"><a href="numero-delle-opzioni-di-risposta.html"><i class="fa fa-check"></i><b>13.3</b> Numero delle opzioni di risposta</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="numero-delle-opzioni-di-risposta.html"><a href="numero-delle-opzioni-di-risposta.html#item-a-codifica-inversa"><i class="fa fa-check"></i><b>13.3.1</b> Item a codifica inversa</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="numero-di-item.html"><a href="numero-di-item.html"><i class="fa fa-check"></i><b>13.4</b> Numero di item</a></li>
+<li class="chapter" data-level="13.5" data-path="numero-di-soggetti.html"><a href="numero-di-soggetti.html"><i class="fa fa-check"></i><b>13.5</b> Numero di soggetti</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="ch:val_matrici.html"><a href="ch:val_matrici.html"><i class="fa fa-check"></i><b>14</b> Valutazione della matrice di correlazione</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="ispezione-visiva-della-matrice-di-correlazione.html"><a href="ispezione-visiva-della-matrice-di-correlazione.html"><i class="fa fa-check"></i><b>14.1</b> Ispezione visiva della matrice di correlazione</a></li>
+<li class="chapter" data-level="14.2" data-path="sfericità-di-bartlett.html"><a href="sfericità-di-bartlett.html"><i class="fa fa-check"></i><b>14.2</b> Sfericità di Bartlett</a></li>
+<li class="chapter" data-level="14.3" data-path="test-di-adeguatezza-campionaria-di-kaiser-meyer-olkin.html"><a href="test-di-adeguatezza-campionaria-di-kaiser-meyer-olkin.html"><i class="fa fa-check"></i><b>14.3</b> Test di adeguatezza campionaria di Kaiser-Meyer-Olkin</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="test-di-adeguatezza-campionaria-di-kaiser-meyer-olkin.html"><a href="test-di-adeguatezza-campionaria-di-kaiser-meyer-olkin.html#matrice-anti-immagine"><i class="fa fa-check"></i><b>14.3.1</b> Matrice anti-immagine</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="ch:estrazione.html"><a href="ch:estrazione.html"><i class="fa fa-check"></i><b>15</b> L’estrazione dei fattori</a>
+<ul>
+<li class="chapter" data-level="" data-path="motivazione.html"><a href="motivazione.html"><i class="fa fa-check"></i>Motivazione</a></li>
+<li class="chapter" data-level="15.1" data-path="metodo-delle-componenti-principali.html"><a href="metodo-delle-componenti-principali.html"><i class="fa fa-check"></i><b>15.1</b> Metodo delle componenti principali</a></li>
+<li class="chapter" data-level="15.2" data-path="metodo-dei-fattori-principali.html"><a href="metodo-dei-fattori-principali.html"><i class="fa fa-check"></i><b>15.2</b> Metodo dei fattori principali</a></li>
+<li class="chapter" data-level="15.3" data-path="metodo-dei-fattori-principali-iterato.html"><a href="metodo-dei-fattori-principali-iterato.html"><i class="fa fa-check"></i><b>15.3</b> Metodo dei fattori principali iterato</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="metodo-dei-fattori-principali-iterato.html"><a href="metodo-dei-fattori-principali-iterato.html#casi-di-heywood"><i class="fa fa-check"></i><b>15.3.1</b> Casi di Heywood</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="metodo-di-massima-verosimiglianza.html"><a href="metodo-di-massima-verosimiglianza.html"><i class="fa fa-check"></i><b>15.4</b> Metodo di massima verosimiglianza</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="ch:numero_fattori.html"><a href="ch:numero_fattori.html"><i class="fa fa-check"></i><b>16</b> Il numero dei fattori</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="quota-di-varianza-spiegata.html"><a href="quota-di-varianza-spiegata.html"><i class="fa fa-check"></i><b>16.1</b> Quota di varianza spiegata</a></li>
+<li class="chapter" data-level="16.2" data-path="valore-medio-degli-autovalori.html"><a href="valore-medio-degli-autovalori.html"><i class="fa fa-check"></i><b>16.2</b> Valore medio degli autovalori</a></li>
+<li class="chapter" data-level="16.3" data-path="scree-test.html"><a href="scree-test.html"><i class="fa fa-check"></i><b>16.3</b> Scree test</a></li>
+<li class="chapter" data-level="16.4" data-path="parallel-analysis.html"><a href="parallel-analysis.html"><i class="fa fa-check"></i><b>16.4</b> Parallel analysis</a></li>
+<li class="chapter" data-level="16.5" data-path="test-di-bontà-di-adattamento.html"><a href="test-di-bontà-di-adattamento.html"><i class="fa fa-check"></i><b>16.5</b> Test di bontà di adattamento</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="ch:rotazione.html"><a href="ch:rotazione.html"><i class="fa fa-check"></i><b>17</b> La rotazione fattoriale</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="indeterminatezza-della-soluzione-fattoriale.html"><a href="indeterminatezza-della-soluzione-fattoriale.html"><i class="fa fa-check"></i><b>17.1</b> Indeterminatezza della soluzione fattoriale</a></li>
+<li class="chapter" data-level="17.2" data-path="parsimonia-e-semplicità.html"><a href="parsimonia-e-semplicità.html"><i class="fa fa-check"></i><b>17.2</b> Parsimonia e semplicità</a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="parsimonia-e-semplicità.html"><a href="parsimonia-e-semplicità.html#il-criterio-della-struttura-semplice"><i class="fa fa-check"></i><b>17.2.1</b> Il criterio della “struttura semplice”</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="rotazione-nello-spazio-geometrico.html"><a href="rotazione-nello-spazio-geometrico.html"><i class="fa fa-check"></i><b>17.3</b> Rotazione nello spazio geometrico</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="rotazione-nello-spazio-geometrico.html"><a href="rotazione-nello-spazio-geometrico.html#rotazione-ortogonale"><i class="fa fa-check"></i><b>17.3.1</b> Rotazione ortogonale</a></li>
+<li class="chapter" data-level="17.3.2" data-path="rotazione-nello-spazio-geometrico.html"><a href="rotazione-nello-spazio-geometrico.html#vincoli-alla-rotazione"><i class="fa fa-check"></i><b>17.3.2</b> Vincoli alla rotazione</a></li>
+<li class="chapter" data-level="17.3.3" data-path="rotazione-nello-spazio-geometrico.html"><a href="rotazione-nello-spazio-geometrico.html#metodo-grafico"><i class="fa fa-check"></i><b>17.3.3</b> Metodo grafico</a></li>
+<li class="chapter" data-level="17.3.4" data-path="rotazione-nello-spazio-geometrico.html"><a href="rotazione-nello-spazio-geometrico.html#medodi-di-rotazione-ortogonale"><i class="fa fa-check"></i><b>17.3.4</b> Medodi di rotazione ortogonale</a></li>
+<li class="chapter" data-level="17.3.5" data-path="rotazione-nello-spazio-geometrico.html"><a href="rotazione-nello-spazio-geometrico.html#metodi-di-rotazione-obliqua"><i class="fa fa-check"></i><b>17.3.5</b> Metodi di rotazione obliqua</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="matrice-dei-pesi-fattoriali-e-matrice-di-struttura.html"><a href="matrice-dei-pesi-fattoriali-e-matrice-di-struttura.html"><i class="fa fa-check"></i><b>17.4</b> Matrice dei pesi fattoriali e matrice di struttura</a></li>
+<li class="chapter" data-level="17.5" data-path="esempio-con-semtools.html"><a href="esempio-con-semtools.html"><i class="fa fa-check"></i><b>17.5</b> Esempio con <code>semTools</code></a>
+<ul>
+<li class="chapter" data-level="17.5.1" data-path="esempio-con-semtools.html"><a href="esempio-con-semtools.html#orthogonal-varimax"><i class="fa fa-check"></i><b>17.5.1</b> Orthogonal varimax</a></li>
+<li class="chapter" data-level="17.5.2" data-path="esempio-con-semtools.html"><a href="esempio-con-semtools.html#orthogonal-quartimin"><i class="fa fa-check"></i><b>17.5.2</b> Orthogonal Quartimin</a></li>
+<li class="chapter" data-level="17.5.3" data-path="esempio-con-semtools.html"><a href="esempio-con-semtools.html#oblique-quartimin"><i class="fa fa-check"></i><b>17.5.3</b> Oblique Quartimin</a></li>
+<li class="chapter" data-level="17.5.4" data-path="esempio-con-semtools.html"><a href="esempio-con-semtools.html#orthogonal-geomin"><i class="fa fa-check"></i><b>17.5.4</b> Orthogonal Geomin</a></li>
+<li class="chapter" data-level="17.5.5" data-path="esempio-con-semtools.html"><a href="esempio-con-semtools.html#oblique-geomin"><i class="fa fa-check"></i><b>17.5.5</b> Oblique Geomin</a></li>
+</ul></li>
+<li class="chapter" data-level="17.6" data-path="interpretazione-1.html"><a href="interpretazione-1.html"><i class="fa fa-check"></i><b>17.6</b> Interpretazione</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="ch:val_sol_fattoriale.html"><a href="ch:val_sol_fattoriale.html"><i class="fa fa-check"></i><b>18</b> Come valutare e rifinire la soluzione fattoriale</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="valutazione-della-matrice-pattern.html"><a href="valutazione-della-matrice-pattern.html"><i class="fa fa-check"></i><b>18.1</b> Valutazione della matrice pattern</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="valutazione-della-matrice-pattern.html"><a href="valutazione-della-matrice-pattern.html#item-con-basse-saturazioni-su-tutti-i-fattori"><i class="fa fa-check"></i><b>18.1.1</b> Item con basse saturazioni su tutti i fattori</a></li>
+<li class="chapter" data-level="18.1.2" data-path="valutazione-della-matrice-pattern.html"><a href="valutazione-della-matrice-pattern.html#item-con-saturazioni-evevate-su-più-di-un-fattore"><i class="fa fa-check"></i><b>18.1.2</b> Item con saturazioni evevate su più di un fattore</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="valutazione-dellattendibilità.html"><a href="valutazione-dellattendibilità.html"><i class="fa fa-check"></i><b>18.2</b> Valutazione dell’attendibilità</a>
+<ul>
+<li class="chapter" data-level="18.2.1" data-path="valutazione-dellattendibilità.html"><a href="valutazione-dellattendibilità.html#consistenza-interna"><i class="fa fa-check"></i><b>18.2.1</b> Consistenza interna</a></li>
+<li class="chapter" data-level="18.2.2" data-path="valutazione-dellattendibilità.html"><a href="valutazione-dellattendibilità.html#stabilità-temporale"><i class="fa fa-check"></i><b>18.2.2</b> Stabilità temporale</a></li>
+<li class="chapter" data-level="18.2.3" data-path="valutazione-dellattendibilità.html"><a href="valutazione-dellattendibilità.html#equivalenza"><i class="fa fa-check"></i><b>18.2.3</b> Equivalenza</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="selezione-di-un-sottoinsieme-di-item.html"><a href="selezione-di-un-sottoinsieme-di-item.html"><i class="fa fa-check"></i><b>18.3</b> Selezione di un sottoinsieme di item</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="selezione-di-un-sottoinsieme-di-item.html"><a href="selezione-di-un-sottoinsieme-di-item.html#attendibilità-e-numero-di-item"><i class="fa fa-check"></i><b>18.3.1</b> Attendibilità e numero di item</a></li>
+<li class="chapter" data-level="18.3.2" data-path="selezione-di-un-sottoinsieme-di-item.html"><a href="selezione-di-un-sottoinsieme-di-item.html#numero-di-item-e-affidabilità"><i class="fa fa-check"></i><b>18.3.2</b> Numero di item e affidabilità</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html"><i class="fa fa-check"></i><b>18.4</b> Analisi degli item</a>
+<ul>
+<li class="chapter" data-level="18.4.1" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#difficoltà-degli-item"><i class="fa fa-check"></i><b>18.4.1</b> Difficoltà degli item</a></li>
+<li class="chapter" data-level="18.4.2" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#correzione-per-guessing"><i class="fa fa-check"></i><b>18.4.2</b> Correzione per guessing</a></li>
+<li class="chapter" data-level="18.4.3" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#discriminatività"><i class="fa fa-check"></i><b>18.4.3</b> Discriminatività</a></li>
+<li class="chapter" data-level="18.4.4" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#potere-discriminante-dellitem-e-analisi-fattoriale"><i class="fa fa-check"></i><b>18.4.4</b> Potere discriminante dell’item e analisi fattoriale</a></li>
+<li class="chapter" data-level="18.4.5" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#punteggio-sullitem-e-punteggio-totale"><i class="fa fa-check"></i><b>18.4.5</b> Punteggio sull’item e punteggio totale</a></li>
+<li class="chapter" data-level="18.4.6" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#relazioni-tra-coppie-di-item"><i class="fa fa-check"></i><b>18.4.6</b> Relazioni tra coppie di item</a></li>
+<li class="chapter" data-level="18.4.7" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#ridondanza"><i class="fa fa-check"></i><b>18.4.7</b> Ridondanza</a></li>
+<li class="chapter" data-level="18.4.8" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#massimizzazione-della-varianza-del-punteggio-totale"><i class="fa fa-check"></i><b>18.4.8</b> Massimizzazione della varianza del punteggio totale</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="ch:factorial-invariance.html"><a href="ch:factorial-invariance.html"><i class="fa fa-check"></i><b>19</b> Invarianza di misura</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="indicatori-continui.html"><a href="indicatori-continui.html"><i class="fa fa-check"></i><b>19.1</b> Indicatori continui</a>
+<ul>
+<li class="chapter" data-level="19.1.1" data-path="indicatori-continui.html"><a href="indicatori-continui.html#intercette-degli-item"><i class="fa fa-check"></i><b>19.1.1</b> Intercette degli item</a></li>
+<li class="chapter" data-level="19.1.2" data-path="indicatori-continui.html"><a href="indicatori-continui.html#terminologia"><i class="fa fa-check"></i><b>19.1.2</b> Terminologia</a></li>
+<li class="chapter" data-level="19.1.3" data-path="indicatori-continui.html"><a href="indicatori-continui.html#un-esempio-concreto-3"><i class="fa fa-check"></i><b>19.1.3</b> Un esempio concreto</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="variabili-a-livello-ordinale.html"><a href="variabili-a-livello-ordinale.html"><i class="fa fa-check"></i><b>19.2</b> Variabili a livello ordinale</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="variabili-a-livello-ordinale.html"><a href="variabili-a-livello-ordinale.html#baseline-model"><i class="fa fa-check"></i><b>19.2.1</b> Baseline model</a></li>
+<li class="chapter" data-level="19.2.2" data-path="variabili-a-livello-ordinale.html"><a href="variabili-a-livello-ordinale.html#invarianza-delle-soglie"><i class="fa fa-check"></i><b>19.2.2</b> Invarianza delle soglie</a></li>
+<li class="chapter" data-level="19.2.3" data-path="variabili-a-livello-ordinale.html"><a href="variabili-a-livello-ordinale.html#threshold-and-loading-invariance"><i class="fa fa-check"></i><b>19.2.3</b> Threshold and loading invariance</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="ch:gof.html"><a href="ch:gof.html"><i class="fa fa-check"></i><b>20</b> Indici di bontà dell’adattamento</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="stima-del-modello.html"><a href="stima-del-modello.html"><i class="fa fa-check"></i><b>20.1</b> Stima del modello</a></li>
+<li class="chapter" data-level="20.2" data-path="massima-verosimiglianza.html"><a href="massima-verosimiglianza.html"><i class="fa fa-check"></i><b>20.2</b> Massima verosimiglianza</a></li>
+<li class="chapter" data-level="20.3" data-path="identificabilità-del-modello.html"><a href="identificabilità-del-modello.html"><i class="fa fa-check"></i><b>20.3</b> Identificabilità del modello</a></li>
+<li class="chapter" data-level="20.4" data-path="bontà-delladattamento.html"><a href="bontà-delladattamento.html"><i class="fa fa-check"></i><b>20.4</b> Bontà dell’adattamento</a>
+<ul>
+<li class="chapter" data-level="20.4.1" data-path="bontà-delladattamento.html"><a href="bontà-delladattamento.html#chi-quadrato"><i class="fa fa-check"></i><b>20.4.1</b> Chi quadrato</a></li>
+</ul></li>
+<li class="chapter" data-level="20.5" data-path="misure-di-adeguamento-per-il-confronto.html"><a href="misure-di-adeguamento-per-il-confronto.html"><i class="fa fa-check"></i><b>20.5</b> Misure di adeguamento per il confronto</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="misure-di-adeguamento-per-il-confronto.html"><a href="misure-di-adeguamento-per-il-confronto.html#cfi"><i class="fa fa-check"></i><b>20.5.1</b> CFI</a></li>
+</ul></li>
+<li class="chapter" data-level="20.6" data-path="misure-di-adeguamento-parsimonioso.html"><a href="misure-di-adeguamento-parsimonioso.html"><i class="fa fa-check"></i><b>20.6</b> Misure di adeguamento parsimonioso</a>
+<ul>
+<li class="chapter" data-level="20.6.1" data-path="misure-di-adeguamento-parsimonioso.html"><a href="misure-di-adeguamento-parsimonioso.html#tli"><i class="fa fa-check"></i><b>20.6.1</b> TLI</a></li>
+</ul></li>
+<li class="chapter" data-level="20.7" data-path="misure-di-adeguamento-assoluto.html"><a href="misure-di-adeguamento-assoluto.html"><i class="fa fa-check"></i><b>20.7</b> Misure di adeguamento assoluto</a>
+<ul>
+<li class="chapter" data-level="20.7.1" data-path="misure-di-adeguamento-assoluto.html"><a href="misure-di-adeguamento-assoluto.html#rmsea"><i class="fa fa-check"></i><b>20.7.1</b> RMSEA</a></li>
+<li class="chapter" data-level="20.7.2" data-path="misure-di-adeguamento-assoluto.html"><a href="misure-di-adeguamento-assoluto.html#rmrs"><i class="fa fa-check"></i><b>20.7.2</b> RMRS</a></li>
+</ul></li>
+<li class="chapter" data-level="20.8" data-path="interpretazione-2.html"><a href="interpretazione-2.html"><i class="fa fa-check"></i><b>20.8</b> Interpretazione</a></li>
+<li class="chapter" data-level="20.9" data-path="una-nota-di-cautela.html"><a href="una-nota-di-cautela.html"><i class="fa fa-check"></i><b>20.9</b> Una nota di cautela</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="ch:growth_models.html"><a href="ch:growth_models.html"><i class="fa fa-check"></i><b>21</b> Curve di crescita latente</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html"><i class="fa fa-check"></i><b>21.1</b> Dati longitudinali</a>
+<ul>
+<li class="chapter" data-level="21.1.1" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#un-esempio-concreto-4"><i class="fa fa-check"></i><b>21.1.1</b> Un esempio concreto</a></li>
+<li class="chapter" data-level="21.1.2" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#un-secondo-esempio"><i class="fa fa-check"></i><b>21.1.2</b> Un secondo esempio</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="ch:missing_data.html"><a href="ch:missing_data.html"><i class="fa fa-check"></i><b>22</b> Dati mancanti</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="tipologie-di-dati-mancanti.html"><a href="tipologie-di-dati-mancanti.html"><i class="fa fa-check"></i><b>22.1</b> Tipologie di dati mancanti</a></li>
+<li class="chapter" data-level="22.2" data-path="la-gestione-dei-dati-mancanti.html"><a href="la-gestione-dei-dati-mancanti.html"><i class="fa fa-check"></i><b>22.2</b> La gestione dei dati mancanti</a>
+<ul>
+<li class="chapter" data-level="22.2.1" data-path="la-gestione-dei-dati-mancanti.html"><a href="la-gestione-dei-dati-mancanti.html#metodo-direct-ml"><i class="fa fa-check"></i><b>22.2.1</b> Metodo Direct ML</a></li>
+<li class="chapter" data-level="22.2.2" data-path="la-gestione-dei-dati-mancanti.html"><a href="la-gestione-dei-dati-mancanti.html#un-esempio-concreto-5"><i class="fa fa-check"></i><b>22.2.2</b> Un esempio concreto</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="ch:cat_data.html"><a href="ch:cat_data.html"><i class="fa fa-check"></i><b>23</b> Dati non gaussiani e categoriali</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="dati-non-gaussiani.html"><a href="dati-non-gaussiani.html"><i class="fa fa-check"></i><b>23.1</b> Dati non gaussiani</a></li>
+<li class="chapter" data-level="23.2" data-path="dati-categoriali.html"><a href="dati-categoriali.html"><i class="fa fa-check"></i><b>23.2</b> Dati categoriali</a>
+<ul>
+<li class="chapter" data-level="23.2.1" data-path="dati-categoriali.html"><a href="dati-categoriali.html#un-esempio-concreto-6"><i class="fa fa-check"></i><b>23.2.1</b> Un esempio concreto</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>V Appendici</b></span></li>
+<li class="appendix"><span><b>Appendici</b></span></li>
+<li class="chapter" data-level="A" data-path="simbologia-di-base.html"><a href="simbologia-di-base.html"><i class="fa fa-check"></i><b>A</b> Simbologia di base</a></li>
+<li class="chapter" data-level="B" data-path="ch:single_case.html"><a href="ch:single_case.html"><i class="fa fa-check"></i><b>B</b> Lo studio del caso singolo</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="sec:motivazione.html"><a href="sec:motivazione.html"><i class="fa fa-check"></i><b>B.1</b> Motivazione</a></li>
+<li class="chapter" data-level="B.2" data-path="sec:comparison-single-case-controls.html"><a href="sec:comparison-single-case-controls.html"><i class="fa fa-check"></i><b>B.2</b> Il confronto tra caso singolo e un gruppo di controllo</a>
+<ul>
+<li class="chapter" data-level="B.2.1" data-path="sec:comparison-single-case-controls.html"><a href="sec:comparison-single-case-controls.html#sec:Crawford-Howell-1998"><i class="fa fa-check"></i><b>B.2.1</b> Il metodo di Crawford e Howell (1998)</a></li>
+<li class="chapter" data-level="B.2.2" data-path="sec:comparison-single-case-controls.html"><a href="sec:comparison-single-case-controls.html#sec:barton-2002"><i class="fa fa-check"></i><b>B.2.2</b> Il metodo di Barton et al. (2002)</a></li>
+</ul></li>
+<li class="chapter" data-level="B.3" data-path="lo-studio-delle-dissociazioni.html"><a href="lo-studio-delle-dissociazioni.html"><i class="fa fa-check"></i><b>B.3</b> Lo studio delle dissociazioni</a></li>
+<li class="chapter" data-level="B.4" data-path="la-misura-del-cambiamento.html"><a href="la-misura-del-cambiamento.html"><i class="fa fa-check"></i><b>B.4</b> La misura del cambiamento</a>
+<ul>
+<li class="chapter" data-level="B.4.1" data-path="la-misura-del-cambiamento.html"><a href="la-misura-del-cambiamento.html#cambiamento-nel-caso-singolo-e-confronto-con-un-campione-di-controllo"><i class="fa fa-check"></i><b>B.4.1</b> Cambiamento nel caso singolo e confronto con un campione di controllo</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="considerazioni-conclusive.html"><a href="considerazioni-conclusive.html"><i class="fa fa-check"></i>Considerazioni conclusive</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="ch:effectiveness.html"><a href="ch:effectiveness.html"><i class="fa fa-check"></i><b>C</b> La valutazione dell’intervento psicologico</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="efficacia-dellintervento-ed-efficienza-clinica.html"><a href="efficacia-dellintervento-ed-efficienza-clinica.html"><i class="fa fa-check"></i><b>C.1</b> Efficacia dell’intervento ed efficienza clinica</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="ch:effect_size.html"><a href="ch:effect_size.html"><i class="fa fa-check"></i><b>D</b> La dimensione dell’effetto del trattamento</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="sec:cont_reponse_eff_size.html"><a href="sec:cont_reponse_eff_size.html"><i class="fa fa-check"></i><b>D.1</b> Risposta continua</a>
+<ul>
+<li class="chapter" data-level="D.1.1" data-path="sec:cont_reponse_eff_size.html"><a href="sec:cont_reponse_eff_size.html#indici-d-di-cohen-e-g-di-hedges"><i class="fa fa-check"></i><b>D.1.1</b> Indici <span class="math inline">\(d\)</span> di Cohen e <span class="math inline">\(g\)</span> di Hedges</a></li>
+</ul></li>
+<li class="chapter" data-level="D.2" data-path="sec:binary_reponse_eff_size.html"><a href="sec:binary_reponse_eff_size.html"><i class="fa fa-check"></i><b>D.2</b> Risposta binaria</a>
+<ul>
+<li class="chapter" data-level="D.2.1" data-path="sec:binary_reponse_eff_size.html"><a href="sec:binary_reponse_eff_size.html#differenza-tra-due-proporzioni"><i class="fa fa-check"></i><b>D.2.1</b> Differenza tra due proporzioni</a></li>
+<li class="chapter" data-level="D.2.2" data-path="sec:binary_reponse_eff_size.html"><a href="sec:binary_reponse_eff_size.html#rischio-relativo"><i class="fa fa-check"></i><b>D.2.2</b> Rischio relativo</a></li>
+<li class="chapter" data-level="D.2.3" data-path="sec:binary_reponse_eff_size.html"><a href="sec:binary_reponse_eff_size.html#odds-ratio"><i class="fa fa-check"></i><b>D.2.3</b> Odds ratio</a></li>
+<li class="chapter" data-level="D.2.4" data-path="sec:binary_reponse_eff_size.html"><a href="sec:binary_reponse_eff_size.html#logit"><i class="fa fa-check"></i><b>D.2.4</b> Logit</a></li>
+<li class="chapter" data-level="D.2.5" data-path="sec:binary_reponse_eff_size.html"><a href="sec:binary_reponse_eff_size.html#rapporto-delle-quote"><i class="fa fa-check"></i><b>D.2.5</b> Rapporto delle quote</a></li>
+<li class="chapter" data-level="D.2.6" data-path="sec:binary_reponse_eff_size.html"><a href="sec:binary_reponse_eff_size.html#logaritmo-del-rapporto-delle-quote"><i class="fa fa-check"></i><b>D.2.6</b> Logaritmo del rapporto delle quote</a></li>
+</ul></li>
+<li class="chapter" data-level="D.3" data-path="tipi-fondamentali-di-indagine.html"><a href="tipi-fondamentali-di-indagine.html"><i class="fa fa-check"></i><b>D.3</b> Tipi fondamentali di indagine</a>
+<ul>
+<li class="chapter" data-level="D.3.1" data-path="tipi-fondamentali-di-indagine.html"><a href="tipi-fondamentali-di-indagine.html#studi-prospettici"><i class="fa fa-check"></i><b>D.3.1</b> Studi prospettici</a></li>
+<li class="chapter" data-level="D.3.2" data-path="tipi-fondamentali-di-indagine.html"><a href="tipi-fondamentali-di-indagine.html#studi-trasversali"><i class="fa fa-check"></i><b>D.3.2</b> Studi trasversali</a></li>
+<li class="chapter" data-level="D.3.3" data-path="tipi-fondamentali-di-indagine.html"><a href="tipi-fondamentali-di-indagine.html#studi-longitudinali-retrospettivi"><i class="fa fa-check"></i><b>D.3.3</b> Studi longitudinali retrospettivi</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="considerazioni-conclusive-1.html"><a href="considerazioni-conclusive-1.html"><i class="fa fa-check"></i>Considerazioni conclusive</a></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="ch:lin-alg.html"><a href="ch:lin-alg.html"><i class="fa fa-check"></i><b>E</b> Elementi di algebra lineare</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="vettori.html"><a href="vettori.html"><i class="fa fa-check"></i><b>E.1</b> Vettori</a>
+<ul>
+<li class="chapter" data-level="E.1.1" data-path="vettori.html"><a href="vettori.html#vettori-nello-spazio-euclideo"><i class="fa fa-check"></i><b>E.1.1</b> Vettori nello spazio euclideo</a></li>
+<li class="chapter" data-level="E.1.2" data-path="vettori.html"><a href="vettori.html#somma-e-differenza-di-vettori"><i class="fa fa-check"></i><b>E.1.2</b> Somma e differenza di vettori</a></li>
+<li class="chapter" data-level="E.1.3" data-path="vettori.html"><a href="vettori.html#moltiplicazione-scalare"><i class="fa fa-check"></i><b>E.1.3</b> Moltiplicazione scalare</a></li>
+<li class="chapter" data-level="E.1.4" data-path="vettori.html"><a href="vettori.html#combinazione-lineare"><i class="fa fa-check"></i><b>E.1.4</b> Combinazione lineare</a></li>
+<li class="chapter" data-level="E.1.5" data-path="vettori.html"><a href="vettori.html#vettore-0-e-vettore-1"><i class="fa fa-check"></i><b>E.1.5</b> Vettore 0 e vettore 1</a></li>
+<li class="chapter" data-level="E.1.6" data-path="vettori.html"><a href="vettori.html#ortogonalità-tra-vettori"><i class="fa fa-check"></i><b>E.1.6</b> Ortogonalità tra vettori</a></li>
+<li class="chapter" data-level="E.1.7" data-path="vettori.html"><a href="vettori.html#trasposta-di-un-vettore"><i class="fa fa-check"></i><b>E.1.7</b> Trasposta di un vettore</a></li>
+<li class="chapter" data-level="E.1.8" data-path="vettori.html"><a href="vettori.html#norma-o-lunghezza-di-un-vettore"><i class="fa fa-check"></i><b>E.1.8</b> Norma o lunghezza di un vettore</a></li>
+</ul></li>
+<li class="chapter" data-level="E.2" data-path="matrici.html"><a href="matrici.html"><i class="fa fa-check"></i><b>E.2</b> Matrici</a>
+<ul>
+<li class="chapter" data-level="E.2.1" data-path="matrici.html"><a href="matrici.html#dimensioni-della-matrice"><i class="fa fa-check"></i><b>E.2.1</b> Dimensioni della matrice</a></li>
+<li class="chapter" data-level="E.2.2" data-path="matrici.html"><a href="matrici.html#matrice-trasposta"><i class="fa fa-check"></i><b>E.2.2</b> Matrice trasposta</a></li>
+<li class="chapter" data-level="E.2.3" data-path="matrici.html"><a href="matrici.html#matrice-simmetrica"><i class="fa fa-check"></i><b>E.2.3</b> Matrice simmetrica</a></li>
+<li class="chapter" data-level="E.2.4" data-path="matrici.html"><a href="matrici.html#matrice-quadrata-o-rettangolare"><i class="fa fa-check"></i><b>E.2.4</b> Matrice quadrata o rettangolare</a></li>
+<li class="chapter" data-level="E.2.5" data-path="matrici.html"><a href="matrici.html#diagonale-principale"><i class="fa fa-check"></i><b>E.2.5</b> Diagonale principale</a></li>
+<li class="chapter" data-level="E.2.6" data-path="matrici.html"><a href="matrici.html#matrice-diagonale"><i class="fa fa-check"></i><b>E.2.6</b> Matrice diagonale</a></li>
+<li class="chapter" data-level="E.2.7" data-path="matrici.html"><a href="matrici.html#matrice-identità"><i class="fa fa-check"></i><b>E.2.7</b> Matrice identità</a></li>
+<li class="chapter" data-level="E.2.8" data-path="matrici.html"><a href="matrici.html#matrici-diagonali-e-triangolari"><i class="fa fa-check"></i><b>E.2.8</b> Matrici diagonali e triangolari</a></li>
+<li class="chapter" data-level="E.2.9" data-path="matrici.html"><a href="matrici.html#somma-e-sottrazione"><i class="fa fa-check"></i><b>E.2.9</b> Somma e sottrazione</a></li>
+<li class="chapter" data-level="E.2.10" data-path="matrici.html"><a href="matrici.html#moltiplicazione-di-scalari-e-matrici"><i class="fa fa-check"></i><b>E.2.10</b> Moltiplicazione di scalari e matrici</a></li>
+<li class="chapter" data-level="E.2.11" data-path="matrici.html"><a href="matrici.html#proprietà-della-somma-e-differenza"><i class="fa fa-check"></i><b>E.2.11</b> Proprietà della somma e differenza</a></li>
+<li class="chapter" data-level="E.2.12" data-path="matrici.html"><a href="matrici.html#prodotto-di-matrici"><i class="fa fa-check"></i><b>E.2.12</b> Prodotto di matrici</a></li>
+<li class="chapter" data-level="E.2.13" data-path="matrici.html"><a href="matrici.html#proprietà-del-prodotto-di-matrici"><i class="fa fa-check"></i><b>E.2.13</b> Proprietà del prodotto di matrici</a></li>
+<li class="chapter" data-level="E.2.14" data-path="matrici.html"><a href="matrici.html#casi-particolari"><i class="fa fa-check"></i><b>E.2.14</b> Casi particolari</a></li>
+<li class="chapter" data-level="E.2.15" data-path="matrici.html"><a href="matrici.html#operazioni-tra-vettori"><i class="fa fa-check"></i><b>E.2.15</b> Operazioni tra vettori</a></li>
+<li class="chapter" data-level="E.2.16" data-path="matrici.html"><a href="matrici.html#prodotto-interno"><i class="fa fa-check"></i><b>E.2.16</b> Prodotto interno</a></li>
+<li class="chapter" data-level="E.2.17" data-path="matrici.html"><a href="matrici.html#prodotto-esterno"><i class="fa fa-check"></i><b>E.2.17</b> Prodotto esterno</a></li>
+<li class="chapter" data-level="E.2.18" data-path="matrici.html"><a href="matrici.html#traccia-di-una-matrice"><i class="fa fa-check"></i><b>E.2.18</b> Traccia di una matrice</a></li>
+<li class="chapter" data-level="E.2.19" data-path="matrici.html"><a href="matrici.html#rango-di-una-matrice"><i class="fa fa-check"></i><b>E.2.19</b> Rango di una matrice</a></li>
+<li class="chapter" data-level="E.2.20" data-path="matrici.html"><a href="matrici.html#matrice-inversa"><i class="fa fa-check"></i><b>E.2.20</b> Matrice inversa</a></li>
+<li class="chapter" data-level="E.2.21" data-path="matrici.html"><a href="matrici.html#determinante-di-una-matrice"><i class="fa fa-check"></i><b>E.2.21</b> Determinante di una matrice</a></li>
+<li class="chapter" data-level="E.2.22" data-path="matrici.html"><a href="matrici.html#determinante-e-inversa"><i class="fa fa-check"></i><b>E.2.22</b> Determinante e inversa</a></li>
+<li class="chapter" data-level="E.2.23" data-path="matrici.html"><a href="matrici.html#proprietà-del-determinante"><i class="fa fa-check"></i><b>E.2.23</b> Proprietà del determinante</a></li>
+<li class="chapter" data-level="E.2.24" data-path="matrici.html"><a href="matrici.html#radici-e-vettori-latenti"><i class="fa fa-check"></i><b>E.2.24</b> Radici e vettori latenti</a></li>
+<li class="chapter" data-level="E.2.25" data-path="matrici.html"><a href="matrici.html#scomposizione-spettrale-di-una-matrice"><i class="fa fa-check"></i><b>E.2.25</b> Scomposizione spettrale di una matrice</a></li>
+<li class="chapter" data-level="E.2.26" data-path="matrici.html"><a href="matrici.html#autovalori-e-determinante"><i class="fa fa-check"></i><b>E.2.26</b> Autovalori e determinante</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ch:lin-alg" class="section level1 hasAnchor" number="28">
+<h1><span class="header-section-number">Appendice E</span> Elementi di algebra lineare<a href="ch:lin-alg.html#ch:lin-alg" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Un aspetto che rende difficile la comprensione dell’analisi fattoriale è il fatto che l’analisi fattoriale sia una tecnica di analisi multivariata e, come tutte le tecniche di analisi multivariata, richiede la comprensione di almeno alcuni concetti di base dell’algebra lineare. A livello minimale è necessario capire che cosa sono i vettori e le matrici, che cosa è il determinante di una matrice, e in che modo possano essere eseguite le operazioni algebriche su vettori e matrici. Questo capitolo si pone l’obiettivo di chiarire le nozioni elencate sopra.</p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="considerazioni-conclusive-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="vettori.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ccaudek/ds4psy/edit/master/900_lin_alg.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["cfa.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
