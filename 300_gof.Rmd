@@ -1,4 +1,4 @@
-# Indici di bontà dell'adattamento 
+# Indici di bontà dell'adattamento {#ch-goodness-of-fit}
 
 ```{r, include = FALSE}
 source("_common.R")
@@ -182,6 +182,85 @@ structure <- " ind60 =~ x1 + x2 + x3
 fit <- lavaan::sem(structure, data = lavaan::PoliticalDemocracy)
 effectsize::interpret(fit)
 ```
+
+## Un esempio concreto
+
+Consideriamo nuovamente i dati discussi da @brown2015confirmatory relativi al modello di misurazione per la depressione maggiore così come è definita nel DSM-IV. Ignoriamo qui le differenze di genere -- si veda il Capitolo \@ref(ch-factorial-invariance). 
+
+Leggiamo i dati in $\mathsf{R}$:
+
+```{r}
+d <- readRDS(
+  here::here("data", "mdd_sex.RDS")
+)
+```
+
+Consideriamo il seguente modello:
+
+```{r}
+model_mdd <- "
+  MDD =~ mdd1 + mdd2 + mdd3 + mdd4 + mdd5 + mdd6 + mdd7 + mdd8 +
+         mdd9
+"
+```
+
+Adattiamo il modello ai dati.
+
+```{r}
+fit <- cfa(
+  model_mdd,
+  data = d
+)
+```
+
+Esaminiamo gli indici di bontà di adattamento.
+
+```{r}
+summary(fit, fit.measures = TRUE)
+```
+
+Il rapporto $\chi^2 / df$ è adeguato.
+
+```{r}
+110.272 / 27
+```
+
+Gli indici Comparative Fit Index (CFI) = 0.934 e Tucker-Lewis Index (TLI) = 0.912 sono superiori a 0.9, dunque sono almeno sufficienti per gli standard correnti. L'indice RMSEA = 0.064 è appena superiore alla soglia di 0.06. L'indice SRMR = 0.044 è inferiore alla soglia 0.05. Dunque, complessivamente, il modello sembra adeguato.
+
+Adattiamo ora il modello con la modifica proposta da @brown2015confirmatory, ovvero
+
+```{r}
+model2_mdd <- "
+  MDD =~ mdd1 + mdd2 + mdd3 + mdd4 + mdd5 + mdd6 + mdd7 + mdd8 +
+         mdd9
+  mdd1 ~~ mdd2
+"
+```
+
+Adattiamo il modello ai dati.
+
+```{r}
+fit2 <- cfa(
+  model2_mdd,
+  data = d
+)
+```
+
+Esaminiamo gli indici di bontà di adattamento.
+
+```{r}
+summary(fit2, fit.measures = TRUE)
+```
+
+In questa seconda versione, l'adattamento del modello è molto migliorato. Il rapporto $\chi^2 / df$ è pari a 
+
+```{r}
+67.559 / 26
+```
+
+Gli indici Comparative Fit Index (CFI) = 0.967 e Tucker-Lewis Index (TLI) = 0.954 sono superiori a 0.95. L'indice RMSEA = 0.046. L'indice SRMR = 0.037. 
+
+Il "costo" che si paga per questo miglioramento dell'adattamento è che questi indici di adattamento così buoni non si replicheranno in un altro campione di dati, a meno che venga introdotto un qualche altro aggiustamento che, sicuramente, sarà diverso da quello usato nell campione corrente. Personalmente, io non avrei introdotto il "miglioramento" proposto da @brown2015confirmatory in quanto, anche senza aggiustamenti post-hoc, il modello produce un adattamento accettabile.
 
 ## Commenti e considerazioni finali {-}
 

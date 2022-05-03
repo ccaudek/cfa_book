@@ -47,6 +47,7 @@ rmd_files:
     - "250_group_invariance.Rmd"
     ## PART V
     - "300_gof.Rmd"
+    - "310_refine_solution.Rmd"
     - "350_growth_models.Rmd"
     - "400_missing_data.Rmd"
     - "500_cat_data.Rmd"

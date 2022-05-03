@@ -1,4 +1,4 @@
-# Invarianza di misura 
+# Invarianza di misura  {#ch-factorial-invariance}
 
 ```{r, include = FALSE}
 source("_common.R")

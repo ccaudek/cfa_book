@@ -1,0 +1,281 @@
+# La revisione del modello {#ch-model-revision}
+
+```{r, include = FALSE}
+source("_common.R")
+library("lavaan")
+library("effectsize")
+```
+
+@brown2015confirmatory discute alcune possibili cause che possono essere responsabili della mancanza di adattamento del modello EFA o CFA ai dati. In particolare, vengono esaminate le seguenti possibili cause: il ricercatore ha ipotizzato il numero sbagliato di fattori comuni latenti, un item viene ipotizzato saturare su un solo fattore comune mentre satura su diversi fattori, un item viene ipotizzato saturare sul fattore comune sbagliato. Inoltre, è sempre possibile che vi siano correlazioni residue che il modello non ha considerato. @brown2015confirmatory mostra come il ricercatore possa usare i Mofification Indices per valutare le cause del mancato adattamento del modello ai dati.
+
+## Un numero di fattori troppo piccolo
+
+Una delle possibili fonti di mancanza di adattamento del modello può dipendere dal fatto che è stato ipotizzato un numero insufficiente di fattori latenti comuni. @brown2015confirmatory discute il caso nel quale si confrontano gli indici di bontà di adattamento di un modello ad un fattore e un modello a due fattori comuni. L'esempio riguarda i dati già in precedenza discussi e relativi relativi a otto misure di personalità raccolte su un campione di 250 pazienti che hanno concluso un programma di psicoterapia. Le scale sono le seguenti:
+
+- anxiety (N1), 
+- hostility (N2), 
+- depression (N3), 
+- self-consciousness (N4), 
+- warmth (E1), 
+- gregariousness (E2), 
+- assertiveness (E3), 
+- positive emotions (E4). 
+
+Leggiamo i dati in $\mathsf{R}$.
+
+```{r}
+varnames <- c("N1", "N2", "N3", "N4", "E1", "E2", "E3", "E4")
+sds <- '5.7  5.6  6.4  5.7  6.0  6.2  5.7  5.6'
+
+cors <- '
+ 1.000
+ 0.767  1.000 
+ 0.731  0.709  1.000 
+ 0.778  0.738  0.762  1.000 
+-0.351  -0.302  -0.356  -0.318  1.000 
+-0.316  -0.280  -0.300  -0.267  0.675  1.000 
+-0.296  -0.289  -0.297  -0.296  0.634  0.651  1.000 
+-0.282  -0.254  -0.292  -0.245  0.534  0.593  0.566  1.000'
+
+psychot_cor_mat <- getCov(cors, names = varnames)
+n <- 250
+```
+
+Supponiamo di adattare ai dati il modello "sbagliato" che include un unico fattore comune. 
+
+```{r}
+# 1-factor model
+f1 <- '
+efa("efa")*f1 =~ N1 + N2 + N3 + N4 + E1 + E2 + E3 + E4
+'
+```
+
+Svolgiamo qui l'analisi fattoriale esplorativa con la funzione `efa()` di `lavaan`. 
+
+```{r}
+efa_f1 <-
+  cfa(
+    model = f1,
+    sample.cov = psychot_cor_mat,
+    sample.nobs = 250,
+    rotation = "oblimin"
+  )
+```
+
+Consideriamo ora un modello a due fattori.
+
+```{r}
+f2 <- '
+efa("efa")*f1 +
+efa("efa")*f2 =~ N1 + N2 + N3 + N4 + E1 + E2 + E3 + E4
+'
+```
+
+Adattiamo il modello ai dati.
+
+```{r}
+efa_f2 <-
+  cfa(
+    model = f2,
+    sample.cov = psychot_cor_mat,
+    sample.nobs = 250,
+    rotation = "oblimin"
+  )
+```
+
+Esaminiamo gli indici di bontà di adattamento.
+
+```{r}
+# define the fit measures
+fit_measures_robust <- c(
+  "chisq", "df", "pvalue", 
+  "cfi", "tli", "rmsea", "srmr"
+)
+
+# collect them for each model
+rbind(
+  fitmeasures(efa_f1, fit_measures_robust),
+  fitmeasures(efa_f2, fit_measures_robust)
+) %>%
+  # wrangle
+  data.frame() %>%
+  mutate(
+    chisq = round(chisq, digits = 0),
+    df = as.integer(df),
+    pvalue = ifelse(pvalue == 0, "< .001", pvalue)
+  ) %>%
+  mutate_at(vars(cfi:srmr), ~ round(., digits = 3))
+```
+
+I risultati mostrano come, in un modello EFA, una soluzione a due fattori produca un adattamento adeguato, mentre ciò non si verifica con un modello ad un solo fattore.
+
+
+## Specificazione errata delle relazioni tra indicatori e fattori latenti
+
+Un'altra potenziale fonte di errata specificazione del modello CFA è una designazione errata delle relazioni tra indicatori e fattori latenti.
+
+In questo esempio, un ricercatore ha sviluppato un questionario di 12 item (gli item sono valutati su scale da 0 a 8) progettato per valutare le motivazioni dei giovani adulti a consumare bevande alcoliche (cfr. Cooper, 1994). La misura aveva lo scopo di valutare tre aspetti di questo costrutto (4 item ciascuno): (1) motivazioni di coping (item 1–4), (2) motivazioni sociali (item 5–8) e (3) motivazioni di miglioramento (item 9 –12). I dati sono i seguenti.
+
+```{r}
+sds <- '2.06  1.52  1.92  1.41  1.73  1.77  2.49  2.27  2.68  1.75  2.57  2.66'
+
+cors <- '
+  1.000 
+  0.300  1.000 
+  0.229  0.261  1.000 
+  0.411  0.406  0.429  1.000 
+  0.172  0.252  0.218  0.481  1.000 
+  0.214  0.268  0.267  0.579  0.484  1.000 
+  0.200  0.214  0.241  0.543  0.426  0.492  1.000 
+  0.185  0.230  0.185  0.545  0.463  0.548  0.522  1.000 
+  0.134  0.146  0.108  0.186  0.122  0.131  0.108  0.151  1.000 
+  0.134  0.099  0.061  0.223  0.133  0.188  0.105  0.170  0.448  1.000 
+  0.160  0.131  0.158  0.161  0.044  0.124  0.066  0.061  0.370  0.350  1.000 
+  0.087  0.088  0.101  0.198  0.077  0.177  0.128  0.112  0.356  0.359  0.507  1.000'
+
+covs <- getCov(cors, sds = sds, names = paste("x", 1:12, sep = ""))
+```
+
+Iniziamo con un modello che ipotizza tre fattori comuni latenti correlati, coerentemente con la motivazione che stava alla base della costruzione dello strumento.
+
+```{r}
+model1 <- '
+  copingm  =~ x1 + x2 + x3 + x4
+  socialm  =~ x5 + x6 + x7 + x8
+  enhancem =~ x9 + x10 + x11 + x12
+'
+```
+
+Adattiamo il modello.
+
+```{r}
+fit1 <- cfa(model1, sample.cov = covs, sample.nobs = 500, mimic = "mplus")
+```
+
+Esaminando le misure di adattamento potremmo concludere che il modello è adeguato.
+
+```{r}
+summary(fit1, fit.measures = TRUE)
+```
+
+Tuttavia, un esame più attento mette in evidenza un comportamento anomalo dell'item `x4` e alcune caratteristiche anomale del modello in generale.
+
+```{r}
+standardizedSolution(fit1)
+```
+
+In particolare, l'item `x4` mostra una saturazione molto forte sul fattore Motivi di coping (.955) ed emerge una correlazione molto alta tra i fattori Motivi di coping e Motivi sociali (.798).
+
+@brown2015confirmatory suggerisce di esaminare i Modification Indices. Tale esame mostra che il MI associato a `x4` è molto alto, 18.916.
+
+```{r}
+modindices(fit1)
+```
+
+Le considerazioni precedenti, dunque, suggeriscono che il modello potrebbe non avere descritto in maniera adeguata le relazioni tra `x4` e i fattori comuni latenti.  In base a considerazioni teoriche, supponiamo che abbia senso pensare che `x4` saturi non solo sul fattore Motivi di coping ma anche sul fattore di Motivi Sociali. Specifichiamo dunque un nuovo modello nel modo seguente.
+
+```{r}
+model2 <- '
+  copingm  =~ x1 + x2 + x3 + x4
+  socialm  =~ x4 + x5 + x6 + x7 + x8
+  enhancem =~ x9 + x10 + x11 + x12
+'
+```
+
+Adattiamo il modello.
+
+```{r}
+fit2 <- cfa(model2, sample.cov = covs, sample.nobs = 500, mimic = "mplus")
+```
+
+Esaminiamo gli indici di bontà di adattamento.
+
+```{r}
+summary(fit2, fit.measures = TRUE)
+```
+
+La bontà di adattamento è migliorata.
+
+Esaminiamo la soluzione standardizzata. Vediamo ora che sono scomparse le due anomalie trovate in precedenza.
+
+```{r}
+standardizedSolution(fit2)
+```
+
+Esaminando i MI, notiamo che il modello potrebbe migliorare se introduciamo una correlazione tra le specificità `x11` e `x12`.
+
+```{r}
+modindices(fit2)
+```
+
+Il nuovo modello diventa dunque il seguente.
+
+```{r}
+model3 <- '
+  copingm  =~ x1 + x2 + x3 + x4
+  socialm  =~ x4 + x5 + x6 + x7 + x8
+  enhancem =~ x9 + x10 + x11 + x12
+  x11 ~~ x12
+'
+```
+
+Adattiamo il modello.
+
+```{r}
+fit3 <- cfa(model3, sample.cov = covs, sample.nobs = 500, mimic = "mplus")
+```
+
+Un test basato sul rapporto di verosimiglianze conferma che il miglioramento di adattamento è sostanziale.
+
+```{r}
+anova(fit2, fit3)
+```
+
+Esaminiamo gli indici di bontà di adattamento.
+
+```{r}
+summary(fit3, fit.measures = TRUE)
+```
+
+Gli indici di fit sono migliorati.
+
+Esaminiamo la soluzione standardizzata.
+
+```{r}
+standardizedSolution(fit3)
+```
+
+Non ci sono motivi di preoccupazione.  Concludiamo dunque che il modello più adeguato è `model3`. Nel caso presente, a mio parare, l'introduzione della correlazione residua tra `x11` e `x12` si sarebbe anche potuta evitare, dato che il modello `model3` (con meno idiosincrasie legate al campione) si era già dimostrato del tutto adeguato.
+
+## Saturazione sul fattore sbagliato
+
+Si può anche dare il caso opposto, ovvero 
+
+```{r}
+model4 <- '
+  copingm  =~ x1 + x2 + x3 + x4
+  socialm  =~ x4 +x5 + x6 + x7 + x8 + x12
+  enhancem =~ x9 + x10 + x11
+'
+```
+
+```{r}
+fit4 <- cfa(model4, sample.cov = covs, sample.nobs = 500, mimic = "mplus")
+```
+
+```{r}
+summary(fit4, fit.measures = TRUE)
+```
+
+È chiaro che il modello `model4` è inadeguato. Il problema emerge chiaramente esaminando i MI.
+
+```{r}
+modindices(fit4)
+```
+
+Il MI relativo alla saturazione di `x12` su `enhancem` è uguale a 116.781. Chiaramente questo è un problema che deve essere affrontato.
+
+## Commenti e considerazioni finali {-}
+
+L'esempio discusso da @brown2015confirmatory mostra come l'uso dei MI, insieme all'esame della soluzione fattoriale, possa essere usata dallo psicologo per migliorare il modello proposto.
+
