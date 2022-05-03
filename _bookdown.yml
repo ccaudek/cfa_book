@@ -48,6 +48,7 @@ rmd_files:
     ## PART V
     - "300_gof.Rmd"
     - "310_refine_solution.Rmd"
+    - "315_mmm.Rmd"
     - "350_growth_models.Rmd"
     - "400_missing_data.Rmd"
     - "500_cat_data.Rmd"
