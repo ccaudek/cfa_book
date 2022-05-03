@@ -5,7 +5,7 @@ source("_common.R")
 library("lavaan")
 ```
 
-Nel capitolo \@ref(ch:estrazione) abbiamo visto come sia possibile ottenere la
+Nel capitolo \@ref(ch-estrazione) abbiamo visto come sia possibile ottenere la
 soluzione fattoriale non ruotata per il numero di fattori comuni che
 meglio riassume l'informazione contenuta nella matrice di correlazioni
 (o covarianze). La soluzione non ruotata non garantisce
@@ -274,7 +274,7 @@ $$
 
 è una matrice ortogonale $2 \times 2$.
 
-::: exmp
+::: {.example}
 Si considerino i dati di Brown, Williams e Barlow (1984) discussi da
 Rencher (2002). Ad una bambina di dodici anni è stato chiesto di
 valutare sette dei suoi conoscenti su cinque variabili: *kind*,
@@ -348,7 +348,6 @@ round(ar %*% T, 3)
 arrows(0, 0, 0.574,  0.819, lwd = 2)
 arrows(0, 0, 0.819, -0.574, lwd = 2)
 ```
-
 
 Nella figura precedente, le due frecce rappresentano gli assi ruotati. È
 chiaro come tale rotazione di $-35^{\circ}$ ha effettivamente l'effetto

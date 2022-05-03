@@ -1,11 +1,11 @@
-# L'estrazione dei fattori 
+# L'estrazione dei fattori {#ch-estrazione}
 
 ```{r, include = FALSE}
 source("_common.R")
 library("psych")
 ```
 
-## Motivazione {#motivazione .unnumbered}
+## Motivazione 
 
 Lo scopo dell'analisi fattoriale è quello di descrivere in maniera
 parsimoniosa le relazioni che intercorrono tra un grande numero di item.

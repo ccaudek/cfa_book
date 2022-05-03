@@ -31,7 +31,7 @@ La parte sinistra dell'espressione precedente contiene il nome della variabile m
 Per esempio, nella specificazione di un modello a due fattori comuni, è possibile aggiungere al modello le medie delle variabili manifeste nel modo seguente:
 
 ```{r, eval=FALSE}
-mod <- "
+mod1 <- "
   # two-factor model
   f1 =~ x1 + x2 + x3
   f2 =~ x4 + x5 + x6
@@ -45,11 +45,18 @@ mod <- "
 "
 ```
 
-Tuttavia, è più conveniente omettere le intercette nella specificazione del modello e aggiungere l'argomento `meanstructure = TRUE` nella funzione `cfa()`:
+Tuttavia, è più conveniente omettere le intercette nella specificazione del modello e aggiungere l'argomento `meanstructure = TRUE` nella funzione `cfa()`.
+
+```{r, eval=FALSE}
+mod2 <- "
+  f1 =~ x1 + x2 + x3
+  f2 =~ x4 + x5 + x6
+"
+```
 
 ```{r, eval=FALSE}
 fit <- cfa(
-  mod,
+  mod2,
   data = d,
   meanstructure = TRUE
 )
@@ -149,24 +156,119 @@ Confrontiamo i modelli:
 lavTestLRT(fit_ef, fit_efl, fit_eii, fit_eir, fit_fv, fit_fm)
 ```
 
-Il confronto tra i precedenti modelli nidificati che introducono vincoli sempre più stringenti sui parametri indica che non vi è una "significativa" perdita di bontà dell'adattamento passando dal modello congenerico al modello che assume l'uguaglianza delle saturazioni fattoriali, delle intercette, delle varianze residue, delle varianze delle variabili latenti e delle medie dei due gruppi. Per i dati discussi da @brown2015confirmatory, dunque, possiamo concludere che vi sono forti evidenze di invarianza fattoriale tra maschi e femmine in relazione al costrutto di depressione maggiore.
+Il confronto tra i precedenti modelli nidificati che introducono vincoli sempre più stringenti sui parametri indica che non vi è una "significativa" perdita di bontà dell'adattamento passando dal modello congenerico al modello che assume l'uguaglianza delle saturazioni fattoriali, delle intercette, delle varianze residue, delle varianze delle variabili latenti e delle medie dei due gruppi. Per i dati discussi da @brown2015confirmatory, dunque, possiamo concludere che vi sono forti evidenze di invarianza fattoriale tra maschi e femmine in relazione al costrutto di depressione maggiore. L'invarianza fattoriali giustifica, per questi dati, un confronto tra le medie dei punteggi totali del test calcolate nei due gruppi.
 
-## Variabili a livello ordinale
+::: {.example}
+Consideriamo un secondo esempio in cui viene esaminata l'invarianza fattoriale. Consideriamo la *Financial Well-Being Scale* e esaminiamo i dati di un campione di xx soggetti:
 
-I test di invarianza per i dati ordinali sono diversi da quelli utilizzati con le variabili continue in due aspetti: differiscono sia lo stimatore che viene utilizzato per le saturazioni fattoriali sia il tipo di analisi statistica che vengono svolte. 
+```{r}
+finance <- rio::import(here::here("data", "finance.csv"))
+```
 
-Le variabili ordinali sono costituite da una serie di modalità (opzioni di risposta) caratterizzate da un ordine logico; ad esempio, le modalità "fortemente in disaccordo" fino a "fortemente d'accordo"; oppure le modalità "mai", "a volte", "spesso", "sempre". Queste opzioni di risposta sono logicamente ordinate e, per convenzione, ad esse vengono assegnati valori numerici interi. Tuttavia, poiché le risposte ordinali non corrispondono all'intensità della presenza di un attributo, l'assegnazione di numeri alle risposte ordinali è arbitraria. Ad esempio, alle stesse cinque opzioni di risposta ordinate possiamo assegnare valori da 0 a 4, da 1 a 5 o da 5 a 1. Pertanto, i dati ordinali non possono essere analizzati come
-se fossero continui. 
+Il test è costituito da 10 item e si assume che gli item 1, 2, 4, 8 misurino una dimensione positiva del benessere finanziario, mentre gli item 3, 5, 9, 10 siano indicatori di una dimensione negativa del benessere finanziario. 
 
-> Le medie, le varianze e le covarianze delle variabili ordinali non hanno significato ( Jöreskog, p. 1). 
+```{r}
+library("corrplot")
+# Correlation matrix of items
+cormat <- finance %>%
+  dplyr::select(starts_with("item")) %>%
+  cor()
+# Correlation matrix plot
+corrplot.mixed(cormat)
+```
 
-Tuttavia, l'ordinamento delle risposte può essere analizzato tramite apposite procedure che sono specifiche per i dati ordinali. Lo stimatore attualmente consigliato per i dati ordinali è quello dei *minimi quadrati ponderati* (*Weighted least squares, WLS*). Consideriamo qui il problema dell'invarianza di misura.
+Il grafico mostra che gli item sono moderatamente correlati tra loro. A causa della polarità degli item, alcune correlazioni sono negative (rosse), mentre le altre sono positive (blu). Possiamo usare il clustering gerarchico per raggruppare gli item aventi la stessa polarità. Il grafico successivo mostra che gli item positivi (item 1, 2, 4 e 8) sono stati raggruppati nel rettangolo superiore, mentre i restanti sei item (cioè gli item negativi) sono stati raggruppati nel rettangolo inferiore.
 
-Oltre alla stima WLS, nell'analisi di dati ordinali viene utilizzata una matrice di correlazione policorica invece dell'usuale matrice di covarianza. Per ciascuna coppia di variabili ordinali viene calcolata una correlazione policorica sulla base dell'ipotesi che una variabile continua latente normalmente distribuita sia responsabile delle frequenze osservate delle risposte ordinali in ciascuna variabile. Secondo questa ipotesi, ogni valore di risposta ordinale osservato corrisponde a un intervallo di valori normalizzati tra soglie, o cutoff, sulla variabile continua latente sottostante. Tali soglie ($\tau_1, \tau_2, \dots, \tau_k$) sono dei margini verticali che suddividono l'area sottesa alla funzione di densità della distribuzione normale sottostante in $k$ sezioni, ciascuna delle quali corrisponde alla frequenza del punteggio ordinale che è stato osservato in quella categoria di risposta. L'invarianza delle soglie (*treshold invariance*) assume che le soglie necessarie per definire le correlazioni policoriche siano invarianti tra gruppi. 
+```{r}
+corrplot(cormat, order = "hclust", addrect = 2)
 
-@wu2016identification mostrano come la procedura per la valutazione dell'invarianza di misura che è stata descritta in precedenza debba essere modificata nel caso di indicatori categoriali. La procedura usuale consiste nel definire prima un modello di riferimento e successivamente di imporre restrizioni crescenti ai parametri. Secondo @wu2016identification, tale approccio non è ottimale nel caso di dati categoriali perché dipende fortemente dal modo in cui vengono definite le soglie rispetto alle scale delle risposte continue latenti nel modello di base. Dunque, secondo @wu2016identification, è prima necessario valutare l'equivalenza delle soglie tra gruppi (_threshold model_) e poi valutare il modello che ipotizza l'equivalenza tra i gruppi delle saturazioni fattoriali.
+```
 
-Per illutrare tale procedura, replichiamo qui il tutorial messo a punto da @svetina2020multiple. Questi autori utilizzano quattro item dei una scala del bullismo per tre paesi (31 = Azerbaigian; 40 = Austria; 246 = Finlandia). Tutti gli item sono misurati su una scala di tipo Likert a 4 punti, che va da 0 (mai) a 3 (almeno una volta alla settimana). Gli item di questa scala chiedono agli studenti quante volte durante l'anno è successo loro a scuola uno degli episodi in questione; per esempio: "mi prendevano in giro o mi insultavano". Le dimensioni del campione per l'Azerbaigian, l'Austria e la Finlandia sono rispettivamente 3808, 4457 e 4520. Leggiamo in dati in $\textsf{R}$:
+Pertanto, definiamo un modello a due fattori (un fattore positivo e un fattore negativo) e assumiamo che i due fattori siano correlati tra loro. 
+
+```{r}
+model <- '
+  positive =~ item1 + item2 + item4 + item8
+  negative =~ item3 + item5 + item6 + item7 + item9 + item10
+  positive ~~ negative
+'
+```
+
+Si tratta di un modello CFA multigruppo stimato separatamente per i partecipanti maschi e femmine. Poiché gli item sono su scala Lickert a 5 punti, utilizzeremo lo stimatore WLSMV, che è più adatto per dati categoriali e ordinali.
+
+```{r}
+# configural invariance
+fit_ef <- cfa(
+  model,
+  data = finance,
+  estimator = "WLSMV",
+  group = "gender",
+  meanstructure = TRUE
+)
+# equal factor laodings
+fit_efl <- update(
+  fit_ef,
+  group.equal = c("loadings")
+)
+# equal indicator intercepts
+fit_eii <- update(
+  fit_efl,
+  group.equal = c("loadings", "intercepts")
+)
+# equal indicator error variances
+fit_eir <- update(
+  fit_eii,
+  group.equal = c("loadings", "intercepts", "residuals")
+)
+# equal factor variances
+fit_fv <- update(
+  fit_eir,
+  group.equal = c(
+    "loadings", "intercepts", "residuals",
+    "lv.variances"
+  )
+)
+# equal latent means
+fit_fm <- update(
+  fit_fv,
+  group.equal = c(
+    "loadings", "intercepts", "residuals",
+    "lv.variances", "means"
+  )
+)
+```
+
+Confrontiamo i modelli:
+
+```{r}
+lavTestLRT(fit_ef, fit_efl, fit_eii, fit_eir, fit_fv, fit_fm)
+```
+
+In questo secondo esempio, il modello metrico che impone il vincolo dell'eguaglianza delle saturazioni fattoriali nei due gruppi non comporta una sostanziale perdita di adattamento rispetto al modello dell'invarianza configurale, che richiede solo la stessa struttura fattoriale nel due gruppi.
+
+L'invarianza scalare introduce anche il vincolo dell'eguaglianza delle intercette nei due gruppi. In questo caso la perdita di adattamento rispetto al modello metrico è sostanziale, $\Delta \chi^2_8 = 41.92$, $p < .001$. In questo secondo esempio, dunque, se non introduciamo dei cambiamenti nel modello suggeriti dai Modification Indices (cosa che, in generale, non si dovrebbe fare), dobbiamo concludere che la scala mostra invarianza metrica ma non invarianza scalare.
+:::
+
+## Indicatori a livello di scala ordinale
+
+I test di invarianza fattoriale per i dati ordinali sono diversi da quelli utilizzati con le variabili continue per due aspetti: differiscono sia per lo stimatore che viene utilizzato per la stima delle saturazioni fattoriali, sia per il tipo di analisi statistiche che vengono svolte. 
+
+Le variabili ordinali sono costituite da una serie di modalità (opzioni di risposta) caratterizzate da un ordine logico; ad esempio, le modalità "fortemente in disaccordo" fino a "fortemente d'accordo"; oppure le modalità "mai", "a volte", "spesso", "sempre". Queste opzioni di risposta sono logicamente ordinate e, per convenzione, ad esse vengono assegnati valori numerici interi. Tuttavia, poiché le risposte ordinali non descrivono l'intensità della presenza di un attributo, l'assegnazione di numeri alle risposte ordinali è arbitraria. Ad esempio, alle stesse cinque opzioni di risposta ordinate possiamo assegnare valori da 0 a 4, da 1 a 5, o da 5 a 1. Pertanto, i dati ordinali non possono essere analizzati come
+se fossero continui: nel caso di dati ordinali, le medie, le varianze e le covarianze delle variabili non hanno significato. 
+
+Un primo problema da affrontare è quello di come si possono calcolare le correlazioni per variabili di questo tipo. La risposta a questa domanda viene fornita dalle correlazioni policoriche. Le correlazioni policoriche si calcolano ipotizzando che vi sia una variabile continua latente normalmente distribuita che è responsabile delle frequenze osservate delle varie modalità di ciascuna variabile ordinali. Secondo questa ipotesi, ogni valore di risposta ordinale (es, "spesso") corrisponde ai valori della variabile continua latente sottostante compresi in un determinato intervallo di valori. Tali soglie, o cutoff, ($\tau_1, \tau_2, \dots, \tau_k$) sono concepite come dei margini verticali che suddividono l'area sottesa alla funzione di densità della distribuzione normale sottostante in $k$ sezioni, ciascuna delle quali corrisponde alla frequenza del punteggio ordinale che è stato osservato in quella categoria di risposta.
+
+Se le correlazioni tra variabili ordinali sono stimate mediante le correlazioni policoriche, allora, nel contesto dell'invarianza fattoriale, un primo problema è quello dell'invarianza delle soglie (*treshold invariance*), la quale assume che le soglie necessarie per definire le correlazioni policoriche siano invarianti tra i gruppi. 
+
+Un secondo aspetto specifico che riguarda lo studio dell'invarianza fattoriale nel caso di variabili ordinali riguarda lo stimatore da usare per la stima delle saturazioni fattoriali.  Lo stimatore attualmente consigliato per i dati ordinali è quello dei *minimi quadrati ponderati* (*Weighted least squares, WLS*). 
+
+### Un esempio concreto
+
+@wu2016identification ritengono che la procedura per la valutazione dell'invarianza fattoriale che è stata descritta in precedenza (per dati continui) debba essere modificata se vogliamo applicarla a indicatori categoriali. La procedura usuale consiste nel definire prima un modello di riferimento e successivamente di imporre restrizioni crescenti ai parametri. Secondo @wu2016identification, tale approccio non è ottimale nel caso di dati categoriali perché dipende fortemente dal modo in cui vengono definite le soglie necessarie per definire le correlazioni policoriche assegnate alle variabili continue latenti nel modello dell'invarianza configurale. Secondo @wu2016identification, dunque, è prima necessario valutare l'equivalenza delle soglie tra gruppi (*threshold model*) e poi valutare il modello che ipotizza l'equivalenza delle saturazioni fattoriali tra i gruppi.
+
+Per illustrare tale procedura, replichiamo qui il tutorial messo a punto da @svetina2020multiple. Questi autori utilizzano quattro item di una scala del bullismo ed esaminano i dati raccolti in tre paesi (31 = Azerbaigian; 40 = Austria; 246 = Finlandia). Tutti gli item sono misurati su una scala di tipo Likert a 4 punti, che va da 0 (mai) a 3 (almeno una volta alla settimana). Gli item chiedono al partecipante di valutare delle affermazioni relative ad episodi di bullismo. Per esempio, "mi prendevano in giro o mi insultavano". Per l'Azerbaigian, l'Austria e la Finlandia, le dimensioni del campione sono rispettivamente pari a 3,808, 4,457 e 4,520. 
+
+Leggiamo in dati in $\textsf{R}$:
 
 ```{r}
 dat <- read.table("data/BULLY.dat", header = FALSE)
@@ -174,7 +276,7 @@ names(dat) <- c("IDCNTRY", "R09A", "R09B", "R09C", "R09D")
 head(dat)
 ```
 
-Viene creata la matrice `all.results` per immagazzinare i risultati dei diversi modelli che verranno confrontati, chiamati _baseline_ (nessun vincolo tra gruppi), _proposition 4_ (equivalenza delle soglie tra gruppi), e _proposition 7_ (equivalenza delle soglie e delle saturazioni fattoriali tra gruppi). Gli indici di bontà dell'adattamento che verranno considerati sono: chi-square, df, p, RMSEA, CFI, e TLI. 
+Viene creata la matrice `all.results` per immagazzinare i risultati dei diversi modelli che verranno confrontati, chiamati _baseline_ (nessun vincolo tra i gruppi), _proposition 4_ (equivalenza delle soglie tra i gruppi), e _proposition 7_ (equivalenza delle soglie e delle saturazioni fattoriali tra i gruppi). Gli indici di bontà dell'adattamento che verranno considerati sono: chi-square, df, p, RMSEA, CFI, e TLI. 
 
 ```{r}
 all.results <- matrix(NA, ncol = 6, nrow = 3)
@@ -182,7 +284,7 @@ all.results <- matrix(NA, ncol = 6, nrow = 3)
 
 ### Baseline model
 
-Nel _baseline model_ non viene posto alcun vincolo tra i gruppi o le misure ripetute:
+Nel _baseline model_ non viene posto alcun vincolo tra i gruppi. È quello dell'invarianza configurale.
 
 ```{r}
 mod.cat <- "F1 =~ R09A + R09B + R09C + R09D"
@@ -247,7 +349,7 @@ all.results[1, ] <-
 
 ### Invarianza delle soglie
 
-Consideriamo ora il modello _threshold invariance_ [chiamata _Proposition 4_ da @wu2016identification]. 
+Consideriamo ora il modello _threshold invariance_ [chiamato _Proposition 4_ da @wu2016identification]. 
 
 ```{r}
 prop4 <- measEq.syntax(
@@ -287,13 +389,13 @@ all.results[2, ] <-
   )
 ```
 
-Eseguiamo il confronto tra il modello di _threshold invariance_ e il modello di _baseline_:
+Eseguiamo il confronto tra il modello _threshold invariance_ e il modello _baseline_:
 
 ```{r}
 lavTestLRT(fit.baseline, fit.prop4)
 ```
 
-### Threshold and loading invariance
+### Invarianza delle soglie e delle saturazioni fattoriali
 
 Consideriamo ora il modello _threshold and loading invariance_ [chiamato _Proposition 7_ da @wu2016identification]. 
 
@@ -360,7 +462,7 @@ Un confronto tra gli indici di bontà di adattamento dei tre modelli è fornito 
 all.results
 ```
 
-In conclusione, nel caso presente, il test del rapporto di verosimiglianza indica che non viene rispettata neppure l'invarianza delle soglie tra gruppi. Gli altri confronti, dunque, al di là dei presenti scopi didattici, sono superflui.
+In conclusione, nel caso presente, il test del rapporto di verosimiglianza indica che non viene rispettata neppure l'invarianza delle soglie tra gruppi. Gli altri confronti, dunque, sono superflui e sono stati qui presentati solo allo scopo di illustrare la procedura, 
 
 <!-- ### Invarianza parziale -->
 
