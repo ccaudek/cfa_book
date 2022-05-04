@@ -18,9 +18,9 @@ description: "This document contains the materials of the lessons of Costruzione
 github-repo: ccaudek/cfa_book
 ---
 
-# Prefazione {-}
+# Benvenuti {-}
 
-La presente dispensa contiene il materiale delle lezioni dell'insegnamento di _Costruzione e validazione di strumenti di misura dell'efficacia dell'intervento psicologico in neuropsicologia_ B020881 (B213) rivolto agli studenti del secondo anno del Corso di Laurea Magistrale in Psicologia Clinica e della Salute e Neuropsicologia (curriculum: assessment e intervento psicologici in neuropsicologia - E21), A.A. 2021-2022. L'insegnamento si propone di fornire agli studenti un'introduzione all'assessment psicologico, ovvero un insieme di  conoscenze/competenze che si pongono all'intersezione tra psicometria, statistica e informatica.
+Benvenuti nella versione online di *Costruzione e validazione di strumenti di misura dell'efficacia dell'intervento psicologico in neuropsicologia*. Questo sito web contiene il materiale didattico dell'insegnamento B020881 (B213) rivolto agli studenti del secondo anno del Corso di Laurea Magistrale in Psicologia Clinica e della Salute e Neuropsicologia (curriculum: assessment e intervento psicologici in neuropsicologia - E21), A.A. 2021-2022. L'insegnamento si propone di fornire agli studenti un'introduzione all'assessment psicologico, ovvero un insieme di  conoscenze/competenze che si pongono all'intersezione tra psicometria, statistica e informatica.
 
 Nello specifico, l'insegnamento si focalizzerà sull'analisi fattoriale  confermativa (*confermatory factor analysis*, CFA) e sull'analisi fattoriale esplorativa, (_explorative factor analysis_, EFA), cioè sugli strumenti che vengono usati durante il processo di sviluppo dei test psicometrici, ovvero che vengono usati per esaminare la struttura latente di una scala psicologica (ad esempio un questionario). In questo contesto, la CFA viene utilizzata per verificare il numero di dimensioni sottostanti gli indicatori (fattori) e l'intensità delle relazioni item-fattore (saturazioni fattoriali). La CFA consente anche di capire di come dovrebbe essere svolto lo scoring di un test. Quando la struttura latente è multifattoriale (cioè, a due o più fattori), il numero di fattori è indicativo del numero di sottoscale e di come esse dovrebbero essere codificate. La CFA è un importante strumento analitico anche per altri aspetti della valutazione psicometrica. Può essere utilizzata per stimare l'affidabilità di scala dei test psicometrici in modo da evitare i problemi della teoria classica dei test (ad es. alpha di Cronbach). Dati i recenti progressi nell'analisi dei dati categoriali, ora la CFA offre un quadro analitico comparabile a quello offerto dalla teoria di risposta agli item (IRT). In effetti, secondo @brown2015confirmatory, la CFA offre una maggiore flessibilità analitica rispetto al modello IRT tradizionale. 
 
@@ -40,6 +40,13 @@ Trattando di argomenti avanzati, questo insegnamento presuppone la conoscenza di
 Corrado Caudek  
 Marzo 2022
 ```
+
+
+## License {-}
+
+The online version of this book is licensed under the [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+
+The code is public domain, licensed under [Creative Commons CC0 1.0 Universal (CC0 1.0)](https://creativecommons.org/publicdomain/zero/1.0/).
 
 
 
