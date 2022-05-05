@@ -6,7 +6,7 @@ library("lavaan")
 library("effectsize")
 ```
 
-@brown2015confirmatory discute alcune possibili cause che possono essere responsabili della mancanza di adattamento del modello EFA o CFA ai dati. In particolare, vengono esaminate le seguenti possibili cause: il ricercatore ha ipotizzato il numero sbagliato di fattori comuni latenti, un item viene ipotizzato saturare su un solo fattore comune mentre satura su diversi fattori, un item viene ipotizzato saturare sul fattore comune sbagliato. Inoltre, è sempre possibile che vi siano correlazioni residue che il modello non ha considerato. @brown2015confirmatory mostra come il ricercatore possa usare i Mofification Indices per valutare le cause del mancato adattamento del modello ai dati.
+@brown2015confirmatory discute alcune possibili cause che possono essere responsabili della mancanza di adattamento del modello EFA o CFA ai dati. In particolare, vengono esaminate le seguenti possibili cause: il ricercatore ha ipotizzato il numero sbagliato di fattori comuni latenti, un item viene ipotizzato saturare su un solo fattore comune mentre satura su diversi fattori, un item viene ipotizzato saturare sul fattore comune sbagliato. Inoltre, è sempre possibile che vi siano correlazioni residue che il modello non ha considerato. @brown2015confirmatory mostra come il ricercatore possa usare i Modification Indices per valutare le cause del mancato adattamento del modello ai dati.
 
 ## Un numero di fattori troppo piccolo
 

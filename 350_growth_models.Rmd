@@ -9,26 +9,45 @@ library("markdown")
 library("patchwork")
 ```
 
-## Dati longitudinali
-
 Un importante classe di modelli a variabili latenti è quella dei modelli delle curve di crescita latente (*latent growth models*, LGM). I modelli delle curve di crescita latente vengono spesso utilizzati per analizzare dati longitudinali. In questo tipo di dati, una misura di esito viene ottenuta in diversi momenti del tempo e si vuole studiare il cambiamento nel tempo. In molti casi, la traiettoria nel tempo può essere modellata come una semplice funzione lineare o quadratica. Le differenze individuali vengono catturate dagli *effetti random* che sono convenientemente rappresentati da variabili latenti (continue), spesso chiamate *fattori di crescita* (*growth factors*). 
 
-Possiamo pensare ai modelli LGM come ad un'estensione del modello CFA dotato di `meanstructure`.  L'inclusione della `meanstructure` significa che non possiamo usare in input la matrice di covarianza campionaria, ma dobbiamo invece utilizzare i dati grezzi (ovvero, le singole osservazioni per ciascun parecipante). Un'altro requisito degli LGM è che i dati devono essere forniti del formato `wide`, il che significa che ogni colonna rappresenta la variabile di esito in un diverso momento nel tempo. Si presume che ogni osservazione o riga sia indipendente dalle altre; le colonne motrano invece una dipendenza temporale tra loro. 
+Supponiamo che la variabile misurata rappresenti una qualche dimensione psicologica $y$. Ci possiamo chiedere le seguenti domande.
 
-I modelli LGM sono un caso speciale di CFA e corrispondono un modello CFA a due fattori in cui le saturazioni fattoriali sono fissate a valori predefiniti. Nello specifico, le saturazioni sul fattore che specifica le intercette delle funzioni individuali di crescita sono tutte fissate a 1; le saturazioni sul fattore che specifica le pendenze delle funzioni individuali di crescita sono fissate in modo tale da corrispondere ai diversi momenti del tempo, laddove la saturazione in corrispondenza del momento $t_0$ è uguale a 0 e la progressione procede con incrementi di 1 (ovvvero, $0, 1, \dots, t-1$). 
+• la $y$ tende ad aumentare nei termini di una relazione lineare?
+• se la $y$ tende ad aumentare nei termini di una relazione lineare, qual è in media la pendenza di questa retta?
+• in che misura questa pendenza varia tra i partecipanti?
+• in che misura questa pendenza dipende dall'effetto di qualche altra variabile $x$?
+• in che misura questa pendenza differisce tra gruppi di partecipanti?
+• in che misura la $y$ durante nella prima rilevazione temporale varia tra i partecipanti?
+• in che misura la $y$ nella prima rilevazione temporale dipende dall'effetto di qualche altra variabile $x$?
 
-Si giunge così alla seguente specifiazione del modello fattoriale:
+Queste sono alcune delle domande a cui si può rispondere usando i modelli LGM.
 
-\begin{equation}
-y_{it} = \tau_i + (1) \xi_1 + (t) \xi_2 + \delta_t,
-\end{equation}
+## Dati longitudinali
 
-con $t = 0, 1, 2, 3$ nel caso di quattro misurazioni temporali. Si noti che, per disegno, $\tau_i = 0$.
+Possiamo pensare ai modelli LGM come ad un'estensione del modello CFA dotato di `meanstructure`. Infatti, dobbiamo modellare la relazione tra le medie dei punteggi dei partecipanti in funzione del tempo.
+
+L'inclusione della `meanstructure` significa che non possiamo usare in input la matrice di covarianza campionaria, ma dobbiamo invece utilizzare i dati grezzi (ovvero, le singole osservazioni per ciascun partecipante). Un altro requisito degli LGM è che i dati devono essere forniti del formato `wide`, il che significa che ogni colonna rappresenta la variabile di esito in un diverso momento nel tempo. Si presume che ogni osservazione o riga sia indipendente dalle altre; le colonne mostrano invece una dipendenza temporale. 
+
+I modelli LGM sono dunque un caso speciale di CFA e, nello specifico, corrispondono un modello CFA a due fattori in cui le saturazioni fattoriali sono fissate a valori predefiniti.
+
+<!-- - le saturazioni sul fattore che specifica le intercette delle funzioni individuali di crescita sono tutte fissate a 1;  -->
+<!-- - le saturazioni sul fattore che specifica le pendenze delle funzioni individuali di crescita sono fissate in modo tale da corrispondere ai diversi momenti del tempo, laddove la saturazione in corrispondenza del momento $t_0$ è uguale a 0 e la progressione procede con incrementi di 1 (ovvero, $0, 1, \dots, t-1$).  -->
+
+<!-- Si giunge così alla seguente specificazione del modello fattoriale: -->
+
+<!-- \begin{equation} -->
+<!-- y_{it} = \tau_i + (1) \xi_1 + (t) \xi_2 + \delta_t, -->
+<!-- \end{equation} -->
+
+<!-- con $t = 0, 1, 2, 3$, per esempio, nel caso di quattro misurazioni temporali.  -->
+<!-- Si noti che, per disegno, $\tau_i = 0$. -->
+
 
 
 ### Un esempio concreto
 
-L'esempio che discuteremo utilizza i dati di un tutorial `lavaan`, ovvero un campione di dati artificiali chiamato `Demo.growth` in cui un punteggio viene misurato su quattro punti temporali. I dati sono i seguenti:
+L'esempio che discuteremo utilizza un campione di dati artificiali chiamato `Demo.growth` in cui si ipotizza che un determinato punteggio venga misurato su quattro punti temporali. I dati sono i seguenti:
 
 ```{r}
 data(Demo.growth)
@@ -62,7 +81,7 @@ d %>%
   geom_line() +
   facet_wrap(~id)
 ```
-Notiamo che un semplce modello lineare è appropriato per rendere conto della variazione temporale della variabile risposta:
+Notiamo che una funzione lineare è appropriata per rendere conto della variazione temporale della variabile risposta:
 
 ```{r}
 d %>% 
@@ -88,18 +107,19 @@ demo_growth_long %>%
   labs(x = "Time", y = "y") 
 ```
 
-Per adattare un modello lineare di crescita a questi dati, specifichiamo il seguente modello a variabili latenti
+
+Per adattare a questi dati un modello lineare di crescita, specifichiamo il seguente modello a variabili latenti
 
 $$
 y_j = \alpha_0 + \alpha_1 \lambda_j + \zeta_{00} + \zeta_{11} \lambda_j + \epsilon_j,
 $$
 dove 
 
-- $y_j$ è la variabile di interesse che cambia nel tempo, $j$.
+- $y_j$ è la variabile di interesse che cambia nel tempo, con $j = 0, \dots, 3$.
 - $\alpha_0$ rappresenta l'intercetta della retta di regressione al tempo $t = 0$ (il punto di partenza della linea nera sopra).
-- $\alpha_1 \lambda_j$ è il tasso medio di variazione nel tempo (la pendenza della linea nera nel grafico sopra). Qui $\lambda_j$ è solo l'indice dei punti temporali considerati (0, 1, 2, 3).
+- $\alpha_1 \lambda_j$ è il tasso medio di crescita nel tempo (la pendenza della linea nera nel grafico sopra). Qui $\lambda_j$ è solo l'indice dei punti temporali considerati (0, 1, 2, 3).
 - $\zeta_{00}$ è la varianza tra i soggetti nel punto $t = 0$.
-- $\zeta_{11} \lambda_j$ è la varianza del tasso di variazione tra i soggetti.
+- $\zeta_{11} \lambda_j$ è la varianza del tasso di crescita tra i soggetti.
 - $\epsilon_j$ è la varianza di ciascun soggetto attorno alla sua retta di regressione.
 
 Tali relazioni statistiche vengono rappresentate dal modello di equazioni strutturali della figura \@ref(fig:growth01). 
@@ -108,7 +128,9 @@ Tali relazioni statistiche vengono rappresentate dal modello di equazioni strutt
 knitr::include_graphics("images/lgm.png")
 ```
 
-In altre parole, un lineare di crescita latente corrisponde ad un modello fattoriale con due variabili latenti: un fattore che corrisponde al "punteggio vero" delle intercette individuali e un fattore che corrisponde al "punteggio vero" delle pendenze individuali. Nella sitassi `lavaan` questo diventa:
+Un modello lineare di crescita latente corrisponde dunque ad un modello fattoriale con due variabili latenti: un fattore ($\eta_0$) corrisponde al "punteggio vero" delle intercette individuali, mentre l'altro fattore ($\eta_1$) che corrisponde al "punteggio vero" delle pendenze delle rette di regressione per i singoli individui.
+
+Nella sintassi `lavaan` il modello LGM diventa:
 
 ```{r}
 model <- "
@@ -117,37 +139,47 @@ model <- "
 "
 ```
 
-Si noti che, per il fattore $\eta_0$ (che rappresenta le intercette), i valori delle saturazioni fattoriali sono fissate a 1 -- questo è il motivo per cui $\alpha_0$ e $\zeta_{00}$ compaiono da soli nell'equazione precedente: in maniera esplicita sono $1 \cdot \alpha_0$ e $1 \cdot \zeta_{00}$. Le saturazioni per il fattore $\eta_1$ (che specifica le pendenze delle funzioni lineari) sono fissate ai valori dei diversi momenti nel tempo: qui i valori $\lambda_j$ da 0 a 3. Abbiamo anche la correlazione tra $\eta_0$ e $\eta_1$, rappresentata dalla doppia freccia $\zeta_{01}$. Se questo parametro è positivo, questo significa che i partecipanti tendono a diventare sempre più diversi tra loro, al passare del tempo; un'interpretazione opposta si ha se il valore del parametro è negativo.
+Si noti che, per il fattore $\eta_0$ (che rappresenta le intercette), i valori delle saturazioni fattoriali sono fissate a 1 -- questo è il motivo per cui $\alpha_0$ e $\zeta_{00}$ compaiono da soli nell'equazione precedente: in maniera esplicita sono $1 \cdot \alpha_0$ e $1 \cdot \zeta_{00}$. 
+
+Le saturazioni per il fattore $\eta_1$ (che specifica le pendenze delle funzioni lineari) sono fissate ai valori che descrivono la variazione temporale: qui i valori $\lambda_j$ da 0 a 3.
+
+Il modello include anche la correlazione tra $\eta_0$ e $\eta_1$, rappresentata dalla doppia freccia $\zeta_{01}$. Se $\zeta_{01} > 0$, questo significa che, con il passare del tempo, i partecipanti tendono a diventare sempre più diversi tra loro; un'interpretazione opposta si ha se $\zeta_{01}< 0$.
 
 Adattiamo il modello ai dati:
 
 ```{r}
 fit <- growth(model, data = Demo.growth)
+summary(fit)
 ```
 
-Esaminiamo il path diagram:
+Esaminiamo il path diagram.
 
 ```{r}
 semPaths(
-  fit,"std",
-  posCol =c("black"),
-  edge.label.cex =0.9,
-  sizeMan =7, 
-  what = "path"
+  fit,
+  layout = "tree",
+  intercepts = FALSE,
+  posCol = c("black"),
+  edge.label.cex = 0.00001,
+  sizeMan = 7,
+  what = "path",
+  optimizeLatRes = TRUE,
+  residuals = TRUE,
+  style = "lisrel"
 )
 ```
 
 Ci sono 6 tipi di parametri di interesse:
 
 ```{r}
-kable(coef(fit), booktabs =TRUE, format = "markdown")
+kable(coef(fit), booktabs =TRUE, format = "markdown") 
 ```
 
 - l'intercetta $i$ = 0.615 è il valore atteso della variabile risposta al momento $t_0$;
 - la pendenza $s$ = 1.006 è il tasso di cambiamento medio della variabile risposta nel tempo. Ad ogni successivo momento temporale, il valore medio della variabile risposta aumenta in media di 1.006 punti;
 - varianza $i$ = 1.932 misura la variazione tra i soggetti al momento $t_0$ (ci dice quanto sono diverse le intercette delle rette di regressione tra i soggetti);
 - varianza $s$ = 0.587 misura la variazione del tasso di crescita tra i soggetti (ci dice quanto sono diverse le pendenze delle rette di regressione tra i soggetti);
-- varianze `t1`, ..., `t4`: i valori da 0.595 a 0.508 ci dicono la variazione tra i soggetti all'interno di ciascun momento del tempo;
+- varianze `t1`, ..., `t4`: i valori da 0.595 a 0.508 descrivono la variazione tra i soggetti in ciascun momento del tempo;
 - la covarianza tra `i` e `s` = 0.618 ci dice che i valori della variabile risposta diventano via via più diversi nel tempo tra i rispondenti (un valore negativo avrebbe l'interpretazione opposta).
 
 Le stime dell'intercetta e della pendenza della funzione di crescita per ciascun partecipante si ottengono nel modo seguente:
@@ -157,7 +189,7 @@ rand_eff <- as.data.frame(lavPredict(fit))
 head(rand_eff)
 ```
 
-Le distribuzione delle stime individuali dell'intercetta e della pendenza della curva di crescita si ottengono nel modo seguente:
+Istogrammi delle stime individuali dell'intercetta e della pendenza della curva di crescita si ottengono nel modo seguente:
 
 ```{r}
 gi <- rand_eff %>% 
@@ -169,7 +201,9 @@ gh <- rand_eff %>%
 gi + gh
 ```
 
-Un buon modo per capire cosa fa il modello è quello di visualizzare i punteggi previsti. Useremo qui la funzione `predict()` per salvare un nuovo oggetto con i punteggi previsti a livello individuale per l'intercetta e la pendenza;
+### Visualizzare il cambiamento
+
+È utile visualizzare i punteggi previsti dal modello. A tal fine, useremo qui la funzione `predict()` per creare un nuovo oggetto $\mathsf{R}$ che contiene i punteggi previsti a livello individuale per l'intercetta e la pendenza.
 
 ```{r}
 pred_lgm <- predict(fit) 
@@ -218,9 +252,31 @@ pred_lgm_long %>%
   labs(y = "y", x = "time")
 ```
 
-La linea nera più spessa rappresenta l'intercetta media e la pendenza media della curva di crescita del modello LGM. Ogni individuo ha una sua specifica intercetta e uno specifico tasso di cambiamento e questa diversità è catturata nelle componenti di varianza del modello
+La linea nera più spessa rappresenta l'intercetta media e la pendenza media della curva di crescita del modello LGM. Ogni individuo ha una sua specifica intercetta e uno specifico tasso di cambiamento e questa diversità è catturata nelle componenti di varianza del modello.
 
-È anche possibile utilizzare le funzionalità di `lavaan` per verificare specifiche ipotesi di interesse relative ai dati longitudinali.  Ad esempio, una possibile domanda riguarda l'ugualianza degli errori nel tempo. Tale domanda può essere affrontata introducendo dei vincoli nella specificazione del modello LGM e, successivamente, confrontanto la bontà dell'adattamento del modello vincolato e del modello generale.
+### Dati ordinali vs. intervalli temporali
+
+La specificazione `s =~ 0*t1 + 1*t2 + 2*t3 + 3*t4` assume che il tempo sia misurato per intervalli costanti. Questa sintassi può essere usata quando il tempo è misurato su una scala a livello ordinale, quando supponiamo diverse rilevazioni temporali e chi chiediamo cosa succeda passando da una alla successiva, senza specificare precisamente qual è la distanza temporale tra le varie rilevazioni. In alternativa è possibile specificare in termini assoluti il tempo trascorso tra le diverse rilevazioni temporali -- questo è possibile solo se tali distanze temporali sono costanti tra i soggetti. Ad esempio, se passano 2, 3 e 9 mesi dalla prima rilevazione, avremo il seguente modello.
+
+```{r}
+model_a <- "
+ i =~ 1*t1 + 1*t2 + 1*t3 + 1*t4
+ s =~ 0*t1 + 2*t2 + 6*t3 + 9*t4
+"
+```
+
+La scelta di utilizzare il tempo ordinale rispetto a quello assoluto non cambia il numero di parametri del modello o i gradi di libertà. Tuttavia la media dei punteggi fattoriali che rappresentano l'intercetta e la pendenza può cambiare e l'interpretazione di questi termini cambierà di conseguenza.
+
+```{r}
+fit_a <- growth(model_a, data = Demo.growth)
+kable(coef(fit_a), booktabs = TRUE, format = "markdown")
+```
+
+Mentre in precedenza l'interpretazione era che la media della variabile risposta aumenta in media 1.006 punti passando da una rilevazione temporale alla successiva, nel caso della presente specificazione temporale in mesi possiamo dire che media della variabile risposta aumenta in media 0.319 punti dopo l'incremento temporale di un mese.
+
+### Verifica di ipotesi
+
+È anche possibile utilizzare le funzionalità di `lavaan` per verificare specifiche ipotesi di interesse relative ai dati longitudinali.  Ad esempio, una possibile domanda riguarda l'uguaglianza degli errori nel tempo. Tale domanda può essere affrontata introducendo dei vincoli nella specificazione del modello LGM e, successivamente, confrontando la bontà dell'adattamento del modello vincolato e del modello generale.
 
 Il modello vincolato è
 
@@ -271,6 +327,7 @@ model2 <- '
 
 ```{r}
 fit2 <- growth(model2, data = Demo.growth)
+summary(fit2)
 ```
 
 ```{r}
@@ -278,3 +335,454 @@ kable(coef(fit2), booktabs =TRUE, format = "markdown")
 ```
 
 I risultati mostrano che le due covariate $x$ influenzano sia l'intercetta sia la pendenza della curva di crescita. Inoltre, vi sono evidenze di un effetto della covariata `c`.
+
+## Crescita non lineare
+
+Ripetiamo la procedura di analisi descritta sopra introducendo però un cambiamento: verrà considerato un modello nel quale la crescita non è lineare.
+
+Nelle analisi seguenti useremo i seguenti indici di bontà di adattamento.
+
+```{r}
+selected_fit_stats <-   
+  c("chisq.scaled",
+    "df.scaled", ## must be >0 to test G.O.F.
+    "pvalue.scaled", ## ideally n.s.
+    "cfi.scaled", ## ideally ≥ 0.95
+    "rmsea.scaled", ## ideally ≤ 0.05
+    "rmsea.pvalue.scaled", ## ideally n.s.
+    "srmr" ## ideally < 0.08
+    )
+```
+
+Simulo i dati secondo questo modello.
+
+```{r}
+growth_mod <- 
+'
+  ## intercept & slope growth terms for X
+  iX =~ 1*x1 + 1*x2 + 1*x3 + 1*x4
+  sX =~ 0*x1 + 1*x2 + 2*x3 + 3*x4
+  
+  ## intercept, slope, & quadratic terms for Y
+  iY =~ 1*y1 + 1*y2 + 1*y3 + 1*y4
+  sY =~ 0*y1 + 1*y2 + 2*y3 + 3*y4
+  qY =~ 0*y1 + 1*y2 + 4*y3 + 9*y4
+  
+  ## set variances 
+  
+  y4 ~~ 2*y4
+  x4 ~~ 1*x4
+  
+  ## set latent means/intercepts
+  iX ~ 2*1
+  sX ~ 1*1
+  sY ~ -1*1
+  qY ~ -1.5*1
+  
+  sY ~ 2*predictor
+  
+  outcome ~ 2*iX + 3*sY 
+'
+```
+
+A questo fine uso la funzione `simulateData()` di `lavaan`. La simulazione include due variabili misurate in quattro punti temporali. 
+
+```{r}
+sim_growth_dat <- simulateData(
+  model = growth_mod, 
+  model.type = "growth", 
+  seed = 82020, 
+  orthogonal = F,
+  auto.cov.y = T, 
+  auto.var = T
+  )
+```
+
+Le variabili sono chiamate `x1`, `x2`, `x3`, `x4`, per la misurazione di `x` ai tempi 1, 2, 3, 4. Lo stesso per la `y`.
+
+```{r}
+head(sim_growth_dat)
+```
+
+Aggiungo qui il numero del partecipante.
+
+```{r}
+sim_growth_dat$participant_n <- 
+  1:nrow(sim_growth_dat) #add participant number
+```
+
+Nei dati simulati, la variabile `x` cambia linearmente nel tempo e la variabile `y`  cambia seguendo un andamento quadratico. Esaminiamo i dati graficamente.
+
+```{r}
+x_plot <-
+  pivot_longer(sim_growth_dat,
+    cols = x1:x4,
+    names_to = "x",
+    names_prefix = "x"
+  )
+
+individual_x_trajectories <-
+  ggplot(
+    x_plot,
+    aes(
+      x = as.numeric(x),
+      y = value,
+      group = participant_n,
+      color = participant_n
+    )
+  ) +
+  geom_line(alpha = 0.2) +
+  labs(
+    title = "Observed Trajectories of x",
+    x = "Timepoint",
+    y = "x"
+  ) +
+  xlim(1, 4) +
+  theme(legend.position = "none")
+
+individual_x_trajectories
+```
+
+Su può vedere che la variabile `x` segue una crescita lineare, ma un modello quadratico molto "debole" potrebbe adattarsi meglio ai dati, quindi sarà necessario controllare se in effetti questo è vero. Se entrambi i modelli si adattano bene, li confronteremo con il test del rapporto di verosimiglianza (LRT).
+
+Faccio lo stesso per la variabile `y`.
+
+```{r}
+y_plot <-
+  pivot_longer(sim_growth_dat,
+    cols = y1:y4,
+    names_to = "y",
+    names_prefix = "y"
+  )
+
+individual_y_trajectories <-
+  ggplot(
+    y_plot,
+    aes(
+      x = as.numeric(y),
+      y = value,
+      group = participant_n,
+      color = participant_n
+    )
+  ) +
+  geom_line(alpha = 0.2) +
+  labs(
+    title = "Observed trajectories of y",
+    x = "Timepoint",
+    y = "y"
+  ) +
+  xlim(1, 4) +
+  theme(legend.position = "none")
+
+individual_y_trajectories
+```
+
+
+È chiaro che la `y` diminuisce in media con il tempo, ma c'è eterogeneità (o variabilità) in ciò che accade nei singoli caso. Anche in questo caso, sia un modello lineare sia un modello quadratico sembrano appropriati per descrivere il cambiamento nei dati.
+
+### Stimatore
+
+Tutti i dati utilizzati sono continui, quindi useremo la stima della massima verosimiglianza (stimatore = ML). Tuttavia è preferibile usare la variante "robusta" (stimatore = MLR) quando possibile per tenere conto dei possibili non normalità nei dati.
+
+### Assenza di crescita
+
+Iniziamo con un modello per la `x` che assume che non vi sia variazione in funzione del tempo.
+
+```{r}
+int_x_mod <- 
+'
+  iX =~ 1*x1 + 1*x2 + 1*x3 + 1*x4
+'
+```
+
+Eseguiamo il fit e esaminiamo i risultati.
+
+```{r}
+int_x_fit <-
+  growth(
+    model = int_x_mod,
+    estimator = "MLR",
+    data = sim_growth_dat
+  )
+
+int_x_fit_stats <-
+  fitmeasures(
+    int_x_fit,
+    selected_fit_stats
+  ) %>%
+  data.frame()
+
+round(int_x_fit_stats, 2)
+```
+
+È chiaro che il modello di assenza di crescita non spiega i dati `x`. Consideriamo `y`.
+
+```{r}
+int_y_mod <- 
+'
+  iY =~ 1*y1 + 1*y2 + 1*y3 + 1*y4
+'
+
+int_y_fit <-
+  growth(
+    model = int_y_mod,
+    estimator = "MLR",
+    data = sim_growth_dat
+  )
+
+int_y_fit_stats <-
+  fitmeasures(
+    int_y_fit,
+    selected_fit_stats
+  ) %>%
+  data.frame()
+
+round(int_y_fit_stats, 2)
+```
+
+Il modello di assenza di crescita non è adeguato neppure per la variabile `y`.
+
+### Crescita lineare
+
+Esaminiamo un modello di crescita lineare per la `x`.
+
+```{r}
+linear_x_mod <- 
+'
+iX =~ 1*x1 + 1*x2 + 1*x3 + 1*x4
+sX =~ 0*x1 + 1*x2 + 2*x3 + 3*x4
+'
+
+linear_x_fit <-
+  growth(
+    model = linear_x_mod,
+    estimator = "MLR",
+    data = sim_growth_dat
+  )
+
+linear_x_fit_stats <-
+  fitmeasures(
+    linear_x_fit,
+    selected_fit_stats
+  ) %>%
+  data.frame()
+
+round(linear_x_fit_stats, 2)
+```
+
+Il modello di crescita lineare per la `x` si adatta bene rispetto a tutti gli indici. Questo è ciò che ci aspettavamo in base al grafico dei dati osservati.
+
+Esaminiamo un modello di crescita lineare per la `y`.
+
+```{r}
+linear_y_mod <- 
+'
+  iY =~ 1*y1 + 1*y2 + 1*y3 + 1*y4
+  sY =~ 0*y1 + 1*y2 + 2*y3 + 3*y4
+'
+
+linear_y_fit <-
+  growth(
+    model = linear_y_mod,
+    estimator = "MLR",
+    data = sim_growth_dat
+  )
+
+linear_y_fit_stats <-
+  fitmeasures(
+    linear_y_fit,
+    selected_fit_stats
+  ) %>%
+  data.frame()
+
+round(linear_y_fit_stats, 2)
+```
+
+Il modello lineare è inadeguato per la `y` rispetto a tutti gli indici considerati.
+
+### Crescita quadratica
+
+I termini quadratici rappresentano il tasso medio di variazione della pendenza nelle diverse rilevazioni temporali. Per descrivere una tale caratteristica si parla di "crescita quadratica" nei modelli SEM.
+
+Consideriamo un modello di crescita quadratica per la `x`.
+
+```{r}
+quad_x_mod <- 
+'
+  iX =~ 1*x1 + 1*x2 + 1*x3 + 1*x4
+  sX =~ 0*x1 + 1*x2 + 2*x3 + 3*x4
+  qX =~ 0*x1 + 1*x2 + 4*x3 + 9*x4
+'
+
+quad_x_fit <-
+  growth(
+    model = quad_x_mod,
+    estimator = "MLR",
+    data = sim_growth_dat
+  )
+
+quad_x_fit_stats <-
+  fitmeasures(
+    quad_x_fit,
+    selected_fit_stats
+  )
+
+round(quad_x_fit_stats, 2)
+```
+
+Qui abbiamo un problema interessante, poiché la `x` si adatta abbastanza bene sia a un modello lineare che a uno quadratico, ma abbiamo un caso di Heywood, in particolare la varianza della variabile osservata stimata è negativa.
+
+```{r}
+lavInspect(quad_x_fit, "est")$theta
+```
+
+Si ottiene una stima negativa per la varianza della variabile osservata `x4`. Questo è un problema e indica che il modello potrebbe non rappresentare bene i dati. È possibile introdurre dei vincoli nei parametri per vedere se l'adattamento rimane buono se "forziamo" una modifica a questo parametro, ma questo va oltre gli scopi presenti. Per i fini di questo tutorial ignoreremo questo caso di Heywood e proseguiremo nell'analisi.
+
+Quando si hanno due modelli nidificati adatti (nel nostro caso, modelli lineari e quadratici), possiamo confrontare formalmente l'adattamento con i test del rapporto di verosimiglianza (LRT). L'ipotesi nulla è che non vi sia alcuna differenza nella varianza spiegata dai due modelli. La parsimonia è preferita in una situazione in cui la varianza spiegata è equivalente.
+
+```{r}
+lavTestLRT(linear_x_fit, quad_x_fit)
+```
+
+Qui, un p-value $> 0.05$ ci dice che il modello lineare è da preferire.
+
+Esaminiamo la `y`. 
+
+```{r}
+quad_y_mod <-
+"
+  iY =~ 1*y1 + 1*y2 + 1*y3 + 1*y4
+  sY =~ 0*y1 + 1*y2 + 2*y3 + 3*y4
+  qY =~ 0*y1 + 1*y2 + 4*y3 + 9*y4
+"
+
+quad_y_fit <-
+  growth(
+    model = quad_y_mod,
+    estimator = "MLR",
+    data = sim_growth_dat
+  )
+
+quad_y_fit_stats <-
+  fitmeasures(
+    quad_y_fit,
+    selected_fit_stats
+  )
+
+quad_y_fit_stats
+```
+
+Qui il modello quadratico si adatta molto bene ai dati ed è sicuramente da preferire al modello lineare per la `y`.
+
+```{r}
+lavTestLRT(linear_y_fit, quad_y_fit)
+```
+
+## Parallel Process Model
+
+Esaminiamo ora un modello che include sia i termini lineari che quadratici (quando richiesti) delle variabili `x` e `y`.
+
+```{r}
+full_model <- 
+'
+  ## intercept & slope growth terms for X
+  iX =~ 1*x1 + 1*x2 + 1*x3 + 1*x4
+  sX =~ 0*x1 + 1*x2 + 2*x3 + 3*x4
+  
+  ## intercept, slope, & quadratic terms for Y
+  iY =~ 1*y1 + 1*y2 + 1*y3 + 1*y4
+  sY =~ 0*y1 + 1*y2 + 2*y3 + 3*y4
+  qY =~ 0*y1 + 1*y2 + 4*y3 + 9*y4
+  
+  ## regress growth terms on predictor
+  qY + iY + sX + iX ~ predictor
+  sY ~ a1*predictor
+  
+  ## regress outcome on growth terms
+  outcome ~ iX + sX + iY + b1*sY + qY
+  
+  ## testing indirect effect 
+  ## predictor --> sY --> outcome
+  
+  predictor_sY_outcome := a1*b1
+'
+```
+
+Adattiamo il modello ai dati.
+
+```{r}
+full_fit <-
+  growth(
+    model = full_model,
+    estimator = "MLR",
+    data = sim_growth_dat
+  )
+```
+
+Esaminiamo il path diagram.
+
+```{r}
+semPaths(
+  full_fit,
+  layout = "tree",
+  intercepts = FALSE,
+  posCol = c("black"),
+  edge.label.cex = 0.00001,
+  sizeMan = 7,
+  what = "path",
+  optimizeLatRes = TRUE,
+  residuals = TRUE,
+  style = "lisrel"
+)
+```
+
+Valutiamo l'adattamento.
+
+```{r}
+full_fit_stats <-
+  fitmeasures(
+    full_fit,
+    selected_fit_stats
+  )
+
+round(full_fit_stats, 2)
+```
+
+Possiamo vedere che questo modello si adatta bene a tutte le statistiche di adattamento scelte. Questo modello viene ritenuto accettabile e ora possiamo passare all'interpretazione dei risultati del modello.
+
+```{r}
+summary(full_fit)
+```
+
+Il risultato importante è che `iX` e `sY` prevedono in modo significativo la variabile di esito, e quest'ultima ha un'importanza molto maggiore rispetto alla prima.
+
+Ciò significa che i livelli di base di `x` predicono il risultato, così come il tasso lineare di cambiamento della `y`, entrambi in modo positivo in modo tale che livelli più elevati di `x` iniziale o tassi di cambiamento più rapidi in `y` portino a livelli più elevati della variabile di esito.
+
+L'esempio include una covariata `predictor` invariante nel tempo. Poiché `predictor` ha previsto in modo significativo `sY` e `sY` ha previsto la variabile di esito, possiamo esaminare con più attenzione l'effetto di mediazione. È possibile riportare semplicemente la stima fornita dal prodotto calcolato in precedenza, ma è meglio fare affidamento su altri metodi per testare gli effetti indiretti.
+
+Una tecnica molto usata a questo fine è il bootstrapping. Il bootstrapping è un metodo di ricampionamento (con sostituzione) apprezzato per la costruzione di intervalli di confidenza attorno alle stime dei parametri degli effetti indiretti, perché non richiede ipotesi distributive sull'effetto indiretto. Questo crea un test più affidabile rispetto ai test di significatività standard. La usiamo qui per testare gli effetti indiretti utilizzando 5000 simulazioni -- per velocizzare, nell'esempio vengono richieste solo 100 simulazioni.
+
+```{r}
+final_fit_boot <-
+  growth(full_fit,
+    data = sim_growth_dat,
+    estimator = "ML",
+    meanstructure = T,
+    se = "bootstrap",
+    bootstrap = 100, # ~5000 better
+    parallel = "multicore"
+  )
+
+parameterEstimates(
+  final_fit_boot,
+  level = .95,
+  boot.ci.type = "bca.simple",
+  stand = TRUE
+)[61, c(4, 5, 9, 10)]
+```
+
+In questo tutorial, dunque, abbiamo visto come valutare se un predittore influenza la crescita in un costrutto. In seguito abbiamo verificato se c'è un effetto indiretto e abbiamo quantificato l'entità di tale effetto indiretto.
+
+
+
+

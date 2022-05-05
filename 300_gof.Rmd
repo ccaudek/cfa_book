@@ -235,11 +235,7 @@ model2_mdd <- "
          mdd9
   mdd1 ~~ mdd2
 "
-```
 
-Adattiamo il modello ai dati.
-
-```{r}
 fit2 <- cfa(
   model2_mdd,
   data = d

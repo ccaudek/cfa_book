@@ -1,0 +1,847 @@
+---
+title: "CLPM Model Selection (Version 4)"
+author: Robin Curtis & Sean Mackinnon
+date: "April 2021"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 2
+---
+
+<style type="text/css">
+.main-container {
+  margin-left: 0;
+}
+</style>
+
+```{r set-options, echo=FALSE, cache=FALSE}
+options(width = 500)
+```
+
+***
+
+# Setup
+
+First, we load the library for lavaan. If needed, this library can be installed by running the command `install.packages(lavaan)` separately.
+
+```{r library}
+library(lavaan)
+library(rmarkdown)
+library(knitr)
+
+#Load the environment to save time, since these models take a long time to run
+load('my_CLPM_work_space.v4.RData')
+
+```
+<br>
+
+Next, we read in our dataset. Make sure to set your working directory first!
+
+```{r data}
+
+model.test.dat <- read.csv(file="Abridged Comp Data.csv",
+						   header=TRUE,
+						   sep=",")
+```
+<br>
+
+<br>
+
+Next, we define our error structure, which is complex. Because it takes up so many lines, we're doing this first to call it up as an object in our syntax later. This will just make our code tidier and shorter overall. Note also that we constrain our error term covariances to equality across waves. This greatly simplifies an already complex model. Note also that lavaan objects are saved as strings, not formulas: This will be relevant in the next step.
+
+```{r errorstructure}
+
+# Error term covariances constrained across waves
+
+errorstructure <- '
+psp1.7 ~~ psp1cov*psp1.8
+psp1.7 ~~ psp1cov*psp1.9
+psp1.7 ~~ psp1cov*psp1.10
+psp1.7 ~~ psp1cov*psp1.11
+psp1.8 ~~ psp1cov*psp1.9
+psp1.8 ~~ psp1cov*psp1.10
+psp1.8 ~~ psp1cov*psp1.11
+psp1.9 ~~ psp1cov*psp1.10
+psp1.9 ~~ psp1cov*psp1.11
+psp1.10 ~~ psp1cov*psp1.11
+
+psp2.7 ~~ psp2cov*psp2.8
+psp2.7 ~~ psp2cov*psp2.9
+psp2.7 ~~ psp2cov*psp2.10
+psp2.7 ~~ psp2cov*psp2.11
+psp2.8 ~~ psp2cov*psp2.9
+psp2.8 ~~ psp2cov*psp2.10
+psp2.8 ~~ psp2cov*psp2.11
+psp2.9 ~~ psp2cov*psp2.10
+psp2.9 ~~ psp2cov*psp2.11
+psp2.10 ~~ psp2cov*psp2.11
+
+psp3.7 ~~ psp3cov*psp3.8
+psp3.7 ~~ psp3cov*psp3.9
+psp3.7 ~~ psp3cov*psp3.10
+psp3.7 ~~ psp3cov*psp3.11
+psp3.8 ~~ psp3cov*psp3.9
+psp3.8 ~~ psp3cov*psp3.10
+psp3.8 ~~ psp3cov*psp3.11
+psp3.9 ~~ psp3cov*psp3.10
+psp3.9 ~~ psp3cov*psp3.11
+psp3.10 ~~ psp3cov*psp3.11
+
+ssa1.7 ~~ ssa1cov*ssa1.8
+ssa1.7 ~~ ssa1cov*ssa1.9
+ssa1.7 ~~ ssa1cov*ssa1.10
+ssa1.7 ~~ ssa1cov*ssa1.11
+ssa1.8 ~~ ssa1cov*ssa1.9
+ssa1.8 ~~ ssa1cov*ssa1.10
+ssa1.8 ~~ ssa1cov*ssa1.11
+ssa1.9 ~~ ssa1cov*ssa1.10
+ssa1.9 ~~ ssa1cov*ssa1.11
+ssa1.10 ~~ ssa1cov*ssa1.11
+
+ssa2.7 ~~ ssa2cov*ssa2.8
+ssa2.7 ~~ ssa2cov*ssa2.9
+ssa2.7 ~~ ssa2cov*ssa2.10
+ssa2.7 ~~ ssa2cov*ssa2.11
+ssa2.8 ~~ ssa2cov*ssa2.9
+ssa2.8 ~~ ssa2cov*ssa2.10
+ssa2.8 ~~ ssa2cov*ssa2.11
+ssa2.9 ~~ ssa2cov*ssa2.10
+ssa2.9 ~~ ssa2cov*ssa2.11
+ssa2.10 ~~ ssa2cov*ssa2.11
+
+ssa3.7 ~~ ssa3cov*ssa3.8
+ssa3.7 ~~ ssa3cov*ssa3.9
+ssa3.7 ~~ ssa3cov*ssa3.10
+ssa3.7 ~~ ssa3cov*ssa3.11
+ssa3.8 ~~ ssa3cov*ssa3.9
+ssa3.8 ~~ ssa3cov*ssa3.10
+ssa3.8 ~~ ssa3cov*ssa3.11
+ssa3.9 ~~ ssa3cov*ssa3.10
+ssa3.9 ~~ ssa3cov*ssa3.11
+ssa3.10 ~~ ssa3cov*ssa3.11
+
+ssa4.7 ~~ ssa4cov*ssa4.8
+ssa4.7 ~~ ssa4cov*ssa4.9
+ssa4.7 ~~ ssa4cov*ssa4.10
+ssa4.7 ~~ ssa4cov*ssa4.11
+ssa4.8 ~~ ssa4cov*ssa4.9
+ssa4.8 ~~ ssa4cov*ssa4.10
+ssa4.8 ~~ ssa4cov*ssa4.11
+ssa4.9 ~~ ssa4cov*ssa4.10
+ssa4.9 ~~ ssa4cov*ssa4.11
+ssa4.10 ~~ ssa4cov*ssa4.11
+
+ssa5.7 ~~ ssa5cov*ssa5.8
+ssa5.7 ~~ ssa5cov*ssa5.9
+ssa5.7 ~~ ssa5cov*ssa5.10
+ssa5.7 ~~ ssa5cov*ssa5.11
+ssa5.8 ~~ ssa5cov*ssa5.9
+ssa5.8 ~~ ssa5cov*ssa5.10
+ssa5.8 ~~ ssa5cov*ssa5.11
+ssa5.9 ~~ ssa5cov*ssa5.10
+ssa5.9 ~~ ssa5cov*ssa5.11
+ssa5.10 ~~ ssa5cov*ssa5.11
+
+ssa6.7 ~~ ssa6cov*ssa6.8
+ssa6.7 ~~ ssa6cov*ssa6.9
+ssa6.7 ~~ ssa6cov*ssa6.10
+ssa6.7 ~~ ssa6cov*ssa6.11
+ssa6.8 ~~ ssa6cov*ssa6.9
+ssa6.8 ~~ ssa6cov*ssa6.10
+ssa6.8 ~~ ssa6cov*ssa6.11
+ssa6.9 ~~ ssa6cov*ssa6.10
+ssa6.9 ~~ ssa6cov*ssa6.11
+ssa6.10 ~~ ssa6cov*ssa6.11
+
+ssa7.7 ~~ ssa7cov*ssa7.8
+ssa7.7 ~~ ssa7cov*ssa7.9
+ssa7.7 ~~ ssa7cov*ssa7.10
+ssa7.7 ~~ ssa7cov*ssa7.11
+ssa7.8 ~~ ssa7cov*ssa7.9
+ssa7.8 ~~ ssa7cov*ssa7.10
+ssa7.8 ~~ ssa7cov*ssa7.11
+ssa7.9 ~~ ssa7cov*ssa7.10
+ssa7.9 ~~ ssa7cov*ssa7.11
+ssa7.10 ~~ ssa7cov*ssa7.11
+'
+```
+<br>
+
+We will now compare nested versions of our model, using confirmatory factor analysis (CFA). We are looking for the simplest model (i.e. model estimating the fewest parameters) that maintains a good fit for our data, while also making good theoretical sense.
+
+<br>
+
+***
+
+# Configural CFA
+
+## Model Definition
+
+First, we wish to establish configural invariance, which serves as the baseline model for assessing measurement invariance. In all of our models, we begin by defining the factor loadings of our latent variables. By default in lavaan, the first factor loading for each latent variable would normally be constrained to 1, whereas the variance of each latent variable would be unconstrained. However, because this will make later steps more inconvenient (e.g., metric invariance), we instead constrain the variance of each latent variable to 1 (e.g. `PSP.7 ~~ 1*PSP.7`), while allowing its first factor loading to vary freely (e.g. `NA*psp1.7`). 
+
+<br>
+
+Note also the use of the "paste" command, which sticks two strings of text together (the model and the correlated error structure). This is not usually needed for lavaan models, but will shorten our code given the extremely complicated error structure. 
+
+```{r configural definition}
+configural.v1 <-
+	
+'
+# PSP factor loadings defined
+
+PSP.7 =~ NA*psp1.7 + psp2.7 + psp3.7
+PSP.8 =~ NA*psp1.8 + psp2.8 + psp3.8
+PSP.9 =~ NA*psp1.9 + psp2.9 + psp3.9
+PSP.10 =~ NA*psp1.10 + psp2.10 + psp3.10
+PSP.11 =~ NA*psp1.11 + psp2.11 + psp3.11
+
+# PSP variance constrained to 1
+
+PSP.7 ~~ 1*PSP.7
+PSP.8 ~~ 1*PSP.8
+PSP.9 ~~ 1*PSP.9
+PSP.10 ~~ 1*PSP.10
+PSP.11 ~~ 1*PSP.11
+
+# SSA factor loadings defined
+
+SSA.7 =~ NA*ssa1.7 + ssa2.7 + ssa3.7 + ssa4.7 + ssa5.7 + ssa6.7 + ssa7.7
+SSA.8 =~ NA*ssa1.8 + ssa2.8 + ssa3.8 + ssa4.8 + ssa5.8 + ssa6.8 + ssa7.8
+SSA.9 =~ NA*ssa1.9 + ssa2.9 + ssa3.9 + ssa4.9 + ssa5.9 + ssa6.9 + ssa7.9
+SSA.10 =~ NA*ssa1.10 + ssa2.10 + ssa3.10 + ssa4.10 + ssa5.10 + ssa6.10 + ssa7.10
+SSA.11 =~ NA*ssa1.11 + ssa2.11 + ssa3.11 + ssa4.11 + ssa5.11 + ssa6.11 + ssa7.11
+
+# SSA variance constrained to 1
+
+SSA.7 ~~ 1*SSA.7
+SSA.8 ~~ 1*SSA.8
+SSA.9 ~~ 1*SSA.9
+SSA.10 ~~ 1*SSA.10
+SSA.11 ~~ 1*SSA.11
+
+'
+
+configural.model <- paste(configural.v1, errorstructure, sep = ' ', collapse = NULL)
+
+```
+<br>
+
+## Model Output
+
+Having thus defined our model, we use it to run our first CFA. For this and all future analyses, we add the line `std.lv = TRUE` to account for our  change to lavaan's default constraint settings for each latent variable's first loading factor (i.e., instead constraining factor variance to 1.0). We then print the model results using the `summary()` command.
+
+
+```{r configural output}
+configural.fit <- cfa(configural.model,
+							data = model.test.dat,
+							estimator = "MLR",
+							se = "robust",
+							missing = "ML",
+							std.lv = TRUE)
+
+summary(configural.fit, 
+    fit.measures = TRUE,
+		standardized = TRUE,
+		ci = TRUE,
+		rsquare = TRUE)
+```
+
+## Interpretation
+
+The covariances between some factors have been truncated in the output, but we could get them if needed. We next begin the process of adding further constraints, and re-running nested versions of our model. Once we have run all of our models, we will compare their fit indices together, and select the most appropriate one to run as a structural equation model. At the very end, we will compare all 4 models to each other with nested comparisons. 
+
+
+***
+
+# Metric CFA
+
+## Model Definition
+
+Next, we demonstrate how to test metric invariance. In this model, in addition to the constraints applied to our configural model, we constrain factor loadings to equality across waves. We do this by applying a single label to all five iterations of each factor (e.g. `psp1f*` is applied to all five iterations of psp1). The test with an "f" appended are on the left the labels, and the variable names are on the right.
+
+```{r metric definition}
+metric.v1 <-
+
+'
+# PSP factor loadings defined, and constrained across waves
+
+PSP.7 =~ psp1f*psp1.7 + psp2f*psp2.7 + psp3f*psp3.7
+PSP.8 =~ psp1f*psp1.8 + psp2f*psp2.8 + psp3f*psp3.8
+PSP.9 =~ psp1f*psp1.9 + psp2f*psp2.9 + psp3f*psp3.9
+PSP.10 =~ psp1f*psp1.10 + psp2f*psp2.10 + psp3f*psp3.10
+PSP.11 =~ psp1f*psp1.11 + psp2f*psp2.11 + psp3f*psp3.11
+
+# PSP variance constrained to 1
+
+PSP.7 ~~ 1*PSP.7
+PSP.8 ~~ 1*PSP.8
+PSP.9 ~~ 1*PSP.9
+PSP.10 ~~ 1*PSP.10
+PSP.11 ~~ 1*PSP.11
+
+# SSA factor loadings defined, and constrained across waves
+
+SSA.7 =~ ssa1f*ssa1.7 + ssa2f*ssa2.7 + ssa3f*ssa3.7 + 
+         ssa4f*ssa4.7 + ssa5f*ssa5.7 + ssa6f*ssa6.7 + ssa7f*ssa7.7
+         
+SSA.8 =~ ssa1f*ssa1.8 + ssa2f*ssa2.8 + ssa3f*ssa3.8 + 
+         ssa4f*ssa4.8 + ssa5f*ssa5.8 + ssa6f*ssa6.8 + ssa7f*ssa7.8
+         
+SSA.9 =~ ssa1f*ssa1.9 + ssa2f*ssa2.9 + ssa3f*ssa3.9 + 
+         ssa4f*ssa4.9 + ssa5f*ssa5.9 + ssa6f*ssa6.9 + ssa7f*ssa7.9
+         
+SSA.10 =~ ssa1f*ssa1.10 + ssa2f*ssa2.10 + ssa3f*ssa3.10 + 
+          ssa4f*ssa4.10 + ssa5f*ssa5.10 + ssa6f*ssa6.10 + ssa7f*ssa7.10
+          
+SSA.11 =~ ssa1f*ssa1.11 + ssa2f*ssa2.11 + ssa3f*ssa3.11 + 
+          ssa4f*ssa4.11 + ssa5f*ssa5.11 + ssa6f*ssa6.11 + ssa7f*ssa7.11
+
+# SSA variance constrained to 1
+
+SSA.7 ~~ 1*SSA.7
+SSA.8 ~~ 1*SSA.8
+SSA.9 ~~ 1*SSA.9
+SSA.10 ~~ 1*SSA.10
+SSA.11 ~~ 1*SSA.11
+'
+
+metric.model <- paste(metric.v1, errorstructure, sep = ' ', collapse = NULL)
+
+```
+
+## Model Output
+
+```{r metric output}
+metric.fit <- cfa(metric.model,
+					   data = model.test.dat,
+					   estimator = "MLR",
+					   se = "robust",
+					   missing = "ML",
+					   std.lv = TRUE)
+
+summary(metric.fit, fit.measures = TRUE,
+		standardized = TRUE,
+		ci = TRUE,
+		rsquare = TRUE)
+```
+
+# Scalar CFA
+
+## Model Definition
+
+Next, we demonstrate how to test a model with scalar invariance. In this model, in addition to the constraints applied to our metric model, we fix item intercepts to equivalence across waves. As with our metric model, we do this by applying a single label to all five iterations of an item's intercept (e.g. `psp1.7 ~ psp1i*1`). In this example, 'psp1.7' is the item, 'pspli' is the label and '*1' tells lavaan to refer to the intercept. The paste command just attaches these constraints to the existing metric model. 
+
+```{r scalar definition}
+scalar.v1 <-
+
+'
+# Intercepts constrained
+
+psp1.7 ~ psp1i*1
+psp1.8 ~ psp1i*1
+psp1.9 ~ psp1i*1
+psp1.10 ~ psp1i*1
+psp1.11 ~ psp1i*1
+
+psp2.7 ~ psp2i*1
+psp2.8 ~ psp2i*1
+psp2.9 ~ psp2i*1
+psp2.10 ~ psp2i*1
+psp2.11 ~ psp2i*1
+
+psp3.7 ~ psp3i*1
+psp3.8 ~ psp3i*1
+psp3.9 ~ psp3i*1
+psp3.10 ~ psp3i*1
+psp3.11 ~ psp3i*1
+
+ssa1.7 ~ ssa1i*1
+ssa1.8 ~ ssa1i*1
+ssa1.9 ~ ssa1i*1
+ssa1.10 ~ ssa1i*1
+ssa1.11 ~ ssa1i*1
+
+ssa2.7 ~ ssa2i*1
+ssa2.8 ~ ssa2i*1
+ssa2.9 ~ ssa2i*1
+ssa2.10 ~ ssa2i*1
+ssa2.11 ~ ssa2i*1
+
+ssa3.7 ~ ssa3i*1
+ssa3.8 ~ ssa3i*1
+ssa3.9 ~ ssa3i*1
+ssa3.10 ~ ssa3i*1
+ssa3.11 ~ ssa3i*1
+
+ssa4.7 ~ ssa4i*1
+ssa4.8 ~ ssa4i*1
+ssa4.9 ~ ssa4i*1
+ssa4.10 ~ ssa4i*1
+ssa4.11 ~ ssa4i*1
+
+ssa5.7 ~ ssa5i*1
+ssa5.8 ~ ssa5i*1
+ssa5.9 ~ ssa5i*1
+ssa5.10 ~ ssa5i*1
+ssa5.11 ~ ssa5i*1
+
+ssa6.7 ~ ssa6i*1
+ssa6.8 ~ ssa6i*1
+ssa6.9 ~ ssa6i*1
+ssa6.10 ~ ssa6i*1
+ssa6.11 ~ ssa6i*1
+
+ssa7.7 ~ ssa7i*1
+ssa7.8 ~ ssa7i*1
+ssa7.9 ~ ssa7i*1
+ssa7.10 ~ ssa7i*1
+ssa7.11 ~ ssa7i*1
+
+'
+
+scalar.model <- paste(metric.v1, errorstructure, scalar.v1, sep = ' ', collapse = NULL)
+
+```
+
+## Model Output
+
+```{r scalar output}
+scalar.fit <- cfa(scalar.model,
+					   data = model.test.dat,
+					   estimator = "MLR",
+					   se = "robust",
+					   missing = "ML",
+					   std.lv = TRUE)
+
+summary(scalar.fit, fit.measures = TRUE,
+		standardized = TRUE,
+		ci = TRUE,
+		rsquare = TRUE)
+```
+
+# Residual CFA
+
+## Model Definition
+
+We now move on to apply the most rigorous set of constraints in our residual model. In this model, in addition to the constraints applied to our scalar model, we constrain the residual error of each factor to equality across waves. Once again, we do this by applying a single label to groups of items we wish to fix (e.g. `psp1.7 ~~ psp1u*psp1.7`). In the syntax, this looks like what we did earlier with the covariances; however, this time each variable is covaried with itself. Since SEM works with variance covariance matricies, and the variances are on the diagonal, it makes sense in lavaan to refer to residual variances in this way. 
+
+```{r residual definition}
+residual.v1 <-
+
+'
+# Residual error constrained across waves
+
+psp1.7 ~~ psp1u*psp1.7
+psp1.8 ~~ psp1u*psp1.8
+psp1.9 ~~ psp1u*psp1.9
+psp1.10 ~~ psp1u*psp1.10
+psp1.11 ~~ psp1u*psp1.11
+
+psp2.7 ~~ psp2u*psp2.7
+psp2.8 ~~ psp2u*psp2.8
+psp2.9 ~~ psp2u*psp2.9
+psp2.10 ~~ psp2u*psp2.10
+psp2.11 ~~ psp2u*psp2.11
+
+psp3.7 ~~ psp3u*psp3.7
+psp3.8 ~~ psp3u*psp3.8
+psp3.9 ~~ psp3u*psp3.9
+psp3.10 ~~ psp3u*psp3.10
+psp3.11 ~~ psp3u*psp3.11
+
+ssa1.7 ~~ ssa1u*ssa1.7
+ssa1.8 ~~ ssa1u*ssa1.8
+ssa1.9 ~~ ssa1u*ssa1.9
+ssa1.10 ~~ ssa1u*ssa1.10
+ssa1.11 ~~ ssa1u*ssa1.11
+
+ssa2.7 ~~ ssa2u*ssa2.7
+ssa2.8 ~~ ssa2u*ssa2.8
+ssa2.9 ~~ ssa2u*ssa2.9
+ssa2.10 ~~ ssa2u*ssa2.10
+ssa2.11 ~~ ssa2u*ssa2.11
+
+ssa3.7 ~~ ssa3u*ssa3.7
+ssa3.8 ~~ ssa3u*ssa3.8
+ssa3.9 ~~ ssa3u*ssa3.9
+ssa3.10 ~~ ssa3u*ssa3.10
+ssa3.11 ~~ ssa3u*ssa3.11
+
+ssa4.7 ~~ ssa4u*ssa4.7
+ssa4.8 ~~ ssa4u*ssa4.8
+ssa4.9 ~~ ssa4u*ssa4.9
+ssa4.10 ~~ ssa4u*ssa4.10
+ssa4.11 ~~ ssa4u*ssa4.11
+
+ssa5.7 ~~ ssa5u*ssa5.7
+ssa5.8 ~~ ssa5u*ssa5.8
+ssa5.9 ~~ ssa5u*ssa5.9
+ssa5.10 ~~ ssa5u*ssa5.10
+ssa5.11 ~~ ssa5u*ssa5.11
+
+ssa6.7 ~~ ssa6u*ssa6.7
+ssa6.8 ~~ ssa6u*ssa6.8
+ssa6.9 ~~ ssa6u*ssa6.9
+ssa6.10 ~~ ssa6u*ssa6.10
+ssa6.11 ~~ ssa6u*ssa6.11
+
+ssa7.7 ~~ ssa7u*ssa7.7
+ssa7.8 ~~ ssa7u*ssa7.8
+ssa7.9 ~~ ssa7u*ssa7.9
+ssa7.10 ~~ ssa7u*ssa7.10
+ssa7.11 ~~ ssa7u*ssa7.11
+
+'
+
+residual.model <- paste(metric.v1, errorstructure, scalar.v1, residual.v1, sep = ' ', collapse = NULL)
+
+```
+
+## Model Output
+
+```{r residual output}
+residual.fit <- cfa(residual.model,
+					   data = model.test.dat,
+					   estimator = "MLR",
+					   se = "robust",
+					   missing = "ML",
+					   std.lv = TRUE)
+
+summary(residual.fit, fit.measures = TRUE,
+		standardized = TRUE,
+		ci = TRUE,
+		rsquare = TRUE)
+```
+
+
+# CFA Model Fit Comparison
+
+## Code and Output
+
+We use the following code to compare relevant fit indices across all four of our models.
+
+```{r cfa comparison}
+round(cbind(configural.error=inspect(configural.fit, 'fit.measures'),
+			metric=inspect(metric.fit, 'fit.measures'),
+			scalar=inspect(scalar.fit, 'fit.measures'),
+			residual=inspect(residual.fit, 'fit.measures')),3)
+
+anova(configural.fit, metric.fit)
+anova(metric.fit, scalar.fit)
+anova(scalar.fit, residual.fit)
+
+```
+
+## Interpretation
+
+In general, the values of relevant fit indices (i.e. Robust CFI, Robust TLI, AIC, BIC, Robust RMSEA, and SRMR) among all four of our models are comparable. For this data, residual-level measurement invariance seems to have been upheld. We therefore proceed to SEM using our residual model in this code. However, not all fit indicies agree on which is the best model (e.g., the chi-squared test prefers the metric model)! See the accompanying tutorial paper for some discussion on this. It is very important to choose your model selection criteria ahead a-priori (ideally, pre-registering) to avoid such ambiguity, even though we show all kinds of different ways to compare nested models in this tutorial.
+
+
+
+# Structural Model
+
+## Model Definition
+
+Having selected the residual model as our preferred model (which is somewhat debatble, but chosen here for purposes of demonstration), we now enter it with structural paths defined, so that it can be run as a structural equation model.
+
+```{r residual sem definition}
+sem.v1 <-
+
+'
+# Structural paths defined
+
+SSA.8 ~ A*SSA.7 + C*PSP.7
+PSP.8 ~ D*SSA.7 + B*PSP.7
+SSA.9 ~ A*SSA.8 + C*PSP.8
+PSP.9 ~ D*SSA.8 + B*PSP.8
+SSA.10 ~ A*SSA.9 + C*PSP.9
+PSP.10 ~ D*SSA.9 + B*PSP.9
+SSA.11 ~ A*SSA.10 + C*PSP.10
+PSP.11 ~ D*SSA.10 + B*PSP.10
+
+# Latent variable covariances defined
+
+SSA.7 ~~ PSP.7
+SSA.8 ~~ PSP.8
+SSA.9 ~~ PSP.9
+SSA.10 ~~ PSP.10
+SSA.11 ~~ PSP.11
+
+'
+
+residual.sem.model <- paste(residual.model, sem.v1, sep = ' ', collapse = NULL)
+
+
+```
+
+## Model Output
+
+```{r residual sem output}
+residual.sem.fit <- sem(residual.sem.model,
+							data = model.test.dat,
+							estimator = "MLR",
+							se = "robust",
+							missing = "ML",
+							std.lv = TRUE)
+
+summary(residual.sem.fit, fit.measures = TRUE,
+		standardized = TRUE,
+		ci = TRUE,
+		rsquare = TRUE)
+```
+
+# Random Intercepts Cross-Lagged Panel Model
+
+## Model Definition
+
+Here, we are using the random intercepts cross-lagged panel model proposed by Ellen Hamaker (Hamaker, 2015; Mulder & Hamaker, 2020) which has notable advantages over the traditional cross-lagged panel model. Here note also that we've done away with the complex correlated errors. 
+
+```{r Random Intercepts Cross-Lagged Panel Model Definition}
+
+sem.v2 <-
+
+'
+# Create between components (random intercepts)
+
+RI.PSP1 =~ 1*psp1.7 + 1*psp1.8 + 1*psp1.9 + 1*psp1.10 + 1*psp1.11 
+RI.PSP2 =~ 1*psp2.7 + 1*psp2.8 + 1*psp2.9 + 1*psp2.10 + 1*psp2.11 
+RI.PSP3 =~ 1*psp3.7 + 1*psp3.8 + 1*psp3.9 + 1*psp3.10 + 1*psp3.11 
+
+RI.SSA1 =~ 1*ssa1.7 + 1*ssa1.8 + 1*ssa1.9 + 1*ssa1.10 + 1*ssa1.11 
+RI.SSA2 =~ 1*ssa2.7 + 1*ssa2.8 + 1*ssa2.9 + 1*ssa2.10 + 1*ssa2.11 
+RI.SSA3 =~ 1*ssa3.7 + 1*ssa3.8 + 1*ssa3.9 + 1*ssa3.10 + 1*ssa3.11 
+RI.SSA4 =~ 1*ssa4.7 + 1*ssa4.8 + 1*ssa4.9 + 1*ssa4.10 + 1*ssa4.11 
+RI.SSA5 =~ 1*ssa5.7 + 1*ssa5.8 + 1*ssa5.9 + 1*ssa5.10 + 1*ssa5.11 
+RI.SSA6 =~ 1*ssa6.7 + 1*ssa6.8 + 1*ssa6.9 + 1*ssa6.10 + 1*ssa6.11 
+RI.SSA7 =~ 1*ssa7.7 + 1*ssa7.8 + 1*ssa7.9 + 1*ssa7.10 + 1*ssa7.11 
+
+# PSP factor loadings defined, and constrained across waves
+
+PSP.7 =~ psp1f*psp1.7 + psp2f*psp2.7 + psp3f*psp3.7
+PSP.8 =~ psp1f*psp1.8 + psp2f*psp2.8 + psp3f*psp3.8
+PSP.9 =~ psp1f*psp1.9 + psp2f*psp2.9 + psp3f*psp3.9
+PSP.10 =~ psp1f*psp1.10 + psp2f*psp2.10 + psp3f*psp3.10
+PSP.11 =~ psp1f*psp1.11 + psp2f*psp2.11 + psp3f*psp3.11
+
+# PSP variance constrained to 1
+
+PSP.7 ~~ 1*PSP.7
+PSP.8 ~~ 1*PSP.8
+PSP.9 ~~ 1*PSP.9
+PSP.10 ~~ 1*PSP.10
+PSP.11 ~~ 1*PSP.11
+
+# SSA factor loadings defined, and constrained across waves
+
+SSA.7 =~ ssa1f*ssa1.7 + ssa2f*ssa2.7 + ssa3f*ssa3.7 + 
+         ssa4f*ssa4.7 + ssa5f*ssa5.7 + ssa6f*ssa6.7 + ssa7f*ssa7.7
+         
+SSA.8 =~ ssa1f*ssa1.8 + ssa2f*ssa2.8 + ssa3f*ssa3.8 + 
+         ssa4f*ssa4.8 + ssa5f*ssa5.8 + ssa6f*ssa6.8 + ssa7f*ssa7.8
+         
+SSA.9 =~ ssa1f*ssa1.9 + ssa2f*ssa2.9 + ssa3f*ssa3.9 + 
+         ssa4f*ssa4.9 + ssa5f*ssa5.9 + ssa6f*ssa6.9 + ssa7f*ssa7.9
+         
+SSA.10 =~ ssa1f*ssa1.10 + ssa2f*ssa2.10 + ssa3f*ssa3.10 + 
+          ssa4f*ssa4.10 + ssa5f*ssa5.10 + ssa6f*ssa6.10 + ssa7f*ssa7.10
+          
+SSA.11 =~ ssa1f*ssa1.11 + ssa2f*ssa2.11 + ssa3f*ssa3.11 + 
+          ssa4f*ssa4.11 + ssa5f*ssa5.11 + ssa6f*ssa6.11 + ssa7f*ssa7.11
+          
+# SSA variance constrained to 1
+
+SSA.7 ~~ 1*SSA.7
+SSA.8 ~~ 1*SSA.8
+SSA.9 ~~ 1*SSA.9
+SSA.10 ~~ 1*SSA.10
+SSA.11 ~~ 1*SSA.11
+          
+# Intercepts constrained
+
+psp1.7 ~ psp1i*1
+psp1.8 ~ psp1i*1
+psp1.9 ~ psp1i*1
+psp1.10 ~ psp1i*1
+psp1.11 ~ psp1i*1
+
+psp2.7 ~ psp2i*1
+psp2.8 ~ psp2i*1
+psp2.9 ~ psp2i*1
+psp2.10 ~ psp2i*1
+psp2.11 ~ psp2i*1
+
+psp3.7 ~ psp3i*1
+psp3.8 ~ psp3i*1
+psp3.9 ~ psp3i*1
+psp3.10 ~ psp3i*1
+psp3.11 ~ psp3i*1
+
+ssa1.7 ~ ssa1i*1
+ssa1.8 ~ ssa1i*1
+ssa1.9 ~ ssa1i*1
+ssa1.10 ~ ssa1i*1
+ssa1.11 ~ ssa1i*1
+
+ssa2.7 ~ ssa2i*1
+ssa2.8 ~ ssa2i*1
+ssa2.9 ~ ssa2i*1
+ssa2.10 ~ ssa2i*1
+ssa2.11 ~ ssa2i*1
+
+ssa3.7 ~ ssa3i*1
+ssa3.8 ~ ssa3i*1
+ssa3.9 ~ ssa3i*1
+ssa3.10 ~ ssa3i*1
+ssa3.11 ~ ssa3i*1
+
+ssa4.7 ~ ssa4i*1
+ssa4.8 ~ ssa4i*1
+ssa4.9 ~ ssa4i*1
+ssa4.10 ~ ssa4i*1
+ssa4.11 ~ ssa4i*1
+
+ssa5.7 ~ ssa5i*1
+ssa5.8 ~ ssa5i*1
+ssa5.9 ~ ssa5i*1
+ssa5.10 ~ ssa5i*1
+ssa5.11 ~ ssa5i*1
+
+ssa6.7 ~ ssa6i*1
+ssa6.8 ~ ssa6i*1
+ssa6.9 ~ ssa6i*1
+ssa6.10 ~ ssa6i*1
+ssa6.11 ~ ssa6i*1
+
+ssa7.7 ~ ssa7i*1
+ssa7.8 ~ ssa7i*1
+ssa7.9 ~ ssa7i*1
+ssa7.10 ~ ssa7i*1
+ssa7.11 ~ ssa7i*1
+
+# Residual error constrained across waves
+
+psp1.7 ~~ psp1u*psp1.7
+psp1.8 ~~ psp1u*psp1.8
+psp1.9 ~~ psp1u*psp1.9
+psp1.10 ~~ psp1u*psp1.10
+psp1.11 ~~ psp1u*psp1.11
+
+psp2.7 ~~ psp2u*psp2.7
+psp2.8 ~~ psp2u*psp2.8
+psp2.9 ~~ psp2u*psp2.9
+psp2.10 ~~ psp2u*psp2.10
+psp2.11 ~~ psp2u*psp2.11
+
+psp3.7 ~~ psp3u*psp3.7
+psp3.8 ~~ psp3u*psp3.8
+psp3.9 ~~ psp3u*psp3.9
+psp3.10 ~~ psp3u*psp3.10
+psp3.11 ~~ psp3u*psp3.11
+
+ssa1.7 ~~ ssa1u*ssa1.7
+ssa1.8 ~~ ssa1u*ssa1.8
+ssa1.9 ~~ ssa1u*ssa1.9
+ssa1.10 ~~ ssa1u*ssa1.10
+ssa1.11 ~~ ssa1u*ssa1.11
+
+ssa2.7 ~~ ssa2u*ssa2.7
+ssa2.8 ~~ ssa2u*ssa2.8
+ssa2.9 ~~ ssa2u*ssa2.9
+ssa2.10 ~~ ssa2u*ssa2.10
+ssa2.11 ~~ ssa2u*ssa2.11
+
+ssa3.7 ~~ ssa3u*ssa3.7
+ssa3.8 ~~ ssa3u*ssa3.8
+ssa3.9 ~~ ssa3u*ssa3.9
+ssa3.10 ~~ ssa3u*ssa3.10
+ssa3.11 ~~ ssa3u*ssa3.11
+
+ssa4.7 ~~ ssa4u*ssa4.7
+ssa4.8 ~~ ssa4u*ssa4.8
+ssa4.9 ~~ ssa4u*ssa4.9
+ssa4.10 ~~ ssa4u*ssa4.10
+ssa4.11 ~~ ssa4u*ssa4.11
+
+ssa5.7 ~~ ssa5u*ssa5.7
+ssa5.8 ~~ ssa5u*ssa5.8
+ssa5.9 ~~ ssa5u*ssa5.9
+ssa5.10 ~~ ssa5u*ssa5.10
+ssa5.11 ~~ ssa5u*ssa5.11
+
+ssa6.7 ~~ ssa6u*ssa6.7
+ssa6.8 ~~ ssa6u*ssa6.8
+ssa6.9 ~~ ssa6u*ssa6.9
+ssa6.10 ~~ ssa6u*ssa6.10
+ssa6.11 ~~ ssa6u*ssa6.11
+
+ssa7.7 ~~ ssa7u*ssa7.7
+ssa7.8 ~~ ssa7u*ssa7.8
+ssa7.9 ~~ ssa7u*ssa7.9
+ssa7.10 ~~ ssa7u*ssa7.10
+ssa7.11 ~~ ssa7u*ssa7.11
+
+# Structural paths defined (WITHIN)
+
+SSA.8 ~ A*SSA.7 + C*PSP.7
+PSP.8 ~ D*SSA.7 + B*PSP.7
+SSA.9 ~ A*SSA.8 + C*PSP.8
+PSP.9 ~ D*SSA.8 + B*PSP.8
+SSA.10 ~ A*SSA.9 + C*PSP.9
+PSP.10 ~ D*SSA.9 + B*PSP.9
+SSA.11 ~ A*SSA.10 + C*PSP.10
+PSP.11 ~ D*SSA.10 + B*PSP.10
+
+# Latent variable covariances defined
+
+SSA.7 ~~ PSP.7
+SSA.8 ~~ PSP.8
+SSA.9 ~~ PSP.9
+SSA.10 ~~ PSP.10
+SSA.11 ~~ PSP.11
+
+  # Free latent means from t = 2 onward (only do this in combination with the 
+  # constraints on the intercepts; without these, this would not be specified).
+  PSP.8 + PSP.9 + PSP.10 + PSP.11 + SSA.8 + SSA.9 + SSA.10 + SSA.11 ~ 1
+
+ # Constrain covariance of the between factors and exogenous within factors to 0. 
+ 
+  RI.PSP1 + RI.PSP2 + RI.PSP3 + RI.SSA1 + RI.SSA2 + RI.SSA3 + RI.SSA4 + RI.SSA5 + RI.SSA6 + RI.SSA7 ~~ 0*PSP.7 + 0*SSA.7
+'
+
+```
+
+
+## Model Output
+
+```{r Random Intercepts Cross-Lagged Panel Model output}
+sem.v2.fit <- sem(sem.v2,
+							data = model.test.dat,
+							estimator = "MLR",
+							se = "robust",
+							missing = "ML",
+							std.lv = TRUE)
+
+summary(sem.v2.fit, fit.measures = TRUE,
+		standardized = TRUE,
+		ci = TRUE,
+		rsquare = TRUE)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
