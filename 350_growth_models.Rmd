@@ -388,13 +388,13 @@ growth_mod <-
 A questo fine uso la funzione `simulateData()` di `lavaan`. La simulazione include due variabili misurate in quattro punti temporali. 
 
 ```{r}
-sim_growth_dat <- simulateData(
+sim_growth_dat <- lavaan::simulateData(
   model = growth_mod, 
   model.type = "growth", 
   seed = 82020, 
-  orthogonal = F,
-  auto.cov.y = T, 
-  auto.var = T
+  orthogonal = FALSE,
+  auto.cov.y = TRUE, 
+  auto.var = TRUE
   )
 ```
 
@@ -408,7 +408,7 @@ Aggiungo qui il numero del partecipante.
 
 ```{r}
 sim_growth_dat$participant_n <- 
-  1:nrow(sim_growth_dat) #add participant number
+  1:nrow(sim_growth_dat) 
 ```
 
 Nei dati simulati, la variabile `x` cambia linearmente nel tempo e la variabile `y`  cambia seguendo un andamento quadratico. Esaminiamo i dati graficamente.

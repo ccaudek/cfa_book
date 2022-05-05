@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2022-05-04" />
+<meta name="date" content="2022-05-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 
-<link rel="next" href="lanalisi-di-regressione.html"/>
+<link rel="next" href="license.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -158,7 +158,10 @@ div.csl-indent {
 <li><a href="./">Appunti di Costruzione e valutazione di test psicometrici</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Benvenuti</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Benvenuti</a>
+<ul>
+<li class="chapter" data-level="" data-path="license.html"><a href="license.html"><i class="fa fa-check"></i>License</a></li>
+</ul></li>
 <li class="part"><span><b>I Il modello lineare</b></span></li>
 <li class="chapter" data-level="1" data-path="lanalisi-di-regressione.html"><a href="lanalisi-di-regressione.html"><i class="fa fa-check"></i><b>1</b> L’analisi di regressione</a>
 <ul>
@@ -506,8 +509,19 @@ div.csl-indent {
 <li class="chapter" data-level="23.1" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html"><i class="fa fa-check"></i><b>23.1</b> Dati longitudinali</a>
 <ul>
 <li class="chapter" data-level="23.1.1" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#un-esempio-concreto-6"><i class="fa fa-check"></i><b>23.1.1</b> Un esempio concreto</a></li>
-<li class="chapter" data-level="23.1.2" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#un-secondo-esempio"><i class="fa fa-check"></i><b>23.1.2</b> Un secondo esempio</a></li>
+<li class="chapter" data-level="23.1.2" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#visualizzare-il-cambiamento"><i class="fa fa-check"></i><b>23.1.2</b> Visualizzare il cambiamento</a></li>
+<li class="chapter" data-level="23.1.3" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#dati-ordinali-vs.-intervalli-temporali"><i class="fa fa-check"></i><b>23.1.3</b> Dati ordinali vs. intervalli temporali</a></li>
+<li class="chapter" data-level="23.1.4" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#verifica-di-ipotesi"><i class="fa fa-check"></i><b>23.1.4</b> Verifica di ipotesi</a></li>
+<li class="chapter" data-level="23.1.5" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#un-secondo-esempio"><i class="fa fa-check"></i><b>23.1.5</b> Un secondo esempio</a></li>
 </ul></li>
+<li class="chapter" data-level="23.2" data-path="crescita-non-lineare.html"><a href="crescita-non-lineare.html"><i class="fa fa-check"></i><b>23.2</b> Crescita non lineare</a>
+<ul>
+<li class="chapter" data-level="23.2.1" data-path="crescita-non-lineare.html"><a href="crescita-non-lineare.html#stimatore"><i class="fa fa-check"></i><b>23.2.1</b> Stimatore</a></li>
+<li class="chapter" data-level="23.2.2" data-path="crescita-non-lineare.html"><a href="crescita-non-lineare.html#assenza-di-crescita"><i class="fa fa-check"></i><b>23.2.2</b> Assenza di crescita</a></li>
+<li class="chapter" data-level="23.2.3" data-path="crescita-non-lineare.html"><a href="crescita-non-lineare.html#crescita-lineare"><i class="fa fa-check"></i><b>23.2.3</b> Crescita lineare</a></li>
+<li class="chapter" data-level="23.2.4" data-path="crescita-non-lineare.html"><a href="crescita-non-lineare.html#crescita-quadratica"><i class="fa fa-check"></i><b>23.2.4</b> Crescita quadratica</a></li>
+</ul></li>
+<li class="chapter" data-level="23.3" data-path="parallel-process-model.html"><a href="parallel-process-model.html"><i class="fa fa-check"></i><b>23.3</b> Parallel Process Model</a></li>
 </ul></li>
 <li class="chapter" data-level="24" data-path="dati-mancanti.html"><a href="dati-mancanti.html"><i class="fa fa-check"></i><b>24</b> Dati mancanti</a>
 <ul>
@@ -637,7 +651,7 @@ div.csl-indent {
 <div id="header">
 <h1 class="title">Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)</h1>
 <p class="author"><em>Corrado Caudek</em></p>
-<p class="date"><em>2022-05-04</em></p>
+<p class="date"><em>2022-05-05</em></p>
 </div>
 <div id="benvenuti" class="section level1 unnumbered hasAnchor">
 <h1>Benvenuti<a href="index.html#benvenuti" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -654,11 +668,7 @@ div.csl-indent {
 Corrado Caudek<br />
 Marzo 2022
 </p>
-
 </div>
-
-
-
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-beaujean2014latent" class="csl-entry">
@@ -683,7 +693,7 @@ R Core Team. 2021. <em>R: A Language and Environment for Statistical Computing</
         </div>
       </div>
 
-<a href="lanalisi-di-regressione.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="license.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

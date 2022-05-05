@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2022-05-04" />
+<meta name="date" content="2022-05-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -158,7 +158,10 @@ div.csl-indent {
 <li><a href="./">Appunti di Costruzione e valutazione di test psicometrici</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Benvenuti</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Benvenuti</a>
+<ul>
+<li class="chapter" data-level="" data-path="license.html"><a href="license.html"><i class="fa fa-check"></i>License</a></li>
+</ul></li>
 <li class="part"><span><b>I Il modello lineare</b></span></li>
 <li class="chapter" data-level="1" data-path="lanalisi-di-regressione.html"><a href="lanalisi-di-regressione.html"><i class="fa fa-check"></i><b>1</b> L’analisi di regressione</a>
 <ul>
@@ -506,8 +509,19 @@ div.csl-indent {
 <li class="chapter" data-level="23.1" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html"><i class="fa fa-check"></i><b>23.1</b> Dati longitudinali</a>
 <ul>
 <li class="chapter" data-level="23.1.1" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#un-esempio-concreto-6"><i class="fa fa-check"></i><b>23.1.1</b> Un esempio concreto</a></li>
-<li class="chapter" data-level="23.1.2" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#un-secondo-esempio"><i class="fa fa-check"></i><b>23.1.2</b> Un secondo esempio</a></li>
+<li class="chapter" data-level="23.1.2" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#visualizzare-il-cambiamento"><i class="fa fa-check"></i><b>23.1.2</b> Visualizzare il cambiamento</a></li>
+<li class="chapter" data-level="23.1.3" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#dati-ordinali-vs.-intervalli-temporali"><i class="fa fa-check"></i><b>23.1.3</b> Dati ordinali vs. intervalli temporali</a></li>
+<li class="chapter" data-level="23.1.4" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#verifica-di-ipotesi"><i class="fa fa-check"></i><b>23.1.4</b> Verifica di ipotesi</a></li>
+<li class="chapter" data-level="23.1.5" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#un-secondo-esempio"><i class="fa fa-check"></i><b>23.1.5</b> Un secondo esempio</a></li>
 </ul></li>
+<li class="chapter" data-level="23.2" data-path="crescita-non-lineare.html"><a href="crescita-non-lineare.html"><i class="fa fa-check"></i><b>23.2</b> Crescita non lineare</a>
+<ul>
+<li class="chapter" data-level="23.2.1" data-path="crescita-non-lineare.html"><a href="crescita-non-lineare.html#stimatore"><i class="fa fa-check"></i><b>23.2.1</b> Stimatore</a></li>
+<li class="chapter" data-level="23.2.2" data-path="crescita-non-lineare.html"><a href="crescita-non-lineare.html#assenza-di-crescita"><i class="fa fa-check"></i><b>23.2.2</b> Assenza di crescita</a></li>
+<li class="chapter" data-level="23.2.3" data-path="crescita-non-lineare.html"><a href="crescita-non-lineare.html#crescita-lineare"><i class="fa fa-check"></i><b>23.2.3</b> Crescita lineare</a></li>
+<li class="chapter" data-level="23.2.4" data-path="crescita-non-lineare.html"><a href="crescita-non-lineare.html#crescita-quadratica"><i class="fa fa-check"></i><b>23.2.4</b> Crescita quadratica</a></li>
+</ul></li>
+<li class="chapter" data-level="23.3" data-path="parallel-process-model.html"><a href="parallel-process-model.html"><i class="fa fa-check"></i><b>23.3</b> Parallel Process Model</a></li>
 </ul></li>
 <li class="chapter" data-level="24" data-path="dati-mancanti.html"><a href="dati-mancanti.html"><i class="fa fa-check"></i><b>24</b> Dati mancanti</a>
 <ul>
@@ -637,218 +651,218 @@ div.csl-indent {
 <div id="saturazione-sul-fattore-sbagliato" class="section level2 hasAnchor" number="21.3">
 <h2><span class="header-section-number">21.3</span> Saturazione sul fattore sbagliato<a href="saturazione-sul-fattore-sbagliato.html#saturazione-sul-fattore-sbagliato" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Si può anche dare il caso opposto, ovvero</p>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="saturazione-sul-fattore-sbagliato.html#cb318-1" aria-hidden="true" tabindex="-1"></a>model4 <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb318-2"><a href="saturazione-sul-fattore-sbagliato.html#cb318-2" aria-hidden="true" tabindex="-1"></a><span class="st">  copingm  =~ x1 + x2 + x3 + x4</span></span>
-<span id="cb318-3"><a href="saturazione-sul-fattore-sbagliato.html#cb318-3" aria-hidden="true" tabindex="-1"></a><span class="st">  socialm  =~ x4 +x5 + x6 + x7 + x8 + x12</span></span>
-<span id="cb318-4"><a href="saturazione-sul-fattore-sbagliato.html#cb318-4" aria-hidden="true" tabindex="-1"></a><span class="st">  enhancem =~ x9 + x10 + x11</span></span>
-<span id="cb318-5"><a href="saturazione-sul-fattore-sbagliato.html#cb318-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="saturazione-sul-fattore-sbagliato.html#cb319-1" aria-hidden="true" tabindex="-1"></a>fit4 <span class="ot">&lt;-</span> <span class="fu">cfa</span>(model4, <span class="at">sample.cov =</span> covs, <span class="at">sample.nobs =</span> <span class="dv">500</span>, <span class="at">mimic =</span> <span class="st">&quot;mplus&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="saturazione-sul-fattore-sbagliato.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit4, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb320-2"><a href="saturazione-sul-fattore-sbagliato.html#cb320-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6-11 ended normally after 59 iterations</span></span>
-<span id="cb320-3"><a href="saturazione-sul-fattore-sbagliato.html#cb320-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb320-4"><a href="saturazione-sul-fattore-sbagliato.html#cb320-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Estimator                                         ML</span></span>
-<span id="cb320-5"><a href="saturazione-sul-fattore-sbagliato.html#cb320-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
-<span id="cb320-6"><a href="saturazione-sul-fattore-sbagliato.html#cb320-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                        40</span></span>
-<span id="cb320-7"><a href="saturazione-sul-fattore-sbagliato.html#cb320-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb320-8"><a href="saturazione-sul-fattore-sbagliato.html#cb320-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Number of observations                           500</span></span>
-<span id="cb320-9"><a href="saturazione-sul-fattore-sbagliato.html#cb320-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb320-10"><a href="saturazione-sul-fattore-sbagliato.html#cb320-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
-<span id="cb320-11"><a href="saturazione-sul-fattore-sbagliato.html#cb320-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb320-12"><a href="saturazione-sul-fattore-sbagliato.html#cb320-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Test statistic                               212.717</span></span>
-<span id="cb320-13"><a href="saturazione-sul-fattore-sbagliato.html#cb320-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                50</span></span>
-<span id="cb320-14"><a href="saturazione-sul-fattore-sbagliato.html#cb320-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                           0.000</span></span>
-<span id="cb320-15"><a href="saturazione-sul-fattore-sbagliato.html#cb320-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb320-16"><a href="saturazione-sul-fattore-sbagliato.html#cb320-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Model Test Baseline Model:</span></span>
-<span id="cb320-17"><a href="saturazione-sul-fattore-sbagliato.html#cb320-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb320-18"><a href="saturazione-sul-fattore-sbagliato.html#cb320-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Test statistic                              1664.026</span></span>
-<span id="cb320-19"><a href="saturazione-sul-fattore-sbagliato.html#cb320-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                66</span></span>
-<span id="cb320-20"><a href="saturazione-sul-fattore-sbagliato.html#cb320-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value                                        0.000</span></span>
-<span id="cb320-21"><a href="saturazione-sul-fattore-sbagliato.html#cb320-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb320-22"><a href="saturazione-sul-fattore-sbagliato.html#cb320-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; User Model versus Baseline Model:</span></span>
-<span id="cb320-23"><a href="saturazione-sul-fattore-sbagliato.html#cb320-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb320-24"><a href="saturazione-sul-fattore-sbagliato.html#cb320-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Comparative Fit Index (CFI)                    0.898</span></span>
-<span id="cb320-25"><a href="saturazione-sul-fattore-sbagliato.html#cb320-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Tucker-Lewis Index (TLI)                       0.866</span></span>
-<span id="cb320-26"><a href="saturazione-sul-fattore-sbagliato.html#cb320-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb320-27"><a href="saturazione-sul-fattore-sbagliato.html#cb320-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loglikelihood and Information Criteria:</span></span>
-<span id="cb320-28"><a href="saturazione-sul-fattore-sbagliato.html#cb320-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb320-29"><a href="saturazione-sul-fattore-sbagliato.html#cb320-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Loglikelihood user model (H0)             -12010.051</span></span>
-<span id="cb320-30"><a href="saturazione-sul-fattore-sbagliato.html#cb320-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Loglikelihood unrestricted model (H1)     -11903.692</span></span>
-<span id="cb320-31"><a href="saturazione-sul-fattore-sbagliato.html#cb320-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb320-32"><a href="saturazione-sul-fattore-sbagliato.html#cb320-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Akaike (AIC)                               24100.101</span></span>
-<span id="cb320-33"><a href="saturazione-sul-fattore-sbagliato.html#cb320-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Bayesian (BIC)                             24268.685</span></span>
-<span id="cb320-34"><a href="saturazione-sul-fattore-sbagliato.html#cb320-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Sample-size adjusted Bayesian (BIC)        24141.723</span></span>
-<span id="cb320-35"><a href="saturazione-sul-fattore-sbagliato.html#cb320-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb320-36"><a href="saturazione-sul-fattore-sbagliato.html#cb320-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Root Mean Square Error of Approximation:</span></span>
-<span id="cb320-37"><a href="saturazione-sul-fattore-sbagliato.html#cb320-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb320-38"><a href="saturazione-sul-fattore-sbagliato.html#cb320-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   RMSEA                                          0.081</span></span>
-<span id="cb320-39"><a href="saturazione-sul-fattore-sbagliato.html#cb320-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - lower         0.070</span></span>
-<span id="cb320-40"><a href="saturazione-sul-fattore-sbagliato.html#cb320-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - upper         0.092</span></span>
-<span id="cb320-41"><a href="saturazione-sul-fattore-sbagliato.html#cb320-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value RMSEA &lt;= 0.05                          0.000</span></span>
-<span id="cb320-42"><a href="saturazione-sul-fattore-sbagliato.html#cb320-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb320-43"><a href="saturazione-sul-fattore-sbagliato.html#cb320-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Standardized Root Mean Square Residual:</span></span>
-<span id="cb320-44"><a href="saturazione-sul-fattore-sbagliato.html#cb320-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb320-45"><a href="saturazione-sul-fattore-sbagliato.html#cb320-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   SRMR                                           0.073</span></span>
-<span id="cb320-46"><a href="saturazione-sul-fattore-sbagliato.html#cb320-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb320-47"><a href="saturazione-sul-fattore-sbagliato.html#cb320-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
-<span id="cb320-48"><a href="saturazione-sul-fattore-sbagliato.html#cb320-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb320-49"><a href="saturazione-sul-fattore-sbagliato.html#cb320-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Standard errors                             Standard</span></span>
-<span id="cb320-50"><a href="saturazione-sul-fattore-sbagliato.html#cb320-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Information                                 Observed</span></span>
-<span id="cb320-51"><a href="saturazione-sul-fattore-sbagliato.html#cb320-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Observed information based on                Hessian</span></span>
-<span id="cb320-52"><a href="saturazione-sul-fattore-sbagliato.html#cb320-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb320-53"><a href="saturazione-sul-fattore-sbagliato.html#cb320-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
-<span id="cb320-54"><a href="saturazione-sul-fattore-sbagliato.html#cb320-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb320-55"><a href="saturazione-sul-fattore-sbagliato.html#cb320-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   copingm =~                                          </span></span>
-<span id="cb320-56"><a href="saturazione-sul-fattore-sbagliato.html#cb320-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x1                1.000                           </span></span>
-<span id="cb320-57"><a href="saturazione-sul-fattore-sbagliato.html#cb320-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x2                0.741    0.093    7.990    0.000</span></span>
-<span id="cb320-58"><a href="saturazione-sul-fattore-sbagliato.html#cb320-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x3                0.932    0.120    7.759    0.000</span></span>
-<span id="cb320-59"><a href="saturazione-sul-fattore-sbagliato.html#cb320-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x4                0.699    0.117    5.965    0.000</span></span>
-<span id="cb320-60"><a href="saturazione-sul-fattore-sbagliato.html#cb320-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   socialm =~                                          </span></span>
-<span id="cb320-61"><a href="saturazione-sul-fattore-sbagliato.html#cb320-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x4                1.000                           </span></span>
-<span id="cb320-62"><a href="saturazione-sul-fattore-sbagliato.html#cb320-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x5                1.725    0.260    6.635    0.000</span></span>
-<span id="cb320-63"><a href="saturazione-sul-fattore-sbagliato.html#cb320-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x6                2.098    0.304    6.899    0.000</span></span>
-<span id="cb320-64"><a href="saturazione-sul-fattore-sbagliato.html#cb320-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x7                2.717    0.398    6.819    0.000</span></span>
-<span id="cb320-65"><a href="saturazione-sul-fattore-sbagliato.html#cb320-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x8                2.619    0.382    6.861    0.000</span></span>
-<span id="cb320-66"><a href="saturazione-sul-fattore-sbagliato.html#cb320-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x12               0.900    0.235    3.822    0.000</span></span>
-<span id="cb320-67"><a href="saturazione-sul-fattore-sbagliato.html#cb320-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   enhancem =~                                         </span></span>
-<span id="cb320-68"><a href="saturazione-sul-fattore-sbagliato.html#cb320-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x9                1.000                           </span></span>
-<span id="cb320-69"><a href="saturazione-sul-fattore-sbagliato.html#cb320-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x10               0.638    0.076    8.429    0.000</span></span>
-<span id="cb320-70"><a href="saturazione-sul-fattore-sbagliato.html#cb320-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x11               0.767    0.093    8.211    0.000</span></span>
-<span id="cb320-71"><a href="saturazione-sul-fattore-sbagliato.html#cb320-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb320-72"><a href="saturazione-sul-fattore-sbagliato.html#cb320-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Covariances:</span></span>
-<span id="cb320-73"><a href="saturazione-sul-fattore-sbagliato.html#cb320-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb320-74"><a href="saturazione-sul-fattore-sbagliato.html#cb320-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   copingm ~~                                          </span></span>
-<span id="cb320-75"><a href="saturazione-sul-fattore-sbagliato.html#cb320-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     socialm           0.410    0.073    5.658    0.000</span></span>
-<span id="cb320-76"><a href="saturazione-sul-fattore-sbagliato.html#cb320-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     enhancem          0.661    0.150    4.395    0.000</span></span>
-<span id="cb320-77"><a href="saturazione-sul-fattore-sbagliato.html#cb320-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   socialm ~~                                          </span></span>
-<span id="cb320-78"><a href="saturazione-sul-fattore-sbagliato.html#cb320-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     enhancem          0.347    0.088    3.939    0.000</span></span>
-<span id="cb320-79"><a href="saturazione-sul-fattore-sbagliato.html#cb320-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb320-80"><a href="saturazione-sul-fattore-sbagliato.html#cb320-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Intercepts:</span></span>
-<span id="cb320-81"><a href="saturazione-sul-fattore-sbagliato.html#cb320-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb320-82"><a href="saturazione-sul-fattore-sbagliato.html#cb320-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x1                0.000    0.092    0.000    1.000</span></span>
-<span id="cb320-83"><a href="saturazione-sul-fattore-sbagliato.html#cb320-83" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x2                0.000    0.068    0.000    1.000</span></span>
-<span id="cb320-84"><a href="saturazione-sul-fattore-sbagliato.html#cb320-84" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x3                0.000    0.086    0.000    1.000</span></span>
-<span id="cb320-85"><a href="saturazione-sul-fattore-sbagliato.html#cb320-85" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x4                0.000    0.063    0.000    1.000</span></span>
-<span id="cb320-86"><a href="saturazione-sul-fattore-sbagliato.html#cb320-86" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x5                0.000    0.077    0.000    1.000</span></span>
-<span id="cb320-87"><a href="saturazione-sul-fattore-sbagliato.html#cb320-87" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x6                0.000    0.079    0.000    1.000</span></span>
-<span id="cb320-88"><a href="saturazione-sul-fattore-sbagliato.html#cb320-88" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x7                0.000    0.111    0.000    1.000</span></span>
-<span id="cb320-89"><a href="saturazione-sul-fattore-sbagliato.html#cb320-89" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x8                0.000    0.101    0.000    1.000</span></span>
-<span id="cb320-90"><a href="saturazione-sul-fattore-sbagliato.html#cb320-90" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x12               0.000    0.119    0.000    1.000</span></span>
-<span id="cb320-91"><a href="saturazione-sul-fattore-sbagliato.html#cb320-91" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x9                0.000    0.120    0.000    1.000</span></span>
-<span id="cb320-92"><a href="saturazione-sul-fattore-sbagliato.html#cb320-92" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x10               0.000    0.078    0.000    1.000</span></span>
-<span id="cb320-93"><a href="saturazione-sul-fattore-sbagliato.html#cb320-93" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x11               0.000    0.115    0.000    1.000</span></span>
-<span id="cb320-94"><a href="saturazione-sul-fattore-sbagliato.html#cb320-94" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     copingm           0.000                           </span></span>
-<span id="cb320-95"><a href="saturazione-sul-fattore-sbagliato.html#cb320-95" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     socialm           0.000                           </span></span>
-<span id="cb320-96"><a href="saturazione-sul-fattore-sbagliato.html#cb320-96" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     enhancem          0.000                           </span></span>
-<span id="cb320-97"><a href="saturazione-sul-fattore-sbagliato.html#cb320-97" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb320-98"><a href="saturazione-sul-fattore-sbagliato.html#cb320-98" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
-<span id="cb320-99"><a href="saturazione-sul-fattore-sbagliato.html#cb320-99" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb320-100"><a href="saturazione-sul-fattore-sbagliato.html#cb320-100" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x1                3.106    0.232   13.403    0.000</span></span>
-<span id="cb320-101"><a href="saturazione-sul-fattore-sbagliato.html#cb320-101" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x2                1.686    0.127   13.278    0.000</span></span>
-<span id="cb320-102"><a href="saturazione-sul-fattore-sbagliato.html#cb320-102" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x3                2.698    0.197   13.663    0.000</span></span>
-<span id="cb320-103"><a href="saturazione-sul-fattore-sbagliato.html#cb320-103" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x4                0.463    0.069    6.672    0.000</span></span>
-<span id="cb320-104"><a href="saturazione-sul-fattore-sbagliato.html#cb320-104" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x5                1.805    0.130   13.881    0.000</span></span>
-<span id="cb320-105"><a href="saturazione-sul-fattore-sbagliato.html#cb320-105" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x6                1.378    0.115   12.003    0.000</span></span>
-<span id="cb320-106"><a href="saturazione-sul-fattore-sbagliato.html#cb320-106" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x7                3.255    0.248   13.116    0.000</span></span>
-<span id="cb320-107"><a href="saturazione-sul-fattore-sbagliato.html#cb320-107" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x8                2.418    0.195   12.404    0.000</span></span>
-<span id="cb320-108"><a href="saturazione-sul-fattore-sbagliato.html#cb320-108" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x12               6.740    0.431   15.652    0.000</span></span>
-<span id="cb320-109"><a href="saturazione-sul-fattore-sbagliato.html#cb320-109" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x9                3.891    0.434    8.964    0.000</span></span>
-<span id="cb320-110"><a href="saturazione-sul-fattore-sbagliato.html#cb320-110" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x10               1.724    0.183    9.403    0.000</span></span>
-<span id="cb320-111"><a href="saturazione-sul-fattore-sbagliato.html#cb320-111" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x11               4.662    0.372   12.539    0.000</span></span>
-<span id="cb320-112"><a href="saturazione-sul-fattore-sbagliato.html#cb320-112" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     copingm           1.129    0.220    5.138    0.000</span></span>
-<span id="cb320-113"><a href="saturazione-sul-fattore-sbagliato.html#cb320-113" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     socialm           0.397    0.111    3.579    0.000</span></span>
-<span id="cb320-114"><a href="saturazione-sul-fattore-sbagliato.html#cb320-114" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     enhancem          3.277    0.522    6.273    0.000</span></span></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="saturazione-sul-fattore-sbagliato.html#cb311-1" aria-hidden="true" tabindex="-1"></a>model4 <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb311-2"><a href="saturazione-sul-fattore-sbagliato.html#cb311-2" aria-hidden="true" tabindex="-1"></a><span class="st">  copingm  =~ x1 + x2 + x3 + x4</span></span>
+<span id="cb311-3"><a href="saturazione-sul-fattore-sbagliato.html#cb311-3" aria-hidden="true" tabindex="-1"></a><span class="st">  socialm  =~ x4 +x5 + x6 + x7 + x8 + x12</span></span>
+<span id="cb311-4"><a href="saturazione-sul-fattore-sbagliato.html#cb311-4" aria-hidden="true" tabindex="-1"></a><span class="st">  enhancem =~ x9 + x10 + x11</span></span>
+<span id="cb311-5"><a href="saturazione-sul-fattore-sbagliato.html#cb311-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="saturazione-sul-fattore-sbagliato.html#cb312-1" aria-hidden="true" tabindex="-1"></a>fit4 <span class="ot">&lt;-</span> <span class="fu">cfa</span>(model4, <span class="at">sample.cov =</span> covs, <span class="at">sample.nobs =</span> <span class="dv">500</span>, <span class="at">mimic =</span> <span class="st">&quot;mplus&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="saturazione-sul-fattore-sbagliato.html#cb313-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit4, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb313-2"><a href="saturazione-sul-fattore-sbagliato.html#cb313-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6-11 ended normally after 59 iterations</span></span>
+<span id="cb313-3"><a href="saturazione-sul-fattore-sbagliato.html#cb313-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb313-4"><a href="saturazione-sul-fattore-sbagliato.html#cb313-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Estimator                                         ML</span></span>
+<span id="cb313-5"><a href="saturazione-sul-fattore-sbagliato.html#cb313-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
+<span id="cb313-6"><a href="saturazione-sul-fattore-sbagliato.html#cb313-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                        40</span></span>
+<span id="cb313-7"><a href="saturazione-sul-fattore-sbagliato.html#cb313-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
+<span id="cb313-8"><a href="saturazione-sul-fattore-sbagliato.html#cb313-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Number of observations                           500</span></span>
+<span id="cb313-9"><a href="saturazione-sul-fattore-sbagliato.html#cb313-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
+<span id="cb313-10"><a href="saturazione-sul-fattore-sbagliato.html#cb313-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
+<span id="cb313-11"><a href="saturazione-sul-fattore-sbagliato.html#cb313-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
+<span id="cb313-12"><a href="saturazione-sul-fattore-sbagliato.html#cb313-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Test statistic                               212.717</span></span>
+<span id="cb313-13"><a href="saturazione-sul-fattore-sbagliato.html#cb313-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                50</span></span>
+<span id="cb313-14"><a href="saturazione-sul-fattore-sbagliato.html#cb313-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                           0.000</span></span>
+<span id="cb313-15"><a href="saturazione-sul-fattore-sbagliato.html#cb313-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb313-16"><a href="saturazione-sul-fattore-sbagliato.html#cb313-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Model Test Baseline Model:</span></span>
+<span id="cb313-17"><a href="saturazione-sul-fattore-sbagliato.html#cb313-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb313-18"><a href="saturazione-sul-fattore-sbagliato.html#cb313-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Test statistic                              1664.026</span></span>
+<span id="cb313-19"><a href="saturazione-sul-fattore-sbagliato.html#cb313-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                66</span></span>
+<span id="cb313-20"><a href="saturazione-sul-fattore-sbagliato.html#cb313-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value                                        0.000</span></span>
+<span id="cb313-21"><a href="saturazione-sul-fattore-sbagliato.html#cb313-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb313-22"><a href="saturazione-sul-fattore-sbagliato.html#cb313-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; User Model versus Baseline Model:</span></span>
+<span id="cb313-23"><a href="saturazione-sul-fattore-sbagliato.html#cb313-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb313-24"><a href="saturazione-sul-fattore-sbagliato.html#cb313-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Comparative Fit Index (CFI)                    0.898</span></span>
+<span id="cb313-25"><a href="saturazione-sul-fattore-sbagliato.html#cb313-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Tucker-Lewis Index (TLI)                       0.866</span></span>
+<span id="cb313-26"><a href="saturazione-sul-fattore-sbagliato.html#cb313-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb313-27"><a href="saturazione-sul-fattore-sbagliato.html#cb313-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loglikelihood and Information Criteria:</span></span>
+<span id="cb313-28"><a href="saturazione-sul-fattore-sbagliato.html#cb313-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb313-29"><a href="saturazione-sul-fattore-sbagliato.html#cb313-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Loglikelihood user model (H0)             -12010.051</span></span>
+<span id="cb313-30"><a href="saturazione-sul-fattore-sbagliato.html#cb313-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Loglikelihood unrestricted model (H1)     -11903.692</span></span>
+<span id="cb313-31"><a href="saturazione-sul-fattore-sbagliato.html#cb313-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
+<span id="cb313-32"><a href="saturazione-sul-fattore-sbagliato.html#cb313-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Akaike (AIC)                               24100.101</span></span>
+<span id="cb313-33"><a href="saturazione-sul-fattore-sbagliato.html#cb313-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Bayesian (BIC)                             24268.685</span></span>
+<span id="cb313-34"><a href="saturazione-sul-fattore-sbagliato.html#cb313-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Sample-size adjusted Bayesian (BIC)        24141.723</span></span>
+<span id="cb313-35"><a href="saturazione-sul-fattore-sbagliato.html#cb313-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb313-36"><a href="saturazione-sul-fattore-sbagliato.html#cb313-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Root Mean Square Error of Approximation:</span></span>
+<span id="cb313-37"><a href="saturazione-sul-fattore-sbagliato.html#cb313-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb313-38"><a href="saturazione-sul-fattore-sbagliato.html#cb313-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   RMSEA                                          0.081</span></span>
+<span id="cb313-39"><a href="saturazione-sul-fattore-sbagliato.html#cb313-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - lower         0.070</span></span>
+<span id="cb313-40"><a href="saturazione-sul-fattore-sbagliato.html#cb313-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - upper         0.092</span></span>
+<span id="cb313-41"><a href="saturazione-sul-fattore-sbagliato.html#cb313-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value RMSEA &lt;= 0.05                          0.000</span></span>
+<span id="cb313-42"><a href="saturazione-sul-fattore-sbagliato.html#cb313-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb313-43"><a href="saturazione-sul-fattore-sbagliato.html#cb313-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Standardized Root Mean Square Residual:</span></span>
+<span id="cb313-44"><a href="saturazione-sul-fattore-sbagliato.html#cb313-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb313-45"><a href="saturazione-sul-fattore-sbagliato.html#cb313-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   SRMR                                           0.073</span></span>
+<span id="cb313-46"><a href="saturazione-sul-fattore-sbagliato.html#cb313-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb313-47"><a href="saturazione-sul-fattore-sbagliato.html#cb313-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
+<span id="cb313-48"><a href="saturazione-sul-fattore-sbagliato.html#cb313-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb313-49"><a href="saturazione-sul-fattore-sbagliato.html#cb313-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Standard errors                             Standard</span></span>
+<span id="cb313-50"><a href="saturazione-sul-fattore-sbagliato.html#cb313-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Information                                 Observed</span></span>
+<span id="cb313-51"><a href="saturazione-sul-fattore-sbagliato.html#cb313-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Observed information based on                Hessian</span></span>
+<span id="cb313-52"><a href="saturazione-sul-fattore-sbagliato.html#cb313-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb313-53"><a href="saturazione-sul-fattore-sbagliato.html#cb313-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
+<span id="cb313-54"><a href="saturazione-sul-fattore-sbagliato.html#cb313-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb313-55"><a href="saturazione-sul-fattore-sbagliato.html#cb313-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   copingm =~                                          </span></span>
+<span id="cb313-56"><a href="saturazione-sul-fattore-sbagliato.html#cb313-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x1                1.000                           </span></span>
+<span id="cb313-57"><a href="saturazione-sul-fattore-sbagliato.html#cb313-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x2                0.741    0.093    7.990    0.000</span></span>
+<span id="cb313-58"><a href="saturazione-sul-fattore-sbagliato.html#cb313-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x3                0.932    0.120    7.759    0.000</span></span>
+<span id="cb313-59"><a href="saturazione-sul-fattore-sbagliato.html#cb313-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x4                0.699    0.117    5.965    0.000</span></span>
+<span id="cb313-60"><a href="saturazione-sul-fattore-sbagliato.html#cb313-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   socialm =~                                          </span></span>
+<span id="cb313-61"><a href="saturazione-sul-fattore-sbagliato.html#cb313-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x4                1.000                           </span></span>
+<span id="cb313-62"><a href="saturazione-sul-fattore-sbagliato.html#cb313-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x5                1.725    0.260    6.635    0.000</span></span>
+<span id="cb313-63"><a href="saturazione-sul-fattore-sbagliato.html#cb313-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x6                2.098    0.304    6.899    0.000</span></span>
+<span id="cb313-64"><a href="saturazione-sul-fattore-sbagliato.html#cb313-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x7                2.717    0.398    6.819    0.000</span></span>
+<span id="cb313-65"><a href="saturazione-sul-fattore-sbagliato.html#cb313-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x8                2.619    0.382    6.861    0.000</span></span>
+<span id="cb313-66"><a href="saturazione-sul-fattore-sbagliato.html#cb313-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x12               0.900    0.235    3.822    0.000</span></span>
+<span id="cb313-67"><a href="saturazione-sul-fattore-sbagliato.html#cb313-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   enhancem =~                                         </span></span>
+<span id="cb313-68"><a href="saturazione-sul-fattore-sbagliato.html#cb313-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x9                1.000                           </span></span>
+<span id="cb313-69"><a href="saturazione-sul-fattore-sbagliato.html#cb313-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x10               0.638    0.076    8.429    0.000</span></span>
+<span id="cb313-70"><a href="saturazione-sul-fattore-sbagliato.html#cb313-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     x11               0.767    0.093    8.211    0.000</span></span>
+<span id="cb313-71"><a href="saturazione-sul-fattore-sbagliato.html#cb313-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb313-72"><a href="saturazione-sul-fattore-sbagliato.html#cb313-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Covariances:</span></span>
+<span id="cb313-73"><a href="saturazione-sul-fattore-sbagliato.html#cb313-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb313-74"><a href="saturazione-sul-fattore-sbagliato.html#cb313-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   copingm ~~                                          </span></span>
+<span id="cb313-75"><a href="saturazione-sul-fattore-sbagliato.html#cb313-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     socialm           0.410    0.073    5.658    0.000</span></span>
+<span id="cb313-76"><a href="saturazione-sul-fattore-sbagliato.html#cb313-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     enhancem          0.661    0.150    4.395    0.000</span></span>
+<span id="cb313-77"><a href="saturazione-sul-fattore-sbagliato.html#cb313-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   socialm ~~                                          </span></span>
+<span id="cb313-78"><a href="saturazione-sul-fattore-sbagliato.html#cb313-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     enhancem          0.347    0.088    3.939    0.000</span></span>
+<span id="cb313-79"><a href="saturazione-sul-fattore-sbagliato.html#cb313-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb313-80"><a href="saturazione-sul-fattore-sbagliato.html#cb313-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Intercepts:</span></span>
+<span id="cb313-81"><a href="saturazione-sul-fattore-sbagliato.html#cb313-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb313-82"><a href="saturazione-sul-fattore-sbagliato.html#cb313-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x1                0.000    0.092    0.000    1.000</span></span>
+<span id="cb313-83"><a href="saturazione-sul-fattore-sbagliato.html#cb313-83" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x2                0.000    0.068    0.000    1.000</span></span>
+<span id="cb313-84"><a href="saturazione-sul-fattore-sbagliato.html#cb313-84" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x3                0.000    0.086    0.000    1.000</span></span>
+<span id="cb313-85"><a href="saturazione-sul-fattore-sbagliato.html#cb313-85" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x4                0.000    0.063    0.000    1.000</span></span>
+<span id="cb313-86"><a href="saturazione-sul-fattore-sbagliato.html#cb313-86" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x5                0.000    0.077    0.000    1.000</span></span>
+<span id="cb313-87"><a href="saturazione-sul-fattore-sbagliato.html#cb313-87" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x6                0.000    0.079    0.000    1.000</span></span>
+<span id="cb313-88"><a href="saturazione-sul-fattore-sbagliato.html#cb313-88" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x7                0.000    0.111    0.000    1.000</span></span>
+<span id="cb313-89"><a href="saturazione-sul-fattore-sbagliato.html#cb313-89" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x8                0.000    0.101    0.000    1.000</span></span>
+<span id="cb313-90"><a href="saturazione-sul-fattore-sbagliato.html#cb313-90" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x12               0.000    0.119    0.000    1.000</span></span>
+<span id="cb313-91"><a href="saturazione-sul-fattore-sbagliato.html#cb313-91" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x9                0.000    0.120    0.000    1.000</span></span>
+<span id="cb313-92"><a href="saturazione-sul-fattore-sbagliato.html#cb313-92" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x10               0.000    0.078    0.000    1.000</span></span>
+<span id="cb313-93"><a href="saturazione-sul-fattore-sbagliato.html#cb313-93" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x11               0.000    0.115    0.000    1.000</span></span>
+<span id="cb313-94"><a href="saturazione-sul-fattore-sbagliato.html#cb313-94" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     copingm           0.000                           </span></span>
+<span id="cb313-95"><a href="saturazione-sul-fattore-sbagliato.html#cb313-95" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     socialm           0.000                           </span></span>
+<span id="cb313-96"><a href="saturazione-sul-fattore-sbagliato.html#cb313-96" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     enhancem          0.000                           </span></span>
+<span id="cb313-97"><a href="saturazione-sul-fattore-sbagliato.html#cb313-97" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb313-98"><a href="saturazione-sul-fattore-sbagliato.html#cb313-98" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
+<span id="cb313-99"><a href="saturazione-sul-fattore-sbagliato.html#cb313-99" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb313-100"><a href="saturazione-sul-fattore-sbagliato.html#cb313-100" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x1                3.106    0.232   13.403    0.000</span></span>
+<span id="cb313-101"><a href="saturazione-sul-fattore-sbagliato.html#cb313-101" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x2                1.686    0.127   13.278    0.000</span></span>
+<span id="cb313-102"><a href="saturazione-sul-fattore-sbagliato.html#cb313-102" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x3                2.698    0.197   13.663    0.000</span></span>
+<span id="cb313-103"><a href="saturazione-sul-fattore-sbagliato.html#cb313-103" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x4                0.463    0.069    6.672    0.000</span></span>
+<span id="cb313-104"><a href="saturazione-sul-fattore-sbagliato.html#cb313-104" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x5                1.805    0.130   13.881    0.000</span></span>
+<span id="cb313-105"><a href="saturazione-sul-fattore-sbagliato.html#cb313-105" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x6                1.378    0.115   12.003    0.000</span></span>
+<span id="cb313-106"><a href="saturazione-sul-fattore-sbagliato.html#cb313-106" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x7                3.255    0.248   13.116    0.000</span></span>
+<span id="cb313-107"><a href="saturazione-sul-fattore-sbagliato.html#cb313-107" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x8                2.418    0.195   12.404    0.000</span></span>
+<span id="cb313-108"><a href="saturazione-sul-fattore-sbagliato.html#cb313-108" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x12               6.740    0.431   15.652    0.000</span></span>
+<span id="cb313-109"><a href="saturazione-sul-fattore-sbagliato.html#cb313-109" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x9                3.891    0.434    8.964    0.000</span></span>
+<span id="cb313-110"><a href="saturazione-sul-fattore-sbagliato.html#cb313-110" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x10               1.724    0.183    9.403    0.000</span></span>
+<span id="cb313-111"><a href="saturazione-sul-fattore-sbagliato.html#cb313-111" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .x11               4.662    0.372   12.539    0.000</span></span>
+<span id="cb313-112"><a href="saturazione-sul-fattore-sbagliato.html#cb313-112" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     copingm           1.129    0.220    5.138    0.000</span></span>
+<span id="cb313-113"><a href="saturazione-sul-fattore-sbagliato.html#cb313-113" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     socialm           0.397    0.111    3.579    0.000</span></span>
+<span id="cb313-114"><a href="saturazione-sul-fattore-sbagliato.html#cb313-114" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     enhancem          3.277    0.522    6.273    0.000</span></span></code></pre></div>
 <p>È chiaro che il modello <code>model4</code> è inadeguato. Il problema emerge chiaramente esaminando i MI.</p>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="saturazione-sul-fattore-sbagliato.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modindices</span>(fit4)</span>
-<span id="cb321-2"><a href="saturazione-sul-fattore-sbagliato.html#cb321-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          lhs op rhs      mi    epc sepc.lv sepc.all sepc.nox</span></span>
-<span id="cb321-3"><a href="saturazione-sul-fattore-sbagliato.html#cb321-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 47   copingm =~  x5   0.090  0.036   0.038    0.022    0.022</span></span>
-<span id="cb321-4"><a href="saturazione-sul-fattore-sbagliato.html#cb321-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 48   copingm =~  x6   0.554  0.090   0.096    0.054    0.054</span></span>
-<span id="cb321-5"><a href="saturazione-sul-fattore-sbagliato.html#cb321-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 49   copingm =~  x7   0.107  0.055   0.059    0.024    0.024</span></span>
-<span id="cb321-6"><a href="saturazione-sul-fattore-sbagliato.html#cb321-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 50   copingm =~  x8   3.919 -0.306  -0.325   -0.143   -0.143</span></span>
-<span id="cb321-7"><a href="saturazione-sul-fattore-sbagliato.html#cb321-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 51   copingm =~ x12   6.109  0.499   0.530    0.199    0.199</span></span>
-<span id="cb321-8"><a href="saturazione-sul-fattore-sbagliato.html#cb321-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 52   copingm =~  x9   0.390 -0.096  -0.102   -0.038   -0.038</span></span>
-<span id="cb321-9"><a href="saturazione-sul-fattore-sbagliato.html#cb321-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 53   copingm =~ x10   0.027 -0.016  -0.017   -0.010   -0.010</span></span>
-<span id="cb321-10"><a href="saturazione-sul-fattore-sbagliato.html#cb321-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 54   copingm =~ x11   0.823  0.123   0.131    0.051    0.051</span></span>
-<span id="cb321-11"><a href="saturazione-sul-fattore-sbagliato.html#cb321-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 55   socialm =~  x1   1.990 -0.398  -0.251   -0.122   -0.122</span></span>
-<span id="cb321-12"><a href="saturazione-sul-fattore-sbagliato.html#cb321-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 56   socialm =~  x2   0.638  0.166   0.105    0.069    0.069</span></span>
-<span id="cb321-13"><a href="saturazione-sul-fattore-sbagliato.html#cb321-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 57   socialm =~  x3   0.372  0.160   0.101    0.053    0.053</span></span>
-<span id="cb321-14"><a href="saturazione-sul-fattore-sbagliato.html#cb321-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 58   socialm =~  x9   0.315 -0.130  -0.082   -0.031   -0.031</span></span>
-<span id="cb321-15"><a href="saturazione-sul-fattore-sbagliato.html#cb321-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 59   socialm =~ x10   1.423  0.179   0.113    0.064    0.064</span></span>
-<span id="cb321-16"><a href="saturazione-sul-fattore-sbagliato.html#cb321-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 60   socialm =~ x11   0.520 -0.150  -0.094   -0.037   -0.037</span></span>
-<span id="cb321-17"><a href="saturazione-sul-fattore-sbagliato.html#cb321-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 61  enhancem =~  x1   1.029  0.067   0.121    0.059    0.059</span></span>
-<span id="cb321-18"><a href="saturazione-sul-fattore-sbagliato.html#cb321-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 62  enhancem =~  x2   0.232  0.023   0.042    0.028    0.028</span></span>
-<span id="cb321-19"><a href="saturazione-sul-fattore-sbagliato.html#cb321-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 63  enhancem =~  x3   0.153 -0.024  -0.043   -0.023   -0.023</span></span>
-<span id="cb321-20"><a href="saturazione-sul-fattore-sbagliato.html#cb321-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 64  enhancem =~  x4   0.745 -0.031  -0.056   -0.040   -0.040</span></span>
-<span id="cb321-21"><a href="saturazione-sul-fattore-sbagliato.html#cb321-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 65  enhancem =~  x5   0.343 -0.028  -0.050   -0.029   -0.029</span></span>
-<span id="cb321-22"><a href="saturazione-sul-fattore-sbagliato.html#cb321-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 66  enhancem =~  x6   0.103  0.015   0.027    0.015    0.015</span></span>
-<span id="cb321-23"><a href="saturazione-sul-fattore-sbagliato.html#cb321-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 67  enhancem =~  x7   2.752 -0.110  -0.198   -0.080   -0.080</span></span>
-<span id="cb321-24"><a href="saturazione-sul-fattore-sbagliato.html#cb321-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 68  enhancem =~  x8   0.129 -0.021  -0.038   -0.017   -0.017</span></span>
-<span id="cb321-25"><a href="saturazione-sul-fattore-sbagliato.html#cb321-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 69  enhancem =~ x12 116.781  0.916   1.658    0.624    0.624</span></span>
-<span id="cb321-26"><a href="saturazione-sul-fattore-sbagliato.html#cb321-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 70        x1 ~~  x2   1.709  0.177   0.177    0.077    0.077</span></span>
-<span id="cb321-27"><a href="saturazione-sul-fattore-sbagliato.html#cb321-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 71        x1 ~~  x3   2.273 -0.257  -0.257   -0.089   -0.089</span></span>
-<span id="cb321-28"><a href="saturazione-sul-fattore-sbagliato.html#cb321-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 72        x1 ~~  x4   0.850  0.103   0.103    0.086    0.086</span></span>
-<span id="cb321-29"><a href="saturazione-sul-fattore-sbagliato.html#cb321-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 73        x1 ~~  x5   0.292 -0.064  -0.064   -0.027   -0.027</span></span>
-<span id="cb321-30"><a href="saturazione-sul-fattore-sbagliato.html#cb321-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 74        x1 ~~  x6   0.188 -0.048  -0.048   -0.023   -0.023</span></span>
-<span id="cb321-31"><a href="saturazione-sul-fattore-sbagliato.html#cb321-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 75        x1 ~~  x7   0.023 -0.025  -0.025   -0.008   -0.008</span></span>
-<span id="cb321-32"><a href="saturazione-sul-fattore-sbagliato.html#cb321-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 76        x1 ~~  x8   0.419 -0.093  -0.093   -0.034   -0.034</span></span>
-<span id="cb321-33"><a href="saturazione-sul-fattore-sbagliato.html#cb321-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 77        x1 ~~ x12   0.025 -0.034  -0.034   -0.007   -0.007</span></span>
-<span id="cb321-34"><a href="saturazione-sul-fattore-sbagliato.html#cb321-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 78        x1 ~~  x9   0.011  0.020   0.020    0.006    0.006</span></span>
-<span id="cb321-35"><a href="saturazione-sul-fattore-sbagliato.html#cb321-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 79        x1 ~~ x10   0.004  0.008   0.008    0.003    0.003</span></span>
-<span id="cb321-36"><a href="saturazione-sul-fattore-sbagliato.html#cb321-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 80        x1 ~~ x11   1.804  0.259   0.259    0.068    0.068</span></span>
-<span id="cb321-37"><a href="saturazione-sul-fattore-sbagliato.html#cb321-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 81        x2 ~~  x3   0.071 -0.034  -0.034   -0.016   -0.016</span></span>
-<span id="cb321-38"><a href="saturazione-sul-fattore-sbagliato.html#cb321-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 82        x2 ~~  x4   2.979 -0.143  -0.143   -0.162   -0.162</span></span>
-<span id="cb321-39"><a href="saturazione-sul-fattore-sbagliato.html#cb321-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 83        x2 ~~  x5   2.403  0.135   0.135    0.077    0.077</span></span>
-<span id="cb321-40"><a href="saturazione-sul-fattore-sbagliato.html#cb321-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 84        x2 ~~  x6   0.551  0.060   0.060    0.040    0.040</span></span>
-<span id="cb321-41"><a href="saturazione-sul-fattore-sbagliato.html#cb321-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 85        x2 ~~  x7   0.457 -0.081  -0.081   -0.035   -0.035</span></span>
-<span id="cb321-42"><a href="saturazione-sul-fattore-sbagliato.html#cb321-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 86        x2 ~~  x8   0.012  0.011   0.011    0.006    0.006</span></span>
-<span id="cb321-43"><a href="saturazione-sul-fattore-sbagliato.html#cb321-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 87        x2 ~~ x12   0.134 -0.058  -0.058   -0.017   -0.017</span></span>
-<span id="cb321-44"><a href="saturazione-sul-fattore-sbagliato.html#cb321-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 88        x2 ~~  x9   1.033  0.145   0.145    0.056    0.056</span></span>
-<span id="cb321-45"><a href="saturazione-sul-fattore-sbagliato.html#cb321-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 89        x2 ~~ x10   1.140 -0.100  -0.100   -0.058   -0.058</span></span>
-<span id="cb321-46"><a href="saturazione-sul-fattore-sbagliato.html#cb321-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 90        x2 ~~ x11   0.323  0.081   0.081    0.029    0.029</span></span>
-<span id="cb321-47"><a href="saturazione-sul-fattore-sbagliato.html#cb321-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 91        x3 ~~  x4   1.472  0.127   0.127    0.113    0.113</span></span>
-<span id="cb321-48"><a href="saturazione-sul-fattore-sbagliato.html#cb321-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 92        x3 ~~  x5   0.140  0.041   0.041    0.019    0.019</span></span>
-<span id="cb321-49"><a href="saturazione-sul-fattore-sbagliato.html#cb321-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 93        x3 ~~  x6   0.717  0.087   0.087    0.045    0.045</span></span>
-<span id="cb321-50"><a href="saturazione-sul-fattore-sbagliato.html#cb321-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 94        x3 ~~  x7   0.317  0.086   0.086    0.029    0.029</span></span>
-<span id="cb321-51"><a href="saturazione-sul-fattore-sbagliato.html#cb321-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 95        x3 ~~  x8   3.121 -0.237  -0.237   -0.093   -0.093</span></span>
-<span id="cb321-52"><a href="saturazione-sul-fattore-sbagliato.html#cb321-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 96        x3 ~~ x12   0.001  0.006   0.006    0.001    0.001</span></span>
-<span id="cb321-53"><a href="saturazione-sul-fattore-sbagliato.html#cb321-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 97        x3 ~~  x9   0.000  0.003   0.003    0.001    0.001</span></span>
-<span id="cb321-54"><a href="saturazione-sul-fattore-sbagliato.html#cb321-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 98        x3 ~~ x10   4.165 -0.241  -0.241   -0.111   -0.111</span></span>
-<span id="cb321-55"><a href="saturazione-sul-fattore-sbagliato.html#cb321-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 99        x3 ~~ x11   3.806  0.350   0.350    0.099    0.099</span></span>
-<span id="cb321-56"><a href="saturazione-sul-fattore-sbagliato.html#cb321-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 100       x4 ~~  x5   0.316 -0.036  -0.036   -0.039   -0.039</span></span>
-<span id="cb321-57"><a href="saturazione-sul-fattore-sbagliato.html#cb321-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 101       x4 ~~  x6   0.052 -0.015  -0.015   -0.019   -0.019</span></span>
-<span id="cb321-58"><a href="saturazione-sul-fattore-sbagliato.html#cb321-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 102       x4 ~~  x7   1.182  0.099   0.099    0.081    0.081</span></span>
-<span id="cb321-59"><a href="saturazione-sul-fattore-sbagliato.html#cb321-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 103       x4 ~~  x8   0.062 -0.021  -0.021   -0.020   -0.020</span></span>
-<span id="cb321-60"><a href="saturazione-sul-fattore-sbagliato.html#cb321-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 104       x4 ~~ x12   0.033  0.020   0.020    0.011    0.011</span></span>
-<span id="cb321-61"><a href="saturazione-sul-fattore-sbagliato.html#cb321-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 105       x4 ~~  x9   1.418 -0.115  -0.115   -0.086   -0.086</span></span>
-<span id="cb321-62"><a href="saturazione-sul-fattore-sbagliato.html#cb321-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 106       x4 ~~ x10   0.914  0.061   0.061    0.068    0.068</span></span>
-<span id="cb321-63"><a href="saturazione-sul-fattore-sbagliato.html#cb321-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 107       x4 ~~ x11   0.517 -0.068  -0.068   -0.047   -0.047</span></span>
-<span id="cb321-64"><a href="saturazione-sul-fattore-sbagliato.html#cb321-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 108       x5 ~~  x6   0.611  0.073   0.073    0.046    0.046</span></span>
-<span id="cb321-65"><a href="saturazione-sul-fattore-sbagliato.html#cb321-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 109       x5 ~~  x7   0.115 -0.045  -0.045   -0.019   -0.019</span></span>
-<span id="cb321-66"><a href="saturazione-sul-fattore-sbagliato.html#cb321-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 110       x5 ~~  x8   0.079  0.034   0.034    0.016    0.016</span></span>
-<span id="cb321-67"><a href="saturazione-sul-fattore-sbagliato.html#cb321-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 111       x5 ~~ x12   3.265 -0.302  -0.302   -0.087   -0.087</span></span>
-<span id="cb321-68"><a href="saturazione-sul-fattore-sbagliato.html#cb321-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 112       x5 ~~  x9   0.203  0.066   0.066    0.025    0.025</span></span>
-<span id="cb321-69"><a href="saturazione-sul-fattore-sbagliato.html#cb321-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 113       x5 ~~ x10   0.000  0.002   0.002    0.001    0.001</span></span>
-<span id="cb321-70"><a href="saturazione-sul-fattore-sbagliato.html#cb321-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 114       x5 ~~ x11   2.312 -0.224  -0.224   -0.077   -0.077</span></span>
-<span id="cb321-71"><a href="saturazione-sul-fattore-sbagliato.html#cb321-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 115       x6 ~~  x7   2.239 -0.200  -0.200   -0.094   -0.094</span></span>
-<span id="cb321-72"><a href="saturazione-sul-fattore-sbagliato.html#cb321-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 116       x6 ~~  x8   0.073  0.033   0.033    0.018    0.018</span></span>
-<span id="cb321-73"><a href="saturazione-sul-fattore-sbagliato.html#cb321-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 117       x6 ~~ x12   0.478  0.109   0.109    0.036    0.036</span></span>
-<span id="cb321-74"><a href="saturazione-sul-fattore-sbagliato.html#cb321-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 118       x6 ~~  x9   1.251 -0.153  -0.153   -0.066   -0.066</span></span>
-<span id="cb321-75"><a href="saturazione-sul-fattore-sbagliato.html#cb321-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 119       x6 ~~ x10   0.784  0.079   0.079    0.051    0.051</span></span>
-<span id="cb321-76"><a href="saturazione-sul-fattore-sbagliato.html#cb321-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 120       x6 ~~ x11   0.370  0.083   0.083    0.033    0.033</span></span>
-<span id="cb321-77"><a href="saturazione-sul-fattore-sbagliato.html#cb321-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 121       x7 ~~  x8   1.644  0.219   0.219    0.078    0.078</span></span>
-<span id="cb321-78"><a href="saturazione-sul-fattore-sbagliato.html#cb321-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 122       x7 ~~ x12   0.433 -0.152  -0.152   -0.032   -0.032</span></span>
-<span id="cb321-79"><a href="saturazione-sul-fattore-sbagliato.html#cb321-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 123       x7 ~~  x9   0.005 -0.015  -0.015   -0.004   -0.004</span></span>
-<span id="cb321-80"><a href="saturazione-sul-fattore-sbagliato.html#cb321-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 124       x7 ~~ x10   1.836 -0.179  -0.179   -0.076   -0.076</span></span>
-<span id="cb321-81"><a href="saturazione-sul-fattore-sbagliato.html#cb321-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 125       x7 ~~ x11   0.348 -0.119  -0.119   -0.031   -0.031</span></span>
-<span id="cb321-82"><a href="saturazione-sul-fattore-sbagliato.html#cb321-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 126       x8 ~~ x12   2.680 -0.335  -0.335   -0.083   -0.083</span></span>
-<span id="cb321-83"><a href="saturazione-sul-fattore-sbagliato.html#cb321-83" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 127       x8 ~~  x9   0.676  0.147   0.147    0.048    0.048</span></span>
-<span id="cb321-84"><a href="saturazione-sul-fattore-sbagliato.html#cb321-84" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 128       x8 ~~ x10   0.337  0.068   0.068    0.033    0.033</span></span>
-<span id="cb321-85"><a href="saturazione-sul-fattore-sbagliato.html#cb321-85" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 129       x8 ~~ x11   3.437 -0.330  -0.330   -0.098   -0.098</span></span>
-<span id="cb321-86"><a href="saturazione-sul-fattore-sbagliato.html#cb321-86" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 130      x12 ~~  x9   7.051  0.713   0.713    0.139    0.139</span></span>
-<span id="cb321-87"><a href="saturazione-sul-fattore-sbagliato.html#cb321-87" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 131      x12 ~~ x10   6.960  0.465   0.465    0.136    0.136</span></span>
-<span id="cb321-88"><a href="saturazione-sul-fattore-sbagliato.html#cb321-88" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 132      x12 ~~ x11  68.717  2.238   2.238    0.399    0.399</span></span>
-<span id="cb321-89"><a href="saturazione-sul-fattore-sbagliato.html#cb321-89" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 133       x9 ~~ x10   0.081  0.138   0.138    0.053    0.053</span></span>
-<span id="cb321-90"><a href="saturazione-sul-fattore-sbagliato.html#cb321-90" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 134       x9 ~~ x11   0.166  0.209   0.209    0.049    0.049</span></span>
-<span id="cb321-91"><a href="saturazione-sul-fattore-sbagliato.html#cb321-91" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 135      x10 ~~ x11   0.423 -0.211  -0.211   -0.075   -0.075</span></span></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="saturazione-sul-fattore-sbagliato.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modindices</span>(fit4)</span>
+<span id="cb314-2"><a href="saturazione-sul-fattore-sbagliato.html#cb314-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          lhs op rhs      mi    epc sepc.lv sepc.all sepc.nox</span></span>
+<span id="cb314-3"><a href="saturazione-sul-fattore-sbagliato.html#cb314-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 47   copingm =~  x5   0.090  0.036   0.038    0.022    0.022</span></span>
+<span id="cb314-4"><a href="saturazione-sul-fattore-sbagliato.html#cb314-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 48   copingm =~  x6   0.554  0.090   0.096    0.054    0.054</span></span>
+<span id="cb314-5"><a href="saturazione-sul-fattore-sbagliato.html#cb314-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 49   copingm =~  x7   0.107  0.055   0.059    0.024    0.024</span></span>
+<span id="cb314-6"><a href="saturazione-sul-fattore-sbagliato.html#cb314-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 50   copingm =~  x8   3.919 -0.306  -0.325   -0.143   -0.143</span></span>
+<span id="cb314-7"><a href="saturazione-sul-fattore-sbagliato.html#cb314-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 51   copingm =~ x12   6.109  0.499   0.530    0.199    0.199</span></span>
+<span id="cb314-8"><a href="saturazione-sul-fattore-sbagliato.html#cb314-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 52   copingm =~  x9   0.390 -0.096  -0.102   -0.038   -0.038</span></span>
+<span id="cb314-9"><a href="saturazione-sul-fattore-sbagliato.html#cb314-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 53   copingm =~ x10   0.027 -0.016  -0.017   -0.010   -0.010</span></span>
+<span id="cb314-10"><a href="saturazione-sul-fattore-sbagliato.html#cb314-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 54   copingm =~ x11   0.823  0.123   0.131    0.051    0.051</span></span>
+<span id="cb314-11"><a href="saturazione-sul-fattore-sbagliato.html#cb314-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 55   socialm =~  x1   1.990 -0.398  -0.251   -0.122   -0.122</span></span>
+<span id="cb314-12"><a href="saturazione-sul-fattore-sbagliato.html#cb314-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 56   socialm =~  x2   0.638  0.166   0.105    0.069    0.069</span></span>
+<span id="cb314-13"><a href="saturazione-sul-fattore-sbagliato.html#cb314-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 57   socialm =~  x3   0.372  0.160   0.101    0.053    0.053</span></span>
+<span id="cb314-14"><a href="saturazione-sul-fattore-sbagliato.html#cb314-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 58   socialm =~  x9   0.315 -0.130  -0.082   -0.031   -0.031</span></span>
+<span id="cb314-15"><a href="saturazione-sul-fattore-sbagliato.html#cb314-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 59   socialm =~ x10   1.423  0.179   0.113    0.064    0.064</span></span>
+<span id="cb314-16"><a href="saturazione-sul-fattore-sbagliato.html#cb314-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 60   socialm =~ x11   0.520 -0.150  -0.094   -0.037   -0.037</span></span>
+<span id="cb314-17"><a href="saturazione-sul-fattore-sbagliato.html#cb314-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 61  enhancem =~  x1   1.029  0.067   0.121    0.059    0.059</span></span>
+<span id="cb314-18"><a href="saturazione-sul-fattore-sbagliato.html#cb314-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 62  enhancem =~  x2   0.232  0.023   0.042    0.028    0.028</span></span>
+<span id="cb314-19"><a href="saturazione-sul-fattore-sbagliato.html#cb314-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 63  enhancem =~  x3   0.153 -0.024  -0.043   -0.023   -0.023</span></span>
+<span id="cb314-20"><a href="saturazione-sul-fattore-sbagliato.html#cb314-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 64  enhancem =~  x4   0.745 -0.031  -0.056   -0.040   -0.040</span></span>
+<span id="cb314-21"><a href="saturazione-sul-fattore-sbagliato.html#cb314-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 65  enhancem =~  x5   0.343 -0.028  -0.050   -0.029   -0.029</span></span>
+<span id="cb314-22"><a href="saturazione-sul-fattore-sbagliato.html#cb314-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 66  enhancem =~  x6   0.103  0.015   0.027    0.015    0.015</span></span>
+<span id="cb314-23"><a href="saturazione-sul-fattore-sbagliato.html#cb314-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 67  enhancem =~  x7   2.752 -0.110  -0.198   -0.080   -0.080</span></span>
+<span id="cb314-24"><a href="saturazione-sul-fattore-sbagliato.html#cb314-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 68  enhancem =~  x8   0.129 -0.021  -0.038   -0.017   -0.017</span></span>
+<span id="cb314-25"><a href="saturazione-sul-fattore-sbagliato.html#cb314-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 69  enhancem =~ x12 116.781  0.916   1.658    0.624    0.624</span></span>
+<span id="cb314-26"><a href="saturazione-sul-fattore-sbagliato.html#cb314-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 70        x1 ~~  x2   1.709  0.177   0.177    0.077    0.077</span></span>
+<span id="cb314-27"><a href="saturazione-sul-fattore-sbagliato.html#cb314-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 71        x1 ~~  x3   2.273 -0.257  -0.257   -0.089   -0.089</span></span>
+<span id="cb314-28"><a href="saturazione-sul-fattore-sbagliato.html#cb314-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 72        x1 ~~  x4   0.850  0.103   0.103    0.086    0.086</span></span>
+<span id="cb314-29"><a href="saturazione-sul-fattore-sbagliato.html#cb314-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 73        x1 ~~  x5   0.292 -0.064  -0.064   -0.027   -0.027</span></span>
+<span id="cb314-30"><a href="saturazione-sul-fattore-sbagliato.html#cb314-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 74        x1 ~~  x6   0.188 -0.048  -0.048   -0.023   -0.023</span></span>
+<span id="cb314-31"><a href="saturazione-sul-fattore-sbagliato.html#cb314-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 75        x1 ~~  x7   0.023 -0.025  -0.025   -0.008   -0.008</span></span>
+<span id="cb314-32"><a href="saturazione-sul-fattore-sbagliato.html#cb314-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 76        x1 ~~  x8   0.419 -0.093  -0.093   -0.034   -0.034</span></span>
+<span id="cb314-33"><a href="saturazione-sul-fattore-sbagliato.html#cb314-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 77        x1 ~~ x12   0.025 -0.034  -0.034   -0.007   -0.007</span></span>
+<span id="cb314-34"><a href="saturazione-sul-fattore-sbagliato.html#cb314-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 78        x1 ~~  x9   0.011  0.020   0.020    0.006    0.006</span></span>
+<span id="cb314-35"><a href="saturazione-sul-fattore-sbagliato.html#cb314-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 79        x1 ~~ x10   0.004  0.008   0.008    0.003    0.003</span></span>
+<span id="cb314-36"><a href="saturazione-sul-fattore-sbagliato.html#cb314-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 80        x1 ~~ x11   1.804  0.259   0.259    0.068    0.068</span></span>
+<span id="cb314-37"><a href="saturazione-sul-fattore-sbagliato.html#cb314-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 81        x2 ~~  x3   0.071 -0.034  -0.034   -0.016   -0.016</span></span>
+<span id="cb314-38"><a href="saturazione-sul-fattore-sbagliato.html#cb314-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 82        x2 ~~  x4   2.979 -0.143  -0.143   -0.162   -0.162</span></span>
+<span id="cb314-39"><a href="saturazione-sul-fattore-sbagliato.html#cb314-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 83        x2 ~~  x5   2.403  0.135   0.135    0.077    0.077</span></span>
+<span id="cb314-40"><a href="saturazione-sul-fattore-sbagliato.html#cb314-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 84        x2 ~~  x6   0.551  0.060   0.060    0.040    0.040</span></span>
+<span id="cb314-41"><a href="saturazione-sul-fattore-sbagliato.html#cb314-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 85        x2 ~~  x7   0.457 -0.081  -0.081   -0.035   -0.035</span></span>
+<span id="cb314-42"><a href="saturazione-sul-fattore-sbagliato.html#cb314-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 86        x2 ~~  x8   0.012  0.011   0.011    0.006    0.006</span></span>
+<span id="cb314-43"><a href="saturazione-sul-fattore-sbagliato.html#cb314-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 87        x2 ~~ x12   0.134 -0.058  -0.058   -0.017   -0.017</span></span>
+<span id="cb314-44"><a href="saturazione-sul-fattore-sbagliato.html#cb314-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 88        x2 ~~  x9   1.033  0.145   0.145    0.056    0.056</span></span>
+<span id="cb314-45"><a href="saturazione-sul-fattore-sbagliato.html#cb314-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 89        x2 ~~ x10   1.140 -0.100  -0.100   -0.058   -0.058</span></span>
+<span id="cb314-46"><a href="saturazione-sul-fattore-sbagliato.html#cb314-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 90        x2 ~~ x11   0.323  0.081   0.081    0.029    0.029</span></span>
+<span id="cb314-47"><a href="saturazione-sul-fattore-sbagliato.html#cb314-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 91        x3 ~~  x4   1.472  0.127   0.127    0.113    0.113</span></span>
+<span id="cb314-48"><a href="saturazione-sul-fattore-sbagliato.html#cb314-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 92        x3 ~~  x5   0.140  0.041   0.041    0.019    0.019</span></span>
+<span id="cb314-49"><a href="saturazione-sul-fattore-sbagliato.html#cb314-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 93        x3 ~~  x6   0.717  0.087   0.087    0.045    0.045</span></span>
+<span id="cb314-50"><a href="saturazione-sul-fattore-sbagliato.html#cb314-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 94        x3 ~~  x7   0.317  0.086   0.086    0.029    0.029</span></span>
+<span id="cb314-51"><a href="saturazione-sul-fattore-sbagliato.html#cb314-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 95        x3 ~~  x8   3.121 -0.237  -0.237   -0.093   -0.093</span></span>
+<span id="cb314-52"><a href="saturazione-sul-fattore-sbagliato.html#cb314-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 96        x3 ~~ x12   0.001  0.006   0.006    0.001    0.001</span></span>
+<span id="cb314-53"><a href="saturazione-sul-fattore-sbagliato.html#cb314-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 97        x3 ~~  x9   0.000  0.003   0.003    0.001    0.001</span></span>
+<span id="cb314-54"><a href="saturazione-sul-fattore-sbagliato.html#cb314-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 98        x3 ~~ x10   4.165 -0.241  -0.241   -0.111   -0.111</span></span>
+<span id="cb314-55"><a href="saturazione-sul-fattore-sbagliato.html#cb314-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 99        x3 ~~ x11   3.806  0.350   0.350    0.099    0.099</span></span>
+<span id="cb314-56"><a href="saturazione-sul-fattore-sbagliato.html#cb314-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 100       x4 ~~  x5   0.316 -0.036  -0.036   -0.039   -0.039</span></span>
+<span id="cb314-57"><a href="saturazione-sul-fattore-sbagliato.html#cb314-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 101       x4 ~~  x6   0.052 -0.015  -0.015   -0.019   -0.019</span></span>
+<span id="cb314-58"><a href="saturazione-sul-fattore-sbagliato.html#cb314-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 102       x4 ~~  x7   1.182  0.099   0.099    0.081    0.081</span></span>
+<span id="cb314-59"><a href="saturazione-sul-fattore-sbagliato.html#cb314-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 103       x4 ~~  x8   0.062 -0.021  -0.021   -0.020   -0.020</span></span>
+<span id="cb314-60"><a href="saturazione-sul-fattore-sbagliato.html#cb314-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 104       x4 ~~ x12   0.033  0.020   0.020    0.011    0.011</span></span>
+<span id="cb314-61"><a href="saturazione-sul-fattore-sbagliato.html#cb314-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 105       x4 ~~  x9   1.418 -0.115  -0.115   -0.086   -0.086</span></span>
+<span id="cb314-62"><a href="saturazione-sul-fattore-sbagliato.html#cb314-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 106       x4 ~~ x10   0.914  0.061   0.061    0.068    0.068</span></span>
+<span id="cb314-63"><a href="saturazione-sul-fattore-sbagliato.html#cb314-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 107       x4 ~~ x11   0.517 -0.068  -0.068   -0.047   -0.047</span></span>
+<span id="cb314-64"><a href="saturazione-sul-fattore-sbagliato.html#cb314-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 108       x5 ~~  x6   0.611  0.073   0.073    0.046    0.046</span></span>
+<span id="cb314-65"><a href="saturazione-sul-fattore-sbagliato.html#cb314-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 109       x5 ~~  x7   0.115 -0.045  -0.045   -0.019   -0.019</span></span>
+<span id="cb314-66"><a href="saturazione-sul-fattore-sbagliato.html#cb314-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 110       x5 ~~  x8   0.079  0.034   0.034    0.016    0.016</span></span>
+<span id="cb314-67"><a href="saturazione-sul-fattore-sbagliato.html#cb314-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 111       x5 ~~ x12   3.265 -0.302  -0.302   -0.087   -0.087</span></span>
+<span id="cb314-68"><a href="saturazione-sul-fattore-sbagliato.html#cb314-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 112       x5 ~~  x9   0.203  0.066   0.066    0.025    0.025</span></span>
+<span id="cb314-69"><a href="saturazione-sul-fattore-sbagliato.html#cb314-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 113       x5 ~~ x10   0.000  0.002   0.002    0.001    0.001</span></span>
+<span id="cb314-70"><a href="saturazione-sul-fattore-sbagliato.html#cb314-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 114       x5 ~~ x11   2.312 -0.224  -0.224   -0.077   -0.077</span></span>
+<span id="cb314-71"><a href="saturazione-sul-fattore-sbagliato.html#cb314-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 115       x6 ~~  x7   2.239 -0.200  -0.200   -0.094   -0.094</span></span>
+<span id="cb314-72"><a href="saturazione-sul-fattore-sbagliato.html#cb314-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 116       x6 ~~  x8   0.073  0.033   0.033    0.018    0.018</span></span>
+<span id="cb314-73"><a href="saturazione-sul-fattore-sbagliato.html#cb314-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 117       x6 ~~ x12   0.478  0.109   0.109    0.036    0.036</span></span>
+<span id="cb314-74"><a href="saturazione-sul-fattore-sbagliato.html#cb314-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 118       x6 ~~  x9   1.251 -0.153  -0.153   -0.066   -0.066</span></span>
+<span id="cb314-75"><a href="saturazione-sul-fattore-sbagliato.html#cb314-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 119       x6 ~~ x10   0.784  0.079   0.079    0.051    0.051</span></span>
+<span id="cb314-76"><a href="saturazione-sul-fattore-sbagliato.html#cb314-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 120       x6 ~~ x11   0.370  0.083   0.083    0.033    0.033</span></span>
+<span id="cb314-77"><a href="saturazione-sul-fattore-sbagliato.html#cb314-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 121       x7 ~~  x8   1.644  0.219   0.219    0.078    0.078</span></span>
+<span id="cb314-78"><a href="saturazione-sul-fattore-sbagliato.html#cb314-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 122       x7 ~~ x12   0.433 -0.152  -0.152   -0.032   -0.032</span></span>
+<span id="cb314-79"><a href="saturazione-sul-fattore-sbagliato.html#cb314-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 123       x7 ~~  x9   0.005 -0.015  -0.015   -0.004   -0.004</span></span>
+<span id="cb314-80"><a href="saturazione-sul-fattore-sbagliato.html#cb314-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 124       x7 ~~ x10   1.836 -0.179  -0.179   -0.076   -0.076</span></span>
+<span id="cb314-81"><a href="saturazione-sul-fattore-sbagliato.html#cb314-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 125       x7 ~~ x11   0.348 -0.119  -0.119   -0.031   -0.031</span></span>
+<span id="cb314-82"><a href="saturazione-sul-fattore-sbagliato.html#cb314-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 126       x8 ~~ x12   2.680 -0.335  -0.335   -0.083   -0.083</span></span>
+<span id="cb314-83"><a href="saturazione-sul-fattore-sbagliato.html#cb314-83" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 127       x8 ~~  x9   0.676  0.147   0.147    0.048    0.048</span></span>
+<span id="cb314-84"><a href="saturazione-sul-fattore-sbagliato.html#cb314-84" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 128       x8 ~~ x10   0.337  0.068   0.068    0.033    0.033</span></span>
+<span id="cb314-85"><a href="saturazione-sul-fattore-sbagliato.html#cb314-85" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 129       x8 ~~ x11   3.437 -0.330  -0.330   -0.098   -0.098</span></span>
+<span id="cb314-86"><a href="saturazione-sul-fattore-sbagliato.html#cb314-86" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 130      x12 ~~  x9   7.051  0.713   0.713    0.139    0.139</span></span>
+<span id="cb314-87"><a href="saturazione-sul-fattore-sbagliato.html#cb314-87" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 131      x12 ~~ x10   6.960  0.465   0.465    0.136    0.136</span></span>
+<span id="cb314-88"><a href="saturazione-sul-fattore-sbagliato.html#cb314-88" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 132      x12 ~~ x11  68.717  2.238   2.238    0.399    0.399</span></span>
+<span id="cb314-89"><a href="saturazione-sul-fattore-sbagliato.html#cb314-89" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 133       x9 ~~ x10   0.081  0.138   0.138    0.053    0.053</span></span>
+<span id="cb314-90"><a href="saturazione-sul-fattore-sbagliato.html#cb314-90" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 134       x9 ~~ x11   0.166  0.209   0.209    0.049    0.049</span></span>
+<span id="cb314-91"><a href="saturazione-sul-fattore-sbagliato.html#cb314-91" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 135      x10 ~~ x11   0.423 -0.211  -0.211   -0.075   -0.075</span></span></code></pre></div>
 <p>Il MI relativo alla saturazione di <code>x12</code> su <code>enhancem</code> è uguale a 116.781. Chiaramente questo è un problema che deve essere affrontato.</p>
 </div>
             </section>
