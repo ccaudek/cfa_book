@@ -50,6 +50,7 @@ rmd_files:
     - "310_refine_solution.Rmd"
     - "315_mmm.Rmd"
     - "350_growth_models.Rmd"
+    - "351_lgm_meas_inv.Rmd"
     - "400_missing_data.Rmd"
     - "500_cat_data.Rmd"
     ## APPENDIX
