@@ -6,11 +6,18 @@ library("lavaan")
 library("effectsize")
 ```
 
-@brown2015confirmatory discute alcune possibili cause che possono essere responsabili della mancanza di adattamento del modello EFA o CFA ai dati. In particolare, vengono esaminate le seguenti possibili cause: il ricercatore ha ipotizzato il numero sbagliato di fattori comuni latenti, un item viene ipotizzato saturare su un solo fattore comune mentre satura su diversi fattori, un item viene ipotizzato saturare sul fattore comune sbagliato. Inoltre, è sempre possibile che vi siano correlazioni residue che il modello non ha considerato. @brown2015confirmatory mostra come il ricercatore possa usare i Modification Indices per valutare le cause del mancato adattamento del modello ai dati.
+@brown2015confirmatory discute alcune possibili cause che possono essere responsabili della mancanza di adattamento del modello EFA o CFA ai dati. In particolare, vengono esaminate le seguenti possibili cause: 
+
+- il ricercatore ha ipotizzato il numero sbagliato di fattori comuni latenti, 
+- un item viene ipotizzato saturare su un solo fattore comune mentre satura su diversi fattori,
+- un item viene ipotizzato saturare sul fattore comune sbagliato, 
+- è possibile che vi siano correlazioni residue che il modello non ha considerato.
+
+@brown2015confirmatory mostra come il ricercatore possa usare i *Modification Indices* per valutare le cause del mancato adattamento del modello ai dati.
 
 ## Un numero di fattori troppo piccolo
 
-Una delle possibili fonti di mancanza di adattamento del modello può dipendere dal fatto che è stato ipotizzato un numero insufficiente di fattori latenti comuni. @brown2015confirmatory discute il caso nel quale si confrontano gli indici di bontà di adattamento di un modello ad un fattore e un modello a due fattori comuni. L'esempio riguarda i dati già in precedenza discussi e relativi relativi a otto misure di personalità raccolte su un campione di 250 pazienti che hanno concluso un programma di psicoterapia. Le scale sono le seguenti:
+Una delle possibili fonti di mancanza di adattamento del modello può dipendere dal fatto che è stato ipotizzato un numero insufficiente di fattori latenti comuni. @brown2015confirmatory discute il caso nel quale si confrontano gli indici di bontà di adattamento di un modello ad un solo fattore comune e un modello a due fattori comuni. L'esempio riguarda i dati già in precedenza discussi e relativi relativi a otto misure di personalità raccolte su un campione di 250 pazienti che hanno concluso un programma di psicoterapia. Le scale sono le seguenti:
 
 - anxiety (N1), 
 - hostility (N2), 
@@ -25,7 +32,8 @@ Leggiamo i dati in $\mathsf{R}$.
 
 ```{r}
 varnames <- c("N1", "N2", "N3", "N4", "E1", "E2", "E3", "E4")
-sds <- '5.7  5.6  6.4  5.7  6.0  6.2  5.7  5.6'
+
+sds <- c(5.7,  5.6,  6.4,  5.7,  6.0,  6.2,  5.7,  5.6)
 
 cors <- '
  1.000
@@ -38,19 +46,20 @@ cors <- '
 -0.282  -0.254  -0.292  -0.245  0.534  0.593  0.566  1.000'
 
 psychot_cor_mat <- getCov(cors, names = varnames)
+
 n <- 250
 ```
 
-Supponiamo di adattare ai dati il modello "sbagliato" che include un unico fattore comune. 
+Supponiamo di adattare ai dati il modello "sbagliato" che include un unico fattore comune.  Svolgiamo qui l'analisi *fattoriale esplorativa* usando la funzione sperimentale `efa()` di `lavaan`.
 
 ```{r}
 # 1-factor model
 f1 <- '
-efa("efa")*f1 =~ N1 + N2 + N3 + N4 + E1 + E2 + E3 + E4
+  efa("efa")*f1 =~ N1 + N2 + N3 + N4 + E1 + E2 + E3 + E4
 '
 ```
 
-Svolgiamo qui l'analisi fattoriale esplorativa con la funzione `efa()` di `lavaan`. 
+ Adattiamo il modello ai dati.
 
 ```{r}
 efa_f1 <-
@@ -66,8 +75,8 @@ Consideriamo ora un modello a due fattori.
 
 ```{r}
 f2 <- '
-efa("efa")*f1 +
-efa("efa")*f2 =~ N1 + N2 + N3 + N4 + E1 + E2 + E3 + E4
+  efa("efa")*f1 +
+  efa("efa")*f2 =~ N1 + N2 + N3 + N4 + E1 + E2 + E3 + E4
 '
 ```
 
@@ -87,10 +96,7 @@ Esaminiamo gli indici di bontà di adattamento.
 
 ```{r}
 # define the fit measures
-fit_measures_robust <- c(
-  "chisq", "df", "pvalue", 
-  "cfi", "tli", "rmsea", "srmr"
-)
+fit_measures_robust <- c("chisq", "df", "pvalue", "cfi", "tli", "rmsea", "srmr")
 
 # collect them for each model
 rbind(
@@ -107,6 +113,15 @@ rbind(
   mutate_at(vars(cfi:srmr), ~ round(., digits = 3))
 ```
 
+
+```{r}
+effectsize::interpret(efa_f1)
+```
+
+```{r}
+effectsize::interpret(efa_f2)
+```
+
 I risultati mostrano come, in un modello EFA, una soluzione a due fattori produca un adattamento adeguato, mentre ciò non si verifica con un modello ad un solo fattore.
 
 
@@ -114,10 +129,10 @@ I risultati mostrano come, in un modello EFA, una soluzione a due fattori produc
 
 Un'altra potenziale fonte di errata specificazione del modello CFA è una designazione errata delle relazioni tra indicatori e fattori latenti.
 
-In questo esempio, un ricercatore ha sviluppato un questionario di 12 item (gli item sono valutati su scale da 0 a 8) progettato per valutare le motivazioni dei giovani adulti a consumare bevande alcoliche (cfr. Cooper, 1994). La misura aveva lo scopo di valutare tre aspetti di questo costrutto (4 item ciascuno): (1) motivazioni di coping (item 1–4), (2) motivazioni sociali (item 5–8) e (3) motivazioni di miglioramento (item 9 –12). I dati sono i seguenti.
+In questo esempio, un ricercatore ha sviluppato un questionario di 12 item (gli item sono valutati su scale da 0 a 8) progettato per valutare le motivazioni dei giovani adulti a consumare bevande alcoliche (Cooper, 1994). La misura aveva lo scopo di valutare tre aspetti di questo costrutto (4 item ciascuno): (1) motivazioni di coping (item 1–4), (2) motivazioni sociali (item 5–8) e (3) motivazioni di miglioramento (item 9 –12). I dati sono i seguenti.
 
 ```{r}
-sds <- '2.06  1.52  1.92  1.41  1.73  1.77  2.49  2.27  2.68  1.75  2.57  2.66'
+sds <- c(2.06, 1.52, 1.92, 1.41, 1.73, 1.77, 2.49, 2.27, 2.68, 1.75, 2.57, 2.66)
 
 cors <- '
   1.000 
@@ -146,16 +161,21 @@ model1 <- '
 '
 ```
 
-Adattiamo il modello.
+Adattiamo il modello ai dati.
 
 ```{r}
-fit1 <- cfa(model1, sample.cov = covs, sample.nobs = 500, mimic = "mplus")
+fit1 <- cfa(
+  model1, 
+  sample.cov = covs, 
+  sample.nobs = 500, 
+  mimic = "mplus"
+)
 ```
 
 Esaminando le misure di adattamento potremmo concludere che il modello è adeguato.
 
 ```{r}
-summary(fit1, fit.measures = TRUE)
+effectsize::interpret(fit1)
 ```
 
 Tuttavia, un esame più attento mette in evidenza un comportamento anomalo dell'item `x4` e alcune caratteristiche anomale del modello in generale.
@@ -166,7 +186,7 @@ standardizedSolution(fit1)
 
 In particolare, l'item `x4` mostra una saturazione molto forte sul fattore Motivi di coping (.955) ed emerge una correlazione molto alta tra i fattori Motivi di coping e Motivi sociali (.798).
 
-@brown2015confirmatory suggerisce di esaminare i Modification Indices. Tale esame mostra che il MI associato a `x4` è molto alto, 18.916.
+@brown2015confirmatory suggerisce di esaminare i *Modification Indices*. Tale esame mostra che il MI associato a `x4` è molto alto, 18.916.
 
 ```{r}
 modindices(fit1)
@@ -185,13 +205,18 @@ model2 <- '
 Adattiamo il modello.
 
 ```{r}
-fit2 <- cfa(model2, sample.cov = covs, sample.nobs = 500, mimic = "mplus")
+fit2 <- cfa(
+  model2, 
+  sample.cov = covs, 
+  sample.nobs = 500, 
+  mimic = "mplus"
+)
 ```
 
 Esaminiamo gli indici di bontà di adattamento.
 
 ```{r}
-summary(fit2, fit.measures = TRUE)
+effectsize::interpret(fit2)
 ```
 
 La bontà di adattamento è migliorata.
@@ -222,13 +247,18 @@ model3 <- '
 Adattiamo il modello.
 
 ```{r}
-fit3 <- cfa(model3, sample.cov = covs, sample.nobs = 500, mimic = "mplus")
+fit3 <- cfa(
+  model3, 
+  sample.cov = covs, 
+  sample.nobs = 500, 
+  mimic = "mplus"
+)
 ```
 
 Un test basato sul rapporto di verosimiglianze conferma che il miglioramento di adattamento è sostanziale.
 
 ```{r}
-anova(fit2, fit3)
+lavTestLRT(fit2, fit3)
 ```
 
 Esaminiamo gli indici di bontà di adattamento.
@@ -245,11 +275,13 @@ Esaminiamo la soluzione standardizzata.
 standardizedSolution(fit3)
 ```
 
-Non ci sono motivi di preoccupazione.  Concludiamo dunque che il modello più adeguato è `model3`. Nel caso presente, a mio parare, l'introduzione della correlazione residua tra `x11` e `x12` si sarebbe anche potuta evitare, dato che il modello `model3` (con meno idiosincrasie legate al campione) si era già dimostrato del tutto adeguato.
+Non ci sono ulteriori motivi di preoccupazione.  @brown2015confirmatory conclude che il modello più adeguato sia `model3`. 
+
+Nel caso presente, a mio parare, l'introduzione della correlazione residua tra `x11` e `x12` si sarebbe anche potuta evitare, dato che il modello `model3` (con meno idiosincrasie legate al campione) si era già dimostrato adeguato.
 
 ## Saturazione sul fattore sbagliato
 
-Si può anche dare il caso opposto, ovvero 
+@brown2015confirmatory considera anche il caso opposto, ovvero quello nel quale il ricercatore ipotizza una saturazione spuria. Per i dati in discussione, si può avere la situazione presente.
 
 ```{r}
 model4 <- '
@@ -259,23 +291,32 @@ model4 <- '
 '
 ```
 
+Adattiamo il modello ai dati.
+
 ```{r}
-fit4 <- cfa(model4, sample.cov = covs, sample.nobs = 500, mimic = "mplus")
+fit4 <- cfa(
+  model4, 
+  sample.cov = covs, 
+  sample.nobs = 500, 
+  mimic = "mplus"
+)
 ```
+
+Esaminiamo la soluzione ottenuta.
 
 ```{r}
 summary(fit4, fit.measures = TRUE)
 ```
 
-È chiaro che il modello `model4` è inadeguato. Il problema emerge chiaramente esaminando i MI.
+È chiaro che il modello `model4` è inadeguato. Il problema emerge chiaramente anche esaminando i MI.
 
 ```{r}
 modindices(fit4)
 ```
 
-Il MI relativo alla saturazione di `x12` su `enhancem` è uguale a 116.781. Chiaramente questo è un problema che deve essere affrontato.
+Il MI relativo alla saturazione di `x12` su `enhancem` è uguale a 116.781. Chiaramente, in una revisione del modello, questo problema dovrebbe deve essere affrontato.
 
 ## Commenti e considerazioni finali {-}
 
-L'esempio discusso da @brown2015confirmatory mostra come l'uso dei MI, insieme all'esame della soluzione fattoriale, possa essere usata dallo psicologo per migliorare il modello proposto.
+Gli esempi discussi da @brown2015confirmatory mostrano come l'uso dei MI, insieme all'esame della soluzione fattoriale, possano essere usati dallo psicologo per migliorare il modello che viene proposto.
 

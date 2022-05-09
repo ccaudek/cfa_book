@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2022-05-06" />
+<meta name="date" content="2022-05-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -712,141 +712,141 @@ div.csl-indent {
 </ul>
 <p>I dati sono contenuti in una matrice 3 (T) × 3 (M), organizzata in modo tale che le correlazioni tra i diversi tratti (disturbi della personalità: paranoico, schizotipico, schizoide) siano annidate all’interno di ciascun metodo (tipo di valutazione: inventario, colloquio clinico, valutazioni degli osservatori).</p>
 <p>I dati sono riportati qui sotto.</p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="mtmm-e-cfa.html#cb315-1" aria-hidden="true" tabindex="-1"></a>sds <span class="ot">&lt;-</span> <span class="st">&quot;3.61  3.66  3.59  2.94  3.03  2.85  2.22  2.42  2.04&quot;</span></span>
-<span id="cb315-2"><a href="mtmm-e-cfa.html#cb315-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb315-3"><a href="mtmm-e-cfa.html#cb315-3" aria-hidden="true" tabindex="-1"></a>cors <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb315-4"><a href="mtmm-e-cfa.html#cb315-4" aria-hidden="true" tabindex="-1"></a><span class="st">  1.000</span></span>
-<span id="cb315-5"><a href="mtmm-e-cfa.html#cb315-5" aria-hidden="true" tabindex="-1"></a><span class="st">  0.290  1.000</span></span>
-<span id="cb315-6"><a href="mtmm-e-cfa.html#cb315-6" aria-hidden="true" tabindex="-1"></a><span class="st">  0.372  0.478  1.000</span></span>
-<span id="cb315-7"><a href="mtmm-e-cfa.html#cb315-7" aria-hidden="true" tabindex="-1"></a><span class="st">  0.587  0.238  0.209  1.000</span></span>
-<span id="cb315-8"><a href="mtmm-e-cfa.html#cb315-8" aria-hidden="true" tabindex="-1"></a><span class="st">  0.201  0.586  0.126  0.213  1.000</span></span>
-<span id="cb315-9"><a href="mtmm-e-cfa.html#cb315-9" aria-hidden="true" tabindex="-1"></a><span class="st">  0.218  0.281  0.681  0.195  0.096  1.000</span></span>
-<span id="cb315-10"><a href="mtmm-e-cfa.html#cb315-10" aria-hidden="true" tabindex="-1"></a><span class="st">  0.557  0.228  0.195  0.664  0.242  0.232  1.000</span></span>
-<span id="cb315-11"><a href="mtmm-e-cfa.html#cb315-11" aria-hidden="true" tabindex="-1"></a><span class="st">  0.196  0.644  0.146  0.261  0.641  0.248  0.383  1.000</span></span>
-<span id="cb315-12"><a href="mtmm-e-cfa.html#cb315-12" aria-hidden="true" tabindex="-1"></a><span class="st">  0.219  0.241  0.676  0.290  0.168  0.749  0.361  0.342  1.000&quot;</span></span>
-<span id="cb315-13"><a href="mtmm-e-cfa.html#cb315-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb315-14"><a href="mtmm-e-cfa.html#cb315-14" aria-hidden="true" tabindex="-1"></a>covs <span class="ot">&lt;-</span> <span class="fu">getCov</span>(cors, <span class="at">sds =</span> sds, <span class="at">names =</span> <span class="fu">c</span>(<span class="st">&quot;pari&quot;</span>, <span class="st">&quot;szti&quot;</span>, <span class="st">&quot;szdi&quot;</span>, <span class="st">&quot;parc&quot;</span>, <span class="st">&quot;sztc&quot;</span>, <span class="st">&quot;szdc&quot;</span>, <span class="st">&quot;paro&quot;</span>, <span class="st">&quot;szto&quot;</span>, <span class="st">&quot;szdo&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="mtmm-e-cfa.html#cb317-1" aria-hidden="true" tabindex="-1"></a>sds <span class="ot">&lt;-</span> <span class="st">&quot;3.61  3.66  3.59  2.94  3.03  2.85  2.22  2.42  2.04&quot;</span></span>
+<span id="cb317-2"><a href="mtmm-e-cfa.html#cb317-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb317-3"><a href="mtmm-e-cfa.html#cb317-3" aria-hidden="true" tabindex="-1"></a>cors <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb317-4"><a href="mtmm-e-cfa.html#cb317-4" aria-hidden="true" tabindex="-1"></a><span class="st">  1.000</span></span>
+<span id="cb317-5"><a href="mtmm-e-cfa.html#cb317-5" aria-hidden="true" tabindex="-1"></a><span class="st">  0.290  1.000</span></span>
+<span id="cb317-6"><a href="mtmm-e-cfa.html#cb317-6" aria-hidden="true" tabindex="-1"></a><span class="st">  0.372  0.478  1.000</span></span>
+<span id="cb317-7"><a href="mtmm-e-cfa.html#cb317-7" aria-hidden="true" tabindex="-1"></a><span class="st">  0.587  0.238  0.209  1.000</span></span>
+<span id="cb317-8"><a href="mtmm-e-cfa.html#cb317-8" aria-hidden="true" tabindex="-1"></a><span class="st">  0.201  0.586  0.126  0.213  1.000</span></span>
+<span id="cb317-9"><a href="mtmm-e-cfa.html#cb317-9" aria-hidden="true" tabindex="-1"></a><span class="st">  0.218  0.281  0.681  0.195  0.096  1.000</span></span>
+<span id="cb317-10"><a href="mtmm-e-cfa.html#cb317-10" aria-hidden="true" tabindex="-1"></a><span class="st">  0.557  0.228  0.195  0.664  0.242  0.232  1.000</span></span>
+<span id="cb317-11"><a href="mtmm-e-cfa.html#cb317-11" aria-hidden="true" tabindex="-1"></a><span class="st">  0.196  0.644  0.146  0.261  0.641  0.248  0.383  1.000</span></span>
+<span id="cb317-12"><a href="mtmm-e-cfa.html#cb317-12" aria-hidden="true" tabindex="-1"></a><span class="st">  0.219  0.241  0.676  0.290  0.168  0.749  0.361  0.342  1.000&quot;</span></span>
+<span id="cb317-13"><a href="mtmm-e-cfa.html#cb317-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb317-14"><a href="mtmm-e-cfa.html#cb317-14" aria-hidden="true" tabindex="-1"></a>covs <span class="ot">&lt;-</span> <span class="fu">getCov</span>(cors, <span class="at">sds =</span> sds, <span class="at">names =</span> <span class="fu">c</span>(<span class="st">&quot;pari&quot;</span>, <span class="st">&quot;szti&quot;</span>, <span class="st">&quot;szdi&quot;</span>, <span class="st">&quot;parc&quot;</span>, <span class="st">&quot;sztc&quot;</span>, <span class="st">&quot;szdc&quot;</span>, <span class="st">&quot;paro&quot;</span>, <span class="st">&quot;szto&quot;</span>, <span class="st">&quot;szdo&quot;</span>))</span></code></pre></div>
 <!-- La MTMM è una matrice di correlazione simmetrica con un'eccezione: le stime di affidabilità (es. alpha di Cronbach) delle misure sono inserite nella diagonale al posto dei valori 1 (es., nei dati in esame la stima di coerenza interna della misura inventariale della personalità paranoica è .93). Come notano Campbell e Fiske (1959), idealmente la diagonale di affidabilità dovrebbe contenere i coefficienti più grandi nella matrice; cioè, la misura dovrebbe essere più fortemente correlata con se stessa che con qualsiasi altro indicatore nella matrice MTMM. -->
 <p>La matrice MTMM è costituita da due tipi di blocchi di coefficienti: (1) blocchi di mono-metodo, che contengono correlazioni tra indicatori derivati dallo stesso metodo di valutazione; e (2) blocchi etero-metodo, che contengono correlazioni tra indicatori valutati con metodi differenti. Di centrale interesse è la diagonale di validità, che corrisponde alla diagonale all’interno di ciascun blocco etero-metodo. Le correlazioni sulla diagonale di validità rappresentano stime di validità convergente: diverse misure di costrutti teoricamente simili o sovrapposti dovrebbero essere fortemente interconnesse.</p>
 <p>Nella matrice MTMM, la validità convergente è evidenziata da forti correlazioni tra metodi che misurano lo stesso tratto (cioè, coefficienti mono-tratto/etero-metodo). Ad esempio, i risultati dell’esempio indicano che le tre diverse misure della personalità schizotipica sono fortemente correlate (valori <span class="math inline">\(r\)</span> da .676 a .749). Gli elementi al di fuori della diagonale dei blocchi etero-metodo rivelano la validità discriminante: le misure di costrutti teoricamente distinti non dovrebbero essere altamente inter-correlate. La validità discriminante nella matrice MTMM è evidenziata da correlazioni deboli tra diversi tratti misurati con metodi diversi (cioè, coefficienti etero-tratto/etero-metodo) in relazione alle correlazioni sulla diagonale di validità (coefficienti mono-tratto/etero-metodo). Nei dati dell’esempio, il supporto per la validità discriminante è ottenuto dalla constatazione che le correlazioni negli elementi al di fuori della diagonale dei blocchi etero-metodo sono uniformemente inferiori (valori <span class="math inline">\(r\)</span> = .126 a .290) rispetto ai coefficienti di validità (valori <span class="math inline">\(r\)</span> = .557 a .749).</p>
 <p>Infine, l’evidenza degli effetti del metodo è ottenuta dall’esame degli elementi fuori dalla diagonale dei blocchi del mono-metodo. L’entità degli effetti del metodo è riflessa dall’entità differenziale delle correlazioni tra i diversi tratti misurati con lo stesso metodo (coefficienti etero-tratto/mono-metodo) rispetto alle correlazioni tra gli stessi due tratti misurati con metodi diversi. Come mostrato nei dati dell’esempio, sebbene non estrema, è evidente una certa varianza di metodo, in particolare per le misure di valutazione dell’inventario e dell’osservatore. Ad esempio, le valutazioni dell’osservatore dei tratti della personalità paranoica e schizotipica sono più altamente correlate (r = .383) rispetto alle misure etero-metodo di questi tratti (ad esempio, la correlazione tra i tratti della personalità paranoide e schizotipica misurata rispettivamente dall’inventario e dalla valutazione dell’osservatore, è .196). Come nel presente esempio, quando i risultati complessivi indicano che la validità convergente e discriminante sono elevate e gli effetti del metodo sono trascurabili, la validità del costrutto è supportata.</p>
 <p><span class="citation">Brown (<a href="#ref-brown2015confirmatory" role="doc-biblioref">2015</a>)</span> suggerisce di analizzare la matrice MTMM con un modello CFA il quale ipotizza correlazioni residue tra le unicità di ciascun metodo. Il modello è formulato nel modo seguente. Ogni fattore comune (<code>paranoid</code>, <code>schizotypal</code>, <code>schizoid</code>) è identificato dagli item corrispondenti definiti da metodi diversi. Le specificità di ciascun metodo sono tra loro correlate.</p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="mtmm-e-cfa.html#cb316-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb316-2"><a href="mtmm-e-cfa.html#cb316-2" aria-hidden="true" tabindex="-1"></a><span class="st">  paranoid    =~ pari + parc + paro</span></span>
-<span id="cb316-3"><a href="mtmm-e-cfa.html#cb316-3" aria-hidden="true" tabindex="-1"></a><span class="st">  schizotypal =~ szti + sztc + szto</span></span>
-<span id="cb316-4"><a href="mtmm-e-cfa.html#cb316-4" aria-hidden="true" tabindex="-1"></a><span class="st">  schizoid    =~ szdi + szdc + szdo</span></span>
-<span id="cb316-5"><a href="mtmm-e-cfa.html#cb316-5" aria-hidden="true" tabindex="-1"></a><span class="st">  pari ~~ szti + szdi</span></span>
-<span id="cb316-6"><a href="mtmm-e-cfa.html#cb316-6" aria-hidden="true" tabindex="-1"></a><span class="st">  szti ~~ szdi</span></span>
-<span id="cb316-7"><a href="mtmm-e-cfa.html#cb316-7" aria-hidden="true" tabindex="-1"></a><span class="st">  parc ~~ sztc + szdc</span></span>
-<span id="cb316-8"><a href="mtmm-e-cfa.html#cb316-8" aria-hidden="true" tabindex="-1"></a><span class="st">  sztc ~~ szdc</span></span>
-<span id="cb316-9"><a href="mtmm-e-cfa.html#cb316-9" aria-hidden="true" tabindex="-1"></a><span class="st">  paro ~~ szto + szdo</span></span>
-<span id="cb316-10"><a href="mtmm-e-cfa.html#cb316-10" aria-hidden="true" tabindex="-1"></a><span class="st">  szto ~~ szdo</span></span>
-<span id="cb316-11"><a href="mtmm-e-cfa.html#cb316-11" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="mtmm-e-cfa.html#cb317-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">cfa</span>(model, <span class="at">sample.cov =</span> covs, <span class="at">sample.nobs =</span> <span class="dv">500</span>, <span class="at">std.lv =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb317-2"><a href="mtmm-e-cfa.html#cb317-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>, <span class="at">standardized =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb317-3"><a href="mtmm-e-cfa.html#cb317-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6-11 ended normally after 59 iterations</span></span>
-<span id="cb317-4"><a href="mtmm-e-cfa.html#cb317-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb317-5"><a href="mtmm-e-cfa.html#cb317-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Estimator                                         ML</span></span>
-<span id="cb317-6"><a href="mtmm-e-cfa.html#cb317-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
-<span id="cb317-7"><a href="mtmm-e-cfa.html#cb317-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                        30</span></span>
-<span id="cb317-8"><a href="mtmm-e-cfa.html#cb317-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb317-9"><a href="mtmm-e-cfa.html#cb317-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Number of observations                           500</span></span>
-<span id="cb317-10"><a href="mtmm-e-cfa.html#cb317-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb317-11"><a href="mtmm-e-cfa.html#cb317-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
-<span id="cb317-12"><a href="mtmm-e-cfa.html#cb317-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb317-13"><a href="mtmm-e-cfa.html#cb317-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Test statistic                                14.371</span></span>
-<span id="cb317-14"><a href="mtmm-e-cfa.html#cb317-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                15</span></span>
-<span id="cb317-15"><a href="mtmm-e-cfa.html#cb317-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                           0.498</span></span>
-<span id="cb317-16"><a href="mtmm-e-cfa.html#cb317-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb317-17"><a href="mtmm-e-cfa.html#cb317-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Model Test Baseline Model:</span></span>
-<span id="cb317-18"><a href="mtmm-e-cfa.html#cb317-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb317-19"><a href="mtmm-e-cfa.html#cb317-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Test statistic                              2503.656</span></span>
-<span id="cb317-20"><a href="mtmm-e-cfa.html#cb317-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                36</span></span>
-<span id="cb317-21"><a href="mtmm-e-cfa.html#cb317-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value                                        0.000</span></span>
-<span id="cb317-22"><a href="mtmm-e-cfa.html#cb317-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb317-23"><a href="mtmm-e-cfa.html#cb317-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; User Model versus Baseline Model:</span></span>
-<span id="cb317-24"><a href="mtmm-e-cfa.html#cb317-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb317-25"><a href="mtmm-e-cfa.html#cb317-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Comparative Fit Index (CFI)                    1.000</span></span>
-<span id="cb317-26"><a href="mtmm-e-cfa.html#cb317-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Tucker-Lewis Index (TLI)                       1.001</span></span>
-<span id="cb317-27"><a href="mtmm-e-cfa.html#cb317-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb317-28"><a href="mtmm-e-cfa.html#cb317-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loglikelihood and Information Criteria:</span></span>
-<span id="cb317-29"><a href="mtmm-e-cfa.html#cb317-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb317-30"><a href="mtmm-e-cfa.html#cb317-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Loglikelihood user model (H0)              -9879.996</span></span>
-<span id="cb317-31"><a href="mtmm-e-cfa.html#cb317-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Loglikelihood unrestricted model (H1)      -9872.811</span></span>
-<span id="cb317-32"><a href="mtmm-e-cfa.html#cb317-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb317-33"><a href="mtmm-e-cfa.html#cb317-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Akaike (AIC)                               19819.992</span></span>
-<span id="cb317-34"><a href="mtmm-e-cfa.html#cb317-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Bayesian (BIC)                             19946.430</span></span>
-<span id="cb317-35"><a href="mtmm-e-cfa.html#cb317-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Sample-size adjusted Bayesian (BIC)        19851.209</span></span>
-<span id="cb317-36"><a href="mtmm-e-cfa.html#cb317-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb317-37"><a href="mtmm-e-cfa.html#cb317-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Root Mean Square Error of Approximation:</span></span>
-<span id="cb317-38"><a href="mtmm-e-cfa.html#cb317-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb317-39"><a href="mtmm-e-cfa.html#cb317-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   RMSEA                                          0.000</span></span>
-<span id="cb317-40"><a href="mtmm-e-cfa.html#cb317-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - lower         0.000</span></span>
-<span id="cb317-41"><a href="mtmm-e-cfa.html#cb317-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - upper         0.041</span></span>
-<span id="cb317-42"><a href="mtmm-e-cfa.html#cb317-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value RMSEA &lt;= 0.05                          0.989</span></span>
-<span id="cb317-43"><a href="mtmm-e-cfa.html#cb317-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb317-44"><a href="mtmm-e-cfa.html#cb317-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Standardized Root Mean Square Residual:</span></span>
-<span id="cb317-45"><a href="mtmm-e-cfa.html#cb317-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb317-46"><a href="mtmm-e-cfa.html#cb317-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   SRMR                                           0.025</span></span>
-<span id="cb317-47"><a href="mtmm-e-cfa.html#cb317-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb317-48"><a href="mtmm-e-cfa.html#cb317-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
-<span id="cb317-49"><a href="mtmm-e-cfa.html#cb317-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb317-50"><a href="mtmm-e-cfa.html#cb317-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Standard errors                             Standard</span></span>
-<span id="cb317-51"><a href="mtmm-e-cfa.html#cb317-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Information                                 Expected</span></span>
-<span id="cb317-52"><a href="mtmm-e-cfa.html#cb317-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Information saturated (h1) model          Structured</span></span>
-<span id="cb317-53"><a href="mtmm-e-cfa.html#cb317-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb317-54"><a href="mtmm-e-cfa.html#cb317-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
-<span id="cb317-55"><a href="mtmm-e-cfa.html#cb317-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all</span></span>
-<span id="cb317-56"><a href="mtmm-e-cfa.html#cb317-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   paranoid =~                                                           </span></span>
-<span id="cb317-57"><a href="mtmm-e-cfa.html#cb317-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     pari              2.588    0.145   17.833    0.000    2.588    0.712</span></span>
-<span id="cb317-58"><a href="mtmm-e-cfa.html#cb317-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     parc              2.472    0.121   20.350    0.000    2.472    0.841</span></span>
-<span id="cb317-59"><a href="mtmm-e-cfa.html#cb317-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     paro              1.747    0.088   19.946    0.000    1.747    0.788</span></span>
-<span id="cb317-60"><a href="mtmm-e-cfa.html#cb317-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   schizotypal =~                                                        </span></span>
-<span id="cb317-61"><a href="mtmm-e-cfa.html#cb317-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     szti              2.950    0.132   22.367    0.000    2.950    0.788</span></span>
-<span id="cb317-62"><a href="mtmm-e-cfa.html#cb317-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     sztc              2.348    0.123   19.047    0.000    2.348    0.768</span></span>
-<span id="cb317-63"><a href="mtmm-e-cfa.html#cb317-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     szto              2.047    0.089   22.905    0.000    2.047    0.843</span></span>
-<span id="cb317-64"><a href="mtmm-e-cfa.html#cb317-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   schizoid =~                                                           </span></span>
-<span id="cb317-65"><a href="mtmm-e-cfa.html#cb317-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     szdi              2.713    0.120   22.526    0.000    2.713    0.769</span></span>
-<span id="cb317-66"><a href="mtmm-e-cfa.html#cb317-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     szdc              2.438    0.107   22.826    0.000    2.438    0.860</span></span>
-<span id="cb317-67"><a href="mtmm-e-cfa.html#cb317-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     szdo              1.782    0.073   24.323    0.000    1.782    0.872</span></span>
-<span id="cb317-68"><a href="mtmm-e-cfa.html#cb317-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb317-69"><a href="mtmm-e-cfa.html#cb317-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Covariances:</span></span>
-<span id="cb317-70"><a href="mtmm-e-cfa.html#cb317-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all</span></span>
-<span id="cb317-71"><a href="mtmm-e-cfa.html#cb317-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  .pari ~~                                                               </span></span>
-<span id="cb317-72"><a href="mtmm-e-cfa.html#cb317-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szti              1.274    0.338    3.774    0.000    1.274    0.217</span></span>
-<span id="cb317-73"><a href="mtmm-e-cfa.html#cb317-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szdi              2.537    0.329    7.703    0.000    2.537    0.441</span></span>
-<span id="cb317-74"><a href="mtmm-e-cfa.html#cb317-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  .szti ~~                                                               </span></span>
-<span id="cb317-75"><a href="mtmm-e-cfa.html#cb317-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szdi              3.872    0.342   11.329    0.000    3.872    0.746</span></span>
-<span id="cb317-76"><a href="mtmm-e-cfa.html#cb317-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  .parc ~~                                                               </span></span>
-<span id="cb317-77"><a href="mtmm-e-cfa.html#cb317-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .sztc             -0.335    0.210   -1.597    0.110   -0.335   -0.107</span></span>
-<span id="cb317-78"><a href="mtmm-e-cfa.html#cb317-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szdc             -0.608    0.176   -3.461    0.001   -0.608   -0.265</span></span>
-<span id="cb317-79"><a href="mtmm-e-cfa.html#cb317-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  .sztc ~~                                                               </span></span>
-<span id="cb317-80"><a href="mtmm-e-cfa.html#cb317-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szdc             -0.933    0.188   -4.967    0.000   -0.933   -0.330</span></span>
-<span id="cb317-81"><a href="mtmm-e-cfa.html#cb317-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  .paro ~~                                                               </span></span>
-<span id="cb317-82"><a href="mtmm-e-cfa.html#cb317-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szto              0.737    0.118    6.240    0.000    0.737    0.413</span></span>
-<span id="cb317-83"><a href="mtmm-e-cfa.html#cb317-83" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szdo              0.505    0.096    5.274    0.000    0.505    0.368</span></span>
-<span id="cb317-84"><a href="mtmm-e-cfa.html#cb317-84" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  .szto ~~                                                               </span></span>
-<span id="cb317-85"><a href="mtmm-e-cfa.html#cb317-85" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szdo              0.625    0.102    6.158    0.000    0.625    0.478</span></span>
-<span id="cb317-86"><a href="mtmm-e-cfa.html#cb317-86" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   paranoid ~~                                                           </span></span>
-<span id="cb317-87"><a href="mtmm-e-cfa.html#cb317-87" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     schizotypal       0.381    0.046    8.341    0.000    0.381    0.381</span></span>
-<span id="cb317-88"><a href="mtmm-e-cfa.html#cb317-88" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     schizoid          0.359    0.046    7.856    0.000    0.359    0.359</span></span>
-<span id="cb317-89"><a href="mtmm-e-cfa.html#cb317-89" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   schizotypal ~~                                                        </span></span>
-<span id="cb317-90"><a href="mtmm-e-cfa.html#cb317-90" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     schizoid          0.310    0.047    6.666    0.000    0.310    0.310</span></span>
-<span id="cb317-91"><a href="mtmm-e-cfa.html#cb317-91" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb317-92"><a href="mtmm-e-cfa.html#cb317-92" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
-<span id="cb317-93"><a href="mtmm-e-cfa.html#cb317-93" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all</span></span>
-<span id="cb317-94"><a href="mtmm-e-cfa.html#cb317-94" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .pari              6.514    0.513   12.695    0.000    6.514    0.493</span></span>
-<span id="cb317-95"><a href="mtmm-e-cfa.html#cb317-95" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .parc              2.529    0.334    7.562    0.000    2.529    0.293</span></span>
-<span id="cb317-96"><a href="mtmm-e-cfa.html#cb317-96" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .paro              1.867    0.179   10.434    0.000    1.867    0.380</span></span>
-<span id="cb317-97"><a href="mtmm-e-cfa.html#cb317-97" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szti              5.309    0.460   11.529    0.000    5.309    0.379</span></span>
-<span id="cb317-98"><a href="mtmm-e-cfa.html#cb317-98" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .sztc              3.846    0.330   11.654    0.000    3.846    0.411</span></span>
-<span id="cb317-99"><a href="mtmm-e-cfa.html#cb317-99" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szto              1.704    0.175    9.742    0.000    1.704    0.289</span></span>
-<span id="cb317-100"><a href="mtmm-e-cfa.html#cb317-100" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szdi              5.080    0.386   13.158    0.000    5.080    0.408</span></span>
-<span id="cb317-101"><a href="mtmm-e-cfa.html#cb317-101" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szdc              2.085    0.230    9.047    0.000    2.085    0.260</span></span>
-<span id="cb317-102"><a href="mtmm-e-cfa.html#cb317-102" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szdo              1.005    0.107    9.351    0.000    1.005    0.240</span></span>
-<span id="cb317-103"><a href="mtmm-e-cfa.html#cb317-103" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     paranoid          1.000                               1.000    1.000</span></span>
-<span id="cb317-104"><a href="mtmm-e-cfa.html#cb317-104" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     schizotypal       1.000                               1.000    1.000</span></span>
-<span id="cb317-105"><a href="mtmm-e-cfa.html#cb317-105" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     schizoid          1.000                               1.000    1.000</span></span></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="mtmm-e-cfa.html#cb318-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb318-2"><a href="mtmm-e-cfa.html#cb318-2" aria-hidden="true" tabindex="-1"></a><span class="st">  paranoid    =~ pari + parc + paro</span></span>
+<span id="cb318-3"><a href="mtmm-e-cfa.html#cb318-3" aria-hidden="true" tabindex="-1"></a><span class="st">  schizotypal =~ szti + sztc + szto</span></span>
+<span id="cb318-4"><a href="mtmm-e-cfa.html#cb318-4" aria-hidden="true" tabindex="-1"></a><span class="st">  schizoid    =~ szdi + szdc + szdo</span></span>
+<span id="cb318-5"><a href="mtmm-e-cfa.html#cb318-5" aria-hidden="true" tabindex="-1"></a><span class="st">  pari ~~ szti + szdi</span></span>
+<span id="cb318-6"><a href="mtmm-e-cfa.html#cb318-6" aria-hidden="true" tabindex="-1"></a><span class="st">  szti ~~ szdi</span></span>
+<span id="cb318-7"><a href="mtmm-e-cfa.html#cb318-7" aria-hidden="true" tabindex="-1"></a><span class="st">  parc ~~ sztc + szdc</span></span>
+<span id="cb318-8"><a href="mtmm-e-cfa.html#cb318-8" aria-hidden="true" tabindex="-1"></a><span class="st">  sztc ~~ szdc</span></span>
+<span id="cb318-9"><a href="mtmm-e-cfa.html#cb318-9" aria-hidden="true" tabindex="-1"></a><span class="st">  paro ~~ szto + szdo</span></span>
+<span id="cb318-10"><a href="mtmm-e-cfa.html#cb318-10" aria-hidden="true" tabindex="-1"></a><span class="st">  szto ~~ szdo</span></span>
+<span id="cb318-11"><a href="mtmm-e-cfa.html#cb318-11" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="mtmm-e-cfa.html#cb319-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">cfa</span>(model, <span class="at">sample.cov =</span> covs, <span class="at">sample.nobs =</span> <span class="dv">500</span>, <span class="at">std.lv =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb319-2"><a href="mtmm-e-cfa.html#cb319-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>, <span class="at">standardized =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb319-3"><a href="mtmm-e-cfa.html#cb319-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6-11 ended normally after 59 iterations</span></span>
+<span id="cb319-4"><a href="mtmm-e-cfa.html#cb319-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb319-5"><a href="mtmm-e-cfa.html#cb319-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Estimator                                         ML</span></span>
+<span id="cb319-6"><a href="mtmm-e-cfa.html#cb319-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
+<span id="cb319-7"><a href="mtmm-e-cfa.html#cb319-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                        30</span></span>
+<span id="cb319-8"><a href="mtmm-e-cfa.html#cb319-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
+<span id="cb319-9"><a href="mtmm-e-cfa.html#cb319-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Number of observations                           500</span></span>
+<span id="cb319-10"><a href="mtmm-e-cfa.html#cb319-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
+<span id="cb319-11"><a href="mtmm-e-cfa.html#cb319-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
+<span id="cb319-12"><a href="mtmm-e-cfa.html#cb319-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
+<span id="cb319-13"><a href="mtmm-e-cfa.html#cb319-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Test statistic                                14.371</span></span>
+<span id="cb319-14"><a href="mtmm-e-cfa.html#cb319-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                15</span></span>
+<span id="cb319-15"><a href="mtmm-e-cfa.html#cb319-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                           0.498</span></span>
+<span id="cb319-16"><a href="mtmm-e-cfa.html#cb319-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb319-17"><a href="mtmm-e-cfa.html#cb319-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Model Test Baseline Model:</span></span>
+<span id="cb319-18"><a href="mtmm-e-cfa.html#cb319-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb319-19"><a href="mtmm-e-cfa.html#cb319-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Test statistic                              2503.656</span></span>
+<span id="cb319-20"><a href="mtmm-e-cfa.html#cb319-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                36</span></span>
+<span id="cb319-21"><a href="mtmm-e-cfa.html#cb319-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value                                        0.000</span></span>
+<span id="cb319-22"><a href="mtmm-e-cfa.html#cb319-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb319-23"><a href="mtmm-e-cfa.html#cb319-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; User Model versus Baseline Model:</span></span>
+<span id="cb319-24"><a href="mtmm-e-cfa.html#cb319-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb319-25"><a href="mtmm-e-cfa.html#cb319-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Comparative Fit Index (CFI)                    1.000</span></span>
+<span id="cb319-26"><a href="mtmm-e-cfa.html#cb319-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Tucker-Lewis Index (TLI)                       1.001</span></span>
+<span id="cb319-27"><a href="mtmm-e-cfa.html#cb319-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb319-28"><a href="mtmm-e-cfa.html#cb319-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loglikelihood and Information Criteria:</span></span>
+<span id="cb319-29"><a href="mtmm-e-cfa.html#cb319-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb319-30"><a href="mtmm-e-cfa.html#cb319-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Loglikelihood user model (H0)              -9879.996</span></span>
+<span id="cb319-31"><a href="mtmm-e-cfa.html#cb319-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Loglikelihood unrestricted model (H1)      -9872.811</span></span>
+<span id="cb319-32"><a href="mtmm-e-cfa.html#cb319-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
+<span id="cb319-33"><a href="mtmm-e-cfa.html#cb319-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Akaike (AIC)                               19819.992</span></span>
+<span id="cb319-34"><a href="mtmm-e-cfa.html#cb319-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Bayesian (BIC)                             19946.430</span></span>
+<span id="cb319-35"><a href="mtmm-e-cfa.html#cb319-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Sample-size adjusted Bayesian (BIC)        19851.209</span></span>
+<span id="cb319-36"><a href="mtmm-e-cfa.html#cb319-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb319-37"><a href="mtmm-e-cfa.html#cb319-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Root Mean Square Error of Approximation:</span></span>
+<span id="cb319-38"><a href="mtmm-e-cfa.html#cb319-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb319-39"><a href="mtmm-e-cfa.html#cb319-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   RMSEA                                          0.000</span></span>
+<span id="cb319-40"><a href="mtmm-e-cfa.html#cb319-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - lower         0.000</span></span>
+<span id="cb319-41"><a href="mtmm-e-cfa.html#cb319-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - upper         0.041</span></span>
+<span id="cb319-42"><a href="mtmm-e-cfa.html#cb319-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value RMSEA &lt;= 0.05                          0.989</span></span>
+<span id="cb319-43"><a href="mtmm-e-cfa.html#cb319-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb319-44"><a href="mtmm-e-cfa.html#cb319-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Standardized Root Mean Square Residual:</span></span>
+<span id="cb319-45"><a href="mtmm-e-cfa.html#cb319-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb319-46"><a href="mtmm-e-cfa.html#cb319-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   SRMR                                           0.025</span></span>
+<span id="cb319-47"><a href="mtmm-e-cfa.html#cb319-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb319-48"><a href="mtmm-e-cfa.html#cb319-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
+<span id="cb319-49"><a href="mtmm-e-cfa.html#cb319-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb319-50"><a href="mtmm-e-cfa.html#cb319-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Standard errors                             Standard</span></span>
+<span id="cb319-51"><a href="mtmm-e-cfa.html#cb319-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Information                                 Expected</span></span>
+<span id="cb319-52"><a href="mtmm-e-cfa.html#cb319-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Information saturated (h1) model          Structured</span></span>
+<span id="cb319-53"><a href="mtmm-e-cfa.html#cb319-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb319-54"><a href="mtmm-e-cfa.html#cb319-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
+<span id="cb319-55"><a href="mtmm-e-cfa.html#cb319-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all</span></span>
+<span id="cb319-56"><a href="mtmm-e-cfa.html#cb319-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   paranoid =~                                                           </span></span>
+<span id="cb319-57"><a href="mtmm-e-cfa.html#cb319-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     pari              2.588    0.145   17.833    0.000    2.588    0.712</span></span>
+<span id="cb319-58"><a href="mtmm-e-cfa.html#cb319-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     parc              2.472    0.121   20.350    0.000    2.472    0.841</span></span>
+<span id="cb319-59"><a href="mtmm-e-cfa.html#cb319-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     paro              1.747    0.088   19.946    0.000    1.747    0.788</span></span>
+<span id="cb319-60"><a href="mtmm-e-cfa.html#cb319-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   schizotypal =~                                                        </span></span>
+<span id="cb319-61"><a href="mtmm-e-cfa.html#cb319-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     szti              2.950    0.132   22.367    0.000    2.950    0.788</span></span>
+<span id="cb319-62"><a href="mtmm-e-cfa.html#cb319-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     sztc              2.348    0.123   19.047    0.000    2.348    0.768</span></span>
+<span id="cb319-63"><a href="mtmm-e-cfa.html#cb319-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     szto              2.047    0.089   22.905    0.000    2.047    0.843</span></span>
+<span id="cb319-64"><a href="mtmm-e-cfa.html#cb319-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   schizoid =~                                                           </span></span>
+<span id="cb319-65"><a href="mtmm-e-cfa.html#cb319-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     szdi              2.713    0.120   22.526    0.000    2.713    0.769</span></span>
+<span id="cb319-66"><a href="mtmm-e-cfa.html#cb319-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     szdc              2.438    0.107   22.826    0.000    2.438    0.860</span></span>
+<span id="cb319-67"><a href="mtmm-e-cfa.html#cb319-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     szdo              1.782    0.073   24.323    0.000    1.782    0.872</span></span>
+<span id="cb319-68"><a href="mtmm-e-cfa.html#cb319-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb319-69"><a href="mtmm-e-cfa.html#cb319-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Covariances:</span></span>
+<span id="cb319-70"><a href="mtmm-e-cfa.html#cb319-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all</span></span>
+<span id="cb319-71"><a href="mtmm-e-cfa.html#cb319-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  .pari ~~                                                               </span></span>
+<span id="cb319-72"><a href="mtmm-e-cfa.html#cb319-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szti              1.274    0.338    3.774    0.000    1.274    0.217</span></span>
+<span id="cb319-73"><a href="mtmm-e-cfa.html#cb319-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szdi              2.537    0.329    7.703    0.000    2.537    0.441</span></span>
+<span id="cb319-74"><a href="mtmm-e-cfa.html#cb319-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  .szti ~~                                                               </span></span>
+<span id="cb319-75"><a href="mtmm-e-cfa.html#cb319-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szdi              3.872    0.342   11.329    0.000    3.872    0.746</span></span>
+<span id="cb319-76"><a href="mtmm-e-cfa.html#cb319-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  .parc ~~                                                               </span></span>
+<span id="cb319-77"><a href="mtmm-e-cfa.html#cb319-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .sztc             -0.335    0.210   -1.597    0.110   -0.335   -0.107</span></span>
+<span id="cb319-78"><a href="mtmm-e-cfa.html#cb319-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szdc             -0.608    0.176   -3.461    0.001   -0.608   -0.265</span></span>
+<span id="cb319-79"><a href="mtmm-e-cfa.html#cb319-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  .sztc ~~                                                               </span></span>
+<span id="cb319-80"><a href="mtmm-e-cfa.html#cb319-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szdc             -0.933    0.188   -4.967    0.000   -0.933   -0.330</span></span>
+<span id="cb319-81"><a href="mtmm-e-cfa.html#cb319-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  .paro ~~                                                               </span></span>
+<span id="cb319-82"><a href="mtmm-e-cfa.html#cb319-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szto              0.737    0.118    6.240    0.000    0.737    0.413</span></span>
+<span id="cb319-83"><a href="mtmm-e-cfa.html#cb319-83" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szdo              0.505    0.096    5.274    0.000    0.505    0.368</span></span>
+<span id="cb319-84"><a href="mtmm-e-cfa.html#cb319-84" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  .szto ~~                                                               </span></span>
+<span id="cb319-85"><a href="mtmm-e-cfa.html#cb319-85" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szdo              0.625    0.102    6.158    0.000    0.625    0.478</span></span>
+<span id="cb319-86"><a href="mtmm-e-cfa.html#cb319-86" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   paranoid ~~                                                           </span></span>
+<span id="cb319-87"><a href="mtmm-e-cfa.html#cb319-87" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     schizotypal       0.381    0.046    8.341    0.000    0.381    0.381</span></span>
+<span id="cb319-88"><a href="mtmm-e-cfa.html#cb319-88" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     schizoid          0.359    0.046    7.856    0.000    0.359    0.359</span></span>
+<span id="cb319-89"><a href="mtmm-e-cfa.html#cb319-89" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   schizotypal ~~                                                        </span></span>
+<span id="cb319-90"><a href="mtmm-e-cfa.html#cb319-90" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     schizoid          0.310    0.047    6.666    0.000    0.310    0.310</span></span>
+<span id="cb319-91"><a href="mtmm-e-cfa.html#cb319-91" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb319-92"><a href="mtmm-e-cfa.html#cb319-92" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
+<span id="cb319-93"><a href="mtmm-e-cfa.html#cb319-93" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all</span></span>
+<span id="cb319-94"><a href="mtmm-e-cfa.html#cb319-94" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .pari              6.514    0.513   12.695    0.000    6.514    0.493</span></span>
+<span id="cb319-95"><a href="mtmm-e-cfa.html#cb319-95" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .parc              2.529    0.334    7.562    0.000    2.529    0.293</span></span>
+<span id="cb319-96"><a href="mtmm-e-cfa.html#cb319-96" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .paro              1.867    0.179   10.434    0.000    1.867    0.380</span></span>
+<span id="cb319-97"><a href="mtmm-e-cfa.html#cb319-97" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szti              5.309    0.460   11.529    0.000    5.309    0.379</span></span>
+<span id="cb319-98"><a href="mtmm-e-cfa.html#cb319-98" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .sztc              3.846    0.330   11.654    0.000    3.846    0.411</span></span>
+<span id="cb319-99"><a href="mtmm-e-cfa.html#cb319-99" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szto              1.704    0.175    9.742    0.000    1.704    0.289</span></span>
+<span id="cb319-100"><a href="mtmm-e-cfa.html#cb319-100" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szdi              5.080    0.386   13.158    0.000    5.080    0.408</span></span>
+<span id="cb319-101"><a href="mtmm-e-cfa.html#cb319-101" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szdc              2.085    0.230    9.047    0.000    2.085    0.260</span></span>
+<span id="cb319-102"><a href="mtmm-e-cfa.html#cb319-102" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .szdo              1.005    0.107    9.351    0.000    1.005    0.240</span></span>
+<span id="cb319-103"><a href="mtmm-e-cfa.html#cb319-103" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     paranoid          1.000                               1.000    1.000</span></span>
+<span id="cb319-104"><a href="mtmm-e-cfa.html#cb319-104" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     schizotypal       1.000                               1.000    1.000</span></span>
+<span id="cb319-105"><a href="mtmm-e-cfa.html#cb319-105" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     schizoid          1.000                               1.000    1.000</span></span></code></pre></div>
 <p>Per i dati di <span class="citation">Brown (<a href="#ref-brown2015confirmatory" role="doc-biblioref">2015</a>)</span>, il fit di tale modello è eccellente. Ciò fornisce forti evidenze di validità di costrutto per i fattori Paranoico, Schizoide e Schizotipico che sono stati ipotizzati.</p>
 
 </div>

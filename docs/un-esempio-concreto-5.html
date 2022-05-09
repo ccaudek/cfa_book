@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2022-05-06" />
+<meta name="date" content="2022-05-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -705,195 +705,58 @@ div.csl-indent {
 <span id="cb281-3"><a href="un-esempio-concreto-5.html#cb281-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>Consideriamo il seguente modello:</p>
 <div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="un-esempio-concreto-5.html#cb282-1" aria-hidden="true" tabindex="-1"></a>model_mdd <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb282-2"><a href="un-esempio-concreto-5.html#cb282-2" aria-hidden="true" tabindex="-1"></a><span class="st">  MDD =~ mdd1 + mdd2 + mdd3 + mdd4 + mdd5 + mdd6 + mdd7 + mdd8 +</span></span>
-<span id="cb282-3"><a href="un-esempio-concreto-5.html#cb282-3" aria-hidden="true" tabindex="-1"></a><span class="st">         mdd9</span></span>
-<span id="cb282-4"><a href="un-esempio-concreto-5.html#cb282-4" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<span id="cb282-2"><a href="un-esempio-concreto-5.html#cb282-2" aria-hidden="true" tabindex="-1"></a><span class="st">  MDD =~ mdd1 + mdd2 + mdd3 + mdd4 + mdd5 + mdd6 + mdd7 + mdd8 + mdd9</span></span>
+<span id="cb282-3"><a href="un-esempio-concreto-5.html#cb282-3" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
 <p>Adattiamo il modello ai dati.</p>
 <div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="un-esempio-concreto-5.html#cb283-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
 <span id="cb283-2"><a href="un-esempio-concreto-5.html#cb283-2" aria-hidden="true" tabindex="-1"></a>  model_mdd,</span>
 <span id="cb283-3"><a href="un-esempio-concreto-5.html#cb283-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> d</span>
 <span id="cb283-4"><a href="un-esempio-concreto-5.html#cb283-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>Esaminiamo gli indici di bontà di adattamento.</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="un-esempio-concreto-5.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb284-2"><a href="un-esempio-concreto-5.html#cb284-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6-11 ended normally after 31 iterations</span></span>
-<span id="cb284-3"><a href="un-esempio-concreto-5.html#cb284-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb284-4"><a href="un-esempio-concreto-5.html#cb284-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Estimator                                         ML</span></span>
-<span id="cb284-5"><a href="un-esempio-concreto-5.html#cb284-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
-<span id="cb284-6"><a href="un-esempio-concreto-5.html#cb284-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                        18</span></span>
-<span id="cb284-7"><a href="un-esempio-concreto-5.html#cb284-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb284-8"><a href="un-esempio-concreto-5.html#cb284-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Number of observations                           750</span></span>
-<span id="cb284-9"><a href="un-esempio-concreto-5.html#cb284-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb284-10"><a href="un-esempio-concreto-5.html#cb284-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
-<span id="cb284-11"><a href="un-esempio-concreto-5.html#cb284-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb284-12"><a href="un-esempio-concreto-5.html#cb284-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Test statistic                               110.272</span></span>
-<span id="cb284-13"><a href="un-esempio-concreto-5.html#cb284-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                27</span></span>
-<span id="cb284-14"><a href="un-esempio-concreto-5.html#cb284-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                           0.000</span></span>
-<span id="cb284-15"><a href="un-esempio-concreto-5.html#cb284-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb284-16"><a href="un-esempio-concreto-5.html#cb284-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Model Test Baseline Model:</span></span>
-<span id="cb284-17"><a href="un-esempio-concreto-5.html#cb284-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb284-18"><a href="un-esempio-concreto-5.html#cb284-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Test statistic                              1297.618</span></span>
-<span id="cb284-19"><a href="un-esempio-concreto-5.html#cb284-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                36</span></span>
-<span id="cb284-20"><a href="un-esempio-concreto-5.html#cb284-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value                                        0.000</span></span>
-<span id="cb284-21"><a href="un-esempio-concreto-5.html#cb284-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb284-22"><a href="un-esempio-concreto-5.html#cb284-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; User Model versus Baseline Model:</span></span>
-<span id="cb284-23"><a href="un-esempio-concreto-5.html#cb284-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb284-24"><a href="un-esempio-concreto-5.html#cb284-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Comparative Fit Index (CFI)                    0.934</span></span>
-<span id="cb284-25"><a href="un-esempio-concreto-5.html#cb284-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Tucker-Lewis Index (TLI)                       0.912</span></span>
-<span id="cb284-26"><a href="un-esempio-concreto-5.html#cb284-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb284-27"><a href="un-esempio-concreto-5.html#cb284-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loglikelihood and Information Criteria:</span></span>
-<span id="cb284-28"><a href="un-esempio-concreto-5.html#cb284-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb284-29"><a href="un-esempio-concreto-5.html#cb284-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Loglikelihood user model (H0)             -13747.192</span></span>
-<span id="cb284-30"><a href="un-esempio-concreto-5.html#cb284-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Loglikelihood unrestricted model (H1)     -13692.056</span></span>
-<span id="cb284-31"><a href="un-esempio-concreto-5.html#cb284-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb284-32"><a href="un-esempio-concreto-5.html#cb284-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Akaike (AIC)                               27530.385</span></span>
-<span id="cb284-33"><a href="un-esempio-concreto-5.html#cb284-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Bayesian (BIC)                             27613.546</span></span>
-<span id="cb284-34"><a href="un-esempio-concreto-5.html#cb284-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Sample-size adjusted Bayesian (BIC)        27556.389</span></span>
-<span id="cb284-35"><a href="un-esempio-concreto-5.html#cb284-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb284-36"><a href="un-esempio-concreto-5.html#cb284-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Root Mean Square Error of Approximation:</span></span>
-<span id="cb284-37"><a href="un-esempio-concreto-5.html#cb284-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb284-38"><a href="un-esempio-concreto-5.html#cb284-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   RMSEA                                          0.064</span></span>
-<span id="cb284-39"><a href="un-esempio-concreto-5.html#cb284-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - lower         0.052</span></span>
-<span id="cb284-40"><a href="un-esempio-concreto-5.html#cb284-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - upper         0.077</span></span>
-<span id="cb284-41"><a href="un-esempio-concreto-5.html#cb284-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value RMSEA &lt;= 0.05                          0.029</span></span>
-<span id="cb284-42"><a href="un-esempio-concreto-5.html#cb284-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb284-43"><a href="un-esempio-concreto-5.html#cb284-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Standardized Root Mean Square Residual:</span></span>
-<span id="cb284-44"><a href="un-esempio-concreto-5.html#cb284-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb284-45"><a href="un-esempio-concreto-5.html#cb284-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   SRMR                                           0.044</span></span>
-<span id="cb284-46"><a href="un-esempio-concreto-5.html#cb284-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb284-47"><a href="un-esempio-concreto-5.html#cb284-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
-<span id="cb284-48"><a href="un-esempio-concreto-5.html#cb284-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb284-49"><a href="un-esempio-concreto-5.html#cb284-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Standard errors                             Standard</span></span>
-<span id="cb284-50"><a href="un-esempio-concreto-5.html#cb284-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Information                                 Expected</span></span>
-<span id="cb284-51"><a href="un-esempio-concreto-5.html#cb284-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Information saturated (h1) model          Structured</span></span>
-<span id="cb284-52"><a href="un-esempio-concreto-5.html#cb284-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb284-53"><a href="un-esempio-concreto-5.html#cb284-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
-<span id="cb284-54"><a href="un-esempio-concreto-5.html#cb284-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb284-55"><a href="un-esempio-concreto-5.html#cb284-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   MDD =~                                              </span></span>
-<span id="cb284-56"><a href="un-esempio-concreto-5.html#cb284-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mdd1              1.000                           </span></span>
-<span id="cb284-57"><a href="un-esempio-concreto-5.html#cb284-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mdd2              1.176    0.062   18.975    0.000</span></span>
-<span id="cb284-58"><a href="un-esempio-concreto-5.html#cb284-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mdd3              0.596    0.064    9.384    0.000</span></span>
-<span id="cb284-59"><a href="un-esempio-concreto-5.html#cb284-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mdd4              0.797    0.067   11.877    0.000</span></span>
-<span id="cb284-60"><a href="un-esempio-concreto-5.html#cb284-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mdd5              0.685    0.064   10.697    0.000</span></span>
-<span id="cb284-61"><a href="un-esempio-concreto-5.html#cb284-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mdd6              0.811    0.062   13.052    0.000</span></span>
-<span id="cb284-62"><a href="un-esempio-concreto-5.html#cb284-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mdd7              0.586    0.066    8.833    0.000</span></span>
-<span id="cb284-63"><a href="un-esempio-concreto-5.html#cb284-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mdd8              0.823    0.065   12.632    0.000</span></span>
-<span id="cb284-64"><a href="un-esempio-concreto-5.html#cb284-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mdd9              0.481    0.054    8.867    0.000</span></span>
-<span id="cb284-65"><a href="un-esempio-concreto-5.html#cb284-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb284-66"><a href="un-esempio-concreto-5.html#cb284-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
-<span id="cb284-67"><a href="un-esempio-concreto-5.html#cb284-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb284-68"><a href="un-esempio-concreto-5.html#cb284-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .mdd1              1.022    0.084   12.120    0.000</span></span>
-<span id="cb284-69"><a href="un-esempio-concreto-5.html#cb284-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .mdd2              1.674    0.127   13.174    0.000</span></span>
-<span id="cb284-70"><a href="un-esempio-concreto-5.html#cb284-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .mdd3              3.777    0.202   18.700    0.000</span></span>
-<span id="cb284-71"><a href="un-esempio-concreto-5.html#cb284-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .mdd4              3.847    0.211   18.193    0.000</span></span>
-<span id="cb284-72"><a href="un-esempio-concreto-5.html#cb284-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .mdd5              3.674    0.199   18.460    0.000</span></span>
-<span id="cb284-73"><a href="un-esempio-concreto-5.html#cb284-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .mdd6              3.123    0.175   17.864    0.000</span></span>
-<span id="cb284-74"><a href="un-esempio-concreto-5.html#cb284-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .mdd7              4.187    0.223   18.786    0.000</span></span>
-<span id="cb284-75"><a href="un-esempio-concreto-5.html#cb284-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .mdd8              3.510    0.195   17.990    0.000</span></span>
-<span id="cb284-76"><a href="un-esempio-concreto-5.html#cb284-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .mdd9              2.796    0.149   18.781    0.000</span></span>
-<span id="cb284-77"><a href="un-esempio-concreto-5.html#cb284-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     MDD               1.722    0.147   11.712    0.000</span></span></code></pre></div>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="un-esempio-concreto-5.html#cb284-1" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">interpret</span>(fit)</span>
+<span id="cb284-2"><a href="un-esempio-concreto-5.html#cb284-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Name      Value Interpretation</span></span>
+<span id="cb284-3"><a href="un-esempio-concreto-5.html#cb284-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    GFI 0.96402909   satisfactory</span></span>
+<span id="cb284-4"><a href="un-esempio-concreto-5.html#cb284-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2   AGFI 0.94004848   satisfactory</span></span>
+<span id="cb284-5"><a href="un-esempio-concreto-5.html#cb284-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    NFI 0.91501936   satisfactory</span></span>
+<span id="cb284-6"><a href="un-esempio-concreto-5.html#cb284-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4   NNFI 0.91199406   satisfactory</span></span>
+<span id="cb284-7"><a href="un-esempio-concreto-5.html#cb284-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    CFI 0.93399554   satisfactory</span></span>
+<span id="cb284-8"><a href="un-esempio-concreto-5.html#cb284-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  RMSEA 0.06412658           poor</span></span>
+<span id="cb284-9"><a href="un-esempio-concreto-5.html#cb284-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7   SRMR 0.04448302   satisfactory</span></span>
+<span id="cb284-10"><a href="un-esempio-concreto-5.html#cb284-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8    RFI 0.88669248           poor</span></span>
+<span id="cb284-11"><a href="un-esempio-concreto-5.html#cb284-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9   PNFI 0.68626452   satisfactory</span></span>
+<span id="cb284-12"><a href="un-esempio-concreto-5.html#cb284-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10   IFI 0.93446306   satisfactory</span></span></code></pre></div>
 <p>Il rapporto <span class="math inline">\(\chi^2 / df\)</span> è adeguato.</p>
 <div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="un-esempio-concreto-5.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="fl">110.272</span> <span class="sc">/</span> <span class="dv">27</span></span>
 <span id="cb285-2"><a href="un-esempio-concreto-5.html#cb285-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.084148</span></span></code></pre></div>
 <p>Gli indici Comparative Fit Index (CFI) = 0.934 e Tucker-Lewis Index (TLI) = 0.912 sono superiori a 0.9, dunque sono almeno sufficienti per gli standard correnti. L’indice RMSEA = 0.064 è appena superiore alla soglia di 0.06. L’indice SRMR = 0.044 è inferiore alla soglia 0.05. Dunque, complessivamente, il modello sembra adeguato.</p>
 <p>Adattiamo ora il modello con la modifica proposta da <span class="citation">Brown (<a href="#ref-brown2015confirmatory" role="doc-biblioref">2015</a>)</span>, ovvero</p>
 <div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="un-esempio-concreto-5.html#cb286-1" aria-hidden="true" tabindex="-1"></a>model2_mdd <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb286-2"><a href="un-esempio-concreto-5.html#cb286-2" aria-hidden="true" tabindex="-1"></a><span class="st">  MDD =~ mdd1 + mdd2 + mdd3 + mdd4 + mdd5 + mdd6 + mdd7 + mdd8 +</span></span>
-<span id="cb286-3"><a href="un-esempio-concreto-5.html#cb286-3" aria-hidden="true" tabindex="-1"></a><span class="st">         mdd9</span></span>
-<span id="cb286-4"><a href="un-esempio-concreto-5.html#cb286-4" aria-hidden="true" tabindex="-1"></a><span class="st">  mdd1 ~~ mdd2</span></span>
-<span id="cb286-5"><a href="un-esempio-concreto-5.html#cb286-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb286-6"><a href="un-esempio-concreto-5.html#cb286-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb286-7"><a href="un-esempio-concreto-5.html#cb286-7" aria-hidden="true" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
-<span id="cb286-8"><a href="un-esempio-concreto-5.html#cb286-8" aria-hidden="true" tabindex="-1"></a>  model2_mdd,</span>
-<span id="cb286-9"><a href="un-esempio-concreto-5.html#cb286-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> d</span>
-<span id="cb286-10"><a href="un-esempio-concreto-5.html#cb286-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb286-2"><a href="un-esempio-concreto-5.html#cb286-2" aria-hidden="true" tabindex="-1"></a><span class="st">  MDD =~ mdd1 + mdd2 + mdd3 + mdd4 + mdd5 + mdd6 + mdd7 + mdd8 +  mdd9</span></span>
+<span id="cb286-3"><a href="un-esempio-concreto-5.html#cb286-3" aria-hidden="true" tabindex="-1"></a><span class="st">  mdd1 ~~ mdd2</span></span>
+<span id="cb286-4"><a href="un-esempio-concreto-5.html#cb286-4" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb286-5"><a href="un-esempio-concreto-5.html#cb286-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb286-6"><a href="un-esempio-concreto-5.html#cb286-6" aria-hidden="true" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
+<span id="cb286-7"><a href="un-esempio-concreto-5.html#cb286-7" aria-hidden="true" tabindex="-1"></a>  model2_mdd,</span>
+<span id="cb286-8"><a href="un-esempio-concreto-5.html#cb286-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> d</span>
+<span id="cb286-9"><a href="un-esempio-concreto-5.html#cb286-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>Esaminiamo gli indici di bontà di adattamento.</p>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="un-esempio-concreto-5.html#cb287-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit2, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb287-2"><a href="un-esempio-concreto-5.html#cb287-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6-11 ended normally after 35 iterations</span></span>
-<span id="cb287-3"><a href="un-esempio-concreto-5.html#cb287-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb287-4"><a href="un-esempio-concreto-5.html#cb287-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Estimator                                         ML</span></span>
-<span id="cb287-5"><a href="un-esempio-concreto-5.html#cb287-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
-<span id="cb287-6"><a href="un-esempio-concreto-5.html#cb287-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                        19</span></span>
-<span id="cb287-7"><a href="un-esempio-concreto-5.html#cb287-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb287-8"><a href="un-esempio-concreto-5.html#cb287-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Number of observations                           750</span></span>
-<span id="cb287-9"><a href="un-esempio-concreto-5.html#cb287-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb287-10"><a href="un-esempio-concreto-5.html#cb287-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
-<span id="cb287-11"><a href="un-esempio-concreto-5.html#cb287-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb287-12"><a href="un-esempio-concreto-5.html#cb287-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Test statistic                                67.559</span></span>
-<span id="cb287-13"><a href="un-esempio-concreto-5.html#cb287-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                26</span></span>
-<span id="cb287-14"><a href="un-esempio-concreto-5.html#cb287-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                           0.000</span></span>
-<span id="cb287-15"><a href="un-esempio-concreto-5.html#cb287-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb287-16"><a href="un-esempio-concreto-5.html#cb287-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Model Test Baseline Model:</span></span>
-<span id="cb287-17"><a href="un-esempio-concreto-5.html#cb287-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb287-18"><a href="un-esempio-concreto-5.html#cb287-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Test statistic                              1297.618</span></span>
-<span id="cb287-19"><a href="un-esempio-concreto-5.html#cb287-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                36</span></span>
-<span id="cb287-20"><a href="un-esempio-concreto-5.html#cb287-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value                                        0.000</span></span>
-<span id="cb287-21"><a href="un-esempio-concreto-5.html#cb287-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb287-22"><a href="un-esempio-concreto-5.html#cb287-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; User Model versus Baseline Model:</span></span>
-<span id="cb287-23"><a href="un-esempio-concreto-5.html#cb287-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb287-24"><a href="un-esempio-concreto-5.html#cb287-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Comparative Fit Index (CFI)                    0.967</span></span>
-<span id="cb287-25"><a href="un-esempio-concreto-5.html#cb287-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Tucker-Lewis Index (TLI)                       0.954</span></span>
-<span id="cb287-26"><a href="un-esempio-concreto-5.html#cb287-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb287-27"><a href="un-esempio-concreto-5.html#cb287-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loglikelihood and Information Criteria:</span></span>
-<span id="cb287-28"><a href="un-esempio-concreto-5.html#cb287-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb287-29"><a href="un-esempio-concreto-5.html#cb287-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Loglikelihood user model (H0)             -13725.836</span></span>
-<span id="cb287-30"><a href="un-esempio-concreto-5.html#cb287-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Loglikelihood unrestricted model (H1)     -13692.056</span></span>
-<span id="cb287-31"><a href="un-esempio-concreto-5.html#cb287-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb287-32"><a href="un-esempio-concreto-5.html#cb287-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Akaike (AIC)                               27489.671</span></span>
-<span id="cb287-33"><a href="un-esempio-concreto-5.html#cb287-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Bayesian (BIC)                             27577.452</span></span>
-<span id="cb287-34"><a href="un-esempio-concreto-5.html#cb287-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Sample-size adjusted Bayesian (BIC)        27517.120</span></span>
-<span id="cb287-35"><a href="un-esempio-concreto-5.html#cb287-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb287-36"><a href="un-esempio-concreto-5.html#cb287-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Root Mean Square Error of Approximation:</span></span>
-<span id="cb287-37"><a href="un-esempio-concreto-5.html#cb287-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb287-38"><a href="un-esempio-concreto-5.html#cb287-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   RMSEA                                          0.046</span></span>
-<span id="cb287-39"><a href="un-esempio-concreto-5.html#cb287-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - lower         0.033</span></span>
-<span id="cb287-40"><a href="un-esempio-concreto-5.html#cb287-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - upper         0.060</span></span>
-<span id="cb287-41"><a href="un-esempio-concreto-5.html#cb287-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   P-value RMSEA &lt;= 0.05                          0.659</span></span>
-<span id="cb287-42"><a href="un-esempio-concreto-5.html#cb287-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb287-43"><a href="un-esempio-concreto-5.html#cb287-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Standardized Root Mean Square Residual:</span></span>
-<span id="cb287-44"><a href="un-esempio-concreto-5.html#cb287-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb287-45"><a href="un-esempio-concreto-5.html#cb287-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   SRMR                                           0.037</span></span>
-<span id="cb287-46"><a href="un-esempio-concreto-5.html#cb287-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb287-47"><a href="un-esempio-concreto-5.html#cb287-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
-<span id="cb287-48"><a href="un-esempio-concreto-5.html#cb287-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb287-49"><a href="un-esempio-concreto-5.html#cb287-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Standard errors                             Standard</span></span>
-<span id="cb287-50"><a href="un-esempio-concreto-5.html#cb287-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Information                                 Expected</span></span>
-<span id="cb287-51"><a href="un-esempio-concreto-5.html#cb287-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Information saturated (h1) model          Structured</span></span>
-<span id="cb287-52"><a href="un-esempio-concreto-5.html#cb287-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb287-53"><a href="un-esempio-concreto-5.html#cb287-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
-<span id="cb287-54"><a href="un-esempio-concreto-5.html#cb287-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb287-55"><a href="un-esempio-concreto-5.html#cb287-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   MDD =~                                              </span></span>
-<span id="cb287-56"><a href="un-esempio-concreto-5.html#cb287-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mdd1              1.000                           </span></span>
-<span id="cb287-57"><a href="un-esempio-concreto-5.html#cb287-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mdd2              1.165    0.065   17.911    0.000</span></span>
-<span id="cb287-58"><a href="un-esempio-concreto-5.html#cb287-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mdd3              0.760    0.082    9.259    0.000</span></span>
-<span id="cb287-59"><a href="un-esempio-concreto-5.html#cb287-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mdd4              1.035    0.091   11.407    0.000</span></span>
-<span id="cb287-60"><a href="un-esempio-concreto-5.html#cb287-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mdd5              0.890    0.085   10.498    0.000</span></span>
-<span id="cb287-61"><a href="un-esempio-concreto-5.html#cb287-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mdd6              1.026    0.086   11.997    0.000</span></span>
-<span id="cb287-62"><a href="un-esempio-concreto-5.html#cb287-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mdd7              0.684    0.084    8.105    0.000</span></span>
-<span id="cb287-63"><a href="un-esempio-concreto-5.html#cb287-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mdd8              1.008    0.088   11.419    0.000</span></span>
-<span id="cb287-64"><a href="un-esempio-concreto-5.html#cb287-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mdd9              0.549    0.069    7.976    0.000</span></span>
-<span id="cb287-65"><a href="un-esempio-concreto-5.html#cb287-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb287-66"><a href="un-esempio-concreto-5.html#cb287-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Covariances:</span></span>
-<span id="cb287-67"><a href="un-esempio-concreto-5.html#cb287-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb287-68"><a href="un-esempio-concreto-5.html#cb287-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  .mdd1 ~~                                             </span></span>
-<span id="cb287-69"><a href="un-esempio-concreto-5.html#cb287-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .mdd2              0.676    0.109    6.208    0.000</span></span>
-<span id="cb287-70"><a href="un-esempio-concreto-5.html#cb287-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb287-71"><a href="un-esempio-concreto-5.html#cb287-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
-<span id="cb287-72"><a href="un-esempio-concreto-5.html#cb287-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb287-73"><a href="un-esempio-concreto-5.html#cb287-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .mdd1              1.460    0.109   13.358    0.000</span></span>
-<span id="cb287-74"><a href="un-esempio-concreto-5.html#cb287-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .mdd2              2.315    0.165   13.997    0.000</span></span>
-<span id="cb287-75"><a href="un-esempio-concreto-5.html#cb287-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .mdd3              3.648    0.201   18.122    0.000</span></span>
-<span id="cb287-76"><a href="un-esempio-concreto-5.html#cb287-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .mdd4              3.566    0.210   16.980    0.000</span></span>
-<span id="cb287-77"><a href="un-esempio-concreto-5.html#cb287-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .mdd5              3.466    0.197   17.563    0.000</span></span>
-<span id="cb287-78"><a href="un-esempio-concreto-5.html#cb287-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .mdd6              2.903    0.176   16.468    0.000</span></span>
-<span id="cb287-79"><a href="un-esempio-concreto-5.html#cb287-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .mdd7              4.178    0.226   18.491    0.000</span></span>
-<span id="cb287-80"><a href="un-esempio-concreto-5.html#cb287-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .mdd8              3.372    0.199   16.970    0.000</span></span>
-<span id="cb287-81"><a href="un-esempio-concreto-5.html#cb287-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    .mdd9              2.807    0.152   18.526    0.000</span></span>
-<span id="cb287-82"><a href="un-esempio-concreto-5.html#cb287-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     MDD               1.283    0.144    8.930    0.000</span></span></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="un-esempio-concreto-5.html#cb287-1" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">interpret</span>(fit2)</span>
+<span id="cb287-2"><a href="un-esempio-concreto-5.html#cb287-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Name      Value Interpretation</span></span>
+<span id="cb287-3"><a href="un-esempio-concreto-5.html#cb287-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    GFI 0.97807123   satisfactory</span></span>
+<span id="cb287-4"><a href="un-esempio-concreto-5.html#cb287-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2   AGFI 0.96204635   satisfactory</span></span>
+<span id="cb287-5"><a href="un-esempio-concreto-5.html#cb287-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    NFI 0.94793648   satisfactory</span></span>
+<span id="cb287-6"><a href="un-esempio-concreto-5.html#cb287-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4   NNFI 0.95438982   satisfactory</span></span>
+<span id="cb287-7"><a href="un-esempio-concreto-5.html#cb287-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    CFI 0.96705932   satisfactory</span></span>
+<span id="cb287-8"><a href="un-esempio-concreto-5.html#cb287-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  RMSEA 0.04616501   satisfactory</span></span>
+<span id="cb287-9"><a href="un-esempio-concreto-5.html#cb287-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7   SRMR 0.03675390   satisfactory</span></span>
+<span id="cb287-10"><a href="un-esempio-concreto-5.html#cb287-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8    RFI 0.92791205   satisfactory</span></span>
+<span id="cb287-11"><a href="un-esempio-concreto-5.html#cb287-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9   PNFI 0.68462079   satisfactory</span></span>
+<span id="cb287-12"><a href="un-esempio-concreto-5.html#cb287-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10   IFI 0.96731836   satisfactory</span></span></code></pre></div>
 <p>In questa seconda versione, l’adattamento del modello è molto migliorato. Il rapporto <span class="math inline">\(\chi^2 / df\)</span> è pari a</p>
 <div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="un-esempio-concreto-5.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="fl">67.559</span> <span class="sc">/</span> <span class="dv">26</span></span>
 <span id="cb288-2"><a href="un-esempio-concreto-5.html#cb288-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2.598423</span></span></code></pre></div>
 <p>Gli indici Comparative Fit Index (CFI) = 0.967 e Tucker-Lewis Index (TLI) = 0.954 sono superiori a 0.95. L’indice RMSEA = 0.046. L’indice SRMR = 0.037.</p>
-<p>Il “costo” che si paga per questo miglioramento dell’adattamento è che questi indici di adattamento così buoni non si replicheranno in un altro campione di dati, a meno che venga introdotto un qualche altro aggiustamento che, sicuramente, sarà diverso da quello usato nell campione corrente. Personalmente, io non avrei introdotto il “miglioramento” proposto da <span class="citation">Brown (<a href="#ref-brown2015confirmatory" role="doc-biblioref">2015</a>)</span> in quanto, anche senza aggiustamenti post-hoc, il modello produce un adattamento accettabile.</p>
+<p>Il “costo” che si paga per questo miglioramento dell’adattamento è che indici di adattamento così buoni, probabilmente, non si replicheranno in un altro campione di dati, a meno che venga introdotto un qualche altro aggiustamento che, sicuramente, sarà diverso da quello usato nel campione corrente. Personalmente, non avrei introdotto il “miglioramento” proposto da <span class="citation">Brown (<a href="#ref-brown2015confirmatory" role="doc-biblioref">2015</a>)</span> in quanto, anche senza un tale aggiustamento post-hoc, il modello produce un adattamento accettabile.</p>
 </div>
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">

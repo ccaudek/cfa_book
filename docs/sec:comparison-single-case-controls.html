@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2022-05-06" />
+<meta name="date" content="2022-05-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -760,25 +760,25 @@ basso).</p>
 un QI pari a 61 mentre il QI dei controlli è
 <span class="math inline">\(\{86, 100, 112, 95, 121, 102\}\)</span>. Ci chiediamo se il QI del caso sia
 anormalmente basso.</p>
-<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="sec:comparison-single-case-controls.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;psycho&quot;</span>)</span>
-<span id="cb398-2"><a href="sec:comparison-single-case-controls.html#cb398-2" aria-hidden="true" tabindex="-1"></a>patient <span class="ot">&lt;-</span> <span class="dv">61</span> <span class="co"># The IQ of a patient</span></span>
-<span id="cb398-3"><a href="sec:comparison-single-case-controls.html#cb398-3" aria-hidden="true" tabindex="-1"></a>controls <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">86</span>, <span class="dv">100</span>, <span class="dv">112</span>, <span class="dv">95</span>, <span class="dv">121</span>, <span class="dv">102</span>) <span class="co"># The IQs of a control group</span></span>
-<span id="cb398-4"><a href="sec:comparison-single-case-controls.html#cb398-4" aria-hidden="true" tabindex="-1"></a><span class="fu">crawford.test</span>(patient, controls)</span>
-<span id="cb398-5"><a href="sec:comparison-single-case-controls.html#cb398-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The Bayesian test for single case assessment (Crawford, Garthwaite, 2007) suggests that the patient&#39;s score (Raw = 61.00, Z = -3.36, percentile = 0.04) is significantly different from the controls (M = 102.67, SD = 12.39, p p = 0.013). The patient&#39;s score is lower than 98.69% (95% CI [1.33e-15, 0.07]) of the control population.</span></span></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="sec:comparison-single-case-controls.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;psycho&quot;</span>)</span>
+<span id="cb400-2"><a href="sec:comparison-single-case-controls.html#cb400-2" aria-hidden="true" tabindex="-1"></a>patient <span class="ot">&lt;-</span> <span class="dv">61</span> <span class="co"># The IQ of a patient</span></span>
+<span id="cb400-3"><a href="sec:comparison-single-case-controls.html#cb400-3" aria-hidden="true" tabindex="-1"></a>controls <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">86</span>, <span class="dv">100</span>, <span class="dv">112</span>, <span class="dv">95</span>, <span class="dv">121</span>, <span class="dv">102</span>) <span class="co"># The IQs of a control group</span></span>
+<span id="cb400-4"><a href="sec:comparison-single-case-controls.html#cb400-4" aria-hidden="true" tabindex="-1"></a><span class="fu">crawford.test</span>(patient, controls)</span>
+<span id="cb400-5"><a href="sec:comparison-single-case-controls.html#cb400-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The Bayesian test for single case assessment (Crawford, Garthwaite, 2007) suggests that the patient&#39;s score (Raw = 61.00, Z = -3.36, percentile = 0.04) is significantly different from the controls (M = 102.67, SD = 12.39, p p = 0.013). The patient&#39;s score is lower than 98.69% (95% CI [1.33e-15, 0.07]) of the control population.</span></span></code></pre></div>
 <p>Utilizzando la <a href="sec:comparison-single-case-controls.html#eq:Crawford-Howell-1998">(B.1)</a> otteniamo un risultato quasi
 identico:</p>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="sec:comparison-single-case-controls.html#cb399-1" aria-hidden="true" tabindex="-1"></a>crawford_howell_test <span class="ot">&lt;-</span> <span class="cf">function</span>(patient, controls) {</span>
-<span id="cb399-2"><a href="sec:comparison-single-case-controls.html#cb399-2" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(controls)</span>
-<span id="cb399-3"><a href="sec:comparison-single-case-controls.html#cb399-3" aria-hidden="true" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sd</span>(controls)</span>
-<span id="cb399-4"><a href="sec:comparison-single-case-controls.html#cb399-4" aria-hidden="true" tabindex="-1"></a>  t <span class="ot">&lt;-</span> (patient <span class="sc">-</span> <span class="fu">mean</span>(controls)) <span class="sc">/</span> (s <span class="sc">*</span> <span class="fu">sqrt</span>((n <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> n))</span>
-<span id="cb399-5"><a href="sec:comparison-single-case-controls.html#cb399-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(t, <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(t, n <span class="sc">-</span> <span class="dv">1</span>))</span>
-<span id="cb399-6"><a href="sec:comparison-single-case-controls.html#cb399-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb399-7"><a href="sec:comparison-single-case-controls.html#cb399-7" aria-hidden="true" tabindex="-1"></a><span class="fu">crawford_howell_test</span>(patient, controls)</span>
-<span id="cb399-8"><a href="sec:comparison-single-case-controls.html#cb399-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb399-9"><a href="sec:comparison-single-case-controls.html#cb399-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -3.113926</span></span>
-<span id="cb399-10"><a href="sec:comparison-single-case-controls.html#cb399-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb399-11"><a href="sec:comparison-single-case-controls.html#cb399-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb399-12"><a href="sec:comparison-single-case-controls.html#cb399-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.9867834</span></span></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="sec:comparison-single-case-controls.html#cb401-1" aria-hidden="true" tabindex="-1"></a>crawford_howell_test <span class="ot">&lt;-</span> <span class="cf">function</span>(patient, controls) {</span>
+<span id="cb401-2"><a href="sec:comparison-single-case-controls.html#cb401-2" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(controls)</span>
+<span id="cb401-3"><a href="sec:comparison-single-case-controls.html#cb401-3" aria-hidden="true" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sd</span>(controls)</span>
+<span id="cb401-4"><a href="sec:comparison-single-case-controls.html#cb401-4" aria-hidden="true" tabindex="-1"></a>  t <span class="ot">&lt;-</span> (patient <span class="sc">-</span> <span class="fu">mean</span>(controls)) <span class="sc">/</span> (s <span class="sc">*</span> <span class="fu">sqrt</span>((n <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> n))</span>
+<span id="cb401-5"><a href="sec:comparison-single-case-controls.html#cb401-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(t, <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(t, n <span class="sc">-</span> <span class="dv">1</span>))</span>
+<span id="cb401-6"><a href="sec:comparison-single-case-controls.html#cb401-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb401-7"><a href="sec:comparison-single-case-controls.html#cb401-7" aria-hidden="true" tabindex="-1"></a><span class="fu">crawford_howell_test</span>(patient, controls)</span>
+<span id="cb401-8"><a href="sec:comparison-single-case-controls.html#cb401-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb401-9"><a href="sec:comparison-single-case-controls.html#cb401-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -3.113926</span></span>
+<span id="cb401-10"><a href="sec:comparison-single-case-controls.html#cb401-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb401-11"><a href="sec:comparison-single-case-controls.html#cb401-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb401-12"><a href="sec:comparison-single-case-controls.html#cb401-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.9867834</span></span></code></pre></div>
 <p>In entrambi i casi la risposta è che il 98.7% dei controlli ha un QI
 superiore a quello del caso. In tali circostanze possiamo dunque
 concludere che siamo in presenza di un deficit.</p>
