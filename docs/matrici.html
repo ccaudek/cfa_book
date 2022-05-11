@@ -572,8 +572,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="24.12" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html"><i class="fa fa-check"></i><b>24.12</b> Modello Random Intercepts Cross-Lagged Panel</a>
 <ul>
-<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#definizione-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Definizione del modello</a></li>
-<li class="chapter" data-level="24.12.2" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.2</b> Output del modello</a></li>
+<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Output del modello</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-2.html"><a href="commenti-e-considerazioni-finali-2.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
 </ul></li>
@@ -714,23 +713,23 @@ a_{11} &amp; a_{12} &amp; a_{13}\\
 a_{21} &amp; a_{22} &amp; a_{23} \end{array} \right]
 \]</span></p>
 <p>In <span class="math inline">\(\mathsf{R}\)</span> abbiamo</p>
-<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="matrici.html#cb427-1" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb427-2"><a href="matrici.html#cb427-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>),</span>
-<span id="cb427-3"><a href="matrici.html#cb427-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">3</span>,</span>
-<span id="cb427-4"><a href="matrici.html#cb427-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
-<span id="cb427-5"><a href="matrici.html#cb427-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb427-6"><a href="matrici.html#cb427-6" aria-hidden="true" tabindex="-1"></a>M</span>
-<span id="cb427-7"><a href="matrici.html#cb427-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
-<span id="cb427-8"><a href="matrici.html#cb427-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    2    3</span></span>
-<span id="cb427-9"><a href="matrici.html#cb427-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    4    5    6</span></span></code></pre></div>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="matrici.html#cb431-1" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb431-2"><a href="matrici.html#cb431-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>),</span>
+<span id="cb431-3"><a href="matrici.html#cb431-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">3</span>,</span>
+<span id="cb431-4"><a href="matrici.html#cb431-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb431-5"><a href="matrici.html#cb431-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb431-6"><a href="matrici.html#cb431-6" aria-hidden="true" tabindex="-1"></a>M</span>
+<span id="cb431-7"><a href="matrici.html#cb431-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span id="cb431-8"><a href="matrici.html#cb431-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    2    3</span></span>
+<span id="cb431-9"><a href="matrici.html#cb431-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    4    5    6</span></span></code></pre></div>
 <div id="dimensioni-della-matrice" class="section level3 hasAnchor" number="31.2.1">
 <h3><span class="header-section-number">E.2.1</span> Dimensioni della matrice<a href="matrici.html#dimensioni-della-matrice" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>I numeri interi <span class="math inline">\(m\)</span> ed <span class="math inline">\(n\)</span> si dicono dimensioni della matrice, ovvero
 <span class="math inline">\(\boldsymbol{A}\)</span> si dice matrice di dimensioni <span class="math inline">\(m \times n\)</span> o di ordine
 <span class="math inline">\(m \times n\)</span>. Nel caso presente, la matrice <span class="math inline">\(\boldsymbol{A}\)</span> ha
 dimensioni <span class="math inline">\(2 \times 3\)</span>.</p>
-<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="matrici.html#cb428-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(M)</span>
-<span id="cb428-2"><a href="matrici.html#cb428-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="matrici.html#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(M)</span>
+<span id="cb432-2"><a href="matrici.html#cb432-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2 3</span></span></code></pre></div>
 </div>
 <div id="matrice-trasposta" class="section level3 hasAnchor" number="31.2.2">
 <h3><span class="header-section-number">E.2.2</span> Matrice trasposta<a href="matrici.html#matrice-trasposta" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -858,29 +857,29 @@ sono definite). Per esempio,</p>
 \end{array}
 \right]
 \]</span></p>
-<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="matrici.html#cb429-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb429-2"><a href="matrici.html#cb429-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">7</span>, <span class="sc">-</span><span class="dv">6</span>),</span>
-<span id="cb429-3"><a href="matrici.html#cb429-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
-<span id="cb429-4"><a href="matrici.html#cb429-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb429-5"><a href="matrici.html#cb429-5" aria-hidden="true" tabindex="-1"></a>A</span>
-<span id="cb429-6"><a href="matrici.html#cb429-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
-<span id="cb429-7"><a href="matrici.html#cb429-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]   -2    5</span></span>
-<span id="cb429-8"><a href="matrici.html#cb429-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    3    1</span></span>
-<span id="cb429-9"><a href="matrici.html#cb429-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    7   -6</span></span></code></pre></div>
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="matrici.html#cb430-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb430-2"><a href="matrici.html#cb430-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">3</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="sc">-</span><span class="dv">3</span>),</span>
-<span id="cb430-3"><a href="matrici.html#cb430-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
-<span id="cb430-4"><a href="matrici.html#cb430-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb430-5"><a href="matrici.html#cb430-5" aria-hidden="true" tabindex="-1"></a>B</span>
-<span id="cb430-6"><a href="matrici.html#cb430-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
-<span id="cb430-7"><a href="matrici.html#cb430-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    3   -2</span></span>
-<span id="cb430-8"><a href="matrici.html#cb430-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    4    5</span></span>
-<span id="cb430-9"><a href="matrici.html#cb430-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]   10   -3</span></span></code></pre></div>
-<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="matrici.html#cb431-1" aria-hidden="true" tabindex="-1"></a>A <span class="sc">+</span> B</span>
-<span id="cb431-2"><a href="matrici.html#cb431-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
-<span id="cb431-3"><a href="matrici.html#cb431-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    3</span></span>
-<span id="cb431-4"><a href="matrici.html#cb431-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    7    6</span></span>
-<span id="cb431-5"><a href="matrici.html#cb431-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]   17   -9</span></span></code></pre></div>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="matrici.html#cb433-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb433-2"><a href="matrici.html#cb433-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">7</span>, <span class="sc">-</span><span class="dv">6</span>),</span>
+<span id="cb433-3"><a href="matrici.html#cb433-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb433-4"><a href="matrici.html#cb433-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb433-5"><a href="matrici.html#cb433-5" aria-hidden="true" tabindex="-1"></a>A</span>
+<span id="cb433-6"><a href="matrici.html#cb433-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
+<span id="cb433-7"><a href="matrici.html#cb433-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]   -2    5</span></span>
+<span id="cb433-8"><a href="matrici.html#cb433-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    3    1</span></span>
+<span id="cb433-9"><a href="matrici.html#cb433-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    7   -6</span></span></code></pre></div>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="matrici.html#cb434-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb434-2"><a href="matrici.html#cb434-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">3</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="sc">-</span><span class="dv">3</span>),</span>
+<span id="cb434-3"><a href="matrici.html#cb434-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb434-4"><a href="matrici.html#cb434-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb434-5"><a href="matrici.html#cb434-5" aria-hidden="true" tabindex="-1"></a>B</span>
+<span id="cb434-6"><a href="matrici.html#cb434-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
+<span id="cb434-7"><a href="matrici.html#cb434-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    3   -2</span></span>
+<span id="cb434-8"><a href="matrici.html#cb434-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    4    5</span></span>
+<span id="cb434-9"><a href="matrici.html#cb434-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]   10   -3</span></span></code></pre></div>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="matrici.html#cb435-1" aria-hidden="true" tabindex="-1"></a>A <span class="sc">+</span> B</span>
+<span id="cb435-2"><a href="matrici.html#cb435-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
+<span id="cb435-3"><a href="matrici.html#cb435-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    3</span></span>
+<span id="cb435-4"><a href="matrici.html#cb435-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    7    6</span></span>
+<span id="cb435-5"><a href="matrici.html#cb435-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]   17   -9</span></span></code></pre></div>
 <p><span class="math display">\[
 \left[ \begin{array}{c c}
 -2 &amp; 5\\
@@ -901,11 +900,11 @@ sono definite). Per esempio,</p>
 \end{array}
 \right]
 \]</span></p>
-<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="matrici.html#cb432-1" aria-hidden="true" tabindex="-1"></a>A <span class="sc">-</span> B</span>
-<span id="cb432-2"><a href="matrici.html#cb432-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
-<span id="cb432-3"><a href="matrici.html#cb432-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]   -5    7</span></span>
-<span id="cb432-4"><a href="matrici.html#cb432-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]   -1   -4</span></span>
-<span id="cb432-5"><a href="matrici.html#cb432-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]   -3   -3</span></span></code></pre></div>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="matrici.html#cb436-1" aria-hidden="true" tabindex="-1"></a>A <span class="sc">-</span> B</span>
+<span id="cb436-2"><a href="matrici.html#cb436-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
+<span id="cb436-3"><a href="matrici.html#cb436-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]   -5    7</span></span>
+<span id="cb436-4"><a href="matrici.html#cb436-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]   -1   -4</span></span>
+<span id="cb436-5"><a href="matrici.html#cb436-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]   -3   -3</span></span></code></pre></div>
 </div>
 <div id="moltiplicazione-di-scalari-e-matrici" class="section level3 hasAnchor" number="31.2.10">
 <h3><span class="header-section-number">E.2.10</span> Moltiplicazione di scalari e matrici<a href="matrici.html#moltiplicazione-di-scalari-e-matrici" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -928,11 +927,11 @@ esempio,</p>
 \end{array}
 \right]
 \]</span></p>
-<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="matrici.html#cb433-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="sc">*</span> A</span>
-<span id="cb433-2"><a href="matrici.html#cb433-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
-<span id="cb433-3"><a href="matrici.html#cb433-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]   -6   15</span></span>
-<span id="cb433-4"><a href="matrici.html#cb433-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    9    3</span></span>
-<span id="cb433-5"><a href="matrici.html#cb433-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]   21  -18</span></span></code></pre></div>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="matrici.html#cb437-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="sc">*</span> A</span>
+<span id="cb437-2"><a href="matrici.html#cb437-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
+<span id="cb437-3"><a href="matrici.html#cb437-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]   -6   15</span></span>
+<span id="cb437-4"><a href="matrici.html#cb437-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    9    3</span></span>
+<span id="cb437-5"><a href="matrici.html#cb437-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]   21  -18</span></span></code></pre></div>
 </div>
 <div id="proprietà-della-somma-e-differenza" class="section level3 hasAnchor" number="31.2.11">
 <h3><span class="header-section-number">E.2.11</span> Proprietà della somma e differenza<a href="matrici.html#proprietà-della-somma-e-differenza" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1010,31 +1009,31 @@ della <em>i</em>-esima riga di <span class="math inline">\(\boldsymbol{A}\)</spa
 \end{array}
 \right]
 \]</span></p>
-<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="matrici.html#cb434-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb434-2"><a href="matrici.html#cb434-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">2</span>),</span>
-<span id="cb434-3"><a href="matrici.html#cb434-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">3</span>,</span>
-<span id="cb434-4"><a href="matrici.html#cb434-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
-<span id="cb434-5"><a href="matrici.html#cb434-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb434-6"><a href="matrici.html#cb434-6" aria-hidden="true" tabindex="-1"></a>A</span>
-<span id="cb434-7"><a href="matrici.html#cb434-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
-<span id="cb434-8"><a href="matrici.html#cb434-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]   -2    1    1</span></span>
-<span id="cb434-9"><a href="matrici.html#cb434-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    1    1    4</span></span>
-<span id="cb434-10"><a href="matrici.html#cb434-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    2   -3    2</span></span></code></pre></div>
-<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="matrici.html#cb435-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb435-2"><a href="matrici.html#cb435-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">3</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">1</span>),</span>
-<span id="cb435-3"><a href="matrici.html#cb435-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">3</span>,</span>
-<span id="cb435-4"><a href="matrici.html#cb435-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
-<span id="cb435-5"><a href="matrici.html#cb435-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb435-6"><a href="matrici.html#cb435-6" aria-hidden="true" tabindex="-1"></a>B</span>
-<span id="cb435-7"><a href="matrici.html#cb435-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
-<span id="cb435-8"><a href="matrici.html#cb435-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    3   -2    1</span></span>
-<span id="cb435-9"><a href="matrici.html#cb435-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    4    5    0</span></span>
-<span id="cb435-10"><a href="matrici.html#cb435-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    1   -3    1</span></span></code></pre></div>
-<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="matrici.html#cb436-1" aria-hidden="true" tabindex="-1"></a>A <span class="sc">%*%</span> B</span>
-<span id="cb436-2"><a href="matrici.html#cb436-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
-<span id="cb436-3"><a href="matrici.html#cb436-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]   -1    6   -1</span></span>
-<span id="cb436-4"><a href="matrici.html#cb436-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]   11   -9    5</span></span>
-<span id="cb436-5"><a href="matrici.html#cb436-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]   -4  -25    4</span></span></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="matrici.html#cb438-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb438-2"><a href="matrici.html#cb438-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">2</span>),</span>
+<span id="cb438-3"><a href="matrici.html#cb438-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">3</span>,</span>
+<span id="cb438-4"><a href="matrici.html#cb438-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb438-5"><a href="matrici.html#cb438-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb438-6"><a href="matrici.html#cb438-6" aria-hidden="true" tabindex="-1"></a>A</span>
+<span id="cb438-7"><a href="matrici.html#cb438-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span id="cb438-8"><a href="matrici.html#cb438-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]   -2    1    1</span></span>
+<span id="cb438-9"><a href="matrici.html#cb438-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    1    1    4</span></span>
+<span id="cb438-10"><a href="matrici.html#cb438-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    2   -3    2</span></span></code></pre></div>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="matrici.html#cb439-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb439-2"><a href="matrici.html#cb439-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">3</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">1</span>),</span>
+<span id="cb439-3"><a href="matrici.html#cb439-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">3</span>,</span>
+<span id="cb439-4"><a href="matrici.html#cb439-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb439-5"><a href="matrici.html#cb439-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb439-6"><a href="matrici.html#cb439-6" aria-hidden="true" tabindex="-1"></a>B</span>
+<span id="cb439-7"><a href="matrici.html#cb439-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span id="cb439-8"><a href="matrici.html#cb439-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    3   -2    1</span></span>
+<span id="cb439-9"><a href="matrici.html#cb439-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    4    5    0</span></span>
+<span id="cb439-10"><a href="matrici.html#cb439-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    1   -3    1</span></span></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="matrici.html#cb440-1" aria-hidden="true" tabindex="-1"></a>A <span class="sc">%*%</span> B</span>
+<span id="cb440-2"><a href="matrici.html#cb440-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span id="cb440-3"><a href="matrici.html#cb440-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]   -1    6   -1</span></span>
+<span id="cb440-4"><a href="matrici.html#cb440-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]   11   -9    5</span></span>
+<span id="cb440-5"><a href="matrici.html#cb440-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]   -4  -25    4</span></span></code></pre></div>
 <p>Calcolando il prodotto <span class="math inline">\(\boldsymbol{D} = \boldsymbol{BA}\)</span> si trova
 invece:</p>
 <p><span class="math display">\[
@@ -1046,11 +1045,11 @@ invece:</p>
 \right]
 \]</span></p>
 <p>da cui risulta evidente che <span class="math inline">\(\boldsymbol{AB} \neq \boldsymbol{BA}\)</span>.</p>
-<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="matrici.html#cb437-1" aria-hidden="true" tabindex="-1"></a>B <span class="sc">%*%</span> A</span>
-<span id="cb437-2"><a href="matrici.html#cb437-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
-<span id="cb437-3"><a href="matrici.html#cb437-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]   -6   -2   -3</span></span>
-<span id="cb437-4"><a href="matrici.html#cb437-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]   -3    9   24</span></span>
-<span id="cb437-5"><a href="matrici.html#cb437-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]   -3   -5   -9</span></span></code></pre></div>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="matrici.html#cb441-1" aria-hidden="true" tabindex="-1"></a>B <span class="sc">%*%</span> A</span>
+<span id="cb441-2"><a href="matrici.html#cb441-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span id="cb441-3"><a href="matrici.html#cb441-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]   -6   -2   -3</span></span>
+<span id="cb441-4"><a href="matrici.html#cb441-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]   -3    9   24</span></span>
+<span id="cb441-5"><a href="matrici.html#cb441-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]   -3   -5   -9</span></span></code></pre></div>
 </div>
 <div id="proprietà-del-prodotto-di-matrici" class="section level3 hasAnchor" number="31.2.13">
 <h3><span class="header-section-number">E.2.13</span> Proprietà del prodotto di matrici<a href="matrici.html#proprietà-del-prodotto-di-matrici" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1092,27 +1091,27 @@ invece:</p>
 \right)
 \]</span></p>
 <p>In R la matrice identità si crea nel modo seguente.</p>
-<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="matrici.html#cb438-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(<span class="dv">2</span>)</span>
-<span id="cb438-2"><a href="matrici.html#cb438-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
-<span id="cb438-3"><a href="matrici.html#cb438-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    0</span></span>
-<span id="cb438-4"><a href="matrici.html#cb438-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    0    1</span></span></code></pre></div>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="matrici.html#cb442-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(<span class="dv">2</span>)</span>
+<span id="cb442-2"><a href="matrici.html#cb442-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
+<span id="cb442-3"><a href="matrici.html#cb442-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    0</span></span>
+<span id="cb442-4"><a href="matrici.html#cb442-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    0    1</span></span></code></pre></div>
 <p>Dunque</p>
-<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="matrici.html#cb439-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb439-2"><a href="matrici.html#cb439-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>),</span>
-<span id="cb439-3"><a href="matrici.html#cb439-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
-<span id="cb439-4"><a href="matrici.html#cb439-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb439-5"><a href="matrici.html#cb439-5" aria-hidden="true" tabindex="-1"></a>A</span>
-<span id="cb439-6"><a href="matrici.html#cb439-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
-<span id="cb439-7"><a href="matrici.html#cb439-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    2    3   -1</span></span>
-<span id="cb439-8"><a href="matrici.html#cb439-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    1    4    7</span></span></code></pre></div>
-<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="matrici.html#cb440-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(<span class="dv">2</span>) <span class="sc">%*%</span> A</span>
-<span id="cb440-2"><a href="matrici.html#cb440-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
-<span id="cb440-3"><a href="matrici.html#cb440-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    2    3   -1</span></span>
-<span id="cb440-4"><a href="matrici.html#cb440-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    1    4    7</span></span></code></pre></div>
-<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="matrici.html#cb441-1" aria-hidden="true" tabindex="-1"></a>A <span class="sc">%*%</span> <span class="fu">diag</span>(<span class="dv">3</span>)</span>
-<span id="cb441-2"><a href="matrici.html#cb441-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
-<span id="cb441-3"><a href="matrici.html#cb441-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    2    3   -1</span></span>
-<span id="cb441-4"><a href="matrici.html#cb441-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    1    4    7</span></span></code></pre></div>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="matrici.html#cb443-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb443-2"><a href="matrici.html#cb443-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>),</span>
+<span id="cb443-3"><a href="matrici.html#cb443-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb443-4"><a href="matrici.html#cb443-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb443-5"><a href="matrici.html#cb443-5" aria-hidden="true" tabindex="-1"></a>A</span>
+<span id="cb443-6"><a href="matrici.html#cb443-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span id="cb443-7"><a href="matrici.html#cb443-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    2    3   -1</span></span>
+<span id="cb443-8"><a href="matrici.html#cb443-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    1    4    7</span></span></code></pre></div>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="matrici.html#cb444-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(<span class="dv">2</span>) <span class="sc">%*%</span> A</span>
+<span id="cb444-2"><a href="matrici.html#cb444-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span id="cb444-3"><a href="matrici.html#cb444-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    2    3   -1</span></span>
+<span id="cb444-4"><a href="matrici.html#cb444-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    1    4    7</span></span></code></pre></div>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="matrici.html#cb445-1" aria-hidden="true" tabindex="-1"></a>A <span class="sc">%*%</span> <span class="fu">diag</span>(<span class="dv">3</span>)</span>
+<span id="cb445-2"><a href="matrici.html#cb445-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span id="cb445-3"><a href="matrici.html#cb445-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    2    3   -1</span></span>
+<span id="cb445-4"><a href="matrici.html#cb445-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    1    4    7</span></span></code></pre></div>
 <p>Un secondo caso particolare si verifica quando una matrice è costituita
 da un’unica colonna o un’unica riga. Se la matrice <span class="math inline">\(\boldsymbol{A}\)</span> si
 riduce ad una sola colonna (o una sola riga) e viene detta vettore
@@ -1163,29 +1162,29 @@ elementi <span class="math inline">\(c_{ij} = a_i b_j\)</span>.</p>
 \]</span></p>
 <p>Osserviamo che tale operazione gode della proprietà
 commutativa, poichè <span class="math inline">\(\boldsymbol{b}&#39;\boldsymbol{a}=7\)</span>.</p>
-<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="matrici.html#cb442-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb442-2"><a href="matrici.html#cb442-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
-<span id="cb442-3"><a href="matrici.html#cb442-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">3</span>,</span>
-<span id="cb442-4"><a href="matrici.html#cb442-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
-<span id="cb442-5"><a href="matrici.html#cb442-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb442-6"><a href="matrici.html#cb442-6" aria-hidden="true" tabindex="-1"></a>a</span>
-<span id="cb442-7"><a href="matrici.html#cb442-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1]</span></span>
-<span id="cb442-8"><a href="matrici.html#cb442-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1</span></span>
-<span id="cb442-9"><a href="matrici.html#cb442-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    2</span></span>
-<span id="cb442-10"><a href="matrici.html#cb442-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    3</span></span></code></pre></div>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="matrici.html#cb443-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb443-2"><a href="matrici.html#cb443-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">4</span>),</span>
-<span id="cb443-3"><a href="matrici.html#cb443-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">3</span>,</span>
-<span id="cb443-4"><a href="matrici.html#cb443-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
-<span id="cb443-5"><a href="matrici.html#cb443-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb443-6"><a href="matrici.html#cb443-6" aria-hidden="true" tabindex="-1"></a>b</span>
-<span id="cb443-7"><a href="matrici.html#cb443-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1]</span></span>
-<span id="cb443-8"><a href="matrici.html#cb443-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]   -1</span></span>
-<span id="cb443-9"><a href="matrici.html#cb443-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]   -2</span></span>
-<span id="cb443-10"><a href="matrici.html#cb443-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    4</span></span></code></pre></div>
-<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="matrici.html#cb444-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(a) <span class="sc">%*%</span> b</span>
-<span id="cb444-2"><a href="matrici.html#cb444-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1]</span></span>
-<span id="cb444-3"><a href="matrici.html#cb444-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    7</span></span></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="matrici.html#cb446-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb446-2"><a href="matrici.html#cb446-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb446-3"><a href="matrici.html#cb446-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">3</span>,</span>
+<span id="cb446-4"><a href="matrici.html#cb446-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb446-5"><a href="matrici.html#cb446-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb446-6"><a href="matrici.html#cb446-6" aria-hidden="true" tabindex="-1"></a>a</span>
+<span id="cb446-7"><a href="matrici.html#cb446-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1]</span></span>
+<span id="cb446-8"><a href="matrici.html#cb446-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1</span></span>
+<span id="cb446-9"><a href="matrici.html#cb446-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    2</span></span>
+<span id="cb446-10"><a href="matrici.html#cb446-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    3</span></span></code></pre></div>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="matrici.html#cb447-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb447-2"><a href="matrici.html#cb447-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">4</span>),</span>
+<span id="cb447-3"><a href="matrici.html#cb447-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">3</span>,</span>
+<span id="cb447-4"><a href="matrici.html#cb447-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb447-5"><a href="matrici.html#cb447-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb447-6"><a href="matrici.html#cb447-6" aria-hidden="true" tabindex="-1"></a>b</span>
+<span id="cb447-7"><a href="matrici.html#cb447-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1]</span></span>
+<span id="cb447-8"><a href="matrici.html#cb447-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]   -1</span></span>
+<span id="cb447-9"><a href="matrici.html#cb447-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]   -2</span></span>
+<span id="cb447-10"><a href="matrici.html#cb447-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    4</span></span></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="matrici.html#cb448-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(a) <span class="sc">%*%</span> b</span>
+<span id="cb448-2"><a href="matrici.html#cb448-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1]</span></span>
+<span id="cb448-3"><a href="matrici.html#cb448-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    7</span></span></code></pre></div>
 </div>
 <div id="prodotto-esterno" class="section level3 hasAnchor" number="31.2.17">
 <h3><span class="header-section-number">E.2.17</span> Prodotto esterno<a href="matrici.html#prodotto-esterno" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1199,11 +1198,11 @@ commutativa, poichè <span class="math inline">\(\boldsymbol{b}&#39;\boldsymbol{
 \end{array}
 \right]
 \]</span></p>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="matrici.html#cb445-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">%*%</span> <span class="fu">t</span>(b)</span>
-<span id="cb445-2"><a href="matrici.html#cb445-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
-<span id="cb445-3"><a href="matrici.html#cb445-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]   -1   -2    4</span></span>
-<span id="cb445-4"><a href="matrici.html#cb445-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]   -2   -4    8</span></span>
-<span id="cb445-5"><a href="matrici.html#cb445-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]   -3   -6   12</span></span></code></pre></div>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="matrici.html#cb449-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">%*%</span> <span class="fu">t</span>(b)</span>
+<span id="cb449-2"><a href="matrici.html#cb449-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span id="cb449-3"><a href="matrici.html#cb449-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]   -1   -2    4</span></span>
+<span id="cb449-4"><a href="matrici.html#cb449-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]   -2   -4    8</span></span>
+<span id="cb449-5"><a href="matrici.html#cb449-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]   -3   -6   12</span></span></code></pre></div>
 <p>Tale prodotto non gode della proprietà commutativa, infatti:</p>
 <p><span class="math display">\[
 \boldsymbol{D} = \boldsymbol{b}\boldsymbol{a}&#39;= \left[
@@ -1214,11 +1213,11 @@ commutativa, poichè <span class="math inline">\(\boldsymbol{b}&#39;\boldsymbol{
 \end{array}
 \right]
 \]</span></p>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="matrici.html#cb446-1" aria-hidden="true" tabindex="-1"></a>b <span class="sc">%*%</span> <span class="fu">t</span>(a)</span>
-<span id="cb446-2"><a href="matrici.html#cb446-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
-<span id="cb446-3"><a href="matrici.html#cb446-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]   -1   -2   -3</span></span>
-<span id="cb446-4"><a href="matrici.html#cb446-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]   -2   -4   -6</span></span>
-<span id="cb446-5"><a href="matrici.html#cb446-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    4    8   12</span></span></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="matrici.html#cb450-1" aria-hidden="true" tabindex="-1"></a>b <span class="sc">%*%</span> <span class="fu">t</span>(a)</span>
+<span id="cb450-2"><a href="matrici.html#cb450-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span id="cb450-3"><a href="matrici.html#cb450-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]   -1   -2   -3</span></span>
+<span id="cb450-4"><a href="matrici.html#cb450-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]   -2   -4   -6</span></span>
+<span id="cb450-5"><a href="matrici.html#cb450-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    4    8   12</span></span></code></pre></div>
 </div>
 <div id="traccia-di-una-matrice" class="section level3 hasAnchor" number="31.2.18">
 <h3><span class="header-section-number">E.2.18</span> Traccia di una matrice<a href="matrici.html#traccia-di-una-matrice" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1247,18 +1246,18 @@ tr(\boldsymbol{A}) = \sum_{i=1}^{n} a_{ii}
 <p><span class="math display">\[
 tr(\boldsymbol{A}) = 7 + 8 + 9 = 24.
 \]</span></p>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="matrici.html#cb447-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb447-2"><a href="matrici.html#cb447-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">9</span>),</span>
-<span id="cb447-3"><a href="matrici.html#cb447-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">3</span>,</span>
-<span id="cb447-4"><a href="matrici.html#cb447-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
-<span id="cb447-5"><a href="matrici.html#cb447-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb447-6"><a href="matrici.html#cb447-6" aria-hidden="true" tabindex="-1"></a>A</span>
-<span id="cb447-7"><a href="matrici.html#cb447-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
-<span id="cb447-8"><a href="matrici.html#cb447-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    7    1    2</span></span>
-<span id="cb447-9"><a href="matrici.html#cb447-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    1    8    3</span></span>
-<span id="cb447-10"><a href="matrici.html#cb447-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    2    3    9</span></span></code></pre></div>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="matrici.html#cb448-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">diag</span>(A))</span>
-<span id="cb448-2"><a href="matrici.html#cb448-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 24</span></span></code></pre></div>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="matrici.html#cb451-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb451-2"><a href="matrici.html#cb451-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">9</span>),</span>
+<span id="cb451-3"><a href="matrici.html#cb451-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">3</span>,</span>
+<span id="cb451-4"><a href="matrici.html#cb451-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb451-5"><a href="matrici.html#cb451-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb451-6"><a href="matrici.html#cb451-6" aria-hidden="true" tabindex="-1"></a>A</span>
+<span id="cb451-7"><a href="matrici.html#cb451-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span id="cb451-8"><a href="matrici.html#cb451-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    7    1    2</span></span>
+<span id="cb451-9"><a href="matrici.html#cb451-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    1    8    3</span></span>
+<span id="cb451-10"><a href="matrici.html#cb451-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    2    3    9</span></span></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="matrici.html#cb452-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">diag</span>(A))</span>
+<span id="cb452-2"><a href="matrici.html#cb452-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 24</span></span></code></pre></div>
 <div id="dipendenza-lineare" class="section level5 hasAnchor" number="31.2.18.0.1">
 <h5><span class="header-section-number">E.2.18.0.1</span> Dipendenza lineare<a href="matrici.html#dipendenza-lineare" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Si consideri la matrice</p>
@@ -1383,63 +1382,63 @@ matrice inversa.</p>
 \end{array}
 \right]
 \]</span></p>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="matrici.html#cb449-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb449-2"><a href="matrici.html#cb449-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">6</span>),</span>
-<span id="cb449-3"><a href="matrici.html#cb449-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">2</span>,</span>
-<span id="cb449-4"><a href="matrici.html#cb449-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
-<span id="cb449-5"><a href="matrici.html#cb449-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb449-6"><a href="matrici.html#cb449-6" aria-hidden="true" tabindex="-1"></a>A</span>
-<span id="cb449-7"><a href="matrici.html#cb449-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
-<span id="cb449-8"><a href="matrici.html#cb449-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    3    4</span></span>
-<span id="cb449-9"><a href="matrici.html#cb449-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    2    6</span></span></code></pre></div>
-<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="matrici.html#cb450-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(A)</span>
-<span id="cb450-2"><a href="matrici.html#cb450-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
-<span id="cb450-3"><a href="matrici.html#cb450-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]  0.6 -0.4</span></span>
-<span id="cb450-4"><a href="matrici.html#cb450-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] -0.2  0.3</span></span></code></pre></div>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="matrici.html#cb451-1" aria-hidden="true" tabindex="-1"></a>A <span class="sc">%*%</span> <span class="fu">solve</span>(A)</span>
-<span id="cb451-2"><a href="matrici.html#cb451-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
-<span id="cb451-3"><a href="matrici.html#cb451-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    0</span></span>
-<span id="cb451-4"><a href="matrici.html#cb451-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    0    1</span></span></code></pre></div>
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="matrici.html#cb452-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(A) <span class="sc">%*%</span> A</span>
-<span id="cb452-2"><a href="matrici.html#cb452-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
-<span id="cb452-3"><a href="matrici.html#cb452-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    0</span></span>
-<span id="cb452-4"><a href="matrici.html#cb452-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    0    1</span></span></code></pre></div>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="matrici.html#cb453-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb453-2"><a href="matrici.html#cb453-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">6</span>),</span>
+<span id="cb453-3"><a href="matrici.html#cb453-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb453-4"><a href="matrici.html#cb453-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb453-5"><a href="matrici.html#cb453-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb453-6"><a href="matrici.html#cb453-6" aria-hidden="true" tabindex="-1"></a>A</span>
+<span id="cb453-7"><a href="matrici.html#cb453-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
+<span id="cb453-8"><a href="matrici.html#cb453-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    3    4</span></span>
+<span id="cb453-9"><a href="matrici.html#cb453-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    2    6</span></span></code></pre></div>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="matrici.html#cb454-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(A)</span>
+<span id="cb454-2"><a href="matrici.html#cb454-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
+<span id="cb454-3"><a href="matrici.html#cb454-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]  0.6 -0.4</span></span>
+<span id="cb454-4"><a href="matrici.html#cb454-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] -0.2  0.3</span></span></code></pre></div>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="matrici.html#cb455-1" aria-hidden="true" tabindex="-1"></a>A <span class="sc">%*%</span> <span class="fu">solve</span>(A)</span>
+<span id="cb455-2"><a href="matrici.html#cb455-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
+<span id="cb455-3"><a href="matrici.html#cb455-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    0</span></span>
+<span id="cb455-4"><a href="matrici.html#cb455-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    0    1</span></span></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="matrici.html#cb456-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(A) <span class="sc">%*%</span> A</span>
+<span id="cb456-2"><a href="matrici.html#cb456-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
+<span id="cb456-3"><a href="matrici.html#cb456-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    0</span></span>
+<span id="cb456-4"><a href="matrici.html#cb456-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    0    1</span></span></code></pre></div>
 <p>Se <span class="math inline">\(\boldsymbol{A}\)</span> e <span class="math inline">\(\boldsymbol{B}\)</span> sono due matrici non singolari
 aventi le stesse dimensioni, allora l’inversa del loro prodotto è uguale
 al prodotto delle loro inverse nella sequenza opposta:</p>
 <p><span class="math display">\[
 (\boldsymbol{AB})^{-1}=\boldsymbol{B}^{-1}\boldsymbol{A}^{-1}
 \]</span></p>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="matrici.html#cb453-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb453-2"><a href="matrici.html#cb453-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">9</span>, <span class="dv">7</span>),</span>
-<span id="cb453-3"><a href="matrici.html#cb453-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">2</span>,</span>
-<span id="cb453-4"><a href="matrici.html#cb453-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
-<span id="cb453-5"><a href="matrici.html#cb453-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb453-6"><a href="matrici.html#cb453-6" aria-hidden="true" tabindex="-1"></a>B</span>
-<span id="cb453-7"><a href="matrici.html#cb453-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
-<span id="cb453-8"><a href="matrici.html#cb453-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    2</span></span>
-<span id="cb453-9"><a href="matrici.html#cb453-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    9    7</span></span></code></pre></div>
-<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="matrici.html#cb454-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(A <span class="sc">%*%</span> B)</span>
-<span id="cb454-2"><a href="matrici.html#cb454-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            [,1]       [,2]</span></span>
-<span id="cb454-3"><a href="matrici.html#cb454-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] -0.4181818  0.3090909</span></span>
-<span id="cb454-4"><a href="matrici.html#cb454-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]  0.5090909 -0.3545455</span></span></code></pre></div>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="matrici.html#cb455-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(B) <span class="sc">%*%</span> <span class="fu">solve</span>(A)</span>
-<span id="cb455-2"><a href="matrici.html#cb455-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            [,1]       [,2]</span></span>
-<span id="cb455-3"><a href="matrici.html#cb455-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] -0.4181818  0.3090909</span></span>
-<span id="cb455-4"><a href="matrici.html#cb455-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]  0.5090909 -0.3545455</span></span></code></pre></div>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="matrici.html#cb457-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb457-2"><a href="matrici.html#cb457-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">9</span>, <span class="dv">7</span>),</span>
+<span id="cb457-3"><a href="matrici.html#cb457-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb457-4"><a href="matrici.html#cb457-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb457-5"><a href="matrici.html#cb457-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb457-6"><a href="matrici.html#cb457-6" aria-hidden="true" tabindex="-1"></a>B</span>
+<span id="cb457-7"><a href="matrici.html#cb457-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
+<span id="cb457-8"><a href="matrici.html#cb457-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    2</span></span>
+<span id="cb457-9"><a href="matrici.html#cb457-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    9    7</span></span></code></pre></div>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="matrici.html#cb458-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(A <span class="sc">%*%</span> B)</span>
+<span id="cb458-2"><a href="matrici.html#cb458-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            [,1]       [,2]</span></span>
+<span id="cb458-3"><a href="matrici.html#cb458-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] -0.4181818  0.3090909</span></span>
+<span id="cb458-4"><a href="matrici.html#cb458-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]  0.5090909 -0.3545455</span></span></code></pre></div>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="matrici.html#cb459-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(B) <span class="sc">%*%</span> <span class="fu">solve</span>(A)</span>
+<span id="cb459-2"><a href="matrici.html#cb459-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            [,1]       [,2]</span></span>
+<span id="cb459-3"><a href="matrici.html#cb459-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] -0.4181818  0.3090909</span></span>
+<span id="cb459-4"><a href="matrici.html#cb459-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]  0.5090909 -0.3545455</span></span></code></pre></div>
 <p>L’inversa della trasposta di una matrice non singolare è uguale alla
 trasposta dell’inversa:</p>
 <p><span class="math display">\[
 (\boldsymbol{A}&#39;)^{-1}=(\boldsymbol{A}^{-1})&#39;
 \]</span></p>
-<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="matrici.html#cb456-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(<span class="fu">t</span>(A))</span>
-<span id="cb456-2"><a href="matrici.html#cb456-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
-<span id="cb456-3"><a href="matrici.html#cb456-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]  0.6 -0.2</span></span>
-<span id="cb456-4"><a href="matrici.html#cb456-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] -0.4  0.3</span></span></code></pre></div>
-<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="matrici.html#cb457-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(<span class="fu">solve</span>(A))</span>
-<span id="cb457-2"><a href="matrici.html#cb457-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
-<span id="cb457-3"><a href="matrici.html#cb457-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]  0.6 -0.2</span></span>
-<span id="cb457-4"><a href="matrici.html#cb457-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] -0.4  0.3</span></span></code></pre></div>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="matrici.html#cb460-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(<span class="fu">t</span>(A))</span>
+<span id="cb460-2"><a href="matrici.html#cb460-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
+<span id="cb460-3"><a href="matrici.html#cb460-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]  0.6 -0.2</span></span>
+<span id="cb460-4"><a href="matrici.html#cb460-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] -0.4  0.3</span></span></code></pre></div>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="matrici.html#cb461-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(<span class="fu">solve</span>(A))</span>
+<span id="cb461-2"><a href="matrici.html#cb461-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
+<span id="cb461-3"><a href="matrici.html#cb461-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]  0.6 -0.2</span></span>
+<span id="cb461-4"><a href="matrici.html#cb461-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] -0.4  0.3</span></span></code></pre></div>
 </div>
 <div id="determinante-di-una-matrice" class="section level3 hasAnchor" number="31.2.21">
 <h3><span class="header-section-number">E.2.21</span> Determinante di una matrice<a href="matrici.html#determinante-di-una-matrice" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1473,17 +1472,17 @@ a_{21} &amp; a_{22} \end{array} \right]
 <p>Il determinante è definito anche per matrici di dimensioni superiori
 anche se, in quel caso, i calcoli sono molto più complessi (una volta
 ancora, si usi il computer!).</p>
-<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="matrici.html#cb458-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb458-2"><a href="matrici.html#cb458-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">9</span>),</span>
-<span id="cb458-3"><a href="matrici.html#cb458-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">2</span>,</span>
-<span id="cb458-4"><a href="matrici.html#cb458-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
-<span id="cb458-5"><a href="matrici.html#cb458-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb458-6"><a href="matrici.html#cb458-6" aria-hidden="true" tabindex="-1"></a>A</span>
-<span id="cb458-7"><a href="matrici.html#cb458-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
-<span id="cb458-8"><a href="matrici.html#cb458-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1   -2</span></span>
-<span id="cb458-9"><a href="matrici.html#cb458-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    3    9</span></span></code></pre></div>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="matrici.html#cb459-1" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(A)</span>
-<span id="cb459-2"><a href="matrici.html#cb459-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 15</span></span></code></pre></div>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="matrici.html#cb462-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb462-2"><a href="matrici.html#cb462-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">9</span>),</span>
+<span id="cb462-3"><a href="matrici.html#cb462-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb462-4"><a href="matrici.html#cb462-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb462-5"><a href="matrici.html#cb462-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb462-6"><a href="matrici.html#cb462-6" aria-hidden="true" tabindex="-1"></a>A</span>
+<span id="cb462-7"><a href="matrici.html#cb462-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
+<span id="cb462-8"><a href="matrici.html#cb462-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1   -2</span></span>
+<span id="cb462-9"><a href="matrici.html#cb462-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    3    9</span></span></code></pre></div>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="matrici.html#cb463-1" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(A)</span>
+<span id="cb463-2"><a href="matrici.html#cb463-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 15</span></span></code></pre></div>
 </div>
 <div id="determinante-e-inversa" class="section level3 hasAnchor" number="31.2.22">
 <h3><span class="header-section-number">E.2.22</span> Determinante e inversa<a href="matrici.html#determinante-e-inversa" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1557,18 +1556,18 @@ a_{21} &amp; a_{22} \end{array} \right)
 |\boldsymbol{A}| = 2a_{12}a_{22}-2a_{12}a_{22}=0
 \]</span></p>
 <p>In conclusione, se il determinante è uguale a zero, allora la matrice inversa non esiste. Nel caso di una matrice (<span class="math inline">\(2 \times 2\)</span>), infatti, la formula dell’inversa richiede la divisione per <span class="math inline">\(a_{11}a_{22}-a_{12}a_{21}\)</span> che, nel caso di una matrice singolare, è uguale a zero.</p>
-<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="matrici.html#cb460-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb460-2"><a href="matrici.html#cb460-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">6</span>),</span>
-<span id="cb460-3"><a href="matrici.html#cb460-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">2</span>,</span>
-<span id="cb460-4"><a href="matrici.html#cb460-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
-<span id="cb460-5"><a href="matrici.html#cb460-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb460-6"><a href="matrici.html#cb460-6" aria-hidden="true" tabindex="-1"></a>A</span>
-<span id="cb460-7"><a href="matrici.html#cb460-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
-<span id="cb460-8"><a href="matrici.html#cb460-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    2    4</span></span>
-<span id="cb460-9"><a href="matrici.html#cb460-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    3    6</span></span></code></pre></div>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="matrici.html#cb461-1" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(A)</span>
-<span id="cb461-2"><a href="matrici.html#cb461-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0</span></span></code></pre></div>
-<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="matrici.html#cb462-1" aria-hidden="true" tabindex="-1"></a><span class="co"># solve(A)</span></span></code></pre></div>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="matrici.html#cb464-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb464-2"><a href="matrici.html#cb464-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">6</span>),</span>
+<span id="cb464-3"><a href="matrici.html#cb464-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb464-4"><a href="matrici.html#cb464-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb464-5"><a href="matrici.html#cb464-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb464-6"><a href="matrici.html#cb464-6" aria-hidden="true" tabindex="-1"></a>A</span>
+<span id="cb464-7"><a href="matrici.html#cb464-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
+<span id="cb464-8"><a href="matrici.html#cb464-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    2    4</span></span>
+<span id="cb464-9"><a href="matrici.html#cb464-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    3    6</span></span></code></pre></div>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="matrici.html#cb465-1" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(A)</span>
+<span id="cb465-2"><a href="matrici.html#cb465-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0</span></span></code></pre></div>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="matrici.html#cb466-1" aria-hidden="true" tabindex="-1"></a><span class="co"># solve(A)</span></span></code></pre></div>
 </div>
 <div id="proprietà-del-determinante" class="section level3 hasAnchor" number="31.2.23">
 <h3><span class="header-section-number">E.2.23</span> Proprietà del determinante<a href="matrici.html#proprietà-del-determinante" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1595,28 +1594,28 @@ o <em>autovalori</em> (denotati da <span class="math inline">\(\lambda_i\)</span
 <em>autovettori</em> della matrice. Alle nozioni di autovalore e autovettore
 verrà qui fornita un’interpretazione geometrica.</p>
 <p>Simuliamo di dati di due variabili associate tra loro:</p>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="matrici.html#cb463-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;car&quot;</span>)</span>
-<span id="cb463-2"><a href="matrici.html#cb463-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123456</span>)</span>
-<span id="cb463-3"><a href="matrici.html#cb463-3" aria-hidden="true" tabindex="-1"></a>npoints <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb463-4"><a href="matrici.html#cb463-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(<span class="fu">rnorm</span>(npoints, <span class="dv">0</span>, <span class="dv">1</span>)))</span>
-<span id="cb463-5"><a href="matrici.html#cb463-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(<span class="dv">3</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(npoints, <span class="dv">0</span>, <span class="dv">2</span>)))</span>
-<span id="cb463-6"><a href="matrici.html#cb463-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span>
-<span id="cb463-7"><a href="matrici.html#cb463-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.076511e-17</span></span>
-<span id="cb463-8"><a href="matrici.html#cb463-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y)</span>
-<span id="cb463-9"><a href="matrici.html#cb463-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -1.872959e-17</span></span>
-<span id="cb463-10"><a href="matrici.html#cb463-10" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x, y)</span>
-<span id="cb463-11"><a href="matrici.html#cb463-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.8291033</span></span></code></pre></div>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="matrici.html#cb467-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;car&quot;</span>)</span>
+<span id="cb467-2"><a href="matrici.html#cb467-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123456</span>)</span>
+<span id="cb467-3"><a href="matrici.html#cb467-3" aria-hidden="true" tabindex="-1"></a>npoints <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb467-4"><a href="matrici.html#cb467-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(<span class="fu">rnorm</span>(npoints, <span class="dv">0</span>, <span class="dv">1</span>)))</span>
+<span id="cb467-5"><a href="matrici.html#cb467-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(<span class="dv">3</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(npoints, <span class="dv">0</span>, <span class="dv">2</span>)))</span>
+<span id="cb467-6"><a href="matrici.html#cb467-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span>
+<span id="cb467-7"><a href="matrici.html#cb467-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.076511e-17</span></span>
+<span id="cb467-8"><a href="matrici.html#cb467-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y)</span>
+<span id="cb467-9"><a href="matrici.html#cb467-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -1.872959e-17</span></span>
+<span id="cb467-10"><a href="matrici.html#cb467-10" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x, y)</span>
+<span id="cb467-11"><a href="matrici.html#cb467-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.8291033</span></span></code></pre></div>
 <p>Disegnamo il diagramma di dispersione con un ellisse che contiene la
 nube di punti:</p>
-<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="matrici.html#cb464-1" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">cbind</span>(x, y)</span>
-<span id="cb464-2"><a href="matrici.html#cb464-2" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">dataEllipse</span>(</span>
-<span id="cb464-3"><a href="matrici.html#cb464-3" aria-hidden="true" tabindex="-1"></a>  Y[, <span class="dv">1</span>], Y[, <span class="dv">2</span>],</span>
-<span id="cb464-4"><a href="matrici.html#cb464-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fl">0.95</span>,</span>
-<span id="cb464-5"><a href="matrici.html#cb464-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">lty =</span> <span class="dv">2</span>,</span>
-<span id="cb464-6"><a href="matrici.html#cb464-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>),</span>
-<span id="cb464-7"><a href="matrici.html#cb464-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb464-8"><a href="matrici.html#cb464-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="cfa_files/figure-html/unnamed-chunk-481-1.png" width="384" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="matrici.html#cb468-1" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">cbind</span>(x, y)</span>
+<span id="cb468-2"><a href="matrici.html#cb468-2" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">dataEllipse</span>(</span>
+<span id="cb468-3"><a href="matrici.html#cb468-3" aria-hidden="true" tabindex="-1"></a>  Y[, <span class="dv">1</span>], Y[, <span class="dv">2</span>],</span>
+<span id="cb468-4"><a href="matrici.html#cb468-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fl">0.95</span>,</span>
+<span id="cb468-5"><a href="matrici.html#cb468-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">lty =</span> <span class="dv">2</span>,</span>
+<span id="cb468-6"><a href="matrici.html#cb468-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>),</span>
+<span id="cb468-7"><a href="matrici.html#cb468-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb468-8"><a href="matrici.html#cb468-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="cfa_files/figure-html/unnamed-chunk-485-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>Se racchiudiamo le osservazioni (<span class="math inline">\(v_1, v_2\)</span>) con un’ellisse, allora la
 lunghezza dei semiassi maggiori e minori dell’ellisse sarà proporzionale
 a <span class="math inline">\(\sqrt{\lambda_1}\)</span> e <span class="math inline">\(\sqrt{\lambda_2}\)</span>. L’asse maggiore è la linea
@@ -1626,34 +1625,34 @@ uguale a <span class="math inline">\(a_{12}/a_{11}\)</span>. L’asse minore è 
 (<span class="math inline">\(\bar{v_1}, \bar{v_2}\)</span>) nella direzione determinata dal secondo
 autovettore <span class="math inline">\(\boldsymbol{a}_2\)</span>.</p>
 <p>Calcoliamo ora gli autovettori e gli autovalori:</p>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="matrici.html#cb465-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">cov</span>(Y)</span>
-<span id="cb465-2"><a href="matrici.html#cb465-2" aria-hidden="true" tabindex="-1"></a>ee <span class="ot">&lt;-</span> <span class="fu">eigen</span>(s)</span></code></pre></div>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="matrici.html#cb469-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">cov</span>(Y)</span>
+<span id="cb469-2"><a href="matrici.html#cb469-2" aria-hidden="true" tabindex="-1"></a>ee <span class="ot">&lt;-</span> <span class="fu">eigen</span>(s)</span></code></pre></div>
 <p>Disegniamo gli assi dell’ellisse:</p>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="matrici.html#cb466-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">dataEllipse</span>(</span>
-<span id="cb466-2"><a href="matrici.html#cb466-2" aria-hidden="true" tabindex="-1"></a>  Y[, <span class="dv">1</span>], Y[, <span class="dv">2</span>],</span>
-<span id="cb466-3"><a href="matrici.html#cb466-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fl">0.95</span>,</span>
-<span id="cb466-4"><a href="matrici.html#cb466-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">lty =</span> <span class="dv">2</span>,</span>
-<span id="cb466-5"><a href="matrici.html#cb466-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>),</span>
-<span id="cb466-6"><a href="matrici.html#cb466-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb466-7"><a href="matrici.html#cb466-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb466-8"><a href="matrici.html#cb466-8" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="fl">2.65</span></span>
-<span id="cb466-9"><a href="matrici.html#cb466-9" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(</span>
-<span id="cb466-10"><a href="matrici.html#cb466-10" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>, <span class="dv">0</span>,</span>
-<span id="cb466-11"><a href="matrici.html#cb466-11" aria-hidden="true" tabindex="-1"></a>  k <span class="sc">*</span> <span class="fu">sqrt</span>(ee<span class="sc">$</span>values[<span class="dv">1</span>]) <span class="sc">*</span> ee<span class="sc">$</span>vectors[<span class="dv">1</span>],</span>
-<span id="cb466-12"><a href="matrici.html#cb466-12" aria-hidden="true" tabindex="-1"></a>  k <span class="sc">*</span> <span class="fu">sqrt</span>(ee<span class="sc">$</span>values[<span class="dv">1</span>]) <span class="sc">*</span> ee<span class="sc">$</span>vectors[<span class="dv">2</span>],</span>
-<span id="cb466-13"><a href="matrici.html#cb466-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">code =</span> <span class="dv">2</span>,</span>
-<span id="cb466-14"><a href="matrici.html#cb466-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">&quot;red&quot;</span>,</span>
-<span id="cb466-15"><a href="matrici.html#cb466-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">lwd =</span> <span class="dv">2</span></span>
-<span id="cb466-16"><a href="matrici.html#cb466-16" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb466-17"><a href="matrici.html#cb466-17" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(</span>
-<span id="cb466-18"><a href="matrici.html#cb466-18" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>, <span class="dv">0</span>,</span>
-<span id="cb466-19"><a href="matrici.html#cb466-19" aria-hidden="true" tabindex="-1"></a>  k <span class="sc">*</span> <span class="fu">sqrt</span>(ee<span class="sc">$</span>values[<span class="dv">2</span>]) <span class="sc">*</span> ee<span class="sc">$</span>vectors[<span class="dv">1</span>],</span>
-<span id="cb466-20"><a href="matrici.html#cb466-20" aria-hidden="true" tabindex="-1"></a>  k <span class="sc">*</span> <span class="fu">sqrt</span>(ee<span class="sc">$</span>values[<span class="dv">2</span>]) <span class="sc">*</span> <span class="sc">-</span>ee<span class="sc">$</span>vectors[<span class="dv">2</span>],</span>
-<span id="cb466-21"><a href="matrici.html#cb466-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">code =</span> <span class="dv">2</span>,</span>
-<span id="cb466-22"><a href="matrici.html#cb466-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">&quot;red&quot;</span>,</span>
-<span id="cb466-23"><a href="matrici.html#cb466-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">lwd =</span> <span class="dv">2</span></span>
-<span id="cb466-24"><a href="matrici.html#cb466-24" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="cfa_files/figure-html/unnamed-chunk-483-1.png" width="384" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="matrici.html#cb470-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">dataEllipse</span>(</span>
+<span id="cb470-2"><a href="matrici.html#cb470-2" aria-hidden="true" tabindex="-1"></a>  Y[, <span class="dv">1</span>], Y[, <span class="dv">2</span>],</span>
+<span id="cb470-3"><a href="matrici.html#cb470-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fl">0.95</span>,</span>
+<span id="cb470-4"><a href="matrici.html#cb470-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">lty =</span> <span class="dv">2</span>,</span>
+<span id="cb470-5"><a href="matrici.html#cb470-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>),</span>
+<span id="cb470-6"><a href="matrici.html#cb470-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb470-7"><a href="matrici.html#cb470-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb470-8"><a href="matrici.html#cb470-8" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="fl">2.65</span></span>
+<span id="cb470-9"><a href="matrici.html#cb470-9" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(</span>
+<span id="cb470-10"><a href="matrici.html#cb470-10" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>, <span class="dv">0</span>,</span>
+<span id="cb470-11"><a href="matrici.html#cb470-11" aria-hidden="true" tabindex="-1"></a>  k <span class="sc">*</span> <span class="fu">sqrt</span>(ee<span class="sc">$</span>values[<span class="dv">1</span>]) <span class="sc">*</span> ee<span class="sc">$</span>vectors[<span class="dv">1</span>],</span>
+<span id="cb470-12"><a href="matrici.html#cb470-12" aria-hidden="true" tabindex="-1"></a>  k <span class="sc">*</span> <span class="fu">sqrt</span>(ee<span class="sc">$</span>values[<span class="dv">1</span>]) <span class="sc">*</span> ee<span class="sc">$</span>vectors[<span class="dv">2</span>],</span>
+<span id="cb470-13"><a href="matrici.html#cb470-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">code =</span> <span class="dv">2</span>,</span>
+<span id="cb470-14"><a href="matrici.html#cb470-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">&quot;red&quot;</span>,</span>
+<span id="cb470-15"><a href="matrici.html#cb470-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">lwd =</span> <span class="dv">2</span></span>
+<span id="cb470-16"><a href="matrici.html#cb470-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb470-17"><a href="matrici.html#cb470-17" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(</span>
+<span id="cb470-18"><a href="matrici.html#cb470-18" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>, <span class="dv">0</span>,</span>
+<span id="cb470-19"><a href="matrici.html#cb470-19" aria-hidden="true" tabindex="-1"></a>  k <span class="sc">*</span> <span class="fu">sqrt</span>(ee<span class="sc">$</span>values[<span class="dv">2</span>]) <span class="sc">*</span> ee<span class="sc">$</span>vectors[<span class="dv">1</span>],</span>
+<span id="cb470-20"><a href="matrici.html#cb470-20" aria-hidden="true" tabindex="-1"></a>  k <span class="sc">*</span> <span class="fu">sqrt</span>(ee<span class="sc">$</span>values[<span class="dv">2</span>]) <span class="sc">*</span> <span class="sc">-</span>ee<span class="sc">$</span>vectors[<span class="dv">2</span>],</span>
+<span id="cb470-21"><a href="matrici.html#cb470-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">code =</span> <span class="dv">2</span>,</span>
+<span id="cb470-22"><a href="matrici.html#cb470-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">&quot;red&quot;</span>,</span>
+<span id="cb470-23"><a href="matrici.html#cb470-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">lwd =</span> <span class="dv">2</span></span>
+<span id="cb470-24"><a href="matrici.html#cb470-24" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="cfa_files/figure-html/unnamed-chunk-487-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>Tale analisi si può estendere a qualunque numero di variabili. Per
 esempio, nel caso di tre variabili, possiamo pensare di disegnare un
 ellisoide attorno ad una nube di punti nello spazio tridimensionale.
@@ -1682,39 +1681,39 @@ associati ai rispettivi autovalori.</li>
 \boldsymbol{\Lambda},\]</span></p>
 <p>da cui l’affermazione che la matrice degli autovettori diagonalizza <span class="math inline">\(\boldsymbol{A}\)</span>.</p>
 <p>Per esempio,</p>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="matrici.html#cb467-1" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb467-2"><a href="matrici.html#cb467-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="fl">1.25</span>),</span>
-<span id="cb467-3"><a href="matrici.html#cb467-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">2</span>,</span>
-<span id="cb467-4"><a href="matrici.html#cb467-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span></span>
-<span id="cb467-5"><a href="matrici.html#cb467-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb467-6"><a href="matrici.html#cb467-6" aria-hidden="true" tabindex="-1"></a>sigma</span>
-<span id="cb467-7"><a href="matrici.html#cb467-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
-<span id="cb467-8"><a href="matrici.html#cb467-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]  1.0 0.50</span></span>
-<span id="cb467-9"><a href="matrici.html#cb467-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]  0.5 1.25</span></span></code></pre></div>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="matrici.html#cb468-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">eigen</span>(sigma)</span>
-<span id="cb468-2"><a href="matrici.html#cb468-2" aria-hidden="true" tabindex="-1"></a>out</span>
-<span id="cb468-3"><a href="matrici.html#cb468-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; eigen() decomposition</span></span>
-<span id="cb468-4"><a href="matrici.html#cb468-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $values</span></span>
-<span id="cb468-5"><a href="matrici.html#cb468-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.6403882 0.6096118</span></span>
-<span id="cb468-6"><a href="matrici.html#cb468-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb468-7"><a href="matrici.html#cb468-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $vectors</span></span>
-<span id="cb468-8"><a href="matrici.html#cb468-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           [,1]       [,2]</span></span>
-<span id="cb468-9"><a href="matrici.html#cb468-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] 0.6154122 -0.7882054</span></span>
-<span id="cb468-10"><a href="matrici.html#cb468-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] 0.7882054  0.6154122</span></span></code></pre></div>
-<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="matrici.html#cb469-1" aria-hidden="true" tabindex="-1"></a>Lambda <span class="ot">&lt;-</span> <span class="fu">diag</span>(out<span class="sc">$</span>values)</span>
-<span id="cb469-2"><a href="matrici.html#cb469-2" aria-hidden="true" tabindex="-1"></a>Lambda</span>
-<span id="cb469-3"><a href="matrici.html#cb469-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          [,1]      [,2]</span></span>
-<span id="cb469-4"><a href="matrici.html#cb469-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] 1.640388 0.0000000</span></span>
-<span id="cb469-5"><a href="matrici.html#cb469-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] 0.000000 0.6096118</span></span></code></pre></div>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="matrici.html#cb470-1" aria-hidden="true" tabindex="-1"></a>U <span class="ot">&lt;-</span> out<span class="sc">$</span>vectors</span>
-<span id="cb470-2"><a href="matrici.html#cb470-2" aria-hidden="true" tabindex="-1"></a>U</span>
-<span id="cb470-3"><a href="matrici.html#cb470-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           [,1]       [,2]</span></span>
-<span id="cb470-4"><a href="matrici.html#cb470-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] 0.6154122 -0.7882054</span></span>
-<span id="cb470-5"><a href="matrici.html#cb470-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] 0.7882054  0.6154122</span></span></code></pre></div>
-<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="matrici.html#cb471-1" aria-hidden="true" tabindex="-1"></a>U <span class="sc">%*%</span> Lambda <span class="sc">%*%</span> <span class="fu">t</span>(U)</span>
-<span id="cb471-2"><a href="matrici.html#cb471-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
-<span id="cb471-3"><a href="matrici.html#cb471-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]  1.0 0.50</span></span>
-<span id="cb471-4"><a href="matrici.html#cb471-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]  0.5 1.25</span></span></code></pre></div>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="matrici.html#cb471-1" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb471-2"><a href="matrici.html#cb471-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="fl">1.25</span>),</span>
+<span id="cb471-3"><a href="matrici.html#cb471-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb471-4"><a href="matrici.html#cb471-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span></span>
+<span id="cb471-5"><a href="matrici.html#cb471-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb471-6"><a href="matrici.html#cb471-6" aria-hidden="true" tabindex="-1"></a>sigma</span>
+<span id="cb471-7"><a href="matrici.html#cb471-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
+<span id="cb471-8"><a href="matrici.html#cb471-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]  1.0 0.50</span></span>
+<span id="cb471-9"><a href="matrici.html#cb471-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]  0.5 1.25</span></span></code></pre></div>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="matrici.html#cb472-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">eigen</span>(sigma)</span>
+<span id="cb472-2"><a href="matrici.html#cb472-2" aria-hidden="true" tabindex="-1"></a>out</span>
+<span id="cb472-3"><a href="matrici.html#cb472-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; eigen() decomposition</span></span>
+<span id="cb472-4"><a href="matrici.html#cb472-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $values</span></span>
+<span id="cb472-5"><a href="matrici.html#cb472-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.6403882 0.6096118</span></span>
+<span id="cb472-6"><a href="matrici.html#cb472-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb472-7"><a href="matrici.html#cb472-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $vectors</span></span>
+<span id="cb472-8"><a href="matrici.html#cb472-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           [,1]       [,2]</span></span>
+<span id="cb472-9"><a href="matrici.html#cb472-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] 0.6154122 -0.7882054</span></span>
+<span id="cb472-10"><a href="matrici.html#cb472-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] 0.7882054  0.6154122</span></span></code></pre></div>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="matrici.html#cb473-1" aria-hidden="true" tabindex="-1"></a>Lambda <span class="ot">&lt;-</span> <span class="fu">diag</span>(out<span class="sc">$</span>values)</span>
+<span id="cb473-2"><a href="matrici.html#cb473-2" aria-hidden="true" tabindex="-1"></a>Lambda</span>
+<span id="cb473-3"><a href="matrici.html#cb473-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          [,1]      [,2]</span></span>
+<span id="cb473-4"><a href="matrici.html#cb473-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] 1.640388 0.0000000</span></span>
+<span id="cb473-5"><a href="matrici.html#cb473-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] 0.000000 0.6096118</span></span></code></pre></div>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="matrici.html#cb474-1" aria-hidden="true" tabindex="-1"></a>U <span class="ot">&lt;-</span> out<span class="sc">$</span>vectors</span>
+<span id="cb474-2"><a href="matrici.html#cb474-2" aria-hidden="true" tabindex="-1"></a>U</span>
+<span id="cb474-3"><a href="matrici.html#cb474-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           [,1]       [,2]</span></span>
+<span id="cb474-4"><a href="matrici.html#cb474-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] 0.6154122 -0.7882054</span></span>
+<span id="cb474-5"><a href="matrici.html#cb474-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] 0.7882054  0.6154122</span></span></code></pre></div>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="matrici.html#cb475-1" aria-hidden="true" tabindex="-1"></a>U <span class="sc">%*%</span> Lambda <span class="sc">%*%</span> <span class="fu">t</span>(U)</span>
+<span id="cb475-2"><a href="matrici.html#cb475-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
+<span id="cb475-3"><a href="matrici.html#cb475-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]  1.0 0.50</span></span>
+<span id="cb475-4"><a href="matrici.html#cb475-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]  0.5 1.25</span></span></code></pre></div>
 </div>
 <div id="autovalori-e-determinante" class="section level3 hasAnchor" number="31.2.26">
 <h3><span class="header-section-number">E.2.26</span> Autovalori e determinante<a href="matrici.html#autovalori-e-determinante" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1726,30 +1725,30 @@ associati ai rispettivi autovalori.</li>
 <p><span class="math display">\[\begin{aligned}
     tr(\boldsymbol{A}) &amp;= \sum_{i=1}^{p} \lambda_i. \notag
     \end{aligned}\]</span></p>
-<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="matrici.html#cb472-1" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb472-2"><a href="matrici.html#cb472-2" aria-hidden="true" tabindex="-1"></a>sigma</span>
-<span id="cb472-3"><a href="matrici.html#cb472-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
-<span id="cb472-4"><a href="matrici.html#cb472-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]  1.0  0.5</span></span>
-<span id="cb472-5"><a href="matrici.html#cb472-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]  0.5  2.0</span></span>
-<span id="cb472-6"><a href="matrici.html#cb472-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb472-7"><a href="matrici.html#cb472-7" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">eigen</span>(sigma)</span>
-<span id="cb472-8"><a href="matrici.html#cb472-8" aria-hidden="true" tabindex="-1"></a>out</span>
-<span id="cb472-9"><a href="matrici.html#cb472-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; eigen() decomposition</span></span>
-<span id="cb472-10"><a href="matrici.html#cb472-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $values</span></span>
-<span id="cb472-11"><a href="matrici.html#cb472-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2.2071068 0.7928932</span></span>
-<span id="cb472-12"><a href="matrici.html#cb472-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb472-13"><a href="matrici.html#cb472-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $vectors</span></span>
-<span id="cb472-14"><a href="matrici.html#cb472-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           [,1]       [,2]</span></span>
-<span id="cb472-15"><a href="matrici.html#cb472-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] 0.3826834 -0.9238795</span></span>
-<span id="cb472-16"><a href="matrici.html#cb472-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] 0.9238795  0.3826834</span></span></code></pre></div>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="matrici.html#cb476-1" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb476-2"><a href="matrici.html#cb476-2" aria-hidden="true" tabindex="-1"></a>sigma</span>
+<span id="cb476-3"><a href="matrici.html#cb476-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
+<span id="cb476-4"><a href="matrici.html#cb476-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]  1.0  0.5</span></span>
+<span id="cb476-5"><a href="matrici.html#cb476-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]  0.5  2.0</span></span>
+<span id="cb476-6"><a href="matrici.html#cb476-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb476-7"><a href="matrici.html#cb476-7" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">eigen</span>(sigma)</span>
+<span id="cb476-8"><a href="matrici.html#cb476-8" aria-hidden="true" tabindex="-1"></a>out</span>
+<span id="cb476-9"><a href="matrici.html#cb476-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; eigen() decomposition</span></span>
+<span id="cb476-10"><a href="matrici.html#cb476-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $values</span></span>
+<span id="cb476-11"><a href="matrici.html#cb476-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2.2071068 0.7928932</span></span>
+<span id="cb476-12"><a href="matrici.html#cb476-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb476-13"><a href="matrici.html#cb476-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $vectors</span></span>
+<span id="cb476-14"><a href="matrici.html#cb476-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           [,1]       [,2]</span></span>
+<span id="cb476-15"><a href="matrici.html#cb476-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] 0.3826834 -0.9238795</span></span>
+<span id="cb476-16"><a href="matrici.html#cb476-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] 0.9238795  0.3826834</span></span></code></pre></div>
 <p>La traccia di una matrice è uguale alla somma degli autovalori:</p>
-<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="matrici.html#cb473-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(out<span class="sc">$</span>values)</span>
-<span id="cb473-2"><a href="matrici.html#cb473-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="matrici.html#cb477-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(out<span class="sc">$</span>values)</span>
+<span id="cb477-2"><a href="matrici.html#cb477-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span></code></pre></div>
 <p>Il determinante di una matrice è il prodotto degli autovalori:</p>
-<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="matrici.html#cb474-1" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(sigma)</span>
-<span id="cb474-2"><a href="matrici.html#cb474-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.75</span></span>
-<span id="cb474-3"><a href="matrici.html#cb474-3" aria-hidden="true" tabindex="-1"></a>out<span class="sc">$</span>values[<span class="dv">1</span>] <span class="sc">*</span> out<span class="sc">$</span>values[<span class="dv">2</span>]</span>
-<span id="cb474-4"><a href="matrici.html#cb474-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.75</span></span></code></pre></div>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="matrici.html#cb478-1" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(sigma)</span>
+<span id="cb478-2"><a href="matrici.html#cb478-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.75</span></span>
+<span id="cb478-3"><a href="matrici.html#cb478-3" aria-hidden="true" tabindex="-1"></a>out<span class="sc">$</span>values[<span class="dv">1</span>] <span class="sc">*</span> out<span class="sc">$</span>values[<span class="dv">2</span>]</span>
+<span id="cb478-4"><a href="matrici.html#cb478-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.75</span></span></code></pre></div>
 <p>Gli autovalori di <span class="math inline">\(\boldsymbol{A}^{-1}\)</span> sono i reciproci degli
 autovalori di <span class="math inline">\(\boldsymbol{A}\)</span>; gli autovettori sono coincidenti.</p>
 
@@ -1822,6 +1821,9 @@ R Core Team. 2021. <em>R: A Language and Environment for Statistical Computing</
 Samejima, Fumiko. 1983. <span>“Constant Information Model on the Dichotomous Response Level.”</span> In <em>New Horizons in Testing</em>, 287–308. Elsevier.
 </div>
 <div class="csl-entry">
+Schoot, R van de, Peter Schmidt, A De Beuckelaer, K Lek, M Zondervan-Zwijnenburg, and A de Beuckelaer. 2015. <span>“Measurement Invariance.”</span>
+</div>
+<div class="csl-entry">
 Spearman, C. 1904. <span>“General Intelligence Objectively Determined and Measured.”</span> <em>American Journal of Psychology</em> 15: 201–93.
 </div>
 <div class="csl-entry">
@@ -1831,7 +1833,13 @@ Svetina, Dubravka, Leslie Rutkowski, and David Rutkowski. 2020. <span>“Multipl
 Thurstone, Louis Leon. 1947. <span>“Multiple-Factor Analysis; a Development and Expansion of the Vectors of Mind.”</span>
 </div>
 <div class="csl-entry">
+Twenge, Jean M, and W Keith Campbell. 2009. <em>The Narcissism Epidemic: Living in the Age of Entitlement</em>. Simon; Schuster.
+</div>
+<div class="csl-entry">
 Wechsler, David. 2008. <span>“Wechsler Adult Intelligence Scale–Fourth Edition (WAIS–IV).”</span> <em>San Antonio, TX: NCS Pearson</em> 22 (498): 816–27.
+</div>
+<div class="csl-entry">
+Wetzel, Eunike, Anna Brown, Patrick L Hill, Joanne M Chung, Richard W Robins, and Brent W Roberts. 2017. <span>“The Narcissism Epidemic Is Dead; Long Live the Narcissism Epidemic.”</span> <em>Psychological Science</em> 28 (12): 1833–47.
 </div>
 <div class="csl-entry">
 Wu, Hao, and Ryne Estabrook. 2016. <span>“Identification of Confirmatory Factor Analysis Models of Different Levels of Invariance for Ordered Categorical Outcomes.”</span> <em>Psychometrika</em> 81 (4): 1014–45.

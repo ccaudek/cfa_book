@@ -572,8 +572,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="24.12" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html"><i class="fa fa-check"></i><b>24.12</b> Modello Random Intercepts Cross-Lagged Panel</a>
 <ul>
-<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#definizione-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Definizione del modello</a></li>
-<li class="chapter" data-level="24.12.2" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.2</b> Output del modello</a></li>
+<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Output del modello</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-2.html"><a href="commenti-e-considerazioni-finali-2.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
 </ul></li>
@@ -862,20 +861,20 @@ Possiamo perciò concludere dicendo che la frequenza relativa del cancro
 polmonare è circa 3 volte più grande per gli individui che hanno fumato
 rispetto a quelli che non hanno mai fumato.</p>
 <p>Un intervallo di confidenza si calcola come indicato in precedenza.</p>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="tipi-fondamentali-di-indagine.html#cb414-1" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="dv">688</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">650</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">21</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">59</span>)</span>
-<span id="cb414-2"><a href="tipi-fondamentali-di-indagine.html#cb414-2" aria-hidden="true" tabindex="-1"></a>se</span>
-<span id="cb414-3"><a href="tipi-fondamentali-di-indagine.html#cb414-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.2599234</span></span>
-<span id="cb414-4"><a href="tipi-fondamentali-di-indagine.html#cb414-4" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> (<span class="dv">688</span> <span class="sc">*</span> <span class="dv">59</span>) <span class="sc">/</span> (<span class="dv">650</span> <span class="sc">*</span> <span class="dv">21</span>)</span>
-<span id="cb414-5"><a href="tipi-fondamentali-di-indagine.html#cb414-5" aria-hidden="true" tabindex="-1"></a>theta</span>
-<span id="cb414-6"><a href="tipi-fondamentali-di-indagine.html#cb414-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2.973773</span></span>
-<span id="cb414-7"><a href="tipi-fondamentali-di-indagine.html#cb414-7" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(theta)</span>
-<span id="cb414-8"><a href="tipi-fondamentali-di-indagine.html#cb414-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.089831</span></span>
-<span id="cb414-9"><a href="tipi-fondamentali-di-indagine.html#cb414-9" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(theta) <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">*</span> <span class="fl">1.96</span> <span class="sc">*</span> se</span>
-<span id="cb414-10"><a href="tipi-fondamentali-di-indagine.html#cb414-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.5803817 1.5992813</span></span>
-<span id="cb414-11"><a href="tipi-fondamentali-di-indagine.html#cb414-11" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fl">0.5803817</span>)</span>
-<span id="cb414-12"><a href="tipi-fondamentali-di-indagine.html#cb414-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.78672</span></span>
-<span id="cb414-13"><a href="tipi-fondamentali-di-indagine.html#cb414-13" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fl">1.5992813</span>)</span>
-<span id="cb414-14"><a href="tipi-fondamentali-di-indagine.html#cb414-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.949474</span></span></code></pre></div>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="tipi-fondamentali-di-indagine.html#cb418-1" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="dv">688</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">650</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">21</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">59</span>)</span>
+<span id="cb418-2"><a href="tipi-fondamentali-di-indagine.html#cb418-2" aria-hidden="true" tabindex="-1"></a>se</span>
+<span id="cb418-3"><a href="tipi-fondamentali-di-indagine.html#cb418-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.2599234</span></span>
+<span id="cb418-4"><a href="tipi-fondamentali-di-indagine.html#cb418-4" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> (<span class="dv">688</span> <span class="sc">*</span> <span class="dv">59</span>) <span class="sc">/</span> (<span class="dv">650</span> <span class="sc">*</span> <span class="dv">21</span>)</span>
+<span id="cb418-5"><a href="tipi-fondamentali-di-indagine.html#cb418-5" aria-hidden="true" tabindex="-1"></a>theta</span>
+<span id="cb418-6"><a href="tipi-fondamentali-di-indagine.html#cb418-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2.973773</span></span>
+<span id="cb418-7"><a href="tipi-fondamentali-di-indagine.html#cb418-7" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(theta)</span>
+<span id="cb418-8"><a href="tipi-fondamentali-di-indagine.html#cb418-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.089831</span></span>
+<span id="cb418-9"><a href="tipi-fondamentali-di-indagine.html#cb418-9" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(theta) <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">*</span> <span class="fl">1.96</span> <span class="sc">*</span> se</span>
+<span id="cb418-10"><a href="tipi-fondamentali-di-indagine.html#cb418-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.5803817 1.5992813</span></span>
+<span id="cb418-11"><a href="tipi-fondamentali-di-indagine.html#cb418-11" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fl">0.5803817</span>)</span>
+<span id="cb418-12"><a href="tipi-fondamentali-di-indagine.html#cb418-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.78672</span></span>
+<span id="cb418-13"><a href="tipi-fondamentali-di-indagine.html#cb418-13" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fl">1.5992813</span>)</span>
+<span id="cb418-14"><a href="tipi-fondamentali-di-indagine.html#cb418-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.949474</span></span></code></pre></div>
 <p>Poiché non contiene il valore 1, i veri valori degli odds per il gruppo
 fumatori e per il gruppo non fumatori sono significativamente diversi:
 gli odds per il cancro ai polmoni sono almeno il 78% in più rispetto al

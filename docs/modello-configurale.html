@@ -572,8 +572,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="24.12" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html"><i class="fa fa-check"></i><b>24.12</b> Modello Random Intercepts Cross-Lagged Panel</a>
 <ul>
-<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#definizione-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Definizione del modello</a></li>
-<li class="chapter" data-level="24.12.2" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.2</b> Output del modello</a></li>
+<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Output del modello</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-2.html"><a href="commenti-e-considerazioni-finali-2.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
 </ul></li>
@@ -706,9 +705,9 @@ div.csl-indent {
 <h2><span class="header-section-number">24.6</span> Modello configurale<a href="modello-configurale.html#modello-configurale" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="definizione-del-modello" class="section level3 hasAnchor" number="24.6.1">
 <h3><span class="header-section-number">24.6.1</span> Definizione del modello<a href="modello-configurale.html#definizione-del-modello" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In primo luogo, desideriamo stabilire l’invarianza configurale, che funge da modello di base per valutare l’invarianza della misurazione. In tutti i nostri modelli, iniziamo definendo le saturazioni fattoriali sulle variabili latenti. Per impostazione predefinita in lavaan, la saturazione del primo indicatore per ciascuna variabile latente viene normalmente vincolata a 1, mentre la varianza di ciascuna variabile latente non viene vincolata. Tuttavia, poiché ciò renderebbe più scomodi i passaggi successivi (ad es. Invarianza metrica), imponiamo invece ad 1 la varianza di ciascuna variabile latente (ad es. <code>PSP.7 ~~ 1*PSP.7</code>), consentendo alla saturazione del primo item a variare liberamente (ad es. <code>NA*psp1.7</code>).</p>
-<p>Da notare anche l’uso del comando <code>paste</code>, che unisce due stringhe di testo (il modello e la struttura dell’errore correlato). Questo di solito non è necessario per i modelli <code>lavaan</code>, ma accorcerà il nostro codice data la struttura dell’errore estremamente complicata.</p>
-<p>Nella figura <a href="modello-configurale.html#fig:configural">24.1</a>, gli ovali rappresentano le variabili latenti. I rettangoli etichettati rappresentano gli item misurati, con le corrispondenti saturazioni fattoriali mostrate come frecce che originano dalle variabili latenti. I triangoli rappresentano le intercette degli item e i cerchi rappresentano i residui. Le frecce a due punte rappresentano le covarianze. Nel modello configurazionale, abbiamo consentito che le saturazioni fattoriali, le intercette degli item e le varianze residue possano variare liberamente tra le rilevazioni temporali. Il modello testato nel tutorial utilizza i dati di 5 giorni; questo diagramma mostra solo i primi due giorni.</p>
+<p>In primo luogo, desideriamo stabilire l’invarianza configurale, che funge da modello di confronto per valutare l’invarianza temporale della misurazione. In tutti i nostri modelli, iniziamo definendo le saturazioni fattoriali sulle variabili latenti. Per impostazione predefinita in lavaan, la saturazione del primo indicatore per ciascuna variabile latente viene normalmente vincolata a 1, mentre la varianza di ciascuna variabile latente non viene vincolata. Tuttavia, poiché ciò renderebbe più scomodi i passaggi successivi (ad es. Invarianza metrica), imponiamo invece ad 1 la varianza di ciascuna variabile latente (ad es. <code>PSP.7 ~~ 1*PSP.7</code>), consentendo così alla saturazione del primo item di variare liberamente (ad es. <code>NA*psp1.7</code>).</p>
+<p>Da notare anche l’uso del comando <code>paste</code>, che unisce due stringhe di testo (il modello e la struttura degli errori). Questo di solito non è necessario per i modelli <code>lavaan</code>, ma accorcerà il nostro codice data la struttura dell’errore estremamente complicata.</p>
+<p>Nella figura <a href="modello-configurale.html#fig:configural">24.1</a>, gli ovali rappresentano le variabili latenti. I rettangoli etichettati rappresentano gli item misurati, con le corrispondenti saturazioni fattoriali mostrate come frecce che originano dalle variabili latenti. I triangoli rappresentano le intercette degli item e i cerchi rappresentano i residui. Le frecce a due punte rappresentano le covarianze. Nel modello configurazionale, abbiamo consentito che le saturazioni fattoriali, le intercette degli item e le varianze residue possano variare liberamente tra le successive rilevazioni temporali. Il modello utilizzato nel tutorial considera i dati di 5 giorni; per semplicità, figura <a href="modello-configurale.html#fig:configural">24.1</a> mostra solo i primi due giorni.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:configural"></span>
 <img src="code/meas_inv_lgm/configural.png" alt="Invarianza configurale." width="70%" />
 <p class="caption">
@@ -718,44 +717,39 @@ FIGURA 24.1: Invarianza configurale.
 <div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="modello-configurale.html#cb370-1" aria-hidden="true" tabindex="-1"></a>configural.v1 <span class="ot">&lt;-</span></span>
 <span id="cb370-2"><a href="modello-configurale.html#cb370-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span></span>
 <span id="cb370-3"><a href="modello-configurale.html#cb370-3" aria-hidden="true" tabindex="-1"></a><span class="st"># PSP factor loadings defined</span></span>
-<span id="cb370-4"><a href="modello-configurale.html#cb370-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb370-5"><a href="modello-configurale.html#cb370-5" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.7 =~ NA*psp1.7 + psp2.7 + psp3.7</span></span>
-<span id="cb370-6"><a href="modello-configurale.html#cb370-6" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.8 =~ NA*psp1.8 + psp2.8 + psp3.8</span></span>
-<span id="cb370-7"><a href="modello-configurale.html#cb370-7" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.9 =~ NA*psp1.9 + psp2.9 + psp3.9</span></span>
-<span id="cb370-8"><a href="modello-configurale.html#cb370-8" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.10 =~ NA*psp1.10 + psp2.10 + psp3.10</span></span>
-<span id="cb370-9"><a href="modello-configurale.html#cb370-9" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.11 =~ NA*psp1.11 + psp2.11 + psp3.11</span></span>
-<span id="cb370-10"><a href="modello-configurale.html#cb370-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb370-11"><a href="modello-configurale.html#cb370-11" aria-hidden="true" tabindex="-1"></a><span class="st"># PSP variance constrained to 1</span></span>
-<span id="cb370-12"><a href="modello-configurale.html#cb370-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb370-13"><a href="modello-configurale.html#cb370-13" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.7 ~~ 1*PSP.7</span></span>
-<span id="cb370-14"><a href="modello-configurale.html#cb370-14" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.8 ~~ 1*PSP.8</span></span>
-<span id="cb370-15"><a href="modello-configurale.html#cb370-15" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.9 ~~ 1*PSP.9</span></span>
-<span id="cb370-16"><a href="modello-configurale.html#cb370-16" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.10 ~~ 1*PSP.10</span></span>
-<span id="cb370-17"><a href="modello-configurale.html#cb370-17" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.11 ~~ 1*PSP.11</span></span>
-<span id="cb370-18"><a href="modello-configurale.html#cb370-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb370-19"><a href="modello-configurale.html#cb370-19" aria-hidden="true" tabindex="-1"></a><span class="st"># SSA factor loadings defined</span></span>
-<span id="cb370-20"><a href="modello-configurale.html#cb370-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb370-21"><a href="modello-configurale.html#cb370-21" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.7 =~ NA*ssa1.7 + ssa2.7 + ssa3.7 + ssa4.7 + ssa5.7 + ssa6.7 + ssa7.7</span></span>
-<span id="cb370-22"><a href="modello-configurale.html#cb370-22" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.8 =~ NA*ssa1.8 + ssa2.8 + ssa3.8 + ssa4.8 + ssa5.8 + ssa6.8 + ssa7.8</span></span>
-<span id="cb370-23"><a href="modello-configurale.html#cb370-23" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.9 =~ NA*ssa1.9 + ssa2.9 + ssa3.9 + ssa4.9 + ssa5.9 + ssa6.9 + ssa7.9</span></span>
-<span id="cb370-24"><a href="modello-configurale.html#cb370-24" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.10 =~ NA*ssa1.10 + ssa2.10 + ssa3.10 + ssa4.10 + ssa5.10 + ssa6.10 + ssa7.10</span></span>
-<span id="cb370-25"><a href="modello-configurale.html#cb370-25" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.11 =~ NA*ssa1.11 + ssa2.11 + ssa3.11 + ssa4.11 + ssa5.11 + ssa6.11 + ssa7.11</span></span>
-<span id="cb370-26"><a href="modello-configurale.html#cb370-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb370-27"><a href="modello-configurale.html#cb370-27" aria-hidden="true" tabindex="-1"></a><span class="st"># SSA variance constrained to 1</span></span>
-<span id="cb370-28"><a href="modello-configurale.html#cb370-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb370-29"><a href="modello-configurale.html#cb370-29" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.7 ~~ 1*SSA.7</span></span>
-<span id="cb370-30"><a href="modello-configurale.html#cb370-30" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.8 ~~ 1*SSA.8</span></span>
-<span id="cb370-31"><a href="modello-configurale.html#cb370-31" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.9 ~~ 1*SSA.9</span></span>
-<span id="cb370-32"><a href="modello-configurale.html#cb370-32" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.10 ~~ 1*SSA.10</span></span>
-<span id="cb370-33"><a href="modello-configurale.html#cb370-33" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.11 ~~ 1*SSA.11</span></span>
-<span id="cb370-34"><a href="modello-configurale.html#cb370-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb370-35"><a href="modello-configurale.html#cb370-35" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb370-36"><a href="modello-configurale.html#cb370-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb370-37"><a href="modello-configurale.html#cb370-37" aria-hidden="true" tabindex="-1"></a>configural.model <span class="ot">&lt;-</span> <span class="fu">paste</span>(configural.v1, errorstructure, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>, <span class="at">collapse =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<span id="cb370-4"><a href="modello-configurale.html#cb370-4" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.7 =~ NA*psp1.7 + psp2.7 + psp3.7</span></span>
+<span id="cb370-5"><a href="modello-configurale.html#cb370-5" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.8 =~ NA*psp1.8 + psp2.8 + psp3.8</span></span>
+<span id="cb370-6"><a href="modello-configurale.html#cb370-6" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.9 =~ NA*psp1.9 + psp2.9 + psp3.9</span></span>
+<span id="cb370-7"><a href="modello-configurale.html#cb370-7" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.10 =~ NA*psp1.10 + psp2.10 + psp3.10</span></span>
+<span id="cb370-8"><a href="modello-configurale.html#cb370-8" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.11 =~ NA*psp1.11 + psp2.11 + psp3.11</span></span>
+<span id="cb370-9"><a href="modello-configurale.html#cb370-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb370-10"><a href="modello-configurale.html#cb370-10" aria-hidden="true" tabindex="-1"></a><span class="st"># PSP variance constrained to 1</span></span>
+<span id="cb370-11"><a href="modello-configurale.html#cb370-11" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.7 ~~ 1*PSP.7</span></span>
+<span id="cb370-12"><a href="modello-configurale.html#cb370-12" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.8 ~~ 1*PSP.8</span></span>
+<span id="cb370-13"><a href="modello-configurale.html#cb370-13" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.9 ~~ 1*PSP.9</span></span>
+<span id="cb370-14"><a href="modello-configurale.html#cb370-14" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.10 ~~ 1*PSP.10</span></span>
+<span id="cb370-15"><a href="modello-configurale.html#cb370-15" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.11 ~~ 1*PSP.11</span></span>
+<span id="cb370-16"><a href="modello-configurale.html#cb370-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb370-17"><a href="modello-configurale.html#cb370-17" aria-hidden="true" tabindex="-1"></a><span class="st"># SSA factor loadings defined</span></span>
+<span id="cb370-18"><a href="modello-configurale.html#cb370-18" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.7 =~ NA*ssa1.7 + ssa2.7 + ssa3.7 + ssa4.7 + ssa5.7 + ssa6.7 + ssa7.7</span></span>
+<span id="cb370-19"><a href="modello-configurale.html#cb370-19" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.8 =~ NA*ssa1.8 + ssa2.8 + ssa3.8 + ssa4.8 + ssa5.8 + ssa6.8 + ssa7.8</span></span>
+<span id="cb370-20"><a href="modello-configurale.html#cb370-20" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.9 =~ NA*ssa1.9 + ssa2.9 + ssa3.9 + ssa4.9 + ssa5.9 + ssa6.9 + ssa7.9</span></span>
+<span id="cb370-21"><a href="modello-configurale.html#cb370-21" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.10 =~ NA*ssa1.10 + ssa2.10 + ssa3.10 + ssa4.10 + ssa5.10 + ssa6.10 + ssa7.10</span></span>
+<span id="cb370-22"><a href="modello-configurale.html#cb370-22" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.11 =~ NA*ssa1.11 + ssa2.11 + ssa3.11 + ssa4.11 + ssa5.11 + ssa6.11 + ssa7.11</span></span>
+<span id="cb370-23"><a href="modello-configurale.html#cb370-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb370-24"><a href="modello-configurale.html#cb370-24" aria-hidden="true" tabindex="-1"></a><span class="st"># SSA variance constrained to 1</span></span>
+<span id="cb370-25"><a href="modello-configurale.html#cb370-25" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.7 ~~ 1*SSA.7</span></span>
+<span id="cb370-26"><a href="modello-configurale.html#cb370-26" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.8 ~~ 1*SSA.8</span></span>
+<span id="cb370-27"><a href="modello-configurale.html#cb370-27" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.9 ~~ 1*SSA.9</span></span>
+<span id="cb370-28"><a href="modello-configurale.html#cb370-28" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.10 ~~ 1*SSA.10</span></span>
+<span id="cb370-29"><a href="modello-configurale.html#cb370-29" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.11 ~~ 1*SSA.11</span></span>
+<span id="cb370-30"><a href="modello-configurale.html#cb370-30" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb370-31"><a href="modello-configurale.html#cb370-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb370-32"><a href="modello-configurale.html#cb370-32" aria-hidden="true" tabindex="-1"></a>configural.model <span class="ot">&lt;-</span> <span class="fu">paste</span>(configural.v1, errorstructure, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>, <span class="at">collapse =</span> <span class="cn">NULL</span>)</span></code></pre></div>
 </div>
 <div id="output-del-modello" class="section level3 hasAnchor" number="24.6.2">
 <h3><span class="header-section-number">24.6.2</span> Output del modello<a href="modello-configurale.html#output-del-modello" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Dopo avere definito il nostro modello, lo adattiamo ai dati. Per questa e tutte le analisi successive, aggiungiamo la riga <code>std.lv = TRUE</code> per tenere conto della nostra modifica alle impostazioni di vincolo predefinite di <code>lavaan</code> per la saturazione fattoriale del primo item in ciascuna variabile latente (cioè, invece, vincolando la varianza del fattore a 1.0). Quindi stampiamo i risultati del modello usando il comando <code>summary()</code>.</p>
+<p>Dopo avere definito il modello, lo adattiamo ai dati. Per questa e tutte le analisi successive, aggiungiamo la riga <code>std.lv = TRUE</code> per tenere conto della nostra modifica alle impostazioni sul vincolo dei default di <code>lavaan</code> che garantisce l’identificabilità del modello. Esaminiamo i risultati con <code>summary()</code>.</p>
 <div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="modello-configurale.html#cb371-1" aria-hidden="true" tabindex="-1"></a>configural.fit <span class="ot">&lt;-</span> <span class="fu">cfa</span>(configural.model,</span>
 <span id="cb371-2"><a href="modello-configurale.html#cb371-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> model.test.dat,</span>
 <span id="cb371-3"><a href="modello-configurale.html#cb371-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">estimator =</span> <span class="st">&quot;MLR&quot;</span>,</span>
@@ -1656,7 +1650,7 @@ FIGURA 24.1: Invarianza configurale.
 </div>
 <div id="interpretazione-4" class="section level3 hasAnchor" number="24.6.3">
 <h3><span class="header-section-number">24.6.3</span> Interpretazione<a href="modello-configurale.html#interpretazione-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Dopo avere costruito il modello “baseline” possiamo iniziamo il processo di aggiunta di ulteriori vincoli e possiamo adattare le ulteriori versioni nidificate del modello. Dopo aver adattato tutti i nostri modelli, confronteremo i loro indici di adattamento e selezioneremo il modello più appropriato. Alla fine, confronteremo tutti e 4 i modelli tra loro con confronti nidificati.</p>
+<p>Dopo avere costruito il modello “baseline” possiamo progressivamente introdurre vincoli aggiuntivi e confrontare le versioni nidificate dei modelli proposti. Dopo aver adattato tutti i modelli, confronteremo i loro indici di adattamento e selezioneremo il modello più appropriato.</p>
 </div>
 </div>
             </section>

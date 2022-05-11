@@ -11,48 +11,53 @@ library("patchwork")
 
 Quando studiamo la variazione dei costrutti nel tempo, amministriamo ripetutamente gli stessi strumenti di misura. Per potere fare affermazioni su come le variabili latenti cambiano nel tempo, è tuttavia prima necessario stabilire che lo strumento utilizzato sia in grado di misurare in maniera invariante il costrutto nel tempo. L'invarianza della misurazione (MI) è confermata in uno studio quando "i partecipanti in tutti i [periodi di tempo] interpretano le singole domande, nonché il fattore latente sottostante, allo stesso modo" [@schoot2015measurement]. Se l'invarianza della misurazione non viene rispettata, la natura del costrutto latente cambia nel tempo, e ciò impedisce di potere eseguire dei confronti tra le diverse rilevazioni temporali. Il problema fondamentale nella misurazione longitudinale è che il semplice passare del tempo (o l'atto di osservare i propri pensieri attraverso misurazioni ripetute) a volte può cambiare il modo in cui i partecipanti interpretano gli item del questionario. Per fare confronti temporali è dunque necessario che la natura del costrutto non sia cambi sostanzialmente nel corso del tempo.
 
-Per utilizzare la CFA per testare la MI, i ricercatori eseguono una serie di confronti di modelli nidificati confrontando tra loro una serie di modelli CFA con vincoli sempre più severi relativamente alle caratteristiche del modello in funzione del tempo. Modelli più restrittivi e parsimoniosi consentono ad un numero minore di parametri di variare in funzione del tempo per lo stesso costrutto latente. In linea di massima, i parametri di cui ci occupiamo sono: 1) le saturazioni fattoriali, che mostrano quanto sia rappresentativo ogni item del fattore latente su cui satura; 2) le intercette, che descrivono il livello medio di ciascuna item; e 3) le varianze residue, che rappresentano l'influenza di altri fattori non inclusi nel modello nella determinazione delle risposte agli item, al di là dell'effetto delle variabili latenti considerate. Il modello più parsimonioso che mantiene adeguati indici di adattamento determina il livello di invarianza fattoriale.
+Per utilizzare la CFA per testare la MI, i ricercatori eseguono una serie di confronti tra modelli nidificati, ovvero confrontando tra loro una serie di modelli CFA dotati di vincoli sempre più stringenti relativi alle caratteristiche del modello in relazione al tempo. Modelli più restrittivi e parsimoniosi consentono ad un numero minore di parametri di variare in funzione del tempo per lo stesso costrutto latente. In generale, i parametri considerati sono: 
 
-Possiamo suddividere la MI in quattro livelli. 
+- le saturazioni fattoriali, che mostrano quanto sia rappresentativo ogni item rispetto al fattore latente su cui satura; 
+- le intercette, che descrivono il livello medio di ciascuna item; 
+- le varianze residue, che rappresentano l'influenza di altri fattori non inclusi nel modello nel determinare delle risposte agli item, al di là dell'effetto delle variabili latenti considerate. 
 
-- Il livello di invarianza meno rigoroso, denominato *invarianza configurale*, consente alle saturazioni fattoriali, alle intercette degli item e alle varianze residue di variare tra le rilevazioni temporali (waves). Ciò significa che a tutte le rilevazioni (waves) si applica la stessa struttura fattoriale (cioè, lo stesso numero di variabili latenti con gli stessi item che saturano su ciascun fattore). 
-- Il livello successivo è l'*invarianza metrica*, a volte chiamata debole, e vincola le saturazioni fattoriali ad essere uguale nelle successive rilevazioni (waves). Ciò stabilisce che gli item non diventino più (o meno) rappresentativi del costrutto latente in rilevazioni successive nel tempo. 
-- Il livello seguente è l'*invarianza scalare* e vincola non solo le saturazioni fattoriali, ma anche le intercette degli item ad essere uguali nel tempo. Il vincolo sulle intercette stabilisce che il livello medio degli item rimanga invariato nel tempo. Se l'invarianza scalare viene violata, ciò significa che l'interpretazione del valore assoluto del punteggio del test cambia con il passare del tempo. È come dire che 100 euro oggi non hanno lo stesso valore di 10 anni fa. Usando un esempio psicologico, una mancanza di invarianza scalare potrebbe far sembrare che le medie stiano aumentando nel tempo quando invece ciò che succede è che i partecipanti stanno cambiando il modo in cui interpretano la scala di risposta nel tempo. 
-- Il livello finale è l'*invarianza residua* la quale vincola le saturazioni fattoriali, le intercette degli item e le varianze residue ad essere uguali nel tempo. Imporre un vincolo relativo alla variazione delle varianze residue tra le onde stabilisce che tutti i fattori esterni non misurati che influenzano il costrutto latente misurato non variano nel tempo (Van de Schoot et al., 2012).
+Il modello più parsimonioso che mantiene adeguati indici di adattamento determina il livello di invarianza fattoriale.
 
+Possiamo distinguere quattro livelli di invarianza temporale dei costrutti. 
 
-Perché questo è importante? Senza tenere conto dell'MI, i ricercatori possono interpretare erroneamente le cause soggiacenti agli effetti osservati. Ad esempio, uno studio di Twenge and Campbell (2009) ha concluso che i livelli di narcisismo sono aumentati tra il 1990 e il 2010. In seguito, Wetzel et al. (2017) hanno esaminato l'invarianza di misurazione di tali rilevazioni temporali e hanno trovato che veniva violata in diversi aspetti della *Narcissistic Personality Inventory* usata nello studio originale. Tenendo conto di questa parziale non equivalenza, il modello di Wetzel et al. (2017) in realtà suggeriva una diminuzione del narcisismo nel tempo. Il controllo dell'MI è quindi una pratica importante prima di interpretare i risultati di studi longitudinali.
+- Il livello di invarianza meno rigoroso, denominato *invarianza configurale*, consente alle saturazioni fattoriali, alle intercette degli item e alle varianze residue di variare tra le diverse rilevazioni temporali (waves). Ciò significa che a tutte le rilevazioni (waves) si applica la stessa struttura fattoriale (cioè, lo stesso numero di variabili latenti con gli stessi item che saturano su ciascun fattore). 
+- Il livello successivo è l'*invarianza metrica*, a volte chiamata debole, la quale vincola le saturazioni fattoriali ad essere uguali nelle successive rilevazioni temporali (waves). In base a tale invarianza, gli item non diventano più (o meno) rappresentativi del costrutto latente in rilevazioni temporali successive. 
+- Il livello seguente è l'*invarianza scalare* il quale vincola non solo le saturazioni fattoriali, ma anche le intercette degli item, a rimanere costanti nel tempo. Il vincolo sulle intercette stabilisce che il livello medio degli item rimane invariato nel tempo. Se l'invarianza scalare viene violata, ciò significa che l'interpretazione del valore assoluto del punteggio del test cambia con il passare del tempo. È come dire che 100 euro oggi non hanno lo stesso valore di 10 anni fa. Usando un esempio psicologico, una mancanza di invarianza scalare potrebbe suggerire che le medie stiano aumentando nel tempo quando invece quello che veramente succede è che l'interpretazione che i partecipanti assegnano alla scala di risposta cambia nel tempo. 
+- Il livello finale è l'*invarianza residua* la quale vincola le saturazioni fattoriali, le intercette degli item e le varianze residue a rimanere uguali nel tempo. Imporre un vincolo sulla variazione delle varianze residue tra le diverse rilevazioni temporali equivale ad affermare che tutti i fattori esterni non misurati che influenzano il costrutto latente non variano nel tempo.
+
+L'invarianza fattoriale temporle è importante perché, se viene violata, i ricercatori possono interpretare erroneamente le cause soggiacenti agli effetti osservati. Ad esempio, uno studio di @twenge2009narcissism ha concluso che i livelli di narcisismo sono aumentati tra il 1990 e il 2010. In seguito, @wetzel2017narcissism hanno esaminato l'invarianza temporale di misurazione nei dati di @twenge2009narcissism e hanno trovato che, in diversi aspetti della *Narcissistic Personality Inventory* [la scala usata da @twenge2009narcissism], essa veniva violata.  Tenendo conto di questa parziale non equivalenza di misurazione, @wetzel2017narcissism hanno concluso che, in realtà, il narcisismo degli adolescenti è diminuito nel tempo. Il controllo dell'invarianza temporale di misurazione è quindi una pratica importante preliminarmente all'interpretazion dei risultati degli studi longitudinali.
 
 ## Studi longitudinali cross-lagged
 
-Un altro aspetto importante degli studi longitudinali sono gli effetti direzionali tra le variabili nel tempo. I ricercatori possono utilizzare *cross-lagged panel models* (CLPM) per studiare in che modo diverse variabili predicono le future iterazioni reciproche, il che aiuta a comprendere le relazioni causali stabilendo la precedenza temporale. I risultati a volte possono aiutare a chiarire la direzione delle relazioni in un modo in cui le gli studi trasversali non possono.
+Un aspetto importante degli studi longitudinali sono gli effetti direzionali tra le variabili nel tempo. I ricercatori possono utilizzare i *cross-lagged panel models* (CLPM) per studiare le iterazioni temporali tra le variabili, il che aiuta a comprendere le relazioni causali stabilendo la precedenza temporale. Gli studi CLP, a volte, possono aiutare a chiarire la direzione delle relazioni causali, mentre ciò non può essere fatto mediante studi trasversali.
 
 ### Invarianza di misura in studi longitudinali cross-lagged
 
-I dati esaminati da Mackinnon and Curtis (in press), derivano da uno studio longitudinale di 21 giorni che indaga il perfezionismo, le motivazioni al consumo di alcol e i problemi legati all'alcol. Le principali variabili latenti di interesse sono:
+Esamineremo qui uno studio di Mackinnon and Curtis (in press). I dati esaminati dai ricercatori derivano da uno studio longitudinale di 21 giorni che indaga il perfezionismo, le motivazioni al consumo di alcol e i problemi legati all'alcol. Le principali variabili latenti di interesse sono le seguenti:
 
 - auto-presentazione perfezionistica (PSP), che misura il desiderio di un individuo di nascondere le proprie imperfezioni;
 - l'ansia sociale di stato (SSA), che misura i sentimenti transitori di ansia associati a situazioni sociali. 
 
-Per facilitare la comprensione, Mackinnon and Curtis si concentrano solo su 5 dei 20 giorni in cui sono stati misurati l'auto-presentazione perfezionistica e l'ansia sociale (arbitrariamente, i giorni 7-11). Pertanto, nell'esempio discusso, l'analisi statistica procede  (a) stabilendo l'invarianza della misurazione longitudinale su 5 giorni e quindi (b) testando un modello cross-lagged panel. Il test dell'invarianza fattoriale nel tempo è come un primo passo necessario per procedere, poi, con la verifica delle ipotesi del modello cross-lag panel.
+Per facilitare la descrizione del modello, Mackinnon and Curtis si concentrano solo su 5 dei 20 giorni in cui sono stati misurati l'auto-presentazione perfezionistica e l'ansia sociale (arbitrariamente, i giorni 7-11). Nell'esempio qui discusso, l'analisi statistica procede, in primo luogo, mediante il test dell'invarianza della misurazione longitudinale relativamente ai 5 giorni considerati e, in seguito, con la verifica delle ipotesi del modello cross-lagged panel.
 
 ## Data set
 
-Il set di dati ridotto contiene le risposte fornite da 251 partecipanti su due variabili latenti (PSP, composta da tre item e SSA, composta da sette item) in cinque giorni (dal giorno sette al giorno undici nello studio originario). Gli item PSP sono stati misurati utilizzando una scala a 7 punti da 1 a 7; gli item SSA sono stati misurati utilizzando una scala a 5 punti da 0 a 4.
+I dati esaminati contengono le risposte fornite da 251 partecipanti su due variabili latenti (scala PSP, composta da tre item, e scala SSA, composta da sette item). Le rilevazioni riguardano cinque giorni successivi (dal giorno sette al giorno undici nello studio originario). Gli item PSP sono stati misurati utilizzando una scala a 7 punti (da 1 a 7); gli item SSA sono stati misurati utilizzando una scala a 5 punti (da 0 a 4).
 
 ## Stretegia analitica
 
-L'obiettivo è quello di confrontare le versioni nidificate del modello CLPM, utilizzando la CFA, per determinare i parametri più appropriati per il modello strutturale finale. Si cerca  il modello più semplice (ovvero il modello che stima il minor numero di parametri) che mantiene un buon adattamento ai dati, pur avendo anche un buon senso teorico.
+L'obiettivo dell'analisi è quello di confrontare, mediante la CFA, varie versioni nidificate del modello CLPM, per determinare la forma più appropriata del modello strutturale finale. Come in precedenza, cerchiamo il modello più semplice (ovvero il modello che stima il minor numero di parametri) che mantiene un buon adattamento ai dati.
 
 L'approccio seguito da Mackinnon e Curtis prevede cinque fasi. 
 
-- Test del modello configurazionale; 
+- Test del modello configurale; 
 - test del modello metrico; 
 - test del modello scalare;
-- test del modello che richiede l'egualianza dei termini d'errore; 
+- test del modello che richiede l'eguaglianza dei termini d'errore; 
 - test del modello strutturale. 
 
-In particolare, nei primi quattro passaggi vengono utilizzate le covarianze (~~) piuttosto che le regressioni (~) per descrivere le relazioni tra variabili. Nella quinta fase, si verifica un CLPM in cui viene assunta la direzionalità temporale delle relazioni (ad esempio, il giorno 7 prevede il giorno 8). Vale la pena notare che le relazioni tra le variabili nei primi quattro passaggi sono più simili a correlazioni bivariate, mentre l'ultimo passaggio è il vero test di ipotesi relative alle relazioni causali. 
+In particolare, le prime quattro verifiche si basano sulle covarianze (~~) piuttosto che sulle regressioni (~) per descrivere le relazioni tra variabili. Nella quinta verifica, si esamina un CLPM che ipotizza relazioni causali direzionali in funzione del tempo (modello di regressione) -- ad esempio, i dati del giorno 7 prevedono i dati del giorno 8. Vale la pena notare che le relazioni tra le variabili prese in esame nelle prime quattro verifiche sono più simili a correlazioni bivariate, mentre l'ultima verifica è un test sulle relazioni causali. 
 
 ## Leggere in dati in $\mathsf{R}$
 
@@ -72,7 +77,7 @@ model.test.dat <- read.csv(
 
 ## Struttura degli errori
 
-Definiamo separatamente la struttura dei termini d'errore, che è complessa. Poiché il codice necessario occupa così tante righe, viene scritto separatamente e richiamato poi nella sintassi dei modelli definiti in seguito. Questo rende il codice più ordinato e più breve. Si noti il  codice seguente impone il vincolo dell'eguaglianza sulle covarianze dei termini di errore corrispondenti a rilevazioni (ondata-wave) successive. 
+Mackinnon e Curtis creano uno script separato che contiene la specificazione della struttura dei termini d'errore, che è complessa. Poiché il codice necessario occupa così tante righe, viene scritto separatamente e richiamato poi nella sintassi dei modelli che vengono definiti in seguito. Questo rende il codice più ordinato e più breve. Si noti che il codice seguente impone il vincolo dell'eguaglianza delle covarianze tra i termini d'errore di rilevazioni temporali successive. 
 
 ```{r errorstructure}
 # Error term covariances constrained across waves
@@ -192,11 +197,11 @@ ssa7.10 ~~ ssa7cov*ssa7.11'
 
 ### Definizione del modello
 
-In primo luogo, desideriamo stabilire l'invarianza configurale, che funge da modello di base per valutare l'invarianza della misurazione. In tutti i nostri modelli, iniziamo definendo le saturazioni fattoriali sulle variabili latenti. Per impostazione predefinita in lavaan, la saturazione del primo indicatore per ciascuna variabile latente viene normalmente vincolata a 1, mentre la varianza di ciascuna variabile latente non viene vincolata. Tuttavia, poiché ciò renderebbe più scomodi i passaggi successivi (ad es. Invarianza metrica), imponiamo invece ad 1 la varianza di ciascuna variabile latente (ad es. `PSP.7 ~~ 1*PSP.7`), consentendo alla saturazione del primo item a variare liberamente (ad es. `NA*psp1.7`).
+In primo luogo, desideriamo stabilire l'invarianza configurale, che funge da modello di confronto per valutare l'invarianza temporale della misurazione. In tutti i nostri modelli, iniziamo definendo le saturazioni fattoriali sulle variabili latenti. Per impostazione predefinita in lavaan, la saturazione del primo indicatore per ciascuna variabile latente viene normalmente vincolata a 1, mentre la varianza di ciascuna variabile latente non viene vincolata. Tuttavia, poiché ciò renderebbe più scomodi i passaggi successivi (ad es. Invarianza metrica), imponiamo invece ad 1 la varianza di ciascuna variabile latente (ad es. `PSP.7 ~~ 1*PSP.7`), consentendo così alla saturazione del primo item di variare liberamente (ad es. `NA*psp1.7`).
 
-Da notare anche l'uso del comando `paste`, che unisce due stringhe di testo (il modello e la struttura dell'errore correlato). Questo di solito non è necessario per i modelli `lavaan`, ma accorcerà il nostro codice data la struttura dell'errore estremamente complicata.
+Da notare anche l'uso del comando `paste`, che unisce due stringhe di testo (il modello e la struttura degli errori). Questo di solito non è necessario per i modelli `lavaan`, ma accorcerà il nostro codice data la struttura dell'errore estremamente complicata.
 
-Nella figura \@ref(fig:configural), gli ovali rappresentano le variabili latenti. I rettangoli etichettati rappresentano gli item misurati, con le corrispondenti saturazioni fattoriali mostrate come frecce che originano dalle variabili latenti. I triangoli rappresentano le intercette degli item e i cerchi rappresentano i residui. Le frecce a due punte rappresentano le covarianze. Nel modello configurazionale, abbiamo consentito che le saturazioni fattoriali, le intercette degli item e le varianze residue possano variare liberamente tra le rilevazioni temporali. Il modello testato nel tutorial utilizza i dati di 5 giorni; questo diagramma mostra solo i primi due giorni.
+Nella figura \@ref(fig:configural), gli ovali rappresentano le variabili latenti. I rettangoli etichettati rappresentano gli item misurati, con le corrispondenti saturazioni fattoriali mostrate come frecce che originano dalle variabili latenti. I triangoli rappresentano le intercette degli item e i cerchi rappresentano i residui. Le frecce a due punte rappresentano le covarianze. Nel modello configurazionale, abbiamo consentito che le saturazioni fattoriali, le intercette degli item e le varianze residue possano variare liberamente tra le successive rilevazioni temporali. Il modello utilizzato nel tutorial considera i dati di 5 giorni; per semplicità, figura \@ref(fig:configural) mostra solo i primi due giorni.
 
 ```{r configural, echo=FALSE, fig.cap='Invarianza configurale.', out.width = '70%'}
 knitr::include_graphics("code/meas_inv_lgm/configural.png")
@@ -207,7 +212,6 @@ configural.v1 <-
 	
 '
 # PSP factor loadings defined
-
 PSP.7 =~ NA*psp1.7 + psp2.7 + psp3.7
 PSP.8 =~ NA*psp1.8 + psp2.8 + psp3.8
 PSP.9 =~ NA*psp1.9 + psp2.9 + psp3.9
@@ -215,7 +219,6 @@ PSP.10 =~ NA*psp1.10 + psp2.10 + psp3.10
 PSP.11 =~ NA*psp1.11 + psp2.11 + psp3.11
 
 # PSP variance constrained to 1
-
 PSP.7 ~~ 1*PSP.7
 PSP.8 ~~ 1*PSP.8
 PSP.9 ~~ 1*PSP.9
@@ -223,7 +226,6 @@ PSP.10 ~~ 1*PSP.10
 PSP.11 ~~ 1*PSP.11
 
 # SSA factor loadings defined
-
 SSA.7 =~ NA*ssa1.7 + ssa2.7 + ssa3.7 + ssa4.7 + ssa5.7 + ssa6.7 + ssa7.7
 SSA.8 =~ NA*ssa1.8 + ssa2.8 + ssa3.8 + ssa4.8 + ssa5.8 + ssa6.8 + ssa7.8
 SSA.9 =~ NA*ssa1.9 + ssa2.9 + ssa3.9 + ssa4.9 + ssa5.9 + ssa6.9 + ssa7.9
@@ -231,22 +233,19 @@ SSA.10 =~ NA*ssa1.10 + ssa2.10 + ssa3.10 + ssa4.10 + ssa5.10 + ssa6.10 + ssa7.10
 SSA.11 =~ NA*ssa1.11 + ssa2.11 + ssa3.11 + ssa4.11 + ssa5.11 + ssa6.11 + ssa7.11
 
 # SSA variance constrained to 1
-
 SSA.7 ~~ 1*SSA.7
 SSA.8 ~~ 1*SSA.8
 SSA.9 ~~ 1*SSA.9
 SSA.10 ~~ 1*SSA.10
 SSA.11 ~~ 1*SSA.11
-
 '
 
 configural.model <- paste(configural.v1, errorstructure, sep = ' ', collapse = NULL)
-
 ```
 
 ### Output del modello
 
-Dopo avere definito il nostro modello, lo adattiamo ai dati. Per questa e tutte le analisi successive, aggiungiamo la riga `std.lv = TRUE` per tenere conto della nostra modifica alle impostazioni di vincolo predefinite di `lavaan` per la saturazione fattoriale del primo item in ciascuna variabile latente (cioè, invece, vincolando la varianza del fattore a 1.0). Quindi stampiamo i risultati del modello usando il comando `summary()`.
+Dopo avere definito il modello, lo adattiamo ai dati. Per questa e tutte le analisi successive, aggiungiamo la riga `std.lv = TRUE` per tenere conto della nostra modifica alle impostazioni sul vincolo dei default di `lavaan` che garantisce l'identificabilità del modello. Esaminiamo i risultati con `summary()`.
 
 ```{r configuraloutput}
 configural.fit <- cfa(configural.model,
@@ -267,13 +266,15 @@ summary(configural.fit,
 
 ### Interpretazione
 
-Dopo avere costruito il modello "baseline" possiamo iniziamo il processo di aggiunta di ulteriori vincoli e possiamo adattare le ulteriori versioni nidificate del modello. Dopo aver adattato tutti i nostri modelli, confronteremo i loro indici di adattamento e selezioneremo il modello più appropriato. Alla fine, confronteremo tutti e 4 i modelli tra loro con confronti nidificati.
+Dopo avere costruito il modello "baseline" possiamo progressivamente introdurre vincoli aggiuntivi e confrontare le versioni nidificate dei modelli proposti. Dopo aver adattato tutti i modelli, confronteremo i loro indici di adattamento e selezioneremo il modello più appropriato. 
 
 ## Invarianza metrica
 
+Esaminiamo ora l'invarianza metrica. 
+
 ### Definizione del modello
 
-Mostriamo ora come verificare l'invarianza metrica. In questo modello, oltre ai vincoli applicati al nostro modello di invarianza configurale, imponiamo il vincolo dell'eguaglianza delle saturazioni di ciascuna rilevazione (wave). Lo facciamo applicando una singola etichetta a tutte e cinque le iterazioni di ciascun fattore (ad es.,, l'etichetta `psp1f*` viene applicata a tutte e cinque le iterazioni di `psp1`). Il test con una "f" aggiunta alle etichette sono a sinistra e i nomi delle variabili sono a destra.
+In questo modello, oltre ai vincoli dell'invarianza configurale, viene imposto il vincolo dell'eguaglianza delle saturazioni di ciascuna rilevazione temporale. Questo viene ottenuto applicando una singola etichetta a tutte e cinque le iterazioni degli item che saturano su ciascun fattore (ad es.,, l'etichetta `psp1f*` viene applicata a tutte e cinque le iterazioni di `psp1`). 
 
 ```{r configuralfig, echo=FALSE, fig.cap='Invarianza metrica.', out.width = '70%'}
 knitr::include_graphics("code/meas_inv_lgm/metric.png")
@@ -284,7 +285,6 @@ metric.v1 <-
 
 '
 # PSP factor loadings defined, and constrained across waves
-
 PSP.7 =~ psp1f*psp1.7 + psp2f*psp2.7 + psp3f*psp3.7
 PSP.8 =~ psp1f*psp1.8 + psp2f*psp2.8 + psp3f*psp3.8
 PSP.9 =~ psp1f*psp1.9 + psp2f*psp2.9 + psp3f*psp3.9
@@ -292,7 +292,6 @@ PSP.10 =~ psp1f*psp1.10 + psp2f*psp2.10 + psp3f*psp3.10
 PSP.11 =~ psp1f*psp1.11 + psp2f*psp2.11 + psp3f*psp3.11
 
 # PSP variance constrained to 1
-
 PSP.7 ~~ 1*PSP.7
 PSP.8 ~~ 1*PSP.8
 PSP.9 ~~ 1*PSP.9
@@ -300,7 +299,6 @@ PSP.10 ~~ 1*PSP.10
 PSP.11 ~~ 1*PSP.11
 
 # SSA factor loadings defined, and constrained across waves
-
 SSA.7 =~ ssa1f*ssa1.7 + ssa2f*ssa2.7 + ssa3f*ssa3.7 + 
          ssa4f*ssa4.7 + ssa5f*ssa5.7 + ssa6f*ssa6.7 + ssa7f*ssa7.7
          
@@ -317,7 +315,6 @@ SSA.11 =~ ssa1f*ssa1.11 + ssa2f*ssa2.11 + ssa3f*ssa3.11 +
           ssa4f*ssa4.11 + ssa5f*ssa5.11 + ssa6f*ssa6.11 + ssa7f*ssa7.11
 
 # SSA variance constrained to 1
-
 SSA.7 ~~ 1*SSA.7
 SSA.8 ~~ 1*SSA.8
 SSA.9 ~~ 1*SSA.9
@@ -326,10 +323,11 @@ SSA.11 ~~ 1*SSA.11
 '
 
 metric.model <- paste(metric.v1, errorstructure, sep = ' ', collapse = NULL)
-
 ```
 
 ### Output del modello
+
+Adattiamo il modello. 
 
 ```{r metricoutput}
 metric.fit <- cfa(metric.model,
@@ -339,7 +337,11 @@ metric.fit <- cfa(metric.model,
   missing = "ML",
   std.lv = TRUE
 )
+```
 
+Esaminiamo i risultati.
+
+```{r}
 summary(metric.fit,
   fit.measures = TRUE,
   standardized = TRUE,
@@ -350,9 +352,11 @@ summary(metric.fit,
 
 ## Invarianza scalare
 
+Esaminiamo il modello di invarianza scalare.
+
 ### Definizione del modello
 
-Ora mostriamo come verificare un modello di invarianza scalare. In questo modello, oltre ai vincoli applicati al modello metrico, fissiamo le intercette degli item in maniera che siano uguali in ciascuna rilevazione (wave). Come con il modello metrico, lo facciamo applicando una singola etichetta a tutte e cinque le iterazioni dell'intercetta di un item (ad es. `psp1.7 ~ psp1i*1`). In questo esempio, "psp1.7" è l'item, "pspli" è l'etichetta e "*1" indica a `lavaan` di fare riferimento all'intercetta. L'istruzione `paste` collega semplicemente questi vincoli al modello di invarianza metrica già definito in precedenza.
+In questo modello, oltre ai vincoli applicati al modello metrico, fissiamo le intercette degli item in maniera tale che siano uguali in ciascuna rilevazione temporale. Come con il modello metrico, questo risultato viene ottenuto applicando una singola etichetta a tutte e cinque le iterazioni dell'intercetta di un item nel tempo (ad es. `psp1.7 ~ psp1i*1`). In questo esempio, "psp1.7" è l'item, "pspli" è l'etichetta e "*1" indica a `lavaan` di fare riferimento all'intercetta. L'istruzione `paste` aggiunge questi vincoli al modello di invarianza metrica già definito in precedenza.
 
 ```{r scalar, echo=FALSE, fig.cap='Invarianza scalare.', out.width = '70%'}
 knitr::include_graphics("code/meas_inv_lgm/scalar.png")
@@ -363,7 +367,6 @@ scalar.v1 <-
 
 '
 # Intercepts constrained
-
 psp1.7 ~ psp1i*1
 psp1.8 ~ psp1i*1
 psp1.9 ~ psp1i*1
@@ -423,14 +426,14 @@ ssa7.8 ~ ssa7i*1
 ssa7.9 ~ ssa7i*1
 ssa7.10 ~ ssa7i*1
 ssa7.11 ~ ssa7i*1
-
 '
 
 scalar.model <- paste(metric.v1, errorstructure, scalar.v1, sep = ' ', collapse = NULL)
-
 ```
 
 ### Output del modello
+
+Adattiamo il modello.
 
 ```{r scalaroutput}
 scalar.fit <- cfa(scalar.model,
@@ -440,7 +443,11 @@ scalar.fit <- cfa(scalar.model,
   missing = "ML",
   std.lv = TRUE
 )
+```
 
+Esaminiamo i risultati.
+
+```{r}
 summary(scalar.fit,
   fit.measures = TRUE,
   standardized = TRUE,
@@ -451,9 +458,11 @@ summary(scalar.fit,
 
 ## Invarianza degli errori
 
+Passiamo ora ad applicare l'insieme più stringente di vincoli al modello di invarianza degli errori. 
+
 ### Definizione del modello
 
-Passiamo ora ad applicare l'insieme più rigoroso di vincoli al modello di invarianza degli errori. In questo modello, oltre ai vincoli applicati al modello scalare, imponiamo il vincolo per cui i termini residui d'errore devono essere uguali all'interno di ciascuna rilevazione (wave). Ancora una volta, lo facciamo applicando una singola etichetta a gruppi di item che desideriamo vincolare (ad esempio `psp1.7 ~~ psp1u*psp1.7`). Nella sintassi, questo è simile a quello che abbiamo fatto in precedenza con le covarianze; tuttavia, questa volta ogni variabile è covariata con se stessa. 
+In questo modello, oltre ai vincoli applicati al modello scalare, imponiamo il vincolo dell'eguaglianza dei termini d'errore nelle diverse rilevazioni temporali. Ancora una volta, questo risultato viene ottenuto applicando una singola etichetta ai gruppi di item che desideriamo vincolare (ad esempio `psp1.7 ~~ psp1u*psp1.7`). Nella sintassi, questo è simile a quello che abbiamo usato in precedenza con le covarianze; tuttavia, questa volta consideriamo la covariazione di ogni variabile con se stessa. 
 
 ```{r residual, echo=FALSE, fig.cap='Invarianza dei termini erratici.', out.width = '70%'}
 knitr::include_graphics("code/meas_inv_lgm/residual.png")
@@ -464,7 +473,6 @@ residual.v1 <-
 
 '
 # Residual error constrained across waves
-
 psp1.7 ~~ psp1u*psp1.7
 psp1.8 ~~ psp1u*psp1.8
 psp1.9 ~~ psp1u*psp1.9
@@ -524,14 +532,14 @@ ssa7.8 ~~ ssa7u*ssa7.8
 ssa7.9 ~~ ssa7u*ssa7.9
 ssa7.10 ~~ ssa7u*ssa7.10
 ssa7.11 ~~ ssa7u*ssa7.11
-
 '
 
 residual.model <- paste(metric.v1, errorstructure, scalar.v1, residual.v1, sep = ' ', collapse = NULL)
-
 ```
 
 ### Output del modello
+
+Adattiamo il modello.
 
 ```{r residualoutput}
 residual.fit <- cfa(residual.model,
@@ -541,7 +549,11 @@ residual.fit <- cfa(residual.model,
   missing = "ML",
   std.lv = TRUE
 )
+```
 
+Esaminiamo i risultati.
+
+```{r}
 summary(residual.fit,
   fit.measures = TRUE,
   standardized = TRUE,
@@ -552,9 +564,11 @@ summary(residual.fit,
 
 ## Confronto tra modelli
 
+Passiamo ora al confronto tra i vari modelli di invarianza temporale di misurazione.
+
 ### Codice e output
 
-Usiamo il codice seguente per confrontare gli indici di adattamento dei quattro modelli.
+Usiamo il codice seguente per confrontare gli indici di adattamento dei quattro modelli descritti in precedenza.
 
 ```{r cfacomparison}
 round(cbind(
@@ -571,23 +585,23 @@ anova(scalar.fit, residual.fit)
 
 ### Interpretazione
 
-In generale, i valori degli indici di adattamento rilevanti (es. Robust CFI, Robust TLI, AIC, BIC, Robust RMSEA e SRMR) tra tutti e quattro i nostri modelli sono comparabili. Per questi dati, l'invarianza della misurazione più restrittiva sembra essere stata confermata. Procediamo quindi all'analisi SEM utilizzando il modello dell'invarianza dei residui. Tuttavia, non tutti gli indici di adattamento concordano su quale sia il modello migliore (ad esempio, il test del chi quadrato preferisce il modello metrico)! È molto importante scegliere i criteri di selezione del modello a priori (idealmente, mediante una pre-registrazione dello studio).
+In generale, i valori degli indici di bontà dell'adattamento (es. Robust CFI, Robust TLI, AIC, BIC, Robust RMSEA e SRMR) sono simili tra i quattro modelli considerati. In questi termini, per questi dati, l'invarianza della misurazione più restrittiva sembra essere stata confermata. Si può notare, però, che non tutti gli indici di adattamento concordano su quale sia il modello migliore (ad esempio, il test del chi quadrato preferisce il modello metrico)! Nel tutorial, Mackinnon and Curtis non basano la selezione dei modelli usando i risultati del test del rapporto di verosimiglianza, ma preferiscono basarsi sugli altri indici. Questo fa capire quanto sia importante scegliere i criteri di selezione del modello a priori (idealmente, mediante una pre-registrazione dello studio).
 
+Procediamo ora all'analisi SEM utilizzando il modello dell'invarianza dei residui.
 
 ## Modello strutturale
 
+Dopo aver selezionato il modello dell'eguaglianza dei residui come il modello preferito (il che potrebbe essere alquanto discutibile, ma qui tale modello è stato scelto a scopo dimostrativo), usiamo il modello selezionato come modello Cross-lagged Panel.
+
 ### Definizione del modello
 
-Dopo aver selezionato il modello dell'eguaglianza dei residui come nostro modello preferito (il che potrebbe essere alquanto discutibile, ma qui tale modello è stato scelto a scopo dimostrativo), lo usiamo come modello Cross-lagged Panel. In questo modello, stimiamo le regressioni anziché le covarianze.
-
-Includiamo solo le relazioni dal tempo t al tempo t+1. Cioè, le relazioni dal tempo t a t+2, a t+3 e così via sono omesse. Si potrebbe voler includere anche queste relazioni, ma per scopi pedagogici qui ci concentreremo solo su un modello più semplice e imporremo il vincolo per cui le relazioni tra variabili con ritardi temporali maggiori di +1 sono ugualia a zero.
+Nel modello Cross-lagged Panel vengono stimati i coefficienti di regressione, non le covarianze. Vengono qui considerate solo le relazioni dal tempo $t$ al tempo $t+1$. Cioè, le relazioni dal tempo $t$ a $t+2$, a $t+3$ e così via vengono omesse. Si potrebbe voler includere anche queste relazioni, ma per i presenti scopi didattici, qui ci concentreremo solo su un modello più semplice e imporremo il vincolo per cui le relazioni tra variabili con ritardi temporali maggiori di +1 sono uguali a zero.
 
 ```{r residualsemdefinition}
 sem.v1 <-
 
 '
 # Structural paths defined
-
 SSA.8 ~ A*SSA.7 + C*PSP.7
 PSP.8 ~ D*SSA.7 + B*PSP.7
 SSA.9 ~ A*SSA.8 + C*PSP.8
@@ -598,19 +612,19 @@ SSA.11 ~ A*SSA.10 + C*PSP.10
 PSP.11 ~ D*SSA.10 + B*PSP.10
 
 # Latent variable covariances defined
-
 SSA.7 ~~ PSP.7
 SSA.8 ~~ PSP.8
 SSA.9 ~~ PSP.9
 SSA.10 ~~ PSP.10
 SSA.11 ~~ PSP.11
-
 '
 
 residual.sem.model <- paste(residual.model, sem.v1, sep = ' ', collapse = NULL)
 ```
 
 ### Output del modello
+
+Adattiamo il modello.
 
 ```{r residualsemoutput}
 residual.sem.fit <- sem(residual.sem.model,
@@ -620,7 +634,11 @@ residual.sem.fit <- sem(residual.sem.model,
   missing = "ML",
   std.lv = TRUE
 )
+```
 
+Esaminiamo i risulati.
+
+```{r}
 summary(residual.sem.fit,
   fit.measures = TRUE,
   standardized = TRUE,
@@ -629,7 +647,7 @@ summary(residual.sem.fit,
 )
 ```
 
-Questo modello ha un fit accettabile. I valori $R^2$ variano da  .38 a .63. La figura \@ref(fig:parintclpm) mostra che l'autopresentazione perfezionistica del giorno precedente predice fortemente l'autopresentazione perfezionista del giorno successivo. Allo stesso modo, l'ansia sociale del giorno precedente predice fortemente l'ansia sociale del giorno successivo. Nel contempo, il percorso incrociato di ciascuna variabile latente che prevedeva la variabile opposta era più debole ma statisticamente significativa. Questo tipo di pattern (grandi percorsi auto-regressivi, piccoli percorsi incrociati) è tipico della maggior parte dei Cross-lagged Panel Model.
+Il modello ha un adattamento accettabile. I valori $R^2$ variano da .38 a .63. La figura \@ref(fig:parintclpm) mostra che l'autopresentazione perfezionistica del giorno precedente predice fortemente l'autopresentazione perfezionista del giorno successivo. Allo stesso modo, l'ansia sociale del giorno precedente predice fortemente l'ansia sociale del giorno successivo. Nel contempo, il percorso incrociato tra ciascuna variabile latente e la variabile opposta è più debole, anche se ancora statisticamente significativo. Questo tipo di pattern (grandi percorsi auto-regressivi, piccoli percorsi incrociati) è tipico della maggior parte dei modelli Cross-lagged Panel.
 
 ```{r parintclpm, echo=FALSE, fig.cap='Modello Cross-lagged Panel Model.', out.width = '90%'}
 knitr::include_graphics("code/meas_inv_lgm/clpm.png")
@@ -637,9 +655,17 @@ knitr::include_graphics("code/meas_inv_lgm/clpm.png")
 
 ## Modello Random Intercepts Cross-Lagged Panel 
 
+Una variante del modello descritto in precedenza è il modello Random Intercepts Cross-Lagged Panel proposto da Ellen Hamaker (Hamaker, 2015; Mulder & Hamaker, 2020). 
 ### Definizione del modello
 
-Usiamo qui il modello Random Intercepts Cross-Lagged Panel proposto da Ellen Hamaker (Hamaker, 2015; Mulder & Hamaker, 2020). Questo modello apporta quattro modifiche principali: (a) viene omessa la struttura residuale correlata; (b) sono specificate le intercette casuali per ciascun indicatore; (c) le intercette casuali possono covariare insieme; (d) le medie latenti per tutte le variabili latenti dal secondo momento temporale in poi sono parametri che possono variare liberamente. La figura \@ref(fig:riclpm) fornisce una rappresentazione visiva di questo modello.
+Questo modello apporta quattro modifiche principali al modello precedente: 
+
+- viene omessa la struttura residuale correlata; 
+- sono specificate intercette casuali per ciascun indicatore; 
+- le intercette casuali possono covariare; 
+- le medie latenti per tutte le variabili latenti dal secondo momento temporale in poi sono parametri che possono variare liberamente. 
+
+La figura \@ref(fig:riclpm) fornisce una rappresentazione grafica di questo modello.
 
 Si noti che il RI-CLPM può essere stimato solo con 3 o più punti temporali; il diagramma in Figura \@ref(fig:riclpm) viene fornito solo quale esempio, per evitare una eccessiva complessità visiva.
 
@@ -653,7 +679,6 @@ sem.v2 <-
 
 '
 # Create between components (random intercepts)
-
 RI.PSP1 =~ 1*psp1.7 + 1*psp1.8 + 1*psp1.9 + 1*psp1.10 + 1*psp1.11 
 RI.PSP2 =~ 1*psp2.7 + 1*psp2.8 + 1*psp2.9 + 1*psp2.10 + 1*psp2.11 
 RI.PSP3 =~ 1*psp3.7 + 1*psp3.8 + 1*psp3.9 + 1*psp3.10 + 1*psp3.11 
@@ -667,7 +692,6 @@ RI.SSA6 =~ 1*ssa6.7 + 1*ssa6.8 + 1*ssa6.9 + 1*ssa6.10 + 1*ssa6.11
 RI.SSA7 =~ 1*ssa7.7 + 1*ssa7.8 + 1*ssa7.9 + 1*ssa7.10 + 1*ssa7.11 
 
 # PSP factor loadings defined, and constrained across waves
-
 PSP.7 =~ psp1f*psp1.7 + psp2f*psp2.7 + psp3f*psp3.7
 PSP.8 =~ psp1f*psp1.8 + psp2f*psp2.8 + psp3f*psp3.8
 PSP.9 =~ psp1f*psp1.9 + psp2f*psp2.9 + psp3f*psp3.9
@@ -675,7 +699,6 @@ PSP.10 =~ psp1f*psp1.10 + psp2f*psp2.10 + psp3f*psp3.10
 PSP.11 =~ psp1f*psp1.11 + psp2f*psp2.11 + psp3f*psp3.11
 
 # PSP variance constrained to 1
-
 PSP.7 ~~ 1*PSP.7
 PSP.8 ~~ 1*PSP.8
 PSP.9 ~~ 1*PSP.9
@@ -683,7 +706,6 @@ PSP.10 ~~ 1*PSP.10
 PSP.11 ~~ 1*PSP.11
 
 # SSA factor loadings defined, and constrained across waves
-
 SSA.7 =~ ssa1f*ssa1.7 + ssa2f*ssa2.7 + ssa3f*ssa3.7 + 
          ssa4f*ssa4.7 + ssa5f*ssa5.7 + ssa6f*ssa6.7 + ssa7f*ssa7.7
          
@@ -700,7 +722,6 @@ SSA.11 =~ ssa1f*ssa1.11 + ssa2f*ssa2.11 + ssa3f*ssa3.11 +
           ssa4f*ssa4.11 + ssa5f*ssa5.11 + ssa6f*ssa6.11 + ssa7f*ssa7.11
           
 # SSA variance constrained to 1
-
 SSA.7 ~~ 1*SSA.7
 SSA.8 ~~ 1*SSA.8
 SSA.9 ~~ 1*SSA.9
@@ -708,7 +729,6 @@ SSA.10 ~~ 1*SSA.10
 SSA.11 ~~ 1*SSA.11
           
 # Intercepts constrained
-
 psp1.7 ~ psp1i*1
 psp1.8 ~ psp1i*1
 psp1.9 ~ psp1i*1
@@ -770,7 +790,6 @@ ssa7.10 ~ ssa7i*1
 ssa7.11 ~ ssa7i*1
 
 # Residual error constrained across waves
-
 psp1.7 ~~ psp1u*psp1.7
 psp1.8 ~~ psp1u*psp1.8
 psp1.9 ~~ psp1u*psp1.9
@@ -832,7 +851,6 @@ ssa7.10 ~~ ssa7u*ssa7.10
 ssa7.11 ~~ ssa7u*ssa7.11
 
 # Structural paths defined (WITHIN)
-
 SSA.8 ~ A*SSA.7 + C*PSP.7
 PSP.8 ~ D*SSA.7 + B*PSP.7
 SSA.9 ~ A*SSA.8 + C*PSP.8
@@ -843,7 +861,6 @@ SSA.11 ~ A*SSA.10 + C*PSP.10
 PSP.11 ~ D*SSA.10 + B*PSP.10
 
 # Latent variable covariances defined
-
 SSA.7 ~~ PSP.7
 SSA.8 ~~ PSP.8
 SSA.9 ~~ PSP.9
@@ -858,7 +875,6 @@ SSA.11 ~~ PSP.11
  
   RI.PSP1 + RI.PSP2 + RI.PSP3 + RI.SSA1 + RI.SSA2 + RI.SSA3 + RI.SSA4 + RI.SSA5 + RI.SSA6 + RI.SSA7 ~~ 0*PSP.7 + 0*SSA.7
 '
-
 ```
 
 ### Output del modello

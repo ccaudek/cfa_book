@@ -572,8 +572,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="24.12" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html"><i class="fa fa-check"></i><b>24.12</b> Modello Random Intercepts Cross-Lagged Panel</a>
 <ul>
-<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#definizione-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Definizione del modello</a></li>
-<li class="chapter" data-level="24.12.2" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.2</b> Output del modello</a></li>
+<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Output del modello</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-2.html"><a href="commenti-e-considerazioni-finali-2.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
 </ul></li>
@@ -704,7 +703,7 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="struttura-degli-errori" class="section level2 hasAnchor" number="24.5">
 <h2><span class="header-section-number">24.5</span> Struttura degli errori<a href="struttura-degli-errori.html#struttura-degli-errori" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Definiamo separatamente la struttura dei termini d’errore, che è complessa. Poiché il codice necessario occupa così tante righe, viene scritto separatamente e richiamato poi nella sintassi dei modelli definiti in seguito. Questo rende il codice più ordinato e più breve. Si noti il codice seguente impone il vincolo dell’eguaglianza sulle covarianze dei termini di errore corrispondenti a rilevazioni (ondata-wave) successive.</p>
+<p>Mackinnon e Curtis creano uno script separato che contiene la specificazione della struttura dei termini d’errore, che è complessa. Poiché il codice necessario occupa così tante righe, viene scritto separatamente e richiamato poi nella sintassi dei modelli che vengono definiti in seguito. Questo rende il codice più ordinato e più breve. Si noti che il codice seguente impone il vincolo dell’eguaglianza delle covarianze tra i termini d’errore di rilevazioni temporali successive.</p>
 <div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="struttura-degli-errori.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Error term covariances constrained across waves</span></span>
 <span id="cb369-2"><a href="struttura-degli-errori.html#cb369-2" aria-hidden="true" tabindex="-1"></a>errorstructure <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
 <span id="cb369-3"><a href="struttura-degli-errori.html#cb369-3" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.7 ~~ psp1cov*psp1.8</span></span>

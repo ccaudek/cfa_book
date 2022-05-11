@@ -572,8 +572,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="24.12" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html"><i class="fa fa-check"></i><b>24.12</b> Modello Random Intercepts Cross-Lagged Panel</a>
 <ul>
-<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#definizione-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Definizione del modello</a></li>
-<li class="chapter" data-level="24.12.2" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.2</b> Output del modello</a></li>
+<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Output del modello</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-2.html"><a href="commenti-e-considerazioni-finali-2.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
 </ul></li>
@@ -834,16 +833,16 @@ campione di controllo. Tale test è implementato nella funzione
 un esempio di applicazione di tale test.</p>
 <div class="exercise">
 <p><span id="exr:unlabeled-div-43" class="exercise"><strong>Esercizio B.4  </strong></span>Si consideriano i seguenti dati</p>
-<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="la-misura-del-cambiamento.html#cb405-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
-<span id="cb405-2"><a href="la-misura-del-cambiamento.html#cb405-2" aria-hidden="true" tabindex="-1"></a>t0 <span class="ot">&lt;-</span> <span class="dv">80</span> <span class="co"># The IQ of a patient at baseline</span></span>
-<span id="cb405-3"><a href="la-misura-del-cambiamento.html#cb405-3" aria-hidden="true" tabindex="-1"></a>t1 <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="co"># The IQ of a patient after the therapy</span></span>
-<span id="cb405-4"><a href="la-misura-del-cambiamento.html#cb405-4" aria-hidden="true" tabindex="-1"></a>controls <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">100</span>, <span class="dv">15</span>))</span>
-<span id="cb405-5"><a href="la-misura-del-cambiamento.html#cb405-5" aria-hidden="true" tabindex="-1"></a>controls</span>
-<span id="cb405-6"><a href="la-misura-del-cambiamento.html#cb405-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 109 111  98  93 109  73 109  96  96  86  98 127 106 108  89 112  87  95 117</span></span>
-<span id="cb405-7"><a href="la-misura-del-cambiamento.html#cb405-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [20] 104</span></span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="la-misura-del-cambiamento.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb409-2"><a href="la-misura-del-cambiamento.html#cb409-2" aria-hidden="true" tabindex="-1"></a>t0 <span class="ot">&lt;-</span> <span class="dv">80</span> <span class="co"># The IQ of a patient at baseline</span></span>
+<span id="cb409-3"><a href="la-misura-del-cambiamento.html#cb409-3" aria-hidden="true" tabindex="-1"></a>t1 <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="co"># The IQ of a patient after the therapy</span></span>
+<span id="cb409-4"><a href="la-misura-del-cambiamento.html#cb409-4" aria-hidden="true" tabindex="-1"></a>controls <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">100</span>, <span class="dv">15</span>))</span>
+<span id="cb409-5"><a href="la-misura-del-cambiamento.html#cb409-5" aria-hidden="true" tabindex="-1"></a>controls</span>
+<span id="cb409-6"><a href="la-misura-del-cambiamento.html#cb409-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 109 111  98  93 109  73 109  96  96  86  98 127 106 108  89 112  87  95 117</span></span>
+<span id="cb409-7"><a href="la-misura-del-cambiamento.html#cb409-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [20] 104</span></span></code></pre></div>
 <p>Il test si svolge come indicato di seguito:</p>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="la-misura-del-cambiamento.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mellenbergh.test</span>(t0, t1, <span class="at">controls =</span> controls)</span>
-<span id="cb406-2"><a href="la-misura-del-cambiamento.html#cb406-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The Mellenbergh &amp; van den Brink (1998) test suggests that the change is not significant (d = 20.00, 90% CI [-9.05, 49.05], z = 1.14, p p = 0.256).</span></span></code></pre></div>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="la-misura-del-cambiamento.html#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mellenbergh.test</span>(t0, t1, <span class="at">controls =</span> controls)</span>
+<span id="cb410-2"><a href="la-misura-del-cambiamento.html#cb410-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The Mellenbergh &amp; van den Brink (1998) test suggests that the change is not significant (d = 20.00, 90% CI [-9.05, 49.05], z = 1.14, p p = 0.256).</span></span></code></pre></div>
 </div>
 </div>
 </div>
