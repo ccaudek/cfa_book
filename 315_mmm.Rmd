@@ -5,30 +5,40 @@ source("_common.R")
 library("lavaan")
 ```
 
-Si dice che una misurazione ha validità di costrutto se correla con misurazioni dello stesso costrutto con metodi differenti. La validità di costrutto è composta dalla validità convergente e dalla validità discriminante. 
+La validità rappresenta la capacità di una procedura di misurazione di misurare ciò che si intende misurare. È possibile distinguere diversi tipi di validità cui corrispondono metodi diversi di verifica. 
 
-La validità di costrutto può anche essere valutata con la tecnica della matrice Multi-Tratto Multi-Metodo (MTMM; Campbell and Fiske, 1959). La MTMM valuta la correlazione tra costrutti differenti misurati sia con metodi uguali, sia con metodi differenti. La ratio è che la validità di costrutto è alta quando lo strumento misura il costrutto in modo tale che lo strumento utilizzato non è essenziale alla misurazione. 
+- **validità di facciata**: "il grado in con cui gli item di un test appaiono ragionevoli o sensibili, rispetto al costrutto, sia alle persone a cui è diretto il test sia a coloro che lo usano" (Anastasi, 1969); è dunque determinata dalla significatività apparente ed esteriore che una misura presenta; per valutarla si richiedono giudizi di esperti relativamente alla validità che sembrano avere le misure;
+- **validità di contenuto**: una misura ha validità di contenuto quando i suoi indicatori rappresentano in modo accurato l'universo di contenuto misurato; anche questo tipo di validità richiede il giudizio di esperti;
+- **validità di costrutto**: richiama la definizione generica di validità: "il grado in cui uno strumento misura il costrutto che intende misurare"; si riferisce all'inferenza della misurazione delle variabili latenti (o costrutti), non direttamente osservabili ma dedotte, attraverso un modello statistico, da variabili osservate; è data dal livello in cui gli indicatori misurano accuratamente i costrutti teorici che interessa misurare; essa è verificata praticamente attraverso la misura dell'associazione tra un costrutto ed altri costrutti secondo particolari modelli teorici (poniamo, per esempio, di voler costruire uno strumento che misuri la depressione di un particolare gruppo di individui; secondo l'ipotesi, lo strumento fornirà una buona misura di depressione, ovvero avrà validità di costrutto, se risulterà essere inversamente correlato con il benessere, ad esempio; per poter procedere in questo modo è necessario assumere che la teoria sia corretta, ovvero che esista la relazione ipotizzata tra depressione e benessere);
+- **validità di criterio**: rappresenta la capacità di uno strumento di fare previsioni accurate; la verifica di tale validità è fatta a partire dalla sua adeguatezza nel predire un criterio esterno;
+- **validità concorrente**: è determinata osservando quanto lo strumento correla con altri strumenti che il ricercatore ritiene validi nel misurare la stessa caratteristica; l'osservazione di una forte relazione statisticamente è considerata verifica della validità;
+- **validità convergente**: è determinata confrontando e correlando i punteggi ottenuti con la misura da validare con quelli ottenuti con la misura di un altro costrutto, teoricamente legato al primo. La possibilità di verificare la validità convergente dipende quindi dall'esistenza di costrutti, e relative misure, legati con quello misurato;
+- **validità discriminante**: è speculare alla validità convergente; essa è alta quando la misura da validare non correla con le misure di altri costrutti, teoricamente distinti dal primo.
 
 ## MTMM e CFA
 
+La Matrice Multi-Tratto Multi-Metodo (MTMM; Campbell and Fiske, 1959) è un metodo per valutare la validità di costrutto. La MTMM valuta la correlazione tra costrutti differenti misurati sia con metodi uguali, sia con metodi differenti. La ratio è che la validità di costrutto è alta quando lo strumento misura il costrutto in modo tale che lo strumento utilizzato non è essenziale alla misurazione. 
+
+### Un esempio concreto
+
 Nell'esempio discusso da @brown2015confirmatory, il ricercatore desidera esaminare la validità del costrutto dei disturbi di personalità del Cluster A del DSM-IV, che sono pattern persistenti di sintomi caratterizzati da comportamenti strani o eccentrici (American Psychiatric Association, 1994). Il cluster A comprende tre costrutti di disturbo della personalità: 
 
-- paranoico (un pattern duraturo di sfiducia e sospetto tale che le motivazioni degli altri sono interpretate come malevole); 
-- schizoide (un pattern duraturo di distacco dalle relazioni sociali e una gamma ristretta di espressioni emotive); 
-- schizotipico (un pattern duraturo di disagio acuto nelle relazioni sociali, distorsioni cognitive e percettive ed eccentricità comportamentali). 
+- *paranoico* (un pattern duraturo di sfiducia e sospetto tale che le motivazioni degli altri sono interpretate come malevole); 
+- *schizoide* (un pattern duraturo di distacco dalle relazioni sociali e una gamma ristretta di espressioni emotive); 
+- *schizotipico* (un pattern duraturo di disagio acuto nelle relazioni sociali, distorsioni cognitive e percettive ed eccentricità comportamentali). 
 
 In un campione di 500 pazienti, ciascuno di questi tre tratti è misurato mediante tre metodi di valutazione: 
 
-- un inventario di autovalutazione dei disturbi di personalità; 
-- valutazioni dimensionali da un colloquio clinico strutturato sui disturbi della personalità; 
-- valutazioni osservazionali effettuate da psicologi.
+- un *inventario di autovalutazione* dei disturbi di personalità; 
+- *valutazioni dimensionali da un *colloquio clinico* strutturato sui disturbi della personalità; 
+- *valutazioni osservazionali* effettuate da psicologi.
 
 I dati sono contenuti in una matrice 3 (T) × 3 (M), organizzata in modo tale che le correlazioni tra i diversi tratti (disturbi della personalità: paranoico, schizotipico, schizoide) siano annidate all'interno di ciascun metodo (tipo di valutazione: inventario, colloquio clinico, valutazioni degli osservatori). 
 
 I dati sono riportati qui sotto.
 
 ```{r}
-sds <- '3.61  3.66  3.59  2.94  3.03  2.85  2.22  2.42  2.04'
+sds <- c(3.61,  3.66,  3.59,  2.94,  3.03,  2.85,  2.22,  2.42,  2.04)
 
 cors <- '
   1.000 
@@ -41,18 +51,25 @@ cors <- '
   0.196  0.644  0.146  0.261  0.641  0.248  0.383  1.000 
   0.219  0.241  0.676  0.290  0.168  0.749  0.361  0.342  1.000'
 
-covs <- getCov(cors, sds = sds, names = c("pari", "szti", "szdi", "parc", "sztc", "szdc", "paro", "szto", "szdo"))
+covs <- getCov(
+  cors, 
+  sds = sds, 
+  names = c("pari", "szti", "szdi", "parc", "sztc", "szdc", "paro", "szto", "szdo")
+  )
 ```
 
 <!-- La MTMM è una matrice di correlazione simmetrica con un'eccezione: le stime di affidabilità (es. alpha di Cronbach) delle misure sono inserite nella diagonale al posto dei valori 1 (es., nei dati in esame la stima di coerenza interna della misura inventariale della personalità paranoica è .93). Come notano Campbell e Fiske (1959), idealmente la diagonale di affidabilità dovrebbe contenere i coefficienti più grandi nella matrice; cioè, la misura dovrebbe essere più fortemente correlata con se stessa che con qualsiasi altro indicatore nella matrice MTMM. -->
 
-La matrice MTMM è costituita da due tipi di blocchi di coefficienti: (1) blocchi di mono-metodo, che contengono correlazioni tra indicatori derivati dallo stesso metodo di valutazione; e (2) blocchi etero-metodo, che contengono correlazioni tra indicatori valutati con metodi differenti. Di centrale interesse è la diagonale di validità, che corrisponde alla diagonale all'interno di ciascun blocco etero-metodo. Le correlazioni sulla diagonale di validità rappresentano stime di validità convergente: diverse misure di costrutti teoricamente simili o sovrapposti dovrebbero essere fortemente interconnesse. 
+La matrice MTMM è costituita da due tipi di blocchi di coefficienti.
+
+1. Blocchi di mono-metodo, che contengono correlazioni tra indicatori derivati dallo stesso metodo di valutazione.
+2. Blocchi etero-metodo, che contengono correlazioni tra indicatori valutati con metodi differenti. Di centrale interesse è la diagonale di validità, che corrisponde alla diagonale all'interno di ciascun blocco etero-metodo. Le correlazioni sulla diagonale di validità rappresentano stime di validità convergente: diverse misure di costrutti teoricamente simili o sovrapposti dovrebbero essere fortemente interconnesse. 
 
 Nella matrice MTMM, la validità convergente è evidenziata da forti correlazioni tra metodi che misurano lo stesso tratto (cioè, coefficienti mono-tratto/etero-metodo). Ad esempio, i risultati dell'esempio indicano che le tre diverse misure della personalità schizotipica sono fortemente correlate (valori $r$ da .676 a .749). Gli elementi al di fuori della diagonale dei blocchi etero-metodo rivelano la validità discriminante: le misure di costrutti teoricamente distinti non dovrebbero essere altamente inter-correlate. La validità discriminante nella matrice MTMM è evidenziata da correlazioni deboli tra diversi tratti misurati con metodi diversi (cioè, coefficienti etero-tratto/etero-metodo) in relazione alle correlazioni sulla diagonale di validità (coefficienti mono-tratto/etero-metodo). Nei dati dell'esempio, il supporto per la validità discriminante è ottenuto dalla constatazione che le correlazioni negli elementi al di fuori della diagonale dei blocchi etero-metodo sono uniformemente inferiori (valori $r$ = .126 a .290) rispetto ai coefficienti di validità (valori $r$ = .557 a .749).
 
 Infine, l'evidenza degli effetti del metodo è ottenuta dall'esame degli elementi fuori dalla  diagonale dei blocchi del mono-metodo. L'entità degli effetti del metodo è riflessa dall'entità differenziale delle correlazioni tra i diversi tratti misurati con lo stesso metodo (coefficienti etero-tratto/mono-metodo) rispetto alle correlazioni tra gli stessi due tratti misurati con metodi diversi. Come mostrato nei dati dell'esempio, sebbene non estrema, è evidente una certa varianza di metodo, in particolare per le misure di valutazione dell'inventario e dell'osservatore. Ad esempio, le valutazioni dell'osservatore dei tratti della personalità paranoica e schizotipica sono più altamente correlate (r = .383) rispetto alle misure etero-metodo di questi tratti (ad esempio, la correlazione tra i tratti della personalità paranoide e schizotipica misurata rispettivamente dall'inventario e dalla valutazione dell'osservatore, è .196). Come nel presente esempio, quando i risultati complessivi indicano che la validità convergente e discriminante sono elevate e gli effetti del metodo sono trascurabili, la validità del costrutto è supportata.
 
-@brown2015confirmatory suggerisce di analizzare la matrice MTMM con un modello CFA il quale ipotizza correlazioni residue tra le unicità di ciascun metodo. Il modello è formulato nel modo seguente. Ogni fattore comune (`paranoid`, `schizotypal`, `schizoid`) è identificato dagli item corrispondenti definiti da metodi diversi. Le specificità di ciascun metodo sono tra loro correlate.
+@brown2015confirmatory mostra come sia possibile analizzare la matrice MTMM con un modello CFA nel quale si ipotizza che vi siano correlazioni residue tra le specificità di ciascun metodo. Il modello è dunque formulato nel modo seguente: ogni fattore comune (`paranoid`, `schizotypal`, `schizoid`) è identificato dagli item corrispondenti definiti da metodi diversi; le specificità di ciascun metodo, inoltre, sono tra loro correlate.
 
 ```{r}
 model <- '
@@ -68,10 +85,26 @@ model <- '
 '  
 ```
 
+Adattiamo il modello ai dati.
+
 ```{r}
-fit <- cfa(model, sample.cov = covs, sample.nobs = 500, std.lv = TRUE)
+fit <- cfa(
+  model, 
+  sample.cov = covs, 
+  sample.nobs = 500, 
+  std.lv = TRUE
+)
+```
+
+Esaminiamo la soluzione ottenuta.
+
+```{r}
 summary(fit, fit.measures = TRUE, standardized = TRUE)
 ```
 
-Per i dati di @brown2015confirmatory, il fit di tale modello è eccellente. Ciò fornisce forti evidenze di validità di costrutto per i fattori Paranoico, Schizoide e Schizotipico che sono stati ipotizzati.
+```{r}
+effectsize::interpret(fit)
+```
+
+Per i dati considerati da @brown2015confirmatory, l'adattamento del modello MTMM è eccellente. Ciò fornisce forti evidenze di validità di costrutto per i fattori Paranoico, Schizoide e Schizotipico che sono stati ipotizzati.
 

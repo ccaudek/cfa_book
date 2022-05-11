@@ -443,9 +443,9 @@ individual_x_trajectories <-
 individual_x_trajectories
 ```
 
-Su può vedere che la variabile `x` segue una crescita lineare, ma un modello quadratico molto "debole" potrebbe adattarsi meglio ai dati, quindi sarà necessario controllare se in effetti questo è vero. Se entrambi i modelli si adattano bene, li confronteremo con il test del rapporto di verosimiglianza (LRT).
+Su può vedere che la variabile `x` segue una crescita lineare, ma un modello quadratico molto "debole" potrebbe adattarsi meglio ai dati, quindi sarà necessario controllare se in effetti questo è vero. 
 
-Faccio lo stesso per la variabile `y`.
+Esaminiamo ora la variabile `y`.
 
 ```{r}
 y_plot <-
@@ -477,12 +477,11 @@ individual_y_trajectories <-
 individual_y_trajectories
 ```
 
-
-È chiaro che la `y` diminuisce in media con il tempo, ma c'è eterogeneità (o variabilità) in ciò che accade nei singoli caso. Anche in questo caso, sia un modello lineare sia un modello quadratico sembrano appropriati per descrivere il cambiamento nei dati.
+È chiaro che la `y` diminuisce in media con il tempo, ma c'è eterogeneità (o variabilità) in ciò che accade nei singoli caso. Anche in questo caso, sia un modello lineare sia un modello quadratico sembrano appropriati per descrivere il cambiamento nei dati, anche se un modello quadratico sembra più appropriato.
 
 ### Stimatore
 
-Tutti i dati utilizzati sono continui, quindi useremo la stima della massima verosimiglianza (stimatore = ML). Tuttavia è preferibile usare la variante "robusta" (stimatore = MLR) quando possibile per tenere conto dei possibili non normalità nei dati.
+Tutti i dati utilizzati sono continui, quindi si potrebbe usare la stima della massima verosimiglianza (stimatore = ML). Tuttavia, quando possibile, è preferibile usare la variante "robusta" di questo stimatore allo scopo di rendere conto della possibile non normalità dei dati (stimatore = MLR).
 
 ### Assenza di crescita
 
@@ -495,7 +494,7 @@ int_x_mod <-
 '
 ```
 
-Eseguiamo il fit e esaminiamo i risultati.
+Adattiamo il modello ai dati ed esaminiamo i risultati.
 
 ```{r}
 int_x_fit <-
@@ -515,7 +514,7 @@ int_x_fit_stats <-
 round(int_x_fit_stats, 2)
 ```
 
-È chiaro che il modello di assenza di crescita non spiega i dati `x`. Consideriamo `y`.
+È chiaro che il modello di assenza di crescita non spiega i dati `x`. Consideriamo la variabile `y`. Anche in questo caso prendiamo in considerazione un modello di assenza di variazione nel tempo. 
 
 ```{r}
 int_y_mod <- 
@@ -570,7 +569,7 @@ linear_x_fit_stats <-
 round(linear_x_fit_stats, 2)
 ```
 
-Il modello di crescita lineare per la `x` si adatta bene rispetto a tutti gli indici. Questo è ciò che ci aspettavamo in base al grafico dei dati osservati.
+Il modello di crescita lineare per la `x` fornisce un buon adattamento ai dati rispetto a tutti gli indici. Questo è ciò che ci aspettavamo esaminando il grafico dei dati.
 
 Esaminiamo un modello di crescita lineare per la `y`.
 
@@ -602,7 +601,7 @@ Il modello lineare è inadeguato per la `y` rispetto a tutti gli indici consider
 
 ### Crescita quadratica
 
-I termini quadratici rappresentano il tasso medio di variazione della pendenza nelle diverse rilevazioni temporali. Per descrivere una tale caratteristica si parla di "crescita quadratica" nei modelli SEM.
+I termini quadratici descrivono il tasso medio di *variazione della pendenza* tra le diverse rilevazioni temporali. Nei modelli SEM, una tale caratteristica viene detta "crescita quadratica".
 
 Consideriamo un modello di crescita quadratica per la `x`.
 
@@ -630,21 +629,21 @@ quad_x_fit_stats <-
 round(quad_x_fit_stats, 2)
 ```
 
-Qui abbiamo un problema interessante, poiché la `x` si adatta abbastanza bene sia a un modello lineare che a uno quadratico, ma abbiamo un caso di Heywood, in particolare la varianza della variabile osservata stimata è negativa.
+Qui abbiamo un problema interessante, poiché la `x` si adatta bene sia a un modello lineare sia a uno quadratico. Abbiamo però un caso di Heywood: la varianza stimata della variabile `x4` è negativa.
 
 ```{r}
 lavInspect(quad_x_fit, "est")$theta
 ```
 
-Si ottiene una stima negativa per la varianza della variabile osservata `x4`. Questo è un problema e indica che il modello potrebbe non rappresentare bene i dati. È possibile introdurre dei vincoli nei parametri per vedere se l'adattamento rimane buono se "forziamo" una modifica a questo parametro, ma questo va oltre gli scopi presenti. Per i fini di questo tutorial ignoreremo questo caso di Heywood e proseguiremo nell'analisi.
+Questo è ovviamente un problema, in quanto il modello non sembra adeguato per i dati. È possibile introdurre dei vincoli sui parametri per poi valutare se, evitando il caso di Heywood, l'adattamento si mantiene a livelli adeguati. Tuttavia, per i fini di questo tutorial, ignoreremo il caso di Heywood e proseguiremo nell'analisi.
 
-Quando si hanno due modelli nidificati adatti (nel nostro caso, modelli lineari e quadratici), possiamo confrontare formalmente l'adattamento con i test del rapporto di verosimiglianza (LRT). L'ipotesi nulla è che non vi sia alcuna differenza nella varianza spiegata dai due modelli. La parsimonia è preferita in una situazione in cui la varianza spiegata è equivalente.
+Quando si hanno due modelli nidificati adatti (nel nostro caso, modelli lineari e quadratici), possiamo confrontare formalmente l'adattamento relativo dei due modelli con il test del rapporto di verosimiglianza (LRT). L'ipotesi nulla è che non vi sia alcuna differenza nella covarianza spiegata dai due modelli. Se la covarianza spiegata è equivalente, preferiamo il modello più semplice.
 
 ```{r}
 lavTestLRT(linear_x_fit, quad_x_fit)
 ```
 
-Qui, un p-value $> 0.05$ ci dice che il modello lineare è da preferire.
+Qui, un p-value $> 0.05$ (ovvero, nessuna evidenza di perdita di adattamento) ci dice che il modello lineare (ovvero, quello più semplice) è da preferire.
 
 Esaminiamo la `y`. 
 
@@ -672,11 +671,13 @@ quad_y_fit_stats <-
 quad_y_fit_stats
 ```
 
-Qui il modello quadratico si adatta molto bene ai dati ed è sicuramente da preferire al modello lineare per la `y`.
+Gli indici di bontà di adattamento sono eccellenti. 
 
 ```{r}
 lavTestLRT(linear_y_fit, quad_y_fit)
 ```
+
+Il test del rapporto di verosimiglianza ci dice che, per la `y`, il modello quadratico è sicuramente da preferire al modello lineare.
 
 ## Parallel Process Model
 
@@ -685,25 +686,24 @@ Esaminiamo ora un modello che include sia i termini lineari che quadratici (quan
 ```{r}
 full_model <- 
 '
-  ## intercept & slope growth terms for X
+  # intercept & slope growth terms for X
   iX =~ 1*x1 + 1*x2 + 1*x3 + 1*x4
   sX =~ 0*x1 + 1*x2 + 2*x3 + 3*x4
   
-  ## intercept, slope, & quadratic terms for Y
+  # intercept, slope, & quadratic terms for Y
   iY =~ 1*y1 + 1*y2 + 1*y3 + 1*y4
   sY =~ 0*y1 + 1*y2 + 2*y3 + 3*y4
   qY =~ 0*y1 + 1*y2 + 4*y3 + 9*y4
   
-  ## regress growth terms on predictor
+  # regress growth terms on predictor
   qY + iY + sX + iX ~ predictor
   sY ~ a1*predictor
   
-  ## regress outcome on growth terms
+  # regress outcome on growth terms
   outcome ~ iX + sX + iY + b1*sY + qY
   
-  ## testing indirect effect 
-  ## predictor --> sY --> outcome
-  
+  # testing indirect effect 
+  # predictor --> sY --> outcome
   predictor_sY_outcome := a1*b1
 '
 ```
@@ -748,19 +748,24 @@ full_fit_stats <-
 round(full_fit_stats, 2)
 ```
 
-Possiamo vedere che questo modello si adatta bene a tutte le statistiche di adattamento scelte. Questo modello viene ritenuto accettabile e ora possiamo passare all'interpretazione dei risultati del modello.
+Si ottiene dunque un ottimo adattamento del modello ai dati (il che non è sorprendente, in quanto i dati sono stati simulati proprio in base a tale modello). 
+
+### Interpretazione
+
+Dato che il modello si adatta bene ai dati, interpretiamo i risultati ottenuti.
 
 ```{r}
 summary(full_fit)
 ```
 
-Il risultato importante è che `iX` e `sY` prevedono in modo significativo la variabile di esito, e quest'ultima ha un'importanza molto maggiore rispetto alla prima.
+Tra i coefficienti di regressione, quando viene considerata la variabile di esito (`outcome`), vi sono solo due risultati con $p < .05$: quelli relativi a `iX` e `sY`. Ciò significa che il modello offre evidenze di una associazione tra `iX` e `sY` e la variabile di esito. La grandezza dei coefficienti suggerisce che `sY` ha un impatto maggiore su `outcome` rispetto a `iX`. In altre parole, sia i livelli iniziali della `x`, sia il tasso lineare di cambiamento della `y` predicono `outcome`. L'effetto è positivo per entrambe le variabili: livelli maggiori dei valori `x` nella prima rilevazione temporale e tassi di cambiamento più rapidi nella `y` portano entrambi un aumento nel valore atteso di `outcome`.
 
-Ciò significa che i livelli di base di `x` predicono il risultato, così come il tasso lineare di cambiamento della `y`, entrambi in modo positivo in modo tale che livelli più elevati di `x` iniziale o tassi di cambiamento più rapidi in `y` portino a livelli più elevati della variabile di esito.
+L'esempio discusso include anche la covariata `predictor`, la quale è invariante nel tempo. Poiché vi sono evidenze di un'associazione tra `predictor` e `sY`, e poiché vi sono evidenze di un'associazione tra `sY` e `outcome`, è ragionevole esaminare con più attenzione un tale effetto di mediazione. 
 
-L'esempio include una covariata `predictor` invariante nel tempo. Poiché `predictor` ha previsto in modo significativo `sY` e `sY` ha previsto la variabile di esito, possiamo esaminare con più attenzione l'effetto di mediazione. È possibile riportare semplicemente la stima fornita dal prodotto calcolato in precedenza, ma è meglio fare affidamento su altri metodi per testare gli effetti indiretti.
+Per testare gli effetti indiretti è consigliato usare la tecnica di bootstrapping, in quanto gli intervalli di confidenza ottenuti con questa tecnica risultano più affidabili di quelli ottenibili mediante tecniche parametriche basate su ipotesi distributive stringenti relative alle distribuzioni dei parametri.
 
-Una tecnica molto usata a questo fine è il bootstrapping. Il bootstrapping è un metodo di ricampionamento (con sostituzione) apprezzato per la costruzione di intervalli di confidenza attorno alle stime dei parametri degli effetti indiretti, perché non richiede ipotesi distributive sull'effetto indiretto. Questo crea un test più affidabile rispetto ai test di significatività standard. La usiamo qui per testare gli effetti indiretti utilizzando 5000 simulazioni -- per velocizzare, nell'esempio vengono richieste solo 100 simulazioni.
+
+Il bootstrapping è una tecnica statistica di ricampionamento con reimmissione spesso usata per la costruzione di intervalli di confidenza delle stime degli effetti indiretti. Il bootstrapping produce intervalli di confidenza più affidabili rispetto a quelli che possono essere ottenuti usando metodi parametrici. Per velocizzare la simulazione, esaminiamo qui solo 500 bootstrap samples (in generale, è meglio usare un numero di simulazioni molto maggiore).
 
 ```{r}
 final_fit_boot <-
@@ -769,7 +774,7 @@ final_fit_boot <-
     estimator = "ML",
     meanstructure = T,
     se = "bootstrap",
-    bootstrap = 100, # ~5000 better
+    bootstrap = 500, # ~5000 better
     parallel = "multicore"
   )
 
@@ -781,7 +786,9 @@ parameterEstimates(
 )[61, c(4, 5, 9, 10)]
 ```
 
-In questo tutorial, dunque, abbiamo visto come valutare se un predittore influenza la crescita in un costrutto. In seguito abbiamo verificato se c'è un effetto indiretto e abbiamo quantificato l'entità di tale effetto indiretto.
+Possiamo dunque concludere che il livello della `y` nella prima rilevazione temporale funge da mediazione tra `predictor` e `outcome`, con un effetto non standardizzato pari a 6.01, 95% bootstrap CI [5.71, 6.34].
+
+In questo tutorial, dunque, abbiamo visto come sia possibile valutare se un predittore influenza la variazione temporale di un costrutto. Abbiamo anche verificato la presenza di un effetto indiretto e abbiamo quantificato l'entità di tale effetto.
 
 
 
