@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2022-05-11" />
+<meta name="date" content="2022-05-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -572,7 +572,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="24.12" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html"><i class="fa fa-check"></i><b>24.12</b> Modello Random Intercepts Cross-Lagged Panel</a>
 <ul>
-<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Output del modello</a></li>
+<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#definizione-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Definizione del modello</a></li>
+<li class="chapter" data-level="24.12.2" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.2</b> Output del modello</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-2.html"><a href="commenti-e-considerazioni-finali-2.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
 </ul></li>
@@ -703,225 +704,224 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="modello-random-intercepts-cross-lagged-panel" class="section level2 hasAnchor" number="24.12">
 <h2><span class="header-section-number">24.12</span> Modello Random Intercepts Cross-Lagged Panel<a href="modello-random-intercepts-cross-lagged-panel.html#modello-random-intercepts-cross-lagged-panel" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Una variante del modello descritto in precedenza è il modello Random Intercepts Cross-Lagged Panel proposto da Ellen Hamaker (Hamaker, 2015; Mulder &amp; Hamaker, 2020).
-### Definizione del modello</p>
-<p>Questo modello apporta quattro modifiche principali al modello precedente:</p>
+<p>Una variante del modello descritto in precedenza è il modello Random Intercepts Cross-Lagged Panel proposto da Ellen Hamaker (Hamaker, 2015; Mulder &amp; Hamaker, 2020).</p>
+<div id="definizione-del-modello-5" class="section level3 hasAnchor" number="24.12.1">
+<h3><span class="header-section-number">24.12.1</span> Definizione del modello<a href="modello-random-intercepts-cross-lagged-panel.html#definizione-del-modello-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Questo modello (si veda la figura <a href="modello-random-intercepts-cross-lagged-panel.html#fig:riclpm">24.6</a>) apporta quattro modifiche al modello precedente:</p>
 <ul>
 <li>viene omessa la struttura residuale correlata;</li>
 <li>sono specificate intercette casuali per ciascun indicatore;</li>
 <li>le intercette casuali possono covariare;</li>
-<li>le medie latenti per tutte le variabili latenti dal secondo momento temporale in poi sono parametri che possono variare liberamente.</li>
+<li>le medie latenti di tutte le variabili latenti dal secondo momento temporale in poi sono parametri che possono variare liberamente.</li>
 </ul>
-<p>La figura <a href="modello-random-intercepts-cross-lagged-panel.html#fig:riclpm">24.6</a> fornisce una rappresentazione grafica di questo modello.</p>
-<p>Si noti che il RI-CLPM può essere stimato solo con 3 o più punti temporali; il diagramma in Figura <a href="modello-random-intercepts-cross-lagged-panel.html#fig:riclpm">24.6</a> viene fornito solo quale esempio, per evitare una eccessiva complessità visiva.</p>
+<p>Si noti che il RI-CLPM richiede almeno 3 punti temporali; il diagramma in Figura <a href="modello-random-intercepts-cross-lagged-panel.html#fig:riclpm">24.6</a>, su due giorni, viene fornito solo quale esempio, per evitare una eccessiva complessità visiva.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:riclpm"></span>
-<img src="code/meas_inv_lgm/random_intercepts_residual.png" alt="Random Intercepts Cross-lagged Panel Model." width="70%" />
+<img src="code/meas_inv_lgm/random_intercepts_residual.png" alt="Random Intercepts Cross-lagged Panel Model." width="80%" />
 <p class="caption">
 FIGURA 24.6: Random Intercepts Cross-lagged Panel Model.
 </p>
 </div>
-<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-2"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-2" aria-hidden="true" tabindex="-1"></a>sem.v2 <span class="ot">&lt;-</span></span>
-<span id="cb385-3"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span></span>
-<span id="cb385-4"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-4" aria-hidden="true" tabindex="-1"></a><span class="st"># Create between components (random intercepts)</span></span>
-<span id="cb385-5"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-5" aria-hidden="true" tabindex="-1"></a><span class="st">RI.PSP1 =~ 1*psp1.7 + 1*psp1.8 + 1*psp1.9 + 1*psp1.10 + 1*psp1.11</span></span>
-<span id="cb385-6"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-6" aria-hidden="true" tabindex="-1"></a><span class="st">RI.PSP2 =~ 1*psp2.7 + 1*psp2.8 + 1*psp2.9 + 1*psp2.10 + 1*psp2.11</span></span>
-<span id="cb385-7"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-7" aria-hidden="true" tabindex="-1"></a><span class="st">RI.PSP3 =~ 1*psp3.7 + 1*psp3.8 + 1*psp3.9 + 1*psp3.10 + 1*psp3.11</span></span>
-<span id="cb385-8"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-9"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-9" aria-hidden="true" tabindex="-1"></a><span class="st">RI.SSA1 =~ 1*ssa1.7 + 1*ssa1.8 + 1*ssa1.9 + 1*ssa1.10 + 1*ssa1.11</span></span>
-<span id="cb385-10"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-10" aria-hidden="true" tabindex="-1"></a><span class="st">RI.SSA2 =~ 1*ssa2.7 + 1*ssa2.8 + 1*ssa2.9 + 1*ssa2.10 + 1*ssa2.11</span></span>
-<span id="cb385-11"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-11" aria-hidden="true" tabindex="-1"></a><span class="st">RI.SSA3 =~ 1*ssa3.7 + 1*ssa3.8 + 1*ssa3.9 + 1*ssa3.10 + 1*ssa3.11</span></span>
-<span id="cb385-12"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-12" aria-hidden="true" tabindex="-1"></a><span class="st">RI.SSA4 =~ 1*ssa4.7 + 1*ssa4.8 + 1*ssa4.9 + 1*ssa4.10 + 1*ssa4.11</span></span>
-<span id="cb385-13"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-13" aria-hidden="true" tabindex="-1"></a><span class="st">RI.SSA5 =~ 1*ssa5.7 + 1*ssa5.8 + 1*ssa5.9 + 1*ssa5.10 + 1*ssa5.11</span></span>
-<span id="cb385-14"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-14" aria-hidden="true" tabindex="-1"></a><span class="st">RI.SSA6 =~ 1*ssa6.7 + 1*ssa6.8 + 1*ssa6.9 + 1*ssa6.10 + 1*ssa6.11</span></span>
-<span id="cb385-15"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-15" aria-hidden="true" tabindex="-1"></a><span class="st">RI.SSA7 =~ 1*ssa7.7 + 1*ssa7.8 + 1*ssa7.9 + 1*ssa7.10 + 1*ssa7.11</span></span>
-<span id="cb385-16"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-17"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-17" aria-hidden="true" tabindex="-1"></a><span class="st"># PSP factor loadings defined, and constrained across waves</span></span>
-<span id="cb385-18"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-18" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.7 =~ psp1f*psp1.7 + psp2f*psp2.7 + psp3f*psp3.7</span></span>
-<span id="cb385-19"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-19" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.8 =~ psp1f*psp1.8 + psp2f*psp2.8 + psp3f*psp3.8</span></span>
-<span id="cb385-20"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-20" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.9 =~ psp1f*psp1.9 + psp2f*psp2.9 + psp3f*psp3.9</span></span>
-<span id="cb385-21"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-21" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.10 =~ psp1f*psp1.10 + psp2f*psp2.10 + psp3f*psp3.10</span></span>
-<span id="cb385-22"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-22" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.11 =~ psp1f*psp1.11 + psp2f*psp2.11 + psp3f*psp3.11</span></span>
-<span id="cb385-23"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-24"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-24" aria-hidden="true" tabindex="-1"></a><span class="st"># PSP variance constrained to 1</span></span>
-<span id="cb385-25"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-25" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.7 ~~ 1*PSP.7</span></span>
-<span id="cb385-26"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-26" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.8 ~~ 1*PSP.8</span></span>
-<span id="cb385-27"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-27" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.9 ~~ 1*PSP.9</span></span>
-<span id="cb385-28"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-28" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.10 ~~ 1*PSP.10</span></span>
-<span id="cb385-29"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-29" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.11 ~~ 1*PSP.11</span></span>
-<span id="cb385-30"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-31"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-31" aria-hidden="true" tabindex="-1"></a><span class="st"># SSA factor loadings defined, and constrained across waves</span></span>
-<span id="cb385-32"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-32" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.7 =~ ssa1f*ssa1.7 + ssa2f*ssa2.7 + ssa3f*ssa3.7 +</span></span>
-<span id="cb385-33"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-33" aria-hidden="true" tabindex="-1"></a><span class="st">         ssa4f*ssa4.7 + ssa5f*ssa5.7 + ssa6f*ssa6.7 + ssa7f*ssa7.7</span></span>
-<span id="cb385-34"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-35"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-35" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.8 =~ ssa1f*ssa1.8 + ssa2f*ssa2.8 + ssa3f*ssa3.8 +</span></span>
-<span id="cb385-36"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-36" aria-hidden="true" tabindex="-1"></a><span class="st">         ssa4f*ssa4.8 + ssa5f*ssa5.8 + ssa6f*ssa6.8 + ssa7f*ssa7.8</span></span>
-<span id="cb385-37"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-38"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-38" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.9 =~ ssa1f*ssa1.9 + ssa2f*ssa2.9 + ssa3f*ssa3.9 +</span></span>
-<span id="cb385-39"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-39" aria-hidden="true" tabindex="-1"></a><span class="st">         ssa4f*ssa4.9 + ssa5f*ssa5.9 + ssa6f*ssa6.9 + ssa7f*ssa7.9</span></span>
-<span id="cb385-40"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-41"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-41" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.10 =~ ssa1f*ssa1.10 + ssa2f*ssa2.10 + ssa3f*ssa3.10 +</span></span>
-<span id="cb385-42"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-42" aria-hidden="true" tabindex="-1"></a><span class="st">          ssa4f*ssa4.10 + ssa5f*ssa5.10 + ssa6f*ssa6.10 + ssa7f*ssa7.10</span></span>
-<span id="cb385-43"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-44"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-44" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.11 =~ ssa1f*ssa1.11 + ssa2f*ssa2.11 + ssa3f*ssa3.11 +</span></span>
-<span id="cb385-45"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-45" aria-hidden="true" tabindex="-1"></a><span class="st">          ssa4f*ssa4.11 + ssa5f*ssa5.11 + ssa6f*ssa6.11 + ssa7f*ssa7.11</span></span>
-<span id="cb385-46"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-47"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-47" aria-hidden="true" tabindex="-1"></a><span class="st"># SSA variance constrained to 1</span></span>
-<span id="cb385-48"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-48" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.7 ~~ 1*SSA.7</span></span>
-<span id="cb385-49"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-49" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.8 ~~ 1*SSA.8</span></span>
-<span id="cb385-50"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-50" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.9 ~~ 1*SSA.9</span></span>
-<span id="cb385-51"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-51" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.10 ~~ 1*SSA.10</span></span>
-<span id="cb385-52"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-52" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.11 ~~ 1*SSA.11</span></span>
-<span id="cb385-53"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-54"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-54" aria-hidden="true" tabindex="-1"></a><span class="st"># Intercepts constrained</span></span>
-<span id="cb385-55"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-55" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.7 ~ psp1i*1</span></span>
-<span id="cb385-56"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-56" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.8 ~ psp1i*1</span></span>
-<span id="cb385-57"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-57" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.9 ~ psp1i*1</span></span>
-<span id="cb385-58"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-58" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.10 ~ psp1i*1</span></span>
-<span id="cb385-59"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-59" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.11 ~ psp1i*1</span></span>
-<span id="cb385-60"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-61"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-61" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.7 ~ psp2i*1</span></span>
-<span id="cb385-62"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-62" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.8 ~ psp2i*1</span></span>
-<span id="cb385-63"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-63" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.9 ~ psp2i*1</span></span>
-<span id="cb385-64"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-64" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.10 ~ psp2i*1</span></span>
-<span id="cb385-65"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-65" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.11 ~ psp2i*1</span></span>
-<span id="cb385-66"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-67"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-67" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.7 ~ psp3i*1</span></span>
-<span id="cb385-68"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-68" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.8 ~ psp3i*1</span></span>
-<span id="cb385-69"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-69" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.9 ~ psp3i*1</span></span>
-<span id="cb385-70"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-70" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.10 ~ psp3i*1</span></span>
-<span id="cb385-71"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-71" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.11 ~ psp3i*1</span></span>
-<span id="cb385-72"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-73"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-73" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.7 ~ ssa1i*1</span></span>
-<span id="cb385-74"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-74" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.8 ~ ssa1i*1</span></span>
-<span id="cb385-75"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-75" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.9 ~ ssa1i*1</span></span>
-<span id="cb385-76"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-76" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.10 ~ ssa1i*1</span></span>
-<span id="cb385-77"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-77" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.11 ~ ssa1i*1</span></span>
-<span id="cb385-78"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-79"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-79" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.7 ~ ssa2i*1</span></span>
-<span id="cb385-80"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-80" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.8 ~ ssa2i*1</span></span>
-<span id="cb385-81"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-81" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.9 ~ ssa2i*1</span></span>
-<span id="cb385-82"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-82" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.10 ~ ssa2i*1</span></span>
-<span id="cb385-83"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-83" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.11 ~ ssa2i*1</span></span>
-<span id="cb385-84"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-85"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-85" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.7 ~ ssa3i*1</span></span>
-<span id="cb385-86"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-86" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.8 ~ ssa3i*1</span></span>
-<span id="cb385-87"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-87" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.9 ~ ssa3i*1</span></span>
-<span id="cb385-88"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-88" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.10 ~ ssa3i*1</span></span>
-<span id="cb385-89"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-89" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.11 ~ ssa3i*1</span></span>
-<span id="cb385-90"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-91"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-91" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.7 ~ ssa4i*1</span></span>
-<span id="cb385-92"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-92" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.8 ~ ssa4i*1</span></span>
-<span id="cb385-93"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-93" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.9 ~ ssa4i*1</span></span>
-<span id="cb385-94"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-94" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.10 ~ ssa4i*1</span></span>
-<span id="cb385-95"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-95" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.11 ~ ssa4i*1</span></span>
-<span id="cb385-96"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-97"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-97" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.7 ~ ssa5i*1</span></span>
-<span id="cb385-98"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-98" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.8 ~ ssa5i*1</span></span>
-<span id="cb385-99"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-99" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.9 ~ ssa5i*1</span></span>
-<span id="cb385-100"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-100" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.10 ~ ssa5i*1</span></span>
-<span id="cb385-101"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-101" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.11 ~ ssa5i*1</span></span>
-<span id="cb385-102"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-103"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-103" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.7 ~ ssa6i*1</span></span>
-<span id="cb385-104"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-104" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.8 ~ ssa6i*1</span></span>
-<span id="cb385-105"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-105" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.9 ~ ssa6i*1</span></span>
-<span id="cb385-106"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-106" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.10 ~ ssa6i*1</span></span>
-<span id="cb385-107"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-107" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.11 ~ ssa6i*1</span></span>
-<span id="cb385-108"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-109"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-109" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.7 ~ ssa7i*1</span></span>
-<span id="cb385-110"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-110" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.8 ~ ssa7i*1</span></span>
-<span id="cb385-111"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-111" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.9 ~ ssa7i*1</span></span>
-<span id="cb385-112"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-112" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.10 ~ ssa7i*1</span></span>
-<span id="cb385-113"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-113" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.11 ~ ssa7i*1</span></span>
-<span id="cb385-114"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-115"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-115" aria-hidden="true" tabindex="-1"></a><span class="st"># Residual error constrained across waves</span></span>
-<span id="cb385-116"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-116" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.7 ~~ psp1u*psp1.7</span></span>
-<span id="cb385-117"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-117" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.8 ~~ psp1u*psp1.8</span></span>
-<span id="cb385-118"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-118" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.9 ~~ psp1u*psp1.9</span></span>
-<span id="cb385-119"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-119" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.10 ~~ psp1u*psp1.10</span></span>
-<span id="cb385-120"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-120" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.11 ~~ psp1u*psp1.11</span></span>
-<span id="cb385-121"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-122"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-122" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.7 ~~ psp2u*psp2.7</span></span>
-<span id="cb385-123"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-123" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.8 ~~ psp2u*psp2.8</span></span>
-<span id="cb385-124"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-124" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.9 ~~ psp2u*psp2.9</span></span>
-<span id="cb385-125"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-125" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.10 ~~ psp2u*psp2.10</span></span>
-<span id="cb385-126"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-126" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.11 ~~ psp2u*psp2.11</span></span>
-<span id="cb385-127"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-128"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-128" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.7 ~~ psp3u*psp3.7</span></span>
-<span id="cb385-129"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-129" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.8 ~~ psp3u*psp3.8</span></span>
-<span id="cb385-130"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-130" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.9 ~~ psp3u*psp3.9</span></span>
-<span id="cb385-131"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-131" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.10 ~~ psp3u*psp3.10</span></span>
-<span id="cb385-132"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-132" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.11 ~~ psp3u*psp3.11</span></span>
-<span id="cb385-133"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-134"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-134" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.7 ~~ ssa1u*ssa1.7</span></span>
-<span id="cb385-135"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-135" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.8 ~~ ssa1u*ssa1.8</span></span>
-<span id="cb385-136"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-136" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.9 ~~ ssa1u*ssa1.9</span></span>
-<span id="cb385-137"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-137" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.10 ~~ ssa1u*ssa1.10</span></span>
-<span id="cb385-138"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-138" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.11 ~~ ssa1u*ssa1.11</span></span>
-<span id="cb385-139"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-140"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-140" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.7 ~~ ssa2u*ssa2.7</span></span>
-<span id="cb385-141"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-141" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.8 ~~ ssa2u*ssa2.8</span></span>
-<span id="cb385-142"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-142" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.9 ~~ ssa2u*ssa2.9</span></span>
-<span id="cb385-143"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-143" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.10 ~~ ssa2u*ssa2.10</span></span>
-<span id="cb385-144"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-144" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.11 ~~ ssa2u*ssa2.11</span></span>
-<span id="cb385-145"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-146"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-146" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.7 ~~ ssa3u*ssa3.7</span></span>
-<span id="cb385-147"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-147" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.8 ~~ ssa3u*ssa3.8</span></span>
-<span id="cb385-148"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-148" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.9 ~~ ssa3u*ssa3.9</span></span>
-<span id="cb385-149"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-149" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.10 ~~ ssa3u*ssa3.10</span></span>
-<span id="cb385-150"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-150" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.11 ~~ ssa3u*ssa3.11</span></span>
-<span id="cb385-151"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-152"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-152" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.7 ~~ ssa4u*ssa4.7</span></span>
-<span id="cb385-153"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-153" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.8 ~~ ssa4u*ssa4.8</span></span>
-<span id="cb385-154"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-154" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.9 ~~ ssa4u*ssa4.9</span></span>
-<span id="cb385-155"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-155" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.10 ~~ ssa4u*ssa4.10</span></span>
-<span id="cb385-156"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-156" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.11 ~~ ssa4u*ssa4.11</span></span>
-<span id="cb385-157"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-158"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-158" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.7 ~~ ssa5u*ssa5.7</span></span>
-<span id="cb385-159"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-159" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.8 ~~ ssa5u*ssa5.8</span></span>
-<span id="cb385-160"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-160" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.9 ~~ ssa5u*ssa5.9</span></span>
-<span id="cb385-161"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-161" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.10 ~~ ssa5u*ssa5.10</span></span>
-<span id="cb385-162"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-162" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.11 ~~ ssa5u*ssa5.11</span></span>
-<span id="cb385-163"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-164"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-164" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.7 ~~ ssa6u*ssa6.7</span></span>
-<span id="cb385-165"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-165" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.8 ~~ ssa6u*ssa6.8</span></span>
-<span id="cb385-166"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-166" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.9 ~~ ssa6u*ssa6.9</span></span>
-<span id="cb385-167"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-167" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.10 ~~ ssa6u*ssa6.10</span></span>
-<span id="cb385-168"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-168" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.11 ~~ ssa6u*ssa6.11</span></span>
-<span id="cb385-169"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-170"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-170" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.7 ~~ ssa7u*ssa7.7</span></span>
-<span id="cb385-171"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-171" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.8 ~~ ssa7u*ssa7.8</span></span>
-<span id="cb385-172"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-172" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.9 ~~ ssa7u*ssa7.9</span></span>
-<span id="cb385-173"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-173" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.10 ~~ ssa7u*ssa7.10</span></span>
-<span id="cb385-174"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-174" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.11 ~~ ssa7u*ssa7.11</span></span>
-<span id="cb385-175"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-176"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-176" aria-hidden="true" tabindex="-1"></a><span class="st"># Structural paths defined (WITHIN)</span></span>
-<span id="cb385-177"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-177" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.8 ~ A*SSA.7 + C*PSP.7</span></span>
-<span id="cb385-178"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-178" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.8 ~ D*SSA.7 + B*PSP.7</span></span>
-<span id="cb385-179"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-179" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.9 ~ A*SSA.8 + C*PSP.8</span></span>
-<span id="cb385-180"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-180" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.9 ~ D*SSA.8 + B*PSP.8</span></span>
-<span id="cb385-181"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-181" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.10 ~ A*SSA.9 + C*PSP.9</span></span>
-<span id="cb385-182"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-182" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.10 ~ D*SSA.9 + B*PSP.9</span></span>
-<span id="cb385-183"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-183" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.11 ~ A*SSA.10 + C*PSP.10</span></span>
-<span id="cb385-184"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-184" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.11 ~ D*SSA.10 + B*PSP.10</span></span>
-<span id="cb385-185"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-186"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-186" aria-hidden="true" tabindex="-1"></a><span class="st"># Latent variable covariances defined</span></span>
-<span id="cb385-187"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-187" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.7 ~~ PSP.7</span></span>
-<span id="cb385-188"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-188" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.8 ~~ PSP.8</span></span>
-<span id="cb385-189"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-189" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.9 ~~ PSP.9</span></span>
-<span id="cb385-190"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-190" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.10 ~~ PSP.10</span></span>
-<span id="cb385-191"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-191" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.11 ~~ PSP.11</span></span>
-<span id="cb385-192"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-193"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-193" aria-hidden="true" tabindex="-1"></a><span class="st">  # Free latent means from t = 2 onward (only do this in combination with the</span></span>
-<span id="cb385-194"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-194" aria-hidden="true" tabindex="-1"></a><span class="st">  # constraints on the intercepts; without these, this would not be specified).</span></span>
-<span id="cb385-195"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-195" aria-hidden="true" tabindex="-1"></a><span class="st">  PSP.8 + PSP.9 + PSP.10 + PSP.11 + SSA.8 + SSA.9 + SSA.10 + SSA.11 ~ 1</span></span>
-<span id="cb385-196"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-197"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-197" aria-hidden="true" tabindex="-1"></a><span class="st"> # Constrain covariance of the between factors and exogenous within factors to 0.</span></span>
-<span id="cb385-198"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-199"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-199" aria-hidden="true" tabindex="-1"></a><span class="st">  RI.PSP1 + RI.PSP2 + RI.PSP3 + RI.SSA1 + RI.SSA2 + RI.SSA3 + RI.SSA4 + RI.SSA5 + RI.SSA6 + RI.SSA7 ~~ 0*PSP.7 + 0*SSA.7</span></span>
-<span id="cb385-200"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-200" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
-<div id="output-del-modello-5" class="section level3 hasAnchor" number="24.12.1">
-<h3><span class="header-section-number">24.12.1</span> Output del modello<a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-1" aria-hidden="true" tabindex="-1"></a>sem.v2 <span class="ot">&lt;-</span></span>
+<span id="cb385-2"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span></span>
+<span id="cb385-3"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-3" aria-hidden="true" tabindex="-1"></a><span class="st"># Create between components (random intercepts)</span></span>
+<span id="cb385-4"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-4" aria-hidden="true" tabindex="-1"></a><span class="st">RI.PSP1 =~ 1*psp1.7 + 1*psp1.8 + 1*psp1.9 + 1*psp1.10 + 1*psp1.11</span></span>
+<span id="cb385-5"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-5" aria-hidden="true" tabindex="-1"></a><span class="st">RI.PSP2 =~ 1*psp2.7 + 1*psp2.8 + 1*psp2.9 + 1*psp2.10 + 1*psp2.11</span></span>
+<span id="cb385-6"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-6" aria-hidden="true" tabindex="-1"></a><span class="st">RI.PSP3 =~ 1*psp3.7 + 1*psp3.8 + 1*psp3.9 + 1*psp3.10 + 1*psp3.11</span></span>
+<span id="cb385-7"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-8"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-8" aria-hidden="true" tabindex="-1"></a><span class="st">RI.SSA1 =~ 1*ssa1.7 + 1*ssa1.8 + 1*ssa1.9 + 1*ssa1.10 + 1*ssa1.11</span></span>
+<span id="cb385-9"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-9" aria-hidden="true" tabindex="-1"></a><span class="st">RI.SSA2 =~ 1*ssa2.7 + 1*ssa2.8 + 1*ssa2.9 + 1*ssa2.10 + 1*ssa2.11</span></span>
+<span id="cb385-10"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-10" aria-hidden="true" tabindex="-1"></a><span class="st">RI.SSA3 =~ 1*ssa3.7 + 1*ssa3.8 + 1*ssa3.9 + 1*ssa3.10 + 1*ssa3.11</span></span>
+<span id="cb385-11"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-11" aria-hidden="true" tabindex="-1"></a><span class="st">RI.SSA4 =~ 1*ssa4.7 + 1*ssa4.8 + 1*ssa4.9 + 1*ssa4.10 + 1*ssa4.11</span></span>
+<span id="cb385-12"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-12" aria-hidden="true" tabindex="-1"></a><span class="st">RI.SSA5 =~ 1*ssa5.7 + 1*ssa5.8 + 1*ssa5.9 + 1*ssa5.10 + 1*ssa5.11</span></span>
+<span id="cb385-13"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-13" aria-hidden="true" tabindex="-1"></a><span class="st">RI.SSA6 =~ 1*ssa6.7 + 1*ssa6.8 + 1*ssa6.9 + 1*ssa6.10 + 1*ssa6.11</span></span>
+<span id="cb385-14"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-14" aria-hidden="true" tabindex="-1"></a><span class="st">RI.SSA7 =~ 1*ssa7.7 + 1*ssa7.8 + 1*ssa7.9 + 1*ssa7.10 + 1*ssa7.11</span></span>
+<span id="cb385-15"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-16"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-16" aria-hidden="true" tabindex="-1"></a><span class="st"># PSP factor loadings defined, and constrained across waves</span></span>
+<span id="cb385-17"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-17" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.7  =~ psp1f*psp1.7 + psp2f*psp2.7 + psp3f*psp3.7</span></span>
+<span id="cb385-18"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-18" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.8  =~ psp1f*psp1.8 + psp2f*psp2.8 + psp3f*psp3.8</span></span>
+<span id="cb385-19"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-19" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.9  =~ psp1f*psp1.9 + psp2f*psp2.9 + psp3f*psp3.9</span></span>
+<span id="cb385-20"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-20" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.10 =~ psp1f*psp1.10 + psp2f*psp2.10 + psp3f*psp3.10</span></span>
+<span id="cb385-21"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-21" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.11 =~ psp1f*psp1.11 + psp2f*psp2.11 + psp3f*psp3.11</span></span>
+<span id="cb385-22"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-23"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-23" aria-hidden="true" tabindex="-1"></a><span class="st"># PSP variance constrained to 1</span></span>
+<span id="cb385-24"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-24" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.7  ~~ 1*PSP.7</span></span>
+<span id="cb385-25"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-25" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.8  ~~ 1*PSP.8</span></span>
+<span id="cb385-26"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-26" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.9  ~~ 1*PSP.9</span></span>
+<span id="cb385-27"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-27" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.10 ~~ 1*PSP.10</span></span>
+<span id="cb385-28"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-28" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.11 ~~ 1*PSP.11</span></span>
+<span id="cb385-29"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-30"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-30" aria-hidden="true" tabindex="-1"></a><span class="st"># SSA factor loadings defined, and constrained across waves</span></span>
+<span id="cb385-31"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-31" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.7 =~ ssa1f*ssa1.7 + ssa2f*ssa2.7 + ssa3f*ssa3.7 +</span></span>
+<span id="cb385-32"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-32" aria-hidden="true" tabindex="-1"></a><span class="st">         ssa4f*ssa4.7 + ssa5f*ssa5.7 + ssa6f*ssa6.7 + ssa7f*ssa7.7</span></span>
+<span id="cb385-33"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-34"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-34" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.8 =~ ssa1f*ssa1.8 + ssa2f*ssa2.8 + ssa3f*ssa3.8 +</span></span>
+<span id="cb385-35"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-35" aria-hidden="true" tabindex="-1"></a><span class="st">         ssa4f*ssa4.8 + ssa5f*ssa5.8 + ssa6f*ssa6.8 + ssa7f*ssa7.8</span></span>
+<span id="cb385-36"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-37"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-37" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.9 =~ ssa1f*ssa1.9 + ssa2f*ssa2.9 + ssa3f*ssa3.9 +</span></span>
+<span id="cb385-38"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-38" aria-hidden="true" tabindex="-1"></a><span class="st">         ssa4f*ssa4.9 + ssa5f*ssa5.9 + ssa6f*ssa6.9 + ssa7f*ssa7.9</span></span>
+<span id="cb385-39"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-40"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-40" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.10 =~ ssa1f*ssa1.10 + ssa2f*ssa2.10 + ssa3f*ssa3.10 +</span></span>
+<span id="cb385-41"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-41" aria-hidden="true" tabindex="-1"></a><span class="st">          ssa4f*ssa4.10 + ssa5f*ssa5.10 + ssa6f*ssa6.10 + ssa7f*ssa7.10</span></span>
+<span id="cb385-42"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-43"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-43" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.11 =~ ssa1f*ssa1.11 + ssa2f*ssa2.11 + ssa3f*ssa3.11 +</span></span>
+<span id="cb385-44"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-44" aria-hidden="true" tabindex="-1"></a><span class="st">          ssa4f*ssa4.11 + ssa5f*ssa5.11 + ssa6f*ssa6.11 + ssa7f*ssa7.11</span></span>
+<span id="cb385-45"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-46"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-46" aria-hidden="true" tabindex="-1"></a><span class="st"># SSA variance constrained to 1</span></span>
+<span id="cb385-47"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-47" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.7  ~~ 1*SSA.7</span></span>
+<span id="cb385-48"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-48" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.8  ~~ 1*SSA.8</span></span>
+<span id="cb385-49"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-49" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.9  ~~ 1*SSA.9</span></span>
+<span id="cb385-50"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-50" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.10 ~~ 1*SSA.10</span></span>
+<span id="cb385-51"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-51" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.11 ~~ 1*SSA.11</span></span>
+<span id="cb385-52"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-53"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-53" aria-hidden="true" tabindex="-1"></a><span class="st"># Intercepts constrained</span></span>
+<span id="cb385-54"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-54" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.7  ~ psp1i*1</span></span>
+<span id="cb385-55"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-55" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.8  ~ psp1i*1</span></span>
+<span id="cb385-56"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-56" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.9  ~ psp1i*1</span></span>
+<span id="cb385-57"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-57" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.10 ~ psp1i*1</span></span>
+<span id="cb385-58"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-58" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.11 ~ psp1i*1</span></span>
+<span id="cb385-59"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-60"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-60" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.7  ~ psp2i*1</span></span>
+<span id="cb385-61"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-61" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.8  ~ psp2i*1</span></span>
+<span id="cb385-62"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-62" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.9  ~ psp2i*1</span></span>
+<span id="cb385-63"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-63" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.10 ~ psp2i*1</span></span>
+<span id="cb385-64"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-64" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.11 ~ psp2i*1</span></span>
+<span id="cb385-65"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-66"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-66" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.7  ~ psp3i*1</span></span>
+<span id="cb385-67"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-67" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.8  ~ psp3i*1</span></span>
+<span id="cb385-68"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-68" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.9  ~ psp3i*1</span></span>
+<span id="cb385-69"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-69" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.10 ~ psp3i*1</span></span>
+<span id="cb385-70"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-70" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.11 ~ psp3i*1</span></span>
+<span id="cb385-71"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-72"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-72" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.7  ~ ssa1i*1</span></span>
+<span id="cb385-73"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-73" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.8  ~ ssa1i*1</span></span>
+<span id="cb385-74"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-74" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.9  ~ ssa1i*1</span></span>
+<span id="cb385-75"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-75" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.10 ~ ssa1i*1</span></span>
+<span id="cb385-76"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-76" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.11 ~ ssa1i*1</span></span>
+<span id="cb385-77"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-78"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-78" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.7  ~ ssa2i*1</span></span>
+<span id="cb385-79"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-79" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.8  ~ ssa2i*1</span></span>
+<span id="cb385-80"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-80" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.9  ~ ssa2i*1</span></span>
+<span id="cb385-81"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-81" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.10 ~ ssa2i*1</span></span>
+<span id="cb385-82"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-82" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.11 ~ ssa2i*1</span></span>
+<span id="cb385-83"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-84"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-84" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.7  ~ ssa3i*1</span></span>
+<span id="cb385-85"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-85" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.8  ~ ssa3i*1</span></span>
+<span id="cb385-86"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-86" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.9  ~ ssa3i*1</span></span>
+<span id="cb385-87"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-87" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.10 ~ ssa3i*1</span></span>
+<span id="cb385-88"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-88" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.11 ~ ssa3i*1</span></span>
+<span id="cb385-89"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-90"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-90" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.7  ~ ssa4i*1</span></span>
+<span id="cb385-91"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-91" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.8  ~ ssa4i*1</span></span>
+<span id="cb385-92"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-92" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.9  ~ ssa4i*1</span></span>
+<span id="cb385-93"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-93" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.10 ~ ssa4i*1</span></span>
+<span id="cb385-94"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-94" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.11 ~ ssa4i*1</span></span>
+<span id="cb385-95"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-96"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-96" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.7  ~ ssa5i*1</span></span>
+<span id="cb385-97"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-97" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.8  ~ ssa5i*1</span></span>
+<span id="cb385-98"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-98" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.9  ~ ssa5i*1</span></span>
+<span id="cb385-99"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-99" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.10 ~ ssa5i*1</span></span>
+<span id="cb385-100"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-100" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.11 ~ ssa5i*1</span></span>
+<span id="cb385-101"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-102"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-102" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.7  ~ ssa6i*1</span></span>
+<span id="cb385-103"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-103" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.8  ~ ssa6i*1</span></span>
+<span id="cb385-104"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-104" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.9  ~ ssa6i*1</span></span>
+<span id="cb385-105"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-105" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.10 ~ ssa6i*1</span></span>
+<span id="cb385-106"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-106" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.11 ~ ssa6i*1</span></span>
+<span id="cb385-107"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-108"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-108" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.7  ~ ssa7i*1</span></span>
+<span id="cb385-109"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-109" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.8  ~ ssa7i*1</span></span>
+<span id="cb385-110"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-110" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.9  ~ ssa7i*1</span></span>
+<span id="cb385-111"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-111" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.10 ~ ssa7i*1</span></span>
+<span id="cb385-112"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-112" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.11 ~ ssa7i*1</span></span>
+<span id="cb385-113"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-114"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-114" aria-hidden="true" tabindex="-1"></a><span class="st"># Residual error constrained across waves</span></span>
+<span id="cb385-115"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-115" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.7  ~~ psp1u*psp1.7</span></span>
+<span id="cb385-116"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-116" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.8  ~~ psp1u*psp1.8</span></span>
+<span id="cb385-117"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-117" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.9  ~~ psp1u*psp1.9</span></span>
+<span id="cb385-118"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-118" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.10 ~~ psp1u*psp1.10</span></span>
+<span id="cb385-119"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-119" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.11 ~~ psp1u*psp1.11</span></span>
+<span id="cb385-120"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-121"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-121" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.7  ~~ psp2u*psp2.7</span></span>
+<span id="cb385-122"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-122" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.8  ~~ psp2u*psp2.8</span></span>
+<span id="cb385-123"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-123" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.9  ~~ psp2u*psp2.9</span></span>
+<span id="cb385-124"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-124" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.10 ~~ psp2u*psp2.10</span></span>
+<span id="cb385-125"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-125" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.11 ~~ psp2u*psp2.11</span></span>
+<span id="cb385-126"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-127"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-127" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.7  ~~ psp3u*psp3.7</span></span>
+<span id="cb385-128"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-128" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.8  ~~ psp3u*psp3.8</span></span>
+<span id="cb385-129"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-129" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.9  ~~ psp3u*psp3.9</span></span>
+<span id="cb385-130"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-130" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.10 ~~ psp3u*psp3.10</span></span>
+<span id="cb385-131"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-131" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.11 ~~ psp3u*psp3.11</span></span>
+<span id="cb385-132"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-133"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-133" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.7  ~~ ssa1u*ssa1.7</span></span>
+<span id="cb385-134"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-134" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.8  ~~ ssa1u*ssa1.8</span></span>
+<span id="cb385-135"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-135" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.9  ~~ ssa1u*ssa1.9</span></span>
+<span id="cb385-136"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-136" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.10 ~~ ssa1u*ssa1.10</span></span>
+<span id="cb385-137"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-137" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.11 ~~ ssa1u*ssa1.11</span></span>
+<span id="cb385-138"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-139"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-139" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.7  ~~ ssa2u*ssa2.7</span></span>
+<span id="cb385-140"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-140" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.8  ~~ ssa2u*ssa2.8</span></span>
+<span id="cb385-141"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-141" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.9  ~~ ssa2u*ssa2.9</span></span>
+<span id="cb385-142"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-142" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.10 ~~ ssa2u*ssa2.10</span></span>
+<span id="cb385-143"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-143" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.11 ~~ ssa2u*ssa2.11</span></span>
+<span id="cb385-144"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-145"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-145" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.7  ~~ ssa3u*ssa3.7</span></span>
+<span id="cb385-146"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-146" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.8  ~~ ssa3u*ssa3.8</span></span>
+<span id="cb385-147"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-147" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.9  ~~ ssa3u*ssa3.9</span></span>
+<span id="cb385-148"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-148" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.10 ~~ ssa3u*ssa3.10</span></span>
+<span id="cb385-149"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-149" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.11 ~~ ssa3u*ssa3.11</span></span>
+<span id="cb385-150"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-151"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-151" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.7  ~~ ssa4u*ssa4.7</span></span>
+<span id="cb385-152"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-152" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.8  ~~ ssa4u*ssa4.8</span></span>
+<span id="cb385-153"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-153" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.9  ~~ ssa4u*ssa4.9</span></span>
+<span id="cb385-154"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-154" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.10 ~~ ssa4u*ssa4.10</span></span>
+<span id="cb385-155"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-155" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.11 ~~ ssa4u*ssa4.11</span></span>
+<span id="cb385-156"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-157"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-157" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.7  ~~ ssa5u*ssa5.7</span></span>
+<span id="cb385-158"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-158" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.8  ~~ ssa5u*ssa5.8</span></span>
+<span id="cb385-159"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-159" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.9  ~~ ssa5u*ssa5.9</span></span>
+<span id="cb385-160"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-160" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.10 ~~ ssa5u*ssa5.10</span></span>
+<span id="cb385-161"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-161" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.11 ~~ ssa5u*ssa5.11</span></span>
+<span id="cb385-162"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-163"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-163" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.7  ~~ ssa6u*ssa6.7</span></span>
+<span id="cb385-164"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-164" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.8  ~~ ssa6u*ssa6.8</span></span>
+<span id="cb385-165"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-165" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.9  ~~ ssa6u*ssa6.9</span></span>
+<span id="cb385-166"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-166" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.10 ~~ ssa6u*ssa6.10</span></span>
+<span id="cb385-167"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-167" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.11 ~~ ssa6u*ssa6.11</span></span>
+<span id="cb385-168"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-169"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-169" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.7  ~~ ssa7u*ssa7.7</span></span>
+<span id="cb385-170"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-170" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.8  ~~ ssa7u*ssa7.8</span></span>
+<span id="cb385-171"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-171" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.9  ~~ ssa7u*ssa7.9</span></span>
+<span id="cb385-172"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-172" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.10 ~~ ssa7u*ssa7.10</span></span>
+<span id="cb385-173"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-173" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.11 ~~ ssa7u*ssa7.11</span></span>
+<span id="cb385-174"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-175"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-175" aria-hidden="true" tabindex="-1"></a><span class="st"># Structural paths defined (WITHIN)</span></span>
+<span id="cb385-176"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-176" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.8  ~ A*SSA.7 + C*PSP.7</span></span>
+<span id="cb385-177"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-177" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.8  ~ D*SSA.7 + B*PSP.7</span></span>
+<span id="cb385-178"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-178" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.9  ~ A*SSA.8 + C*PSP.8</span></span>
+<span id="cb385-179"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-179" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.9  ~ D*SSA.8 + B*PSP.8</span></span>
+<span id="cb385-180"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-180" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.10 ~ A*SSA.9 + C*PSP.9</span></span>
+<span id="cb385-181"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-181" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.10 ~ D*SSA.9 + B*PSP.9</span></span>
+<span id="cb385-182"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-182" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.11 ~ A*SSA.10 + C*PSP.10</span></span>
+<span id="cb385-183"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-183" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.11 ~ D*SSA.10 + B*PSP.10</span></span>
+<span id="cb385-184"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-185"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-185" aria-hidden="true" tabindex="-1"></a><span class="st"># Latent variable covariances defined</span></span>
+<span id="cb385-186"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-186" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.7  ~~ PSP.7</span></span>
+<span id="cb385-187"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-187" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.8  ~~ PSP.8</span></span>
+<span id="cb385-188"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-188" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.9  ~~ PSP.9</span></span>
+<span id="cb385-189"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-189" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.10 ~~ PSP.10</span></span>
+<span id="cb385-190"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-190" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.11 ~~ PSP.11</span></span>
+<span id="cb385-191"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-192"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-192" aria-hidden="true" tabindex="-1"></a><span class="st"># Free latent means from t = 2 onward (only do this in combination with the</span></span>
+<span id="cb385-193"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-193" aria-hidden="true" tabindex="-1"></a><span class="st"># constraints on the intercepts; without these, this would not be specified).</span></span>
+<span id="cb385-194"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-194" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.8 + PSP.9 + PSP.10 + PSP.11 + SSA.8 + SSA.9 + SSA.10 + SSA.11 ~ 1</span></span>
+<span id="cb385-195"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-196"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-196" aria-hidden="true" tabindex="-1"></a><span class="st"># Constrain covariance of the between factors and exogenous within factors to 0.</span></span>
+<span id="cb385-197"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-197" aria-hidden="true" tabindex="-1"></a><span class="st">RI.PSP1 + RI.PSP2 + RI.PSP3 + RI.SSA1 + RI.SSA2 + RI.SSA3 + RI.SSA4 + RI.SSA5 + RI.SSA6 + RI.SSA7 ~~ 0*PSP.7 + 0*SSA.7</span></span>
+<span id="cb385-198"><a href="modello-random-intercepts-cross-lagged-panel.html#cb385-198" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+</div>
+<div id="output-del-modello-5" class="section level3 hasAnchor" number="24.12.2">
+<h3><span class="header-section-number">24.12.2</span> Output del modello<a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="modello-random-intercepts-cross-lagged-panel.html#cb386-1" aria-hidden="true" tabindex="-1"></a>sem.v2.fit <span class="ot">&lt;-</span> <span class="fu">sem</span>(sem.v2,</span>
 <span id="cb386-2"><a href="modello-random-intercepts-cross-lagged-panel.html#cb386-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> model.test.dat,</span>
 <span id="cb386-3"><a href="modello-random-intercepts-cross-lagged-panel.html#cb386-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">estimator =</span> <span class="st">&quot;MLR&quot;</span>,</span>
@@ -1839,14 +1839,14 @@ FIGURA 24.6: Random Intercepts Cross-lagged Panel Model.
 <span id="cb386-915"><a href="modello-random-intercepts-cross-lagged-panel.html#cb386-915" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     ssa7.9            0.750</span></span>
 <span id="cb386-916"><a href="modello-random-intercepts-cross-lagged-panel.html#cb386-916" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     ssa7.10           0.752</span></span>
 <span id="cb386-917"><a href="modello-random-intercepts-cross-lagged-panel.html#cb386-917" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     ssa7.11           0.752</span></span></code></pre></div>
-<p>Eccetto per la statistica chi-squadrato e per il SRMR, il fit del modello è buono, χ2(1225) = 1884, Robust CFI = 0.94, Robust TLI = 0.94, RMSEA = 0.05, SRMR = 0.16. La figura <a href="modello-random-intercepts-cross-lagged-panel.html#fig:parintriclpm">24.7</a> mostra gli intervalli al 95% per i parametri di interesse.</p>
+<p>Eccetto per la statistica chi-squadrato e per il SRMR, il fit del modello è buono, <span class="math inline">\(\chi^2_{1225}\)</span> = 1884, Robust CFI = 0.94, Robust TLI = 0.94, RMSEA = 0.05, SRMR = 0.16. La figura <a href="modello-random-intercepts-cross-lagged-panel.html#fig:parintriclpm">24.7</a> mostra gli intervalli al 95% per i parametri di interesse.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:parintriclpm"></span>
-<img src="code/meas_inv_lgm/rir.png" alt="Coefficienti di interesse per il Random Intercepts Cross-lagged Panel Model." width="90%" />
+<img src="code/meas_inv_lgm/rir.png" alt="Coefficienti di interesse per il Random Intercepts Cross-lagged Panel Model." width="99%" />
 <p class="caption">
 FIGURA 24.7: Coefficienti di interesse per il Random Intercepts Cross-lagged Panel Model.
 </p>
 </div>
-<p>Qui abbiamo un diverso pattern di risultati rispetto al caso precedente. I percorsi auto-regressivi ora rappresentano effetti carry-over all’interno della persona (Mulder &amp; Hamaker, 2020). Per l’auto-presentazione perfezionista, quando le persone sperimentano punteggi di perfezionismo elevati rispetto al proprio punteggio atteso, è più probabile che manifestino punteggi di perfezionismo elevati rispetto al proprio punteggio atteso anche nella prossima occasione. In confronto, non c’è evidenza di effetti carry-over all’interno della persona per l’ansia sociale. Inoltre, i percorsi incrociati ora suggeriscono che la presentazione di sé perfezionista predice aumenti dell’ansia sociale nel tempo, ma non il contrario. È interessante notare che questo risultato è più in linea con le previsioni teoriche in quest’area di ricerca.</p>
+<p>Qui abbiamo un diverso pattern di risultati rispetto al caso precedente. I percorsi auto-regressivi ora rappresentano effetti carry-over all’interno della persona (Mulder &amp; Hamaker, 2020). Per l’auto-presentazione perfezionista, quando le persone sperimentano punteggi di perfezionismo elevati rispetto al proprio punteggio atteso, è più probabile che manifestino punteggi di perfezionismo elevati rispetto al proprio punteggio atteso anche nella successiva occasione temporale. In confronto, per l’ansia sociale non ci sono evidenze di effetti carry-over all’interno della persona. Inoltre, i percorsi incrociati ora suggeriscono che la presentazione di sé perfezionista predice aumenti dell’ansia sociale nel tempo, ma non il contrario. È interessante notare che questo risultato è più in linea con le previsioni teoriche in quest’area di ricerca.</p>
 </div>
 </div>
             </section>

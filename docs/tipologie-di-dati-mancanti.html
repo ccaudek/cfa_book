@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2022-05-11" />
+<meta name="date" content="2022-05-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -572,7 +572,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="24.12" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html"><i class="fa fa-check"></i><b>24.12</b> Modello Random Intercepts Cross-Lagged Panel</a>
 <ul>
-<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Output del modello</a></li>
+<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#definizione-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Definizione del modello</a></li>
+<li class="chapter" data-level="24.12.2" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.2</b> Output del modello</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-2.html"><a href="commenti-e-considerazioni-finali-2.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
 </ul></li>
@@ -703,11 +704,12 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="tipologie-di-dati-mancanti" class="section level2 hasAnchor" number="25.1">
 <h2><span class="header-section-number">25.1</span> Tipologie di dati mancanti<a href="tipologie-di-dati-mancanti.html#tipologie-di-dati-mancanti" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>I dati mancanti possono verificarsi per una serie di motivi. Ad esempio, i dati possono mancare per disegno dello studio (“mancanza pianificata”), come ad esempio nei progetti di ricerca in cui i partecipanti al campione vengono selezionati casualmente per completare vari sottoinsiemi della batteria di valutazione completa (a causa di considerazioni pratiche come vincoli di tempo). In tali condizioni, si presume che i dati mancanti si distribuiscano in un modo completamente casuale rispetto a tutte le altre variabili nello studio. In generale, i meccanismi che determinano la presenza di dati mancanti possono essere classificati in tre categorie:</p>
+<p>Ci sono molti motivi che possono stare alla base dei dati mancanti. Ad esempio, i dati possono mancare per disegno dello studio (“mancanza pianificata”), come ad esempio nei progetti di ricerca in cui i partecipanti al campione vengono selezionati casualmente per completare sottoinsiemi diversi della batteria di valutazione (una scelta di questo tipo viene motivata, ad esempio, a causa di considerazioni pratiche come i vincoli di tempo). In tali condizioni, si presume che i dati mancanti si distribuiscano in un modo completamente casuale rispetto a tutte le altre variabili nello studio.</p>
+<p>In generale, i meccanismi che determinano la presenza di dati mancanti possono essere classificati in tre categorie:</p>
 <ol style="list-style-type: decimal">
 <li><em>valori mancanti completamente casuali</em> (<em>Missing Completely At Random</em>, MCAR). La probabilità di dati mancanti su una variabile non è collegata né al valore mancante sulla variabile, né al valore di ogni altra variabile presente nella matrice dati che si sta analizzando;</li>
-<li><em>valori mancanti casuali</em> (<em>Missing At Random</em>, MAR). I valori mancanti sono indipendenti dal valore che viene a mancare, ma dipendono da altre variabili, cioè i dati sulla variabile sono mancanti per categorie di partecipanti che potrebbero essere identificati da valori su altre variabili;</li>
-<li><em>valori mancanti non ignorabili</em> (<em>Missing Not At Random</em>, MNAR). La mancanza di un dato può dipendere sia dal valore del dato stesso che dalle altre variabili. Per esempio, se si studia la salute mentale e le persone depresse riferiscono meno volentieri informazioni riguardanti il loro stato di salute, allora i dati non sono mancanti per caso.</li>
+<li><em>valori mancanti casuali</em> (<em>Missing At Random</em>, MAR). I valori mancanti sono indipendenti dal valore che viene a mancare, ma dipendono da altre variabili, cioè i dati sulla variabile sono mancanti per categorie di partecipanti che potrebbero essere identificati dai valori assunti dalle altre variabili presenti nello studio;</li>
+<li><em>valori mancanti non ignorabili</em> (<em>Missing Not At Random</em>, MNAR). La mancanza di un dato può dipendere sia dal valore del dato stesso che dalle altre variabili. Per esempio, se si studia la salute mentale e le persone depresse riferiscono meno volentieri informazioni riguardanti il loro stato di salute, allora i dati non sono mancanti per caso.</li>
 </ol>
 </div>
             </section>

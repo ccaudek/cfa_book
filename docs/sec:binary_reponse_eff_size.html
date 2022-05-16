@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2022-05-11" />
+<meta name="date" content="2022-05-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -572,7 +572,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="24.12" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html"><i class="fa fa-check"></i><b>24.12</b> Modello Random Intercepts Cross-Lagged Panel</a>
 <ul>
-<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Output del modello</a></li>
+<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#definizione-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Definizione del modello</a></li>
+<li class="chapter" data-level="24.12.2" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.2</b> Output del modello</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-2.html"><a href="commenti-e-considerazioni-finali-2.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
 </ul></li>
@@ -859,47 +860,47 @@ volontari) venivano assegnati in modo casuale al trattamento (uso
 regolare di Aspirina, <span class="math inline">\(n_1=11037\)</span>) o al placebo (<span class="math inline">\(n_2=11034\)</span>). I
 soggetti non erano a conoscenza del tipo di trattamento cui erano stati
 assegnati.</p>
-<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="sec:binary_reponse_eff_size.html#cb411-1" aria-hidden="true" tabindex="-1"></a>aspirina <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb411-2"><a href="sec:binary_reponse_eff_size.html#cb411-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">104</span>, <span class="dv">10933</span>, <span class="dv">189</span>, <span class="dv">10845</span>),</span>
-<span id="cb411-3"><a href="sec:binary_reponse_eff_size.html#cb411-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">2</span>,</span>
-<span id="cb411-4"><a href="sec:binary_reponse_eff_size.html#cb411-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
-<span id="cb411-5"><a href="sec:binary_reponse_eff_size.html#cb411-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb411-6"><a href="sec:binary_reponse_eff_size.html#cb411-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(aspirina) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb411-7"><a href="sec:binary_reponse_eff_size.html#cb411-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;Aspirina&quot;</span>, <span class="st">&quot;Placebo&quot;</span>),</span>
-<span id="cb411-8"><a href="sec:binary_reponse_eff_size.html#cb411-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;Si&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
-<span id="cb411-9"><a href="sec:binary_reponse_eff_size.html#cb411-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb411-10"><a href="sec:binary_reponse_eff_size.html#cb411-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">dimnames</span>(aspirina)) <span class="ot">&lt;-</span></span>
-<span id="cb411-11"><a href="sec:binary_reponse_eff_size.html#cb411-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;Gruppo&quot;</span>, <span class="st">&quot;Infarto miocardico&quot;</span>)</span>
-<span id="cb411-12"><a href="sec:binary_reponse_eff_size.html#cb411-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb411-13"><a href="sec:binary_reponse_eff_size.html#cb411-13" aria-hidden="true" tabindex="-1"></a>aspirina</span>
-<span id="cb411-14"><a href="sec:binary_reponse_eff_size.html#cb411-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           Infarto miocardico</span></span>
-<span id="cb411-15"><a href="sec:binary_reponse_eff_size.html#cb411-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Gruppo      Si    No</span></span>
-<span id="cb411-16"><a href="sec:binary_reponse_eff_size.html#cb411-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Aspirina 104 10933</span></span>
-<span id="cb411-17"><a href="sec:binary_reponse_eff_size.html#cb411-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Placebo  189 10845</span></span></code></pre></div>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="sec:binary_reponse_eff_size.html#cb414-1" aria-hidden="true" tabindex="-1"></a>aspirina <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb414-2"><a href="sec:binary_reponse_eff_size.html#cb414-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">104</span>, <span class="dv">10933</span>, <span class="dv">189</span>, <span class="dv">10845</span>),</span>
+<span id="cb414-3"><a href="sec:binary_reponse_eff_size.html#cb414-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb414-4"><a href="sec:binary_reponse_eff_size.html#cb414-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb414-5"><a href="sec:binary_reponse_eff_size.html#cb414-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb414-6"><a href="sec:binary_reponse_eff_size.html#cb414-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(aspirina) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb414-7"><a href="sec:binary_reponse_eff_size.html#cb414-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;Aspirina&quot;</span>, <span class="st">&quot;Placebo&quot;</span>),</span>
+<span id="cb414-8"><a href="sec:binary_reponse_eff_size.html#cb414-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;Si&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
+<span id="cb414-9"><a href="sec:binary_reponse_eff_size.html#cb414-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb414-10"><a href="sec:binary_reponse_eff_size.html#cb414-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">dimnames</span>(aspirina)) <span class="ot">&lt;-</span></span>
+<span id="cb414-11"><a href="sec:binary_reponse_eff_size.html#cb414-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;Gruppo&quot;</span>, <span class="st">&quot;Infarto miocardico&quot;</span>)</span>
+<span id="cb414-12"><a href="sec:binary_reponse_eff_size.html#cb414-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb414-13"><a href="sec:binary_reponse_eff_size.html#cb414-13" aria-hidden="true" tabindex="-1"></a>aspirina</span>
+<span id="cb414-14"><a href="sec:binary_reponse_eff_size.html#cb414-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           Infarto miocardico</span></span>
+<span id="cb414-15"><a href="sec:binary_reponse_eff_size.html#cb414-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Gruppo      Si    No</span></span>
+<span id="cb414-16"><a href="sec:binary_reponse_eff_size.html#cb414-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Aspirina 104 10933</span></span>
+<span id="cb414-17"><a href="sec:binary_reponse_eff_size.html#cb414-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Placebo  189 10845</span></span></code></pre></div>
 <p>L’evento chiamato convenzionalmente successo è la presenza di un
 infarto.</p>
 <p>Calcolare la grandezza totale del campione e le proporzioni
 <span class="math inline">\(\hat{\pi}_{ij}\)</span> è facile:</p>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="sec:binary_reponse_eff_size.html#cb412-1" aria-hidden="true" tabindex="-1"></a>tot <span class="ot">&lt;-</span> <span class="fu">sum</span>(aspirina)</span>
-<span id="cb412-2"><a href="sec:binary_reponse_eff_size.html#cb412-2" aria-hidden="true" tabindex="-1"></a>tot</span>
-<span id="cb412-3"><a href="sec:binary_reponse_eff_size.html#cb412-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 22071</span></span>
-<span id="cb412-4"><a href="sec:binary_reponse_eff_size.html#cb412-4" aria-hidden="true" tabindex="-1"></a>aspirina <span class="sc">/</span> tot</span>
-<span id="cb412-5"><a href="sec:binary_reponse_eff_size.html#cb412-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           Infarto miocardico</span></span>
-<span id="cb412-6"><a href="sec:binary_reponse_eff_size.html#cb412-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Gruppo              Si        No</span></span>
-<span id="cb412-7"><a href="sec:binary_reponse_eff_size.html#cb412-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Aspirina 0.004712066 0.4953559</span></span>
-<span id="cb412-8"><a href="sec:binary_reponse_eff_size.html#cb412-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Placebo  0.008563273 0.4913688</span></span></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="sec:binary_reponse_eff_size.html#cb415-1" aria-hidden="true" tabindex="-1"></a>tot <span class="ot">&lt;-</span> <span class="fu">sum</span>(aspirina)</span>
+<span id="cb415-2"><a href="sec:binary_reponse_eff_size.html#cb415-2" aria-hidden="true" tabindex="-1"></a>tot</span>
+<span id="cb415-3"><a href="sec:binary_reponse_eff_size.html#cb415-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 22071</span></span>
+<span id="cb415-4"><a href="sec:binary_reponse_eff_size.html#cb415-4" aria-hidden="true" tabindex="-1"></a>aspirina <span class="sc">/</span> tot</span>
+<span id="cb415-5"><a href="sec:binary_reponse_eff_size.html#cb415-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           Infarto miocardico</span></span>
+<span id="cb415-6"><a href="sec:binary_reponse_eff_size.html#cb415-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Gruppo              Si        No</span></span>
+<span id="cb415-7"><a href="sec:binary_reponse_eff_size.html#cb415-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Aspirina 0.004712066 0.4953559</span></span>
+<span id="cb415-8"><a href="sec:binary_reponse_eff_size.html#cb415-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Placebo  0.008563273 0.4913688</span></span></code></pre></div>
 <p>Le stime delle probabilità condizionate di successo dato <span class="math inline">\(X\)</span>
 (proporzioni di riga) si ottengono nel modo seguente:</p>
-<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="sec:binary_reponse_eff_size.html#cb413-1" aria-hidden="true" tabindex="-1"></a>rowtot <span class="ot">&lt;-</span> <span class="fu">apply</span>(aspirina, <span class="dv">1</span>, sum)</span>
-<span id="cb413-2"><a href="sec:binary_reponse_eff_size.html#cb413-2" aria-hidden="true" tabindex="-1"></a>rowtot</span>
-<span id="cb413-3"><a href="sec:binary_reponse_eff_size.html#cb413-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Aspirina  Placebo </span></span>
-<span id="cb413-4"><a href="sec:binary_reponse_eff_size.html#cb413-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    11037    11034</span></span></code></pre></div>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="sec:binary_reponse_eff_size.html#cb414-1" aria-hidden="true" tabindex="-1"></a>rowprop <span class="ot">&lt;-</span> <span class="fu">sweep</span>(aspirina, <span class="dv">1</span>, rowtot, <span class="st">&quot;/&quot;</span>)</span>
-<span id="cb414-2"><a href="sec:binary_reponse_eff_size.html#cb414-2" aria-hidden="true" tabindex="-1"></a>rowprop</span>
-<span id="cb414-3"><a href="sec:binary_reponse_eff_size.html#cb414-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           Infarto miocardico</span></span>
-<span id="cb414-4"><a href="sec:binary_reponse_eff_size.html#cb414-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Gruppo             Si        No</span></span>
-<span id="cb414-5"><a href="sec:binary_reponse_eff_size.html#cb414-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Aspirina 0.00942285 0.9905771</span></span>
-<span id="cb414-6"><a href="sec:binary_reponse_eff_size.html#cb414-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Placebo  0.01712887 0.9828711</span></span></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="sec:binary_reponse_eff_size.html#cb416-1" aria-hidden="true" tabindex="-1"></a>rowtot <span class="ot">&lt;-</span> <span class="fu">apply</span>(aspirina, <span class="dv">1</span>, sum)</span>
+<span id="cb416-2"><a href="sec:binary_reponse_eff_size.html#cb416-2" aria-hidden="true" tabindex="-1"></a>rowtot</span>
+<span id="cb416-3"><a href="sec:binary_reponse_eff_size.html#cb416-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Aspirina  Placebo </span></span>
+<span id="cb416-4"><a href="sec:binary_reponse_eff_size.html#cb416-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    11037    11034</span></span></code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="sec:binary_reponse_eff_size.html#cb417-1" aria-hidden="true" tabindex="-1"></a>rowprop <span class="ot">&lt;-</span> <span class="fu">sweep</span>(aspirina, <span class="dv">1</span>, rowtot, <span class="st">&quot;/&quot;</span>)</span>
+<span id="cb417-2"><a href="sec:binary_reponse_eff_size.html#cb417-2" aria-hidden="true" tabindex="-1"></a>rowprop</span>
+<span id="cb417-3"><a href="sec:binary_reponse_eff_size.html#cb417-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           Infarto miocardico</span></span>
+<span id="cb417-4"><a href="sec:binary_reponse_eff_size.html#cb417-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Gruppo             Si        No</span></span>
+<span id="cb417-5"><a href="sec:binary_reponse_eff_size.html#cb417-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Aspirina 0.00942285 0.9905771</span></span>
+<span id="cb417-6"><a href="sec:binary_reponse_eff_size.html#cb417-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Placebo  0.01712887 0.9828711</span></span></code></pre></div>
 <p>quindi <span class="math inline">\(\hat{\pi}_1=0.0094\)</span> e <span class="math inline">\(\hat{\pi}_2=0.0171\)</span>.</p>
 </div>
 <div id="differenza-tra-due-proporzioni" class="section level3 hasAnchor" number="30.2.1">
@@ -929,15 +930,15 @@ standard stimato della differenza tra le proporzioni è</p>
 contiene solo valori negativi si conclude che <span class="math inline">\(\pi_1 &lt; \pi_2\)</span>, per cui
 il trattamento con aspirina appare ridurre la probabilità di infarto.</p>
 <p>Il risultato precedente si ottiene con nel modo seguente:</p>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="sec:binary_reponse_eff_size.html#cb415-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="dv">104</span> <span class="sc">/</span> <span class="dv">11037</span></span>
-<span id="cb415-2"><a href="sec:binary_reponse_eff_size.html#cb415-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="dv">189</span> <span class="sc">/</span> <span class="dv">11034</span></span>
-<span id="cb415-3"><a href="sec:binary_reponse_eff_size.html#cb415-3" aria-hidden="true" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="dv">11037</span></span>
-<span id="cb415-4"><a href="sec:binary_reponse_eff_size.html#cb415-4" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="dv">11034</span></span>
-<span id="cb415-5"><a href="sec:binary_reponse_eff_size.html#cb415-5" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((p1 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p1) <span class="sc">/</span> n1) <span class="sc">+</span> (p2 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p2) <span class="sc">/</span> n2))</span>
-<span id="cb415-6"><a href="sec:binary_reponse_eff_size.html#cb415-6" aria-hidden="true" tabindex="-1"></a>se</span>
-<span id="cb415-7"><a href="sec:binary_reponse_eff_size.html#cb415-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.001539964</span></span>
-<span id="cb415-8"><a href="sec:binary_reponse_eff_size.html#cb415-8" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">-</span> p2 <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>) <span class="sc">*</span> se</span>
-<span id="cb415-9"><a href="sec:binary_reponse_eff_size.html#cb415-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -0.010724297 -0.004687751</span></span></code></pre></div>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="sec:binary_reponse_eff_size.html#cb418-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="dv">104</span> <span class="sc">/</span> <span class="dv">11037</span></span>
+<span id="cb418-2"><a href="sec:binary_reponse_eff_size.html#cb418-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="dv">189</span> <span class="sc">/</span> <span class="dv">11034</span></span>
+<span id="cb418-3"><a href="sec:binary_reponse_eff_size.html#cb418-3" aria-hidden="true" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="dv">11037</span></span>
+<span id="cb418-4"><a href="sec:binary_reponse_eff_size.html#cb418-4" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="dv">11034</span></span>
+<span id="cb418-5"><a href="sec:binary_reponse_eff_size.html#cb418-5" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((p1 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p1) <span class="sc">/</span> n1) <span class="sc">+</span> (p2 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p2) <span class="sc">/</span> n2))</span>
+<span id="cb418-6"><a href="sec:binary_reponse_eff_size.html#cb418-6" aria-hidden="true" tabindex="-1"></a>se</span>
+<span id="cb418-7"><a href="sec:binary_reponse_eff_size.html#cb418-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.001539964</span></span>
+<span id="cb418-8"><a href="sec:binary_reponse_eff_size.html#cb418-8" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">-</span> p2 <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>) <span class="sc">*</span> se</span>
+<span id="cb418-9"><a href="sec:binary_reponse_eff_size.html#cb418-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -0.010724297 -0.004687751</span></span></code></pre></div>
 </div>
 </div>
 <div id="rischio-relativo" class="section level3 hasAnchor" number="30.2.2">
@@ -1200,14 +1201,14 @@ del rapporto delle quote cambia semplicemente di segno:</p>
 \sqrt{\frac{1}{189} + \frac{1}{10845} + \frac{1}{104} + \frac{1}{10933}} = 0.1228.
 \]</span></p>
 <p>Un intervallo di confidenza al 95% per <span class="math inline">\(\log_e \theta\)</span> è</p>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="sec:binary_reponse_eff_size.html#cb416-1" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fl">0.1228</span></span>
-<span id="cb416-2"><a href="sec:binary_reponse_eff_size.html#cb416-2" aria-hidden="true" tabindex="-1"></a><span class="fl">0.6054377</span> <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">*</span> <span class="fl">1.96</span> <span class="sc">*</span> se</span>
-<span id="cb416-3"><a href="sec:binary_reponse_eff_size.html#cb416-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.3647497 0.8461257</span></span></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="sec:binary_reponse_eff_size.html#cb419-1" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fl">0.1228</span></span>
+<span id="cb419-2"><a href="sec:binary_reponse_eff_size.html#cb419-2" aria-hidden="true" tabindex="-1"></a><span class="fl">0.6054377</span> <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">*</span> <span class="fl">1.96</span> <span class="sc">*</span> se</span>
+<span id="cb419-3"><a href="sec:binary_reponse_eff_size.html#cb419-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.3647497 0.8461257</span></span></code></pre></div>
 <p>e il corrispondente intervallo di confidenza per <span class="math inline">\(\theta\)</span> è</p>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="sec:binary_reponse_eff_size.html#cb417-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fl">0.8462073</span>)</span>
-<span id="cb417-2"><a href="sec:binary_reponse_eff_size.html#cb417-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2.33079</span></span>
-<span id="cb417-3"><a href="sec:binary_reponse_eff_size.html#cb417-3" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fl">0.3646681</span>)</span>
-<span id="cb417-4"><a href="sec:binary_reponse_eff_size.html#cb417-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.440036</span></span></code></pre></div>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="sec:binary_reponse_eff_size.html#cb420-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fl">0.8462073</span>)</span>
+<span id="cb420-2"><a href="sec:binary_reponse_eff_size.html#cb420-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2.33079</span></span>
+<span id="cb420-3"><a href="sec:binary_reponse_eff_size.html#cb420-3" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fl">0.3646681</span>)</span>
+<span id="cb420-4"><a href="sec:binary_reponse_eff_size.html#cb420-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.440036</span></span></code></pre></div>
 <p>Poiché non contiene il valore 1, i veri valori degli odds per il gruppo
 placebo e per il gruppo aspirina sono significativamente diversi: gli
 odds per l’infarto sono almeno il 44% in più rispetto al gruppo

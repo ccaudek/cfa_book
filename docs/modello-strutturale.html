@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2022-05-11" />
+<meta name="date" content="2022-05-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -572,7 +572,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="24.12" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html"><i class="fa fa-check"></i><b>24.12</b> Modello Random Intercepts Cross-Lagged Panel</a>
 <ul>
-<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Output del modello</a></li>
+<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#definizione-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Definizione del modello</a></li>
+<li class="chapter" data-level="24.12.2" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.2</b> Output del modello</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-2.html"><a href="commenti-e-considerazioni-finali-2.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
 </ul></li>
@@ -706,28 +707,33 @@ div.csl-indent {
 <p>Dopo aver selezionato il modello dell’eguaglianza dei residui come il modello preferito (il che potrebbe essere alquanto discutibile, ma qui tale modello è stato scelto a scopo dimostrativo), usiamo il modello selezionato come modello Cross-lagged Panel.</p>
 <div id="definizione-del-modello-4" class="section level3 hasAnchor" number="24.11.1">
 <h3><span class="header-section-number">24.11.1</span> Definizione del modello<a href="modello-strutturale.html#definizione-del-modello-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Nel modello Cross-lagged Panel vengono stimati i coefficienti di regressione, non le covarianze. Vengono qui considerate solo le relazioni dal tempo <span class="math inline">\(t\)</span> al tempo <span class="math inline">\(t+1\)</span>. Cioè, le relazioni dal tempo <span class="math inline">\(t\)</span> a <span class="math inline">\(t+2\)</span>, a <span class="math inline">\(t+3\)</span> e così via vengono omesse. Si potrebbe voler includere anche queste relazioni, ma per i presenti scopi didattici, qui ci concentreremo solo su un modello più semplice e imporremo il vincolo per cui le relazioni tra variabili con ritardi temporali maggiori di +1 sono uguali a zero.</p>
+<p>Nel modello Cross-lagged Panel vengono stimati i coefficienti di regressione, non le covarianze. Vengono qui considerate solo le relazioni dal tempo <span class="math inline">\(t\)</span> al tempo <span class="math inline">\(t+1\)</span>. Cioè, le relazioni dal tempo <span class="math inline">\(t\)</span> a <span class="math inline">\(t+2\)</span>, a <span class="math inline">\(t+3\)</span> e così via vengono omesse. Si potrebbe voler includere anche queste relazioni, ma per i presenti scopi didattici, qui verrà solo esaminato un modello più semplice e verrà imposto il vincolo per cui le relazioni tra variabili con ritardi temporali maggiori di +1 sono uguali a zero.</p>
 <div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="modello-strutturale.html#cb382-1" aria-hidden="true" tabindex="-1"></a>sem.v1 <span class="ot">&lt;-</span></span>
 <span id="cb382-2"><a href="modello-strutturale.html#cb382-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span></span>
 <span id="cb382-3"><a href="modello-strutturale.html#cb382-3" aria-hidden="true" tabindex="-1"></a><span class="st"># Structural paths defined</span></span>
-<span id="cb382-4"><a href="modello-strutturale.html#cb382-4" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.8 ~ A*SSA.7 + C*PSP.7</span></span>
-<span id="cb382-5"><a href="modello-strutturale.html#cb382-5" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.8 ~ D*SSA.7 + B*PSP.7</span></span>
-<span id="cb382-6"><a href="modello-strutturale.html#cb382-6" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.9 ~ A*SSA.8 + C*PSP.8</span></span>
-<span id="cb382-7"><a href="modello-strutturale.html#cb382-7" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.9 ~ D*SSA.8 + B*PSP.8</span></span>
+<span id="cb382-4"><a href="modello-strutturale.html#cb382-4" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.8  ~ A*SSA.7 + C*PSP.7</span></span>
+<span id="cb382-5"><a href="modello-strutturale.html#cb382-5" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.8  ~ D*SSA.7 + B*PSP.7</span></span>
+<span id="cb382-6"><a href="modello-strutturale.html#cb382-6" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.9  ~ A*SSA.8 + C*PSP.8</span></span>
+<span id="cb382-7"><a href="modello-strutturale.html#cb382-7" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.9  ~ D*SSA.8 + B*PSP.8</span></span>
 <span id="cb382-8"><a href="modello-strutturale.html#cb382-8" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.10 ~ A*SSA.9 + C*PSP.9</span></span>
 <span id="cb382-9"><a href="modello-strutturale.html#cb382-9" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.10 ~ D*SSA.9 + B*PSP.9</span></span>
 <span id="cb382-10"><a href="modello-strutturale.html#cb382-10" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.11 ~ A*SSA.10 + C*PSP.10</span></span>
 <span id="cb382-11"><a href="modello-strutturale.html#cb382-11" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.11 ~ D*SSA.10 + B*PSP.10</span></span>
 <span id="cb382-12"><a href="modello-strutturale.html#cb382-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb382-13"><a href="modello-strutturale.html#cb382-13" aria-hidden="true" tabindex="-1"></a><span class="st"># Latent variable covariances defined</span></span>
-<span id="cb382-14"><a href="modello-strutturale.html#cb382-14" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.7 ~~ PSP.7</span></span>
-<span id="cb382-15"><a href="modello-strutturale.html#cb382-15" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.8 ~~ PSP.8</span></span>
-<span id="cb382-16"><a href="modello-strutturale.html#cb382-16" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.9 ~~ PSP.9</span></span>
+<span id="cb382-14"><a href="modello-strutturale.html#cb382-14" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.7  ~~ PSP.7</span></span>
+<span id="cb382-15"><a href="modello-strutturale.html#cb382-15" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.8  ~~ PSP.8</span></span>
+<span id="cb382-16"><a href="modello-strutturale.html#cb382-16" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.9  ~~ PSP.9</span></span>
 <span id="cb382-17"><a href="modello-strutturale.html#cb382-17" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.10 ~~ PSP.10</span></span>
 <span id="cb382-18"><a href="modello-strutturale.html#cb382-18" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.11 ~~ PSP.11</span></span>
 <span id="cb382-19"><a href="modello-strutturale.html#cb382-19" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
 <span id="cb382-20"><a href="modello-strutturale.html#cb382-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb382-21"><a href="modello-strutturale.html#cb382-21" aria-hidden="true" tabindex="-1"></a>residual.sem.model <span class="ot">&lt;-</span> <span class="fu">paste</span>(residual.model, sem.v1, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>, <span class="at">collapse =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<span id="cb382-21"><a href="modello-strutturale.html#cb382-21" aria-hidden="true" tabindex="-1"></a>residual.sem.model <span class="ot">&lt;-</span> <span class="fu">paste</span>(</span>
+<span id="cb382-22"><a href="modello-strutturale.html#cb382-22" aria-hidden="true" tabindex="-1"></a>  residual.model,</span>
+<span id="cb382-23"><a href="modello-strutturale.html#cb382-23" aria-hidden="true" tabindex="-1"></a>  sem.v1,</span>
+<span id="cb382-24"><a href="modello-strutturale.html#cb382-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">&quot; &quot;</span>,</span>
+<span id="cb382-25"><a href="modello-strutturale.html#cb382-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">collapse =</span> <span class="cn">NULL</span></span>
+<span id="cb382-26"><a href="modello-strutturale.html#cb382-26" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="output-del-modello-4" class="section level3 hasAnchor" number="24.11.2">
 <h3><span class="header-section-number">24.11.2</span> Output del modello<a href="modello-strutturale.html#output-del-modello-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1601,9 +1607,9 @@ div.csl-indent {
 <span id="cb384-859"><a href="modello-strutturale.html#cb384-859" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     ssa7.9            0.376</span></span>
 <span id="cb384-860"><a href="modello-strutturale.html#cb384-860" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     ssa7.10           0.407</span></span>
 <span id="cb384-861"><a href="modello-strutturale.html#cb384-861" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     ssa7.11           0.427</span></span></code></pre></div>
-<p>Il modello ha un adattamento accettabile. I valori <span class="math inline">\(R^2\)</span> variano da .38 a .63. La figura <a href="modello-strutturale.html#fig:parintclpm">24.5</a> mostra che l’autopresentazione perfezionistica del giorno precedente predice fortemente l’autopresentazione perfezionista del giorno successivo. Allo stesso modo, l’ansia sociale del giorno precedente predice fortemente l’ansia sociale del giorno successivo. Nel contempo, il percorso incrociato tra ciascuna variabile latente e la variabile opposta è più debole, anche se ancora statisticamente significativo. Questo tipo di pattern (grandi percorsi auto-regressivi, piccoli percorsi incrociati) è tipico della maggior parte dei modelli Cross-lagged Panel.</p>
+<p>Il modello ha un adattamento accettabile. I valori <span class="math inline">\(R^2\)</span> variano da .38 a .63. La figura <a href="modello-strutturale.html#fig:parintclpm">24.5</a> mostra che l’auto-presentazione perfezionistica del giorno precedente predice fortemente l’auto-presentazione perfezionista del giorno successivo. Allo stesso modo, l’ansia sociale del giorno precedente predice fortemente l’ansia sociale del giorno successivo. Nel contempo, il percorso incrociato tra ciascuna variabile latente e la variabile opposta è più debole, anche se non statisticamente nullo. Questo tipo di pattern (grandi percorsi auto-regressivi, piccoli percorsi incrociati) è tipico dei modelli Cross-lagged Panel.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:parintclpm"></span>
-<img src="code/meas_inv_lgm/clpm.png" alt="Modello Cross-lagged Panel Model." width="90%" />
+<img src="code/meas_inv_lgm/clpm.png" alt="Modello Cross-lagged Panel Model." width="99%" />
 <p class="caption">
 FIGURA 24.5: Modello Cross-lagged Panel Model.
 </p>

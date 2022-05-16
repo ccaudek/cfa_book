@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2022-05-11" />
+<meta name="date" content="2022-05-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -572,7 +572,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="24.12" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html"><i class="fa fa-check"></i><b>24.12</b> Modello Random Intercepts Cross-Lagged Panel</a>
 <ul>
-<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Output del modello</a></li>
+<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#definizione-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Definizione del modello</a></li>
+<li class="chapter" data-level="24.12.2" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.2</b> Output del modello</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-2.html"><a href="commenti-e-considerazioni-finali-2.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
 </ul></li>
@@ -716,16 +717,16 @@ FIGURA 24.2: Invarianza metrica.
 <div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="invarianza-metrica.html#cb372-1" aria-hidden="true" tabindex="-1"></a>metric.v1 <span class="ot">&lt;-</span></span>
 <span id="cb372-2"><a href="invarianza-metrica.html#cb372-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span></span>
 <span id="cb372-3"><a href="invarianza-metrica.html#cb372-3" aria-hidden="true" tabindex="-1"></a><span class="st"># PSP factor loadings defined, and constrained across waves</span></span>
-<span id="cb372-4"><a href="invarianza-metrica.html#cb372-4" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.7 =~ psp1f*psp1.7 + psp2f*psp2.7 + psp3f*psp3.7</span></span>
-<span id="cb372-5"><a href="invarianza-metrica.html#cb372-5" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.8 =~ psp1f*psp1.8 + psp2f*psp2.8 + psp3f*psp3.8</span></span>
-<span id="cb372-6"><a href="invarianza-metrica.html#cb372-6" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.9 =~ psp1f*psp1.9 + psp2f*psp2.9 + psp3f*psp3.9</span></span>
+<span id="cb372-4"><a href="invarianza-metrica.html#cb372-4" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.7  =~ psp1f*psp1.7 + psp2f*psp2.7 + psp3f*psp3.7</span></span>
+<span id="cb372-5"><a href="invarianza-metrica.html#cb372-5" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.8  =~ psp1f*psp1.8 + psp2f*psp2.8 + psp3f*psp3.8</span></span>
+<span id="cb372-6"><a href="invarianza-metrica.html#cb372-6" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.9  =~ psp1f*psp1.9 + psp2f*psp2.9 + psp3f*psp3.9</span></span>
 <span id="cb372-7"><a href="invarianza-metrica.html#cb372-7" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.10 =~ psp1f*psp1.10 + psp2f*psp2.10 + psp3f*psp3.10</span></span>
 <span id="cb372-8"><a href="invarianza-metrica.html#cb372-8" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.11 =~ psp1f*psp1.11 + psp2f*psp2.11 + psp3f*psp3.11</span></span>
 <span id="cb372-9"><a href="invarianza-metrica.html#cb372-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb372-10"><a href="invarianza-metrica.html#cb372-10" aria-hidden="true" tabindex="-1"></a><span class="st"># PSP variance constrained to 1</span></span>
-<span id="cb372-11"><a href="invarianza-metrica.html#cb372-11" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.7 ~~ 1*PSP.7</span></span>
-<span id="cb372-12"><a href="invarianza-metrica.html#cb372-12" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.8 ~~ 1*PSP.8</span></span>
-<span id="cb372-13"><a href="invarianza-metrica.html#cb372-13" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.9 ~~ 1*PSP.9</span></span>
+<span id="cb372-11"><a href="invarianza-metrica.html#cb372-11" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.7  ~~ 1*PSP.7</span></span>
+<span id="cb372-12"><a href="invarianza-metrica.html#cb372-12" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.8  ~~ 1*PSP.8</span></span>
+<span id="cb372-13"><a href="invarianza-metrica.html#cb372-13" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.9  ~~ 1*PSP.9</span></span>
 <span id="cb372-14"><a href="invarianza-metrica.html#cb372-14" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.10 ~~ 1*PSP.10</span></span>
 <span id="cb372-15"><a href="invarianza-metrica.html#cb372-15" aria-hidden="true" tabindex="-1"></a><span class="st">PSP.11 ~~ 1*PSP.11</span></span>
 <span id="cb372-16"><a href="invarianza-metrica.html#cb372-16" aria-hidden="true" tabindex="-1"></a></span>
@@ -746,14 +747,19 @@ FIGURA 24.2: Invarianza metrica.
 <span id="cb372-31"><a href="invarianza-metrica.html#cb372-31" aria-hidden="true" tabindex="-1"></a><span class="st">          ssa4f*ssa4.11 + ssa5f*ssa5.11 + ssa6f*ssa6.11 + ssa7f*ssa7.11</span></span>
 <span id="cb372-32"><a href="invarianza-metrica.html#cb372-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb372-33"><a href="invarianza-metrica.html#cb372-33" aria-hidden="true" tabindex="-1"></a><span class="st"># SSA variance constrained to 1</span></span>
-<span id="cb372-34"><a href="invarianza-metrica.html#cb372-34" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.7 ~~ 1*SSA.7</span></span>
-<span id="cb372-35"><a href="invarianza-metrica.html#cb372-35" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.8 ~~ 1*SSA.8</span></span>
-<span id="cb372-36"><a href="invarianza-metrica.html#cb372-36" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.9 ~~ 1*SSA.9</span></span>
+<span id="cb372-34"><a href="invarianza-metrica.html#cb372-34" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.7  ~~ 1*SSA.7</span></span>
+<span id="cb372-35"><a href="invarianza-metrica.html#cb372-35" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.8  ~~ 1*SSA.8</span></span>
+<span id="cb372-36"><a href="invarianza-metrica.html#cb372-36" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.9  ~~ 1*SSA.9</span></span>
 <span id="cb372-37"><a href="invarianza-metrica.html#cb372-37" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.10 ~~ 1*SSA.10</span></span>
 <span id="cb372-38"><a href="invarianza-metrica.html#cb372-38" aria-hidden="true" tabindex="-1"></a><span class="st">SSA.11 ~~ 1*SSA.11</span></span>
 <span id="cb372-39"><a href="invarianza-metrica.html#cb372-39" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
 <span id="cb372-40"><a href="invarianza-metrica.html#cb372-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb372-41"><a href="invarianza-metrica.html#cb372-41" aria-hidden="true" tabindex="-1"></a>metric.model <span class="ot">&lt;-</span> <span class="fu">paste</span>(metric.v1, errorstructure, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>, <span class="at">collapse =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<span id="cb372-41"><a href="invarianza-metrica.html#cb372-41" aria-hidden="true" tabindex="-1"></a>metric.model <span class="ot">&lt;-</span> <span class="fu">paste</span>(</span>
+<span id="cb372-42"><a href="invarianza-metrica.html#cb372-42" aria-hidden="true" tabindex="-1"></a>  metric.v1,</span>
+<span id="cb372-43"><a href="invarianza-metrica.html#cb372-43" aria-hidden="true" tabindex="-1"></a>  errorstructure,</span>
+<span id="cb372-44"><a href="invarianza-metrica.html#cb372-44" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">&quot; &quot;</span>,</span>
+<span id="cb372-45"><a href="invarianza-metrica.html#cb372-45" aria-hidden="true" tabindex="-1"></a>  <span class="at">collapse =</span> <span class="cn">NULL</span></span>
+<span id="cb372-46"><a href="invarianza-metrica.html#cb372-46" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="output-del-modello-1" class="section level3 hasAnchor" number="24.7.2">
 <h3><span class="header-section-number">24.7.2</span> Output del modello<a href="invarianza-metrica.html#output-del-modello-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>

@@ -12,7 +12,6 @@ library("patchwork")
 Quando studiamo la variazione dei costrutti nel tempo, amministriamo ripetutamente gli stessi strumenti di misura. Per potere fare affermazioni su come le variabili latenti cambiano nel tempo, è tuttavia prima necessario stabilire che lo strumento utilizzato sia in grado di misurare in maniera invariante il costrutto nel tempo. L'invarianza della misurazione (MI) è confermata in uno studio quando "i partecipanti in tutti i [periodi di tempo] interpretano le singole domande, nonché il fattore latente sottostante, allo stesso modo" [@schoot2015measurement]. Se l'invarianza della misurazione non viene rispettata, la natura del costrutto latente cambia nel tempo, e ciò impedisce di potere eseguire dei confronti tra le diverse rilevazioni temporali. Il problema fondamentale nella misurazione longitudinale è che il semplice passare del tempo (o l'atto di osservare i propri pensieri attraverso misurazioni ripetute) a volte può cambiare il modo in cui i partecipanti interpretano gli item del questionario. Per fare confronti temporali è dunque necessario che la natura del costrutto non sia cambi sostanzialmente nel corso del tempo.
 
 Per utilizzare la CFA per testare la MI, i ricercatori eseguono una serie di confronti tra modelli nidificati, ovvero confrontando tra loro una serie di modelli CFA dotati di vincoli sempre più stringenti relativi alle caratteristiche del modello in relazione al tempo. Modelli più restrittivi e parsimoniosi consentono ad un numero minore di parametri di variare in funzione del tempo per lo stesso costrutto latente. In generale, i parametri considerati sono: 
-
 - le saturazioni fattoriali, che mostrano quanto sia rappresentativo ogni item rispetto al fattore latente su cui satura; 
 - le intercette, che descrivono il livello medio di ciascuna item; 
 - le varianze residue, che rappresentano l'influenza di altri fattori non inclusi nel modello nel determinare delle risposte agli item, al di là dell'effetto delle variabili latenti considerate. 
@@ -26,11 +25,11 @@ Possiamo distinguere quattro livelli di invarianza temporale dei costrutti.
 - Il livello seguente è l'*invarianza scalare* il quale vincola non solo le saturazioni fattoriali, ma anche le intercette degli item, a rimanere costanti nel tempo. Il vincolo sulle intercette stabilisce che il livello medio degli item rimane invariato nel tempo. Se l'invarianza scalare viene violata, ciò significa che l'interpretazione del valore assoluto del punteggio del test cambia con il passare del tempo. È come dire che 100 euro oggi non hanno lo stesso valore di 10 anni fa. Usando un esempio psicologico, una mancanza di invarianza scalare potrebbe suggerire che le medie stiano aumentando nel tempo quando invece quello che veramente succede è che l'interpretazione che i partecipanti assegnano alla scala di risposta cambia nel tempo. 
 - Il livello finale è l'*invarianza residua* la quale vincola le saturazioni fattoriali, le intercette degli item e le varianze residue a rimanere uguali nel tempo. Imporre un vincolo sulla variazione delle varianze residue tra le diverse rilevazioni temporali equivale ad affermare che tutti i fattori esterni non misurati che influenzano il costrutto latente non variano nel tempo.
 
-L'invarianza fattoriale temporle è importante perché, se viene violata, i ricercatori possono interpretare erroneamente le cause soggiacenti agli effetti osservati. Ad esempio, uno studio di @twenge2009narcissism ha concluso che i livelli di narcisismo sono aumentati tra il 1990 e il 2010. In seguito, @wetzel2017narcissism hanno esaminato l'invarianza temporale di misurazione nei dati di @twenge2009narcissism e hanno trovato che, in diversi aspetti della *Narcissistic Personality Inventory* [la scala usata da @twenge2009narcissism], essa veniva violata.  Tenendo conto di questa parziale non equivalenza di misurazione, @wetzel2017narcissism hanno concluso che, in realtà, il narcisismo degli adolescenti è diminuito nel tempo. Il controllo dell'invarianza temporale di misurazione è quindi una pratica importante preliminarmente all'interpretazion dei risultati degli studi longitudinali.
+L'invarianza fattoriale temporale è importante perché, se viene violata, i ricercatori possono interpretare erroneamente le cause soggiacenti agli effetti osservati. Ad esempio, uno studio di @twenge2009narcissism ha concluso che i livelli di narcisismo sono aumentati tra il 1990 e il 2010. In seguito, @wetzel2017narcissism hanno esaminato l'invarianza temporale di misurazione nei dati di @twenge2009narcissism e hanno trovato che, in diversi aspetti della *Narcissistic Personality Inventory* [la scala usata da @twenge2009narcissism], essa veniva violata. Tenendo conto di questa parziale non equivalenza di misurazione, @wetzel2017narcissism hanno concluso che, in realtà, il narcisismo degli adolescenti è diminuito nel tempo. Il controllo dell'invarianza temporale di misurazione è quindi una pratica importante preliminarmente all'interpretazione dei risultati degli studi longitudinali.
 
 ## Studi longitudinali cross-lagged
 
-Un aspetto importante degli studi longitudinali sono gli effetti direzionali tra le variabili nel tempo. I ricercatori possono utilizzare i *cross-lagged panel models* (CLPM) per studiare le iterazioni temporali tra le variabili, il che aiuta a comprendere le relazioni causali stabilendo la precedenza temporale. Gli studi CLP, a volte, possono aiutare a chiarire la direzione delle relazioni causali, mentre ciò non può essere fatto mediante studi trasversali.
+Un aspetto importante degli studi longitudinali sono *gli effetti direzionali tra le variabili nel tempo*. Per studiare le iterazioni temporali tra le variabili, i ricercatori possono utilizzare i *cross-lagged panel models* (CLPM). Rispetto agli scudi trasversali, i modelli CLPM possono contribuire a chiarire la direzione delle relazioni causali, in quanto, nei disegni longitudinali, la precedenza temporale è certa. 
 
 ### Invarianza di misura in studi longitudinali cross-lagged
 
@@ -57,7 +56,7 @@ L'approccio seguito da Mackinnon e Curtis prevede cinque fasi.
 - test del modello che richiede l'eguaglianza dei termini d'errore; 
 - test del modello strutturale. 
 
-In particolare, le prime quattro verifiche si basano sulle covarianze (~~) piuttosto che sulle regressioni (~) per descrivere le relazioni tra variabili. Nella quinta verifica, si esamina un CLPM che ipotizza relazioni causali direzionali in funzione del tempo (modello di regressione) -- ad esempio, i dati del giorno 7 prevedono i dati del giorno 8. Vale la pena notare che le relazioni tra le variabili prese in esame nelle prime quattro verifiche sono più simili a correlazioni bivariate, mentre l'ultima verifica è un test sulle relazioni causali. 
+In particolare, le prime quattro verifiche si basano sull'analisi delle covarianze (~~) tra le variabili. Nella quinta verifica, un modello CLPM esamina invece le regressioni (~), ovvero le relazioni causali direzionali in funzione del tempo -- ad esempio, i dati del giorno 7 vengono usati per prevedere i dati del giorno 8. 
 
 ## Leggere in dati in $\mathsf{R}$
 
@@ -82,114 +81,114 @@ Mackinnon e Curtis creano uno script separato che contiene la specificazione del
 ```{r errorstructure}
 # Error term covariances constrained across waves
 errorstructure <- '
-psp1.7 ~~ psp1cov*psp1.8
-psp1.7 ~~ psp1cov*psp1.9
-psp1.7 ~~ psp1cov*psp1.10
-psp1.7 ~~ psp1cov*psp1.11
-psp1.8 ~~ psp1cov*psp1.9
-psp1.8 ~~ psp1cov*psp1.10
-psp1.8 ~~ psp1cov*psp1.11
-psp1.9 ~~ psp1cov*psp1.10
-psp1.9 ~~ psp1cov*psp1.11
+psp1.7  ~~ psp1cov*psp1.8
+psp1.7  ~~ psp1cov*psp1.9
+psp1.7  ~~ psp1cov*psp1.10
+psp1.7  ~~ psp1cov*psp1.11
+psp1.8  ~~ psp1cov*psp1.9
+psp1.8  ~~ psp1cov*psp1.10
+psp1.8  ~~ psp1cov*psp1.11
+psp1.9  ~~ psp1cov*psp1.10
+psp1.9  ~~ psp1cov*psp1.11
 psp1.10 ~~ psp1cov*psp1.11
 
-psp2.7 ~~ psp2cov*psp2.8
-psp2.7 ~~ psp2cov*psp2.9
-psp2.7 ~~ psp2cov*psp2.10
-psp2.7 ~~ psp2cov*psp2.11
-psp2.8 ~~ psp2cov*psp2.9
-psp2.8 ~~ psp2cov*psp2.10
-psp2.8 ~~ psp2cov*psp2.11
-psp2.9 ~~ psp2cov*psp2.10
-psp2.9 ~~ psp2cov*psp2.11
+psp2.7  ~~ psp2cov*psp2.8
+psp2.7  ~~ psp2cov*psp2.9
+psp2.7  ~~ psp2cov*psp2.10
+psp2.7  ~~ psp2cov*psp2.11
+psp2.8  ~~ psp2cov*psp2.9
+psp2.8  ~~ psp2cov*psp2.10
+psp2.8  ~~ psp2cov*psp2.11
+psp2.9  ~~ psp2cov*psp2.10
+psp2.9  ~~ psp2cov*psp2.11
 psp2.10 ~~ psp2cov*psp2.11
 
-psp3.7 ~~ psp3cov*psp3.8
-psp3.7 ~~ psp3cov*psp3.9
-psp3.7 ~~ psp3cov*psp3.10
-psp3.7 ~~ psp3cov*psp3.11
-psp3.8 ~~ psp3cov*psp3.9
-psp3.8 ~~ psp3cov*psp3.10
-psp3.8 ~~ psp3cov*psp3.11
-psp3.9 ~~ psp3cov*psp3.10
-psp3.9 ~~ psp3cov*psp3.11
+psp3.7  ~~ psp3cov*psp3.8
+psp3.7  ~~ psp3cov*psp3.9
+psp3.7  ~~ psp3cov*psp3.10
+psp3.7  ~~ psp3cov*psp3.11
+psp3.8  ~~ psp3cov*psp3.9
+psp3.8  ~~ psp3cov*psp3.10
+psp3.8  ~~ psp3cov*psp3.11
+psp3.9  ~~ psp3cov*psp3.10
+psp3.9  ~~ psp3cov*psp3.11
 psp3.10 ~~ psp3cov*psp3.11
 
-ssa1.7 ~~ ssa1cov*ssa1.8
-ssa1.7 ~~ ssa1cov*ssa1.9
-ssa1.7 ~~ ssa1cov*ssa1.10
-ssa1.7 ~~ ssa1cov*ssa1.11
-ssa1.8 ~~ ssa1cov*ssa1.9
-ssa1.8 ~~ ssa1cov*ssa1.10
-ssa1.8 ~~ ssa1cov*ssa1.11
-ssa1.9 ~~ ssa1cov*ssa1.10
-ssa1.9 ~~ ssa1cov*ssa1.11
+ssa1.7  ~~ ssa1cov*ssa1.8
+ssa1.7  ~~ ssa1cov*ssa1.9
+ssa1.7  ~~ ssa1cov*ssa1.10
+ssa1.7  ~~ ssa1cov*ssa1.11
+ssa1.8  ~~ ssa1cov*ssa1.9
+ssa1.8  ~~ ssa1cov*ssa1.10
+ssa1.8  ~~ ssa1cov*ssa1.11
+ssa1.9  ~~ ssa1cov*ssa1.10
+ssa1.9  ~~ ssa1cov*ssa1.11
 ssa1.10 ~~ ssa1cov*ssa1.11
 
-ssa2.7 ~~ ssa2cov*ssa2.8
-ssa2.7 ~~ ssa2cov*ssa2.9
-ssa2.7 ~~ ssa2cov*ssa2.10
-ssa2.7 ~~ ssa2cov*ssa2.11
-ssa2.8 ~~ ssa2cov*ssa2.9
-ssa2.8 ~~ ssa2cov*ssa2.10
-ssa2.8 ~~ ssa2cov*ssa2.11
-ssa2.9 ~~ ssa2cov*ssa2.10
-ssa2.9 ~~ ssa2cov*ssa2.11
+ssa2.7  ~~ ssa2cov*ssa2.8
+ssa2.7  ~~ ssa2cov*ssa2.9
+ssa2.7  ~~ ssa2cov*ssa2.10
+ssa2.7  ~~ ssa2cov*ssa2.11
+ssa2.8  ~~ ssa2cov*ssa2.9
+ssa2.8  ~~ ssa2cov*ssa2.10
+ssa2.8  ~~ ssa2cov*ssa2.11
+ssa2.9  ~~ ssa2cov*ssa2.10
+ssa2.9  ~~ ssa2cov*ssa2.11
 ssa2.10 ~~ ssa2cov*ssa2.11
 
-ssa3.7 ~~ ssa3cov*ssa3.8
-ssa3.7 ~~ ssa3cov*ssa3.9
-ssa3.7 ~~ ssa3cov*ssa3.10
-ssa3.7 ~~ ssa3cov*ssa3.11
-ssa3.8 ~~ ssa3cov*ssa3.9
-ssa3.8 ~~ ssa3cov*ssa3.10
-ssa3.8 ~~ ssa3cov*ssa3.11
-ssa3.9 ~~ ssa3cov*ssa3.10
-ssa3.9 ~~ ssa3cov*ssa3.11
+ssa3.7  ~~ ssa3cov*ssa3.8
+ssa3.7  ~~ ssa3cov*ssa3.9
+ssa3.7  ~~ ssa3cov*ssa3.10
+ssa3.7  ~~ ssa3cov*ssa3.11
+ssa3.8  ~~ ssa3cov*ssa3.9
+ssa3.8  ~~ ssa3cov*ssa3.10
+ssa3.8  ~~ ssa3cov*ssa3.11
+ssa3.9  ~~ ssa3cov*ssa3.10
+ssa3.9  ~~ ssa3cov*ssa3.11
 ssa3.10 ~~ ssa3cov*ssa3.11
 
-ssa4.7 ~~ ssa4cov*ssa4.8
-ssa4.7 ~~ ssa4cov*ssa4.9
-ssa4.7 ~~ ssa4cov*ssa4.10
-ssa4.7 ~~ ssa4cov*ssa4.11
-ssa4.8 ~~ ssa4cov*ssa4.9
-ssa4.8 ~~ ssa4cov*ssa4.10
-ssa4.8 ~~ ssa4cov*ssa4.11
-ssa4.9 ~~ ssa4cov*ssa4.10
-ssa4.9 ~~ ssa4cov*ssa4.11
+ssa4.7  ~~ ssa4cov*ssa4.8
+ssa4.7  ~~ ssa4cov*ssa4.9
+ssa4.7  ~~ ssa4cov*ssa4.10
+ssa4.7  ~~ ssa4cov*ssa4.11
+ssa4.8  ~~ ssa4cov*ssa4.9
+ssa4.8  ~~ ssa4cov*ssa4.10
+ssa4.8  ~~ ssa4cov*ssa4.11
+ssa4.9  ~~ ssa4cov*ssa4.10
+ssa4.9  ~~ ssa4cov*ssa4.11
 ssa4.10 ~~ ssa4cov*ssa4.11
 
-ssa5.7 ~~ ssa5cov*ssa5.8
-ssa5.7 ~~ ssa5cov*ssa5.9
-ssa5.7 ~~ ssa5cov*ssa5.10
-ssa5.7 ~~ ssa5cov*ssa5.11
-ssa5.8 ~~ ssa5cov*ssa5.9
-ssa5.8 ~~ ssa5cov*ssa5.10
-ssa5.8 ~~ ssa5cov*ssa5.11
-ssa5.9 ~~ ssa5cov*ssa5.10
-ssa5.9 ~~ ssa5cov*ssa5.11
+ssa5.7  ~~ ssa5cov*ssa5.8
+ssa5.7  ~~ ssa5cov*ssa5.9
+ssa5.7  ~~ ssa5cov*ssa5.10
+ssa5.7  ~~ ssa5cov*ssa5.11
+ssa5.8  ~~ ssa5cov*ssa5.9
+ssa5.8  ~~ ssa5cov*ssa5.10
+ssa5.8  ~~ ssa5cov*ssa5.11
+ssa5.9  ~~ ssa5cov*ssa5.10
+ssa5.9  ~~ ssa5cov*ssa5.11
 ssa5.10 ~~ ssa5cov*ssa5.11
 
-ssa6.7 ~~ ssa6cov*ssa6.8
-ssa6.7 ~~ ssa6cov*ssa6.9
-ssa6.7 ~~ ssa6cov*ssa6.10
-ssa6.7 ~~ ssa6cov*ssa6.11
-ssa6.8 ~~ ssa6cov*ssa6.9
-ssa6.8 ~~ ssa6cov*ssa6.10
-ssa6.8 ~~ ssa6cov*ssa6.11
-ssa6.9 ~~ ssa6cov*ssa6.10
-ssa6.9 ~~ ssa6cov*ssa6.11
+ssa6.7  ~~ ssa6cov*ssa6.8
+ssa6.7  ~~ ssa6cov*ssa6.9
+ssa6.7  ~~ ssa6cov*ssa6.10
+ssa6.7  ~~ ssa6cov*ssa6.11
+ssa6.8  ~~ ssa6cov*ssa6.9
+ssa6.8  ~~ ssa6cov*ssa6.10
+ssa6.8  ~~ ssa6cov*ssa6.11
+ssa6.9  ~~ ssa6cov*ssa6.10
+ssa6.9  ~~ ssa6cov*ssa6.11
 ssa6.10 ~~ ssa6cov*ssa6.11
 
-ssa7.7 ~~ ssa7cov*ssa7.8
-ssa7.7 ~~ ssa7cov*ssa7.9
-ssa7.7 ~~ ssa7cov*ssa7.10
-ssa7.7 ~~ ssa7cov*ssa7.11
-ssa7.8 ~~ ssa7cov*ssa7.9
-ssa7.8 ~~ ssa7cov*ssa7.10
-ssa7.8 ~~ ssa7cov*ssa7.11
-ssa7.9 ~~ ssa7cov*ssa7.10
-ssa7.9 ~~ ssa7cov*ssa7.11
+ssa7.7  ~~ ssa7cov*ssa7.8
+ssa7.7  ~~ ssa7cov*ssa7.9
+ssa7.7  ~~ ssa7cov*ssa7.10
+ssa7.7  ~~ ssa7cov*ssa7.11
+ssa7.8  ~~ ssa7cov*ssa7.9
+ssa7.8  ~~ ssa7cov*ssa7.10
+ssa7.8  ~~ ssa7cov*ssa7.11
+ssa7.9  ~~ ssa7cov*ssa7.10
+ssa7.9  ~~ ssa7cov*ssa7.11
 ssa7.10 ~~ ssa7cov*ssa7.11'
 ```
 
@@ -209,43 +208,47 @@ knitr::include_graphics("code/meas_inv_lgm/configural.png")
 
 ```{r configuraldefinition}
 configural.v1 <-
-	
 '
 # PSP factor loadings defined
-PSP.7 =~ NA*psp1.7 + psp2.7 + psp3.7
-PSP.8 =~ NA*psp1.8 + psp2.8 + psp3.8
-PSP.9 =~ NA*psp1.9 + psp2.9 + psp3.9
+PSP.7  =~ NA*psp1.7 + psp2.7 + psp3.7
+PSP.8  =~ NA*psp1.8 + psp2.8 + psp3.8
+PSP.9  =~ NA*psp1.9 + psp2.9 + psp3.9
 PSP.10 =~ NA*psp1.10 + psp2.10 + psp3.10
 PSP.11 =~ NA*psp1.11 + psp2.11 + psp3.11
 
 # PSP variance constrained to 1
-PSP.7 ~~ 1*PSP.7
-PSP.8 ~~ 1*PSP.8
-PSP.9 ~~ 1*PSP.9
+PSP.7  ~~ 1*PSP.7
+PSP.8  ~~ 1*PSP.8
+PSP.9  ~~ 1*PSP.9
 PSP.10 ~~ 1*PSP.10
 PSP.11 ~~ 1*PSP.11
 
 # SSA factor loadings defined
-SSA.7 =~ NA*ssa1.7 + ssa2.7 + ssa3.7 + ssa4.7 + ssa5.7 + ssa6.7 + ssa7.7
-SSA.8 =~ NA*ssa1.8 + ssa2.8 + ssa3.8 + ssa4.8 + ssa5.8 + ssa6.8 + ssa7.8
-SSA.9 =~ NA*ssa1.9 + ssa2.9 + ssa3.9 + ssa4.9 + ssa5.9 + ssa6.9 + ssa7.9
+SSA.7  =~ NA*ssa1.7 + ssa2.7 + ssa3.7 + ssa4.7 + ssa5.7 + ssa6.7 + ssa7.7
+SSA.8  =~ NA*ssa1.8 + ssa2.8 + ssa3.8 + ssa4.8 + ssa5.8 + ssa6.8 + ssa7.8
+SSA.9  =~ NA*ssa1.9 + ssa2.9 + ssa3.9 + ssa4.9 + ssa5.9 + ssa6.9 + ssa7.9
 SSA.10 =~ NA*ssa1.10 + ssa2.10 + ssa3.10 + ssa4.10 + ssa5.10 + ssa6.10 + ssa7.10
 SSA.11 =~ NA*ssa1.11 + ssa2.11 + ssa3.11 + ssa4.11 + ssa5.11 + ssa6.11 + ssa7.11
 
 # SSA variance constrained to 1
-SSA.7 ~~ 1*SSA.7
-SSA.8 ~~ 1*SSA.8
-SSA.9 ~~ 1*SSA.9
+SSA.7  ~~ 1*SSA.7
+SSA.8  ~~ 1*SSA.8
+SSA.9  ~~ 1*SSA.9
 SSA.10 ~~ 1*SSA.10
 SSA.11 ~~ 1*SSA.11
 '
 
-configural.model <- paste(configural.v1, errorstructure, sep = ' ', collapse = NULL)
+configural.model <- paste(
+  configural.v1, 
+  errorstructure, 
+  sep = ' ', 
+  collapse = NULL
+)
 ```
 
 ### Output del modello
 
-Dopo avere definito il modello, lo adattiamo ai dati. Per questa e tutte le analisi successive, aggiungiamo la riga `std.lv = TRUE` per tenere conto della nostra modifica alle impostazioni sul vincolo dei default di `lavaan` che garantisce l'identificabilità del modello. Esaminiamo i risultati con `summary()`.
+Dopo avere definito il modello, lo adattiamo ai dati. Per questa e tutte le analisi successive, aggiungiamo la riga `std.lv = TRUE` per tenere conto della nostra modifica alle impostazioni sui vincoli dei default di `lavaan` allo scopo di garantire l'identificabilità del modello. Esaminiamo i risultati con `summary()`.
 
 ```{r configuraloutput}
 configural.fit <- cfa(configural.model,
@@ -266,7 +269,7 @@ summary(configural.fit,
 
 ### Interpretazione
 
-Dopo avere costruito il modello "baseline" possiamo progressivamente introdurre vincoli aggiuntivi e confrontare le versioni nidificate dei modelli proposti. Dopo aver adattato tutti i modelli, confronteremo i loro indici di adattamento e selezioneremo il modello più appropriato. 
+Dopo avere costruito il modello "baseline" passiamo a introdurre progressivamente dei vincoli aggiuntivi per poi procedere al confronto tra le versioni nidificate dei modelli proposti. Dopo aver adattato tutti i modelli, il modello più appropriato verrà selezionato mediante il confronto tra gli indici di bontà di adattamento. 
 
 ## Invarianza metrica
 
@@ -282,19 +285,18 @@ knitr::include_graphics("code/meas_inv_lgm/metric.png")
 
 ```{r metricdefinition}
 metric.v1 <-
-
 '
 # PSP factor loadings defined, and constrained across waves
-PSP.7 =~ psp1f*psp1.7 + psp2f*psp2.7 + psp3f*psp3.7
-PSP.8 =~ psp1f*psp1.8 + psp2f*psp2.8 + psp3f*psp3.8
-PSP.9 =~ psp1f*psp1.9 + psp2f*psp2.9 + psp3f*psp3.9
+PSP.7  =~ psp1f*psp1.7 + psp2f*psp2.7 + psp3f*psp3.7
+PSP.8  =~ psp1f*psp1.8 + psp2f*psp2.8 + psp3f*psp3.8
+PSP.9  =~ psp1f*psp1.9 + psp2f*psp2.9 + psp3f*psp3.9
 PSP.10 =~ psp1f*psp1.10 + psp2f*psp2.10 + psp3f*psp3.10
 PSP.11 =~ psp1f*psp1.11 + psp2f*psp2.11 + psp3f*psp3.11
 
 # PSP variance constrained to 1
-PSP.7 ~~ 1*PSP.7
-PSP.8 ~~ 1*PSP.8
-PSP.9 ~~ 1*PSP.9
+PSP.7  ~~ 1*PSP.7
+PSP.8  ~~ 1*PSP.8
+PSP.9  ~~ 1*PSP.9
 PSP.10 ~~ 1*PSP.10
 PSP.11 ~~ 1*PSP.11
 
@@ -315,14 +317,19 @@ SSA.11 =~ ssa1f*ssa1.11 + ssa2f*ssa2.11 + ssa3f*ssa3.11 +
           ssa4f*ssa4.11 + ssa5f*ssa5.11 + ssa6f*ssa6.11 + ssa7f*ssa7.11
 
 # SSA variance constrained to 1
-SSA.7 ~~ 1*SSA.7
-SSA.8 ~~ 1*SSA.8
-SSA.9 ~~ 1*SSA.9
+SSA.7  ~~ 1*SSA.7
+SSA.8  ~~ 1*SSA.8
+SSA.9  ~~ 1*SSA.9
 SSA.10 ~~ 1*SSA.10
 SSA.11 ~~ 1*SSA.11
 '
 
-metric.model <- paste(metric.v1, errorstructure, sep = ' ', collapse = NULL)
+metric.model <- paste(
+  metric.v1, 
+  errorstructure, 
+  sep = ' ', 
+  collapse = NULL
+)
 ```
 
 ### Output del modello
@@ -356,7 +363,7 @@ Esaminiamo il modello di invarianza scalare.
 
 ### Definizione del modello
 
-In questo modello, oltre ai vincoli applicati al modello metrico, fissiamo le intercette degli item in maniera tale che siano uguali in ciascuna rilevazione temporale. Come con il modello metrico, questo risultato viene ottenuto applicando una singola etichetta a tutte e cinque le iterazioni dell'intercetta di un item nel tempo (ad es. `psp1.7 ~ psp1i*1`). In questo esempio, "psp1.7" è l'item, "pspli" è l'etichetta e "*1" indica a `lavaan` di fare riferimento all'intercetta. L'istruzione `paste` aggiunge questi vincoli al modello di invarianza metrica già definito in precedenza.
+In questo modello, oltre ai vincoli applicati al modello metrico, fissiamo le intercette degli item in maniera tale che siano uguali in ciascuna rilevazione temporale. Come con il modello metrico, questo risultato viene ottenuto applicando una singola etichetta a tutte e cinque le iterazioni dell'intercetta di un item nel tempo (ad es. `psp1.7 ~ psp1i*1`). In questo esempio, "psp1.7" è l'item, "psp1i" è l'etichetta e "*1" indica a `lavaan` di fare riferimento all'intercetta. L'istruzione `paste` aggiunge questi vincoli al modello di invarianza metrica che è stato definito in precedenza.
 
 ```{r scalar, echo=FALSE, fig.cap='Invarianza scalare.', out.width = '70%'}
 knitr::include_graphics("code/meas_inv_lgm/scalar.png")
@@ -364,71 +371,76 @@ knitr::include_graphics("code/meas_inv_lgm/scalar.png")
 
 ```{r scalardefinition}
 scalar.v1 <-
-
 '
 # Intercepts constrained
-psp1.7 ~ psp1i*1
-psp1.8 ~ psp1i*1
-psp1.9 ~ psp1i*1
+psp1.7  ~ psp1i*1
+psp1.8  ~ psp1i*1
+psp1.9  ~ psp1i*1
 psp1.10 ~ psp1i*1
 psp1.11 ~ psp1i*1
 
-psp2.7 ~ psp2i*1
-psp2.8 ~ psp2i*1
-psp2.9 ~ psp2i*1
+psp2.7  ~ psp2i*1
+psp2.8  ~ psp2i*1
+psp2.9  ~ psp2i*1
 psp2.10 ~ psp2i*1
 psp2.11 ~ psp2i*1
 
-psp3.7 ~ psp3i*1
-psp3.8 ~ psp3i*1
-psp3.9 ~ psp3i*1
+psp3.7  ~ psp3i*1
+psp3.8  ~ psp3i*1
+psp3.9  ~ psp3i*1
 psp3.10 ~ psp3i*1
 psp3.11 ~ psp3i*1
 
-ssa1.7 ~ ssa1i*1
-ssa1.8 ~ ssa1i*1
-ssa1.9 ~ ssa1i*1
+ssa1.7  ~ ssa1i*1
+ssa1.8  ~ ssa1i*1
+ssa1.9  ~ ssa1i*1
 ssa1.10 ~ ssa1i*1
 ssa1.11 ~ ssa1i*1
 
-ssa2.7 ~ ssa2i*1
-ssa2.8 ~ ssa2i*1
-ssa2.9 ~ ssa2i*1
+ssa2.7  ~ ssa2i*1
+ssa2.8  ~ ssa2i*1
+ssa2.9  ~ ssa2i*1
 ssa2.10 ~ ssa2i*1
 ssa2.11 ~ ssa2i*1
 
-ssa3.7 ~ ssa3i*1
-ssa3.8 ~ ssa3i*1
-ssa3.9 ~ ssa3i*1
+ssa3.7  ~ ssa3i*1
+ssa3.8  ~ ssa3i*1
+ssa3.9  ~ ssa3i*1
 ssa3.10 ~ ssa3i*1
 ssa3.11 ~ ssa3i*1
 
-ssa4.7 ~ ssa4i*1
-ssa4.8 ~ ssa4i*1
-ssa4.9 ~ ssa4i*1
+ssa4.7  ~ ssa4i*1
+ssa4.8  ~ ssa4i*1
+ssa4.9  ~ ssa4i*1
 ssa4.10 ~ ssa4i*1
 ssa4.11 ~ ssa4i*1
 
-ssa5.7 ~ ssa5i*1
-ssa5.8 ~ ssa5i*1
-ssa5.9 ~ ssa5i*1
+ssa5.7  ~ ssa5i*1
+ssa5.8  ~ ssa5i*1
+ssa5.9  ~ ssa5i*1
 ssa5.10 ~ ssa5i*1
 ssa5.11 ~ ssa5i*1
 
-ssa6.7 ~ ssa6i*1
-ssa6.8 ~ ssa6i*1
-ssa6.9 ~ ssa6i*1
+ssa6.7  ~ ssa6i*1
+ssa6.8  ~ ssa6i*1
+ssa6.9  ~ ssa6i*1
 ssa6.10 ~ ssa6i*1
 ssa6.11 ~ ssa6i*1
 
-ssa7.7 ~ ssa7i*1
-ssa7.8 ~ ssa7i*1
-ssa7.9 ~ ssa7i*1
+ssa7.7  ~ ssa7i*1
+ssa7.8  ~ ssa7i*1
+ssa7.9  ~ ssa7i*1
 ssa7.10 ~ ssa7i*1
 ssa7.11 ~ ssa7i*1
 '
 
-scalar.model <- paste(metric.v1, errorstructure, scalar.v1, sep = ' ', collapse = NULL)
+scalar.model <- paste(
+  metric.v1, 
+  errorstructure, 
+  scalar.v1, 
+  sep = ' ', 
+  collapse = NULL
+)
 ```
 
 ### Output del modello
@@ -458,11 +470,11 @@ summary(scalar.fit,
 
 ## Invarianza degli errori
 
-Passiamo ora ad applicare l'insieme più stringente di vincoli al modello di invarianza degli errori. 
+Passiamo ora ad applicare l'insieme più stringente di vincoli, ovvero quello dell'invarianza degli errori. 
 
 ### Definizione del modello
 
-In questo modello, oltre ai vincoli applicati al modello scalare, imponiamo il vincolo dell'eguaglianza dei termini d'errore nelle diverse rilevazioni temporali. Ancora una volta, questo risultato viene ottenuto applicando una singola etichetta ai gruppi di item che desideriamo vincolare (ad esempio `psp1.7 ~~ psp1u*psp1.7`). Nella sintassi, questo è simile a quello che abbiamo usato in precedenza con le covarianze; tuttavia, questa volta consideriamo la covariazione di ogni variabile con se stessa. 
+Nel presente modello, oltre ai vincoli applicati al modello scalare, imponiamo anche il vincolo dell'eguaglianza dei termini d'errore nelle diverse rilevazioni temporali. Ancora una volta, questo risultato viene ottenuto applicando una singola etichetta (ad esempio, `psp1u`) ai gruppi di item che desideriamo vincolare (ad esempio `psp1.7 ~~ psp1u*psp1.7` e `psp1.8 ~~ psp1u*psp1.8`). La sintassi è simile a quella che abbiamo usato in precedenza per le covarianze; tuttavia, in questo caso viene considerata la covariazione di ogni variabile con se stessa. 
 
 ```{r residual, echo=FALSE, fig.cap='Invarianza dei termini erratici.', out.width = '70%'}
 knitr::include_graphics("code/meas_inv_lgm/residual.png")
@@ -470,71 +482,77 @@ knitr::include_graphics("code/meas_inv_lgm/residual.png")
 
 ```{r residualdefinition}
 residual.v1 <-
-
 '
 # Residual error constrained across waves
-psp1.7 ~~ psp1u*psp1.7
-psp1.8 ~~ psp1u*psp1.8
-psp1.9 ~~ psp1u*psp1.9
+psp1.7  ~~ psp1u*psp1.7
+psp1.8  ~~ psp1u*psp1.8
+psp1.9  ~~ psp1u*psp1.9
 psp1.10 ~~ psp1u*psp1.10
 psp1.11 ~~ psp1u*psp1.11
 
-psp2.7 ~~ psp2u*psp2.7
-psp2.8 ~~ psp2u*psp2.8
-psp2.9 ~~ psp2u*psp2.9
+psp2.7  ~~ psp2u*psp2.7
+psp2.8  ~~ psp2u*psp2.8
+psp2.9  ~~ psp2u*psp2.9
 psp2.10 ~~ psp2u*psp2.10
 psp2.11 ~~ psp2u*psp2.11
 
-psp3.7 ~~ psp3u*psp3.7
-psp3.8 ~~ psp3u*psp3.8
-psp3.9 ~~ psp3u*psp3.9
+psp3.7  ~~ psp3u*psp3.7
+psp3.8  ~~ psp3u*psp3.8
+psp3.9  ~~ psp3u*psp3.9
 psp3.10 ~~ psp3u*psp3.10
 psp3.11 ~~ psp3u*psp3.11
 
-ssa1.7 ~~ ssa1u*ssa1.7
-ssa1.8 ~~ ssa1u*ssa1.8
-ssa1.9 ~~ ssa1u*ssa1.9
+ssa1.7  ~~ ssa1u*ssa1.7
+ssa1.8  ~~ ssa1u*ssa1.8
+ssa1.9  ~~ ssa1u*ssa1.9
 ssa1.10 ~~ ssa1u*ssa1.10
 ssa1.11 ~~ ssa1u*ssa1.11
 
-ssa2.7 ~~ ssa2u*ssa2.7
-ssa2.8 ~~ ssa2u*ssa2.8
-ssa2.9 ~~ ssa2u*ssa2.9
+ssa2.7  ~~ ssa2u*ssa2.7
+ssa2.8  ~~ ssa2u*ssa2.8
+ssa2.9  ~~ ssa2u*ssa2.9
 ssa2.10 ~~ ssa2u*ssa2.10
 ssa2.11 ~~ ssa2u*ssa2.11
 
-ssa3.7 ~~ ssa3u*ssa3.7
-ssa3.8 ~~ ssa3u*ssa3.8
-ssa3.9 ~~ ssa3u*ssa3.9
+ssa3.7  ~~ ssa3u*ssa3.7
+ssa3.8  ~~ ssa3u*ssa3.8
+ssa3.9  ~~ ssa3u*ssa3.9
 ssa3.10 ~~ ssa3u*ssa3.10
 ssa3.11 ~~ ssa3u*ssa3.11
 
-ssa4.7 ~~ ssa4u*ssa4.7
-ssa4.8 ~~ ssa4u*ssa4.8
-ssa4.9 ~~ ssa4u*ssa4.9
+ssa4.7  ~~ ssa4u*ssa4.7
+ssa4.8  ~~ ssa4u*ssa4.8
+ssa4.9  ~~ ssa4u*ssa4.9
 ssa4.10 ~~ ssa4u*ssa4.10
 ssa4.11 ~~ ssa4u*ssa4.11
 
-ssa5.7 ~~ ssa5u*ssa5.7
-ssa5.8 ~~ ssa5u*ssa5.8
-ssa5.9 ~~ ssa5u*ssa5.9
+ssa5.7  ~~ ssa5u*ssa5.7
+ssa5.8  ~~ ssa5u*ssa5.8
+ssa5.9  ~~ ssa5u*ssa5.9
 ssa5.10 ~~ ssa5u*ssa5.10
 ssa5.11 ~~ ssa5u*ssa5.11
 
-ssa6.7 ~~ ssa6u*ssa6.7
-ssa6.8 ~~ ssa6u*ssa6.8
-ssa6.9 ~~ ssa6u*ssa6.9
+ssa6.7  ~~ ssa6u*ssa6.7
+ssa6.8  ~~ ssa6u*ssa6.8
+ssa6.9  ~~ ssa6u*ssa6.9
 ssa6.10 ~~ ssa6u*ssa6.10
 ssa6.11 ~~ ssa6u*ssa6.11
 
-ssa7.7 ~~ ssa7u*ssa7.7
-ssa7.8 ~~ ssa7u*ssa7.8
-ssa7.9 ~~ ssa7u*ssa7.9
+ssa7.7  ~~ ssa7u*ssa7.7
+ssa7.8  ~~ ssa7u*ssa7.8
+ssa7.9  ~~ ssa7u*ssa7.9
 ssa7.10 ~~ ssa7u*ssa7.10
 ssa7.11 ~~ ssa7u*ssa7.11
 '
 
-residual.model <- paste(metric.v1, errorstructure, scalar.v1, residual.v1, sep = ' ', collapse = NULL)
+residual.model <- paste(
+  metric.v1, 
+  errorstructure, 
+  scalar.v1, 
+  residual.v1, 
+  sep = ' ', 
+  collapse = NULL
+)
 ```
 
 ### Output del modello
@@ -595,31 +613,34 @@ Dopo aver selezionato il modello dell'eguaglianza dei residui come il modello pr
 
 ### Definizione del modello
 
-Nel modello Cross-lagged Panel vengono stimati i coefficienti di regressione, non le covarianze. Vengono qui considerate solo le relazioni dal tempo $t$ al tempo $t+1$. Cioè, le relazioni dal tempo $t$ a $t+2$, a $t+3$ e così via vengono omesse. Si potrebbe voler includere anche queste relazioni, ma per i presenti scopi didattici, qui ci concentreremo solo su un modello più semplice e imporremo il vincolo per cui le relazioni tra variabili con ritardi temporali maggiori di +1 sono uguali a zero.
+Nel modello Cross-lagged Panel vengono stimati i coefficienti di regressione, non le covarianze. Vengono qui considerate solo le relazioni dal tempo $t$ al tempo $t+1$. Cioè, le relazioni dal tempo $t$ a $t+2$, a $t+3$ e così via vengono omesse. Si potrebbe voler includere anche queste relazioni, ma per i presenti scopi didattici, qui verrà solo esaminato un modello più semplice e verrà imposto il vincolo per cui le relazioni tra variabili con ritardi temporali maggiori di +1 sono uguali a zero.
 
 ```{r residualsemdefinition}
 sem.v1 <-
-
 '
 # Structural paths defined
-SSA.8 ~ A*SSA.7 + C*PSP.7
-PSP.8 ~ D*SSA.7 + B*PSP.7
-SSA.9 ~ A*SSA.8 + C*PSP.8
-PSP.9 ~ D*SSA.8 + B*PSP.8
+SSA.8  ~ A*SSA.7 + C*PSP.7
+PSP.8  ~ D*SSA.7 + B*PSP.7
+SSA.9  ~ A*SSA.8 + C*PSP.8
+PSP.9  ~ D*SSA.8 + B*PSP.8
 SSA.10 ~ A*SSA.9 + C*PSP.9
 PSP.10 ~ D*SSA.9 + B*PSP.9
 SSA.11 ~ A*SSA.10 + C*PSP.10
 PSP.11 ~ D*SSA.10 + B*PSP.10
 
 # Latent variable covariances defined
-SSA.7 ~~ PSP.7
-SSA.8 ~~ PSP.8
-SSA.9 ~~ PSP.9
+SSA.7  ~~ PSP.7
+SSA.8  ~~ PSP.8
+SSA.9  ~~ PSP.9
 SSA.10 ~~ PSP.10
 SSA.11 ~~ PSP.11
 '
 
-residual.sem.model <- paste(residual.model, sem.v1, sep = ' ', collapse = NULL)
+residual.sem.model <- paste(
+  residual.model, 
+  sem.v1, sep = ' ', 
+  collapse = NULL
+)
 ```
 
 ### Output del modello
@@ -647,36 +668,33 @@ summary(residual.sem.fit,
 )
 ```
 
-Il modello ha un adattamento accettabile. I valori $R^2$ variano da .38 a .63. La figura \@ref(fig:parintclpm) mostra che l'autopresentazione perfezionistica del giorno precedente predice fortemente l'autopresentazione perfezionista del giorno successivo. Allo stesso modo, l'ansia sociale del giorno precedente predice fortemente l'ansia sociale del giorno successivo. Nel contempo, il percorso incrociato tra ciascuna variabile latente e la variabile opposta è più debole, anche se ancora statisticamente significativo. Questo tipo di pattern (grandi percorsi auto-regressivi, piccoli percorsi incrociati) è tipico della maggior parte dei modelli Cross-lagged Panel.
+Il modello ha un adattamento accettabile. I valori $R^2$ variano da .38 a .63. La figura \@ref(fig:parintclpm) mostra che l'auto-presentazione perfezionistica del giorno precedente predice fortemente l'auto-presentazione perfezionista del giorno successivo. Allo stesso modo, l'ansia sociale del giorno precedente predice fortemente l'ansia sociale del giorno successivo. Nel contempo, il percorso incrociato tra ciascuna variabile latente e la variabile opposta è più debole, anche se non statisticamente nullo. Questo tipo di pattern (grandi percorsi auto-regressivi, piccoli percorsi incrociati) è tipico dei modelli Cross-lagged Panel.
 
-```{r parintclpm, echo=FALSE, fig.cap='Modello Cross-lagged Panel Model.', out.width = '90%'}
+```{r parintclpm, echo=FALSE, fig.cap='Modello Cross-lagged Panel Model.', out.width = '99%'}
 knitr::include_graphics("code/meas_inv_lgm/clpm.png")
 ```
 
 ## Modello Random Intercepts Cross-Lagged Panel 
 
 Una variante del modello descritto in precedenza è il modello Random Intercepts Cross-Lagged Panel proposto da Ellen Hamaker (Hamaker, 2015; Mulder & Hamaker, 2020). 
+
 ### Definizione del modello
 
-Questo modello apporta quattro modifiche principali al modello precedente: 
+Questo modello (si veda la figura \@ref(fig:riclpm)) apporta quattro modifiche al modello precedente: 
 
 - viene omessa la struttura residuale correlata; 
 - sono specificate intercette casuali per ciascun indicatore; 
 - le intercette casuali possono covariare; 
-- le medie latenti per tutte le variabili latenti dal secondo momento temporale in poi sono parametri che possono variare liberamente. 
+- le medie latenti di tutte le variabili latenti dal secondo momento temporale in poi sono parametri che possono variare liberamente. 
 
-La figura \@ref(fig:riclpm) fornisce una rappresentazione grafica di questo modello.
+Si noti che il RI-CLPM richiede almeno 3 punti temporali; il diagramma in Figura \@ref(fig:riclpm), su due giorni, viene fornito solo quale esempio, per evitare una eccessiva complessità visiva.
 
-Si noti che il RI-CLPM può essere stimato solo con 3 o più punti temporali; il diagramma in Figura \@ref(fig:riclpm) viene fornito solo quale esempio, per evitare una eccessiva complessità visiva.
-
-```{r riclpm, echo=FALSE, fig.cap='Random Intercepts Cross-lagged Panel Model.', out.width = '70%'}
+```{r riclpm, echo=FALSE, fig.cap='Random Intercepts Cross-lagged Panel Model.', out.width = '80%'}
 knitr::include_graphics("code/meas_inv_lgm/random_intercepts_residual.png")
 ```
 
 ```{r ricpmdefinition}
-
 sem.v2 <-
-
 '
 # Create between components (random intercepts)
 RI.PSP1 =~ 1*psp1.7 + 1*psp1.8 + 1*psp1.9 + 1*psp1.10 + 1*psp1.11 
@@ -692,16 +710,16 @@ RI.SSA6 =~ 1*ssa6.7 + 1*ssa6.8 + 1*ssa6.9 + 1*ssa6.10 + 1*ssa6.11
 RI.SSA7 =~ 1*ssa7.7 + 1*ssa7.8 + 1*ssa7.9 + 1*ssa7.10 + 1*ssa7.11 
 
 # PSP factor loadings defined, and constrained across waves
-PSP.7 =~ psp1f*psp1.7 + psp2f*psp2.7 + psp3f*psp3.7
-PSP.8 =~ psp1f*psp1.8 + psp2f*psp2.8 + psp3f*psp3.8
-PSP.9 =~ psp1f*psp1.9 + psp2f*psp2.9 + psp3f*psp3.9
+PSP.7  =~ psp1f*psp1.7 + psp2f*psp2.7 + psp3f*psp3.7
+PSP.8  =~ psp1f*psp1.8 + psp2f*psp2.8 + psp3f*psp3.8
+PSP.9  =~ psp1f*psp1.9 + psp2f*psp2.9 + psp3f*psp3.9
 PSP.10 =~ psp1f*psp1.10 + psp2f*psp2.10 + psp3f*psp3.10
 PSP.11 =~ psp1f*psp1.11 + psp2f*psp2.11 + psp3f*psp3.11
 
 # PSP variance constrained to 1
-PSP.7 ~~ 1*PSP.7
-PSP.8 ~~ 1*PSP.8
-PSP.9 ~~ 1*PSP.9
+PSP.7  ~~ 1*PSP.7
+PSP.8  ~~ 1*PSP.8
+PSP.9  ~~ 1*PSP.9
 PSP.10 ~~ 1*PSP.10
 PSP.11 ~~ 1*PSP.11
 
@@ -722,158 +740,157 @@ SSA.11 =~ ssa1f*ssa1.11 + ssa2f*ssa2.11 + ssa3f*ssa3.11 +
           ssa4f*ssa4.11 + ssa5f*ssa5.11 + ssa6f*ssa6.11 + ssa7f*ssa7.11
           
 # SSA variance constrained to 1
-SSA.7 ~~ 1*SSA.7
-SSA.8 ~~ 1*SSA.8
-SSA.9 ~~ 1*SSA.9
+SSA.7  ~~ 1*SSA.7
+SSA.8  ~~ 1*SSA.8
+SSA.9  ~~ 1*SSA.9
 SSA.10 ~~ 1*SSA.10
 SSA.11 ~~ 1*SSA.11
           
 # Intercepts constrained
-psp1.7 ~ psp1i*1
-psp1.8 ~ psp1i*1
-psp1.9 ~ psp1i*1
+psp1.7  ~ psp1i*1
+psp1.8  ~ psp1i*1
+psp1.9  ~ psp1i*1
 psp1.10 ~ psp1i*1
 psp1.11 ~ psp1i*1
 
-psp2.7 ~ psp2i*1
-psp2.8 ~ psp2i*1
-psp2.9 ~ psp2i*1
+psp2.7  ~ psp2i*1
+psp2.8  ~ psp2i*1
+psp2.9  ~ psp2i*1
 psp2.10 ~ psp2i*1
 psp2.11 ~ psp2i*1
 
-psp3.7 ~ psp3i*1
-psp3.8 ~ psp3i*1
-psp3.9 ~ psp3i*1
+psp3.7  ~ psp3i*1
+psp3.8  ~ psp3i*1
+psp3.9  ~ psp3i*1
 psp3.10 ~ psp3i*1
 psp3.11 ~ psp3i*1
 
-ssa1.7 ~ ssa1i*1
-ssa1.8 ~ ssa1i*1
-ssa1.9 ~ ssa1i*1
+ssa1.7  ~ ssa1i*1
+ssa1.8  ~ ssa1i*1
+ssa1.9  ~ ssa1i*1
 ssa1.10 ~ ssa1i*1
 ssa1.11 ~ ssa1i*1
 
-ssa2.7 ~ ssa2i*1
-ssa2.8 ~ ssa2i*1
-ssa2.9 ~ ssa2i*1
+ssa2.7  ~ ssa2i*1
+ssa2.8  ~ ssa2i*1
+ssa2.9  ~ ssa2i*1
 ssa2.10 ~ ssa2i*1
 ssa2.11 ~ ssa2i*1
 
-ssa3.7 ~ ssa3i*1
-ssa3.8 ~ ssa3i*1
-ssa3.9 ~ ssa3i*1
+ssa3.7  ~ ssa3i*1
+ssa3.8  ~ ssa3i*1
+ssa3.9  ~ ssa3i*1
 ssa3.10 ~ ssa3i*1
 ssa3.11 ~ ssa3i*1
 
-ssa4.7 ~ ssa4i*1
-ssa4.8 ~ ssa4i*1
-ssa4.9 ~ ssa4i*1
+ssa4.7  ~ ssa4i*1
+ssa4.8  ~ ssa4i*1
+ssa4.9  ~ ssa4i*1
 ssa4.10 ~ ssa4i*1
 ssa4.11 ~ ssa4i*1
 
-ssa5.7 ~ ssa5i*1
-ssa5.8 ~ ssa5i*1
-ssa5.9 ~ ssa5i*1
+ssa5.7  ~ ssa5i*1
+ssa5.8  ~ ssa5i*1
+ssa5.9  ~ ssa5i*1
 ssa5.10 ~ ssa5i*1
 ssa5.11 ~ ssa5i*1
 
-ssa6.7 ~ ssa6i*1
-ssa6.8 ~ ssa6i*1
-ssa6.9 ~ ssa6i*1
+ssa6.7  ~ ssa6i*1
+ssa6.8  ~ ssa6i*1
+ssa6.9  ~ ssa6i*1
 ssa6.10 ~ ssa6i*1
 ssa6.11 ~ ssa6i*1
 
-ssa7.7 ~ ssa7i*1
-ssa7.8 ~ ssa7i*1
-ssa7.9 ~ ssa7i*1
+ssa7.7  ~ ssa7i*1
+ssa7.8  ~ ssa7i*1
+ssa7.9  ~ ssa7i*1
 ssa7.10 ~ ssa7i*1
 ssa7.11 ~ ssa7i*1
 
 # Residual error constrained across waves
-psp1.7 ~~ psp1u*psp1.7
-psp1.8 ~~ psp1u*psp1.8
-psp1.9 ~~ psp1u*psp1.9
+psp1.7  ~~ psp1u*psp1.7
+psp1.8  ~~ psp1u*psp1.8
+psp1.9  ~~ psp1u*psp1.9
 psp1.10 ~~ psp1u*psp1.10
 psp1.11 ~~ psp1u*psp1.11
 
-psp2.7 ~~ psp2u*psp2.7
-psp2.8 ~~ psp2u*psp2.8
-psp2.9 ~~ psp2u*psp2.9
+psp2.7  ~~ psp2u*psp2.7
+psp2.8  ~~ psp2u*psp2.8
+psp2.9  ~~ psp2u*psp2.9
 psp2.10 ~~ psp2u*psp2.10
 psp2.11 ~~ psp2u*psp2.11
 
-psp3.7 ~~ psp3u*psp3.7
-psp3.8 ~~ psp3u*psp3.8
-psp3.9 ~~ psp3u*psp3.9
+psp3.7  ~~ psp3u*psp3.7
+psp3.8  ~~ psp3u*psp3.8
+psp3.9  ~~ psp3u*psp3.9
 psp3.10 ~~ psp3u*psp3.10
 psp3.11 ~~ psp3u*psp3.11
 
-ssa1.7 ~~ ssa1u*ssa1.7
-ssa1.8 ~~ ssa1u*ssa1.8
-ssa1.9 ~~ ssa1u*ssa1.9
+ssa1.7  ~~ ssa1u*ssa1.7
+ssa1.8  ~~ ssa1u*ssa1.8
+ssa1.9  ~~ ssa1u*ssa1.9
 ssa1.10 ~~ ssa1u*ssa1.10
 ssa1.11 ~~ ssa1u*ssa1.11
 
-ssa2.7 ~~ ssa2u*ssa2.7
-ssa2.8 ~~ ssa2u*ssa2.8
-ssa2.9 ~~ ssa2u*ssa2.9
+ssa2.7  ~~ ssa2u*ssa2.7
+ssa2.8  ~~ ssa2u*ssa2.8
+ssa2.9  ~~ ssa2u*ssa2.9
 ssa2.10 ~~ ssa2u*ssa2.10
 ssa2.11 ~~ ssa2u*ssa2.11
 
-ssa3.7 ~~ ssa3u*ssa3.7
-ssa3.8 ~~ ssa3u*ssa3.8
-ssa3.9 ~~ ssa3u*ssa3.9
+ssa3.7  ~~ ssa3u*ssa3.7
+ssa3.8  ~~ ssa3u*ssa3.8
+ssa3.9  ~~ ssa3u*ssa3.9
 ssa3.10 ~~ ssa3u*ssa3.10
 ssa3.11 ~~ ssa3u*ssa3.11
 
-ssa4.7 ~~ ssa4u*ssa4.7
-ssa4.8 ~~ ssa4u*ssa4.8
-ssa4.9 ~~ ssa4u*ssa4.9
+ssa4.7  ~~ ssa4u*ssa4.7
+ssa4.8  ~~ ssa4u*ssa4.8
+ssa4.9  ~~ ssa4u*ssa4.9
 ssa4.10 ~~ ssa4u*ssa4.10
 ssa4.11 ~~ ssa4u*ssa4.11
 
-ssa5.7 ~~ ssa5u*ssa5.7
-ssa5.8 ~~ ssa5u*ssa5.8
-ssa5.9 ~~ ssa5u*ssa5.9
+ssa5.7  ~~ ssa5u*ssa5.7
+ssa5.8  ~~ ssa5u*ssa5.8
+ssa5.9  ~~ ssa5u*ssa5.9
 ssa5.10 ~~ ssa5u*ssa5.10
 ssa5.11 ~~ ssa5u*ssa5.11
 
-ssa6.7 ~~ ssa6u*ssa6.7
-ssa6.8 ~~ ssa6u*ssa6.8
-ssa6.9 ~~ ssa6u*ssa6.9
+ssa6.7  ~~ ssa6u*ssa6.7
+ssa6.8  ~~ ssa6u*ssa6.8
+ssa6.9  ~~ ssa6u*ssa6.9
 ssa6.10 ~~ ssa6u*ssa6.10
 ssa6.11 ~~ ssa6u*ssa6.11
 
-ssa7.7 ~~ ssa7u*ssa7.7
-ssa7.8 ~~ ssa7u*ssa7.8
-ssa7.9 ~~ ssa7u*ssa7.9
+ssa7.7  ~~ ssa7u*ssa7.7
+ssa7.8  ~~ ssa7u*ssa7.8
+ssa7.9  ~~ ssa7u*ssa7.9
 ssa7.10 ~~ ssa7u*ssa7.10
 ssa7.11 ~~ ssa7u*ssa7.11
 
 # Structural paths defined (WITHIN)
-SSA.8 ~ A*SSA.7 + C*PSP.7
-PSP.8 ~ D*SSA.7 + B*PSP.7
-SSA.9 ~ A*SSA.8 + C*PSP.8
-PSP.9 ~ D*SSA.8 + B*PSP.8
+SSA.8  ~ A*SSA.7 + C*PSP.7
+PSP.8  ~ D*SSA.7 + B*PSP.7
+SSA.9  ~ A*SSA.8 + C*PSP.8
+PSP.9  ~ D*SSA.8 + B*PSP.8
 SSA.10 ~ A*SSA.9 + C*PSP.9
 PSP.10 ~ D*SSA.9 + B*PSP.9
 SSA.11 ~ A*SSA.10 + C*PSP.10
 PSP.11 ~ D*SSA.10 + B*PSP.10
 
 # Latent variable covariances defined
-SSA.7 ~~ PSP.7
-SSA.8 ~~ PSP.8
-SSA.9 ~~ PSP.9
+SSA.7  ~~ PSP.7
+SSA.8  ~~ PSP.8
+SSA.9  ~~ PSP.9
 SSA.10 ~~ PSP.10
 SSA.11 ~~ PSP.11
 
-  # Free latent means from t = 2 onward (only do this in combination with the 
-  # constraints on the intercepts; without these, this would not be specified).
-  PSP.8 + PSP.9 + PSP.10 + PSP.11 + SSA.8 + SSA.9 + SSA.10 + SSA.11 ~ 1
+# Free latent means from t = 2 onward (only do this in combination with the 
+# constraints on the intercepts; without these, this would not be specified).
+PSP.8 + PSP.9 + PSP.10 + PSP.11 + SSA.8 + SSA.9 + SSA.10 + SSA.11 ~ 1
 
- # Constrain covariance of the between factors and exogenous within factors to 0. 
- 
-  RI.PSP1 + RI.PSP2 + RI.PSP3 + RI.SSA1 + RI.SSA2 + RI.SSA3 + RI.SSA4 + RI.SSA5 + RI.SSA6 + RI.SSA7 ~~ 0*PSP.7 + 0*SSA.7
+# Constrain covariance of the between factors and exogenous within factors to 0. 
+RI.PSP1 + RI.PSP2 + RI.PSP3 + RI.SSA1 + RI.SSA2 + RI.SSA3 + RI.SSA4 + RI.SSA5 + RI.SSA6 + RI.SSA7 ~~ 0*PSP.7 + 0*SSA.7
 '
 ```
 
@@ -896,19 +913,17 @@ summary(sem.v2.fit,
 )
 ```
 
-Eccetto per la statistica chi-squadrato e per il SRMR, il fit del modello è buono, χ2(1225) = 1884, Robust CFI = 0.94, Robust TLI = 0.94, RMSEA = 0.05, SRMR = 0.16.  La figura \@ref(fig:parintriclpm) mostra gli intervalli al 95% per i parametri di interesse. 
+Eccetto per la statistica chi-squadrato e per il SRMR, il fit del modello è buono, $\chi^2_{1225}$ = 1884, Robust CFI = 0.94, Robust TLI = 0.94, RMSEA = 0.05, SRMR = 0.16.  La figura \@ref(fig:parintriclpm) mostra gli intervalli al 95% per i parametri di interesse. 
 
-```{r parintriclpm, echo=FALSE, fig.cap='Coefficienti di interesse per il Random Intercepts Cross-lagged Panel Model.', out.width = '90%'}
+```{r parintriclpm, echo=FALSE, fig.cap='Coefficienti di interesse per il Random Intercepts Cross-lagged Panel Model.', out.width = '99%'}
 knitr::include_graphics("code/meas_inv_lgm/rir.png")
 ```
 
-Qui abbiamo un diverso pattern di risultati rispetto al caso precedente. I percorsi auto-regressivi ora rappresentano effetti carry-over all'interno della persona (Mulder & Hamaker, 2020). Per l'auto-presentazione perfezionista, quando le persone sperimentano punteggi di perfezionismo elevati rispetto al proprio punteggio atteso, è più probabile che manifestino punteggi di perfezionismo elevati rispetto al proprio punteggio atteso anche nella prossima occasione. In confronto, non c'è evidenza di effetti carry-over all'interno della persona per l'ansia sociale. Inoltre, i percorsi incrociati ora suggeriscono che la presentazione di sé perfezionista predice aumenti dell'ansia sociale nel tempo, ma non il contrario. È interessante notare che questo risultato è più in linea con le previsioni teoriche in quest'area di ricerca.
+Qui abbiamo un diverso pattern di risultati rispetto al caso precedente. I percorsi auto-regressivi ora rappresentano effetti carry-over all'interno della persona (Mulder & Hamaker, 2020). Per l'auto-presentazione perfezionista, quando le persone sperimentano punteggi di perfezionismo elevati rispetto al proprio punteggio atteso, è più probabile che manifestino punteggi di perfezionismo elevati rispetto al proprio punteggio atteso anche nella successiva occasione temporale. In confronto, per l'ansia sociale non ci sono evidenze di effetti carry-over all'interno della persona. Inoltre, i percorsi incrociati ora suggeriscono che la presentazione di sé perfezionista predice aumenti dell'ansia sociale nel tempo, ma non il contrario. È interessante notare che questo risultato è più in linea con le previsioni teoriche in quest'area di ricerca.
 
 ## Commenti e considerazioni finali {-}
 
-Per ricapitolare, abbiamo utilizzato l'analisi fattoriale confermativa per valutare l'invarianza della misurazione su cinque onde su due variabili correlate utilizzando quattro modelli nidificati sempre più restrittivi: modello configurale, metrico, scalare e di eguaglianza dei residui. Dopo aver selezionato il modello di eguaglianza dei residui come il più semplice che manteneva un buon adattamento, abbiamo applicato i suoi vincoli a un modello di equazione strutturali, il che ci ha consentito di quantificare le relazioni cross-lagged delle nostre due variabili in funzione del tempo.
+Per ricapitolare, abbiamo utilizzato l'analisi fattoriale confermativa per valutare l'invarianza della misurazione su cinque onde su due variabili correlate utilizzando quattro modelli nidificati sempre più restrittivi: modello configurale, metrico, scalare e di eguaglianza dei residui. Dopo aver selezionato il modello di eguaglianza dei residui come il modello più semplice che consentiva, nel contempo, un buon adattamento ai dati, abbiamo applicato i suoi vincoli a un modello di equazione strutturali, il che ci ha consentito di quantificare le relazioni cross-lagged delle due variabili esaminate in funzione del tempo.
 
-Nel nostro caso, il modello finale è conforme al livello più rigoroso di invarianza della misurazione. Tuttavia, in alcuni studi, questo non è il caso. *L'invarianza scalare è in genere sufficiente per l'analisi generale dei dati*, poiché indica che i partecipanti non variano molto tra le onde nel modo in cui interpretano e rispondono alle domande. Tuttavia, se viene confermata solo l'invarianza metrica, i ricercatori devono qualificare qualsiasi risultato successivo riconoscendo che, sebbene i fattori latenti siano saturati dagli item in modo simile nel tempo, il modo in cui gli individui interpretano gli item possono cambiare nel tempo. Vale la pena notare la tecnica qui descritta per testare la MI nei CLPM è maggiormente adatta per modelli con un numero di onde da basso a moderato. Per uno studio con rilevazioni su 20 giorni, potrebbe essere più semplice implementare tecniche di modellazione multilivello o una modellazione di equazioni strutturali multilivello.
-
-
+Nel nostro caso, il modello finale è conforme al livello più rigoroso di invarianza della misurazione. Tuttavia, in alcuni studi, questo non è il caso. *L'invarianza scalare è in genere sufficiente per l'analisi dei dati*, poiché indica che i partecipanti non variano molto tra le onde nel modo in cui interpretano e rispondono alle domande. Tuttavia, se viene confermata solo l'invarianza metrica, i ricercatori devono qualificare qualsiasi risultato successivo riconoscendo che, sebbene i fattori latenti vengano saturati dagli item in modo simile nel corso del tempo, il modo in cui gli individui interpretano gli item potrrebbe cambiare nel corso tempo. Vale la pena notare la tecnica qui descritta per testare la MI nei CLPM è maggiormente adatta a modelli con un numero di onde da basso a moderato. Per uno studio con rilevazioni su 20 giorni, potrebbe essere più semplice implementare tecniche di modellazione multi-livello o una modellazione di equazioni strutturali multi-livello.
 

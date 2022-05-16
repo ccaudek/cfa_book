@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2022-05-11" />
+<meta name="date" content="2022-05-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -572,7 +572,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="24.12" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html"><i class="fa fa-check"></i><b>24.12</b> Modello Random Intercepts Cross-Lagged Panel</a>
 <ul>
-<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Output del modello</a></li>
+<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#definizione-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Definizione del modello</a></li>
+<li class="chapter" data-level="24.12.2" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.2</b> Output del modello</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-2.html"><a href="commenti-e-considerazioni-finali-2.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
 </ul></li>
@@ -703,10 +704,10 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="invarianza-degli-errori" class="section level2 hasAnchor" number="24.9">
 <h2><span class="header-section-number">24.9</span> Invarianza degli errori<a href="invarianza-degli-errori.html#invarianza-degli-errori" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Passiamo ora ad applicare l’insieme più stringente di vincoli al modello di invarianza degli errori.</p>
+<p>Passiamo ora ad applicare l’insieme più stringente di vincoli, ovvero quello dell’invarianza degli errori.</p>
 <div id="definizione-del-modello-3" class="section level3 hasAnchor" number="24.9.1">
 <h3><span class="header-section-number">24.9.1</span> Definizione del modello<a href="invarianza-degli-errori.html#definizione-del-modello-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In questo modello, oltre ai vincoli applicati al modello scalare, imponiamo il vincolo dell’eguaglianza dei termini d’errore nelle diverse rilevazioni temporali. Ancora una volta, questo risultato viene ottenuto applicando una singola etichetta ai gruppi di item che desideriamo vincolare (ad esempio <code>psp1.7 ~~ psp1u*psp1.7</code>). Nella sintassi, questo è simile a quello che abbiamo usato in precedenza con le covarianze; tuttavia, questa volta consideriamo la covariazione di ogni variabile con se stessa.</p>
+<p>Nel presente modello, oltre ai vincoli applicati al modello scalare, imponiamo anche il vincolo dell’eguaglianza dei termini d’errore nelle diverse rilevazioni temporali. Ancora una volta, questo risultato viene ottenuto applicando una singola etichetta (ad esempio, <code>psp1u</code>) ai gruppi di item che desideriamo vincolare (ad esempio <code>psp1.7 ~~ psp1u*psp1.7</code> e <code>psp1.8 ~~ psp1u*psp1.8</code>). La sintassi è simile a quella che abbiamo usato in precedenza per le covarianze; tuttavia, in questo caso viene considerata la covariazione di ogni variabile con se stessa.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:residual"></span>
 <img src="code/meas_inv_lgm/residual.png" alt="Invarianza dei termini erratici." width="70%" />
 <p class="caption">
@@ -716,68 +717,75 @@ FIGURA 24.4: Invarianza dei termini erratici.
 <div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="invarianza-degli-errori.html#cb378-1" aria-hidden="true" tabindex="-1"></a>residual.v1 <span class="ot">&lt;-</span></span>
 <span id="cb378-2"><a href="invarianza-degli-errori.html#cb378-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span></span>
 <span id="cb378-3"><a href="invarianza-degli-errori.html#cb378-3" aria-hidden="true" tabindex="-1"></a><span class="st"># Residual error constrained across waves</span></span>
-<span id="cb378-4"><a href="invarianza-degli-errori.html#cb378-4" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.7 ~~ psp1u*psp1.7</span></span>
-<span id="cb378-5"><a href="invarianza-degli-errori.html#cb378-5" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.8 ~~ psp1u*psp1.8</span></span>
-<span id="cb378-6"><a href="invarianza-degli-errori.html#cb378-6" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.9 ~~ psp1u*psp1.9</span></span>
+<span id="cb378-4"><a href="invarianza-degli-errori.html#cb378-4" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.7  ~~ psp1u*psp1.7</span></span>
+<span id="cb378-5"><a href="invarianza-degli-errori.html#cb378-5" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.8  ~~ psp1u*psp1.8</span></span>
+<span id="cb378-6"><a href="invarianza-degli-errori.html#cb378-6" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.9  ~~ psp1u*psp1.9</span></span>
 <span id="cb378-7"><a href="invarianza-degli-errori.html#cb378-7" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.10 ~~ psp1u*psp1.10</span></span>
 <span id="cb378-8"><a href="invarianza-degli-errori.html#cb378-8" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.11 ~~ psp1u*psp1.11</span></span>
 <span id="cb378-9"><a href="invarianza-degli-errori.html#cb378-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb378-10"><a href="invarianza-degli-errori.html#cb378-10" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.7 ~~ psp2u*psp2.7</span></span>
-<span id="cb378-11"><a href="invarianza-degli-errori.html#cb378-11" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.8 ~~ psp2u*psp2.8</span></span>
-<span id="cb378-12"><a href="invarianza-degli-errori.html#cb378-12" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.9 ~~ psp2u*psp2.9</span></span>
+<span id="cb378-10"><a href="invarianza-degli-errori.html#cb378-10" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.7  ~~ psp2u*psp2.7</span></span>
+<span id="cb378-11"><a href="invarianza-degli-errori.html#cb378-11" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.8  ~~ psp2u*psp2.8</span></span>
+<span id="cb378-12"><a href="invarianza-degli-errori.html#cb378-12" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.9  ~~ psp2u*psp2.9</span></span>
 <span id="cb378-13"><a href="invarianza-degli-errori.html#cb378-13" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.10 ~~ psp2u*psp2.10</span></span>
 <span id="cb378-14"><a href="invarianza-degli-errori.html#cb378-14" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.11 ~~ psp2u*psp2.11</span></span>
 <span id="cb378-15"><a href="invarianza-degli-errori.html#cb378-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb378-16"><a href="invarianza-degli-errori.html#cb378-16" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.7 ~~ psp3u*psp3.7</span></span>
-<span id="cb378-17"><a href="invarianza-degli-errori.html#cb378-17" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.8 ~~ psp3u*psp3.8</span></span>
-<span id="cb378-18"><a href="invarianza-degli-errori.html#cb378-18" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.9 ~~ psp3u*psp3.9</span></span>
+<span id="cb378-16"><a href="invarianza-degli-errori.html#cb378-16" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.7  ~~ psp3u*psp3.7</span></span>
+<span id="cb378-17"><a href="invarianza-degli-errori.html#cb378-17" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.8  ~~ psp3u*psp3.8</span></span>
+<span id="cb378-18"><a href="invarianza-degli-errori.html#cb378-18" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.9  ~~ psp3u*psp3.9</span></span>
 <span id="cb378-19"><a href="invarianza-degli-errori.html#cb378-19" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.10 ~~ psp3u*psp3.10</span></span>
 <span id="cb378-20"><a href="invarianza-degli-errori.html#cb378-20" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.11 ~~ psp3u*psp3.11</span></span>
 <span id="cb378-21"><a href="invarianza-degli-errori.html#cb378-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb378-22"><a href="invarianza-degli-errori.html#cb378-22" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.7 ~~ ssa1u*ssa1.7</span></span>
-<span id="cb378-23"><a href="invarianza-degli-errori.html#cb378-23" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.8 ~~ ssa1u*ssa1.8</span></span>
-<span id="cb378-24"><a href="invarianza-degli-errori.html#cb378-24" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.9 ~~ ssa1u*ssa1.9</span></span>
+<span id="cb378-22"><a href="invarianza-degli-errori.html#cb378-22" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.7  ~~ ssa1u*ssa1.7</span></span>
+<span id="cb378-23"><a href="invarianza-degli-errori.html#cb378-23" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.8  ~~ ssa1u*ssa1.8</span></span>
+<span id="cb378-24"><a href="invarianza-degli-errori.html#cb378-24" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.9  ~~ ssa1u*ssa1.9</span></span>
 <span id="cb378-25"><a href="invarianza-degli-errori.html#cb378-25" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.10 ~~ ssa1u*ssa1.10</span></span>
 <span id="cb378-26"><a href="invarianza-degli-errori.html#cb378-26" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.11 ~~ ssa1u*ssa1.11</span></span>
 <span id="cb378-27"><a href="invarianza-degli-errori.html#cb378-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb378-28"><a href="invarianza-degli-errori.html#cb378-28" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.7 ~~ ssa2u*ssa2.7</span></span>
-<span id="cb378-29"><a href="invarianza-degli-errori.html#cb378-29" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.8 ~~ ssa2u*ssa2.8</span></span>
-<span id="cb378-30"><a href="invarianza-degli-errori.html#cb378-30" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.9 ~~ ssa2u*ssa2.9</span></span>
+<span id="cb378-28"><a href="invarianza-degli-errori.html#cb378-28" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.7  ~~ ssa2u*ssa2.7</span></span>
+<span id="cb378-29"><a href="invarianza-degli-errori.html#cb378-29" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.8  ~~ ssa2u*ssa2.8</span></span>
+<span id="cb378-30"><a href="invarianza-degli-errori.html#cb378-30" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.9  ~~ ssa2u*ssa2.9</span></span>
 <span id="cb378-31"><a href="invarianza-degli-errori.html#cb378-31" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.10 ~~ ssa2u*ssa2.10</span></span>
 <span id="cb378-32"><a href="invarianza-degli-errori.html#cb378-32" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.11 ~~ ssa2u*ssa2.11</span></span>
 <span id="cb378-33"><a href="invarianza-degli-errori.html#cb378-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb378-34"><a href="invarianza-degli-errori.html#cb378-34" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.7 ~~ ssa3u*ssa3.7</span></span>
-<span id="cb378-35"><a href="invarianza-degli-errori.html#cb378-35" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.8 ~~ ssa3u*ssa3.8</span></span>
-<span id="cb378-36"><a href="invarianza-degli-errori.html#cb378-36" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.9 ~~ ssa3u*ssa3.9</span></span>
+<span id="cb378-34"><a href="invarianza-degli-errori.html#cb378-34" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.7  ~~ ssa3u*ssa3.7</span></span>
+<span id="cb378-35"><a href="invarianza-degli-errori.html#cb378-35" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.8  ~~ ssa3u*ssa3.8</span></span>
+<span id="cb378-36"><a href="invarianza-degli-errori.html#cb378-36" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.9  ~~ ssa3u*ssa3.9</span></span>
 <span id="cb378-37"><a href="invarianza-degli-errori.html#cb378-37" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.10 ~~ ssa3u*ssa3.10</span></span>
 <span id="cb378-38"><a href="invarianza-degli-errori.html#cb378-38" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.11 ~~ ssa3u*ssa3.11</span></span>
 <span id="cb378-39"><a href="invarianza-degli-errori.html#cb378-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb378-40"><a href="invarianza-degli-errori.html#cb378-40" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.7 ~~ ssa4u*ssa4.7</span></span>
-<span id="cb378-41"><a href="invarianza-degli-errori.html#cb378-41" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.8 ~~ ssa4u*ssa4.8</span></span>
-<span id="cb378-42"><a href="invarianza-degli-errori.html#cb378-42" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.9 ~~ ssa4u*ssa4.9</span></span>
+<span id="cb378-40"><a href="invarianza-degli-errori.html#cb378-40" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.7  ~~ ssa4u*ssa4.7</span></span>
+<span id="cb378-41"><a href="invarianza-degli-errori.html#cb378-41" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.8  ~~ ssa4u*ssa4.8</span></span>
+<span id="cb378-42"><a href="invarianza-degli-errori.html#cb378-42" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.9  ~~ ssa4u*ssa4.9</span></span>
 <span id="cb378-43"><a href="invarianza-degli-errori.html#cb378-43" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.10 ~~ ssa4u*ssa4.10</span></span>
 <span id="cb378-44"><a href="invarianza-degli-errori.html#cb378-44" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.11 ~~ ssa4u*ssa4.11</span></span>
 <span id="cb378-45"><a href="invarianza-degli-errori.html#cb378-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb378-46"><a href="invarianza-degli-errori.html#cb378-46" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.7 ~~ ssa5u*ssa5.7</span></span>
-<span id="cb378-47"><a href="invarianza-degli-errori.html#cb378-47" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.8 ~~ ssa5u*ssa5.8</span></span>
-<span id="cb378-48"><a href="invarianza-degli-errori.html#cb378-48" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.9 ~~ ssa5u*ssa5.9</span></span>
+<span id="cb378-46"><a href="invarianza-degli-errori.html#cb378-46" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.7  ~~ ssa5u*ssa5.7</span></span>
+<span id="cb378-47"><a href="invarianza-degli-errori.html#cb378-47" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.8  ~~ ssa5u*ssa5.8</span></span>
+<span id="cb378-48"><a href="invarianza-degli-errori.html#cb378-48" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.9  ~~ ssa5u*ssa5.9</span></span>
 <span id="cb378-49"><a href="invarianza-degli-errori.html#cb378-49" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.10 ~~ ssa5u*ssa5.10</span></span>
 <span id="cb378-50"><a href="invarianza-degli-errori.html#cb378-50" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.11 ~~ ssa5u*ssa5.11</span></span>
 <span id="cb378-51"><a href="invarianza-degli-errori.html#cb378-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb378-52"><a href="invarianza-degli-errori.html#cb378-52" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.7 ~~ ssa6u*ssa6.7</span></span>
-<span id="cb378-53"><a href="invarianza-degli-errori.html#cb378-53" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.8 ~~ ssa6u*ssa6.8</span></span>
-<span id="cb378-54"><a href="invarianza-degli-errori.html#cb378-54" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.9 ~~ ssa6u*ssa6.9</span></span>
+<span id="cb378-52"><a href="invarianza-degli-errori.html#cb378-52" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.7  ~~ ssa6u*ssa6.7</span></span>
+<span id="cb378-53"><a href="invarianza-degli-errori.html#cb378-53" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.8  ~~ ssa6u*ssa6.8</span></span>
+<span id="cb378-54"><a href="invarianza-degli-errori.html#cb378-54" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.9  ~~ ssa6u*ssa6.9</span></span>
 <span id="cb378-55"><a href="invarianza-degli-errori.html#cb378-55" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.10 ~~ ssa6u*ssa6.10</span></span>
 <span id="cb378-56"><a href="invarianza-degli-errori.html#cb378-56" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.11 ~~ ssa6u*ssa6.11</span></span>
 <span id="cb378-57"><a href="invarianza-degli-errori.html#cb378-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb378-58"><a href="invarianza-degli-errori.html#cb378-58" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.7 ~~ ssa7u*ssa7.7</span></span>
-<span id="cb378-59"><a href="invarianza-degli-errori.html#cb378-59" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.8 ~~ ssa7u*ssa7.8</span></span>
-<span id="cb378-60"><a href="invarianza-degli-errori.html#cb378-60" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.9 ~~ ssa7u*ssa7.9</span></span>
+<span id="cb378-58"><a href="invarianza-degli-errori.html#cb378-58" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.7  ~~ ssa7u*ssa7.7</span></span>
+<span id="cb378-59"><a href="invarianza-degli-errori.html#cb378-59" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.8  ~~ ssa7u*ssa7.8</span></span>
+<span id="cb378-60"><a href="invarianza-degli-errori.html#cb378-60" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.9  ~~ ssa7u*ssa7.9</span></span>
 <span id="cb378-61"><a href="invarianza-degli-errori.html#cb378-61" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.10 ~~ ssa7u*ssa7.10</span></span>
 <span id="cb378-62"><a href="invarianza-degli-errori.html#cb378-62" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.11 ~~ ssa7u*ssa7.11</span></span>
 <span id="cb378-63"><a href="invarianza-degli-errori.html#cb378-63" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
 <span id="cb378-64"><a href="invarianza-degli-errori.html#cb378-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb378-65"><a href="invarianza-degli-errori.html#cb378-65" aria-hidden="true" tabindex="-1"></a>residual.model <span class="ot">&lt;-</span> <span class="fu">paste</span>(metric.v1, errorstructure, scalar.v1, residual.v1, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>, <span class="at">collapse =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<span id="cb378-65"><a href="invarianza-degli-errori.html#cb378-65" aria-hidden="true" tabindex="-1"></a>residual.model <span class="ot">&lt;-</span> <span class="fu">paste</span>(</span>
+<span id="cb378-66"><a href="invarianza-degli-errori.html#cb378-66" aria-hidden="true" tabindex="-1"></a>  metric.v1,</span>
+<span id="cb378-67"><a href="invarianza-degli-errori.html#cb378-67" aria-hidden="true" tabindex="-1"></a>  errorstructure,</span>
+<span id="cb378-68"><a href="invarianza-degli-errori.html#cb378-68" aria-hidden="true" tabindex="-1"></a>  scalar.v1,</span>
+<span id="cb378-69"><a href="invarianza-degli-errori.html#cb378-69" aria-hidden="true" tabindex="-1"></a>  residual.v1,</span>
+<span id="cb378-70"><a href="invarianza-degli-errori.html#cb378-70" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">&quot; &quot;</span>,</span>
+<span id="cb378-71"><a href="invarianza-degli-errori.html#cb378-71" aria-hidden="true" tabindex="-1"></a>  <span class="at">collapse =</span> <span class="cn">NULL</span></span>
+<span id="cb378-72"><a href="invarianza-degli-errori.html#cb378-72" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="output-del-modello-3" class="section level3 hasAnchor" number="24.9.2">
 <h3><span class="header-section-number">24.9.2</span> Output del modello<a href="invarianza-degli-errori.html#output-del-modello-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>

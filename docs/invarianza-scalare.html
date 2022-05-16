@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2022-05-11" />
+<meta name="date" content="2022-05-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -572,7 +572,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="24.12" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html"><i class="fa fa-check"></i><b>24.12</b> Modello Random Intercepts Cross-Lagged Panel</a>
 <ul>
-<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Output del modello</a></li>
+<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#definizione-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Definizione del modello</a></li>
+<li class="chapter" data-level="24.12.2" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.2</b> Output del modello</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-2.html"><a href="commenti-e-considerazioni-finali-2.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
 </ul></li>
@@ -706,7 +707,7 @@ div.csl-indent {
 <p>Esaminiamo il modello di invarianza scalare.</p>
 <div id="definizione-del-modello-2" class="section level3 hasAnchor" number="24.8.1">
 <h3><span class="header-section-number">24.8.1</span> Definizione del modello<a href="invarianza-scalare.html#definizione-del-modello-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In questo modello, oltre ai vincoli applicati al modello metrico, fissiamo le intercette degli item in maniera tale che siano uguali in ciascuna rilevazione temporale. Come con il modello metrico, questo risultato viene ottenuto applicando una singola etichetta a tutte e cinque le iterazioni dell’intercetta di un item nel tempo (ad es. <code>psp1.7 ~ psp1i*1</code>). In questo esempio, “psp1.7” è l’item, “pspli” è l’etichetta e “*1” indica a <code>lavaan</code> di fare riferimento all’intercetta. L’istruzione <code>paste</code> aggiunge questi vincoli al modello di invarianza metrica già definito in precedenza.</p>
+<p>In questo modello, oltre ai vincoli applicati al modello metrico, fissiamo le intercette degli item in maniera tale che siano uguali in ciascuna rilevazione temporale. Come con il modello metrico, questo risultato viene ottenuto applicando una singola etichetta a tutte e cinque le iterazioni dell’intercetta di un item nel tempo (ad es. <code>psp1.7 ~ psp1i*1</code>). In questo esempio, “psp1.7” è l’item, “psp1i” è l’etichetta e “*1” indica a <code>lavaan</code> di fare riferimento all’intercetta. L’istruzione <code>paste</code> aggiunge questi vincoli al modello di invarianza metrica che è stato definito in precedenza.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:scalar"></span>
 <img src="code/meas_inv_lgm/scalar.png" alt="Invarianza scalare." width="70%" />
 <p class="caption">
@@ -716,68 +717,74 @@ FIGURA 24.3: Invarianza scalare.
 <div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="invarianza-scalare.html#cb375-1" aria-hidden="true" tabindex="-1"></a>scalar.v1 <span class="ot">&lt;-</span></span>
 <span id="cb375-2"><a href="invarianza-scalare.html#cb375-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span></span>
 <span id="cb375-3"><a href="invarianza-scalare.html#cb375-3" aria-hidden="true" tabindex="-1"></a><span class="st"># Intercepts constrained</span></span>
-<span id="cb375-4"><a href="invarianza-scalare.html#cb375-4" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.7 ~ psp1i*1</span></span>
-<span id="cb375-5"><a href="invarianza-scalare.html#cb375-5" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.8 ~ psp1i*1</span></span>
-<span id="cb375-6"><a href="invarianza-scalare.html#cb375-6" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.9 ~ psp1i*1</span></span>
+<span id="cb375-4"><a href="invarianza-scalare.html#cb375-4" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.7  ~ psp1i*1</span></span>
+<span id="cb375-5"><a href="invarianza-scalare.html#cb375-5" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.8  ~ psp1i*1</span></span>
+<span id="cb375-6"><a href="invarianza-scalare.html#cb375-6" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.9  ~ psp1i*1</span></span>
 <span id="cb375-7"><a href="invarianza-scalare.html#cb375-7" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.10 ~ psp1i*1</span></span>
 <span id="cb375-8"><a href="invarianza-scalare.html#cb375-8" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.11 ~ psp1i*1</span></span>
 <span id="cb375-9"><a href="invarianza-scalare.html#cb375-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb375-10"><a href="invarianza-scalare.html#cb375-10" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.7 ~ psp2i*1</span></span>
-<span id="cb375-11"><a href="invarianza-scalare.html#cb375-11" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.8 ~ psp2i*1</span></span>
-<span id="cb375-12"><a href="invarianza-scalare.html#cb375-12" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.9 ~ psp2i*1</span></span>
+<span id="cb375-10"><a href="invarianza-scalare.html#cb375-10" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.7  ~ psp2i*1</span></span>
+<span id="cb375-11"><a href="invarianza-scalare.html#cb375-11" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.8  ~ psp2i*1</span></span>
+<span id="cb375-12"><a href="invarianza-scalare.html#cb375-12" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.9  ~ psp2i*1</span></span>
 <span id="cb375-13"><a href="invarianza-scalare.html#cb375-13" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.10 ~ psp2i*1</span></span>
 <span id="cb375-14"><a href="invarianza-scalare.html#cb375-14" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.11 ~ psp2i*1</span></span>
 <span id="cb375-15"><a href="invarianza-scalare.html#cb375-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb375-16"><a href="invarianza-scalare.html#cb375-16" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.7 ~ psp3i*1</span></span>
-<span id="cb375-17"><a href="invarianza-scalare.html#cb375-17" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.8 ~ psp3i*1</span></span>
-<span id="cb375-18"><a href="invarianza-scalare.html#cb375-18" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.9 ~ psp3i*1</span></span>
+<span id="cb375-16"><a href="invarianza-scalare.html#cb375-16" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.7  ~ psp3i*1</span></span>
+<span id="cb375-17"><a href="invarianza-scalare.html#cb375-17" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.8  ~ psp3i*1</span></span>
+<span id="cb375-18"><a href="invarianza-scalare.html#cb375-18" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.9  ~ psp3i*1</span></span>
 <span id="cb375-19"><a href="invarianza-scalare.html#cb375-19" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.10 ~ psp3i*1</span></span>
 <span id="cb375-20"><a href="invarianza-scalare.html#cb375-20" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.11 ~ psp3i*1</span></span>
 <span id="cb375-21"><a href="invarianza-scalare.html#cb375-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb375-22"><a href="invarianza-scalare.html#cb375-22" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.7 ~ ssa1i*1</span></span>
-<span id="cb375-23"><a href="invarianza-scalare.html#cb375-23" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.8 ~ ssa1i*1</span></span>
-<span id="cb375-24"><a href="invarianza-scalare.html#cb375-24" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.9 ~ ssa1i*1</span></span>
+<span id="cb375-22"><a href="invarianza-scalare.html#cb375-22" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.7  ~ ssa1i*1</span></span>
+<span id="cb375-23"><a href="invarianza-scalare.html#cb375-23" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.8  ~ ssa1i*1</span></span>
+<span id="cb375-24"><a href="invarianza-scalare.html#cb375-24" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.9  ~ ssa1i*1</span></span>
 <span id="cb375-25"><a href="invarianza-scalare.html#cb375-25" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.10 ~ ssa1i*1</span></span>
 <span id="cb375-26"><a href="invarianza-scalare.html#cb375-26" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.11 ~ ssa1i*1</span></span>
 <span id="cb375-27"><a href="invarianza-scalare.html#cb375-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb375-28"><a href="invarianza-scalare.html#cb375-28" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.7 ~ ssa2i*1</span></span>
-<span id="cb375-29"><a href="invarianza-scalare.html#cb375-29" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.8 ~ ssa2i*1</span></span>
-<span id="cb375-30"><a href="invarianza-scalare.html#cb375-30" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.9 ~ ssa2i*1</span></span>
+<span id="cb375-28"><a href="invarianza-scalare.html#cb375-28" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.7  ~ ssa2i*1</span></span>
+<span id="cb375-29"><a href="invarianza-scalare.html#cb375-29" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.8  ~ ssa2i*1</span></span>
+<span id="cb375-30"><a href="invarianza-scalare.html#cb375-30" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.9  ~ ssa2i*1</span></span>
 <span id="cb375-31"><a href="invarianza-scalare.html#cb375-31" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.10 ~ ssa2i*1</span></span>
 <span id="cb375-32"><a href="invarianza-scalare.html#cb375-32" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.11 ~ ssa2i*1</span></span>
 <span id="cb375-33"><a href="invarianza-scalare.html#cb375-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb375-34"><a href="invarianza-scalare.html#cb375-34" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.7 ~ ssa3i*1</span></span>
-<span id="cb375-35"><a href="invarianza-scalare.html#cb375-35" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.8 ~ ssa3i*1</span></span>
-<span id="cb375-36"><a href="invarianza-scalare.html#cb375-36" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.9 ~ ssa3i*1</span></span>
+<span id="cb375-34"><a href="invarianza-scalare.html#cb375-34" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.7  ~ ssa3i*1</span></span>
+<span id="cb375-35"><a href="invarianza-scalare.html#cb375-35" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.8  ~ ssa3i*1</span></span>
+<span id="cb375-36"><a href="invarianza-scalare.html#cb375-36" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.9  ~ ssa3i*1</span></span>
 <span id="cb375-37"><a href="invarianza-scalare.html#cb375-37" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.10 ~ ssa3i*1</span></span>
 <span id="cb375-38"><a href="invarianza-scalare.html#cb375-38" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.11 ~ ssa3i*1</span></span>
 <span id="cb375-39"><a href="invarianza-scalare.html#cb375-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb375-40"><a href="invarianza-scalare.html#cb375-40" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.7 ~ ssa4i*1</span></span>
-<span id="cb375-41"><a href="invarianza-scalare.html#cb375-41" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.8 ~ ssa4i*1</span></span>
-<span id="cb375-42"><a href="invarianza-scalare.html#cb375-42" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.9 ~ ssa4i*1</span></span>
+<span id="cb375-40"><a href="invarianza-scalare.html#cb375-40" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.7  ~ ssa4i*1</span></span>
+<span id="cb375-41"><a href="invarianza-scalare.html#cb375-41" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.8  ~ ssa4i*1</span></span>
+<span id="cb375-42"><a href="invarianza-scalare.html#cb375-42" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.9  ~ ssa4i*1</span></span>
 <span id="cb375-43"><a href="invarianza-scalare.html#cb375-43" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.10 ~ ssa4i*1</span></span>
 <span id="cb375-44"><a href="invarianza-scalare.html#cb375-44" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.11 ~ ssa4i*1</span></span>
 <span id="cb375-45"><a href="invarianza-scalare.html#cb375-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb375-46"><a href="invarianza-scalare.html#cb375-46" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.7 ~ ssa5i*1</span></span>
-<span id="cb375-47"><a href="invarianza-scalare.html#cb375-47" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.8 ~ ssa5i*1</span></span>
-<span id="cb375-48"><a href="invarianza-scalare.html#cb375-48" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.9 ~ ssa5i*1</span></span>
+<span id="cb375-46"><a href="invarianza-scalare.html#cb375-46" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.7  ~ ssa5i*1</span></span>
+<span id="cb375-47"><a href="invarianza-scalare.html#cb375-47" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.8  ~ ssa5i*1</span></span>
+<span id="cb375-48"><a href="invarianza-scalare.html#cb375-48" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.9  ~ ssa5i*1</span></span>
 <span id="cb375-49"><a href="invarianza-scalare.html#cb375-49" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.10 ~ ssa5i*1</span></span>
 <span id="cb375-50"><a href="invarianza-scalare.html#cb375-50" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.11 ~ ssa5i*1</span></span>
 <span id="cb375-51"><a href="invarianza-scalare.html#cb375-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb375-52"><a href="invarianza-scalare.html#cb375-52" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.7 ~ ssa6i*1</span></span>
-<span id="cb375-53"><a href="invarianza-scalare.html#cb375-53" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.8 ~ ssa6i*1</span></span>
-<span id="cb375-54"><a href="invarianza-scalare.html#cb375-54" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.9 ~ ssa6i*1</span></span>
+<span id="cb375-52"><a href="invarianza-scalare.html#cb375-52" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.7  ~ ssa6i*1</span></span>
+<span id="cb375-53"><a href="invarianza-scalare.html#cb375-53" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.8  ~ ssa6i*1</span></span>
+<span id="cb375-54"><a href="invarianza-scalare.html#cb375-54" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.9  ~ ssa6i*1</span></span>
 <span id="cb375-55"><a href="invarianza-scalare.html#cb375-55" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.10 ~ ssa6i*1</span></span>
 <span id="cb375-56"><a href="invarianza-scalare.html#cb375-56" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.11 ~ ssa6i*1</span></span>
 <span id="cb375-57"><a href="invarianza-scalare.html#cb375-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb375-58"><a href="invarianza-scalare.html#cb375-58" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.7 ~ ssa7i*1</span></span>
-<span id="cb375-59"><a href="invarianza-scalare.html#cb375-59" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.8 ~ ssa7i*1</span></span>
-<span id="cb375-60"><a href="invarianza-scalare.html#cb375-60" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.9 ~ ssa7i*1</span></span>
+<span id="cb375-58"><a href="invarianza-scalare.html#cb375-58" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.7  ~ ssa7i*1</span></span>
+<span id="cb375-59"><a href="invarianza-scalare.html#cb375-59" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.8  ~ ssa7i*1</span></span>
+<span id="cb375-60"><a href="invarianza-scalare.html#cb375-60" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.9  ~ ssa7i*1</span></span>
 <span id="cb375-61"><a href="invarianza-scalare.html#cb375-61" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.10 ~ ssa7i*1</span></span>
 <span id="cb375-62"><a href="invarianza-scalare.html#cb375-62" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.11 ~ ssa7i*1</span></span>
 <span id="cb375-63"><a href="invarianza-scalare.html#cb375-63" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
 <span id="cb375-64"><a href="invarianza-scalare.html#cb375-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb375-65"><a href="invarianza-scalare.html#cb375-65" aria-hidden="true" tabindex="-1"></a>scalar.model <span class="ot">&lt;-</span> <span class="fu">paste</span>(metric.v1, errorstructure, scalar.v1, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>, <span class="at">collapse =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<span id="cb375-65"><a href="invarianza-scalare.html#cb375-65" aria-hidden="true" tabindex="-1"></a>scalar.model <span class="ot">&lt;-</span> <span class="fu">paste</span>(</span>
+<span id="cb375-66"><a href="invarianza-scalare.html#cb375-66" aria-hidden="true" tabindex="-1"></a>  metric.v1,</span>
+<span id="cb375-67"><a href="invarianza-scalare.html#cb375-67" aria-hidden="true" tabindex="-1"></a>  errorstructure,</span>
+<span id="cb375-68"><a href="invarianza-scalare.html#cb375-68" aria-hidden="true" tabindex="-1"></a>  scalar.v1,</span>
+<span id="cb375-69"><a href="invarianza-scalare.html#cb375-69" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">&quot; &quot;</span>,</span>
+<span id="cb375-70"><a href="invarianza-scalare.html#cb375-70" aria-hidden="true" tabindex="-1"></a>  <span class="at">collapse =</span> <span class="cn">NULL</span></span>
+<span id="cb375-71"><a href="invarianza-scalare.html#cb375-71" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="output-del-modello-2" class="section level3 hasAnchor" number="24.8.2">
 <h3><span class="header-section-number">24.8.2</span> Output del modello<a href="invarianza-scalare.html#output-del-modello-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>

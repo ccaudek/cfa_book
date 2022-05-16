@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2022-05-11" />
+<meta name="date" content="2022-05-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -572,7 +572,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="24.12" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html"><i class="fa fa-check"></i><b>24.12</b> Modello Random Intercepts Cross-Lagged Panel</a>
 <ul>
-<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Output del modello</a></li>
+<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#definizione-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Definizione del modello</a></li>
+<li class="chapter" data-level="24.12.2" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.2</b> Output del modello</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-2.html"><a href="commenti-e-considerazioni-finali-2.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
 </ul></li>
@@ -706,114 +707,114 @@ div.csl-indent {
 <p>Mackinnon e Curtis creano uno script separato che contiene la specificazione della struttura dei termini d’errore, che è complessa. Poiché il codice necessario occupa così tante righe, viene scritto separatamente e richiamato poi nella sintassi dei modelli che vengono definiti in seguito. Questo rende il codice più ordinato e più breve. Si noti che il codice seguente impone il vincolo dell’eguaglianza delle covarianze tra i termini d’errore di rilevazioni temporali successive.</p>
 <div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="struttura-degli-errori.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Error term covariances constrained across waves</span></span>
 <span id="cb369-2"><a href="struttura-degli-errori.html#cb369-2" aria-hidden="true" tabindex="-1"></a>errorstructure <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb369-3"><a href="struttura-degli-errori.html#cb369-3" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.7 ~~ psp1cov*psp1.8</span></span>
-<span id="cb369-4"><a href="struttura-degli-errori.html#cb369-4" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.7 ~~ psp1cov*psp1.9</span></span>
-<span id="cb369-5"><a href="struttura-degli-errori.html#cb369-5" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.7 ~~ psp1cov*psp1.10</span></span>
-<span id="cb369-6"><a href="struttura-degli-errori.html#cb369-6" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.7 ~~ psp1cov*psp1.11</span></span>
-<span id="cb369-7"><a href="struttura-degli-errori.html#cb369-7" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.8 ~~ psp1cov*psp1.9</span></span>
-<span id="cb369-8"><a href="struttura-degli-errori.html#cb369-8" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.8 ~~ psp1cov*psp1.10</span></span>
-<span id="cb369-9"><a href="struttura-degli-errori.html#cb369-9" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.8 ~~ psp1cov*psp1.11</span></span>
-<span id="cb369-10"><a href="struttura-degli-errori.html#cb369-10" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.9 ~~ psp1cov*psp1.10</span></span>
-<span id="cb369-11"><a href="struttura-degli-errori.html#cb369-11" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.9 ~~ psp1cov*psp1.11</span></span>
+<span id="cb369-3"><a href="struttura-degli-errori.html#cb369-3" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.7  ~~ psp1cov*psp1.8</span></span>
+<span id="cb369-4"><a href="struttura-degli-errori.html#cb369-4" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.7  ~~ psp1cov*psp1.9</span></span>
+<span id="cb369-5"><a href="struttura-degli-errori.html#cb369-5" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.7  ~~ psp1cov*psp1.10</span></span>
+<span id="cb369-6"><a href="struttura-degli-errori.html#cb369-6" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.7  ~~ psp1cov*psp1.11</span></span>
+<span id="cb369-7"><a href="struttura-degli-errori.html#cb369-7" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.8  ~~ psp1cov*psp1.9</span></span>
+<span id="cb369-8"><a href="struttura-degli-errori.html#cb369-8" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.8  ~~ psp1cov*psp1.10</span></span>
+<span id="cb369-9"><a href="struttura-degli-errori.html#cb369-9" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.8  ~~ psp1cov*psp1.11</span></span>
+<span id="cb369-10"><a href="struttura-degli-errori.html#cb369-10" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.9  ~~ psp1cov*psp1.10</span></span>
+<span id="cb369-11"><a href="struttura-degli-errori.html#cb369-11" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.9  ~~ psp1cov*psp1.11</span></span>
 <span id="cb369-12"><a href="struttura-degli-errori.html#cb369-12" aria-hidden="true" tabindex="-1"></a><span class="st">psp1.10 ~~ psp1cov*psp1.11</span></span>
 <span id="cb369-13"><a href="struttura-degli-errori.html#cb369-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb369-14"><a href="struttura-degli-errori.html#cb369-14" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.7 ~~ psp2cov*psp2.8</span></span>
-<span id="cb369-15"><a href="struttura-degli-errori.html#cb369-15" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.7 ~~ psp2cov*psp2.9</span></span>
-<span id="cb369-16"><a href="struttura-degli-errori.html#cb369-16" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.7 ~~ psp2cov*psp2.10</span></span>
-<span id="cb369-17"><a href="struttura-degli-errori.html#cb369-17" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.7 ~~ psp2cov*psp2.11</span></span>
-<span id="cb369-18"><a href="struttura-degli-errori.html#cb369-18" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.8 ~~ psp2cov*psp2.9</span></span>
-<span id="cb369-19"><a href="struttura-degli-errori.html#cb369-19" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.8 ~~ psp2cov*psp2.10</span></span>
-<span id="cb369-20"><a href="struttura-degli-errori.html#cb369-20" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.8 ~~ psp2cov*psp2.11</span></span>
-<span id="cb369-21"><a href="struttura-degli-errori.html#cb369-21" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.9 ~~ psp2cov*psp2.10</span></span>
-<span id="cb369-22"><a href="struttura-degli-errori.html#cb369-22" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.9 ~~ psp2cov*psp2.11</span></span>
+<span id="cb369-14"><a href="struttura-degli-errori.html#cb369-14" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.7  ~~ psp2cov*psp2.8</span></span>
+<span id="cb369-15"><a href="struttura-degli-errori.html#cb369-15" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.7  ~~ psp2cov*psp2.9</span></span>
+<span id="cb369-16"><a href="struttura-degli-errori.html#cb369-16" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.7  ~~ psp2cov*psp2.10</span></span>
+<span id="cb369-17"><a href="struttura-degli-errori.html#cb369-17" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.7  ~~ psp2cov*psp2.11</span></span>
+<span id="cb369-18"><a href="struttura-degli-errori.html#cb369-18" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.8  ~~ psp2cov*psp2.9</span></span>
+<span id="cb369-19"><a href="struttura-degli-errori.html#cb369-19" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.8  ~~ psp2cov*psp2.10</span></span>
+<span id="cb369-20"><a href="struttura-degli-errori.html#cb369-20" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.8  ~~ psp2cov*psp2.11</span></span>
+<span id="cb369-21"><a href="struttura-degli-errori.html#cb369-21" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.9  ~~ psp2cov*psp2.10</span></span>
+<span id="cb369-22"><a href="struttura-degli-errori.html#cb369-22" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.9  ~~ psp2cov*psp2.11</span></span>
 <span id="cb369-23"><a href="struttura-degli-errori.html#cb369-23" aria-hidden="true" tabindex="-1"></a><span class="st">psp2.10 ~~ psp2cov*psp2.11</span></span>
 <span id="cb369-24"><a href="struttura-degli-errori.html#cb369-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb369-25"><a href="struttura-degli-errori.html#cb369-25" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.7 ~~ psp3cov*psp3.8</span></span>
-<span id="cb369-26"><a href="struttura-degli-errori.html#cb369-26" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.7 ~~ psp3cov*psp3.9</span></span>
-<span id="cb369-27"><a href="struttura-degli-errori.html#cb369-27" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.7 ~~ psp3cov*psp3.10</span></span>
-<span id="cb369-28"><a href="struttura-degli-errori.html#cb369-28" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.7 ~~ psp3cov*psp3.11</span></span>
-<span id="cb369-29"><a href="struttura-degli-errori.html#cb369-29" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.8 ~~ psp3cov*psp3.9</span></span>
-<span id="cb369-30"><a href="struttura-degli-errori.html#cb369-30" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.8 ~~ psp3cov*psp3.10</span></span>
-<span id="cb369-31"><a href="struttura-degli-errori.html#cb369-31" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.8 ~~ psp3cov*psp3.11</span></span>
-<span id="cb369-32"><a href="struttura-degli-errori.html#cb369-32" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.9 ~~ psp3cov*psp3.10</span></span>
-<span id="cb369-33"><a href="struttura-degli-errori.html#cb369-33" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.9 ~~ psp3cov*psp3.11</span></span>
+<span id="cb369-25"><a href="struttura-degli-errori.html#cb369-25" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.7  ~~ psp3cov*psp3.8</span></span>
+<span id="cb369-26"><a href="struttura-degli-errori.html#cb369-26" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.7  ~~ psp3cov*psp3.9</span></span>
+<span id="cb369-27"><a href="struttura-degli-errori.html#cb369-27" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.7  ~~ psp3cov*psp3.10</span></span>
+<span id="cb369-28"><a href="struttura-degli-errori.html#cb369-28" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.7  ~~ psp3cov*psp3.11</span></span>
+<span id="cb369-29"><a href="struttura-degli-errori.html#cb369-29" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.8  ~~ psp3cov*psp3.9</span></span>
+<span id="cb369-30"><a href="struttura-degli-errori.html#cb369-30" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.8  ~~ psp3cov*psp3.10</span></span>
+<span id="cb369-31"><a href="struttura-degli-errori.html#cb369-31" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.8  ~~ psp3cov*psp3.11</span></span>
+<span id="cb369-32"><a href="struttura-degli-errori.html#cb369-32" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.9  ~~ psp3cov*psp3.10</span></span>
+<span id="cb369-33"><a href="struttura-degli-errori.html#cb369-33" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.9  ~~ psp3cov*psp3.11</span></span>
 <span id="cb369-34"><a href="struttura-degli-errori.html#cb369-34" aria-hidden="true" tabindex="-1"></a><span class="st">psp3.10 ~~ psp3cov*psp3.11</span></span>
 <span id="cb369-35"><a href="struttura-degli-errori.html#cb369-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb369-36"><a href="struttura-degli-errori.html#cb369-36" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.7 ~~ ssa1cov*ssa1.8</span></span>
-<span id="cb369-37"><a href="struttura-degli-errori.html#cb369-37" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.7 ~~ ssa1cov*ssa1.9</span></span>
-<span id="cb369-38"><a href="struttura-degli-errori.html#cb369-38" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.7 ~~ ssa1cov*ssa1.10</span></span>
-<span id="cb369-39"><a href="struttura-degli-errori.html#cb369-39" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.7 ~~ ssa1cov*ssa1.11</span></span>
-<span id="cb369-40"><a href="struttura-degli-errori.html#cb369-40" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.8 ~~ ssa1cov*ssa1.9</span></span>
-<span id="cb369-41"><a href="struttura-degli-errori.html#cb369-41" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.8 ~~ ssa1cov*ssa1.10</span></span>
-<span id="cb369-42"><a href="struttura-degli-errori.html#cb369-42" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.8 ~~ ssa1cov*ssa1.11</span></span>
-<span id="cb369-43"><a href="struttura-degli-errori.html#cb369-43" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.9 ~~ ssa1cov*ssa1.10</span></span>
-<span id="cb369-44"><a href="struttura-degli-errori.html#cb369-44" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.9 ~~ ssa1cov*ssa1.11</span></span>
+<span id="cb369-36"><a href="struttura-degli-errori.html#cb369-36" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.7  ~~ ssa1cov*ssa1.8</span></span>
+<span id="cb369-37"><a href="struttura-degli-errori.html#cb369-37" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.7  ~~ ssa1cov*ssa1.9</span></span>
+<span id="cb369-38"><a href="struttura-degli-errori.html#cb369-38" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.7  ~~ ssa1cov*ssa1.10</span></span>
+<span id="cb369-39"><a href="struttura-degli-errori.html#cb369-39" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.7  ~~ ssa1cov*ssa1.11</span></span>
+<span id="cb369-40"><a href="struttura-degli-errori.html#cb369-40" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.8  ~~ ssa1cov*ssa1.9</span></span>
+<span id="cb369-41"><a href="struttura-degli-errori.html#cb369-41" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.8  ~~ ssa1cov*ssa1.10</span></span>
+<span id="cb369-42"><a href="struttura-degli-errori.html#cb369-42" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.8  ~~ ssa1cov*ssa1.11</span></span>
+<span id="cb369-43"><a href="struttura-degli-errori.html#cb369-43" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.9  ~~ ssa1cov*ssa1.10</span></span>
+<span id="cb369-44"><a href="struttura-degli-errori.html#cb369-44" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.9  ~~ ssa1cov*ssa1.11</span></span>
 <span id="cb369-45"><a href="struttura-degli-errori.html#cb369-45" aria-hidden="true" tabindex="-1"></a><span class="st">ssa1.10 ~~ ssa1cov*ssa1.11</span></span>
 <span id="cb369-46"><a href="struttura-degli-errori.html#cb369-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb369-47"><a href="struttura-degli-errori.html#cb369-47" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.7 ~~ ssa2cov*ssa2.8</span></span>
-<span id="cb369-48"><a href="struttura-degli-errori.html#cb369-48" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.7 ~~ ssa2cov*ssa2.9</span></span>
-<span id="cb369-49"><a href="struttura-degli-errori.html#cb369-49" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.7 ~~ ssa2cov*ssa2.10</span></span>
-<span id="cb369-50"><a href="struttura-degli-errori.html#cb369-50" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.7 ~~ ssa2cov*ssa2.11</span></span>
-<span id="cb369-51"><a href="struttura-degli-errori.html#cb369-51" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.8 ~~ ssa2cov*ssa2.9</span></span>
-<span id="cb369-52"><a href="struttura-degli-errori.html#cb369-52" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.8 ~~ ssa2cov*ssa2.10</span></span>
-<span id="cb369-53"><a href="struttura-degli-errori.html#cb369-53" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.8 ~~ ssa2cov*ssa2.11</span></span>
-<span id="cb369-54"><a href="struttura-degli-errori.html#cb369-54" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.9 ~~ ssa2cov*ssa2.10</span></span>
-<span id="cb369-55"><a href="struttura-degli-errori.html#cb369-55" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.9 ~~ ssa2cov*ssa2.11</span></span>
+<span id="cb369-47"><a href="struttura-degli-errori.html#cb369-47" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.7  ~~ ssa2cov*ssa2.8</span></span>
+<span id="cb369-48"><a href="struttura-degli-errori.html#cb369-48" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.7  ~~ ssa2cov*ssa2.9</span></span>
+<span id="cb369-49"><a href="struttura-degli-errori.html#cb369-49" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.7  ~~ ssa2cov*ssa2.10</span></span>
+<span id="cb369-50"><a href="struttura-degli-errori.html#cb369-50" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.7  ~~ ssa2cov*ssa2.11</span></span>
+<span id="cb369-51"><a href="struttura-degli-errori.html#cb369-51" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.8  ~~ ssa2cov*ssa2.9</span></span>
+<span id="cb369-52"><a href="struttura-degli-errori.html#cb369-52" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.8  ~~ ssa2cov*ssa2.10</span></span>
+<span id="cb369-53"><a href="struttura-degli-errori.html#cb369-53" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.8  ~~ ssa2cov*ssa2.11</span></span>
+<span id="cb369-54"><a href="struttura-degli-errori.html#cb369-54" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.9  ~~ ssa2cov*ssa2.10</span></span>
+<span id="cb369-55"><a href="struttura-degli-errori.html#cb369-55" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.9  ~~ ssa2cov*ssa2.11</span></span>
 <span id="cb369-56"><a href="struttura-degli-errori.html#cb369-56" aria-hidden="true" tabindex="-1"></a><span class="st">ssa2.10 ~~ ssa2cov*ssa2.11</span></span>
 <span id="cb369-57"><a href="struttura-degli-errori.html#cb369-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb369-58"><a href="struttura-degli-errori.html#cb369-58" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.7 ~~ ssa3cov*ssa3.8</span></span>
-<span id="cb369-59"><a href="struttura-degli-errori.html#cb369-59" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.7 ~~ ssa3cov*ssa3.9</span></span>
-<span id="cb369-60"><a href="struttura-degli-errori.html#cb369-60" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.7 ~~ ssa3cov*ssa3.10</span></span>
-<span id="cb369-61"><a href="struttura-degli-errori.html#cb369-61" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.7 ~~ ssa3cov*ssa3.11</span></span>
-<span id="cb369-62"><a href="struttura-degli-errori.html#cb369-62" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.8 ~~ ssa3cov*ssa3.9</span></span>
-<span id="cb369-63"><a href="struttura-degli-errori.html#cb369-63" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.8 ~~ ssa3cov*ssa3.10</span></span>
-<span id="cb369-64"><a href="struttura-degli-errori.html#cb369-64" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.8 ~~ ssa3cov*ssa3.11</span></span>
-<span id="cb369-65"><a href="struttura-degli-errori.html#cb369-65" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.9 ~~ ssa3cov*ssa3.10</span></span>
-<span id="cb369-66"><a href="struttura-degli-errori.html#cb369-66" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.9 ~~ ssa3cov*ssa3.11</span></span>
+<span id="cb369-58"><a href="struttura-degli-errori.html#cb369-58" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.7  ~~ ssa3cov*ssa3.8</span></span>
+<span id="cb369-59"><a href="struttura-degli-errori.html#cb369-59" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.7  ~~ ssa3cov*ssa3.9</span></span>
+<span id="cb369-60"><a href="struttura-degli-errori.html#cb369-60" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.7  ~~ ssa3cov*ssa3.10</span></span>
+<span id="cb369-61"><a href="struttura-degli-errori.html#cb369-61" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.7  ~~ ssa3cov*ssa3.11</span></span>
+<span id="cb369-62"><a href="struttura-degli-errori.html#cb369-62" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.8  ~~ ssa3cov*ssa3.9</span></span>
+<span id="cb369-63"><a href="struttura-degli-errori.html#cb369-63" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.8  ~~ ssa3cov*ssa3.10</span></span>
+<span id="cb369-64"><a href="struttura-degli-errori.html#cb369-64" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.8  ~~ ssa3cov*ssa3.11</span></span>
+<span id="cb369-65"><a href="struttura-degli-errori.html#cb369-65" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.9  ~~ ssa3cov*ssa3.10</span></span>
+<span id="cb369-66"><a href="struttura-degli-errori.html#cb369-66" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.9  ~~ ssa3cov*ssa3.11</span></span>
 <span id="cb369-67"><a href="struttura-degli-errori.html#cb369-67" aria-hidden="true" tabindex="-1"></a><span class="st">ssa3.10 ~~ ssa3cov*ssa3.11</span></span>
 <span id="cb369-68"><a href="struttura-degli-errori.html#cb369-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb369-69"><a href="struttura-degli-errori.html#cb369-69" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.7 ~~ ssa4cov*ssa4.8</span></span>
-<span id="cb369-70"><a href="struttura-degli-errori.html#cb369-70" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.7 ~~ ssa4cov*ssa4.9</span></span>
-<span id="cb369-71"><a href="struttura-degli-errori.html#cb369-71" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.7 ~~ ssa4cov*ssa4.10</span></span>
-<span id="cb369-72"><a href="struttura-degli-errori.html#cb369-72" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.7 ~~ ssa4cov*ssa4.11</span></span>
-<span id="cb369-73"><a href="struttura-degli-errori.html#cb369-73" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.8 ~~ ssa4cov*ssa4.9</span></span>
-<span id="cb369-74"><a href="struttura-degli-errori.html#cb369-74" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.8 ~~ ssa4cov*ssa4.10</span></span>
-<span id="cb369-75"><a href="struttura-degli-errori.html#cb369-75" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.8 ~~ ssa4cov*ssa4.11</span></span>
-<span id="cb369-76"><a href="struttura-degli-errori.html#cb369-76" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.9 ~~ ssa4cov*ssa4.10</span></span>
-<span id="cb369-77"><a href="struttura-degli-errori.html#cb369-77" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.9 ~~ ssa4cov*ssa4.11</span></span>
+<span id="cb369-69"><a href="struttura-degli-errori.html#cb369-69" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.7  ~~ ssa4cov*ssa4.8</span></span>
+<span id="cb369-70"><a href="struttura-degli-errori.html#cb369-70" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.7  ~~ ssa4cov*ssa4.9</span></span>
+<span id="cb369-71"><a href="struttura-degli-errori.html#cb369-71" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.7  ~~ ssa4cov*ssa4.10</span></span>
+<span id="cb369-72"><a href="struttura-degli-errori.html#cb369-72" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.7  ~~ ssa4cov*ssa4.11</span></span>
+<span id="cb369-73"><a href="struttura-degli-errori.html#cb369-73" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.8  ~~ ssa4cov*ssa4.9</span></span>
+<span id="cb369-74"><a href="struttura-degli-errori.html#cb369-74" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.8  ~~ ssa4cov*ssa4.10</span></span>
+<span id="cb369-75"><a href="struttura-degli-errori.html#cb369-75" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.8  ~~ ssa4cov*ssa4.11</span></span>
+<span id="cb369-76"><a href="struttura-degli-errori.html#cb369-76" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.9  ~~ ssa4cov*ssa4.10</span></span>
+<span id="cb369-77"><a href="struttura-degli-errori.html#cb369-77" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.9  ~~ ssa4cov*ssa4.11</span></span>
 <span id="cb369-78"><a href="struttura-degli-errori.html#cb369-78" aria-hidden="true" tabindex="-1"></a><span class="st">ssa4.10 ~~ ssa4cov*ssa4.11</span></span>
 <span id="cb369-79"><a href="struttura-degli-errori.html#cb369-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb369-80"><a href="struttura-degli-errori.html#cb369-80" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.7 ~~ ssa5cov*ssa5.8</span></span>
-<span id="cb369-81"><a href="struttura-degli-errori.html#cb369-81" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.7 ~~ ssa5cov*ssa5.9</span></span>
-<span id="cb369-82"><a href="struttura-degli-errori.html#cb369-82" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.7 ~~ ssa5cov*ssa5.10</span></span>
-<span id="cb369-83"><a href="struttura-degli-errori.html#cb369-83" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.7 ~~ ssa5cov*ssa5.11</span></span>
-<span id="cb369-84"><a href="struttura-degli-errori.html#cb369-84" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.8 ~~ ssa5cov*ssa5.9</span></span>
-<span id="cb369-85"><a href="struttura-degli-errori.html#cb369-85" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.8 ~~ ssa5cov*ssa5.10</span></span>
-<span id="cb369-86"><a href="struttura-degli-errori.html#cb369-86" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.8 ~~ ssa5cov*ssa5.11</span></span>
-<span id="cb369-87"><a href="struttura-degli-errori.html#cb369-87" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.9 ~~ ssa5cov*ssa5.10</span></span>
-<span id="cb369-88"><a href="struttura-degli-errori.html#cb369-88" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.9 ~~ ssa5cov*ssa5.11</span></span>
+<span id="cb369-80"><a href="struttura-degli-errori.html#cb369-80" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.7  ~~ ssa5cov*ssa5.8</span></span>
+<span id="cb369-81"><a href="struttura-degli-errori.html#cb369-81" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.7  ~~ ssa5cov*ssa5.9</span></span>
+<span id="cb369-82"><a href="struttura-degli-errori.html#cb369-82" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.7  ~~ ssa5cov*ssa5.10</span></span>
+<span id="cb369-83"><a href="struttura-degli-errori.html#cb369-83" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.7  ~~ ssa5cov*ssa5.11</span></span>
+<span id="cb369-84"><a href="struttura-degli-errori.html#cb369-84" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.8  ~~ ssa5cov*ssa5.9</span></span>
+<span id="cb369-85"><a href="struttura-degli-errori.html#cb369-85" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.8  ~~ ssa5cov*ssa5.10</span></span>
+<span id="cb369-86"><a href="struttura-degli-errori.html#cb369-86" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.8  ~~ ssa5cov*ssa5.11</span></span>
+<span id="cb369-87"><a href="struttura-degli-errori.html#cb369-87" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.9  ~~ ssa5cov*ssa5.10</span></span>
+<span id="cb369-88"><a href="struttura-degli-errori.html#cb369-88" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.9  ~~ ssa5cov*ssa5.11</span></span>
 <span id="cb369-89"><a href="struttura-degli-errori.html#cb369-89" aria-hidden="true" tabindex="-1"></a><span class="st">ssa5.10 ~~ ssa5cov*ssa5.11</span></span>
 <span id="cb369-90"><a href="struttura-degli-errori.html#cb369-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb369-91"><a href="struttura-degli-errori.html#cb369-91" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.7 ~~ ssa6cov*ssa6.8</span></span>
-<span id="cb369-92"><a href="struttura-degli-errori.html#cb369-92" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.7 ~~ ssa6cov*ssa6.9</span></span>
-<span id="cb369-93"><a href="struttura-degli-errori.html#cb369-93" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.7 ~~ ssa6cov*ssa6.10</span></span>
-<span id="cb369-94"><a href="struttura-degli-errori.html#cb369-94" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.7 ~~ ssa6cov*ssa6.11</span></span>
-<span id="cb369-95"><a href="struttura-degli-errori.html#cb369-95" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.8 ~~ ssa6cov*ssa6.9</span></span>
-<span id="cb369-96"><a href="struttura-degli-errori.html#cb369-96" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.8 ~~ ssa6cov*ssa6.10</span></span>
-<span id="cb369-97"><a href="struttura-degli-errori.html#cb369-97" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.8 ~~ ssa6cov*ssa6.11</span></span>
-<span id="cb369-98"><a href="struttura-degli-errori.html#cb369-98" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.9 ~~ ssa6cov*ssa6.10</span></span>
-<span id="cb369-99"><a href="struttura-degli-errori.html#cb369-99" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.9 ~~ ssa6cov*ssa6.11</span></span>
+<span id="cb369-91"><a href="struttura-degli-errori.html#cb369-91" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.7  ~~ ssa6cov*ssa6.8</span></span>
+<span id="cb369-92"><a href="struttura-degli-errori.html#cb369-92" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.7  ~~ ssa6cov*ssa6.9</span></span>
+<span id="cb369-93"><a href="struttura-degli-errori.html#cb369-93" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.7  ~~ ssa6cov*ssa6.10</span></span>
+<span id="cb369-94"><a href="struttura-degli-errori.html#cb369-94" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.7  ~~ ssa6cov*ssa6.11</span></span>
+<span id="cb369-95"><a href="struttura-degli-errori.html#cb369-95" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.8  ~~ ssa6cov*ssa6.9</span></span>
+<span id="cb369-96"><a href="struttura-degli-errori.html#cb369-96" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.8  ~~ ssa6cov*ssa6.10</span></span>
+<span id="cb369-97"><a href="struttura-degli-errori.html#cb369-97" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.8  ~~ ssa6cov*ssa6.11</span></span>
+<span id="cb369-98"><a href="struttura-degli-errori.html#cb369-98" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.9  ~~ ssa6cov*ssa6.10</span></span>
+<span id="cb369-99"><a href="struttura-degli-errori.html#cb369-99" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.9  ~~ ssa6cov*ssa6.11</span></span>
 <span id="cb369-100"><a href="struttura-degli-errori.html#cb369-100" aria-hidden="true" tabindex="-1"></a><span class="st">ssa6.10 ~~ ssa6cov*ssa6.11</span></span>
 <span id="cb369-101"><a href="struttura-degli-errori.html#cb369-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb369-102"><a href="struttura-degli-errori.html#cb369-102" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.7 ~~ ssa7cov*ssa7.8</span></span>
-<span id="cb369-103"><a href="struttura-degli-errori.html#cb369-103" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.7 ~~ ssa7cov*ssa7.9</span></span>
-<span id="cb369-104"><a href="struttura-degli-errori.html#cb369-104" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.7 ~~ ssa7cov*ssa7.10</span></span>
-<span id="cb369-105"><a href="struttura-degli-errori.html#cb369-105" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.7 ~~ ssa7cov*ssa7.11</span></span>
-<span id="cb369-106"><a href="struttura-degli-errori.html#cb369-106" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.8 ~~ ssa7cov*ssa7.9</span></span>
-<span id="cb369-107"><a href="struttura-degli-errori.html#cb369-107" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.8 ~~ ssa7cov*ssa7.10</span></span>
-<span id="cb369-108"><a href="struttura-degli-errori.html#cb369-108" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.8 ~~ ssa7cov*ssa7.11</span></span>
-<span id="cb369-109"><a href="struttura-degli-errori.html#cb369-109" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.9 ~~ ssa7cov*ssa7.10</span></span>
-<span id="cb369-110"><a href="struttura-degli-errori.html#cb369-110" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.9 ~~ ssa7cov*ssa7.11</span></span>
+<span id="cb369-102"><a href="struttura-degli-errori.html#cb369-102" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.7  ~~ ssa7cov*ssa7.8</span></span>
+<span id="cb369-103"><a href="struttura-degli-errori.html#cb369-103" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.7  ~~ ssa7cov*ssa7.9</span></span>
+<span id="cb369-104"><a href="struttura-degli-errori.html#cb369-104" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.7  ~~ ssa7cov*ssa7.10</span></span>
+<span id="cb369-105"><a href="struttura-degli-errori.html#cb369-105" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.7  ~~ ssa7cov*ssa7.11</span></span>
+<span id="cb369-106"><a href="struttura-degli-errori.html#cb369-106" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.8  ~~ ssa7cov*ssa7.9</span></span>
+<span id="cb369-107"><a href="struttura-degli-errori.html#cb369-107" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.8  ~~ ssa7cov*ssa7.10</span></span>
+<span id="cb369-108"><a href="struttura-degli-errori.html#cb369-108" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.8  ~~ ssa7cov*ssa7.11</span></span>
+<span id="cb369-109"><a href="struttura-degli-errori.html#cb369-109" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.9  ~~ ssa7cov*ssa7.10</span></span>
+<span id="cb369-110"><a href="struttura-degli-errori.html#cb369-110" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.9  ~~ ssa7cov*ssa7.11</span></span>
 <span id="cb369-111"><a href="struttura-degli-errori.html#cb369-111" aria-hidden="true" tabindex="-1"></a><span class="st">ssa7.10 ~~ ssa7cov*ssa7.11&quot;</span></span></code></pre></div>
 </div>
             </section>
