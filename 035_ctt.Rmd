@@ -150,7 +150,7 @@ nella tendenza centrale della misurazione (la media di $E$ viene assunta essere 
 ottenuto:
 
 $$
-T = \E(X) \equiv \mu_X \equiv \mu_{T}.
+T = \mathbb{E}(X) \equiv \mu_X \equiv \mu_{T}.
 $$
 
 Combinando la seconda e la terza definizione presentate sopra, @lord1968statistical concepiscono il punteggio vero come la media dei punteggi che un soggetto
@@ -196,7 +196,7 @@ $$E \equiv X - T.$$
 In base all'assunzione secondo cui il valore atteso dei punteggi è uguale alla media del valore vero, segue che
 
 $$
-\E(E) = \E(X - T) = \E(X) - \E(T) = \mu_{T} - \mu_{T} = 0,
+\mathbb{E}(E) = \mathbb{E}(X - T) = \mathbb{E}(X) - \mathbb{E}(T) = \mu_{T} - \mu_{T} = 0,
 $$
 
 ovvero, il valore atteso degli errori è uguale a zero.
@@ -237,13 +237,6 @@ La quantità $\sigma_E$ è appunto chiamata errore standard della misurazione. S
 
 ## L'attendibilità del test
 
-<!-- Il concetto di attendibilità è strettamente legato alla riproducibilità -->
-<!-- della misurazione: si riferisce al grado di stabilità, di coerenza -->
-<!-- interna e di precisione di una procedura di misurazione. Affinché una -->
-<!-- misurazione psicologica sia utile, deve produrre lo stesso risultato se -->
-<!-- viene applicata ripetutamente un determinato rispondente. Altri termini -->
-<!-- che vengono usati sono: affidabilità, costanza e credibilità. -->
-
 In questo paragrafo vedremo come il coefficiente di attendibilità (altri termini
 che vengono usati sono: affidabilità, costanza, credibilità) fornisce una
 stima della quota della varianza del punteggio osservato che può essere
@@ -270,7 +263,7 @@ varianza del punteggio vero e della varianza dell'errore di misurazione.
 La varianza del punteggio osservato è uguale a
 
 $$
-\sigma^2_X =  \V(T+E) =  \sigma_T^2 + \sigma_E^2 + 2 \sigma_{TE}.
+\sigma^2_X =  \mathbb{V}(T+E) =  \sigma_T^2 + \sigma_E^2 + 2 \sigma_{TE}.
 (\#eq:3-2-4)
 $$
 
@@ -292,10 +285,10 @@ La covarianza tra punteggio osservato e punteggio vero è uguale a
 
 $$
 \begin{aligned}
-\sigma_{X T} &= \E(XT) - \E(X)\E(T)\notag\\
-&=  \E[(T+E)T] - \E(T+E)\E(T)\notag\\
-&=  \E(T^2) + \underbrace{\E(ET)}_{=0} - [\E(T)]^2 -  \underbrace{\E(E)}_{=0} \E(T)\notag\\
-&=\E(T^2) - [\E(T)]^2\notag \\
+\sigma_{X T} &= \mathbb{E}(XT) - \mathbb{E}(X)\mathbb{E}(T)\notag\\
+&=  \mathbb{E}[(T+E)T] - \mathbb{E}(T+E)\mathbb{E}(T)\notag\\
+&=  \mathbb{E}(T^2) + \underbrace{\mathbb{E}(ET)}_{=0} - [\mathbb{E}(T)]^2 -  \underbrace{\mathbb{E}(E)}_{=0} \mathbb{E}(T)\notag\\
+&=\mathbb{E}(T^2) - [\mathbb{E}(T)]^2\notag \\
 &= \sigma_T^2.
 \end{aligned}
 $$
@@ -305,12 +298,10 @@ $$
 
 La correlazione tra punteggio osservato $X$ e punteggio vero $T$ è uguale al rapporto tra la covarianza tra $X$ e $T$ divisa per il prodotto delle due deviazioni standard:
 
-\begin{equation}
-\begin{aligned}
-\rho_{XT} &= \frac{\sigma_{XT}}{\sigma_X \sigma_T} = \frac{\sigma^2_{T}}{\sigma_X \sigma_T} = \frac{\sigma_{T}}{\sigma_X}.
+$$
+\rho_{XT} = \frac{\sigma_{XT}}{\sigma_X \sigma_T} = \frac{\sigma^2_{T}}{\sigma_X \sigma_T} = \frac{\sigma_{T}}{\sigma_X}.
 (\#eq:sd-ratio)
-\end{aligned}
-\end{equation}
+$$
 
 ### Definizione e significato dell'attendibilità
 
@@ -329,13 +320,12 @@ Questa è la quantità fondamentale della CTT e misura il grado di
 variazione del punteggio vero rispetto alla variazione del punteggio
 osservato. Dato che $\sigma^2_X = \sigma_T^2 + \sigma_E^2$, in base alla \@ref(eq:reliability-1) possiamo scrivere 
 
+$$
 \begin{equation}
-\begin{aligned}
-\rho_{XT}^2 &= \frac{\sigma_{T}^2}{\sigma_X^2} =\frac{\sigma_{X}^2 - \sigma^2_E}{\sigma_X^2}
- = 1-\frac{\sigma_{E}^2}{\sigma_X^2}.
+\rho_{XT}^2 = \frac{\sigma_{T}^2}{\sigma_X^2} =\frac{\sigma_{X}^2 - \sigma^2_E}{\sigma_X^2} = 1-\frac{\sigma_{E}^2}{\sigma_X^2}.
  (\#eq:3-2-6)
-\end{aligned}
 \end{equation}
+$$
 
 Questo significa che il coefficiente di attendibilità assume valore $1$ se la varianza degli errori $\sigma_{E}^2$ è nulla e assume valore $0$ se la varianza degli errori è
 uguale alla varianza del punteggio osservato. Il coefficiente di attendibilità è dunque un numero puro contenuto nell'intervallo compreso tra $0$ e $1$.
@@ -468,7 +458,7 @@ fm <- lm(X ~ T)
 summary(fm)
 ```
 
-Si noti che la retta di regressione ha intercetta 0 e pendenza 1. Questo è coerente con l'assunzione $\E(X) = \E(T)$. Ma il risultato più importante di questa simulazione è che il coefficiente di determinazione ($R^2$ = 0.67) del modello di regressione $X = 0 + 1 \times T + E$ è identico al coefficiente di attendibilità che si può calcolare con la formula $\rho_{XT}^2 = \frac{\sigma_{T}^2}{\sigma_X^2}$:
+Si noti che la retta di regressione ha intercetta 0 e pendenza 1. Questo è coerente con l'assunzione $\mathbb{E}(X) = \mathbb{E}(T)$. Ma il risultato più importante di questa simulazione è che il coefficiente di determinazione ($R^2$ = 0.67) del modello di regressione $X = 0 + 1 \times T + E$ è identico al coefficiente di attendibilità che si può calcolare con la formula $\rho_{XT}^2 = \frac{\sigma_{T}^2}{\sigma_X^2}$:
 
 ```{r}
 var(T) / var(X)
@@ -511,18 +501,18 @@ Secondo la CTT, due test $X=T+E$ e $X^\prime=T^\prime+E^\prime$ si dicono misura
 parallele della stessa abilità latente se 
 
 - $T = T^\prime$,
-- $\V(E) = \V(E^\prime)$.
+- $\mathbb{V}(E) = \mathbb{V}(E^\prime)$.
 
-Da tali assunzioni segue che $\E(X) = \E(X^\prime)$.
+Da tali assunzioni segue che $\mathbb{E}(X) = \mathbb{E}(X^\prime)$.
 
 ::: {.proof}
-Dato che $\E(X) = T$ e che $\E(X^\prime) = T$, è immediato vedere che $\E(X) =\E(X^\prime)$ in quanto $\E(E) = \E(E^\prime) = 0$.
+Dato che $\mathbb{E}(X) = T$ e che $\mathbb{E}(X^\prime) = T$, è immediato vedere che $\mathbb{E}(X) =\mathbb{E}(X^\prime)$ in quanto $\mathbb{E}(E) = \mathbb{E}(E^\prime) = 0$.
 :::
 
-In maniera corrispondente, anche le varianze dei punteggi osservati di due misurazioni parallele devono essere uguali, $\V(X) = \V(X^\prime)$.
+In maniera corrispondente, anche le varianze dei punteggi osservati di due misurazioni parallele devono essere uguali, $\mathbb{V}(X) = \mathbb{V}(X^\prime)$.
 
 ::: {.proof}
-Per $X$ abbiamo che $\V(X) = \V(T + E) = \V(T) + \V(E)$; per $X^\prime$ abbiamo che $\V(X^\prime) = \V(T^\prime + E^\prime) = \V(T^\prime) + \V(E^\prime)$. Dato che $\V(E) = \V(E^\prime)$ e che $T = T^\prime$, ne segue che $\V(X) = \V(X^\prime)$.
+Per $X$ abbiamo che $\mathbb{V}(X) = \mathbb{V}(T + E) = \mathbb{V}(T) + \mathbb{V}(E)$; per $X^\prime$ abbiamo che $\mathbb{V}(X^\prime) = \mathbb{V}(T^\prime + E^\prime) = \mathbb{V}(T^\prime) + \mathbb{V}(E^\prime)$. Dato che $\mathbb{V}(E) = \mathbb{V}(E^\prime)$ e che $T = T^\prime$, ne segue che $\mathbb{V}(X) = \mathbb{V}(X^\prime)$.
 :::
 
 Per costruzione, inoltre, gli errori $E$ e $E^\prime$ devono essere incorrelati con $T$ e tra loro.
@@ -577,21 +567,21 @@ Per costruzione, inoltre, gli errori $E$ e $E^\prime$ devono essere incorrelati 
 Dimostriamo ora che, in base alle assunzioni della CTT, la correlazione tra  due forme parallele del test è uguale al rapporto tra la varianza del punteggio vero e la varianza del punteggio osservato. 
 
 ::: {.proof}
-Assumendo, senza perdita di generalità, che $\E(X)=\E(X')=\E(T)=0$, possiamo scrivere 
+Assumendo, senza perdita di generalità, che $\mathbb{E}(X)=\E(X')=\mathbb{E}(T)=0$, possiamo scrivere 
 
 \begin{equation}
 \begin{aligned}
 \rho_{X X^\prime} &= \frac{\sigma(X, X^\prime)}{\sigma(X) \sigma(X^\prime)}\notag\\
-&= \frac{\E(XX^\prime)}{\sigma(X) \sigma(X^\prime)}\notag\\
-&=\frac{\E[(T+E)(T+E^\prime)]}{\sigma(X) \sigma(X^\prime)}\notag\\
-&=\frac{\E(T^2)+\E(TE^\prime)+\E(TE)+ \E(EE^\prime)}{\sigma(X) \sigma(X^\prime)}.\notag
+&= \frac{\mathbb{E}(XX^\prime)}{\sigma(X) \sigma(X^\prime)}\notag\\
+&=\frac{\mathbb{E}[(T+E)(T+E^\prime)]}{\sigma(X) \sigma(X^\prime)}\notag\\
+&=\frac{\mathbb{E}(T^2)+\mathbb{E}(TE^\prime)+\mathbb{E}(TE)+ \mathbb{E}(EE^\prime)}{\sigma(X) \sigma(X^\prime)}.\notag
 \end{aligned}
 \end{equation}
 
-Ma $\E(TE) = \E(TE^\prime) = \E(EE^\prime)=0$. Inoltre, $\sigma(X) =\sigma(X^\prime)= \sigma_X$. Dunque,
+Ma $\mathbb{E}(TE) = \mathbb{E}(TE^\prime) = \mathbb{E}(EE^\prime)=0$. Inoltre, $\sigma(X) =\sigma(X^\prime)= \sigma_X$. Dunque,
 
 \begin{equation}
-\rho_{X X^\prime} =\frac{\E(T^2)}{\sigma_X \sigma_X} = \frac{\sigma^2_T}{\sigma^2_X}.
+\rho_{X X^\prime} =\frac{\mathbb{E}(T^2)}{\sigma_X \sigma_X} = \frac{\sigma^2_T}{\sigma^2_X}.
 (\#eq:3-3-5)
 \end{equation}
 :::

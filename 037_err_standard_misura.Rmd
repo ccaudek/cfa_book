@@ -219,7 +219,6 @@ fm <- lm(formula = X ~ T)
 summary(fm)
 ```
 
-
 Si noti che, nell'output di $\textsf{R}$ fornito sopra, l'errore standard della
 regressione, ovvero `residual sd`, corrisponde a 2.01 anziché a 2.0. Ciò
 si verifica in quanto $\textsf{R}$ ha calcolato una stima della deviazione standard
@@ -233,7 +232,7 @@ Poniamoci ora il problema di derivare la formula dell'errore standard
 della misurazione. Per derivare la formula $\sigma_E = \sigma_X \sqrt{1 -\rho_{XX^\prime}}$ sono necessari due passi: prima dobbiamo trovare la varianza del punteggio vero; poi dobbiamo esprimere il punteggio osservato come la somma della varianza del punteggio vero e la varianza dell'errore.
 
 ::: {.proof}
-In base alla definizione del coefficiente di attendibilità $\rho_{XX^\prime} = \frac{\sigma^2_T}{\sigma^2_X}$ possiamo scrivere $\sigma^2_T = \rho_{XX^\prime} \sigma^2_X$, dove $X$ e $X^\prime$ sono due forme parallele di un test. Ricordiamo che misurazioni parallele hanno le seguenti proprietà: $\E(X) = \E(X^\prime)$ e $\V(X) = \V(X^\prime)$. Dato che $\sigma_{X}=\sigma_{X^\prime}$, l'equazione precedente diventa $\sigma^2_T = \rho_{XX^\prime} \sigma_X\sigma_{X^\prime}.$ Utilizzando la definizione della covarianza tra $X$ e $X^\prime$, ovvero, $\sigma_{XX^\prime}=\rho_{XX^\prime}\sigma_X\sigma_{X^\prime}$, possiamo concludere che la varianza del punteggio vero è uguale alla covarianza tra due misurazioni parallele:
+In base alla definizione del coefficiente di attendibilità $\rho_{XX^\prime} = \frac{\sigma^2_T}{\sigma^2_X}$ possiamo scrivere $\sigma^2_T = \rho_{XX^\prime} \sigma^2_X$, dove $X$ e $X^\prime$ sono due forme parallele di un test. Ricordiamo che misurazioni parallele hanno le seguenti proprietà: $\mathbb{E}(X) = \mathbb{E}(X^\prime)$ e $\mathbb{V}(X) = \mathbb{V}(X^\prime)$. Dato che $\sigma_{X}=\sigma_{X^\prime}$, l'equazione precedente diventa $\sigma^2_T = \rho_{XX^\prime} \sigma_X\sigma_{X^\prime}.$ Utilizzando la definizione della covarianza tra $X$ e $X^\prime$, ovvero, $\sigma_{XX^\prime}=\rho_{XX^\prime}\sigma_X\sigma_{X^\prime}$, possiamo concludere che la varianza del punteggio vero è uguale alla covarianza tra due misurazioni parallele:
 
 $$
 \sigma^2_T =  \sigma_{XX^\prime}.

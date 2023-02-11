@@ -38,10 +38,10 @@ $$
 Y_i -\mu_i = \lambda_i \xi + \delta_i.
 $$
 
-Si assume che il fattore comune abbia media zero, $\E(\xi)=0$, e
-varianza unitaria, $\V(\xi)=1$, che i fattori specifici abbiano media
-zero, $\E(\delta_j)=0$, e varianza $\V(\delta_j)=\psi_{i}$, che i
-fattori specifici siano incorrelati tra loro, $\E(\delta_i \delta_k)=0$, e che i fattori specifici siano incorrelati con il fattore comune, $\E(\delta_i \xi)=0$.
+Si assume che il fattore comune abbia media zero, $\mathbb{E}(\xi)=0$, e
+varianza unitaria, $\mathbb{V}(\xi)=1$, che i fattori specifici abbiano media
+zero, $\mathbb{E}(\delta_j)=0$, e varianza $\mathbb{V}(\delta_j)=\psi_{i}$, che i
+fattori specifici siano incorrelati tra loro, $\mathbb{E}(\delta_i \delta_k)=0$, e che i fattori specifici siano incorrelati con il fattore comune, $\mathbb{E}(\delta_i \xi)=0$.
 
 In questo modello, poiché i fattori specifici sono tra loro incorrelati,
 l'interdipendenza tra le variabili manifeste è completamente spiegata
@@ -57,16 +57,16 @@ covarianza teorica tra una variabile manifesta $Y_i$ e il fattore comune
 $\xi$: 
 
 $$
-\mbox{Cov}(Y_i,\xi)=\E(Y_i \xi)-\E(Y_i)\E(\xi).
+\mbox{Cov}(Y_i,\xi)=\mathbb{E}(Y_i \xi)-\mathbb{E}(Y_i)\mathbb{E}(\xi).
 $$ 
 
-Dato che $\E(\xi)=0$, possiamo scrivere 
+Dato che $\mathbb{E}(\xi)=0$, possiamo scrivere 
 
 \begin{equation}
 \begin{aligned}
-  \mbox{Cov}(Y_i,\xi) &= \E(Y_i \xi)=\E[(\lambda_i \xi + \delta_i) \xi]\notag\\
-  &=\E(\lambda_i \xi^2 + \delta_i \xi)\notag\\
-  &=\lambda_i\underbrace{\E(\xi^2)}_{\V(\xi)=1} + \underbrace{\E(\delta_i \xi)}_{\mbox{Cov}(\delta_i, \xi)=0}\notag\\
+  \mbox{Cov}(Y_i,\xi) &= \mathbb{E}(Y_i \xi)=\mathbb{E}[(\lambda_i \xi + \delta_i) \xi]\notag\\
+  &=\mathbb{E}(\lambda_i \xi^2 + \delta_i \xi)\notag\\
+  &=\lambda_i\underbrace{\mathbb{E}(\xi^2)}_{\mathbb{V}(\xi)=1} + \underbrace{\mathbb{E}(\delta_i \xi)}_{\mbox{Cov}(\delta_i, \xi)=0}\notag\\
   &= \lambda_i.\notag
 \end{aligned}
 \end{equation}
@@ -81,15 +81,15 @@ $\lambda_i$ corrisponde alla correlazione tra $Y_i$ e $\xi$.
 Nell'ipotesi che le variabili $Y_i$ abbiano media nulla, la varianza di $Y_i$
 
 \begin{equation}
-  \V(Y_i) = \E(Y_i^2) -[\E(Y_i)]^2 = \E(Y_i^2)\notag
+  \mathbb{V}(Y_i) = \mathbb{E}(Y_i^2) -[\mathbb{E}(Y_i)]^2 = \mathbb{E}(Y_i^2)\notag
 \end{equation}
 
 è data da
 
 \begin{equation}
 \begin{aligned}
-  \V(Y_i) &= \E[(\lambda_i \xi + \delta_i)^2 ]\notag\\
-  &=\lambda_i^2 \underbrace{\E(\xi^2) }_{\V(\xi)=1} + \underbrace{ \E(\delta_i^2) }_{\V(\delta_i)=\psi_{i}} + 2\lambda_i \underbrace{ \E(\xi \delta_i) }_{\mbox{Cov}(\xi, \delta_{i})=0}\notag\\
+  \mathbb{V}(Y_i) &= \mathbb{E}[(\lambda_i \xi + \delta_i)^2 ]\notag\\
+  &=\lambda_i^2 \underbrace{\mathbb{E}(\xi^2) }_{\mathbb{V}(\xi)=1} + \underbrace{\mathbb{E}(\delta_i^2) }_{\mathbb{V}(\delta_i)=\psi_{i}} + 2\lambda_i \underbrace{\mathbb{E}(\xi \delta_i) }_{\mbox{Cov}(\xi, \delta_{i})=0}\notag\\
   &=\lambda^2_i + \psi_{i}.
 \end{aligned}
 \end{equation}
@@ -186,18 +186,18 @@ Nell'ipotesi che le variabili $Y_i$ abbiano media nulla, la covarianza
 tra $Y_i$ e $Y_k$
 
 $$
-\mbox{Cov}(Y_i, Y_k)=\E(Y_i Y_k) -
-\E(Y_i)\E(Y_k)=\E(Y_i Y_k)
+\mbox{Cov}(Y_i, Y_k)=\mathbb{E}(Y_i Y_k) -
+\mathbb{E}(Y_i)\mathbb{E}(Y_k)=\mathbb{E}(Y_i Y_k)
 $$
 
 è uguale al prodotto delle corrispondenti saturazioni fattoriali.
 
 \begin{equation}
 \begin{aligned}
- \mbox{Cov}(Y_i, Y_k) &= \E(Y_i Y_k) \notag\\
-  & =\E[(\lambda_i \xi + \delta_i)(\lambda_k \xi +  \delta_k)]\notag\\
-  &=\E(\lambda_i\lambda_k\xi^2 + \lambda_i  \xi \delta_k + \lambda_k \delta_i \xi + \delta_i \delta_k)\notag\\
-  &=\lambda_i\lambda_k\underbrace{\E(\xi^2)}_{\V(\xi)=1}+\lambda_i\underbrace{\E(\xi \delta_k)}_{\mbox{Cov}(\xi, \delta_k) =0}+\notag\\ \;&+\lambda_k\underbrace{\E(\delta_i \xi)}_{\mbox{Cov}(\delta_i, \xi) =0} +\underbrace{\E(\delta_i \delta_k)}_{\mbox{Cov}(\delta_i, \delta_k)=0}\notag\\
+ \mbox{Cov}(Y_i, Y_k) &= \mathbb{E}(Y_i Y_k) \notag\\
+  & =\mathbb{E}[(\lambda_i \xi + \delta_i)(\lambda_k \xi +  \delta_k)]\notag\\
+  &=\mathbb{E}(\lambda_i\lambda_k\xi^2 + \lambda_i  \xi \delta_k + \lambda_k \delta_i \xi + \delta_i \delta_k)\notag\\
+  &=\lambda_i\lambda_k\underbrace{\mathbb{E}(\xi^2)}_{\mathbb{V}(\xi)=1}+\lambda_i\underbrace{\mathbb{E}(\xi \delta_k)}_{\mbox{Cov}(\xi, \delta_k) =0}+\notag\\ \;&+\lambda_k\underbrace{\mathbb{E}(\delta_i \xi)}_{\mbox{Cov}(\delta_i, \xi) =0} +\underbrace{\mathbb{E}(\delta_i \delta_k)}_{\mbox{Cov}(\delta_i, \delta_k)=0}\notag\\
   &=\lambda_i\lambda_k
 \end{aligned}
 \end{equation}
@@ -291,7 +291,8 @@ Riscriviamo ora questa equazione nei termini di un modello monofattoriale con $p
  Y_{1i} &=  \lambda_1 \xi_i + \delta_{1i} \notag\\
  Y_{2i} &=  \lambda_2 \xi_i + \delta_{2i} \notag\\
   \dots\notag\\
- Y_{pi} &=  \lambda_p \xi_i + \delta_{pi} \notag\end{aligned}
+ Y_{pi} &=  \lambda_p \xi_i + \delta_{pi} \notag
+ \end{aligned}
  \end{equation}
 
 Il punteggio totale $X_i$ per il rispondente $i$-esimo è dato dalla somma
@@ -313,8 +314,8 @@ somma delle satutazioni fattoriali:
 
 \begin{equation}
 \begin{aligned}
- \sigma^2_{T_i} &= \V\left[ \left( \sum_{j=1}^p \lambda_j \right) \xi_i \right]\notag\\
- &= \left( \sum_{j=1}^p \lambda_j \right)^2 \V(\xi_i)\notag\\
+ \sigma^2_{T_i} &= \mathbb{V}\left[ \left( \sum_{j=1}^p \lambda_j \right) \xi_i \right]\notag\\
+ &= \left( \sum_{j=1}^p \lambda_j \right)^2 \mathbb{V}(\xi_i)\notag\\
  &= \left( \sum_{j=1}^p \lambda_j \right)^2 \notag
 \end{aligned}
 \end{equation}
@@ -325,8 +326,8 @@ $\sigma^2_{E_i}$, è data dalla somma delle unicità:
 
 \begin{equation}
 \begin{aligned}
- \sigma^2_{E_i} &= \V\left( \sum_{j=1}^p \delta_{ji} \right)\notag\\
- &= \sum_{j=1}^p \V\left( \delta_{ji} \right)\notag\\
+ \sigma^2_{E_i} &= \mathbb{V}\left( \sum_{j=1}^p \delta_{ji} \right)\notag\\
+ &= \sum_{j=1}^p \mathbb{V}\left( \delta_{ji} \right)\notag\\
  &= \sum_{j=1}^p \Psi_j\notag
 \end{aligned}
 \end{equation}

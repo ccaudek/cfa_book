@@ -62,9 +62,8 @@ y_i -\mu_i = \lambda_i \xi + 1 \cdot \varepsilon_i.
 (\#eq:mod-monofattoriale)
 \end{equation}
 
-Si assume che il fattore comune abbia media zero, $\E(\xi)=0$, e varianza unitaria,
-$\V(\xi)=1$, i fattori specifici abbiano media zero, $\E(\varepsilon_j)=0$, varianza $\V(\varepsilon_i)=\psi_{i}$ e siano incorrelati tra loro, $\E(\varepsilon_i \varepsilon_k)=0$, e con il fattore comune, $\E(\varepsilon_i \xi)=0$. In questo modello, poiché i fattori specifici sono tra loro incorrelati, l'interdipendenza tra le
-variabili è completamente spiegata dal fattore comune.
+Si assume che il fattore comune abbia media zero, $\mathbb{E}(\xi)=0$, e varianza unitaria,
+$\mathbb{V}(\xi)=1$, i fattori specifici abbiano media zero, $\mathbb{E}(\varepsilon_j)=0$, varianza $\mathbb{V}(\varepsilon_i)=\psi_{i}$ e siano incorrelati tra loro, $\mathbb{E}(\varepsilon_i \varepsilon_k)=0$, e con il fattore comune, $\mathbb{E}(\varepsilon_i \xi)=0$. In questo modello, poiché i fattori specifici sono tra loro incorrelati, l'interdipendenza tra le variabili è completamente spiegata dal fattore comune.
 
 Dalle ipotesi precedenti è possibile ricavare:
 

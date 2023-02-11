@@ -1,4 +1,4 @@
-# Path Analysis 
+# Visualizzare il modelli di equazioni strutturali 
 
 ```{r, include = FALSE}
 source("_common.R")
@@ -6,12 +6,9 @@ library("lavaan")
 library("semPlot")
 ```
 
-La *path analysis* è un metodo per decomporre la correlazione (o la
-covarianza) in componenti differenti al fine di studiare i processi
-causali sottostanti. La *path analysis* comprende due parti principali:
-la rappresentazione grafica delle interrelazioni esistenti tra le
-variabili e la scomposizione delle correlazioni (o covarianze) nei
-termini dei parametri del modello.
+Le visualizzazioni sono strumenti essenziali per comunicare relazioni complesse tra variabili in modo accessibile e succinto. Poiché i modelli di equazioni strutturali (SEM) sono, di natura, multivariati, esprimendo spesso una complessa rete di relazioni direzionali e non direzionali tra variabili manifeste e latenti, i ricercatori utilizzano strumenti grafici per facilitare la specificazione e l'espressione del modello, e per presentare i propri risultati.
+
+La *path analysis* è un metodo per decomporre la correlazione (o la covarianza) in componenti differenti al fine di descrivere le relazioni tra variabili. Lo sviluppo di diagrammi di percorso per descrivere i modelli di equazioni strutturali è attribuito a Wright (1920). La *path analysis* comprende due parti principali: la rappresentazione grafica delle interrelazioni tra le variabili e la scomposizione delle correlazioni (o covarianze) nei termini dei parametri del modello.
 
 ## Path diagram
 
@@ -244,7 +241,7 @@ $$
 1-0.61 = 0.39.
 $$
 
-## Come calcolare i coefficienti di percorso? {#sec:how_compute_path_coef}
+## Come calcolare i coefficienti di percorso?
 
 Data una matrice di correlazione, i coefficienti di percorso possono
 essere calcolati risolvendo un sistema di equazioni simultanee. Si
@@ -280,7 +277,7 @@ Risolvendo il sistema di equazioni simultanee, si ottengono i valori dei coeffic
 \end{aligned}
 \end{equation}
 
-## Path analysis e software 
+## Path analysis con `lavaan` 
 
 Usiamo `lavaan` per svolgere l'analisi statistica descritta nell'esempio precedente.
 

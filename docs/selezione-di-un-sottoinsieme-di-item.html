@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>18.3 Selezione di un sottoinsieme di item | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)</title>
   <meta name="description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2021/2022) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
   <meta property="og:title" content="18.3 Selezione di un sottoinsieme di item | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2022-05-16" />
+<meta name="date" content="2023-02-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -92,7 +92,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -105,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -298,7 +298,7 @@ div.csl-indent {
 <li class="chapter" data-level="9.1.2" data-path="punteggi-fattoriali.html"><a href="punteggi-fattoriali.html#dimostrazione-di-thurstone"><i class="fa fa-check"></i><b>9.1.2</b> Dimostrazione di Thurstone</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="path-analysis.html"><a href="path-analysis.html"><i class="fa fa-check"></i><b>10</b> Path Analysis</a>
+<li class="chapter" data-level="10" data-path="visualizzare-il-modelli-di-equazioni-strutturali.html"><a href="visualizzare-il-modelli-di-equazioni-strutturali.html"><i class="fa fa-check"></i><b>10</b> Visualizzare il modelli di equazioni strutturali</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="path-diagram.html"><a href="path-diagram.html"><i class="fa fa-check"></i><b>10.1</b> Path diagram</a></li>
 <li class="chapter" data-level="10.2" data-path="path-analysis-e-regressione-multipla.html"><a href="path-analysis-e-regressione-multipla.html"><i class="fa fa-check"></i><b>10.2</b> Path analysis e regressione multipla</a></li>
@@ -308,8 +308,8 @@ div.csl-indent {
 <li class="chapter" data-level="10.4.1" data-path="le-regole-di-wright.html"><a href="le-regole-di-wright.html#scomposizione-delle-correlazioni-covarianze"><i class="fa fa-check"></i><b>10.4.1</b> Scomposizione delle correlazioni (covarianze)</a></li>
 <li class="chapter" data-level="10.4.2" data-path="le-regole-di-wright.html"><a href="le-regole-di-wright.html#scomposizione-della-varianza"><i class="fa fa-check"></i><b>10.4.2</b> Scomposizione della varianza</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="sec:how_compute_path_coef.html"><a href="sec:how_compute_path_coef.html"><i class="fa fa-check"></i><b>10.5</b> Come calcolare i coefficienti di percorso?</a></li>
-<li class="chapter" data-level="10.6" data-path="path-analysis-e-software.html"><a href="path-analysis-e-software.html"><i class="fa fa-check"></i><b>10.6</b> Path analysis e software</a></li>
+<li class="chapter" data-level="10.5" data-path="come-calcolare-i-coefficienti-di-percorso.html"><a href="come-calcolare-i-coefficienti-di-percorso.html"><i class="fa fa-check"></i><b>10.5</b> Come calcolare i coefficienti di percorso?</a></li>
+<li class="chapter" data-level="10.6" data-path="path-analysis-con-lavaan.html"><a href="path-analysis-con-lavaan.html"><i class="fa fa-check"></i><b>10.6</b> Path analysis con <code>lavaan</code></a></li>
 <li class="chapter" data-level="10.7" data-path="oltre-la-regressione-multipla.html"><a href="oltre-la-regressione-multipla.html"><i class="fa fa-check"></i><b>10.7</b> Oltre la regressione multipla</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="attendibilità-e-modello-fattoriale.html"><a href="attendibilità-e-modello-fattoriale.html"><i class="fa fa-check"></i><b>11</b> Attendibilità e modello fattoriale</a>
@@ -507,179 +507,50 @@ div.csl-indent {
 <li class="chapter" data-level="22.1.1" data-path="mtmm-e-cfa.html"><a href="mtmm-e-cfa.html#un-esempio-concreto-6"><i class="fa fa-check"></i><b>22.1.1</b> Un esempio concreto</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="curve-di-crescita-latente.html"><a href="curve-di-crescita-latente.html"><i class="fa fa-check"></i><b>23</b> Curve di crescita latente</a>
-<ul>
-<li class="chapter" data-level="23.1" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html"><i class="fa fa-check"></i><b>23.1</b> Dati longitudinali</a>
-<ul>
-<li class="chapter" data-level="23.1.1" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#un-esempio-concreto-7"><i class="fa fa-check"></i><b>23.1.1</b> Un esempio concreto</a></li>
-<li class="chapter" data-level="23.1.2" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#visualizzare-il-cambiamento"><i class="fa fa-check"></i><b>23.1.2</b> Visualizzare il cambiamento</a></li>
-<li class="chapter" data-level="23.1.3" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#dati-ordinali-vs.-intervalli-temporali"><i class="fa fa-check"></i><b>23.1.3</b> Dati ordinali vs. intervalli temporali</a></li>
-<li class="chapter" data-level="23.1.4" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#verifica-di-ipotesi"><i class="fa fa-check"></i><b>23.1.4</b> Verifica di ipotesi</a></li>
-<li class="chapter" data-level="23.1.5" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#un-secondo-esempio"><i class="fa fa-check"></i><b>23.1.5</b> Un secondo esempio</a></li>
-</ul></li>
-<li class="chapter" data-level="23.2" data-path="crescita-non-lineare.html"><a href="crescita-non-lineare.html"><i class="fa fa-check"></i><b>23.2</b> Crescita non lineare</a>
-<ul>
-<li class="chapter" data-level="23.2.1" data-path="crescita-non-lineare.html"><a href="crescita-non-lineare.html#stimatore"><i class="fa fa-check"></i><b>23.2.1</b> Stimatore</a></li>
-<li class="chapter" data-level="23.2.2" data-path="crescita-non-lineare.html"><a href="crescita-non-lineare.html#assenza-di-crescita"><i class="fa fa-check"></i><b>23.2.2</b> Assenza di crescita</a></li>
-<li class="chapter" data-level="23.2.3" data-path="crescita-non-lineare.html"><a href="crescita-non-lineare.html#crescita-lineare"><i class="fa fa-check"></i><b>23.2.3</b> Crescita lineare</a></li>
-<li class="chapter" data-level="23.2.4" data-path="crescita-non-lineare.html"><a href="crescita-non-lineare.html#crescita-quadratica"><i class="fa fa-check"></i><b>23.2.4</b> Crescita quadratica</a></li>
-</ul></li>
-<li class="chapter" data-level="23.3" data-path="parallel-process-model.html"><a href="parallel-process-model.html"><i class="fa fa-check"></i><b>23.3</b> Parallel Process Model</a>
-<ul>
-<li class="chapter" data-level="23.3.1" data-path="parallel-process-model.html"><a href="parallel-process-model.html#interpretazione-3"><i class="fa fa-check"></i><b>23.3.1</b> Interpretazione</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="24" data-path="invarianza-fattoriale-nei-modelli-lgm.html"><a href="invarianza-fattoriale-nei-modelli-lgm.html"><i class="fa fa-check"></i><b>24</b> Invarianza fattoriale nei modelli LGM</a>
-<ul>
-<li class="chapter" data-level="24.1" data-path="studi-longitudinali-cross-lagged.html"><a href="studi-longitudinali-cross-lagged.html"><i class="fa fa-check"></i><b>24.1</b> Studi longitudinali cross-lagged</a>
-<ul>
-<li class="chapter" data-level="24.1.1" data-path="studi-longitudinali-cross-lagged.html"><a href="studi-longitudinali-cross-lagged.html#invarianza-di-misura-in-studi-longitudinali-cross-lagged"><i class="fa fa-check"></i><b>24.1.1</b> Invarianza di misura in studi longitudinali cross-lagged</a></li>
-</ul></li>
-<li class="chapter" data-level="24.2" data-path="data-set.html"><a href="data-set.html"><i class="fa fa-check"></i><b>24.2</b> Data set</a></li>
-<li class="chapter" data-level="24.3" data-path="stretegia-analitica.html"><a href="stretegia-analitica.html"><i class="fa fa-check"></i><b>24.3</b> Stretegia analitica</a></li>
-<li class="chapter" data-level="24.4" data-path="leggere-in-dati-in-mathsfr.html"><a href="leggere-in-dati-in-mathsfr.html"><i class="fa fa-check"></i><b>24.4</b> Leggere in dati in <span class="math inline">\(\mathsf{R}\)</span></a></li>
-<li class="chapter" data-level="24.5" data-path="struttura-degli-errori.html"><a href="struttura-degli-errori.html"><i class="fa fa-check"></i><b>24.5</b> Struttura degli errori</a></li>
-<li class="chapter" data-level="24.6" data-path="modello-configurale.html"><a href="modello-configurale.html"><i class="fa fa-check"></i><b>24.6</b> Modello configurale</a>
-<ul>
-<li class="chapter" data-level="24.6.1" data-path="modello-configurale.html"><a href="modello-configurale.html#definizione-del-modello"><i class="fa fa-check"></i><b>24.6.1</b> Definizione del modello</a></li>
-<li class="chapter" data-level="24.6.2" data-path="modello-configurale.html"><a href="modello-configurale.html#output-del-modello"><i class="fa fa-check"></i><b>24.6.2</b> Output del modello</a></li>
-<li class="chapter" data-level="24.6.3" data-path="modello-configurale.html"><a href="modello-configurale.html#interpretazione-4"><i class="fa fa-check"></i><b>24.6.3</b> Interpretazione</a></li>
-</ul></li>
-<li class="chapter" data-level="24.7" data-path="invarianza-metrica.html"><a href="invarianza-metrica.html"><i class="fa fa-check"></i><b>24.7</b> Invarianza metrica</a>
-<ul>
-<li class="chapter" data-level="24.7.1" data-path="invarianza-metrica.html"><a href="invarianza-metrica.html#definizione-del-modello-1"><i class="fa fa-check"></i><b>24.7.1</b> Definizione del modello</a></li>
-<li class="chapter" data-level="24.7.2" data-path="invarianza-metrica.html"><a href="invarianza-metrica.html#output-del-modello-1"><i class="fa fa-check"></i><b>24.7.2</b> Output del modello</a></li>
-</ul></li>
-<li class="chapter" data-level="24.8" data-path="invarianza-scalare.html"><a href="invarianza-scalare.html"><i class="fa fa-check"></i><b>24.8</b> Invarianza scalare</a>
-<ul>
-<li class="chapter" data-level="24.8.1" data-path="invarianza-scalare.html"><a href="invarianza-scalare.html#definizione-del-modello-2"><i class="fa fa-check"></i><b>24.8.1</b> Definizione del modello</a></li>
-<li class="chapter" data-level="24.8.2" data-path="invarianza-scalare.html"><a href="invarianza-scalare.html#output-del-modello-2"><i class="fa fa-check"></i><b>24.8.2</b> Output del modello</a></li>
-</ul></li>
-<li class="chapter" data-level="24.9" data-path="invarianza-degli-errori.html"><a href="invarianza-degli-errori.html"><i class="fa fa-check"></i><b>24.9</b> Invarianza degli errori</a>
-<ul>
-<li class="chapter" data-level="24.9.1" data-path="invarianza-degli-errori.html"><a href="invarianza-degli-errori.html#definizione-del-modello-3"><i class="fa fa-check"></i><b>24.9.1</b> Definizione del modello</a></li>
-<li class="chapter" data-level="24.9.2" data-path="invarianza-degli-errori.html"><a href="invarianza-degli-errori.html#output-del-modello-3"><i class="fa fa-check"></i><b>24.9.2</b> Output del modello</a></li>
-</ul></li>
-<li class="chapter" data-level="24.10" data-path="confronto-tra-modelli.html"><a href="confronto-tra-modelli.html"><i class="fa fa-check"></i><b>24.10</b> Confronto tra modelli</a>
-<ul>
-<li class="chapter" data-level="24.10.1" data-path="confronto-tra-modelli.html"><a href="confronto-tra-modelli.html#codice-e-output"><i class="fa fa-check"></i><b>24.10.1</b> Codice e output</a></li>
-<li class="chapter" data-level="24.10.2" data-path="confronto-tra-modelli.html"><a href="confronto-tra-modelli.html#interpretazione-5"><i class="fa fa-check"></i><b>24.10.2</b> Interpretazione</a></li>
-</ul></li>
-<li class="chapter" data-level="24.11" data-path="modello-strutturale.html"><a href="modello-strutturale.html"><i class="fa fa-check"></i><b>24.11</b> Modello strutturale</a>
-<ul>
-<li class="chapter" data-level="24.11.1" data-path="modello-strutturale.html"><a href="modello-strutturale.html#definizione-del-modello-4"><i class="fa fa-check"></i><b>24.11.1</b> Definizione del modello</a></li>
-<li class="chapter" data-level="24.11.2" data-path="modello-strutturale.html"><a href="modello-strutturale.html#output-del-modello-4"><i class="fa fa-check"></i><b>24.11.2</b> Output del modello</a></li>
-</ul></li>
-<li class="chapter" data-level="24.12" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html"><i class="fa fa-check"></i><b>24.12</b> Modello Random Intercepts Cross-Lagged Panel</a>
-<ul>
-<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#definizione-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Definizione del modello</a></li>
-<li class="chapter" data-level="24.12.2" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.2</b> Output del modello</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-2.html"><a href="commenti-e-considerazioni-finali-2.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
-</ul></li>
-<li class="chapter" data-level="25" data-path="dati-mancanti.html"><a href="dati-mancanti.html"><i class="fa fa-check"></i><b>25</b> Dati mancanti</a>
-<ul>
-<li class="chapter" data-level="25.1" data-path="tipologie-di-dati-mancanti.html"><a href="tipologie-di-dati-mancanti.html"><i class="fa fa-check"></i><b>25.1</b> Tipologie di dati mancanti</a></li>
-<li class="chapter" data-level="25.2" data-path="la-gestione-dei-dati-mancanti.html"><a href="la-gestione-dei-dati-mancanti.html"><i class="fa fa-check"></i><b>25.2</b> La gestione dei dati mancanti</a>
-<ul>
-<li class="chapter" data-level="25.2.1" data-path="la-gestione-dei-dati-mancanti.html"><a href="la-gestione-dei-dati-mancanti.html#metodo-direct-ml"><i class="fa fa-check"></i><b>25.2.1</b> Metodo Direct ML</a></li>
-<li class="chapter" data-level="25.2.2" data-path="la-gestione-dei-dati-mancanti.html"><a href="la-gestione-dei-dati-mancanti.html#un-esempio-concreto-8"><i class="fa fa-check"></i><b>25.2.2</b> Un esempio concreto</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="26" data-path="dati-non-gaussiani-e-categoriali.html"><a href="dati-non-gaussiani-e-categoriali.html"><i class="fa fa-check"></i><b>26</b> Dati non gaussiani e categoriali</a>
-<ul>
-<li class="chapter" data-level="26.1" data-path="dati-non-gaussiani.html"><a href="dati-non-gaussiani.html"><i class="fa fa-check"></i><b>26.1</b> Dati non gaussiani</a></li>
-<li class="chapter" data-level="26.2" data-path="dati-categoriali.html"><a href="dati-categoriali.html"><i class="fa fa-check"></i><b>26.2</b> Dati categoriali</a>
-<ul>
-<li class="chapter" data-level="26.2.1" data-path="dati-categoriali.html"><a href="dati-categoriali.html#un-esempio-concreto-9"><i class="fa fa-check"></i><b>26.2.1</b> Un esempio concreto</a></li>
-</ul></li>
-</ul></li>
 <li class="part"><span><b>V Appendici</b></span></li>
 <li class="appendix"><span><b>Appendici</b></span></li>
 <li class="chapter" data-level="A" data-path="simbologia-di-base.html"><a href="simbologia-di-base.html"><i class="fa fa-check"></i><b>A</b> Simbologia di base</a></li>
-<li class="chapter" data-level="B" data-path="lo-studio-del-caso-singolo.html"><a href="lo-studio-del-caso-singolo.html"><i class="fa fa-check"></i><b>B</b> Lo studio del caso singolo</a>
+<li class="chapter" data-level="B" data-path="elementi-di-algebra-lineare.html"><a href="elementi-di-algebra-lineare.html"><i class="fa fa-check"></i><b>B</b> Elementi di algebra lineare</a>
 <ul>
-<li class="chapter" data-level="B.1" data-path="motivazione-1.html"><a href="motivazione-1.html"><i class="fa fa-check"></i><b>B.1</b> Motivazione</a></li>
-<li class="chapter" data-level="B.2" data-path="sec:comparison-single-case-controls.html"><a href="sec:comparison-single-case-controls.html"><i class="fa fa-check"></i><b>B.2</b> Il confronto tra caso singolo e un gruppo di controllo</a>
+<li class="chapter" data-level="B.1" data-path="vettori.html"><a href="vettori.html"><i class="fa fa-check"></i><b>B.1</b> Vettori</a>
 <ul>
-<li class="chapter" data-level="B.2.1" data-path="sec:comparison-single-case-controls.html"><a href="sec:comparison-single-case-controls.html#sec:Crawford-Howell-1998"><i class="fa fa-check"></i><b>B.2.1</b> Il metodo di Crawford e Howell (1998)</a></li>
-<li class="chapter" data-level="B.2.2" data-path="sec:comparison-single-case-controls.html"><a href="sec:comparison-single-case-controls.html#sec:barton-2002"><i class="fa fa-check"></i><b>B.2.2</b> Il metodo di Barton et al. (2002)</a></li>
+<li class="chapter" data-level="B.1.1" data-path="vettori.html"><a href="vettori.html#vettori-nello-spazio-euclideo"><i class="fa fa-check"></i><b>B.1.1</b> Vettori nello spazio euclideo</a></li>
+<li class="chapter" data-level="B.1.2" data-path="vettori.html"><a href="vettori.html#somma-e-differenza-di-vettori"><i class="fa fa-check"></i><b>B.1.2</b> Somma e differenza di vettori</a></li>
+<li class="chapter" data-level="B.1.3" data-path="vettori.html"><a href="vettori.html#moltiplicazione-scalare"><i class="fa fa-check"></i><b>B.1.3</b> Moltiplicazione scalare</a></li>
+<li class="chapter" data-level="B.1.4" data-path="vettori.html"><a href="vettori.html#combinazione-lineare"><i class="fa fa-check"></i><b>B.1.4</b> Combinazione lineare</a></li>
+<li class="chapter" data-level="B.1.5" data-path="vettori.html"><a href="vettori.html#vettore-0-e-vettore-1"><i class="fa fa-check"></i><b>B.1.5</b> Vettore 0 e vettore 1</a></li>
+<li class="chapter" data-level="B.1.6" data-path="vettori.html"><a href="vettori.html#ortogonalità-tra-vettori"><i class="fa fa-check"></i><b>B.1.6</b> Ortogonalità tra vettori</a></li>
+<li class="chapter" data-level="B.1.7" data-path="vettori.html"><a href="vettori.html#trasposta-di-un-vettore"><i class="fa fa-check"></i><b>B.1.7</b> Trasposta di un vettore</a></li>
+<li class="chapter" data-level="B.1.8" data-path="vettori.html"><a href="vettori.html#norma-o-lunghezza-di-un-vettore"><i class="fa fa-check"></i><b>B.1.8</b> Norma o lunghezza di un vettore</a></li>
 </ul></li>
-<li class="chapter" data-level="B.3" data-path="lo-studio-delle-dissociazioni.html"><a href="lo-studio-delle-dissociazioni.html"><i class="fa fa-check"></i><b>B.3</b> Lo studio delle dissociazioni</a></li>
-<li class="chapter" data-level="B.4" data-path="la-misura-del-cambiamento.html"><a href="la-misura-del-cambiamento.html"><i class="fa fa-check"></i><b>B.4</b> La misura del cambiamento</a>
+<li class="chapter" data-level="B.2" data-path="matrici.html"><a href="matrici.html"><i class="fa fa-check"></i><b>B.2</b> Matrici</a>
 <ul>
-<li class="chapter" data-level="B.4.1" data-path="la-misura-del-cambiamento.html"><a href="la-misura-del-cambiamento.html#cambiamento-nel-caso-singolo-e-confronto-con-un-campione-di-controllo"><i class="fa fa-check"></i><b>B.4.1</b> Cambiamento nel caso singolo e confronto con un campione di controllo</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="considerazioni-conclusive.html"><a href="considerazioni-conclusive.html"><i class="fa fa-check"></i>Considerazioni conclusive</a></li>
-</ul></li>
-<li class="chapter" data-level="C" data-path="la-valutazione-dellintervento-psicologico.html"><a href="la-valutazione-dellintervento-psicologico.html"><i class="fa fa-check"></i><b>C</b> La valutazione dell’intervento psicologico</a>
-<ul>
-<li class="chapter" data-level="C.1" data-path="efficacia-dellintervento-ed-efficienza-clinica.html"><a href="efficacia-dellintervento-ed-efficienza-clinica.html"><i class="fa fa-check"></i><b>C.1</b> Efficacia dell’intervento ed efficienza clinica</a></li>
-</ul></li>
-<li class="chapter" data-level="D" data-path="la-dimensione-delleffetto-del-trattamento.html"><a href="la-dimensione-delleffetto-del-trattamento.html"><i class="fa fa-check"></i><b>D</b> La dimensione dell’effetto del trattamento</a>
-<ul>
-<li class="chapter" data-level="D.1" data-path="sec:cont_reponse_eff_size.html"><a href="sec:cont_reponse_eff_size.html"><i class="fa fa-check"></i><b>D.1</b> Risposta continua</a>
-<ul>
-<li class="chapter" data-level="D.1.1" data-path="sec:cont_reponse_eff_size.html"><a href="sec:cont_reponse_eff_size.html#indici-d-di-cohen-e-g-di-hedges"><i class="fa fa-check"></i><b>D.1.1</b> Indici <span class="math inline">\(d\)</span> di Cohen e <span class="math inline">\(g\)</span> di Hedges</a></li>
-</ul></li>
-<li class="chapter" data-level="D.2" data-path="sec:binary_reponse_eff_size.html"><a href="sec:binary_reponse_eff_size.html"><i class="fa fa-check"></i><b>D.2</b> Risposta binaria</a>
-<ul>
-<li class="chapter" data-level="D.2.1" data-path="sec:binary_reponse_eff_size.html"><a href="sec:binary_reponse_eff_size.html#differenza-tra-due-proporzioni"><i class="fa fa-check"></i><b>D.2.1</b> Differenza tra due proporzioni</a></li>
-<li class="chapter" data-level="D.2.2" data-path="sec:binary_reponse_eff_size.html"><a href="sec:binary_reponse_eff_size.html#rischio-relativo"><i class="fa fa-check"></i><b>D.2.2</b> Rischio relativo</a></li>
-<li class="chapter" data-level="D.2.3" data-path="sec:binary_reponse_eff_size.html"><a href="sec:binary_reponse_eff_size.html#odds-ratio"><i class="fa fa-check"></i><b>D.2.3</b> Odds ratio</a></li>
-<li class="chapter" data-level="D.2.4" data-path="sec:binary_reponse_eff_size.html"><a href="sec:binary_reponse_eff_size.html#logit"><i class="fa fa-check"></i><b>D.2.4</b> Logit</a></li>
-<li class="chapter" data-level="D.2.5" data-path="sec:binary_reponse_eff_size.html"><a href="sec:binary_reponse_eff_size.html#rapporto-delle-quote"><i class="fa fa-check"></i><b>D.2.5</b> Rapporto delle quote</a></li>
-<li class="chapter" data-level="D.2.6" data-path="sec:binary_reponse_eff_size.html"><a href="sec:binary_reponse_eff_size.html#logaritmo-del-rapporto-delle-quote"><i class="fa fa-check"></i><b>D.2.6</b> Logaritmo del rapporto delle quote</a></li>
-</ul></li>
-<li class="chapter" data-level="D.3" data-path="tipi-fondamentali-di-indagine.html"><a href="tipi-fondamentali-di-indagine.html"><i class="fa fa-check"></i><b>D.3</b> Tipi fondamentali di indagine</a>
-<ul>
-<li class="chapter" data-level="D.3.1" data-path="tipi-fondamentali-di-indagine.html"><a href="tipi-fondamentali-di-indagine.html#studi-prospettici"><i class="fa fa-check"></i><b>D.3.1</b> Studi prospettici</a></li>
-<li class="chapter" data-level="D.3.2" data-path="tipi-fondamentali-di-indagine.html"><a href="tipi-fondamentali-di-indagine.html#studi-trasversali"><i class="fa fa-check"></i><b>D.3.2</b> Studi trasversali</a></li>
-<li class="chapter" data-level="D.3.3" data-path="tipi-fondamentali-di-indagine.html"><a href="tipi-fondamentali-di-indagine.html#studi-longitudinali-retrospettivi"><i class="fa fa-check"></i><b>D.3.3</b> Studi longitudinali retrospettivi</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="considerazioni-conclusive-1.html"><a href="considerazioni-conclusive-1.html"><i class="fa fa-check"></i>Considerazioni conclusive</a></li>
-</ul></li>
-<li class="chapter" data-level="E" data-path="elementi-di-algebra-lineare.html"><a href="elementi-di-algebra-lineare.html"><i class="fa fa-check"></i><b>E</b> Elementi di algebra lineare</a>
-<ul>
-<li class="chapter" data-level="E.1" data-path="vettori.html"><a href="vettori.html"><i class="fa fa-check"></i><b>E.1</b> Vettori</a>
-<ul>
-<li class="chapter" data-level="E.1.1" data-path="vettori.html"><a href="vettori.html#vettori-nello-spazio-euclideo"><i class="fa fa-check"></i><b>E.1.1</b> Vettori nello spazio euclideo</a></li>
-<li class="chapter" data-level="E.1.2" data-path="vettori.html"><a href="vettori.html#somma-e-differenza-di-vettori"><i class="fa fa-check"></i><b>E.1.2</b> Somma e differenza di vettori</a></li>
-<li class="chapter" data-level="E.1.3" data-path="vettori.html"><a href="vettori.html#moltiplicazione-scalare"><i class="fa fa-check"></i><b>E.1.3</b> Moltiplicazione scalare</a></li>
-<li class="chapter" data-level="E.1.4" data-path="vettori.html"><a href="vettori.html#combinazione-lineare"><i class="fa fa-check"></i><b>E.1.4</b> Combinazione lineare</a></li>
-<li class="chapter" data-level="E.1.5" data-path="vettori.html"><a href="vettori.html#vettore-0-e-vettore-1"><i class="fa fa-check"></i><b>E.1.5</b> Vettore 0 e vettore 1</a></li>
-<li class="chapter" data-level="E.1.6" data-path="vettori.html"><a href="vettori.html#ortogonalità-tra-vettori"><i class="fa fa-check"></i><b>E.1.6</b> Ortogonalità tra vettori</a></li>
-<li class="chapter" data-level="E.1.7" data-path="vettori.html"><a href="vettori.html#trasposta-di-un-vettore"><i class="fa fa-check"></i><b>E.1.7</b> Trasposta di un vettore</a></li>
-<li class="chapter" data-level="E.1.8" data-path="vettori.html"><a href="vettori.html#norma-o-lunghezza-di-un-vettore"><i class="fa fa-check"></i><b>E.1.8</b> Norma o lunghezza di un vettore</a></li>
-</ul></li>
-<li class="chapter" data-level="E.2" data-path="matrici.html"><a href="matrici.html"><i class="fa fa-check"></i><b>E.2</b> Matrici</a>
-<ul>
-<li class="chapter" data-level="E.2.1" data-path="matrici.html"><a href="matrici.html#dimensioni-della-matrice"><i class="fa fa-check"></i><b>E.2.1</b> Dimensioni della matrice</a></li>
-<li class="chapter" data-level="E.2.2" data-path="matrici.html"><a href="matrici.html#matrice-trasposta"><i class="fa fa-check"></i><b>E.2.2</b> Matrice trasposta</a></li>
-<li class="chapter" data-level="E.2.3" data-path="matrici.html"><a href="matrici.html#matrice-simmetrica"><i class="fa fa-check"></i><b>E.2.3</b> Matrice simmetrica</a></li>
-<li class="chapter" data-level="E.2.4" data-path="matrici.html"><a href="matrici.html#matrice-quadrata-o-rettangolare"><i class="fa fa-check"></i><b>E.2.4</b> Matrice quadrata o rettangolare</a></li>
-<li class="chapter" data-level="E.2.5" data-path="matrici.html"><a href="matrici.html#diagonale-principale"><i class="fa fa-check"></i><b>E.2.5</b> Diagonale principale</a></li>
-<li class="chapter" data-level="E.2.6" data-path="matrici.html"><a href="matrici.html#matrice-diagonale"><i class="fa fa-check"></i><b>E.2.6</b> Matrice diagonale</a></li>
-<li class="chapter" data-level="E.2.7" data-path="matrici.html"><a href="matrici.html#matrice-identità"><i class="fa fa-check"></i><b>E.2.7</b> Matrice identità</a></li>
-<li class="chapter" data-level="E.2.8" data-path="matrici.html"><a href="matrici.html#matrici-diagonali-e-triangolari"><i class="fa fa-check"></i><b>E.2.8</b> Matrici diagonali e triangolari</a></li>
-<li class="chapter" data-level="E.2.9" data-path="matrici.html"><a href="matrici.html#somma-e-sottrazione"><i class="fa fa-check"></i><b>E.2.9</b> Somma e sottrazione</a></li>
-<li class="chapter" data-level="E.2.10" data-path="matrici.html"><a href="matrici.html#moltiplicazione-di-scalari-e-matrici"><i class="fa fa-check"></i><b>E.2.10</b> Moltiplicazione di scalari e matrici</a></li>
-<li class="chapter" data-level="E.2.11" data-path="matrici.html"><a href="matrici.html#proprietà-della-somma-e-differenza"><i class="fa fa-check"></i><b>E.2.11</b> Proprietà della somma e differenza</a></li>
-<li class="chapter" data-level="E.2.12" data-path="matrici.html"><a href="matrici.html#prodotto-di-matrici"><i class="fa fa-check"></i><b>E.2.12</b> Prodotto di matrici</a></li>
-<li class="chapter" data-level="E.2.13" data-path="matrici.html"><a href="matrici.html#proprietà-del-prodotto-di-matrici"><i class="fa fa-check"></i><b>E.2.13</b> Proprietà del prodotto di matrici</a></li>
-<li class="chapter" data-level="E.2.14" data-path="matrici.html"><a href="matrici.html#casi-particolari"><i class="fa fa-check"></i><b>E.2.14</b> Casi particolari</a></li>
-<li class="chapter" data-level="E.2.15" data-path="matrici.html"><a href="matrici.html#operazioni-tra-vettori"><i class="fa fa-check"></i><b>E.2.15</b> Operazioni tra vettori</a></li>
-<li class="chapter" data-level="E.2.16" data-path="matrici.html"><a href="matrici.html#prodotto-interno"><i class="fa fa-check"></i><b>E.2.16</b> Prodotto interno</a></li>
-<li class="chapter" data-level="E.2.17" data-path="matrici.html"><a href="matrici.html#prodotto-esterno"><i class="fa fa-check"></i><b>E.2.17</b> Prodotto esterno</a></li>
-<li class="chapter" data-level="E.2.18" data-path="matrici.html"><a href="matrici.html#traccia-di-una-matrice"><i class="fa fa-check"></i><b>E.2.18</b> Traccia di una matrice</a></li>
-<li class="chapter" data-level="E.2.19" data-path="matrici.html"><a href="matrici.html#rango-di-una-matrice"><i class="fa fa-check"></i><b>E.2.19</b> Rango di una matrice</a></li>
-<li class="chapter" data-level="E.2.20" data-path="matrici.html"><a href="matrici.html#matrice-inversa"><i class="fa fa-check"></i><b>E.2.20</b> Matrice inversa</a></li>
-<li class="chapter" data-level="E.2.21" data-path="matrici.html"><a href="matrici.html#determinante-di-una-matrice"><i class="fa fa-check"></i><b>E.2.21</b> Determinante di una matrice</a></li>
-<li class="chapter" data-level="E.2.22" data-path="matrici.html"><a href="matrici.html#determinante-e-inversa"><i class="fa fa-check"></i><b>E.2.22</b> Determinante e inversa</a></li>
-<li class="chapter" data-level="E.2.23" data-path="matrici.html"><a href="matrici.html#proprietà-del-determinante"><i class="fa fa-check"></i><b>E.2.23</b> Proprietà del determinante</a></li>
-<li class="chapter" data-level="E.2.24" data-path="matrici.html"><a href="matrici.html#radici-e-vettori-latenti"><i class="fa fa-check"></i><b>E.2.24</b> Radici e vettori latenti</a></li>
-<li class="chapter" data-level="E.2.25" data-path="matrici.html"><a href="matrici.html#scomposizione-spettrale-di-una-matrice"><i class="fa fa-check"></i><b>E.2.25</b> Scomposizione spettrale di una matrice</a></li>
-<li class="chapter" data-level="E.2.26" data-path="matrici.html"><a href="matrici.html#autovalori-e-determinante"><i class="fa fa-check"></i><b>E.2.26</b> Autovalori e determinante</a></li>
+<li class="chapter" data-level="B.2.1" data-path="matrici.html"><a href="matrici.html#dimensioni-della-matrice"><i class="fa fa-check"></i><b>B.2.1</b> Dimensioni della matrice</a></li>
+<li class="chapter" data-level="B.2.2" data-path="matrici.html"><a href="matrici.html#matrice-trasposta"><i class="fa fa-check"></i><b>B.2.2</b> Matrice trasposta</a></li>
+<li class="chapter" data-level="B.2.3" data-path="matrici.html"><a href="matrici.html#matrice-simmetrica"><i class="fa fa-check"></i><b>B.2.3</b> Matrice simmetrica</a></li>
+<li class="chapter" data-level="B.2.4" data-path="matrici.html"><a href="matrici.html#matrice-quadrata-o-rettangolare"><i class="fa fa-check"></i><b>B.2.4</b> Matrice quadrata o rettangolare</a></li>
+<li class="chapter" data-level="B.2.5" data-path="matrici.html"><a href="matrici.html#diagonale-principale"><i class="fa fa-check"></i><b>B.2.5</b> Diagonale principale</a></li>
+<li class="chapter" data-level="B.2.6" data-path="matrici.html"><a href="matrici.html#matrice-diagonale"><i class="fa fa-check"></i><b>B.2.6</b> Matrice diagonale</a></li>
+<li class="chapter" data-level="B.2.7" data-path="matrici.html"><a href="matrici.html#matrice-identità"><i class="fa fa-check"></i><b>B.2.7</b> Matrice identità</a></li>
+<li class="chapter" data-level="B.2.8" data-path="matrici.html"><a href="matrici.html#matrici-diagonali-e-triangolari"><i class="fa fa-check"></i><b>B.2.8</b> Matrici diagonali e triangolari</a></li>
+<li class="chapter" data-level="B.2.9" data-path="matrici.html"><a href="matrici.html#somma-e-sottrazione"><i class="fa fa-check"></i><b>B.2.9</b> Somma e sottrazione</a></li>
+<li class="chapter" data-level="B.2.10" data-path="matrici.html"><a href="matrici.html#moltiplicazione-di-scalari-e-matrici"><i class="fa fa-check"></i><b>B.2.10</b> Moltiplicazione di scalari e matrici</a></li>
+<li class="chapter" data-level="B.2.11" data-path="matrici.html"><a href="matrici.html#proprietà-della-somma-e-differenza"><i class="fa fa-check"></i><b>B.2.11</b> Proprietà della somma e differenza</a></li>
+<li class="chapter" data-level="B.2.12" data-path="matrici.html"><a href="matrici.html#prodotto-di-matrici"><i class="fa fa-check"></i><b>B.2.12</b> Prodotto di matrici</a></li>
+<li class="chapter" data-level="B.2.13" data-path="matrici.html"><a href="matrici.html#proprietà-del-prodotto-di-matrici"><i class="fa fa-check"></i><b>B.2.13</b> Proprietà del prodotto di matrici</a></li>
+<li class="chapter" data-level="B.2.14" data-path="matrici.html"><a href="matrici.html#casi-particolari"><i class="fa fa-check"></i><b>B.2.14</b> Casi particolari</a></li>
+<li class="chapter" data-level="B.2.15" data-path="matrici.html"><a href="matrici.html#operazioni-tra-vettori"><i class="fa fa-check"></i><b>B.2.15</b> Operazioni tra vettori</a></li>
+<li class="chapter" data-level="B.2.16" data-path="matrici.html"><a href="matrici.html#prodotto-interno"><i class="fa fa-check"></i><b>B.2.16</b> Prodotto interno</a></li>
+<li class="chapter" data-level="B.2.17" data-path="matrici.html"><a href="matrici.html#prodotto-esterno"><i class="fa fa-check"></i><b>B.2.17</b> Prodotto esterno</a></li>
+<li class="chapter" data-level="B.2.18" data-path="matrici.html"><a href="matrici.html#traccia-di-una-matrice"><i class="fa fa-check"></i><b>B.2.18</b> Traccia di una matrice</a></li>
+<li class="chapter" data-level="B.2.19" data-path="matrici.html"><a href="matrici.html#rango-di-una-matrice"><i class="fa fa-check"></i><b>B.2.19</b> Rango di una matrice</a></li>
+<li class="chapter" data-level="B.2.20" data-path="matrici.html"><a href="matrici.html#matrice-inversa"><i class="fa fa-check"></i><b>B.2.20</b> Matrice inversa</a></li>
+<li class="chapter" data-level="B.2.21" data-path="matrici.html"><a href="matrici.html#determinante-di-una-matrice"><i class="fa fa-check"></i><b>B.2.21</b> Determinante di una matrice</a></li>
+<li class="chapter" data-level="B.2.22" data-path="matrici.html"><a href="matrici.html#determinante-e-inversa"><i class="fa fa-check"></i><b>B.2.22</b> Determinante e inversa</a></li>
+<li class="chapter" data-level="B.2.23" data-path="matrici.html"><a href="matrici.html#proprietà-del-determinante"><i class="fa fa-check"></i><b>B.2.23</b> Proprietà del determinante</a></li>
+<li class="chapter" data-level="B.2.24" data-path="matrici.html"><a href="matrici.html#radici-e-vettori-latenti"><i class="fa fa-check"></i><b>B.2.24</b> Radici e vettori latenti</a></li>
+<li class="chapter" data-level="B.2.25" data-path="matrici.html"><a href="matrici.html#scomposizione-spettrale-di-una-matrice"><i class="fa fa-check"></i><b>B.2.25</b> Scomposizione spettrale di una matrice</a></li>
+<li class="chapter" data-level="B.2.26" data-path="matrici.html"><a href="matrici.html#autovalori-e-determinante"><i class="fa fa-check"></i><b>B.2.26</b> Autovalori e determinante</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -719,74 +590,75 @@ uguale a</p>
 <p><span class="math display">\[
 \binom{100}{20} = 5.36 \times 10^{20}.
 \]</span></p>
-<p>È dunque necessario trovare metodi alternativi che evitino una tale esplosione combinatoria. A questo fine, ovvero per procedere alla selezione del sottoinsieme dei “migliori” item, <span class="citation">McDonald (<a href="#ref-mcdonald2013test" role="doc-biblioref">2013</a>)</span> suggerisce di calcolare la <em>quantità di informazione</em> di ciascun item. La quantità di informazione di un item è definita come rapporto tra segnale/rumore, in relazione alla scomposizione della varianza dell’item:</p>
+<p>È dunque necessario trovare metodi alternativi che evitino una tale esplosione combinatoria. A questo fine, ovvero per procedere alla selezione del sottoinsieme dei “migliori” item, <span class="citation">McDonald (<a href="#ref-mcdonald2013test">2013</a>)</span> suggerisce di calcolare la <em>quantità di informazione</em> di ciascun item. La quantità di informazione di un item è definita come rapporto tra segnale/rumore, in relazione alla scomposizione della varianza dell’item:</p>
 <p><span class="math display">\[
 \frac{\lambda_i^2}{\psi_{ii}}.
 \]</span></p>
-<p><span class="citation">McDonald (<a href="#ref-mcdonald2013test" role="doc-biblioref">2013</a>)</span> mostra come l’omissione di uno o più item produce sempre una riduzione dell’attendibilità del test (ovvero, una riduzione nel valore del coefficiente <span class="math inline">\(\omega\)</span>). Tuttavia, tale riduzione è tanto più piccola quanto più
+<p><span class="citation">McDonald (<a href="#ref-mcdonald2013test">2013</a>)</span> mostra come l’omissione di uno o più item produce sempre una riduzione dell’attendibilità del test (ovvero, una riduzione nel valore del coefficiente <span class="math inline">\(\omega\)</span>). Tuttavia, tale riduzione è tanto più piccola quanto più
 piccola è la quantità di informazione degli item omessi. Il processo di
 selezione degli item può dunque essere guidato da un semplice principio:
 si selezionano gli item aventi la quantità di informazione maggiore. Ovvero, in altre parole, si rimuovono gli item aventi la quantità di informazione più bassa.</p>
 <div class="example">
 <p><span id="exm:unlabeled-div-32" class="example"><strong>Esempio 18.1  </strong></span>Per fare un esempio, consideriamo nuovamente la matrice di varianze e di covarianze della scala SWLS.</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-1" aria-hidden="true" tabindex="-1"></a>varnames <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Y1&quot;</span>, <span class="st">&quot;Y2&quot;</span>, <span class="st">&quot;Y3&quot;</span>, <span class="st">&quot;Y4&quot;</span>, <span class="st">&quot;Y5&quot;</span>)</span>
-<span id="cb233-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-2" aria-hidden="true" tabindex="-1"></a>SWLS <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
-<span id="cb233-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-3" aria-hidden="true" tabindex="-1"></a>  <span class="fl">2.565</span>, <span class="fl">1.424</span>, <span class="fl">1.481</span>, <span class="fl">1.328</span>, <span class="fl">1.529</span>,</span>
-<span id="cb233-4"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-4" aria-hidden="true" tabindex="-1"></a>  <span class="fl">1.424</span>, <span class="fl">2.493</span>, <span class="fl">1.267</span>, <span class="fl">1.051</span>, <span class="fl">1.308</span>,</span>
-<span id="cb233-5"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-5" aria-hidden="true" tabindex="-1"></a>  <span class="fl">1.481</span>, <span class="fl">1.267</span>, <span class="fl">2.462</span>, <span class="fl">1.093</span>, <span class="fl">1.360</span>,</span>
-<span id="cb233-6"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-6" aria-hidden="true" tabindex="-1"></a>  <span class="fl">1.328</span>, <span class="fl">1.051</span>, <span class="fl">1.093</span>, <span class="fl">2.769</span>, <span class="fl">1.128</span>,</span>
-<span id="cb233-7"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-7" aria-hidden="true" tabindex="-1"></a>  <span class="fl">1.529</span>, <span class="fl">1.308</span>, <span class="fl">1.360</span>, <span class="fl">1.128</span>, <span class="fl">3.355</span></span>
-<span id="cb233-8"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-8" aria-hidden="true" tabindex="-1"></a>),</span>
-<span id="cb233-9"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-9" aria-hidden="true" tabindex="-1"></a><span class="at">ncol =</span> <span class="dv">5</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb233-10"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-10" aria-hidden="true" tabindex="-1"></a><span class="at">dimnames =</span> <span class="fu">list</span>(varnames, varnames)</span>
-<span id="cb233-11"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb233-12"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-12" aria-hidden="true" tabindex="-1"></a>SWLS</span>
-<span id="cb233-13"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       Y1    Y2    Y3    Y4    Y5</span></span>
-<span id="cb233-14"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Y1 2.565 1.424 1.481 1.328 1.529</span></span>
-<span id="cb233-15"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Y2 1.424 2.493 1.267 1.051 1.308</span></span>
-<span id="cb233-16"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Y3 1.481 1.267 2.462 1.093 1.360</span></span>
-<span id="cb233-17"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Y4 1.328 1.051 1.093 2.769 1.128</span></span>
-<span id="cb233-18"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Y5 1.529 1.308 1.360 1.128 3.355</span></span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-1" tabindex="-1"></a>varnames <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Y1&quot;</span>, <span class="st">&quot;Y2&quot;</span>, <span class="st">&quot;Y3&quot;</span>, <span class="st">&quot;Y4&quot;</span>, <span class="st">&quot;Y5&quot;</span>)</span>
+<span id="cb233-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-2" tabindex="-1"></a>SWLS <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb233-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-3" tabindex="-1"></a>  <span class="fu">c</span>(</span>
+<span id="cb233-4"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-4" tabindex="-1"></a>    <span class="fl">2.565</span>, <span class="fl">1.424</span>, <span class="fl">1.481</span>, <span class="fl">1.328</span>, <span class="fl">1.529</span>,</span>
+<span id="cb233-5"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-5" tabindex="-1"></a>    <span class="fl">1.424</span>, <span class="fl">2.493</span>, <span class="fl">1.267</span>, <span class="fl">1.051</span>, <span class="fl">1.308</span>,</span>
+<span id="cb233-6"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-6" tabindex="-1"></a>    <span class="fl">1.481</span>, <span class="fl">1.267</span>, <span class="fl">2.462</span>, <span class="fl">1.093</span>, <span class="fl">1.360</span>,</span>
+<span id="cb233-7"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-7" tabindex="-1"></a>    <span class="fl">1.328</span>, <span class="fl">1.051</span>, <span class="fl">1.093</span>, <span class="fl">2.769</span>, <span class="fl">1.128</span>,</span>
+<span id="cb233-8"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-8" tabindex="-1"></a>    <span class="fl">1.529</span>, <span class="fl">1.308</span>, <span class="fl">1.360</span>, <span class="fl">1.128</span>, <span class="fl">3.355</span></span>
+<span id="cb233-9"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-9" tabindex="-1"></a>  ),</span>
+<span id="cb233-10"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-10" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">5</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb233-11"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-11" tabindex="-1"></a>  <span class="at">dimnames =</span> <span class="fu">list</span>(varnames, varnames)</span>
+<span id="cb233-12"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-12" tabindex="-1"></a>)</span>
+<span id="cb233-13"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-13" tabindex="-1"></a>SWLS</span>
+<span id="cb233-14"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-14" tabindex="-1"></a><span class="co">#&gt;       Y1    Y2    Y3    Y4    Y5</span></span>
+<span id="cb233-15"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-15" tabindex="-1"></a><span class="co">#&gt; Y1 2.565 1.424 1.481 1.328 1.529</span></span>
+<span id="cb233-16"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-16" tabindex="-1"></a><span class="co">#&gt; Y2 1.424 2.493 1.267 1.051 1.308</span></span>
+<span id="cb233-17"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-17" tabindex="-1"></a><span class="co">#&gt; Y3 1.481 1.267 2.462 1.093 1.360</span></span>
+<span id="cb233-18"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-18" tabindex="-1"></a><span class="co">#&gt; Y4 1.328 1.051 1.093 2.769 1.128</span></span>
+<span id="cb233-19"><a href="selezione-di-un-sottoinsieme-di-item.html#cb233-19" tabindex="-1"></a><span class="co">#&gt; Y5 1.529 1.308 1.360 1.128 3.355</span></span></code></pre></div>
 <p>Utilizzando la funzione <code>cfa()</code> contenuta nel pacchetto <code>lavaan</code>, il modello
 ad un fattore viene definito nel modo seguente.</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb234-1" aria-hidden="true" tabindex="-1"></a>mod_1 <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb234-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb234-2" aria-hidden="true" tabindex="-1"></a><span class="st">  F =~ Y1 + Y2 + Y3 + Y4 + Y5</span></span>
-<span id="cb234-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb234-3" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb234-1" tabindex="-1"></a>mod_1 <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb234-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb234-2" tabindex="-1"></a><span class="st">  F =~ Y1 + Y2 + Y3 + Y4 + Y5</span></span>
+<span id="cb234-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb234-3" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
 <p>Otteniamo così una stima dei pesi fattoriali e delle unicità.</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb235-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> lavaan<span class="sc">::</span><span class="fu">cfa</span>(</span>
-<span id="cb235-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb235-2" aria-hidden="true" tabindex="-1"></a>  mod_1,</span>
-<span id="cb235-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb235-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample.cov =</span> SWLS,</span>
-<span id="cb235-4"><a href="selezione-di-un-sottoinsieme-di-item.html#cb235-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample.nobs =</span> <span class="dv">215</span>,</span>
-<span id="cb235-5"><a href="selezione-di-un-sottoinsieme-di-item.html#cb235-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">std.lv =</span> <span class="cn">TRUE</span></span>
-<span id="cb235-6"><a href="selezione-di-un-sottoinsieme-di-item.html#cb235-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb235-1" tabindex="-1"></a>fit <span class="ot">&lt;-</span> lavaan<span class="sc">::</span><span class="fu">cfa</span>(</span>
+<span id="cb235-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb235-2" tabindex="-1"></a>  mod_1,</span>
+<span id="cb235-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb235-3" tabindex="-1"></a>  <span class="at">sample.cov =</span> SWLS,</span>
+<span id="cb235-4"><a href="selezione-di-un-sottoinsieme-di-item.html#cb235-4" tabindex="-1"></a>  <span class="at">sample.nobs =</span> <span class="dv">215</span>,</span>
+<span id="cb235-5"><a href="selezione-di-un-sottoinsieme-di-item.html#cb235-5" tabindex="-1"></a>  <span class="at">std.lv =</span> <span class="cn">TRUE</span></span>
+<span id="cb235-6"><a href="selezione-di-un-sottoinsieme-di-item.html#cb235-6" tabindex="-1"></a>)</span></code></pre></div>
 <p>Calcoliamo la quantità di informazione fornita da ciascun item. Iniziamo a estrarre dall’oggetto <code>fit</code> la matrice delle saturazioni fattoriali.</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb236-1" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="fu">inspect</span>(fit, <span class="at">what =</span> <span class="st">&quot;std&quot;</span>)<span class="sc">$</span>lambda</span>
-<span id="cb236-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb236-2" aria-hidden="true" tabindex="-1"></a>lambda</span>
-<span id="cb236-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb236-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        F</span></span>
-<span id="cb236-4"><a href="selezione-di-un-sottoinsieme-di-item.html#cb236-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Y1 0.817</span></span>
-<span id="cb236-5"><a href="selezione-di-un-sottoinsieme-di-item.html#cb236-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Y2 0.694</span></span>
-<span id="cb236-6"><a href="selezione-di-un-sottoinsieme-di-item.html#cb236-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Y3 0.726</span></span>
-<span id="cb236-7"><a href="selezione-di-un-sottoinsieme-di-item.html#cb236-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Y4 0.591</span></span>
-<span id="cb236-8"><a href="selezione-di-un-sottoinsieme-di-item.html#cb236-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Y5 0.643</span></span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb236-1" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="fu">inspect</span>(fit, <span class="at">what =</span> <span class="st">&quot;std&quot;</span>)<span class="sc">$</span>lambda</span>
+<span id="cb236-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb236-2" tabindex="-1"></a>lambda</span>
+<span id="cb236-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb236-3" tabindex="-1"></a><span class="co">#&gt;        F</span></span>
+<span id="cb236-4"><a href="selezione-di-un-sottoinsieme-di-item.html#cb236-4" tabindex="-1"></a><span class="co">#&gt; Y1 0.817</span></span>
+<span id="cb236-5"><a href="selezione-di-un-sottoinsieme-di-item.html#cb236-5" tabindex="-1"></a><span class="co">#&gt; Y2 0.694</span></span>
+<span id="cb236-6"><a href="selezione-di-un-sottoinsieme-di-item.html#cb236-6" tabindex="-1"></a><span class="co">#&gt; Y3 0.726</span></span>
+<span id="cb236-7"><a href="selezione-di-un-sottoinsieme-di-item.html#cb236-7" tabindex="-1"></a><span class="co">#&gt; Y4 0.591</span></span>
+<span id="cb236-8"><a href="selezione-di-un-sottoinsieme-di-item.html#cb236-8" tabindex="-1"></a><span class="co">#&gt; Y5 0.643</span></span></code></pre></div>
 <p>Estraiamo da <code>fit</code> le specificità.</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb237-1" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="fu">inspect</span>(fit, <span class="at">what =</span> <span class="st">&quot;std&quot;</span>)<span class="sc">$</span>theta)</span>
-<span id="cb237-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb237-2" aria-hidden="true" tabindex="-1"></a>theta</span>
-<span id="cb237-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb237-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        Y1        Y2        Y3        Y4        Y5 </span></span>
-<span id="cb237-4"><a href="selezione-di-un-sottoinsieme-di-item.html#cb237-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0.3330083 0.5181701 0.4732395 0.6512159 0.5866646</span></span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb237-1" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="fu">inspect</span>(fit, <span class="at">what =</span> <span class="st">&quot;std&quot;</span>)<span class="sc">$</span>theta)</span>
+<span id="cb237-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb237-2" tabindex="-1"></a>theta</span>
+<span id="cb237-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb237-3" tabindex="-1"></a><span class="co">#&gt;        Y1        Y2        Y3        Y4        Y5 </span></span>
+<span id="cb237-4"><a href="selezione-di-un-sottoinsieme-di-item.html#cb237-4" tabindex="-1"></a><span class="co">#&gt; 0.3330083 0.5181701 0.4732395 0.6512159 0.5866646</span></span></code></pre></div>
 <p>Possiamo ora calcolare quantità di informazione degli item facendo il rapporto tra ciascuna saturazione fattoriale innalzata al quadrato e la corrispondente specificità.</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
-<span id="cb238-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(lambda[i]<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> theta[i])</span>
-<span id="cb238-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb238-4"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       Y1 </span></span>
-<span id="cb238-5"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2.002928 </span></span>
-<span id="cb238-6"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        Y2 </span></span>
-<span id="cb238-7"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0.9298683 </span></span>
-<span id="cb238-8"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       Y3 </span></span>
-<span id="cb238-9"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1.113095 </span></span>
-<span id="cb238-10"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        Y4 </span></span>
-<span id="cb238-11"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0.5355891 </span></span>
-<span id="cb238-12"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        Y5 </span></span>
-<span id="cb238-13"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0.7045515</span></span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-1" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb238-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-2" tabindex="-1"></a>  <span class="fu">print</span>(lambda[i]<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> theta[i])</span>
+<span id="cb238-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-3" tabindex="-1"></a>}</span>
+<span id="cb238-4"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-4" tabindex="-1"></a><span class="co">#&gt;       Y1 </span></span>
+<span id="cb238-5"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-5" tabindex="-1"></a><span class="co">#&gt; 2.002928 </span></span>
+<span id="cb238-6"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-6" tabindex="-1"></a><span class="co">#&gt;        Y2 </span></span>
+<span id="cb238-7"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-7" tabindex="-1"></a><span class="co">#&gt; 0.9298683 </span></span>
+<span id="cb238-8"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-8" tabindex="-1"></a><span class="co">#&gt;       Y3 </span></span>
+<span id="cb238-9"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-9" tabindex="-1"></a><span class="co">#&gt; 1.113095 </span></span>
+<span id="cb238-10"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-10" tabindex="-1"></a><span class="co">#&gt;        Y4 </span></span>
+<span id="cb238-11"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-11" tabindex="-1"></a><span class="co">#&gt; 0.5355891 </span></span>
+<span id="cb238-12"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-12" tabindex="-1"></a><span class="co">#&gt;        Y5 </span></span>
+<span id="cb238-13"><a href="selezione-di-un-sottoinsieme-di-item.html#cb238-13" tabindex="-1"></a><span class="co">#&gt; 0.7045515</span></span></code></pre></div>
 <p>Il risultato ottenuto indica che il quarto item è il meno informativo e che il
 quinto item è il secondo meno informativo. Se un solo item deve essere
 eliminato, dunque, elimineremo il quarto item. Se devono essere
@@ -818,8 +690,8 @@ che può essere utilizzato per valutare la relazione tra attendibilità e numero
 scala se il numero di item aumenta da 5 a 20. Poniamo che l’attendibilità della
 scala SWLS costituita da 5 item sia uguale a 0.824. Applicando la formula di
 Spearman-Brown otteniamo la stima seguente.</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb239-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">4</span> <span class="sc">*</span> <span class="fl">0.824</span>) <span class="sc">/</span> ((<span class="dv">4</span> <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fl">0.824</span> <span class="sc">+</span> <span class="dv">1</span>)</span>
-<span id="cb239-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb239-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.9493088</span></span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb239-1" tabindex="-1"></a>(<span class="dv">4</span> <span class="sc">*</span> <span class="fl">0.824</span>) <span class="sc">/</span> ((<span class="dv">4</span> <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fl">0.824</span> <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb239-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb239-2" tabindex="-1"></a><span class="co">#&gt; [1] 0.9493088</span></span></code></pre></div>
 </div>
 <div class="example">
 <p><span id="exm:unlabeled-div-34" class="example"><strong>Esempio 18.3  </strong></span>Possiamo giungere al risultato precedente in un altro modo. Supponiamo che i 15 item aggiuntivi abbiano le stesse saturazioni fattoriali medie (<span class="math inline">\(\bar{\lambda}\)</span>) e le stesse varianze specifiche medie (<span class="math inline">\(\bar{\psi}\)</span>) rispetto agli item originali.
@@ -829,56 +701,56 @@ Mediante gli item di cui disponiamo, stimiamo l’attendibilità di un
 \rho_1 = \frac{\bar{\lambda}^2}{\bar{\lambda}^2 + \bar{\psi}},
 \]</span></p>
 <p>ovvero otteniamo la stima di 0.48:</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb240-1" aria-hidden="true" tabindex="-1"></a>rho_1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(lambda)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> (<span class="fu">mean</span>(lambda)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">mean</span>(theta))</span>
-<span id="cb240-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb240-2" aria-hidden="true" tabindex="-1"></a>rho_1</span>
-<span id="cb240-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb240-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.4845124</span></span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb240-1" tabindex="-1"></a>rho_1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(lambda)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> (<span class="fu">mean</span>(lambda)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">mean</span>(theta))</span>
+<span id="cb240-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb240-2" tabindex="-1"></a>rho_1</span>
+<span id="cb240-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb240-3" tabindex="-1"></a><span class="co">#&gt; [1] 0.4845124</span></span></code></pre></div>
 <p>L’attendibilità predetta di un test costituito da 20 item sarà dunque
 uguale a</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb241-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">20</span> <span class="sc">*</span> rho_1) <span class="sc">/</span> ((<span class="dv">20</span> <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> rho_1 <span class="sc">+</span> <span class="dv">1</span>)</span>
-<span id="cb241-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb241-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.9494904</span></span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb241-1" tabindex="-1"></a>(<span class="dv">20</span> <span class="sc">*</span> rho_1) <span class="sc">/</span> ((<span class="dv">20</span> <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> rho_1 <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb241-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb241-2" tabindex="-1"></a><span class="co">#&gt; [1] 0.9494904</span></span></code></pre></div>
 <p>il che replica il risultato ottenuto precedentemente.</p>
 </div>
 <div class="example">
 <p><span id="exm:unlabeled-div-35" class="example"><strong>Esempio 18.4  </strong></span>Un altro modo ancora per ottenere lo stesso risultato è quello di utilizzare
 un modello mono-fattoriale per item paralleli.</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb242-1" aria-hidden="true" tabindex="-1"></a>mod_2 <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb242-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb242-2" aria-hidden="true" tabindex="-1"></a><span class="st">  F =~ a*Y1 + a*Y2 + a*Y3 + a*Y4 + a*Y5</span></span>
-<span id="cb242-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb242-3" aria-hidden="true" tabindex="-1"></a><span class="st">  Y1 ~~ b*Y1</span></span>
-<span id="cb242-4"><a href="selezione-di-un-sottoinsieme-di-item.html#cb242-4" aria-hidden="true" tabindex="-1"></a><span class="st">  Y2 ~~ b*Y2</span></span>
-<span id="cb242-5"><a href="selezione-di-un-sottoinsieme-di-item.html#cb242-5" aria-hidden="true" tabindex="-1"></a><span class="st">  Y3 ~~ b*Y3</span></span>
-<span id="cb242-6"><a href="selezione-di-un-sottoinsieme-di-item.html#cb242-6" aria-hidden="true" tabindex="-1"></a><span class="st">  Y4 ~~ b*Y4</span></span>
-<span id="cb242-7"><a href="selezione-di-un-sottoinsieme-di-item.html#cb242-7" aria-hidden="true" tabindex="-1"></a><span class="st">  Y5 ~~ b*Y5</span></span>
-<span id="cb242-8"><a href="selezione-di-un-sottoinsieme-di-item.html#cb242-8" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb242-1" tabindex="-1"></a>mod_2 <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb242-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb242-2" tabindex="-1"></a><span class="st">  F =~ a*Y1 + a*Y2 + a*Y3 + a*Y4 + a*Y5</span></span>
+<span id="cb242-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb242-3" tabindex="-1"></a><span class="st">  Y1 ~~ b*Y1</span></span>
+<span id="cb242-4"><a href="selezione-di-un-sottoinsieme-di-item.html#cb242-4" tabindex="-1"></a><span class="st">  Y2 ~~ b*Y2</span></span>
+<span id="cb242-5"><a href="selezione-di-un-sottoinsieme-di-item.html#cb242-5" tabindex="-1"></a><span class="st">  Y3 ~~ b*Y3</span></span>
+<span id="cb242-6"><a href="selezione-di-un-sottoinsieme-di-item.html#cb242-6" tabindex="-1"></a><span class="st">  Y4 ~~ b*Y4</span></span>
+<span id="cb242-7"><a href="selezione-di-un-sottoinsieme-di-item.html#cb242-7" tabindex="-1"></a><span class="st">  Y5 ~~ b*Y5</span></span>
+<span id="cb242-8"><a href="selezione-di-un-sottoinsieme-di-item.html#cb242-8" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
 <p>Adattiamo il modello ai dati.</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb243-1" aria-hidden="true" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> lavaan<span class="sc">::</span><span class="fu">cfa</span>(</span>
-<span id="cb243-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb243-2" aria-hidden="true" tabindex="-1"></a>  mod_2,</span>
-<span id="cb243-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb243-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample.cov =</span> SWLS,</span>
-<span id="cb243-4"><a href="selezione-di-un-sottoinsieme-di-item.html#cb243-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample.nobs =</span> <span class="dv">215</span>,</span>
-<span id="cb243-5"><a href="selezione-di-un-sottoinsieme-di-item.html#cb243-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">std.lv =</span> <span class="cn">TRUE</span></span>
-<span id="cb243-6"><a href="selezione-di-un-sottoinsieme-di-item.html#cb243-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb243-1" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> lavaan<span class="sc">::</span><span class="fu">cfa</span>(</span>
+<span id="cb243-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb243-2" tabindex="-1"></a>  mod_2,</span>
+<span id="cb243-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb243-3" tabindex="-1"></a>  <span class="at">sample.cov =</span> SWLS,</span>
+<span id="cb243-4"><a href="selezione-di-un-sottoinsieme-di-item.html#cb243-4" tabindex="-1"></a>  <span class="at">sample.nobs =</span> <span class="dv">215</span>,</span>
+<span id="cb243-5"><a href="selezione-di-un-sottoinsieme-di-item.html#cb243-5" tabindex="-1"></a>  <span class="at">std.lv =</span> <span class="cn">TRUE</span></span>
+<span id="cb243-6"><a href="selezione-di-un-sottoinsieme-di-item.html#cb243-6" tabindex="-1"></a>)</span></code></pre></div>
 <p>Estraiamo dall’oggetto <code>fit2</code> le saturazioni fattoriali.</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb244-1" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="fu">inspect</span>(fit2, <span class="at">what =</span> <span class="st">&quot;std&quot;</span>)<span class="sc">$</span>lambda</span>
-<span id="cb244-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb244-2" aria-hidden="true" tabindex="-1"></a>lambda</span>
-<span id="cb244-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb244-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        F</span></span>
-<span id="cb244-4"><a href="selezione-di-un-sottoinsieme-di-item.html#cb244-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Y1 0.689</span></span>
-<span id="cb244-5"><a href="selezione-di-un-sottoinsieme-di-item.html#cb244-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Y2 0.689</span></span>
-<span id="cb244-6"><a href="selezione-di-un-sottoinsieme-di-item.html#cb244-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Y3 0.689</span></span>
-<span id="cb244-7"><a href="selezione-di-un-sottoinsieme-di-item.html#cb244-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Y4 0.689</span></span>
-<span id="cb244-8"><a href="selezione-di-un-sottoinsieme-di-item.html#cb244-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Y5 0.689</span></span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb244-1" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="fu">inspect</span>(fit2, <span class="at">what =</span> <span class="st">&quot;std&quot;</span>)<span class="sc">$</span>lambda</span>
+<span id="cb244-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb244-2" tabindex="-1"></a>lambda</span>
+<span id="cb244-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb244-3" tabindex="-1"></a><span class="co">#&gt;        F</span></span>
+<span id="cb244-4"><a href="selezione-di-un-sottoinsieme-di-item.html#cb244-4" tabindex="-1"></a><span class="co">#&gt; Y1 0.689</span></span>
+<span id="cb244-5"><a href="selezione-di-un-sottoinsieme-di-item.html#cb244-5" tabindex="-1"></a><span class="co">#&gt; Y2 0.689</span></span>
+<span id="cb244-6"><a href="selezione-di-un-sottoinsieme-di-item.html#cb244-6" tabindex="-1"></a><span class="co">#&gt; Y3 0.689</span></span>
+<span id="cb244-7"><a href="selezione-di-un-sottoinsieme-di-item.html#cb244-7" tabindex="-1"></a><span class="co">#&gt; Y4 0.689</span></span>
+<span id="cb244-8"><a href="selezione-di-un-sottoinsieme-di-item.html#cb244-8" tabindex="-1"></a><span class="co">#&gt; Y5 0.689</span></span></code></pre></div>
 <p>Estraiamo da <code>fit2</code> le specificità.</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb245-1" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="fu">inspect</span>(fit2, <span class="at">what =</span> <span class="st">&quot;std&quot;</span>)<span class="sc">$</span>theta)</span>
-<span id="cb245-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb245-2" aria-hidden="true" tabindex="-1"></a>theta</span>
-<span id="cb245-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb245-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        Y1        Y2        Y3        Y4        Y5 </span></span>
-<span id="cb245-4"><a href="selezione-di-un-sottoinsieme-di-item.html#cb245-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0.5247361 0.5247361 0.5247361 0.5247361 0.5247361</span></span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb245-1" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="fu">inspect</span>(fit2, <span class="at">what =</span> <span class="st">&quot;std&quot;</span>)<span class="sc">$</span>theta)</span>
+<span id="cb245-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb245-2" tabindex="-1"></a>theta</span>
+<span id="cb245-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb245-3" tabindex="-1"></a><span class="co">#&gt;        Y1        Y2        Y3        Y4        Y5 </span></span>
+<span id="cb245-4"><a href="selezione-di-un-sottoinsieme-di-item.html#cb245-4" tabindex="-1"></a><span class="co">#&gt; 0.5247361 0.5247361 0.5247361 0.5247361 0.5247361</span></span></code></pre></div>
 <p>Calcoliamo l’attendibilità dell’item “medio” usando <span class="math inline">\(\lambda\)</span> e <span class="math inline">\(\psi\)</span> (chiamato <code>theta</code> da <code>lavaan</code>).</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb246-1" aria-hidden="true" tabindex="-1"></a>rho_1 <span class="ot">&lt;-</span> lambda[<span class="dv">1</span>]<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> (lambda[<span class="dv">1</span>]<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> theta[<span class="dv">2</span>])</span>
-<span id="cb246-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb246-2" aria-hidden="true" tabindex="-1"></a>rho_1</span>
-<span id="cb246-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb246-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        Y2 </span></span>
-<span id="cb246-4"><a href="selezione-di-un-sottoinsieme-di-item.html#cb246-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0.4752639</span></span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb246-1" tabindex="-1"></a>rho_1 <span class="ot">&lt;-</span> lambda[<span class="dv">1</span>]<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> (lambda[<span class="dv">1</span>]<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> theta[<span class="dv">2</span>])</span>
+<span id="cb246-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb246-2" tabindex="-1"></a>rho_1</span>
+<span id="cb246-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb246-3" tabindex="-1"></a><span class="co">#&gt;        Y2 </span></span>
+<span id="cb246-4"><a href="selezione-di-un-sottoinsieme-di-item.html#cb246-4" tabindex="-1"></a><span class="co">#&gt; 0.4752639</span></span></code></pre></div>
 <p>Posso ora applicare la formula di Spearman-Brown.</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb247-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">20</span> <span class="sc">*</span> rho_1) <span class="sc">/</span> ((<span class="dv">20</span> <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> rho_1 <span class="sc">+</span> <span class="dv">1</span>)</span>
-<span id="cb247-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb247-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        Y2 </span></span>
-<span id="cb247-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb247-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0.9476834</span></span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb247-1" tabindex="-1"></a>(<span class="dv">20</span> <span class="sc">*</span> rho_1) <span class="sc">/</span> ((<span class="dv">20</span> <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> rho_1 <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb247-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb247-2" tabindex="-1"></a><span class="co">#&gt;        Y2 </span></span>
+<span id="cb247-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb247-3" tabindex="-1"></a><span class="co">#&gt; 0.9476834</span></span></code></pre></div>
 <p>Il risultato è praticamente identico a quelli trovati in precedenza.</p>
 </div>
 </div>
@@ -895,9 +767,9 @@ p = \frac{\rho_p (1-\rho_1)}{\rho_1(1-\rho_p)},
 <span class="math inline">\(\omega = 0.824\)</span>. Quanti item devono essere aggiunti se si vuole
 raggiungere un livello di attendibilità pari a <span class="math inline">\(0.95\)</span>?</p>
 <p>Ponendo <span class="math inline">\(\rho_p = 0.95\)</span> e <span class="math inline">\(\rho_1= 0.479\)</span>, in base alla <a href="selezione-di-un-sottoinsieme-di-item.html#eq:s-b-inv">(18.2)</a> si ottiene che</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb248-1" aria-hidden="true" tabindex="-1"></a>(.<span class="dv">95</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> rho_1)) <span class="sc">/</span> (rho_1 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> .<span class="dv">95</span>))</span>
-<span id="cb248-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb248-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       Y2 </span></span>
-<span id="cb248-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb248-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20.97779</span></span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="selezione-di-un-sottoinsieme-di-item.html#cb248-1" tabindex="-1"></a>(.<span class="dv">95</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> rho_1)) <span class="sc">/</span> (rho_1 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> .<span class="dv">95</span>))</span>
+<span id="cb248-2"><a href="selezione-di-un-sottoinsieme-di-item.html#cb248-2" tabindex="-1"></a><span class="co">#&gt;       Y2 </span></span>
+<span id="cb248-3"><a href="selezione-di-un-sottoinsieme-di-item.html#cb248-3" tabindex="-1"></a><span class="co">#&gt; 20.97779</span></span></code></pre></div>
 <p>il test dovrà essere costituito da 21 item.</p>
 </div>
 </div>
@@ -974,7 +846,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -304,10 +304,10 @@ Per un modello congenerico, la varianza del punteggio totale $Y$ è uguale a:
 
 \begin{equation}
 \begin{aligned}
-  \mathbb{V}(Y) &= \V\left[ \sum_i  \left(\lambda_i \xi + \delta_i\right)  \right]\notag\\
-  &= \V\left[  (\lambda_1 \xi + \delta_1) + (\lambda_2 \xi + \delta_2) + \dots +  (\lambda_p \xi + \delta_p)  \right]\notag\\
-  &= \V\left[ \left( \sum_i \lambda_i\right) \xi + \sum_i \delta_i\right]\notag\\
-  &=  \left(\sum_i \lambda_i\right)^2 \underbrace{\V(\xi)}_{=1} +  \sum_i  \V(\delta_i)\notag\\
+  \mathbb{V}(Y) &= \mathbb{V}\left[ \sum_i  \left(\lambda_i \xi + \delta_i\right)  \right]\notag\\
+  &= \mathbb{V}\left[  (\lambda_1 \xi + \delta_1) + (\lambda_2 \xi + \delta_2) + \dots +  (\lambda_p \xi + \delta_p)  \right]\notag\\
+  &= \mathbb{V}\left[ \left( \sum_i \lambda_i\right) \xi + \sum_i \delta_i\right]\notag\\
+  &=  \left(\sum_i \lambda_i\right)^2 \underbrace{\mathbb{V}(\xi)}_{=1} +  \sum_i  \mathbb{V}(\delta_i)\notag\\
   &= \left(\sum_i \lambda_i\right)^2 + \sum_i \psi_{ii}.\notag
 \end{aligned}
 \end{equation}
@@ -495,7 +495,7 @@ La stima dell'attendibilità fornita dalla \@ref(eq:alpha-camp) trova il suo cor
 \begin{equation}
 \begin{aligned}
 \alpha &= \frac{p}{p-1}\left(1-\frac{\sum_{i=1}^p \sigma_{ii}}{\sigma_Y^2}\right)
-&= \frac{p}{p-1}\frac{\sum_{i\neq k}^p \mbox{Cov}(X_i, X_k)}{\V(Y)}
+&= \frac{p}{p-1}\frac{\sum_{i\neq k}^p \mbox{Cov}(X_i, X_k)}{\mathbb{V}(Y)}
 \end{aligned}
 (\#eq:alpha-pop)
 \end{equation}

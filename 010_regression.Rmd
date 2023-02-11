@@ -14,7 +14,7 @@ library("lavaan")
 library("semPlot")
 ```
 
-Conoscere l'analisi di regressione aiuta a capire la teoria classica dei test, l'analisi fattoriale e i modelli di equazioni strutturali. Sebbene le tecniche dell'analisi di regressione analizzino solo le variabili osservate, i principi  della regressione costituiscono la base delle tecniche più avanzate che includono anche le variabili latenti.
+La conoscenza dell'analisi di regressione è necessaria per capire la teoria classica dei test, l'analisi fattoriale e i modelli di equazioni strutturali. Sebbene le tecniche dell'analisi di regressione analizzino solo le variabili osservate, i principi  della regressione costituiscono la base delle tecniche più avanzate che includono anche le variabili latenti.
 
 ## Regressione bivariata
 

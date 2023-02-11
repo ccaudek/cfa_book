@@ -89,13 +89,13 @@ $i=1, \dots, p$, anch'essi inosservabili e di natura residua.
 Le variabili inosservabili a fattore comune $\xi_j$, con
 $j=1, \dots, m$, in quanto latenti, non possiedono unità di misura.
 Pertanto, per semplicità si assume che abbiano media zero,
-$\E (\xi_j)=0$, abbiano varianza unitaria,
-$\V (\xi_j)= \E (\xi_j^2) - [\E (\xi_j)]^2=1$, e siano incorrelate
+$\mathbb{E}(\xi_j)=0$, abbiano varianza unitaria,
+$\mathbb{V} (\xi_j)= \mathbb{E}(\xi_j^2) - [\mathbb{E}(\xi_j)]^2=1$, e siano incorrelate
 tra loro, $\mbox{Cov}(\xi_j, \xi_h)=0$, con $j, h = 1, \dots, m; \;j \neq h$.
 Si assume inoltre che le variabili a fattore specifico $\delta_i$ siano
 tra loro incorrelate, $\mbox{Cov}(\delta_i,\delta_k)=0$, con
 $i, k = 1, \dots, p, \; i \neq k$, abbiano media zero,
-$\E (\delta_i)=0$, e varianza uguale a $\V (\delta_i) = \psi_{ii}$.
+$\mathbb{E}(\delta_i)=0$, e varianza uguale a $\mathbb{V} (\delta_i) = \psi_{ii}$.
 La varianza $\psi_{ii}$ è detta *varianza specifica* o *unicità* della
 $i$-esima variabile manifesta $Y_i$. Si assume infine che i fattori
 specifici siano linearmente incorrelati con i fattori comuni, ovvero
@@ -116,7 +116,6 @@ il modello multifattoriale diventa +
   Y_3 &= \lambda_{31} \xi_1 + \lambda_{32} \xi_2 + \delta_3,\notag\\
   Y_4 &= \lambda_{41} \xi_1 + \lambda_{42} \xi_2 + \delta_4,\notag\\
   Y_5 &= \lambda_{51} \xi_1 + \lambda_{52} \xi_2 + \delta_5.\notag
-(\#eq:plurifattore2)
 \end{aligned}
 \end{equation}
 
@@ -125,18 +124,19 @@ il modello multifattoriale diventa +
 Nell'ipotesi che le variabili $Y_i$ abbiano media nulla, la covarianza
 tra $Y_i$ e $\xi_j$ è uguale alla saturazione fattoriale $\lambda_{ij}$:
 
+$$
 \begin{equation}
 \begin{aligned}
-  \mbox{Cov}(Y_i, \xi_j) &= \E(Y_i \xi_j)\notag\\
-  &=\E\left[(\lambda_{i1} \xi_1 + \dots + \lambda_{im} \xi_m + \delta_i)\xi_j \right]\notag\\
-  &= \lambda_{i1}\underbrace{\E(\xi_1\xi_j)}_{=0} + \dots + 
-\lambda_{ij}\underbrace{\E(\xi_j^2)}_{=1} + \dots \notag\\
-& \; + \lambda_{im}\underbrace{\E(\xi_m\xi_j)}_{=0} +
-  \underbrace{\E(\delta_i \xi_j)}_{=0}\notag\\
+  \mbox{Cov}(Y_i, \xi_j) &= \mathbb{E}(Y_i \xi_j)\notag\\
+  &=\mathbb{E}\left[(\lambda_{i1} \xi_1 + \dots + \lambda_{im} \xi_m + \delta_i)\xi_j \right]\notag\\
+  &= \lambda_{i1}\underbrace{\mathbb{E}(\xi_1\xi_j)}_{=0} + \dots + 
+\lambda_{ij}\underbrace{\mathbb{E}(\xi_j^2)}_{=1} + \dots \notag\\
+& \; + \lambda_{im}\underbrace{\mathbb{E}(\xi_m\xi_j)}_{=0} +
+  \underbrace{\mathbb{E}(\delta_i \xi_j)}_{=0}\notag\\
   &= \lambda_{ij}.\notag
-  (\#eq:cov-multifatt-orto)
 \end{aligned}
 \end{equation}
+$$
 
 Anche nel modello multifattoriale, dunque, le saturazioni fattoriali rappresentano le covarianze tra le variabili e i fattori:
 
@@ -160,8 +160,8 @@ varianza di $Y_i$ è uguale a
 
 \begin{equation}
 \begin{aligned}
-  \V (Y_i) 
-  &=\E\left[ (\lambda_{i1} \xi_1 + \dots +
+  \mathbb{V} (Y_i) 
+  &=\mathbb{E}\left[ (\lambda_{i1} \xi_1 + \dots +
     \lambda_{im} \xi_m + \delta_i)^2 \right].
 \end{aligned}
 (\#eq:eq-var-multifatt)
@@ -170,21 +170,21 @@ varianza di $Y_i$ è uguale a
 Come si sviluppa il polinomio precedente? Il quadrato di un polinomio è uguale alla somma
 dei quadrati di tutti i termini più il doppio prodotto di ogni termine
 per ciascuno di quelli che lo seguono. Il valore atteso del quadrato del
-primo termine è uguale a $\lambda_{i1}^2\E(\xi_1^2)$ ma, essendo la
+primo termine è uguale a $\lambda_{i1}^2\mathbb{E}(\xi_1^2)$ ma, essendo la
 varianza di $\xi_1$ uguale a $1$, otteniamo semplicemente
 $\lambda_{i1}^2$. Lo stesso vale per i quadrati di tutti i termini
-seguenti tranne l'ultimo. Infatti, $\E(\delta_i^2)=\psi_{ii}$. Per quel
+seguenti tranne l'ultimo. Infatti, $\mathbb{E}(\delta_i^2)=\psi_{ii}$. Per quel
 che riguarda i doppi prodotti, sono tutti nulli. In primo luogo perché,
 nel caso di fattori ortogonali, la covarianza tra i fattori comuni è
-nulla, $\E(\xi_j \xi_h)=0$, con $j \neq h$. In secondo luogo perché il
+nulla, $\mathbb{E}(\xi_j \xi_h)=0$, con $j \neq h$. In secondo luogo perché il
 fattori comuni cono incorrelati con i fattori specifici, quindi
-$\E(\delta_i \xi_j)=0$.
+$\mathbb{E}(\delta_i \xi_j)=0$.
 
 In conclusione, 
 
 \begin{equation}
 \begin{aligned}
-  \V(Y_i) &= \lambda_{i1}^2 + \lambda_{i2}^2 + \dots + \lambda_{im}^2 + \psi_{ii} \notag\\
+  \mathbb{V}(Y_i) &= \lambda_{i1}^2 + \lambda_{i2}^2 + \dots + \lambda_{im}^2 + \psi_{ii} \notag\\
   &= \sum_{j=1}^m \lambda_{ij}^2 + \psi_{ii}\notag\\
   &= h_i^2 + \psi_{ii}\notag\\
   &=\text{communalità} + \text{unicità},\notag
@@ -206,19 +206,19 @@ covarianza tra $Y_1$ e $Y_2$, ad esempio, è uguale a:
 
 \begin{equation}
 \begin{aligned}
-  \mbox{Cov}(Y_1, Y_2) &= \E\left( Y_1 Y_2\right) \notag\\
-  &= \E \left[ 
+  \mbox{Cov}(Y_1, Y_2) &= \mathbb{E}\left( Y_1 Y_2\right) \notag\\
+  &= \mathbb{E}\left[ 
   (\lambda_{11} \xi_1 + \lambda_{12} \xi_2 + \delta_1)
    (\lambda_{21} \xi_1 + \lambda_{22} \xi_2 +  \delta_2)
   \right]\notag\\
-  &= \lambda_{11} \lambda_{21} \E (\xi_1^2) +
-      \lambda_{11} \lambda_{22} \E (\xi_1 \xi_2) +\notag 
-      \lambda_{11} \E (\xi_1 \delta_2) +\notag\\
-    &\quad \lambda_{12} \lambda_{21}\E(\xi_1 \xi_2)\, + 
-      \lambda_{12} \lambda_{22}\E(\xi^2_2)\, + 
-      \lambda_{12} \E (\xi_2\delta_2) +\notag\\
-    &\quad \lambda_{21} \E(\xi_1\delta_1) +\notag 
-     \lambda_{22} \E(\xi_2\delta_1) + \E(\delta_1 \delta_2)\notag\\
+  &= \lambda_{11} \lambda_{21} \mathbb{E}(\xi_1^2) +
+      \lambda_{11} \lambda_{22} \mathbb{E}(\xi_1 \xi_2) +\notag 
+      \lambda_{11} \mathbb{E}(\xi_1 \delta_2) +\notag\\
+    &\quad \lambda_{12} \lambda_{21}\mathbb{E}(\xi_1 \xi_2)\, + 
+      \lambda_{12} \lambda_{22}\mathbb{E}(\xi^2_2)\, + 
+      \lambda_{12} \mathbb{E}(\xi_2\delta_2) +\notag\\
+    &\quad \lambda_{21} \mathbb{E}(\xi_1\delta_1) +\notag 
+     \lambda_{22} \mathbb{E}(\xi_2\delta_1) + \mathbb{E}(\delta_1 \delta_2)\notag\\
    &= \lambda_{11} \lambda_{21} + \lambda_{12} \lambda_{22}.\notag
 \end{aligned}
 \end{equation}
@@ -393,18 +393,19 @@ $$
 Poniamoci il problema di trovare la
 covarianza teorica tra la variabile manifesta $Y_i$ e il fattore comune
 $\xi_j$. Come in precedenza, il problema si riduce a quello di trovare
-$\E(Y_i \xi_j)$. Ne segue che 
+$\mathbb{E}(Y_i \xi_j)$. Ne segue che 
 
+$$
 \begin{equation}
 \begin{aligned}
-  \mbox{Cov}(Y_i, \xi_j) &= \E(Y_i \xi_j)\notag\\
-  &=\E\left[(\lambda_{i1} \xi_1 + \dots + \lambda_{ij} \xi_j + \dots + \lambda_{im} \xi_m + \delta_i)\xi_j \right]\notag\\
-  &= \lambda_{i1}\underbrace{\E(\xi_1\xi_j)}_{\neq 0} + \dots + \lambda_{ij}\underbrace{\E(\xi_j^2)}_{=1} + \dots \notag\\
-& \quad + \lambda_{im}\underbrace{\E(\xi_m\xi_j)}_{\neq 0} + \underbrace{\E(\delta_i \xi_j)}_{=0}\notag\\
+  \mbox{Cov}(Y_i, \xi_j) &= \mathbb{E}(Y_i \xi_j)\notag\\
+  &=\mathbb{E}\left[(\lambda_{i1} \xi_1 + \dots + \lambda_{ij} \xi_j + \dots + \lambda_{im} \xi_m + \delta_i)\xi_j \right]\notag\\
+  &= \lambda_{i1}\underbrace{\mathbb{E}(\xi_1\xi_j)}_{\neq 0} + \dots + \lambda_{ij}\underbrace{\mathbb{E}(\xi_j^2)}_{=1} + \dots \notag\\
+& \quad + \lambda_{im}\underbrace{\mathbb{E}(\xi_m\xi_j)}_{\neq 0} + \underbrace{\mathbb{E}(\delta_i \xi_j)}_{=0}\notag\\
   &= \lambda_{ij} + \lambda_{i1} \mbox{Cov}(\xi_1, \xi_j) + \dots + \lambda_{im} \mbox{Cov}(\xi_m, \xi_j).
-(\#eq:cov-multifatt-obli)
 \end{aligned}
 \end{equation}
+$$
 
 Ad esempio, nel caso di tre fattori comuni $\xi_1, \xi_2, \xi_3$, la
 covarianza tra $Y_1$ e $\xi_{1}$ diventa
@@ -418,20 +419,20 @@ $$
 Poniamoci ora il problema di trovare la varianza teorica della variabile
 manifesta $Y_i$. In base al modello fattoriale, la variabile $Y_i$ è
 specificata come nella \@ref(eq:mod-multifact). La varianza di $Y_i$ è
-$\V(Y_i) = \E(Y_i^2) -[\E(Y_i)]^2$. Però, avendo espresso $Y_i$ nei
+$\mathbb{V}(Y_i) = \mathbb{E}(Y_i^2) -[\mathbb{E}(Y_i)]^2$. Però, avendo espresso $Y_i$ nei
 termini della differenza dalla sua media, l'espressione della varianza
-si riduce a $\V(Y_i) = \E(Y_i^2)$. Dobbiamo dunque sviluppare
+si riduce a $\mathbb{V}(Y_i) = \mathbb{E}(Y_i^2)$. Dobbiamo dunque sviluppare
 l'espressione
 
 $$
-\E(Y_i^2) = \E[(\lambda_{i1} \xi_1 + \dots + \lambda_{im} \xi_m + \delta_i)^2].
+\mathbb{E}(Y_i^2) = \mathbb{E}[(\lambda_{i1} \xi_1 + \dots + \lambda_{im} \xi_m + \delta_i)^2].
 $$
 
 In conclusione, la varianza teorica di $Y_i$ è uguale a 
 
 \begin{equation}
 \begin{split}
-\V(Y_i) &= \lambda_{i1}^2 + \lambda_{i2}^2 + \dots + \lambda_{im}^2  + \\
+\mathbb{V}(Y_i) &= \lambda_{i1}^2 + \lambda_{i2}^2 + \dots + \lambda_{im}^2  + \\
 &\quad 2 \lambda_{i1} \lambda_{i2} \mbox{Cov}(\xi_1, \xi_2) + \dots + 2 \lambda_{i,m-1} \lambda_{im} \mbox{Cov}(\xi_{m-1}, \xi_m) + \\
 &\quad \psi_{ii}.\notag
 \end{split}
@@ -442,7 +443,7 @@ varianza di $Y_1$ è
 
 \begin{equation}
 \begin{split}
-\V(Y_1) = &\lambda_{11}^2 + \lambda_{12}^2 + \lambda_{13}^2 +\\ 
+\mathbb{V}(Y_1) = &\lambda_{11}^2 + \lambda_{12}^2 + \lambda_{13}^2 +\\ 
 &\quad 2 \lambda_{11} \lambda_{12} \mbox{Cov}(\xi_1, \xi_2) + \\ 
 &\quad 2 \lambda_{11} \lambda_{13} \mbox{Cov}(\xi_1, \xi_3) + \\ 
 &\quad 2 \lambda_{12} \lambda_{13} \mbox{Cov}(\xi_2, \xi_3) + \\ 
@@ -457,8 +458,8 @@ correlati e calcoliamo la covarianza tra $Y_1$ e $Y_2$:
 
 \begin{equation}
 \begin{aligned}
-\E(Y_1 Y_2) =\E[(&\lambda_{11}\xi_1 + \lambda_{12}\xi_2+\delta_1) (\lambda_{21}\xi_1 + \lambda_{22}\xi_2+\delta_2)]\notag\\
-=\E( 
+\mathbb{E}(Y_1 Y_2) =\mathbb{E}[(&\lambda_{11}\xi_1 + \lambda_{12}\xi_2+\delta_1) (\lambda_{21}\xi_1 + \lambda_{22}\xi_2+\delta_2)]\notag\\
+=\mathbb{E}( 
 &\lambda_{11}\lambda_{21}\xi_1^2 +
 \lambda_{11}\lambda_{22}\xi_1\xi_2 +
 \lambda_{11}\xi_1\delta_2 +\notag\\
@@ -471,7 +472,7 @@ correlati e calcoliamo la covarianza tra $Y_1$ e $Y_2$:
 \end{aligned}
 \end{equation}
 
-Distribuendo l'operatore di valore atteso, dato che $\E(\xi^2)=1$ e $\E(\xi \delta)=0$, otteniamo
+Distribuendo l'operatore di valore atteso, dato che $\mathbb{E}(\xi^2)=1$ e $\mathbb{E}(\xi \delta)=0$, otteniamo
 
 $$
 \mbox{Cov}(Y_1, Y_2) = \lambda_{11} \lambda_{21} + \lambda_{12} \lambda_{22} + 

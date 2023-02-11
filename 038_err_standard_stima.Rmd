@@ -140,9 +140,7 @@ $$
 T = \alpha + \beta X + \varepsilon.
 $$ 
 
-Se esprimiamo le variabili come
-deviazioni dalla media, $x = X - \bar{X}$ e $\tau = T - \E(T)$, allora
-l'intercetta diventa uguale a zero e il modello diventa
+Se esprimiamo le variabili come deviazioni dalla media, $x = X - \bar{X}$ e $\tau = T - \mathbb{E}(T)$, allora l'intercetta diventa uguale a zero e il modello diventa
 $\tau = \beta x + \varepsilon$, ovvero $\hat{\tau} = \beta x.$ Il
 problema è quello di calcolare il coefficiente $\beta$.
 
@@ -155,26 +153,25 @@ Possiamo dunque scrivere il modello di regressione nel modo seguente:
 (\#eq:hat-t-1)
 \end{equation}
 
-La correlazione tra $x$ (o $X$) e $\tau$ (o $T$) è uguale a 
-$\rho_{\tau x} = \frac{\sigma_{\tau x}}{\sigma_x \sigma_{\tau}}$. 
-Dunque $\sigma_{\tau x} = \rho_{\tau x}\sigma_x \sigma_{\tau}$ e l'equazione precedente diventa
-  
+La correlazione tra $x$ (o $X$) e $\tau$ (o $T$) è uguale a $\rho_{\tau x} = \frac{\sigma_{\tau x}}{\sigma_x \sigma_{\tau}}$. Dunque $\sigma_{\tau x} = \rho_{\tau x}\sigma_x \sigma_{\tau}$ e l'equazione precedente diventa 
+
+$$
 \begin{equation}
 \begin{aligned}
-\hat{\tau} %&= \frac{\sigma_{TX}}{\sigma^2_X} X  \notag\\[10pt]
-&= \frac{\rho_{\tau x}\sigma_x \sigma_{\tau}}{\sigma^2_x} x  \notag\\
+\hat{\tau} &= \frac{\sigma_{TX}}{\sigma^2_X} X  \notag\\
+&= \frac{\rho_{\tau x}\sigma_x \sigma_{\tau}}{\sigma^2_x} x \notag\\
 &= \rho_{\tau x}\frac{\sigma_{\tau}}{\sigma_x} x. \notag
-(\#eq:hat-t-2)
 \end{aligned}
 \end{equation}
+$$
 
-In base alla definizione di
-attendibilità, la varianza del punteggio vero è
+In base alla definizione di attendibilità, la varianza del punteggio vero è
 $\sigma^2_{\tau} = \sigma^2_x \rho_{xx^\prime}$. Dunque, la deviazione
 standard del punteggio vero diventa
 $\sigma_{\tau} = \sigma_x \sqrt{\rho_{xx^\prime}}$. Sostituendo questo
 risultato nell'equazione precedente otteniamo 
 
+$$
 \begin{equation}
 \begin{aligned}
 \hat{\tau} &= \rho_{\tau x}\frac{\sigma_x \sqrt{\rho_{xx^\prime}}}{\sigma_x} x
@@ -182,17 +179,19 @@ risultato nell'equazione precedente otteniamo
 &=  \rho_{\tau x}  \sqrt{\rho_{xx^\prime}} x. \notag
 \end{aligned}
 \end{equation}
+$$
 
 In precedenza abbiamo visto che $\rho^2_{\tau x} = \rho_{xx^\prime}$, dunque
 
+$$
 \begin{equation}
 \begin{aligned}
 \hat{\tau} &= \rho_{\tau x} \sqrt{\rho_{xx^\prime}} x \notag\\
         &= \sqrt{\rho_{xx^\prime}} \sqrt{\rho_{xx^\prime}} x \notag\\
-        &= \rho_{xx^\prime} x.
-(\#eq:hat-t-part)
+        &= \rho_{xx^\prime} x.\notag
 \end{aligned}
 \end{equation}
+$$
 
 In conclusione, una stima del punteggio vero si ottiene moltiplicando il punteggio osservato, espresso come deviazione dalla media, per il coefficiente di attendibilità.
 
@@ -204,6 +203,7 @@ $$
 
 laddove $\hat{T}^\prime$ è la stima del punteggio vero grezzo. Sviluppando otteniamo
 
+$$
 \begin{equation}
 \begin{aligned}
 \hat{T} &= \rho_{XX^\prime} (X - \bar{X}) + \bar{X}\notag\\
@@ -213,6 +213,7 @@ laddove $\hat{T}^\prime$ è la stima del punteggio vero grezzo. Sviluppando otte
 &= \bar{X} + \rho_{XX'} (X - \bar{X}).\notag
 \end{aligned}
 \end{equation}
+$$
 
 Per i dati campionari, la formula diventa:
 
@@ -230,12 +231,14 @@ Posto un coefficiente di attendibilità pari a 0.80 e una media del test pari a 
 
 La stima del punteggio vero $\hat{T}$ è uguale a 
 
+$$
 \begin{equation}
 \begin{aligned}
 \hat{T} &= \bar{X} + r_{XX^\prime}  (X - \bar{X})\notag\\
 &= 100 + 0.80 \cdot (115 - 100) = 112.
 \end{aligned}
 \end{equation}
+$$
 :::
 
 ## L'errore standard della stima
@@ -257,10 +260,12 @@ stima di $\hat{T}$. La deviazione standard di tali (ipotetiche) stime di
 $\hat{T}$ è chiamata _errore standard della stima_. L'errore standard
 della stima, $\sigma_{\hat{T}}$, si calcola con la formula seguente:
 
+$$
 \begin{equation}
 \sigma_{\hat{T}} = \sigma_X \sqrt{\rho_{XX^\prime} (1 -\rho_{XX^\prime})}.
 (\#eq:bistd-err-estimatenom)
 \end{equation}
+$$
 
 ::: {.proof}
 Per ricavare la (\#eq:std-err-estimate) si definisce $\varepsilon$ l'errore
@@ -275,41 +280,50 @@ Si presti attenzione alla notazione: $E = X - T$ indica l'errore della misurazio
 $\varepsilon = T - \hat{T}$ indica la differenza tra il punteggio vero e
 la stima del punteggio vero. Avendo che $\hat{T} = \bar{X} + \rho_{XX^\prime} (X - \bar{X})$, la varianza di $\varepsilon = T - \hat{T}$ si può scrivere come 
 
+$$
 \begin{equation}
 \begin{aligned}
-\V(\varepsilon) &=  \V(T - \hat{T})\notag\\
-&= \V(T - \bar{X} - \rho_{XX^\prime} X + \rho_{XX^\prime}\bar{X}).
+\mathbb{V}(\varepsilon) &=  \mathbb{V}(T - \hat{T})\notag\\
+&= \mathbb{V}(T - \bar{X} - \rho_{XX^\prime} X + \rho_{XX^\prime}\bar{X}).
 \end{aligned}
 \end{equation}
+$$
 
 Dato che la varianza di una variabile aleatoria non cambia sommando a
 tale variabile una costante, dobbiamo semplicemente calcolare
 
+$$
 \begin{equation}
-\V(\varepsilon) = \V(T - \rho_{XX^\prime}X).\notag
+\mathbb{V}(\varepsilon) = \mathbb{V}(T - \rho_{XX^\prime}X).\notag
 \end{equation}
+$$
 
 Dobbiamo trovare la varianza della somma di due variabili aleatorie, una delle
 quali moltiplicata per una costante. Dunque: 
 
 $$
-\V(\varepsilon) = \V(T) + \rho_{XX^\prime}^2 \V(X) - 2 \rho_{XX^\prime} \mbox{Cov}(X,T),
+\mathbb{V}(\varepsilon) = \mathbb{V}(T) + \rho_{XX^\prime}^2 \mathbb{V}(X) - 2 \rho_{XX^\prime} \mbox{Cov}(X,T),
 $$
 
 ovvero, semplificando la notazione, 
 
+$$
 \begin{equation}
 \sigma^2_{\varepsilon} = \sigma^2_T + \rho_{XX^\prime}^2 \sigma^2_X - 2  \rho_{XX^\prime} \sigma_{XT}.\notag
 \end{equation}
+$$
 
 La quantità $\rho_{XX^\prime}$ è il coefficiente di attendibilità. Quindi
 
+$$
 \begin{equation}
 \sigma^2_{\varepsilon} = \sigma^2_T + \left(\frac{\sigma_T^2}{\sigma_X^2}\right)^2 \sigma^2_X - 2  \frac{\sigma_T^2}{\sigma_X^2} \sigma_{XT}.\notag
 \end{equation}
+$$
 
 Semplificando otteniamo 
 
+$$
 \begin{equation}
 \begin{aligned}
 \sigma^2_{\varepsilon} &= \sigma^2_T + \frac{\sigma_T^4}{\sigma_X^4}
@@ -320,9 +334,11 @@ Semplificando otteniamo
   \frac{\sigma_{XT}}{\sigma_X^2}\right).\notag 
   \end{aligned}
 \end{equation}
+$$
   
 Dato che $\sigma_{XT}=\sigma^2_T$, l'equazione precedente diventa uguale a
 
+$$
 \begin{equation}
 \begin{aligned}
 \sigma^2_{\varepsilon} &= \sigma^2_T \left(1
@@ -332,9 +348,11 @@ Dato che $\sigma_{XT}=\sigma^2_T$, l'equazione precedente diventa uguale a
   \frac{\sigma_{T}^2}{\sigma_X^2}\right).
 \end{aligned}
 \end{equation}
+$$
 
 L'errore standard della stima è dunque uguale a 
 
+$$
 \begin{equation}
 \begin{aligned}
 \sigma_{\varepsilon} 
@@ -343,9 +361,11 @@ L'errore standard della stima è dunque uguale a
 &=\frac{\sigma_T}{\sigma_X} \sqrt{\sigma^2_X - \sigma^2_T}.
 \end{aligned}
 \end{equation}
+$$
 
 Dato che $\sigma^2_X=\sigma^2_T+\sigma^2_E$, abbiamo 
 
+$$
 \begin{equation}
 \begin{aligned}
 \sigma_{\varepsilon} 
@@ -354,9 +374,11 @@ Dato che $\sigma^2_X=\sigma^2_T+\sigma^2_E$, abbiamo
 &= \sqrt{\rho_{XX^\prime}} \sigma_E. \notag
 \end{aligned}
 \end{equation}
+$$
 
 Ricordando che l'errore standard della misurazione è $\sigma_E = \sigma_X \sqrt{1 - \rho_{XX^\prime}}$, possiamo scrivere
 
+$$
 \begin{equation}
 \begin{aligned}
 \sigma_{\varepsilon}  &= \sqrt{\rho_{XX^\prime}} \sigma_E \notag\\
@@ -365,6 +387,7 @@ Ricordando che l'errore standard della misurazione è $\sigma_E = \sigma_X \sqrt
 &= \sigma_X \sqrt{\rho_{XX^\prime} (1 - \rho_{XX^\prime})}.\notag
 \end{aligned}
 \end{equation}
+$$
 :::
 
 Per dati campionari, l'errore standard della stima si calcola nel modo
@@ -420,6 +443,7 @@ il quale il QI viene misurato. I valori esaminati sono 0.55, 0.65, 0.75,
 pari a QI = 120 e poniamo che $\rho_{xx^\prime}$ = 0.65. In tali circostanze,
 la stima del punteggio vero è pari a 
 
+$$
 \begin{equation}
 \begin{aligned}
 \hat{T} &= \bar{X} + r_{XX^\prime}  (X - \bar{X}) \notag\\
@@ -427,9 +451,11 @@ la stima del punteggio vero è pari a
 &= 113.\notag
 \end{aligned}
 \end{equation}
+$$
 
 L'errore standard della stima è uguale a
 
+$$
 \begin{equation}
 \begin{aligned}
 \sigma_{\hat{T}} &= \sigma_{X} \sqrt{r_{XX^\prime} (1 - r_{XX^\prime})} \notag\\
@@ -437,6 +463,7 @@ L'errore standard della stima è uguale a
 &= 7.15.\notag
 \end{aligned}
 \end{equation}
+$$
 
 L'intervallo di confidenza al 95% per la
 stima del punteggio vero diventa pertanto uguale a 
