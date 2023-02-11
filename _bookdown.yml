@@ -49,16 +49,16 @@ rmd_files:
     - "300_gof.Rmd"
     - "310_refine_solution.Rmd"
     - "315_mmm.Rmd"
-    # - "350_growth_models.Rmd"
+    - "350_growth_models.Rmd"
     # - "351_lgm_meas_inv.Rmd"
-    # - "400_missing_data.Rmd"
-    # - "500_cat_data.Rmd"
+    - "400_missing_data.Rmd"
+    - "500_cat_data.Rmd"
     ## APPENDIX
     - "800_appendix.Rmd"
     - "801_math_symbols.Rmd"
-    # - "850_single_case.Rmd"
-    # - "860_efficacy_effectiveness.Rmd"
-    # - "865_effect_size.Rmd"
+    - "850_single_case.Rmd"
+    - "860_efficacy_effectiveness.Rmd"
+    - "865_effect_size.Rmd"
     - "900_lin_alg.Rmd"
 delete_merged_file: true
 

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>23.2 Crescita non lineare | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)</title>
   <meta name="description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2021/2022) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
   <meta property="og:title" content="23.2 Crescita non lineare | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2022-05-16" />
+<meta name="date" content="2023-02-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -92,7 +92,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -105,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -298,7 +298,7 @@ div.csl-indent {
 <li class="chapter" data-level="9.1.2" data-path="punteggi-fattoriali.html"><a href="punteggi-fattoriali.html#dimostrazione-di-thurstone"><i class="fa fa-check"></i><b>9.1.2</b> Dimostrazione di Thurstone</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="path-analysis.html"><a href="path-analysis.html"><i class="fa fa-check"></i><b>10</b> Path Analysis</a>
+<li class="chapter" data-level="10" data-path="visualizzare-il-modelli-di-equazioni-strutturali.html"><a href="visualizzare-il-modelli-di-equazioni-strutturali.html"><i class="fa fa-check"></i><b>10</b> Visualizzare il modelli di equazioni strutturali</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="path-diagram.html"><a href="path-diagram.html"><i class="fa fa-check"></i><b>10.1</b> Path diagram</a></li>
 <li class="chapter" data-level="10.2" data-path="path-analysis-e-regressione-multipla.html"><a href="path-analysis-e-regressione-multipla.html"><i class="fa fa-check"></i><b>10.2</b> Path analysis e regressione multipla</a></li>
@@ -308,8 +308,8 @@ div.csl-indent {
 <li class="chapter" data-level="10.4.1" data-path="le-regole-di-wright.html"><a href="le-regole-di-wright.html#scomposizione-delle-correlazioni-covarianze"><i class="fa fa-check"></i><b>10.4.1</b> Scomposizione delle correlazioni (covarianze)</a></li>
 <li class="chapter" data-level="10.4.2" data-path="le-regole-di-wright.html"><a href="le-regole-di-wright.html#scomposizione-della-varianza"><i class="fa fa-check"></i><b>10.4.2</b> Scomposizione della varianza</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="sec:how_compute_path_coef.html"><a href="sec:how_compute_path_coef.html"><i class="fa fa-check"></i><b>10.5</b> Come calcolare i coefficienti di percorso?</a></li>
-<li class="chapter" data-level="10.6" data-path="path-analysis-e-software.html"><a href="path-analysis-e-software.html"><i class="fa fa-check"></i><b>10.6</b> Path analysis e software</a></li>
+<li class="chapter" data-level="10.5" data-path="come-calcolare-i-coefficienti-di-percorso.html"><a href="come-calcolare-i-coefficienti-di-percorso.html"><i class="fa fa-check"></i><b>10.5</b> Come calcolare i coefficienti di percorso?</a></li>
+<li class="chapter" data-level="10.6" data-path="path-analysis-con-lavaan.html"><a href="path-analysis-con-lavaan.html"><i class="fa fa-check"></i><b>10.6</b> Path analysis con <code>lavaan</code></a></li>
 <li class="chapter" data-level="10.7" data-path="oltre-la-regressione-multipla.html"><a href="oltre-la-regressione-multipla.html"><i class="fa fa-check"></i><b>10.7</b> Oltre la regressione multipla</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="attendibilità-e-modello-fattoriale.html"><a href="attendibilità-e-modello-fattoriale.html"><i class="fa fa-check"></i><b>11</b> Attendibilità e modello fattoriale</a>
@@ -529,69 +529,21 @@ div.csl-indent {
 <li class="chapter" data-level="23.3.1" data-path="parallel-process-model.html"><a href="parallel-process-model.html#interpretazione-3"><i class="fa fa-check"></i><b>23.3.1</b> Interpretazione</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="invarianza-fattoriale-nei-modelli-lgm.html"><a href="invarianza-fattoriale-nei-modelli-lgm.html"><i class="fa fa-check"></i><b>24</b> Invarianza fattoriale nei modelli LGM</a>
+<li class="chapter" data-level="24" data-path="dati-mancanti.html"><a href="dati-mancanti.html"><i class="fa fa-check"></i><b>24</b> Dati mancanti</a>
 <ul>
-<li class="chapter" data-level="24.1" data-path="studi-longitudinali-cross-lagged.html"><a href="studi-longitudinali-cross-lagged.html"><i class="fa fa-check"></i><b>24.1</b> Studi longitudinali cross-lagged</a>
+<li class="chapter" data-level="24.1" data-path="tipologie-di-dati-mancanti.html"><a href="tipologie-di-dati-mancanti.html"><i class="fa fa-check"></i><b>24.1</b> Tipologie di dati mancanti</a></li>
+<li class="chapter" data-level="24.2" data-path="la-gestione-dei-dati-mancanti.html"><a href="la-gestione-dei-dati-mancanti.html"><i class="fa fa-check"></i><b>24.2</b> La gestione dei dati mancanti</a>
 <ul>
-<li class="chapter" data-level="24.1.1" data-path="studi-longitudinali-cross-lagged.html"><a href="studi-longitudinali-cross-lagged.html#invarianza-di-misura-in-studi-longitudinali-cross-lagged"><i class="fa fa-check"></i><b>24.1.1</b> Invarianza di misura in studi longitudinali cross-lagged</a></li>
-</ul></li>
-<li class="chapter" data-level="24.2" data-path="data-set.html"><a href="data-set.html"><i class="fa fa-check"></i><b>24.2</b> Data set</a></li>
-<li class="chapter" data-level="24.3" data-path="stretegia-analitica.html"><a href="stretegia-analitica.html"><i class="fa fa-check"></i><b>24.3</b> Stretegia analitica</a></li>
-<li class="chapter" data-level="24.4" data-path="leggere-in-dati-in-mathsfr.html"><a href="leggere-in-dati-in-mathsfr.html"><i class="fa fa-check"></i><b>24.4</b> Leggere in dati in <span class="math inline">\(\mathsf{R}\)</span></a></li>
-<li class="chapter" data-level="24.5" data-path="struttura-degli-errori.html"><a href="struttura-degli-errori.html"><i class="fa fa-check"></i><b>24.5</b> Struttura degli errori</a></li>
-<li class="chapter" data-level="24.6" data-path="modello-configurale.html"><a href="modello-configurale.html"><i class="fa fa-check"></i><b>24.6</b> Modello configurale</a>
-<ul>
-<li class="chapter" data-level="24.6.1" data-path="modello-configurale.html"><a href="modello-configurale.html#definizione-del-modello"><i class="fa fa-check"></i><b>24.6.1</b> Definizione del modello</a></li>
-<li class="chapter" data-level="24.6.2" data-path="modello-configurale.html"><a href="modello-configurale.html#output-del-modello"><i class="fa fa-check"></i><b>24.6.2</b> Output del modello</a></li>
-<li class="chapter" data-level="24.6.3" data-path="modello-configurale.html"><a href="modello-configurale.html#interpretazione-4"><i class="fa fa-check"></i><b>24.6.3</b> Interpretazione</a></li>
-</ul></li>
-<li class="chapter" data-level="24.7" data-path="invarianza-metrica.html"><a href="invarianza-metrica.html"><i class="fa fa-check"></i><b>24.7</b> Invarianza metrica</a>
-<ul>
-<li class="chapter" data-level="24.7.1" data-path="invarianza-metrica.html"><a href="invarianza-metrica.html#definizione-del-modello-1"><i class="fa fa-check"></i><b>24.7.1</b> Definizione del modello</a></li>
-<li class="chapter" data-level="24.7.2" data-path="invarianza-metrica.html"><a href="invarianza-metrica.html#output-del-modello-1"><i class="fa fa-check"></i><b>24.7.2</b> Output del modello</a></li>
-</ul></li>
-<li class="chapter" data-level="24.8" data-path="invarianza-scalare.html"><a href="invarianza-scalare.html"><i class="fa fa-check"></i><b>24.8</b> Invarianza scalare</a>
-<ul>
-<li class="chapter" data-level="24.8.1" data-path="invarianza-scalare.html"><a href="invarianza-scalare.html#definizione-del-modello-2"><i class="fa fa-check"></i><b>24.8.1</b> Definizione del modello</a></li>
-<li class="chapter" data-level="24.8.2" data-path="invarianza-scalare.html"><a href="invarianza-scalare.html#output-del-modello-2"><i class="fa fa-check"></i><b>24.8.2</b> Output del modello</a></li>
-</ul></li>
-<li class="chapter" data-level="24.9" data-path="invarianza-degli-errori.html"><a href="invarianza-degli-errori.html"><i class="fa fa-check"></i><b>24.9</b> Invarianza degli errori</a>
-<ul>
-<li class="chapter" data-level="24.9.1" data-path="invarianza-degli-errori.html"><a href="invarianza-degli-errori.html#definizione-del-modello-3"><i class="fa fa-check"></i><b>24.9.1</b> Definizione del modello</a></li>
-<li class="chapter" data-level="24.9.2" data-path="invarianza-degli-errori.html"><a href="invarianza-degli-errori.html#output-del-modello-3"><i class="fa fa-check"></i><b>24.9.2</b> Output del modello</a></li>
-</ul></li>
-<li class="chapter" data-level="24.10" data-path="confronto-tra-modelli.html"><a href="confronto-tra-modelli.html"><i class="fa fa-check"></i><b>24.10</b> Confronto tra modelli</a>
-<ul>
-<li class="chapter" data-level="24.10.1" data-path="confronto-tra-modelli.html"><a href="confronto-tra-modelli.html#codice-e-output"><i class="fa fa-check"></i><b>24.10.1</b> Codice e output</a></li>
-<li class="chapter" data-level="24.10.2" data-path="confronto-tra-modelli.html"><a href="confronto-tra-modelli.html#interpretazione-5"><i class="fa fa-check"></i><b>24.10.2</b> Interpretazione</a></li>
-</ul></li>
-<li class="chapter" data-level="24.11" data-path="modello-strutturale.html"><a href="modello-strutturale.html"><i class="fa fa-check"></i><b>24.11</b> Modello strutturale</a>
-<ul>
-<li class="chapter" data-level="24.11.1" data-path="modello-strutturale.html"><a href="modello-strutturale.html#definizione-del-modello-4"><i class="fa fa-check"></i><b>24.11.1</b> Definizione del modello</a></li>
-<li class="chapter" data-level="24.11.2" data-path="modello-strutturale.html"><a href="modello-strutturale.html#output-del-modello-4"><i class="fa fa-check"></i><b>24.11.2</b> Output del modello</a></li>
-</ul></li>
-<li class="chapter" data-level="24.12" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html"><i class="fa fa-check"></i><b>24.12</b> Modello Random Intercepts Cross-Lagged Panel</a>
-<ul>
-<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#definizione-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Definizione del modello</a></li>
-<li class="chapter" data-level="24.12.2" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.2</b> Output del modello</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-2.html"><a href="commenti-e-considerazioni-finali-2.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
-</ul></li>
-<li class="chapter" data-level="25" data-path="dati-mancanti.html"><a href="dati-mancanti.html"><i class="fa fa-check"></i><b>25</b> Dati mancanti</a>
-<ul>
-<li class="chapter" data-level="25.1" data-path="tipologie-di-dati-mancanti.html"><a href="tipologie-di-dati-mancanti.html"><i class="fa fa-check"></i><b>25.1</b> Tipologie di dati mancanti</a></li>
-<li class="chapter" data-level="25.2" data-path="la-gestione-dei-dati-mancanti.html"><a href="la-gestione-dei-dati-mancanti.html"><i class="fa fa-check"></i><b>25.2</b> La gestione dei dati mancanti</a>
-<ul>
-<li class="chapter" data-level="25.2.1" data-path="la-gestione-dei-dati-mancanti.html"><a href="la-gestione-dei-dati-mancanti.html#metodo-direct-ml"><i class="fa fa-check"></i><b>25.2.1</b> Metodo Direct ML</a></li>
-<li class="chapter" data-level="25.2.2" data-path="la-gestione-dei-dati-mancanti.html"><a href="la-gestione-dei-dati-mancanti.html#un-esempio-concreto-8"><i class="fa fa-check"></i><b>25.2.2</b> Un esempio concreto</a></li>
+<li class="chapter" data-level="24.2.1" data-path="la-gestione-dei-dati-mancanti.html"><a href="la-gestione-dei-dati-mancanti.html#metodo-direct-ml"><i class="fa fa-check"></i><b>24.2.1</b> Metodo Direct ML</a></li>
+<li class="chapter" data-level="24.2.2" data-path="la-gestione-dei-dati-mancanti.html"><a href="la-gestione-dei-dati-mancanti.html#un-esempio-concreto-8"><i class="fa fa-check"></i><b>24.2.2</b> Un esempio concreto</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="dati-non-gaussiani-e-categoriali.html"><a href="dati-non-gaussiani-e-categoriali.html"><i class="fa fa-check"></i><b>26</b> Dati non gaussiani e categoriali</a>
+<li class="chapter" data-level="25" data-path="dati-non-gaussiani-e-categoriali.html"><a href="dati-non-gaussiani-e-categoriali.html"><i class="fa fa-check"></i><b>25</b> Dati non gaussiani e categoriali</a>
 <ul>
-<li class="chapter" data-level="26.1" data-path="dati-non-gaussiani.html"><a href="dati-non-gaussiani.html"><i class="fa fa-check"></i><b>26.1</b> Dati non gaussiani</a></li>
-<li class="chapter" data-level="26.2" data-path="dati-categoriali.html"><a href="dati-categoriali.html"><i class="fa fa-check"></i><b>26.2</b> Dati categoriali</a>
+<li class="chapter" data-level="25.1" data-path="dati-non-gaussiani.html"><a href="dati-non-gaussiani.html"><i class="fa fa-check"></i><b>25.1</b> Dati non gaussiani</a></li>
+<li class="chapter" data-level="25.2" data-path="dati-categoriali.html"><a href="dati-categoriali.html"><i class="fa fa-check"></i><b>25.2</b> Dati categoriali</a>
 <ul>
-<li class="chapter" data-level="26.2.1" data-path="dati-categoriali.html"><a href="dati-categoriali.html#un-esempio-concreto-9"><i class="fa fa-check"></i><b>26.2.1</b> Un esempio concreto</a></li>
+<li class="chapter" data-level="25.2.1" data-path="dati-categoriali.html"><a href="dati-categoriali.html#un-esempio-concreto-9"><i class="fa fa-check"></i><b>25.2.1</b> Un esempio concreto</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>V Appendici</b></span></li>
@@ -706,129 +658,129 @@ div.csl-indent {
 <h2><span class="header-section-number">23.2</span> Crescita non lineare<a href="crescita-non-lineare.html#crescita-non-lineare" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Ripetiamo la procedura di analisi descritta sopra introducendo però un cambiamento: verrà considerato un modello nel quale la crescita non è lineare.</p>
 <p>Nelle analisi seguenti useremo i seguenti indici di bontà di adattamento.</p>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="crescita-non-lineare.html#cb344-1" aria-hidden="true" tabindex="-1"></a>selected_fit_stats <span class="ot">&lt;-</span></span>
-<span id="cb344-2"><a href="crescita-non-lineare.html#cb344-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(</span>
-<span id="cb344-3"><a href="crescita-non-lineare.html#cb344-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;chisq.scaled&quot;</span>,</span>
-<span id="cb344-4"><a href="crescita-non-lineare.html#cb344-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;df.scaled&quot;</span>, <span class="do">## must be &gt;0 to test G.O.F.</span></span>
-<span id="cb344-5"><a href="crescita-non-lineare.html#cb344-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;pvalue.scaled&quot;</span>, <span class="do">## ideally n.s.</span></span>
-<span id="cb344-6"><a href="crescita-non-lineare.html#cb344-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;cfi.scaled&quot;</span>, <span class="do">## ideally ≥ 0.95</span></span>
-<span id="cb344-7"><a href="crescita-non-lineare.html#cb344-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;rmsea.scaled&quot;</span>, <span class="do">## ideally ≤ 0.05</span></span>
-<span id="cb344-8"><a href="crescita-non-lineare.html#cb344-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;rmsea.pvalue.scaled&quot;</span>, <span class="do">## ideally n.s.</span></span>
-<span id="cb344-9"><a href="crescita-non-lineare.html#cb344-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;srmr&quot;</span> <span class="do">## ideally &lt; 0.08</span></span>
-<span id="cb344-10"><a href="crescita-non-lineare.html#cb344-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="crescita-non-lineare.html#cb344-1" tabindex="-1"></a>selected_fit_stats <span class="ot">&lt;-</span></span>
+<span id="cb344-2"><a href="crescita-non-lineare.html#cb344-2" tabindex="-1"></a>  <span class="fu">c</span>(</span>
+<span id="cb344-3"><a href="crescita-non-lineare.html#cb344-3" tabindex="-1"></a>    <span class="st">&quot;chisq.scaled&quot;</span>,</span>
+<span id="cb344-4"><a href="crescita-non-lineare.html#cb344-4" tabindex="-1"></a>    <span class="st">&quot;df.scaled&quot;</span>, <span class="do">## must be &gt;0 to test G.O.F.</span></span>
+<span id="cb344-5"><a href="crescita-non-lineare.html#cb344-5" tabindex="-1"></a>    <span class="st">&quot;pvalue.scaled&quot;</span>, <span class="do">## ideally n.s.</span></span>
+<span id="cb344-6"><a href="crescita-non-lineare.html#cb344-6" tabindex="-1"></a>    <span class="st">&quot;cfi.scaled&quot;</span>, <span class="do">## ideally ≥ 0.95</span></span>
+<span id="cb344-7"><a href="crescita-non-lineare.html#cb344-7" tabindex="-1"></a>    <span class="st">&quot;rmsea.scaled&quot;</span>, <span class="do">## ideally ≤ 0.05</span></span>
+<span id="cb344-8"><a href="crescita-non-lineare.html#cb344-8" tabindex="-1"></a>    <span class="st">&quot;rmsea.pvalue.scaled&quot;</span>, <span class="do">## ideally n.s.</span></span>
+<span id="cb344-9"><a href="crescita-non-lineare.html#cb344-9" tabindex="-1"></a>    <span class="st">&quot;srmr&quot;</span> <span class="do">## ideally &lt; 0.08</span></span>
+<span id="cb344-10"><a href="crescita-non-lineare.html#cb344-10" tabindex="-1"></a>  )</span></code></pre></div>
 <p>Simulo i dati secondo questo modello.</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="crescita-non-lineare.html#cb345-1" aria-hidden="true" tabindex="-1"></a>growth_mod <span class="ot">&lt;-</span></span>
-<span id="cb345-2"><a href="crescita-non-lineare.html#cb345-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span></span>
-<span id="cb345-3"><a href="crescita-non-lineare.html#cb345-3" aria-hidden="true" tabindex="-1"></a><span class="st">  ## intercept &amp; slope growth terms for X</span></span>
-<span id="cb345-4"><a href="crescita-non-lineare.html#cb345-4" aria-hidden="true" tabindex="-1"></a><span class="st">  iX =~ 1*x1 + 1*x2 + 1*x3 + 1*x4</span></span>
-<span id="cb345-5"><a href="crescita-non-lineare.html#cb345-5" aria-hidden="true" tabindex="-1"></a><span class="st">  sX =~ 0*x1 + 1*x2 + 2*x3 + 3*x4</span></span>
-<span id="cb345-6"><a href="crescita-non-lineare.html#cb345-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb345-7"><a href="crescita-non-lineare.html#cb345-7" aria-hidden="true" tabindex="-1"></a><span class="st">  ## intercept, slope, &amp; quadratic terms for Y</span></span>
-<span id="cb345-8"><a href="crescita-non-lineare.html#cb345-8" aria-hidden="true" tabindex="-1"></a><span class="st">  iY =~ 1*y1 + 1*y2 + 1*y3 + 1*y4</span></span>
-<span id="cb345-9"><a href="crescita-non-lineare.html#cb345-9" aria-hidden="true" tabindex="-1"></a><span class="st">  sY =~ 0*y1 + 1*y2 + 2*y3 + 3*y4</span></span>
-<span id="cb345-10"><a href="crescita-non-lineare.html#cb345-10" aria-hidden="true" tabindex="-1"></a><span class="st">  qY =~ 0*y1 + 1*y2 + 4*y3 + 9*y4</span></span>
-<span id="cb345-11"><a href="crescita-non-lineare.html#cb345-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb345-12"><a href="crescita-non-lineare.html#cb345-12" aria-hidden="true" tabindex="-1"></a><span class="st">  ## set variances</span></span>
-<span id="cb345-13"><a href="crescita-non-lineare.html#cb345-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb345-14"><a href="crescita-non-lineare.html#cb345-14" aria-hidden="true" tabindex="-1"></a><span class="st">  y4 ~~ 2*y4</span></span>
-<span id="cb345-15"><a href="crescita-non-lineare.html#cb345-15" aria-hidden="true" tabindex="-1"></a><span class="st">  x4 ~~ 1*x4</span></span>
-<span id="cb345-16"><a href="crescita-non-lineare.html#cb345-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb345-17"><a href="crescita-non-lineare.html#cb345-17" aria-hidden="true" tabindex="-1"></a><span class="st">  ## set latent means/intercepts</span></span>
-<span id="cb345-18"><a href="crescita-non-lineare.html#cb345-18" aria-hidden="true" tabindex="-1"></a><span class="st">  iX ~ 2*1</span></span>
-<span id="cb345-19"><a href="crescita-non-lineare.html#cb345-19" aria-hidden="true" tabindex="-1"></a><span class="st">  sX ~ 1*1</span></span>
-<span id="cb345-20"><a href="crescita-non-lineare.html#cb345-20" aria-hidden="true" tabindex="-1"></a><span class="st">  sY ~ -1*1</span></span>
-<span id="cb345-21"><a href="crescita-non-lineare.html#cb345-21" aria-hidden="true" tabindex="-1"></a><span class="st">  qY ~ -1.5*1</span></span>
-<span id="cb345-22"><a href="crescita-non-lineare.html#cb345-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb345-23"><a href="crescita-non-lineare.html#cb345-23" aria-hidden="true" tabindex="-1"></a><span class="st">  sY ~ 2*predictor</span></span>
-<span id="cb345-24"><a href="crescita-non-lineare.html#cb345-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb345-25"><a href="crescita-non-lineare.html#cb345-25" aria-hidden="true" tabindex="-1"></a><span class="st">  outcome ~ 2*iX + 3*sY</span></span>
-<span id="cb345-26"><a href="crescita-non-lineare.html#cb345-26" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="crescita-non-lineare.html#cb345-1" tabindex="-1"></a>growth_mod <span class="ot">&lt;-</span></span>
+<span id="cb345-2"><a href="crescita-non-lineare.html#cb345-2" tabindex="-1"></a>  <span class="st">&quot;</span></span>
+<span id="cb345-3"><a href="crescita-non-lineare.html#cb345-3" tabindex="-1"></a><span class="st">  ## intercept &amp; slope growth terms for X</span></span>
+<span id="cb345-4"><a href="crescita-non-lineare.html#cb345-4" tabindex="-1"></a><span class="st">  iX =~ 1*x1 + 1*x2 + 1*x3 + 1*x4</span></span>
+<span id="cb345-5"><a href="crescita-non-lineare.html#cb345-5" tabindex="-1"></a><span class="st">  sX =~ 0*x1 + 1*x2 + 2*x3 + 3*x4</span></span>
+<span id="cb345-6"><a href="crescita-non-lineare.html#cb345-6" tabindex="-1"></a></span>
+<span id="cb345-7"><a href="crescita-non-lineare.html#cb345-7" tabindex="-1"></a><span class="st">  ## intercept, slope, &amp; quadratic terms for Y</span></span>
+<span id="cb345-8"><a href="crescita-non-lineare.html#cb345-8" tabindex="-1"></a><span class="st">  iY =~ 1*y1 + 1*y2 + 1*y3 + 1*y4</span></span>
+<span id="cb345-9"><a href="crescita-non-lineare.html#cb345-9" tabindex="-1"></a><span class="st">  sY =~ 0*y1 + 1*y2 + 2*y3 + 3*y4</span></span>
+<span id="cb345-10"><a href="crescita-non-lineare.html#cb345-10" tabindex="-1"></a><span class="st">  qY =~ 0*y1 + 1*y2 + 4*y3 + 9*y4</span></span>
+<span id="cb345-11"><a href="crescita-non-lineare.html#cb345-11" tabindex="-1"></a></span>
+<span id="cb345-12"><a href="crescita-non-lineare.html#cb345-12" tabindex="-1"></a><span class="st">  ## set variances</span></span>
+<span id="cb345-13"><a href="crescita-non-lineare.html#cb345-13" tabindex="-1"></a></span>
+<span id="cb345-14"><a href="crescita-non-lineare.html#cb345-14" tabindex="-1"></a><span class="st">  y4 ~~ 2*y4</span></span>
+<span id="cb345-15"><a href="crescita-non-lineare.html#cb345-15" tabindex="-1"></a><span class="st">  x4 ~~ 1*x4</span></span>
+<span id="cb345-16"><a href="crescita-non-lineare.html#cb345-16" tabindex="-1"></a></span>
+<span id="cb345-17"><a href="crescita-non-lineare.html#cb345-17" tabindex="-1"></a><span class="st">  ## set latent means/intercepts</span></span>
+<span id="cb345-18"><a href="crescita-non-lineare.html#cb345-18" tabindex="-1"></a><span class="st">  iX ~ 2*1</span></span>
+<span id="cb345-19"><a href="crescita-non-lineare.html#cb345-19" tabindex="-1"></a><span class="st">  sX ~ 1*1</span></span>
+<span id="cb345-20"><a href="crescita-non-lineare.html#cb345-20" tabindex="-1"></a><span class="st">  sY ~ -1*1</span></span>
+<span id="cb345-21"><a href="crescita-non-lineare.html#cb345-21" tabindex="-1"></a><span class="st">  qY ~ -1.5*1</span></span>
+<span id="cb345-22"><a href="crescita-non-lineare.html#cb345-22" tabindex="-1"></a></span>
+<span id="cb345-23"><a href="crescita-non-lineare.html#cb345-23" tabindex="-1"></a><span class="st">  sY ~ 2*predictor</span></span>
+<span id="cb345-24"><a href="crescita-non-lineare.html#cb345-24" tabindex="-1"></a></span>
+<span id="cb345-25"><a href="crescita-non-lineare.html#cb345-25" tabindex="-1"></a><span class="st">  outcome ~ 2*iX + 3*sY</span></span>
+<span id="cb345-26"><a href="crescita-non-lineare.html#cb345-26" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
 <p>A questo fine uso la funzione <code>simulateData()</code> di <code>lavaan</code>. La simulazione include due variabili misurate in quattro punti temporali.</p>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="crescita-non-lineare.html#cb346-1" aria-hidden="true" tabindex="-1"></a>sim_growth_dat <span class="ot">&lt;-</span> lavaan<span class="sc">::</span><span class="fu">simulateData</span>(</span>
-<span id="cb346-2"><a href="crescita-non-lineare.html#cb346-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> growth_mod,</span>
-<span id="cb346-3"><a href="crescita-non-lineare.html#cb346-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">model.type =</span> <span class="st">&quot;growth&quot;</span>,</span>
-<span id="cb346-4"><a href="crescita-non-lineare.html#cb346-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">82020</span>,</span>
-<span id="cb346-5"><a href="crescita-non-lineare.html#cb346-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">orthogonal =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb346-6"><a href="crescita-non-lineare.html#cb346-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">auto.cov.y =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb346-7"><a href="crescita-non-lineare.html#cb346-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">auto.var =</span> <span class="cn">TRUE</span></span>
-<span id="cb346-8"><a href="crescita-non-lineare.html#cb346-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="crescita-non-lineare.html#cb346-1" tabindex="-1"></a>sim_growth_dat <span class="ot">&lt;-</span> lavaan<span class="sc">::</span><span class="fu">simulateData</span>(</span>
+<span id="cb346-2"><a href="crescita-non-lineare.html#cb346-2" tabindex="-1"></a>  <span class="at">model =</span> growth_mod,</span>
+<span id="cb346-3"><a href="crescita-non-lineare.html#cb346-3" tabindex="-1"></a>  <span class="at">model.type =</span> <span class="st">&quot;growth&quot;</span>,</span>
+<span id="cb346-4"><a href="crescita-non-lineare.html#cb346-4" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">82020</span>,</span>
+<span id="cb346-5"><a href="crescita-non-lineare.html#cb346-5" tabindex="-1"></a>  <span class="at">orthogonal =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb346-6"><a href="crescita-non-lineare.html#cb346-6" tabindex="-1"></a>  <span class="at">auto.cov.y =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb346-7"><a href="crescita-non-lineare.html#cb346-7" tabindex="-1"></a>  <span class="at">auto.var =</span> <span class="cn">TRUE</span></span>
+<span id="cb346-8"><a href="crescita-non-lineare.html#cb346-8" tabindex="-1"></a>)</span></code></pre></div>
 <p>Le variabili sono chiamate <code>x1</code>, <code>x2</code>, <code>x3</code>, <code>x4</code>, per la misurazione di <code>x</code> ai tempi 1, 2, 3, 4. Lo stesso per la <code>y</code>.</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="crescita-non-lineare.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sim_growth_dat)</span>
-<span id="cb347-2"><a href="crescita-non-lineare.html#cb347-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         x1       x2        x3          x4          y1        y2         y3</span></span>
-<span id="cb347-3"><a href="crescita-non-lineare.html#cb347-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 1.033229 2.746064 4.9423623  8.41058044  3.36324415 -1.196550 -11.103494</span></span>
-<span id="cb347-4"><a href="crescita-non-lineare.html#cb347-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 3.192802 3.057675 0.7965786  0.84592869 -1.60039704 -5.970381 -10.399366</span></span>
-<span id="cb347-5"><a href="crescita-non-lineare.html#cb347-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 3.758457 4.712351 5.6308218  4.76577291  2.58001675 -3.272134 -11.312994</span></span>
-<span id="cb347-6"><a href="crescita-non-lineare.html#cb347-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2.700514 4.921257 6.7116263 10.13354061  0.03886676  0.510869  -5.937016</span></span>
-<span id="cb347-7"><a href="crescita-non-lineare.html#cb347-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 1.259807 1.526301 1.6663799 -0.09959486  0.53939838 -4.274106 -12.968362</span></span>
-<span id="cb347-8"><a href="crescita-non-lineare.html#cb347-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 2.547125 5.426192 4.9463195  8.48790397  2.18069542  1.590009  -2.253218</span></span>
-<span id="cb347-9"><a href="crescita-non-lineare.html#cb347-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           y4   outcome  predictor</span></span>
-<span id="cb347-10"><a href="crescita-non-lineare.html#cb347-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 -31.509255  2.161186 -0.4893276</span></span>
-<span id="cb347-11"><a href="crescita-non-lineare.html#cb347-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 -19.908088  5.089750  0.5199749</span></span>
-<span id="cb347-12"><a href="crescita-non-lineare.html#cb347-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 -26.681111  3.173129 -0.5938816</span></span>
-<span id="cb347-13"><a href="crescita-non-lineare.html#cb347-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  -7.836099  1.035215 -0.7813707</span></span>
-<span id="cb347-14"><a href="crescita-non-lineare.html#cb347-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 -22.595311 -4.352557 -0.7067630</span></span>
-<span id="cb347-15"><a href="crescita-non-lineare.html#cb347-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  -8.892786  3.277985 -1.2978592</span></span></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="crescita-non-lineare.html#cb347-1" tabindex="-1"></a><span class="fu">head</span>(sim_growth_dat)</span>
+<span id="cb347-2"><a href="crescita-non-lineare.html#cb347-2" tabindex="-1"></a><span class="co">#&gt;         x1       x2        x3          x4          y1        y2         y3</span></span>
+<span id="cb347-3"><a href="crescita-non-lineare.html#cb347-3" tabindex="-1"></a><span class="co">#&gt; 1 1.033229 2.746064 4.9423623  8.41058044  3.36324415 -1.196550 -11.103494</span></span>
+<span id="cb347-4"><a href="crescita-non-lineare.html#cb347-4" tabindex="-1"></a><span class="co">#&gt; 2 3.192802 3.057675 0.7965786  0.84592869 -1.60039704 -5.970381 -10.399366</span></span>
+<span id="cb347-5"><a href="crescita-non-lineare.html#cb347-5" tabindex="-1"></a><span class="co">#&gt; 3 3.758457 4.712351 5.6308218  4.76577291  2.58001675 -3.272134 -11.312994</span></span>
+<span id="cb347-6"><a href="crescita-non-lineare.html#cb347-6" tabindex="-1"></a><span class="co">#&gt; 4 2.700514 4.921257 6.7116263 10.13354061  0.03886676  0.510869  -5.937016</span></span>
+<span id="cb347-7"><a href="crescita-non-lineare.html#cb347-7" tabindex="-1"></a><span class="co">#&gt; 5 1.259807 1.526301 1.6663799 -0.09959486  0.53939838 -4.274106 -12.968362</span></span>
+<span id="cb347-8"><a href="crescita-non-lineare.html#cb347-8" tabindex="-1"></a><span class="co">#&gt; 6 2.547125 5.426192 4.9463195  8.48790397  2.18069542  1.590009  -2.253218</span></span>
+<span id="cb347-9"><a href="crescita-non-lineare.html#cb347-9" tabindex="-1"></a><span class="co">#&gt;           y4   outcome  predictor</span></span>
+<span id="cb347-10"><a href="crescita-non-lineare.html#cb347-10" tabindex="-1"></a><span class="co">#&gt; 1 -31.509255  2.161186 -0.4893276</span></span>
+<span id="cb347-11"><a href="crescita-non-lineare.html#cb347-11" tabindex="-1"></a><span class="co">#&gt; 2 -19.908088  5.089750  0.5199749</span></span>
+<span id="cb347-12"><a href="crescita-non-lineare.html#cb347-12" tabindex="-1"></a><span class="co">#&gt; 3 -26.681111  3.173129 -0.5938816</span></span>
+<span id="cb347-13"><a href="crescita-non-lineare.html#cb347-13" tabindex="-1"></a><span class="co">#&gt; 4  -7.836099  1.035215 -0.7813707</span></span>
+<span id="cb347-14"><a href="crescita-non-lineare.html#cb347-14" tabindex="-1"></a><span class="co">#&gt; 5 -22.595311 -4.352557 -0.7067630</span></span>
+<span id="cb347-15"><a href="crescita-non-lineare.html#cb347-15" tabindex="-1"></a><span class="co">#&gt; 6  -8.892786  3.277985 -1.2978592</span></span></code></pre></div>
 <p>Aggiungo qui il numero del partecipante.</p>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="crescita-non-lineare.html#cb348-1" aria-hidden="true" tabindex="-1"></a>sim_growth_dat<span class="sc">$</span>participant_n <span class="ot">&lt;-</span></span>
-<span id="cb348-2"><a href="crescita-non-lineare.html#cb348-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(sim_growth_dat)</span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="crescita-non-lineare.html#cb348-1" tabindex="-1"></a>sim_growth_dat<span class="sc">$</span>participant_n <span class="ot">&lt;-</span></span>
+<span id="cb348-2"><a href="crescita-non-lineare.html#cb348-2" tabindex="-1"></a>  <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(sim_growth_dat)</span></code></pre></div>
 <p>Nei dati simulati, la variabile <code>x</code> cambia linearmente nel tempo e la variabile <code>y</code> cambia seguendo un andamento quadratico. Esaminiamo i dati graficamente.</p>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="crescita-non-lineare.html#cb349-1" aria-hidden="true" tabindex="-1"></a>x_plot <span class="ot">&lt;-</span></span>
-<span id="cb349-2"><a href="crescita-non-lineare.html#cb349-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(sim_growth_dat,</span>
-<span id="cb349-3"><a href="crescita-non-lineare.html#cb349-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> x1<span class="sc">:</span>x4,</span>
-<span id="cb349-4"><a href="crescita-non-lineare.html#cb349-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;x&quot;</span>,</span>
-<span id="cb349-5"><a href="crescita-non-lineare.html#cb349-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">&quot;x&quot;</span></span>
-<span id="cb349-6"><a href="crescita-non-lineare.html#cb349-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb349-7"><a href="crescita-non-lineare.html#cb349-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb349-8"><a href="crescita-non-lineare.html#cb349-8" aria-hidden="true" tabindex="-1"></a>individual_x_trajectories <span class="ot">&lt;-</span></span>
-<span id="cb349-9"><a href="crescita-non-lineare.html#cb349-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb349-10"><a href="crescita-non-lineare.html#cb349-10" aria-hidden="true" tabindex="-1"></a>    x_plot,</span>
-<span id="cb349-11"><a href="crescita-non-lineare.html#cb349-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
-<span id="cb349-12"><a href="crescita-non-lineare.html#cb349-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="fu">as.numeric</span>(x),</span>
-<span id="cb349-13"><a href="crescita-non-lineare.html#cb349-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> value,</span>
-<span id="cb349-14"><a href="crescita-non-lineare.html#cb349-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">group =</span> participant_n,</span>
-<span id="cb349-15"><a href="crescita-non-lineare.html#cb349-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> participant_n</span>
-<span id="cb349-16"><a href="crescita-non-lineare.html#cb349-16" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb349-17"><a href="crescita-non-lineare.html#cb349-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb349-18"><a href="crescita-non-lineare.html#cb349-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb349-19"><a href="crescita-non-lineare.html#cb349-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb349-20"><a href="crescita-non-lineare.html#cb349-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Observed Trajectories of x&quot;</span>,</span>
-<span id="cb349-21"><a href="crescita-non-lineare.html#cb349-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Timepoint&quot;</span>,</span>
-<span id="cb349-22"><a href="crescita-non-lineare.html#cb349-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;x&quot;</span></span>
-<span id="cb349-23"><a href="crescita-non-lineare.html#cb349-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb349-24"><a href="crescita-non-lineare.html#cb349-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">1</span>, <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb349-25"><a href="crescita-non-lineare.html#cb349-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb349-26"><a href="crescita-non-lineare.html#cb349-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb349-27"><a href="crescita-non-lineare.html#cb349-27" aria-hidden="true" tabindex="-1"></a>individual_x_trajectories</span></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="crescita-non-lineare.html#cb349-1" tabindex="-1"></a>x_plot <span class="ot">&lt;-</span></span>
+<span id="cb349-2"><a href="crescita-non-lineare.html#cb349-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(sim_growth_dat,</span>
+<span id="cb349-3"><a href="crescita-non-lineare.html#cb349-3" tabindex="-1"></a>    <span class="at">cols =</span> x1<span class="sc">:</span>x4,</span>
+<span id="cb349-4"><a href="crescita-non-lineare.html#cb349-4" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;x&quot;</span>,</span>
+<span id="cb349-5"><a href="crescita-non-lineare.html#cb349-5" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">&quot;x&quot;</span></span>
+<span id="cb349-6"><a href="crescita-non-lineare.html#cb349-6" tabindex="-1"></a>  )</span>
+<span id="cb349-7"><a href="crescita-non-lineare.html#cb349-7" tabindex="-1"></a></span>
+<span id="cb349-8"><a href="crescita-non-lineare.html#cb349-8" tabindex="-1"></a>individual_x_trajectories <span class="ot">&lt;-</span></span>
+<span id="cb349-9"><a href="crescita-non-lineare.html#cb349-9" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb349-10"><a href="crescita-non-lineare.html#cb349-10" tabindex="-1"></a>    x_plot,</span>
+<span id="cb349-11"><a href="crescita-non-lineare.html#cb349-11" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb349-12"><a href="crescita-non-lineare.html#cb349-12" tabindex="-1"></a>      <span class="at">x =</span> <span class="fu">as.numeric</span>(x),</span>
+<span id="cb349-13"><a href="crescita-non-lineare.html#cb349-13" tabindex="-1"></a>      <span class="at">y =</span> value,</span>
+<span id="cb349-14"><a href="crescita-non-lineare.html#cb349-14" tabindex="-1"></a>      <span class="at">group =</span> participant_n,</span>
+<span id="cb349-15"><a href="crescita-non-lineare.html#cb349-15" tabindex="-1"></a>      <span class="at">color =</span> participant_n</span>
+<span id="cb349-16"><a href="crescita-non-lineare.html#cb349-16" tabindex="-1"></a>    )</span>
+<span id="cb349-17"><a href="crescita-non-lineare.html#cb349-17" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb349-18"><a href="crescita-non-lineare.html#cb349-18" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb349-19"><a href="crescita-non-lineare.html#cb349-19" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb349-20"><a href="crescita-non-lineare.html#cb349-20" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Observed Trajectories of x&quot;</span>,</span>
+<span id="cb349-21"><a href="crescita-non-lineare.html#cb349-21" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Timepoint&quot;</span>,</span>
+<span id="cb349-22"><a href="crescita-non-lineare.html#cb349-22" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;x&quot;</span></span>
+<span id="cb349-23"><a href="crescita-non-lineare.html#cb349-23" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb349-24"><a href="crescita-non-lineare.html#cb349-24" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">1</span>, <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb349-25"><a href="crescita-non-lineare.html#cb349-25" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb349-26"><a href="crescita-non-lineare.html#cb349-26" tabindex="-1"></a></span>
+<span id="cb349-27"><a href="crescita-non-lineare.html#cb349-27" tabindex="-1"></a>individual_x_trajectories</span></code></pre></div>
 <p><img src="cfa_files/figure-html/unnamed-chunk-373-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Su può vedere che la variabile <code>x</code> segue una crescita lineare, ma un modello quadratico molto “debole” potrebbe adattarsi meglio ai dati, quindi sarà necessario controllare se in effetti questo è vero.</p>
 <p>Esaminiamo ora la variabile <code>y</code>.</p>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="crescita-non-lineare.html#cb350-1" aria-hidden="true" tabindex="-1"></a>y_plot <span class="ot">&lt;-</span></span>
-<span id="cb350-2"><a href="crescita-non-lineare.html#cb350-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(sim_growth_dat,</span>
-<span id="cb350-3"><a href="crescita-non-lineare.html#cb350-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> y1<span class="sc">:</span>y4,</span>
-<span id="cb350-4"><a href="crescita-non-lineare.html#cb350-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;y&quot;</span>,</span>
-<span id="cb350-5"><a href="crescita-non-lineare.html#cb350-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">&quot;y&quot;</span></span>
-<span id="cb350-6"><a href="crescita-non-lineare.html#cb350-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb350-7"><a href="crescita-non-lineare.html#cb350-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb350-8"><a href="crescita-non-lineare.html#cb350-8" aria-hidden="true" tabindex="-1"></a>individual_y_trajectories <span class="ot">&lt;-</span></span>
-<span id="cb350-9"><a href="crescita-non-lineare.html#cb350-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb350-10"><a href="crescita-non-lineare.html#cb350-10" aria-hidden="true" tabindex="-1"></a>    y_plot,</span>
-<span id="cb350-11"><a href="crescita-non-lineare.html#cb350-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
-<span id="cb350-12"><a href="crescita-non-lineare.html#cb350-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="fu">as.numeric</span>(y),</span>
-<span id="cb350-13"><a href="crescita-non-lineare.html#cb350-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> value,</span>
-<span id="cb350-14"><a href="crescita-non-lineare.html#cb350-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">group =</span> participant_n,</span>
-<span id="cb350-15"><a href="crescita-non-lineare.html#cb350-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> participant_n</span>
-<span id="cb350-16"><a href="crescita-non-lineare.html#cb350-16" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb350-17"><a href="crescita-non-lineare.html#cb350-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb350-18"><a href="crescita-non-lineare.html#cb350-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb350-19"><a href="crescita-non-lineare.html#cb350-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb350-20"><a href="crescita-non-lineare.html#cb350-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Observed trajectories of y&quot;</span>,</span>
-<span id="cb350-21"><a href="crescita-non-lineare.html#cb350-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Timepoint&quot;</span>,</span>
-<span id="cb350-22"><a href="crescita-non-lineare.html#cb350-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;y&quot;</span></span>
-<span id="cb350-23"><a href="crescita-non-lineare.html#cb350-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb350-24"><a href="crescita-non-lineare.html#cb350-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">1</span>, <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb350-25"><a href="crescita-non-lineare.html#cb350-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb350-26"><a href="crescita-non-lineare.html#cb350-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb350-27"><a href="crescita-non-lineare.html#cb350-27" aria-hidden="true" tabindex="-1"></a>individual_y_trajectories</span></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="crescita-non-lineare.html#cb350-1" tabindex="-1"></a>y_plot <span class="ot">&lt;-</span></span>
+<span id="cb350-2"><a href="crescita-non-lineare.html#cb350-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(sim_growth_dat,</span>
+<span id="cb350-3"><a href="crescita-non-lineare.html#cb350-3" tabindex="-1"></a>    <span class="at">cols =</span> y1<span class="sc">:</span>y4,</span>
+<span id="cb350-4"><a href="crescita-non-lineare.html#cb350-4" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;y&quot;</span>,</span>
+<span id="cb350-5"><a href="crescita-non-lineare.html#cb350-5" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">&quot;y&quot;</span></span>
+<span id="cb350-6"><a href="crescita-non-lineare.html#cb350-6" tabindex="-1"></a>  )</span>
+<span id="cb350-7"><a href="crescita-non-lineare.html#cb350-7" tabindex="-1"></a></span>
+<span id="cb350-8"><a href="crescita-non-lineare.html#cb350-8" tabindex="-1"></a>individual_y_trajectories <span class="ot">&lt;-</span></span>
+<span id="cb350-9"><a href="crescita-non-lineare.html#cb350-9" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb350-10"><a href="crescita-non-lineare.html#cb350-10" tabindex="-1"></a>    y_plot,</span>
+<span id="cb350-11"><a href="crescita-non-lineare.html#cb350-11" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb350-12"><a href="crescita-non-lineare.html#cb350-12" tabindex="-1"></a>      <span class="at">x =</span> <span class="fu">as.numeric</span>(y),</span>
+<span id="cb350-13"><a href="crescita-non-lineare.html#cb350-13" tabindex="-1"></a>      <span class="at">y =</span> value,</span>
+<span id="cb350-14"><a href="crescita-non-lineare.html#cb350-14" tabindex="-1"></a>      <span class="at">group =</span> participant_n,</span>
+<span id="cb350-15"><a href="crescita-non-lineare.html#cb350-15" tabindex="-1"></a>      <span class="at">color =</span> participant_n</span>
+<span id="cb350-16"><a href="crescita-non-lineare.html#cb350-16" tabindex="-1"></a>    )</span>
+<span id="cb350-17"><a href="crescita-non-lineare.html#cb350-17" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb350-18"><a href="crescita-non-lineare.html#cb350-18" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb350-19"><a href="crescita-non-lineare.html#cb350-19" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb350-20"><a href="crescita-non-lineare.html#cb350-20" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Observed trajectories of y&quot;</span>,</span>
+<span id="cb350-21"><a href="crescita-non-lineare.html#cb350-21" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Timepoint&quot;</span>,</span>
+<span id="cb350-22"><a href="crescita-non-lineare.html#cb350-22" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;y&quot;</span></span>
+<span id="cb350-23"><a href="crescita-non-lineare.html#cb350-23" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb350-24"><a href="crescita-non-lineare.html#cb350-24" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">1</span>, <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb350-25"><a href="crescita-non-lineare.html#cb350-25" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb350-26"><a href="crescita-non-lineare.html#cb350-26" tabindex="-1"></a></span>
+<span id="cb350-27"><a href="crescita-non-lineare.html#cb350-27" tabindex="-1"></a>individual_y_trajectories</span></code></pre></div>
 <p><img src="cfa_files/figure-html/unnamed-chunk-374-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>È chiaro che la <code>y</code> diminuisce in media con il tempo, ma c’è eterogeneità (o variabilità) in ciò che accade nei singoli caso. Anche in questo caso, sia un modello lineare sia un modello quadratico sembrano appropriati per descrivere il cambiamento nei dati, anche se un modello quadratico sembra più appropriato.</p>
 <div id="stimatore" class="section level3 hasAnchor" number="23.2.1">
@@ -838,220 +790,222 @@ div.csl-indent {
 <div id="assenza-di-crescita" class="section level3 hasAnchor" number="23.2.2">
 <h3><span class="header-section-number">23.2.2</span> Assenza di crescita<a href="crescita-non-lineare.html#assenza-di-crescita" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Iniziamo con un modello per la <code>x</code> che assume che non vi sia variazione in funzione del tempo.</p>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="crescita-non-lineare.html#cb351-1" aria-hidden="true" tabindex="-1"></a>int_x_mod <span class="ot">&lt;-</span></span>
-<span id="cb351-2"><a href="crescita-non-lineare.html#cb351-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span></span>
-<span id="cb351-3"><a href="crescita-non-lineare.html#cb351-3" aria-hidden="true" tabindex="-1"></a><span class="st">  iX =~ 1*x1 + 1*x2 + 1*x3 + 1*x4</span></span>
-<span id="cb351-4"><a href="crescita-non-lineare.html#cb351-4" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="crescita-non-lineare.html#cb351-1" tabindex="-1"></a>int_x_mod <span class="ot">&lt;-</span></span>
+<span id="cb351-2"><a href="crescita-non-lineare.html#cb351-2" tabindex="-1"></a>  <span class="st">&quot;</span></span>
+<span id="cb351-3"><a href="crescita-non-lineare.html#cb351-3" tabindex="-1"></a><span class="st">  iX =~ 1*x1 + 1*x2 + 1*x3 + 1*x4</span></span>
+<span id="cb351-4"><a href="crescita-non-lineare.html#cb351-4" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
 <p>Adattiamo il modello ai dati ed esaminiamo i risultati.</p>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="crescita-non-lineare.html#cb352-1" aria-hidden="true" tabindex="-1"></a>int_x_fit <span class="ot">&lt;-</span></span>
-<span id="cb352-2"><a href="crescita-non-lineare.html#cb352-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">growth</span>(</span>
-<span id="cb352-3"><a href="crescita-non-lineare.html#cb352-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">model =</span> int_x_mod,</span>
-<span id="cb352-4"><a href="crescita-non-lineare.html#cb352-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">estimator =</span> <span class="st">&quot;MLR&quot;</span>,</span>
-<span id="cb352-5"><a href="crescita-non-lineare.html#cb352-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> sim_growth_dat</span>
-<span id="cb352-6"><a href="crescita-non-lineare.html#cb352-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb352-7"><a href="crescita-non-lineare.html#cb352-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb352-8"><a href="crescita-non-lineare.html#cb352-8" aria-hidden="true" tabindex="-1"></a>int_x_fit_stats <span class="ot">&lt;-</span></span>
-<span id="cb352-9"><a href="crescita-non-lineare.html#cb352-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(</span>
-<span id="cb352-10"><a href="crescita-non-lineare.html#cb352-10" aria-hidden="true" tabindex="-1"></a>    int_x_fit,</span>
-<span id="cb352-11"><a href="crescita-non-lineare.html#cb352-11" aria-hidden="true" tabindex="-1"></a>    selected_fit_stats</span>
-<span id="cb352-12"><a href="crescita-non-lineare.html#cb352-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb352-13"><a href="crescita-non-lineare.html#cb352-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>()</span>
-<span id="cb352-14"><a href="crescita-non-lineare.html#cb352-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb352-15"><a href="crescita-non-lineare.html#cb352-15" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(int_x_fit_stats, <span class="dv">2</span>)</span>
-<span id="cb352-16"><a href="crescita-non-lineare.html#cb352-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                           .</span></span>
-<span id="cb352-17"><a href="crescita-non-lineare.html#cb352-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; chisq.scaled        1192.66</span></span>
-<span id="cb352-18"><a href="crescita-non-lineare.html#cb352-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; df.scaled              8.00</span></span>
-<span id="cb352-19"><a href="crescita-non-lineare.html#cb352-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; pvalue.scaled          0.00</span></span>
-<span id="cb352-20"><a href="crescita-non-lineare.html#cb352-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; cfi.scaled             0.02</span></span>
-<span id="cb352-21"><a href="crescita-non-lineare.html#cb352-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rmsea.scaled           0.54</span></span>
-<span id="cb352-22"><a href="crescita-non-lineare.html#cb352-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rmsea.pvalue.scaled    0.00</span></span>
-<span id="cb352-23"><a href="crescita-non-lineare.html#cb352-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; srmr                   0.63</span></span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="crescita-non-lineare.html#cb352-1" tabindex="-1"></a>int_x_fit <span class="ot">&lt;-</span></span>
+<span id="cb352-2"><a href="crescita-non-lineare.html#cb352-2" tabindex="-1"></a>  <span class="fu">growth</span>(</span>
+<span id="cb352-3"><a href="crescita-non-lineare.html#cb352-3" tabindex="-1"></a>    <span class="at">model =</span> int_x_mod,</span>
+<span id="cb352-4"><a href="crescita-non-lineare.html#cb352-4" tabindex="-1"></a>    <span class="at">estimator =</span> <span class="st">&quot;MLR&quot;</span>,</span>
+<span id="cb352-5"><a href="crescita-non-lineare.html#cb352-5" tabindex="-1"></a>    <span class="at">data =</span> sim_growth_dat</span>
+<span id="cb352-6"><a href="crescita-non-lineare.html#cb352-6" tabindex="-1"></a>  )</span>
+<span id="cb352-7"><a href="crescita-non-lineare.html#cb352-7" tabindex="-1"></a></span>
+<span id="cb352-8"><a href="crescita-non-lineare.html#cb352-8" tabindex="-1"></a>int_x_fit_stats <span class="ot">&lt;-</span></span>
+<span id="cb352-9"><a href="crescita-non-lineare.html#cb352-9" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(</span>
+<span id="cb352-10"><a href="crescita-non-lineare.html#cb352-10" tabindex="-1"></a>    int_x_fit,</span>
+<span id="cb352-11"><a href="crescita-non-lineare.html#cb352-11" tabindex="-1"></a>    selected_fit_stats</span>
+<span id="cb352-12"><a href="crescita-non-lineare.html#cb352-12" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb352-13"><a href="crescita-non-lineare.html#cb352-13" tabindex="-1"></a>  <span class="fu">data.frame</span>()</span>
+<span id="cb352-14"><a href="crescita-non-lineare.html#cb352-14" tabindex="-1"></a></span>
+<span id="cb352-15"><a href="crescita-non-lineare.html#cb352-15" tabindex="-1"></a><span class="fu">round</span>(int_x_fit_stats, <span class="dv">2</span>)</span>
+<span id="cb352-16"><a href="crescita-non-lineare.html#cb352-16" tabindex="-1"></a><span class="co">#&gt;                           .</span></span>
+<span id="cb352-17"><a href="crescita-non-lineare.html#cb352-17" tabindex="-1"></a><span class="co">#&gt; chisq.scaled        1192.66</span></span>
+<span id="cb352-18"><a href="crescita-non-lineare.html#cb352-18" tabindex="-1"></a><span class="co">#&gt; df.scaled              8.00</span></span>
+<span id="cb352-19"><a href="crescita-non-lineare.html#cb352-19" tabindex="-1"></a><span class="co">#&gt; pvalue.scaled          0.00</span></span>
+<span id="cb352-20"><a href="crescita-non-lineare.html#cb352-20" tabindex="-1"></a><span class="co">#&gt; cfi.scaled             0.02</span></span>
+<span id="cb352-21"><a href="crescita-non-lineare.html#cb352-21" tabindex="-1"></a><span class="co">#&gt; rmsea.scaled           0.54</span></span>
+<span id="cb352-22"><a href="crescita-non-lineare.html#cb352-22" tabindex="-1"></a><span class="co">#&gt; rmsea.pvalue.scaled    0.00</span></span>
+<span id="cb352-23"><a href="crescita-non-lineare.html#cb352-23" tabindex="-1"></a><span class="co">#&gt; srmr                   0.63</span></span></code></pre></div>
 <p>È chiaro che il modello di assenza di crescita non spiega i dati <code>x</code>. Consideriamo la variabile <code>y</code>. Anche in questo caso prendiamo in considerazione un modello di assenza di variazione nel tempo.</p>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="crescita-non-lineare.html#cb353-1" aria-hidden="true" tabindex="-1"></a>int_y_mod <span class="ot">&lt;-</span></span>
-<span id="cb353-2"><a href="crescita-non-lineare.html#cb353-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span></span>
-<span id="cb353-3"><a href="crescita-non-lineare.html#cb353-3" aria-hidden="true" tabindex="-1"></a><span class="st">  iY =~ 1*y1 + 1*y2 + 1*y3 + 1*y4</span></span>
-<span id="cb353-4"><a href="crescita-non-lineare.html#cb353-4" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb353-5"><a href="crescita-non-lineare.html#cb353-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb353-6"><a href="crescita-non-lineare.html#cb353-6" aria-hidden="true" tabindex="-1"></a>int_y_fit <span class="ot">&lt;-</span></span>
-<span id="cb353-7"><a href="crescita-non-lineare.html#cb353-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">growth</span>(</span>
-<span id="cb353-8"><a href="crescita-non-lineare.html#cb353-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">model =</span> int_y_mod,</span>
-<span id="cb353-9"><a href="crescita-non-lineare.html#cb353-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">estimator =</span> <span class="st">&quot;MLR&quot;</span>,</span>
-<span id="cb353-10"><a href="crescita-non-lineare.html#cb353-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> sim_growth_dat</span>
-<span id="cb353-11"><a href="crescita-non-lineare.html#cb353-11" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb353-12"><a href="crescita-non-lineare.html#cb353-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb353-13"><a href="crescita-non-lineare.html#cb353-13" aria-hidden="true" tabindex="-1"></a>int_y_fit_stats <span class="ot">&lt;-</span></span>
-<span id="cb353-14"><a href="crescita-non-lineare.html#cb353-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(</span>
-<span id="cb353-15"><a href="crescita-non-lineare.html#cb353-15" aria-hidden="true" tabindex="-1"></a>    int_y_fit,</span>
-<span id="cb353-16"><a href="crescita-non-lineare.html#cb353-16" aria-hidden="true" tabindex="-1"></a>    selected_fit_stats</span>
-<span id="cb353-17"><a href="crescita-non-lineare.html#cb353-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb353-18"><a href="crescita-non-lineare.html#cb353-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>()</span>
-<span id="cb353-19"><a href="crescita-non-lineare.html#cb353-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb353-20"><a href="crescita-non-lineare.html#cb353-20" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(int_y_fit_stats, <span class="dv">2</span>)</span>
-<span id="cb353-21"><a href="crescita-non-lineare.html#cb353-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                           .</span></span>
-<span id="cb353-22"><a href="crescita-non-lineare.html#cb353-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; chisq.scaled        3136.54</span></span>
-<span id="cb353-23"><a href="crescita-non-lineare.html#cb353-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; df.scaled              8.00</span></span>
-<span id="cb353-24"><a href="crescita-non-lineare.html#cb353-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; pvalue.scaled          0.00</span></span>
-<span id="cb353-25"><a href="crescita-non-lineare.html#cb353-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; cfi.scaled             0.00</span></span>
-<span id="cb353-26"><a href="crescita-non-lineare.html#cb353-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rmsea.scaled           0.88</span></span>
-<span id="cb353-27"><a href="crescita-non-lineare.html#cb353-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rmsea.pvalue.scaled    0.00</span></span>
-<span id="cb353-28"><a href="crescita-non-lineare.html#cb353-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; srmr                   0.98</span></span></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="crescita-non-lineare.html#cb353-1" tabindex="-1"></a>int_y_mod <span class="ot">&lt;-</span></span>
+<span id="cb353-2"><a href="crescita-non-lineare.html#cb353-2" tabindex="-1"></a>  <span class="st">&quot;</span></span>
+<span id="cb353-3"><a href="crescita-non-lineare.html#cb353-3" tabindex="-1"></a><span class="st">  iY =~ 1*y1 + 1*y2 + 1*y3 + 1*y4</span></span>
+<span id="cb353-4"><a href="crescita-non-lineare.html#cb353-4" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb353-5"><a href="crescita-non-lineare.html#cb353-5" tabindex="-1"></a></span>
+<span id="cb353-6"><a href="crescita-non-lineare.html#cb353-6" tabindex="-1"></a>int_y_fit <span class="ot">&lt;-</span></span>
+<span id="cb353-7"><a href="crescita-non-lineare.html#cb353-7" tabindex="-1"></a>  <span class="fu">growth</span>(</span>
+<span id="cb353-8"><a href="crescita-non-lineare.html#cb353-8" tabindex="-1"></a>    <span class="at">model =</span> int_y_mod,</span>
+<span id="cb353-9"><a href="crescita-non-lineare.html#cb353-9" tabindex="-1"></a>    <span class="at">estimator =</span> <span class="st">&quot;MLR&quot;</span>,</span>
+<span id="cb353-10"><a href="crescita-non-lineare.html#cb353-10" tabindex="-1"></a>    <span class="at">data =</span> sim_growth_dat</span>
+<span id="cb353-11"><a href="crescita-non-lineare.html#cb353-11" tabindex="-1"></a>  )</span>
+<span id="cb353-12"><a href="crescita-non-lineare.html#cb353-12" tabindex="-1"></a></span>
+<span id="cb353-13"><a href="crescita-non-lineare.html#cb353-13" tabindex="-1"></a>int_y_fit_stats <span class="ot">&lt;-</span></span>
+<span id="cb353-14"><a href="crescita-non-lineare.html#cb353-14" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(</span>
+<span id="cb353-15"><a href="crescita-non-lineare.html#cb353-15" tabindex="-1"></a>    int_y_fit,</span>
+<span id="cb353-16"><a href="crescita-non-lineare.html#cb353-16" tabindex="-1"></a>    selected_fit_stats</span>
+<span id="cb353-17"><a href="crescita-non-lineare.html#cb353-17" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb353-18"><a href="crescita-non-lineare.html#cb353-18" tabindex="-1"></a>  <span class="fu">data.frame</span>()</span>
+<span id="cb353-19"><a href="crescita-non-lineare.html#cb353-19" tabindex="-1"></a></span>
+<span id="cb353-20"><a href="crescita-non-lineare.html#cb353-20" tabindex="-1"></a><span class="fu">round</span>(int_y_fit_stats, <span class="dv">2</span>)</span>
+<span id="cb353-21"><a href="crescita-non-lineare.html#cb353-21" tabindex="-1"></a><span class="co">#&gt;                           .</span></span>
+<span id="cb353-22"><a href="crescita-non-lineare.html#cb353-22" tabindex="-1"></a><span class="co">#&gt; chisq.scaled        3136.54</span></span>
+<span id="cb353-23"><a href="crescita-non-lineare.html#cb353-23" tabindex="-1"></a><span class="co">#&gt; df.scaled              8.00</span></span>
+<span id="cb353-24"><a href="crescita-non-lineare.html#cb353-24" tabindex="-1"></a><span class="co">#&gt; pvalue.scaled          0.00</span></span>
+<span id="cb353-25"><a href="crescita-non-lineare.html#cb353-25" tabindex="-1"></a><span class="co">#&gt; cfi.scaled             0.00</span></span>
+<span id="cb353-26"><a href="crescita-non-lineare.html#cb353-26" tabindex="-1"></a><span class="co">#&gt; rmsea.scaled           0.88</span></span>
+<span id="cb353-27"><a href="crescita-non-lineare.html#cb353-27" tabindex="-1"></a><span class="co">#&gt; rmsea.pvalue.scaled    0.00</span></span>
+<span id="cb353-28"><a href="crescita-non-lineare.html#cb353-28" tabindex="-1"></a><span class="co">#&gt; srmr                   0.98</span></span></code></pre></div>
 <p>Il modello di assenza di crescita non è adeguato neppure per la variabile <code>y</code>.</p>
 </div>
 <div id="crescita-lineare" class="section level3 hasAnchor" number="23.2.3">
 <h3><span class="header-section-number">23.2.3</span> Crescita lineare<a href="crescita-non-lineare.html#crescita-lineare" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Esaminiamo un modello di crescita lineare per la <code>x</code>.</p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="crescita-non-lineare.html#cb354-1" aria-hidden="true" tabindex="-1"></a>linear_x_mod <span class="ot">&lt;-</span></span>
-<span id="cb354-2"><a href="crescita-non-lineare.html#cb354-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span></span>
-<span id="cb354-3"><a href="crescita-non-lineare.html#cb354-3" aria-hidden="true" tabindex="-1"></a><span class="st">iX =~ 1*x1 + 1*x2 + 1*x3 + 1*x4</span></span>
-<span id="cb354-4"><a href="crescita-non-lineare.html#cb354-4" aria-hidden="true" tabindex="-1"></a><span class="st">sX =~ 0*x1 + 1*x2 + 2*x3 + 3*x4</span></span>
-<span id="cb354-5"><a href="crescita-non-lineare.html#cb354-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb354-6"><a href="crescita-non-lineare.html#cb354-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb354-7"><a href="crescita-non-lineare.html#cb354-7" aria-hidden="true" tabindex="-1"></a>linear_x_fit <span class="ot">&lt;-</span></span>
-<span id="cb354-8"><a href="crescita-non-lineare.html#cb354-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">growth</span>(</span>
-<span id="cb354-9"><a href="crescita-non-lineare.html#cb354-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">model =</span> linear_x_mod,</span>
-<span id="cb354-10"><a href="crescita-non-lineare.html#cb354-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">estimator =</span> <span class="st">&quot;MLR&quot;</span>,</span>
-<span id="cb354-11"><a href="crescita-non-lineare.html#cb354-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> sim_growth_dat</span>
-<span id="cb354-12"><a href="crescita-non-lineare.html#cb354-12" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb354-13"><a href="crescita-non-lineare.html#cb354-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb354-14"><a href="crescita-non-lineare.html#cb354-14" aria-hidden="true" tabindex="-1"></a>linear_x_fit_stats <span class="ot">&lt;-</span></span>
-<span id="cb354-15"><a href="crescita-non-lineare.html#cb354-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(</span>
-<span id="cb354-16"><a href="crescita-non-lineare.html#cb354-16" aria-hidden="true" tabindex="-1"></a>    linear_x_fit,</span>
-<span id="cb354-17"><a href="crescita-non-lineare.html#cb354-17" aria-hidden="true" tabindex="-1"></a>    selected_fit_stats</span>
-<span id="cb354-18"><a href="crescita-non-lineare.html#cb354-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb354-19"><a href="crescita-non-lineare.html#cb354-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>()</span>
-<span id="cb354-20"><a href="crescita-non-lineare.html#cb354-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb354-21"><a href="crescita-non-lineare.html#cb354-21" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(linear_x_fit_stats, <span class="dv">2</span>)</span>
-<span id="cb354-22"><a href="crescita-non-lineare.html#cb354-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                        .</span></span>
-<span id="cb354-23"><a href="crescita-non-lineare.html#cb354-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; chisq.scaled        4.03</span></span>
-<span id="cb354-24"><a href="crescita-non-lineare.html#cb354-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; df.scaled           5.00</span></span>
-<span id="cb354-25"><a href="crescita-non-lineare.html#cb354-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; pvalue.scaled       0.54</span></span>
-<span id="cb354-26"><a href="crescita-non-lineare.html#cb354-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; cfi.scaled          1.00</span></span>
-<span id="cb354-27"><a href="crescita-non-lineare.html#cb354-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rmsea.scaled        0.00</span></span>
-<span id="cb354-28"><a href="crescita-non-lineare.html#cb354-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rmsea.pvalue.scaled 0.92</span></span>
-<span id="cb354-29"><a href="crescita-non-lineare.html#cb354-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; srmr                0.02</span></span></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="crescita-non-lineare.html#cb354-1" tabindex="-1"></a>linear_x_mod <span class="ot">&lt;-</span></span>
+<span id="cb354-2"><a href="crescita-non-lineare.html#cb354-2" tabindex="-1"></a>  <span class="st">&quot;</span></span>
+<span id="cb354-3"><a href="crescita-non-lineare.html#cb354-3" tabindex="-1"></a><span class="st">iX =~ 1*x1 + 1*x2 + 1*x3 + 1*x4</span></span>
+<span id="cb354-4"><a href="crescita-non-lineare.html#cb354-4" tabindex="-1"></a><span class="st">sX =~ 0*x1 + 1*x2 + 2*x3 + 3*x4</span></span>
+<span id="cb354-5"><a href="crescita-non-lineare.html#cb354-5" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb354-6"><a href="crescita-non-lineare.html#cb354-6" tabindex="-1"></a></span>
+<span id="cb354-7"><a href="crescita-non-lineare.html#cb354-7" tabindex="-1"></a>linear_x_fit <span class="ot">&lt;-</span></span>
+<span id="cb354-8"><a href="crescita-non-lineare.html#cb354-8" tabindex="-1"></a>  <span class="fu">growth</span>(</span>
+<span id="cb354-9"><a href="crescita-non-lineare.html#cb354-9" tabindex="-1"></a>    <span class="at">model =</span> linear_x_mod,</span>
+<span id="cb354-10"><a href="crescita-non-lineare.html#cb354-10" tabindex="-1"></a>    <span class="at">estimator =</span> <span class="st">&quot;MLR&quot;</span>,</span>
+<span id="cb354-11"><a href="crescita-non-lineare.html#cb354-11" tabindex="-1"></a>    <span class="at">data =</span> sim_growth_dat</span>
+<span id="cb354-12"><a href="crescita-non-lineare.html#cb354-12" tabindex="-1"></a>  )</span>
+<span id="cb354-13"><a href="crescita-non-lineare.html#cb354-13" tabindex="-1"></a></span>
+<span id="cb354-14"><a href="crescita-non-lineare.html#cb354-14" tabindex="-1"></a>linear_x_fit_stats <span class="ot">&lt;-</span></span>
+<span id="cb354-15"><a href="crescita-non-lineare.html#cb354-15" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(</span>
+<span id="cb354-16"><a href="crescita-non-lineare.html#cb354-16" tabindex="-1"></a>    linear_x_fit,</span>
+<span id="cb354-17"><a href="crescita-non-lineare.html#cb354-17" tabindex="-1"></a>    selected_fit_stats</span>
+<span id="cb354-18"><a href="crescita-non-lineare.html#cb354-18" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb354-19"><a href="crescita-non-lineare.html#cb354-19" tabindex="-1"></a>  <span class="fu">data.frame</span>()</span>
+<span id="cb354-20"><a href="crescita-non-lineare.html#cb354-20" tabindex="-1"></a></span>
+<span id="cb354-21"><a href="crescita-non-lineare.html#cb354-21" tabindex="-1"></a><span class="fu">round</span>(linear_x_fit_stats, <span class="dv">2</span>)</span>
+<span id="cb354-22"><a href="crescita-non-lineare.html#cb354-22" tabindex="-1"></a><span class="co">#&gt;                        .</span></span>
+<span id="cb354-23"><a href="crescita-non-lineare.html#cb354-23" tabindex="-1"></a><span class="co">#&gt; chisq.scaled        4.03</span></span>
+<span id="cb354-24"><a href="crescita-non-lineare.html#cb354-24" tabindex="-1"></a><span class="co">#&gt; df.scaled           5.00</span></span>
+<span id="cb354-25"><a href="crescita-non-lineare.html#cb354-25" tabindex="-1"></a><span class="co">#&gt; pvalue.scaled       0.54</span></span>
+<span id="cb354-26"><a href="crescita-non-lineare.html#cb354-26" tabindex="-1"></a><span class="co">#&gt; cfi.scaled          1.00</span></span>
+<span id="cb354-27"><a href="crescita-non-lineare.html#cb354-27" tabindex="-1"></a><span class="co">#&gt; rmsea.scaled        0.00</span></span>
+<span id="cb354-28"><a href="crescita-non-lineare.html#cb354-28" tabindex="-1"></a><span class="co">#&gt; rmsea.pvalue.scaled 0.92</span></span>
+<span id="cb354-29"><a href="crescita-non-lineare.html#cb354-29" tabindex="-1"></a><span class="co">#&gt; srmr                0.02</span></span></code></pre></div>
 <p>Il modello di crescita lineare per la <code>x</code> fornisce un buon adattamento ai dati rispetto a tutti gli indici. Questo è ciò che ci aspettavamo esaminando il grafico dei dati.</p>
 <p>Esaminiamo un modello di crescita lineare per la <code>y</code>.</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="crescita-non-lineare.html#cb355-1" aria-hidden="true" tabindex="-1"></a>linear_y_mod <span class="ot">&lt;-</span></span>
-<span id="cb355-2"><a href="crescita-non-lineare.html#cb355-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span></span>
-<span id="cb355-3"><a href="crescita-non-lineare.html#cb355-3" aria-hidden="true" tabindex="-1"></a><span class="st">  iY =~ 1*y1 + 1*y2 + 1*y3 + 1*y4</span></span>
-<span id="cb355-4"><a href="crescita-non-lineare.html#cb355-4" aria-hidden="true" tabindex="-1"></a><span class="st">  sY =~ 0*y1 + 1*y2 + 2*y3 + 3*y4</span></span>
-<span id="cb355-5"><a href="crescita-non-lineare.html#cb355-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb355-6"><a href="crescita-non-lineare.html#cb355-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb355-7"><a href="crescita-non-lineare.html#cb355-7" aria-hidden="true" tabindex="-1"></a>linear_y_fit <span class="ot">&lt;-</span></span>
-<span id="cb355-8"><a href="crescita-non-lineare.html#cb355-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">growth</span>(</span>
-<span id="cb355-9"><a href="crescita-non-lineare.html#cb355-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">model =</span> linear_y_mod,</span>
-<span id="cb355-10"><a href="crescita-non-lineare.html#cb355-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">estimator =</span> <span class="st">&quot;MLR&quot;</span>,</span>
-<span id="cb355-11"><a href="crescita-non-lineare.html#cb355-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> sim_growth_dat</span>
-<span id="cb355-12"><a href="crescita-non-lineare.html#cb355-12" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb355-13"><a href="crescita-non-lineare.html#cb355-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb355-14"><a href="crescita-non-lineare.html#cb355-14" aria-hidden="true" tabindex="-1"></a>linear_y_fit_stats <span class="ot">&lt;-</span></span>
-<span id="cb355-15"><a href="crescita-non-lineare.html#cb355-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(</span>
-<span id="cb355-16"><a href="crescita-non-lineare.html#cb355-16" aria-hidden="true" tabindex="-1"></a>    linear_y_fit,</span>
-<span id="cb355-17"><a href="crescita-non-lineare.html#cb355-17" aria-hidden="true" tabindex="-1"></a>    selected_fit_stats</span>
-<span id="cb355-18"><a href="crescita-non-lineare.html#cb355-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb355-19"><a href="crescita-non-lineare.html#cb355-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>()</span>
-<span id="cb355-20"><a href="crescita-non-lineare.html#cb355-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb355-21"><a href="crescita-non-lineare.html#cb355-21" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(linear_y_fit_stats, <span class="dv">2</span>)</span>
-<span id="cb355-22"><a href="crescita-non-lineare.html#cb355-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                          .</span></span>
-<span id="cb355-23"><a href="crescita-non-lineare.html#cb355-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; chisq.scaled        842.85</span></span>
-<span id="cb355-24"><a href="crescita-non-lineare.html#cb355-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; df.scaled             5.00</span></span>
-<span id="cb355-25"><a href="crescita-non-lineare.html#cb355-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; pvalue.scaled         0.00</span></span>
-<span id="cb355-26"><a href="crescita-non-lineare.html#cb355-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; cfi.scaled            0.61</span></span>
-<span id="cb355-27"><a href="crescita-non-lineare.html#cb355-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rmsea.scaled          0.58</span></span>
-<span id="cb355-28"><a href="crescita-non-lineare.html#cb355-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rmsea.pvalue.scaled   0.00</span></span>
-<span id="cb355-29"><a href="crescita-non-lineare.html#cb355-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; srmr                  0.55</span></span></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="crescita-non-lineare.html#cb355-1" tabindex="-1"></a>linear_y_mod <span class="ot">&lt;-</span></span>
+<span id="cb355-2"><a href="crescita-non-lineare.html#cb355-2" tabindex="-1"></a>  <span class="st">&quot;</span></span>
+<span id="cb355-3"><a href="crescita-non-lineare.html#cb355-3" tabindex="-1"></a><span class="st">  iY =~ 1*y1 + 1*y2 + 1*y3 + 1*y4</span></span>
+<span id="cb355-4"><a href="crescita-non-lineare.html#cb355-4" tabindex="-1"></a><span class="st">  sY =~ 0*y1 + 1*y2 + 2*y3 + 3*y4</span></span>
+<span id="cb355-5"><a href="crescita-non-lineare.html#cb355-5" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb355-6"><a href="crescita-non-lineare.html#cb355-6" tabindex="-1"></a></span>
+<span id="cb355-7"><a href="crescita-non-lineare.html#cb355-7" tabindex="-1"></a>linear_y_fit <span class="ot">&lt;-</span></span>
+<span id="cb355-8"><a href="crescita-non-lineare.html#cb355-8" tabindex="-1"></a>  <span class="fu">growth</span>(</span>
+<span id="cb355-9"><a href="crescita-non-lineare.html#cb355-9" tabindex="-1"></a>    <span class="at">model =</span> linear_y_mod,</span>
+<span id="cb355-10"><a href="crescita-non-lineare.html#cb355-10" tabindex="-1"></a>    <span class="at">estimator =</span> <span class="st">&quot;MLR&quot;</span>,</span>
+<span id="cb355-11"><a href="crescita-non-lineare.html#cb355-11" tabindex="-1"></a>    <span class="at">data =</span> sim_growth_dat</span>
+<span id="cb355-12"><a href="crescita-non-lineare.html#cb355-12" tabindex="-1"></a>  )</span>
+<span id="cb355-13"><a href="crescita-non-lineare.html#cb355-13" tabindex="-1"></a></span>
+<span id="cb355-14"><a href="crescita-non-lineare.html#cb355-14" tabindex="-1"></a>linear_y_fit_stats <span class="ot">&lt;-</span></span>
+<span id="cb355-15"><a href="crescita-non-lineare.html#cb355-15" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(</span>
+<span id="cb355-16"><a href="crescita-non-lineare.html#cb355-16" tabindex="-1"></a>    linear_y_fit,</span>
+<span id="cb355-17"><a href="crescita-non-lineare.html#cb355-17" tabindex="-1"></a>    selected_fit_stats</span>
+<span id="cb355-18"><a href="crescita-non-lineare.html#cb355-18" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb355-19"><a href="crescita-non-lineare.html#cb355-19" tabindex="-1"></a>  <span class="fu">data.frame</span>()</span>
+<span id="cb355-20"><a href="crescita-non-lineare.html#cb355-20" tabindex="-1"></a></span>
+<span id="cb355-21"><a href="crescita-non-lineare.html#cb355-21" tabindex="-1"></a><span class="fu">round</span>(linear_y_fit_stats, <span class="dv">2</span>)</span>
+<span id="cb355-22"><a href="crescita-non-lineare.html#cb355-22" tabindex="-1"></a><span class="co">#&gt;                          .</span></span>
+<span id="cb355-23"><a href="crescita-non-lineare.html#cb355-23" tabindex="-1"></a><span class="co">#&gt; chisq.scaled        842.85</span></span>
+<span id="cb355-24"><a href="crescita-non-lineare.html#cb355-24" tabindex="-1"></a><span class="co">#&gt; df.scaled             5.00</span></span>
+<span id="cb355-25"><a href="crescita-non-lineare.html#cb355-25" tabindex="-1"></a><span class="co">#&gt; pvalue.scaled         0.00</span></span>
+<span id="cb355-26"><a href="crescita-non-lineare.html#cb355-26" tabindex="-1"></a><span class="co">#&gt; cfi.scaled            0.61</span></span>
+<span id="cb355-27"><a href="crescita-non-lineare.html#cb355-27" tabindex="-1"></a><span class="co">#&gt; rmsea.scaled          0.58</span></span>
+<span id="cb355-28"><a href="crescita-non-lineare.html#cb355-28" tabindex="-1"></a><span class="co">#&gt; rmsea.pvalue.scaled   0.00</span></span>
+<span id="cb355-29"><a href="crescita-non-lineare.html#cb355-29" tabindex="-1"></a><span class="co">#&gt; srmr                  0.55</span></span></code></pre></div>
 <p>Il modello lineare è inadeguato per la <code>y</code> rispetto a tutti gli indici considerati.</p>
 </div>
 <div id="crescita-quadratica" class="section level3 hasAnchor" number="23.2.4">
 <h3><span class="header-section-number">23.2.4</span> Crescita quadratica<a href="crescita-non-lineare.html#crescita-quadratica" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>I termini quadratici descrivono il tasso medio di <em>variazione della pendenza</em> tra le diverse rilevazioni temporali. Nei modelli SEM, una tale caratteristica viene detta “crescita quadratica”.</p>
 <p>Consideriamo un modello di crescita quadratica per la <code>x</code>.</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="crescita-non-lineare.html#cb356-1" aria-hidden="true" tabindex="-1"></a>quad_x_mod <span class="ot">&lt;-</span></span>
-<span id="cb356-2"><a href="crescita-non-lineare.html#cb356-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span></span>
-<span id="cb356-3"><a href="crescita-non-lineare.html#cb356-3" aria-hidden="true" tabindex="-1"></a><span class="st">  iX =~ 1*x1 + 1*x2 + 1*x3 + 1*x4</span></span>
-<span id="cb356-4"><a href="crescita-non-lineare.html#cb356-4" aria-hidden="true" tabindex="-1"></a><span class="st">  sX =~ 0*x1 + 1*x2 + 2*x3 + 3*x4</span></span>
-<span id="cb356-5"><a href="crescita-non-lineare.html#cb356-5" aria-hidden="true" tabindex="-1"></a><span class="st">  qX =~ 0*x1 + 1*x2 + 4*x3 + 9*x4</span></span>
-<span id="cb356-6"><a href="crescita-non-lineare.html#cb356-6" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb356-7"><a href="crescita-non-lineare.html#cb356-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb356-8"><a href="crescita-non-lineare.html#cb356-8" aria-hidden="true" tabindex="-1"></a>quad_x_fit <span class="ot">&lt;-</span></span>
-<span id="cb356-9"><a href="crescita-non-lineare.html#cb356-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">growth</span>(</span>
-<span id="cb356-10"><a href="crescita-non-lineare.html#cb356-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">model =</span> quad_x_mod,</span>
-<span id="cb356-11"><a href="crescita-non-lineare.html#cb356-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">estimator =</span> <span class="st">&quot;MLR&quot;</span>,</span>
-<span id="cb356-12"><a href="crescita-non-lineare.html#cb356-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> sim_growth_dat</span>
-<span id="cb356-13"><a href="crescita-non-lineare.html#cb356-13" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb356-14"><a href="crescita-non-lineare.html#cb356-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb356-15"><a href="crescita-non-lineare.html#cb356-15" aria-hidden="true" tabindex="-1"></a>quad_x_fit_stats <span class="ot">&lt;-</span></span>
-<span id="cb356-16"><a href="crescita-non-lineare.html#cb356-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(</span>
-<span id="cb356-17"><a href="crescita-non-lineare.html#cb356-17" aria-hidden="true" tabindex="-1"></a>    quad_x_fit,</span>
-<span id="cb356-18"><a href="crescita-non-lineare.html#cb356-18" aria-hidden="true" tabindex="-1"></a>    selected_fit_stats</span>
-<span id="cb356-19"><a href="crescita-non-lineare.html#cb356-19" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb356-20"><a href="crescita-non-lineare.html#cb356-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb356-21"><a href="crescita-non-lineare.html#cb356-21" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(quad_x_fit_stats, <span class="dv">2</span>)</span>
-<span id="cb356-22"><a href="crescita-non-lineare.html#cb356-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        chisq.scaled           df.scaled       pvalue.scaled          cfi.scaled </span></span>
-<span id="cb356-23"><a href="crescita-non-lineare.html#cb356-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                0.02                1.00                0.89                1.00 </span></span>
-<span id="cb356-24"><a href="crescita-non-lineare.html#cb356-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        rmsea.scaled rmsea.pvalue.scaled                srmr </span></span>
-<span id="cb356-25"><a href="crescita-non-lineare.html#cb356-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                0.00                0.94                0.00</span></span></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="crescita-non-lineare.html#cb356-1" tabindex="-1"></a>quad_x_mod <span class="ot">&lt;-</span></span>
+<span id="cb356-2"><a href="crescita-non-lineare.html#cb356-2" tabindex="-1"></a>  <span class="st">&quot;</span></span>
+<span id="cb356-3"><a href="crescita-non-lineare.html#cb356-3" tabindex="-1"></a><span class="st">  iX =~ 1*x1 + 1*x2 + 1*x3 + 1*x4</span></span>
+<span id="cb356-4"><a href="crescita-non-lineare.html#cb356-4" tabindex="-1"></a><span class="st">  sX =~ 0*x1 + 1*x2 + 2*x3 + 3*x4</span></span>
+<span id="cb356-5"><a href="crescita-non-lineare.html#cb356-5" tabindex="-1"></a><span class="st">  qX =~ 0*x1 + 1*x2 + 4*x3 + 9*x4</span></span>
+<span id="cb356-6"><a href="crescita-non-lineare.html#cb356-6" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb356-7"><a href="crescita-non-lineare.html#cb356-7" tabindex="-1"></a></span>
+<span id="cb356-8"><a href="crescita-non-lineare.html#cb356-8" tabindex="-1"></a>quad_x_fit <span class="ot">&lt;-</span></span>
+<span id="cb356-9"><a href="crescita-non-lineare.html#cb356-9" tabindex="-1"></a>  <span class="fu">growth</span>(</span>
+<span id="cb356-10"><a href="crescita-non-lineare.html#cb356-10" tabindex="-1"></a>    <span class="at">model =</span> quad_x_mod,</span>
+<span id="cb356-11"><a href="crescita-non-lineare.html#cb356-11" tabindex="-1"></a>    <span class="at">estimator =</span> <span class="st">&quot;MLR&quot;</span>,</span>
+<span id="cb356-12"><a href="crescita-non-lineare.html#cb356-12" tabindex="-1"></a>    <span class="at">data =</span> sim_growth_dat</span>
+<span id="cb356-13"><a href="crescita-non-lineare.html#cb356-13" tabindex="-1"></a>  )</span>
+<span id="cb356-14"><a href="crescita-non-lineare.html#cb356-14" tabindex="-1"></a></span>
+<span id="cb356-15"><a href="crescita-non-lineare.html#cb356-15" tabindex="-1"></a>quad_x_fit_stats <span class="ot">&lt;-</span></span>
+<span id="cb356-16"><a href="crescita-non-lineare.html#cb356-16" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(</span>
+<span id="cb356-17"><a href="crescita-non-lineare.html#cb356-17" tabindex="-1"></a>    quad_x_fit,</span>
+<span id="cb356-18"><a href="crescita-non-lineare.html#cb356-18" tabindex="-1"></a>    selected_fit_stats</span>
+<span id="cb356-19"><a href="crescita-non-lineare.html#cb356-19" tabindex="-1"></a>  )</span>
+<span id="cb356-20"><a href="crescita-non-lineare.html#cb356-20" tabindex="-1"></a></span>
+<span id="cb356-21"><a href="crescita-non-lineare.html#cb356-21" tabindex="-1"></a><span class="fu">round</span>(quad_x_fit_stats, <span class="dv">2</span>)</span>
+<span id="cb356-22"><a href="crescita-non-lineare.html#cb356-22" tabindex="-1"></a><span class="co">#&gt;        chisq.scaled           df.scaled       pvalue.scaled          cfi.scaled </span></span>
+<span id="cb356-23"><a href="crescita-non-lineare.html#cb356-23" tabindex="-1"></a><span class="co">#&gt;                0.02                1.00                0.89                1.00 </span></span>
+<span id="cb356-24"><a href="crescita-non-lineare.html#cb356-24" tabindex="-1"></a><span class="co">#&gt;        rmsea.scaled rmsea.pvalue.scaled                srmr </span></span>
+<span id="cb356-25"><a href="crescita-non-lineare.html#cb356-25" tabindex="-1"></a><span class="co">#&gt;                0.00                0.94                0.00</span></span></code></pre></div>
 <p>Qui abbiamo un problema interessante, poiché la <code>x</code> si adatta bene sia a un modello lineare sia a uno quadratico. Abbiamo però un caso di Heywood: la varianza stimata della variabile <code>x4</code> è negativa.</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="crescita-non-lineare.html#cb357-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lavInspect</span>(quad_x_fit, <span class="st">&quot;est&quot;</span>)<span class="sc">$</span>theta</span>
-<span id="cb357-2"><a href="crescita-non-lineare.html#cb357-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    x1     x2     x3     x4    </span></span>
-<span id="cb357-3"><a href="crescita-non-lineare.html#cb357-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x1  1.171                     </span></span>
-<span id="cb357-4"><a href="crescita-non-lineare.html#cb357-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x2  0.000  0.718              </span></span>
-<span id="cb357-5"><a href="crescita-non-lineare.html#cb357-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x3  0.000  0.000  1.213       </span></span>
-<span id="cb357-6"><a href="crescita-non-lineare.html#cb357-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; x4  0.000  0.000  0.000 -0.064</span></span></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="crescita-non-lineare.html#cb357-1" tabindex="-1"></a><span class="fu">lavInspect</span>(quad_x_fit, <span class="st">&quot;est&quot;</span>)<span class="sc">$</span>theta</span>
+<span id="cb357-2"><a href="crescita-non-lineare.html#cb357-2" tabindex="-1"></a><span class="co">#&gt;        x1     x2     x3     x4</span></span>
+<span id="cb357-3"><a href="crescita-non-lineare.html#cb357-3" tabindex="-1"></a><span class="co">#&gt; x1  1.171                     </span></span>
+<span id="cb357-4"><a href="crescita-non-lineare.html#cb357-4" tabindex="-1"></a><span class="co">#&gt; x2  0.000  0.718              </span></span>
+<span id="cb357-5"><a href="crescita-non-lineare.html#cb357-5" tabindex="-1"></a><span class="co">#&gt; x3  0.000  0.000  1.213       </span></span>
+<span id="cb357-6"><a href="crescita-non-lineare.html#cb357-6" tabindex="-1"></a><span class="co">#&gt; x4  0.000  0.000  0.000 -0.064</span></span></code></pre></div>
 <p>Questo è ovviamente un problema, in quanto il modello non sembra adeguato per i dati. È possibile introdurre dei vincoli sui parametri per poi valutare se, evitando il caso di Heywood, l’adattamento si mantiene a livelli adeguati. Tuttavia, per i fini di questo tutorial, ignoreremo il caso di Heywood e proseguiremo nell’analisi.</p>
 <p>Quando si hanno due modelli nidificati adatti (nel nostro caso, modelli lineari e quadratici), possiamo confrontare formalmente l’adattamento relativo dei due modelli con il test del rapporto di verosimiglianza (LRT). L’ipotesi nulla è che non vi sia alcuna differenza nella covarianza spiegata dai due modelli. Se la covarianza spiegata è equivalente, preferiamo il modello più semplice.</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="crescita-non-lineare.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lavTestLRT</span>(linear_x_fit, quad_x_fit)</span>
-<span id="cb358-2"><a href="crescita-non-lineare.html#cb358-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Scaled Chi-Squared Difference Test (method = &quot;satorra.bentler.2001&quot;)</span></span>
-<span id="cb358-3"><a href="crescita-non-lineare.html#cb358-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb358-4"><a href="crescita-non-lineare.html#cb358-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lavaan </span><span class="al">NOTE</span><span class="co">:</span></span>
-<span id="cb358-5"><a href="crescita-non-lineare.html#cb358-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     The &quot;Chisq&quot; column contains standard test statistics, not the</span></span>
-<span id="cb358-6"><a href="crescita-non-lineare.html#cb358-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     robust test that should be reported per model. A robust difference</span></span>
-<span id="cb358-7"><a href="crescita-non-lineare.html#cb358-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     test is a function of two standard (not robust) statistics.</span></span>
-<span id="cb358-8"><a href="crescita-non-lineare.html#cb358-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  </span></span>
-<span id="cb358-9"><a href="crescita-non-lineare.html#cb358-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;              Df    AIC    BIC  Chisq Chisq diff Df diff Pr(&gt;Chisq)</span></span>
-<span id="cb358-10"><a href="crescita-non-lineare.html#cb358-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; quad_x_fit    1 7570.4 7625.2 0.0200                              </span></span>
-<span id="cb358-11"><a href="crescita-non-lineare.html#cb358-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; linear_x_fit  5 7566.4 7604.3 4.0675     4.0026       4     0.4056</span></span></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="crescita-non-lineare.html#cb358-1" tabindex="-1"></a><span class="fu">lavTestLRT</span>(linear_x_fit, quad_x_fit)</span>
+<span id="cb358-2"><a href="crescita-non-lineare.html#cb358-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb358-3"><a href="crescita-non-lineare.html#cb358-3" tabindex="-1"></a><span class="co">#&gt; Scaled Chi-Squared Difference Test (method = &quot;satorra.bentler.2001&quot;)</span></span>
+<span id="cb358-4"><a href="crescita-non-lineare.html#cb358-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb358-5"><a href="crescita-non-lineare.html#cb358-5" tabindex="-1"></a><span class="co">#&gt; lavaan </span><span class="al">NOTE</span><span class="co">:</span></span>
+<span id="cb358-6"><a href="crescita-non-lineare.html#cb358-6" tabindex="-1"></a><span class="co">#&gt;     The &quot;Chisq&quot; column contains standard test statistics, not the</span></span>
+<span id="cb358-7"><a href="crescita-non-lineare.html#cb358-7" tabindex="-1"></a><span class="co">#&gt;     robust test that should be reported per model. A robust difference</span></span>
+<span id="cb358-8"><a href="crescita-non-lineare.html#cb358-8" tabindex="-1"></a><span class="co">#&gt;     test is a function of two standard (not robust) statistics.</span></span>
+<span id="cb358-9"><a href="crescita-non-lineare.html#cb358-9" tabindex="-1"></a><span class="co">#&gt;  </span></span>
+<span id="cb358-10"><a href="crescita-non-lineare.html#cb358-10" tabindex="-1"></a><span class="co">#&gt;              Df    AIC    BIC  Chisq Chisq diff Df diff Pr(&gt;Chisq)</span></span>
+<span id="cb358-11"><a href="crescita-non-lineare.html#cb358-11" tabindex="-1"></a><span class="co">#&gt; quad_x_fit    1 7570.4 7625.2 0.0200                              </span></span>
+<span id="cb358-12"><a href="crescita-non-lineare.html#cb358-12" tabindex="-1"></a><span class="co">#&gt; linear_x_fit  5 7566.4 7604.3 4.0675     4.0026       4     0.4056</span></span></code></pre></div>
 <p>Qui, un p-value <span class="math inline">\(&gt; 0.05\)</span> (ovvero, nessuna evidenza di perdita di adattamento) ci dice che il modello lineare (ovvero, quello più semplice) è da preferire.</p>
 <p>Esaminiamo la <code>y</code>.</p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="crescita-non-lineare.html#cb359-1" aria-hidden="true" tabindex="-1"></a>quad_y_mod <span class="ot">&lt;-</span></span>
-<span id="cb359-2"><a href="crescita-non-lineare.html#cb359-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span></span>
-<span id="cb359-3"><a href="crescita-non-lineare.html#cb359-3" aria-hidden="true" tabindex="-1"></a><span class="st">  iY =~ 1*y1 + 1*y2 + 1*y3 + 1*y4</span></span>
-<span id="cb359-4"><a href="crescita-non-lineare.html#cb359-4" aria-hidden="true" tabindex="-1"></a><span class="st">  sY =~ 0*y1 + 1*y2 + 2*y3 + 3*y4</span></span>
-<span id="cb359-5"><a href="crescita-non-lineare.html#cb359-5" aria-hidden="true" tabindex="-1"></a><span class="st">  qY =~ 0*y1 + 1*y2 + 4*y3 + 9*y4</span></span>
-<span id="cb359-6"><a href="crescita-non-lineare.html#cb359-6" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb359-7"><a href="crescita-non-lineare.html#cb359-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb359-8"><a href="crescita-non-lineare.html#cb359-8" aria-hidden="true" tabindex="-1"></a>quad_y_fit <span class="ot">&lt;-</span></span>
-<span id="cb359-9"><a href="crescita-non-lineare.html#cb359-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">growth</span>(</span>
-<span id="cb359-10"><a href="crescita-non-lineare.html#cb359-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">model =</span> quad_y_mod,</span>
-<span id="cb359-11"><a href="crescita-non-lineare.html#cb359-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">estimator =</span> <span class="st">&quot;MLR&quot;</span>,</span>
-<span id="cb359-12"><a href="crescita-non-lineare.html#cb359-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> sim_growth_dat</span>
-<span id="cb359-13"><a href="crescita-non-lineare.html#cb359-13" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb359-14"><a href="crescita-non-lineare.html#cb359-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb359-15"><a href="crescita-non-lineare.html#cb359-15" aria-hidden="true" tabindex="-1"></a>quad_y_fit_stats <span class="ot">&lt;-</span></span>
-<span id="cb359-16"><a href="crescita-non-lineare.html#cb359-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(</span>
-<span id="cb359-17"><a href="crescita-non-lineare.html#cb359-17" aria-hidden="true" tabindex="-1"></a>    quad_y_fit,</span>
-<span id="cb359-18"><a href="crescita-non-lineare.html#cb359-18" aria-hidden="true" tabindex="-1"></a>    selected_fit_stats</span>
-<span id="cb359-19"><a href="crescita-non-lineare.html#cb359-19" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb359-20"><a href="crescita-non-lineare.html#cb359-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb359-21"><a href="crescita-non-lineare.html#cb359-21" aria-hidden="true" tabindex="-1"></a>quad_y_fit_stats</span>
-<span id="cb359-22"><a href="crescita-non-lineare.html#cb359-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        chisq.scaled           df.scaled       pvalue.scaled          cfi.scaled </span></span>
-<span id="cb359-23"><a href="crescita-non-lineare.html#cb359-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               0.190               1.000               0.663               1.000 </span></span>
-<span id="cb359-24"><a href="crescita-non-lineare.html#cb359-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        rmsea.scaled rmsea.pvalue.scaled                srmr </span></span>
-<span id="cb359-25"><a href="crescita-non-lineare.html#cb359-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               0.000               0.813               0.001</span></span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="crescita-non-lineare.html#cb359-1" tabindex="-1"></a>quad_y_mod <span class="ot">&lt;-</span></span>
+<span id="cb359-2"><a href="crescita-non-lineare.html#cb359-2" tabindex="-1"></a>  <span class="st">&quot;</span></span>
+<span id="cb359-3"><a href="crescita-non-lineare.html#cb359-3" tabindex="-1"></a><span class="st">  iY =~ 1*y1 + 1*y2 + 1*y3 + 1*y4</span></span>
+<span id="cb359-4"><a href="crescita-non-lineare.html#cb359-4" tabindex="-1"></a><span class="st">  sY =~ 0*y1 + 1*y2 + 2*y3 + 3*y4</span></span>
+<span id="cb359-5"><a href="crescita-non-lineare.html#cb359-5" tabindex="-1"></a><span class="st">  qY =~ 0*y1 + 1*y2 + 4*y3 + 9*y4</span></span>
+<span id="cb359-6"><a href="crescita-non-lineare.html#cb359-6" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb359-7"><a href="crescita-non-lineare.html#cb359-7" tabindex="-1"></a></span>
+<span id="cb359-8"><a href="crescita-non-lineare.html#cb359-8" tabindex="-1"></a>quad_y_fit <span class="ot">&lt;-</span></span>
+<span id="cb359-9"><a href="crescita-non-lineare.html#cb359-9" tabindex="-1"></a>  <span class="fu">growth</span>(</span>
+<span id="cb359-10"><a href="crescita-non-lineare.html#cb359-10" tabindex="-1"></a>    <span class="at">model =</span> quad_y_mod,</span>
+<span id="cb359-11"><a href="crescita-non-lineare.html#cb359-11" tabindex="-1"></a>    <span class="at">estimator =</span> <span class="st">&quot;MLR&quot;</span>,</span>
+<span id="cb359-12"><a href="crescita-non-lineare.html#cb359-12" tabindex="-1"></a>    <span class="at">data =</span> sim_growth_dat</span>
+<span id="cb359-13"><a href="crescita-non-lineare.html#cb359-13" tabindex="-1"></a>  )</span>
+<span id="cb359-14"><a href="crescita-non-lineare.html#cb359-14" tabindex="-1"></a></span>
+<span id="cb359-15"><a href="crescita-non-lineare.html#cb359-15" tabindex="-1"></a>quad_y_fit_stats <span class="ot">&lt;-</span></span>
+<span id="cb359-16"><a href="crescita-non-lineare.html#cb359-16" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(</span>
+<span id="cb359-17"><a href="crescita-non-lineare.html#cb359-17" tabindex="-1"></a>    quad_y_fit,</span>
+<span id="cb359-18"><a href="crescita-non-lineare.html#cb359-18" tabindex="-1"></a>    selected_fit_stats</span>
+<span id="cb359-19"><a href="crescita-non-lineare.html#cb359-19" tabindex="-1"></a>  )</span>
+<span id="cb359-20"><a href="crescita-non-lineare.html#cb359-20" tabindex="-1"></a></span>
+<span id="cb359-21"><a href="crescita-non-lineare.html#cb359-21" tabindex="-1"></a>quad_y_fit_stats</span>
+<span id="cb359-22"><a href="crescita-non-lineare.html#cb359-22" tabindex="-1"></a><span class="co">#&gt;        chisq.scaled           df.scaled       pvalue.scaled          cfi.scaled </span></span>
+<span id="cb359-23"><a href="crescita-non-lineare.html#cb359-23" tabindex="-1"></a><span class="co">#&gt;               0.190               1.000               0.663               1.000 </span></span>
+<span id="cb359-24"><a href="crescita-non-lineare.html#cb359-24" tabindex="-1"></a><span class="co">#&gt;        rmsea.scaled rmsea.pvalue.scaled                srmr </span></span>
+<span id="cb359-25"><a href="crescita-non-lineare.html#cb359-25" tabindex="-1"></a><span class="co">#&gt;               0.000               0.813               0.001</span></span></code></pre></div>
 <p>Gli indici di bontà di adattamento sono eccellenti.</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="crescita-non-lineare.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lavTestLRT</span>(linear_y_fit, quad_y_fit)</span>
-<span id="cb360-2"><a href="crescita-non-lineare.html#cb360-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Scaled Chi-Squared Difference Test (method = &quot;satorra.bentler.2001&quot;)</span></span>
-<span id="cb360-3"><a href="crescita-non-lineare.html#cb360-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb360-4"><a href="crescita-non-lineare.html#cb360-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lavaan </span><span class="al">NOTE</span><span class="co">:</span></span>
-<span id="cb360-5"><a href="crescita-non-lineare.html#cb360-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     The &quot;Chisq&quot; column contains standard test statistics, not the</span></span>
-<span id="cb360-6"><a href="crescita-non-lineare.html#cb360-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     robust test that should be reported per model. A robust difference</span></span>
-<span id="cb360-7"><a href="crescita-non-lineare.html#cb360-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     test is a function of two standard (not robust) statistics.</span></span>
-<span id="cb360-8"><a href="crescita-non-lineare.html#cb360-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  </span></span>
-<span id="cb360-9"><a href="crescita-non-lineare.html#cb360-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;              Df     AIC     BIC    Chisq Chisq diff Df diff Pr(&gt;Chisq)    </span></span>
-<span id="cb360-10"><a href="crescita-non-lineare.html#cb360-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; quad_y_fit    1  9301.7  9356.5   0.1901                                  </span></span>
-<span id="cb360-11"><a href="crescita-non-lineare.html#cb360-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; linear_y_fit  5 10194.9 10232.9 901.4270     829.59       4  &lt; 2.2e-16 ***</span></span>
-<span id="cb360-12"><a href="crescita-non-lineare.html#cb360-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb360-13"><a href="crescita-non-lineare.html#cb360-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="crescita-non-lineare.html#cb360-1" tabindex="-1"></a><span class="fu">lavTestLRT</span>(linear_y_fit, quad_y_fit)</span>
+<span id="cb360-2"><a href="crescita-non-lineare.html#cb360-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb360-3"><a href="crescita-non-lineare.html#cb360-3" tabindex="-1"></a><span class="co">#&gt; Scaled Chi-Squared Difference Test (method = &quot;satorra.bentler.2001&quot;)</span></span>
+<span id="cb360-4"><a href="crescita-non-lineare.html#cb360-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb360-5"><a href="crescita-non-lineare.html#cb360-5" tabindex="-1"></a><span class="co">#&gt; lavaan </span><span class="al">NOTE</span><span class="co">:</span></span>
+<span id="cb360-6"><a href="crescita-non-lineare.html#cb360-6" tabindex="-1"></a><span class="co">#&gt;     The &quot;Chisq&quot; column contains standard test statistics, not the</span></span>
+<span id="cb360-7"><a href="crescita-non-lineare.html#cb360-7" tabindex="-1"></a><span class="co">#&gt;     robust test that should be reported per model. A robust difference</span></span>
+<span id="cb360-8"><a href="crescita-non-lineare.html#cb360-8" tabindex="-1"></a><span class="co">#&gt;     test is a function of two standard (not robust) statistics.</span></span>
+<span id="cb360-9"><a href="crescita-non-lineare.html#cb360-9" tabindex="-1"></a><span class="co">#&gt;  </span></span>
+<span id="cb360-10"><a href="crescita-non-lineare.html#cb360-10" tabindex="-1"></a><span class="co">#&gt;              Df     AIC     BIC    Chisq Chisq diff Df diff Pr(&gt;Chisq)    </span></span>
+<span id="cb360-11"><a href="crescita-non-lineare.html#cb360-11" tabindex="-1"></a><span class="co">#&gt; quad_y_fit    1  9301.7  9356.5   0.1901                                  </span></span>
+<span id="cb360-12"><a href="crescita-non-lineare.html#cb360-12" tabindex="-1"></a><span class="co">#&gt; linear_y_fit  5 10194.9 10232.9 901.4270     829.59       4  &lt; 2.2e-16 ***</span></span>
+<span id="cb360-13"><a href="crescita-non-lineare.html#cb360-13" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb360-14"><a href="crescita-non-lineare.html#cb360-14" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
 <p>Il test del rapporto di verosimiglianza ci dice che, per la <code>y</code>, il modello quadratico è sicuramente da preferire al modello lineare.</p>
 </div>
 </div>
@@ -1121,7 +1075,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

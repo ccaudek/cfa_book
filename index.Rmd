@@ -34,7 +34,7 @@ In questo insegnamento la discussione delle teciche della CFA sarà preceduta da
 
 L'insegnamento pone una grande enfasi non solo sulla comprensione dei concetti teorici necessari per la costruzione e la validazione di uno strumento di misura in psicologia, ma anche sulla capacità di applicare tali concetti in situazioni concrete. Di conseguenza, la discussione dei concetti sarà sempre accompagnata da applicazioni pratiche. Tali applicazioni richiedono l'uso di un software. In questo insegnamento useremo $\textsf{R}$ [@rmanual] quale linguaggio di programmazione probabilistica e, tra gli altri, il pacchetto `lavaan` che consente di svolgere le analisi statistiche della CFA e della EFA [@beaujean2014latent]. La teoria classica dei test verrà descritta con riferimento al classico testo di @lord1968statistical. Questa dispensa, inoltre, segue da vicino la trattazione della CFA fornita nei testi di @mcdonald2013test e di @brown2015confirmatory.
 
-Trattando di argomenti avanzati, questo insegnamento presuppone la conoscenza di base dei concetti fondamentali della teoria delle probabilità; presuppone inoltre il possesso delle conoscenze di base necessarie per procedere all'utilizzo di $\textsf{R}$. Informazioni su tali argomenti sono forniti nella dispensa di Psicometria (A.A. 2021-2022).
+Trattando di argomenti avanzati, questo insegnamento presuppone la conoscenza di base dei concetti fondamentali della teoria delle probabilità; presuppone inoltre il possesso delle conoscenze di base necessarie per procedere all'utilizzo di $\textsf{R}$. 
 
 ```{block2, type='flushright', html.tag='p'}
 Corrado Caudek  

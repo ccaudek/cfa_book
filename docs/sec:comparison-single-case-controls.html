@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>B.2 Il confronto tra caso singolo e un gruppo di controllo | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)</title>
   <meta name="description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2021/2022) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
   <meta property="og:title" content="B.2 Il confronto tra caso singolo e un gruppo di controllo | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2022-05-16" />
+<meta name="date" content="2023-02-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -92,7 +92,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -105,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -298,7 +298,7 @@ div.csl-indent {
 <li class="chapter" data-level="9.1.2" data-path="punteggi-fattoriali.html"><a href="punteggi-fattoriali.html#dimostrazione-di-thurstone"><i class="fa fa-check"></i><b>9.1.2</b> Dimostrazione di Thurstone</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="path-analysis.html"><a href="path-analysis.html"><i class="fa fa-check"></i><b>10</b> Path Analysis</a>
+<li class="chapter" data-level="10" data-path="visualizzare-il-modelli-di-equazioni-strutturali.html"><a href="visualizzare-il-modelli-di-equazioni-strutturali.html"><i class="fa fa-check"></i><b>10</b> Visualizzare il modelli di equazioni strutturali</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="path-diagram.html"><a href="path-diagram.html"><i class="fa fa-check"></i><b>10.1</b> Path diagram</a></li>
 <li class="chapter" data-level="10.2" data-path="path-analysis-e-regressione-multipla.html"><a href="path-analysis-e-regressione-multipla.html"><i class="fa fa-check"></i><b>10.2</b> Path analysis e regressione multipla</a></li>
@@ -308,8 +308,8 @@ div.csl-indent {
 <li class="chapter" data-level="10.4.1" data-path="le-regole-di-wright.html"><a href="le-regole-di-wright.html#scomposizione-delle-correlazioni-covarianze"><i class="fa fa-check"></i><b>10.4.1</b> Scomposizione delle correlazioni (covarianze)</a></li>
 <li class="chapter" data-level="10.4.2" data-path="le-regole-di-wright.html"><a href="le-regole-di-wright.html#scomposizione-della-varianza"><i class="fa fa-check"></i><b>10.4.2</b> Scomposizione della varianza</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="sec:how_compute_path_coef.html"><a href="sec:how_compute_path_coef.html"><i class="fa fa-check"></i><b>10.5</b> Come calcolare i coefficienti di percorso?</a></li>
-<li class="chapter" data-level="10.6" data-path="path-analysis-e-software.html"><a href="path-analysis-e-software.html"><i class="fa fa-check"></i><b>10.6</b> Path analysis e software</a></li>
+<li class="chapter" data-level="10.5" data-path="come-calcolare-i-coefficienti-di-percorso.html"><a href="come-calcolare-i-coefficienti-di-percorso.html"><i class="fa fa-check"></i><b>10.5</b> Come calcolare i coefficienti di percorso?</a></li>
+<li class="chapter" data-level="10.6" data-path="path-analysis-con-lavaan.html"><a href="path-analysis-con-lavaan.html"><i class="fa fa-check"></i><b>10.6</b> Path analysis con <code>lavaan</code></a></li>
 <li class="chapter" data-level="10.7" data-path="oltre-la-regressione-multipla.html"><a href="oltre-la-regressione-multipla.html"><i class="fa fa-check"></i><b>10.7</b> Oltre la regressione multipla</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="attendibilità-e-modello-fattoriale.html"><a href="attendibilità-e-modello-fattoriale.html"><i class="fa fa-check"></i><b>11</b> Attendibilità e modello fattoriale</a>
@@ -529,69 +529,21 @@ div.csl-indent {
 <li class="chapter" data-level="23.3.1" data-path="parallel-process-model.html"><a href="parallel-process-model.html#interpretazione-3"><i class="fa fa-check"></i><b>23.3.1</b> Interpretazione</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="invarianza-fattoriale-nei-modelli-lgm.html"><a href="invarianza-fattoriale-nei-modelli-lgm.html"><i class="fa fa-check"></i><b>24</b> Invarianza fattoriale nei modelli LGM</a>
+<li class="chapter" data-level="24" data-path="dati-mancanti.html"><a href="dati-mancanti.html"><i class="fa fa-check"></i><b>24</b> Dati mancanti</a>
 <ul>
-<li class="chapter" data-level="24.1" data-path="studi-longitudinali-cross-lagged.html"><a href="studi-longitudinali-cross-lagged.html"><i class="fa fa-check"></i><b>24.1</b> Studi longitudinali cross-lagged</a>
+<li class="chapter" data-level="24.1" data-path="tipologie-di-dati-mancanti.html"><a href="tipologie-di-dati-mancanti.html"><i class="fa fa-check"></i><b>24.1</b> Tipologie di dati mancanti</a></li>
+<li class="chapter" data-level="24.2" data-path="la-gestione-dei-dati-mancanti.html"><a href="la-gestione-dei-dati-mancanti.html"><i class="fa fa-check"></i><b>24.2</b> La gestione dei dati mancanti</a>
 <ul>
-<li class="chapter" data-level="24.1.1" data-path="studi-longitudinali-cross-lagged.html"><a href="studi-longitudinali-cross-lagged.html#invarianza-di-misura-in-studi-longitudinali-cross-lagged"><i class="fa fa-check"></i><b>24.1.1</b> Invarianza di misura in studi longitudinali cross-lagged</a></li>
-</ul></li>
-<li class="chapter" data-level="24.2" data-path="data-set.html"><a href="data-set.html"><i class="fa fa-check"></i><b>24.2</b> Data set</a></li>
-<li class="chapter" data-level="24.3" data-path="stretegia-analitica.html"><a href="stretegia-analitica.html"><i class="fa fa-check"></i><b>24.3</b> Stretegia analitica</a></li>
-<li class="chapter" data-level="24.4" data-path="leggere-in-dati-in-mathsfr.html"><a href="leggere-in-dati-in-mathsfr.html"><i class="fa fa-check"></i><b>24.4</b> Leggere in dati in <span class="math inline">\(\mathsf{R}\)</span></a></li>
-<li class="chapter" data-level="24.5" data-path="struttura-degli-errori.html"><a href="struttura-degli-errori.html"><i class="fa fa-check"></i><b>24.5</b> Struttura degli errori</a></li>
-<li class="chapter" data-level="24.6" data-path="modello-configurale.html"><a href="modello-configurale.html"><i class="fa fa-check"></i><b>24.6</b> Modello configurale</a>
-<ul>
-<li class="chapter" data-level="24.6.1" data-path="modello-configurale.html"><a href="modello-configurale.html#definizione-del-modello"><i class="fa fa-check"></i><b>24.6.1</b> Definizione del modello</a></li>
-<li class="chapter" data-level="24.6.2" data-path="modello-configurale.html"><a href="modello-configurale.html#output-del-modello"><i class="fa fa-check"></i><b>24.6.2</b> Output del modello</a></li>
-<li class="chapter" data-level="24.6.3" data-path="modello-configurale.html"><a href="modello-configurale.html#interpretazione-4"><i class="fa fa-check"></i><b>24.6.3</b> Interpretazione</a></li>
-</ul></li>
-<li class="chapter" data-level="24.7" data-path="invarianza-metrica.html"><a href="invarianza-metrica.html"><i class="fa fa-check"></i><b>24.7</b> Invarianza metrica</a>
-<ul>
-<li class="chapter" data-level="24.7.1" data-path="invarianza-metrica.html"><a href="invarianza-metrica.html#definizione-del-modello-1"><i class="fa fa-check"></i><b>24.7.1</b> Definizione del modello</a></li>
-<li class="chapter" data-level="24.7.2" data-path="invarianza-metrica.html"><a href="invarianza-metrica.html#output-del-modello-1"><i class="fa fa-check"></i><b>24.7.2</b> Output del modello</a></li>
-</ul></li>
-<li class="chapter" data-level="24.8" data-path="invarianza-scalare.html"><a href="invarianza-scalare.html"><i class="fa fa-check"></i><b>24.8</b> Invarianza scalare</a>
-<ul>
-<li class="chapter" data-level="24.8.1" data-path="invarianza-scalare.html"><a href="invarianza-scalare.html#definizione-del-modello-2"><i class="fa fa-check"></i><b>24.8.1</b> Definizione del modello</a></li>
-<li class="chapter" data-level="24.8.2" data-path="invarianza-scalare.html"><a href="invarianza-scalare.html#output-del-modello-2"><i class="fa fa-check"></i><b>24.8.2</b> Output del modello</a></li>
-</ul></li>
-<li class="chapter" data-level="24.9" data-path="invarianza-degli-errori.html"><a href="invarianza-degli-errori.html"><i class="fa fa-check"></i><b>24.9</b> Invarianza degli errori</a>
-<ul>
-<li class="chapter" data-level="24.9.1" data-path="invarianza-degli-errori.html"><a href="invarianza-degli-errori.html#definizione-del-modello-3"><i class="fa fa-check"></i><b>24.9.1</b> Definizione del modello</a></li>
-<li class="chapter" data-level="24.9.2" data-path="invarianza-degli-errori.html"><a href="invarianza-degli-errori.html#output-del-modello-3"><i class="fa fa-check"></i><b>24.9.2</b> Output del modello</a></li>
-</ul></li>
-<li class="chapter" data-level="24.10" data-path="confronto-tra-modelli.html"><a href="confronto-tra-modelli.html"><i class="fa fa-check"></i><b>24.10</b> Confronto tra modelli</a>
-<ul>
-<li class="chapter" data-level="24.10.1" data-path="confronto-tra-modelli.html"><a href="confronto-tra-modelli.html#codice-e-output"><i class="fa fa-check"></i><b>24.10.1</b> Codice e output</a></li>
-<li class="chapter" data-level="24.10.2" data-path="confronto-tra-modelli.html"><a href="confronto-tra-modelli.html#interpretazione-5"><i class="fa fa-check"></i><b>24.10.2</b> Interpretazione</a></li>
-</ul></li>
-<li class="chapter" data-level="24.11" data-path="modello-strutturale.html"><a href="modello-strutturale.html"><i class="fa fa-check"></i><b>24.11</b> Modello strutturale</a>
-<ul>
-<li class="chapter" data-level="24.11.1" data-path="modello-strutturale.html"><a href="modello-strutturale.html#definizione-del-modello-4"><i class="fa fa-check"></i><b>24.11.1</b> Definizione del modello</a></li>
-<li class="chapter" data-level="24.11.2" data-path="modello-strutturale.html"><a href="modello-strutturale.html#output-del-modello-4"><i class="fa fa-check"></i><b>24.11.2</b> Output del modello</a></li>
-</ul></li>
-<li class="chapter" data-level="24.12" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html"><i class="fa fa-check"></i><b>24.12</b> Modello Random Intercepts Cross-Lagged Panel</a>
-<ul>
-<li class="chapter" data-level="24.12.1" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#definizione-del-modello-5"><i class="fa fa-check"></i><b>24.12.1</b> Definizione del modello</a></li>
-<li class="chapter" data-level="24.12.2" data-path="modello-random-intercepts-cross-lagged-panel.html"><a href="modello-random-intercepts-cross-lagged-panel.html#output-del-modello-5"><i class="fa fa-check"></i><b>24.12.2</b> Output del modello</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-2.html"><a href="commenti-e-considerazioni-finali-2.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
-</ul></li>
-<li class="chapter" data-level="25" data-path="dati-mancanti.html"><a href="dati-mancanti.html"><i class="fa fa-check"></i><b>25</b> Dati mancanti</a>
-<ul>
-<li class="chapter" data-level="25.1" data-path="tipologie-di-dati-mancanti.html"><a href="tipologie-di-dati-mancanti.html"><i class="fa fa-check"></i><b>25.1</b> Tipologie di dati mancanti</a></li>
-<li class="chapter" data-level="25.2" data-path="la-gestione-dei-dati-mancanti.html"><a href="la-gestione-dei-dati-mancanti.html"><i class="fa fa-check"></i><b>25.2</b> La gestione dei dati mancanti</a>
-<ul>
-<li class="chapter" data-level="25.2.1" data-path="la-gestione-dei-dati-mancanti.html"><a href="la-gestione-dei-dati-mancanti.html#metodo-direct-ml"><i class="fa fa-check"></i><b>25.2.1</b> Metodo Direct ML</a></li>
-<li class="chapter" data-level="25.2.2" data-path="la-gestione-dei-dati-mancanti.html"><a href="la-gestione-dei-dati-mancanti.html#un-esempio-concreto-8"><i class="fa fa-check"></i><b>25.2.2</b> Un esempio concreto</a></li>
+<li class="chapter" data-level="24.2.1" data-path="la-gestione-dei-dati-mancanti.html"><a href="la-gestione-dei-dati-mancanti.html#metodo-direct-ml"><i class="fa fa-check"></i><b>24.2.1</b> Metodo Direct ML</a></li>
+<li class="chapter" data-level="24.2.2" data-path="la-gestione-dei-dati-mancanti.html"><a href="la-gestione-dei-dati-mancanti.html#un-esempio-concreto-8"><i class="fa fa-check"></i><b>24.2.2</b> Un esempio concreto</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="dati-non-gaussiani-e-categoriali.html"><a href="dati-non-gaussiani-e-categoriali.html"><i class="fa fa-check"></i><b>26</b> Dati non gaussiani e categoriali</a>
+<li class="chapter" data-level="25" data-path="dati-non-gaussiani-e-categoriali.html"><a href="dati-non-gaussiani-e-categoriali.html"><i class="fa fa-check"></i><b>25</b> Dati non gaussiani e categoriali</a>
 <ul>
-<li class="chapter" data-level="26.1" data-path="dati-non-gaussiani.html"><a href="dati-non-gaussiani.html"><i class="fa fa-check"></i><b>26.1</b> Dati non gaussiani</a></li>
-<li class="chapter" data-level="26.2" data-path="dati-categoriali.html"><a href="dati-categoriali.html"><i class="fa fa-check"></i><b>26.2</b> Dati categoriali</a>
+<li class="chapter" data-level="25.1" data-path="dati-non-gaussiani.html"><a href="dati-non-gaussiani.html"><i class="fa fa-check"></i><b>25.1</b> Dati non gaussiani</a></li>
+<li class="chapter" data-level="25.2" data-path="dati-categoriali.html"><a href="dati-categoriali.html"><i class="fa fa-check"></i><b>25.2</b> Dati categoriali</a>
 <ul>
-<li class="chapter" data-level="26.2.1" data-path="dati-categoriali.html"><a href="dati-categoriali.html#un-esempio-concreto-9"><i class="fa fa-check"></i><b>26.2.1</b> Un esempio concreto</a></li>
+<li class="chapter" data-level="25.2.1" data-path="dati-categoriali.html"><a href="dati-categoriali.html#un-esempio-concreto-9"><i class="fa fa-check"></i><b>25.2.1</b> Un esempio concreto</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>V Appendici</b></span></li>
@@ -702,7 +654,7 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="sec:comparison-single-case-controls" class="section level2 hasAnchor" number="28.2">
+<div id="sec:comparison-single-case-controls" class="section level2 hasAnchor" number="27.2">
 <h2><span class="header-section-number">B.2</span> Il confronto tra caso singolo e un gruppo di controllo<a href="sec:comparison-single-case-controls.html#sec:comparison-single-case-controls" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>I neuropsicologi hanno spesso bisogno di confrontare un singolo caso con
 un piccolo gruppo di controllo. Tuttavia, il test <span class="math inline">\(t\)</span> di Student per due
@@ -731,7 +683,7 @@ di tipo I quando si conclude che il punteggio del caso non è
 un’osservazione che appartiene alla popolazione del punteggi dei
 controlli) e viene sovrastimata l’anormalità del punteggio del caso
 singolo. A tale problema sono state proposte diverse soluzioni.</p>
-<div id="sec:Crawford-Howell-1998" class="section level3 hasAnchor" number="28.2.1">
+<div id="sec:Crawford-Howell-1998" class="section level3 hasAnchor" number="27.2.1">
 <h3><span class="header-section-number">B.2.1</span> Il metodo di Crawford e Howell (1998)<a href="sec:comparison-single-case-controls.html#sec:Crawford-Howell-1998" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Questo metodo differisce dall’uso del punteggio <span class="math inline">\(z\)</span> descritto sopra
 perché tratta la media e la deviazione standard del gruppo di controllo
@@ -766,31 +718,31 @@ basso).</p>
 un QI pari a 61 mentre il QI dei controlli è
 <span class="math inline">\(\{86, 100, 112, 95, 121, 102\}\)</span>. Ci chiediamo se il QI del caso sia
 anormalmente basso.</p>
-<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="sec:comparison-single-case-controls.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;psycho&quot;</span>)</span>
-<span id="cb409-2"><a href="sec:comparison-single-case-controls.html#cb409-2" aria-hidden="true" tabindex="-1"></a>patient <span class="ot">&lt;-</span> <span class="dv">61</span> <span class="co"># The IQ of a patient</span></span>
-<span id="cb409-3"><a href="sec:comparison-single-case-controls.html#cb409-3" aria-hidden="true" tabindex="-1"></a>controls <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">86</span>, <span class="dv">100</span>, <span class="dv">112</span>, <span class="dv">95</span>, <span class="dv">121</span>, <span class="dv">102</span>) <span class="co"># The IQs of a control group</span></span>
-<span id="cb409-4"><a href="sec:comparison-single-case-controls.html#cb409-4" aria-hidden="true" tabindex="-1"></a><span class="fu">crawford.test</span>(patient, controls)</span>
-<span id="cb409-5"><a href="sec:comparison-single-case-controls.html#cb409-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The Bayesian test for single case assessment (Crawford, Garthwaite, 2007) suggests that the patient&#39;s score (Raw = 61.00, Z = -3.36, percentile = 0.04) is significantly different from the controls (M = 102.67, SD = 12.39, p p = 0.013). The patient&#39;s score is lower than 98.69% (95% CI [1.33e-15, 0.07]) of the control population.</span></span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="sec:comparison-single-case-controls.html#cb389-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;psycho&quot;</span>)</span>
+<span id="cb389-2"><a href="sec:comparison-single-case-controls.html#cb389-2" tabindex="-1"></a>patient <span class="ot">&lt;-</span> <span class="dv">61</span> <span class="co"># The IQ of a patient</span></span>
+<span id="cb389-3"><a href="sec:comparison-single-case-controls.html#cb389-3" tabindex="-1"></a>controls <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">86</span>, <span class="dv">100</span>, <span class="dv">112</span>, <span class="dv">95</span>, <span class="dv">121</span>, <span class="dv">102</span>) <span class="co"># The IQs of a control group</span></span>
+<span id="cb389-4"><a href="sec:comparison-single-case-controls.html#cb389-4" tabindex="-1"></a><span class="fu">crawford.test</span>(patient, controls)</span>
+<span id="cb389-5"><a href="sec:comparison-single-case-controls.html#cb389-5" tabindex="-1"></a><span class="co">#&gt; The Bayesian test for single case assessment (Crawford, Garthwaite, 2007) suggests that the patient&#39;s score (Raw = 61.00, Z = -3.36, percentile = 0.04) is significantly different from the controls (M = 102.67, SD = 12.39, p p = 0.013). The patient&#39;s score is lower than 98.69% (95% CI [1.33e-15, 0.07]) of the control population.</span></span></code></pre></div>
 <p>Utilizzando la <a href="sec:comparison-single-case-controls.html#eq:Crawford-Howell-1998">(B.1)</a> otteniamo un risultato quasi
 identico:</p>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="sec:comparison-single-case-controls.html#cb410-1" aria-hidden="true" tabindex="-1"></a>crawford_howell_test <span class="ot">&lt;-</span> <span class="cf">function</span>(patient, controls) {</span>
-<span id="cb410-2"><a href="sec:comparison-single-case-controls.html#cb410-2" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(controls)</span>
-<span id="cb410-3"><a href="sec:comparison-single-case-controls.html#cb410-3" aria-hidden="true" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sd</span>(controls)</span>
-<span id="cb410-4"><a href="sec:comparison-single-case-controls.html#cb410-4" aria-hidden="true" tabindex="-1"></a>  t <span class="ot">&lt;-</span> (patient <span class="sc">-</span> <span class="fu">mean</span>(controls)) <span class="sc">/</span> (s <span class="sc">*</span> <span class="fu">sqrt</span>((n <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> n))</span>
-<span id="cb410-5"><a href="sec:comparison-single-case-controls.html#cb410-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(t, <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(t, n <span class="sc">-</span> <span class="dv">1</span>))</span>
-<span id="cb410-6"><a href="sec:comparison-single-case-controls.html#cb410-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb410-7"><a href="sec:comparison-single-case-controls.html#cb410-7" aria-hidden="true" tabindex="-1"></a><span class="fu">crawford_howell_test</span>(patient, controls)</span>
-<span id="cb410-8"><a href="sec:comparison-single-case-controls.html#cb410-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb410-9"><a href="sec:comparison-single-case-controls.html#cb410-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -3.113926</span></span>
-<span id="cb410-10"><a href="sec:comparison-single-case-controls.html#cb410-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb410-11"><a href="sec:comparison-single-case-controls.html#cb410-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb410-12"><a href="sec:comparison-single-case-controls.html#cb410-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.9867834</span></span></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="sec:comparison-single-case-controls.html#cb390-1" tabindex="-1"></a>crawford_howell_test <span class="ot">&lt;-</span> <span class="cf">function</span>(patient, controls) {</span>
+<span id="cb390-2"><a href="sec:comparison-single-case-controls.html#cb390-2" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(controls)</span>
+<span id="cb390-3"><a href="sec:comparison-single-case-controls.html#cb390-3" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sd</span>(controls)</span>
+<span id="cb390-4"><a href="sec:comparison-single-case-controls.html#cb390-4" tabindex="-1"></a>  t <span class="ot">&lt;-</span> (patient <span class="sc">-</span> <span class="fu">mean</span>(controls)) <span class="sc">/</span> (s <span class="sc">*</span> <span class="fu">sqrt</span>((n <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> n))</span>
+<span id="cb390-5"><a href="sec:comparison-single-case-controls.html#cb390-5" tabindex="-1"></a>  <span class="fu">list</span>(t, <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(t, n <span class="sc">-</span> <span class="dv">1</span>))</span>
+<span id="cb390-6"><a href="sec:comparison-single-case-controls.html#cb390-6" tabindex="-1"></a>}</span>
+<span id="cb390-7"><a href="sec:comparison-single-case-controls.html#cb390-7" tabindex="-1"></a><span class="fu">crawford_howell_test</span>(patient, controls)</span>
+<span id="cb390-8"><a href="sec:comparison-single-case-controls.html#cb390-8" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb390-9"><a href="sec:comparison-single-case-controls.html#cb390-9" tabindex="-1"></a><span class="co">#&gt; [1] -3.113926</span></span>
+<span id="cb390-10"><a href="sec:comparison-single-case-controls.html#cb390-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb390-11"><a href="sec:comparison-single-case-controls.html#cb390-11" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb390-12"><a href="sec:comparison-single-case-controls.html#cb390-12" tabindex="-1"></a><span class="co">#&gt; [1] 0.9867834</span></span></code></pre></div>
 <p>In entrambi i casi la risposta è che il 98.7% dei controlli ha un QI
 superiore a quello del caso. In tali circostanze possiamo dunque
 concludere che siamo in presenza di un deficit.</p>
 </div>
 </div>
-<div id="sec:barton-2002" class="section level3 hasAnchor" number="28.2.2">
+<div id="sec:barton-2002" class="section level3 hasAnchor" number="27.2.2">
 <h3><span class="header-section-number">B.2.2</span> Il metodo di Barton et al. (2002)<a href="sec:comparison-single-case-controls.html#sec:barton-2002" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Un metodo equivalente alla <a href="sec:comparison-single-case-controls.html#eq:Crawford-Howell-1998">(B.1)</a> è stato proposto da Barton et al. (2002). Questi autori confrontano il valore del caso con l’intervallo di
 confidenza costruito utilizzando i valori dei controlli:</p>
@@ -801,7 +753,7 @@ confidenza costruito utilizzando i valori dei controlli:</p>
 <p>laddove le quantità nella <a href="sec:comparison-single-case-controls.html#eq:Barton-2002">(B.2)</a> hanno lo stesso significato che in
 precedenza. Se il valore del caso singolo cade al di fuori dell’intervallo definito dalla <a href="sec:comparison-single-case-controls.html#eq:Barton-2002">(B.2)</a> , allora possiamo concludere che il caso
 manifesta un deficit.</p>
-<div id="lintervallo-di-confidenza-tradizionale" class="section level4 hasAnchor" number="28.2.2.1">
+<div id="lintervallo-di-confidenza-tradizionale" class="section level4 hasAnchor" number="27.2.2.1">
 <h4><span class="header-section-number">B.2.2.1</span> L’intervallo di confidenza “tradizionale”<a href="sec:comparison-single-case-controls.html#lintervallo-di-confidenza-tradizionale" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Alcuni autori utilizzano una procedura simile a quella descritta nella <a href="sec:comparison-single-case-controls.html#eq:Barton-2002">(B.2)</a>, ma utilizzando la formula</p>
 <p><span class="math display" id="eq:Barton-2002-b">\[
@@ -814,7 +766,7 @@ decidere che il caso manifesta un deficit anche quando ci sono
 piccolissime differenze rispetto alla media dei controlli. Questo
 approccio, dunque, è da rifiutare.</p>
 </div>
-<div id="il-test-t-di-student-versione-1" class="section level4 hasAnchor" number="28.2.2.2">
+<div id="il-test-t-di-student-versione-1" class="section level4 hasAnchor" number="27.2.2.2">
 <h4><span class="header-section-number">B.2.2.2</span> Il test <span class="math inline">\(t\)</span> di Student – versione 1<a href="sec:comparison-single-case-controls.html#il-test-t-di-student-versione-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Alcuni autori utilizzano la formula del test <span class="math inline">\(t\)</span> di Student nel modo
 seguente:</p>
@@ -825,7 +777,7 @@ t_{n-1} = \frac{\bar{x} - x^*}{\frac{s}{\sqrt{n}}}.
 <p>Per esempio, Reinhold and Markowitsch (2007) descrivono tale procedura nel modo seguente: “Separately for each patient, all comparisons were computed by t-tests for one group with the score of each patient as the tested value (p. &gt; 60)”.</p>
 <p>Questo è un uso del tutto bizzarro del test <span class="math inline">\(t\)</span> di Student e non trova giustificazione alcuna.</p>
 </div>
-<div id="il-test-t-di-student-versione-2" class="section level4 hasAnchor" number="28.2.2.3">
+<div id="il-test-t-di-student-versione-2" class="section level4 hasAnchor" number="27.2.2.3">
 <h4><span class="header-section-number">B.2.2.3</span> Il test <span class="math inline">\(t\)</span> di Student – versione 2<a href="sec:comparison-single-case-controls.html#il-test-t-di-student-versione-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Altri autori hanno usato la formula del test <span class="math inline">\(t\)</span> di Student scritta nel
 modo seguente:</p>
@@ -904,7 +856,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
