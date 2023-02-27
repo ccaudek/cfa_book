@@ -214,7 +214,7 @@ In $\mathsf{R}$ abbiamo
 sqrt(t(v1) %*% v1)
 ```
 
-## Matrici {#matrici}
+## Matrici 
 
 Una matrice costituisce un insieme rettangolare di scalari ordinati per
 riga e colonna. Può anche essere vista come la raccolta di $m$ vettori

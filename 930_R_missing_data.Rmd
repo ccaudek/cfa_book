@@ -1,0 +1,76 @@
+# Dati mancanti
+
+```{r, include = FALSE}
+source("_common.R")
+```
+
+## Motivazione 
+
+La pulizia dei dati (*data cleaning*) in `R` è fondamentale per effettuare qualsiasi analisi. Uno degli aspetti più importanti della pulizia dei dati è la gestione dei dati mancanti. I valori mancanti (*missing values*) vengono indicati dal codice `NA`, che significa *not available* — non disponibile. 
+
+
+## Trattamento dei dati mancanti
+
+Se una variabile contiene valori mancanti, `R` non è in grado di applicare ad essa alcune Funzioni, come ad esempio la media. Per questa ragione, la gran parte delle funzioni di `R` prevedono modi specifici per trattare i valori mancanti.
+
+Ci sono diversi tipi di dati "mancanti" in `R`;
+
+- `NA` - generico dato mancante;
+- `NaN` - il codice `NaN` (*Not a Number*) indica i valori numerici impossibili, quali ad esempio un valore 0/0;
+- `Inf` e `-Inf` - Infinity, si verifca, ad esempio, quando si divide un numero per 0.
+
+La funzione `is.na()` ritorna un output che indica con TRUE le celle che contengono NA o NaN.
+
+Si noti che 
+
+- se `is.na(x)` è TRUE, allora `!is.na(x)` è FALSE;
+- `all(!is.na(x))` ritorna TRUE se tutti i valori `x` sono NOT NA;
+- `any(is.na(x))` risponde alla domanda: c'è qualche valore NA (almeno uno) in `x`?;
+- `complete.cases(x)` ritorna TRUE se ciascun elemento di `x` è is NOT NA; ritorna FALSE se almeno un elemento di `x` è NA;
+
+Le funzioni `R` `is.nan()` e `is.infinite()` si applicano ai tipi di dati `NaN` e `Inf`.
+
+Per esempio, consideriamo il seguente data.frame:
+
+```{r}
+d <- tibble(
+  w = c(1, 2, NA, 3, NA), 
+  x = 1:5, 
+  y = 1, 
+  z = x ^ 2 + y,
+  q = c(3, NA, 5, 1, 4)
+)
+d
+```
+
+```{r}
+is.na(d$w)
+is.na(d$x)
+```
+
+Per creare un nuovo Dataframe senza valori mancanti:
+
+```{r}
+d_clean <- d[complete.cases(d), ]
+d_clean
+```
+
+Oppure, se vogliamo eliminare le righe con NA solo in una variabile:
+
+```{r}
+d1 <- d[!is.na(d$q), ]
+d1
+```
+
+
+Se vogliamo esaminare le righe con i dati mancanti in qualunque colonna:
+
+```{r}
+d_na <- d[!complete.cases(d), ]
+d_na
+```
+
+Spesso i valori mancanti vengono sostiuti con valori "ragionevoli", come ad esempio la media dei valori in quella colonna del Dataframe.  Oppure, vengono considerati come "ragionevoli" i valori che vengono predetti conoscendo le altre variabili del Dataframe.  Questa procedura si chiama *imputazione multipla*.  Questo è però un argomento avanzato che non verrà trattato in questo insegnamento.  La cosa più semplice da fare, in presenza di dati mancanti, è semplicemente quella di escludere tutte le righe nelle quali ci sono degli NAs.
+
+
+

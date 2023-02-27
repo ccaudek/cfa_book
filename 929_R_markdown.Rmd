@@ -1,0 +1,138 @@
+# Flusso di lavoro riproducibile 
+
+```{r, include = FALSE}
+source("_common.R")
+```
+
+## La crisi della riproducibilità 
+
+*"Per il metodo scientifico è essenziale che gli esperimenti siano riproducibili. Vale a dire che una persona diversa dallo sperimentatore originale deve essere in grado di ottenere gli stessi risultati seguendo lo stesso protocollo sperimentale (Gilbert Chin)."* Ma in psicologia (e non solo) la riproducibilità è inferiore a quanto previsto o desiderato. In un famoso studio pubblicato su _Science_, un ampio gruppo di ricercatori [@open2015estimating] è riuscito a replicare solo il 40 per cento circa dei risultati di 100 studi di psicologia cognitiva e sociale pubblicati in precedenza. I risultati di questo studio, e di molti altri pubblicati in seguito, sono stati interpretati in modi diversi. La preoccupazione sulla riproducibilità della ricerca è stata espressa mediante  l'affermare secondo la quale "la maggior parte dei risultati della ricerca sono falsi" [@ioannidis2005most] oppure mediante l'affermazione secondo cui "dobbiamo apportare modifiche sostanziali al modo in cui conduciamo la ricerca" [@cumming2014new]. Alcuni ricercatori sono arrivati a definire la presente situazione come una "crisi della riproducibilità dei risultati della ricerca".
+
+Il termine "riproducibilità" (o "replicabilità") è stato definito in vari modi. Consideriamo la definizione fornita da @goodman2016does:
+
+- la riproducibilità dei metodi "si riferisce al fatto che il ricercatore fornisce  dettagli sufficienti sulle procedure e sui dati dello studio in modo che le stesse procedure possano ... essere replicate esattamente" (pag. 2) con gli stessi dati;
+
+- la riproducibilità dei risultati "si riferisce all'ottenimento degli stessi risultati dalla conduzione di uno studio indipendente le cui procedure replicano il più esattamente possibile quelle dell'esperimento originale" (pag. 2-3) con dati indipendenti;
+
+- la riproducibilità inferenziale "si riferisce alla possibilità di trarre conclusioni qualitativamente simili da una replica indipendente di uno studio o da una nuova analisi dello studio originale" (pag. 4).
+
+Per gli scopi presenti, ci focalizzeremo qui sulla riproducibilità dei metodi. Cioè, discuteremo di come `R` può aiutarci a migliorare questo aspetto della riproducibilità. In questo capitolo mostreremo come R possa essere utilizzato all'interno di un flusso di lavoro (_workflow_) riproducibile che integra (1) il codice di analisi dei dati, (2) i dati medesimi e (3) il testo della relazione che comunica i risultati dello studio. A tal fine utilizzeremo due pacchetti R: `rmarkdown` e `knitr`. Questi pacchetti consentono di unire il codice R ad un linguaggio di marcatura (o di markup) chiamato Markdown. Il linguaggio di markup Markdown sta diventando sempre più popolare e viene usato, oltre che per creare [reports](https://avehtari.github.io/ROS-Examples/Simplest/simplest.html) di analisi di dati, anche per creare [siti web](https://alison.rbind.io), [blog](https://djnavarro.net), [libri](https://r4ds.had.co.nz), [articoli accademici](https://osf.io/9te8p/), [curriculum vitae](https://github.com/mitchelloharawild/vitae), [slide](https://rmarkdown.rstudio.com/lesson-11.html), [tesi di laurea](https://github.com/ismayc/thesisdown). Per esempio, il presente sito web è stato scritto usando R-markdown.
+
+
+## R-markdown
+
+Un linguaggio di markup permette di aggiungere mediante marcatori (tag) informazioni sulla struttura e sulla formattazione da applicare ad un documento. Un'introduzione al linguaggio Markdown può essere trovata, per esempio, [qui](https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html) oppure [qui](https://experienceleague.adobe.com/docs/contributor/contributor-guide/writing-essentials/markdown.html?lang=it#estensioni-personalizzate-markdown).
+
+In questo capitolo  ci focalizzeremo però sugli aspetti più importanti di R-markdown che permette di costruire documenti in cui combinare testo formattato (quindi non solo commenti ma anche formule, titoli etc) e istruzioni codice (`R` e non solo) con i corrispettivi output. Informazioni dettagliate su R-markdown sono disponibili  [qui](https://bookdown.org/yihui/rmarkdown/) e [qui](https://bookdown.org/yihui/rmarkdown-cookbook/).
+
+Un file R-markdown è composto da tre tipi di oggetti:
+
+1. header in formato `YAML` delimitato da `---`,
+3. testo in formato `markdown`,
+2. blocchi ("chunks") di codice `R`, delimitati da tre apici.
+
+
+### Header
+
+L'intestazione di un documento `.Rmd` (R-markdown) corrisponde al cosiddetto _YAML header_ (un acronimo che significa _Yet Another Markup Language_). Lo YAML header controlla le caratteristiche generali del documento, incluso il tipo di documento che viene prodotto (un documento HTML che può essere visualizzato su tutti i principali browser, un documento Microsoft Word o un PDF se abbiamo installato LaTeX sul nostro computer), la dimensione del carattere, lo stile, il titolo, l'autore, ecc. Nello YAML header (a differenza del codice `R`) è necessario rispettare la spaziatura prestabilita delle istruzioni che vengono elencate. Gli elementi principali sono `title:`, `author:`, `output:`.
+
+L'argomento di `output:` è dove diciamo a R-markdown quale tipo di file vogliamo che venga prodotto. Il tipo più flessibile, che non richiede alcuna configurazione, è `html_document`.
+
+
+### Testo
+
+Alla conclusione dello YAML header inizia il documento R-markdown. Da questo punto in poi possiamo utilizzare testo normale, codice `R` e sintassi Markdown per controllare cosa viene mostrato e come.
+
+
+### Formattazione
+
+È possibile contrassegnare intestazioni, grassetto e corsivo come indicato di seguito.
+
+```
+# Intestazione 1
+## Intestazione 2
+### Intestazione 3
+#### Intestazione 4
+##### Intestazione 5
+###### Intestazione 6
+
+Questo è un testo normale.
+Possiamo scrivere in **grassetto** il testo usando due asterischi.
+Possiamo scrivere in *corsivo* usando un asterisco.
+
+>Questa è un’**area rientrata**.
+
+Questa riga invece non è più rientrata.
+```
+
+### Elenchi
+
+Per creare un elenco puntato si utilizza il segno più, il trattino o l’asterisco. Tutte le tre soluzioni portano allo stesso risultato.
+
+```
+- Punto 1 della lista
+- Punto 2 della lista
+- Punto 3 della lista
+```
+
+Un elenco numerato, invece, si crea con un numero seguito da un punto.
+
+```
+1. Punto 1 della lista
+2. Punto 2 della lista
+3. Punto 3 della lista
+```
+
+### Hyperlink
+
+Per inserire un hyperlink ci sono due metodi:
+
+- specificare solo il percorso `<http://rmarkdown.rstudio.com>`, <http://rmarkdown.rstudio.com>\
+- creare un [link](http://rmarkdown.rstudio.com) con `[link](http://rmarkdown.rstudio.com)`\
+
+
+### Immagini
+
+Per inserire un'immagine la sintassi è molto simile: `![Esempio di immagine inserita in un documento R-markdown.](images/hex-rmarkdown.png){width=20%}`:
+
+![Esempio di immagine inserita in un documento R-markdown.](images/hex-rmarkdown.png){width=20%}
+
+
+### Codice inline
+
+Per contrassegnare un'area di testo come codice, markdown utilizza il cosiddetto backtick, noto anche come gravis o accento grave, da non confondere con la virgoletta singola. La marcatura prevede un accento all'inizio e uno alla fine dell'area di testo corrispondente.
+
+```
+Questo è `codice`.
+```
+
+### Equazioni
+
+Equazioni possono essere inserite in un documento R-markdown usando la sintassi \LaTeX. Qualsiasi cosa all'interno del segno di dollaro \$ viene trattata come un'equazione "inline". Qualunque cosa all'interno di due segni di dollaro \$$ viene trattata come  un'equazione a sé stante.
+
+Per esempio, questa è la formula della distribuzione Normale espressa in notazione LaTeX e riprodotta all'interno di un documento R-markdown:
+
+```{r, asis, eval=FALSE}
+f(x) = \frac{1}{\sigma\sqrt{2\pi}}
+  \exp\left( -\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{\!2}\,\right)
+```
+
+$$
+f(x) = \frac{1}{\sigma\sqrt{2\pi}}
+  \exp\left( -\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{\!2}\,\right)
+$$
+
+### Codice R
+
+In un documento R-markdown istruzioni di codice vengono inserite in blocchi delimitati da tre apici. Ciò consente di valutare il codice all'interno del documento e di produrre un output che verrà stampato nel documento stesso. Possiamo dunque stampare tabelle e figure prodotti direttamente dal codice `R`. Ciò significa inoltre, che se qualcosa cambia nei dati o nelle analisi dei dati, le tabelle e le figure si aggiorneranno automaticamente.
+
+Un chunk `R` viene valutato proprio come il normale codice `R`, quindi si applica tutto ciò che abbiamo imparato nei capitoli precedenti. Se il chunk `R` produce un output, questo output verrà visualizzato nel documento.
+
+
+## Compilare la presentazione R-markdown
+
+Ma dove si trova questo magico documento che include il testo e l'output prodotto dal codice `R`? Ottima domanda. Siamo stati abituati ai programmi di videoscrittura (come Microsoft Word) che si conformano al cosiddetto stile "WYSIWYG" (What You See Is What You Get) -- cioè, si vede come apparirà il documento stampato mentre lo si digita. Questo può avere alcuni vantaggi ma può anche essere molto limitante. R-Markdown, d'altra parte, funziona in modo diverso. Ovvero, deve essere "compilato" (knitted) per passare dal file sorgente al documento formattato. In RStudio, tale operazione è semplice: c'è un pulsante in alto a sinistra nel pannello di scripting di un documento `.Rmd`. È sufficiente selezionare tale pulsante e il nostro documento verrà creato.
+
+È importante notare che il codice del documento deve essere autonomo. Ciò significa che tutto ciò che vogliamo che venga eseguito deve essere incluso nel documento, indipendentemente da ciò che era già stato eseguito al di fuori di esso. Ad esempio, è perfettamente legittimo (e anche molto utile) testare il codice `R` al di fuori del documento `Rmd`. Tuttavia, quando compiliamo il documento `Rmd`, tutto ciò che è stato fatto al di fuori del documento `Rmd` viene dimenticato. Ciò consente di creare un documento autosufficiente che favorisce la riproducibilità dei metodi di analisi dei dati: utilizzando uno specifico documento `Rmd` con un campione di dati si giunge sempre allo stesso risultato e alla stessa interpretazione. Ciò non è invece vero se si utilizza un software con un interfaccia point-and-click.
+
+

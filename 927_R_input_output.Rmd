@@ -1,0 +1,109 @@
+# Input/Output 
+
+```{r, include = FALSE}
+source("_common.R")
+```
+
+I dati raccolti dallo psicologo sono contenuti in file aventi formati
+diversi: solo testo, CSV, Excel, eccetera. `R` prevede diverse funzioni
+di importazione dei dati. Esamineremo qui la funzione `read.table()` per
+l'importazione di dati in formato solo testo, ma funzioni analoghe
+possono essere usate per molti altri formati possibili.
+
+## La funzione `read.table()`
+
+Ci sono tanti modi per importare un file dal nostro computer. `R` permette di utilizzare delle funzioni che sono già nella libreria di base, oppure possiamo utilizzare delle funzioni specifiche, a seconda del tipo di file da importare, che sono contenute in pacchetti aggiuntivi. Per leggere i dati da file in `R` è conveniente
+preliminarmente generare un file di dati in formato ASCII, disponendoli
+come si farebbe in una matrice di dati, e mettere questo file nella
+cartella di lavoro corrente. Fatto questo, si può utilizzare la funzione
+`read.table()` presente nella libreria di base per leggere l'intero
+dataset. Se la prima riga del file contiene l'intestazione delle
+variabili, allora `read.table("my_file.txt", header = TRUE)`
+interpreterà la prima riga del file come una riga dove sono contenuti i
+nomi delle variabili, assegnando ciascun nome alle variabili del data
+frame:
+
+```{r, eval=FALSE}
+mydata <- read.table("my_file.txt", header = TRUE)
+```
+    
+In alternativa, si può impiegare la funzione `read.csv()`, che è adatta
+a leggere dati salvati in `.csv`. Utilizzando altre funzioni, si possono
+leggere in `R` i dati contenuti in file aventi formati diversi da quelli
+considerati qui, quali Excel, SPSS, ecc.
+
+## File di dati forniti da R
+
+In `R` esistono comunque oltre 50 insiemi di dati contenuti nel package
+`base` e altri sono disponibili in altri packages. Per vedere l'elenco
+degli insiemi di dati disponibili nel package `base` basta usare
+l'istruzione `data()`; per caricare un particolare insieme di dati, ad
+esempio `cars`, basta utilizzare l'istruzione
+
+```{r, eval=FALSE}
+data(cars)
+```
+
+Nella maggior parte dei casi questo corrisponde a caricare un oggetto,
+solitamente un data.frame dello stesso nome: per l'esempio considerato
+si avrebbe un data frame di nome `cars`.
+
+## Esportazione di un file
+
+Per esportare un data.frame in formato `.csv` possiamo scrivere il
+seguente codice
+
+```{r, eval=FALSE}
+write.csv(df_esempio, file = "esempio.csv", row.names = FALSE)
+```
+
+dove `df_esempio` è il data.frame da salvare e `esempio.csv` è il file
+che verrà salvato all'interno della nostra cartellla di lavoro.
+
+## Pacchetto `rio`
+
+Un'alternativa più semplice è fornita dalle funzioni fornite dal pacchetto `rio`.  Per importare i dati da un file in qualsiasi formato si usa
+
+```{r eval=FALSE}
+my_data_frame <- rio::import("my_file.csv")
+```
+
+Per esportare i dati in un file avente qualsiasi formato si usa invece
+
+```{r eval=FALSE}
+rio::export(my_data_frame, "my_file.csv")
+```
+
+## Dove sono i miei file?
+
+Quello che abbiamo detto finora, a proposito dell'importazione ed esportazione dei file, si riferisce a file che si trovano nella cartella di lavoro (_working directory_). Ma non sempre ci troviamo in questa situazione, il che è una buona cosa, perché se dobbiamo gestire un progetto anche leggermente complesso è sempre una buona idea salvare i file che usiamo in cartelle diverse. Per esempio, possiamo usare una cartella chiamata `psicometria` dove salviamo tutto il materiale di questo insegnamento. Nella cartella `psicometria` ci potrà essere una cartella chiamata `scripts` dove salveremo gli script con il codice R utilizzato per i vari esercizi, e una cartella chiamata `data` dove possiamo salvare i dati. Questa organizzazione minimale ci pone, però, difronte ad un problema: i dati che vogliamo caricare in R non si trovano nella cartella dove sono contenuti gli script. Quando importiamo un file di dati dobbiamo dunque specificare il percorso che identifica la posizione del file sul nostro computer.
+
+Questo problema può essere risolto in due modi: speficicando l'indirizzo assoluto del file, o l'indirizzo relativo. Specificare l'indirizzo assoluto di un file comporta una serie di svantaggi. Il più grande è che non sarà possibile utilizzare quell'istruzione su una macchina diversa.  Dunque, è molto più conveniente specificare l'indirizzo dei file in modo relativo.  Ma relativo rispetto a cosa?  Rispetto alla _working directory_ che definirà l'origine del nostro percorso.
+
+È ovvio che la _working directory_ cambia da progetto a progetto. Infatti, per ciascun progetto dobbiamo specificare una diversa _working directory_.  Per esempio, potremmo avere un progetto relativo all'insegnamento di Psicometria e un progetto relativo alla prova finale.
+
+Per organizzaere il lavoro in questo modo, si procede come segue. Supponiamo di creare una cartella chiamata `psicometria` che contiene, al suo interno, le cartelle `scripts` e `data`: 
+
+```{r eval=FALSE}
+psicometria/
+  ├── data
+  ├── scripts
+```
+
+Supponiamo che queste cartelle contengano i file che ho specificato sopra. Chiudiamo RStudio, se è aperto, e lo riapriamo di nuovo.  Dal menu selezioniamo `File -> New Project...` In questo modo si aprirà un menu che ci chiederà, tra le altre cose, se vogliamo creare un nuovo progetto (`New project`). Selezioniamo quell'opzione e navighiamo fino alla cartella `psicometria` e selezioniamo `open`. Questo creerà un file chiamato `psicometria.Rproj` nella cartella `psicometria`.
+
+Chiudiamo ora RStudio.  Se vogliamo accedere al progetto "psicometria", che abbiamo appena creato, dobbiamo semplicemente cliccare sul file `psicometria.Rproj`. Questo aprirà RStudio e farà in modo che la _working directory_ coincida con la cartalla `psicometria`. Ogni volta che vogliamo lavorare sui dati del progetto "psicometria" chiudiamo dunque RStudio (se è già aperto) e lo riapriamo cliccando sul file `psicometria.Rproj`.
+
+A questo punto possiamo definire l'indirizzo dei file in modo relativo -- ovvero, relativo alla cartella `psicometria`. Per fare questo usiamo le funzionalità del pacchetto `here`. Supponiamo di volere caricare un file di dati che si chiama `dati_depressione.txt` e si trova nella cartella `psicometria/data`. Per importare i dati (dopo avere caricato i pacchetti `rio` e `here`) useremo l'istruzione seguente:
+
+```{r eval=FALSE}
+rio::import(here("data", "dati_depressione.txt"))
+```
+
+In altre parole, così facendo specifichiamo il percorso relativo del file `dati_depressione.txt` (in quanto l'origine corrisponde alla cartella `psicometria`).  L'istruzione precedente significa che, partendo dalla cartella che coincide con la _working directory_ (ovvero, `psicometria`) ci spostiamo nella cartella `data` e lì dentro troviamo il file chiamato `dati_depressione.txt`.
+
+
+
+
+
+

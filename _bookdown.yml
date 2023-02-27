@@ -21,6 +21,14 @@ language:
     appendix_name: "Appendice "
 rmd_files:
     - "index.Rmd"
+    ## PART 0
+    - "924_R_basic_syntax.Rmd"
+    - "925_R_classes.Rmd"
+    - "926_R_control.Rmd"
+    - "927_R_input_output.Rmd"
+    - "928_R_tidyverse.Rmd"
+    - "929_R_markdown.Rmd"
+    - "930_R_missing_data.Rmd"
     ## PART I
     - "010_regression.Rmd"
     ## PART II
@@ -51,14 +59,14 @@ rmd_files:
     - "315_mmm.Rmd"
     - "350_growth_models.Rmd"
     # - "351_lgm_meas_inv.Rmd"
-    - "400_missing_data.Rmd"
+    # - "400_missing_data.Rmd"
     - "500_cat_data.Rmd"
     ## APPENDIX
     - "800_appendix.Rmd"
-    - "801_math_symbols.Rmd"
-    - "850_single_case.Rmd"
-    - "860_efficacy_effectiveness.Rmd"
-    - "865_effect_size.Rmd"
+    # - "801_math_symbols.Rmd"
+    # - "850_single_case.Rmd"
+    # - "860_efficacy_effectiveness.Rmd"
+    # - "865_effect_size.Rmd"
     - "900_lin_alg.Rmd"
 delete_merged_file: true
 
