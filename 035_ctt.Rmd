@@ -103,7 +103,7 @@ componente casuale dell'errore ($E$). L'aspetto cruciale nella CTT riguarda la v
 ## Le due componenti del punteggio osservato
 
 CTT si occupa delle relazioni tra $X$, $T$ ed $E$. La CTT si basa su un
-modello relativamente semplice in cui il punteggio osservato, nel quale il
+modello relativamente semplice in cui il punteggio osservato, il
 punteggio vero (cioè l'abilità inosservabile del rispondente) e l'errore
 aleatorio di misurazione sono legati da una relazione lineare. Indicati
 con $T_{\nu j}$ (_true score_) l'abilità latente da misurare
@@ -119,32 +119,33 @@ X_{\nu j} = T_{\nu} + E_{\nu j}.
 Dunque, in base alla \@ref(eq:observed-true-plus-error) il punteggio osservato
 $X_{\nu j}$ differisce da quello vero $T_{\nu j}$ a causa di una
 componente di errore casuale la quale viene assunta essere $E_{\nu j} \sim \mathcal{N}(0, \sigma_E)$. Uno degli obiettivi centrali della CTT è quello di quantificare l'entità di tale errore (ovvero, di stimare $\sigma_E$). Vedremo come questa quantificazione verrà fornita in due forme: l'attendibilità del
-test e la stima dell'errore standard della misurazione. 
+test e la stima dell'errore standard della misurazione. Si notino le similarità tra queste due misure della CTT e le misure di bontà di adattamento del modello di regressione lineare.
 
 - L'attendibilità (o affidabilità) rappresenta l'accuratezza con cui un test può misurare il punteggio vero (Coaley, 2014) e corrisponde al rapporto tra la varianza dei punteggi veri e la varianza dei punteggi osservati:
   - se l'attendibilità è grande, $\sigma_E$ è piccolo -- $X$ ha un piccolo errore di misurazione e sarà vicino a $T$.
   - se l'attendibilità è piccola, $\sigma_E$ è grande -- $X$ presenta un grande errore di misurazione e si discosterà molto da $T$.
-- La stima dell'errore standard della misurazione è appunto una stima della deviazione standard della variabile casuale $E$ (ovvero $\sigma_E$) che corrompe i punteggi veri.
+- La stima dell'errore standard della misurazione è una stima della deviazione standard della variabile casuale $E$ (ovvero $\sigma_E$) che corrompe i punteggi veri.
+
+Vedremo in seguito in che senso l'attendibilità della CTT possa essere messa in relazione con il coefficiente di determinazione del modello statistico della regressione lineare e come l'errore standard della misurazione della CTT possa essere messo in relazione con l'errore standard della regressione.
 
 ### Il punteggio vero
 
 La \@ref(eq:observed-true-plus-error) ci dice che il punteggio
 osservato è dato dalla somma di due componenti: una componente
-sistematica (il punteggio vero) e una componente casuale (l'errore di
+sistematica (il punteggio vero) e una componente aleatoria (l'errore di
 misurazione). Ma che cos'è il punteggio vero? CTT attribuisce diverse interpretazioni al punteggio vero. 
 
 - La CTT considera un reattivo psicologico come una selezione casuale di item da un
 universo/popolazione di item attinenti al costrutto da misurare [@nunnally1994psychometric; @kline2013handbook]. Se il reattivo psicologico viene
 concepito in questo modo, il punteggio vero diventa il punteggio che un
-rispondente otterrebbe se fosse misurato su tutto l'universo degli item
-proprio del costrutto in esame. L'errore di misurazione riflette dunque
+rispondente otterrebbe se fosse misurato su tutto l'universo degli item del costrutto. In questo senso, l'errore di misurazione riflette
 il grado in cui gli item che costituiscono il test non riescono a
 rappresentare l'intero universo degli item attinenti al costrutto.
 - In maniera equivalente, il punteggio vero può essere concepito come il
 punteggio non "distorto" da componenti estranee al costrutto, ovvero da
 effetti di apprendimento, fatica, memoria, motivazione, eccetera.
 Essendo concepita come del tutto casuale (ovvero, priva di qualunque
-natura sistematica), la componente casuale non introduce alcun bias
+natura sistematica), la componente aleatoria non introduce alcun bias
 nella tendenza centrale della misurazione (la media di $E$ viene assunta essere uguale a 0).
 - In termini puramente statistici, il punteggio vero è un punteggio inosservabile che corrisponde al valore atteso di infinite realizzazioni del punteggio
 ottenuto:
@@ -163,11 +164,11 @@ Nella formulazione del modello della CTT si possono distinguere due tipi
 di esperimenti aleatori: uno che considera l'unità di osservazione
 (l'individuo) come campionaria, l'altro che considera il punteggio, per
 un determinato individuo, come una variabile casuale. Un importante risultato è
-dato dall'unione dei due esperimenti casuali, ovvero dalla dimostrazione che i
+dato dall'unione di questi due esperimenti casuali, ovvero dalla dimostrazione che i
 risultati della CTT, la quale è stata sviluppata ipotizzando ipotetiche
 somministrazioni ripetute del test allo stesso individuo sotto le
 medesime condizioni, si generalizzano al caso di una singola
-somministrazione del test ad un campione di individui [@allen2001introduction]. In base a questo risultato, se consideriamo la somministrazione del test ad una popolazione di individui, allora diventa più facile assegnare un contenuto empirico alle quantità della CTT:
+somministrazione del test ad un campione di individui [@allen2001introduction]. In base a questo risultato, se consideriamo la somministrazione del test ad una popolazione di individui, allora diventa più facile assegnare un contenuto empirico alle quantità discusse dalla CTT:
 
 -   $\sigma^2_X$ è la varianza del punteggio osservato nella
     popolazione,
@@ -207,10 +208,7 @@ La radice quadrata della varianza degli errori di misurazione, ovvero la deviazi
 misurazione costituisce uno degli obiettivi più importanti della
 CTT. 
 
-Ricordiamo che la deviazione standard è simile (ma non identica)
-alla media del valore assoluto degli scarti dei valori di una
-distribuzione dalla media. Possiamo dunque utilizzare questa proprietà
-per descrivere il modo in cui la CTT interpreta $\sigma_E$. In altre parole, l'errore standard della misurazione $\sigma_E$ ci dice qual è, approssimativamente, la variazione attesa del punteggio osservato, se il test venisse somministrato ripetute volte al rispondente sotto le stesse condizioni (in assenza di effetti di apprendimento o di fatica).
+Ricordiamo che la deviazione standard indica quanto i dati di una distribuzione si discostano dalla media di quella distribuzione. È simile allo scarto tipico, ovvero la distanza media tra i valori della distribuzione e la loro media. Possiamo dunque utilizzare questa proprietà per descrivere il modo in cui la CTT interpreta la quantità $\sigma_E$: l'errore standard della misurazione $\sigma_E$ ci dice qual è, approssimativamente, la quantità attesa di variazione del punteggio osservato, se il test venisse somministrato ripetute volte al medesimo rispondente sotto le stesse condizioni (ovvero, in assenza di effetti di apprendimento o di fatica).
 
 ## Assiomi della Teoria Classica
 
@@ -233,11 +231,13 @@ $$
 E \sim \mathcal{N}(0, \sigma_E).
 $$
 
-La quantità $\sigma_E$ è appunto chiamata errore standard della misurazione. Sulla base di tali assunzioni la CTT deriva la formula dell'attendibilità di un test. Si noti che le assunzioni della CTT hanno una corrispondenza puntuale con le assunzioni su cui si basa il modello di regressione lineare.
+La quantità $\sigma_E$ è appunto l'errore standard della misurazione. Sulla base di tali assunzioni la CTT deriva la formula dell'attendibilità di un test. 
+
+Si noti che le assunzioni della CTT hanno una corrispondenza puntuale con le assunzioni su cui si basa il modello di regressione lineare.
 
 ## L'attendibilità del test
 
-In questo paragrafo vedremo come il coefficiente di attendibilità (altri termini
+In questa sezione vedremo come il coefficiente di attendibilità (altri termini
 che vengono usati sono: affidabilità, costanza, credibilità) fornisce una
 stima della quota della varianza del punteggio osservato che può essere
 attribuita all'abilità latente ("punteggio vero", cioè privo di errore
@@ -251,13 +251,18 @@ Per definire l'attendibilità, la CTT si serve di due quantità:
 -   la varianza del punteggio osservato,
 -   la correlazione tra punteggio osservato e punteggio vero.
 
-Vediamo come queste quantità possano essere ottenute sulla base delle
+Vediamo ora come queste quantità possano essere ottenute sulla base delle
 assunzioni del modello statistico che sta alla base della CTT.
 
 ### La varianza del punteggio osservato
 
 La varianza del punteggio osservato $X$ è uguale alla somma della
-varianza del punteggio vero e della varianza dell'errore di misurazione.
+varianza del punteggio vero e della varianza dell'errore di misurazione:
+
+$$
+\sigma^2_X =   \sigma_T^2 + \sigma_E^2.
+(\#eq:var-sum)
+$$
 
 ::: {.proof}
 La varianza del punteggio osservato è uguale a
@@ -271,13 +276,17 @@ Dato che $\sigma_{TE}=\rho_{TE}\sigma_T \sigma_E=0$, in quanto $\rho_{TE}=0$, ne
 
 $$
 \sigma^2_X =   \sigma_T^2 + \sigma_E^2.
-(\#eq:var-sum)
 $$
 :::
 
 ### La covarianza tra punteggio osservato e punteggio vero
 
-La covarianza tra punteggio osservato $X$ e punteggio vero $T$ è uguale alla varianza del punteggio vero.
+La covarianza tra punteggio osservato $X$ e punteggio vero $T$ è uguale alla varianza del punteggio vero:
+
+$$
+\sigma_{X T} = \sigma_T^2.
+(\#eq:cov-obs-true)
+$$
 
 ::: {.proof}
 
@@ -303,13 +312,14 @@ $$
 (\#eq:sd-ratio)
 $$
 
+Dunque, la correlazione tra il punteggio osservato e il punteggio vero è uguale al rapporto tra la deviazione standard dei punteggi veri e la deviazione standard dei punteggi osservati.
+
 ### Definizione e significato dell'attendibilità
 
 Sulla base della \@ref(eq:sd-ratio) giungiamo alla definizione dell'attendibilità. 
-La CTT definisce attendibilità di un test (o di un item) come il
+La CTT definisce attendibilità di un test (o di un item) come il rapporto tra la varianza del punteggio vero e la varianza del punteggio osservato, ovvero come il
 quadrato della correlazione tra punteggio osservato $X$ e punteggio vero
-$T$, ovvero come il rapporto tra la varianza del punteggio vero e la
-varianza del punteggio osservato:
+$T$:
 
 \begin{equation}
 \rho_{XT}^2 = \frac{\sigma_{T}^2}{\sigma_X^2}.
@@ -327,8 +337,7 @@ $$
 \end{equation}
 $$
 
-Questo significa che il coefficiente di attendibilità assume valore $1$ se la varianza degli errori $\sigma_{E}^2$ è nulla e assume valore $0$ se la varianza degli errori è
-uguale alla varianza del punteggio osservato. Il coefficiente di attendibilità è dunque un numero puro contenuto nell'intervallo compreso tra $0$ e $1$.
+La \@ref(eq:3-2-6) ci dice che il coefficiente di attendibilità assume valore $1$ se la varianza degli errori $\sigma_{E}^2$ è nulla e assume valore $0$ se la varianza degli errori è uguale alla varianza del punteggio osservato. Il coefficiente di attendibilità è dunque un numero puro contenuto nell'intervallo compreso tra $0$ e $1$.
 
 ## Attendibilità e modello di regressione lineare
 
