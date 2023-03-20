@@ -492,4 +492,119 @@ Un esempio di standard statistico è la regressione _stepwise_, in cui il comput
 
 Una considerazione finale riguarda l'idea di rimuovere i predittori "non significativi" dal modello di regressione. Questa è una cattiva idea. Il ricercatore non deve sentirsi in dovere di trascurare quei predittore che non risultano "statisticamente significativi". In campioni piccoli, la potenza dei test di significatività è  bassa e la rimozione di un predittore non significativo può alterare sostanzialmente la soluzione. Se c'è una buona ragione per includere un predittore, allora è meglio lasciarlo nel modello, fino a prova contraria. In termini generali, qualsiasi considerazione basata sulla "significatività statistia" è fuorviante.
 
+## Proprietà degli stimatori dei minimi quadrati
+
+Consideriamo il problema dell'inferenza statistica nel caso più semplice, quello della regressione bivariata. Il caso generale della regressione multipla segue lo stesso approccio, anche se le formule sono più complesse in quanto vengono formulate nei termini dell'albebra matriciale.
+
+Per il caso bivariato, si può dire che il coefficiente dei minimi quadrati $b$ è una combinazione lineare delle osservazioni $y_i$. Tale proprietà è importante perché consente di derivare la distribuzione di $b$ dalla distribuzione delle $y_i$. 
+Può essere dimostrato che la formula per il calcolo di $b$ si può scrivere nel modo seguente:
+
+$$
+\begin{align}
+b &= \sum_i \left[\frac{x_i-\bar{x}}{\sum_j(x_j-\bar{x})^2}\right]y_i = \textstyle\sum m_i y_i,
+\end{align}
+$$
+
+dove $m_i \triangleq (x_i-\bar{x}) / \sum (x_j-\bar{x})^2$ è il peso associato a ciascun valore $y_i$. Dato che i valori $x_i$ sono fissi e $m_i$ dipende solo da $x_i$, anche i pesi $m_i$ sono fissi.  
+
+Il valore atteso di $b$ è uguale a 
+
+$$
+\begin{align}
+E(b) &= \textstyle\sum m_i E(y_i)\notag\\ 
+&= \textstyle\sum m_i (\alpha + \beta x_i)\notag\\ 
+&= \textstyle\alpha\sum m_i + \beta \sum m_i x_i\notag\\
+&= \frac{\alpha \sum(x_i-\bar{x})}{\sum(x_i-\bar{x})^2} + \beta \frac{\sum(x_i-\bar{x})x_i}{\sum(x_i-\bar{x})^2}\notag\\
+&= 0 + \beta \frac{\sum x_i^2 -\bar{x}\sum x_i}{\sum(x_i-\bar{x})^2}\notag\\ 
+&= \beta \frac{\sum x_i^2 - n\bar{x}^2}{\sum(x_i-\bar{x})^2}\notag\\ 
+&= \beta.
+\end{align}
+$$
+
+Il coefficiente dei minimi quadrati $b$ è dunque uno stimatore corretto di $\beta$. In maniera equivalente si può dimostrare che $E(a) = \alpha$.
+
+Sotto le ipotesi di omoschedasticità $\big[ var(y_i) = var(\varepsilon_i)=\sigma^2_{\varepsilon}\big]$ e indipendenza, la varianza di $b$ è 
+
+$$
+\begin{align}
+var(b) &= \textstyle var\big(\sum m_i y_i\big)\notag\\
+&= \textstyle\mathop{\sum m_i^2} var(y_i)\notag\\ 
+&= \textstyle\mathop{\sum m_i^2} \sigma^2_{\varepsilon}\notag\\
+&= \frac{\mathop{\sigma^2_{\varepsilon}} \textstyle\sum(x_i-\bar{x})^2}{\big[\textstyle\sum(x_i-\bar{x})^2\big]^2}\notag\\
+&= \frac{\sigma^2_{\varepsilon}}{\sum(x_i-\bar{x})^2}.
+\end{align}
+$$
+
+In maniera simile si dimostra che la varianza di $a$ è 
+
+$$
+var(a)= \frac{\sigma^2_{\varepsilon} \textstyle\sum x_i^2}{n \textstyle\sum (x_i-\bar{x})^2}.
+$$
+
+Dato che sia $a$ che $b$ sono funzioni lineari di $y_i$, se i valori $y_i$ seguono la distribuzione gaussiana, allora anche  $a$ e $b$ saranno distribuiti secondo una distribuzione normale. In conclusione,
+
+$$
+\begin{align}
+b &\sim \mathcal{N}\bigg(\beta,  \frac{\sigma^2_{\varepsilon}}{\sum(x_i-\bar{x})^2}\bigg),\\
+a &\sim \mathcal{N}\bigg(\alpha, \frac{\sigma^2_{\varepsilon}\textstyle\sum x_i^2}{n \textstyle\sum (x_i-\bar{x})^2} \bigg).
+\end{align}
+$$
+
+### Ipotesi statistiche e statistica test
+
+Una volta definite le proprietà delle distribuzioni degli stimatori dei minimi quadrati è possibile procedere con l'inferenza sui parametri del modello di regressione.
+L'inferenza statistica si articola nella formulazione degli intervalli di confidenza per i parametri di interesse e nei test di significatività statistica.
+
+Un'ipotesi che viene frequentemente sottoposta a verifica è quella di significatività, cioè l'ipotesi che alla variabile esplicativa sia associato un coefficiente nullo.
+In tal caso, l'ipotesi nulla è
+
+$$H_0:\beta=0$$
+e l'ipotesi alternativa è
+
+  $$H_1:\beta \neq 0.$$
+  
+Sotto l'ipotesi nulla $H_0: \beta = 0$ la statistica
+
+$$
+ t_{\hat{\beta}} = \frac{\hat{\beta}}{s_{\hat{\beta}}}
+$$
+
+si distribuisce come una variabile aleatoria $t$ di Student con $n-2$ gradi di libert{\`a}.
+
+Di fronte al problema di decidere se il valore stimato $\hat{\beta}$ sia sufficientemente "distante" da zero, in modo da respingere l'ipotesi nulla che il vero valore $\beta$ sia nullo, non è sufficiente basarsi soltanto sul valore numerico assunto da $\hat{\beta}$, ma occorre tener conto della variabilità campionaria.
+La statistica ottenuta dividendo $\hat{\beta}$ per la stima del suo errore standard, $s_{\hat{\beta}}$, ci permette di utilizzare la distribuzione $t$ di  Student come metrica per stabilire se la stima trovata si debba considerare "diversa" da quanto ipotizzato sotto $H_0$.
+
+L'ipotesi nulla viene rifiutata quando il valore assoluto del rapporto è esterno alla regione di accettazione, i cui limiti sono definiti dai valori critici della distribuzione $t$ di Student con $n - 2$ gradi di libertà per il livello di significatività $\alpha$ prescelto.
+Se l'ipotesi nulla viene rifiutata si dice che il coefficiente $\hat{\beta}$ è \enquote{statisticamente significativo} ammettendo così la possibilità di descrivere con un modello lineare la relazione esistente tra le  variabili $X$ e $Y$.
+Quando non si può rifiutare l'ipotesi nulla nel modello di regressione, si conclude che il coefficiente angolare della retta non risulta significativamente diverso da zero, individuando  così nella popolazione una retta parallela all'asse delle 
+
+### Riportare i risultati
+
+È consuetudine riportare i risultati dell'analisi di regressione in modo che insieme alle stime dei coefficienti vengano riportati i rispettivi errori standard stimati. Il valore-$p$ esprime la probabilità di ottenere un valore del test uguale o superiore a quello ottenuto nel campione esaminato, utilizzando la distribuzione campionaria del test sotto l'ipotesi nulla. 
+Se $t_{\hat{\beta}}$ è il valore osservato del rapporto $t$ per il coefficiente angolare della retta di regressione, allora il { $p$-valore} è dato da
+
+$$
+p = 2 \times Pr(t \geq |t_{\hat{\beta}}|),
+$$
+
+dove $t$ è il valore di una variabile aleatoria $t$ di Student con $(n-2)$ gradi di libertà.
+
+#### Regola di decisione
+
+Ogni volta che il $p$-valore del test è inferiore al livello di significatività che si è scelto per $H_0$, il test porta al rifiuto dell'ipotesi nulla.
+Solitamente si sceglie un livello $\alpha$ pari a 0.05 o 0.01.
+
+I test di significatività possono essere eseguiti con R, utilizzando la funzione \texttt{summary()} applicata all'oggetto creato dal \texttt{lm()}.
+
+Il test statistico sul parametro $\beta$ del modello di regressione verifica l'ipotesi nulla di indipendenza, ovvero l'ipotesi che, nella popolazione, la pendenza della retta di regressione sia uguale a zero. Pi{\`u} informativo del test statistico $H_0: \beta=0$ è  l'intervallo di confidenza per il parametro $\beta$:
+
+$$
+\hat{\beta} \pm t_{\alpha/2} s_{\hat{\beta}}.
+$$
+
+### Considerazioni conclusive
+
+Il modello di regressione lineare semplice è un metodo per studiare la relazione tra due variabili e per prevedere il valore della variabile dipendente in base alla variabile indipendente. Tuttavia, questo modello è limitato poiché si concentra solo sulla relazione tra una singola variabile indipendente e la variabile dipendente. Quando ci sono più variabili indipendenti, il modello di regressione diventa più complesso e richiede l'uso dell'algebra matriciale. Questo modello può includere variabili indipendenti sia quantitative che qualitative e può essere utilizzato anche per l'analisi della varianza. Il modello lineare è alla base dell'analisi fattoriale, una tecnica ampiamente utilizzata per la costruzione e la validazione dei test psicometrici.
+
+
 

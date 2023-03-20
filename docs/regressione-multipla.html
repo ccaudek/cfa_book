@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2023-02-27" />
+<meta name="date" content="2023-03-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="regressione-bivariata.html"/>
-<link rel="next" href="ch:teoria_classica.html"/>
+<link rel="next" href="proprietà-degli-stimatori-dei-minimi-quadrati.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -300,6 +300,12 @@ div.csl-indent {
 <li class="chapter" data-level="8.2.3" data-path="regressione-multipla.html"><a href="regressione-multipla.html#errore-di-specificazione"><i class="fa fa-check"></i><b>8.2.3</b> Errore di specificazione</a></li>
 <li class="chapter" data-level="8.2.4" data-path="regressione-multipla.html"><a href="regressione-multipla.html#soppressione"><i class="fa fa-check"></i><b>8.2.4</b> Soppressione</a></li>
 <li class="chapter" data-level="8.2.5" data-path="regressione-multipla.html"><a href="regressione-multipla.html#stepwise-regression"><i class="fa fa-check"></i><b>8.2.5</b> Stepwise regression</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="proprietà-degli-stimatori-dei-minimi-quadrati.html"><a href="proprietà-degli-stimatori-dei-minimi-quadrati.html"><i class="fa fa-check"></i><b>8.3</b> Proprietà degli stimatori dei minimi quadrati</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="proprietà-degli-stimatori-dei-minimi-quadrati.html"><a href="proprietà-degli-stimatori-dei-minimi-quadrati.html#ipotesi-statistiche-e-statistica-test"><i class="fa fa-check"></i><b>8.3.1</b> Ipotesi statistiche e statistica test</a></li>
+<li class="chapter" data-level="8.3.2" data-path="proprietà-degli-stimatori-dei-minimi-quadrati.html"><a href="proprietà-degli-stimatori-dei-minimi-quadrati.html#riportare-i-risultati"><i class="fa fa-check"></i><b>8.3.2</b> Riportare i risultati</a></li>
+<li class="chapter" data-level="8.3.3" data-path="proprietà-degli-stimatori-dei-minimi-quadrati.html"><a href="proprietà-degli-stimatori-dei-minimi-quadrati.html#considerazioni-conclusive"><i class="fa fa-check"></i><b>8.3.3</b> Considerazioni conclusive</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III La teoria classica dei test</b></span></li>
@@ -901,13 +907,8 @@ b_1^\prime &amp;= \frac{\mbox{Cov}(X_1, a + b_1 X_1 + b_2 X_2 + e)}{\mbox{Var}(X
 <p>L’ordine di ingresso può essere determinato in base a standard: teorici (razionali) o empirici (statistici). Lo standard razionale corrisponde alla <em>regressione gerarchica</em>, in cui si comunica al computer un ordine fisso per inserire i predittori. Ad esempio, a volte le variabili demografiche vengono inserite nel primo passaggio, quindi nel secondo passaggio viene inserita una variabile psicologica di interesse. Questo ordine non solo controlla le variabili demografiche ma permette anche di valutare il potere predittivo della variabile psicologica, al di là di quello delle semplici variabili demografiche. Quest’ultimo può essere stimato come l’aumento della correlazione multipla al quadrato, o <span class="math inline">\(\Delta R^2\)</span>, da quella della fase 1 con solo predittori demografici a quella della fase 2 con tutti i predittori nell’equazione di regressione.</p>
 <p>Un esempio di standard statistico è la regressione <em>stepwise</em>, in cui il computer seleziona l’inserimento dei predittori in base esclusivamente alla significatività statistica; cioè, viene chiesto: quale predittore, se inserito nell’equazione, avrebbe il valore_<span class="math inline">\(p\)</span> più piccolo per il test del suo coefficiente di regressione parziale? Dopo la selezione, i predittori in una fase successiva possono essere rimossi dall’equazione di regressione in base ai loro valori-<span class="math inline">\(p\)</span> (ad esempio, se <span class="math inline">\(p \geq\)</span> .05). Il processo stepwise si interrompe quando, aggiungendo più predittori, <span class="math inline">\(\Delta R^2\)</span> non migliora. Varianti della regressione stepwise includono <em>forward inclusion</em>, in cui i predittori selezionati non vengono successivamente rimossi dal modello, e <em>backward elimination</em>, che inizia con tutti i predittori nel modello per poi rimuoverne alcuni in passi successivi. Per le ragioni descritte nel paragrafo sull’errore di specificazione, i metodi basati sulle procedure di stepwise regression non dovrebbero mai essere usati. Infatti, i problemi relativi a tale procedura sono così gravi che varie riviste non accettano studi che fanno uso di una tale tecnica statistica. I risultati ottenuti con tali metodi, infatti, sono quasi certamente non replicabili in campioni diversi.</p>
 <p>Una considerazione finale riguarda l’idea di rimuovere i predittori “non significativi” dal modello di regressione. Questa è una cattiva idea. Il ricercatore non deve sentirsi in dovere di trascurare quei predittore che non risultano “statisticamente significativi”. In campioni piccoli, la potenza dei test di significatività è bassa e la rimozione di un predittore non significativo può alterare sostanzialmente la soluzione. Se c’è una buona ragione per includere un predittore, allora è meglio lasciarlo nel modello, fino a prova contraria. In termini generali, qualsiasi considerazione basata sulla “significatività statistia” è fuorviante.</p>
-
 </div>
 </div>
-<!-- </div> -->
-
-
-
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-mauro1990understanding" class="csl-entry">
@@ -920,7 +921,7 @@ Mauro, Robert. 1990. <span>“<span class="nocase">Understanding LOVE (left out 
         </div>
       </div>
 <a href="regressione-bivariata.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="ch:teoria_classica.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="proprietà-degli-stimatori-dei-minimi-quadrati.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
