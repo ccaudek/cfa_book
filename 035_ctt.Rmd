@@ -341,25 +341,7 @@ La \@ref(eq:3-2-6) ci dice che il coefficiente di attendibilità assume valore $
 
 ## Attendibilità e modello di regressione lineare
 
-Il modello di regressione lineare sta alla base della CTT. Infatti si
-può dire che tutte le proprietà della CTT che abbiamo discusso in
-precedenza non sono altro che le caratteristiche di un modello di
-regressione lineare nel quale
-
-- i punteggi osservati $X$ sono la variabile dipendente, 
-- i punteggi veri $T$ sono la variabile indipendente.
-
-Se rappresentiamo la CTT in questo modo, il coefficiente di
-attendibilità $\rho_{XT}^2 = \frac{\sigma_{T}^2}{\sigma_X^2}$ non
-diventa altro che la quota di varianza del punteggio osservato $X$ che
-viene spiegata dal punteggio vero $T$ in base ad un modello lineare con
-pendenza unitaria e intercetta nulla:
-
-$$
-X = 0 + 1 \cdot T + E.
-$$
-
-Nei termini di una tale rappresentazione, il coefficiente di attendibilità è uguale al coefficiente di determinazione del modello di regressione.
+In parole semplici, la CTT (Teoria Classica dei Test) si basa sul modello di regressione lineare, dove i punteggi osservati sono considerati come variabile dipendente e i punteggi veri come variabile indipendente. Il coefficiente di attendibilità $\rho_{XT}^2$ rappresenta la proporzione di varianza nella variabile dipendente spiegata dalla variabile indipendente in un modello di regressione lineare con una pendenza unitaria e un'intercetta di zero. In altre parole, il coefficiente di attendibilità è equivalente al coefficiente di determinazione del modello di regressione.
 
 ### Simulazione
 
@@ -467,7 +449,7 @@ fm <- lm(X ~ T)
 summary(fm)
 ```
 
-Si noti che la retta di regressione ha intercetta 0 e pendenza 1. Questo è coerente con l'assunzione $\mathbb{E}(X) = \mathbb{E}(T)$. Ma il risultato più importante di questa simulazione è che il coefficiente di determinazione ($R^2$ = 0.67) del modello di regressione $X = 0 + 1 \times T + E$ è identico al coefficiente di attendibilità che si può calcolare con la formula $\rho_{XT}^2 = \frac{\sigma_{T}^2}{\sigma_X^2}$:
+Si noti che la retta di regressione ha intercetta 0 e pendenza 1. Questo è coerente con l'assunzione $\mathbb{E}(X) = \mathbb{E}(T)$. Ma il risultato più importante di questa simulazione è che il coefficiente di determinazione ($R^2$ = 0.67) del modello di regressione $X = 0 + 1 \times T + E$ è identico al coefficiente di attendibilità calcolato con la formula $\rho_{XT}^2 = \frac{\sigma_{T}^2}{\sigma_X^2}$:
 
 ```{r}
 var(T) / var(X)
@@ -576,7 +558,7 @@ Per costruzione, inoltre, gli errori $E$ e $E^\prime$ devono essere incorrelati 
 Dimostriamo ora che, in base alle assunzioni della CTT, la correlazione tra  due forme parallele del test è uguale al rapporto tra la varianza del punteggio vero e la varianza del punteggio osservato. 
 
 ::: {.proof}
-Assumendo, senza perdita di generalità, che $\mathbb{E}(X)=\E(X')=\mathbb{E}(T)=0$, possiamo scrivere 
+Assumendo, senza perdita di generalità, che $\mathbb{E}(X)=\mathbb{E}(X')=\mathbb{E}(T)=0$, possiamo scrivere 
 
 \begin{equation}
 \begin{aligned}
@@ -602,7 +584,7 @@ Si noti come la \@ref(eq:3-3-5) e l'equazione che definisce il coefficiente di a
 (\#eq:rho2xt-rhoxx)
 \end{equation}
 
-Tale risultato è importante perché consente di esprimere la quantità inosservabile $\rho^2_{XT}$ nei termini della quantità $\rho_{XX^\prime}$ che può essere calcolata sulla base dei punteggi osservati di due forme parallele del test. Quindi, la stima di $\rho^2_{XT}$ si riduce alla stima di $\rho^2_{XX^\prime}$. Per questa ragione, la \@ref(eq:rho2xt-rhoxx) è forse la formula più importante della CTT.
+Tale risultato è importante perché consente di esprimere la quantità inosservabile $\rho^2_{XT}$ nei termini della quantità $\rho_{XX^\prime}$ che può essere calcolata sulla base dei punteggi osservati di due forme parallele del test. Quindi, la stima di $\rho^2_{XT}$ si riduce alla stima di $\rho^2_{XX^\prime}$. Per questa ragione, la \@ref(eq:rho2xt-rhoxx) è forse la formula più importante della CTT. Inoltre, è importante notare che l'eq. \@ref(eq:rho2xt-rhoxx) fornisce la giustificazione per l'utilizzo della correlazione split-half come misura di attendibilità.
 
 ### La correlazione tra punteggio osservato e punteggio vero
 
@@ -624,45 +606,24 @@ $$
 \rho_{XT}^2 = 1-\frac{\sigma_{E}^2}{\sigma_X^2},
 $$ 
 
-possiamo dire che ci sono tre modi equivalenti per concludere che l'attendibilità di un test è alta. L'attendibilità di un test è alta 
+possiamo dire che ci sono tre modi equivalenti per concludere che l'attendibilità di un test è alta. La attendibilità di un test è considerata alta se si verificano le seguenti condizioni:
 
-1. se è alta la correlazione tra le forme parallele del test,
-2. se è grande la varianza del punteggio vero relativamente alla varianza del punteggio osservato,
-3. se è piccola la varianza dell'errore di misura relativamente alla varianza del punteggio osservato.
-
-Tali considerazioni hanno importanti implicazioni per le scelte che
-devono guidare la costruzione di un test. Si consideri, in particolare,
-l'equazione $\rho^2_{XT} =  \rho_{XX'}$. Se interpretiamo $\rho_{XX'}$
-come la correlazione tra due item, allora tale equazione ci fornisce un
-criterio per la scelta degli item da includere in un test: devono essere inclusi  nel test gli item che correlano maggiormente tra loro. In questo modo, infatti, l'attendibilità del test aumenterà perché gli item inclusi nel test sono maggiormente correlati con il punteggio vero.
+ -La correlazione tra le forme parallele del test è alta.
+- La varianza del punteggio vero è grande rispetto alla varianza del punteggio osservato.
+ - La varianza dell'errore di misura è piccola rispetto alla varianza del punteggio osservato.
+ 
+Queste considerazioni sono importanti per la progettazione di un test. In particolare, l'equazione $\rho^2_{XT} = \rho_{XX'}$ fornisce un criterio per la selezione degli item da includere nel test. Se interpretiamo $\rho_{XX'}$ come la correlazione tra due item, allora gli item che hanno la correlazione più alta tra di loro dovrebbero essere inclusi nel test. In questo modo, l'attendibilità del test aumenta perché gli item inclusi sono maggiormente correlati con il punteggio vero.
 
 ## Metodi alternativi per la stima del coefficiente di attendibilità
 
-Come si stima in pratica l'affidabilità? Un modo grossolano (e molto
-impreciso) consiste nel somministrare allo stesso gruppo di individui lo
-stesso test in due differenti momenti e di calcolare il coefficiente di
-correlazione dei punteggi totali (_test-retest reliability_). @mcdonald2013test afferma che tale procedura può essere giustificata in due modi
-diversi. La prima giustificazione è basata sull'assunzione che il valore
-vero non varia tra le due somministrazioni del test. Se le cose stanno
-in questo modo, gli errori saranno indipendenti e la correlazione tra il
-punteggio osservato nelle due somministrazioni ci fornirà una stima di
-$\rho_{XX^\prime}$. Il problema è che non disponiamo di nessuno strumento per
-distinguere questa situazione ideale dal caso in cui viene violata
-l'assunzione dell'invarianza del punteggio vero. Una seconda
-giustificazione del metodo test-retest ci porta a definire il punteggio
-vero di retest come la componente del punteggio osservato che non varia
-tra le due somministrazioni. Il tal senso, il coefficiente di
-attendibilità viene concepito come un coefficiente di stabilità
-temporale. In generale, maggiore è l'intervallo temporale tra le due
-somministrazioni, minore sarà il valore del coefficiente di stabilità
-temporale. Uno dei problemi del metodo test-retest è che due
-somministrazioni successive di un test ci forniscono soltanto un
-sottoinsieme delle possibili informazioni che verrebbero raccolte da uno
-studio longitudinale che copre un periodo temporale maggiore. Se tale
-studio longitudinale venisse eseguito, potremmo trovare la funzione che
-descrive la variazione del punteggio osservato in funzione del tempo. In
+In pratica, come si stima l'affidabilità di un test? Per stimare l'affidabilità di un test, esistono diversi metodi. Uno di questi consiste nella somministrazione dello stesso test a un gruppo di individui in due momenti diversi, in modo da calcolare la correlazione dei punteggi totali ottenuti (*test-retest reliability*).Questo metodo può essere giustificato in due modi diversi [@mcdonald2013test]. 
+
+- Il primo si basa sull'assunzione che il valore vero non varia tra le due somministrazioni del test. In tal caso, gli errori commessi dai partecipanti durante le due somministrazioni sono indipendenti tra loro e la correlazione tra i punteggi totali ci fornisce una stima del coefficiente di correlazione tra gli item del test. Tuttavia, non è possibile distinguere questa situazione ideale dal caso in cui viene violata l'assunzione di invarianza del punteggio vero.
+- Il secondo metodo si basa sulla definizione del punteggio vero di retest come la componente del punteggio osservato che non varia tra le due somministrazioni. In questo caso, il coefficiente di attendibilità viene concepito come un coefficiente di stabilità temporale, che diminuisce all'aumentare dell'intervallo di tempo tra le due somministrazioni. 
+
+Il metodo test-retest ha il limite di fornire solo un sottoinsieme delle informazioni che verrebbero raccolte da uno studio longitudinale che copre un periodo di tempo maggiore. Se fosse possibile eseguire uno studio di questo tipo, potremmo trovare la funzione che descrive la variazione del punteggio osservato in funzione del tempo. In
 generale, tale funzione non può essere descritta da un singolo
-parametro. Resta aperta la domanda di quale sia relazione tra questa
+parametro. Resta dunque aperta la domanda di quale sia relazione tra questa
 funzione e il coefficiente di attendibilità.
 
 Se sono disponibili due forme parallele dello stesso test,
@@ -672,7 +633,7 @@ reliability_), valendo l'uguaglianza $\rho_{XX^\prime} = \rho^2_{XT}$. Anche
 questo metodo, come il metodo del test-retest, non è esente da errori.
 
 Il metodo di stima più diffuso è quello dell'attendibilità come consistenza interna 
-(*internal consistency reliability*), originariamente ricavato da @kuder1937theory per item dicotomici e poi generalizzato da @cronbach1951coefficient per item a risposte ordinali. L'idea su cui si basa consiste nel fatto che ogni singolo item del test, se confrontato con tutti gli altri, può essere usato per stimare l'affidabilità del test. L'analisi degli item valuta dunque la misura in cui gli item del test sono espressione dello stesso costrutto.
+(*internal consistency reliability*), originariamente ricavato da @kuder1937theory per item dicotomici e poi generalizzato da @cronbach1951coefficient per item a risposte ordinali. L'idea su cui si basa consiste nel fatto che ogni singolo item del test, se confrontato con tutti gli altri, può essere usato per stimare l'affidabilità del test. L'analisi degli item valuta dunque quanto gli item del test misurano lo stesso costrutto.
 
 
 

@@ -44,13 +44,8 @@ sostenuto da Dawes è che, date le evidenze molto convincenti che sono
 disponibili, non è etico usare il giudizio clinico in preferenza all'uso
 di modelli statistici di previsione. Citiamo dall'abstract:
 
-::: displayquote
-Whenever statistical prediction rules [...] are available for making a
-relevant prediction, they should be used in preference to intuition.
-[...] Providing service that assumes that clinicians "can do better"
-simply based on self-confidence or plausibility in the absence of
-evidence that they can actually do so is simply unethical.
-:::
+
+> Whenever statistical prediction rules [...] are available for making a relevant prediction, they should be used in preference to intuition. [...] Providing service that assumes that clinicians "can do better" simply based on self-confidence or plausibility in the absence of evidence that they can actually do so is simply unethical.
 
 Sulla base di quanto detto sopra, e in riferimento ai nostri scopi
 presenti, si pone dunque il problema di capire come sia possibile
