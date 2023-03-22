@@ -35,6 +35,7 @@ rmd_files:
     - "035_ctt.Rmd"
     - "037_err_standard_misura.Rmd"
     - "038_err_standard_stima.Rmd"
+    - "040_exercises_ctt.Rmd"
     ## PART III
     - "050_sviluppo_strumento.Rmd"
     - "055_analisi_fattoriale_1.Rmd"

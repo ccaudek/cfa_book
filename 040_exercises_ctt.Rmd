@@ -1,0 +1,156 @@
+# Esercizi sulla CTT
+
+Le applicazioni della CTT discusse in questo capitolo sono presentate da @desjardins2018handbook. Tuttavia, i fondamenti teorici delle applicazioni qui considerate saranno spiegati nei capitoli successivi. In questo capitolo, ci limiteremo ad utilizzare le funzioni e i dati contenuti nel pacchetto `hemp`. 
+
+Per l'installazione di `hemp` si procede nel modo seguente.
+
+```{r, include = FALSE}
+source("_common.R")
+library("hemp")
+```
+
+```{r, eval = FALSE}
+install.packages("devtools")
+library("devtools")
+```
+
+
+```{r, eval = FALSE}
+install_github("cddesja/hemp")
+```
+
+## Attendibilità
+
+Nell'esempio seguente, utilizziamo il set di dati SAPA per dimostrare come calcolare varie stime di coerenza interna in R. Il set di dati SAPA è costituito da 1525 risposte a un test di abilità a scelta multipla di 16 item tratti da un progetto di valutazione della personalità  chiamato *Synthetic Aperture Personality Assessment* (SAPA). Gli item misurano il ragionamento di base, la manipolazione di serie alfanumeriche, il ragionamento con matrici e la capacità di rotazione mentale.
+
+Carichiamo i dati.
+
+```{r}
+data(SAPA)
+```
+
+Esaminiamo i dati mancanti.
+
+```{r}
+num_miss(SAPA)
+```
+
+Una semplice misura di coerenza interna è la affidabilità *split-half*. Una stima dell'affidabilità *split-half* può essere ottenuta dividendo un test in due parti equivalenti, calcolando i punteggi totali delle due parti e correlandoli. Ci sono molti modi per creare la suddivisione (ad esempio, selezionando gli item pari e quelli dispari, oppure in modo casuale, ecc.). Di seguito calcoliamo l'affidabilità *split-half* selezionando gli item pari e quelli dispari.
+
+```{r}
+split_half(SAPA, type = "alternate")
+```
+
+In questo secondo caso, l'affidabilità *split-half* è calcolata selezionando due sottoinsiemi casuali di item della stessa numerosità.
+
+```{r}
+set.seed(1)
+split_half(SAPA, type = "random")
+```
+
+È noto che la stima dell'affidabilità split-half è distorta verso il basso (R. J. Cohen, Swerdlik e Sturman, 2013). La correzione Spearman-Brown può essere applicata per superare questo problema. Per fare ciò, basta passare l'argomento `sb = TRUE` alla funzione `split_half()`.
+
+```{r}
+split_half(SAPA, type = "alternate", sb = TRUE)
+```
+
+Dopo aver applicato la correzione di Spearman-Brown, l'affidabilità split-half è ora stimata a 0.862, che è un po' più alta. 
+
+Data la nostra attuale stima di affidabilità, possiamo anche determinare la lunghezza di un test per ottenere l'affidabilità desiderata. Possiamo farlo usando la funzione `test_length()` in `hemp`. Supponendo di volere un'affidabilità di 0.95, possiamo determinare di quanti item dovrebbe essere costituito il test. Nella chiamata a `test_length()`, specifichiamo `r_type = "split"` in modo che l'affidabilità attuale venga calcolata utilizzando l'affidabilità split-half con la correzione di Spearman-Brown. 
+
+```{r}
+test_length(SAPA, r = .95, r_type = "split")
+```
+
+Se vogliamo un test con un'affidabilità di 0.95, dato che il nostro test attuale ha un'affidabilità di 0.862 basata su 16 item, avremmo bisogno di un test che consiste di almeno 49 item.
+
+La misura più comune della consistenza interna è il coefficiente alfa (Cronbach, 1951). Il coefficiente alfa rappresenta la media di tutte le possibili correlazioni split-half. Può essere calcolato utilizzando la funzione `coef_alpha()` in `hemp`.
+
+```{r}
+coef_alpha(SAPA)
+```
+
+Anche se le stime puntuali di affidabilità possono essere utili, è generalmente utile calcolare un intervallo di confidenza. Quando la dimensione del campione è piccola, le ipotesi dei modelli statistici non sono soddisfatte o la distribuzione campionaria di un parametro è sconosciuta, allora il bootstrap può essere utilizzato per costruire una distribuzione campionaria empirica, che possiamo quindi utilizzare per creare intervalli di confidenza (Efron & Tibshirani, 1986 ).
+
+La nostra motivazione per l'introduzione del bootstrapping è che consente la creazione di intervalli di confidenza e incertezza indipendentemente dal parametro stimato. Pertanto, mentre illustriamo l'uso del bootstrap per il coefficiente alfa, questo può essere facilmente applicato per l'affidabilità split-half di cui sopra, la validità o le statistiche dell'analisi degli elementi presentate più avanti in questo capitolo e in molti altri contesti presentati in tutto il libro.
+Per eseguire il bootstrap per il coefficiente alfa, possiamo usare, ad esempio, il pacchetto `boot` (Canty & Ripley, 2017).
+
+```{r}
+library(boot)
+```
+
+Dobbiamo creare una funzione da passare alla funzione `boot`, che chiamiamo `alpha_fun()`. Questa funzione accetta due argomenti: un set di dati, chiamato `data`, e una matrice di indici, chiamata `row` Questi argomenti vengono quindi passati alla funzione `coef_alpha`. Ciò consentirà alla funzione `boot` di eseguire un campionamento con rimpiazzo delle righe di `data` e creare una distribuzione empirica per il coefficiente alfa.
+
+```{r}
+alpha_fun <- function(data, row){
+  coef_alpha(data[row, ])}
+```
+
+```{r}
+alpha_boot <- boot(SAPA, alpha_fun, R = 1e3)
+alpha_boot
+```
+La figura seguente mostra un istogramma e un Q-Q plot della distribuzione empirica per il coefficiente alfa basato sui 1000 campioni.
+
+```{r}
+plot(alpha_boot)
+```
+
+Utilizziamo la funzione `boot.ci()` per calcolare gli intervalli di confidenza al 95% utilizzando gli intervalli `norm`, `basic` e `perc`. In breve, gli intervalli `basic` e `perc` fanno meno assunzioni rispetto agli intervalli `norm` (ovvero, nessuna assunzione di normalità asintotica). Se la distribuzione empirica si discosta dalla normalità, allora gli intervalli `basic` e `perc` sono una scelta migliore.
+
+```{r}
+boot.ci(alpha_boot, type = c("norm", "basic", "perc"))
+```
+
+Si può concludere che per la maggior parte degli scopi l'attendibilità sembra essere sufficientemente alta da non richiedere l'onere aggiuntivo per i rispondenti di aumentare la lunghezza dello strumento.
+
+## Validità
+
+La validità può essere esaminato in molti modi e quantificare l'evidenza di validità è abbastanza semplice con R. Una forma comune di evidenza di validità è l'opinione di un esperto. Le opinioni degli esperti possono aiutare a valutare l'adeguatezza del contenuto degli item, se lo strumento sta campionando adeguatamente tutte le dimensioni del dominio del costrutto e se gli item sono necessari per misurare il costrutto. Un modo per quantificare questo tipo di validità è con il *content validity ratio*, CVR (Lawshe, 1975). Il CVR è definito come:
+
+$$
+CVR = \frac{n_e - (N/2)}{N/2},
+$$
+
+dove $n_e$ è il numero di esperti che ritengono essenziale l'item e $N$ è il numero totale di esperti. Ad esempio, possiamo costruire uno strumento che interroghi i genitori sull'aggressività nei loro figli. Un item potrebbe chiedere: "Tuo figlio morde altri bambini?" Se chiediamo a 20 esperti se pensano che questo elemento sia essenziale per misurare l'aggressività nei bambini e 17 concordano che lo sia, allora il CVR può essere calcolato usando la funzione `cvr` di `hemp`:
+
+```{r}
+cvr(N = 20, n_e = 17)
+```
+Scopriamo che il CVR è 0.70 per questo particolare item, ma non sappiamo se 0.70 sia abbastanza grande da mantenere l'item nello strumento. La tabella 1 in Lawshe (1975) fornisce valori soglia di CVR dato un determinato numero di esperti. Per 20 esperti, il CVR minimo è 0.42 e per cui potremmo concludere che gli esperti ritengono che questo item sia utile e potremmo mantenere questo item nel nostro strumento.
+
+Altre forme di prova di validità valutano la misura in cui i punteggi del test si riferiscono a qualche criterio esterno (validità di criterio). Il supporto statistico per questa forma di validità può comportare il calcolo di correlazioni semplici o l'uso della regressione.
+
+Esaminiamo al set di dati `interest`, un set di dati artificiale che contiene misure di personalità, di capacità cognitive e di interessi vocazionali. Per questi dati potremmo aspettarci che il test del vocabolario (`vocab`) sia correlato con valutazioni che misurano la comprensione della lettura (`reading`) e il completamento di frasi (`sent-comp`). Pertanto, possiamo utilizzare la funzione `cor` per calcolare la correlazione di Pearson tra queste variabili.
+
+```{r}
+cor(interest[, c("vocab", "reading", "sentcomp")])
+```
+
+La correlazione di Pearson tra `vocab` e `reading` è 0.803, mentre la correlazione tra `vocab` e `sentcomp` è 0.813. Ciò rappresenterebbe una prova di validità concorrente se i test di vocabolario fossero somministrati al momento della valutazione della lettura e del completamento della frase. Se il test del vocabolario precede i test di lettura e di completamento della frase, allora la correlazione di Pearson rappresenta una prova a sostegno della validità predittiva.
+
+Supponiamo che stiamo misurando l'interesse di qualcuno a diventare un insegnante (`teacher`) utilizzando una misura della personalità del dominio sociale (`socdom`) e vogliamo capire se esiste un'ulteriore capacità predittiva di somministrare la valutazione della comprensione della lettura oltre la sola misura della personalità. Stiamo cercando di valutare se la comprensione della lettura ha una validità incrementale, e ciò può essere valutato usando l'analisi di regressione.
+
+```{r}
+mod_old <- lm(teacher ~ socdom, interest)
+mod_new <- lm(teacher ~ socdom + reading, interest)
+```
+
+
+I modelli risultanti sono nidificati perché `mod_new` include le stesse variabili dipendenti e indipendenti utilizzate in `mod_old` includendo anche la variabile di lettura. Per esaminare il contributo della lettura oltre il socdom nella previsione dell'insegnante, possiamo estrarre il cambiamento nel valore R-quadrato (R2) tra i due modelli. Inoltre, possiamo confrontare statisticamente i modelli utilizzando la funzione `anova` in R. Questo test esamina se la variazione di R2 tra i due modelli è statisticamente significativa (ovvero, R2 > 0). Se la variazione R2 è statisticamente significativa, allora possiamo concludere che la lettura spiega una quantità significativa di variazione nella variabile dipendente `teacher` oltre `socdom`.
+
+```{r}
+summary(mod_new)$r.squared - summary(mod_old)$r.squared
+anova(mod_old, mod_new)
+```
+
+Dall'output sopra, vediamo che la valutazione della comprensione della lettura ha una validità incrementale oltre la sola misura di dominanza sociale (p <.001) e che spiega circa il 9% in più di variabilità nell'interesse per la professione di insegnante.
+
+```{r}
+summary(mod_old)
+```
+```{r}
+summary(mod_new)
+```
+
+

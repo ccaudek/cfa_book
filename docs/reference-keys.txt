@@ -1,8 +1,9 @@
 eq:specific-err
 eq:observed-true-plus-error
 eq:assunzione-media-x-media-t
-eq:3-2-4
 eq:var-sum
+eq:3-2-4
+eq:cov-obs-true
 eq:sd-ratio
 eq:reliability-1
 eq:3-2-6
@@ -22,16 +23,16 @@ eq:mod-monofattoriale
 eq:corr-parz
 def:unlabeled-div-12
 eq:tetradi
-tab:unnamed-chunk-206
+tab:unnamed-chunk-227
 exr:unlabeled-div-13
 eq:err-stnd-meas-FA
 eq:eq-var-multifatt
 exr:unlabeled-div-15
 exr:unlabeled-div-16
-tab:unnamed-chunk-244
+tab:unnamed-chunk-265
 eq:mod-multifact
 exr:unlabeled-div-17
-tab:unnamed-chunk-248
+tab:unnamed-chunk-269
 exr:unlabeled-div-18
 fig:path01
 fig:path02
@@ -223,6 +224,8 @@ lerrore-standard-della-stima
 intervallo-di-confidenza-per-il-punteggio-vero
 cut-off
 procedure-alternative
+esercizi-sulla-ctt
+validità
 utilizzo-e-costruzione-di-test-psicometrici
 caratteristiche-dellanalisi-fattoriale
 lanalisi-fattoriale-esplorativa-e-confermativa
@@ -470,5 +473,3 @@ proprietà-del-determinante
 radici-e-vettori-latenti
 scomposizione-spettrale-di-una-matrice
 autovalori-e-determinante
-fig:unnamed-chunk-5
-eq:cov-obs-true
