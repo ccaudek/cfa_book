@@ -161,12 +161,8 @@ se.m <- function(responses, rel.est = "alpha") {
   sd.x <- sqrt(var(total) * (n.persons - 1) / n.persons)
   if (rel.est == "alpha") {
     rel <- coeff.alpha(responses)
-  } else if (rel.est == "KR20") {
-    rel <- KR20(responses)
-  } else if (rel.est == "KR21") {
-    rel <- KR21(responses)
   } else {
-    error("rel.est must be either alpha, KR20, or KR21")
+    error("rel.est must be either alpha")
   }
   se.m <- sd.x * sqrt(1 - rel)
   return(se.m)
