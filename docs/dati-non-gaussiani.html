@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2023-03-22" />
+<meta name="date" content="2023-03-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,12 +340,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9.9" data-path="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><a href="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><i class="fa fa-check"></i><b>9.9</b> Metodi alternativi per la stima del coefficiente di attendibilità</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10</b> L’incertezza della misura</a>
+<li class="chapter" data-level="10" data-path="lerrore-standard-della-misurazione.html"><a href="lerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10</b> L’errore standard della misurazione</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10.1</b> La stima dell’errore standard della misurazione</a>
+<li class="chapter" data-level="10.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10.1</b> L’incertezza della misura</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
-<li class="chapter" data-level="10.1.2" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
+<li class="chapter" data-level="10.1.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
+<li class="chapter" data-level="10.1.2" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="dimostrazione.html"><a href="dimostrazione.html"><i class="fa fa-check"></i><b>10.2</b> Dimostrazione</a></li>
 <li class="chapter" data-level="10.3" data-path="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><a href="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><i class="fa fa-check"></i><b>10.3</b> Intervallo di confidenza per il punteggio vero e <span class="math inline">\(\sigma_E\)</span></a></li>
@@ -360,7 +360,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="12" data-path="esercizi-sulla-ctt.html"><a href="esercizi-sulla-ctt.html"><i class="fa fa-check"></i><b>12</b> Esercizi sulla CTT</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.1</b> Validità</a></li>
+<li class="chapter" data-level="12.1" data-path="attendibilità.html"><a href="attendibilità.html"><i class="fa fa-check"></i><b>12.1</b> Attendibilità</a></li>
+<li class="chapter" data-level="12.2" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.2</b> Validità</a></li>
 </ul></li>
 <li class="part"><span><b>IV L’analisi fattoriale</b></span></li>
 <li class="chapter" data-level="13" data-path="utilizzo-e-costruzione-di-test-psicometrici.html"><a href="utilizzo-e-costruzione-di-test-psicometrici.html"><i class="fa fa-check"></i><b>13</b> Utilizzo e costruzione di test psicometrici</a>
@@ -748,131 +749,131 @@ div.csl-indent {
 </ul>
 <p>L’uso di WLS non è, in generale, raccomandato, a meno che le dimensioni del campione non siano molto grandi. Al contrario, la ricerca ha dimostrato che il metodo ML robusto fornisce uno stimatore adeguato rispetto a diversi livelli di non normalità.</p>
 <p>Esaminiamo qui un esempio discusso da <span class="citation">Brown (<a href="#ref-brown2015confirmatory">2015</a>)</span> nelle sue tabelle 9.5 – 9.7.</p>
-<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="dati-non-gaussiani.html#cb508-1" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;brown_table_9_5_data.RDS&quot;</span>))</span>
-<span id="cb508-2"><a href="dati-non-gaussiani.html#cb508-2" tabindex="-1"></a><span class="fu">head</span>(d)</span>
-<span id="cb508-3"><a href="dati-non-gaussiani.html#cb508-3" tabindex="-1"></a><span class="co">#&gt;   x1 x2 x3 x4 x5</span></span>
-<span id="cb508-4"><a href="dati-non-gaussiani.html#cb508-4" tabindex="-1"></a><span class="co">#&gt; 1  0  0  0  0  0</span></span>
-<span id="cb508-5"><a href="dati-non-gaussiani.html#cb508-5" tabindex="-1"></a><span class="co">#&gt; 2  0  0  0  0  0</span></span>
-<span id="cb508-6"><a href="dati-non-gaussiani.html#cb508-6" tabindex="-1"></a><span class="co">#&gt; 3  0  0  0  0  0</span></span>
-<span id="cb508-7"><a href="dati-non-gaussiani.html#cb508-7" tabindex="-1"></a><span class="co">#&gt; 4  4  2  2  1  1</span></span>
-<span id="cb508-8"><a href="dati-non-gaussiani.html#cb508-8" tabindex="-1"></a><span class="co">#&gt; 5  1  0  1  6  0</span></span>
-<span id="cb508-9"><a href="dati-non-gaussiani.html#cb508-9" tabindex="-1"></a><span class="co">#&gt; 6  0  0  0  0  0</span></span></code></pre></div>
+<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="dati-non-gaussiani.html#cb518-1" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;brown_table_9_5_data.RDS&quot;</span>))</span>
+<span id="cb518-2"><a href="dati-non-gaussiani.html#cb518-2" tabindex="-1"></a><span class="fu">head</span>(d)</span>
+<span id="cb518-3"><a href="dati-non-gaussiani.html#cb518-3" tabindex="-1"></a><span class="co">#&gt;   x1 x2 x3 x4 x5</span></span>
+<span id="cb518-4"><a href="dati-non-gaussiani.html#cb518-4" tabindex="-1"></a><span class="co">#&gt; 1  0  0  0  0  0</span></span>
+<span id="cb518-5"><a href="dati-non-gaussiani.html#cb518-5" tabindex="-1"></a><span class="co">#&gt; 2  0  0  0  0  0</span></span>
+<span id="cb518-6"><a href="dati-non-gaussiani.html#cb518-6" tabindex="-1"></a><span class="co">#&gt; 3  0  0  0  0  0</span></span>
+<span id="cb518-7"><a href="dati-non-gaussiani.html#cb518-7" tabindex="-1"></a><span class="co">#&gt; 4  4  2  2  1  1</span></span>
+<span id="cb518-8"><a href="dati-non-gaussiani.html#cb518-8" tabindex="-1"></a><span class="co">#&gt; 5  1  0  1  6  0</span></span>
+<span id="cb518-9"><a href="dati-non-gaussiani.html#cb518-9" tabindex="-1"></a><span class="co">#&gt; 6  0  0  0  0  0</span></span></code></pre></div>
 <p>Le statistiche descrittive di questo campione di dati mostrano valori eccessivi di asimmetria e di curtosi.</p>
-<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb509-1"><a href="dati-non-gaussiani.html#cb509-1" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(d)</span>
-<span id="cb509-2"><a href="dati-non-gaussiani.html#cb509-2" tabindex="-1"></a><span class="co">#&gt;    vars   n mean   sd median trimmed mad min max range skew kurtosis   se</span></span>
-<span id="cb509-3"><a href="dati-non-gaussiani.html#cb509-3" tabindex="-1"></a><span class="co">#&gt; x1    1 870 1.47 2.17      0    1.01   0   0   8     8 1.51     1.25 0.07</span></span>
-<span id="cb509-4"><a href="dati-non-gaussiani.html#cb509-4" tabindex="-1"></a><span class="co">#&gt; x2    2 870 0.82 1.60      0    0.42   0   0   8     8 2.40     5.67 0.05</span></span>
-<span id="cb509-5"><a href="dati-non-gaussiani.html#cb509-5" tabindex="-1"></a><span class="co">#&gt; x3    3 870 1.27 2.07      0    0.78   0   0   8     8 1.80     2.34 0.07</span></span>
-<span id="cb509-6"><a href="dati-non-gaussiani.html#cb509-6" tabindex="-1"></a><span class="co">#&gt; x4    4 870 1.03 1.93      0    0.54   0   0   8     8 2.16     3.98 0.07</span></span>
-<span id="cb509-7"><a href="dati-non-gaussiani.html#cb509-7" tabindex="-1"></a><span class="co">#&gt; x5    5 870 0.61 1.52      0    0.18   0   0   8     8 3.10     9.37 0.05</span></span></code></pre></div>
+<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="dati-non-gaussiani.html#cb519-1" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(d)</span>
+<span id="cb519-2"><a href="dati-non-gaussiani.html#cb519-2" tabindex="-1"></a><span class="co">#&gt;    vars   n mean   sd median trimmed mad min max range skew kurtosis   se</span></span>
+<span id="cb519-3"><a href="dati-non-gaussiani.html#cb519-3" tabindex="-1"></a><span class="co">#&gt; x1    1 870 1.47 2.17      0    1.01   0   0   8     8 1.51     1.25 0.07</span></span>
+<span id="cb519-4"><a href="dati-non-gaussiani.html#cb519-4" tabindex="-1"></a><span class="co">#&gt; x2    2 870 0.82 1.60      0    0.42   0   0   8     8 2.40     5.67 0.05</span></span>
+<span id="cb519-5"><a href="dati-non-gaussiani.html#cb519-5" tabindex="-1"></a><span class="co">#&gt; x3    3 870 1.27 2.07      0    0.78   0   0   8     8 1.80     2.34 0.07</span></span>
+<span id="cb519-6"><a href="dati-non-gaussiani.html#cb519-6" tabindex="-1"></a><span class="co">#&gt; x4    4 870 1.03 1.93      0    0.54   0   0   8     8 2.16     3.98 0.07</span></span>
+<span id="cb519-7"><a href="dati-non-gaussiani.html#cb519-7" tabindex="-1"></a><span class="co">#&gt; x5    5 870 0.61 1.52      0    0.18   0   0   8     8 3.10     9.37 0.05</span></span></code></pre></div>
 <p>Definiamo un modello ad un fattore e, seguendo <span class="citation">Brown (<a href="#ref-brown2015confirmatory">2015</a>)</span>, aggiungiamo una correlazione residua tra gli indicatori <code>X1</code> e <code>X3</code>:</p>
-<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="dati-non-gaussiani.html#cb510-1" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb510-2"><a href="dati-non-gaussiani.html#cb510-2" tabindex="-1"></a><span class="st">  f1 =~ x1 + x2 + x3 + x4 + x5</span></span>
-<span id="cb510-3"><a href="dati-non-gaussiani.html#cb510-3" tabindex="-1"></a><span class="st">  x1 ~~ x3</span></span>
-<span id="cb510-4"><a href="dati-non-gaussiani.html#cb510-4" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="dati-non-gaussiani.html#cb520-1" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb520-2"><a href="dati-non-gaussiani.html#cb520-2" tabindex="-1"></a><span class="st">  f1 =~ x1 + x2 + x3 + x4 + x5</span></span>
+<span id="cb520-3"><a href="dati-non-gaussiani.html#cb520-3" tabindex="-1"></a><span class="st">  x1 ~~ x3</span></span>
+<span id="cb520-4"><a href="dati-non-gaussiani.html#cb520-4" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
 <p>Procediamo alla stima dei parametri utilizzando uno stimatore di ML robusto. La sintassi <code>lavaan</code> è la seguente:</p>
-<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="dati-non-gaussiani.html#cb511-1" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">cfa</span>(model, <span class="at">data =</span> d, <span class="at">mimic =</span> <span class="st">&quot;MPLUS&quot;</span>, <span class="at">estimator =</span> <span class="st">&quot;MLM&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="dati-non-gaussiani.html#cb521-1" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">cfa</span>(model, <span class="at">data =</span> d, <span class="at">mimic =</span> <span class="st">&quot;MPLUS&quot;</span>, <span class="at">estimator =</span> <span class="st">&quot;MLM&quot;</span>)</span></code></pre></div>
 <p>Per esaminare la soluzione ottenuta ci focalizziamo sulla statistica <span class="math inline">\(\chi^2\)</span> – si consideri la soluzione robusta fornita nell’output.</p>
-<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="dati-non-gaussiani.html#cb512-1" tabindex="-1"></a><span class="fu">summary</span>(fit)</span>
-<span id="cb512-2"><a href="dati-non-gaussiani.html#cb512-2" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6.15 ended normally after 28 iterations</span></span>
-<span id="cb512-3"><a href="dati-non-gaussiani.html#cb512-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb512-4"><a href="dati-non-gaussiani.html#cb512-4" tabindex="-1"></a><span class="co">#&gt;   Estimator                                         ML</span></span>
-<span id="cb512-5"><a href="dati-non-gaussiani.html#cb512-5" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
-<span id="cb512-6"><a href="dati-non-gaussiani.html#cb512-6" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                        16</span></span>
-<span id="cb512-7"><a href="dati-non-gaussiani.html#cb512-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb512-8"><a href="dati-non-gaussiani.html#cb512-8" tabindex="-1"></a><span class="co">#&gt;   Number of observations                           870</span></span>
-<span id="cb512-9"><a href="dati-non-gaussiani.html#cb512-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb512-10"><a href="dati-non-gaussiani.html#cb512-10" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
-<span id="cb512-11"><a href="dati-non-gaussiani.html#cb512-11" tabindex="-1"></a><span class="co">#&gt;                                                Standard      Scaled</span></span>
-<span id="cb512-12"><a href="dati-non-gaussiani.html#cb512-12" tabindex="-1"></a><span class="co">#&gt;   Test Statistic                                 25.913      10.356</span></span>
-<span id="cb512-13"><a href="dati-non-gaussiani.html#cb512-13" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                  4           4</span></span>
-<span id="cb512-14"><a href="dati-non-gaussiani.html#cb512-14" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                            0.000       0.035</span></span>
-<span id="cb512-15"><a href="dati-non-gaussiani.html#cb512-15" tabindex="-1"></a><span class="co">#&gt;   Scaling correction factor                                   2.502</span></span>
-<span id="cb512-16"><a href="dati-non-gaussiani.html#cb512-16" tabindex="-1"></a><span class="co">#&gt;     Satorra-Bentler correction (Mplus variant)                     </span></span>
-<span id="cb512-17"><a href="dati-non-gaussiani.html#cb512-17" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb512-18"><a href="dati-non-gaussiani.html#cb512-18" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
-<span id="cb512-19"><a href="dati-non-gaussiani.html#cb512-19" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb512-20"><a href="dati-non-gaussiani.html#cb512-20" tabindex="-1"></a><span class="co">#&gt;   Standard errors                           Robust.sem</span></span>
-<span id="cb512-21"><a href="dati-non-gaussiani.html#cb512-21" tabindex="-1"></a><span class="co">#&gt;   Information                                 Expected</span></span>
-<span id="cb512-22"><a href="dati-non-gaussiani.html#cb512-22" tabindex="-1"></a><span class="co">#&gt;   Information saturated (h1) model          Structured</span></span>
-<span id="cb512-23"><a href="dati-non-gaussiani.html#cb512-23" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb512-24"><a href="dati-non-gaussiani.html#cb512-24" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
-<span id="cb512-25"><a href="dati-non-gaussiani.html#cb512-25" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb512-26"><a href="dati-non-gaussiani.html#cb512-26" tabindex="-1"></a><span class="co">#&gt;   f1 =~                                               </span></span>
-<span id="cb512-27"><a href="dati-non-gaussiani.html#cb512-27" tabindex="-1"></a><span class="co">#&gt;     x1                1.000                           </span></span>
-<span id="cb512-28"><a href="dati-non-gaussiani.html#cb512-28" tabindex="-1"></a><span class="co">#&gt;     x2                0.703    0.062   11.338    0.000</span></span>
-<span id="cb512-29"><a href="dati-non-gaussiani.html#cb512-29" tabindex="-1"></a><span class="co">#&gt;     x3                1.068    0.044   24.304    0.000</span></span>
-<span id="cb512-30"><a href="dati-non-gaussiani.html#cb512-30" tabindex="-1"></a><span class="co">#&gt;     x4                0.918    0.063   14.638    0.000</span></span>
-<span id="cb512-31"><a href="dati-non-gaussiani.html#cb512-31" tabindex="-1"></a><span class="co">#&gt;     x5                0.748    0.055   13.582    0.000</span></span>
-<span id="cb512-32"><a href="dati-non-gaussiani.html#cb512-32" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb512-33"><a href="dati-non-gaussiani.html#cb512-33" tabindex="-1"></a><span class="co">#&gt; Covariances:</span></span>
-<span id="cb512-34"><a href="dati-non-gaussiani.html#cb512-34" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb512-35"><a href="dati-non-gaussiani.html#cb512-35" tabindex="-1"></a><span class="co">#&gt;  .x1 ~~                                               </span></span>
-<span id="cb512-36"><a href="dati-non-gaussiani.html#cb512-36" tabindex="-1"></a><span class="co">#&gt;    .x3                0.655    0.143    4.579    0.000</span></span>
-<span id="cb512-37"><a href="dati-non-gaussiani.html#cb512-37" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb512-38"><a href="dati-non-gaussiani.html#cb512-38" tabindex="-1"></a><span class="co">#&gt; Intercepts:</span></span>
-<span id="cb512-39"><a href="dati-non-gaussiani.html#cb512-39" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb512-40"><a href="dati-non-gaussiani.html#cb512-40" tabindex="-1"></a><span class="co">#&gt;    .x1                1.470    0.074   19.968    0.000</span></span>
-<span id="cb512-41"><a href="dati-non-gaussiani.html#cb512-41" tabindex="-1"></a><span class="co">#&gt;    .x2                0.823    0.054   15.166    0.000</span></span>
-<span id="cb512-42"><a href="dati-non-gaussiani.html#cb512-42" tabindex="-1"></a><span class="co">#&gt;    .x3                1.266    0.070   18.043    0.000</span></span>
-<span id="cb512-43"><a href="dati-non-gaussiani.html#cb512-43" tabindex="-1"></a><span class="co">#&gt;    .x4                1.026    0.065   15.712    0.000</span></span>
-<span id="cb512-44"><a href="dati-non-gaussiani.html#cb512-44" tabindex="-1"></a><span class="co">#&gt;    .x5                0.607    0.051   11.790    0.000</span></span>
-<span id="cb512-45"><a href="dati-non-gaussiani.html#cb512-45" tabindex="-1"></a><span class="co">#&gt;     f1                0.000                           </span></span>
-<span id="cb512-46"><a href="dati-non-gaussiani.html#cb512-46" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb512-47"><a href="dati-non-gaussiani.html#cb512-47" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
-<span id="cb512-48"><a href="dati-non-gaussiani.html#cb512-48" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb512-49"><a href="dati-non-gaussiani.html#cb512-49" tabindex="-1"></a><span class="co">#&gt;    .x1                2.040    0.228    8.952    0.000</span></span>
-<span id="cb512-50"><a href="dati-non-gaussiani.html#cb512-50" tabindex="-1"></a><span class="co">#&gt;    .x2                1.241    0.124   10.019    0.000</span></span>
-<span id="cb512-51"><a href="dati-non-gaussiani.html#cb512-51" tabindex="-1"></a><span class="co">#&gt;    .x3                1.227    0.169    7.255    0.000</span></span>
-<span id="cb512-52"><a href="dati-non-gaussiani.html#cb512-52" tabindex="-1"></a><span class="co">#&gt;    .x4                1.458    0.177    8.233    0.000</span></span>
-<span id="cb512-53"><a href="dati-non-gaussiani.html#cb512-53" tabindex="-1"></a><span class="co">#&gt;    .x5                0.807    0.100    8.063    0.000</span></span>
-<span id="cb512-54"><a href="dati-non-gaussiani.html#cb512-54" tabindex="-1"></a><span class="co">#&gt;     f1                2.675    0.289    9.273    0.000</span></span></code></pre></div>
+<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="dati-non-gaussiani.html#cb522-1" tabindex="-1"></a><span class="fu">summary</span>(fit)</span>
+<span id="cb522-2"><a href="dati-non-gaussiani.html#cb522-2" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6.15 ended normally after 28 iterations</span></span>
+<span id="cb522-3"><a href="dati-non-gaussiani.html#cb522-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb522-4"><a href="dati-non-gaussiani.html#cb522-4" tabindex="-1"></a><span class="co">#&gt;   Estimator                                         ML</span></span>
+<span id="cb522-5"><a href="dati-non-gaussiani.html#cb522-5" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
+<span id="cb522-6"><a href="dati-non-gaussiani.html#cb522-6" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                        16</span></span>
+<span id="cb522-7"><a href="dati-non-gaussiani.html#cb522-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb522-8"><a href="dati-non-gaussiani.html#cb522-8" tabindex="-1"></a><span class="co">#&gt;   Number of observations                           870</span></span>
+<span id="cb522-9"><a href="dati-non-gaussiani.html#cb522-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb522-10"><a href="dati-non-gaussiani.html#cb522-10" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
+<span id="cb522-11"><a href="dati-non-gaussiani.html#cb522-11" tabindex="-1"></a><span class="co">#&gt;                                                Standard      Scaled</span></span>
+<span id="cb522-12"><a href="dati-non-gaussiani.html#cb522-12" tabindex="-1"></a><span class="co">#&gt;   Test Statistic                                 25.913      10.356</span></span>
+<span id="cb522-13"><a href="dati-non-gaussiani.html#cb522-13" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                  4           4</span></span>
+<span id="cb522-14"><a href="dati-non-gaussiani.html#cb522-14" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                            0.000       0.035</span></span>
+<span id="cb522-15"><a href="dati-non-gaussiani.html#cb522-15" tabindex="-1"></a><span class="co">#&gt;   Scaling correction factor                                   2.502</span></span>
+<span id="cb522-16"><a href="dati-non-gaussiani.html#cb522-16" tabindex="-1"></a><span class="co">#&gt;     Satorra-Bentler correction (Mplus variant)                     </span></span>
+<span id="cb522-17"><a href="dati-non-gaussiani.html#cb522-17" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb522-18"><a href="dati-non-gaussiani.html#cb522-18" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
+<span id="cb522-19"><a href="dati-non-gaussiani.html#cb522-19" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb522-20"><a href="dati-non-gaussiani.html#cb522-20" tabindex="-1"></a><span class="co">#&gt;   Standard errors                           Robust.sem</span></span>
+<span id="cb522-21"><a href="dati-non-gaussiani.html#cb522-21" tabindex="-1"></a><span class="co">#&gt;   Information                                 Expected</span></span>
+<span id="cb522-22"><a href="dati-non-gaussiani.html#cb522-22" tabindex="-1"></a><span class="co">#&gt;   Information saturated (h1) model          Structured</span></span>
+<span id="cb522-23"><a href="dati-non-gaussiani.html#cb522-23" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb522-24"><a href="dati-non-gaussiani.html#cb522-24" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
+<span id="cb522-25"><a href="dati-non-gaussiani.html#cb522-25" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb522-26"><a href="dati-non-gaussiani.html#cb522-26" tabindex="-1"></a><span class="co">#&gt;   f1 =~                                               </span></span>
+<span id="cb522-27"><a href="dati-non-gaussiani.html#cb522-27" tabindex="-1"></a><span class="co">#&gt;     x1                1.000                           </span></span>
+<span id="cb522-28"><a href="dati-non-gaussiani.html#cb522-28" tabindex="-1"></a><span class="co">#&gt;     x2                0.703    0.062   11.338    0.000</span></span>
+<span id="cb522-29"><a href="dati-non-gaussiani.html#cb522-29" tabindex="-1"></a><span class="co">#&gt;     x3                1.068    0.044   24.304    0.000</span></span>
+<span id="cb522-30"><a href="dati-non-gaussiani.html#cb522-30" tabindex="-1"></a><span class="co">#&gt;     x4                0.918    0.063   14.638    0.000</span></span>
+<span id="cb522-31"><a href="dati-non-gaussiani.html#cb522-31" tabindex="-1"></a><span class="co">#&gt;     x5                0.748    0.055   13.582    0.000</span></span>
+<span id="cb522-32"><a href="dati-non-gaussiani.html#cb522-32" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb522-33"><a href="dati-non-gaussiani.html#cb522-33" tabindex="-1"></a><span class="co">#&gt; Covariances:</span></span>
+<span id="cb522-34"><a href="dati-non-gaussiani.html#cb522-34" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb522-35"><a href="dati-non-gaussiani.html#cb522-35" tabindex="-1"></a><span class="co">#&gt;  .x1 ~~                                               </span></span>
+<span id="cb522-36"><a href="dati-non-gaussiani.html#cb522-36" tabindex="-1"></a><span class="co">#&gt;    .x3                0.655    0.143    4.579    0.000</span></span>
+<span id="cb522-37"><a href="dati-non-gaussiani.html#cb522-37" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb522-38"><a href="dati-non-gaussiani.html#cb522-38" tabindex="-1"></a><span class="co">#&gt; Intercepts:</span></span>
+<span id="cb522-39"><a href="dati-non-gaussiani.html#cb522-39" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb522-40"><a href="dati-non-gaussiani.html#cb522-40" tabindex="-1"></a><span class="co">#&gt;    .x1                1.470    0.074   19.968    0.000</span></span>
+<span id="cb522-41"><a href="dati-non-gaussiani.html#cb522-41" tabindex="-1"></a><span class="co">#&gt;    .x2                0.823    0.054   15.166    0.000</span></span>
+<span id="cb522-42"><a href="dati-non-gaussiani.html#cb522-42" tabindex="-1"></a><span class="co">#&gt;    .x3                1.266    0.070   18.043    0.000</span></span>
+<span id="cb522-43"><a href="dati-non-gaussiani.html#cb522-43" tabindex="-1"></a><span class="co">#&gt;    .x4                1.026    0.065   15.712    0.000</span></span>
+<span id="cb522-44"><a href="dati-non-gaussiani.html#cb522-44" tabindex="-1"></a><span class="co">#&gt;    .x5                0.607    0.051   11.790    0.000</span></span>
+<span id="cb522-45"><a href="dati-non-gaussiani.html#cb522-45" tabindex="-1"></a><span class="co">#&gt;     f1                0.000                           </span></span>
+<span id="cb522-46"><a href="dati-non-gaussiani.html#cb522-46" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb522-47"><a href="dati-non-gaussiani.html#cb522-47" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
+<span id="cb522-48"><a href="dati-non-gaussiani.html#cb522-48" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb522-49"><a href="dati-non-gaussiani.html#cb522-49" tabindex="-1"></a><span class="co">#&gt;    .x1                2.040    0.228    8.952    0.000</span></span>
+<span id="cb522-50"><a href="dati-non-gaussiani.html#cb522-50" tabindex="-1"></a><span class="co">#&gt;    .x2                1.241    0.124   10.019    0.000</span></span>
+<span id="cb522-51"><a href="dati-non-gaussiani.html#cb522-51" tabindex="-1"></a><span class="co">#&gt;    .x3                1.227    0.169    7.255    0.000</span></span>
+<span id="cb522-52"><a href="dati-non-gaussiani.html#cb522-52" tabindex="-1"></a><span class="co">#&gt;    .x4                1.458    0.177    8.233    0.000</span></span>
+<span id="cb522-53"><a href="dati-non-gaussiani.html#cb522-53" tabindex="-1"></a><span class="co">#&gt;    .x5                0.807    0.100    8.063    0.000</span></span>
+<span id="cb522-54"><a href="dati-non-gaussiani.html#cb522-54" tabindex="-1"></a><span class="co">#&gt;     f1                2.675    0.289    9.273    0.000</span></span></code></pre></div>
 <p>Per fare un confronto, adattiamo lo stesso modello ai dati usando lo stimatore di ML.</p>
-<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="dati-non-gaussiani.html#cb513-1" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">cfa</span>(model, <span class="at">data =</span> d)</span></code></pre></div>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="dati-non-gaussiani.html#cb523-1" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">cfa</span>(model, <span class="at">data =</span> d)</span></code></pre></div>
 <p>Notiamo come il valore della statistica <span class="math inline">\(\chi^2\)</span> ora ottenuto sia molto maggiore di quello trovato in precedenza.</p>
-<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="dati-non-gaussiani.html#cb514-1" tabindex="-1"></a><span class="fu">summary</span>(fit2)</span>
-<span id="cb514-2"><a href="dati-non-gaussiani.html#cb514-2" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6.15 ended normally after 28 iterations</span></span>
-<span id="cb514-3"><a href="dati-non-gaussiani.html#cb514-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb514-4"><a href="dati-non-gaussiani.html#cb514-4" tabindex="-1"></a><span class="co">#&gt;   Estimator                                         ML</span></span>
-<span id="cb514-5"><a href="dati-non-gaussiani.html#cb514-5" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
-<span id="cb514-6"><a href="dati-non-gaussiani.html#cb514-6" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                        11</span></span>
-<span id="cb514-7"><a href="dati-non-gaussiani.html#cb514-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb514-8"><a href="dati-non-gaussiani.html#cb514-8" tabindex="-1"></a><span class="co">#&gt;   Number of observations                           870</span></span>
-<span id="cb514-9"><a href="dati-non-gaussiani.html#cb514-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb514-10"><a href="dati-non-gaussiani.html#cb514-10" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
-<span id="cb514-11"><a href="dati-non-gaussiani.html#cb514-11" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb514-12"><a href="dati-non-gaussiani.html#cb514-12" tabindex="-1"></a><span class="co">#&gt;   Test statistic                                25.913</span></span>
-<span id="cb514-13"><a href="dati-non-gaussiani.html#cb514-13" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                 4</span></span>
-<span id="cb514-14"><a href="dati-non-gaussiani.html#cb514-14" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                           0.000</span></span>
-<span id="cb514-15"><a href="dati-non-gaussiani.html#cb514-15" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb514-16"><a href="dati-non-gaussiani.html#cb514-16" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
-<span id="cb514-17"><a href="dati-non-gaussiani.html#cb514-17" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb514-18"><a href="dati-non-gaussiani.html#cb514-18" tabindex="-1"></a><span class="co">#&gt;   Standard errors                             Standard</span></span>
-<span id="cb514-19"><a href="dati-non-gaussiani.html#cb514-19" tabindex="-1"></a><span class="co">#&gt;   Information                                 Expected</span></span>
-<span id="cb514-20"><a href="dati-non-gaussiani.html#cb514-20" tabindex="-1"></a><span class="co">#&gt;   Information saturated (h1) model          Structured</span></span>
-<span id="cb514-21"><a href="dati-non-gaussiani.html#cb514-21" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb514-22"><a href="dati-non-gaussiani.html#cb514-22" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
-<span id="cb514-23"><a href="dati-non-gaussiani.html#cb514-23" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb514-24"><a href="dati-non-gaussiani.html#cb514-24" tabindex="-1"></a><span class="co">#&gt;   f1 =~                                               </span></span>
-<span id="cb514-25"><a href="dati-non-gaussiani.html#cb514-25" tabindex="-1"></a><span class="co">#&gt;     x1                1.000                           </span></span>
-<span id="cb514-26"><a href="dati-non-gaussiani.html#cb514-26" tabindex="-1"></a><span class="co">#&gt;     x2                0.703    0.035   20.133    0.000</span></span>
-<span id="cb514-27"><a href="dati-non-gaussiani.html#cb514-27" tabindex="-1"></a><span class="co">#&gt;     x3                1.068    0.034   31.730    0.000</span></span>
-<span id="cb514-28"><a href="dati-non-gaussiani.html#cb514-28" tabindex="-1"></a><span class="co">#&gt;     x4                0.918    0.042   21.775    0.000</span></span>
-<span id="cb514-29"><a href="dati-non-gaussiani.html#cb514-29" tabindex="-1"></a><span class="co">#&gt;     x5                0.748    0.033   22.416    0.000</span></span>
-<span id="cb514-30"><a href="dati-non-gaussiani.html#cb514-30" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb514-31"><a href="dati-non-gaussiani.html#cb514-31" tabindex="-1"></a><span class="co">#&gt; Covariances:</span></span>
-<span id="cb514-32"><a href="dati-non-gaussiani.html#cb514-32" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb514-33"><a href="dati-non-gaussiani.html#cb514-33" tabindex="-1"></a><span class="co">#&gt;  .x1 ~~                                               </span></span>
-<span id="cb514-34"><a href="dati-non-gaussiani.html#cb514-34" tabindex="-1"></a><span class="co">#&gt;    .x3                0.655    0.091    7.213    0.000</span></span>
-<span id="cb514-35"><a href="dati-non-gaussiani.html#cb514-35" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb514-36"><a href="dati-non-gaussiani.html#cb514-36" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
-<span id="cb514-37"><a href="dati-non-gaussiani.html#cb514-37" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb514-38"><a href="dati-non-gaussiani.html#cb514-38" tabindex="-1"></a><span class="co">#&gt;    .x1                2.040    0.128   15.897    0.000</span></span>
-<span id="cb514-39"><a href="dati-non-gaussiani.html#cb514-39" tabindex="-1"></a><span class="co">#&gt;    .x2                1.241    0.070   17.671    0.000</span></span>
-<span id="cb514-40"><a href="dati-non-gaussiani.html#cb514-40" tabindex="-1"></a><span class="co">#&gt;    .x3                1.227    0.095   12.942    0.000</span></span>
-<span id="cb514-41"><a href="dati-non-gaussiani.html#cb514-41" tabindex="-1"></a><span class="co">#&gt;    .x4                1.458    0.090   16.135    0.000</span></span>
-<span id="cb514-42"><a href="dati-non-gaussiani.html#cb514-42" tabindex="-1"></a><span class="co">#&gt;    .x5                0.807    0.053   15.119    0.000</span></span>
-<span id="cb514-43"><a href="dati-non-gaussiani.html#cb514-43" tabindex="-1"></a><span class="co">#&gt;     f1                2.675    0.220   12.154    0.000</span></span></code></pre></div>
+<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="dati-non-gaussiani.html#cb524-1" tabindex="-1"></a><span class="fu">summary</span>(fit2)</span>
+<span id="cb524-2"><a href="dati-non-gaussiani.html#cb524-2" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6.15 ended normally after 28 iterations</span></span>
+<span id="cb524-3"><a href="dati-non-gaussiani.html#cb524-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb524-4"><a href="dati-non-gaussiani.html#cb524-4" tabindex="-1"></a><span class="co">#&gt;   Estimator                                         ML</span></span>
+<span id="cb524-5"><a href="dati-non-gaussiani.html#cb524-5" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
+<span id="cb524-6"><a href="dati-non-gaussiani.html#cb524-6" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                        11</span></span>
+<span id="cb524-7"><a href="dati-non-gaussiani.html#cb524-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb524-8"><a href="dati-non-gaussiani.html#cb524-8" tabindex="-1"></a><span class="co">#&gt;   Number of observations                           870</span></span>
+<span id="cb524-9"><a href="dati-non-gaussiani.html#cb524-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb524-10"><a href="dati-non-gaussiani.html#cb524-10" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
+<span id="cb524-11"><a href="dati-non-gaussiani.html#cb524-11" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
+<span id="cb524-12"><a href="dati-non-gaussiani.html#cb524-12" tabindex="-1"></a><span class="co">#&gt;   Test statistic                                25.913</span></span>
+<span id="cb524-13"><a href="dati-non-gaussiani.html#cb524-13" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                 4</span></span>
+<span id="cb524-14"><a href="dati-non-gaussiani.html#cb524-14" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                           0.000</span></span>
+<span id="cb524-15"><a href="dati-non-gaussiani.html#cb524-15" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb524-16"><a href="dati-non-gaussiani.html#cb524-16" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
+<span id="cb524-17"><a href="dati-non-gaussiani.html#cb524-17" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb524-18"><a href="dati-non-gaussiani.html#cb524-18" tabindex="-1"></a><span class="co">#&gt;   Standard errors                             Standard</span></span>
+<span id="cb524-19"><a href="dati-non-gaussiani.html#cb524-19" tabindex="-1"></a><span class="co">#&gt;   Information                                 Expected</span></span>
+<span id="cb524-20"><a href="dati-non-gaussiani.html#cb524-20" tabindex="-1"></a><span class="co">#&gt;   Information saturated (h1) model          Structured</span></span>
+<span id="cb524-21"><a href="dati-non-gaussiani.html#cb524-21" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb524-22"><a href="dati-non-gaussiani.html#cb524-22" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
+<span id="cb524-23"><a href="dati-non-gaussiani.html#cb524-23" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb524-24"><a href="dati-non-gaussiani.html#cb524-24" tabindex="-1"></a><span class="co">#&gt;   f1 =~                                               </span></span>
+<span id="cb524-25"><a href="dati-non-gaussiani.html#cb524-25" tabindex="-1"></a><span class="co">#&gt;     x1                1.000                           </span></span>
+<span id="cb524-26"><a href="dati-non-gaussiani.html#cb524-26" tabindex="-1"></a><span class="co">#&gt;     x2                0.703    0.035   20.133    0.000</span></span>
+<span id="cb524-27"><a href="dati-non-gaussiani.html#cb524-27" tabindex="-1"></a><span class="co">#&gt;     x3                1.068    0.034   31.730    0.000</span></span>
+<span id="cb524-28"><a href="dati-non-gaussiani.html#cb524-28" tabindex="-1"></a><span class="co">#&gt;     x4                0.918    0.042   21.775    0.000</span></span>
+<span id="cb524-29"><a href="dati-non-gaussiani.html#cb524-29" tabindex="-1"></a><span class="co">#&gt;     x5                0.748    0.033   22.416    0.000</span></span>
+<span id="cb524-30"><a href="dati-non-gaussiani.html#cb524-30" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb524-31"><a href="dati-non-gaussiani.html#cb524-31" tabindex="-1"></a><span class="co">#&gt; Covariances:</span></span>
+<span id="cb524-32"><a href="dati-non-gaussiani.html#cb524-32" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb524-33"><a href="dati-non-gaussiani.html#cb524-33" tabindex="-1"></a><span class="co">#&gt;  .x1 ~~                                               </span></span>
+<span id="cb524-34"><a href="dati-non-gaussiani.html#cb524-34" tabindex="-1"></a><span class="co">#&gt;    .x3                0.655    0.091    7.213    0.000</span></span>
+<span id="cb524-35"><a href="dati-non-gaussiani.html#cb524-35" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb524-36"><a href="dati-non-gaussiani.html#cb524-36" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
+<span id="cb524-37"><a href="dati-non-gaussiani.html#cb524-37" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb524-38"><a href="dati-non-gaussiani.html#cb524-38" tabindex="-1"></a><span class="co">#&gt;    .x1                2.040    0.128   15.897    0.000</span></span>
+<span id="cb524-39"><a href="dati-non-gaussiani.html#cb524-39" tabindex="-1"></a><span class="co">#&gt;    .x2                1.241    0.070   17.671    0.000</span></span>
+<span id="cb524-40"><a href="dati-non-gaussiani.html#cb524-40" tabindex="-1"></a><span class="co">#&gt;    .x3                1.227    0.095   12.942    0.000</span></span>
+<span id="cb524-41"><a href="dati-non-gaussiani.html#cb524-41" tabindex="-1"></a><span class="co">#&gt;    .x4                1.458    0.090   16.135    0.000</span></span>
+<span id="cb524-42"><a href="dati-non-gaussiani.html#cb524-42" tabindex="-1"></a><span class="co">#&gt;    .x5                0.807    0.053   15.119    0.000</span></span>
+<span id="cb524-43"><a href="dati-non-gaussiani.html#cb524-43" tabindex="-1"></a><span class="co">#&gt;     f1                2.675    0.220   12.154    0.000</span></span></code></pre></div>
 </div>
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">

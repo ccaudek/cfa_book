@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2023-03-22" />
+<meta name="date" content="2023-03-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,12 +340,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9.9" data-path="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><a href="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><i class="fa fa-check"></i><b>9.9</b> Metodi alternativi per la stima del coefficiente di attendibilità</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10</b> L’incertezza della misura</a>
+<li class="chapter" data-level="10" data-path="lerrore-standard-della-misurazione.html"><a href="lerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10</b> L’errore standard della misurazione</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10.1</b> La stima dell’errore standard della misurazione</a>
+<li class="chapter" data-level="10.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10.1</b> L’incertezza della misura</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
-<li class="chapter" data-level="10.1.2" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
+<li class="chapter" data-level="10.1.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
+<li class="chapter" data-level="10.1.2" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="dimostrazione.html"><a href="dimostrazione.html"><i class="fa fa-check"></i><b>10.2</b> Dimostrazione</a></li>
 <li class="chapter" data-level="10.3" data-path="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><a href="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><i class="fa fa-check"></i><b>10.3</b> Intervallo di confidenza per il punteggio vero e <span class="math inline">\(\sigma_E\)</span></a></li>
@@ -360,7 +360,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="12" data-path="esercizi-sulla-ctt.html"><a href="esercizi-sulla-ctt.html"><i class="fa fa-check"></i><b>12</b> Esercizi sulla CTT</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.1</b> Validità</a></li>
+<li class="chapter" data-level="12.1" data-path="attendibilità.html"><a href="attendibilità.html"><i class="fa fa-check"></i><b>12.1</b> Attendibilità</a></li>
+<li class="chapter" data-level="12.2" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.2</b> Validità</a></li>
 </ul></li>
 <li class="part"><span><b>IV L’analisi fattoriale</b></span></li>
 <li class="chapter" data-level="13" data-path="utilizzo-e-costruzione-di-test-psicometrici.html"><a href="utilizzo-e-costruzione-di-test-psicometrici.html"><i class="fa fa-check"></i><b>13</b> Utilizzo e costruzione di test psicometrici</a>
@@ -734,37 +735,37 @@ div.csl-indent {
 <div id="modello-parallelo" class="section level2 hasAnchor" number="20.3">
 <h2><span class="header-section-number">20.3</span> Modello parallelo<a href="modello-parallelo.html#modello-parallelo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Solo memoria auditiva:</p>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="modello-parallelo.html#cb323-1" tabindex="-1"></a>model.parallel.a <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb323-2"><a href="modello-parallelo.html#cb323-2" tabindex="-1"></a><span class="st">  auditorymemory =~ x1 + v1*x1 + v1*x2 + v1*x3</span></span>
-<span id="cb323-3"><a href="modello-parallelo.html#cb323-3" tabindex="-1"></a><span class="st">  visualmemory   =~ x4 + v2*x4 + v2*x5 + v2*x6</span></span>
-<span id="cb323-4"><a href="modello-parallelo.html#cb323-4" tabindex="-1"></a><span class="st">  x1 ~~ v3 * x1</span></span>
-<span id="cb323-5"><a href="modello-parallelo.html#cb323-5" tabindex="-1"></a><span class="st">  x2 ~~ v3 * x2</span></span>
-<span id="cb323-6"><a href="modello-parallelo.html#cb323-6" tabindex="-1"></a><span class="st">  x3 ~~ v3 * x3</span></span>
-<span id="cb323-7"><a href="modello-parallelo.html#cb323-7" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="modello-parallelo.html#cb324-1" tabindex="-1"></a>fit.parallel.a <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
-<span id="cb324-2"><a href="modello-parallelo.html#cb324-2" tabindex="-1"></a>  model.parallel.a,</span>
-<span id="cb324-3"><a href="modello-parallelo.html#cb324-3" tabindex="-1"></a>  <span class="at">sample.cov =</span> covs,</span>
-<span id="cb324-4"><a href="modello-parallelo.html#cb324-4" tabindex="-1"></a>  <span class="at">sample.nobs =</span> <span class="dv">200</span>,</span>
-<span id="cb324-5"><a href="modello-parallelo.html#cb324-5" tabindex="-1"></a>  <span class="at">std.lv =</span> <span class="cn">TRUE</span></span>
-<span id="cb324-6"><a href="modello-parallelo.html#cb324-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="modello-parallelo.html#cb333-1" tabindex="-1"></a>model.parallel.a <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb333-2"><a href="modello-parallelo.html#cb333-2" tabindex="-1"></a><span class="st">  auditorymemory =~ x1 + v1*x1 + v1*x2 + v1*x3</span></span>
+<span id="cb333-3"><a href="modello-parallelo.html#cb333-3" tabindex="-1"></a><span class="st">  visualmemory   =~ x4 + v2*x4 + v2*x5 + v2*x6</span></span>
+<span id="cb333-4"><a href="modello-parallelo.html#cb333-4" tabindex="-1"></a><span class="st">  x1 ~~ v3 * x1</span></span>
+<span id="cb333-5"><a href="modello-parallelo.html#cb333-5" tabindex="-1"></a><span class="st">  x2 ~~ v3 * x2</span></span>
+<span id="cb333-6"><a href="modello-parallelo.html#cb333-6" tabindex="-1"></a><span class="st">  x3 ~~ v3 * x3</span></span>
+<span id="cb333-7"><a href="modello-parallelo.html#cb333-7" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="modello-parallelo.html#cb334-1" tabindex="-1"></a>fit.parallel.a <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
+<span id="cb334-2"><a href="modello-parallelo.html#cb334-2" tabindex="-1"></a>  model.parallel.a,</span>
+<span id="cb334-3"><a href="modello-parallelo.html#cb334-3" tabindex="-1"></a>  <span class="at">sample.cov =</span> covs,</span>
+<span id="cb334-4"><a href="modello-parallelo.html#cb334-4" tabindex="-1"></a>  <span class="at">sample.nobs =</span> <span class="dv">200</span>,</span>
+<span id="cb334-5"><a href="modello-parallelo.html#cb334-5" tabindex="-1"></a>  <span class="at">std.lv =</span> <span class="cn">TRUE</span></span>
+<span id="cb334-6"><a href="modello-parallelo.html#cb334-6" tabindex="-1"></a>)</span></code></pre></div>
 <p>Memoria auditiva e visiva:</p>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="modello-parallelo.html#cb325-1" tabindex="-1"></a>model.parallel.av <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb325-2"><a href="modello-parallelo.html#cb325-2" tabindex="-1"></a><span class="st">  auditorymemory =~ x1 + v1*x1 + v1*x2 + v1*x3</span></span>
-<span id="cb325-3"><a href="modello-parallelo.html#cb325-3" tabindex="-1"></a><span class="st">  visualmemory   =~ x4 + v2*x4 + v2*x5 + v2*x6</span></span>
-<span id="cb325-4"><a href="modello-parallelo.html#cb325-4" tabindex="-1"></a><span class="st">  x1 ~~ v3 * x1</span></span>
-<span id="cb325-5"><a href="modello-parallelo.html#cb325-5" tabindex="-1"></a><span class="st">  x2 ~~ v3 * x2</span></span>
-<span id="cb325-6"><a href="modello-parallelo.html#cb325-6" tabindex="-1"></a><span class="st">  x3 ~~ v3 * x3</span></span>
-<span id="cb325-7"><a href="modello-parallelo.html#cb325-7" tabindex="-1"></a></span>
-<span id="cb325-8"><a href="modello-parallelo.html#cb325-8" tabindex="-1"></a><span class="st">  x4 ~~ v4 * x4</span></span>
-<span id="cb325-9"><a href="modello-parallelo.html#cb325-9" tabindex="-1"></a><span class="st">  x5 ~~ v4 * x5</span></span>
-<span id="cb325-10"><a href="modello-parallelo.html#cb325-10" tabindex="-1"></a><span class="st">  x6 ~~ v4 * x6</span></span>
-<span id="cb325-11"><a href="modello-parallelo.html#cb325-11" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="modello-parallelo.html#cb326-1" tabindex="-1"></a>fit.parallel.av <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
-<span id="cb326-2"><a href="modello-parallelo.html#cb326-2" tabindex="-1"></a>  model.parallel.av,</span>
-<span id="cb326-3"><a href="modello-parallelo.html#cb326-3" tabindex="-1"></a>  <span class="at">sample.cov =</span> covs,</span>
-<span id="cb326-4"><a href="modello-parallelo.html#cb326-4" tabindex="-1"></a>  <span class="at">sample.nobs =</span> <span class="dv">200</span>,</span>
-<span id="cb326-5"><a href="modello-parallelo.html#cb326-5" tabindex="-1"></a>  <span class="at">std.lv =</span> <span class="cn">TRUE</span></span>
-<span id="cb326-6"><a href="modello-parallelo.html#cb326-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="modello-parallelo.html#cb335-1" tabindex="-1"></a>model.parallel.av <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb335-2"><a href="modello-parallelo.html#cb335-2" tabindex="-1"></a><span class="st">  auditorymemory =~ x1 + v1*x1 + v1*x2 + v1*x3</span></span>
+<span id="cb335-3"><a href="modello-parallelo.html#cb335-3" tabindex="-1"></a><span class="st">  visualmemory   =~ x4 + v2*x4 + v2*x5 + v2*x6</span></span>
+<span id="cb335-4"><a href="modello-parallelo.html#cb335-4" tabindex="-1"></a><span class="st">  x1 ~~ v3 * x1</span></span>
+<span id="cb335-5"><a href="modello-parallelo.html#cb335-5" tabindex="-1"></a><span class="st">  x2 ~~ v3 * x2</span></span>
+<span id="cb335-6"><a href="modello-parallelo.html#cb335-6" tabindex="-1"></a><span class="st">  x3 ~~ v3 * x3</span></span>
+<span id="cb335-7"><a href="modello-parallelo.html#cb335-7" tabindex="-1"></a></span>
+<span id="cb335-8"><a href="modello-parallelo.html#cb335-8" tabindex="-1"></a><span class="st">  x4 ~~ v4 * x4</span></span>
+<span id="cb335-9"><a href="modello-parallelo.html#cb335-9" tabindex="-1"></a><span class="st">  x5 ~~ v4 * x5</span></span>
+<span id="cb335-10"><a href="modello-parallelo.html#cb335-10" tabindex="-1"></a><span class="st">  x6 ~~ v4 * x6</span></span>
+<span id="cb335-11"><a href="modello-parallelo.html#cb335-11" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="modello-parallelo.html#cb336-1" tabindex="-1"></a>fit.parallel.av <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
+<span id="cb336-2"><a href="modello-parallelo.html#cb336-2" tabindex="-1"></a>  model.parallel.av,</span>
+<span id="cb336-3"><a href="modello-parallelo.html#cb336-3" tabindex="-1"></a>  <span class="at">sample.cov =</span> covs,</span>
+<span id="cb336-4"><a href="modello-parallelo.html#cb336-4" tabindex="-1"></a>  <span class="at">sample.nobs =</span> <span class="dv">200</span>,</span>
+<span id="cb336-5"><a href="modello-parallelo.html#cb336-5" tabindex="-1"></a>  <span class="at">std.lv =</span> <span class="cn">TRUE</span></span>
+<span id="cb336-6"><a href="modello-parallelo.html#cb336-6" tabindex="-1"></a>)</span></code></pre></div>
 </div>
             </section>
 

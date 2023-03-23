@@ -46,8 +46,7 @@ informazioni diverse sul grado di precisione del test:
 -   l'attendibilità corrisponde ad un rapporto tra varianze e dunque è
     un numero puro (privo di unità di misura).
 
-**Esempio 1.**
-Supponiamo che un test di intelligenza produca un punteggio medio pari a
+**Esempio 1.** Supponiamo che un test di intelligenza produca un punteggio medio pari a
 100 con una deviazione standard di 15. Supponiamo inoltre che il test
 abbia una attendibilità pari a 0.73. Si calcoli l'errore standard della
 misurazione.
@@ -74,8 +73,9 @@ $$
 $$
 Questa è una proprietà della distribuzione gaussiana.
 
-Per il caso presente, questo intervallo è uguale a $2 \cdot 1.96 \cdot 7.79 = 30.54$ punti. In altre parole, ci possiamo aspettare che, nel caso di somministrazioni ripetute del test sotto le stesse identiche condizioni, i punteggi del QI di un singolo rispondente
-varino tra loro all'interno di un intervallo di 30 punti. Ciò significa
+Per il caso presente, questo intervallo è uguale a $2 \cdot 1.96 \cdot 7.79 = 30.54$ punti. 
+
+In altre parole, ci possiamo aspettare che, nel caso di somministrazioni ripetute del test sotto le stesse identiche condizioni, i punteggi del QI di un singolo rispondente varino tra loro all'interno di un intervallo di 30 punti. Ciò significa
 che, se il test avesse un'attendibilità pari a 0.73, e se la deviazione
 standard dei punteggi del test nella popolazione fosse pari a 15, la
 somministrazione di un tale test ad un singolo individuo sarebbe di
@@ -84,8 +84,15 @@ confronto con i dati di questo esempio, la Full Scale IQ (FSIQ) della
 WAIS-IV [@wechsler2008wechsler] ha un'attendibilità split-half pari a 0.98, con
 errore standard di misurazione pari a 2.16.
 
-**Esempio 2.**
-Continuando con l'esempio precedente, per gli ipotetici dati riportati
+Si noti che l'errore standard della misurazione può essere calcolato con la funzione `SE.Means()` del pacchetto `psychometric`.
+
+```{r}
+suppressWarnings(suppressMessages(library("psychometric")))
+
+SE.Meas(15, .73)
+```
+
+**Esempio 2.** Continuando con l'esempio precedente, per gli ipotetici dati riportati
 sopra, poniamoci ora la seguente domanda: qual è la probabilità che un
 rispondente ottenga un punteggio minore o uguale a 116 nel test, se il
 suo punteggio vero è uguale a 120?
@@ -107,10 +114,7 @@ rispondente ottenga un punteggio minore o uguale a 116 è dunque uguale a
 0.30.
 
 
-**Esempio 3.**
-Poniamoci ora la seguente domanda: quale intervallo di valori centrato
-sul punteggio vero contiene, con una probabilità di 0.95, i punteggi che
-il rispondente otterrebbe in ipotetiche somministrazioni ripetute del
+**Esempio 3.** Sempre per l'esempio discusso, poniamoci ora la seguente domanda: quale intervallo di valori centrato sul punteggio vero contiene, con una probabilità di 0.95, i punteggi che il rispondente otterrebbe in ipotetiche somministrazioni ripetute del
 test sotto le stesse identiche condizioni?
 
 Dobbiamo trovare i quantili della distribuzione $\mathcal{N}(120, 7.79)$ a cui sono associate le probabilità di 0.025 e 0.975. La soluzione è dunque data da:
@@ -120,6 +124,94 @@ qnorm(c(.025, .975), 120, 7.79)
 ```
 
 L'intervallo cercato è dunque $[104.7, 135.3]$.
+
+
+**Esempio 4.** Calcoliamo ora l'errore standard di misurazione utilizzando un set di dati grezzi.
+
+Iniziamo a definire una funzione che ritorna il coefficiente di attendibilità $\alpha$ di Cronbach (questo argomento sarà discusso in un capitolo successivo).
+
+```{r}
+coeff.alpha <- function(responses){
+  # Get number of items (N) and individuals
+  n.items <- ncol(responses)
+  n.persons <- nrow(responses)
+  # Get individual total scores
+  x <- rowSums(responses)
+  # Get observed-score variance of whole test (X)
+  var.x <- var(x)*(n.persons-1)/n.persons
+  # Get observed-score variance of each item (Y_j)
+  var.y <- numeric(n.items)
+  for(i in 1:n.items){
+    var.y[i] <- var(responses[,i])*(n.persons-1)/n.persons
+  }
+  # Apply the alpha formula
+  alpha <- (n.items/(n.items-1))*(1 - sum(var.y)/var.x)
+  return(alpha)
+}
+```
+
+Definiamo una funzione per calcolare l'errore standard di misurazione usando la formula che abbiamo discusso in questo capitolo.
+
+```{r}
+se.m <- function(responses, rel.est = "alpha") {
+  # The number of subjects
+  n.persons <- nrow(responses)
+  # Get the total score and its standard deviation
+  total <- rowSums(responses)
+  sd.x <- sqrt(var(total) * (n.persons - 1) / n.persons)
+  if (rel.est == "alpha") {
+    rel <- coeff.alpha(responses)
+  } else if (rel.est == "KR20") {
+    rel <- KR20(responses)
+  } else if (rel.est == "KR21") {
+    rel <- KR21(responses)
+  } else {
+    error("rel.est must be either alpha, KR20, or KR21")
+  }
+  se.m <- sd.x * sqrt(1 - rel)
+  return(se.m)
+}
+```
+
+Leggiamo ora un set di dati dal pacchetto `hemp`. Per l'installazione di `hemp` si procede nel modo seguente.
+
+```{r, eval = FALSE}
+install.packages("devtools")
+library("devtools")
+```
+
+```{r, eval = FALSE}
+install_github("cddesja/hemp")
+```
+
+Carichiamo `hemp` e leggiamo i dati. 
+
+```{r}
+library("hemp")
+data(SAPA)
+head(SAPA)
+```
+
+Useremo qui i dati SAPA. Il set di dati SAPA è costituito da 1525 risposte a un test di abilità a scelta multipla di 16 item tratti da un progetto di valutazione della personalità  chiamato *Synthetic Aperture Personality Assessment* (SAPA). Gli item misurano il ragionamento di base, la manipolazione di serie alfanumeriche, il ragionamento con matrici e la capacità di rotazione mentale.
+
+Iniziamo con il verificare se ci sono dati mancanti.
+
+```{r}
+num_miss(SAPA)
+```
+
+Dato che ci sono solo pochi dati mancanti, rimuoviamo tutte le righe che contengono dati mancanti.
+
+```{r}
+df <- na.omit(SAPA)
+```
+
+Possiamo ora usare la funzione `se.m()` che abbiamo definito sopra.
+
+```{r}
+se.m(df, "alpha")
+```
+
 
 ### Simulazione
 

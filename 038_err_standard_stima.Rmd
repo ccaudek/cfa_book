@@ -44,7 +44,6 @@ sostenuto da Dawes è che, date le evidenze molto convincenti che sono
 disponibili, non è etico usare il giudizio clinico in preferenza all'uso
 di modelli statistici di previsione. Citiamo dall'abstract:
 
-
 > Whenever statistical prediction rules [...] are available for making a relevant prediction, they should be used in preference to intuition. [...] Providing service that assumes that clinicians "can do better" simply based on self-confidence or plausibility in the absence of evidence that they can actually do so is simply unethical.
 
 Sulla base di quanto detto sopra, e in riferimento ai nostri scopi
@@ -234,6 +233,13 @@ $$
 \end{aligned}
 \end{equation}
 $$
+In alternativa, possiamo usare la funzione `Est.true` del pacchetto `psychometric`.
+
+```{r}
+suppressWarnings(suppressMessages(library("psychometric")))
+
+Est.true(115, 100, .8)
+```
 :::
 
 ## L'errore standard della stima
@@ -460,12 +466,26 @@ $$
 \end{equation}
 $$
 
-L'intervallo di confidenza al 95% per la
-stima del punteggio vero diventa pertanto uguale a 
+L'intervallo di confidenza al 95% per la stima del punteggio vero diventa pertanto uguale a 
 
 $$
 113 \pm 1.96 \cdot 7.15 = [98.98, 127.02].
 $$ 
+
+L'errore standard della stima si può calcolare con la funzione `SE.Est()` del pacchetto `psychometric`.
+
+```{r}
+suppressWarnings(suppressMessages(library("psychometric")))
+
+SE.Est(15, .65)
+```
+
+La funzione `CI.tscore()` restituisce sia la stima del punteggio vero sia l'intervallo di fiducia al livello desiderato di significatività. 
+
+```{r}
+CI.tscore(120, 100, 15, 0.65, level = 0.95)
+```
+
 :::
 
 
@@ -566,5 +586,4 @@ $$
 X_j \pm z_{\frac{\alpha}{2}} \sigma_E,
 $$ 
 
-dove $\sigma_E = \sigma_X \sqrt{1 -\rho_{XX^\prime}}$. Tale procedura è però stata
-criticata da diversi autori (es., Dudek, 1979).
+dove $\sigma_E = \sigma_X \sqrt{1 -\rho_{XX^\prime}}$. Come abbiamo visto in precedenza, però, tale procedura non è corretta e non dovrebbe essere usata (es., Dudek, 1979).

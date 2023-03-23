@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2023-03-22" />
+<meta name="date" content="2023-03-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,12 +340,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9.9" data-path="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><a href="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><i class="fa fa-check"></i><b>9.9</b> Metodi alternativi per la stima del coefficiente di attendibilità</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10</b> L’incertezza della misura</a>
+<li class="chapter" data-level="10" data-path="lerrore-standard-della-misurazione.html"><a href="lerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10</b> L’errore standard della misurazione</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10.1</b> La stima dell’errore standard della misurazione</a>
+<li class="chapter" data-level="10.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10.1</b> L’incertezza della misura</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
-<li class="chapter" data-level="10.1.2" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
+<li class="chapter" data-level="10.1.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
+<li class="chapter" data-level="10.1.2" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="dimostrazione.html"><a href="dimostrazione.html"><i class="fa fa-check"></i><b>10.2</b> Dimostrazione</a></li>
 <li class="chapter" data-level="10.3" data-path="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><a href="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><i class="fa fa-check"></i><b>10.3</b> Intervallo di confidenza per il punteggio vero e <span class="math inline">\(\sigma_E\)</span></a></li>
@@ -360,7 +360,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="12" data-path="esercizi-sulla-ctt.html"><a href="esercizi-sulla-ctt.html"><i class="fa fa-check"></i><b>12</b> Esercizi sulla CTT</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.1</b> Validità</a></li>
+<li class="chapter" data-level="12.1" data-path="attendibilità.html"><a href="attendibilità.html"><i class="fa fa-check"></i><b>12.1</b> Attendibilità</a></li>
+<li class="chapter" data-level="12.2" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.2</b> Validità</a></li>
 </ul></li>
 <li class="part"><span><b>IV L’analisi fattoriale</b></span></li>
 <li class="chapter" data-level="13" data-path="utilizzo-e-costruzione-di-test-psicometrici.html"><a href="utilizzo-e-costruzione-di-test-psicometrici.html"><i class="fa fa-check"></i><b>13</b> Utilizzo e costruzione di test psicometrici</a>
@@ -734,27 +735,27 @@ div.csl-indent {
 <div id="modello-tau-equivalente" class="section level2 hasAnchor" number="20.2">
 <h2><span class="header-section-number">20.2</span> Modello tau-equivalente<a href="modello-tau-equivalente.html#modello-tau-equivalente" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Solo memoria auditiva:</p>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="modello-tau-equivalente.html#cb319-1" tabindex="-1"></a>model.tau.a <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb319-2"><a href="modello-tau-equivalente.html#cb319-2" tabindex="-1"></a><span class="st">  auditorymemory =~ x1 + v1*x1 + v1*x2 + v1*x3</span></span>
-<span id="cb319-3"><a href="modello-tau-equivalente.html#cb319-3" tabindex="-1"></a><span class="st">  visualmemory   =~ x4 + x5 + x6</span></span>
-<span id="cb319-4"><a href="modello-tau-equivalente.html#cb319-4" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="modello-tau-equivalente.html#cb320-1" tabindex="-1"></a>fit.tau.a <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
-<span id="cb320-2"><a href="modello-tau-equivalente.html#cb320-2" tabindex="-1"></a>  model.tau.a,</span>
-<span id="cb320-3"><a href="modello-tau-equivalente.html#cb320-3" tabindex="-1"></a>  <span class="at">sample.cov =</span> covs,</span>
-<span id="cb320-4"><a href="modello-tau-equivalente.html#cb320-4" tabindex="-1"></a>  <span class="at">sample.nobs =</span> <span class="dv">200</span>,</span>
-<span id="cb320-5"><a href="modello-tau-equivalente.html#cb320-5" tabindex="-1"></a>  <span class="at">std.lv =</span> <span class="cn">TRUE</span></span>
-<span id="cb320-6"><a href="modello-tau-equivalente.html#cb320-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="modello-tau-equivalente.html#cb329-1" tabindex="-1"></a>model.tau.a <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb329-2"><a href="modello-tau-equivalente.html#cb329-2" tabindex="-1"></a><span class="st">  auditorymemory =~ x1 + v1*x1 + v1*x2 + v1*x3</span></span>
+<span id="cb329-3"><a href="modello-tau-equivalente.html#cb329-3" tabindex="-1"></a><span class="st">  visualmemory   =~ x4 + x5 + x6</span></span>
+<span id="cb329-4"><a href="modello-tau-equivalente.html#cb329-4" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="modello-tau-equivalente.html#cb330-1" tabindex="-1"></a>fit.tau.a <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
+<span id="cb330-2"><a href="modello-tau-equivalente.html#cb330-2" tabindex="-1"></a>  model.tau.a,</span>
+<span id="cb330-3"><a href="modello-tau-equivalente.html#cb330-3" tabindex="-1"></a>  <span class="at">sample.cov =</span> covs,</span>
+<span id="cb330-4"><a href="modello-tau-equivalente.html#cb330-4" tabindex="-1"></a>  <span class="at">sample.nobs =</span> <span class="dv">200</span>,</span>
+<span id="cb330-5"><a href="modello-tau-equivalente.html#cb330-5" tabindex="-1"></a>  <span class="at">std.lv =</span> <span class="cn">TRUE</span></span>
+<span id="cb330-6"><a href="modello-tau-equivalente.html#cb330-6" tabindex="-1"></a>)</span></code></pre></div>
 <p>Memoria auditiva e visiva:</p>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="modello-tau-equivalente.html#cb321-1" tabindex="-1"></a>model.tau.av <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb321-2"><a href="modello-tau-equivalente.html#cb321-2" tabindex="-1"></a><span class="st">  auditorymemory =~ x1 + v1*x1 + v1*x2 + v1*x3</span></span>
-<span id="cb321-3"><a href="modello-tau-equivalente.html#cb321-3" tabindex="-1"></a><span class="st">  visualmemory   =~ x4 + v2*x4 + v2*x5 + v2*x6</span></span>
-<span id="cb321-4"><a href="modello-tau-equivalente.html#cb321-4" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="modello-tau-equivalente.html#cb322-1" tabindex="-1"></a>fit.tau.av <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
-<span id="cb322-2"><a href="modello-tau-equivalente.html#cb322-2" tabindex="-1"></a>  model.tau.av,</span>
-<span id="cb322-3"><a href="modello-tau-equivalente.html#cb322-3" tabindex="-1"></a>  <span class="at">sample.cov =</span> covs,</span>
-<span id="cb322-4"><a href="modello-tau-equivalente.html#cb322-4" tabindex="-1"></a>  <span class="at">sample.nobs =</span> <span class="dv">200</span>,</span>
-<span id="cb322-5"><a href="modello-tau-equivalente.html#cb322-5" tabindex="-1"></a>  <span class="at">std.lv =</span> <span class="cn">TRUE</span></span>
-<span id="cb322-6"><a href="modello-tau-equivalente.html#cb322-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="modello-tau-equivalente.html#cb331-1" tabindex="-1"></a>model.tau.av <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb331-2"><a href="modello-tau-equivalente.html#cb331-2" tabindex="-1"></a><span class="st">  auditorymemory =~ x1 + v1*x1 + v1*x2 + v1*x3</span></span>
+<span id="cb331-3"><a href="modello-tau-equivalente.html#cb331-3" tabindex="-1"></a><span class="st">  visualmemory   =~ x4 + v2*x4 + v2*x5 + v2*x6</span></span>
+<span id="cb331-4"><a href="modello-tau-equivalente.html#cb331-4" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="modello-tau-equivalente.html#cb332-1" tabindex="-1"></a>fit.tau.av <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
+<span id="cb332-2"><a href="modello-tau-equivalente.html#cb332-2" tabindex="-1"></a>  model.tau.av,</span>
+<span id="cb332-3"><a href="modello-tau-equivalente.html#cb332-3" tabindex="-1"></a>  <span class="at">sample.cov =</span> covs,</span>
+<span id="cb332-4"><a href="modello-tau-equivalente.html#cb332-4" tabindex="-1"></a>  <span class="at">sample.nobs =</span> <span class="dv">200</span>,</span>
+<span id="cb332-5"><a href="modello-tau-equivalente.html#cb332-5" tabindex="-1"></a>  <span class="at">std.lv =</span> <span class="cn">TRUE</span></span>
+<span id="cb332-6"><a href="modello-tau-equivalente.html#cb332-6" tabindex="-1"></a>)</span></code></pre></div>
 </div>
             </section>
 

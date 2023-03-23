@@ -2,30 +2,19 @@
 
 Le applicazioni della CTT discusse in questo capitolo sono presentate da @desjardins2018handbook. Tuttavia, i fondamenti teorici delle applicazioni qui considerate saranno spiegati nei capitoli successivi. In questo capitolo, ci limiteremo ad utilizzare le funzioni e i dati contenuti nel pacchetto `hemp`. 
 
-Per l'installazione di `hemp` si procede nel modo seguente.
-
 ```{r, include = FALSE}
 source("_common.R")
 library("hemp")
 ```
 
-```{r, eval = FALSE}
-install.packages("devtools")
-library("devtools")
-```
-
-
-```{r, eval = FALSE}
-install_github("cddesja/hemp")
-```
-
 ## Attendibilità
 
-Nell'esempio seguente, utilizziamo il set di dati SAPA per dimostrare come calcolare varie stime di coerenza interna in R. Il set di dati SAPA è costituito da 1525 risposte a un test di abilità a scelta multipla di 16 item tratti da un progetto di valutazione della personalità  chiamato *Synthetic Aperture Personality Assessment* (SAPA). Gli item misurano il ragionamento di base, la manipolazione di serie alfanumeriche, il ragionamento con matrici e la capacità di rotazione mentale.
+Nell'esempio seguente, utilizziamo il set di dati SAPA per dimostrare come calcolare varie stime di coerenza interna in R. Ricordiamo che il data.frame SAPA (*Synthetic Aperture Personality Assessment*) è costituito da 1525 risposte a 16 item per la valutazione della personalità. Gli item misurano il ragionamento di base, la manipolazione di serie alfanumeriche, il ragionamento con matrici e la capacità di rotazione mentale.
 
 Carichiamo i dati.
 
 ```{r}
+library("hemp")
 data(SAPA)
 ```
 

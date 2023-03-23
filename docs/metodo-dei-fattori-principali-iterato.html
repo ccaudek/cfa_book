@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2023-03-22" />
+<meta name="date" content="2023-03-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,12 +340,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9.9" data-path="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><a href="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><i class="fa fa-check"></i><b>9.9</b> Metodi alternativi per la stima del coefficiente di attendibilità</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10</b> L’incertezza della misura</a>
+<li class="chapter" data-level="10" data-path="lerrore-standard-della-misurazione.html"><a href="lerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10</b> L’errore standard della misurazione</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10.1</b> La stima dell’errore standard della misurazione</a>
+<li class="chapter" data-level="10.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10.1</b> L’incertezza della misura</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
-<li class="chapter" data-level="10.1.2" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
+<li class="chapter" data-level="10.1.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
+<li class="chapter" data-level="10.1.2" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="dimostrazione.html"><a href="dimostrazione.html"><i class="fa fa-check"></i><b>10.2</b> Dimostrazione</a></li>
 <li class="chapter" data-level="10.3" data-path="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><a href="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><i class="fa fa-check"></i><b>10.3</b> Intervallo di confidenza per il punteggio vero e <span class="math inline">\(\sigma_E\)</span></a></li>
@@ -360,7 +360,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="12" data-path="esercizi-sulla-ctt.html"><a href="esercizi-sulla-ctt.html"><i class="fa fa-check"></i><b>12</b> Esercizi sulla CTT</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.1</b> Validità</a></li>
+<li class="chapter" data-level="12.1" data-path="attendibilità.html"><a href="attendibilità.html"><i class="fa fa-check"></i><b>12.1</b> Attendibilità</a></li>
+<li class="chapter" data-level="12.2" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.2</b> Validità</a></li>
 </ul></li>
 <li class="part"><span><b>IV L’analisi fattoriale</b></span></li>
 <li class="chapter" data-level="13" data-path="utilizzo-e-costruzione-di-test-psicometrici.html"><a href="utilizzo-e-costruzione-di-test-psicometrici.html"><i class="fa fa-check"></i><b>13</b> Utilizzo e costruzione di test psicometrici</a>
@@ -770,35 +771,35 @@ il programma riporta che non può essere trovata una soluzione.</p>
 <p>Nell’esempio presente viene utilizzata la funzione <code>factor.pa()</code>
 contenuta nel pacchetto <code>psych</code> per trovare la soluzione dei fattori
 principali mediante il metodo iterativo:</p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="metodo-dei-fattori-principali-iterato.html#cb339-1" tabindex="-1"></a>pa <span class="ot">&lt;-</span> <span class="fu">fa</span>(R, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">rotate =</span> <span class="st">&quot;none&quot;</span>, <span class="at">fm =</span> <span class="st">&quot;pa&quot;</span>)</span>
-<span id="cb339-2"><a href="metodo-dei-fattori-principali-iterato.html#cb339-2" tabindex="-1"></a>pa</span>
-<span id="cb339-3"><a href="metodo-dei-fattori-principali-iterato.html#cb339-3" tabindex="-1"></a><span class="co">#&gt; Factor Analysis using method =  pa</span></span>
-<span id="cb339-4"><a href="metodo-dei-fattori-principali-iterato.html#cb339-4" tabindex="-1"></a><span class="co">#&gt; Call: fa(r = R, nfactors = 2, rotate = &quot;none&quot;, fm = &quot;pa&quot;)</span></span>
-<span id="cb339-5"><a href="metodo-dei-fattori-principali-iterato.html#cb339-5" tabindex="-1"></a><span class="co">#&gt; Standardized loadings (pattern matrix) based upon correlation matrix</span></span>
-<span id="cb339-6"><a href="metodo-dei-fattori-principali-iterato.html#cb339-6" tabindex="-1"></a><span class="co">#&gt;    PA1   PA2   h2     u2 com</span></span>
-<span id="cb339-7"><a href="metodo-dei-fattori-principali-iterato.html#cb339-7" tabindex="-1"></a><span class="co">#&gt; K 0.98 -0.21 1.01 -0.008 1.1</span></span>
-<span id="cb339-8"><a href="metodo-dei-fattori-principali-iterato.html#cb339-8" tabindex="-1"></a><span class="co">#&gt; I 0.48  0.74 0.77  0.230 1.7</span></span>
-<span id="cb339-9"><a href="metodo-dei-fattori-principali-iterato.html#cb339-9" tabindex="-1"></a><span class="co">#&gt; H 0.78 -0.56 0.92  0.085 1.8</span></span>
-<span id="cb339-10"><a href="metodo-dei-fattori-principali-iterato.html#cb339-10" tabindex="-1"></a><span class="co">#&gt; L 0.98 -0.19 0.99  0.010 1.1</span></span>
-<span id="cb339-11"><a href="metodo-dei-fattori-principali-iterato.html#cb339-11" tabindex="-1"></a><span class="co">#&gt; J 0.69  0.69 0.95  0.049 2.0</span></span>
-<span id="cb339-12"><a href="metodo-dei-fattori-principali-iterato.html#cb339-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb339-13"><a href="metodo-dei-fattori-principali-iterato.html#cb339-13" tabindex="-1"></a><span class="co">#&gt;                        PA1  PA2</span></span>
-<span id="cb339-14"><a href="metodo-dei-fattori-principali-iterato.html#cb339-14" tabindex="-1"></a><span class="co">#&gt; SS loadings           3.22 1.41</span></span>
-<span id="cb339-15"><a href="metodo-dei-fattori-principali-iterato.html#cb339-15" tabindex="-1"></a><span class="co">#&gt; Proportion Var        0.64 0.28</span></span>
-<span id="cb339-16"><a href="metodo-dei-fattori-principali-iterato.html#cb339-16" tabindex="-1"></a><span class="co">#&gt; Cumulative Var        0.64 0.93</span></span>
-<span id="cb339-17"><a href="metodo-dei-fattori-principali-iterato.html#cb339-17" tabindex="-1"></a><span class="co">#&gt; Proportion Explained  0.70 0.30</span></span>
-<span id="cb339-18"><a href="metodo-dei-fattori-principali-iterato.html#cb339-18" tabindex="-1"></a><span class="co">#&gt; Cumulative Proportion 0.70 1.00</span></span>
-<span id="cb339-19"><a href="metodo-dei-fattori-principali-iterato.html#cb339-19" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb339-20"><a href="metodo-dei-fattori-principali-iterato.html#cb339-20" tabindex="-1"></a><span class="co">#&gt; Mean item complexity =  1.5</span></span>
-<span id="cb339-21"><a href="metodo-dei-fattori-principali-iterato.html#cb339-21" tabindex="-1"></a><span class="co">#&gt; Test of the hypothesis that 2 factors are sufficient.</span></span>
-<span id="cb339-22"><a href="metodo-dei-fattori-principali-iterato.html#cb339-22" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb339-23"><a href="metodo-dei-fattori-principali-iterato.html#cb339-23" tabindex="-1"></a><span class="co">#&gt; df null model =  10  with the objective function =  12</span></span>
-<span id="cb339-24"><a href="metodo-dei-fattori-principali-iterato.html#cb339-24" tabindex="-1"></a><span class="co">#&gt; df of  the model are 1  and the objective function was  5.6 </span></span>
-<span id="cb339-25"><a href="metodo-dei-fattori-principali-iterato.html#cb339-25" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb339-26"><a href="metodo-dei-fattori-principali-iterato.html#cb339-26" tabindex="-1"></a><span class="co">#&gt; The root mean square of the residuals (RMSR) is  0.01 </span></span>
-<span id="cb339-27"><a href="metodo-dei-fattori-principali-iterato.html#cb339-27" tabindex="-1"></a><span class="co">#&gt; The df corrected root mean square of the residuals is  0.04 </span></span>
-<span id="cb339-28"><a href="metodo-dei-fattori-principali-iterato.html#cb339-28" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb339-29"><a href="metodo-dei-fattori-principali-iterato.html#cb339-29" tabindex="-1"></a><span class="co">#&gt; Fit based upon off diagonal values = 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="metodo-dei-fattori-principali-iterato.html#cb349-1" tabindex="-1"></a>pa <span class="ot">&lt;-</span> <span class="fu">fa</span>(R, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">rotate =</span> <span class="st">&quot;none&quot;</span>, <span class="at">fm =</span> <span class="st">&quot;pa&quot;</span>)</span>
+<span id="cb349-2"><a href="metodo-dei-fattori-principali-iterato.html#cb349-2" tabindex="-1"></a>pa</span>
+<span id="cb349-3"><a href="metodo-dei-fattori-principali-iterato.html#cb349-3" tabindex="-1"></a><span class="co">#&gt; Factor Analysis using method =  pa</span></span>
+<span id="cb349-4"><a href="metodo-dei-fattori-principali-iterato.html#cb349-4" tabindex="-1"></a><span class="co">#&gt; Call: fa(r = R, nfactors = 2, rotate = &quot;none&quot;, fm = &quot;pa&quot;)</span></span>
+<span id="cb349-5"><a href="metodo-dei-fattori-principali-iterato.html#cb349-5" tabindex="-1"></a><span class="co">#&gt; Standardized loadings (pattern matrix) based upon correlation matrix</span></span>
+<span id="cb349-6"><a href="metodo-dei-fattori-principali-iterato.html#cb349-6" tabindex="-1"></a><span class="co">#&gt;    PA1   PA2   h2     u2 com</span></span>
+<span id="cb349-7"><a href="metodo-dei-fattori-principali-iterato.html#cb349-7" tabindex="-1"></a><span class="co">#&gt; K 0.98 -0.21 1.01 -0.008 1.1</span></span>
+<span id="cb349-8"><a href="metodo-dei-fattori-principali-iterato.html#cb349-8" tabindex="-1"></a><span class="co">#&gt; I 0.48  0.74 0.77  0.230 1.7</span></span>
+<span id="cb349-9"><a href="metodo-dei-fattori-principali-iterato.html#cb349-9" tabindex="-1"></a><span class="co">#&gt; H 0.78 -0.56 0.92  0.085 1.8</span></span>
+<span id="cb349-10"><a href="metodo-dei-fattori-principali-iterato.html#cb349-10" tabindex="-1"></a><span class="co">#&gt; L 0.98 -0.19 0.99  0.010 1.1</span></span>
+<span id="cb349-11"><a href="metodo-dei-fattori-principali-iterato.html#cb349-11" tabindex="-1"></a><span class="co">#&gt; J 0.69  0.69 0.95  0.049 2.0</span></span>
+<span id="cb349-12"><a href="metodo-dei-fattori-principali-iterato.html#cb349-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb349-13"><a href="metodo-dei-fattori-principali-iterato.html#cb349-13" tabindex="-1"></a><span class="co">#&gt;                        PA1  PA2</span></span>
+<span id="cb349-14"><a href="metodo-dei-fattori-principali-iterato.html#cb349-14" tabindex="-1"></a><span class="co">#&gt; SS loadings           3.22 1.41</span></span>
+<span id="cb349-15"><a href="metodo-dei-fattori-principali-iterato.html#cb349-15" tabindex="-1"></a><span class="co">#&gt; Proportion Var        0.64 0.28</span></span>
+<span id="cb349-16"><a href="metodo-dei-fattori-principali-iterato.html#cb349-16" tabindex="-1"></a><span class="co">#&gt; Cumulative Var        0.64 0.93</span></span>
+<span id="cb349-17"><a href="metodo-dei-fattori-principali-iterato.html#cb349-17" tabindex="-1"></a><span class="co">#&gt; Proportion Explained  0.70 0.30</span></span>
+<span id="cb349-18"><a href="metodo-dei-fattori-principali-iterato.html#cb349-18" tabindex="-1"></a><span class="co">#&gt; Cumulative Proportion 0.70 1.00</span></span>
+<span id="cb349-19"><a href="metodo-dei-fattori-principali-iterato.html#cb349-19" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb349-20"><a href="metodo-dei-fattori-principali-iterato.html#cb349-20" tabindex="-1"></a><span class="co">#&gt; Mean item complexity =  1.5</span></span>
+<span id="cb349-21"><a href="metodo-dei-fattori-principali-iterato.html#cb349-21" tabindex="-1"></a><span class="co">#&gt; Test of the hypothesis that 2 factors are sufficient.</span></span>
+<span id="cb349-22"><a href="metodo-dei-fattori-principali-iterato.html#cb349-22" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb349-23"><a href="metodo-dei-fattori-principali-iterato.html#cb349-23" tabindex="-1"></a><span class="co">#&gt; df null model =  10  with the objective function =  12</span></span>
+<span id="cb349-24"><a href="metodo-dei-fattori-principali-iterato.html#cb349-24" tabindex="-1"></a><span class="co">#&gt; df of  the model are 1  and the objective function was  5.6 </span></span>
+<span id="cb349-25"><a href="metodo-dei-fattori-principali-iterato.html#cb349-25" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb349-26"><a href="metodo-dei-fattori-principali-iterato.html#cb349-26" tabindex="-1"></a><span class="co">#&gt; The root mean square of the residuals (RMSR) is  0.01 </span></span>
+<span id="cb349-27"><a href="metodo-dei-fattori-principali-iterato.html#cb349-27" tabindex="-1"></a><span class="co">#&gt; The df corrected root mean square of the residuals is  0.04 </span></span>
+<span id="cb349-28"><a href="metodo-dei-fattori-principali-iterato.html#cb349-28" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb349-29"><a href="metodo-dei-fattori-principali-iterato.html#cb349-29" tabindex="-1"></a><span class="co">#&gt; Fit based upon off diagonal values = 1</span></span></code></pre></div>
 <p>Si noti che, in questo caso, le unicità assumono valori negativi, il che
 suggerisce che la soluzione è impropria.</p>
 </div>

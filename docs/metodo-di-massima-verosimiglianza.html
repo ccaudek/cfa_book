@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2023-03-22" />
+<meta name="date" content="2023-03-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,12 +340,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9.9" data-path="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><a href="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><i class="fa fa-check"></i><b>9.9</b> Metodi alternativi per la stima del coefficiente di attendibilità</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10</b> L’incertezza della misura</a>
+<li class="chapter" data-level="10" data-path="lerrore-standard-della-misurazione.html"><a href="lerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10</b> L’errore standard della misurazione</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10.1</b> La stima dell’errore standard della misurazione</a>
+<li class="chapter" data-level="10.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10.1</b> L’incertezza della misura</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
-<li class="chapter" data-level="10.1.2" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
+<li class="chapter" data-level="10.1.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
+<li class="chapter" data-level="10.1.2" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="dimostrazione.html"><a href="dimostrazione.html"><i class="fa fa-check"></i><b>10.2</b> Dimostrazione</a></li>
 <li class="chapter" data-level="10.3" data-path="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><a href="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><i class="fa fa-check"></i><b>10.3</b> Intervallo di confidenza per il punteggio vero e <span class="math inline">\(\sigma_E\)</span></a></li>
@@ -360,7 +360,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="12" data-path="esercizi-sulla-ctt.html"><a href="esercizi-sulla-ctt.html"><i class="fa fa-check"></i><b>12</b> Esercizi sulla CTT</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.1</b> Validità</a></li>
+<li class="chapter" data-level="12.1" data-path="attendibilità.html"><a href="attendibilità.html"><i class="fa fa-check"></i><b>12.1</b> Attendibilità</a></li>
+<li class="chapter" data-level="12.2" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.2</b> Validità</a></li>
 </ul></li>
 <li class="part"><span><b>IV L’analisi fattoriale</b></span></li>
 <li class="chapter" data-level="13" data-path="utilizzo-e-costruzione-di-test-psicometrici.html"><a href="utilizzo-e-costruzione-di-test-psicometrici.html"><i class="fa fa-check"></i><b>13</b> Utilizzo e costruzione di test psicometrici</a>
@@ -759,31 +760,31 @@ la matrice delle varianze e covarianze, sia che si analizzi la matrice
 delle correlazioni.</p>
 <p>Consideriamo nuovamente i dati dell’esempio precedente. Le istruzioni
 sono le seguenti:</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="metodo-di-massima-verosimiglianza.html#cb340-1" tabindex="-1"></a><span class="fu">factanal</span>(<span class="at">covmat =</span> R, <span class="at">factors =</span> <span class="dv">2</span>, <span class="at">rotation =</span> <span class="st">&quot;none&quot;</span>, <span class="at">n.obs =</span> <span class="dv">225</span>)</span>
-<span id="cb340-2"><a href="metodo-di-massima-verosimiglianza.html#cb340-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb340-3"><a href="metodo-di-massima-verosimiglianza.html#cb340-3" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb340-4"><a href="metodo-di-massima-verosimiglianza.html#cb340-4" tabindex="-1"></a><span class="co">#&gt; factanal(factors = 2, covmat = R, n.obs = 225, rotation = &quot;none&quot;)</span></span>
-<span id="cb340-5"><a href="metodo-di-massima-verosimiglianza.html#cb340-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb340-6"><a href="metodo-di-massima-verosimiglianza.html#cb340-6" tabindex="-1"></a><span class="co">#&gt; Uniquenesses:</span></span>
-<span id="cb340-7"><a href="metodo-di-massima-verosimiglianza.html#cb340-7" tabindex="-1"></a><span class="co">#&gt;     K     I     H     L     J </span></span>
-<span id="cb340-8"><a href="metodo-di-massima-verosimiglianza.html#cb340-8" tabindex="-1"></a><span class="co">#&gt; 0.005 0.268 0.055 0.008 0.005 </span></span>
-<span id="cb340-9"><a href="metodo-di-massima-verosimiglianza.html#cb340-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb340-10"><a href="metodo-di-massima-verosimiglianza.html#cb340-10" tabindex="-1"></a><span class="co">#&gt; Loadings:</span></span>
-<span id="cb340-11"><a href="metodo-di-massima-verosimiglianza.html#cb340-11" tabindex="-1"></a><span class="co">#&gt;   Factor1 Factor2</span></span>
-<span id="cb340-12"><a href="metodo-di-massima-verosimiglianza.html#cb340-12" tabindex="-1"></a><span class="co">#&gt; K  0.955  -0.289 </span></span>
-<span id="cb340-13"><a href="metodo-di-massima-verosimiglianza.html#cb340-13" tabindex="-1"></a><span class="co">#&gt; I  0.528   0.673 </span></span>
-<span id="cb340-14"><a href="metodo-di-massima-verosimiglianza.html#cb340-14" tabindex="-1"></a><span class="co">#&gt; H  0.720  -0.653 </span></span>
-<span id="cb340-15"><a href="metodo-di-massima-verosimiglianza.html#cb340-15" tabindex="-1"></a><span class="co">#&gt; L  0.954  -0.287 </span></span>
-<span id="cb340-16"><a href="metodo-di-massima-verosimiglianza.html#cb340-16" tabindex="-1"></a><span class="co">#&gt; J  0.764   0.642 </span></span>
-<span id="cb340-17"><a href="metodo-di-massima-verosimiglianza.html#cb340-17" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb340-18"><a href="metodo-di-massima-verosimiglianza.html#cb340-18" tabindex="-1"></a><span class="co">#&gt;                Factor1 Factor2</span></span>
-<span id="cb340-19"><a href="metodo-di-massima-verosimiglianza.html#cb340-19" tabindex="-1"></a><span class="co">#&gt; SS loadings      3.203   1.457</span></span>
-<span id="cb340-20"><a href="metodo-di-massima-verosimiglianza.html#cb340-20" tabindex="-1"></a><span class="co">#&gt; Proportion Var   0.641   0.291</span></span>
-<span id="cb340-21"><a href="metodo-di-massima-verosimiglianza.html#cb340-21" tabindex="-1"></a><span class="co">#&gt; Cumulative Var   0.641   0.932</span></span>
-<span id="cb340-22"><a href="metodo-di-massima-verosimiglianza.html#cb340-22" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb340-23"><a href="metodo-di-massima-verosimiglianza.html#cb340-23" tabindex="-1"></a><span class="co">#&gt; Test of the hypothesis that 2 factors are sufficient.</span></span>
-<span id="cb340-24"><a href="metodo-di-massima-verosimiglianza.html#cb340-24" tabindex="-1"></a><span class="co">#&gt; The chi square statistic is 648.09 on 1 degree of freedom.</span></span>
-<span id="cb340-25"><a href="metodo-di-massima-verosimiglianza.html#cb340-25" tabindex="-1"></a><span class="co">#&gt; The p-value is 5.81e-143</span></span></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="metodo-di-massima-verosimiglianza.html#cb350-1" tabindex="-1"></a><span class="fu">factanal</span>(<span class="at">covmat =</span> R, <span class="at">factors =</span> <span class="dv">2</span>, <span class="at">rotation =</span> <span class="st">&quot;none&quot;</span>, <span class="at">n.obs =</span> <span class="dv">225</span>)</span>
+<span id="cb350-2"><a href="metodo-di-massima-verosimiglianza.html#cb350-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb350-3"><a href="metodo-di-massima-verosimiglianza.html#cb350-3" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb350-4"><a href="metodo-di-massima-verosimiglianza.html#cb350-4" tabindex="-1"></a><span class="co">#&gt; factanal(factors = 2, covmat = R, n.obs = 225, rotation = &quot;none&quot;)</span></span>
+<span id="cb350-5"><a href="metodo-di-massima-verosimiglianza.html#cb350-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb350-6"><a href="metodo-di-massima-verosimiglianza.html#cb350-6" tabindex="-1"></a><span class="co">#&gt; Uniquenesses:</span></span>
+<span id="cb350-7"><a href="metodo-di-massima-verosimiglianza.html#cb350-7" tabindex="-1"></a><span class="co">#&gt;     K     I     H     L     J </span></span>
+<span id="cb350-8"><a href="metodo-di-massima-verosimiglianza.html#cb350-8" tabindex="-1"></a><span class="co">#&gt; 0.005 0.268 0.055 0.008 0.005 </span></span>
+<span id="cb350-9"><a href="metodo-di-massima-verosimiglianza.html#cb350-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb350-10"><a href="metodo-di-massima-verosimiglianza.html#cb350-10" tabindex="-1"></a><span class="co">#&gt; Loadings:</span></span>
+<span id="cb350-11"><a href="metodo-di-massima-verosimiglianza.html#cb350-11" tabindex="-1"></a><span class="co">#&gt;   Factor1 Factor2</span></span>
+<span id="cb350-12"><a href="metodo-di-massima-verosimiglianza.html#cb350-12" tabindex="-1"></a><span class="co">#&gt; K  0.955  -0.289 </span></span>
+<span id="cb350-13"><a href="metodo-di-massima-verosimiglianza.html#cb350-13" tabindex="-1"></a><span class="co">#&gt; I  0.528   0.673 </span></span>
+<span id="cb350-14"><a href="metodo-di-massima-verosimiglianza.html#cb350-14" tabindex="-1"></a><span class="co">#&gt; H  0.720  -0.653 </span></span>
+<span id="cb350-15"><a href="metodo-di-massima-verosimiglianza.html#cb350-15" tabindex="-1"></a><span class="co">#&gt; L  0.954  -0.287 </span></span>
+<span id="cb350-16"><a href="metodo-di-massima-verosimiglianza.html#cb350-16" tabindex="-1"></a><span class="co">#&gt; J  0.764   0.642 </span></span>
+<span id="cb350-17"><a href="metodo-di-massima-verosimiglianza.html#cb350-17" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb350-18"><a href="metodo-di-massima-verosimiglianza.html#cb350-18" tabindex="-1"></a><span class="co">#&gt;                Factor1 Factor2</span></span>
+<span id="cb350-19"><a href="metodo-di-massima-verosimiglianza.html#cb350-19" tabindex="-1"></a><span class="co">#&gt; SS loadings      3.203   1.457</span></span>
+<span id="cb350-20"><a href="metodo-di-massima-verosimiglianza.html#cb350-20" tabindex="-1"></a><span class="co">#&gt; Proportion Var   0.641   0.291</span></span>
+<span id="cb350-21"><a href="metodo-di-massima-verosimiglianza.html#cb350-21" tabindex="-1"></a><span class="co">#&gt; Cumulative Var   0.641   0.932</span></span>
+<span id="cb350-22"><a href="metodo-di-massima-verosimiglianza.html#cb350-22" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb350-23"><a href="metodo-di-massima-verosimiglianza.html#cb350-23" tabindex="-1"></a><span class="co">#&gt; Test of the hypothesis that 2 factors are sufficient.</span></span>
+<span id="cb350-24"><a href="metodo-di-massima-verosimiglianza.html#cb350-24" tabindex="-1"></a><span class="co">#&gt; The chi square statistic is 648.09 on 1 degree of freedom.</span></span>
+<span id="cb350-25"><a href="metodo-di-massima-verosimiglianza.html#cb350-25" tabindex="-1"></a><span class="co">#&gt; The p-value is 5.81e-143</span></span></code></pre></div>
 
 </div>
 <!-- </div> -->

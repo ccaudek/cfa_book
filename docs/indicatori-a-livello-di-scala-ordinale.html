@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2023-03-22" />
+<meta name="date" content="2023-03-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,12 +340,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9.9" data-path="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><a href="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><i class="fa fa-check"></i><b>9.9</b> Metodi alternativi per la stima del coefficiente di attendibilità</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10</b> L’incertezza della misura</a>
+<li class="chapter" data-level="10" data-path="lerrore-standard-della-misurazione.html"><a href="lerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10</b> L’errore standard della misurazione</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10.1</b> La stima dell’errore standard della misurazione</a>
+<li class="chapter" data-level="10.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10.1</b> L’incertezza della misura</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
-<li class="chapter" data-level="10.1.2" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
+<li class="chapter" data-level="10.1.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
+<li class="chapter" data-level="10.1.2" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="dimostrazione.html"><a href="dimostrazione.html"><i class="fa fa-check"></i><b>10.2</b> Dimostrazione</a></li>
 <li class="chapter" data-level="10.3" data-path="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><a href="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><i class="fa fa-check"></i><b>10.3</b> Intervallo di confidenza per il punteggio vero e <span class="math inline">\(\sigma_E\)</span></a></li>
@@ -360,7 +360,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="12" data-path="esercizi-sulla-ctt.html"><a href="esercizi-sulla-ctt.html"><i class="fa fa-check"></i><b>12</b> Esercizi sulla CTT</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.1</b> Validità</a></li>
+<li class="chapter" data-level="12.1" data-path="attendibilità.html"><a href="attendibilità.html"><i class="fa fa-check"></i><b>12.1</b> Attendibilità</a></li>
+<li class="chapter" data-level="12.2" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.2</b> Validità</a></li>
 </ul></li>
 <li class="part"><span><b>IV L’analisi fattoriale</b></span></li>
 <li class="chapter" data-level="13" data-path="utilizzo-e-costruzione-di-test-psicometrici.html"><a href="utilizzo-e-costruzione-di-test-psicometrici.html"><i class="fa fa-check"></i><b>13</b> Utilizzo e costruzione di test psicometrici</a>
@@ -744,111 +745,24 @@ se fossero continui: nel caso di dati ordinali, le medie, le varianze e le covar
 <p><span class="citation">Wu and Estabrook (<a href="#ref-wu2016identification">2016</a>)</span> ritengono che la procedura per la valutazione dell’invarianza fattoriale che è stata descritta in precedenza (per dati continui) debba essere modificata se vogliamo applicarla a indicatori categoriali. La procedura usuale consiste nel definire prima un modello di riferimento e successivamente di imporre restrizioni crescenti ai parametri. Secondo <span class="citation">Wu and Estabrook (<a href="#ref-wu2016identification">2016</a>)</span>, tale approccio non è ottimale nel caso di dati categoriali perché dipende fortemente dal modo in cui vengono definite le soglie necessarie per definire le correlazioni policoriche assegnate alle variabili continue latenti nel modello dell’invarianza configurale. Secondo <span class="citation">Wu and Estabrook (<a href="#ref-wu2016identification">2016</a>)</span>, dunque, è prima necessario valutare l’equivalenza delle soglie tra gruppi (<em>threshold model</em>) e poi valutare il modello che ipotizza l’equivalenza delle saturazioni fattoriali tra i gruppi.</p>
 <p>Per illustrare tale procedura, replichiamo qui il tutorial messo a punto da <span class="citation">Svetina, Rutkowski, and Rutkowski (<a href="#ref-svetina2020multiple">2020</a>)</span>. Questi autori utilizzano quattro item di una scala del bullismo ed esaminano i dati raccolti in tre paesi (31 = Azerbaigian; 40 = Austria; 246 = Finlandia). Tutti gli item sono misurati su una scala di tipo Likert a 4 punti, che va da 0 (mai) a 3 (almeno una volta alla settimana). Gli item chiedono al partecipante di valutare delle affermazioni relative ad episodi di bullismo. Per esempio, “mi prendevano in giro o mi insultavano”. Per l’Azerbaigian, l’Austria e la Finlandia, le dimensioni del campione sono rispettivamente pari a 3,808, 4,457 e 4,520.</p>
 <p>Leggiamo in dati in <span class="math inline">\(\textsf{R}\)</span>:</p>
-<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb402-1" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;data/BULLY.dat&quot;</span>, <span class="at">header =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb402-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb402-2" tabindex="-1"></a><span class="fu">names</span>(dat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;IDCNTRY&quot;</span>, <span class="st">&quot;R09A&quot;</span>, <span class="st">&quot;R09B&quot;</span>, <span class="st">&quot;R09C&quot;</span>, <span class="st">&quot;R09D&quot;</span>)</span>
-<span id="cb402-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb402-3" tabindex="-1"></a><span class="fu">head</span>(dat)</span>
-<span id="cb402-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb402-4" tabindex="-1"></a><span class="co">#&gt;   IDCNTRY R09A R09B R09C R09D</span></span>
-<span id="cb402-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb402-5" tabindex="-1"></a><span class="co">#&gt; 1      31    3    3    0    0</span></span>
-<span id="cb402-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb402-6" tabindex="-1"></a><span class="co">#&gt; 2      31    0    0    0    0</span></span>
-<span id="cb402-7"><a href="indicatori-a-livello-di-scala-ordinale.html#cb402-7" tabindex="-1"></a><span class="co">#&gt; 3      31    3    2    1    3</span></span>
-<span id="cb402-8"><a href="indicatori-a-livello-di-scala-ordinale.html#cb402-8" tabindex="-1"></a><span class="co">#&gt; 4      31    0    0    3    0</span></span>
-<span id="cb402-9"><a href="indicatori-a-livello-di-scala-ordinale.html#cb402-9" tabindex="-1"></a><span class="co">#&gt; 5      31    0    0    0    0</span></span>
-<span id="cb402-10"><a href="indicatori-a-livello-di-scala-ordinale.html#cb402-10" tabindex="-1"></a><span class="co">#&gt; 6      31    0    0    0    0</span></span></code></pre></div>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb412-1" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;data/BULLY.dat&quot;</span>, <span class="at">header =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb412-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb412-2" tabindex="-1"></a><span class="fu">names</span>(dat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;IDCNTRY&quot;</span>, <span class="st">&quot;R09A&quot;</span>, <span class="st">&quot;R09B&quot;</span>, <span class="st">&quot;R09C&quot;</span>, <span class="st">&quot;R09D&quot;</span>)</span>
+<span id="cb412-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb412-3" tabindex="-1"></a><span class="fu">head</span>(dat)</span>
+<span id="cb412-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb412-4" tabindex="-1"></a><span class="co">#&gt;   IDCNTRY R09A R09B R09C R09D</span></span>
+<span id="cb412-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb412-5" tabindex="-1"></a><span class="co">#&gt; 1      31    3    3    0    0</span></span>
+<span id="cb412-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb412-6" tabindex="-1"></a><span class="co">#&gt; 2      31    0    0    0    0</span></span>
+<span id="cb412-7"><a href="indicatori-a-livello-di-scala-ordinale.html#cb412-7" tabindex="-1"></a><span class="co">#&gt; 3      31    3    2    1    3</span></span>
+<span id="cb412-8"><a href="indicatori-a-livello-di-scala-ordinale.html#cb412-8" tabindex="-1"></a><span class="co">#&gt; 4      31    0    0    3    0</span></span>
+<span id="cb412-9"><a href="indicatori-a-livello-di-scala-ordinale.html#cb412-9" tabindex="-1"></a><span class="co">#&gt; 5      31    0    0    0    0</span></span>
+<span id="cb412-10"><a href="indicatori-a-livello-di-scala-ordinale.html#cb412-10" tabindex="-1"></a><span class="co">#&gt; 6      31    0    0    0    0</span></span></code></pre></div>
 <p>Viene creata la matrice <code>all.results</code> per immagazzinare i risultati dei diversi modelli che verranno confrontati, chiamati <em>baseline</em> (nessun vincolo tra i gruppi), <em>proposition 4</em> (equivalenza delle soglie tra i gruppi), e <em>proposition 7</em> (equivalenza delle soglie e delle saturazioni fattoriali tra i gruppi). Gli indici di bontà dell’adattamento che verranno considerati sono: chi-square, df, p, RMSEA, CFI, e TLI.</p>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb403-1" tabindex="-1"></a>all.results <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">ncol =</span> <span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb413-1" tabindex="-1"></a>all.results <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">ncol =</span> <span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code></pre></div>
 </div>
 <div id="baseline-model" class="section level3 hasAnchor" number="27.2.2">
 <h3><span class="header-section-number">27.2.2</span> Baseline model<a href="indicatori-a-livello-di-scala-ordinale.html#baseline-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Nel <em>baseline model</em> non viene posto alcun vincolo tra i gruppi. È quello dell’invarianza configurale.</p>
-<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb404-1" tabindex="-1"></a>mod.cat <span class="ot">&lt;-</span> <span class="st">&quot;F1 =~ R09A + R09B + R09C + R09D&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb405-1" tabindex="-1"></a>baseline <span class="ot">&lt;-</span> <span class="fu">measEq.syntax</span>(</span>
-<span id="cb405-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb405-2" tabindex="-1"></a>  <span class="at">configural.model =</span> mod.cat,</span>
-<span id="cb405-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb405-3" tabindex="-1"></a>  <span class="at">data =</span> dat,</span>
-<span id="cb405-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb405-4" tabindex="-1"></a>  <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">&quot;R09A&quot;</span>, <span class="st">&quot;R09B&quot;</span>, <span class="st">&quot;R09C&quot;</span>, <span class="st">&quot;R09D&quot;</span>),</span>
-<span id="cb405-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb405-5" tabindex="-1"></a>  <span class="at">parameterization =</span> <span class="st">&quot;delta&quot;</span>,</span>
-<span id="cb405-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb405-6" tabindex="-1"></a>  <span class="at">ID.fac =</span> <span class="st">&quot;std.lv&quot;</span>,</span>
-<span id="cb405-7"><a href="indicatori-a-livello-di-scala-ordinale.html#cb405-7" tabindex="-1"></a>  <span class="at">ID.cat =</span> <span class="st">&quot;Wu.Estabrook.2016&quot;</span>,</span>
-<span id="cb405-8"><a href="indicatori-a-livello-di-scala-ordinale.html#cb405-8" tabindex="-1"></a>  <span class="at">group =</span> <span class="st">&quot;IDCNTRY&quot;</span>,</span>
-<span id="cb405-9"><a href="indicatori-a-livello-di-scala-ordinale.html#cb405-9" tabindex="-1"></a>  <span class="at">group.equal =</span> <span class="st">&quot;configural&quot;</span></span>
-<span id="cb405-10"><a href="indicatori-a-livello-di-scala-ordinale.html#cb405-10" tabindex="-1"></a>)</span></code></pre></div>
-<p>Informazioni sul modello baseline si ottengono nel modo seguente:</p>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb406-1" tabindex="-1"></a><span class="fu">summary</span>(baseline)</span></code></pre></div>
-<p>Le proprietà del modello possono essere esplicitate con la seguente istruzione:</p>
-<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb407-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">as.character</span>(baseline))</span></code></pre></div>
-<p>Per potere essere passato a <code>lavaan</code>, l’oggetto <code>baseline</code> deve essere in formato <code>char</code>:</p>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb408-1" tabindex="-1"></a>model.baseline <span class="ot">&lt;-</span> <span class="fu">as.character</span>(baseline)</span></code></pre></div>
-<p>Adattiamo il modello ai dati:</p>
-<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb409-1" tabindex="-1"></a>fit.baseline <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
-<span id="cb409-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb409-2" tabindex="-1"></a>  model.baseline,</span>
-<span id="cb409-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb409-3" tabindex="-1"></a>  <span class="at">data =</span> dat,</span>
-<span id="cb409-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb409-4" tabindex="-1"></a>  <span class="at">group =</span> <span class="st">&quot;IDCNTRY&quot;</span>,</span>
-<span id="cb409-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb409-5" tabindex="-1"></a>  <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">&quot;R09A&quot;</span>, <span class="st">&quot;R09B&quot;</span>, <span class="st">&quot;R09C&quot;</span>, <span class="st">&quot;R09D&quot;</span>)</span>
-<span id="cb409-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb409-6" tabindex="-1"></a>)</span></code></pre></div>
-<p>Salviamo i risultati:</p>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb410-1" tabindex="-1"></a>all.results[<span class="dv">1</span>, ] <span class="ot">&lt;-</span></span>
-<span id="cb410-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb410-2" tabindex="-1"></a>  <span class="fu">round</span>(</span>
-<span id="cb410-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb410-3" tabindex="-1"></a>    <span class="fu">data.matrix</span>(</span>
-<span id="cb410-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb410-4" tabindex="-1"></a>      <span class="fu">fitmeasures</span>(fit.baseline, <span class="at">fit.measures =</span> <span class="fu">c</span>(</span>
-<span id="cb410-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb410-5" tabindex="-1"></a>        <span class="st">&quot;chisq.scaled&quot;</span>, <span class="st">&quot;df.scaled&quot;</span>, <span class="st">&quot;pvalue.scaled&quot;</span>,</span>
-<span id="cb410-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb410-6" tabindex="-1"></a>        <span class="st">&quot;rmsea.scaled&quot;</span>, <span class="st">&quot;cfi.scaled&quot;</span>, <span class="st">&quot;tli.scaled&quot;</span></span>
-<span id="cb410-7"><a href="indicatori-a-livello-di-scala-ordinale.html#cb410-7" tabindex="-1"></a>      ))</span>
-<span id="cb410-8"><a href="indicatori-a-livello-di-scala-ordinale.html#cb410-8" tabindex="-1"></a>    ),</span>
-<span id="cb410-9"><a href="indicatori-a-livello-di-scala-ordinale.html#cb410-9" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">3</span></span>
-<span id="cb410-10"><a href="indicatori-a-livello-di-scala-ordinale.html#cb410-10" tabindex="-1"></a>  )</span></code></pre></div>
-</div>
-<div id="invarianza-delle-soglie" class="section level3 hasAnchor" number="27.2.3">
-<h3><span class="header-section-number">27.2.3</span> Invarianza delle soglie<a href="indicatori-a-livello-di-scala-ordinale.html#invarianza-delle-soglie" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Consideriamo ora il modello <em>threshold invariance</em> <span class="citation">(chiamato <em>Proposition 4</em> da <a href="#ref-wu2016identification">Wu and Estabrook 2016</a>)</span>.</p>
-<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb411-1" tabindex="-1"></a>prop4 <span class="ot">&lt;-</span> <span class="fu">measEq.syntax</span>(</span>
-<span id="cb411-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb411-2" tabindex="-1"></a>  <span class="at">configural.model =</span> mod.cat,</span>
-<span id="cb411-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb411-3" tabindex="-1"></a>  <span class="at">data =</span> dat,</span>
-<span id="cb411-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb411-4" tabindex="-1"></a>  <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">&quot;R09A&quot;</span>, <span class="st">&quot;R09B&quot;</span>, <span class="st">&quot;R09C&quot;</span>, <span class="st">&quot;R09D&quot;</span>),</span>
-<span id="cb411-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb411-5" tabindex="-1"></a>  <span class="at">parameterization =</span> <span class="st">&quot;delta&quot;</span>,</span>
-<span id="cb411-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb411-6" tabindex="-1"></a>  <span class="at">ID.fac =</span> <span class="st">&quot;std.lv&quot;</span>,</span>
-<span id="cb411-7"><a href="indicatori-a-livello-di-scala-ordinale.html#cb411-7" tabindex="-1"></a>  <span class="at">ID.cat =</span> <span class="st">&quot;Wu.Estabrook.2016&quot;</span>,</span>
-<span id="cb411-8"><a href="indicatori-a-livello-di-scala-ordinale.html#cb411-8" tabindex="-1"></a>  <span class="at">group =</span> <span class="st">&quot;IDCNTRY&quot;</span>,</span>
-<span id="cb411-9"><a href="indicatori-a-livello-di-scala-ordinale.html#cb411-9" tabindex="-1"></a>  <span class="at">group.equal =</span> <span class="fu">c</span>(<span class="st">&quot;thresholds&quot;</span>)</span>
-<span id="cb411-10"><a href="indicatori-a-livello-di-scala-ordinale.html#cb411-10" tabindex="-1"></a>)</span></code></pre></div>
-<p>Adattiamo il modello ai dati:</p>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb412-1" tabindex="-1"></a>model.prop4 <span class="ot">&lt;-</span> <span class="fu">as.character</span>(prop4)</span>
-<span id="cb412-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb412-2" tabindex="-1"></a>fit.prop4 <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
-<span id="cb412-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb412-3" tabindex="-1"></a>  model.prop4,</span>
-<span id="cb412-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb412-4" tabindex="-1"></a>  <span class="at">data =</span> dat,</span>
-<span id="cb412-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb412-5" tabindex="-1"></a>  <span class="at">group =</span> <span class="st">&quot;IDCNTRY&quot;</span>,</span>
-<span id="cb412-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb412-6" tabindex="-1"></a>  <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">&quot;R09A&quot;</span>, <span class="st">&quot;R09B&quot;</span>, <span class="st">&quot;R09C&quot;</span>, <span class="st">&quot;R09D&quot;</span>)</span>
-<span id="cb412-7"><a href="indicatori-a-livello-di-scala-ordinale.html#cb412-7" tabindex="-1"></a>)</span></code></pre></div>
-<p>Salviamo i risulati</p>
-<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb413-1" tabindex="-1"></a><span class="co"># store model fit information for proposition 4</span></span>
-<span id="cb413-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb413-2" tabindex="-1"></a>all.results[<span class="dv">2</span>, ] <span class="ot">&lt;-</span></span>
-<span id="cb413-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb413-3" tabindex="-1"></a>  <span class="fu">round</span>(</span>
-<span id="cb413-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb413-4" tabindex="-1"></a>    <span class="fu">data.matrix</span>(</span>
-<span id="cb413-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb413-5" tabindex="-1"></a>      <span class="fu">fitmeasures</span>(fit.prop4, <span class="at">fit.measures =</span> <span class="fu">c</span>(</span>
-<span id="cb413-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb413-6" tabindex="-1"></a>        <span class="st">&quot;chisq.scaled&quot;</span>, <span class="st">&quot;df.scaled&quot;</span>, <span class="st">&quot;pvalue.scaled&quot;</span>,</span>
-<span id="cb413-7"><a href="indicatori-a-livello-di-scala-ordinale.html#cb413-7" tabindex="-1"></a>        <span class="st">&quot;rmsea.scaled&quot;</span>, <span class="st">&quot;cfi.scaled&quot;</span>, <span class="st">&quot;tli.scaled&quot;</span></span>
-<span id="cb413-8"><a href="indicatori-a-livello-di-scala-ordinale.html#cb413-8" tabindex="-1"></a>      ))</span>
-<span id="cb413-9"><a href="indicatori-a-livello-di-scala-ordinale.html#cb413-9" tabindex="-1"></a>    ),</span>
-<span id="cb413-10"><a href="indicatori-a-livello-di-scala-ordinale.html#cb413-10" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">3</span></span>
-<span id="cb413-11"><a href="indicatori-a-livello-di-scala-ordinale.html#cb413-11" tabindex="-1"></a>  )</span></code></pre></div>
-<p>Eseguiamo il confronto tra il modello <em>threshold invariance</em> e il modello <em>baseline</em>:</p>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb414-1" tabindex="-1"></a><span class="fu">lavTestLRT</span>(fit.baseline, fit.prop4)</span>
-<span id="cb414-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb414-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb414-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb414-3" tabindex="-1"></a><span class="co">#&gt; Scaled Chi-Squared Difference Test (method = &quot;satorra.2000&quot;)</span></span>
-<span id="cb414-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb414-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb414-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb414-5" tabindex="-1"></a><span class="co">#&gt; lavaan </span><span class="al">NOTE</span><span class="co">:</span></span>
-<span id="cb414-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb414-6" tabindex="-1"></a><span class="co">#&gt;     The &quot;Chisq&quot; column contains standard test statistics, not the</span></span>
-<span id="cb414-7"><a href="indicatori-a-livello-di-scala-ordinale.html#cb414-7" tabindex="-1"></a><span class="co">#&gt;     robust test that should be reported per model. A robust difference</span></span>
-<span id="cb414-8"><a href="indicatori-a-livello-di-scala-ordinale.html#cb414-8" tabindex="-1"></a><span class="co">#&gt;     test is a function of two standard (not robust) statistics.</span></span>
-<span id="cb414-9"><a href="indicatori-a-livello-di-scala-ordinale.html#cb414-9" tabindex="-1"></a><span class="co">#&gt;  </span></span>
-<span id="cb414-10"><a href="indicatori-a-livello-di-scala-ordinale.html#cb414-10" tabindex="-1"></a><span class="co">#&gt;              Df AIC BIC  Chisq Chisq diff Df diff Pr(&gt;Chisq)    </span></span>
-<span id="cb414-11"><a href="indicatori-a-livello-di-scala-ordinale.html#cb414-11" tabindex="-1"></a><span class="co">#&gt; fit.baseline  6         26.942                                  </span></span>
-<span id="cb414-12"><a href="indicatori-a-livello-di-scala-ordinale.html#cb414-12" tabindex="-1"></a><span class="co">#&gt; fit.prop4    14         42.170     61.011       8  2.951e-10 ***</span></span>
-<span id="cb414-13"><a href="indicatori-a-livello-di-scala-ordinale.html#cb414-13" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb414-14"><a href="indicatori-a-livello-di-scala-ordinale.html#cb414-14" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
-</div>
-<div id="invarianza-delle-soglie-e-delle-saturazioni-fattoriali" class="section level3 hasAnchor" number="27.2.4">
-<h3><span class="header-section-number">27.2.4</span> Invarianza delle soglie e delle saturazioni fattoriali<a href="indicatori-a-livello-di-scala-ordinale.html#invarianza-delle-soglie-e-delle-saturazioni-fattoriali" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Consideriamo ora il modello <em>threshold and loading invariance</em> <span class="citation">(chiamato <em>Proposition 7</em> da <a href="#ref-wu2016identification">Wu and Estabrook 2016</a>)</span>.</p>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb415-1" tabindex="-1"></a>prop7 <span class="ot">&lt;-</span> <span class="fu">measEq.syntax</span>(</span>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb414-1" tabindex="-1"></a>mod.cat <span class="ot">&lt;-</span> <span class="st">&quot;F1 =~ R09A + R09B + R09C + R09D&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb415-1" tabindex="-1"></a>baseline <span class="ot">&lt;-</span> <span class="fu">measEq.syntax</span>(</span>
 <span id="cb415-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb415-2" tabindex="-1"></a>  <span class="at">configural.model =</span> mod.cat,</span>
 <span id="cb415-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb415-3" tabindex="-1"></a>  <span class="at">data =</span> dat,</span>
 <span id="cb415-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb415-4" tabindex="-1"></a>  <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">&quot;R09A&quot;</span>, <span class="st">&quot;R09B&quot;</span>, <span class="st">&quot;R09C&quot;</span>, <span class="st">&quot;R09D&quot;</span>),</span>
@@ -856,73 +770,160 @@ se fossero continui: nel caso di dati ordinali, le medie, le varianze e le covar
 <span id="cb415-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb415-6" tabindex="-1"></a>  <span class="at">ID.fac =</span> <span class="st">&quot;std.lv&quot;</span>,</span>
 <span id="cb415-7"><a href="indicatori-a-livello-di-scala-ordinale.html#cb415-7" tabindex="-1"></a>  <span class="at">ID.cat =</span> <span class="st">&quot;Wu.Estabrook.2016&quot;</span>,</span>
 <span id="cb415-8"><a href="indicatori-a-livello-di-scala-ordinale.html#cb415-8" tabindex="-1"></a>  <span class="at">group =</span> <span class="st">&quot;IDCNTRY&quot;</span>,</span>
-<span id="cb415-9"><a href="indicatori-a-livello-di-scala-ordinale.html#cb415-9" tabindex="-1"></a>  <span class="at">group.equal =</span> <span class="fu">c</span>(<span class="st">&quot;thresholds&quot;</span>, <span class="st">&quot;loadings&quot;</span>)</span>
+<span id="cb415-9"><a href="indicatori-a-livello-di-scala-ordinale.html#cb415-9" tabindex="-1"></a>  <span class="at">group.equal =</span> <span class="st">&quot;configural&quot;</span></span>
 <span id="cb415-10"><a href="indicatori-a-livello-di-scala-ordinale.html#cb415-10" tabindex="-1"></a>)</span></code></pre></div>
+<p>Informazioni sul modello baseline si ottengono nel modo seguente:</p>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb416-1" tabindex="-1"></a><span class="fu">summary</span>(baseline)</span></code></pre></div>
+<p>Le proprietà del modello possono essere esplicitate con la seguente istruzione:</p>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb417-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">as.character</span>(baseline))</span></code></pre></div>
+<p>Per potere essere passato a <code>lavaan</code>, l’oggetto <code>baseline</code> deve essere in formato <code>char</code>:</p>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb418-1" tabindex="-1"></a>model.baseline <span class="ot">&lt;-</span> <span class="fu">as.character</span>(baseline)</span></code></pre></div>
 <p>Adattiamo il modello ai dati:</p>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb416-1" tabindex="-1"></a>model.prop7 <span class="ot">&lt;-</span> <span class="fu">as.character</span>(prop7)</span>
-<span id="cb416-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb416-2" tabindex="-1"></a>fit.prop7 <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
-<span id="cb416-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb416-3" tabindex="-1"></a>  model.prop7,</span>
-<span id="cb416-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb416-4" tabindex="-1"></a>  <span class="at">data =</span> dat, <span class="at">group =</span> <span class="st">&quot;IDCNTRY&quot;</span>,</span>
-<span id="cb416-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb416-5" tabindex="-1"></a>  <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">&quot;R09A&quot;</span>, <span class="st">&quot;R09B&quot;</span>, <span class="st">&quot;R09C&quot;</span>, <span class="st">&quot;R09D&quot;</span>)</span>
-<span id="cb416-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb416-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb419-1" tabindex="-1"></a>fit.baseline <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
+<span id="cb419-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb419-2" tabindex="-1"></a>  model.baseline,</span>
+<span id="cb419-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb419-3" tabindex="-1"></a>  <span class="at">data =</span> dat,</span>
+<span id="cb419-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb419-4" tabindex="-1"></a>  <span class="at">group =</span> <span class="st">&quot;IDCNTRY&quot;</span>,</span>
+<span id="cb419-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb419-5" tabindex="-1"></a>  <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">&quot;R09A&quot;</span>, <span class="st">&quot;R09B&quot;</span>, <span class="st">&quot;R09C&quot;</span>, <span class="st">&quot;R09D&quot;</span>)</span>
+<span id="cb419-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb419-6" tabindex="-1"></a>)</span></code></pre></div>
 <p>Salviamo i risultati:</p>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb417-1" tabindex="-1"></a>all.results[<span class="dv">3</span>, ] <span class="ot">&lt;-</span></span>
-<span id="cb417-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb417-2" tabindex="-1"></a>  <span class="fu">round</span>(<span class="fu">data.matrix</span>(</span>
-<span id="cb417-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb417-3" tabindex="-1"></a>    <span class="fu">fitmeasures</span>(fit.prop7, <span class="at">fit.measures =</span> <span class="fu">c</span>(</span>
-<span id="cb417-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb417-4" tabindex="-1"></a>      <span class="st">&quot;chisq.scaled&quot;</span>, <span class="st">&quot;df.scaled&quot;</span>, <span class="st">&quot;pvalue.scaled&quot;</span>,</span>
-<span id="cb417-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb417-5" tabindex="-1"></a>      <span class="st">&quot;rmsea.scaled&quot;</span>, <span class="st">&quot;cfi.scaled&quot;</span>, <span class="st">&quot;tli.scaled&quot;</span></span>
-<span id="cb417-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb417-6" tabindex="-1"></a>    ))</span>
-<span id="cb417-7"><a href="indicatori-a-livello-di-scala-ordinale.html#cb417-7" tabindex="-1"></a>  ), <span class="at">digits =</span> <span class="dv">3</span>)</span>
-<span id="cb417-8"><a href="indicatori-a-livello-di-scala-ordinale.html#cb417-8" tabindex="-1"></a></span>
-<span id="cb417-9"><a href="indicatori-a-livello-di-scala-ordinale.html#cb417-9" tabindex="-1"></a>column.names <span class="ot">&lt;-</span></span>
-<span id="cb417-10"><a href="indicatori-a-livello-di-scala-ordinale.html#cb417-10" tabindex="-1"></a>  <span class="fu">c</span>(</span>
-<span id="cb417-11"><a href="indicatori-a-livello-di-scala-ordinale.html#cb417-11" tabindex="-1"></a>    <span class="st">&quot;chisq.scaled&quot;</span>, <span class="st">&quot;df.scaled&quot;</span>, <span class="st">&quot;pvalue.scaled&quot;</span>, <span class="st">&quot;rmsea.scaled&quot;</span>,</span>
-<span id="cb417-12"><a href="indicatori-a-livello-di-scala-ordinale.html#cb417-12" tabindex="-1"></a>    <span class="st">&quot;cfi.scaled&quot;</span>, <span class="st">&quot;tli.scaled&quot;</span></span>
-<span id="cb417-13"><a href="indicatori-a-livello-di-scala-ordinale.html#cb417-13" tabindex="-1"></a>  )</span>
-<span id="cb417-14"><a href="indicatori-a-livello-di-scala-ordinale.html#cb417-14" tabindex="-1"></a></span>
-<span id="cb417-15"><a href="indicatori-a-livello-di-scala-ordinale.html#cb417-15" tabindex="-1"></a>row.names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;baseline&quot;</span>, <span class="st">&quot;prop4&quot;</span>, <span class="st">&quot;prop7&quot;</span>)</span>
-<span id="cb417-16"><a href="indicatori-a-livello-di-scala-ordinale.html#cb417-16" tabindex="-1"></a></span>
-<span id="cb417-17"><a href="indicatori-a-livello-di-scala-ordinale.html#cb417-17" tabindex="-1"></a><span class="fu">colnames</span>(all.results) <span class="ot">&lt;-</span> column.names</span>
-<span id="cb417-18"><a href="indicatori-a-livello-di-scala-ordinale.html#cb417-18" tabindex="-1"></a><span class="fu">rownames</span>(all.results) <span class="ot">&lt;-</span> row.names</span></code></pre></div>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb420-1" tabindex="-1"></a>all.results[<span class="dv">1</span>, ] <span class="ot">&lt;-</span></span>
+<span id="cb420-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb420-2" tabindex="-1"></a>  <span class="fu">round</span>(</span>
+<span id="cb420-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb420-3" tabindex="-1"></a>    <span class="fu">data.matrix</span>(</span>
+<span id="cb420-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb420-4" tabindex="-1"></a>      <span class="fu">fitmeasures</span>(fit.baseline, <span class="at">fit.measures =</span> <span class="fu">c</span>(</span>
+<span id="cb420-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb420-5" tabindex="-1"></a>        <span class="st">&quot;chisq.scaled&quot;</span>, <span class="st">&quot;df.scaled&quot;</span>, <span class="st">&quot;pvalue.scaled&quot;</span>,</span>
+<span id="cb420-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb420-6" tabindex="-1"></a>        <span class="st">&quot;rmsea.scaled&quot;</span>, <span class="st">&quot;cfi.scaled&quot;</span>, <span class="st">&quot;tli.scaled&quot;</span></span>
+<span id="cb420-7"><a href="indicatori-a-livello-di-scala-ordinale.html#cb420-7" tabindex="-1"></a>      ))</span>
+<span id="cb420-8"><a href="indicatori-a-livello-di-scala-ordinale.html#cb420-8" tabindex="-1"></a>    ),</span>
+<span id="cb420-9"><a href="indicatori-a-livello-di-scala-ordinale.html#cb420-9" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">3</span></span>
+<span id="cb420-10"><a href="indicatori-a-livello-di-scala-ordinale.html#cb420-10" tabindex="-1"></a>  )</span></code></pre></div>
+</div>
+<div id="invarianza-delle-soglie" class="section level3 hasAnchor" number="27.2.3">
+<h3><span class="header-section-number">27.2.3</span> Invarianza delle soglie<a href="indicatori-a-livello-di-scala-ordinale.html#invarianza-delle-soglie" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Consideriamo ora il modello <em>threshold invariance</em> <span class="citation">(chiamato <em>Proposition 4</em> da <a href="#ref-wu2016identification">Wu and Estabrook 2016</a>)</span>.</p>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb421-1" tabindex="-1"></a>prop4 <span class="ot">&lt;-</span> <span class="fu">measEq.syntax</span>(</span>
+<span id="cb421-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb421-2" tabindex="-1"></a>  <span class="at">configural.model =</span> mod.cat,</span>
+<span id="cb421-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb421-3" tabindex="-1"></a>  <span class="at">data =</span> dat,</span>
+<span id="cb421-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb421-4" tabindex="-1"></a>  <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">&quot;R09A&quot;</span>, <span class="st">&quot;R09B&quot;</span>, <span class="st">&quot;R09C&quot;</span>, <span class="st">&quot;R09D&quot;</span>),</span>
+<span id="cb421-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb421-5" tabindex="-1"></a>  <span class="at">parameterization =</span> <span class="st">&quot;delta&quot;</span>,</span>
+<span id="cb421-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb421-6" tabindex="-1"></a>  <span class="at">ID.fac =</span> <span class="st">&quot;std.lv&quot;</span>,</span>
+<span id="cb421-7"><a href="indicatori-a-livello-di-scala-ordinale.html#cb421-7" tabindex="-1"></a>  <span class="at">ID.cat =</span> <span class="st">&quot;Wu.Estabrook.2016&quot;</span>,</span>
+<span id="cb421-8"><a href="indicatori-a-livello-di-scala-ordinale.html#cb421-8" tabindex="-1"></a>  <span class="at">group =</span> <span class="st">&quot;IDCNTRY&quot;</span>,</span>
+<span id="cb421-9"><a href="indicatori-a-livello-di-scala-ordinale.html#cb421-9" tabindex="-1"></a>  <span class="at">group.equal =</span> <span class="fu">c</span>(<span class="st">&quot;thresholds&quot;</span>)</span>
+<span id="cb421-10"><a href="indicatori-a-livello-di-scala-ordinale.html#cb421-10" tabindex="-1"></a>)</span></code></pre></div>
+<p>Adattiamo il modello ai dati:</p>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb422-1" tabindex="-1"></a>model.prop4 <span class="ot">&lt;-</span> <span class="fu">as.character</span>(prop4)</span>
+<span id="cb422-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb422-2" tabindex="-1"></a>fit.prop4 <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
+<span id="cb422-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb422-3" tabindex="-1"></a>  model.prop4,</span>
+<span id="cb422-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb422-4" tabindex="-1"></a>  <span class="at">data =</span> dat,</span>
+<span id="cb422-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb422-5" tabindex="-1"></a>  <span class="at">group =</span> <span class="st">&quot;IDCNTRY&quot;</span>,</span>
+<span id="cb422-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb422-6" tabindex="-1"></a>  <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">&quot;R09A&quot;</span>, <span class="st">&quot;R09B&quot;</span>, <span class="st">&quot;R09C&quot;</span>, <span class="st">&quot;R09D&quot;</span>)</span>
+<span id="cb422-7"><a href="indicatori-a-livello-di-scala-ordinale.html#cb422-7" tabindex="-1"></a>)</span></code></pre></div>
+<p>Salviamo i risulati</p>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb423-1" tabindex="-1"></a><span class="co"># store model fit information for proposition 4</span></span>
+<span id="cb423-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb423-2" tabindex="-1"></a>all.results[<span class="dv">2</span>, ] <span class="ot">&lt;-</span></span>
+<span id="cb423-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb423-3" tabindex="-1"></a>  <span class="fu">round</span>(</span>
+<span id="cb423-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb423-4" tabindex="-1"></a>    <span class="fu">data.matrix</span>(</span>
+<span id="cb423-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb423-5" tabindex="-1"></a>      <span class="fu">fitmeasures</span>(fit.prop4, <span class="at">fit.measures =</span> <span class="fu">c</span>(</span>
+<span id="cb423-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb423-6" tabindex="-1"></a>        <span class="st">&quot;chisq.scaled&quot;</span>, <span class="st">&quot;df.scaled&quot;</span>, <span class="st">&quot;pvalue.scaled&quot;</span>,</span>
+<span id="cb423-7"><a href="indicatori-a-livello-di-scala-ordinale.html#cb423-7" tabindex="-1"></a>        <span class="st">&quot;rmsea.scaled&quot;</span>, <span class="st">&quot;cfi.scaled&quot;</span>, <span class="st">&quot;tli.scaled&quot;</span></span>
+<span id="cb423-8"><a href="indicatori-a-livello-di-scala-ordinale.html#cb423-8" tabindex="-1"></a>      ))</span>
+<span id="cb423-9"><a href="indicatori-a-livello-di-scala-ordinale.html#cb423-9" tabindex="-1"></a>    ),</span>
+<span id="cb423-10"><a href="indicatori-a-livello-di-scala-ordinale.html#cb423-10" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">3</span></span>
+<span id="cb423-11"><a href="indicatori-a-livello-di-scala-ordinale.html#cb423-11" tabindex="-1"></a>  )</span></code></pre></div>
+<p>Eseguiamo il confronto tra il modello <em>threshold invariance</em> e il modello <em>baseline</em>:</p>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb424-1" tabindex="-1"></a><span class="fu">lavTestLRT</span>(fit.baseline, fit.prop4)</span>
+<span id="cb424-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb424-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb424-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb424-3" tabindex="-1"></a><span class="co">#&gt; Scaled Chi-Squared Difference Test (method = &quot;satorra.2000&quot;)</span></span>
+<span id="cb424-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb424-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb424-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb424-5" tabindex="-1"></a><span class="co">#&gt; lavaan </span><span class="al">NOTE</span><span class="co">:</span></span>
+<span id="cb424-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb424-6" tabindex="-1"></a><span class="co">#&gt;     The &quot;Chisq&quot; column contains standard test statistics, not the</span></span>
+<span id="cb424-7"><a href="indicatori-a-livello-di-scala-ordinale.html#cb424-7" tabindex="-1"></a><span class="co">#&gt;     robust test that should be reported per model. A robust difference</span></span>
+<span id="cb424-8"><a href="indicatori-a-livello-di-scala-ordinale.html#cb424-8" tabindex="-1"></a><span class="co">#&gt;     test is a function of two standard (not robust) statistics.</span></span>
+<span id="cb424-9"><a href="indicatori-a-livello-di-scala-ordinale.html#cb424-9" tabindex="-1"></a><span class="co">#&gt;  </span></span>
+<span id="cb424-10"><a href="indicatori-a-livello-di-scala-ordinale.html#cb424-10" tabindex="-1"></a><span class="co">#&gt;              Df AIC BIC  Chisq Chisq diff Df diff Pr(&gt;Chisq)    </span></span>
+<span id="cb424-11"><a href="indicatori-a-livello-di-scala-ordinale.html#cb424-11" tabindex="-1"></a><span class="co">#&gt; fit.baseline  6         26.942                                  </span></span>
+<span id="cb424-12"><a href="indicatori-a-livello-di-scala-ordinale.html#cb424-12" tabindex="-1"></a><span class="co">#&gt; fit.prop4    14         42.170     61.011       8  2.951e-10 ***</span></span>
+<span id="cb424-13"><a href="indicatori-a-livello-di-scala-ordinale.html#cb424-13" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb424-14"><a href="indicatori-a-livello-di-scala-ordinale.html#cb424-14" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
+</div>
+<div id="invarianza-delle-soglie-e-delle-saturazioni-fattoriali" class="section level3 hasAnchor" number="27.2.4">
+<h3><span class="header-section-number">27.2.4</span> Invarianza delle soglie e delle saturazioni fattoriali<a href="indicatori-a-livello-di-scala-ordinale.html#invarianza-delle-soglie-e-delle-saturazioni-fattoriali" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Consideriamo ora il modello <em>threshold and loading invariance</em> <span class="citation">(chiamato <em>Proposition 7</em> da <a href="#ref-wu2016identification">Wu and Estabrook 2016</a>)</span>.</p>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb425-1" tabindex="-1"></a>prop7 <span class="ot">&lt;-</span> <span class="fu">measEq.syntax</span>(</span>
+<span id="cb425-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb425-2" tabindex="-1"></a>  <span class="at">configural.model =</span> mod.cat,</span>
+<span id="cb425-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb425-3" tabindex="-1"></a>  <span class="at">data =</span> dat,</span>
+<span id="cb425-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb425-4" tabindex="-1"></a>  <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">&quot;R09A&quot;</span>, <span class="st">&quot;R09B&quot;</span>, <span class="st">&quot;R09C&quot;</span>, <span class="st">&quot;R09D&quot;</span>),</span>
+<span id="cb425-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb425-5" tabindex="-1"></a>  <span class="at">parameterization =</span> <span class="st">&quot;delta&quot;</span>,</span>
+<span id="cb425-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb425-6" tabindex="-1"></a>  <span class="at">ID.fac =</span> <span class="st">&quot;std.lv&quot;</span>,</span>
+<span id="cb425-7"><a href="indicatori-a-livello-di-scala-ordinale.html#cb425-7" tabindex="-1"></a>  <span class="at">ID.cat =</span> <span class="st">&quot;Wu.Estabrook.2016&quot;</span>,</span>
+<span id="cb425-8"><a href="indicatori-a-livello-di-scala-ordinale.html#cb425-8" tabindex="-1"></a>  <span class="at">group =</span> <span class="st">&quot;IDCNTRY&quot;</span>,</span>
+<span id="cb425-9"><a href="indicatori-a-livello-di-scala-ordinale.html#cb425-9" tabindex="-1"></a>  <span class="at">group.equal =</span> <span class="fu">c</span>(<span class="st">&quot;thresholds&quot;</span>, <span class="st">&quot;loadings&quot;</span>)</span>
+<span id="cb425-10"><a href="indicatori-a-livello-di-scala-ordinale.html#cb425-10" tabindex="-1"></a>)</span></code></pre></div>
+<p>Adattiamo il modello ai dati:</p>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb426-1" tabindex="-1"></a>model.prop7 <span class="ot">&lt;-</span> <span class="fu">as.character</span>(prop7)</span>
+<span id="cb426-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb426-2" tabindex="-1"></a>fit.prop7 <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
+<span id="cb426-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb426-3" tabindex="-1"></a>  model.prop7,</span>
+<span id="cb426-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb426-4" tabindex="-1"></a>  <span class="at">data =</span> dat, <span class="at">group =</span> <span class="st">&quot;IDCNTRY&quot;</span>,</span>
+<span id="cb426-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb426-5" tabindex="-1"></a>  <span class="at">ordered =</span> <span class="fu">c</span>(<span class="st">&quot;R09A&quot;</span>, <span class="st">&quot;R09B&quot;</span>, <span class="st">&quot;R09C&quot;</span>, <span class="st">&quot;R09D&quot;</span>)</span>
+<span id="cb426-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb426-6" tabindex="-1"></a>)</span></code></pre></div>
+<p>Salviamo i risultati:</p>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb427-1" tabindex="-1"></a>all.results[<span class="dv">3</span>, ] <span class="ot">&lt;-</span></span>
+<span id="cb427-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb427-2" tabindex="-1"></a>  <span class="fu">round</span>(<span class="fu">data.matrix</span>(</span>
+<span id="cb427-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb427-3" tabindex="-1"></a>    <span class="fu">fitmeasures</span>(fit.prop7, <span class="at">fit.measures =</span> <span class="fu">c</span>(</span>
+<span id="cb427-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb427-4" tabindex="-1"></a>      <span class="st">&quot;chisq.scaled&quot;</span>, <span class="st">&quot;df.scaled&quot;</span>, <span class="st">&quot;pvalue.scaled&quot;</span>,</span>
+<span id="cb427-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb427-5" tabindex="-1"></a>      <span class="st">&quot;rmsea.scaled&quot;</span>, <span class="st">&quot;cfi.scaled&quot;</span>, <span class="st">&quot;tli.scaled&quot;</span></span>
+<span id="cb427-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb427-6" tabindex="-1"></a>    ))</span>
+<span id="cb427-7"><a href="indicatori-a-livello-di-scala-ordinale.html#cb427-7" tabindex="-1"></a>  ), <span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb427-8"><a href="indicatori-a-livello-di-scala-ordinale.html#cb427-8" tabindex="-1"></a></span>
+<span id="cb427-9"><a href="indicatori-a-livello-di-scala-ordinale.html#cb427-9" tabindex="-1"></a>column.names <span class="ot">&lt;-</span></span>
+<span id="cb427-10"><a href="indicatori-a-livello-di-scala-ordinale.html#cb427-10" tabindex="-1"></a>  <span class="fu">c</span>(</span>
+<span id="cb427-11"><a href="indicatori-a-livello-di-scala-ordinale.html#cb427-11" tabindex="-1"></a>    <span class="st">&quot;chisq.scaled&quot;</span>, <span class="st">&quot;df.scaled&quot;</span>, <span class="st">&quot;pvalue.scaled&quot;</span>, <span class="st">&quot;rmsea.scaled&quot;</span>,</span>
+<span id="cb427-12"><a href="indicatori-a-livello-di-scala-ordinale.html#cb427-12" tabindex="-1"></a>    <span class="st">&quot;cfi.scaled&quot;</span>, <span class="st">&quot;tli.scaled&quot;</span></span>
+<span id="cb427-13"><a href="indicatori-a-livello-di-scala-ordinale.html#cb427-13" tabindex="-1"></a>  )</span>
+<span id="cb427-14"><a href="indicatori-a-livello-di-scala-ordinale.html#cb427-14" tabindex="-1"></a></span>
+<span id="cb427-15"><a href="indicatori-a-livello-di-scala-ordinale.html#cb427-15" tabindex="-1"></a>row.names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;baseline&quot;</span>, <span class="st">&quot;prop4&quot;</span>, <span class="st">&quot;prop7&quot;</span>)</span>
+<span id="cb427-16"><a href="indicatori-a-livello-di-scala-ordinale.html#cb427-16" tabindex="-1"></a></span>
+<span id="cb427-17"><a href="indicatori-a-livello-di-scala-ordinale.html#cb427-17" tabindex="-1"></a><span class="fu">colnames</span>(all.results) <span class="ot">&lt;-</span> column.names</span>
+<span id="cb427-18"><a href="indicatori-a-livello-di-scala-ordinale.html#cb427-18" tabindex="-1"></a><span class="fu">rownames</span>(all.results) <span class="ot">&lt;-</span> row.names</span></code></pre></div>
 <p>Eseguiamo i confronti tra modelli:</p>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb418-1" tabindex="-1"></a><span class="fu">lavTestLRT</span>(fit.prop4, fit.prop7)</span>
-<span id="cb418-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb418-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb418-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb418-3" tabindex="-1"></a><span class="co">#&gt; Scaled Chi-Squared Difference Test (method = &quot;satorra.2000&quot;)</span></span>
-<span id="cb418-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb418-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb418-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb418-5" tabindex="-1"></a><span class="co">#&gt; lavaan </span><span class="al">NOTE</span><span class="co">:</span></span>
-<span id="cb418-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb418-6" tabindex="-1"></a><span class="co">#&gt;     The &quot;Chisq&quot; column contains standard test statistics, not the</span></span>
-<span id="cb418-7"><a href="indicatori-a-livello-di-scala-ordinale.html#cb418-7" tabindex="-1"></a><span class="co">#&gt;     robust test that should be reported per model. A robust difference</span></span>
-<span id="cb418-8"><a href="indicatori-a-livello-di-scala-ordinale.html#cb418-8" tabindex="-1"></a><span class="co">#&gt;     test is a function of two standard (not robust) statistics.</span></span>
-<span id="cb418-9"><a href="indicatori-a-livello-di-scala-ordinale.html#cb418-9" tabindex="-1"></a><span class="co">#&gt;  </span></span>
-<span id="cb418-10"><a href="indicatori-a-livello-di-scala-ordinale.html#cb418-10" tabindex="-1"></a><span class="co">#&gt;           Df AIC BIC  Chisq Chisq diff Df diff Pr(&gt;Chisq)    </span></span>
-<span id="cb418-11"><a href="indicatori-a-livello-di-scala-ordinale.html#cb418-11" tabindex="-1"></a><span class="co">#&gt; fit.prop4 14         42.170                                  </span></span>
-<span id="cb418-12"><a href="indicatori-a-livello-di-scala-ordinale.html#cb418-12" tabindex="-1"></a><span class="co">#&gt; fit.prop7 20         93.115     73.708       6   7.08e-14 ***</span></span>
-<span id="cb418-13"><a href="indicatori-a-livello-di-scala-ordinale.html#cb418-13" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb418-14"><a href="indicatori-a-livello-di-scala-ordinale.html#cb418-14" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
-<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb419-1" tabindex="-1"></a><span class="fu">lavTestLRT</span>(fit.prop7, fit.baseline)</span>
-<span id="cb419-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb419-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb419-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb419-3" tabindex="-1"></a><span class="co">#&gt; Scaled Chi-Squared Difference Test (method = &quot;satorra.2000&quot;)</span></span>
-<span id="cb419-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb419-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb419-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb419-5" tabindex="-1"></a><span class="co">#&gt; lavaan </span><span class="al">NOTE</span><span class="co">:</span></span>
-<span id="cb419-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb419-6" tabindex="-1"></a><span class="co">#&gt;     The &quot;Chisq&quot; column contains standard test statistics, not the</span></span>
-<span id="cb419-7"><a href="indicatori-a-livello-di-scala-ordinale.html#cb419-7" tabindex="-1"></a><span class="co">#&gt;     robust test that should be reported per model. A robust difference</span></span>
-<span id="cb419-8"><a href="indicatori-a-livello-di-scala-ordinale.html#cb419-8" tabindex="-1"></a><span class="co">#&gt;     test is a function of two standard (not robust) statistics.</span></span>
-<span id="cb419-9"><a href="indicatori-a-livello-di-scala-ordinale.html#cb419-9" tabindex="-1"></a><span class="co">#&gt;  </span></span>
-<span id="cb419-10"><a href="indicatori-a-livello-di-scala-ordinale.html#cb419-10" tabindex="-1"></a><span class="co">#&gt;              Df AIC BIC  Chisq Chisq diff Df diff Pr(&gt;Chisq)    </span></span>
-<span id="cb419-11"><a href="indicatori-a-livello-di-scala-ordinale.html#cb419-11" tabindex="-1"></a><span class="co">#&gt; fit.baseline  6         26.942                                  </span></span>
-<span id="cb419-12"><a href="indicatori-a-livello-di-scala-ordinale.html#cb419-12" tabindex="-1"></a><span class="co">#&gt; fit.prop7    20         93.115     136.14      14  &lt; 2.2e-16 ***</span></span>
-<span id="cb419-13"><a href="indicatori-a-livello-di-scala-ordinale.html#cb419-13" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb419-14"><a href="indicatori-a-livello-di-scala-ordinale.html#cb419-14" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb428-1" tabindex="-1"></a><span class="fu">lavTestLRT</span>(fit.prop4, fit.prop7)</span>
+<span id="cb428-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb428-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb428-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb428-3" tabindex="-1"></a><span class="co">#&gt; Scaled Chi-Squared Difference Test (method = &quot;satorra.2000&quot;)</span></span>
+<span id="cb428-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb428-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb428-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb428-5" tabindex="-1"></a><span class="co">#&gt; lavaan </span><span class="al">NOTE</span><span class="co">:</span></span>
+<span id="cb428-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb428-6" tabindex="-1"></a><span class="co">#&gt;     The &quot;Chisq&quot; column contains standard test statistics, not the</span></span>
+<span id="cb428-7"><a href="indicatori-a-livello-di-scala-ordinale.html#cb428-7" tabindex="-1"></a><span class="co">#&gt;     robust test that should be reported per model. A robust difference</span></span>
+<span id="cb428-8"><a href="indicatori-a-livello-di-scala-ordinale.html#cb428-8" tabindex="-1"></a><span class="co">#&gt;     test is a function of two standard (not robust) statistics.</span></span>
+<span id="cb428-9"><a href="indicatori-a-livello-di-scala-ordinale.html#cb428-9" tabindex="-1"></a><span class="co">#&gt;  </span></span>
+<span id="cb428-10"><a href="indicatori-a-livello-di-scala-ordinale.html#cb428-10" tabindex="-1"></a><span class="co">#&gt;           Df AIC BIC  Chisq Chisq diff Df diff Pr(&gt;Chisq)    </span></span>
+<span id="cb428-11"><a href="indicatori-a-livello-di-scala-ordinale.html#cb428-11" tabindex="-1"></a><span class="co">#&gt; fit.prop4 14         42.170                                  </span></span>
+<span id="cb428-12"><a href="indicatori-a-livello-di-scala-ordinale.html#cb428-12" tabindex="-1"></a><span class="co">#&gt; fit.prop7 20         93.115     73.708       6   7.08e-14 ***</span></span>
+<span id="cb428-13"><a href="indicatori-a-livello-di-scala-ordinale.html#cb428-13" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb428-14"><a href="indicatori-a-livello-di-scala-ordinale.html#cb428-14" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb429-1" tabindex="-1"></a><span class="fu">lavTestLRT</span>(fit.prop7, fit.baseline)</span>
+<span id="cb429-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb429-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb429-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb429-3" tabindex="-1"></a><span class="co">#&gt; Scaled Chi-Squared Difference Test (method = &quot;satorra.2000&quot;)</span></span>
+<span id="cb429-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb429-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb429-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb429-5" tabindex="-1"></a><span class="co">#&gt; lavaan </span><span class="al">NOTE</span><span class="co">:</span></span>
+<span id="cb429-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb429-6" tabindex="-1"></a><span class="co">#&gt;     The &quot;Chisq&quot; column contains standard test statistics, not the</span></span>
+<span id="cb429-7"><a href="indicatori-a-livello-di-scala-ordinale.html#cb429-7" tabindex="-1"></a><span class="co">#&gt;     robust test that should be reported per model. A robust difference</span></span>
+<span id="cb429-8"><a href="indicatori-a-livello-di-scala-ordinale.html#cb429-8" tabindex="-1"></a><span class="co">#&gt;     test is a function of two standard (not robust) statistics.</span></span>
+<span id="cb429-9"><a href="indicatori-a-livello-di-scala-ordinale.html#cb429-9" tabindex="-1"></a><span class="co">#&gt;  </span></span>
+<span id="cb429-10"><a href="indicatori-a-livello-di-scala-ordinale.html#cb429-10" tabindex="-1"></a><span class="co">#&gt;              Df AIC BIC  Chisq Chisq diff Df diff Pr(&gt;Chisq)    </span></span>
+<span id="cb429-11"><a href="indicatori-a-livello-di-scala-ordinale.html#cb429-11" tabindex="-1"></a><span class="co">#&gt; fit.baseline  6         26.942                                  </span></span>
+<span id="cb429-12"><a href="indicatori-a-livello-di-scala-ordinale.html#cb429-12" tabindex="-1"></a><span class="co">#&gt; fit.prop7    20         93.115     136.14      14  &lt; 2.2e-16 ***</span></span>
+<span id="cb429-13"><a href="indicatori-a-livello-di-scala-ordinale.html#cb429-13" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb429-14"><a href="indicatori-a-livello-di-scala-ordinale.html#cb429-14" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
 <p>Un confronto tra gli indici di bontà di adattamento dei tre modelli è fornito di seguito:</p>
-<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb420-1" tabindex="-1"></a>all.results</span>
-<span id="cb420-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb420-2" tabindex="-1"></a><span class="co">#&gt;          chisq.scaled df.scaled pvalue.scaled rmsea.scaled cfi.scaled</span></span>
-<span id="cb420-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb420-3" tabindex="-1"></a><span class="co">#&gt; baseline       50.944         6             0        0.042      0.997</span></span>
-<span id="cb420-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb420-4" tabindex="-1"></a><span class="co">#&gt; prop4         107.839        14             0        0.040      0.994</span></span>
-<span id="cb420-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb420-5" tabindex="-1"></a><span class="co">#&gt; prop7         186.542        20             0        0.044      0.989</span></span>
-<span id="cb420-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb420-6" tabindex="-1"></a><span class="co">#&gt;          tli.scaled</span></span>
-<span id="cb420-7"><a href="indicatori-a-livello-di-scala-ordinale.html#cb420-7" tabindex="-1"></a><span class="co">#&gt; baseline      0.991</span></span>
-<span id="cb420-8"><a href="indicatori-a-livello-di-scala-ordinale.html#cb420-8" tabindex="-1"></a><span class="co">#&gt; prop4         0.992</span></span>
-<span id="cb420-9"><a href="indicatori-a-livello-di-scala-ordinale.html#cb420-9" tabindex="-1"></a><span class="co">#&gt; prop7         0.990</span></span></code></pre></div>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="indicatori-a-livello-di-scala-ordinale.html#cb430-1" tabindex="-1"></a>all.results</span>
+<span id="cb430-2"><a href="indicatori-a-livello-di-scala-ordinale.html#cb430-2" tabindex="-1"></a><span class="co">#&gt;          chisq.scaled df.scaled pvalue.scaled rmsea.scaled cfi.scaled</span></span>
+<span id="cb430-3"><a href="indicatori-a-livello-di-scala-ordinale.html#cb430-3" tabindex="-1"></a><span class="co">#&gt; baseline       50.944         6             0        0.042      0.997</span></span>
+<span id="cb430-4"><a href="indicatori-a-livello-di-scala-ordinale.html#cb430-4" tabindex="-1"></a><span class="co">#&gt; prop4         107.839        14             0        0.040      0.994</span></span>
+<span id="cb430-5"><a href="indicatori-a-livello-di-scala-ordinale.html#cb430-5" tabindex="-1"></a><span class="co">#&gt; prop7         186.542        20             0        0.044      0.989</span></span>
+<span id="cb430-6"><a href="indicatori-a-livello-di-scala-ordinale.html#cb430-6" tabindex="-1"></a><span class="co">#&gt;          tli.scaled</span></span>
+<span id="cb430-7"><a href="indicatori-a-livello-di-scala-ordinale.html#cb430-7" tabindex="-1"></a><span class="co">#&gt; baseline      0.991</span></span>
+<span id="cb430-8"><a href="indicatori-a-livello-di-scala-ordinale.html#cb430-8" tabindex="-1"></a><span class="co">#&gt; prop4         0.992</span></span>
+<span id="cb430-9"><a href="indicatori-a-livello-di-scala-ordinale.html#cb430-9" tabindex="-1"></a><span class="co">#&gt; prop7         0.990</span></span></code></pre></div>
 <p>In conclusione, nel caso presente, il test del rapporto di verosimiglianza indica che non viene rispettata neppure l’invarianza delle soglie tra gruppi. Gli altri confronti, dunque, sono superflui e sono stati qui presentati solo allo scopo di illustrare la procedura,</p>
 <!-- ### Invarianza parziale -->
 <!-- Viene introdotto il vincolo dell'eguaglianza delle soglie mentre viene liberamente stimata  la saturazione fattoriale R09C, come conseguenza delle indicazioni derivate dagli indici di modificazione (_modification indices_). -->

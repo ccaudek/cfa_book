@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2023-03-22" />
+<meta name="date" content="2023-03-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,12 +340,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9.9" data-path="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><a href="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><i class="fa fa-check"></i><b>9.9</b> Metodi alternativi per la stima del coefficiente di attendibilità</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10</b> L’incertezza della misura</a>
+<li class="chapter" data-level="10" data-path="lerrore-standard-della-misurazione.html"><a href="lerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10</b> L’errore standard della misurazione</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10.1</b> La stima dell’errore standard della misurazione</a>
+<li class="chapter" data-level="10.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10.1</b> L’incertezza della misura</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
-<li class="chapter" data-level="10.1.2" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
+<li class="chapter" data-level="10.1.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
+<li class="chapter" data-level="10.1.2" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="dimostrazione.html"><a href="dimostrazione.html"><i class="fa fa-check"></i><b>10.2</b> Dimostrazione</a></li>
 <li class="chapter" data-level="10.3" data-path="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><a href="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><i class="fa fa-check"></i><b>10.3</b> Intervallo di confidenza per il punteggio vero e <span class="math inline">\(\sigma_E\)</span></a></li>
@@ -360,7 +360,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="12" data-path="esercizi-sulla-ctt.html"><a href="esercizi-sulla-ctt.html"><i class="fa fa-check"></i><b>12</b> Esercizi sulla CTT</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.1</b> Validità</a></li>
+<li class="chapter" data-level="12.1" data-path="attendibilità.html"><a href="attendibilità.html"><i class="fa fa-check"></i><b>12.1</b> Attendibilità</a></li>
+<li class="chapter" data-level="12.2" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.2</b> Validità</a></li>
 </ul></li>
 <li class="part"><span><b>IV L’analisi fattoriale</b></span></li>
 <li class="chapter" data-level="13" data-path="utilizzo-e-costruzione-di-test-psicometrici.html"><a href="utilizzo-e-costruzione-di-test-psicometrici.html"><i class="fa fa-check"></i><b>13</b> Utilizzo e costruzione di test psicometrici</a>
@@ -746,20 +747,20 @@ può essere espressa come:</p>
 differenza tra la matrice di correlazioni osservate e la matrice di
 correlazioni riprodotte dal modello. Per i dati di Spearman, le
 correlazioni riprodotte dal modello ad un fattore sono</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html#cb228-1" tabindex="-1"></a><span class="fu">round</span>(L <span class="sc">%*%</span> <span class="fu">t</span>(L) <span class="sc">+</span> <span class="fu">diag</span>(fm<span class="sc">$</span>uniq), <span class="dv">3</span>)</span>
-<span id="cb228-2"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html#cb228-2" tabindex="-1"></a><span class="co">#&gt;       [,1]  [,2]  [,3]  [,4]</span></span>
-<span id="cb228-3"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html#cb228-3" tabindex="-1"></a><span class="co">#&gt; [1,] 1.000 0.784 0.703 0.649</span></span>
-<span id="cb228-4"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html#cb228-4" tabindex="-1"></a><span class="co">#&gt; [2,] 0.784 1.000 0.602 0.556</span></span>
-<span id="cb228-5"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html#cb228-5" tabindex="-1"></a><span class="co">#&gt; [3,] 0.703 0.602 1.000 0.499</span></span>
-<span id="cb228-6"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html#cb228-6" tabindex="-1"></a><span class="co">#&gt; [4,] 0.649 0.556 0.499 1.000</span></span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html#cb238-1" tabindex="-1"></a><span class="fu">round</span>(L <span class="sc">%*%</span> <span class="fu">t</span>(L) <span class="sc">+</span> <span class="fu">diag</span>(fm<span class="sc">$</span>uniq), <span class="dv">3</span>)</span>
+<span id="cb238-2"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html#cb238-2" tabindex="-1"></a><span class="co">#&gt;       [,1]  [,2]  [,3]  [,4]</span></span>
+<span id="cb238-3"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html#cb238-3" tabindex="-1"></a><span class="co">#&gt; [1,] 1.000 0.784 0.703 0.649</span></span>
+<span id="cb238-4"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html#cb238-4" tabindex="-1"></a><span class="co">#&gt; [2,] 0.784 1.000 0.602 0.556</span></span>
+<span id="cb238-5"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html#cb238-5" tabindex="-1"></a><span class="co">#&gt; [3,] 0.703 0.602 1.000 0.499</span></span>
+<span id="cb238-6"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html#cb238-6" tabindex="-1"></a><span class="co">#&gt; [4,] 0.649 0.556 0.499 1.000</span></span></code></pre></div>
 <p>La matrice delle differenze tra le correlazioni campionarie e quelle
 riprodotte è</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html#cb229-1" tabindex="-1"></a><span class="fu">round</span>(Spearman <span class="sc">-</span> (L <span class="sc">%*%</span> <span class="fu">t</span>(L) <span class="sc">+</span> <span class="fu">diag</span>(fm<span class="sc">$</span>uniq)), <span class="dv">3</span>)</span>
-<span id="cb229-2"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html#cb229-2" tabindex="-1"></a><span class="co">#&gt;        C      E      M      P</span></span>
-<span id="cb229-3"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html#cb229-3" tabindex="-1"></a><span class="co">#&gt; C  0.000 -0.004 -0.003  0.011</span></span>
-<span id="cb229-4"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html#cb229-4" tabindex="-1"></a><span class="co">#&gt; E -0.004  0.000  0.038 -0.016</span></span>
-<span id="cb229-5"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html#cb229-5" tabindex="-1"></a><span class="co">#&gt; M -0.003  0.038  0.000 -0.049</span></span>
-<span id="cb229-6"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html#cb229-6" tabindex="-1"></a><span class="co">#&gt; P  0.011 -0.016 -0.049  0.000</span></span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html#cb239-1" tabindex="-1"></a><span class="fu">round</span>(Spearman <span class="sc">-</span> (L <span class="sc">%*%</span> <span class="fu">t</span>(L) <span class="sc">+</span> <span class="fu">diag</span>(fm<span class="sc">$</span>uniq)), <span class="dv">3</span>)</span>
+<span id="cb239-2"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html#cb239-2" tabindex="-1"></a><span class="co">#&gt;        C      E      M      P</span></span>
+<span id="cb239-3"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html#cb239-3" tabindex="-1"></a><span class="co">#&gt; C  0.000 -0.004 -0.003  0.011</span></span>
+<span id="cb239-4"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html#cb239-4" tabindex="-1"></a><span class="co">#&gt; E -0.004  0.000  0.038 -0.016</span></span>
+<span id="cb239-5"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html#cb239-5" tabindex="-1"></a><span class="co">#&gt; M -0.003  0.038  0.000 -0.049</span></span>
+<span id="cb239-6"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html#cb239-6" tabindex="-1"></a><span class="co">#&gt; P  0.011 -0.016 -0.049  0.000</span></span></code></pre></div>
 <p>Lo scarto maggiore tra le correlazioni campionarie e quelle riprodotte è
 uguale a 0.049. Si può dunque concludere che il modello monofattoriale
 spiega in maniera ragionevole i dati di Spearman.</p>

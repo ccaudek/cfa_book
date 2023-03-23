@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2023-03-22" />
+<meta name="date" content="2023-03-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,12 +340,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9.9" data-path="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><a href="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><i class="fa fa-check"></i><b>9.9</b> Metodi alternativi per la stima del coefficiente di attendibilità</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10</b> L’incertezza della misura</a>
+<li class="chapter" data-level="10" data-path="lerrore-standard-della-misurazione.html"><a href="lerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10</b> L’errore standard della misurazione</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10.1</b> La stima dell’errore standard della misurazione</a>
+<li class="chapter" data-level="10.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10.1</b> L’incertezza della misura</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
-<li class="chapter" data-level="10.1.2" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
+<li class="chapter" data-level="10.1.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
+<li class="chapter" data-level="10.1.2" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="dimostrazione.html"><a href="dimostrazione.html"><i class="fa fa-check"></i><b>10.2</b> Dimostrazione</a></li>
 <li class="chapter" data-level="10.3" data-path="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><a href="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><i class="fa fa-check"></i><b>10.3</b> Intervallo di confidenza per il punteggio vero e <span class="math inline">\(\sigma_E\)</span></a></li>
@@ -360,7 +360,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="12" data-path="esercizi-sulla-ctt.html"><a href="esercizi-sulla-ctt.html"><i class="fa fa-check"></i><b>12</b> Esercizi sulla CTT</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.1</b> Validità</a></li>
+<li class="chapter" data-level="12.1" data-path="attendibilità.html"><a href="attendibilità.html"><i class="fa fa-check"></i><b>12.1</b> Attendibilità</a></li>
+<li class="chapter" data-level="12.2" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.2</b> Validità</a></li>
 </ul></li>
 <li class="part"><span><b>IV L’analisi fattoriale</b></span></li>
 <li class="chapter" data-level="13" data-path="utilizzo-e-costruzione-di-test-psicometrici.html"><a href="utilizzo-e-costruzione-di-test-psicometrici.html"><i class="fa fa-check"></i><b>13</b> Utilizzo e costruzione di test psicometrici</a>
@@ -792,7 +793,7 @@ certezza. Questo avviene quando tutti i metodi che abbiamo descritto
 prima forniscono la stessa risposta. In questi casi, possiamo essere più
 certi della soluzione dell’analisi fattoriale.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-29" class="example"><strong>Esempio 24.1  </strong></span>Per confrontare i quattro metodi discussi per la scelta del numero <span class="math inline">\(m\)</span>
+<p><span id="exm:unlabeled-div-28" class="example"><strong>Esempio 24.1  </strong></span>Per confrontare i quattro metodi discussi per la scelta del numero <span class="math inline">\(m\)</span>
 di fattori usiamo qui una matrice di correlazioni calcolata sulla WAIS. Le 11 sottoscale sono le seguenti:</p>
 <ul>
 <li>X1 = Information</li>
@@ -807,123 +808,123 @@ di fattori usiamo qui una matrice di correlazioni calcolata sulla WAIS. Le 11 so
 <li>X10 = Picture.arrangement</li>
 <li>X11 = Object.assembly</li>
 </ul>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="test-di-bontà-di-adattamento.html#cb342-1" tabindex="-1"></a>varnames <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb342-2"><a href="test-di-bontà-di-adattamento.html#cb342-2" tabindex="-1"></a>  <span class="st">&quot;IN&quot;</span>, <span class="st">&quot;CO&quot;</span>, <span class="st">&quot;AR&quot;</span>, <span class="st">&quot;SI&quot;</span>, <span class="st">&quot;DS&quot;</span>, <span class="st">&quot;VO&quot;</span>, <span class="st">&quot;SY&quot;</span>, <span class="st">&quot;PC&quot;</span>,</span>
-<span id="cb342-3"><a href="test-di-bontà-di-adattamento.html#cb342-3" tabindex="-1"></a>  <span class="st">&quot;BD&quot;</span>, <span class="st">&quot;PA&quot;</span>, <span class="st">&quot;OA&quot;</span>, <span class="st">&quot;AG&quot;</span>, <span class="st">&quot;ED&quot;</span></span>
-<span id="cb342-4"><a href="test-di-bontà-di-adattamento.html#cb342-4" tabindex="-1"></a>)</span>
-<span id="cb342-5"><a href="test-di-bontà-di-adattamento.html#cb342-5" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
-<span id="cb342-6"><a href="test-di-bontà-di-adattamento.html#cb342-6" tabindex="-1"></a>  <span class="dv">1</span>, <span class="fl">0.67</span>, <span class="fl">0.62</span>, <span class="fl">0.66</span>, <span class="fl">0.47</span>, <span class="fl">0.81</span>, <span class="fl">0.47</span>, <span class="fl">0.60</span>, <span class="fl">0.49</span>, <span class="fl">0.51</span>, <span class="fl">0.41</span>,</span>
-<span id="cb342-7"><a href="test-di-bontà-di-adattamento.html#cb342-7" tabindex="-1"></a>  <span class="sc">-</span><span class="fl">0.07</span>, <span class="fl">0.66</span>, .<span class="dv">67</span>, <span class="dv">1</span>, <span class="fl">0.54</span>, <span class="fl">0.60</span>, <span class="fl">0.39</span>, <span class="fl">0.72</span>, <span class="fl">0.40</span>, <span class="fl">0.54</span>, <span class="fl">0.45</span>,</span>
-<span id="cb342-8"><a href="test-di-bontà-di-adattamento.html#cb342-8" tabindex="-1"></a>  <span class="fl">0.49</span>, <span class="fl">0.38</span>, <span class="sc">-</span><span class="fl">0.08</span>, <span class="fl">0.52</span>, .<span class="dv">62</span>, .<span class="dv">54</span>, <span class="dv">1</span>, <span class="fl">0.51</span>, <span class="fl">0.51</span>, <span class="fl">0.58</span>, <span class="fl">0.41</span>,</span>
-<span id="cb342-9"><a href="test-di-bontà-di-adattamento.html#cb342-9" tabindex="-1"></a>  <span class="fl">0.46</span>, <span class="fl">0.48</span>, <span class="fl">0.43</span>, <span class="fl">0.37</span>, <span class="sc">-</span><span class="fl">0.08</span>, <span class="fl">0.49</span>, .<span class="dv">66</span>, .<span class="dv">60</span>, .<span class="dv">51</span>, <span class="dv">1</span>, <span class="fl">0.41</span>,</span>
-<span id="cb342-10"><a href="test-di-bontà-di-adattamento.html#cb342-10" tabindex="-1"></a>  <span class="fl">0.68</span>, <span class="fl">0.49</span>, <span class="fl">0.56</span>, <span class="fl">0.50</span>, <span class="fl">0.50</span>, <span class="fl">0.41</span>, <span class="sc">-</span><span class="fl">0.19</span>, <span class="fl">0.55</span>, .<span class="dv">47</span>, .<span class="dv">39</span>, .<span class="dv">51</span>,</span>
-<span id="cb342-11"><a href="test-di-bontà-di-adattamento.html#cb342-11" tabindex="-1"></a>  .<span class="dv">41</span>, <span class="dv">1</span>, <span class="fl">0.45</span>, <span class="fl">0.45</span>, <span class="fl">0.42</span>, <span class="fl">0.39</span>, <span class="fl">0.42</span>, <span class="fl">0.31</span>, <span class="sc">-</span><span class="fl">0.19</span>, <span class="fl">0.43</span>,</span>
-<span id="cb342-12"><a href="test-di-bontà-di-adattamento.html#cb342-12" tabindex="-1"></a>  .<span class="dv">81</span>, .<span class="dv">72</span>, .<span class="dv">58</span>, .<span class="dv">68</span>, .<span class="dv">45</span>, <span class="dv">1</span>, <span class="fl">0.49</span>, <span class="fl">0.57</span>, <span class="fl">0.46</span>, <span class="fl">0.52</span>, <span class="fl">0.40</span>, <span class="sc">-</span><span class="fl">0.02</span>,</span>
-<span id="cb342-13"><a href="test-di-bontà-di-adattamento.html#cb342-13" tabindex="-1"></a>  <span class="fl">0.62</span>, .<span class="dv">47</span>, .<span class="dv">40</span>, .<span class="dv">41</span>, .<span class="dv">49</span>, .<span class="dv">45</span>, .<span class="dv">49</span>, <span class="dv">1</span>, <span class="fl">0.50</span>, <span class="fl">0.50</span>, <span class="fl">0.52</span>, <span class="fl">0.46</span>,</span>
-<span id="cb342-14"><a href="test-di-bontà-di-adattamento.html#cb342-14" tabindex="-1"></a>  <span class="sc">-</span><span class="fl">0.46</span>, <span class="fl">0.57</span>, .<span class="dv">60</span>, .<span class="dv">54</span>, .<span class="dv">46</span>, .<span class="dv">56</span>, .<span class="dv">42</span>, .<span class="dv">57</span>, .<span class="dv">50</span>, <span class="dv">1</span>, <span class="fl">0.61</span>, <span class="fl">0.59</span>,</span>
-<span id="cb342-15"><a href="test-di-bontà-di-adattamento.html#cb342-15" tabindex="-1"></a>  <span class="fl">0.51</span>, <span class="sc">-</span><span class="fl">0.28</span>, <span class="fl">0.48</span>, .<span class="dv">49</span>, .<span class="dv">45</span>, .<span class="dv">48</span>, .<span class="dv">50</span>, .<span class="dv">39</span>, .<span class="dv">46</span>, .<span class="dv">50</span>, .<span class="dv">61</span>, <span class="dv">1</span>,</span>
-<span id="cb342-16"><a href="test-di-bontà-di-adattamento.html#cb342-16" tabindex="-1"></a>  <span class="fl">0.54</span>, <span class="fl">0.59</span>, <span class="sc">-</span><span class="fl">0.32</span>, <span class="fl">0.44</span>, .<span class="dv">51</span>, .<span class="dv">49</span>, .<span class="dv">43</span>, .<span class="dv">50</span>, .<span class="dv">42</span>, .<span class="dv">52</span>, .<span class="dv">52</span>, .<span class="dv">59</span>,</span>
-<span id="cb342-17"><a href="test-di-bontà-di-adattamento.html#cb342-17" tabindex="-1"></a>  .<span class="dv">54</span>, <span class="dv">1</span>, <span class="fl">0.46</span>, <span class="sc">-</span><span class="fl">0.37</span>, <span class="fl">0.49</span>, .<span class="dv">41</span>, .<span class="dv">38</span>, .<span class="dv">37</span>, .<span class="dv">41</span>, .<span class="dv">31</span>, .<span class="dv">40</span>, .<span class="dv">46</span>, .<span class="dv">51</span>,</span>
-<span id="cb342-18"><a href="test-di-bontà-di-adattamento.html#cb342-18" tabindex="-1"></a>  .<span class="dv">59</span>, .<span class="dv">46</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.28</span>, <span class="fl">0.40</span>, <span class="sc">-</span>.<span class="dv">07</span>, <span class="sc">-</span>.<span class="dv">08</span>, <span class="sc">-</span>.<span class="dv">08</span>, <span class="sc">-</span>.<span class="dv">19</span>, <span class="sc">-</span>.<span class="dv">19</span>, <span class="sc">-</span>.<span class="dv">02</span>,</span>
-<span id="cb342-19"><a href="test-di-bontà-di-adattamento.html#cb342-19" tabindex="-1"></a>  <span class="sc">-</span>.<span class="dv">46</span>, <span class="sc">-</span>.<span class="dv">28</span>, <span class="sc">-</span>.<span class="dv">32</span>, <span class="sc">-</span>.<span class="dv">37</span>, <span class="sc">-</span>.<span class="dv">28</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.29</span>, .<span class="dv">66</span>, .<span class="dv">52</span>, .<span class="dv">49</span>, .<span class="dv">55</span>, .<span class="dv">43</span>,</span>
-<span id="cb342-20"><a href="test-di-bontà-di-adattamento.html#cb342-20" tabindex="-1"></a>  .<span class="dv">62</span>, .<span class="dv">57</span>, .<span class="dv">48</span>, .<span class="dv">44</span>, .<span class="dv">49</span>, .<span class="dv">40</span>, <span class="sc">-</span>.<span class="dv">29</span>, <span class="dv">1</span></span>
-<span id="cb342-21"><a href="test-di-bontà-di-adattamento.html#cb342-21" tabindex="-1"></a>), <span class="at">nrow =</span> <span class="dv">13</span>, <span class="at">ncol =</span> <span class="dv">13</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb342-22"><a href="test-di-bontà-di-adattamento.html#cb342-22" tabindex="-1"></a></span>
-<span id="cb342-23"><a href="test-di-bontà-di-adattamento.html#cb342-23" tabindex="-1"></a><span class="fu">colnames</span>(temp) <span class="ot">&lt;-</span> varnames</span>
-<span id="cb342-24"><a href="test-di-bontà-di-adattamento.html#cb342-24" tabindex="-1"></a><span class="fu">rownames</span>(temp) <span class="ot">&lt;-</span> varnames</span>
-<span id="cb342-25"><a href="test-di-bontà-di-adattamento.html#cb342-25" tabindex="-1"></a></span>
-<span id="cb342-26"><a href="test-di-bontà-di-adattamento.html#cb342-26" tabindex="-1"></a>wais_cor <span class="ot">&lt;-</span> temp[<span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>]</span>
-<span id="cb342-27"><a href="test-di-bontà-di-adattamento.html#cb342-27" tabindex="-1"></a>wais_cor</span>
-<span id="cb342-28"><a href="test-di-bontà-di-adattamento.html#cb342-28" tabindex="-1"></a><span class="co">#&gt;      IN   CO   AR   SI   DS   VO   SY   PC   BD   PA   OA</span></span>
-<span id="cb342-29"><a href="test-di-bontà-di-adattamento.html#cb342-29" tabindex="-1"></a><span class="co">#&gt; IN 1.00 0.67 0.62 0.66 0.47 0.81 0.47 0.60 0.49 0.51 0.41</span></span>
-<span id="cb342-30"><a href="test-di-bontà-di-adattamento.html#cb342-30" tabindex="-1"></a><span class="co">#&gt; CO 0.67 1.00 0.54 0.60 0.39 0.72 0.40 0.54 0.45 0.49 0.38</span></span>
-<span id="cb342-31"><a href="test-di-bontà-di-adattamento.html#cb342-31" tabindex="-1"></a><span class="co">#&gt; AR 0.62 0.54 1.00 0.51 0.51 0.58 0.41 0.46 0.48 0.43 0.37</span></span>
-<span id="cb342-32"><a href="test-di-bontà-di-adattamento.html#cb342-32" tabindex="-1"></a><span class="co">#&gt; SI 0.66 0.60 0.51 1.00 0.41 0.68 0.49 0.56 0.50 0.50 0.41</span></span>
-<span id="cb342-33"><a href="test-di-bontà-di-adattamento.html#cb342-33" tabindex="-1"></a><span class="co">#&gt; DS 0.47 0.39 0.51 0.41 1.00 0.45 0.45 0.42 0.39 0.42 0.31</span></span>
-<span id="cb342-34"><a href="test-di-bontà-di-adattamento.html#cb342-34" tabindex="-1"></a><span class="co">#&gt; VO 0.81 0.72 0.58 0.68 0.45 1.00 0.49 0.57 0.46 0.52 0.40</span></span>
-<span id="cb342-35"><a href="test-di-bontà-di-adattamento.html#cb342-35" tabindex="-1"></a><span class="co">#&gt; SY 0.47 0.40 0.41 0.49 0.45 0.49 1.00 0.50 0.50 0.52 0.46</span></span>
-<span id="cb342-36"><a href="test-di-bontà-di-adattamento.html#cb342-36" tabindex="-1"></a><span class="co">#&gt; PC 0.60 0.54 0.46 0.56 0.42 0.57 0.50 1.00 0.61 0.59 0.51</span></span>
-<span id="cb342-37"><a href="test-di-bontà-di-adattamento.html#cb342-37" tabindex="-1"></a><span class="co">#&gt; BD 0.49 0.45 0.48 0.50 0.39 0.46 0.50 0.61 1.00 0.54 0.59</span></span>
-<span id="cb342-38"><a href="test-di-bontà-di-adattamento.html#cb342-38" tabindex="-1"></a><span class="co">#&gt; PA 0.51 0.49 0.43 0.50 0.42 0.52 0.52 0.59 0.54 1.00 0.46</span></span>
-<span id="cb342-39"><a href="test-di-bontà-di-adattamento.html#cb342-39" tabindex="-1"></a><span class="co">#&gt; OA 0.41 0.38 0.37 0.41 0.31 0.40 0.46 0.51 0.59 0.46 1.00</span></span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="test-di-bontà-di-adattamento.html#cb352-1" tabindex="-1"></a>varnames <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb352-2"><a href="test-di-bontà-di-adattamento.html#cb352-2" tabindex="-1"></a>  <span class="st">&quot;IN&quot;</span>, <span class="st">&quot;CO&quot;</span>, <span class="st">&quot;AR&quot;</span>, <span class="st">&quot;SI&quot;</span>, <span class="st">&quot;DS&quot;</span>, <span class="st">&quot;VO&quot;</span>, <span class="st">&quot;SY&quot;</span>, <span class="st">&quot;PC&quot;</span>,</span>
+<span id="cb352-3"><a href="test-di-bontà-di-adattamento.html#cb352-3" tabindex="-1"></a>  <span class="st">&quot;BD&quot;</span>, <span class="st">&quot;PA&quot;</span>, <span class="st">&quot;OA&quot;</span>, <span class="st">&quot;AG&quot;</span>, <span class="st">&quot;ED&quot;</span></span>
+<span id="cb352-4"><a href="test-di-bontà-di-adattamento.html#cb352-4" tabindex="-1"></a>)</span>
+<span id="cb352-5"><a href="test-di-bontà-di-adattamento.html#cb352-5" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
+<span id="cb352-6"><a href="test-di-bontà-di-adattamento.html#cb352-6" tabindex="-1"></a>  <span class="dv">1</span>, <span class="fl">0.67</span>, <span class="fl">0.62</span>, <span class="fl">0.66</span>, <span class="fl">0.47</span>, <span class="fl">0.81</span>, <span class="fl">0.47</span>, <span class="fl">0.60</span>, <span class="fl">0.49</span>, <span class="fl">0.51</span>, <span class="fl">0.41</span>,</span>
+<span id="cb352-7"><a href="test-di-bontà-di-adattamento.html#cb352-7" tabindex="-1"></a>  <span class="sc">-</span><span class="fl">0.07</span>, <span class="fl">0.66</span>, .<span class="dv">67</span>, <span class="dv">1</span>, <span class="fl">0.54</span>, <span class="fl">0.60</span>, <span class="fl">0.39</span>, <span class="fl">0.72</span>, <span class="fl">0.40</span>, <span class="fl">0.54</span>, <span class="fl">0.45</span>,</span>
+<span id="cb352-8"><a href="test-di-bontà-di-adattamento.html#cb352-8" tabindex="-1"></a>  <span class="fl">0.49</span>, <span class="fl">0.38</span>, <span class="sc">-</span><span class="fl">0.08</span>, <span class="fl">0.52</span>, .<span class="dv">62</span>, .<span class="dv">54</span>, <span class="dv">1</span>, <span class="fl">0.51</span>, <span class="fl">0.51</span>, <span class="fl">0.58</span>, <span class="fl">0.41</span>,</span>
+<span id="cb352-9"><a href="test-di-bontà-di-adattamento.html#cb352-9" tabindex="-1"></a>  <span class="fl">0.46</span>, <span class="fl">0.48</span>, <span class="fl">0.43</span>, <span class="fl">0.37</span>, <span class="sc">-</span><span class="fl">0.08</span>, <span class="fl">0.49</span>, .<span class="dv">66</span>, .<span class="dv">60</span>, .<span class="dv">51</span>, <span class="dv">1</span>, <span class="fl">0.41</span>,</span>
+<span id="cb352-10"><a href="test-di-bontà-di-adattamento.html#cb352-10" tabindex="-1"></a>  <span class="fl">0.68</span>, <span class="fl">0.49</span>, <span class="fl">0.56</span>, <span class="fl">0.50</span>, <span class="fl">0.50</span>, <span class="fl">0.41</span>, <span class="sc">-</span><span class="fl">0.19</span>, <span class="fl">0.55</span>, .<span class="dv">47</span>, .<span class="dv">39</span>, .<span class="dv">51</span>,</span>
+<span id="cb352-11"><a href="test-di-bontà-di-adattamento.html#cb352-11" tabindex="-1"></a>  .<span class="dv">41</span>, <span class="dv">1</span>, <span class="fl">0.45</span>, <span class="fl">0.45</span>, <span class="fl">0.42</span>, <span class="fl">0.39</span>, <span class="fl">0.42</span>, <span class="fl">0.31</span>, <span class="sc">-</span><span class="fl">0.19</span>, <span class="fl">0.43</span>,</span>
+<span id="cb352-12"><a href="test-di-bontà-di-adattamento.html#cb352-12" tabindex="-1"></a>  .<span class="dv">81</span>, .<span class="dv">72</span>, .<span class="dv">58</span>, .<span class="dv">68</span>, .<span class="dv">45</span>, <span class="dv">1</span>, <span class="fl">0.49</span>, <span class="fl">0.57</span>, <span class="fl">0.46</span>, <span class="fl">0.52</span>, <span class="fl">0.40</span>, <span class="sc">-</span><span class="fl">0.02</span>,</span>
+<span id="cb352-13"><a href="test-di-bontà-di-adattamento.html#cb352-13" tabindex="-1"></a>  <span class="fl">0.62</span>, .<span class="dv">47</span>, .<span class="dv">40</span>, .<span class="dv">41</span>, .<span class="dv">49</span>, .<span class="dv">45</span>, .<span class="dv">49</span>, <span class="dv">1</span>, <span class="fl">0.50</span>, <span class="fl">0.50</span>, <span class="fl">0.52</span>, <span class="fl">0.46</span>,</span>
+<span id="cb352-14"><a href="test-di-bontà-di-adattamento.html#cb352-14" tabindex="-1"></a>  <span class="sc">-</span><span class="fl">0.46</span>, <span class="fl">0.57</span>, .<span class="dv">60</span>, .<span class="dv">54</span>, .<span class="dv">46</span>, .<span class="dv">56</span>, .<span class="dv">42</span>, .<span class="dv">57</span>, .<span class="dv">50</span>, <span class="dv">1</span>, <span class="fl">0.61</span>, <span class="fl">0.59</span>,</span>
+<span id="cb352-15"><a href="test-di-bontà-di-adattamento.html#cb352-15" tabindex="-1"></a>  <span class="fl">0.51</span>, <span class="sc">-</span><span class="fl">0.28</span>, <span class="fl">0.48</span>, .<span class="dv">49</span>, .<span class="dv">45</span>, .<span class="dv">48</span>, .<span class="dv">50</span>, .<span class="dv">39</span>, .<span class="dv">46</span>, .<span class="dv">50</span>, .<span class="dv">61</span>, <span class="dv">1</span>,</span>
+<span id="cb352-16"><a href="test-di-bontà-di-adattamento.html#cb352-16" tabindex="-1"></a>  <span class="fl">0.54</span>, <span class="fl">0.59</span>, <span class="sc">-</span><span class="fl">0.32</span>, <span class="fl">0.44</span>, .<span class="dv">51</span>, .<span class="dv">49</span>, .<span class="dv">43</span>, .<span class="dv">50</span>, .<span class="dv">42</span>, .<span class="dv">52</span>, .<span class="dv">52</span>, .<span class="dv">59</span>,</span>
+<span id="cb352-17"><a href="test-di-bontà-di-adattamento.html#cb352-17" tabindex="-1"></a>  .<span class="dv">54</span>, <span class="dv">1</span>, <span class="fl">0.46</span>, <span class="sc">-</span><span class="fl">0.37</span>, <span class="fl">0.49</span>, .<span class="dv">41</span>, .<span class="dv">38</span>, .<span class="dv">37</span>, .<span class="dv">41</span>, .<span class="dv">31</span>, .<span class="dv">40</span>, .<span class="dv">46</span>, .<span class="dv">51</span>,</span>
+<span id="cb352-18"><a href="test-di-bontà-di-adattamento.html#cb352-18" tabindex="-1"></a>  .<span class="dv">59</span>, .<span class="dv">46</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.28</span>, <span class="fl">0.40</span>, <span class="sc">-</span>.<span class="dv">07</span>, <span class="sc">-</span>.<span class="dv">08</span>, <span class="sc">-</span>.<span class="dv">08</span>, <span class="sc">-</span>.<span class="dv">19</span>, <span class="sc">-</span>.<span class="dv">19</span>, <span class="sc">-</span>.<span class="dv">02</span>,</span>
+<span id="cb352-19"><a href="test-di-bontà-di-adattamento.html#cb352-19" tabindex="-1"></a>  <span class="sc">-</span>.<span class="dv">46</span>, <span class="sc">-</span>.<span class="dv">28</span>, <span class="sc">-</span>.<span class="dv">32</span>, <span class="sc">-</span>.<span class="dv">37</span>, <span class="sc">-</span>.<span class="dv">28</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.29</span>, .<span class="dv">66</span>, .<span class="dv">52</span>, .<span class="dv">49</span>, .<span class="dv">55</span>, .<span class="dv">43</span>,</span>
+<span id="cb352-20"><a href="test-di-bontà-di-adattamento.html#cb352-20" tabindex="-1"></a>  .<span class="dv">62</span>, .<span class="dv">57</span>, .<span class="dv">48</span>, .<span class="dv">44</span>, .<span class="dv">49</span>, .<span class="dv">40</span>, <span class="sc">-</span>.<span class="dv">29</span>, <span class="dv">1</span></span>
+<span id="cb352-21"><a href="test-di-bontà-di-adattamento.html#cb352-21" tabindex="-1"></a>), <span class="at">nrow =</span> <span class="dv">13</span>, <span class="at">ncol =</span> <span class="dv">13</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb352-22"><a href="test-di-bontà-di-adattamento.html#cb352-22" tabindex="-1"></a></span>
+<span id="cb352-23"><a href="test-di-bontà-di-adattamento.html#cb352-23" tabindex="-1"></a><span class="fu">colnames</span>(temp) <span class="ot">&lt;-</span> varnames</span>
+<span id="cb352-24"><a href="test-di-bontà-di-adattamento.html#cb352-24" tabindex="-1"></a><span class="fu">rownames</span>(temp) <span class="ot">&lt;-</span> varnames</span>
+<span id="cb352-25"><a href="test-di-bontà-di-adattamento.html#cb352-25" tabindex="-1"></a></span>
+<span id="cb352-26"><a href="test-di-bontà-di-adattamento.html#cb352-26" tabindex="-1"></a>wais_cor <span class="ot">&lt;-</span> temp[<span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>]</span>
+<span id="cb352-27"><a href="test-di-bontà-di-adattamento.html#cb352-27" tabindex="-1"></a>wais_cor</span>
+<span id="cb352-28"><a href="test-di-bontà-di-adattamento.html#cb352-28" tabindex="-1"></a><span class="co">#&gt;      IN   CO   AR   SI   DS   VO   SY   PC   BD   PA   OA</span></span>
+<span id="cb352-29"><a href="test-di-bontà-di-adattamento.html#cb352-29" tabindex="-1"></a><span class="co">#&gt; IN 1.00 0.67 0.62 0.66 0.47 0.81 0.47 0.60 0.49 0.51 0.41</span></span>
+<span id="cb352-30"><a href="test-di-bontà-di-adattamento.html#cb352-30" tabindex="-1"></a><span class="co">#&gt; CO 0.67 1.00 0.54 0.60 0.39 0.72 0.40 0.54 0.45 0.49 0.38</span></span>
+<span id="cb352-31"><a href="test-di-bontà-di-adattamento.html#cb352-31" tabindex="-1"></a><span class="co">#&gt; AR 0.62 0.54 1.00 0.51 0.51 0.58 0.41 0.46 0.48 0.43 0.37</span></span>
+<span id="cb352-32"><a href="test-di-bontà-di-adattamento.html#cb352-32" tabindex="-1"></a><span class="co">#&gt; SI 0.66 0.60 0.51 1.00 0.41 0.68 0.49 0.56 0.50 0.50 0.41</span></span>
+<span id="cb352-33"><a href="test-di-bontà-di-adattamento.html#cb352-33" tabindex="-1"></a><span class="co">#&gt; DS 0.47 0.39 0.51 0.41 1.00 0.45 0.45 0.42 0.39 0.42 0.31</span></span>
+<span id="cb352-34"><a href="test-di-bontà-di-adattamento.html#cb352-34" tabindex="-1"></a><span class="co">#&gt; VO 0.81 0.72 0.58 0.68 0.45 1.00 0.49 0.57 0.46 0.52 0.40</span></span>
+<span id="cb352-35"><a href="test-di-bontà-di-adattamento.html#cb352-35" tabindex="-1"></a><span class="co">#&gt; SY 0.47 0.40 0.41 0.49 0.45 0.49 1.00 0.50 0.50 0.52 0.46</span></span>
+<span id="cb352-36"><a href="test-di-bontà-di-adattamento.html#cb352-36" tabindex="-1"></a><span class="co">#&gt; PC 0.60 0.54 0.46 0.56 0.42 0.57 0.50 1.00 0.61 0.59 0.51</span></span>
+<span id="cb352-37"><a href="test-di-bontà-di-adattamento.html#cb352-37" tabindex="-1"></a><span class="co">#&gt; BD 0.49 0.45 0.48 0.50 0.39 0.46 0.50 0.61 1.00 0.54 0.59</span></span>
+<span id="cb352-38"><a href="test-di-bontà-di-adattamento.html#cb352-38" tabindex="-1"></a><span class="co">#&gt; PA 0.51 0.49 0.43 0.50 0.42 0.52 0.52 0.59 0.54 1.00 0.46</span></span>
+<span id="cb352-39"><a href="test-di-bontà-di-adattamento.html#cb352-39" tabindex="-1"></a><span class="co">#&gt; OA 0.41 0.38 0.37 0.41 0.31 0.40 0.46 0.51 0.59 0.46 1.00</span></span></code></pre></div>
 <p>Il primo metodo per la determinazione di <span class="math inline">\(m\)</span> richiede di estrarre tanti
 fattori quanti sono necessari per spiegare una quota predeterminata
 della varianza totale. Supponiamo di porre il criterio pari all’80%
 della varianza totale. La soluzione ottenuta in questo modo ci
 porterebbe a mantenere <span class="math inline">\(m=5\)</span> fattori:</p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="test-di-bontà-di-adattamento.html#cb343-1" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">eigen</span>(wais_cor)</span>
-<span id="cb343-2"><a href="test-di-bontà-di-adattamento.html#cb343-2" tabindex="-1"></a><span class="fu">sum</span>(out<span class="sc">$</span>val[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]) <span class="sc">/</span> <span class="fu">sum</span>(out<span class="sc">$</span>val)</span>
-<span id="cb343-3"><a href="test-di-bontà-di-adattamento.html#cb343-3" tabindex="-1"></a><span class="co">#&gt; [1] 0.7656781</span></span>
-<span id="cb343-4"><a href="test-di-bontà-di-adattamento.html#cb343-4" tabindex="-1"></a><span class="fu">sum</span>(out<span class="sc">$</span>val[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]) <span class="sc">/</span> <span class="fu">sum</span>(out<span class="sc">$</span>val)</span>
-<span id="cb343-5"><a href="test-di-bontà-di-adattamento.html#cb343-5" tabindex="-1"></a><span class="co">#&gt; [1] 0.8118853</span></span></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="test-di-bontà-di-adattamento.html#cb353-1" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">eigen</span>(wais_cor)</span>
+<span id="cb353-2"><a href="test-di-bontà-di-adattamento.html#cb353-2" tabindex="-1"></a><span class="fu">sum</span>(out<span class="sc">$</span>val[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]) <span class="sc">/</span> <span class="fu">sum</span>(out<span class="sc">$</span>val)</span>
+<span id="cb353-3"><a href="test-di-bontà-di-adattamento.html#cb353-3" tabindex="-1"></a><span class="co">#&gt; [1] 0.7656781</span></span>
+<span id="cb353-4"><a href="test-di-bontà-di-adattamento.html#cb353-4" tabindex="-1"></a><span class="fu">sum</span>(out<span class="sc">$</span>val[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]) <span class="sc">/</span> <span class="fu">sum</span>(out<span class="sc">$</span>val)</span>
+<span id="cb353-5"><a href="test-di-bontà-di-adattamento.html#cb353-5" tabindex="-1"></a><span class="co">#&gt; [1] 0.8118853</span></span></code></pre></div>
 <p>Il secondo metodo suggerisce di mantenere tutti gli autovalori superiori
 al valore medio degli autovalori (che, nel caso di <strong>R</strong> è uguale a
 <span class="math inline">\(1\)</span>). Nel caso presente, <span class="math inline">\(m=2\)</span>:</p>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="test-di-bontà-di-adattamento.html#cb344-1" tabindex="-1"></a><span class="fu">round</span>(out<span class="sc">$</span>values, <span class="dv">3</span>)</span>
-<span id="cb344-2"><a href="test-di-bontà-di-adattamento.html#cb344-2" tabindex="-1"></a><span class="co">#&gt;  [1] 6.074 1.015 0.746 0.587 0.508 0.431 0.423 0.377 0.351 0.310 0.177</span></span></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="test-di-bontà-di-adattamento.html#cb354-1" tabindex="-1"></a><span class="fu">round</span>(out<span class="sc">$</span>values, <span class="dv">3</span>)</span>
+<span id="cb354-2"><a href="test-di-bontà-di-adattamento.html#cb354-2" tabindex="-1"></a><span class="co">#&gt;  [1] 6.074 1.015 0.746 0.587 0.508 0.431 0.423 0.377 0.351 0.310 0.177</span></span></code></pre></div>
 <p>Il terzo metodo, lo scree test, può essere eseguito usando la funzione
 <code>VSS.scree()</code> contenuta nel pacchetto <code>psych</code>.</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="test-di-bontà-di-adattamento.html#cb345-1" tabindex="-1"></a><span class="fu">VSS.scree</span>(wais_cor)</span></code></pre></div>
-<p><img src="cfa_files/figure-html/unnamed-chunk-365-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="test-di-bontà-di-adattamento.html#cb355-1" tabindex="-1"></a><span class="fu">VSS.scree</span>(wais_cor)</span></code></pre></div>
+<p><img src="cfa_files/figure-html/unnamed-chunk-375-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Lo scree test suggerisce una soluzione a <span class="math inline">\(m=1\)</span> fattori, come indicato
 nella figura precedente. Il terzo metodo, nella versione della Parallel
 Analysis, può essere eseguito usando la funzione <code>paran()</code> contenuta nel
 pacchetto <code>paran</code>. La Parallel Analysis indica una soluzione a <span class="math inline">\(m=1\)</span>
 fattore.</p>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="test-di-bontà-di-adattamento.html#cb346-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;paran&quot;</span>)</span>
-<span id="cb346-2"><a href="test-di-bontà-di-adattamento.html#cb346-2" tabindex="-1"></a><span class="fu">paran</span>(wais_cor, <span class="at">graph =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb346-3"><a href="test-di-bontà-di-adattamento.html#cb346-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb346-4"><a href="test-di-bontà-di-adattamento.html#cb346-4" tabindex="-1"></a><span class="co">#&gt; Using eigendecomposition of correlation matrix.</span></span>
-<span id="cb346-5"><a href="test-di-bontà-di-adattamento.html#cb346-5" tabindex="-1"></a><span class="co">#&gt; Computing: 10%  20%  30%  40%  50%  60%  70%  80%  90%  100%</span></span>
-<span id="cb346-6"><a href="test-di-bontà-di-adattamento.html#cb346-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb346-7"><a href="test-di-bontà-di-adattamento.html#cb346-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb346-8"><a href="test-di-bontà-di-adattamento.html#cb346-8" tabindex="-1"></a><span class="co">#&gt; Results of Horn&#39;s Parallel Analysis for component retention</span></span>
-<span id="cb346-9"><a href="test-di-bontà-di-adattamento.html#cb346-9" tabindex="-1"></a><span class="co">#&gt; 330 iterations, using the mean estimate</span></span>
-<span id="cb346-10"><a href="test-di-bontà-di-adattamento.html#cb346-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb346-11"><a href="test-di-bontà-di-adattamento.html#cb346-11" tabindex="-1"></a><span class="co">#&gt; -------------------------------------------------- </span></span>
-<span id="cb346-12"><a href="test-di-bontà-di-adattamento.html#cb346-12" tabindex="-1"></a><span class="co">#&gt; Component   Adjusted    Unadjusted    Estimated </span></span>
-<span id="cb346-13"><a href="test-di-bontà-di-adattamento.html#cb346-13" tabindex="-1"></a><span class="co">#&gt;             Eigenvalue  Eigenvalue    Bias </span></span>
-<span id="cb346-14"><a href="test-di-bontà-di-adattamento.html#cb346-14" tabindex="-1"></a><span class="co">#&gt; -------------------------------------------------- </span></span>
-<span id="cb346-15"><a href="test-di-bontà-di-adattamento.html#cb346-15" tabindex="-1"></a><span class="co">#&gt; 1           1.636878    3.765744      2.128865</span></span>
-<span id="cb346-16"><a href="test-di-bontà-di-adattamento.html#cb346-16" tabindex="-1"></a><span class="co">#&gt; -------------------------------------------------- </span></span>
-<span id="cb346-17"><a href="test-di-bontà-di-adattamento.html#cb346-17" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb346-18"><a href="test-di-bontà-di-adattamento.html#cb346-18" tabindex="-1"></a><span class="co">#&gt; Adjusted eigenvalues &gt; 1 indicate dimensions to retain.</span></span>
-<span id="cb346-19"><a href="test-di-bontà-di-adattamento.html#cb346-19" tabindex="-1"></a><span class="co">#&gt; (1 components retained)</span></span></code></pre></div>
-<p><img src="cfa_files/figure-html/unnamed-chunk-366-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="test-di-bontà-di-adattamento.html#cb356-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;paran&quot;</span>)</span>
+<span id="cb356-2"><a href="test-di-bontà-di-adattamento.html#cb356-2" tabindex="-1"></a><span class="fu">paran</span>(wais_cor, <span class="at">graph =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb356-3"><a href="test-di-bontà-di-adattamento.html#cb356-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb356-4"><a href="test-di-bontà-di-adattamento.html#cb356-4" tabindex="-1"></a><span class="co">#&gt; Using eigendecomposition of correlation matrix.</span></span>
+<span id="cb356-5"><a href="test-di-bontà-di-adattamento.html#cb356-5" tabindex="-1"></a><span class="co">#&gt; Computing: 10%  20%  30%  40%  50%  60%  70%  80%  90%  100%</span></span>
+<span id="cb356-6"><a href="test-di-bontà-di-adattamento.html#cb356-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb356-7"><a href="test-di-bontà-di-adattamento.html#cb356-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb356-8"><a href="test-di-bontà-di-adattamento.html#cb356-8" tabindex="-1"></a><span class="co">#&gt; Results of Horn&#39;s Parallel Analysis for component retention</span></span>
+<span id="cb356-9"><a href="test-di-bontà-di-adattamento.html#cb356-9" tabindex="-1"></a><span class="co">#&gt; 330 iterations, using the mean estimate</span></span>
+<span id="cb356-10"><a href="test-di-bontà-di-adattamento.html#cb356-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb356-11"><a href="test-di-bontà-di-adattamento.html#cb356-11" tabindex="-1"></a><span class="co">#&gt; -------------------------------------------------- </span></span>
+<span id="cb356-12"><a href="test-di-bontà-di-adattamento.html#cb356-12" tabindex="-1"></a><span class="co">#&gt; Component   Adjusted    Unadjusted    Estimated </span></span>
+<span id="cb356-13"><a href="test-di-bontà-di-adattamento.html#cb356-13" tabindex="-1"></a><span class="co">#&gt;             Eigenvalue  Eigenvalue    Bias </span></span>
+<span id="cb356-14"><a href="test-di-bontà-di-adattamento.html#cb356-14" tabindex="-1"></a><span class="co">#&gt; -------------------------------------------------- </span></span>
+<span id="cb356-15"><a href="test-di-bontà-di-adattamento.html#cb356-15" tabindex="-1"></a><span class="co">#&gt; 1           1.636878    3.765744      2.128865</span></span>
+<span id="cb356-16"><a href="test-di-bontà-di-adattamento.html#cb356-16" tabindex="-1"></a><span class="co">#&gt; -------------------------------------------------- </span></span>
+<span id="cb356-17"><a href="test-di-bontà-di-adattamento.html#cb356-17" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb356-18"><a href="test-di-bontà-di-adattamento.html#cb356-18" tabindex="-1"></a><span class="co">#&gt; Adjusted eigenvalues &gt; 1 indicate dimensions to retain.</span></span>
+<span id="cb356-19"><a href="test-di-bontà-di-adattamento.html#cb356-19" tabindex="-1"></a><span class="co">#&gt; (1 components retained)</span></span></code></pre></div>
+<p><img src="cfa_files/figure-html/unnamed-chunk-376-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Il quarto metodo consiste nell’applicazione di un test inferenziale
 relativo al numero di fattori. Anche questo metodo indica una soluzione
 a sei fattori:</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="test-di-bontà-di-adattamento.html#cb347-1" tabindex="-1"></a><span class="fu">factanal</span>(<span class="at">covmat =</span> wais_cor, <span class="at">factors =</span> <span class="dv">5</span>, <span class="at">n.obs =</span> <span class="dv">933</span>)</span>
-<span id="cb347-2"><a href="test-di-bontà-di-adattamento.html#cb347-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb347-3"><a href="test-di-bontà-di-adattamento.html#cb347-3" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb347-4"><a href="test-di-bontà-di-adattamento.html#cb347-4" tabindex="-1"></a><span class="co">#&gt; factanal(factors = 5, covmat = wais_cor, n.obs = 933)</span></span>
-<span id="cb347-5"><a href="test-di-bontà-di-adattamento.html#cb347-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb347-6"><a href="test-di-bontà-di-adattamento.html#cb347-6" tabindex="-1"></a><span class="co">#&gt; Uniquenesses:</span></span>
-<span id="cb347-7"><a href="test-di-bontà-di-adattamento.html#cb347-7" tabindex="-1"></a><span class="co">#&gt;    IN    CO    AR    SI    DS    VO    SY    PC    BD    PA    OA </span></span>
-<span id="cb347-8"><a href="test-di-bontà-di-adattamento.html#cb347-8" tabindex="-1"></a><span class="co">#&gt; 0.235 0.389 0.117 0.419 0.600 0.109 0.277 0.308 0.334 0.472 0.456 </span></span>
-<span id="cb347-9"><a href="test-di-bontà-di-adattamento.html#cb347-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb347-10"><a href="test-di-bontà-di-adattamento.html#cb347-10" tabindex="-1"></a><span class="co">#&gt; Loadings:</span></span>
-<span id="cb347-11"><a href="test-di-bontà-di-adattamento.html#cb347-11" tabindex="-1"></a><span class="co">#&gt;    Factor1 Factor2 Factor3 Factor4 Factor5</span></span>
-<span id="cb347-12"><a href="test-di-bontà-di-adattamento.html#cb347-12" tabindex="-1"></a><span class="co">#&gt; IN  0.745   0.264   0.301   0.192   0.118 </span></span>
-<span id="cb347-13"><a href="test-di-bontà-di-adattamento.html#cb347-13" tabindex="-1"></a><span class="co">#&gt; CO  0.667   0.278   0.244   0.129   0.111 </span></span>
-<span id="cb347-14"><a href="test-di-bontà-di-adattamento.html#cb347-14" tabindex="-1"></a><span class="co">#&gt; AR  0.378   0.236   0.814   0.145         </span></span>
-<span id="cb347-15"><a href="test-di-bontà-di-adattamento.html#cb347-15" tabindex="-1"></a><span class="co">#&gt; SI  0.591   0.332   0.207   0.252   0.121 </span></span>
-<span id="cb347-16"><a href="test-di-bontà-di-adattamento.html#cb347-16" tabindex="-1"></a><span class="co">#&gt; DS  0.288   0.208   0.366   0.341   0.155 </span></span>
-<span id="cb347-17"><a href="test-di-bontà-di-adattamento.html#cb347-17" tabindex="-1"></a><span class="co">#&gt; VO  0.865   0.216   0.207   0.229         </span></span>
-<span id="cb347-18"><a href="test-di-bontà-di-adattamento.html#cb347-18" tabindex="-1"></a><span class="co">#&gt; SY  0.251   0.364   0.153   0.708         </span></span>
-<span id="cb347-19"><a href="test-di-bontà-di-adattamento.html#cb347-19" tabindex="-1"></a><span class="co">#&gt; PC  0.425   0.548   0.156   0.216   0.375 </span></span>
-<span id="cb347-20"><a href="test-di-bontà-di-adattamento.html#cb347-20" tabindex="-1"></a><span class="co">#&gt; BD  0.246   0.708   0.230   0.201   0.107 </span></span>
-<span id="cb347-21"><a href="test-di-bontà-di-adattamento.html#cb347-21" tabindex="-1"></a><span class="co">#&gt; PA  0.355   0.457   0.163   0.325   0.245 </span></span>
-<span id="cb347-22"><a href="test-di-bontà-di-adattamento.html#cb347-22" tabindex="-1"></a><span class="co">#&gt; OA  0.211   0.664   0.128   0.205         </span></span>
-<span id="cb347-23"><a href="test-di-bontà-di-adattamento.html#cb347-23" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb347-24"><a href="test-di-bontà-di-adattamento.html#cb347-24" tabindex="-1"></a><span class="co">#&gt;                Factor1 Factor2 Factor3 Factor4 Factor5</span></span>
-<span id="cb347-25"><a href="test-di-bontà-di-adattamento.html#cb347-25" tabindex="-1"></a><span class="co">#&gt; SS loadings      2.799   1.986   1.176   1.043   0.280</span></span>
-<span id="cb347-26"><a href="test-di-bontà-di-adattamento.html#cb347-26" tabindex="-1"></a><span class="co">#&gt; Proportion Var   0.254   0.181   0.107   0.095   0.025</span></span>
-<span id="cb347-27"><a href="test-di-bontà-di-adattamento.html#cb347-27" tabindex="-1"></a><span class="co">#&gt; Cumulative Var   0.254   0.435   0.542   0.637   0.662</span></span>
-<span id="cb347-28"><a href="test-di-bontà-di-adattamento.html#cb347-28" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb347-29"><a href="test-di-bontà-di-adattamento.html#cb347-29" tabindex="-1"></a><span class="co">#&gt; Test of the hypothesis that 5 factors are sufficient.</span></span>
-<span id="cb347-30"><a href="test-di-bontà-di-adattamento.html#cb347-30" tabindex="-1"></a><span class="co">#&gt; The chi square statistic is 12.46 on 10 degrees of freedom.</span></span>
-<span id="cb347-31"><a href="test-di-bontà-di-adattamento.html#cb347-31" tabindex="-1"></a><span class="co">#&gt; The p-value is 0.256</span></span></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="test-di-bontà-di-adattamento.html#cb357-1" tabindex="-1"></a><span class="fu">factanal</span>(<span class="at">covmat =</span> wais_cor, <span class="at">factors =</span> <span class="dv">5</span>, <span class="at">n.obs =</span> <span class="dv">933</span>)</span>
+<span id="cb357-2"><a href="test-di-bontà-di-adattamento.html#cb357-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb357-3"><a href="test-di-bontà-di-adattamento.html#cb357-3" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb357-4"><a href="test-di-bontà-di-adattamento.html#cb357-4" tabindex="-1"></a><span class="co">#&gt; factanal(factors = 5, covmat = wais_cor, n.obs = 933)</span></span>
+<span id="cb357-5"><a href="test-di-bontà-di-adattamento.html#cb357-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb357-6"><a href="test-di-bontà-di-adattamento.html#cb357-6" tabindex="-1"></a><span class="co">#&gt; Uniquenesses:</span></span>
+<span id="cb357-7"><a href="test-di-bontà-di-adattamento.html#cb357-7" tabindex="-1"></a><span class="co">#&gt;    IN    CO    AR    SI    DS    VO    SY    PC    BD    PA    OA </span></span>
+<span id="cb357-8"><a href="test-di-bontà-di-adattamento.html#cb357-8" tabindex="-1"></a><span class="co">#&gt; 0.235 0.389 0.117 0.419 0.600 0.109 0.277 0.308 0.334 0.472 0.456 </span></span>
+<span id="cb357-9"><a href="test-di-bontà-di-adattamento.html#cb357-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb357-10"><a href="test-di-bontà-di-adattamento.html#cb357-10" tabindex="-1"></a><span class="co">#&gt; Loadings:</span></span>
+<span id="cb357-11"><a href="test-di-bontà-di-adattamento.html#cb357-11" tabindex="-1"></a><span class="co">#&gt;    Factor1 Factor2 Factor3 Factor4 Factor5</span></span>
+<span id="cb357-12"><a href="test-di-bontà-di-adattamento.html#cb357-12" tabindex="-1"></a><span class="co">#&gt; IN  0.745   0.264   0.301   0.192   0.118 </span></span>
+<span id="cb357-13"><a href="test-di-bontà-di-adattamento.html#cb357-13" tabindex="-1"></a><span class="co">#&gt; CO  0.667   0.278   0.244   0.129   0.111 </span></span>
+<span id="cb357-14"><a href="test-di-bontà-di-adattamento.html#cb357-14" tabindex="-1"></a><span class="co">#&gt; AR  0.378   0.236   0.814   0.145         </span></span>
+<span id="cb357-15"><a href="test-di-bontà-di-adattamento.html#cb357-15" tabindex="-1"></a><span class="co">#&gt; SI  0.591   0.332   0.207   0.252   0.121 </span></span>
+<span id="cb357-16"><a href="test-di-bontà-di-adattamento.html#cb357-16" tabindex="-1"></a><span class="co">#&gt; DS  0.288   0.208   0.366   0.341   0.155 </span></span>
+<span id="cb357-17"><a href="test-di-bontà-di-adattamento.html#cb357-17" tabindex="-1"></a><span class="co">#&gt; VO  0.865   0.216   0.207   0.229         </span></span>
+<span id="cb357-18"><a href="test-di-bontà-di-adattamento.html#cb357-18" tabindex="-1"></a><span class="co">#&gt; SY  0.251   0.364   0.153   0.708         </span></span>
+<span id="cb357-19"><a href="test-di-bontà-di-adattamento.html#cb357-19" tabindex="-1"></a><span class="co">#&gt; PC  0.425   0.548   0.156   0.216   0.375 </span></span>
+<span id="cb357-20"><a href="test-di-bontà-di-adattamento.html#cb357-20" tabindex="-1"></a><span class="co">#&gt; BD  0.246   0.708   0.230   0.201   0.107 </span></span>
+<span id="cb357-21"><a href="test-di-bontà-di-adattamento.html#cb357-21" tabindex="-1"></a><span class="co">#&gt; PA  0.355   0.457   0.163   0.325   0.245 </span></span>
+<span id="cb357-22"><a href="test-di-bontà-di-adattamento.html#cb357-22" tabindex="-1"></a><span class="co">#&gt; OA  0.211   0.664   0.128   0.205         </span></span>
+<span id="cb357-23"><a href="test-di-bontà-di-adattamento.html#cb357-23" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb357-24"><a href="test-di-bontà-di-adattamento.html#cb357-24" tabindex="-1"></a><span class="co">#&gt;                Factor1 Factor2 Factor3 Factor4 Factor5</span></span>
+<span id="cb357-25"><a href="test-di-bontà-di-adattamento.html#cb357-25" tabindex="-1"></a><span class="co">#&gt; SS loadings      2.799   1.986   1.176   1.043   0.280</span></span>
+<span id="cb357-26"><a href="test-di-bontà-di-adattamento.html#cb357-26" tabindex="-1"></a><span class="co">#&gt; Proportion Var   0.254   0.181   0.107   0.095   0.025</span></span>
+<span id="cb357-27"><a href="test-di-bontà-di-adattamento.html#cb357-27" tabindex="-1"></a><span class="co">#&gt; Cumulative Var   0.254   0.435   0.542   0.637   0.662</span></span>
+<span id="cb357-28"><a href="test-di-bontà-di-adattamento.html#cb357-28" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb357-29"><a href="test-di-bontà-di-adattamento.html#cb357-29" tabindex="-1"></a><span class="co">#&gt; Test of the hypothesis that 5 factors are sufficient.</span></span>
+<span id="cb357-30"><a href="test-di-bontà-di-adattamento.html#cb357-30" tabindex="-1"></a><span class="co">#&gt; The chi square statistic is 12.46 on 10 degrees of freedom.</span></span>
+<span id="cb357-31"><a href="test-di-bontà-di-adattamento.html#cb357-31" tabindex="-1"></a><span class="co">#&gt; The p-value is 0.256</span></span></code></pre></div>
 <p>Le differenze tra i risultati ottenuti con i quattro metodi descritti
 sopra suggeriscono la presenza di una componente di arbitrarietà nella
 scelta della soluzione da adottare.</p>

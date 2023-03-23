@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2023-03-22" />
+<meta name="date" content="2023-03-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,12 +340,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9.9" data-path="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><a href="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><i class="fa fa-check"></i><b>9.9</b> Metodi alternativi per la stima del coefficiente di attendibilità</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10</b> L’incertezza della misura</a>
+<li class="chapter" data-level="10" data-path="lerrore-standard-della-misurazione.html"><a href="lerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10</b> L’errore standard della misurazione</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10.1</b> La stima dell’errore standard della misurazione</a>
+<li class="chapter" data-level="10.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10.1</b> L’incertezza della misura</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
-<li class="chapter" data-level="10.1.2" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
+<li class="chapter" data-level="10.1.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
+<li class="chapter" data-level="10.1.2" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="dimostrazione.html"><a href="dimostrazione.html"><i class="fa fa-check"></i><b>10.2</b> Dimostrazione</a></li>
 <li class="chapter" data-level="10.3" data-path="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><a href="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><i class="fa fa-check"></i><b>10.3</b> Intervallo di confidenza per il punteggio vero e <span class="math inline">\(\sigma_E\)</span></a></li>
@@ -360,7 +360,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="12" data-path="esercizi-sulla-ctt.html"><a href="esercizi-sulla-ctt.html"><i class="fa fa-check"></i><b>12</b> Esercizi sulla CTT</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.1</b> Validità</a></li>
+<li class="chapter" data-level="12.1" data-path="attendibilità.html"><a href="attendibilità.html"><i class="fa fa-check"></i><b>12.1</b> Attendibilità</a></li>
+<li class="chapter" data-level="12.2" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.2</b> Validità</a></li>
 </ul></li>
 <li class="part"><span><b>IV L’analisi fattoriale</b></span></li>
 <li class="chapter" data-level="13" data-path="utilizzo-e-costruzione-di-test-psicometrici.html"><a href="utilizzo-e-costruzione-di-test-psicometrici.html"><i class="fa fa-check"></i><b>13</b> Utilizzo e costruzione di test psicometrici</a>
@@ -754,46 +755,46 @@ sua conoscenza. Ciascuna persona veniva valutata su una scala a nove
 punti rispetto a cinque variabili: <em>kind</em>, <em>intelligent</em>, <em>happy</em>,
 <em>likeable</em> e <em>just</em>. La matrice di correlazione per tali variabili è
 riportata di seguito:</p>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="metodo-delle-componenti-principali.html#cb328-1" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb328-2"><a href="metodo-delle-componenti-principali.html#cb328-2" tabindex="-1"></a>  <span class="fu">c</span>(</span>
-<span id="cb328-3"><a href="metodo-delle-componenti-principali.html#cb328-3" tabindex="-1"></a>    <span class="fl">1.000</span>, .<span class="dv">296</span>, .<span class="dv">881</span>, .<span class="dv">995</span>, .<span class="dv">545</span>,</span>
-<span id="cb328-4"><a href="metodo-delle-componenti-principali.html#cb328-4" tabindex="-1"></a>    .<span class="dv">296</span>, <span class="fl">1.000</span>, <span class="sc">-</span>.<span class="dv">022</span>, .<span class="dv">326</span>, .<span class="dv">837</span>,</span>
-<span id="cb328-5"><a href="metodo-delle-componenti-principali.html#cb328-5" tabindex="-1"></a>    .<span class="dv">881</span>, <span class="sc">-</span>.<span class="dv">022</span>, <span class="fl">1.000</span>, .<span class="dv">867</span>, .<span class="dv">130</span>,</span>
-<span id="cb328-6"><a href="metodo-delle-componenti-principali.html#cb328-6" tabindex="-1"></a>    .<span class="dv">995</span>, .<span class="dv">326</span>, .<span class="dv">867</span>, <span class="fl">1.000</span>, .<span class="dv">544</span>,</span>
-<span id="cb328-7"><a href="metodo-delle-componenti-principali.html#cb328-7" tabindex="-1"></a>    .<span class="dv">545</span>, .<span class="dv">837</span>, .<span class="dv">130</span>, .<span class="dv">544</span>, <span class="fl">1.000</span></span>
-<span id="cb328-8"><a href="metodo-delle-componenti-principali.html#cb328-8" tabindex="-1"></a>  ),</span>
-<span id="cb328-9"><a href="metodo-delle-componenti-principali.html#cb328-9" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">5</span>, <span class="at">byrow =</span> T, <span class="at">dimnames =</span> <span class="fu">list</span>(</span>
-<span id="cb328-10"><a href="metodo-delle-componenti-principali.html#cb328-10" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">&quot;K&quot;</span>, <span class="st">&quot;I&quot;</span>, <span class="st">&quot;H&quot;</span>, <span class="st">&quot;L&quot;</span>, <span class="st">&quot;J&quot;</span>),</span>
-<span id="cb328-11"><a href="metodo-delle-componenti-principali.html#cb328-11" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">&quot;K&quot;</span>, <span class="st">&quot;I&quot;</span>, <span class="st">&quot;H&quot;</span>, <span class="st">&quot;L&quot;</span>, <span class="st">&quot;J&quot;</span>)</span>
-<span id="cb328-12"><a href="metodo-delle-componenti-principali.html#cb328-12" tabindex="-1"></a>  )</span>
-<span id="cb328-13"><a href="metodo-delle-componenti-principali.html#cb328-13" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="metodo-delle-componenti-principali.html#cb338-1" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb338-2"><a href="metodo-delle-componenti-principali.html#cb338-2" tabindex="-1"></a>  <span class="fu">c</span>(</span>
+<span id="cb338-3"><a href="metodo-delle-componenti-principali.html#cb338-3" tabindex="-1"></a>    <span class="fl">1.000</span>, .<span class="dv">296</span>, .<span class="dv">881</span>, .<span class="dv">995</span>, .<span class="dv">545</span>,</span>
+<span id="cb338-4"><a href="metodo-delle-componenti-principali.html#cb338-4" tabindex="-1"></a>    .<span class="dv">296</span>, <span class="fl">1.000</span>, <span class="sc">-</span>.<span class="dv">022</span>, .<span class="dv">326</span>, .<span class="dv">837</span>,</span>
+<span id="cb338-5"><a href="metodo-delle-componenti-principali.html#cb338-5" tabindex="-1"></a>    .<span class="dv">881</span>, <span class="sc">-</span>.<span class="dv">022</span>, <span class="fl">1.000</span>, .<span class="dv">867</span>, .<span class="dv">130</span>,</span>
+<span id="cb338-6"><a href="metodo-delle-componenti-principali.html#cb338-6" tabindex="-1"></a>    .<span class="dv">995</span>, .<span class="dv">326</span>, .<span class="dv">867</span>, <span class="fl">1.000</span>, .<span class="dv">544</span>,</span>
+<span id="cb338-7"><a href="metodo-delle-componenti-principali.html#cb338-7" tabindex="-1"></a>    .<span class="dv">545</span>, .<span class="dv">837</span>, .<span class="dv">130</span>, .<span class="dv">544</span>, <span class="fl">1.000</span></span>
+<span id="cb338-8"><a href="metodo-delle-componenti-principali.html#cb338-8" tabindex="-1"></a>  ),</span>
+<span id="cb338-9"><a href="metodo-delle-componenti-principali.html#cb338-9" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">5</span>, <span class="at">byrow =</span> T, <span class="at">dimnames =</span> <span class="fu">list</span>(</span>
+<span id="cb338-10"><a href="metodo-delle-componenti-principali.html#cb338-10" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">&quot;K&quot;</span>, <span class="st">&quot;I&quot;</span>, <span class="st">&quot;H&quot;</span>, <span class="st">&quot;L&quot;</span>, <span class="st">&quot;J&quot;</span>),</span>
+<span id="cb338-11"><a href="metodo-delle-componenti-principali.html#cb338-11" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">&quot;K&quot;</span>, <span class="st">&quot;I&quot;</span>, <span class="st">&quot;H&quot;</span>, <span class="st">&quot;L&quot;</span>, <span class="st">&quot;J&quot;</span>)</span>
+<span id="cb338-12"><a href="metodo-delle-componenti-principali.html#cb338-12" tabindex="-1"></a>  )</span>
+<span id="cb338-13"><a href="metodo-delle-componenti-principali.html#cb338-13" tabindex="-1"></a>)</span></code></pre></div>
 <p>Gli autovalori e gli autovettori si calcolano con la funzione <code>eigen()</code>:</p>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="metodo-delle-componenti-principali.html#cb329-1" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">eigen</span>(R)</span>
-<span id="cb329-2"><a href="metodo-delle-componenti-principali.html#cb329-2" tabindex="-1"></a><span class="fu">print</span>(e, <span class="dv">3</span>)</span>
-<span id="cb329-3"><a href="metodo-delle-componenti-principali.html#cb329-3" tabindex="-1"></a><span class="co">#&gt; eigen() decomposition</span></span>
-<span id="cb329-4"><a href="metodo-delle-componenti-principali.html#cb329-4" tabindex="-1"></a><span class="co">#&gt; $values</span></span>
-<span id="cb329-5"><a href="metodo-delle-componenti-principali.html#cb329-5" tabindex="-1"></a><span class="co">#&gt; [1] 3.263377 1.538382 0.167969 0.030030 0.000242</span></span>
-<span id="cb329-6"><a href="metodo-delle-componenti-principali.html#cb329-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb329-7"><a href="metodo-delle-componenti-principali.html#cb329-7" tabindex="-1"></a><span class="co">#&gt; $vectors</span></span>
-<span id="cb329-8"><a href="metodo-delle-componenti-principali.html#cb329-8" tabindex="-1"></a><span class="co">#&gt;        [,1]   [,2]    [,3]   [,4]   [,5]</span></span>
-<span id="cb329-9"><a href="metodo-delle-componenti-principali.html#cb329-9" tabindex="-1"></a><span class="co">#&gt; [1,] -0.537 -0.186 -0.1899 -0.125  0.791</span></span>
-<span id="cb329-10"><a href="metodo-delle-componenti-principali.html#cb329-10" tabindex="-1"></a><span class="co">#&gt; [2,] -0.287  0.651  0.6849 -0.120  0.103</span></span>
-<span id="cb329-11"><a href="metodo-delle-componenti-principali.html#cb329-11" tabindex="-1"></a><span class="co">#&gt; [3,] -0.434 -0.474  0.4069  0.614 -0.212</span></span>
-<span id="cb329-12"><a href="metodo-delle-componenti-principali.html#cb329-12" tabindex="-1"></a><span class="co">#&gt; [4,] -0.537 -0.169 -0.0953 -0.629 -0.527</span></span>
-<span id="cb329-13"><a href="metodo-delle-componenti-principali.html#cb329-13" tabindex="-1"></a><span class="co">#&gt; [5,] -0.390  0.538 -0.5658  0.444 -0.204</span></span></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="metodo-delle-componenti-principali.html#cb339-1" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">eigen</span>(R)</span>
+<span id="cb339-2"><a href="metodo-delle-componenti-principali.html#cb339-2" tabindex="-1"></a><span class="fu">print</span>(e, <span class="dv">3</span>)</span>
+<span id="cb339-3"><a href="metodo-delle-componenti-principali.html#cb339-3" tabindex="-1"></a><span class="co">#&gt; eigen() decomposition</span></span>
+<span id="cb339-4"><a href="metodo-delle-componenti-principali.html#cb339-4" tabindex="-1"></a><span class="co">#&gt; $values</span></span>
+<span id="cb339-5"><a href="metodo-delle-componenti-principali.html#cb339-5" tabindex="-1"></a><span class="co">#&gt; [1] 3.263377 1.538382 0.167969 0.030030 0.000242</span></span>
+<span id="cb339-6"><a href="metodo-delle-componenti-principali.html#cb339-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb339-7"><a href="metodo-delle-componenti-principali.html#cb339-7" tabindex="-1"></a><span class="co">#&gt; $vectors</span></span>
+<span id="cb339-8"><a href="metodo-delle-componenti-principali.html#cb339-8" tabindex="-1"></a><span class="co">#&gt;        [,1]   [,2]    [,3]   [,4]   [,5]</span></span>
+<span id="cb339-9"><a href="metodo-delle-componenti-principali.html#cb339-9" tabindex="-1"></a><span class="co">#&gt; [1,] -0.537 -0.186 -0.1899 -0.125  0.791</span></span>
+<span id="cb339-10"><a href="metodo-delle-componenti-principali.html#cb339-10" tabindex="-1"></a><span class="co">#&gt; [2,] -0.287  0.651  0.6849 -0.120  0.103</span></span>
+<span id="cb339-11"><a href="metodo-delle-componenti-principali.html#cb339-11" tabindex="-1"></a><span class="co">#&gt; [3,] -0.434 -0.474  0.4069  0.614 -0.212</span></span>
+<span id="cb339-12"><a href="metodo-delle-componenti-principali.html#cb339-12" tabindex="-1"></a><span class="co">#&gt; [4,] -0.537 -0.169 -0.0953 -0.629 -0.527</span></span>
+<span id="cb339-13"><a href="metodo-delle-componenti-principali.html#cb339-13" tabindex="-1"></a><span class="co">#&gt; [5,] -0.390  0.538 -0.5658  0.444 -0.204</span></span></code></pre></div>
 <p>Come indicato in precedenza, la matrice <strong>R</strong> può essere espressa come
 <span class="math inline">\(\textbf{R} = \textbf{C}\textbf{D}\textbf{C}^{\ensuremath{\mathsf{T}}}\)</span>:</p>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="metodo-delle-componenti-principali.html#cb330-1" tabindex="-1"></a>e<span class="sc">$</span>vectors <span class="sc">%*%</span> <span class="fu">diag</span>(e<span class="sc">$</span>values) <span class="sc">%*%</span> <span class="fu">t</span>(e<span class="sc">$</span>vectors)</span>
-<span id="cb330-2"><a href="metodo-delle-componenti-principali.html#cb330-2" tabindex="-1"></a><span class="co">#&gt;       [,1]   [,2]   [,3]  [,4]  [,5]</span></span>
-<span id="cb330-3"><a href="metodo-delle-componenti-principali.html#cb330-3" tabindex="-1"></a><span class="co">#&gt; [1,] 1.000  0.296  0.881 0.995 0.545</span></span>
-<span id="cb330-4"><a href="metodo-delle-componenti-principali.html#cb330-4" tabindex="-1"></a><span class="co">#&gt; [2,] 0.296  1.000 -0.022 0.326 0.837</span></span>
-<span id="cb330-5"><a href="metodo-delle-componenti-principali.html#cb330-5" tabindex="-1"></a><span class="co">#&gt; [3,] 0.881 -0.022  1.000 0.867 0.130</span></span>
-<span id="cb330-6"><a href="metodo-delle-componenti-principali.html#cb330-6" tabindex="-1"></a><span class="co">#&gt; [4,] 0.995  0.326  0.867 1.000 0.544</span></span>
-<span id="cb330-7"><a href="metodo-delle-componenti-principali.html#cb330-7" tabindex="-1"></a><span class="co">#&gt; [5,] 0.545  0.837  0.130 0.544 1.000</span></span></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="metodo-delle-componenti-principali.html#cb340-1" tabindex="-1"></a>e<span class="sc">$</span>vectors <span class="sc">%*%</span> <span class="fu">diag</span>(e<span class="sc">$</span>values) <span class="sc">%*%</span> <span class="fu">t</span>(e<span class="sc">$</span>vectors)</span>
+<span id="cb340-2"><a href="metodo-delle-componenti-principali.html#cb340-2" tabindex="-1"></a><span class="co">#&gt;       [,1]   [,2]   [,3]  [,4]  [,5]</span></span>
+<span id="cb340-3"><a href="metodo-delle-componenti-principali.html#cb340-3" tabindex="-1"></a><span class="co">#&gt; [1,] 1.000  0.296  0.881 0.995 0.545</span></span>
+<span id="cb340-4"><a href="metodo-delle-componenti-principali.html#cb340-4" tabindex="-1"></a><span class="co">#&gt; [2,] 0.296  1.000 -0.022 0.326 0.837</span></span>
+<span id="cb340-5"><a href="metodo-delle-componenti-principali.html#cb340-5" tabindex="-1"></a><span class="co">#&gt; [3,] 0.881 -0.022  1.000 0.867 0.130</span></span>
+<span id="cb340-6"><a href="metodo-delle-componenti-principali.html#cb340-6" tabindex="-1"></a><span class="co">#&gt; [4,] 0.995  0.326  0.867 1.000 0.544</span></span>
+<span id="cb340-7"><a href="metodo-delle-componenti-principali.html#cb340-7" tabindex="-1"></a><span class="co">#&gt; [5,] 0.545  0.837  0.130 0.544 1.000</span></span></code></pre></div>
 <p>Esaminiamo ora gli autovalori. I primi due autovalori spiegano da soli
 il 96% della varianza campionaria:</p>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="metodo-delle-componenti-principali.html#cb331-1" tabindex="-1"></a>(e<span class="sc">$</span>values[<span class="dv">1</span>] <span class="sc">+</span> e<span class="sc">$</span>values[<span class="dv">2</span>]) <span class="sc">/</span> <span class="dv">5</span></span>
-<span id="cb331-2"><a href="metodo-delle-componenti-principali.html#cb331-2" tabindex="-1"></a><span class="co">#&gt; [1] 0.9603517</span></span></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="metodo-delle-componenti-principali.html#cb341-1" tabindex="-1"></a>(e<span class="sc">$</span>values[<span class="dv">1</span>] <span class="sc">+</span> e<span class="sc">$</span>values[<span class="dv">2</span>]) <span class="sc">/</span> <span class="dv">5</span></span>
+<span id="cb341-2"><a href="metodo-delle-componenti-principali.html#cb341-2" tabindex="-1"></a><span class="co">#&gt; [1] 0.9603517</span></span></code></pre></div>
 <p>Usando i primi due autovalori e i primi due autovettori sarà dunque
 possibile riprodurre in maniera soddisfacente la matrice <strong>R</strong> operando
 nel contempo una riduzione di dimensionalità dei dati.</p>
@@ -883,27 +884,27 @@ c_{51} &amp; c_{52}
 \right]
 \]</span></p>
 <p>Svolgendo i calcoli con <span class="math inline">\(\textsf{R}\)</span> otteniamo:</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="metodo-delle-componenti-principali.html#cb332-1" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
-<span id="cb332-2"><a href="metodo-delle-componenti-principali.html#cb332-2" tabindex="-1"></a>  e<span class="sc">$</span>vectors[, <span class="dv">1</span>] <span class="sc">*</span> <span class="fu">sqrt</span>(e<span class="sc">$</span>values[<span class="dv">1</span>]),</span>
-<span id="cb332-3"><a href="metodo-delle-componenti-principali.html#cb332-3" tabindex="-1"></a>  e<span class="sc">$</span>vectors[, <span class="dv">2</span>] <span class="sc">*</span> <span class="fu">sqrt</span>(e<span class="sc">$</span>values[<span class="dv">2</span>])</span>
-<span id="cb332-4"><a href="metodo-delle-componenti-principali.html#cb332-4" tabindex="-1"></a>)</span>
-<span id="cb332-5"><a href="metodo-delle-componenti-principali.html#cb332-5" tabindex="-1"></a></span>
-<span id="cb332-6"><a href="metodo-delle-componenti-principali.html#cb332-6" tabindex="-1"></a><span class="fu">round</span>(L, <span class="dv">3</span>)</span>
-<span id="cb332-7"><a href="metodo-delle-componenti-principali.html#cb332-7" tabindex="-1"></a><span class="co">#&gt;        [,1]   [,2]</span></span>
-<span id="cb332-8"><a href="metodo-delle-componenti-principali.html#cb332-8" tabindex="-1"></a><span class="co">#&gt; [1,] -0.970 -0.231</span></span>
-<span id="cb332-9"><a href="metodo-delle-componenti-principali.html#cb332-9" tabindex="-1"></a><span class="co">#&gt; [2,] -0.519  0.807</span></span>
-<span id="cb332-10"><a href="metodo-delle-componenti-principali.html#cb332-10" tabindex="-1"></a><span class="co">#&gt; [3,] -0.785 -0.588</span></span>
-<span id="cb332-11"><a href="metodo-delle-componenti-principali.html#cb332-11" tabindex="-1"></a><span class="co">#&gt; [4,] -0.971 -0.210</span></span>
-<span id="cb332-12"><a href="metodo-delle-componenti-principali.html#cb332-12" tabindex="-1"></a><span class="co">#&gt; [5,] -0.704  0.667</span></span></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="metodo-delle-componenti-principali.html#cb342-1" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
+<span id="cb342-2"><a href="metodo-delle-componenti-principali.html#cb342-2" tabindex="-1"></a>  e<span class="sc">$</span>vectors[, <span class="dv">1</span>] <span class="sc">*</span> <span class="fu">sqrt</span>(e<span class="sc">$</span>values[<span class="dv">1</span>]),</span>
+<span id="cb342-3"><a href="metodo-delle-componenti-principali.html#cb342-3" tabindex="-1"></a>  e<span class="sc">$</span>vectors[, <span class="dv">2</span>] <span class="sc">*</span> <span class="fu">sqrt</span>(e<span class="sc">$</span>values[<span class="dv">2</span>])</span>
+<span id="cb342-4"><a href="metodo-delle-componenti-principali.html#cb342-4" tabindex="-1"></a>)</span>
+<span id="cb342-5"><a href="metodo-delle-componenti-principali.html#cb342-5" tabindex="-1"></a></span>
+<span id="cb342-6"><a href="metodo-delle-componenti-principali.html#cb342-6" tabindex="-1"></a><span class="fu">round</span>(L, <span class="dv">3</span>)</span>
+<span id="cb342-7"><a href="metodo-delle-componenti-principali.html#cb342-7" tabindex="-1"></a><span class="co">#&gt;        [,1]   [,2]</span></span>
+<span id="cb342-8"><a href="metodo-delle-componenti-principali.html#cb342-8" tabindex="-1"></a><span class="co">#&gt; [1,] -0.970 -0.231</span></span>
+<span id="cb342-9"><a href="metodo-delle-componenti-principali.html#cb342-9" tabindex="-1"></a><span class="co">#&gt; [2,] -0.519  0.807</span></span>
+<span id="cb342-10"><a href="metodo-delle-componenti-principali.html#cb342-10" tabindex="-1"></a><span class="co">#&gt; [3,] -0.785 -0.588</span></span>
+<span id="cb342-11"><a href="metodo-delle-componenti-principali.html#cb342-11" tabindex="-1"></a><span class="co">#&gt; [4,] -0.971 -0.210</span></span>
+<span id="cb342-12"><a href="metodo-delle-componenti-principali.html#cb342-12" tabindex="-1"></a><span class="co">#&gt; [5,] -0.704  0.667</span></span></code></pre></div>
 <p>La matrice di correlazione riprodotta (con le comunalità sulla diagonale
 principale) diventa</p>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="metodo-delle-componenti-principali.html#cb333-1" tabindex="-1"></a><span class="fu">round</span>(L <span class="sc">%*%</span> <span class="fu">t</span>(L), <span class="dv">3</span>)</span>
-<span id="cb333-2"><a href="metodo-delle-componenti-principali.html#cb333-2" tabindex="-1"></a><span class="co">#&gt;       [,1]   [,2]   [,3]  [,4]  [,5]</span></span>
-<span id="cb333-3"><a href="metodo-delle-componenti-principali.html#cb333-3" tabindex="-1"></a><span class="co">#&gt; [1,] 0.993  0.317  0.896 0.990 0.529</span></span>
-<span id="cb333-4"><a href="metodo-delle-componenti-principali.html#cb333-4" tabindex="-1"></a><span class="co">#&gt; [2,] 0.317  0.921 -0.067 0.335 0.904</span></span>
-<span id="cb333-5"><a href="metodo-delle-componenti-principali.html#cb333-5" tabindex="-1"></a><span class="co">#&gt; [3,] 0.896 -0.067  0.961 0.885 0.160</span></span>
-<span id="cb333-6"><a href="metodo-delle-componenti-principali.html#cb333-6" tabindex="-1"></a><span class="co">#&gt; [4,] 0.990  0.335  0.885 0.987 0.543</span></span>
-<span id="cb333-7"><a href="metodo-delle-componenti-principali.html#cb333-7" tabindex="-1"></a><span class="co">#&gt; [5,] 0.529  0.904  0.160 0.543 0.940</span></span></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="metodo-delle-componenti-principali.html#cb343-1" tabindex="-1"></a><span class="fu">round</span>(L <span class="sc">%*%</span> <span class="fu">t</span>(L), <span class="dv">3</span>)</span>
+<span id="cb343-2"><a href="metodo-delle-componenti-principali.html#cb343-2" tabindex="-1"></a><span class="co">#&gt;       [,1]   [,2]   [,3]  [,4]  [,5]</span></span>
+<span id="cb343-3"><a href="metodo-delle-componenti-principali.html#cb343-3" tabindex="-1"></a><span class="co">#&gt; [1,] 0.993  0.317  0.896 0.990 0.529</span></span>
+<span id="cb343-4"><a href="metodo-delle-componenti-principali.html#cb343-4" tabindex="-1"></a><span class="co">#&gt; [2,] 0.317  0.921 -0.067 0.335 0.904</span></span>
+<span id="cb343-5"><a href="metodo-delle-componenti-principali.html#cb343-5" tabindex="-1"></a><span class="co">#&gt; [3,] 0.896 -0.067  0.961 0.885 0.160</span></span>
+<span id="cb343-6"><a href="metodo-delle-componenti-principali.html#cb343-6" tabindex="-1"></a><span class="co">#&gt; [4,] 0.990  0.335  0.885 0.987 0.543</span></span>
+<span id="cb343-7"><a href="metodo-delle-componenti-principali.html#cb343-7" tabindex="-1"></a><span class="co">#&gt; [5,] 0.529  0.904  0.160 0.543 0.940</span></span></code></pre></div>
 <p>Possiamo ora capire il motivo del nome “metodo delle componenti
 principali.” Le saturazioni fattoriali sono proporzionali agli
 autovettori di <span class="math inline">\(\textbf{R}\)</span>. Tuttavia, dopo la rotazione delle

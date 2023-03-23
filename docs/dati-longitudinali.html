@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2023-03-22" />
+<meta name="date" content="2023-03-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,12 +340,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9.9" data-path="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><a href="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><i class="fa fa-check"></i><b>9.9</b> Metodi alternativi per la stima del coefficiente di attendibilità</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10</b> L’incertezza della misura</a>
+<li class="chapter" data-level="10" data-path="lerrore-standard-della-misurazione.html"><a href="lerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10</b> L’errore standard della misurazione</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10.1</b> La stima dell’errore standard della misurazione</a>
+<li class="chapter" data-level="10.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10.1</b> L’incertezza della misura</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
-<li class="chapter" data-level="10.1.2" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
+<li class="chapter" data-level="10.1.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
+<li class="chapter" data-level="10.1.2" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="dimostrazione.html"><a href="dimostrazione.html"><i class="fa fa-check"></i><b>10.2</b> Dimostrazione</a></li>
 <li class="chapter" data-level="10.3" data-path="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><a href="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><i class="fa fa-check"></i><b>10.3</b> Intervallo di confidenza per il punteggio vero e <span class="math inline">\(\sigma_E\)</span></a></li>
@@ -360,7 +360,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="12" data-path="esercizi-sulla-ctt.html"><a href="esercizi-sulla-ctt.html"><i class="fa fa-check"></i><b>12</b> Esercizi sulla CTT</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.1</b> Validità</a></li>
+<li class="chapter" data-level="12.1" data-path="attendibilità.html"><a href="attendibilità.html"><i class="fa fa-check"></i><b>12.1</b> Attendibilità</a></li>
+<li class="chapter" data-level="12.2" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.2</b> Validità</a></li>
 </ul></li>
 <li class="part"><span><b>IV L’analisi fattoriale</b></span></li>
 <li class="chapter" data-level="13" data-path="utilizzo-e-costruzione-di-test-psicometrici.html"><a href="utilizzo-e-costruzione-di-test-psicometrici.html"><i class="fa fa-check"></i><b>13</b> Utilizzo e costruzione di test psicometrici</a>
@@ -747,60 +748,60 @@ div.csl-indent {
 <div id="un-esempio-concreto-7" class="section level3 hasAnchor" number="31.1.1">
 <h3><span class="header-section-number">31.1.1</span> Un esempio concreto<a href="dati-longitudinali.html#un-esempio-concreto-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>L’esempio che discuteremo utilizza un campione di dati artificiali chiamato <code>Demo.growth</code> in cui si ipotizza che un determinato punteggio venga misurato su quattro punti temporali. I dati sono i seguenti:</p>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="dati-longitudinali.html#cb463-1" tabindex="-1"></a><span class="fu">data</span>(Demo.growth)</span>
-<span id="cb463-2"><a href="dati-longitudinali.html#cb463-2" tabindex="-1"></a><span class="fu">glimpse</span>(Demo.growth)</span>
-<span id="cb463-3"><a href="dati-longitudinali.html#cb463-3" tabindex="-1"></a><span class="co">#&gt; Rows: 400</span></span>
-<span id="cb463-4"><a href="dati-longitudinali.html#cb463-4" tabindex="-1"></a><span class="co">#&gt; Columns: 10</span></span>
-<span id="cb463-5"><a href="dati-longitudinali.html#cb463-5" tabindex="-1"></a><span class="co">#&gt; $ t1 &lt;dbl&gt; 1.7256454, -1.9841595, 0.3195183, 0.7769485, 0.4489440, -1.7469951,…</span></span>
-<span id="cb463-6"><a href="dati-longitudinali.html#cb463-6" tabindex="-1"></a><span class="co">#&gt; $ t2 &lt;dbl&gt; 2.1424005, -4.4006027, -1.2691171, 3.5313707, -0.7727747, -0.996340…</span></span>
-<span id="cb463-7"><a href="dati-longitudinali.html#cb463-7" tabindex="-1"></a><span class="co">#&gt; $ t3 &lt;dbl&gt; 2.77317167, -6.01655626, 1.56001603, 3.13821140, -1.50351504, -0.82…</span></span>
-<span id="cb463-8"><a href="dati-longitudinali.html#cb463-8" tabindex="-1"></a><span class="co">#&gt; $ t4 &lt;dbl&gt; 2.51595586, -7.02961801, 2.86852958, 5.36374139, 0.07846742, 0.5669…</span></span>
-<span id="cb463-9"><a href="dati-longitudinali.html#cb463-9" tabindex="-1"></a><span class="co">#&gt; $ x1 &lt;dbl&gt; -1.1641026, -1.7454025, 0.9202112, 2.3595236, -1.0887077, -0.513516…</span></span>
-<span id="cb463-10"><a href="dati-longitudinali.html#cb463-10" tabindex="-1"></a><span class="co">#&gt; $ x2 &lt;dbl&gt; 0.17422932, -1.57686022, -0.14181802, 0.70796813, -1.00999772, -0.1…</span></span>
-<span id="cb463-11"><a href="dati-longitudinali.html#cb463-11" tabindex="-1"></a><span class="co">#&gt; $ c1 &lt;dbl&gt; -0.02767765, -2.03196724, 0.05237496, 0.01911429, 0.65243274, -0.04…</span></span>
-<span id="cb463-12"><a href="dati-longitudinali.html#cb463-12" tabindex="-1"></a><span class="co">#&gt; $ c2 &lt;dbl&gt; 0.55492337, 0.12533477, -1.25774075, 0.64738300, 0.73091476, -0.416…</span></span>
-<span id="cb463-13"><a href="dati-longitudinali.html#cb463-13" tabindex="-1"></a><span class="co">#&gt; $ c3 &lt;dbl&gt; 0.254478433, -1.564232274, -1.803390895, -0.432379510, -0.753781573…</span></span>
-<span id="cb463-14"><a href="dati-longitudinali.html#cb463-14" tabindex="-1"></a><span class="co">#&gt; $ c4 &lt;dbl&gt; -1.00639541, 1.22926875, -0.32725761, -1.03239779, -0.02745598, 0.5…</span></span></code></pre></div>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="dati-longitudinali.html#cb473-1" tabindex="-1"></a><span class="fu">data</span>(Demo.growth)</span>
+<span id="cb473-2"><a href="dati-longitudinali.html#cb473-2" tabindex="-1"></a><span class="fu">glimpse</span>(Demo.growth)</span>
+<span id="cb473-3"><a href="dati-longitudinali.html#cb473-3" tabindex="-1"></a><span class="co">#&gt; Rows: 400</span></span>
+<span id="cb473-4"><a href="dati-longitudinali.html#cb473-4" tabindex="-1"></a><span class="co">#&gt; Columns: 10</span></span>
+<span id="cb473-5"><a href="dati-longitudinali.html#cb473-5" tabindex="-1"></a><span class="co">#&gt; $ t1 &lt;dbl&gt; 1.7256454, -1.9841595, 0.3195183, 0.7769485, 0.4489440, -1.7469951,…</span></span>
+<span id="cb473-6"><a href="dati-longitudinali.html#cb473-6" tabindex="-1"></a><span class="co">#&gt; $ t2 &lt;dbl&gt; 2.1424005, -4.4006027, -1.2691171, 3.5313707, -0.7727747, -0.996340…</span></span>
+<span id="cb473-7"><a href="dati-longitudinali.html#cb473-7" tabindex="-1"></a><span class="co">#&gt; $ t3 &lt;dbl&gt; 2.77317167, -6.01655626, 1.56001603, 3.13821140, -1.50351504, -0.82…</span></span>
+<span id="cb473-8"><a href="dati-longitudinali.html#cb473-8" tabindex="-1"></a><span class="co">#&gt; $ t4 &lt;dbl&gt; 2.51595586, -7.02961801, 2.86852958, 5.36374139, 0.07846742, 0.5669…</span></span>
+<span id="cb473-9"><a href="dati-longitudinali.html#cb473-9" tabindex="-1"></a><span class="co">#&gt; $ x1 &lt;dbl&gt; -1.1641026, -1.7454025, 0.9202112, 2.3595236, -1.0887077, -0.513516…</span></span>
+<span id="cb473-10"><a href="dati-longitudinali.html#cb473-10" tabindex="-1"></a><span class="co">#&gt; $ x2 &lt;dbl&gt; 0.17422932, -1.57686022, -0.14181802, 0.70796813, -1.00999772, -0.1…</span></span>
+<span id="cb473-11"><a href="dati-longitudinali.html#cb473-11" tabindex="-1"></a><span class="co">#&gt; $ c1 &lt;dbl&gt; -0.02767765, -2.03196724, 0.05237496, 0.01911429, 0.65243274, -0.04…</span></span>
+<span id="cb473-12"><a href="dati-longitudinali.html#cb473-12" tabindex="-1"></a><span class="co">#&gt; $ c2 &lt;dbl&gt; 0.55492337, 0.12533477, -1.25774075, 0.64738300, 0.73091476, -0.416…</span></span>
+<span id="cb473-13"><a href="dati-longitudinali.html#cb473-13" tabindex="-1"></a><span class="co">#&gt; $ c3 &lt;dbl&gt; 0.254478433, -1.564232274, -1.803390895, -0.432379510, -0.753781573…</span></span>
+<span id="cb473-14"><a href="dati-longitudinali.html#cb473-14" tabindex="-1"></a><span class="co">#&gt; $ c4 &lt;dbl&gt; -1.00639541, 1.22926875, -0.32725761, -1.03239779, -0.02745598, 0.5…</span></span></code></pre></div>
 <p>La variabile dipendente è rappresentata dalle quattro colonne chiamate <code>t1</code>, <code>t2</code>, <code>t3</code> e <code>t4</code> che corrispondono alla serie temporale con quattro misurazioni per ciascun soggetto.</p>
 <p>Trasformiamo i dati in formato <code>long</code>:</p>
-<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="dati-longitudinali.html#cb464-1" tabindex="-1"></a>demo_growth_long <span class="ot">&lt;-</span> Demo.growth <span class="sc">%&gt;%</span></span>
-<span id="cb464-2"><a href="dati-longitudinali.html#cb464-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(t1, t2, t3, t4) <span class="sc">%&gt;%</span></span>
-<span id="cb464-3"><a href="dati-longitudinali.html#cb464-3" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb464-4"><a href="dati-longitudinali.html#cb464-4" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">&quot;t&quot;</span>),</span>
-<span id="cb464-5"><a href="dati-longitudinali.html#cb464-5" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;t&quot;</span>,</span>
-<span id="cb464-6"><a href="dati-longitudinali.html#cb464-6" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;y&quot;</span></span>
-<span id="cb464-7"><a href="dati-longitudinali.html#cb464-7" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb464-8"><a href="dati-longitudinali.html#cb464-8" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
-<span id="cb464-9"><a href="dati-longitudinali.html#cb464-9" tabindex="-1"></a>demo_growth_long<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">400</span>)</span>
-<span id="cb464-10"><a href="dati-longitudinali.html#cb464-10" tabindex="-1"></a>demo_growth_long<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>, <span class="at">each =</span> <span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="dati-longitudinali.html#cb474-1" tabindex="-1"></a>demo_growth_long <span class="ot">&lt;-</span> Demo.growth <span class="sc">%&gt;%</span></span>
+<span id="cb474-2"><a href="dati-longitudinali.html#cb474-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(t1, t2, t3, t4) <span class="sc">%&gt;%</span></span>
+<span id="cb474-3"><a href="dati-longitudinali.html#cb474-3" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb474-4"><a href="dati-longitudinali.html#cb474-4" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">&quot;t&quot;</span>),</span>
+<span id="cb474-5"><a href="dati-longitudinali.html#cb474-5" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;t&quot;</span>,</span>
+<span id="cb474-6"><a href="dati-longitudinali.html#cb474-6" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;y&quot;</span></span>
+<span id="cb474-7"><a href="dati-longitudinali.html#cb474-7" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb474-8"><a href="dati-longitudinali.html#cb474-8" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
+<span id="cb474-9"><a href="dati-longitudinali.html#cb474-9" tabindex="-1"></a>demo_growth_long<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">400</span>)</span>
+<span id="cb474-10"><a href="dati-longitudinali.html#cb474-10" tabindex="-1"></a>demo_growth_long<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>, <span class="at">each =</span> <span class="dv">4</span>)</span></code></pre></div>
 <p>Esaminiamo un campione casuale di 9 soggetti. È presente una notevole variazione da soggetto a soggetto:</p>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="dati-longitudinali.html#cb465-1" tabindex="-1"></a>id_sel <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>, <span class="dv">9</span>)</span>
-<span id="cb465-2"><a href="dati-longitudinali.html#cb465-2" tabindex="-1"></a>d <span class="ot">&lt;-</span> demo_growth_long[demo_growth_long<span class="sc">$</span>id <span class="sc">%in%</span> id_sel, ]</span>
-<span id="cb465-3"><a href="dati-longitudinali.html#cb465-3" tabindex="-1"></a>d <span class="sc">%&gt;%</span></span>
-<span id="cb465-4"><a href="dati-longitudinali.html#cb465-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> y)) <span class="sc">+</span></span>
-<span id="cb465-5"><a href="dati-longitudinali.html#cb465-5" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb465-6"><a href="dati-longitudinali.html#cb465-6" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>id)</span></code></pre></div>
-<p><img src="cfa_files/figure-html/unnamed-chunk-492-1.png" width="576" style="display: block; margin: auto;" />
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="dati-longitudinali.html#cb475-1" tabindex="-1"></a>id_sel <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>, <span class="dv">9</span>)</span>
+<span id="cb475-2"><a href="dati-longitudinali.html#cb475-2" tabindex="-1"></a>d <span class="ot">&lt;-</span> demo_growth_long[demo_growth_long<span class="sc">$</span>id <span class="sc">%in%</span> id_sel, ]</span>
+<span id="cb475-3"><a href="dati-longitudinali.html#cb475-3" tabindex="-1"></a>d <span class="sc">%&gt;%</span></span>
+<span id="cb475-4"><a href="dati-longitudinali.html#cb475-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb475-5"><a href="dati-longitudinali.html#cb475-5" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb475-6"><a href="dati-longitudinali.html#cb475-6" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>id)</span></code></pre></div>
+<p><img src="cfa_files/figure-html/unnamed-chunk-502-1.png" width="576" style="display: block; margin: auto;" />
 Notiamo che una funzione lineare è appropriata per rendere conto della variazione temporale della variabile risposta:</p>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="dati-longitudinali.html#cb466-1" tabindex="-1"></a>d <span class="sc">%&gt;%</span></span>
-<span id="cb466-2"><a href="dati-longitudinali.html#cb466-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> y)) <span class="sc">+</span></span>
-<span id="cb466-3"><a href="dati-longitudinali.html#cb466-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb466-4"><a href="dati-longitudinali.html#cb466-4" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb466-5"><a href="dati-longitudinali.html#cb466-5" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>id)</span></code></pre></div>
-<p><img src="cfa_files/figure-html/unnamed-chunk-493-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="dati-longitudinali.html#cb476-1" tabindex="-1"></a>d <span class="sc">%&gt;%</span></span>
+<span id="cb476-2"><a href="dati-longitudinali.html#cb476-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb476-3"><a href="dati-longitudinali.html#cb476-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb476-4"><a href="dati-longitudinali.html#cb476-4" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb476-5"><a href="dati-longitudinali.html#cb476-5" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>id)</span></code></pre></div>
+<p><img src="cfa_files/figure-html/unnamed-chunk-503-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Complessivamente, i dati suggeriscono un andamento crescente della variabile risposta in funzione del tempo:</p>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="dati-longitudinali.html#cb467-1" tabindex="-1"></a>demo_growth_long <span class="sc">%&gt;%</span></span>
-<span id="cb467-2"><a href="dati-longitudinali.html#cb467-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(time, y, <span class="at">group =</span> id)) <span class="sc">+</span></span>
-<span id="cb467-3"><a href="dati-longitudinali.html#cb467-3" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span> <span class="co"># add individual line with transparency</span></span>
-<span id="cb467-4"><a href="dati-longitudinali.html#cb467-4" tabindex="-1"></a>  <span class="fu">stat_summary</span>( <span class="co"># add average line</span></span>
-<span id="cb467-5"><a href="dati-longitudinali.html#cb467-5" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">group =</span> <span class="dv">1</span>),</span>
-<span id="cb467-6"><a href="dati-longitudinali.html#cb467-6" tabindex="-1"></a>    <span class="at">fun =</span> mean,</span>
-<span id="cb467-7"><a href="dati-longitudinali.html#cb467-7" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">&quot;line&quot;</span>,</span>
-<span id="cb467-8"><a href="dati-longitudinali.html#cb467-8" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">1.5</span>,</span>
-<span id="cb467-9"><a href="dati-longitudinali.html#cb467-9" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;black&quot;</span></span>
-<span id="cb467-10"><a href="dati-longitudinali.html#cb467-10" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb467-11"><a href="dati-longitudinali.html#cb467-11" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Time&quot;</span>, <span class="at">y =</span> <span class="st">&quot;y&quot;</span>)</span></code></pre></div>
-<p><img src="cfa_files/figure-html/unnamed-chunk-494-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="dati-longitudinali.html#cb477-1" tabindex="-1"></a>demo_growth_long <span class="sc">%&gt;%</span></span>
+<span id="cb477-2"><a href="dati-longitudinali.html#cb477-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(time, y, <span class="at">group =</span> id)) <span class="sc">+</span></span>
+<span id="cb477-3"><a href="dati-longitudinali.html#cb477-3" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span> <span class="co"># add individual line with transparency</span></span>
+<span id="cb477-4"><a href="dati-longitudinali.html#cb477-4" tabindex="-1"></a>  <span class="fu">stat_summary</span>( <span class="co"># add average line</span></span>
+<span id="cb477-5"><a href="dati-longitudinali.html#cb477-5" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">group =</span> <span class="dv">1</span>),</span>
+<span id="cb477-6"><a href="dati-longitudinali.html#cb477-6" tabindex="-1"></a>    <span class="at">fun =</span> mean,</span>
+<span id="cb477-7"><a href="dati-longitudinali.html#cb477-7" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">&quot;line&quot;</span>,</span>
+<span id="cb477-8"><a href="dati-longitudinali.html#cb477-8" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">1.5</span>,</span>
+<span id="cb477-9"><a href="dati-longitudinali.html#cb477-9" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;black&quot;</span></span>
+<span id="cb477-10"><a href="dati-longitudinali.html#cb477-10" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb477-11"><a href="dati-longitudinali.html#cb477-11" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Time&quot;</span>, <span class="at">y =</span> <span class="st">&quot;y&quot;</span>)</span></code></pre></div>
+<p><img src="cfa_files/figure-html/unnamed-chunk-504-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Per adattare a questi dati un modello lineare di crescita, specifichiamo il seguente modello a variabili latenti</p>
 <p><span class="math display">\[
 y_j = \alpha_0 + \alpha_1 \lambda_j + \zeta_{00} + \zeta_{11} \lambda_j + \epsilon_j,
@@ -823,87 +824,87 @@ FIGURA 31.1: Modello di crescita latente.
 </div>
 <p>Un modello lineare di crescita latente corrisponde dunque ad un modello fattoriale con due variabili latenti: un fattore (<span class="math inline">\(\eta_0\)</span>) corrisponde al “punteggio vero” delle intercette individuali, mentre l’altro fattore (<span class="math inline">\(\eta_1\)</span>) che corrisponde al “punteggio vero” delle pendenze delle rette di regressione per i singoli individui.</p>
 <p>Nella sintassi <code>lavaan</code> il modello LGM diventa:</p>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="dati-longitudinali.html#cb468-1" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb468-2"><a href="dati-longitudinali.html#cb468-2" tabindex="-1"></a><span class="st"> i =~ 1*t1 + 1*t2 + 1*t3 + 1*t4</span></span>
-<span id="cb468-3"><a href="dati-longitudinali.html#cb468-3" tabindex="-1"></a><span class="st"> s =~ 0*t1 + 1*t2 + 2*t3 + 3*t4</span></span>
-<span id="cb468-4"><a href="dati-longitudinali.html#cb468-4" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="dati-longitudinali.html#cb478-1" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb478-2"><a href="dati-longitudinali.html#cb478-2" tabindex="-1"></a><span class="st"> i =~ 1*t1 + 1*t2 + 1*t3 + 1*t4</span></span>
+<span id="cb478-3"><a href="dati-longitudinali.html#cb478-3" tabindex="-1"></a><span class="st"> s =~ 0*t1 + 1*t2 + 2*t3 + 3*t4</span></span>
+<span id="cb478-4"><a href="dati-longitudinali.html#cb478-4" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
 <p>Si noti che, per il fattore <span class="math inline">\(\eta_0\)</span> (che rappresenta le intercette), i valori delle saturazioni fattoriali sono fissate a 1 – questo è il motivo per cui <span class="math inline">\(\alpha_0\)</span> e <span class="math inline">\(\zeta_{00}\)</span> compaiono da soli nell’equazione precedente: in maniera esplicita sono <span class="math inline">\(1 \cdot \alpha_0\)</span> e <span class="math inline">\(1 \cdot \zeta_{00}\)</span>.</p>
 <p>Le saturazioni per il fattore <span class="math inline">\(\eta_1\)</span> (che specifica le pendenze delle funzioni lineari) sono fissate ai valori che descrivono la variazione temporale: qui i valori <span class="math inline">\(\lambda_j\)</span> da 0 a 3.</p>
 <p>Il modello include anche la correlazione tra <span class="math inline">\(\eta_0\)</span> e <span class="math inline">\(\eta_1\)</span>, rappresentata dalla doppia freccia <span class="math inline">\(\zeta_{01}\)</span>. Se <span class="math inline">\(\zeta_{01} &gt; 0\)</span>, questo significa che, con il passare del tempo, i partecipanti tendono a diventare sempre più diversi tra loro; un’interpretazione opposta si ha se <span class="math inline">\(\zeta_{01}&lt; 0\)</span>.</p>
 <p>Adattiamo il modello ai dati:</p>
-<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="dati-longitudinali.html#cb469-1" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">growth</span>(model, <span class="at">data =</span> Demo.growth)</span>
-<span id="cb469-2"><a href="dati-longitudinali.html#cb469-2" tabindex="-1"></a><span class="fu">summary</span>(fit)</span>
-<span id="cb469-3"><a href="dati-longitudinali.html#cb469-3" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6.15 ended normally after 29 iterations</span></span>
-<span id="cb469-4"><a href="dati-longitudinali.html#cb469-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb469-5"><a href="dati-longitudinali.html#cb469-5" tabindex="-1"></a><span class="co">#&gt;   Estimator                                         ML</span></span>
-<span id="cb469-6"><a href="dati-longitudinali.html#cb469-6" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
-<span id="cb469-7"><a href="dati-longitudinali.html#cb469-7" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                         9</span></span>
-<span id="cb469-8"><a href="dati-longitudinali.html#cb469-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb469-9"><a href="dati-longitudinali.html#cb469-9" tabindex="-1"></a><span class="co">#&gt;   Number of observations                           400</span></span>
-<span id="cb469-10"><a href="dati-longitudinali.html#cb469-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb469-11"><a href="dati-longitudinali.html#cb469-11" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
-<span id="cb469-12"><a href="dati-longitudinali.html#cb469-12" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb469-13"><a href="dati-longitudinali.html#cb469-13" tabindex="-1"></a><span class="co">#&gt;   Test statistic                                 8.069</span></span>
-<span id="cb469-14"><a href="dati-longitudinali.html#cb469-14" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                 5</span></span>
-<span id="cb469-15"><a href="dati-longitudinali.html#cb469-15" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                           0.152</span></span>
-<span id="cb469-16"><a href="dati-longitudinali.html#cb469-16" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb469-17"><a href="dati-longitudinali.html#cb469-17" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
-<span id="cb469-18"><a href="dati-longitudinali.html#cb469-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb469-19"><a href="dati-longitudinali.html#cb469-19" tabindex="-1"></a><span class="co">#&gt;   Standard errors                             Standard</span></span>
-<span id="cb469-20"><a href="dati-longitudinali.html#cb469-20" tabindex="-1"></a><span class="co">#&gt;   Information                                 Expected</span></span>
-<span id="cb469-21"><a href="dati-longitudinali.html#cb469-21" tabindex="-1"></a><span class="co">#&gt;   Information saturated (h1) model          Structured</span></span>
-<span id="cb469-22"><a href="dati-longitudinali.html#cb469-22" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb469-23"><a href="dati-longitudinali.html#cb469-23" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
-<span id="cb469-24"><a href="dati-longitudinali.html#cb469-24" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb469-25"><a href="dati-longitudinali.html#cb469-25" tabindex="-1"></a><span class="co">#&gt;   i =~                                                </span></span>
-<span id="cb469-26"><a href="dati-longitudinali.html#cb469-26" tabindex="-1"></a><span class="co">#&gt;     t1                1.000                           </span></span>
-<span id="cb469-27"><a href="dati-longitudinali.html#cb469-27" tabindex="-1"></a><span class="co">#&gt;     t2                1.000                           </span></span>
-<span id="cb469-28"><a href="dati-longitudinali.html#cb469-28" tabindex="-1"></a><span class="co">#&gt;     t3                1.000                           </span></span>
-<span id="cb469-29"><a href="dati-longitudinali.html#cb469-29" tabindex="-1"></a><span class="co">#&gt;     t4                1.000                           </span></span>
-<span id="cb469-30"><a href="dati-longitudinali.html#cb469-30" tabindex="-1"></a><span class="co">#&gt;   s =~                                                </span></span>
-<span id="cb469-31"><a href="dati-longitudinali.html#cb469-31" tabindex="-1"></a><span class="co">#&gt;     t1                0.000                           </span></span>
-<span id="cb469-32"><a href="dati-longitudinali.html#cb469-32" tabindex="-1"></a><span class="co">#&gt;     t2                1.000                           </span></span>
-<span id="cb469-33"><a href="dati-longitudinali.html#cb469-33" tabindex="-1"></a><span class="co">#&gt;     t3                2.000                           </span></span>
-<span id="cb469-34"><a href="dati-longitudinali.html#cb469-34" tabindex="-1"></a><span class="co">#&gt;     t4                3.000                           </span></span>
-<span id="cb469-35"><a href="dati-longitudinali.html#cb469-35" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb469-36"><a href="dati-longitudinali.html#cb469-36" tabindex="-1"></a><span class="co">#&gt; Covariances:</span></span>
-<span id="cb469-37"><a href="dati-longitudinali.html#cb469-37" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb469-38"><a href="dati-longitudinali.html#cb469-38" tabindex="-1"></a><span class="co">#&gt;   i ~~                                                </span></span>
-<span id="cb469-39"><a href="dati-longitudinali.html#cb469-39" tabindex="-1"></a><span class="co">#&gt;     s                 0.618    0.071    8.686    0.000</span></span>
-<span id="cb469-40"><a href="dati-longitudinali.html#cb469-40" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb469-41"><a href="dati-longitudinali.html#cb469-41" tabindex="-1"></a><span class="co">#&gt; Intercepts:</span></span>
-<span id="cb469-42"><a href="dati-longitudinali.html#cb469-42" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb469-43"><a href="dati-longitudinali.html#cb469-43" tabindex="-1"></a><span class="co">#&gt;    .t1                0.000                           </span></span>
-<span id="cb469-44"><a href="dati-longitudinali.html#cb469-44" tabindex="-1"></a><span class="co">#&gt;    .t2                0.000                           </span></span>
-<span id="cb469-45"><a href="dati-longitudinali.html#cb469-45" tabindex="-1"></a><span class="co">#&gt;    .t3                0.000                           </span></span>
-<span id="cb469-46"><a href="dati-longitudinali.html#cb469-46" tabindex="-1"></a><span class="co">#&gt;    .t4                0.000                           </span></span>
-<span id="cb469-47"><a href="dati-longitudinali.html#cb469-47" tabindex="-1"></a><span class="co">#&gt;     i                 0.615    0.077    8.007    0.000</span></span>
-<span id="cb469-48"><a href="dati-longitudinali.html#cb469-48" tabindex="-1"></a><span class="co">#&gt;     s                 1.006    0.042   24.076    0.000</span></span>
-<span id="cb469-49"><a href="dati-longitudinali.html#cb469-49" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb469-50"><a href="dati-longitudinali.html#cb469-50" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
-<span id="cb469-51"><a href="dati-longitudinali.html#cb469-51" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb469-52"><a href="dati-longitudinali.html#cb469-52" tabindex="-1"></a><span class="co">#&gt;    .t1                0.595    0.086    6.944    0.000</span></span>
-<span id="cb469-53"><a href="dati-longitudinali.html#cb469-53" tabindex="-1"></a><span class="co">#&gt;    .t2                0.676    0.061   11.061    0.000</span></span>
-<span id="cb469-54"><a href="dati-longitudinali.html#cb469-54" tabindex="-1"></a><span class="co">#&gt;    .t3                0.635    0.072    8.761    0.000</span></span>
-<span id="cb469-55"><a href="dati-longitudinali.html#cb469-55" tabindex="-1"></a><span class="co">#&gt;    .t4                0.508    0.124    4.090    0.000</span></span>
-<span id="cb469-56"><a href="dati-longitudinali.html#cb469-56" tabindex="-1"></a><span class="co">#&gt;     i                 1.932    0.173   11.194    0.000</span></span>
-<span id="cb469-57"><a href="dati-longitudinali.html#cb469-57" tabindex="-1"></a><span class="co">#&gt;     s                 0.587    0.052   11.336    0.000</span></span></code></pre></div>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="dati-longitudinali.html#cb479-1" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">growth</span>(model, <span class="at">data =</span> Demo.growth)</span>
+<span id="cb479-2"><a href="dati-longitudinali.html#cb479-2" tabindex="-1"></a><span class="fu">summary</span>(fit)</span>
+<span id="cb479-3"><a href="dati-longitudinali.html#cb479-3" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6.15 ended normally after 29 iterations</span></span>
+<span id="cb479-4"><a href="dati-longitudinali.html#cb479-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb479-5"><a href="dati-longitudinali.html#cb479-5" tabindex="-1"></a><span class="co">#&gt;   Estimator                                         ML</span></span>
+<span id="cb479-6"><a href="dati-longitudinali.html#cb479-6" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
+<span id="cb479-7"><a href="dati-longitudinali.html#cb479-7" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                         9</span></span>
+<span id="cb479-8"><a href="dati-longitudinali.html#cb479-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb479-9"><a href="dati-longitudinali.html#cb479-9" tabindex="-1"></a><span class="co">#&gt;   Number of observations                           400</span></span>
+<span id="cb479-10"><a href="dati-longitudinali.html#cb479-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb479-11"><a href="dati-longitudinali.html#cb479-11" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
+<span id="cb479-12"><a href="dati-longitudinali.html#cb479-12" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
+<span id="cb479-13"><a href="dati-longitudinali.html#cb479-13" tabindex="-1"></a><span class="co">#&gt;   Test statistic                                 8.069</span></span>
+<span id="cb479-14"><a href="dati-longitudinali.html#cb479-14" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                 5</span></span>
+<span id="cb479-15"><a href="dati-longitudinali.html#cb479-15" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                           0.152</span></span>
+<span id="cb479-16"><a href="dati-longitudinali.html#cb479-16" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb479-17"><a href="dati-longitudinali.html#cb479-17" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
+<span id="cb479-18"><a href="dati-longitudinali.html#cb479-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb479-19"><a href="dati-longitudinali.html#cb479-19" tabindex="-1"></a><span class="co">#&gt;   Standard errors                             Standard</span></span>
+<span id="cb479-20"><a href="dati-longitudinali.html#cb479-20" tabindex="-1"></a><span class="co">#&gt;   Information                                 Expected</span></span>
+<span id="cb479-21"><a href="dati-longitudinali.html#cb479-21" tabindex="-1"></a><span class="co">#&gt;   Information saturated (h1) model          Structured</span></span>
+<span id="cb479-22"><a href="dati-longitudinali.html#cb479-22" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb479-23"><a href="dati-longitudinali.html#cb479-23" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
+<span id="cb479-24"><a href="dati-longitudinali.html#cb479-24" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb479-25"><a href="dati-longitudinali.html#cb479-25" tabindex="-1"></a><span class="co">#&gt;   i =~                                                </span></span>
+<span id="cb479-26"><a href="dati-longitudinali.html#cb479-26" tabindex="-1"></a><span class="co">#&gt;     t1                1.000                           </span></span>
+<span id="cb479-27"><a href="dati-longitudinali.html#cb479-27" tabindex="-1"></a><span class="co">#&gt;     t2                1.000                           </span></span>
+<span id="cb479-28"><a href="dati-longitudinali.html#cb479-28" tabindex="-1"></a><span class="co">#&gt;     t3                1.000                           </span></span>
+<span id="cb479-29"><a href="dati-longitudinali.html#cb479-29" tabindex="-1"></a><span class="co">#&gt;     t4                1.000                           </span></span>
+<span id="cb479-30"><a href="dati-longitudinali.html#cb479-30" tabindex="-1"></a><span class="co">#&gt;   s =~                                                </span></span>
+<span id="cb479-31"><a href="dati-longitudinali.html#cb479-31" tabindex="-1"></a><span class="co">#&gt;     t1                0.000                           </span></span>
+<span id="cb479-32"><a href="dati-longitudinali.html#cb479-32" tabindex="-1"></a><span class="co">#&gt;     t2                1.000                           </span></span>
+<span id="cb479-33"><a href="dati-longitudinali.html#cb479-33" tabindex="-1"></a><span class="co">#&gt;     t3                2.000                           </span></span>
+<span id="cb479-34"><a href="dati-longitudinali.html#cb479-34" tabindex="-1"></a><span class="co">#&gt;     t4                3.000                           </span></span>
+<span id="cb479-35"><a href="dati-longitudinali.html#cb479-35" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb479-36"><a href="dati-longitudinali.html#cb479-36" tabindex="-1"></a><span class="co">#&gt; Covariances:</span></span>
+<span id="cb479-37"><a href="dati-longitudinali.html#cb479-37" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb479-38"><a href="dati-longitudinali.html#cb479-38" tabindex="-1"></a><span class="co">#&gt;   i ~~                                                </span></span>
+<span id="cb479-39"><a href="dati-longitudinali.html#cb479-39" tabindex="-1"></a><span class="co">#&gt;     s                 0.618    0.071    8.686    0.000</span></span>
+<span id="cb479-40"><a href="dati-longitudinali.html#cb479-40" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb479-41"><a href="dati-longitudinali.html#cb479-41" tabindex="-1"></a><span class="co">#&gt; Intercepts:</span></span>
+<span id="cb479-42"><a href="dati-longitudinali.html#cb479-42" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb479-43"><a href="dati-longitudinali.html#cb479-43" tabindex="-1"></a><span class="co">#&gt;    .t1                0.000                           </span></span>
+<span id="cb479-44"><a href="dati-longitudinali.html#cb479-44" tabindex="-1"></a><span class="co">#&gt;    .t2                0.000                           </span></span>
+<span id="cb479-45"><a href="dati-longitudinali.html#cb479-45" tabindex="-1"></a><span class="co">#&gt;    .t3                0.000                           </span></span>
+<span id="cb479-46"><a href="dati-longitudinali.html#cb479-46" tabindex="-1"></a><span class="co">#&gt;    .t4                0.000                           </span></span>
+<span id="cb479-47"><a href="dati-longitudinali.html#cb479-47" tabindex="-1"></a><span class="co">#&gt;     i                 0.615    0.077    8.007    0.000</span></span>
+<span id="cb479-48"><a href="dati-longitudinali.html#cb479-48" tabindex="-1"></a><span class="co">#&gt;     s                 1.006    0.042   24.076    0.000</span></span>
+<span id="cb479-49"><a href="dati-longitudinali.html#cb479-49" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb479-50"><a href="dati-longitudinali.html#cb479-50" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
+<span id="cb479-51"><a href="dati-longitudinali.html#cb479-51" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb479-52"><a href="dati-longitudinali.html#cb479-52" tabindex="-1"></a><span class="co">#&gt;    .t1                0.595    0.086    6.944    0.000</span></span>
+<span id="cb479-53"><a href="dati-longitudinali.html#cb479-53" tabindex="-1"></a><span class="co">#&gt;    .t2                0.676    0.061   11.061    0.000</span></span>
+<span id="cb479-54"><a href="dati-longitudinali.html#cb479-54" tabindex="-1"></a><span class="co">#&gt;    .t3                0.635    0.072    8.761    0.000</span></span>
+<span id="cb479-55"><a href="dati-longitudinali.html#cb479-55" tabindex="-1"></a><span class="co">#&gt;    .t4                0.508    0.124    4.090    0.000</span></span>
+<span id="cb479-56"><a href="dati-longitudinali.html#cb479-56" tabindex="-1"></a><span class="co">#&gt;     i                 1.932    0.173   11.194    0.000</span></span>
+<span id="cb479-57"><a href="dati-longitudinali.html#cb479-57" tabindex="-1"></a><span class="co">#&gt;     s                 0.587    0.052   11.336    0.000</span></span></code></pre></div>
 <p>Esaminiamo il path diagram.</p>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="dati-longitudinali.html#cb470-1" tabindex="-1"></a><span class="fu">semPaths</span>(</span>
-<span id="cb470-2"><a href="dati-longitudinali.html#cb470-2" tabindex="-1"></a>  fit,</span>
-<span id="cb470-3"><a href="dati-longitudinali.html#cb470-3" tabindex="-1"></a>  <span class="at">layout =</span> <span class="st">&quot;tree&quot;</span>,</span>
-<span id="cb470-4"><a href="dati-longitudinali.html#cb470-4" tabindex="-1"></a>  <span class="at">intercepts =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb470-5"><a href="dati-longitudinali.html#cb470-5" tabindex="-1"></a>  <span class="at">posCol =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>),</span>
-<span id="cb470-6"><a href="dati-longitudinali.html#cb470-6" tabindex="-1"></a>  <span class="at">edge.label.cex =</span> <span class="fl">0.00001</span>,</span>
-<span id="cb470-7"><a href="dati-longitudinali.html#cb470-7" tabindex="-1"></a>  <span class="at">sizeMan =</span> <span class="dv">7</span>,</span>
-<span id="cb470-8"><a href="dati-longitudinali.html#cb470-8" tabindex="-1"></a>  <span class="at">what =</span> <span class="st">&quot;path&quot;</span>,</span>
-<span id="cb470-9"><a href="dati-longitudinali.html#cb470-9" tabindex="-1"></a>  <span class="at">optimizeLatRes =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb470-10"><a href="dati-longitudinali.html#cb470-10" tabindex="-1"></a>  <span class="at">residuals =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb470-11"><a href="dati-longitudinali.html#cb470-11" tabindex="-1"></a>  <span class="at">style =</span> <span class="st">&quot;lisrel&quot;</span></span>
-<span id="cb470-12"><a href="dati-longitudinali.html#cb470-12" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="cfa_files/figure-html/unnamed-chunk-497-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="dati-longitudinali.html#cb480-1" tabindex="-1"></a><span class="fu">semPaths</span>(</span>
+<span id="cb480-2"><a href="dati-longitudinali.html#cb480-2" tabindex="-1"></a>  fit,</span>
+<span id="cb480-3"><a href="dati-longitudinali.html#cb480-3" tabindex="-1"></a>  <span class="at">layout =</span> <span class="st">&quot;tree&quot;</span>,</span>
+<span id="cb480-4"><a href="dati-longitudinali.html#cb480-4" tabindex="-1"></a>  <span class="at">intercepts =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb480-5"><a href="dati-longitudinali.html#cb480-5" tabindex="-1"></a>  <span class="at">posCol =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>),</span>
+<span id="cb480-6"><a href="dati-longitudinali.html#cb480-6" tabindex="-1"></a>  <span class="at">edge.label.cex =</span> <span class="fl">0.00001</span>,</span>
+<span id="cb480-7"><a href="dati-longitudinali.html#cb480-7" tabindex="-1"></a>  <span class="at">sizeMan =</span> <span class="dv">7</span>,</span>
+<span id="cb480-8"><a href="dati-longitudinali.html#cb480-8" tabindex="-1"></a>  <span class="at">what =</span> <span class="st">&quot;path&quot;</span>,</span>
+<span id="cb480-9"><a href="dati-longitudinali.html#cb480-9" tabindex="-1"></a>  <span class="at">optimizeLatRes =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb480-10"><a href="dati-longitudinali.html#cb480-10" tabindex="-1"></a>  <span class="at">residuals =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb480-11"><a href="dati-longitudinali.html#cb480-11" tabindex="-1"></a>  <span class="at">style =</span> <span class="st">&quot;lisrel&quot;</span></span>
+<span id="cb480-12"><a href="dati-longitudinali.html#cb480-12" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="cfa_files/figure-html/unnamed-chunk-507-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Ci sono 6 tipi di parametri di interesse:</p>
-<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="dati-longitudinali.html#cb471-1" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">coef</span>(fit), <span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">format =</span> <span class="st">&quot;markdown&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="dati-longitudinali.html#cb481-1" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">coef</span>(fit), <span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">format =</span> <span class="st">&quot;markdown&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -959,84 +960,84 @@ FIGURA 31.1: Modello di crescita latente.
 <li>la covarianza tra <code>i</code> e <code>s</code> = 0.618 ci dice che i valori della variabile risposta diventano via via più diversi nel tempo tra i rispondenti (un valore negativo avrebbe l’interpretazione opposta).</li>
 </ul>
 <p>Le stime dell’intercetta e della pendenza della funzione di crescita per ciascun partecipante si ottengono nel modo seguente:</p>
-<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="dati-longitudinali.html#cb472-1" tabindex="-1"></a>rand_eff <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">lavPredict</span>(fit))</span>
-<span id="cb472-2"><a href="dati-longitudinali.html#cb472-2" tabindex="-1"></a><span class="fu">head</span>(rand_eff)</span>
-<span id="cb472-3"><a href="dati-longitudinali.html#cb472-3" tabindex="-1"></a><span class="co">#&gt;            i           s</span></span>
-<span id="cb472-4"><a href="dati-longitudinali.html#cb472-4" tabindex="-1"></a><span class="co">#&gt; 1  1.2275557  0.60278312</span></span>
-<span id="cb472-5"><a href="dati-longitudinali.html#cb472-5" tabindex="-1"></a><span class="co">#&gt; 2 -2.6795847 -1.38498215</span></span>
-<span id="cb472-6"><a href="dati-longitudinali.html#cb472-6" tabindex="-1"></a><span class="co">#&gt; 3 -0.2955058  0.88828376</span></span>
-<span id="cb472-7"><a href="dati-longitudinali.html#cb472-7" tabindex="-1"></a><span class="co">#&gt; 4  1.1576419  1.34051395</span></span>
-<span id="cb472-8"><a href="dati-longitudinali.html#cb472-8" tabindex="-1"></a><span class="co">#&gt; 5 -0.4355522  0.03193498</span></span>
-<span id="cb472-9"><a href="dati-longitudinali.html#cb472-9" tabindex="-1"></a><span class="co">#&gt; 6 -1.3121802  0.50258530</span></span></code></pre></div>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="dati-longitudinali.html#cb482-1" tabindex="-1"></a>rand_eff <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">lavPredict</span>(fit))</span>
+<span id="cb482-2"><a href="dati-longitudinali.html#cb482-2" tabindex="-1"></a><span class="fu">head</span>(rand_eff)</span>
+<span id="cb482-3"><a href="dati-longitudinali.html#cb482-3" tabindex="-1"></a><span class="co">#&gt;            i           s</span></span>
+<span id="cb482-4"><a href="dati-longitudinali.html#cb482-4" tabindex="-1"></a><span class="co">#&gt; 1  1.2275557  0.60278312</span></span>
+<span id="cb482-5"><a href="dati-longitudinali.html#cb482-5" tabindex="-1"></a><span class="co">#&gt; 2 -2.6795847 -1.38498215</span></span>
+<span id="cb482-6"><a href="dati-longitudinali.html#cb482-6" tabindex="-1"></a><span class="co">#&gt; 3 -0.2955058  0.88828376</span></span>
+<span id="cb482-7"><a href="dati-longitudinali.html#cb482-7" tabindex="-1"></a><span class="co">#&gt; 4  1.1576419  1.34051395</span></span>
+<span id="cb482-8"><a href="dati-longitudinali.html#cb482-8" tabindex="-1"></a><span class="co">#&gt; 5 -0.4355522  0.03193498</span></span>
+<span id="cb482-9"><a href="dati-longitudinali.html#cb482-9" tabindex="-1"></a><span class="co">#&gt; 6 -1.3121802  0.50258530</span></span></code></pre></div>
 <p>Istogrammi delle stime individuali dell’intercetta e della pendenza della curva di crescita si ottengono nel modo seguente:</p>
-<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="dati-longitudinali.html#cb473-1" tabindex="-1"></a>gi <span class="ot">&lt;-</span> rand_eff <span class="sc">%&gt;%</span></span>
-<span id="cb473-2"><a href="dati-longitudinali.html#cb473-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> i)) <span class="sc">+</span></span>
-<span id="cb473-3"><a href="dati-longitudinali.html#cb473-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
-<span id="cb473-4"><a href="dati-longitudinali.html#cb473-4" tabindex="-1"></a>gh <span class="ot">&lt;-</span> rand_eff <span class="sc">%&gt;%</span></span>
-<span id="cb473-5"><a href="dati-longitudinali.html#cb473-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> s)) <span class="sc">+</span></span>
-<span id="cb473-6"><a href="dati-longitudinali.html#cb473-6" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
-<span id="cb473-7"><a href="dati-longitudinali.html#cb473-7" tabindex="-1"></a>gi <span class="sc">+</span> gh</span></code></pre></div>
-<p><img src="cfa_files/figure-html/unnamed-chunk-500-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="dati-longitudinali.html#cb483-1" tabindex="-1"></a>gi <span class="ot">&lt;-</span> rand_eff <span class="sc">%&gt;%</span></span>
+<span id="cb483-2"><a href="dati-longitudinali.html#cb483-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> i)) <span class="sc">+</span></span>
+<span id="cb483-3"><a href="dati-longitudinali.html#cb483-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
+<span id="cb483-4"><a href="dati-longitudinali.html#cb483-4" tabindex="-1"></a>gh <span class="ot">&lt;-</span> rand_eff <span class="sc">%&gt;%</span></span>
+<span id="cb483-5"><a href="dati-longitudinali.html#cb483-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> s)) <span class="sc">+</span></span>
+<span id="cb483-6"><a href="dati-longitudinali.html#cb483-6" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
+<span id="cb483-7"><a href="dati-longitudinali.html#cb483-7" tabindex="-1"></a>gi <span class="sc">+</span> gh</span></code></pre></div>
+<p><img src="cfa_files/figure-html/unnamed-chunk-510-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="visualizzare-il-cambiamento" class="section level3 hasAnchor" number="31.1.2">
 <h3><span class="header-section-number">31.1.2</span> Visualizzare il cambiamento<a href="dati-longitudinali.html#visualizzare-il-cambiamento" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>È utile visualizzare i punteggi previsti dal modello. A tal fine, useremo qui la funzione <code>predict()</code> per creare un nuovo oggetto <span class="math inline">\(\mathsf{R}\)</span> che contiene i punteggi previsti a livello individuale per l’intercetta e la pendenza.</p>
-<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="dati-longitudinali.html#cb474-1" tabindex="-1"></a>pred_lgm <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit)</span>
-<span id="cb474-2"><a href="dati-longitudinali.html#cb474-2" tabindex="-1"></a><span class="fu">head</span>(pred_lgm)</span>
-<span id="cb474-3"><a href="dati-longitudinali.html#cb474-3" tabindex="-1"></a><span class="co">#&gt;               i           s</span></span>
-<span id="cb474-4"><a href="dati-longitudinali.html#cb474-4" tabindex="-1"></a><span class="co">#&gt; [1,]  1.2275557  0.60278312</span></span>
-<span id="cb474-5"><a href="dati-longitudinali.html#cb474-5" tabindex="-1"></a><span class="co">#&gt; [2,] -2.6795847 -1.38498215</span></span>
-<span id="cb474-6"><a href="dati-longitudinali.html#cb474-6" tabindex="-1"></a><span class="co">#&gt; [3,] -0.2955058  0.88828376</span></span>
-<span id="cb474-7"><a href="dati-longitudinali.html#cb474-7" tabindex="-1"></a><span class="co">#&gt; [4,]  1.1576419  1.34051395</span></span>
-<span id="cb474-8"><a href="dati-longitudinali.html#cb474-8" tabindex="-1"></a><span class="co">#&gt; [5,] -0.4355522  0.03193498</span></span>
-<span id="cb474-9"><a href="dati-longitudinali.html#cb474-9" tabindex="-1"></a><span class="co">#&gt; [6,] -1.3121802  0.50258530</span></span></code></pre></div>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="dati-longitudinali.html#cb484-1" tabindex="-1"></a>pred_lgm <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit)</span>
+<span id="cb484-2"><a href="dati-longitudinali.html#cb484-2" tabindex="-1"></a><span class="fu">head</span>(pred_lgm)</span>
+<span id="cb484-3"><a href="dati-longitudinali.html#cb484-3" tabindex="-1"></a><span class="co">#&gt;               i           s</span></span>
+<span id="cb484-4"><a href="dati-longitudinali.html#cb484-4" tabindex="-1"></a><span class="co">#&gt; [1,]  1.2275557  0.60278312</span></span>
+<span id="cb484-5"><a href="dati-longitudinali.html#cb484-5" tabindex="-1"></a><span class="co">#&gt; [2,] -2.6795847 -1.38498215</span></span>
+<span id="cb484-6"><a href="dati-longitudinali.html#cb484-6" tabindex="-1"></a><span class="co">#&gt; [3,] -0.2955058  0.88828376</span></span>
+<span id="cb484-7"><a href="dati-longitudinali.html#cb484-7" tabindex="-1"></a><span class="co">#&gt; [4,]  1.1576419  1.34051395</span></span>
+<span id="cb484-8"><a href="dati-longitudinali.html#cb484-8" tabindex="-1"></a><span class="co">#&gt; [5,] -0.4355522  0.03193498</span></span>
+<span id="cb484-9"><a href="dati-longitudinali.html#cb484-9" tabindex="-1"></a><span class="co">#&gt; [6,] -1.3121802  0.50258530</span></span></code></pre></div>
 <p>Questi sono i valori previsti dal modello per ciascun partecipante. Se calcoliamo la media di queste variabili otteniamo gli stessi risultati che sono stati riportati sopra:</p>
-<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="dati-longitudinali.html#cb475-1" tabindex="-1"></a><span class="co"># average of the intercepts (first column)</span></span>
-<span id="cb475-2"><a href="dati-longitudinali.html#cb475-2" tabindex="-1"></a><span class="fu">mean</span>(pred_lgm[, <span class="dv">1</span>])</span>
-<span id="cb475-3"><a href="dati-longitudinali.html#cb475-3" tabindex="-1"></a><span class="co">#&gt; [1] 0.6146957</span></span>
-<span id="cb475-4"><a href="dati-longitudinali.html#cb475-4" tabindex="-1"></a><span class="co"># average of the slope (second column)</span></span>
-<span id="cb475-5"><a href="dati-longitudinali.html#cb475-5" tabindex="-1"></a><span class="fu">mean</span>(pred_lgm[, <span class="dv">2</span>])</span>
-<span id="cb475-6"><a href="dati-longitudinali.html#cb475-6" tabindex="-1"></a><span class="co">#&gt; [1] 1.006294</span></span></code></pre></div>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="dati-longitudinali.html#cb485-1" tabindex="-1"></a><span class="co"># average of the intercepts (first column)</span></span>
+<span id="cb485-2"><a href="dati-longitudinali.html#cb485-2" tabindex="-1"></a><span class="fu">mean</span>(pred_lgm[, <span class="dv">1</span>])</span>
+<span id="cb485-3"><a href="dati-longitudinali.html#cb485-3" tabindex="-1"></a><span class="co">#&gt; [1] 0.6146957</span></span>
+<span id="cb485-4"><a href="dati-longitudinali.html#cb485-4" tabindex="-1"></a><span class="co"># average of the slope (second column)</span></span>
+<span id="cb485-5"><a href="dati-longitudinali.html#cb485-5" tabindex="-1"></a><span class="fu">mean</span>(pred_lgm[, <span class="dv">2</span>])</span>
+<span id="cb485-6"><a href="dati-longitudinali.html#cb485-6" tabindex="-1"></a><span class="co">#&gt; [1] 1.006294</span></span></code></pre></div>
 <p>Il cambiamento nel tempo previsto dal modello per il soggetto <span class="math inline">\(j\)</span>-esimo è</p>
 <p><span class="math display">\[
 y_j = \eta_0 + \lambda_j \eta_1.
 \]</span></p>
 <p>Il cambiamento previsto per tutti i soggetti può essere visualizzato nel modo seguente:</p>
-<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="dati-longitudinali.html#cb476-1" tabindex="-1"></a><span class="co"># create long data for each individual</span></span>
-<span id="cb476-2"><a href="dati-longitudinali.html#cb476-2" tabindex="-1"></a>pred_lgm_long <span class="ot">&lt;-</span> <span class="fu">map</span>(</span>
-<span id="cb476-3"><a href="dati-longitudinali.html#cb476-3" tabindex="-1"></a>  <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>, <span class="co"># loop over time</span></span>
-<span id="cb476-4"><a href="dati-longitudinali.html#cb476-4" tabindex="-1"></a>  <span class="cf">function</span>(x) pred_lgm[, <span class="dv">1</span>] <span class="sc">+</span> x <span class="sc">*</span> pred_lgm[, <span class="dv">2</span>]</span>
-<span id="cb476-5"><a href="dati-longitudinali.html#cb476-5" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb476-6"><a href="dati-longitudinali.html#cb476-6" tabindex="-1"></a>  <span class="fu">reduce</span>(cbind) <span class="sc">%&gt;%</span> <span class="co"># bring together the wave predictions</span></span>
-<span id="cb476-7"><a href="dati-longitudinali.html#cb476-7" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> <span class="co"># make data frame</span></span>
-<span id="cb476-8"><a href="dati-longitudinali.html#cb476-8" tabindex="-1"></a>  <span class="fu">setNames</span>(<span class="fu">str_c</span>(<span class="st">&quot;time&quot;</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>)) <span class="sc">%&gt;%</span> <span class="co"># give names to variables</span></span>
-<span id="cb476-9"><a href="dati-longitudinali.html#cb476-9" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span> <span class="co"># make unique id</span></span>
-<span id="cb476-10"><a href="dati-longitudinali.html#cb476-10" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="sc">-</span>id, <span class="at">key =</span> time, <span class="at">value =</span> pred) <span class="co"># make long format</span></span>
-<span id="cb476-11"><a href="dati-longitudinali.html#cb476-11" tabindex="-1"></a><span class="co"># make graph</span></span>
-<span id="cb476-12"><a href="dati-longitudinali.html#cb476-12" tabindex="-1"></a>pred_lgm_long <span class="sc">%&gt;%</span></span>
-<span id="cb476-13"><a href="dati-longitudinali.html#cb476-13" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(time, pred, <span class="at">group =</span> id)) <span class="sc">+</span> <span class="co"># what variables to plot?</span></span>
-<span id="cb476-14"><a href="dati-longitudinali.html#cb476-14" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span> <span class="co"># add a transparent line for each person</span></span>
-<span id="cb476-15"><a href="dati-longitudinali.html#cb476-15" tabindex="-1"></a>  <span class="fu">stat_summary</span>( <span class="co"># add average line</span></span>
-<span id="cb476-16"><a href="dati-longitudinali.html#cb476-16" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">group =</span> <span class="dv">1</span>),</span>
-<span id="cb476-17"><a href="dati-longitudinali.html#cb476-17" tabindex="-1"></a>    <span class="at">fun =</span> mean,</span>
-<span id="cb476-18"><a href="dati-longitudinali.html#cb476-18" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">&quot;line&quot;</span>,</span>
-<span id="cb476-19"><a href="dati-longitudinali.html#cb476-19" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">1.5</span>,</span>
-<span id="cb476-20"><a href="dati-longitudinali.html#cb476-20" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;black&quot;</span></span>
-<span id="cb476-21"><a href="dati-longitudinali.html#cb476-21" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb476-22"><a href="dati-longitudinali.html#cb476-22" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;y&quot;</span>, <span class="at">x =</span> <span class="st">&quot;time&quot;</span>)</span></code></pre></div>
-<p><img src="cfa_files/figure-html/unnamed-chunk-503-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="dati-longitudinali.html#cb486-1" tabindex="-1"></a><span class="co"># create long data for each individual</span></span>
+<span id="cb486-2"><a href="dati-longitudinali.html#cb486-2" tabindex="-1"></a>pred_lgm_long <span class="ot">&lt;-</span> <span class="fu">map</span>(</span>
+<span id="cb486-3"><a href="dati-longitudinali.html#cb486-3" tabindex="-1"></a>  <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>, <span class="co"># loop over time</span></span>
+<span id="cb486-4"><a href="dati-longitudinali.html#cb486-4" tabindex="-1"></a>  <span class="cf">function</span>(x) pred_lgm[, <span class="dv">1</span>] <span class="sc">+</span> x <span class="sc">*</span> pred_lgm[, <span class="dv">2</span>]</span>
+<span id="cb486-5"><a href="dati-longitudinali.html#cb486-5" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb486-6"><a href="dati-longitudinali.html#cb486-6" tabindex="-1"></a>  <span class="fu">reduce</span>(cbind) <span class="sc">%&gt;%</span> <span class="co"># bring together the wave predictions</span></span>
+<span id="cb486-7"><a href="dati-longitudinali.html#cb486-7" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> <span class="co"># make data frame</span></span>
+<span id="cb486-8"><a href="dati-longitudinali.html#cb486-8" tabindex="-1"></a>  <span class="fu">setNames</span>(<span class="fu">str_c</span>(<span class="st">&quot;time&quot;</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>)) <span class="sc">%&gt;%</span> <span class="co"># give names to variables</span></span>
+<span id="cb486-9"><a href="dati-longitudinali.html#cb486-9" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span> <span class="co"># make unique id</span></span>
+<span id="cb486-10"><a href="dati-longitudinali.html#cb486-10" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="sc">-</span>id, <span class="at">key =</span> time, <span class="at">value =</span> pred) <span class="co"># make long format</span></span>
+<span id="cb486-11"><a href="dati-longitudinali.html#cb486-11" tabindex="-1"></a><span class="co"># make graph</span></span>
+<span id="cb486-12"><a href="dati-longitudinali.html#cb486-12" tabindex="-1"></a>pred_lgm_long <span class="sc">%&gt;%</span></span>
+<span id="cb486-13"><a href="dati-longitudinali.html#cb486-13" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(time, pred, <span class="at">group =</span> id)) <span class="sc">+</span> <span class="co"># what variables to plot?</span></span>
+<span id="cb486-14"><a href="dati-longitudinali.html#cb486-14" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span> <span class="co"># add a transparent line for each person</span></span>
+<span id="cb486-15"><a href="dati-longitudinali.html#cb486-15" tabindex="-1"></a>  <span class="fu">stat_summary</span>( <span class="co"># add average line</span></span>
+<span id="cb486-16"><a href="dati-longitudinali.html#cb486-16" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">group =</span> <span class="dv">1</span>),</span>
+<span id="cb486-17"><a href="dati-longitudinali.html#cb486-17" tabindex="-1"></a>    <span class="at">fun =</span> mean,</span>
+<span id="cb486-18"><a href="dati-longitudinali.html#cb486-18" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">&quot;line&quot;</span>,</span>
+<span id="cb486-19"><a href="dati-longitudinali.html#cb486-19" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">1.5</span>,</span>
+<span id="cb486-20"><a href="dati-longitudinali.html#cb486-20" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;black&quot;</span></span>
+<span id="cb486-21"><a href="dati-longitudinali.html#cb486-21" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb486-22"><a href="dati-longitudinali.html#cb486-22" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;y&quot;</span>, <span class="at">x =</span> <span class="st">&quot;time&quot;</span>)</span></code></pre></div>
+<p><img src="cfa_files/figure-html/unnamed-chunk-513-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>La linea nera più spessa rappresenta l’intercetta media e la pendenza media della curva di crescita del modello LGM. Ogni individuo ha una sua specifica intercetta e uno specifico tasso di cambiamento e questa diversità è catturata nelle componenti di varianza del modello.</p>
 </div>
 <div id="dati-ordinali-vs.-intervalli-temporali" class="section level3 hasAnchor" number="31.1.3">
 <h3><span class="header-section-number">31.1.3</span> Dati ordinali vs. intervalli temporali<a href="dati-longitudinali.html#dati-ordinali-vs.-intervalli-temporali" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La specificazione <code>s =~ 0*t1 + 1*t2 + 2*t3 + 3*t4</code> assume che il tempo sia misurato per intervalli costanti. Questa sintassi può essere usata quando il tempo è misurato su una scala a livello ordinale, quando supponiamo diverse rilevazioni temporali e chi chiediamo cosa succeda passando da una alla successiva, senza specificare precisamente qual è la distanza temporale tra le varie rilevazioni. In alternativa è possibile specificare in termini assoluti il tempo trascorso tra le diverse rilevazioni temporali – questo è possibile solo se tali distanze temporali sono costanti tra i soggetti. Ad esempio, se passano 2, 3 e 9 mesi dalla prima rilevazione, avremo il seguente modello.</p>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="dati-longitudinali.html#cb477-1" tabindex="-1"></a>model_a <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb477-2"><a href="dati-longitudinali.html#cb477-2" tabindex="-1"></a><span class="st"> i =~ 1*t1 + 1*t2 + 1*t3 + 1*t4</span></span>
-<span id="cb477-3"><a href="dati-longitudinali.html#cb477-3" tabindex="-1"></a><span class="st"> s =~ 0*t1 + 2*t2 + 6*t3 + 9*t4</span></span>
-<span id="cb477-4"><a href="dati-longitudinali.html#cb477-4" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="dati-longitudinali.html#cb487-1" tabindex="-1"></a>model_a <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb487-2"><a href="dati-longitudinali.html#cb487-2" tabindex="-1"></a><span class="st"> i =~ 1*t1 + 1*t2 + 1*t3 + 1*t4</span></span>
+<span id="cb487-3"><a href="dati-longitudinali.html#cb487-3" tabindex="-1"></a><span class="st"> s =~ 0*t1 + 2*t2 + 6*t3 + 9*t4</span></span>
+<span id="cb487-4"><a href="dati-longitudinali.html#cb487-4" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
 <p>La scelta di utilizzare il tempo ordinale rispetto a quello assoluto non cambia il numero di parametri del modello o i gradi di libertà. Tuttavia la media dei punteggi fattoriali che rappresentano l’intercetta e la pendenza può cambiare e l’interpretazione di questi termini cambierà di conseguenza.</p>
-<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="dati-longitudinali.html#cb478-1" tabindex="-1"></a>fit_a <span class="ot">&lt;-</span> <span class="fu">growth</span>(model_a, <span class="at">data =</span> Demo.growth)</span>
-<span id="cb478-2"><a href="dati-longitudinali.html#cb478-2" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">coef</span>(fit_a), <span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">format =</span> <span class="st">&quot;markdown&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="dati-longitudinali.html#cb488-1" tabindex="-1"></a>fit_a <span class="ot">&lt;-</span> <span class="fu">growth</span>(model_a, <span class="at">data =</span> Demo.growth)</span>
+<span id="cb488-2"><a href="dati-longitudinali.html#cb488-2" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">coef</span>(fit_a), <span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">format =</span> <span class="st">&quot;markdown&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1089,117 +1090,117 @@ y_j = \eta_0 + \lambda_j \eta_1.
 <h3><span class="header-section-number">31.1.4</span> Verifica di ipotesi<a href="dati-longitudinali.html#verifica-di-ipotesi" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>È anche possibile utilizzare le funzionalità di <code>lavaan</code> per verificare specifiche ipotesi di interesse relative ai dati longitudinali. Ad esempio, una possibile domanda riguarda l’uguaglianza degli errori nel tempo. Tale domanda può essere affrontata introducendo dei vincoli nella specificazione del modello LGM e, successivamente, confrontando la bontà dell’adattamento del modello vincolato e del modello generale.</p>
 <p>Il modello vincolato è</p>
-<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="dati-longitudinali.html#cb479-1" tabindex="-1"></a>model_eqerr <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb479-2"><a href="dati-longitudinali.html#cb479-2" tabindex="-1"></a><span class="st"> i =~ 1*t1 + 1*t2 + 1*t3 + 1*t4</span></span>
-<span id="cb479-3"><a href="dati-longitudinali.html#cb479-3" tabindex="-1"></a><span class="st"> s =~ 0*t1 + 1*t2 + 2*t3 + 3*t4</span></span>
-<span id="cb479-4"><a href="dati-longitudinali.html#cb479-4" tabindex="-1"></a><span class="st"> t1 ~~ a*t1</span></span>
-<span id="cb479-5"><a href="dati-longitudinali.html#cb479-5" tabindex="-1"></a><span class="st"> t2 ~~ a*t2</span></span>
-<span id="cb479-6"><a href="dati-longitudinali.html#cb479-6" tabindex="-1"></a><span class="st"> t3 ~~ a*t3</span></span>
-<span id="cb479-7"><a href="dati-longitudinali.html#cb479-7" tabindex="-1"></a><span class="st"> t4 ~~ a*t4</span></span>
-<span id="cb479-8"><a href="dati-longitudinali.html#cb479-8" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="dati-longitudinali.html#cb489-1" tabindex="-1"></a>model_eqerr <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb489-2"><a href="dati-longitudinali.html#cb489-2" tabindex="-1"></a><span class="st"> i =~ 1*t1 + 1*t2 + 1*t3 + 1*t4</span></span>
+<span id="cb489-3"><a href="dati-longitudinali.html#cb489-3" tabindex="-1"></a><span class="st"> s =~ 0*t1 + 1*t2 + 2*t3 + 3*t4</span></span>
+<span id="cb489-4"><a href="dati-longitudinali.html#cb489-4" tabindex="-1"></a><span class="st"> t1 ~~ a*t1</span></span>
+<span id="cb489-5"><a href="dati-longitudinali.html#cb489-5" tabindex="-1"></a><span class="st"> t2 ~~ a*t2</span></span>
+<span id="cb489-6"><a href="dati-longitudinali.html#cb489-6" tabindex="-1"></a><span class="st"> t3 ~~ a*t3</span></span>
+<span id="cb489-7"><a href="dati-longitudinali.html#cb489-7" tabindex="-1"></a><span class="st"> t4 ~~ a*t4</span></span>
+<span id="cb489-8"><a href="dati-longitudinali.html#cb489-8" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
 <p>Adattiamo il modello vincolato:</p>
-<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="dati-longitudinali.html#cb480-1" tabindex="-1"></a>fit_eqerr <span class="ot">&lt;-</span> <span class="fu">growth</span>(model_eqerr, <span class="at">data =</span> Demo.growth)</span></code></pre></div>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="dati-longitudinali.html#cb490-1" tabindex="-1"></a>fit_eqerr <span class="ot">&lt;-</span> <span class="fu">growth</span>(model_eqerr, <span class="at">data =</span> Demo.growth)</span></code></pre></div>
 <p>Confrontiamo il modello vincolato con il modello libero:</p>
-<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="dati-longitudinali.html#cb481-1" tabindex="-1"></a><span class="fu">anova</span>(fit, fit_eqerr)</span>
-<span id="cb481-2"><a href="dati-longitudinali.html#cb481-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb481-3"><a href="dati-longitudinali.html#cb481-3" tabindex="-1"></a><span class="co">#&gt; Chi-Squared Difference Test</span></span>
-<span id="cb481-4"><a href="dati-longitudinali.html#cb481-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb481-5"><a href="dati-longitudinali.html#cb481-5" tabindex="-1"></a><span class="co">#&gt;           Df    AIC    BIC  Chisq Chisq diff RMSEA Df diff Pr(&gt;Chisq)</span></span>
-<span id="cb481-6"><a href="dati-longitudinali.html#cb481-6" tabindex="-1"></a><span class="co">#&gt; fit        5 5528.1 5564.0 8.0687                                    </span></span>
-<span id="cb481-7"><a href="dati-longitudinali.html#cb481-7" tabindex="-1"></a><span class="co">#&gt; fit_eqerr  8 5523.7 5547.7 9.6779     1.6091     0       3     0.6573</span></span></code></pre></div>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="dati-longitudinali.html#cb491-1" tabindex="-1"></a><span class="fu">anova</span>(fit, fit_eqerr)</span>
+<span id="cb491-2"><a href="dati-longitudinali.html#cb491-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb491-3"><a href="dati-longitudinali.html#cb491-3" tabindex="-1"></a><span class="co">#&gt; Chi-Squared Difference Test</span></span>
+<span id="cb491-4"><a href="dati-longitudinali.html#cb491-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb491-5"><a href="dati-longitudinali.html#cb491-5" tabindex="-1"></a><span class="co">#&gt;           Df    AIC    BIC  Chisq Chisq diff RMSEA Df diff Pr(&gt;Chisq)</span></span>
+<span id="cb491-6"><a href="dati-longitudinali.html#cb491-6" tabindex="-1"></a><span class="co">#&gt; fit        5 5528.1 5564.0 8.0687                                    </span></span>
+<span id="cb491-7"><a href="dati-longitudinali.html#cb491-7" tabindex="-1"></a><span class="co">#&gt; fit_eqerr  8 5523.7 5547.7 9.6779     1.6091     0       3     0.6573</span></span></code></pre></div>
 <p>Il test del rapporto di verosimiglianza (<em>likelihood ratio</em>) eseguito dalla funzione <code>anova()</code> produce un <span class="math inline">\(p\)</span>-valore di 0.6573. Ciò significa che, nei dati esaminati, non si rileva una decremento della bontà dell’adattamento degna di nota nel passare dal modello libero al modello vincolato. Dunque, l’ipotesi dell’equaglianza della varianza degli errori nel tempo sembra ragionevole.</p>
 </div>
 <div id="un-secondo-esempio" class="section level3 hasAnchor" number="31.1.5">
 <h3><span class="header-section-number">31.1.5</span> Un secondo esempio<a href="dati-longitudinali.html#un-secondo-esempio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Un modello leggermente più complesso aggiunge due regressori (<code>x1</code> e <code>x2</code>) che influenzano i fattori di crescita latenti. Inoltre, è stata aggiunta al modello una covariata <code>c</code> variabile nel tempo che influenza la misura del risultato nei quattro punti temporali.</p>
-<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="dati-longitudinali.html#cb482-1" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb482-2"><a href="dati-longitudinali.html#cb482-2" tabindex="-1"></a><span class="st">  # intercept and slope with fixed coefficients</span></span>
-<span id="cb482-3"><a href="dati-longitudinali.html#cb482-3" tabindex="-1"></a><span class="st">    i =~ 1*t1 + 1*t2 + 1*t3 + 1*t4</span></span>
-<span id="cb482-4"><a href="dati-longitudinali.html#cb482-4" tabindex="-1"></a><span class="st">    s =~ 0*t1 + 1*t2 + 2*t3 + 3*t4</span></span>
-<span id="cb482-5"><a href="dati-longitudinali.html#cb482-5" tabindex="-1"></a><span class="st">  # regressions</span></span>
-<span id="cb482-6"><a href="dati-longitudinali.html#cb482-6" tabindex="-1"></a><span class="st">    i ~ x1 + x2</span></span>
-<span id="cb482-7"><a href="dati-longitudinali.html#cb482-7" tabindex="-1"></a><span class="st">    s ~ x1 + x2</span></span>
-<span id="cb482-8"><a href="dati-longitudinali.html#cb482-8" tabindex="-1"></a><span class="st">  # time-varying covariates</span></span>
-<span id="cb482-9"><a href="dati-longitudinali.html#cb482-9" tabindex="-1"></a><span class="st">    t1 ~ c1</span></span>
-<span id="cb482-10"><a href="dati-longitudinali.html#cb482-10" tabindex="-1"></a><span class="st">    t2 ~ c2</span></span>
-<span id="cb482-11"><a href="dati-longitudinali.html#cb482-11" tabindex="-1"></a><span class="st">    t3 ~ c3</span></span>
-<span id="cb482-12"><a href="dati-longitudinali.html#cb482-12" tabindex="-1"></a><span class="st">    t4 ~ c4</span></span>
-<span id="cb482-13"><a href="dati-longitudinali.html#cb482-13" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="dati-longitudinali.html#cb483-1" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">growth</span>(model2, <span class="at">data =</span> Demo.growth)</span>
-<span id="cb483-2"><a href="dati-longitudinali.html#cb483-2" tabindex="-1"></a><span class="fu">summary</span>(fit2)</span>
-<span id="cb483-3"><a href="dati-longitudinali.html#cb483-3" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6.15 ended normally after 31 iterations</span></span>
-<span id="cb483-4"><a href="dati-longitudinali.html#cb483-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb483-5"><a href="dati-longitudinali.html#cb483-5" tabindex="-1"></a><span class="co">#&gt;   Estimator                                         ML</span></span>
-<span id="cb483-6"><a href="dati-longitudinali.html#cb483-6" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
-<span id="cb483-7"><a href="dati-longitudinali.html#cb483-7" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                        17</span></span>
-<span id="cb483-8"><a href="dati-longitudinali.html#cb483-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb483-9"><a href="dati-longitudinali.html#cb483-9" tabindex="-1"></a><span class="co">#&gt;   Number of observations                           400</span></span>
-<span id="cb483-10"><a href="dati-longitudinali.html#cb483-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb483-11"><a href="dati-longitudinali.html#cb483-11" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
-<span id="cb483-12"><a href="dati-longitudinali.html#cb483-12" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb483-13"><a href="dati-longitudinali.html#cb483-13" tabindex="-1"></a><span class="co">#&gt;   Test statistic                                26.059</span></span>
-<span id="cb483-14"><a href="dati-longitudinali.html#cb483-14" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                21</span></span>
-<span id="cb483-15"><a href="dati-longitudinali.html#cb483-15" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                           0.204</span></span>
-<span id="cb483-16"><a href="dati-longitudinali.html#cb483-16" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb483-17"><a href="dati-longitudinali.html#cb483-17" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
-<span id="cb483-18"><a href="dati-longitudinali.html#cb483-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb483-19"><a href="dati-longitudinali.html#cb483-19" tabindex="-1"></a><span class="co">#&gt;   Standard errors                             Standard</span></span>
-<span id="cb483-20"><a href="dati-longitudinali.html#cb483-20" tabindex="-1"></a><span class="co">#&gt;   Information                                 Expected</span></span>
-<span id="cb483-21"><a href="dati-longitudinali.html#cb483-21" tabindex="-1"></a><span class="co">#&gt;   Information saturated (h1) model          Structured</span></span>
-<span id="cb483-22"><a href="dati-longitudinali.html#cb483-22" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb483-23"><a href="dati-longitudinali.html#cb483-23" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
-<span id="cb483-24"><a href="dati-longitudinali.html#cb483-24" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb483-25"><a href="dati-longitudinali.html#cb483-25" tabindex="-1"></a><span class="co">#&gt;   i =~                                                </span></span>
-<span id="cb483-26"><a href="dati-longitudinali.html#cb483-26" tabindex="-1"></a><span class="co">#&gt;     t1                1.000                           </span></span>
-<span id="cb483-27"><a href="dati-longitudinali.html#cb483-27" tabindex="-1"></a><span class="co">#&gt;     t2                1.000                           </span></span>
-<span id="cb483-28"><a href="dati-longitudinali.html#cb483-28" tabindex="-1"></a><span class="co">#&gt;     t3                1.000                           </span></span>
-<span id="cb483-29"><a href="dati-longitudinali.html#cb483-29" tabindex="-1"></a><span class="co">#&gt;     t4                1.000                           </span></span>
-<span id="cb483-30"><a href="dati-longitudinali.html#cb483-30" tabindex="-1"></a><span class="co">#&gt;   s =~                                                </span></span>
-<span id="cb483-31"><a href="dati-longitudinali.html#cb483-31" tabindex="-1"></a><span class="co">#&gt;     t1                0.000                           </span></span>
-<span id="cb483-32"><a href="dati-longitudinali.html#cb483-32" tabindex="-1"></a><span class="co">#&gt;     t2                1.000                           </span></span>
-<span id="cb483-33"><a href="dati-longitudinali.html#cb483-33" tabindex="-1"></a><span class="co">#&gt;     t3                2.000                           </span></span>
-<span id="cb483-34"><a href="dati-longitudinali.html#cb483-34" tabindex="-1"></a><span class="co">#&gt;     t4                3.000                           </span></span>
-<span id="cb483-35"><a href="dati-longitudinali.html#cb483-35" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb483-36"><a href="dati-longitudinali.html#cb483-36" tabindex="-1"></a><span class="co">#&gt; Regressions:</span></span>
-<span id="cb483-37"><a href="dati-longitudinali.html#cb483-37" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb483-38"><a href="dati-longitudinali.html#cb483-38" tabindex="-1"></a><span class="co">#&gt;   i ~                                                 </span></span>
-<span id="cb483-39"><a href="dati-longitudinali.html#cb483-39" tabindex="-1"></a><span class="co">#&gt;     x1                0.608    0.060   10.134    0.000</span></span>
-<span id="cb483-40"><a href="dati-longitudinali.html#cb483-40" tabindex="-1"></a><span class="co">#&gt;     x2                0.604    0.064    9.412    0.000</span></span>
-<span id="cb483-41"><a href="dati-longitudinali.html#cb483-41" tabindex="-1"></a><span class="co">#&gt;   s ~                                                 </span></span>
-<span id="cb483-42"><a href="dati-longitudinali.html#cb483-42" tabindex="-1"></a><span class="co">#&gt;     x1                0.262    0.029    9.198    0.000</span></span>
-<span id="cb483-43"><a href="dati-longitudinali.html#cb483-43" tabindex="-1"></a><span class="co">#&gt;     x2                0.522    0.031   17.083    0.000</span></span>
-<span id="cb483-44"><a href="dati-longitudinali.html#cb483-44" tabindex="-1"></a><span class="co">#&gt;   t1 ~                                                </span></span>
-<span id="cb483-45"><a href="dati-longitudinali.html#cb483-45" tabindex="-1"></a><span class="co">#&gt;     c1                0.143    0.050    2.883    0.004</span></span>
-<span id="cb483-46"><a href="dati-longitudinali.html#cb483-46" tabindex="-1"></a><span class="co">#&gt;   t2 ~                                                </span></span>
-<span id="cb483-47"><a href="dati-longitudinali.html#cb483-47" tabindex="-1"></a><span class="co">#&gt;     c2                0.289    0.046    6.295    0.000</span></span>
-<span id="cb483-48"><a href="dati-longitudinali.html#cb483-48" tabindex="-1"></a><span class="co">#&gt;   t3 ~                                                </span></span>
-<span id="cb483-49"><a href="dati-longitudinali.html#cb483-49" tabindex="-1"></a><span class="co">#&gt;     c3                0.328    0.044    7.361    0.000</span></span>
-<span id="cb483-50"><a href="dati-longitudinali.html#cb483-50" tabindex="-1"></a><span class="co">#&gt;   t4 ~                                                </span></span>
-<span id="cb483-51"><a href="dati-longitudinali.html#cb483-51" tabindex="-1"></a><span class="co">#&gt;     c4                0.330    0.058    5.655    0.000</span></span>
-<span id="cb483-52"><a href="dati-longitudinali.html#cb483-52" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb483-53"><a href="dati-longitudinali.html#cb483-53" tabindex="-1"></a><span class="co">#&gt; Covariances:</span></span>
-<span id="cb483-54"><a href="dati-longitudinali.html#cb483-54" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb483-55"><a href="dati-longitudinali.html#cb483-55" tabindex="-1"></a><span class="co">#&gt;  .i ~~                                                </span></span>
-<span id="cb483-56"><a href="dati-longitudinali.html#cb483-56" tabindex="-1"></a><span class="co">#&gt;    .s                 0.075    0.040    1.855    0.064</span></span>
-<span id="cb483-57"><a href="dati-longitudinali.html#cb483-57" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb483-58"><a href="dati-longitudinali.html#cb483-58" tabindex="-1"></a><span class="co">#&gt; Intercepts:</span></span>
-<span id="cb483-59"><a href="dati-longitudinali.html#cb483-59" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb483-60"><a href="dati-longitudinali.html#cb483-60" tabindex="-1"></a><span class="co">#&gt;    .t1                0.000                           </span></span>
-<span id="cb483-61"><a href="dati-longitudinali.html#cb483-61" tabindex="-1"></a><span class="co">#&gt;    .t2                0.000                           </span></span>
-<span id="cb483-62"><a href="dati-longitudinali.html#cb483-62" tabindex="-1"></a><span class="co">#&gt;    .t3                0.000                           </span></span>
-<span id="cb483-63"><a href="dati-longitudinali.html#cb483-63" tabindex="-1"></a><span class="co">#&gt;    .t4                0.000                           </span></span>
-<span id="cb483-64"><a href="dati-longitudinali.html#cb483-64" tabindex="-1"></a><span class="co">#&gt;    .i                 0.580    0.062    9.368    0.000</span></span>
-<span id="cb483-65"><a href="dati-longitudinali.html#cb483-65" tabindex="-1"></a><span class="co">#&gt;    .s                 0.958    0.029   32.552    0.000</span></span>
-<span id="cb483-66"><a href="dati-longitudinali.html#cb483-66" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb483-67"><a href="dati-longitudinali.html#cb483-67" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
-<span id="cb483-68"><a href="dati-longitudinali.html#cb483-68" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb483-69"><a href="dati-longitudinali.html#cb483-69" tabindex="-1"></a><span class="co">#&gt;    .t1                0.580    0.080    7.230    0.000</span></span>
-<span id="cb483-70"><a href="dati-longitudinali.html#cb483-70" tabindex="-1"></a><span class="co">#&gt;    .t2                0.596    0.054   10.969    0.000</span></span>
-<span id="cb483-71"><a href="dati-longitudinali.html#cb483-71" tabindex="-1"></a><span class="co">#&gt;    .t3                0.481    0.055    8.745    0.000</span></span>
-<span id="cb483-72"><a href="dati-longitudinali.html#cb483-72" tabindex="-1"></a><span class="co">#&gt;    .t4                0.535    0.098    5.466    0.000</span></span>
-<span id="cb483-73"><a href="dati-longitudinali.html#cb483-73" tabindex="-1"></a><span class="co">#&gt;    .i                 1.079    0.112    9.609    0.000</span></span>
-<span id="cb483-74"><a href="dati-longitudinali.html#cb483-74" tabindex="-1"></a><span class="co">#&gt;    .s                 0.224    0.027    8.429    0.000</span></span></code></pre></div>
-<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="dati-longitudinali.html#cb484-1" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">coef</span>(fit2), <span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">format =</span> <span class="st">&quot;markdown&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="dati-longitudinali.html#cb492-1" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb492-2"><a href="dati-longitudinali.html#cb492-2" tabindex="-1"></a><span class="st">  # intercept and slope with fixed coefficients</span></span>
+<span id="cb492-3"><a href="dati-longitudinali.html#cb492-3" tabindex="-1"></a><span class="st">    i =~ 1*t1 + 1*t2 + 1*t3 + 1*t4</span></span>
+<span id="cb492-4"><a href="dati-longitudinali.html#cb492-4" tabindex="-1"></a><span class="st">    s =~ 0*t1 + 1*t2 + 2*t3 + 3*t4</span></span>
+<span id="cb492-5"><a href="dati-longitudinali.html#cb492-5" tabindex="-1"></a><span class="st">  # regressions</span></span>
+<span id="cb492-6"><a href="dati-longitudinali.html#cb492-6" tabindex="-1"></a><span class="st">    i ~ x1 + x2</span></span>
+<span id="cb492-7"><a href="dati-longitudinali.html#cb492-7" tabindex="-1"></a><span class="st">    s ~ x1 + x2</span></span>
+<span id="cb492-8"><a href="dati-longitudinali.html#cb492-8" tabindex="-1"></a><span class="st">  # time-varying covariates</span></span>
+<span id="cb492-9"><a href="dati-longitudinali.html#cb492-9" tabindex="-1"></a><span class="st">    t1 ~ c1</span></span>
+<span id="cb492-10"><a href="dati-longitudinali.html#cb492-10" tabindex="-1"></a><span class="st">    t2 ~ c2</span></span>
+<span id="cb492-11"><a href="dati-longitudinali.html#cb492-11" tabindex="-1"></a><span class="st">    t3 ~ c3</span></span>
+<span id="cb492-12"><a href="dati-longitudinali.html#cb492-12" tabindex="-1"></a><span class="st">    t4 ~ c4</span></span>
+<span id="cb492-13"><a href="dati-longitudinali.html#cb492-13" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="dati-longitudinali.html#cb493-1" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">growth</span>(model2, <span class="at">data =</span> Demo.growth)</span>
+<span id="cb493-2"><a href="dati-longitudinali.html#cb493-2" tabindex="-1"></a><span class="fu">summary</span>(fit2)</span>
+<span id="cb493-3"><a href="dati-longitudinali.html#cb493-3" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6.15 ended normally after 31 iterations</span></span>
+<span id="cb493-4"><a href="dati-longitudinali.html#cb493-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb493-5"><a href="dati-longitudinali.html#cb493-5" tabindex="-1"></a><span class="co">#&gt;   Estimator                                         ML</span></span>
+<span id="cb493-6"><a href="dati-longitudinali.html#cb493-6" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
+<span id="cb493-7"><a href="dati-longitudinali.html#cb493-7" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                        17</span></span>
+<span id="cb493-8"><a href="dati-longitudinali.html#cb493-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb493-9"><a href="dati-longitudinali.html#cb493-9" tabindex="-1"></a><span class="co">#&gt;   Number of observations                           400</span></span>
+<span id="cb493-10"><a href="dati-longitudinali.html#cb493-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb493-11"><a href="dati-longitudinali.html#cb493-11" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
+<span id="cb493-12"><a href="dati-longitudinali.html#cb493-12" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
+<span id="cb493-13"><a href="dati-longitudinali.html#cb493-13" tabindex="-1"></a><span class="co">#&gt;   Test statistic                                26.059</span></span>
+<span id="cb493-14"><a href="dati-longitudinali.html#cb493-14" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                21</span></span>
+<span id="cb493-15"><a href="dati-longitudinali.html#cb493-15" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                           0.204</span></span>
+<span id="cb493-16"><a href="dati-longitudinali.html#cb493-16" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb493-17"><a href="dati-longitudinali.html#cb493-17" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
+<span id="cb493-18"><a href="dati-longitudinali.html#cb493-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb493-19"><a href="dati-longitudinali.html#cb493-19" tabindex="-1"></a><span class="co">#&gt;   Standard errors                             Standard</span></span>
+<span id="cb493-20"><a href="dati-longitudinali.html#cb493-20" tabindex="-1"></a><span class="co">#&gt;   Information                                 Expected</span></span>
+<span id="cb493-21"><a href="dati-longitudinali.html#cb493-21" tabindex="-1"></a><span class="co">#&gt;   Information saturated (h1) model          Structured</span></span>
+<span id="cb493-22"><a href="dati-longitudinali.html#cb493-22" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb493-23"><a href="dati-longitudinali.html#cb493-23" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
+<span id="cb493-24"><a href="dati-longitudinali.html#cb493-24" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb493-25"><a href="dati-longitudinali.html#cb493-25" tabindex="-1"></a><span class="co">#&gt;   i =~                                                </span></span>
+<span id="cb493-26"><a href="dati-longitudinali.html#cb493-26" tabindex="-1"></a><span class="co">#&gt;     t1                1.000                           </span></span>
+<span id="cb493-27"><a href="dati-longitudinali.html#cb493-27" tabindex="-1"></a><span class="co">#&gt;     t2                1.000                           </span></span>
+<span id="cb493-28"><a href="dati-longitudinali.html#cb493-28" tabindex="-1"></a><span class="co">#&gt;     t3                1.000                           </span></span>
+<span id="cb493-29"><a href="dati-longitudinali.html#cb493-29" tabindex="-1"></a><span class="co">#&gt;     t4                1.000                           </span></span>
+<span id="cb493-30"><a href="dati-longitudinali.html#cb493-30" tabindex="-1"></a><span class="co">#&gt;   s =~                                                </span></span>
+<span id="cb493-31"><a href="dati-longitudinali.html#cb493-31" tabindex="-1"></a><span class="co">#&gt;     t1                0.000                           </span></span>
+<span id="cb493-32"><a href="dati-longitudinali.html#cb493-32" tabindex="-1"></a><span class="co">#&gt;     t2                1.000                           </span></span>
+<span id="cb493-33"><a href="dati-longitudinali.html#cb493-33" tabindex="-1"></a><span class="co">#&gt;     t3                2.000                           </span></span>
+<span id="cb493-34"><a href="dati-longitudinali.html#cb493-34" tabindex="-1"></a><span class="co">#&gt;     t4                3.000                           </span></span>
+<span id="cb493-35"><a href="dati-longitudinali.html#cb493-35" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb493-36"><a href="dati-longitudinali.html#cb493-36" tabindex="-1"></a><span class="co">#&gt; Regressions:</span></span>
+<span id="cb493-37"><a href="dati-longitudinali.html#cb493-37" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb493-38"><a href="dati-longitudinali.html#cb493-38" tabindex="-1"></a><span class="co">#&gt;   i ~                                                 </span></span>
+<span id="cb493-39"><a href="dati-longitudinali.html#cb493-39" tabindex="-1"></a><span class="co">#&gt;     x1                0.608    0.060   10.134    0.000</span></span>
+<span id="cb493-40"><a href="dati-longitudinali.html#cb493-40" tabindex="-1"></a><span class="co">#&gt;     x2                0.604    0.064    9.412    0.000</span></span>
+<span id="cb493-41"><a href="dati-longitudinali.html#cb493-41" tabindex="-1"></a><span class="co">#&gt;   s ~                                                 </span></span>
+<span id="cb493-42"><a href="dati-longitudinali.html#cb493-42" tabindex="-1"></a><span class="co">#&gt;     x1                0.262    0.029    9.198    0.000</span></span>
+<span id="cb493-43"><a href="dati-longitudinali.html#cb493-43" tabindex="-1"></a><span class="co">#&gt;     x2                0.522    0.031   17.083    0.000</span></span>
+<span id="cb493-44"><a href="dati-longitudinali.html#cb493-44" tabindex="-1"></a><span class="co">#&gt;   t1 ~                                                </span></span>
+<span id="cb493-45"><a href="dati-longitudinali.html#cb493-45" tabindex="-1"></a><span class="co">#&gt;     c1                0.143    0.050    2.883    0.004</span></span>
+<span id="cb493-46"><a href="dati-longitudinali.html#cb493-46" tabindex="-1"></a><span class="co">#&gt;   t2 ~                                                </span></span>
+<span id="cb493-47"><a href="dati-longitudinali.html#cb493-47" tabindex="-1"></a><span class="co">#&gt;     c2                0.289    0.046    6.295    0.000</span></span>
+<span id="cb493-48"><a href="dati-longitudinali.html#cb493-48" tabindex="-1"></a><span class="co">#&gt;   t3 ~                                                </span></span>
+<span id="cb493-49"><a href="dati-longitudinali.html#cb493-49" tabindex="-1"></a><span class="co">#&gt;     c3                0.328    0.044    7.361    0.000</span></span>
+<span id="cb493-50"><a href="dati-longitudinali.html#cb493-50" tabindex="-1"></a><span class="co">#&gt;   t4 ~                                                </span></span>
+<span id="cb493-51"><a href="dati-longitudinali.html#cb493-51" tabindex="-1"></a><span class="co">#&gt;     c4                0.330    0.058    5.655    0.000</span></span>
+<span id="cb493-52"><a href="dati-longitudinali.html#cb493-52" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb493-53"><a href="dati-longitudinali.html#cb493-53" tabindex="-1"></a><span class="co">#&gt; Covariances:</span></span>
+<span id="cb493-54"><a href="dati-longitudinali.html#cb493-54" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb493-55"><a href="dati-longitudinali.html#cb493-55" tabindex="-1"></a><span class="co">#&gt;  .i ~~                                                </span></span>
+<span id="cb493-56"><a href="dati-longitudinali.html#cb493-56" tabindex="-1"></a><span class="co">#&gt;    .s                 0.075    0.040    1.855    0.064</span></span>
+<span id="cb493-57"><a href="dati-longitudinali.html#cb493-57" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb493-58"><a href="dati-longitudinali.html#cb493-58" tabindex="-1"></a><span class="co">#&gt; Intercepts:</span></span>
+<span id="cb493-59"><a href="dati-longitudinali.html#cb493-59" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb493-60"><a href="dati-longitudinali.html#cb493-60" tabindex="-1"></a><span class="co">#&gt;    .t1                0.000                           </span></span>
+<span id="cb493-61"><a href="dati-longitudinali.html#cb493-61" tabindex="-1"></a><span class="co">#&gt;    .t2                0.000                           </span></span>
+<span id="cb493-62"><a href="dati-longitudinali.html#cb493-62" tabindex="-1"></a><span class="co">#&gt;    .t3                0.000                           </span></span>
+<span id="cb493-63"><a href="dati-longitudinali.html#cb493-63" tabindex="-1"></a><span class="co">#&gt;    .t4                0.000                           </span></span>
+<span id="cb493-64"><a href="dati-longitudinali.html#cb493-64" tabindex="-1"></a><span class="co">#&gt;    .i                 0.580    0.062    9.368    0.000</span></span>
+<span id="cb493-65"><a href="dati-longitudinali.html#cb493-65" tabindex="-1"></a><span class="co">#&gt;    .s                 0.958    0.029   32.552    0.000</span></span>
+<span id="cb493-66"><a href="dati-longitudinali.html#cb493-66" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb493-67"><a href="dati-longitudinali.html#cb493-67" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
+<span id="cb493-68"><a href="dati-longitudinali.html#cb493-68" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb493-69"><a href="dati-longitudinali.html#cb493-69" tabindex="-1"></a><span class="co">#&gt;    .t1                0.580    0.080    7.230    0.000</span></span>
+<span id="cb493-70"><a href="dati-longitudinali.html#cb493-70" tabindex="-1"></a><span class="co">#&gt;    .t2                0.596    0.054   10.969    0.000</span></span>
+<span id="cb493-71"><a href="dati-longitudinali.html#cb493-71" tabindex="-1"></a><span class="co">#&gt;    .t3                0.481    0.055    8.745    0.000</span></span>
+<span id="cb493-72"><a href="dati-longitudinali.html#cb493-72" tabindex="-1"></a><span class="co">#&gt;    .t4                0.535    0.098    5.466    0.000</span></span>
+<span id="cb493-73"><a href="dati-longitudinali.html#cb493-73" tabindex="-1"></a><span class="co">#&gt;    .i                 1.079    0.112    9.609    0.000</span></span>
+<span id="cb493-74"><a href="dati-longitudinali.html#cb493-74" tabindex="-1"></a><span class="co">#&gt;    .s                 0.224    0.027    8.429    0.000</span></span></code></pre></div>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="dati-longitudinali.html#cb494-1" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">coef</span>(fit2), <span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">format =</span> <span class="st">&quot;markdown&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">

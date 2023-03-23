@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2023-03-22" />
+<meta name="date" content="2023-03-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,12 +340,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9.9" data-path="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><a href="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><i class="fa fa-check"></i><b>9.9</b> Metodi alternativi per la stima del coefficiente di attendibilità</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10</b> L’incertezza della misura</a>
+<li class="chapter" data-level="10" data-path="lerrore-standard-della-misurazione.html"><a href="lerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10</b> L’errore standard della misurazione</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10.1</b> La stima dell’errore standard della misurazione</a>
+<li class="chapter" data-level="10.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10.1</b> L’incertezza della misura</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
-<li class="chapter" data-level="10.1.2" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
+<li class="chapter" data-level="10.1.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
+<li class="chapter" data-level="10.1.2" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="dimostrazione.html"><a href="dimostrazione.html"><i class="fa fa-check"></i><b>10.2</b> Dimostrazione</a></li>
 <li class="chapter" data-level="10.3" data-path="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><a href="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><i class="fa fa-check"></i><b>10.3</b> Intervallo di confidenza per il punteggio vero e <span class="math inline">\(\sigma_E\)</span></a></li>
@@ -360,7 +360,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="12" data-path="esercizi-sulla-ctt.html"><a href="esercizi-sulla-ctt.html"><i class="fa fa-check"></i><b>12</b> Esercizi sulla CTT</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.1</b> Validità</a></li>
+<li class="chapter" data-level="12.1" data-path="attendibilità.html"><a href="attendibilità.html"><i class="fa fa-check"></i><b>12.1</b> Attendibilità</a></li>
+<li class="chapter" data-level="12.2" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.2</b> Validità</a></li>
 </ul></li>
 <li class="part"><span><b>IV L’analisi fattoriale</b></span></li>
 <li class="chapter" data-level="13" data-path="utilizzo-e-costruzione-di-test-psicometrici.html"><a href="utilizzo-e-costruzione-di-test-psicometrici.html"><i class="fa fa-check"></i><b>13</b> Utilizzo e costruzione di test psicometrici</a>
@@ -735,61 +736,61 @@ div.csl-indent {
 <h2><span class="header-section-number">28.8</span> Un esempio concreto<a href="un-esempio-concreto-5.html#un-esempio-concreto-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Consideriamo nuovamente i dati discussi da <span class="citation">Brown (<a href="#ref-brown2015confirmatory">2015</a>)</span> relativi al modello di misurazione per la depressione maggiore così come è definita nel DSM-IV. Ignoriamo qui le differenze di genere – si veda il Capitolo <a href="ch-factorial-invariance.html#ch-factorial-invariance">27</a>.</p>
 <p>Leggiamo i dati in <span class="math inline">\(\mathsf{R}\)</span>:</p>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="un-esempio-concreto-5.html#cb422-1" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(</span>
-<span id="cb422-2"><a href="un-esempio-concreto-5.html#cb422-2" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;mdd_sex.RDS&quot;</span>)</span>
-<span id="cb422-3"><a href="un-esempio-concreto-5.html#cb422-3" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="un-esempio-concreto-5.html#cb432-1" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(</span>
+<span id="cb432-2"><a href="un-esempio-concreto-5.html#cb432-2" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;mdd_sex.RDS&quot;</span>)</span>
+<span id="cb432-3"><a href="un-esempio-concreto-5.html#cb432-3" tabindex="-1"></a>)</span></code></pre></div>
 <p>Consideriamo il seguente modello:</p>
-<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="un-esempio-concreto-5.html#cb423-1" tabindex="-1"></a>model_mdd <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb423-2"><a href="un-esempio-concreto-5.html#cb423-2" tabindex="-1"></a><span class="st">  MDD =~ mdd1 + mdd2 + mdd3 + mdd4 + mdd5 + mdd6 + mdd7 + mdd8 + mdd9</span></span>
-<span id="cb423-3"><a href="un-esempio-concreto-5.html#cb423-3" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="un-esempio-concreto-5.html#cb433-1" tabindex="-1"></a>model_mdd <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb433-2"><a href="un-esempio-concreto-5.html#cb433-2" tabindex="-1"></a><span class="st">  MDD =~ mdd1 + mdd2 + mdd3 + mdd4 + mdd5 + mdd6 + mdd7 + mdd8 + mdd9</span></span>
+<span id="cb433-3"><a href="un-esempio-concreto-5.html#cb433-3" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
 <p>Adattiamo il modello ai dati.</p>
-<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="un-esempio-concreto-5.html#cb424-1" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
-<span id="cb424-2"><a href="un-esempio-concreto-5.html#cb424-2" tabindex="-1"></a>  model_mdd,</span>
-<span id="cb424-3"><a href="un-esempio-concreto-5.html#cb424-3" tabindex="-1"></a>  <span class="at">data =</span> d</span>
-<span id="cb424-4"><a href="un-esempio-concreto-5.html#cb424-4" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="un-esempio-concreto-5.html#cb434-1" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
+<span id="cb434-2"><a href="un-esempio-concreto-5.html#cb434-2" tabindex="-1"></a>  model_mdd,</span>
+<span id="cb434-3"><a href="un-esempio-concreto-5.html#cb434-3" tabindex="-1"></a>  <span class="at">data =</span> d</span>
+<span id="cb434-4"><a href="un-esempio-concreto-5.html#cb434-4" tabindex="-1"></a>)</span></code></pre></div>
 <p>Esaminiamo gli indici di bontà di adattamento.</p>
-<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="un-esempio-concreto-5.html#cb425-1" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">interpret</span>(fit)</span>
-<span id="cb425-2"><a href="un-esempio-concreto-5.html#cb425-2" tabindex="-1"></a><span class="co">#&gt;     Name      Value Threshold Interpretation</span></span>
-<span id="cb425-3"><a href="un-esempio-concreto-5.html#cb425-3" tabindex="-1"></a><span class="co">#&gt; 1    GFI 0.96402909      0.95   satisfactory</span></span>
-<span id="cb425-4"><a href="un-esempio-concreto-5.html#cb425-4" tabindex="-1"></a><span class="co">#&gt; 2   AGFI 0.94004848      0.90   satisfactory</span></span>
-<span id="cb425-5"><a href="un-esempio-concreto-5.html#cb425-5" tabindex="-1"></a><span class="co">#&gt; 3    NFI 0.91501936      0.90   satisfactory</span></span>
-<span id="cb425-6"><a href="un-esempio-concreto-5.html#cb425-6" tabindex="-1"></a><span class="co">#&gt; 4   NNFI 0.91199406      0.90   satisfactory</span></span>
-<span id="cb425-7"><a href="un-esempio-concreto-5.html#cb425-7" tabindex="-1"></a><span class="co">#&gt; 5    CFI 0.93399554      0.90   satisfactory</span></span>
-<span id="cb425-8"><a href="un-esempio-concreto-5.html#cb425-8" tabindex="-1"></a><span class="co">#&gt; 6  RMSEA 0.06412658      0.05           poor</span></span>
-<span id="cb425-9"><a href="un-esempio-concreto-5.html#cb425-9" tabindex="-1"></a><span class="co">#&gt; 7   SRMR 0.04448302      0.08   satisfactory</span></span>
-<span id="cb425-10"><a href="un-esempio-concreto-5.html#cb425-10" tabindex="-1"></a><span class="co">#&gt; 8    RFI 0.88669248      0.90           poor</span></span>
-<span id="cb425-11"><a href="un-esempio-concreto-5.html#cb425-11" tabindex="-1"></a><span class="co">#&gt; 9   PNFI 0.68626452      0.50   satisfactory</span></span>
-<span id="cb425-12"><a href="un-esempio-concreto-5.html#cb425-12" tabindex="-1"></a><span class="co">#&gt; 10   IFI 0.93446306      0.90   satisfactory</span></span></code></pre></div>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="un-esempio-concreto-5.html#cb435-1" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">interpret</span>(fit)</span>
+<span id="cb435-2"><a href="un-esempio-concreto-5.html#cb435-2" tabindex="-1"></a><span class="co">#&gt;     Name      Value Threshold Interpretation</span></span>
+<span id="cb435-3"><a href="un-esempio-concreto-5.html#cb435-3" tabindex="-1"></a><span class="co">#&gt; 1    GFI 0.96402909      0.95   satisfactory</span></span>
+<span id="cb435-4"><a href="un-esempio-concreto-5.html#cb435-4" tabindex="-1"></a><span class="co">#&gt; 2   AGFI 0.94004848      0.90   satisfactory</span></span>
+<span id="cb435-5"><a href="un-esempio-concreto-5.html#cb435-5" tabindex="-1"></a><span class="co">#&gt; 3    NFI 0.91501936      0.90   satisfactory</span></span>
+<span id="cb435-6"><a href="un-esempio-concreto-5.html#cb435-6" tabindex="-1"></a><span class="co">#&gt; 4   NNFI 0.91199406      0.90   satisfactory</span></span>
+<span id="cb435-7"><a href="un-esempio-concreto-5.html#cb435-7" tabindex="-1"></a><span class="co">#&gt; 5    CFI 0.93399554      0.90   satisfactory</span></span>
+<span id="cb435-8"><a href="un-esempio-concreto-5.html#cb435-8" tabindex="-1"></a><span class="co">#&gt; 6  RMSEA 0.06412658      0.05           poor</span></span>
+<span id="cb435-9"><a href="un-esempio-concreto-5.html#cb435-9" tabindex="-1"></a><span class="co">#&gt; 7   SRMR 0.04448302      0.08   satisfactory</span></span>
+<span id="cb435-10"><a href="un-esempio-concreto-5.html#cb435-10" tabindex="-1"></a><span class="co">#&gt; 8    RFI 0.88669248      0.90           poor</span></span>
+<span id="cb435-11"><a href="un-esempio-concreto-5.html#cb435-11" tabindex="-1"></a><span class="co">#&gt; 9   PNFI 0.68626452      0.50   satisfactory</span></span>
+<span id="cb435-12"><a href="un-esempio-concreto-5.html#cb435-12" tabindex="-1"></a><span class="co">#&gt; 10   IFI 0.93446306      0.90   satisfactory</span></span></code></pre></div>
 <p>Il rapporto <span class="math inline">\(\chi^2 / df\)</span> è adeguato.</p>
-<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="un-esempio-concreto-5.html#cb426-1" tabindex="-1"></a><span class="fl">110.272</span> <span class="sc">/</span> <span class="dv">27</span></span>
-<span id="cb426-2"><a href="un-esempio-concreto-5.html#cb426-2" tabindex="-1"></a><span class="co">#&gt; [1] 4.084148</span></span></code></pre></div>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="un-esempio-concreto-5.html#cb436-1" tabindex="-1"></a><span class="fl">110.272</span> <span class="sc">/</span> <span class="dv">27</span></span>
+<span id="cb436-2"><a href="un-esempio-concreto-5.html#cb436-2" tabindex="-1"></a><span class="co">#&gt; [1] 4.084148</span></span></code></pre></div>
 <p>Gli indici Comparative Fit Index (CFI) = 0.934 e Tucker-Lewis Index (TLI) = 0.912 sono superiori a 0.9, dunque sono almeno sufficienti per gli standard correnti. L’indice RMSEA = 0.064 è appena superiore alla soglia di 0.06. L’indice SRMR = 0.044 è inferiore alla soglia 0.05. Dunque, complessivamente, il modello sembra adeguato.</p>
 <p>Adattiamo ora il modello con la modifica proposta da <span class="citation">Brown (<a href="#ref-brown2015confirmatory">2015</a>)</span>, ovvero</p>
-<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="un-esempio-concreto-5.html#cb427-1" tabindex="-1"></a>model2_mdd <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb427-2"><a href="un-esempio-concreto-5.html#cb427-2" tabindex="-1"></a><span class="st">  MDD =~ mdd1 + mdd2 + mdd3 + mdd4 + mdd5 + mdd6 + mdd7 + mdd8 +  mdd9</span></span>
-<span id="cb427-3"><a href="un-esempio-concreto-5.html#cb427-3" tabindex="-1"></a><span class="st">  mdd1 ~~ mdd2</span></span>
-<span id="cb427-4"><a href="un-esempio-concreto-5.html#cb427-4" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb427-5"><a href="un-esempio-concreto-5.html#cb427-5" tabindex="-1"></a></span>
-<span id="cb427-6"><a href="un-esempio-concreto-5.html#cb427-6" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
-<span id="cb427-7"><a href="un-esempio-concreto-5.html#cb427-7" tabindex="-1"></a>  model2_mdd,</span>
-<span id="cb427-8"><a href="un-esempio-concreto-5.html#cb427-8" tabindex="-1"></a>  <span class="at">data =</span> d</span>
-<span id="cb427-9"><a href="un-esempio-concreto-5.html#cb427-9" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="un-esempio-concreto-5.html#cb437-1" tabindex="-1"></a>model2_mdd <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb437-2"><a href="un-esempio-concreto-5.html#cb437-2" tabindex="-1"></a><span class="st">  MDD =~ mdd1 + mdd2 + mdd3 + mdd4 + mdd5 + mdd6 + mdd7 + mdd8 +  mdd9</span></span>
+<span id="cb437-3"><a href="un-esempio-concreto-5.html#cb437-3" tabindex="-1"></a><span class="st">  mdd1 ~~ mdd2</span></span>
+<span id="cb437-4"><a href="un-esempio-concreto-5.html#cb437-4" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb437-5"><a href="un-esempio-concreto-5.html#cb437-5" tabindex="-1"></a></span>
+<span id="cb437-6"><a href="un-esempio-concreto-5.html#cb437-6" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">cfa</span>(</span>
+<span id="cb437-7"><a href="un-esempio-concreto-5.html#cb437-7" tabindex="-1"></a>  model2_mdd,</span>
+<span id="cb437-8"><a href="un-esempio-concreto-5.html#cb437-8" tabindex="-1"></a>  <span class="at">data =</span> d</span>
+<span id="cb437-9"><a href="un-esempio-concreto-5.html#cb437-9" tabindex="-1"></a>)</span></code></pre></div>
 <p>Esaminiamo gli indici di bontà di adattamento.</p>
-<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="un-esempio-concreto-5.html#cb428-1" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">interpret</span>(fit2)</span>
-<span id="cb428-2"><a href="un-esempio-concreto-5.html#cb428-2" tabindex="-1"></a><span class="co">#&gt;     Name      Value Threshold Interpretation</span></span>
-<span id="cb428-3"><a href="un-esempio-concreto-5.html#cb428-3" tabindex="-1"></a><span class="co">#&gt; 1    GFI 0.97807123      0.95   satisfactory</span></span>
-<span id="cb428-4"><a href="un-esempio-concreto-5.html#cb428-4" tabindex="-1"></a><span class="co">#&gt; 2   AGFI 0.96204635      0.90   satisfactory</span></span>
-<span id="cb428-5"><a href="un-esempio-concreto-5.html#cb428-5" tabindex="-1"></a><span class="co">#&gt; 3    NFI 0.94793648      0.90   satisfactory</span></span>
-<span id="cb428-6"><a href="un-esempio-concreto-5.html#cb428-6" tabindex="-1"></a><span class="co">#&gt; 4   NNFI 0.95438982      0.90   satisfactory</span></span>
-<span id="cb428-7"><a href="un-esempio-concreto-5.html#cb428-7" tabindex="-1"></a><span class="co">#&gt; 5    CFI 0.96705932      0.90   satisfactory</span></span>
-<span id="cb428-8"><a href="un-esempio-concreto-5.html#cb428-8" tabindex="-1"></a><span class="co">#&gt; 6  RMSEA 0.04616501      0.05   satisfactory</span></span>
-<span id="cb428-9"><a href="un-esempio-concreto-5.html#cb428-9" tabindex="-1"></a><span class="co">#&gt; 7   SRMR 0.03675390      0.08   satisfactory</span></span>
-<span id="cb428-10"><a href="un-esempio-concreto-5.html#cb428-10" tabindex="-1"></a><span class="co">#&gt; 8    RFI 0.92791205      0.90   satisfactory</span></span>
-<span id="cb428-11"><a href="un-esempio-concreto-5.html#cb428-11" tabindex="-1"></a><span class="co">#&gt; 9   PNFI 0.68462079      0.50   satisfactory</span></span>
-<span id="cb428-12"><a href="un-esempio-concreto-5.html#cb428-12" tabindex="-1"></a><span class="co">#&gt; 10   IFI 0.96731836      0.90   satisfactory</span></span></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="un-esempio-concreto-5.html#cb438-1" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">interpret</span>(fit2)</span>
+<span id="cb438-2"><a href="un-esempio-concreto-5.html#cb438-2" tabindex="-1"></a><span class="co">#&gt;     Name      Value Threshold Interpretation</span></span>
+<span id="cb438-3"><a href="un-esempio-concreto-5.html#cb438-3" tabindex="-1"></a><span class="co">#&gt; 1    GFI 0.97807123      0.95   satisfactory</span></span>
+<span id="cb438-4"><a href="un-esempio-concreto-5.html#cb438-4" tabindex="-1"></a><span class="co">#&gt; 2   AGFI 0.96204635      0.90   satisfactory</span></span>
+<span id="cb438-5"><a href="un-esempio-concreto-5.html#cb438-5" tabindex="-1"></a><span class="co">#&gt; 3    NFI 0.94793648      0.90   satisfactory</span></span>
+<span id="cb438-6"><a href="un-esempio-concreto-5.html#cb438-6" tabindex="-1"></a><span class="co">#&gt; 4   NNFI 0.95438982      0.90   satisfactory</span></span>
+<span id="cb438-7"><a href="un-esempio-concreto-5.html#cb438-7" tabindex="-1"></a><span class="co">#&gt; 5    CFI 0.96705932      0.90   satisfactory</span></span>
+<span id="cb438-8"><a href="un-esempio-concreto-5.html#cb438-8" tabindex="-1"></a><span class="co">#&gt; 6  RMSEA 0.04616501      0.05   satisfactory</span></span>
+<span id="cb438-9"><a href="un-esempio-concreto-5.html#cb438-9" tabindex="-1"></a><span class="co">#&gt; 7   SRMR 0.03675390      0.08   satisfactory</span></span>
+<span id="cb438-10"><a href="un-esempio-concreto-5.html#cb438-10" tabindex="-1"></a><span class="co">#&gt; 8    RFI 0.92791205      0.90   satisfactory</span></span>
+<span id="cb438-11"><a href="un-esempio-concreto-5.html#cb438-11" tabindex="-1"></a><span class="co">#&gt; 9   PNFI 0.68462079      0.50   satisfactory</span></span>
+<span id="cb438-12"><a href="un-esempio-concreto-5.html#cb438-12" tabindex="-1"></a><span class="co">#&gt; 10   IFI 0.96731836      0.90   satisfactory</span></span></code></pre></div>
 <p>In questa seconda versione, l’adattamento del modello è molto migliorato. Il rapporto <span class="math inline">\(\chi^2 / df\)</span> è pari a</p>
-<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="un-esempio-concreto-5.html#cb429-1" tabindex="-1"></a><span class="fl">67.559</span> <span class="sc">/</span> <span class="dv">26</span></span>
-<span id="cb429-2"><a href="un-esempio-concreto-5.html#cb429-2" tabindex="-1"></a><span class="co">#&gt; [1] 2.598423</span></span></code></pre></div>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="un-esempio-concreto-5.html#cb439-1" tabindex="-1"></a><span class="fl">67.559</span> <span class="sc">/</span> <span class="dv">26</span></span>
+<span id="cb439-2"><a href="un-esempio-concreto-5.html#cb439-2" tabindex="-1"></a><span class="co">#&gt; [1] 2.598423</span></span></code></pre></div>
 <p>Gli indici Comparative Fit Index (CFI) = 0.967 e Tucker-Lewis Index (TLI) = 0.954 sono superiori a 0.95. L’indice RMSEA = 0.046. L’indice SRMR = 0.037.</p>
 <p>Il “costo” che si paga per questo miglioramento dell’adattamento è che indici di adattamento così buoni, probabilmente, non si replicheranno in un altro campione di dati, a meno che venga introdotto un qualche altro aggiustamento che, sicuramente, sarà diverso da quello usato nel campione corrente. Personalmente, non avrei introdotto il “miglioramento” proposto da <span class="citation">Brown (<a href="#ref-brown2015confirmatory">2015</a>)</span> in quanto, anche senza un tale aggiustamento post-hoc, il modello produce un adattamento accettabile.</p>
 </div>

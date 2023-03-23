@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2023-03-22" />
+<meta name="date" content="2023-03-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,12 +340,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9.9" data-path="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><a href="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><i class="fa fa-check"></i><b>9.9</b> Metodi alternativi per la stima del coefficiente di attendibilità</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10</b> L’incertezza della misura</a>
+<li class="chapter" data-level="10" data-path="lerrore-standard-della-misurazione.html"><a href="lerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10</b> L’errore standard della misurazione</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10.1</b> La stima dell’errore standard della misurazione</a>
+<li class="chapter" data-level="10.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10.1</b> L’incertezza della misura</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
-<li class="chapter" data-level="10.1.2" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
+<li class="chapter" data-level="10.1.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
+<li class="chapter" data-level="10.1.2" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="dimostrazione.html"><a href="dimostrazione.html"><i class="fa fa-check"></i><b>10.2</b> Dimostrazione</a></li>
 <li class="chapter" data-level="10.3" data-path="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><a href="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><i class="fa fa-check"></i><b>10.3</b> Intervallo di confidenza per il punteggio vero e <span class="math inline">\(\sigma_E\)</span></a></li>
@@ -360,7 +360,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="12" data-path="esercizi-sulla-ctt.html"><a href="esercizi-sulla-ctt.html"><i class="fa fa-check"></i><b>12</b> Esercizi sulla CTT</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.1</b> Validità</a></li>
+<li class="chapter" data-level="12.1" data-path="attendibilità.html"><a href="attendibilità.html"><i class="fa fa-check"></i><b>12.1</b> Attendibilità</a></li>
+<li class="chapter" data-level="12.2" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.2</b> Validità</a></li>
 </ul></li>
 <li class="part"><span><b>IV L’analisi fattoriale</b></span></li>
 <li class="chapter" data-level="13" data-path="utilizzo-e-costruzione-di-test-psicometrici.html"><a href="utilizzo-e-costruzione-di-test-psicometrici.html"><i class="fa fa-check"></i><b>13</b> Utilizzo e costruzione di test psicometrici</a>
@@ -745,93 +746,93 @@ div.csl-indent {
 <li>positive emotions (E4).</li>
 </ul>
 <p>Leggiamo i dati in <span class="math inline">\(\mathsf{R}\)</span>.</p>
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="un-numero-di-fattori-troppo-piccolo.html#cb430-1" tabindex="-1"></a>varnames <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;N1&quot;</span>, <span class="st">&quot;N2&quot;</span>, <span class="st">&quot;N3&quot;</span>, <span class="st">&quot;N4&quot;</span>, <span class="st">&quot;E1&quot;</span>, <span class="st">&quot;E2&quot;</span>, <span class="st">&quot;E3&quot;</span>, <span class="st">&quot;E4&quot;</span>)</span>
-<span id="cb430-2"><a href="un-numero-di-fattori-troppo-piccolo.html#cb430-2" tabindex="-1"></a></span>
-<span id="cb430-3"><a href="un-numero-di-fattori-troppo-piccolo.html#cb430-3" tabindex="-1"></a>sds <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">5.6</span>, <span class="fl">6.4</span>, <span class="fl">5.7</span>, <span class="fl">6.0</span>, <span class="fl">6.2</span>, <span class="fl">5.7</span>, <span class="fl">5.6</span>)</span>
-<span id="cb430-4"><a href="un-numero-di-fattori-troppo-piccolo.html#cb430-4" tabindex="-1"></a></span>
-<span id="cb430-5"><a href="un-numero-di-fattori-troppo-piccolo.html#cb430-5" tabindex="-1"></a>cors <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb430-6"><a href="un-numero-di-fattori-troppo-piccolo.html#cb430-6" tabindex="-1"></a><span class="st"> 1.000</span></span>
-<span id="cb430-7"><a href="un-numero-di-fattori-troppo-piccolo.html#cb430-7" tabindex="-1"></a><span class="st"> 0.767  1.000</span></span>
-<span id="cb430-8"><a href="un-numero-di-fattori-troppo-piccolo.html#cb430-8" tabindex="-1"></a><span class="st"> 0.731  0.709  1.000</span></span>
-<span id="cb430-9"><a href="un-numero-di-fattori-troppo-piccolo.html#cb430-9" tabindex="-1"></a><span class="st"> 0.778  0.738  0.762  1.000</span></span>
-<span id="cb430-10"><a href="un-numero-di-fattori-troppo-piccolo.html#cb430-10" tabindex="-1"></a><span class="st">-0.351  -0.302  -0.356  -0.318  1.000</span></span>
-<span id="cb430-11"><a href="un-numero-di-fattori-troppo-piccolo.html#cb430-11" tabindex="-1"></a><span class="st">-0.316  -0.280  -0.300  -0.267  0.675  1.000</span></span>
-<span id="cb430-12"><a href="un-numero-di-fattori-troppo-piccolo.html#cb430-12" tabindex="-1"></a><span class="st">-0.296  -0.289  -0.297  -0.296  0.634  0.651  1.000</span></span>
-<span id="cb430-13"><a href="un-numero-di-fattori-troppo-piccolo.html#cb430-13" tabindex="-1"></a><span class="st">-0.282  -0.254  -0.292  -0.245  0.534  0.593  0.566  1.000&quot;</span></span>
-<span id="cb430-14"><a href="un-numero-di-fattori-troppo-piccolo.html#cb430-14" tabindex="-1"></a></span>
-<span id="cb430-15"><a href="un-numero-di-fattori-troppo-piccolo.html#cb430-15" tabindex="-1"></a>psychot_cor_mat <span class="ot">&lt;-</span> <span class="fu">getCov</span>(cors, <span class="at">names =</span> varnames)</span>
-<span id="cb430-16"><a href="un-numero-di-fattori-troppo-piccolo.html#cb430-16" tabindex="-1"></a></span>
-<span id="cb430-17"><a href="un-numero-di-fattori-troppo-piccolo.html#cb430-17" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">250</span></span></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="un-numero-di-fattori-troppo-piccolo.html#cb440-1" tabindex="-1"></a>varnames <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;N1&quot;</span>, <span class="st">&quot;N2&quot;</span>, <span class="st">&quot;N3&quot;</span>, <span class="st">&quot;N4&quot;</span>, <span class="st">&quot;E1&quot;</span>, <span class="st">&quot;E2&quot;</span>, <span class="st">&quot;E3&quot;</span>, <span class="st">&quot;E4&quot;</span>)</span>
+<span id="cb440-2"><a href="un-numero-di-fattori-troppo-piccolo.html#cb440-2" tabindex="-1"></a></span>
+<span id="cb440-3"><a href="un-numero-di-fattori-troppo-piccolo.html#cb440-3" tabindex="-1"></a>sds <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">5.6</span>, <span class="fl">6.4</span>, <span class="fl">5.7</span>, <span class="fl">6.0</span>, <span class="fl">6.2</span>, <span class="fl">5.7</span>, <span class="fl">5.6</span>)</span>
+<span id="cb440-4"><a href="un-numero-di-fattori-troppo-piccolo.html#cb440-4" tabindex="-1"></a></span>
+<span id="cb440-5"><a href="un-numero-di-fattori-troppo-piccolo.html#cb440-5" tabindex="-1"></a>cors <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb440-6"><a href="un-numero-di-fattori-troppo-piccolo.html#cb440-6" tabindex="-1"></a><span class="st"> 1.000</span></span>
+<span id="cb440-7"><a href="un-numero-di-fattori-troppo-piccolo.html#cb440-7" tabindex="-1"></a><span class="st"> 0.767  1.000</span></span>
+<span id="cb440-8"><a href="un-numero-di-fattori-troppo-piccolo.html#cb440-8" tabindex="-1"></a><span class="st"> 0.731  0.709  1.000</span></span>
+<span id="cb440-9"><a href="un-numero-di-fattori-troppo-piccolo.html#cb440-9" tabindex="-1"></a><span class="st"> 0.778  0.738  0.762  1.000</span></span>
+<span id="cb440-10"><a href="un-numero-di-fattori-troppo-piccolo.html#cb440-10" tabindex="-1"></a><span class="st">-0.351  -0.302  -0.356  -0.318  1.000</span></span>
+<span id="cb440-11"><a href="un-numero-di-fattori-troppo-piccolo.html#cb440-11" tabindex="-1"></a><span class="st">-0.316  -0.280  -0.300  -0.267  0.675  1.000</span></span>
+<span id="cb440-12"><a href="un-numero-di-fattori-troppo-piccolo.html#cb440-12" tabindex="-1"></a><span class="st">-0.296  -0.289  -0.297  -0.296  0.634  0.651  1.000</span></span>
+<span id="cb440-13"><a href="un-numero-di-fattori-troppo-piccolo.html#cb440-13" tabindex="-1"></a><span class="st">-0.282  -0.254  -0.292  -0.245  0.534  0.593  0.566  1.000&quot;</span></span>
+<span id="cb440-14"><a href="un-numero-di-fattori-troppo-piccolo.html#cb440-14" tabindex="-1"></a></span>
+<span id="cb440-15"><a href="un-numero-di-fattori-troppo-piccolo.html#cb440-15" tabindex="-1"></a>psychot_cor_mat <span class="ot">&lt;-</span> <span class="fu">getCov</span>(cors, <span class="at">names =</span> varnames)</span>
+<span id="cb440-16"><a href="un-numero-di-fattori-troppo-piccolo.html#cb440-16" tabindex="-1"></a></span>
+<span id="cb440-17"><a href="un-numero-di-fattori-troppo-piccolo.html#cb440-17" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">250</span></span></code></pre></div>
 <p>Supponiamo di adattare ai dati il modello “sbagliato” che include un unico fattore comune. Svolgiamo qui l’analisi <em>fattoriale esplorativa</em> usando la funzione sperimentale <code>efa()</code> di <code>lavaan</code>.</p>
-<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="un-numero-di-fattori-troppo-piccolo.html#cb431-1" tabindex="-1"></a><span class="co"># 1-factor model</span></span>
-<span id="cb431-2"><a href="un-numero-di-fattori-troppo-piccolo.html#cb431-2" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="st">&#39;</span></span>
-<span id="cb431-3"><a href="un-numero-di-fattori-troppo-piccolo.html#cb431-3" tabindex="-1"></a><span class="st">  efa(&quot;efa&quot;)*f1 =~ N1 + N2 + N3 + N4 + E1 + E2 + E3 + E4</span></span>
-<span id="cb431-4"><a href="un-numero-di-fattori-troppo-piccolo.html#cb431-4" tabindex="-1"></a><span class="st">&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="un-numero-di-fattori-troppo-piccolo.html#cb441-1" tabindex="-1"></a><span class="co"># 1-factor model</span></span>
+<span id="cb441-2"><a href="un-numero-di-fattori-troppo-piccolo.html#cb441-2" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="st">&#39;</span></span>
+<span id="cb441-3"><a href="un-numero-di-fattori-troppo-piccolo.html#cb441-3" tabindex="-1"></a><span class="st">  efa(&quot;efa&quot;)*f1 =~ N1 + N2 + N3 + N4 + E1 + E2 + E3 + E4</span></span>
+<span id="cb441-4"><a href="un-numero-di-fattori-troppo-piccolo.html#cb441-4" tabindex="-1"></a><span class="st">&#39;</span></span></code></pre></div>
 <p>Adattiamo il modello ai dati.</p>
-<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="un-numero-di-fattori-troppo-piccolo.html#cb432-1" tabindex="-1"></a>efa_f1 <span class="ot">&lt;-</span></span>
-<span id="cb432-2"><a href="un-numero-di-fattori-troppo-piccolo.html#cb432-2" tabindex="-1"></a>  <span class="fu">cfa</span>(</span>
-<span id="cb432-3"><a href="un-numero-di-fattori-troppo-piccolo.html#cb432-3" tabindex="-1"></a>    <span class="at">model =</span> f1,</span>
-<span id="cb432-4"><a href="un-numero-di-fattori-troppo-piccolo.html#cb432-4" tabindex="-1"></a>    <span class="at">sample.cov =</span> psychot_cor_mat,</span>
-<span id="cb432-5"><a href="un-numero-di-fattori-troppo-piccolo.html#cb432-5" tabindex="-1"></a>    <span class="at">sample.nobs =</span> <span class="dv">250</span>,</span>
-<span id="cb432-6"><a href="un-numero-di-fattori-troppo-piccolo.html#cb432-6" tabindex="-1"></a>    <span class="at">rotation =</span> <span class="st">&quot;oblimin&quot;</span></span>
-<span id="cb432-7"><a href="un-numero-di-fattori-troppo-piccolo.html#cb432-7" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="un-numero-di-fattori-troppo-piccolo.html#cb442-1" tabindex="-1"></a>efa_f1 <span class="ot">&lt;-</span></span>
+<span id="cb442-2"><a href="un-numero-di-fattori-troppo-piccolo.html#cb442-2" tabindex="-1"></a>  <span class="fu">cfa</span>(</span>
+<span id="cb442-3"><a href="un-numero-di-fattori-troppo-piccolo.html#cb442-3" tabindex="-1"></a>    <span class="at">model =</span> f1,</span>
+<span id="cb442-4"><a href="un-numero-di-fattori-troppo-piccolo.html#cb442-4" tabindex="-1"></a>    <span class="at">sample.cov =</span> psychot_cor_mat,</span>
+<span id="cb442-5"><a href="un-numero-di-fattori-troppo-piccolo.html#cb442-5" tabindex="-1"></a>    <span class="at">sample.nobs =</span> <span class="dv">250</span>,</span>
+<span id="cb442-6"><a href="un-numero-di-fattori-troppo-piccolo.html#cb442-6" tabindex="-1"></a>    <span class="at">rotation =</span> <span class="st">&quot;oblimin&quot;</span></span>
+<span id="cb442-7"><a href="un-numero-di-fattori-troppo-piccolo.html#cb442-7" tabindex="-1"></a>  )</span></code></pre></div>
 <p>Consideriamo ora un modello a due fattori.</p>
-<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="un-numero-di-fattori-troppo-piccolo.html#cb433-1" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> <span class="st">&#39;</span></span>
-<span id="cb433-2"><a href="un-numero-di-fattori-troppo-piccolo.html#cb433-2" tabindex="-1"></a><span class="st">  efa(&quot;efa&quot;)*f1 +</span></span>
-<span id="cb433-3"><a href="un-numero-di-fattori-troppo-piccolo.html#cb433-3" tabindex="-1"></a><span class="st">  efa(&quot;efa&quot;)*f2 =~ N1 + N2 + N3 + N4 + E1 + E2 + E3 + E4</span></span>
-<span id="cb433-4"><a href="un-numero-di-fattori-troppo-piccolo.html#cb433-4" tabindex="-1"></a><span class="st">&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="un-numero-di-fattori-troppo-piccolo.html#cb443-1" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> <span class="st">&#39;</span></span>
+<span id="cb443-2"><a href="un-numero-di-fattori-troppo-piccolo.html#cb443-2" tabindex="-1"></a><span class="st">  efa(&quot;efa&quot;)*f1 +</span></span>
+<span id="cb443-3"><a href="un-numero-di-fattori-troppo-piccolo.html#cb443-3" tabindex="-1"></a><span class="st">  efa(&quot;efa&quot;)*f2 =~ N1 + N2 + N3 + N4 + E1 + E2 + E3 + E4</span></span>
+<span id="cb443-4"><a href="un-numero-di-fattori-troppo-piccolo.html#cb443-4" tabindex="-1"></a><span class="st">&#39;</span></span></code></pre></div>
 <p>Adattiamo il modello ai dati.</p>
-<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="un-numero-di-fattori-troppo-piccolo.html#cb434-1" tabindex="-1"></a>efa_f2 <span class="ot">&lt;-</span></span>
-<span id="cb434-2"><a href="un-numero-di-fattori-troppo-piccolo.html#cb434-2" tabindex="-1"></a>  <span class="fu">cfa</span>(</span>
-<span id="cb434-3"><a href="un-numero-di-fattori-troppo-piccolo.html#cb434-3" tabindex="-1"></a>    <span class="at">model =</span> f2,</span>
-<span id="cb434-4"><a href="un-numero-di-fattori-troppo-piccolo.html#cb434-4" tabindex="-1"></a>    <span class="at">sample.cov =</span> psychot_cor_mat,</span>
-<span id="cb434-5"><a href="un-numero-di-fattori-troppo-piccolo.html#cb434-5" tabindex="-1"></a>    <span class="at">sample.nobs =</span> <span class="dv">250</span>,</span>
-<span id="cb434-6"><a href="un-numero-di-fattori-troppo-piccolo.html#cb434-6" tabindex="-1"></a>    <span class="at">rotation =</span> <span class="st">&quot;oblimin&quot;</span></span>
-<span id="cb434-7"><a href="un-numero-di-fattori-troppo-piccolo.html#cb434-7" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="un-numero-di-fattori-troppo-piccolo.html#cb444-1" tabindex="-1"></a>efa_f2 <span class="ot">&lt;-</span></span>
+<span id="cb444-2"><a href="un-numero-di-fattori-troppo-piccolo.html#cb444-2" tabindex="-1"></a>  <span class="fu">cfa</span>(</span>
+<span id="cb444-3"><a href="un-numero-di-fattori-troppo-piccolo.html#cb444-3" tabindex="-1"></a>    <span class="at">model =</span> f2,</span>
+<span id="cb444-4"><a href="un-numero-di-fattori-troppo-piccolo.html#cb444-4" tabindex="-1"></a>    <span class="at">sample.cov =</span> psychot_cor_mat,</span>
+<span id="cb444-5"><a href="un-numero-di-fattori-troppo-piccolo.html#cb444-5" tabindex="-1"></a>    <span class="at">sample.nobs =</span> <span class="dv">250</span>,</span>
+<span id="cb444-6"><a href="un-numero-di-fattori-troppo-piccolo.html#cb444-6" tabindex="-1"></a>    <span class="at">rotation =</span> <span class="st">&quot;oblimin&quot;</span></span>
+<span id="cb444-7"><a href="un-numero-di-fattori-troppo-piccolo.html#cb444-7" tabindex="-1"></a>  )</span></code></pre></div>
 <p>Esaminiamo gli indici di bontà di adattamento.</p>
-<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="un-numero-di-fattori-troppo-piccolo.html#cb435-1" tabindex="-1"></a><span class="co"># define the fit measures</span></span>
-<span id="cb435-2"><a href="un-numero-di-fattori-troppo-piccolo.html#cb435-2" tabindex="-1"></a>fit_measures_robust <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;chisq&quot;</span>, <span class="st">&quot;df&quot;</span>, <span class="st">&quot;pvalue&quot;</span>, <span class="st">&quot;cfi&quot;</span>, <span class="st">&quot;tli&quot;</span>, <span class="st">&quot;rmsea&quot;</span>, <span class="st">&quot;srmr&quot;</span>)</span>
-<span id="cb435-3"><a href="un-numero-di-fattori-troppo-piccolo.html#cb435-3" tabindex="-1"></a></span>
-<span id="cb435-4"><a href="un-numero-di-fattori-troppo-piccolo.html#cb435-4" tabindex="-1"></a><span class="co"># collect them for each model</span></span>
-<span id="cb435-5"><a href="un-numero-di-fattori-troppo-piccolo.html#cb435-5" tabindex="-1"></a><span class="fu">rbind</span>(</span>
-<span id="cb435-6"><a href="un-numero-di-fattori-troppo-piccolo.html#cb435-6" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(efa_f1, fit_measures_robust),</span>
-<span id="cb435-7"><a href="un-numero-di-fattori-troppo-piccolo.html#cb435-7" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(efa_f2, fit_measures_robust)</span>
-<span id="cb435-8"><a href="un-numero-di-fattori-troppo-piccolo.html#cb435-8" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb435-9"><a href="un-numero-di-fattori-troppo-piccolo.html#cb435-9" tabindex="-1"></a>  <span class="co"># wrangle</span></span>
-<span id="cb435-10"><a href="un-numero-di-fattori-troppo-piccolo.html#cb435-10" tabindex="-1"></a>  <span class="fu">data.frame</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb435-11"><a href="un-numero-di-fattori-troppo-piccolo.html#cb435-11" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb435-12"><a href="un-numero-di-fattori-troppo-piccolo.html#cb435-12" tabindex="-1"></a>    <span class="at">chisq =</span> <span class="fu">round</span>(chisq, <span class="at">digits =</span> <span class="dv">0</span>),</span>
-<span id="cb435-13"><a href="un-numero-di-fattori-troppo-piccolo.html#cb435-13" tabindex="-1"></a>    <span class="at">df =</span> <span class="fu">as.integer</span>(df),</span>
-<span id="cb435-14"><a href="un-numero-di-fattori-troppo-piccolo.html#cb435-14" tabindex="-1"></a>    <span class="at">pvalue =</span> <span class="fu">ifelse</span>(pvalue <span class="sc">==</span> <span class="dv">0</span>, <span class="st">&quot;&lt; .001&quot;</span>, pvalue)</span>
-<span id="cb435-15"><a href="un-numero-di-fattori-troppo-piccolo.html#cb435-15" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb435-16"><a href="un-numero-di-fattori-troppo-piccolo.html#cb435-16" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(cfi<span class="sc">:</span>srmr), <span class="sc">~</span> <span class="fu">round</span>(., <span class="at">digits =</span> <span class="dv">3</span>))</span>
-<span id="cb435-17"><a href="un-numero-di-fattori-troppo-piccolo.html#cb435-17" tabindex="-1"></a><span class="co">#&gt;   chisq df            pvalue  cfi   tli rmsea  srmr</span></span>
-<span id="cb435-18"><a href="un-numero-di-fattori-troppo-piccolo.html#cb435-18" tabindex="-1"></a><span class="co">#&gt; 1   375 20            &lt; .001 0.71 0.594 0.267 0.187</span></span>
-<span id="cb435-19"><a href="un-numero-di-fattori-troppo-piccolo.html#cb435-19" tabindex="-1"></a><span class="co">#&gt; 2    10 13 0.709310449320062 1.00 1.006 0.000 0.010</span></span></code></pre></div>
-<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="un-numero-di-fattori-troppo-piccolo.html#cb436-1" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">interpret</span>(efa_f1)</span>
-<span id="cb436-2"><a href="un-numero-di-fattori-troppo-piccolo.html#cb436-2" tabindex="-1"></a><span class="co">#&gt;     Name     Value Threshold Interpretation</span></span>
-<span id="cb436-3"><a href="un-numero-di-fattori-troppo-piccolo.html#cb436-3" tabindex="-1"></a><span class="co">#&gt; 1    GFI 0.6713421      0.95           poor</span></span>
-<span id="cb436-4"><a href="un-numero-di-fattori-troppo-piccolo.html#cb436-4" tabindex="-1"></a><span class="co">#&gt; 2   AGFI 0.4084158      0.90           poor</span></span>
-<span id="cb436-5"><a href="un-numero-di-fattori-troppo-piccolo.html#cb436-5" tabindex="-1"></a><span class="co">#&gt; 3    NFI 0.7006460      0.90           poor</span></span>
-<span id="cb436-6"><a href="un-numero-di-fattori-troppo-piccolo.html#cb436-6" tabindex="-1"></a><span class="co">#&gt; 4   NNFI 0.5941736      0.90           poor</span></span>
-<span id="cb436-7"><a href="un-numero-di-fattori-troppo-piccolo.html#cb436-7" tabindex="-1"></a><span class="co">#&gt; 5    CFI 0.7101240      0.90           poor</span></span>
-<span id="cb436-8"><a href="un-numero-di-fattori-troppo-piccolo.html#cb436-8" tabindex="-1"></a><span class="co">#&gt; 6  RMSEA 0.2665811      0.05           poor</span></span>
-<span id="cb436-9"><a href="un-numero-di-fattori-troppo-piccolo.html#cb436-9" tabindex="-1"></a><span class="co">#&gt; 7   SRMR 0.1873289      0.08           poor</span></span>
-<span id="cb436-10"><a href="un-numero-di-fattori-troppo-piccolo.html#cb436-10" tabindex="-1"></a><span class="co">#&gt; 8    RFI 0.5809044      0.90           poor</span></span>
-<span id="cb436-11"><a href="un-numero-di-fattori-troppo-piccolo.html#cb436-11" tabindex="-1"></a><span class="co">#&gt; 9   PNFI 0.5004614      0.50   satisfactory</span></span>
-<span id="cb436-12"><a href="un-numero-di-fattori-troppo-piccolo.html#cb436-12" tabindex="-1"></a><span class="co">#&gt; 10   IFI 0.7120036      0.90           poor</span></span></code></pre></div>
-<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="un-numero-di-fattori-troppo-piccolo.html#cb437-1" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">interpret</span>(efa_f2)</span>
-<span id="cb437-2"><a href="un-numero-di-fattori-troppo-piccolo.html#cb437-2" tabindex="-1"></a><span class="co">#&gt;     Name       Value Threshold Interpretation</span></span>
-<span id="cb437-3"><a href="un-numero-di-fattori-troppo-piccolo.html#cb437-3" tabindex="-1"></a><span class="co">#&gt; 1    GFI 0.990554109      0.95   satisfactory</span></span>
-<span id="cb437-4"><a href="un-numero-di-fattori-troppo-piccolo.html#cb437-4" tabindex="-1"></a><span class="co">#&gt; 2   AGFI 0.973842148      0.90   satisfactory</span></span>
-<span id="cb437-5"><a href="un-numero-di-fattori-troppo-piccolo.html#cb437-5" tabindex="-1"></a><span class="co">#&gt; 3    NFI 0.992174918      0.90   satisfactory</span></span>
-<span id="cb437-6"><a href="un-numero-di-fattori-troppo-piccolo.html#cb437-6" tabindex="-1"></a><span class="co">#&gt; 4   NNFI 1.005603388      0.90   satisfactory</span></span>
-<span id="cb437-7"><a href="un-numero-di-fattori-troppo-piccolo.html#cb437-7" tabindex="-1"></a><span class="co">#&gt; 5    CFI 1.000000000      0.90   satisfactory</span></span>
-<span id="cb437-8"><a href="un-numero-di-fattori-troppo-piccolo.html#cb437-8" tabindex="-1"></a><span class="co">#&gt; 6  RMSEA 0.000000000      0.05   satisfactory</span></span>
-<span id="cb437-9"><a href="un-numero-di-fattori-troppo-piccolo.html#cb437-9" tabindex="-1"></a><span class="co">#&gt; 7   SRMR 0.009907613      0.08   satisfactory</span></span>
-<span id="cb437-10"><a href="un-numero-di-fattori-troppo-piccolo.html#cb437-10" tabindex="-1"></a><span class="co">#&gt; 8    RFI 0.983145977      0.90   satisfactory</span></span>
-<span id="cb437-11"><a href="un-numero-di-fattori-troppo-piccolo.html#cb437-11" tabindex="-1"></a><span class="co">#&gt; 9   PNFI 0.460652640      0.50           poor</span></span>
-<span id="cb437-12"><a href="un-numero-di-fattori-troppo-piccolo.html#cb437-12" tabindex="-1"></a><span class="co">#&gt; 10   IFI 1.002570123      0.90   satisfactory</span></span></code></pre></div>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="un-numero-di-fattori-troppo-piccolo.html#cb445-1" tabindex="-1"></a><span class="co"># define the fit measures</span></span>
+<span id="cb445-2"><a href="un-numero-di-fattori-troppo-piccolo.html#cb445-2" tabindex="-1"></a>fit_measures_robust <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;chisq&quot;</span>, <span class="st">&quot;df&quot;</span>, <span class="st">&quot;pvalue&quot;</span>, <span class="st">&quot;cfi&quot;</span>, <span class="st">&quot;tli&quot;</span>, <span class="st">&quot;rmsea&quot;</span>, <span class="st">&quot;srmr&quot;</span>)</span>
+<span id="cb445-3"><a href="un-numero-di-fattori-troppo-piccolo.html#cb445-3" tabindex="-1"></a></span>
+<span id="cb445-4"><a href="un-numero-di-fattori-troppo-piccolo.html#cb445-4" tabindex="-1"></a><span class="co"># collect them for each model</span></span>
+<span id="cb445-5"><a href="un-numero-di-fattori-troppo-piccolo.html#cb445-5" tabindex="-1"></a><span class="fu">rbind</span>(</span>
+<span id="cb445-6"><a href="un-numero-di-fattori-troppo-piccolo.html#cb445-6" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(efa_f1, fit_measures_robust),</span>
+<span id="cb445-7"><a href="un-numero-di-fattori-troppo-piccolo.html#cb445-7" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(efa_f2, fit_measures_robust)</span>
+<span id="cb445-8"><a href="un-numero-di-fattori-troppo-piccolo.html#cb445-8" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb445-9"><a href="un-numero-di-fattori-troppo-piccolo.html#cb445-9" tabindex="-1"></a>  <span class="co"># wrangle</span></span>
+<span id="cb445-10"><a href="un-numero-di-fattori-troppo-piccolo.html#cb445-10" tabindex="-1"></a>  <span class="fu">data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb445-11"><a href="un-numero-di-fattori-troppo-piccolo.html#cb445-11" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb445-12"><a href="un-numero-di-fattori-troppo-piccolo.html#cb445-12" tabindex="-1"></a>    <span class="at">chisq =</span> <span class="fu">round</span>(chisq, <span class="at">digits =</span> <span class="dv">0</span>),</span>
+<span id="cb445-13"><a href="un-numero-di-fattori-troppo-piccolo.html#cb445-13" tabindex="-1"></a>    <span class="at">df =</span> <span class="fu">as.integer</span>(df),</span>
+<span id="cb445-14"><a href="un-numero-di-fattori-troppo-piccolo.html#cb445-14" tabindex="-1"></a>    <span class="at">pvalue =</span> <span class="fu">ifelse</span>(pvalue <span class="sc">==</span> <span class="dv">0</span>, <span class="st">&quot;&lt; .001&quot;</span>, pvalue)</span>
+<span id="cb445-15"><a href="un-numero-di-fattori-troppo-piccolo.html#cb445-15" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb445-16"><a href="un-numero-di-fattori-troppo-piccolo.html#cb445-16" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(cfi<span class="sc">:</span>srmr), <span class="sc">~</span> <span class="fu">round</span>(., <span class="at">digits =</span> <span class="dv">3</span>))</span>
+<span id="cb445-17"><a href="un-numero-di-fattori-troppo-piccolo.html#cb445-17" tabindex="-1"></a><span class="co">#&gt;   chisq df            pvalue  cfi   tli rmsea  srmr</span></span>
+<span id="cb445-18"><a href="un-numero-di-fattori-troppo-piccolo.html#cb445-18" tabindex="-1"></a><span class="co">#&gt; 1   375 20            &lt; .001 0.71 0.594 0.267 0.187</span></span>
+<span id="cb445-19"><a href="un-numero-di-fattori-troppo-piccolo.html#cb445-19" tabindex="-1"></a><span class="co">#&gt; 2    10 13 0.709310449320062 1.00 1.006 0.000 0.010</span></span></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="un-numero-di-fattori-troppo-piccolo.html#cb446-1" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">interpret</span>(efa_f1)</span>
+<span id="cb446-2"><a href="un-numero-di-fattori-troppo-piccolo.html#cb446-2" tabindex="-1"></a><span class="co">#&gt;     Name     Value Threshold Interpretation</span></span>
+<span id="cb446-3"><a href="un-numero-di-fattori-troppo-piccolo.html#cb446-3" tabindex="-1"></a><span class="co">#&gt; 1    GFI 0.6713421      0.95           poor</span></span>
+<span id="cb446-4"><a href="un-numero-di-fattori-troppo-piccolo.html#cb446-4" tabindex="-1"></a><span class="co">#&gt; 2   AGFI 0.4084158      0.90           poor</span></span>
+<span id="cb446-5"><a href="un-numero-di-fattori-troppo-piccolo.html#cb446-5" tabindex="-1"></a><span class="co">#&gt; 3    NFI 0.7006460      0.90           poor</span></span>
+<span id="cb446-6"><a href="un-numero-di-fattori-troppo-piccolo.html#cb446-6" tabindex="-1"></a><span class="co">#&gt; 4   NNFI 0.5941736      0.90           poor</span></span>
+<span id="cb446-7"><a href="un-numero-di-fattori-troppo-piccolo.html#cb446-7" tabindex="-1"></a><span class="co">#&gt; 5    CFI 0.7101240      0.90           poor</span></span>
+<span id="cb446-8"><a href="un-numero-di-fattori-troppo-piccolo.html#cb446-8" tabindex="-1"></a><span class="co">#&gt; 6  RMSEA 0.2665811      0.05           poor</span></span>
+<span id="cb446-9"><a href="un-numero-di-fattori-troppo-piccolo.html#cb446-9" tabindex="-1"></a><span class="co">#&gt; 7   SRMR 0.1873289      0.08           poor</span></span>
+<span id="cb446-10"><a href="un-numero-di-fattori-troppo-piccolo.html#cb446-10" tabindex="-1"></a><span class="co">#&gt; 8    RFI 0.5809044      0.90           poor</span></span>
+<span id="cb446-11"><a href="un-numero-di-fattori-troppo-piccolo.html#cb446-11" tabindex="-1"></a><span class="co">#&gt; 9   PNFI 0.5004614      0.50   satisfactory</span></span>
+<span id="cb446-12"><a href="un-numero-di-fattori-troppo-piccolo.html#cb446-12" tabindex="-1"></a><span class="co">#&gt; 10   IFI 0.7120036      0.90           poor</span></span></code></pre></div>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="un-numero-di-fattori-troppo-piccolo.html#cb447-1" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">interpret</span>(efa_f2)</span>
+<span id="cb447-2"><a href="un-numero-di-fattori-troppo-piccolo.html#cb447-2" tabindex="-1"></a><span class="co">#&gt;     Name       Value Threshold Interpretation</span></span>
+<span id="cb447-3"><a href="un-numero-di-fattori-troppo-piccolo.html#cb447-3" tabindex="-1"></a><span class="co">#&gt; 1    GFI 0.990554109      0.95   satisfactory</span></span>
+<span id="cb447-4"><a href="un-numero-di-fattori-troppo-piccolo.html#cb447-4" tabindex="-1"></a><span class="co">#&gt; 2   AGFI 0.973842148      0.90   satisfactory</span></span>
+<span id="cb447-5"><a href="un-numero-di-fattori-troppo-piccolo.html#cb447-5" tabindex="-1"></a><span class="co">#&gt; 3    NFI 0.992174918      0.90   satisfactory</span></span>
+<span id="cb447-6"><a href="un-numero-di-fattori-troppo-piccolo.html#cb447-6" tabindex="-1"></a><span class="co">#&gt; 4   NNFI 1.005603388      0.90   satisfactory</span></span>
+<span id="cb447-7"><a href="un-numero-di-fattori-troppo-piccolo.html#cb447-7" tabindex="-1"></a><span class="co">#&gt; 5    CFI 1.000000000      0.90   satisfactory</span></span>
+<span id="cb447-8"><a href="un-numero-di-fattori-troppo-piccolo.html#cb447-8" tabindex="-1"></a><span class="co">#&gt; 6  RMSEA 0.000000000      0.05   satisfactory</span></span>
+<span id="cb447-9"><a href="un-numero-di-fattori-troppo-piccolo.html#cb447-9" tabindex="-1"></a><span class="co">#&gt; 7   SRMR 0.009907613      0.08   satisfactory</span></span>
+<span id="cb447-10"><a href="un-numero-di-fattori-troppo-piccolo.html#cb447-10" tabindex="-1"></a><span class="co">#&gt; 8    RFI 0.983145977      0.90   satisfactory</span></span>
+<span id="cb447-11"><a href="un-numero-di-fattori-troppo-piccolo.html#cb447-11" tabindex="-1"></a><span class="co">#&gt; 9   PNFI 0.460652640      0.50           poor</span></span>
+<span id="cb447-12"><a href="un-numero-di-fattori-troppo-piccolo.html#cb447-12" tabindex="-1"></a><span class="co">#&gt; 10   IFI 1.002570123      0.90   satisfactory</span></span></code></pre></div>
 <p>I risultati mostrano come, in un modello EFA, una soluzione a due fattori produca un adattamento adeguato, mentre ciò non si verifica con un modello ad un solo fattore.</p>
 </div>
 <h3>References</h3>

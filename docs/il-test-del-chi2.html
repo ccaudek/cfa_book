@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2023-03-22" />
+<meta name="date" content="2023-03-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,12 +340,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9.9" data-path="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><a href="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><i class="fa fa-check"></i><b>9.9</b> Metodi alternativi per la stima del coefficiente di attendibilità</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10</b> L’incertezza della misura</a>
+<li class="chapter" data-level="10" data-path="lerrore-standard-della-misurazione.html"><a href="lerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10</b> L’errore standard della misurazione</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10.1</b> La stima dell’errore standard della misurazione</a>
+<li class="chapter" data-level="10.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10.1</b> L’incertezza della misura</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
-<li class="chapter" data-level="10.1.2" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
+<li class="chapter" data-level="10.1.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
+<li class="chapter" data-level="10.1.2" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="dimostrazione.html"><a href="dimostrazione.html"><i class="fa fa-check"></i><b>10.2</b> Dimostrazione</a></li>
 <li class="chapter" data-level="10.3" data-path="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><a href="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><i class="fa fa-check"></i><b>10.3</b> Intervallo di confidenza per il punteggio vero e <span class="math inline">\(\sigma_E\)</span></a></li>
@@ -360,7 +360,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="12" data-path="esercizi-sulla-ctt.html"><a href="esercizi-sulla-ctt.html"><i class="fa fa-check"></i><b>12</b> Esercizi sulla CTT</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.1</b> Validità</a></li>
+<li class="chapter" data-level="12.1" data-path="attendibilità.html"><a href="attendibilità.html"><i class="fa fa-check"></i><b>12.1</b> Attendibilità</a></li>
+<li class="chapter" data-level="12.2" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.2</b> Validità</a></li>
 </ul></li>
 <li class="part"><span><b>IV L’analisi fattoriale</b></span></li>
 <li class="chapter" data-level="13" data-path="utilizzo-e-costruzione-di-test-psicometrici.html"><a href="utilizzo-e-costruzione-di-test-psicometrici.html"><i class="fa fa-check"></i><b>13</b> Utilizzo e costruzione di test psicometrici</a>
@@ -736,23 +737,23 @@ div.csl-indent {
 <p>Il confronto tra modelli nidificati procede attraverso il test <span class="math inline">\(\chi^2\)</span>. Tale test si basa su una proprietà delle variabili casuali distribuite come <span class="math inline">\(\chi^2\)</span>: la differenza tra due v.c. <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> che seguono la distribuzione <span class="math inline">\(\chi^2\)</span>, rispettivamente con <span class="math inline">\(\nu_1\)</span> e <span class="math inline">\(\nu_2\)</span>, con <span class="math inline">\(\nu_1 &gt; \nu_2\)</span>, è una variabile causale che segue la distribuzione <span class="math inline">\(\chi^2\)</span> con gradi di libertà pari a <span class="math inline">\(\nu_1 - \nu_2\)</span>.</p>
 <p>Un modello nidificato è un modello che impone dei vincoli sui parametri del modello di partenza. L’imposizione di vincoli sui parametri ha la conseguenza che vi sarà un numero minore di parametri da stimare. Il confronto tra i modelli si esegue valutando in maniera relativa la bontà di adattamento di ciascun modello per mezzo della statistica chi-quadrato. La statistica così calcolata avrà un numero di gradi di libertà uguale alla differenza tra i gradi di libertà dei due modelli.</p>
 <p>Nel caso dell’esempio in dicussione, abbiamo</p>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="il-test-del-chi2.html#cb327-1" tabindex="-1"></a><span class="fu">anova</span>(</span>
-<span id="cb327-2"><a href="il-test-del-chi2.html#cb327-2" tabindex="-1"></a>  fit.congeneric,</span>
-<span id="cb327-3"><a href="il-test-del-chi2.html#cb327-3" tabindex="-1"></a>  fit.tau.a,</span>
-<span id="cb327-4"><a href="il-test-del-chi2.html#cb327-4" tabindex="-1"></a>  fit.tau.av,</span>
-<span id="cb327-5"><a href="il-test-del-chi2.html#cb327-5" tabindex="-1"></a>  fit.parallel.a,</span>
-<span id="cb327-6"><a href="il-test-del-chi2.html#cb327-6" tabindex="-1"></a>  fit.parallel.av,</span>
-<span id="cb327-7"><a href="il-test-del-chi2.html#cb327-7" tabindex="-1"></a>  <span class="at">test =</span> <span class="st">&quot;chisq&quot;</span></span>
-<span id="cb327-8"><a href="il-test-del-chi2.html#cb327-8" tabindex="-1"></a>)</span>
-<span id="cb327-9"><a href="il-test-del-chi2.html#cb327-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb327-10"><a href="il-test-del-chi2.html#cb327-10" tabindex="-1"></a><span class="co">#&gt; Chi-Squared Difference Test</span></span>
-<span id="cb327-11"><a href="il-test-del-chi2.html#cb327-11" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb327-12"><a href="il-test-del-chi2.html#cb327-12" tabindex="-1"></a><span class="co">#&gt;                 Df    AIC    BIC  Chisq Chisq diff    RMSEA Df diff Pr(&gt;Chisq)</span></span>
-<span id="cb327-13"><a href="il-test-del-chi2.html#cb327-13" tabindex="-1"></a><span class="co">#&gt; fit.congeneric   8 4702.0 4744.8 4.8773                                       </span></span>
-<span id="cb327-14"><a href="il-test-del-chi2.html#cb327-14" tabindex="-1"></a><span class="co">#&gt; fit.tau.a       10 4698.7 4735.0 5.6597     0.7823 0.000000       2     0.6763</span></span>
-<span id="cb327-15"><a href="il-test-del-chi2.html#cb327-15" tabindex="-1"></a><span class="co">#&gt; fit.tau.av      12 4695.0 4724.6 5.8810     0.2213 0.000000       2     0.8952</span></span>
-<span id="cb327-16"><a href="il-test-del-chi2.html#cb327-16" tabindex="-1"></a><span class="co">#&gt; fit.parallel.a  14 4691.1 4714.1 5.9769     0.0959 0.000000       2     0.9532</span></span>
-<span id="cb327-17"><a href="il-test-del-chi2.html#cb327-17" tabindex="-1"></a><span class="co">#&gt; fit.parallel.av 16 4690.4 4706.9 9.2772     3.3003 0.057016       2     0.1920</span></span></code></pre></div>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="il-test-del-chi2.html#cb337-1" tabindex="-1"></a><span class="fu">anova</span>(</span>
+<span id="cb337-2"><a href="il-test-del-chi2.html#cb337-2" tabindex="-1"></a>  fit.congeneric,</span>
+<span id="cb337-3"><a href="il-test-del-chi2.html#cb337-3" tabindex="-1"></a>  fit.tau.a,</span>
+<span id="cb337-4"><a href="il-test-del-chi2.html#cb337-4" tabindex="-1"></a>  fit.tau.av,</span>
+<span id="cb337-5"><a href="il-test-del-chi2.html#cb337-5" tabindex="-1"></a>  fit.parallel.a,</span>
+<span id="cb337-6"><a href="il-test-del-chi2.html#cb337-6" tabindex="-1"></a>  fit.parallel.av,</span>
+<span id="cb337-7"><a href="il-test-del-chi2.html#cb337-7" tabindex="-1"></a>  <span class="at">test =</span> <span class="st">&quot;chisq&quot;</span></span>
+<span id="cb337-8"><a href="il-test-del-chi2.html#cb337-8" tabindex="-1"></a>)</span>
+<span id="cb337-9"><a href="il-test-del-chi2.html#cb337-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb337-10"><a href="il-test-del-chi2.html#cb337-10" tabindex="-1"></a><span class="co">#&gt; Chi-Squared Difference Test</span></span>
+<span id="cb337-11"><a href="il-test-del-chi2.html#cb337-11" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb337-12"><a href="il-test-del-chi2.html#cb337-12" tabindex="-1"></a><span class="co">#&gt;                 Df    AIC    BIC  Chisq Chisq diff    RMSEA Df diff Pr(&gt;Chisq)</span></span>
+<span id="cb337-13"><a href="il-test-del-chi2.html#cb337-13" tabindex="-1"></a><span class="co">#&gt; fit.congeneric   8 4702.0 4744.8 4.8773                                       </span></span>
+<span id="cb337-14"><a href="il-test-del-chi2.html#cb337-14" tabindex="-1"></a><span class="co">#&gt; fit.tau.a       10 4698.7 4735.0 5.6597     0.7823 0.000000       2     0.6763</span></span>
+<span id="cb337-15"><a href="il-test-del-chi2.html#cb337-15" tabindex="-1"></a><span class="co">#&gt; fit.tau.av      12 4695.0 4724.6 5.8810     0.2213 0.000000       2     0.8952</span></span>
+<span id="cb337-16"><a href="il-test-del-chi2.html#cb337-16" tabindex="-1"></a><span class="co">#&gt; fit.parallel.a  14 4691.1 4714.1 5.9769     0.0959 0.000000       2     0.9532</span></span>
+<span id="cb337-17"><a href="il-test-del-chi2.html#cb337-17" tabindex="-1"></a><span class="co">#&gt; fit.parallel.av 16 4690.4 4706.9 9.2772     3.3003 0.057016       2     0.1920</span></span></code></pre></div>
 <p>I test precedenti indicano come non vi sia una perdita di adattamento passando dal modello congenerico al modello più restrittivo (ovvero, il modello parallelo per entrambi i fattori). Per questi dati, dunque, può essere adottato il modello più semplice, cioè il modello parallelo.</p>
 
 </div>

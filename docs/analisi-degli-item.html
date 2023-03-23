@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2023-03-22" />
+<meta name="date" content="2023-03-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,12 +340,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9.9" data-path="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><a href="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><i class="fa fa-check"></i><b>9.9</b> Metodi alternativi per la stima del coefficiente di attendibilità</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10</b> L’incertezza della misura</a>
+<li class="chapter" data-level="10" data-path="lerrore-standard-della-misurazione.html"><a href="lerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10</b> L’errore standard della misurazione</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10.1</b> La stima dell’errore standard della misurazione</a>
+<li class="chapter" data-level="10.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10.1</b> L’incertezza della misura</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
-<li class="chapter" data-level="10.1.2" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
+<li class="chapter" data-level="10.1.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
+<li class="chapter" data-level="10.1.2" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="dimostrazione.html"><a href="dimostrazione.html"><i class="fa fa-check"></i><b>10.2</b> Dimostrazione</a></li>
 <li class="chapter" data-level="10.3" data-path="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><a href="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><i class="fa fa-check"></i><b>10.3</b> Intervallo di confidenza per il punteggio vero e <span class="math inline">\(\sigma_E\)</span></a></li>
@@ -360,7 +360,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="12" data-path="esercizi-sulla-ctt.html"><a href="esercizi-sulla-ctt.html"><i class="fa fa-check"></i><b>12</b> Esercizi sulla CTT</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.1</b> Validità</a></li>
+<li class="chapter" data-level="12.1" data-path="attendibilità.html"><a href="attendibilità.html"><i class="fa fa-check"></i><b>12.1</b> Attendibilità</a></li>
+<li class="chapter" data-level="12.2" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.2</b> Validità</a></li>
 </ul></li>
 <li class="part"><span><b>IV L’analisi fattoriale</b></span></li>
 <li class="chapter" data-level="13" data-path="utilizzo-e-costruzione-di-test-psicometrici.html"><a href="utilizzo-e-costruzione-di-test-psicometrici.html"><i class="fa fa-check"></i><b>13</b> Utilizzo e costruzione di test psicometrici</a>
@@ -784,19 +785,19 @@ alternative) e il punteggio pieno (<span class="math inline">\(1.0\)</span>).</p
 \]</span></p>
 <p>In generale, item con livelli di difficoltà superiore a <span class="math inline">\(0.90\)</span> o inferiore a <span class="math inline">\(0.20\)</span> dovrebbero essere utilizzati con cautela.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-37" class="example"><strong>Esempio 26.6  </strong></span>Riporto qui sotto le proporzioni di risposte corrette (usando la correzione per il guessing) di 192 studenti di Psicometria nel primo parziale dell’AA 2021/2022. Il test aveva 16 item con 5 alternative di risposta ciascuno. Dunque la difficoltà media ottimale è pari a 0.6.</p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="analisi-degli-item.html#cb390-1" tabindex="-1"></a>item_par_1 <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb390-2"><a href="analisi-degli-item.html#cb390-2" tabindex="-1"></a>  <span class="fl">0.54255319</span>, <span class="fl">0.76063830</span>, <span class="fl">0.64361702</span>, <span class="fl">0.65957447</span>, <span class="fl">0.67021277</span>, <span class="fl">0.12234043</span>,</span>
-<span id="cb390-3"><a href="analisi-degli-item.html#cb390-3" tabindex="-1"></a>  <span class="fl">0.14361702</span>, <span class="fl">0.18085106</span>, <span class="fl">0.76063830</span>, <span class="fl">0.82978723</span>, <span class="fl">0.81914894</span>, <span class="fl">0.84042553</span>,</span>
-<span id="cb390-4"><a href="analisi-degli-item.html#cb390-4" tabindex="-1"></a>  <span class="fl">0.07978723</span>, <span class="fl">0.07978723</span>, <span class="fl">0.76063830</span>, <span class="fl">0.79255319</span></span>
-<span id="cb390-5"><a href="analisi-degli-item.html#cb390-5" tabindex="-1"></a>)</span></code></pre></div>
+<p><span id="exm:unlabeled-div-36" class="example"><strong>Esempio 26.6  </strong></span>Riporto qui sotto le proporzioni di risposte corrette (usando la correzione per il guessing) di 192 studenti di Psicometria nel primo parziale dell’AA 2021/2022. Il test aveva 16 item con 5 alternative di risposta ciascuno. Dunque la difficoltà media ottimale è pari a 0.6.</p>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="analisi-degli-item.html#cb400-1" tabindex="-1"></a>item_par_1 <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb400-2"><a href="analisi-degli-item.html#cb400-2" tabindex="-1"></a>  <span class="fl">0.54255319</span>, <span class="fl">0.76063830</span>, <span class="fl">0.64361702</span>, <span class="fl">0.65957447</span>, <span class="fl">0.67021277</span>, <span class="fl">0.12234043</span>,</span>
+<span id="cb400-3"><a href="analisi-degli-item.html#cb400-3" tabindex="-1"></a>  <span class="fl">0.14361702</span>, <span class="fl">0.18085106</span>, <span class="fl">0.76063830</span>, <span class="fl">0.82978723</span>, <span class="fl">0.81914894</span>, <span class="fl">0.84042553</span>,</span>
+<span id="cb400-4"><a href="analisi-degli-item.html#cb400-4" tabindex="-1"></a>  <span class="fl">0.07978723</span>, <span class="fl">0.07978723</span>, <span class="fl">0.76063830</span>, <span class="fl">0.79255319</span></span>
+<span id="cb400-5"><a href="analisi-degli-item.html#cb400-5" tabindex="-1"></a>)</span></code></pre></div>
 <p>Nel compito, la difficoltà media è risultata essere un po’ inferiore.</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="analisi-degli-item.html#cb391-1" tabindex="-1"></a><span class="fu">mean</span>(item_par_1) <span class="sc">%&gt;%</span></span>
-<span id="cb391-2"><a href="analisi-degli-item.html#cb391-2" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">2</span>)</span>
-<span id="cb391-3"><a href="analisi-degli-item.html#cb391-3" tabindex="-1"></a><span class="co">#&gt; [1] 0.54</span></span></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="analisi-degli-item.html#cb401-1" tabindex="-1"></a><span class="fu">mean</span>(item_par_1) <span class="sc">%&gt;%</span></span>
+<span id="cb401-2"><a href="analisi-degli-item.html#cb401-2" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb401-3"><a href="analisi-degli-item.html#cb401-3" tabindex="-1"></a><span class="co">#&gt; [1] 0.54</span></span></code></pre></div>
 <p>La distribuzione dei livelli di difficoltà degli item suggerisce che forse alcuni item “difficili” si sarebbero potuti sostituire con item di difficoltà media.</p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="analisi-degli-item.html#cb392-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(item_par_1))</span></code></pre></div>
-<p><img src="cfa_files/figure-html/unnamed-chunk-414-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="analisi-degli-item.html#cb402-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(item_par_1))</span></code></pre></div>
+<p><img src="cfa_files/figure-html/unnamed-chunk-424-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="correzione-per-guessing" class="section level3 hasAnchor" number="26.4.2">
@@ -886,7 +887,7 @@ gruppo target (ad esempio, pazienti) e quello “di controllo” (per
 esempio, popolazione generale).</p>
 <p>È consigliabile valutare la dimensione dell’effetto, ad esempio attraverso l’indice <span class="math inline">\(d\)</span> di Cohen. La dimensione dell’effetto dovrebbe essere almeno moderata (<span class="math inline">\(d &gt; |0.50|\)</span>).</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-38" class="example"><strong>Esempio 26.7  </strong></span>Per il primo parziale di Psicometria AA 2021/2022, l’indice <span class="math inline">\(d\)</span> di Cohen calcolato sulla proporzione di risposte corrette per il gruppo di studenti con i punteggi più bassi (primo quartile) e il gruppo di studenti con i punteggi più alti (ultimo quartile) è stato di 4.76, 95% CI [4.0, 5.51]. L’indice <em>complessivo</em> di discriminatività sembra dunque adeguato. Sarebbe però necessario calcolare questo indice item per item.</p>
+<p><span id="exm:unlabeled-div-37" class="example"><strong>Esempio 26.7  </strong></span>Per il primo parziale di Psicometria AA 2021/2022, l’indice <span class="math inline">\(d\)</span> di Cohen calcolato sulla proporzione di risposte corrette per il gruppo di studenti con i punteggi più bassi (primo quartile) e il gruppo di studenti con i punteggi più alti (ultimo quartile) è stato di 4.76, 95% CI [4.0, 5.51]. L’indice <em>complessivo</em> di discriminatività sembra dunque adeguato. Sarebbe però necessario calcolare questo indice item per item.</p>
 </div>
 </div>
 <div id="potere-discriminante-dellitem-e-analisi-fattoriale" class="section level3 hasAnchor" number="26.4.4">
@@ -898,28 +899,28 @@ grande (200 o meno), infatti, è possibile procedere alla selezione degli
 item migliori tramite l’analisi fattoriale – ovvero, scegliendo gli
 item con le saturazioni maggiori.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-39" class="example"><strong>Esempio 26.8  </strong></span>Per il primo parziale di Psicometria AA 2021/2022 si ottiene la seguente soluzione fattoriale a due fattori. Questa soluzione sembra suggerire che gli item 1 e 5 forse andrebbero sostituiti, mentre gli altri item sembrano adeguati.</p>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="analisi-degli-item.html#cb393-1" tabindex="-1"></a>faT1 <span class="ot">&lt;-</span> <span class="fu">fa</span>(<span class="at">r=</span>cormat, <span class="at">nfactors=</span><span class="dv">2</span>, <span class="at">n.obs=</span><span class="dv">192</span>, <span class="at">rotate=</span><span class="st">&quot;oblimin&quot;</span>)</span>
-<span id="cb393-2"><a href="analisi-degli-item.html#cb393-2" tabindex="-1"></a>faT1<span class="sc">$</span>loadings</span>
-<span id="cb393-3"><a href="analisi-degli-item.html#cb393-3" tabindex="-1"></a></span>
-<span id="cb393-4"><a href="analisi-degli-item.html#cb393-4" tabindex="-1"></a>Loadings<span class="sc">:</span></span>
-<span id="cb393-5"><a href="analisi-degli-item.html#cb393-5" tabindex="-1"></a>    MR1    MR2   </span>
-<span id="cb393-6"><a href="analisi-degli-item.html#cb393-6" tabindex="-1"></a>i1   <span class="fl">0.132</span>       </span>
-<span id="cb393-7"><a href="analisi-degli-item.html#cb393-7" tabindex="-1"></a>i2   <span class="fl">0.270</span>  <span class="fl">0.107</span></span>
-<span id="cb393-8"><a href="analisi-degli-item.html#cb393-8" tabindex="-1"></a>i3   <span class="fl">0.489</span>       </span>
-<span id="cb393-9"><a href="analisi-degli-item.html#cb393-9" tabindex="-1"></a>i4   <span class="fl">0.343</span>  <span class="fl">0.365</span></span>
-<span id="cb393-10"><a href="analisi-degli-item.html#cb393-10" tabindex="-1"></a>i5   <span class="fl">0.130</span>  <span class="fl">0.105</span></span>
-<span id="cb393-11"><a href="analisi-degli-item.html#cb393-11" tabindex="-1"></a>i6   <span class="fl">0.565</span> <span class="sc">-</span><span class="fl">0.497</span></span>
-<span id="cb393-12"><a href="analisi-degli-item.html#cb393-12" tabindex="-1"></a>i7   <span class="fl">0.527</span>       </span>
-<span id="cb393-13"><a href="analisi-degli-item.html#cb393-13" tabindex="-1"></a>i8          <span class="fl">0.792</span></span>
-<span id="cb393-14"><a href="analisi-degli-item.html#cb393-14" tabindex="-1"></a>i9   <span class="fl">0.363</span>       </span>
-<span id="cb393-15"><a href="analisi-degli-item.html#cb393-15" tabindex="-1"></a>i10  <span class="fl">0.467</span>  <span class="fl">0.250</span></span>
-<span id="cb393-16"><a href="analisi-degli-item.html#cb393-16" tabindex="-1"></a>i11  <span class="fl">0.459</span>  <span class="fl">0.190</span></span>
-<span id="cb393-17"><a href="analisi-degli-item.html#cb393-17" tabindex="-1"></a>i12  <span class="fl">0.111</span>  <span class="fl">0.497</span></span>
-<span id="cb393-18"><a href="analisi-degli-item.html#cb393-18" tabindex="-1"></a>i13  <span class="fl">0.401</span>       </span>
-<span id="cb393-19"><a href="analisi-degli-item.html#cb393-19" tabindex="-1"></a>i14  <span class="fl">0.511</span>  <span class="fl">0.173</span></span>
-<span id="cb393-20"><a href="analisi-degli-item.html#cb393-20" tabindex="-1"></a>i15  <span class="fl">0.206</span>  <span class="fl">0.252</span></span>
-<span id="cb393-21"><a href="analisi-degli-item.html#cb393-21" tabindex="-1"></a>i16  <span class="fl">0.247</span>  <span class="fl">0.365</span></span></code></pre></div>
+<p><span id="exm:unlabeled-div-38" class="example"><strong>Esempio 26.8  </strong></span>Per il primo parziale di Psicometria AA 2021/2022 si ottiene la seguente soluzione fattoriale a due fattori. Questa soluzione sembra suggerire che gli item 1 e 5 forse andrebbero sostituiti, mentre gli altri item sembrano adeguati.</p>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="analisi-degli-item.html#cb403-1" tabindex="-1"></a>faT1 <span class="ot">&lt;-</span> <span class="fu">fa</span>(<span class="at">r=</span>cormat, <span class="at">nfactors=</span><span class="dv">2</span>, <span class="at">n.obs=</span><span class="dv">192</span>, <span class="at">rotate=</span><span class="st">&quot;oblimin&quot;</span>)</span>
+<span id="cb403-2"><a href="analisi-degli-item.html#cb403-2" tabindex="-1"></a>faT1<span class="sc">$</span>loadings</span>
+<span id="cb403-3"><a href="analisi-degli-item.html#cb403-3" tabindex="-1"></a></span>
+<span id="cb403-4"><a href="analisi-degli-item.html#cb403-4" tabindex="-1"></a>Loadings<span class="sc">:</span></span>
+<span id="cb403-5"><a href="analisi-degli-item.html#cb403-5" tabindex="-1"></a>    MR1    MR2   </span>
+<span id="cb403-6"><a href="analisi-degli-item.html#cb403-6" tabindex="-1"></a>i1   <span class="fl">0.132</span>       </span>
+<span id="cb403-7"><a href="analisi-degli-item.html#cb403-7" tabindex="-1"></a>i2   <span class="fl">0.270</span>  <span class="fl">0.107</span></span>
+<span id="cb403-8"><a href="analisi-degli-item.html#cb403-8" tabindex="-1"></a>i3   <span class="fl">0.489</span>       </span>
+<span id="cb403-9"><a href="analisi-degli-item.html#cb403-9" tabindex="-1"></a>i4   <span class="fl">0.343</span>  <span class="fl">0.365</span></span>
+<span id="cb403-10"><a href="analisi-degli-item.html#cb403-10" tabindex="-1"></a>i5   <span class="fl">0.130</span>  <span class="fl">0.105</span></span>
+<span id="cb403-11"><a href="analisi-degli-item.html#cb403-11" tabindex="-1"></a>i6   <span class="fl">0.565</span> <span class="sc">-</span><span class="fl">0.497</span></span>
+<span id="cb403-12"><a href="analisi-degli-item.html#cb403-12" tabindex="-1"></a>i7   <span class="fl">0.527</span>       </span>
+<span id="cb403-13"><a href="analisi-degli-item.html#cb403-13" tabindex="-1"></a>i8          <span class="fl">0.792</span></span>
+<span id="cb403-14"><a href="analisi-degli-item.html#cb403-14" tabindex="-1"></a>i9   <span class="fl">0.363</span>       </span>
+<span id="cb403-15"><a href="analisi-degli-item.html#cb403-15" tabindex="-1"></a>i10  <span class="fl">0.467</span>  <span class="fl">0.250</span></span>
+<span id="cb403-16"><a href="analisi-degli-item.html#cb403-16" tabindex="-1"></a>i11  <span class="fl">0.459</span>  <span class="fl">0.190</span></span>
+<span id="cb403-17"><a href="analisi-degli-item.html#cb403-17" tabindex="-1"></a>i12  <span class="fl">0.111</span>  <span class="fl">0.497</span></span>
+<span id="cb403-18"><a href="analisi-degli-item.html#cb403-18" tabindex="-1"></a>i13  <span class="fl">0.401</span>       </span>
+<span id="cb403-19"><a href="analisi-degli-item.html#cb403-19" tabindex="-1"></a>i14  <span class="fl">0.511</span>  <span class="fl">0.173</span></span>
+<span id="cb403-20"><a href="analisi-degli-item.html#cb403-20" tabindex="-1"></a>i15  <span class="fl">0.206</span>  <span class="fl">0.252</span></span>
+<span id="cb403-21"><a href="analisi-degli-item.html#cb403-21" tabindex="-1"></a>i16  <span class="fl">0.247</span>  <span class="fl">0.365</span></span></code></pre></div>
 </div>
 </div>
 <div id="punteggio-sullitem-e-punteggio-totale" class="section level3 hasAnchor" number="26.4.5">

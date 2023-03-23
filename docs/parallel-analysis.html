@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2023-03-22" />
+<meta name="date" content="2023-03-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,12 +340,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9.9" data-path="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><a href="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><i class="fa fa-check"></i><b>9.9</b> Metodi alternativi per la stima del coefficiente di attendibilità</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10</b> L’incertezza della misura</a>
+<li class="chapter" data-level="10" data-path="lerrore-standard-della-misurazione.html"><a href="lerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10</b> L’errore standard della misurazione</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10.1</b> La stima dell’errore standard della misurazione</a>
+<li class="chapter" data-level="10.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10.1</b> L’incertezza della misura</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
-<li class="chapter" data-level="10.1.2" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
+<li class="chapter" data-level="10.1.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
+<li class="chapter" data-level="10.1.2" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="dimostrazione.html"><a href="dimostrazione.html"><i class="fa fa-check"></i><b>10.2</b> Dimostrazione</a></li>
 <li class="chapter" data-level="10.3" data-path="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><a href="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><i class="fa fa-check"></i><b>10.3</b> Intervallo di confidenza per il punteggio vero e <span class="math inline">\(\sigma_E\)</span></a></li>
@@ -360,7 +360,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="12" data-path="esercizi-sulla-ctt.html"><a href="esercizi-sulla-ctt.html"><i class="fa fa-check"></i><b>12</b> Esercizi sulla CTT</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.1</b> Validità</a></li>
+<li class="chapter" data-level="12.1" data-path="attendibilità.html"><a href="attendibilità.html"><i class="fa fa-check"></i><b>12.1</b> Attendibilità</a></li>
+<li class="chapter" data-level="12.2" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.2</b> Validità</a></li>
 </ul></li>
 <li class="part"><span><b>IV L’analisi fattoriale</b></span></li>
 <li class="chapter" data-level="13" data-path="utilizzo-e-costruzione-di-test-psicometrici.html"><a href="utilizzo-e-costruzione-di-test-psicometrici.html"><i class="fa fa-check"></i><b>13</b> Utilizzo e costruzione di test psicometrici</a>
@@ -747,19 +748,19 @@ maggiori di uno.</p>
 simulazione di Monte Carlo. Si consideri una matrice di correlazione
 calcolata su <span class="math inline">\(p=10\)</span> variabili casuali mutuamente indipendenti, ciascuna
 costituita da <span class="math inline">\(n=20\)</span> osservazioni.</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="parallel-analysis.html#cb341-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb341-2"><a href="parallel-analysis.html#cb341-2" tabindex="-1"></a>nsim <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb341-3"><a href="parallel-analysis.html#cb341-3" tabindex="-1"></a>e1 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, nsim)</span>
-<span id="cb341-4"><a href="parallel-analysis.html#cb341-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nsim) {</span>
-<span id="cb341-5"><a href="parallel-analysis.html#cb341-5" tabindex="-1"></a>  Y <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
-<span id="cb341-6"><a href="parallel-analysis.html#cb341-6" tabindex="-1"></a>    <span class="fu">rnorm</span>(n), <span class="fu">rnorm</span>(n), <span class="fu">rnorm</span>(n), <span class="fu">rnorm</span>(n), <span class="fu">rnorm</span>(n),</span>
-<span id="cb341-7"><a href="parallel-analysis.html#cb341-7" tabindex="-1"></a>    <span class="fu">rnorm</span>(n), <span class="fu">rnorm</span>(n), <span class="fu">rnorm</span>(n), <span class="fu">rnorm</span>(n), <span class="fu">rnorm</span>(n)</span>
-<span id="cb341-8"><a href="parallel-analysis.html#cb341-8" tabindex="-1"></a>  )</span>
-<span id="cb341-9"><a href="parallel-analysis.html#cb341-9" tabindex="-1"></a>  e <span class="ot">&lt;-</span> <span class="fu">eigen</span>(<span class="fu">cor</span>(Y))</span>
-<span id="cb341-10"><a href="parallel-analysis.html#cb341-10" tabindex="-1"></a>  e1[i] <span class="ot">&lt;-</span> e<span class="sc">$</span>values[<span class="dv">1</span>]</span>
-<span id="cb341-11"><a href="parallel-analysis.html#cb341-11" tabindex="-1"></a>}</span>
-<span id="cb341-12"><a href="parallel-analysis.html#cb341-12" tabindex="-1"></a><span class="fu">max</span>(e1)</span>
-<span id="cb341-13"><a href="parallel-analysis.html#cb341-13" tabindex="-1"></a><span class="co">#&gt; [1] 3.332866</span></span></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="parallel-analysis.html#cb351-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb351-2"><a href="parallel-analysis.html#cb351-2" tabindex="-1"></a>nsim <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb351-3"><a href="parallel-analysis.html#cb351-3" tabindex="-1"></a>e1 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, nsim)</span>
+<span id="cb351-4"><a href="parallel-analysis.html#cb351-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nsim) {</span>
+<span id="cb351-5"><a href="parallel-analysis.html#cb351-5" tabindex="-1"></a>  Y <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
+<span id="cb351-6"><a href="parallel-analysis.html#cb351-6" tabindex="-1"></a>    <span class="fu">rnorm</span>(n), <span class="fu">rnorm</span>(n), <span class="fu">rnorm</span>(n), <span class="fu">rnorm</span>(n), <span class="fu">rnorm</span>(n),</span>
+<span id="cb351-7"><a href="parallel-analysis.html#cb351-7" tabindex="-1"></a>    <span class="fu">rnorm</span>(n), <span class="fu">rnorm</span>(n), <span class="fu">rnorm</span>(n), <span class="fu">rnorm</span>(n), <span class="fu">rnorm</span>(n)</span>
+<span id="cb351-8"><a href="parallel-analysis.html#cb351-8" tabindex="-1"></a>  )</span>
+<span id="cb351-9"><a href="parallel-analysis.html#cb351-9" tabindex="-1"></a>  e <span class="ot">&lt;-</span> <span class="fu">eigen</span>(<span class="fu">cor</span>(Y))</span>
+<span id="cb351-10"><a href="parallel-analysis.html#cb351-10" tabindex="-1"></a>  e1[i] <span class="ot">&lt;-</span> e<span class="sc">$</span>values[<span class="dv">1</span>]</span>
+<span id="cb351-11"><a href="parallel-analysis.html#cb351-11" tabindex="-1"></a>}</span>
+<span id="cb351-12"><a href="parallel-analysis.html#cb351-12" tabindex="-1"></a><span class="fu">max</span>(e1)</span>
+<span id="cb351-13"><a href="parallel-analysis.html#cb351-13" tabindex="-1"></a><span class="co">#&gt; [1] 3.332866</span></span></code></pre></div>
 <p>Per i dati di questa simulazione, l’autovalore maggiore ha un valore
 pari a <span class="math inline">\(3.53\)</span>, anche se i dati sono del tutto casuali. La Parallel
 Analysis tiene conto di questo fatto e determina <span class="math inline">\(m\)</span> confrontando gli

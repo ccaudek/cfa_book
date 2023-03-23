@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2023-03-22" />
+<meta name="date" content="2023-03-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,12 +340,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9.9" data-path="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><a href="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><i class="fa fa-check"></i><b>9.9</b> Metodi alternativi per la stima del coefficiente di attendibilità</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10</b> L’incertezza della misura</a>
+<li class="chapter" data-level="10" data-path="lerrore-standard-della-misurazione.html"><a href="lerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10</b> L’errore standard della misurazione</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10.1</b> La stima dell’errore standard della misurazione</a>
+<li class="chapter" data-level="10.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10.1</b> L’incertezza della misura</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
-<li class="chapter" data-level="10.1.2" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
+<li class="chapter" data-level="10.1.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
+<li class="chapter" data-level="10.1.2" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="dimostrazione.html"><a href="dimostrazione.html"><i class="fa fa-check"></i><b>10.2</b> Dimostrazione</a></li>
 <li class="chapter" data-level="10.3" data-path="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><a href="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><i class="fa fa-check"></i><b>10.3</b> Intervallo di confidenza per il punteggio vero e <span class="math inline">\(\sigma_E\)</span></a></li>
@@ -360,7 +360,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="12" data-path="esercizi-sulla-ctt.html"><a href="esercizi-sulla-ctt.html"><i class="fa fa-check"></i><b>12</b> Esercizi sulla CTT</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.1</b> Validità</a></li>
+<li class="chapter" data-level="12.1" data-path="attendibilità.html"><a href="attendibilità.html"><i class="fa fa-check"></i><b>12.1</b> Attendibilità</a></li>
+<li class="chapter" data-level="12.2" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.2</b> Validità</a></li>
 </ul></li>
 <li class="part"><span><b>IV L’analisi fattoriale</b></span></li>
 <li class="chapter" data-level="13" data-path="utilizzo-e-costruzione-di-test-psicometrici.html"><a href="utilizzo-e-costruzione-di-test-psicometrici.html"><i class="fa fa-check"></i><b>13</b> Utilizzo e costruzione di test psicometrici</a>
@@ -760,22 +761,22 @@ riprodotta tra le variabili <span class="math inline">\(i\)</span> e <span class
 <h3><span class="header-section-number">28.7.3</span> Interpretazione<a href="misure-di-adeguamento-assoluto.html#interpretazione-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Un valore RMSEA &lt; .05 indica un “close fit” e quello &lt; .08 suggerisce un ragionevole adattamento modello-dati. Bentler e Bonett (1980) raccomandano TLI &gt; .90 per un adattamento accettabile.</p>
 <p>L’interpretazione degli indici di bontà di adattamento trovati nella CFA o nella modellazione di equazioni strutturali può essere ottenuta usando le funzioni del pacchetto <code>effectsize</code>. Ad esempio (dal manuale):</p>
-<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="misure-di-adeguamento-assoluto.html#cb421-1" tabindex="-1"></a>structure <span class="ot">&lt;-</span> <span class="st">&quot; ind60 =~ x1 + x2 + x3</span></span>
-<span id="cb421-2"><a href="misure-di-adeguamento-assoluto.html#cb421-2" tabindex="-1"></a><span class="st">               dem60 =~ y1 + y2 + y3</span></span>
-<span id="cb421-3"><a href="misure-di-adeguamento-assoluto.html#cb421-3" tabindex="-1"></a><span class="st">               dem60 ~~ ind60 &quot;</span></span>
-<span id="cb421-4"><a href="misure-di-adeguamento-assoluto.html#cb421-4" tabindex="-1"></a>fit <span class="ot">&lt;-</span> lavaan<span class="sc">::</span><span class="fu">sem</span>(structure, <span class="at">data =</span> lavaan<span class="sc">::</span>PoliticalDemocracy)</span>
-<span id="cb421-5"><a href="misure-di-adeguamento-assoluto.html#cb421-5" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">interpret</span>(fit)</span>
-<span id="cb421-6"><a href="misure-di-adeguamento-assoluto.html#cb421-6" tabindex="-1"></a><span class="co">#&gt;     Name      Value Threshold Interpretation</span></span>
-<span id="cb421-7"><a href="misure-di-adeguamento-assoluto.html#cb421-7" tabindex="-1"></a><span class="co">#&gt; 1    GFI 0.96664121      0.95   satisfactory</span></span>
-<span id="cb421-8"><a href="misure-di-adeguamento-assoluto.html#cb421-8" tabindex="-1"></a><span class="co">#&gt; 2   AGFI 0.91243318      0.90   satisfactory</span></span>
-<span id="cb421-9"><a href="misure-di-adeguamento-assoluto.html#cb421-9" tabindex="-1"></a><span class="co">#&gt; 3    NFI 0.97486324      0.90   satisfactory</span></span>
-<span id="cb421-10"><a href="misure-di-adeguamento-assoluto.html#cb421-10" tabindex="-1"></a><span class="co">#&gt; 4   NNFI 1.00010307      0.90   satisfactory</span></span>
-<span id="cb421-11"><a href="misure-di-adeguamento-assoluto.html#cb421-11" tabindex="-1"></a><span class="co">#&gt; 5    CFI 1.00000000      0.90   satisfactory</span></span>
-<span id="cb421-12"><a href="misure-di-adeguamento-assoluto.html#cb421-12" tabindex="-1"></a><span class="co">#&gt; 6  RMSEA 0.00000000      0.05   satisfactory</span></span>
-<span id="cb421-13"><a href="misure-di-adeguamento-assoluto.html#cb421-13" tabindex="-1"></a><span class="co">#&gt; 7   SRMR 0.02726216      0.08   satisfactory</span></span>
-<span id="cb421-14"><a href="misure-di-adeguamento-assoluto.html#cb421-14" tabindex="-1"></a><span class="co">#&gt; 8    RFI 0.95286858      0.90   satisfactory</span></span>
-<span id="cb421-15"><a href="misure-di-adeguamento-assoluto.html#cb421-15" tabindex="-1"></a><span class="co">#&gt; 9   PNFI 0.51992706      0.50   satisfactory</span></span>
-<span id="cb421-16"><a href="misure-di-adeguamento-assoluto.html#cb421-16" tabindex="-1"></a><span class="co">#&gt; 10   IFI 1.00005373      0.90   satisfactory</span></span></code></pre></div>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="misure-di-adeguamento-assoluto.html#cb431-1" tabindex="-1"></a>structure <span class="ot">&lt;-</span> <span class="st">&quot; ind60 =~ x1 + x2 + x3</span></span>
+<span id="cb431-2"><a href="misure-di-adeguamento-assoluto.html#cb431-2" tabindex="-1"></a><span class="st">               dem60 =~ y1 + y2 + y3</span></span>
+<span id="cb431-3"><a href="misure-di-adeguamento-assoluto.html#cb431-3" tabindex="-1"></a><span class="st">               dem60 ~~ ind60 &quot;</span></span>
+<span id="cb431-4"><a href="misure-di-adeguamento-assoluto.html#cb431-4" tabindex="-1"></a>fit <span class="ot">&lt;-</span> lavaan<span class="sc">::</span><span class="fu">sem</span>(structure, <span class="at">data =</span> lavaan<span class="sc">::</span>PoliticalDemocracy)</span>
+<span id="cb431-5"><a href="misure-di-adeguamento-assoluto.html#cb431-5" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">interpret</span>(fit)</span>
+<span id="cb431-6"><a href="misure-di-adeguamento-assoluto.html#cb431-6" tabindex="-1"></a><span class="co">#&gt;     Name      Value Threshold Interpretation</span></span>
+<span id="cb431-7"><a href="misure-di-adeguamento-assoluto.html#cb431-7" tabindex="-1"></a><span class="co">#&gt; 1    GFI 0.96664121      0.95   satisfactory</span></span>
+<span id="cb431-8"><a href="misure-di-adeguamento-assoluto.html#cb431-8" tabindex="-1"></a><span class="co">#&gt; 2   AGFI 0.91243318      0.90   satisfactory</span></span>
+<span id="cb431-9"><a href="misure-di-adeguamento-assoluto.html#cb431-9" tabindex="-1"></a><span class="co">#&gt; 3    NFI 0.97486324      0.90   satisfactory</span></span>
+<span id="cb431-10"><a href="misure-di-adeguamento-assoluto.html#cb431-10" tabindex="-1"></a><span class="co">#&gt; 4   NNFI 1.00010307      0.90   satisfactory</span></span>
+<span id="cb431-11"><a href="misure-di-adeguamento-assoluto.html#cb431-11" tabindex="-1"></a><span class="co">#&gt; 5    CFI 1.00000000      0.90   satisfactory</span></span>
+<span id="cb431-12"><a href="misure-di-adeguamento-assoluto.html#cb431-12" tabindex="-1"></a><span class="co">#&gt; 6  RMSEA 0.00000000      0.05   satisfactory</span></span>
+<span id="cb431-13"><a href="misure-di-adeguamento-assoluto.html#cb431-13" tabindex="-1"></a><span class="co">#&gt; 7   SRMR 0.02726216      0.08   satisfactory</span></span>
+<span id="cb431-14"><a href="misure-di-adeguamento-assoluto.html#cb431-14" tabindex="-1"></a><span class="co">#&gt; 8    RFI 0.95286858      0.90   satisfactory</span></span>
+<span id="cb431-15"><a href="misure-di-adeguamento-assoluto.html#cb431-15" tabindex="-1"></a><span class="co">#&gt; 9   PNFI 0.51992706      0.50   satisfactory</span></span>
+<span id="cb431-16"><a href="misure-di-adeguamento-assoluto.html#cb431-16" tabindex="-1"></a><span class="co">#&gt; 10   IFI 1.00005373      0.90   satisfactory</span></span></code></pre></div>
 </div>
 </div>
             </section>

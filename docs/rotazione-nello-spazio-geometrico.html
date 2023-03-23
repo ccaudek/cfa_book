@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2023-03-22" />
+<meta name="date" content="2023-03-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,12 +340,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9.9" data-path="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><a href="metodi-alternativi-per-la-stima-del-coefficiente-di-attendibilità.html"><i class="fa fa-check"></i><b>9.9</b> Metodi alternativi per la stima del coefficiente di attendibilità</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10</b> L’incertezza della misura</a>
+<li class="chapter" data-level="10" data-path="lerrore-standard-della-misurazione.html"><a href="lerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10</b> L’errore standard della misurazione</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html"><i class="fa fa-check"></i><b>10.1</b> La stima dell’errore standard della misurazione</a>
+<li class="chapter" data-level="10.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html"><i class="fa fa-check"></i><b>10.1</b> L’incertezza della misura</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
-<li class="chapter" data-level="10.1.2" data-path="la-stima-dellerrore-standard-della-misurazione.html"><a href="la-stima-dellerrore-standard-della-misurazione.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
+<li class="chapter" data-level="10.1.1" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#interpretazione"><i class="fa fa-check"></i><b>10.1.1</b> Interpretazione</a></li>
+<li class="chapter" data-level="10.1.2" data-path="lincertezza-della-misura.html"><a href="lincertezza-della-misura.html#simulazione-1"><i class="fa fa-check"></i><b>10.1.2</b> Simulazione</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="dimostrazione.html"><a href="dimostrazione.html"><i class="fa fa-check"></i><b>10.2</b> Dimostrazione</a></li>
 <li class="chapter" data-level="10.3" data-path="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><a href="intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e.html"><i class="fa fa-check"></i><b>10.3</b> Intervallo di confidenza per il punteggio vero e <span class="math inline">\(\sigma_E\)</span></a></li>
@@ -360,7 +360,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="12" data-path="esercizi-sulla-ctt.html"><a href="esercizi-sulla-ctt.html"><i class="fa fa-check"></i><b>12</b> Esercizi sulla CTT</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.1</b> Validità</a></li>
+<li class="chapter" data-level="12.1" data-path="attendibilità.html"><a href="attendibilità.html"><i class="fa fa-check"></i><b>12.1</b> Attendibilità</a></li>
+<li class="chapter" data-level="12.2" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.2</b> Validità</a></li>
 </ul></li>
 <li class="part"><span><b>IV L’analisi fattoriale</b></span></li>
 <li class="chapter" data-level="13" data-path="utilizzo-e-costruzione-di-test-psicometrici.html"><a href="utilizzo-e-costruzione-di-test-psicometrici.html"><i class="fa fa-check"></i><b>13</b> Utilizzo e costruzione di test psicometrici</a>
@@ -745,7 +746,7 @@ di <span class="math inline">\(\hat{\boldsymbol{\Lambda}}\)</span>. La matrice <
 è pertanto determinata a meno della moltiplicazione per una matrice
 ortonormale.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-30" class="definition"><strong>Definizione 25.1  </strong></span>Geometricamente, i pesi fattoriali costituiscono le coordinate di un
+<p><span id="def:unlabeled-div-29" class="definition"><strong>Definizione 25.1  </strong></span>Geometricamente, i pesi fattoriali costituiscono le coordinate di un
 punto (ci sono tanti punti quante sono le <span class="math inline">\(p\)</span> variabili manifeste) in
 uno spazio avente un numero di dimensioni pari al numero <span class="math inline">\(m\)</span> dei
 fattori.</p>
@@ -817,99 +818,99 @@ dove</p>
 \]</span></p>
 <p>è una matrice ortogonale <span class="math inline">\(2 \times 2\)</span>.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-31" class="example"><strong>Esempio 25.1  </strong></span>Si considerino i dati di Brown, Williams e Barlow (1984) discussi da
+<p><span id="exm:unlabeled-div-30" class="example"><strong>Esempio 25.1  </strong></span>Si considerino i dati di Brown, Williams e Barlow (1984) discussi da
 Rencher (2002). Ad una bambina di dodici anni è stato chiesto di
 valutare sette dei suoi conoscenti su cinque variabili: <em>kind</em>,
 <em>intelligent</em>, <em>happy</em>, <em>likeable</em> e <em>just</em>. Per queste cinque
 variabili, la matrice di correlazioni è</p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="rotazione-nello-spazio-geometrico.html#cb354-1" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb354-2"><a href="rotazione-nello-spazio-geometrico.html#cb354-2" tabindex="-1"></a>  <span class="fu">c</span>(</span>
-<span id="cb354-3"><a href="rotazione-nello-spazio-geometrico.html#cb354-3" tabindex="-1"></a>    <span class="fl">1.00</span>, .<span class="dv">296</span>, .<span class="dv">881</span>, .<span class="dv">995</span>, .<span class="dv">545</span>,</span>
-<span id="cb354-4"><a href="rotazione-nello-spazio-geometrico.html#cb354-4" tabindex="-1"></a>    .<span class="dv">296</span>, <span class="fl">1.000</span>, <span class="sc">-</span>.<span class="dv">022</span>, .<span class="dv">326</span>, .<span class="dv">837</span>,</span>
-<span id="cb354-5"><a href="rotazione-nello-spazio-geometrico.html#cb354-5" tabindex="-1"></a>    .<span class="dv">881</span>, <span class="sc">-</span>.<span class="dv">022</span>, <span class="fl">1.000</span>, .<span class="dv">867</span>, .<span class="dv">130</span>,</span>
-<span id="cb354-6"><a href="rotazione-nello-spazio-geometrico.html#cb354-6" tabindex="-1"></a>    .<span class="dv">995</span>, .<span class="dv">326</span>, .<span class="dv">867</span>, <span class="fl">1.000</span>, .<span class="dv">544</span>,</span>
-<span id="cb354-7"><a href="rotazione-nello-spazio-geometrico.html#cb354-7" tabindex="-1"></a>    .<span class="dv">545</span>, .<span class="dv">837</span>, .<span class="dv">130</span>, .<span class="dv">544</span>, <span class="fl">1.00</span></span>
-<span id="cb354-8"><a href="rotazione-nello-spazio-geometrico.html#cb354-8" tabindex="-1"></a>  ),</span>
-<span id="cb354-9"><a href="rotazione-nello-spazio-geometrico.html#cb354-9" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">5</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">dimnames =</span> <span class="fu">list</span>(</span>
-<span id="cb354-10"><a href="rotazione-nello-spazio-geometrico.html#cb354-10" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">&quot;K&quot;</span>, <span class="st">&quot;I&quot;</span>, <span class="st">&quot;H&quot;</span>, <span class="st">&quot;L&quot;</span>, <span class="st">&quot;J&quot;</span>), <span class="fu">c</span>(<span class="st">&quot;K&quot;</span>, <span class="st">&quot;I&quot;</span>, <span class="st">&quot;H&quot;</span>, <span class="st">&quot;L&quot;</span>, <span class="st">&quot;J&quot;</span>)</span>
-<span id="cb354-11"><a href="rotazione-nello-spazio-geometrico.html#cb354-11" tabindex="-1"></a>  )</span>
-<span id="cb354-12"><a href="rotazione-nello-spazio-geometrico.html#cb354-12" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="rotazione-nello-spazio-geometrico.html#cb364-1" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb364-2"><a href="rotazione-nello-spazio-geometrico.html#cb364-2" tabindex="-1"></a>  <span class="fu">c</span>(</span>
+<span id="cb364-3"><a href="rotazione-nello-spazio-geometrico.html#cb364-3" tabindex="-1"></a>    <span class="fl">1.00</span>, .<span class="dv">296</span>, .<span class="dv">881</span>, .<span class="dv">995</span>, .<span class="dv">545</span>,</span>
+<span id="cb364-4"><a href="rotazione-nello-spazio-geometrico.html#cb364-4" tabindex="-1"></a>    .<span class="dv">296</span>, <span class="fl">1.000</span>, <span class="sc">-</span>.<span class="dv">022</span>, .<span class="dv">326</span>, .<span class="dv">837</span>,</span>
+<span id="cb364-5"><a href="rotazione-nello-spazio-geometrico.html#cb364-5" tabindex="-1"></a>    .<span class="dv">881</span>, <span class="sc">-</span>.<span class="dv">022</span>, <span class="fl">1.000</span>, .<span class="dv">867</span>, .<span class="dv">130</span>,</span>
+<span id="cb364-6"><a href="rotazione-nello-spazio-geometrico.html#cb364-6" tabindex="-1"></a>    .<span class="dv">995</span>, .<span class="dv">326</span>, .<span class="dv">867</span>, <span class="fl">1.000</span>, .<span class="dv">544</span>,</span>
+<span id="cb364-7"><a href="rotazione-nello-spazio-geometrico.html#cb364-7" tabindex="-1"></a>    .<span class="dv">545</span>, .<span class="dv">837</span>, .<span class="dv">130</span>, .<span class="dv">544</span>, <span class="fl">1.00</span></span>
+<span id="cb364-8"><a href="rotazione-nello-spazio-geometrico.html#cb364-8" tabindex="-1"></a>  ),</span>
+<span id="cb364-9"><a href="rotazione-nello-spazio-geometrico.html#cb364-9" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">5</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">dimnames =</span> <span class="fu">list</span>(</span>
+<span id="cb364-10"><a href="rotazione-nello-spazio-geometrico.html#cb364-10" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">&quot;K&quot;</span>, <span class="st">&quot;I&quot;</span>, <span class="st">&quot;H&quot;</span>, <span class="st">&quot;L&quot;</span>, <span class="st">&quot;J&quot;</span>), <span class="fu">c</span>(<span class="st">&quot;K&quot;</span>, <span class="st">&quot;I&quot;</span>, <span class="st">&quot;H&quot;</span>, <span class="st">&quot;L&quot;</span>, <span class="st">&quot;J&quot;</span>)</span>
+<span id="cb364-11"><a href="rotazione-nello-spazio-geometrico.html#cb364-11" tabindex="-1"></a>  )</span>
+<span id="cb364-12"><a href="rotazione-nello-spazio-geometrico.html#cb364-12" tabindex="-1"></a>)</span></code></pre></div>
 <p>Dalla matrice <strong>R</strong> estraiamo due fattori con il metodo delle componenti
 principali:</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="rotazione-nello-spazio-geometrico.html#cb355-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;psych&quot;</span>)</span>
-<span id="cb355-2"><a href="rotazione-nello-spazio-geometrico.html#cb355-2" tabindex="-1"></a>f.pc <span class="ot">&lt;-</span> <span class="fu">principal</span>(R, <span class="dv">2</span>, <span class="at">rotate =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb355-3"><a href="rotazione-nello-spazio-geometrico.html#cb355-3" tabindex="-1"></a>f.pc</span>
-<span id="cb355-4"><a href="rotazione-nello-spazio-geometrico.html#cb355-4" tabindex="-1"></a><span class="co">#&gt; Principal Components Analysis</span></span>
-<span id="cb355-5"><a href="rotazione-nello-spazio-geometrico.html#cb355-5" tabindex="-1"></a><span class="co">#&gt; Call: principal(r = R, nfactors = 2, rotate = FALSE)</span></span>
-<span id="cb355-6"><a href="rotazione-nello-spazio-geometrico.html#cb355-6" tabindex="-1"></a><span class="co">#&gt; Standardized loadings (pattern matrix) based upon correlation matrix</span></span>
-<span id="cb355-7"><a href="rotazione-nello-spazio-geometrico.html#cb355-7" tabindex="-1"></a><span class="co">#&gt;    PC1   PC2   h2     u2 com</span></span>
-<span id="cb355-8"><a href="rotazione-nello-spazio-geometrico.html#cb355-8" tabindex="-1"></a><span class="co">#&gt; K 0.97 -0.23 0.99 0.0067 1.1</span></span>
-<span id="cb355-9"><a href="rotazione-nello-spazio-geometrico.html#cb355-9" tabindex="-1"></a><span class="co">#&gt; I 0.52  0.81 0.92 0.0792 1.7</span></span>
-<span id="cb355-10"><a href="rotazione-nello-spazio-geometrico.html#cb355-10" tabindex="-1"></a><span class="co">#&gt; H 0.78 -0.59 0.96 0.0391 1.9</span></span>
-<span id="cb355-11"><a href="rotazione-nello-spazio-geometrico.html#cb355-11" tabindex="-1"></a><span class="co">#&gt; L 0.97 -0.21 0.99 0.0135 1.1</span></span>
-<span id="cb355-12"><a href="rotazione-nello-spazio-geometrico.html#cb355-12" tabindex="-1"></a><span class="co">#&gt; J 0.70  0.67 0.94 0.0597 2.0</span></span>
-<span id="cb355-13"><a href="rotazione-nello-spazio-geometrico.html#cb355-13" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb355-14"><a href="rotazione-nello-spazio-geometrico.html#cb355-14" tabindex="-1"></a><span class="co">#&gt;                        PC1  PC2</span></span>
-<span id="cb355-15"><a href="rotazione-nello-spazio-geometrico.html#cb355-15" tabindex="-1"></a><span class="co">#&gt; SS loadings           3.26 1.54</span></span>
-<span id="cb355-16"><a href="rotazione-nello-spazio-geometrico.html#cb355-16" tabindex="-1"></a><span class="co">#&gt; Proportion Var        0.65 0.31</span></span>
-<span id="cb355-17"><a href="rotazione-nello-spazio-geometrico.html#cb355-17" tabindex="-1"></a><span class="co">#&gt; Cumulative Var        0.65 0.96</span></span>
-<span id="cb355-18"><a href="rotazione-nello-spazio-geometrico.html#cb355-18" tabindex="-1"></a><span class="co">#&gt; Proportion Explained  0.68 0.32</span></span>
-<span id="cb355-19"><a href="rotazione-nello-spazio-geometrico.html#cb355-19" tabindex="-1"></a><span class="co">#&gt; Cumulative Proportion 0.68 1.00</span></span>
-<span id="cb355-20"><a href="rotazione-nello-spazio-geometrico.html#cb355-20" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb355-21"><a href="rotazione-nello-spazio-geometrico.html#cb355-21" tabindex="-1"></a><span class="co">#&gt; Mean item complexity =  1.6</span></span>
-<span id="cb355-22"><a href="rotazione-nello-spazio-geometrico.html#cb355-22" tabindex="-1"></a><span class="co">#&gt; Test of the hypothesis that 2 components are sufficient.</span></span>
-<span id="cb355-23"><a href="rotazione-nello-spazio-geometrico.html#cb355-23" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb355-24"><a href="rotazione-nello-spazio-geometrico.html#cb355-24" tabindex="-1"></a><span class="co">#&gt; The root mean square of the residuals (RMSR) is  0.03 </span></span>
-<span id="cb355-25"><a href="rotazione-nello-spazio-geometrico.html#cb355-25" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb355-26"><a href="rotazione-nello-spazio-geometrico.html#cb355-26" tabindex="-1"></a><span class="co">#&gt; Fit based upon off diagonal values = 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="rotazione-nello-spazio-geometrico.html#cb365-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;psych&quot;</span>)</span>
+<span id="cb365-2"><a href="rotazione-nello-spazio-geometrico.html#cb365-2" tabindex="-1"></a>f.pc <span class="ot">&lt;-</span> <span class="fu">principal</span>(R, <span class="dv">2</span>, <span class="at">rotate =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb365-3"><a href="rotazione-nello-spazio-geometrico.html#cb365-3" tabindex="-1"></a>f.pc</span>
+<span id="cb365-4"><a href="rotazione-nello-spazio-geometrico.html#cb365-4" tabindex="-1"></a><span class="co">#&gt; Principal Components Analysis</span></span>
+<span id="cb365-5"><a href="rotazione-nello-spazio-geometrico.html#cb365-5" tabindex="-1"></a><span class="co">#&gt; Call: principal(r = R, nfactors = 2, rotate = FALSE)</span></span>
+<span id="cb365-6"><a href="rotazione-nello-spazio-geometrico.html#cb365-6" tabindex="-1"></a><span class="co">#&gt; Standardized loadings (pattern matrix) based upon correlation matrix</span></span>
+<span id="cb365-7"><a href="rotazione-nello-spazio-geometrico.html#cb365-7" tabindex="-1"></a><span class="co">#&gt;    PC1   PC2   h2     u2 com</span></span>
+<span id="cb365-8"><a href="rotazione-nello-spazio-geometrico.html#cb365-8" tabindex="-1"></a><span class="co">#&gt; K 0.97 -0.23 0.99 0.0067 1.1</span></span>
+<span id="cb365-9"><a href="rotazione-nello-spazio-geometrico.html#cb365-9" tabindex="-1"></a><span class="co">#&gt; I 0.52  0.81 0.92 0.0792 1.7</span></span>
+<span id="cb365-10"><a href="rotazione-nello-spazio-geometrico.html#cb365-10" tabindex="-1"></a><span class="co">#&gt; H 0.78 -0.59 0.96 0.0391 1.9</span></span>
+<span id="cb365-11"><a href="rotazione-nello-spazio-geometrico.html#cb365-11" tabindex="-1"></a><span class="co">#&gt; L 0.97 -0.21 0.99 0.0135 1.1</span></span>
+<span id="cb365-12"><a href="rotazione-nello-spazio-geometrico.html#cb365-12" tabindex="-1"></a><span class="co">#&gt; J 0.70  0.67 0.94 0.0597 2.0</span></span>
+<span id="cb365-13"><a href="rotazione-nello-spazio-geometrico.html#cb365-13" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb365-14"><a href="rotazione-nello-spazio-geometrico.html#cb365-14" tabindex="-1"></a><span class="co">#&gt;                        PC1  PC2</span></span>
+<span id="cb365-15"><a href="rotazione-nello-spazio-geometrico.html#cb365-15" tabindex="-1"></a><span class="co">#&gt; SS loadings           3.26 1.54</span></span>
+<span id="cb365-16"><a href="rotazione-nello-spazio-geometrico.html#cb365-16" tabindex="-1"></a><span class="co">#&gt; Proportion Var        0.65 0.31</span></span>
+<span id="cb365-17"><a href="rotazione-nello-spazio-geometrico.html#cb365-17" tabindex="-1"></a><span class="co">#&gt; Cumulative Var        0.65 0.96</span></span>
+<span id="cb365-18"><a href="rotazione-nello-spazio-geometrico.html#cb365-18" tabindex="-1"></a><span class="co">#&gt; Proportion Explained  0.68 0.32</span></span>
+<span id="cb365-19"><a href="rotazione-nello-spazio-geometrico.html#cb365-19" tabindex="-1"></a><span class="co">#&gt; Cumulative Proportion 0.68 1.00</span></span>
+<span id="cb365-20"><a href="rotazione-nello-spazio-geometrico.html#cb365-20" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb365-21"><a href="rotazione-nello-spazio-geometrico.html#cb365-21" tabindex="-1"></a><span class="co">#&gt; Mean item complexity =  1.6</span></span>
+<span id="cb365-22"><a href="rotazione-nello-spazio-geometrico.html#cb365-22" tabindex="-1"></a><span class="co">#&gt; Test of the hypothesis that 2 components are sufficient.</span></span>
+<span id="cb365-23"><a href="rotazione-nello-spazio-geometrico.html#cb365-23" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb365-24"><a href="rotazione-nello-spazio-geometrico.html#cb365-24" tabindex="-1"></a><span class="co">#&gt; The root mean square of the residuals (RMSR) is  0.03 </span></span>
+<span id="cb365-25"><a href="rotazione-nello-spazio-geometrico.html#cb365-25" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb365-26"><a href="rotazione-nello-spazio-geometrico.html#cb365-26" tabindex="-1"></a><span class="co">#&gt; Fit based upon off diagonal values = 1</span></span></code></pre></div>
 <p>Nella seguente figura, i punti rappresentano le cinque coppie di pesi
 fattoriali non ruotati:</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="rotazione-nello-spazio-geometrico.html#cb356-1" tabindex="-1"></a><span class="fu">plot</span>(</span>
-<span id="cb356-2"><a href="rotazione-nello-spazio-geometrico.html#cb356-2" tabindex="-1"></a>  f.pc<span class="sc">$</span>load[, <span class="dv">1</span>], f.pc<span class="sc">$</span>load[, <span class="dv">2</span>],</span>
-<span id="cb356-3"><a href="rotazione-nello-spazio-geometrico.html#cb356-3" tabindex="-1"></a>  <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>,</span>
-<span id="cb356-4"><a href="rotazione-nello-spazio-geometrico.html#cb356-4" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Primo Fattore&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Secondo Fattore&quot;</span>,</span>
-<span id="cb356-5"><a href="rotazione-nello-spazio-geometrico.html#cb356-5" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">6</span>, <span class="dv">1</span>), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">pch =</span> <span class="dv">19</span></span>
-<span id="cb356-6"><a href="rotazione-nello-spazio-geometrico.html#cb356-6" tabindex="-1"></a>)</span>
-<span id="cb356-7"><a href="rotazione-nello-spazio-geometrico.html#cb356-7" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">pos =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>))</span>
-<span id="cb356-8"><a href="rotazione-nello-spazio-geometrico.html#cb356-8" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>, <span class="dv">0</span>)</span></code></pre></div>
-<p><img src="cfa_files/figure-html/unnamed-chunk-377-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="rotazione-nello-spazio-geometrico.html#cb366-1" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb366-2"><a href="rotazione-nello-spazio-geometrico.html#cb366-2" tabindex="-1"></a>  f.pc<span class="sc">$</span>load[, <span class="dv">1</span>], f.pc<span class="sc">$</span>load[, <span class="dv">2</span>],</span>
+<span id="cb366-3"><a href="rotazione-nello-spazio-geometrico.html#cb366-3" tabindex="-1"></a>  <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb366-4"><a href="rotazione-nello-spazio-geometrico.html#cb366-4" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Primo Fattore&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Secondo Fattore&quot;</span>,</span>
+<span id="cb366-5"><a href="rotazione-nello-spazio-geometrico.html#cb366-5" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">6</span>, <span class="dv">1</span>), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">pch =</span> <span class="dv">19</span></span>
+<span id="cb366-6"><a href="rotazione-nello-spazio-geometrico.html#cb366-6" tabindex="-1"></a>)</span>
+<span id="cb366-7"><a href="rotazione-nello-spazio-geometrico.html#cb366-7" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">pos =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb366-8"><a href="rotazione-nello-spazio-geometrico.html#cb366-8" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>, <span class="dv">0</span>)</span></code></pre></div>
+<p><img src="cfa_files/figure-html/unnamed-chunk-387-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Rencher (2002) nota che, per questi dati, una rotazione ortogonale di
 <span class="math inline">\(-35^{\circ}\)</span> ci porterebbe ad avvicinare gli assi ai punti nel
 diagramma. Per verificare questo, disegnamo sul diagramma i nuovi assi
 dopo una rotazione di <span class="math inline">\(-35^{\circ}\)</span>. Le istruzioni <code>R</code> sono le seguenti:</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="rotazione-nello-spazio-geometrico.html#cb357-1" tabindex="-1"></a><span class="fu">plot</span>(</span>
-<span id="cb357-2"><a href="rotazione-nello-spazio-geometrico.html#cb357-2" tabindex="-1"></a>  f.pc<span class="sc">$</span>load[, <span class="dv">1</span>], f.pc<span class="sc">$</span>load[, <span class="dv">2</span>],</span>
-<span id="cb357-3"><a href="rotazione-nello-spazio-geometrico.html#cb357-3" tabindex="-1"></a>  <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>,</span>
-<span id="cb357-4"><a href="rotazione-nello-spazio-geometrico.html#cb357-4" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Primo Fattore&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Secondo Fattore&quot;</span>,</span>
-<span id="cb357-5"><a href="rotazione-nello-spazio-geometrico.html#cb357-5" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">6</span>, <span class="dv">1</span>), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">pch =</span> <span class="dv">19</span></span>
-<span id="cb357-6"><a href="rotazione-nello-spazio-geometrico.html#cb357-6" tabindex="-1"></a>)</span>
-<span id="cb357-7"><a href="rotazione-nello-spazio-geometrico.html#cb357-7" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">pos =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>))</span>
-<span id="cb357-8"><a href="rotazione-nello-spazio-geometrico.html#cb357-8" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb357-9"><a href="rotazione-nello-spazio-geometrico.html#cb357-9" tabindex="-1"></a></span>
-<span id="cb357-10"><a href="rotazione-nello-spazio-geometrico.html#cb357-10" tabindex="-1"></a>ar <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
-<span id="cb357-11"><a href="rotazione-nello-spazio-geometrico.html#cb357-11" tabindex="-1"></a>  <span class="dv">0</span>, <span class="dv">0</span>,</span>
-<span id="cb357-12"><a href="rotazione-nello-spazio-geometrico.html#cb357-12" tabindex="-1"></a>  <span class="dv">0</span>, <span class="dv">1</span>,</span>
-<span id="cb357-13"><a href="rotazione-nello-spazio-geometrico.html#cb357-13" tabindex="-1"></a>  <span class="dv">0</span>, <span class="dv">0</span>,</span>
-<span id="cb357-14"><a href="rotazione-nello-spazio-geometrico.html#cb357-14" tabindex="-1"></a>  <span class="dv">1</span>, <span class="dv">0</span></span>
-<span id="cb357-15"><a href="rotazione-nello-spazio-geometrico.html#cb357-15" tabindex="-1"></a>), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb357-16"><a href="rotazione-nello-spazio-geometrico.html#cb357-16" tabindex="-1"></a></span>
-<span id="cb357-17"><a href="rotazione-nello-spazio-geometrico.html#cb357-17" tabindex="-1"></a>angle <span class="ot">&lt;-</span> <span class="dv">35</span></span>
-<span id="cb357-18"><a href="rotazione-nello-spazio-geometrico.html#cb357-18" tabindex="-1"></a>rad <span class="ot">&lt;-</span> angle <span class="sc">*</span> pi <span class="sc">/</span> <span class="dv">180</span></span>
-<span id="cb357-19"><a href="rotazione-nello-spazio-geometrico.html#cb357-19" tabindex="-1"></a>T <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
-<span id="cb357-20"><a href="rotazione-nello-spazio-geometrico.html#cb357-20" tabindex="-1"></a>  <span class="fu">cos</span>(rad), <span class="sc">-</span><span class="fu">sin</span>(rad),</span>
-<span id="cb357-21"><a href="rotazione-nello-spazio-geometrico.html#cb357-21" tabindex="-1"></a>  <span class="fu">sin</span>(rad),  <span class="fu">cos</span>(rad)</span>
-<span id="cb357-22"><a href="rotazione-nello-spazio-geometrico.html#cb357-22" tabindex="-1"></a>), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb357-23"><a href="rotazione-nello-spazio-geometrico.html#cb357-23" tabindex="-1"></a></span>
-<span id="cb357-24"><a href="rotazione-nello-spazio-geometrico.html#cb357-24" tabindex="-1"></a><span class="fu">round</span>(ar <span class="sc">%*%</span> T, <span class="dv">3</span>)</span>
-<span id="cb357-25"><a href="rotazione-nello-spazio-geometrico.html#cb357-25" tabindex="-1"></a><span class="co">#&gt;       [,1]   [,2]</span></span>
-<span id="cb357-26"><a href="rotazione-nello-spazio-geometrico.html#cb357-26" tabindex="-1"></a><span class="co">#&gt; [1,] 0.000  0.000</span></span>
-<span id="cb357-27"><a href="rotazione-nello-spazio-geometrico.html#cb357-27" tabindex="-1"></a><span class="co">#&gt; [2,] 0.574  0.819</span></span>
-<span id="cb357-28"><a href="rotazione-nello-spazio-geometrico.html#cb357-28" tabindex="-1"></a><span class="co">#&gt; [3,] 0.000  0.000</span></span>
-<span id="cb357-29"><a href="rotazione-nello-spazio-geometrico.html#cb357-29" tabindex="-1"></a><span class="co">#&gt; [4,] 0.819 -0.574</span></span>
-<span id="cb357-30"><a href="rotazione-nello-spazio-geometrico.html#cb357-30" tabindex="-1"></a></span>
-<span id="cb357-31"><a href="rotazione-nello-spazio-geometrico.html#cb357-31" tabindex="-1"></a><span class="fu">arrows</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.574</span>, <span class="fl">0.819</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb357-32"><a href="rotazione-nello-spazio-geometrico.html#cb357-32" tabindex="-1"></a><span class="fu">arrows</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.819</span>, <span class="sc">-</span><span class="fl">0.574</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="cfa_files/figure-html/unnamed-chunk-378-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="rotazione-nello-spazio-geometrico.html#cb367-1" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb367-2"><a href="rotazione-nello-spazio-geometrico.html#cb367-2" tabindex="-1"></a>  f.pc<span class="sc">$</span>load[, <span class="dv">1</span>], f.pc<span class="sc">$</span>load[, <span class="dv">2</span>],</span>
+<span id="cb367-3"><a href="rotazione-nello-spazio-geometrico.html#cb367-3" tabindex="-1"></a>  <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb367-4"><a href="rotazione-nello-spazio-geometrico.html#cb367-4" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Primo Fattore&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Secondo Fattore&quot;</span>,</span>
+<span id="cb367-5"><a href="rotazione-nello-spazio-geometrico.html#cb367-5" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">6</span>, <span class="dv">1</span>), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">pch =</span> <span class="dv">19</span></span>
+<span id="cb367-6"><a href="rotazione-nello-spazio-geometrico.html#cb367-6" tabindex="-1"></a>)</span>
+<span id="cb367-7"><a href="rotazione-nello-spazio-geometrico.html#cb367-7" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">pos =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb367-8"><a href="rotazione-nello-spazio-geometrico.html#cb367-8" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb367-9"><a href="rotazione-nello-spazio-geometrico.html#cb367-9" tabindex="-1"></a></span>
+<span id="cb367-10"><a href="rotazione-nello-spazio-geometrico.html#cb367-10" tabindex="-1"></a>ar <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
+<span id="cb367-11"><a href="rotazione-nello-spazio-geometrico.html#cb367-11" tabindex="-1"></a>  <span class="dv">0</span>, <span class="dv">0</span>,</span>
+<span id="cb367-12"><a href="rotazione-nello-spazio-geometrico.html#cb367-12" tabindex="-1"></a>  <span class="dv">0</span>, <span class="dv">1</span>,</span>
+<span id="cb367-13"><a href="rotazione-nello-spazio-geometrico.html#cb367-13" tabindex="-1"></a>  <span class="dv">0</span>, <span class="dv">0</span>,</span>
+<span id="cb367-14"><a href="rotazione-nello-spazio-geometrico.html#cb367-14" tabindex="-1"></a>  <span class="dv">1</span>, <span class="dv">0</span></span>
+<span id="cb367-15"><a href="rotazione-nello-spazio-geometrico.html#cb367-15" tabindex="-1"></a>), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb367-16"><a href="rotazione-nello-spazio-geometrico.html#cb367-16" tabindex="-1"></a></span>
+<span id="cb367-17"><a href="rotazione-nello-spazio-geometrico.html#cb367-17" tabindex="-1"></a>angle <span class="ot">&lt;-</span> <span class="dv">35</span></span>
+<span id="cb367-18"><a href="rotazione-nello-spazio-geometrico.html#cb367-18" tabindex="-1"></a>rad <span class="ot">&lt;-</span> angle <span class="sc">*</span> pi <span class="sc">/</span> <span class="dv">180</span></span>
+<span id="cb367-19"><a href="rotazione-nello-spazio-geometrico.html#cb367-19" tabindex="-1"></a>T <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
+<span id="cb367-20"><a href="rotazione-nello-spazio-geometrico.html#cb367-20" tabindex="-1"></a>  <span class="fu">cos</span>(rad), <span class="sc">-</span><span class="fu">sin</span>(rad),</span>
+<span id="cb367-21"><a href="rotazione-nello-spazio-geometrico.html#cb367-21" tabindex="-1"></a>  <span class="fu">sin</span>(rad),  <span class="fu">cos</span>(rad)</span>
+<span id="cb367-22"><a href="rotazione-nello-spazio-geometrico.html#cb367-22" tabindex="-1"></a>), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb367-23"><a href="rotazione-nello-spazio-geometrico.html#cb367-23" tabindex="-1"></a></span>
+<span id="cb367-24"><a href="rotazione-nello-spazio-geometrico.html#cb367-24" tabindex="-1"></a><span class="fu">round</span>(ar <span class="sc">%*%</span> T, <span class="dv">3</span>)</span>
+<span id="cb367-25"><a href="rotazione-nello-spazio-geometrico.html#cb367-25" tabindex="-1"></a><span class="co">#&gt;       [,1]   [,2]</span></span>
+<span id="cb367-26"><a href="rotazione-nello-spazio-geometrico.html#cb367-26" tabindex="-1"></a><span class="co">#&gt; [1,] 0.000  0.000</span></span>
+<span id="cb367-27"><a href="rotazione-nello-spazio-geometrico.html#cb367-27" tabindex="-1"></a><span class="co">#&gt; [2,] 0.574  0.819</span></span>
+<span id="cb367-28"><a href="rotazione-nello-spazio-geometrico.html#cb367-28" tabindex="-1"></a><span class="co">#&gt; [3,] 0.000  0.000</span></span>
+<span id="cb367-29"><a href="rotazione-nello-spazio-geometrico.html#cb367-29" tabindex="-1"></a><span class="co">#&gt; [4,] 0.819 -0.574</span></span>
+<span id="cb367-30"><a href="rotazione-nello-spazio-geometrico.html#cb367-30" tabindex="-1"></a></span>
+<span id="cb367-31"><a href="rotazione-nello-spazio-geometrico.html#cb367-31" tabindex="-1"></a><span class="fu">arrows</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.574</span>, <span class="fl">0.819</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb367-32"><a href="rotazione-nello-spazio-geometrico.html#cb367-32" tabindex="-1"></a><span class="fu">arrows</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.819</span>, <span class="sc">-</span><span class="fl">0.574</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="cfa_files/figure-html/unnamed-chunk-388-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Nella figura precedente, le due frecce rappresentano gli assi ruotati. È
 chiaro come tale rotazione di <span class="math inline">\(-35^{\circ}\)</span> ha effettivamente l’effetto
 di avvicinare gli assi ai punti del diagramma. Se usiamo dunque il
@@ -918,19 +919,19 @@ calcolare le saturazioni fattoriali della soluzione ruotata
 <span class="math inline">\(\hat{\boldsymbol{\Lambda}}^* = \hat{\boldsymbol{\Lambda}} \textbf{T}\)</span>.
 Le saturazioni fattoriali ruotate non sono altro che la proiezione
 ortogonale dei punti sugli assi ruotati:</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="rotazione-nello-spazio-geometrico.html#cb358-1" tabindex="-1"></a>angle <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">35</span></span>
-<span id="cb358-2"><a href="rotazione-nello-spazio-geometrico.html#cb358-2" tabindex="-1"></a>rad <span class="ot">&lt;-</span> angle <span class="sc">*</span> pi <span class="sc">/</span> <span class="dv">180</span></span>
-<span id="cb358-3"><a href="rotazione-nello-spazio-geometrico.html#cb358-3" tabindex="-1"></a>T <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
-<span id="cb358-4"><a href="rotazione-nello-spazio-geometrico.html#cb358-4" tabindex="-1"></a>  <span class="fu">cos</span>(rad), <span class="sc">-</span><span class="fu">sin</span>(rad),</span>
-<span id="cb358-5"><a href="rotazione-nello-spazio-geometrico.html#cb358-5" tabindex="-1"></a>  <span class="fu">sin</span>(rad),  <span class="fu">cos</span>(rad)</span>
-<span id="cb358-6"><a href="rotazione-nello-spazio-geometrico.html#cb358-6" tabindex="-1"></a>), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb358-7"><a href="rotazione-nello-spazio-geometrico.html#cb358-7" tabindex="-1"></a><span class="fu">round</span>(f.pc<span class="sc">$</span>load <span class="sc">%*%</span> T, <span class="dv">3</span>)</span>
-<span id="cb358-8"><a href="rotazione-nello-spazio-geometrico.html#cb358-8" tabindex="-1"></a><span class="co">#&gt;     [,1]   [,2]</span></span>
-<span id="cb358-9"><a href="rotazione-nello-spazio-geometrico.html#cb358-9" tabindex="-1"></a><span class="co">#&gt; K  0.927  0.367</span></span>
-<span id="cb358-10"><a href="rotazione-nello-spazio-geometrico.html#cb358-10" tabindex="-1"></a><span class="co">#&gt; I -0.037  0.959</span></span>
-<span id="cb358-11"><a href="rotazione-nello-spazio-geometrico.html#cb358-11" tabindex="-1"></a><span class="co">#&gt; H  0.980 -0.031</span></span>
-<span id="cb358-12"><a href="rotazione-nello-spazio-geometrico.html#cb358-12" tabindex="-1"></a><span class="co">#&gt; L  0.916  0.385</span></span>
-<span id="cb358-13"><a href="rotazione-nello-spazio-geometrico.html#cb358-13" tabindex="-1"></a><span class="co">#&gt; J  0.194  0.950</span></span></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="rotazione-nello-spazio-geometrico.html#cb368-1" tabindex="-1"></a>angle <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">35</span></span>
+<span id="cb368-2"><a href="rotazione-nello-spazio-geometrico.html#cb368-2" tabindex="-1"></a>rad <span class="ot">&lt;-</span> angle <span class="sc">*</span> pi <span class="sc">/</span> <span class="dv">180</span></span>
+<span id="cb368-3"><a href="rotazione-nello-spazio-geometrico.html#cb368-3" tabindex="-1"></a>T <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
+<span id="cb368-4"><a href="rotazione-nello-spazio-geometrico.html#cb368-4" tabindex="-1"></a>  <span class="fu">cos</span>(rad), <span class="sc">-</span><span class="fu">sin</span>(rad),</span>
+<span id="cb368-5"><a href="rotazione-nello-spazio-geometrico.html#cb368-5" tabindex="-1"></a>  <span class="fu">sin</span>(rad),  <span class="fu">cos</span>(rad)</span>
+<span id="cb368-6"><a href="rotazione-nello-spazio-geometrico.html#cb368-6" tabindex="-1"></a>), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb368-7"><a href="rotazione-nello-spazio-geometrico.html#cb368-7" tabindex="-1"></a><span class="fu">round</span>(f.pc<span class="sc">$</span>load <span class="sc">%*%</span> T, <span class="dv">3</span>)</span>
+<span id="cb368-8"><a href="rotazione-nello-spazio-geometrico.html#cb368-8" tabindex="-1"></a><span class="co">#&gt;     [,1]   [,2]</span></span>
+<span id="cb368-9"><a href="rotazione-nello-spazio-geometrico.html#cb368-9" tabindex="-1"></a><span class="co">#&gt; K  0.927  0.367</span></span>
+<span id="cb368-10"><a href="rotazione-nello-spazio-geometrico.html#cb368-10" tabindex="-1"></a><span class="co">#&gt; I -0.037  0.959</span></span>
+<span id="cb368-11"><a href="rotazione-nello-spazio-geometrico.html#cb368-11" tabindex="-1"></a><span class="co">#&gt; H  0.980 -0.031</span></span>
+<span id="cb368-12"><a href="rotazione-nello-spazio-geometrico.html#cb368-12" tabindex="-1"></a><span class="co">#&gt; L  0.916  0.385</span></span>
+<span id="cb368-13"><a href="rotazione-nello-spazio-geometrico.html#cb368-13" tabindex="-1"></a><span class="co">#&gt; J  0.194  0.950</span></span></code></pre></div>
 <p>La soluzione ottenuta in questo modo riproduce quella riportata da
 Rencher (2002).</p>
 </div>
@@ -953,32 +954,32 @@ massima verosimiglianza. Usando le funzioni <code>principal()</code> e
 <code>factor.pa()</code> disponibili nel pacchetto <code>psych</code>, la rotazione Varimax
 può essere applicata alle soluzioni ottenute mediante il metodo delle
 componenti principali e il metodo del fattore principale. Ad esempio, otteniamo:</p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="rotazione-nello-spazio-geometrico.html#cb359-1" tabindex="-1"></a>f_pc <span class="ot">&lt;-</span> <span class="fu">principal</span>(R, <span class="dv">2</span>, <span class="at">n.obs =</span> <span class="dv">7</span>, <span class="at">rotate =</span> <span class="st">&quot;varimax&quot;</span>)</span>
-<span id="cb359-2"><a href="rotazione-nello-spazio-geometrico.html#cb359-2" tabindex="-1"></a>f_pc</span>
-<span id="cb359-3"><a href="rotazione-nello-spazio-geometrico.html#cb359-3" tabindex="-1"></a><span class="co">#&gt; Principal Components Analysis</span></span>
-<span id="cb359-4"><a href="rotazione-nello-spazio-geometrico.html#cb359-4" tabindex="-1"></a><span class="co">#&gt; Call: principal(r = R, nfactors = 2, rotate = &quot;varimax&quot;, n.obs = 7)</span></span>
-<span id="cb359-5"><a href="rotazione-nello-spazio-geometrico.html#cb359-5" tabindex="-1"></a><span class="co">#&gt; Standardized loadings (pattern matrix) based upon correlation matrix</span></span>
-<span id="cb359-6"><a href="rotazione-nello-spazio-geometrico.html#cb359-6" tabindex="-1"></a><span class="co">#&gt;    RC1   RC2   h2     u2 com</span></span>
-<span id="cb359-7"><a href="rotazione-nello-spazio-geometrico.html#cb359-7" tabindex="-1"></a><span class="co">#&gt; K 0.95  0.30 0.99 0.0067 1.2</span></span>
-<span id="cb359-8"><a href="rotazione-nello-spazio-geometrico.html#cb359-8" tabindex="-1"></a><span class="co">#&gt; I 0.03  0.96 0.92 0.0792 1.0</span></span>
-<span id="cb359-9"><a href="rotazione-nello-spazio-geometrico.html#cb359-9" tabindex="-1"></a><span class="co">#&gt; H 0.97 -0.10 0.96 0.0391 1.0</span></span>
-<span id="cb359-10"><a href="rotazione-nello-spazio-geometrico.html#cb359-10" tabindex="-1"></a><span class="co">#&gt; L 0.94  0.32 0.99 0.0135 1.2</span></span>
-<span id="cb359-11"><a href="rotazione-nello-spazio-geometrico.html#cb359-11" tabindex="-1"></a><span class="co">#&gt; J 0.26  0.93 0.94 0.0597 1.2</span></span>
-<span id="cb359-12"><a href="rotazione-nello-spazio-geometrico.html#cb359-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb359-13"><a href="rotazione-nello-spazio-geometrico.html#cb359-13" tabindex="-1"></a><span class="co">#&gt;                        RC1  RC2</span></span>
-<span id="cb359-14"><a href="rotazione-nello-spazio-geometrico.html#cb359-14" tabindex="-1"></a><span class="co">#&gt; SS loadings           2.81 1.99</span></span>
-<span id="cb359-15"><a href="rotazione-nello-spazio-geometrico.html#cb359-15" tabindex="-1"></a><span class="co">#&gt; Proportion Var        0.56 0.40</span></span>
-<span id="cb359-16"><a href="rotazione-nello-spazio-geometrico.html#cb359-16" tabindex="-1"></a><span class="co">#&gt; Cumulative Var        0.56 0.96</span></span>
-<span id="cb359-17"><a href="rotazione-nello-spazio-geometrico.html#cb359-17" tabindex="-1"></a><span class="co">#&gt; Proportion Explained  0.58 0.42</span></span>
-<span id="cb359-18"><a href="rotazione-nello-spazio-geometrico.html#cb359-18" tabindex="-1"></a><span class="co">#&gt; Cumulative Proportion 0.58 1.00</span></span>
-<span id="cb359-19"><a href="rotazione-nello-spazio-geometrico.html#cb359-19" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb359-20"><a href="rotazione-nello-spazio-geometrico.html#cb359-20" tabindex="-1"></a><span class="co">#&gt; Mean item complexity =  1.1</span></span>
-<span id="cb359-21"><a href="rotazione-nello-spazio-geometrico.html#cb359-21" tabindex="-1"></a><span class="co">#&gt; Test of the hypothesis that 2 components are sufficient.</span></span>
-<span id="cb359-22"><a href="rotazione-nello-spazio-geometrico.html#cb359-22" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb359-23"><a href="rotazione-nello-spazio-geometrico.html#cb359-23" tabindex="-1"></a><span class="co">#&gt; The root mean square of the residuals (RMSR) is  0.03 </span></span>
-<span id="cb359-24"><a href="rotazione-nello-spazio-geometrico.html#cb359-24" tabindex="-1"></a><span class="co">#&gt;  with the empirical chi square  0.12  with prob &lt;  0.73 </span></span>
-<span id="cb359-25"><a href="rotazione-nello-spazio-geometrico.html#cb359-25" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb359-26"><a href="rotazione-nello-spazio-geometrico.html#cb359-26" tabindex="-1"></a><span class="co">#&gt; Fit based upon off diagonal values = 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="rotazione-nello-spazio-geometrico.html#cb369-1" tabindex="-1"></a>f_pc <span class="ot">&lt;-</span> <span class="fu">principal</span>(R, <span class="dv">2</span>, <span class="at">n.obs =</span> <span class="dv">7</span>, <span class="at">rotate =</span> <span class="st">&quot;varimax&quot;</span>)</span>
+<span id="cb369-2"><a href="rotazione-nello-spazio-geometrico.html#cb369-2" tabindex="-1"></a>f_pc</span>
+<span id="cb369-3"><a href="rotazione-nello-spazio-geometrico.html#cb369-3" tabindex="-1"></a><span class="co">#&gt; Principal Components Analysis</span></span>
+<span id="cb369-4"><a href="rotazione-nello-spazio-geometrico.html#cb369-4" tabindex="-1"></a><span class="co">#&gt; Call: principal(r = R, nfactors = 2, rotate = &quot;varimax&quot;, n.obs = 7)</span></span>
+<span id="cb369-5"><a href="rotazione-nello-spazio-geometrico.html#cb369-5" tabindex="-1"></a><span class="co">#&gt; Standardized loadings (pattern matrix) based upon correlation matrix</span></span>
+<span id="cb369-6"><a href="rotazione-nello-spazio-geometrico.html#cb369-6" tabindex="-1"></a><span class="co">#&gt;    RC1   RC2   h2     u2 com</span></span>
+<span id="cb369-7"><a href="rotazione-nello-spazio-geometrico.html#cb369-7" tabindex="-1"></a><span class="co">#&gt; K 0.95  0.30 0.99 0.0067 1.2</span></span>
+<span id="cb369-8"><a href="rotazione-nello-spazio-geometrico.html#cb369-8" tabindex="-1"></a><span class="co">#&gt; I 0.03  0.96 0.92 0.0792 1.0</span></span>
+<span id="cb369-9"><a href="rotazione-nello-spazio-geometrico.html#cb369-9" tabindex="-1"></a><span class="co">#&gt; H 0.97 -0.10 0.96 0.0391 1.0</span></span>
+<span id="cb369-10"><a href="rotazione-nello-spazio-geometrico.html#cb369-10" tabindex="-1"></a><span class="co">#&gt; L 0.94  0.32 0.99 0.0135 1.2</span></span>
+<span id="cb369-11"><a href="rotazione-nello-spazio-geometrico.html#cb369-11" tabindex="-1"></a><span class="co">#&gt; J 0.26  0.93 0.94 0.0597 1.2</span></span>
+<span id="cb369-12"><a href="rotazione-nello-spazio-geometrico.html#cb369-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb369-13"><a href="rotazione-nello-spazio-geometrico.html#cb369-13" tabindex="-1"></a><span class="co">#&gt;                        RC1  RC2</span></span>
+<span id="cb369-14"><a href="rotazione-nello-spazio-geometrico.html#cb369-14" tabindex="-1"></a><span class="co">#&gt; SS loadings           2.81 1.99</span></span>
+<span id="cb369-15"><a href="rotazione-nello-spazio-geometrico.html#cb369-15" tabindex="-1"></a><span class="co">#&gt; Proportion Var        0.56 0.40</span></span>
+<span id="cb369-16"><a href="rotazione-nello-spazio-geometrico.html#cb369-16" tabindex="-1"></a><span class="co">#&gt; Cumulative Var        0.56 0.96</span></span>
+<span id="cb369-17"><a href="rotazione-nello-spazio-geometrico.html#cb369-17" tabindex="-1"></a><span class="co">#&gt; Proportion Explained  0.58 0.42</span></span>
+<span id="cb369-18"><a href="rotazione-nello-spazio-geometrico.html#cb369-18" tabindex="-1"></a><span class="co">#&gt; Cumulative Proportion 0.58 1.00</span></span>
+<span id="cb369-19"><a href="rotazione-nello-spazio-geometrico.html#cb369-19" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb369-20"><a href="rotazione-nello-spazio-geometrico.html#cb369-20" tabindex="-1"></a><span class="co">#&gt; Mean item complexity =  1.1</span></span>
+<span id="cb369-21"><a href="rotazione-nello-spazio-geometrico.html#cb369-21" tabindex="-1"></a><span class="co">#&gt; Test of the hypothesis that 2 components are sufficient.</span></span>
+<span id="cb369-22"><a href="rotazione-nello-spazio-geometrico.html#cb369-22" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb369-23"><a href="rotazione-nello-spazio-geometrico.html#cb369-23" tabindex="-1"></a><span class="co">#&gt; The root mean square of the residuals (RMSR) is  0.03 </span></span>
+<span id="cb369-24"><a href="rotazione-nello-spazio-geometrico.html#cb369-24" tabindex="-1"></a><span class="co">#&gt;  with the empirical chi square  0.12  with prob &lt;  0.73 </span></span>
+<span id="cb369-25"><a href="rotazione-nello-spazio-geometrico.html#cb369-25" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb369-26"><a href="rotazione-nello-spazio-geometrico.html#cb369-26" tabindex="-1"></a><span class="co">#&gt; Fit based upon off diagonal values = 1</span></span></code></pre></div>
 <p>Il metodo Quartimax (Neuhaus e Wringley, 1954) opera una semplificazione
 della matrice <span class="math inline">\(\hat{\boldsymbol{\Lambda}}\)</span> massimizzando le covarianze
 tra i quadrati degli elementi <span class="math inline">\(\lambda_{ij}\)</span> appartenenti a righe
