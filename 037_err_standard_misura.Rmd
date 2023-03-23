@@ -4,11 +4,15 @@
 source("_common.R")
 ```
 
-Secondo Lord e Novick (1968), l'errore $E = X - T$ è la variabile aleatoria di primario interesse per la CTT, in quanto lo scopo è stimare il punteggio vero di ciascun rispondente e confrontare le stime ottenute per rispondenti diversi. La grandezza dell'errore che si commette utilizzando il punteggio osservato come misura del punteggio vero può essere quantificata dalla deviazione standard di $E$, $\sigma_E$, chiamata "errore standard della misurazione" o SEM. Ma come si può stimare $\sigma_E$?
+Secondo @lord1968statistical, l'errore $E = X - T$ rappresenta la variabile aleatoria di primario interesse per la CTT. Infatti, poiché lo scopo della CTT è di stimare il punteggio vero di ciascun rispondente e confrontare le stime ottenute per rispondenti diversi, la grandezza dell'errore $E$ è un'informazione essenziale. La discrepanza tra il punteggio osservato e il punteggio vero può essere misurata utilizzando la deviazione standard di $E$, chiamata "errore standard della misurazione" o SEM. Pertanto, l'errore standard della misurazione è lo strumento utilizzato dalla CTT per stimare in che misura un punteggio osservato si discosta da un punteggio vero.
+
+In questo capitolo vedremo come si può stimare $\sigma_E$.
 
 ## L'incertezza della misura 
 
-L'errore standard della misurazione rappresenta il grado di incertezza presente nei punteggi di un test. Secondo la CTT, è possibile stimare l'errore standard della misurazione ($\sigma_E$) utilizzando l'equazione:
+Secondo la CTT, l'errore standard della misurazione può essere stimato utilizzando una formula che richiede la conoscenza della deviazione standard della distribuzione dei punteggi del test e dell'affidabilità del test. Se questi valori sono noti (o possono essere calcolati), allora si può ottenere una stima dell'errore standard di un particolare punteggio. Tale misura di errore è utile per comprendere quanto il punteggio osservato si discosta dal vero punteggio del soggetto.
+
+Secondo la CTT, è possibile stimare l'errore standard della misurazione ($\sigma_E$) utilizzando l'equazione:
 
 $$
 \sigma_E = \sigma_X \sqrt{1 -\rho_{XX^\prime}},
@@ -17,11 +21,9 @@ $$
 
 dove $\sigma_X$ è la deviazione standard dei punteggi ottenuti in un campione di rispondenti e $\rho_{XX^\prime}$ è il coefficiente di attendibilità. Per calcolare $\sigma_E$, si sottrae l'attendibilità del test da 1, si prende la radice quadrata della differenza e si moltiplica per la deviazione standard dei punteggi del test.
 
-È importante notare che l'errore standard della misurazione $\sigma_E$ è direttamente legato all'attendibilità del test: l'errore standard
-della misurazione diminuisce al crescere dell'attendibilità del test. Se
-l'attendibilità del test è uguale a 0 $\sigma_E$ diventa uguale alla
-deviazione standard del punteggio osservato del test. Se l'attendibilità
-del test è uguale a 1 $\sigma_E$ diventa uguale a zero: se il test è
+L'errore standard della misurazione si basa sull'assunzione che, se una persona facesse un gran numero di test equivalenti, i punteggi di questi test sarebbero distribuiti normalmente, con il vero punteggio della persona come media. In altre parole, possiamo immaginare che la persona completi molte versioni identiche del test, senza ricordare le risposte precedenti e in condizioni simili ogni volta. In questo scenario ipotetico, l'errore standard della misurazione sarebbe semplicemente la deviazione standard di queste misurazioni ripetute.
+
+È importante notare che l'errore standard della misurazione $\sigma_E$ è direttamente legato all'attendibilità del test: l'errore standard della misurazione diminuisce al crescere dell'attendibilità del test. Se l'attendibilità del test è uguale a 0 $\sigma_E$ diventa uguale alla deviazione standard del punteggio osservato del test. Se l'attendibilità del test è uguale a 1 $\sigma_E$ diventa uguale a zero: se il test è
 perfettamente affidabile non ci sono errori e $\sigma_E$ è uguale a
 zero.
 
