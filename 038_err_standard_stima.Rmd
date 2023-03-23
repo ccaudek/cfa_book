@@ -11,7 +11,7 @@ della misurazione: $X = T + E$. Poniamoci ora il problema di utilizzare
 i concetti della Teoria Classica per stimare il punteggio vero di un
 rispondente utilizzando il suo punteggio osservato e l'attendibilità del
 test. Questa stima è utile soprattutto quando è necessario costruire un
-intervallo di confidenza per il punteggio vero.
+intervallo di confidenza per il punteggio vero del rispondente.
 
 Per costruire l'intervallo di confidenza del punteggio vero dobbiamo
 utilizzare due quantità:
@@ -26,42 +26,37 @@ Iniziamo con il problema della stima del punteggio vero.
 
 ## Il paradosso di Kelley
 
-Nella sua monografia del 1954, "Clinical versus statistical prediction:
-A theoretical analysis and a review of the evidence", Paul Meehl suscitò
-un grande scalpore con una convincente dimostrazione del fatto che
-metodi meccanici di combinazione dei dati, come ad esempio la
-regressione multipla, sono in grado di fornire delle predizioni migliori
-di quanto sia in grado di fare la diagnosi clinica eseguita da esperti.
-L'enorme quantità di letteratura che è stata prodotta in seguito a tale
-contributo ha fornito forti e univoche evidenze a sostegno di questa
-osservazione.
+<!-- Nella sua monografia del 1954, "Clinical versus statistical prediction: -->
+<!-- A theoretical analysis and a review of the evidence", Paul Meehl suscitò -->
+<!-- un grande scalpore con una convincente dimostrazione del fatto che -->
+<!-- metodi meccanici di combinazione dei dati, come ad esempio la -->
+<!-- regressione multipla, sono in grado di fornire delle predizioni migliori -->
+<!-- di quanto sia in grado di fare la diagnosi clinica eseguita da esperti. -->
+<!-- L'enorme quantità di letteratura che è stata prodotta in seguito a tale -->
+<!-- contributo ha fornito forti e univoche evidenze a sostegno di questa -->
+<!-- osservazione. -->
 
-È interessante notare che Robyn Dawes (2005) ha pubblicato un articolo
-su *Journal of Clinical Psychology* (61, 1245--1255) dal titolo
-seguente: "The ethical implications of Paul Meehl's Work on comparing
-clinical versus actuarial prediction methods". L'argomento principale
-sostenuto da Dawes è che, date le evidenze molto convincenti che sono
-disponibili, non è etico usare il giudizio clinico in preferenza all'uso
-di modelli statistici di previsione. Citiamo dall'abstract:
+<!-- È interessante notare che Robyn Dawes (2005) ha pubblicato un articolo -->
+<!-- su *Journal of Clinical Psychology* (61, 1245--1255) dal titolo -->
+<!-- seguente: "The ethical implications of Paul Meehl's Work on comparing -->
+<!-- clinical versus actuarial prediction methods". L'argomento principale -->
+<!-- sostenuto da Dawes è che, date le evidenze molto convincenti che sono -->
+<!-- disponibili, non è etico usare il giudizio clinico in preferenza all'uso -->
+<!-- di modelli statistici di previsione. Citiamo dall'abstract: -->
 
-> Whenever statistical prediction rules [...] are available for making a relevant prediction, they should be used in preference to intuition. [...] Providing service that assumes that clinicians "can do better" simply based on self-confidence or plausibility in the absence of evidence that they can actually do so is simply unethical.
+<!-- > Whenever statistical prediction rules [...] are available for making a relevant prediction, they should be used in preference to intuition. [...] Providing service that assumes that clinicians "can do better" simply based on self-confidence or plausibility in the absence of evidence that they can actually do so is simply unethical. -->
 
-Sulla base di quanto detto sopra, e in riferimento ai nostri scopi
-presenti, si pone dunque il problema di capire come sia possibile
-utilizzare il modello di regressione per ottenere una stima del
-punteggio vero di un rispondente. A questo proposito si deve notare che
-è necessario tenere in considerazione il fatto che le nostre variabili
-indipendenti sono corrotte dall'errore di misurazione, mentre il modello
-di regressione tradizionale presuppone che le variabili indipendenti
-siano misurate senza errori. Le considerazioni seguenti sono state
-proposte da Kelly negli anni '20.
+<!-- Sulla base di quanto detto sopra, e in riferimento ai nostri scopi -->
+<!-- presenti, si pone dunque il problema di capire come sia possibile -->
+<!-- utilizzare il modello di regressione per ottenere una stima del -->
+<!-- punteggio vero di un rispondente. A questo proposito si deve notare che -->
+<!-- è necessario tenere in considerazione il fatto che le nostre variabili -->
+<!-- indipendenti sono corrotte dall'errore di misurazione, mentre il modello -->
+<!-- di regressione tradizionale presuppone che le variabili indipendenti -->
+<!-- siano misurate senza errori. Le considerazioni seguenti sono state -->
+<!-- proposte da Kelly negli anni '20. -->
 
-Come dimostrato in seguito, la formula di Kelley si basa
-sull'equivalenza algebrica secondo la quale l'attendibilità è uguale al
-quadrato del coefficiente di correlazione tra i punteggi osservati e i
-punteggi veri. In base alla formula di Kelley, il punteggio vero di un
-rispondente può essere stimato nel modo seguente mediante il modello di
-regressione: 
+Negli anni '20, Kelly ha dimostrato come sia possibile stimare il punteggio vero del rispondente utilizzando il modello di regressione. La formula di Kelley si basa sull'equivalenza algebrica secondo cui l'attendibilità è uguale al quadrato del coefficiente di correlazione tra i punteggi osservati e i punteggi veri. Quindi, sulla base della formula di Kelley, il punteggio vero di un rispondente può essere stimato nel seguente modo:
 
 $$
 \hat{T} = \mu_x + \rho  (X - \mu_x),
@@ -77,56 +72,21 @@ $0 < \rho < 1$, la stima del punteggio vero corrisponde ad un valore che
 si discosta dal punteggio osservato nella direzione della media del
 campione. La stima del punteggio vero, dunque, esibisce la proprietà
 della regressione verso la media del punteggio osservato, in funzione
-dell'attendibilità del test[^1].
+dell'attendibilità del test.
 
-La \@ref(eq:true-score) può essere interpretata dicendo che, per
-stimare il punteggio vero di un rispondente, partiamo dalla media della
-distribuzione della popolazione dei rispondenti e ci spostiamo nella
-direzione del punteggio osservato di un rispondente. Tuttavia, non
-raggiungiamo il valore del punteggio osservato: la quantità di cui ci
-spostiamo è proporzionale all'attendibilità. In altre parole, a seconda
-della dimensione di $\rho$, la stima del punteggio vero di un individuo
-è dovuta, in parte, a dove si trova l'individuo in relazione al gruppo
-di appartenenza: la stima del punteggio vero dell'individuo si sposterà
-verso l'alto se l'individuo è collocato sotto la media del gruppo di
-appartenenza e si sposterà verso il basso se l'individuo è collocato al
-di sopra della media del gruppo di appartenenza. Questa equazione è
-stata chiamata il *paradosso di Kelley*.
+La formula del punteggio vero \@ref(eq:true-score) può essere spiegata come segue: per stimare il punteggio vero di un rispondente, si parte dalla media della distribuzione della popolazione dei rispondenti e si si sposta in direzione del punteggio osservato. Tuttavia, il valore del punteggio osservato non viene raggiunto, ma la quantità di spostamento è proporzionale all'attendibilità. Ciò significa che, a seconda della dimensione di $\rho$, la stima del punteggio vero dell'individuo dipende anche dalla sua posizione relativa al gruppo di appartenenza. Se l'individuo si trova al di sotto della media del gruppo, la stima del punteggio vero sarà spostata verso l'alto e viceversa. Questo effetto è noto come il "paradosso di Kelley".
 
-È importante sottolineare che l'interpretazione precedente rivela che la
-formula di Kelley contraddice la nozione intuitiva secondo cui il
-punteggio osservato può essere utilizzato quale stima del punteggio vero
-(cioè, $\hat{T} = X$). Tale ragionamento ingenuo sarebbe corretto se
-l'attendibilità del test fosse perfetta ($\rho = 1$). All'altra
-estremità dello spettro, quando $\rho = 0$, la formula di Kelley ci
-suggerisce $\mu_x$ quale stima del punteggio vero, il che è equivale a
-dire che il punteggio osservato deve essere ignorato -- infatti se la
-varianza di $X$ è solamente dovuta all'errore di misurazione, allora il
-test è del tutto inutile quale strumento inferenziale per differenziare
-le abilità dei rispondenti. Fortunatamente, in pratica è molto
-improbabile che $\rho = 0$. Se $\rho$ cade tra gli estremi di 0 e 1,
-allora il punteggio vero stimato sarà compreso tra il punteggio
-osservato e $\mu_x$. Per capire cosa esso catturi, possiamo citare
-Kelley(1947), che osservò:
+È importante sottolineare che l'interpretazione precedente evidenzia una contraddizione tra la formula di Kelley e la nozione intuitiva secondo cui il punteggio osservato può essere utilizzato come stima del punteggio vero (ovvero $\hat{T} = X$). Questo ragionamento sarebbe corretto solo se l'attendibilità del test fosse perfetta ($\rho = 1$). Al contrario, quando $\rho = 0$, la formula di Kelley suggerisce di utilizzare la media dei punteggi osservati come stima del punteggio vero, il che equivale ad affermare che il punteggio osservato non ha alcuna utilità. Tuttavia, è altamente improbabile che $\rho = 0$ nella pratica. Invece, se $\rho$ si trova tra 0 e 1, la stima del punteggio vero sarà compresa tra il punteggio osservato e la media della popolazione. Per comprendere cosa questa stima rappresenti, possiamo citare Kelley (1947), che ha osservato:
 
-::: displayquote
-This is an interesting equation in that it expresses the estimate of
-true ability as the weighted sum of two separate estimates, -- one based
-upon the individual's observed score, $X_1$ ($X$ nella notazione
-corrente) and the other based upon the mean of the group to which he
-belongs, $M_1$ ($\mu_x$ nella notazione corrente). If the test is
+> This is an interesting equation in that it expresses the estimate of true ability as the weighted sum of two separate estimates, -- one based upon the individual's observed score, $X_1$ ($X$ nella notazione corrente) and the other based upon the mean of the group to which he belongs, $M_1$ ($\mu_x$ nella notazione corrente). If the test is
 highly reliable, much weight is given to the test score and little to
 the group mean, and vice versa.
-:::
+
 
 ::: {.proof}
-Come si arriva all'equazione di Kelley? Abbiamo visto in
-precedenza come l'equazione che mette in relazione il punteggio
-osservato con il punteggio vero non è altro che un modello di
-regressione con intercetta nulla e pendenza unitaria:
-$X = 0 + 1 \cdot T + E$. In questo caso, però, il problema è diverso, in
-quanto noi vogliamo _predire_ il punteggio vero sulla base del punteggio
+Per comprendere l'equazione di Kelley, dobbiamo partire dal modello di regressione lineare semplice che mette in relazione il punteggio osservato $X$ con il punteggio vero. Abbiamo visto in precedenza il modello di regressione che mette in relazione il punteggio osservato, $X = 0 + 1 \cdot T + E$. In questo caso, però, il problema è diverso, in quanto noi vogliamo *predire* il punteggio vero sulla base del punteggio
 osservato per mezzo di un modello di regressione (Nunnally, 1978).
+
 Avendo quale scopo quello di "predire" il punteggio vero $T$ sulla base
 del punteggio osservato $X$, il modello di regressione diventa
 
@@ -244,34 +204,23 @@ Est.true(115, 100, .8)
 
 ## L'errore standard della stima
 
-Oltre a ottenere una stima del punteggio vero da un punteggio osservato,
-il modello di regressione di Kelley ci fornisce anche l'errore standard
-della stima. È chiaro che la stima del punteggio vero è difficile da
-interpretare se non è accompagnata da una qualche indicazione sulla
-precisione della stima. Tale informazione viene appunto fornita
-dall'*errore standard della stima*.
+Il modello di regressione di Kelley non solo ci permette di ottenere una stima del punteggio vero a partire dal punteggio osservato, ma ci fornisce anche una misura di precisione di tale stima: l'*errore standard della stima*.
 
-Se il test potesse essere somministrato ad un rispondente più volte
-sotto le identiche condizioni, sarebbe possibile ottenere in ciascuna
-somministrazione una stima del valore vero $\hat{T}$. A causa
-dell'errore della misurazione, il punteggio osservato non può che
-variare in ciascuna ipotetica somministrazioni del test e, di
-conseguenza, in ciascuna ipotetica somministrazione varierà anche la
-stima di $\hat{T}$. La deviazione standard di tali (ipotetiche) stime di
-$\hat{T}$ è chiamata _errore standard della stima_. L'errore standard
-della stima, $\sigma_{\hat{T}}$, si calcola con la formula seguente:
+Immaginiamo di poter somministrare il test ad un rispondente più volte, in condizioni identiche, e di ottenere in ogni somministrazione una stima del valore vero $\hat{T}$. A causa dell'errore di misurazione, il punteggio osservato varierà in ogni somministrazione del test, e quindi anche la stima di $\hat{T}$ varierà. La deviazione standard di queste stime ipotetiche di $\hat{T}$ è chiamata *errore standard della stima*, indicato con $\sigma_{\hat{T}}$.
+
+Calcolare l'errore standard della stima è importante poiché ci dà un'indicazione della precisione della stima del punteggio vero. Più piccolo è l'errore standard della stima, più precisa sarà la stima del punteggio vero. L'errore standard della stima si calcola con la formula seguente:
 
 $$
 \begin{equation}
 \sigma_{\hat{T}} = \sigma_X \sqrt{\rho_{XX^\prime} (1 -\rho_{XX^\prime})}.
-(\#eq:bistd-err-estimatenom)
+(\#eq:std-err-estimate)
 \end{equation}
 $$
 
 ::: {.proof}
-Per ricavare la (\#eq:std-err-estimate) si definisce $\varepsilon$ l'errore
+Per ricavare la \@ref(eq:std-err-estimate) si definisce $\varepsilon$ l'errore
 che si commette quando si stima il punteggio vero $\hat{T}$ con il
-punteggio osservato $T$ (si veda Lord e Novick, 1968):
+punteggio osservato $T$ [si veda @lord1968statistical]:
 
 $$
 \varepsilon = T - \hat{T}.
@@ -279,7 +228,9 @@ $$
 
 Si presti attenzione alla notazione: $E = X - T$ indica l'errore della misurazione, ovvero la differenza tra il punteggio osservato e il punteggio vero. Invece
 $\varepsilon = T - \hat{T}$ indica la differenza tra il punteggio vero e
-la stima del punteggio vero. Avendo che $\hat{T} = \bar{X} + \rho_{XX^\prime} (X - \bar{X})$, la varianza di $\varepsilon = T - \hat{T}$ si può scrivere come 
+la stima del punteggio vero. 
+
+Avendo che $\hat{T} = \bar{X} + \rho_{XX^\prime} (X - \bar{X})$, la varianza di $\varepsilon = T - \hat{T}$ si può scrivere come 
 
 $$
 \begin{equation}
@@ -391,6 +342,8 @@ $$
 $$
 :::
 
+\
+
 Per dati campionari, l'errore standard della stima si calcola nel modo
 seguente: 
 
@@ -403,8 +356,8 @@ attendibilità.
 
 ## Intervallo di confidenza per il punteggio vero
 
-L'errore standard della stima $\sigma_{\hat{T}}$ viene usato per
-calcolare l'intervallo di confidenza per il punteggio vero[^2]:
+
+Siamo ora finalmente nelle condizioni di potere calcolare l'intervallo di confidenza per il punteggio vero. Conoscendo l'errore standard della stima $\sigma_{\hat{T}}$,  l'intervallo di confidenza per il punteggio vero è dato da:
 
 $$
 \hat{T} \pm z  \sigma_{\hat{T}},
@@ -413,36 +366,20 @@ $$
 laddove $\hat{T}$ è la stima del punteggio vero e $z$ è il quantile della normale standardizzata al livello di probabilità desiderato. Se il campione è piccolo (minore di
 30) è opportuno usare $t$ anziché $z$.
 
-Si osservi che l'intervallo $\hat{T} \pm z  \sigma_{\hat{T}}$ è centrato
-sulla *stima puntuale del valore vero* e ha una ampiezza che dipende sia
-dal livello di copertura desiderato (da cui dipende il quantile
-$z_{\frac{\alpha}{2}}$), sia dal grado di precisione dello stimatore
-misurato dall'errore standard della stima,
-$\sigma_{\hat{T}} = \sigma_X \sqrt{\rho_{XX^\prime} (1 -\rho_{XX^\prime})}$.
-L'errore standard della stima diventa tanto più grande quanto minore è
-l'attendibilità $\rho_{XX^\prime}$ del test.
+### Interpretazione
 
-L'intervallo di confidenza ricorda allo psicologo quanto sia imprecisa
-la misura che utilizza: tanto più grande è l'intervallo di confidenza,
-tanto maggiore è l'incertezza dell'interpretazione. L'intervallo di
-confidenza è lo strumento che consente allo psicologo di giungere ad una
-conclusione sapendo qual è la probabilità che tale conclusione sia
-sbagliata. Se la decisione è basata su un intervallo di confidenza al
-95%, la probabilità di sbagliare è 0.05. Se lo psicologo vuole che la
-probabilità d'errore sia più piccola, può costruire un intervallo di
-confidenza utilizzando un valore $\alpha$ minore. La diminuzione di
-$\alpha$, però, produce un aumento dell'ampiezza dell'intervallo di
-confidenza. Valori accettabili per $\alpha$ sono 0.1 e 0.05.
+Notiamo che l'intervallo $\hat{T} \pm z \sigma_{\hat{T}}$ è centrato sulla
+stima puntuale del valore vero e la sua ampiezza dipende sia dal livello
+di confidenza desiderato (rappresentato dal quantile $z_{\frac{\alpha}{2}}$),
+sia dal grado di precisione dello stimatore, misurato dall'errore standard
+della stima, $\sigma_{\hat{T}} = \sigma_X \sqrt{\rho_{XX^\prime} (1 -\rho_{XX^\prime})}$.
+È importante notare che l'errore standard della stima diventa sempre più grande
+man mano che diminuisce l'attendibilità $\rho_{XX^\prime}$ del test.
+
+L'intervallo di confidenza indica quanto l'imprecisione della misura influisce sull'interpretazione dei dati. Più l'intervallo di confidenza è ampio, maggiore è l'incertezza nella valutazione dei risultati. Tuttavia, l'intervallo di confidenza può essere utilizzato per fare conclusioni con una certa probabilità di essere corrette. Ad esempio, se si utilizza un intervallo di confidenza del 95%, c'è solo una probabilità del 5% di commettere un errore nella valutazione dei dati. Se lo psicologo desidera ridurre ulteriormente la probabilità di errore, può utilizzare un valore di $\alpha$ più piccolo. Tuttavia, ciò comporta un aumento dell'ampiezza dell'intervallo di confidenza. In generale, i valori di $\alpha$ accettabili sono 0.1 e 0.05.
 
 :::{.exercise}
-Charter (1996) discute l'effetto della variazione dell'attendibilità del
-test sull'ampiezza dell'intervallo di confidenza per il punteggio vero.
-Nell'esempio considera i punteggi del QI ($\mu$ = 100, $\sigma$ = 15)
-immaginando di variare il coefficiente di attendibilità del test tramite
-il quale il QI viene misurato. I valori esaminati sono 0.55, 0.65, 0.75,
-0.85 e 0.95. Consideriamo, ad esempio, il caso di un punteggio osservato
-pari a QI = 120 e poniamo che $\rho_{xx^\prime}$ = 0.65. In tali circostanze,
-la stima del punteggio vero è pari a 
+@charter1996revisiting ha esaminato l'effetto della variazione dell'attendibilità del test sull'ampiezza dell'intervallo di confidenza per il punteggio vero. Utilizzando come esempio i punteggi di QI ($\mu$ = 100, $\sigma$ = 15), Charter ha immaginato di variare il coefficiente di attendibilità del test utilizzato per la misurazione del QI. I valori presi in considerazione sono 0.55, 0.65, 0.75, 0.85 e 0.95. Ad esempio, supponiamo di avere un punteggio osservato pari a QI = 120 e un coefficiente di attendibilità del test $\rho_{xx^\prime}$ pari a 0.65. In tali circostanze, la stima del punteggio vero è pari a
 
 $$
 \begin{equation}
@@ -472,7 +409,7 @@ $$
 113 \pm 1.96 \cdot 7.15 = [98.98, 127.02].
 $$ 
 
-L'errore standard della stima si può calcolare con la funzione `SE.Est()` del pacchetto `psychometric`.
+Si noti che si può calcolare l'errore standard della stima con la funzione `SE.Est()` del pacchetto `psychometric`.
 
 ```{r}
 suppressWarnings(suppressMessages(library("psychometric")))
@@ -480,7 +417,7 @@ suppressWarnings(suppressMessages(library("psychometric")))
 SE.Est(15, .65)
 ```
 
-La funzione `CI.tscore()` restituisce sia la stima del punteggio vero sia l'intervallo di fiducia al livello desiderato di significatività. 
+Inoltre, la funzione `CI.tscore()` restituisce sia la stima del punteggio vero sia l'intervallo di fiducia al livello desiderato di significatività. 
 
 ```{r}
 CI.tscore(120, 100, 15, 0.65, level = 0.95)
@@ -501,18 +438,7 @@ CI.tscore(120, 100, 15, 0.65, level = 0.95)
 
 ## Cut-off
 
-Uno degli usi possibili degli intervalli di confidenza per il punteggio
-vero è quello di confrontare i limiti dell'intervallo di confidenza con
-un cut-off. Sono possibili tre alternative: il limite inferiore
-dell'intervallo di confidenza è maggiore del cut-off, il limite
-superiore dell'intervallo è minore del cut-off, oppure il valore del
-cut-off è contenuto all'interno dell'intervallo. Nel primo caso, lo
-psicologo afferma, con un grado di certezza $1 -\alpha$, che il valore
-vero del rispondente è superiore al cut-off. Nel secondo caso, lo
-psicologo afferma, con un grado di certezza $1 -\alpha$, che il valore
-vero del rispondente è inferiore al cut-off. Nel terzo caso lo psicologo
-non può concludere né che il valore vero sia inferiore né che sia
-superiore al cut-off.
+Gli intervalli di confidenza per il punteggio vero possono essere utilizzati per confrontare i limiti dell'intervallo con un cut-off. Ci sono tre possibili esiti: il limite inferiore dell'intervallo di confidenza è maggiore del cut-off, il limite superiore dell'intervallo è minore del cut-off, o il valore del cut-off è compreso all'interno dell'intervallo. Nel primo caso, lo psicologo può affermare, con un grado di certezza $1-\alpha$, che il valore vero del rispondente è superiore al cut-off. Nel secondo caso, lo psicologo può affermare, con un grado di certezza $1-\alpha$, che il valore vero del rispondente è inferiore al cut-off. Nel terzo caso, lo psicologo non può concludere né che il valore vero sia inferiore né che sia superiore al cut-off, con un certo grado di incertezza.
 
 :::{.exercise}
 Si considerino i punteggi del QI, per cui $\bar{X}$ = 100 e $s_X$ = 15.
@@ -542,7 +468,7 @@ del cut-off, lo psicologo conclude che il punteggio vero del rispondente
 è maggiore di 120. Quindi, raccomanda che il rispondente sia ammesso al
 corso avanzato.
 
-Continuiamo con l'esempio precedente, ma supponiamo che l'attendibilità
+Continuando con l'esempio precedente, supponiamo che l'attendibilità
 del test abbia un valore simile a quello che solitamente si ottiene
 empiricamente, ovvero 0.80.
 
@@ -573,11 +499,10 @@ punteggio vero. Charter e Feldt (1991) descrivono altri quattro approcci
 possibili, oltre a quello discusso qui, per costruire gli intervalli di
 confidenza per il punteggio vero. L'approccio che abbiamo descritto è
 accettato da tutti gli autori; le procedure alternative descritte da
-Charter e Feldt (1991), non sono invece accettate come valide da tutti
+@charter2001confidence, non sono invece accettate come valide da tutti
 gli autori.
 
-La più comune delle procedure alternative descritte da Charter e Feldt
-(1991), che rappresenta l'approccio tradizionale a questo problema,
+La più comune delle procedure alternative descritte da @charter2001confidence, che rappresenta l'approccio tradizionale a questo problema,
 centra l'intervallo di confidenza sul punteggio osservato di un
 rispondente e utilizza l'errore standard della misurazione per
 calcolare i limiti dell'intervallo di confidenza:
@@ -586,4 +511,14 @@ $$
 X_j \pm z_{\frac{\alpha}{2}} \sigma_E,
 $$ 
 
-dove $\sigma_E = \sigma_X \sqrt{1 -\rho_{XX^\prime}}$. Come abbiamo visto in precedenza, però, tale procedura non è corretta e non dovrebbe essere usata (es., Dudek, 1979).
+dove $\sigma_E = \sigma_X \sqrt{1 -\rho_{XX^\prime}}$. Come abbiamo visto in precedenza, però, tale procedura non è corretta e non dovrebbe essere usata [es., @dudek1979continuing].
+
+## Conclusioni
+
+### Vantaggi della CTT
+
+Ci sono numerosi vantaggi nel lavorare nel framework della teoria classica dei test (CTT) durante lo sviluppo di test. In primo luogo, i concetti della CTT sono ampiamente insegnati e compresi. In secondo luogo, i concetti della CTT sono relativamente facili da imparare, usare e spiegare. Le utili statistiche descrittive (ad esempio, la media, la deviazione standard, l'intervallo, ecc.) e le statistiche di analisi degli item (in particolare la facilità e la discriminazione degli item) possono essere calcolate  facilmente. In terzo luogo, il modello CTT soddisfa molte esigenze di misurazione, in particolare per lo sviluppo di misure di competenza e di collocazione che possono aiutare nelle decisioni di ammissione, nei confronti tra programmi e nelle decisioni di collocazione in vari contesti lavorativi. In quarto luogo, giusto o sbagliato, il modello CTT consente e permette l'interpretazione dei punteggi degli esaminati del 0% e del 100% e delle stime di facilità degli item di 0.0 e di 1.0 - risultati che si verificano nel mondo reale. Tali punteggi degli esaminati (detti anche stime di abilità personale) e stime di facilità degli item sono generalmente considerati non adatti nei modelli di teoria di risposta agli item (IRT).
+
+### Svantaggi della CTT
+
+Tuttavia, lavorare all'interno del quadro CTT presenta anche alcuni svantaggi. In primo luogo, i test CTT tendono ad essere lunghi e necessariamente composti da elementi omogenei. In secondo luogo, gli esaminandi che completano test sviluppati attraverso i metodi CTT potrebbero dover affrontare numerosi elementi che sono troppo facili o troppo difficili per loro come individui. In terzo luogo, i risultati sui test CTT si applicano solo al campione preso in considerazione o a campioni molto simili. In quarto luogo, i risultati CTT si applicano solo alla selezione corrente di item. In quinto luogo, a causa della sua dipendenza dalla distribuzione normale, i CTT sono utili solo per lo sviluppo di test normativi. In sesto luogo, a causa della natura correlativa della discriminazione degli elementi, dell'affidabilità e di alcune stime di validità, gli elementi e i test CTT finiscono spesso per essere sensibili alle differenze tra gli estremi della scala. In settimo luogo, sebbene in realtà gli errori di misurazione su un test varino lungo tutto il range dei possibili punteggi in un test CTT (vale a dire, l'errore standard di misurazione è maggiore o vicino alla media e diventa sempre più piccolo man mano che i punteggi si allontanano dalla media in entrambe le direzioni), l'errore standard di misurazione stimato nei CTT è una media su tutto questo intervallo.

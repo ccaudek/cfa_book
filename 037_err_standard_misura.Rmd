@@ -45,6 +45,8 @@ informazioni diverse sul grado di precisione del test:
     nei termini del quadrato del punteggio osservato;
 -   l'attendibilità corrisponde ad un rapporto tra varianze e dunque è
     un numero puro (privo di unità di misura).
+    
+
 
 **Esempio 1.** Supponiamo che un test di intelligenza produca un punteggio medio pari a
 100 con una deviazione standard di 15. Supponiamo inoltre che il test
@@ -323,3 +325,11 @@ così. In realtà, come abbiamo detto sopra, l'errore standard della
 misurazione è la deviazione standard, calcolata rispetto al valore
 vero, di ipotetiche misurazioni ripetute dello stesso test. Si può
 ribadire questo concetto nel modo seguente: "In spite of @dudek1979continuing's reminder that the SEM should not be used to construct confidence intervals, many test manuals, computer-scoring programs, and texts in psychology and education continue to do so. Because authors of many textbooks and manuals make these errors, it is understandable that those who learned from and look to these sources for guidance also make these errors. In summary, the SEM should not be used to construct confidence intervals for test scores" (p. 1141). Sembra piuttosto chiaro.
+
+## Conclusioni
+
+Le stime di affidabilità sono uno strumento utile nell'ambito della teoria classica dei test (CTT) per valutare la coerenza dei test. Tuttavia, quando si prendono decisioni importanti sul superamento o meno di un esame, ad esempio, è più utile fare ricorso all'errore standard di misurazione (SEM) per valutare la coerenza di una serie di punteggi del test. Il SEM fornisce una stima quantitativa del grado di variazione dei punteggi del test dovuto ad errori di misurazione all'interno di un insieme di punteggi.
+
+Il SEM è una stima dell'errore medio nei punteggi di tutti gli esaminati che hanno sostenuto il test. Utilizzando il SEM, possiamo calcolare fino a che punto i punteggi degli esaminati possono variare solo per caso con una certa probabilità. In particolare, possiamo prevedere che l'errore può far variare i punteggi degli esaminati all'interno di una banda di più o meno un SEM con una precisione del 68% (sulla base delle percentuali previste sotto la distribuzione normale dei punteggi dei test). Ad esempio, se il punteggio vero di un candidato è 65 e il SEM è di 2, possiamo stimare che i suoi punteggi potrebbero variare casualmente tra 63 e 67 punti (65 – 2 = 63; 65 + 2 = 67) con una precisione del 68% se dovesse sostenere il test più volte. Se vogliamo essere ancora più sicuri nella previsione dei suoi punteggi in somministrazioni ripetute, possiamo utilizzare due SEM (2 + 2 = 4) e affermare che i suoi punteggi potrebbero variare solo casualmente tra 61 e 69 punti (65 – 4 = 61; 65 + 4 = 69) con una precisione del 95%.
+
+Il SEM indica quanto i punteggi di un test possono fluttuare casualmente se lo stesso test viene ripetuto più volte dagli stessi esaminati. Un SEM di 2 punti indica che ci si può aspettare fluttuazioni relativamente basse nei punteggi, mentre un SEM di 15 punti indica fluttuazioni maggiori. In generale, più il SEM è piccolo, più stretta sarà la banda di fluttuazioni casuali, ovvero la differenza tra i punteggi veri degli esaminati e quelli osservati. Questo significa che, se il SEM è piccolo, i punteggi rappresenteranno in modo più coerente le vere abilità degli esaminati. Alcuni psicologi preferiscono utilizzare il SEM rispetto alle stime di affidabilità del test, in quanto il SEM rappresenta una banda di punteggio più facilmente interpretabile rispetto alle stime di affidabilità, che possono essere più astratte o basate sulla stabilità temporale del test.

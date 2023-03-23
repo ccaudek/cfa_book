@@ -14,7 +14,6 @@ eq:err-stnd-mis
 eq:true-score
 eq:hat-t-1
 exr:unlabeled-div-7
-eq:bistd-err-estimatenom
 eq:std-err-estimate
 exr:unlabeled-div-9
 exr:unlabeled-div-10
@@ -218,12 +217,17 @@ interpretazione
 simulazione-1
 dimostrazione
 intervallo-di-confidenza-per-il-punteggio-vero-e-sigma_e
+conclusioni
 la-stima-del-punteggio-vero
 il-paradosso-di-kelley
 lerrore-standard-della-stima
 intervallo-di-confidenza-per-il-punteggio-vero
+interpretazione-1
 cut-off
 procedure-alternative
+conclusioni-1
+vantaggi-della-ctt
+svantaggi-della-ctt
 esercizi-sulla-ctt
 attendibilità
 validità
@@ -362,7 +366,7 @@ orthogonal-quartimin
 oblique-quartimin
 orthogonal-geomin
 oblique-geomin
-interpretazione-1
+interpretazione-2
 come-valutare-e-rifinire-la-soluzione-fattoriale
 valutazione-della-matrice-pattern
 item-con-basse-saturazioni-su-tutti-i-fattori
@@ -409,7 +413,7 @@ tli
 misure-di-adeguamento-assoluto
 rmsea
 rmrs
-interpretazione-2
+interpretazione-3
 un-esempio-concreto-5
 ch-model-revision
 un-numero-di-fattori-troppo-piccolo
@@ -431,7 +435,7 @@ assenza-di-crescita
 crescita-lineare
 crescita-quadratica
 parallel-process-model
-interpretazione-3
+interpretazione-4
 dati-non-gaussiani-e-categoriali
 dati-non-gaussiani
 dati-categoriali
