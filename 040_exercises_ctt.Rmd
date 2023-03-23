@@ -142,4 +142,85 @@ summary(mod_old)
 summary(mod_new)
 ```
 
+## Analisi degli item
+
+### Difficoltà degli item
+
+L'analisi degli item svolge un ruolo importante nello sviluppo e nella revisione dei test psicometrici. L'analisi degli item può essere eseguita utilizzando le funzioni di base fornite da R. Torniamo al set di dati SAPA per dimostrare come eseguire l'analisi degli item per item a risposta dicotomica.
+
+Una statistica comune da calcolare durante l'analisi degli item è la proporzione di esaminandi che rispondono correttamente ad ogni item. Questa è nota come *difficoltà dell'item*, *p*. Questo valore non va confuso con la difficoltà dell'item nella teoria della risposta agli item o con il valore-$p$ dei test di ipotesi frequentisti. L'item con la maggiore difficoltà, ironicamente, è l'item più facile per gli esaminandi, motivo per cui la difficoltà dell'item è talvolta indicata come facilità dell'item.
+
+Possiamo utilizzare la funzione `colMeans` per calcolare la difficoltà degli item. Poiché abbiamo dei partecipanti che hanno risposte mancanti su alcuni item, dobbiamo passare l'argomento `na.rm = TRUE` per ignorare i dati mancanti. In caso contrario, la funzione `colMeans` restituirebbe `NA` per gli item che hanno almeno un valore mancante. Per rendere più leggibili i valori di difficoltà degli item, arrotondiamo a tre decimali utilizzando la funzione `round`.
+
+```{r}
+item_diff <- colMeans(SAPA, na.rm = TRUE)
+round(item_diff, 3)
+```
+L'output mostra che gli item `reason.16` e `reason.17` ottengono i livelli di difficoltà  più alti, mentre `rotate.8` ha il livello di difficoltà più basso. Circa il 70% degli studenti è stato in grado di rispondere correttamente a `reason.16` e `reason.17`, mentre solo il 19% ha risposto correttamente a `rotate.8`.
+
+### Potere discriminante degli item
+
+Un'altra statistica ampiamente utilizzata nell'analisi degli item è il potere discriminante degli item, che si riferisce alla capacità dell'item nel distinguere gli esaminandi con una alta abilità da quelli con una bassa abilità. Sebbene esistano molti modi per calcolare la discriminazione degli item, la forma più comune è la correlazione punto-biserial tra le risposte degli esaminandi all'item e il loro punteggio totale nel test. Valori grandi e positivi indicano una forte relazione tra il rispondere correttamente all'item e avere un punteggio alto nel test, mentre valori vicini allo zero indicano nessuna relazione e valori negativi indicano che il rispondere correttamente all'item è associato a un punteggio complessivo del test più basso. Valori vicini allo zero o negativi suggeriscono che l'item potrebbe non funzionare correttamente. Alcune delle ragioni per ottenere una discriminazione degli item bassa o negativa potrebbero essere l'utilizzo di una chiave di risposta errata per l'item o l'assenza di risposte corrette. Indipendentemente dalla causa, gli item con correlazioni punto-biserial basse o negative devono essere modificati, se il test/strumento è in fase di revisione, o rimossi dal test e dal punteggio.
+
+Per calcolare il potere discriminante dell'item per i dati SAPA, prima calcoliamo il punteggio totale del test utilizzando la funzione `rowSums` insieme all'opzione `na.rm = TRUE` e lo salviamo come `total_score`. Successivamente, correlaziamo gli item in SAPA con il punteggio totale del test utilizzando la funzione `cor`. Specificamente, usiamo l'argomento `use = "pairwise.complete.obs"` nella funzione `cor` a causa della presenza di risposte mancanti. Infine, salviamo la matrice di correlazione come `item_discr` e la stampiamo.
+
+```{r}
+total_score <- rowSums(SAPA, na.rm = TRUE)
+item_discr <- cor(SAPA, total_score, use = "pairwise.complete.obs")
+round(item_discr, 2)
+```
+
+I risultati mostrano che tutti gli item del test SAPA sono moderatamente e positivamente correlati con il punteggio totale del test. Questo indica che tutti gli item funzionano correttamente e non fornisce informazioni salienti su quali item rimuovere o modificare.
+
+Un altro modo per calcolare il potere discriminante degli item consiste nel dividere i candidati in due gruppi (ad esempio, 1 = alto rendimento e 0 = basso rendimento) in base ai loro punteggi totali nel test e correlare questa variabile di raggruppamento con le risposte agli item. Questo è noto come *indice di discriminazione degli item*. Un'opzione per creare gruppi di alto e basso rendimento è selezionare il 27% più alto e il 27% più basso dei candidati in base ai loro punteggi totali nel test. Va notato che la decisione di utilizzare il 27% è in qualche modo arbitraria. Potremmo facilmente utilizzare un altro valore (ad esempio, il 10% o il 20%) per definire i gruppi di alto e basso rendimento. Dopo aver definito il punto di cut-off per i gruppi, calcoliamo la proporzione di candidati che hanno risposto correttamente all'elemento nei gruppi di alto e basso rendimento.
+
+Nell'esempio seguente, calcoliamo l'indice di discriminazione dell'elemento `reason.4` nel set di dati SAPA utilizzando la funzione `idi` del pacchetto `hemp`. Per specificare i gruppi di alto e basso rendimento, utilizziamo il valore `perc_cut = .27` nella funzione `idi`.
+
+```{r}
+idi(SAPA, SAPA$reason.4, perc_cut = .27)
+```
+
+Abbiamo scoperto che l'81% dei candidati nel gruppo di alto rendimento ha risposto correttamente all'item `reason.4`, mentre solo il 19% dei candidati nel gruppo di basso rendimento ha risposto correttamente. Questo suggerisce che l'item era più facile per i candidati di alto rendimento e più difficile per quelli di basso rendimento. Pertanto, possiamo dire che questo particolare item risulta utile per differenziare i due gruppi, ma non necessariamente all'interno di ciascun gruppo.
+
+
+### Indice di affidabilità dell'item
+
+Oltre agli indici di difficoltà e discriminazione degli elementi, un'altra statistica utile per l'analisi degli elementi è l'indice di affidabilità dell'elemento. L'indice di affidabilità dell'elemento (IRI) è definito come:
+
+$$
+IRI = S_i \cdot r_{i,tt},
+$$
+
+dove $S_i$ è la deviazione standard dell'item $i$ e $r_{i,tt}$ è la correlazione tra l'item $i$ e il punteggio totale del test. L'IRI può teoricamente variare tra -0.5 e 0.5, con valori grandi e positivi indicativi di alta affidabilità. 
+
+Di seguito calcoliamo l'IRI per tutti gli item nel set di dati SAPA. Possiamo farlo utilizzando la funzione `iri` in `hemp`.
+
+```{r}
+iri(SAPA)
+```
+
+I risultati restituiti dalla funzione `iri` mostrano che l'IRI varia da circa 0.19 a 0.29 per il set di dati SAPA. Tutti questi sono valori ragionevoli per l'IRI (ovvero nessuno è negativo o vicino allo zero).
+
+### Indice di validità dell'item
+
+Quando invece del punteggio totale del test viene utilizzato un criterio esterno, questo indice è noto come *indice di validità dell'item* (IVI). L'IVI può variare anche tra -0.5 e 0.5, con valori elevati (in valore assoluto) che indicano una validità maggiore. Valori negativi elevati indicano una maggiore validità quando ci si aspetta che gli elementi siano correlati in modo negativo con il criterio.
+
+Nell'esempio seguente, utilizziamo la funzione `ivi` in `hemp` con "reason.17" come criterio esterno e "reason.4" come elemento di interesse e troviamo che l'IVI è 0.19.
+
+```{r}
+ivi(item = SAPA$reason.4, crit = SAPA$reason.17)
+```
+
+### Distrattori
+
+Un altro aspetto importante degli elementi che deve essere analizzato sono le opzioni di risposta. Nel contesto dei test a scelta multipla, le opzioni di risposta alternative (cioè sbagliate) vengono definite "distrattori". I distrattori svolgono un ruolo importante in un elemento a scelta multipla. Per garantire elementi a scelta multipla di alta qualità, è cruciale includere distrattori plausibili e ben funzionanti che siano più probabili di attirare i candidati con conoscenze parziali. I distrattori non plausibili potrebbero dover essere riscritti o sostituiti con un distrattore migliore. La qualità dei distrattori viene tipicamente valutata attraverso l'analisi dei distrattori. L'analisi dei distrattori viene spesso condotta osservando la proporzione di candidati che scelgono un distrattore particolare.
+
+Per illustrare l'analisi dei distrattori, utilizziamo gli item del data set `multiplechoice` in `hemp`. Si tratta di un ipotetico test a scelta multipla composto da 27 item somministrati a 496 candidati. Le quattro opzioni di risposta sono codificate come 1, 2, 3 e 4 nel data set. Utilizziamo la funzione `distract` in `hemp` per calcolare la proporzione di candidati che selezionano ciascun distrattore. 
+
+```{r}
+distractors <- distract(multiplechoice)
+head(distractors)
+```
+
+Nella tabella sopra, vediamo che tutti gli item avevano distrattori selezionati circa il 5% delle volte o meno. Questi distrattori potrebbero essere candidati per una revisione in quanto sono stati approvati ad un livello così basso da suggerire che la maggior parte degli esaminandi non li ha considerati come opzioni plausibili. Per l'item 1, i distrattori funzionavano tutti più o meno allo stesso modo (ovvero circa il 5% delle volte ogniuno è stato approvato), suggerendo che funzionavano tutti bene rispetto l'uno all'altro, ma che l'item era troppo facile (la risposta corretta era l'opzione 4, selezionata dall'84.5% degli esaminandi). Al contrario, l'item 5 era un item più difficile, con la risposta corretta che ancora una volta era l'opzione 4. Le opzioni 1 e 2 erano molto probabilmente fraintendimenti, mentre l'opzione 3 potrebbe essere rivista o potenzialmente eliminata da questo item a causa del basso tasso di approvazione (solo il 4.2%). Dato l'approvazione molto alta dell'opzione 1 (35.1%), è molto probabile che anche questa opzione fosse corretta. Per ottenere una visione più completa del funzionamento dell'item, sarebbe consigliabile calcolare l'indice di discriminazione specifico per quell'item. Questo ci permetterebbe di ottenere ulteriori informazioni sulla capacità dell'item di distinguere tra candidati di alto e basso livello.
 
