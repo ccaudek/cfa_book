@@ -4,23 +4,7 @@
 source("_common.R")
 ```
 
-In questo Capitolo verranno presentate le basi teoriche dell'analisi
-fattoriale, ovvero di quel modello statistico che offre la possibilità
-di ricostruire le correlazioni osservate tra le variabili manifeste
-considerando le saturazioni delle variabili in uno o più fattori
-generali. Nell'analisi fattoriale $p$ variabili manifeste (item) vengono
-concepite come condizionalmente indipendenti date $m$ variabili latenti
-chiamate *fattori*. L'analisi fattoriale si pone lo scopo di
-interpretare i fattori come dei costrutti teorici inosservabili.
-Infatti, il desiderio di spiegare mediante il concetto di intelligenza
-le correlazioni osservate tra le prestazioni di un gruppo di individui
-in una serie di compiti è stato la forza trainante nello sviluppo
-originale dell'analisi fattoriale. L'analisi fattoriale consente di
-identificare i costrutti di cui gli item sono espressione e di stabilire
-in che misura ciascun item rappresenta il costrutto. Il modello
-unifattoriale ipotizza $m = 1$; il modello multifattoriale ipotizza
-$m > 1$. Lo scopo di questo capitolo è quello di introdurre il modello
-fattoriale che assume l'esistenza di un unico fattore comune latente.
+In questo capitolo saranno presentate le nozioni fondamentali dell'analisi fattoriale, un modello statistico che consente di spiegare le correlazioni tra variabili osservate mediante la loro saturazione in uno o più fattori generali. In questo modello, le $p$ variabili osservate (item) sono considerate condizionalmente indipendenti rispetto a $m$ variabili latenti chiamate fattori. L'obiettivo dell'analisi fattoriale è di interpretare questi fattori come costrutti teorici inosservabili. Ad esempio, l'analisi fattoriale può essere utilizzata per spiegare le correlazioni tra le prestazioni di un gruppo di individui in una serie di compiti mediante il concetto di intelligenza. In questo modo, l'analisi fattoriale aiuta a identificare i costrutti cui gli item si riferiscono e a stabilire in che misura ciascun item rappresenta il costrutto. Il modello può essere unifattoriale ($m = 1$) o multifattoriale ($m > 1$), e in questo capitolo si introdurrà il modello unifattoriale che assume l'esistenza di un unico fattore comune latente.
 
 ## Modello monofattoriale
 
@@ -32,95 +16,45 @@ y_i = \mu_i + \lambda_{i} \xi +  1 \cdot \varepsilon_i \qquad i=1, \dots, p,
 (\#eq:mod-unifattoriale)
 \end{equation}
 
- dove $\xi$ rappresenta il fattore comune a tutte le $y_i$, $\varepsilon_i$ sono i fattori
-specifici o unici di ogni variabile osservata e $\lambda_i$ sono le
+dove $\xi$ rappresenta il fattore comune a tutte le $y_i$, $\varepsilon_i$ sono i fattori specifici o unici di ogni variabile osservata e $\lambda_i$ sono le
 saturazioni (o pesi) fattoriali le quali stabiliscono il peso del
 fattore latente su ciascuna variabile osservata.
 
-Si noti che il modello di analisi fattoriale è solo apparentemente
-simile al modello di regressione. Infatti, sia il fattore comune $\xi$
-sia i fattori specifici $\varepsilon_i$ sono inosservabili: tutto ciò
-che giace a destra dell'uguaglianza è dunque incognito. L'analisi di
-regressione e l'analisi fattoriale si differenziano non solo per tale
-aspetto, ma anche per il fatto di avere obiettivi diversi. L'analisi di
-regressione ha l'obiettivo di individuare le variabili esplicative,
-direttamente osservabili, che sono in grado di spiegare la maggior parte
-della *varianza* della variabile dipendente. Il problema dell'analisi
-unifattoriale, invece, è quello di identificare la variabile esplicativa
-inosservabile che è in grado di spiegare la maggior parte della
-*covarianza* tra le variabili osservate.
+Il modello di analisi fattoriale e il modello di regressione possono sembrare simili, ma presentano alcune differenze importanti. In primo luogo, sia il fattore comune $\xi$ sia i fattori specifici $\varepsilon_i$ sono inosservabili, il che rende tutto ciò che si trova a destra dell'uguaglianza incognito. In secondo luogo, l'analisi di regressione e l'analisi fattoriale hanno obiettivi diversi. L'analisi di regressione mira a individuare le variabili esplicative, osservabili direttamente, che sono in grado di spiegare la maggior parte della varianza della variabile dipendente. Al contrario, il problema dell'analisi unifattoriale consiste nell'identificare la variabile esplicativa inosservabile che è in grado di spiegare la maggior parte della covarianza tra le variabili osservate.
 
-Nel caso di cinque variabili osservate e un solo fattore comune, ad
-esempio, il modellofattoriale \@ref(eq:mod-unifattoriale)  può essere rappresentato graficamente nel modo seguente.
-
-Si suole assumere per comodità che $\mu=0$, il che corrisponde a
-considerare le variabili $y_i$ come ottenute dagli scarti dalle medie
-$\mu_i$, per $i = 1, \dots, p$: 
+Solitamente, per comodità, si assume che la media delle variabili osservate $y_i$ sia zero, ovvero $\mu_i=0$. Ciò equivale a considerare gli scarti delle variabili rispetto alle rispettive medie. Il modello unifattoriale assume che le variabili osservate siano il risultato della combinazione lineare di un fattore comune $\xi$ e dei fattori specifici $\varepsilon_i$, ovvero:
 
 \begin{equation}
-y_i -\mu_i = \lambda_i \xi + 1 \cdot \varepsilon_i.
+y_i -\mu_i = \lambda_i \xi + 1 \cdot \varepsilon_i,
 (\#eq:mod-monofattoriale)
 \end{equation}
 
-Si assume che il fattore comune abbia media zero, $\mathbb{E}(\xi)=0$, e varianza unitaria,
-$\mathbb{V}(\xi)=1$, i fattori specifici abbiano media zero, $\mathbb{E}(\varepsilon_j)=0$, varianza $\mathbb{V}(\varepsilon_i)=\psi_{i}$ e siano incorrelati tra loro, $\mathbb{E}(\varepsilon_i \varepsilon_k)=0$, e con il fattore comune, $\mathbb{E}(\varepsilon_i \xi)=0$. In questo modello, poiché i fattori specifici sono tra loro incorrelati, l'interdipendenza tra le variabili è completamente spiegata dal fattore comune.
+dove $\lambda_i$ è il carico o il peso della variabile $i$-esima sul fattore comune e $\varepsilon_i$ rappresenta il fattore specifico della variabile $i$-esima. Si assume che il fattore comune abbia media zero e varianza unitaria, mentre i fattori specifici abbiano media zero, varianza $\psi_{i}$ e siano incorrelati tra loro e con il fattore comune. Nel modello unifattoriale, l'interdipendenza tra le variabili è completamente spiegata dal fattore comune.
 
-Dalle ipotesi precedenti è possibile ricavare:
-
--   la covarianza tra $y_i$ e il fattore comune,
--   la varianza della $i$-esima variabile osservabile $y_i$,
--   la covarianza tra due variabili $y_i$ e $y_k$.
-
-Questo sarà l'obiettivo della discussione presente in questo capitolo.
+Le ipotesi precedenti consentono di ricavare la covarianza tra la variabile osservata $y_i$ e il fattore comune, la varianza della variabile osservata $y_i$ e la covarianza tra due variabili osservate $y_i$ e $y_k$. L'obiettivo della discussione in questo capitolo è appunto quello di analizzare tali grandezze statistiche.
 
 ## Correlazione parziale
 
-Prima di discutere il modello statistico dell'analisi fattoriale,
-chiariamo il concetto di correlazione parziale. La nascita dell'analisi
-fattoriale viene di solito attribuita a Charles Spearman. Nel 1904,
-Sperman pubblicò un articolo dal titolo "General Intelligence,
-objectively determined and measured" dove propose la Teoria dei Due
-Fattori. Nel suo articolo del 1904, Spearman dimostrò come, mediante il
-metodo dell'annullamento della tetrade (*tetrad differences*), sia
-possibile identificare un fattore inosservabile a partire da una matrice
-di correlazioni. L'annullamento della tetrade rappresenta
-un'applicazione della teoria della correlazione parziale. Il problema è
-quello di stabilire se, controllando un insieme di variabili
-inosservabili $\xi_j$, dette fattori, le correlazioni tra le variabili
-osservabili $Y_i$, al netto degli effetti lineari delle $\xi_j$,
-diventino statisticamente nulle.
+Prima di entrare nel dettaglio del modello statistico dell'analisi fattoriale, è importante chiarire il concetto di correlazione parziale. Si attribuisce spesso a Charles Spearman la nascita dell'analisi fattoriale. Nel 1904, Spearman pubblicò un articolo intitolato "General Intelligence, Objectively Determined and Measured" in cui propose la Teoria dei Due Fattori. In questo articolo, dimostrò come fosse possibile identificare un fattore inosservabile a partire da una matrice di correlazioni, utilizzando il metodo dell'annullamento della tetrade (tetrad differences). L'annullamento della tetrade è un'applicazione della teoria della correlazione parziale, che mira a stabilire se, controllando un insieme di variabili inosservabili chiamate fattori $\xi_j$, le correlazioni tra le variabili osservabili $Y_i$, al netto degli effetti lineari delle $\xi_j$, diventino statisticamente nulle.
 
-Consideriamo un esempio nel quale sono presenti solo tre variabili:
-$Y_1$, $Y_2$ e $F$. In generale, la correlazione $r_{1,2}$ tra due
-variabili $Y_1$ e $Y_2$ può risultare dalla loro associazione con una
-terza variabile $F$. Per calcolare la correlazione parziale tra $Y_1$ e
-$Y_2$ al netto dell'effetto lineare di $F$ è necessario trovare le
-componenti di $Y_1$ e di $Y_2$ che sono linearmente indipendenti da $F$.
+Possiamo considerare un esempio con tre variabili: $Y_1$, $Y_2$ e $F$. La correlazione tra $Y_1$ e $Y_2$, $r_{1,2}$, può essere influenzata dalla presenza di $F$. Per calcolare la correlazione parziale tra $Y_1$ e $Y_2$ al netto dell'effetto lineare di $F$, dobbiamo trovare le componenti di $Y_1$ e $Y_2$ che sono linearmente indipendenti da $F$.
 
-Vediamo come si può ottenere questo risultato. La componente di $Y_1$
-linearmente indipendente da $F$ è data dai residui $E_1$ del modello
+Per fare ciò, dobbiamo trovare la componente di $Y_1$ che è ortogonale a $F$. Possiamo calcolare i residui $E_1$ del modello:
 
 $$
 Y_1 = b_{01} + b_{11}F + E_1.
 $$
 
-La componente di $Y_2$ linearmente indipendente da $F$ è data dai residui $E_2$ del modello
+La componente di $Y_1$ linearmente indipendente da $F$ è quindi data dai residui $E_1$. Possiamo eseguire un'operazione analoga per $Y_2$ per trovare la sua componente ortogonale a $F$. Calcolando la correlazione tra le due componenti così ottenute si ottiene la correlazione parziale tra $Y_1$ e $Y_2$ al netto dell'effetto lineare di $F$.
 
-$$
-Y_2 = b_{02} + b_{12}F + E_2.
-$$
-
-La correlazione parziale $r_{1,2 \mid F}$ è la correlazione di Pearson tra $E_1$ e $E_2$, ovvero la correlazione tra le componenti di $Y_1$ e $Y_2$ linearmente
-indipendenti da $F$.
-
-La correlazione parziale tra $Y_1$ e $Y_2$ al netto dell'effetto di $F$
-può essere calcolata direttamente dalle correlazioni semplici tra le tre
-variabili $Y_1$, $Y_2$ e $F$ mediante la seguente formula:
+L'eq. \@ref(eq:corr-parz) permette di calcolare la correlazione parziale tra $Y_1$ e $Y_2$ al netto dell'effetto di $F$ a partire dalle correlazioni semplici tra le tre variabili $Y_1$, $Y_2$ e $F$. 
 
 \begin{equation}
 r_{1,2 \mid F} = \frac{r_{12} - r_{1F}r_{2F}}{\sqrt{(1-r_{1F}^2)(1-r_{2F}^2)}}
 (\#eq:corr-parz)
 \end{equation}
+
+In particolare, la correlazione parziale $r_{1,2 \mid F}$ è data dalla differenza tra la correlazione $r_{12}$ tra $Y_1$ e $Y_2$ e il prodotto tra le correlazioni $r_{1F}$ e $r_{2F}$ tra ciascuna delle due variabili e $F$, il tutto diviso per la radice quadrata del prodotto delle differenze tra 1 e i quadrati delle correlazioni tra $Y_1$ e $F$ e tra $Y_2$ e $F$. In altre parole, la formula tiene conto dell'effetto di $F$ sulle correlazioni tra $Y_1$ e $Y_2$ per ottenere una stima della relazione diretta tra le due variabili, eliminando l'effetto del fattore comune.
 
 Facciamo un esempio numerico. Sia $f$ una variabile su cui misuriamo $n$ valori
 
@@ -136,7 +70,6 @@ Siano $y_1$ e $y_2$ funzioni lineari di $f$, a cui viene aggiunta una componente
 y1 <- 10 + 7 * f + rnorm(n, 0, 50)
 y2 <- 3  + 2 * f + rnorm(n, 0, 50)
 ```
-
 
 La correlazione tra $y_1$ e $y_2$ ($r_{12}= 0.355$) deriva dal fatto che $\hat{y}_1$ e $\hat{y}_2$ sono entrambe funzioni lineari di $f$:
 
@@ -184,10 +117,8 @@ visto sopra, che la componente di $y_1$ linearmente indipendente da $f$
 $f$.
 
 La correlazione che abbiamo calcolato tra i residui di due modelli di
-regressione non è altro che la correlazione che viene calcolata
-applicando la \@ref(eq:corr-parz). Infatti, inserendo
-nella \@ref(eq:corr-parz) i valori delle correlazioni esaminate
-otteniamo
+regressione è identica alla correlazione che viene calcolata
+applicando la \@ref(eq:corr-parz):
 
 ```{r}
 (R[1, 2] - R[1, 3] * R[2, 3]) / 
@@ -195,48 +126,15 @@ otteniamo
   round(3)
 ```
 
-In conclusione, possiamo dunque attribuire alla \@ref(eq:corr-parz) la seguente interpretazione: la correlazione parziale tra le variabili $y_1$ e $y_2$ dato $f$ non è altro che la correlazione tra le componenti di $y_1$ e $y_2$ da cui l'effetto lineare
-di $f$ è stato rimosso.
+In conclusione, possiamo attribuire alla formula \@ref(eq:corr-parz) la seguente interpretazione: la correlazione parziale tra le variabili $y_1$ e $y_2$ condizionata alla variabile $f$ rappresenta la correlazione tra le componenti di $y_1$ e $y_2$ da cui è stato rimosso l'effetto lineare di $f$. Ricordiamo il ragionamento che abbiamo svolto in precedenza per fornire un'interpretazione al coefficiente parziale del modello di regressione.
 
 ## Principio base dell'analisi fattoriale
 
-Attualmente, l'inferenza statistica nell'analisi fattoriale spesso si
-svolge mediante il calcolo di stime della massima verosimiglianza
-ottenute mediante procedure iterative come l'algoritmo EM (Rubin &
-Thayer, 1982). All'inizio dell'analisi fattoriale, tuttavia, la
-procedura di estrazione dei fattori faceva leva sulle relazioni
-invarianti che il modello fattoriale impone agli elementi della matrice
-di covarianza delle variabili osservate. Il più conosciuto tra tali
-invarianti è la *tetrade* che si presenta nei modelli ad un fattore.
+Nell'attuale pratica dell'inferenza statistica nell'analisi fattoriale, spesso si utilizzano stime della massima verosimiglianza, calcolate attraverso procedure iterative come l'algoritmo EM (Rubin & Thayer, 1982). Tuttavia, all'inizio dell'analisi fattoriale, la procedura di estrazione dei fattori si basava sulle relazioni invarianti che il modello fattoriale imponeva agli elementi della matrice di covarianza delle variabili osservate. Uno dei più noti tra questi invarianti è la *tetrade*, presente nei modelli ad un fattore.
 
-La tetrade è una combinazione di quattro correlazioni. Se l'associazione
-osservata tra le variabili dipende effettivamente dal fatto che le
-variabili in questione sono state causalmente generate da un fattore
-comune inosservabile, allora è possibile generare una combinazione delle
-correlazioni tra le variabili che porta all'annullamento della tetrade.
-In altre parole, l'analisi fattoriale si chiede se esiste un insieme
-esiguo di $m<p$ variabili inosservabili che rendono significativamente
-nulle tutte le correlazioni parziali tra le $p$ variabili osservate al
-netto dei fattori comuni. Se il metodo della correlazione parziale
-consente di identificare $m$ variabili latenti, allora lo psicologo
-conclude che tali fattori corrispondono agli $m$ costrutti che intende
-misurare.
+La tetrade consiste in una combinazione di quattro correlazioni. Se l'associazione tra le variabili osservate dipende dal fatto che queste sono state generate causalmente da un fattore comune inosservabile, allora è possibile generare una combinazione delle correlazioni che annulla la tetrade. In altre parole, l'analisi fattoriale si propone di individuare un insieme di sole $m<p$ variabili latenti che, al netto dei fattori comuni, annullano significativamente tutte le correlazioni parziali tra le $p$ variabili osservate. Se il metodo della correlazione parziale consente di identificare $m$ variabili latenti, allora lo psicologo può concludere che tali fattori corrispondono agli $m$ costrutti che intende misurare.
 
-Per chiarire il metodo dell'annullamento della tetrade consideriamo la
-matrice di correlazioni riportata nella Tabella \@ref(tab:corr_parziale). Nella tabella, la correlazione parziale tra ciascuna coppia di variabili $y_i$, $y_j$ (con $i \neq j$) dato $\xi$ è sempre uguale a zero. Ad esempio, la correlazione parziale tra
-$y_3$ e $y_5$ dato $\xi$ è:
-
-\begin{equation}
-\begin{aligned}
-  r_{35 \mid \xi} &= \frac{r_{35} - r_{3\xi}r_{5\xi}}
-  {\sqrt{(1-r_{3\xi}^2)(1-r_{5\xi}^2)}} \notag \\[12pt]
-  &= \frac{0.35 - 0.7 \times 0.5}
-  {\sqrt{(1-0.7^2)(1-0.5^2)}} = 0. \notag
-  \end{aligned}
-\end{equation}
-
-Lo stesso risultato si trova per qualunque altra coppia di variabili $y_i$ e
-$y_j$, ovvero $r_{ij \mid \xi} = 0$.
+Per illustrare il metodo dell'annullamento della tetrade, consideriamo la matrice di correlazioni riportata nella Tabella seguente. 
 
 ::: {#tab:corr-parziale}
             $\xi$     $y_1$   $y_2$   $y_3$   $y_4$   $y_5$
@@ -252,24 +150,28 @@ $y_j$, ovvero $r_{ij \mid \xi} = 0$.
   tra le variabili $Y$ al netto dell'effetto di $\xi$ sono nulle.
 :::
 
-Possiamo dunque dire che, per la matrice di correlazioni della
-Tabella precedente, esiste un'unica variabile $\xi$ la
+Nella tabella, la correlazione parziale tra ciascuna coppia di variabili $y_i$, $y_j$ (con $i \neq j$) dato $\xi$ è sempre pari a zero. Ad esempio, la correlazione parziale tra $y_3$ e $y_5$ condizionata a $\xi$ è:
+
+\begin{equation}
+\begin{aligned}
+  r_{35 \mid \xi} &= \frac{r_{35} - r_{3\xi}r_{5\xi}}
+  {\sqrt{(1-r_{3\xi}^2)(1-r_{5\xi}^2)}} \notag \\[12pt]
+  &= \frac{0.35 - 0.7 \times 0.5}
+  {\sqrt{(1-0.7^2)(1-0.5^2)}} = 0. \notag
+  \end{aligned}
+\end{equation}
+
+Lo stesso risultato si trova per qualunque altra coppia di variabili $y_i$ e
+$y_j$, ovvero $r_{ij \mid \xi} = 0$. Possiamo dunque dire che, per la matrice di correlazioni della Tabella, esiste un'unica variabile $\xi$ la
 quale, quando viene controllata, spiega tutte le
 
 $$
 p(p-1)/2 = 5(5-1)/2=10
 $$
 
-correlazioni tra le variabili $y$. Questo risultato non è sorprendente, in quanto la matrice di correlazioni della Tabella esaminata è stata costruita in modo tale da possedere tale proprietà.
+correlazioni tra le variabili $y$. Questo risultato non è sorprendente, in quanto la matrice di correlazioni è stata costruita in modo tale da possedere tale proprietà.
 
-Ma supponiamo di essere in una situazione diversa, ovvero di avere
-osservato soltanto le variabili $y_i$ e di non conoscere $\xi$. In tali
-circostanze ci possiamo porre la seguente domanda: "esiste una variabile
-inosservabile $\xi$ la quale, se venisse controllata, renderebbe uguali
-a zero tutte le correlazioni parziali tra le variabili $y$?" Se una tale
-variabile inosservabile esiste, ed è in grado di spiegare tutte le
-correlazioni tra le variabili osservate $y$, allora essa viene chiamata
-*fattore*.
+Immaginiamo invece di trovarci in una situazione diversa, ovvero di avere a disposizione solo le variabili $y_i$ senza conoscere $\xi$. In questo caso, ci poniamo la domanda: "Esiste una variabile latente $\xi$ tale che, se fosse osservabile, renderebbe nulle tutte le correlazioni parziali tra le variabili $y$?". Se esiste una tale variabile latente che spiega tutte le correlazioni tra le variabili osservate $y$, allora viene chiamata *fattore latente*.
 
 ::: {.definition}
 Un fattore è una variabile inosservabile in grado di rendere significativamente nulle tutte le correlazioni parziali tra le variabili manifeste.
@@ -307,46 +209,17 @@ latente $\xi$. Questo è il principio base dell'analisi fattoriale.
 
 ### Teoria dei Due Fattori
 
-Per fare un esempio concreto relativo al metodo dell'annullamento della
-tetrade, esaminiamo la matrice di correlazioni originariamente
-analizzata da Spearman. Spearman (1904) raccolse alcune misure di
-capacità intellettuale su un piccolo numero di studenti di una scuola
-superiore. Nello specifico, esaminò i voti di tali studenti nelle
-seguenti materie: studio dei classici ($c$), letteratura inglese ($e$) e
-abilità matematiche ($m$). Considerò anche la prestazione in un compito
-di discriminazione dell'altezza di suoni (*pitch discrimination*) ($p$),
-ovvero un'abilità diversa da quelle richieste nei test scolastici.
+Per fornire un esempio concreto del metodo dell'annullamento della tetrade, possiamo esaminare la matrice di correlazioni utilizzata da Spearman (1904) nella sua ricerca sulle capacità intellettuali di alcuni studenti di una scuola superiore. In particolare, sono state considerate le prestazioni degli studenti in tre materie scolastiche (studio dei classici, letteratura inglese, abilità matematiche) e in un compito di discriminazione dell'altezza di suoni. Secondo la Teoria dei Due Fattori di Spearman, le prestazioni in ogni compito intellettuale sono costituite da due componenti: un fattore generale comune a tutte le attività intellettuali (fattore "g") e un fattore specifico relativo al compito in questione (fattore "s"). In questo modello, il fattore "g" rappresenta la componente invariante dell'abilità intellettiva, mentre il fattore "s" è una componente che varia da condizione a condizione.
 
-Secondo la Teoria dei Due Fattori, le prestazioni relative ad un
-determinato compito intellettuale possiedono una componente comune
-(detta fattore "g") con le prestazioni in un qualunque altro compito
-intellettuale e una componente specifica a quel determinato compito. Il
-modello dell'intelligenza di Spearman prevede dunque due fattori, uno
-generale e uno specifico (detto fattore "s"). Il fattore "g" costituisce
-la componente invariante dell'abilità intellettiva, mente il fattore "s"
-è una componente che varia da condizione a condizione.
-
-Come è possibile stabilire se esiste una variabile latente in grado di
-spiegare le correlazioni tra le variabili osservate da Spearman? Lo
-strumento proposto da Spearman per rispondere a questa domanda è
-*l'annullamento della tetrade*. L'annullamento della tetrade utilizza i
-vincoli sulle correlazioni che derivano dalla definizione di
-correlazione parziale. In precedenza abbiamo visto che la correlazione
-parziale tra le variabili $y$ indicizzate da $i$ e $j$, al netto
-dell'effetto di $\xi$, è nulla se 
+Per verificare l'esistenza di una variabile latente in grado di spiegare le correlazioni tra le variabili osservate da Spearman, è stato proposto uno strumento chiamato "annullamento della tetrade". Tale strumento si basa sui vincoli sulle correlazioni derivanti dalla definizione di correlazione parziale. Come abbiamo visto in precedenza, la correlazione parziale tra le variabili $y$ indicizzate da $i$ e $j$, al netto dell'effetto di $\xi$, è nulla se la seguente relazione è soddisfatta:
 
 $$
 r_{ij} = r_{i\xi}r_{j\xi}.
 $$ 
 
-Nel caso dei dati di Spearman, dunque, le correlazioni parziali sono nulle
-se la correlazione tra "studi classici" e "letteratura inglese" è uguale
-al prodotto della correlazione tra "studi classici" e il fattore $\xi$ e
-della correlazione tra "letteratura inglese" e il fattore $\xi$.
-Inoltre, la correlazione tra "studi classici" e "abilità matematica"
-deve essere uguale al prodotto della correlazione tra "studi classici" e
-il fattore $\xi$ e della correlazione tra "abilità matematica" e il
-fattore $\xi$; e così via.
+In altre parole, se la correlazione tra due variabili osservate può essere spiegata dall'effetto di una terza variabile latente, allora la correlazione parziale tra tali variabili sarà nulla una volta che si tiene conto dell'effetto della variabile latente. Utilizzando questo strumento, Spearman ha dimostrato che le correlazioni tra le prestazioni degli studenti nei vari compiti intellettuali possono essere spiegate da due fattori: un fattore generale comune a tutti i compiti (fattore "g") e un fattore specifico a ciascun compito (fattore "s").
+
+Nel caso dei dati di Spearman, le correlazioni parziali sono nulle quando la correlazione tra "studi classici" e "letteratura inglese" è pari al prodotto della correlazione tra "studi classici" e la variabile latente $\xi$ e della correlazione tra "letteratura inglese" e la variabile latente $\xi$. Inoltre, la correlazione tra "studi classici" e "abilità matematica" deve essere uguale al prodotto della correlazione tra "studi classici" e la variabile latente $\xi$ e della correlazione tra "abilità matematica" e la variabile latente $\xi$, e così via per tutte le altre coppie di variabili.
 
 Le correlazioni tra le variabili manifeste e il fattore latente sono
 dette *saturazioni fattoriali* e vengono denotate con la lettera
@@ -356,9 +229,7 @@ $$
 r_{ec}=\lambda_e \times \lambda_{c},
 $$
 
-dove $r_{ec}$ è la correlazione
-tra "letteratura inglese" (e) e "studi classici" (c), $\lambda_e$ è la
-correlazione tra "letteratura inglese" e $\xi$, e $\lambda_{c}$ è la
+dove $r_{ec}$ è la correlazione tra "letteratura inglese" (e) e "studi classici" (c), $\lambda_e$ è la correlazione tra "letteratura inglese" e $\xi$, e $\lambda_{c}$ è la
 correlazione tra "studi classici" e $\xi$.
 
 Allo stesso modo, la correlazione tra "studi classici" e "matematica"
@@ -372,10 +243,7 @@ eccetera.
 
 ### Annullamento della tetrade
 
-Date le correlazioni tra tre coppie di variabili manifeste, il metodo
-dell'annullamento della tetrade rende possibile stimare i valori delle
-saturazioni fattoriali $\lambda$. Ad esempio, per le variabili $c$, $m$
-ed $e$, possiamo scrivere le seguenti tre equazioni in tre incognite:
+Utilizzando il metodo dell'annullamento della tetrade è possibile stimare i valori delle saturazioni fattoriali $\lambda$, partendo dalle correlazioni tra le tre coppie di variabili manifeste $c$, $m$ ed $e$. In particolare, si possono scrivere tre equazioni in tre incognite, che consentono di calcolare le saturazioni $\lambda$. Ad esempio, per le tre variabili sopracitate, tali equazioni possono essere espresse nel seguente modo:
 
 \begin{equation}
 \begin{aligned}
@@ -385,10 +253,7 @@ ed $e$, possiamo scrivere le seguenti tre equazioni in tre incognite:
 \end{aligned}
 \end{equation}
 
-Risolvendo il precedente sistema di equazioni lineari, il coefficiente
-di saturazione $\lambda_m$ della variabile $y_m$ nel fattore comune
-$\xi$, ad esempio, può essere calcolato a partire dalle correlazioni tra
-le variabili manifeste $c$, $m$, ed $e$ nel modo seguente:
+Calcolando il determinante del sistema di equazioni lineari composto dalle correlazioni tra le variabili manifeste $c$, $m$ ed $e$, possiamo ottenere il valore della saturazione fattoriale $\lambda$ e, in particolare, il coefficiente di saturazione $\lambda_m$ della variabile $y_m$ nel fattore comune $\xi$. In altre parole, risolvendo il sistema di equazioni lineari, possiamo stimare il valore delle saturazioni fattoriali, compreso il coefficiente di saturazione $\lambda_m$, a partire dalle correlazioni tra le variabili manifeste:
 
 \begin{equation}
 \lambda_m = \sqrt{ \frac{r_{cm} r_{em}}{r_{ce}}}.

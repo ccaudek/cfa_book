@@ -6,270 +6,67 @@
 source("_common.R")
 ```
 
-La maggior parte degli psicologi che utilizzano i test non costruiscono
-dei test ad hoc ma utilizzano i test già validati e interpretano i
-punteggi attenuti sulla base delle norme fornite nel manuale del test.
-Nella selezione del test che è più appropriato per il problema che lo
-psicologo deve affrontare, si devono considerare domande quali: Qual è
-il valore minimo di attendibilità che è richiesto? Ovvero, a che livello
-di precisione dobbiamo essere in grado di differenziare tra i
-rispondenti? Che tipo di validità è importante? Quali sono le
-caratteristiche della popolazione che il gruppo normativo deve
-rappresentare? Qual è il livello di istruzione necessario per completare
-il test? Qual è il tempo disponibile per la somministrazione del test e
-per lo scoring dei risultati? Quali sono i costi necessari per la
-somministrazione del test e per lo scoring dei risultati? Avendo dato
-una risposta a tali domande, la selezione del test solitamente si riduce
-ad una scelta tra poche alternative. Per giungere ad una decisione tra
-tali alternative è importante consultare la letteratura specialistica
-che discute le proprietà psicometriche dei test e la loro validità.
+La maggior parte degli psicologi che utilizzano i test non creano test ad hoc ma piuttosto utilizzano test già validati e interpretano i punteggi sulla base delle norme fornite nel manuale del test. Quando si sceglie il test più appropriato per il problema da affrontare, è necessario considerare diverse domande. Ad esempio, qual è il valore minimo di attendibilità richiesto? In altre parole, a che livello di precisione è necessario essere in grado di differenziare tra i rispondenti? Che tipo di validità è importante? Quali sono le caratteristiche della popolazione che il gruppo normativo deve rappresentare? Qual è il livello di istruzione richiesto per completare il test? Quanto tempo è disponibile per la somministrazione del test e per lo scoring dei risultati? Quali sono i costi necessari per la somministrazione del test e per lo scoring dei risultati?
 
-Ciascuno psicologo ha l'obbligo di dimostrare che il test che usa per un
-certo scopo costituisca lo strumento migliore, tra quelli disponibili,
-per giungere ad una decisione razionale e obiettiva relativamente al
-problema che si trova ad affrontare (si veda il Codice Deontologico). Se
-nessuno dei test disponibili si dimostra appropriato per misurare un
-determinato tratto psicologico, si procede alla costruzione di un nuovo
-reattivo. La costruzione di un test richiede sia conoscenze
-specialistiche di tipo psicometrico, sia una conoscenza specialistica
-del fenomeno considerato.
+Dopo aver risposto a queste domande, la selezione del test si riduce solitamente ad una scelta tra poche alternative. Per prendere una decisione tra queste alternative, è importante consultare la letteratura specialistica che discute le proprietà psicometriche dei test e la loro validità. In questo modo, si può effettuare una scelta informata basata sulla conoscenza delle proprietà del test e sulla sua validità, e assicurarsi che sia adatto alla popolazione e alle esigenze specifiche del caso in questione.
 
-Le fasi di costruzione dei test comprendono la definizione delle aree di
-contenuto che andranno misurate dal test; la generazione degli item per
-ciascuna area in un numero di circa tre volte superiore a quello che ci
-si aspetta farà parte della versione finale del test; la
-somministrazione degli item ad un campione sufficientemente numeroso
-(centinaia di rispondenti selezionati in modo tale che il campione sia
-rappresentativo della popolazione di interesse); l'analisi degli item
-che ci consente di selezionare gli item migliori; infine, la
-somministrazione della versione revisionata del test ad un nuovo
-campione per stabilire se la versione finale del test sia soddisfacente
-dal punto di vista psicometrico. In caso affermativo, il campione
-esaminato fornisce le norme del test e questa fase va sotto il nome di
-*standardizzazione del test*.
+Ogni psicologo ha l'obbligo di dimostrare che il test che sceglie per un determinato scopo sia il miglior strumento tra quelli disponibili per giungere ad una decisione razionale e obiettiva relativamente al problema che si trova ad affrontare (come indicato dal Codice Deontologico). Se nessuno dei test disponibili risulta appropriato per misurare un tratto psicologico specifico, si procede alla costruzione di un nuovo reattivo. La costruzione di un test richiede conoscenze specialistiche sia di tipo psicometrico che del fenomeno considerato.
+
+Le fasi di costruzione dei test includono la definizione delle aree di contenuto che il test dovrà misurare; la generazione di un numero di item per ciascuna area circa tre volte superiore rispetto a quelli che si prevede faranno parte della versione finale del test; la somministrazione degli item ad un campione sufficientemente ampio (con centinaia di rispondenti selezionati in modo tale che il campione sia rappresentativo della popolazione di interesse); l'analisi degli item per selezionare quelli migliori; infine, la somministrazione della versione revisionata del test ad un nuovo campione per verificare se la versione finale del test sia soddisfacente dal punto di vista psicometrico. In caso affermativo, il campione esaminato fornisce le norme del test, e questa fase è chiamata "standardizzazione del test".
 
 ## Caratteristiche dell'analisi fattoriale
 
-La teoria psicometria è l'unico strumento che abbiamo a disposizione per
-creare strumenti di misurazione validi e attendibili per l'assessment
-psicologico e neuropsicologico. La psicometria comprende due diversi
-approcci metodologici per la costruzione dei reattivi psicologici: la
-teoria classica dei test e la teoria di risposta all'item (*item
-response theory*). Esamineremo qui gli aspetti di base della teoria
-classica dei test e ci focalizzeremo, in particolare, sull'analisi
-fattoriale.
+La teoria psicometrica rappresenta il principale strumento a disposizione per la creazione di strumenti di misurazione attendibili e validi nell'ambito dell'assessment psicologico e neuropsicologico. Tale disciplina si basa su due diversi approcci metodologici per la costruzione dei reattivi psicologici: la teoria classica dei test e la teoria di risposta all'item, nota come *item response theory* (IRT). Nel presente capitolo, esamineremo come l'analisi fattoriale possa essere utilizzata per rispondere alle domande che sono state affrontate nel capitolo precedente, in cui abbiamo esaminato la teoria classica dei test.
 
-Se vogliamo costruire un test psicometrico per la valutazione di un
-particolare deficit psicologico o neuropsicologico, prima di iniziare lo
-studio, dobbiamo fornire una risposta ad una serie di domande. Per
-esempio, come dobbiamo selezionare gli item? Gli item scelti coprono
-tutto il dominio del fenomeno considerato? Quanti item dobbiamo usare? A
-quanti soggetti dobbiamo somministrare lo strumento? Quali analisi
-statistiche dobbiamo svolgere sui dati raccolti?
+<!-- Se vogliamo costruire un test psicometrico per la valutazione di un -->
+<!-- particolare deficit psicologico o neuropsicologico, prima di iniziare lo -->
+<!-- studio, dobbiamo fornire una risposta ad una serie di domande. Per -->
+<!-- esempio, come dobbiamo selezionare gli item? Gli item scelti coprono -->
+<!-- tutto il dominio del fenomeno considerato? Quanti item dobbiamo usare? A -->
+<!-- quanti soggetti dobbiamo somministrare lo strumento? Quali analisi -->
+<!-- statistiche dobbiamo svolgere sui dati raccolti? -->
 
-L'analisi fattoriale è uno strumento statistico che può essere
-utilizzato per trovare una risposta a queste domande. Chiariamo subito
-che l'analisi fattoriale è una tecnica statistica complessa che richiede
-l'uso di un software. Per gli scopi di questo insegnamento useremo il
-pacchetto `lavaan` del linguaggio statistico .
+L'analisi fattoriale rappresenta uno strumento statistico utile per trovare le risposte alle domande sollevate in precedenza riguardo alla teoria classica dei test. Tuttavia, va sottolineato che si tratta di una tecnica statistica complessa che richiede l'uso di specifici software. Nel contesto di questo insegnamento, utilizzeremo il pacchetto "lavaan" del linguaggio statistico R per condurre l'analisi fattoriale.
 
-L'analisi fattoriale può essere pensata come una tecnica statistica per
-la ricerca di variabili latenti a partire da alcune variabili osservate.
-La distinzione tra variabili latenti e variabili osservate si basa sulla
-osservabilità, ossia sulla possibilità di rilevazione empirica. Le prime
-sono variabili non direttamente osservabili in quanto rappresentano
-concetti molto generali o complessi, mentre le seconde sono facilmente
-rilevabili. In ogni caso, entrambe possono essere operazionalizzate, per
-cui anche nel caso delle variabili latenti c'è una sostanziale
-differenza con i concetti.
+L'analisi fattoriale è una tecnica statistica che consente di identificare variabili latenti a partire da un insieme di variabili osservate. La distinzione tra variabili latenti e osservate si basa sulla loro osservabilità empirica: le prime rappresentano concetti generali o complessi che non possono essere misurati direttamente, mentre le seconde possono essere facilmente rilevate. Tuttavia, entrambe le tipologie di variabili possono essere definite in modo operazionale. Ciò significa che, anche per le variabili latenti, è possibile identificare indicatori misurabili che ne forniscono una rappresentazione concreta e quantificabile.
 
-Ma che cos'è una variabile latente o fattore? Un fattore può essere
-descritto come una combinazione lineare di variabili manifeste tra loro
-associate le quali rappresentano una specifica dimensione di un
-costrutto psicologico, la quale si distingue da altre dimensioni dello
-stesso costrutto o dalle dimensioni di costrutti diversi (Tabachnick &
-Fidell, 2001). Per esempio, la Wechsler Adult Intelligence Scale --
-Fourth Edition (WAIS-IV) dà una valutazione complessiva delle capacità
-cognitive di adolescenti e adulti e distingue tra quattro dimensioni
-dell'intelligenza: comprensione verbale, ragionamento visuo-percettivo,
-memoria di lavoro e velocità di elaborazione.
+Ma cos'è esattamente una variabile latente o un fattore? Un fattore può essere definito come una combinazione lineare di variabili osservate tra loro correlate, che rappresentano una specifica dimensione di un costrutto psicologico distinta da altre dimensioni dello stesso costrutto o da dimensioni di costrutti diversi (Tabachnick e Fidell, 2001). Ad esempio, la Wechsler Adult Intelligence Scale -- Fourth Edition (WAIS-IV) valuta le capacità cognitive di adolescenti e adulti, distinguendo tra quattro dimensioni dell'intelligenza: comprensione verbale, ragionamento visuo-percettivo, memoria di lavoro e velocità di elaborazione.
 
-L'analisi fattoriale viene usata per lo sviluppo e la validazione di un
-test psicometrico e per stabilire la validità di costrutto di uno
-strumento per una specifica popolazione. Una volta che la struttura
-interna di un costrutto è stata chiarita, l'analisi fattoriale può
-essere usata per identificare le variabili esterne (per esempio, il
-genere o il livello di istruzione) che sono associate alle varie
-dimensioni del costrutto di interesse (Nunnally & Bernstein, 1994).
+L'analisi fattoriale viene impiegata per diversi scopi nel campo della psicometria, tra cui lo sviluppo e la validazione di strumenti di valutazione psicologica e la determinazione della validità di costrutto di uno strumento per una particolare popolazione. Una volta che la struttura interna di un costrutto è stata definita, l'analisi fattoriale può essere utilizzata per identificare le variabili esterne (ad esempio, il genere o il livello di istruzione) che sono associate alle diverse dimensioni del costrutto di interesse (Nunnally & Bernstein, 1994).
 
 ### L'analisi fattoriale esplorativa e confermativa
 
-Nei suoi primi modelli matematici, l'analisi fattoriale era una tecnica
-di analisi esplorativa appunto perché permetteva di "esplorare" le
-relazioni nascoste fra un gran numero di variabili. In tempi più
-recenti, la tecnica delle equazioni strutturali ha permesso di
-sviluppare una tecnica di analisi fattoriale di tipo confermativo, che
-cioè permette di verificare se effettivamente i fattori ipotizzati
-servono a spiegare le variabili misurate. In tempi ancora più recenti è
-stato notato che i vincoli posti dai modelli SEM sono, alle volte,
-troppo restrittivi per cui le tecniche dell'analisi fattoriale
-esplorativa vengono integrate con i modelli di equazioni strutturali in
-maniera tale da produrre un nuovo approccio alla definizione delle
-variabili latenti, ovvero quelli che si chiamano modelli ESEM
-(Exploratory Structural Equation Modeling).
+L'analisi fattoriale, nei suoi primi modelli matematici, era principalmente una tecnica di analisi esplorativa che permetteva di scoprire le relazioni nascoste tra un gran numero di variabili. In seguito, con lo sviluppo delle tecniche delle equazioni strutturali, l'analisi fattoriale ha dato vita ad una tecnica di analisi confermativa, che permette di verificare se i fattori ipotizzati spiegano effettivamente le variabili misurate. Più recentemente, si è notato che i vincoli posti dai modelli SEM possono essere troppo restrittivi, e pertanto le tecniche dell'analisi fattoriale esplorativa vengono integrate con i modelli di equazioni strutturali, dando vita ad un nuovo approccio alla definizione delle variabili latenti, chiamato modelli ESEM (Exploratory Structural Equation Modeling).
 
 ### Assunzioni dell'analisi fattoriale
 
-L'assunzione di base dell'analisi fattoriale esplorativa è che, dato un
-insieme di variabili osservate, esista un insieme più piccolo di fattori
-latenti i quali siano in grado di spiegare i legami, le interrelazioni e
-le dipendenze tra le variabili statistiche osservate. Dato che l'analisi
-fattoriale si propone di spiegare una matrice di correlazioni, molte
-delle assunzioni che stanno alla base del calcolo delle correlazioni si
-applicano anche all'analisi fattoriale: campioni di grande numerosità,
-il fatto che le variabili considerate abbiano una distribuzione di
-probabilità continua, la linearità nella relazione tra le variabili. In
-generale, queste assunzioni si riducono al requisito della normalità
-multivariata, ovvero il requisito per il quale tutte le variabili
-considerate e tutte le combinazioni lineari tra tali variabili sono
-distribuite normalmente.
-
-Molto spesso, però, l'assunzione di normalità multivariata è violata a
-causa del fatto che, anziché essere delle variabili continue, gli item
-sono spesso variabili (discrete) che derivano da risposte a questionari
-fornite utilizzando scale di tipo Likert. Vedremo come questo problema
-può essere superato utilizzando le correlazioni policoriche.
+L'analisi fattoriale esplorativa si basa sull'assunzione che un insieme di variabili osservate possa essere spiegato da un insieme più piccolo di fattori latenti che rappresentano le interrelazioni tra di esse. Per poter condurre l'analisi fattoriale, molte delle assunzioni che stanno alla base del calcolo delle correlazioni devono essere rispettate, come ad esempio la normalità multivariata delle variabili considerate. Tuttavia, spesso questa assunzione viene violata quando le variabili osservate derivano da risposte a questionari che utilizzano scale di tipo Likert. In questi casi, si può superare il problema utilizzando le correlazioni policoriche. In generale, l'analisi fattoriale esplorativa permette di esplorare e comprendere le relazioni nascoste tra le variabili osservate, mentre l'analisi fattoriale di tipo confermativo e i modelli ESEM consentono di verificare se i fattori ipotizzati spiegano effettivamente le variabili misurate.
 
 ### Sviluppo storico dell'analisi fattoriale
 
-L'analisi fattoriale è un metodo di analisi multivariata che, dal punto
-di vista storico, risulta fortemente interconnessa con i modelli
-psicometrici. Alcuni concetti basilari per i successivi sviluppi
-dell'analisi fattoriale si possono trovare in Galton (1888, 1889) con il
-concetto di *fonte comune* (*common source*) e in Pearson (1901) con
-l'introduzione delle *componenti principali* come metodo di riduzione
-dei dati. Si deve però a Spearman (1904) l'elaborazione del primo
-*modello di analisi fattoriale* secondo il quale le risposte fornite ad
-un insieme di test di abilità sono riconducibili ad un unico fattore
-generale di intelligenza.
+L'analisi fattoriale è una tecnica di analisi multivariata che, storicamente, è stata strettamente legata ai modelli psicometrici. I concetti di fonte comune e componenti principali, che sono alla base dell'analisi fattoriale, possono essere trovati nei lavori di Galton e Pearson. Tuttavia, il primo modello di analisi fattoriale è stato elaborato da Spearman, il quale ha proposto che le risposte ad un insieme di test di abilità sono riconducibili ad un unico fattore generale di intelligenza.
 
-L'analisi fattoriale è stata sviluppata da diversi gruppi di psicologi
-inglesi e americani che, tra l'inizio del '900 e il 1930, svilupparono
-una serie di tecniche statistiche per affrontare problemi quali quello
-di determinare le dimensioni dell'intelligenza (Garnett, 1919; Pearson,
-1901; Spearman, 1904, 1923, 1927, 1929; Thurstone, 1935, 1937a, 1937b;
-Wilson, 1928).
+Tra l'inizio del '900 e il 1930, diversi gruppi di psicologi inglesi e americani svilupparono una serie di tecniche statistiche per determinare le dimensioni dell'intelligenza. In Inghilterra, Spearman e i suoi colleghi svilupparono la teoria dei due fattori dell'intelligenza umana, secondo cui esiste un fattore generale (g) che esprime l'intelligenza generale, e tanti fattori specifici (s) che rappresentano l'acquisizione specifica attraverso l'apprendimento e l'esperienza. Thurstone generalizzò il modello fattoriale al caso in cui sono presenti più fattori comuni.
 
-In Inghilterra, Spearman e i suoi colleghi (Burt, 1939, 1941; Garnett,
-1919; Ledermann, 1937, 1938; Spearman, 1904, 1922, 1923, 1927, 1928,
-1929, 1930a, 1930b; Thomson, 1934, 1936, 1938) svilupparono il concetto
-della teoria dei due fattori dell'intelligenza umana secondo cui esiste
-un fattore generale, *g*, che esprime l'intelligenza generale, è
-ereditario e compare in maggiore o minor misura in tutti i test, e
-esistono inoltre tanti fattori specifici, *s*, che rappresentano
-l'acquisizione specifica attraverso l'apprendimento e l'esperienza, e
-sono presenti in modo differenziato in ogni singolo test. Dato che i
-fattori specifici sono incorrelati tra loro, il fattore *g* spiega la
-maggior parte delle correlazioni tra i punteggi delle abilità mentali
-(Nunnally & Bernstein, 1994). Anche se successive ricerche non
-confermarono totalmente l'ipotesi di Spearman dell'esistenza di un
-fattore *g*, e particolarmente vennero alla luce dei fattori di gruppo,
-che potevano spiegare le correlazioni esistenti tra test simili
-(Garnett, 1919; Spearman, 1927), la maggior parte dello sviluppo
-iniziale dell'analisi fattoriale fu dedicata alla ricerca di un singolo
-fattore per l'intelligenza.
+Thurstone e i suoi collaboratori applicarono la teoria dei fattori multipli a vari problemi psicometrici, diventando ben presto il riferimento più importante per lo sviluppo delle procedure dell'analisi fattoriale. Successivamente, un numero di importanti psicometristi europei contribuì a spostare il focus dell'assessment psicologico dall'approccio esplorativo a quello confermativo. I contributi di Jöreskog e Sörbom hanno contribuito a sviluppare i modelli di equazioni strutturali (Structural Equation Models, SEM), i quali costituiscono una delle tecniche più utilizzate per l'analisi dei dati nelle discipline psicologiche e sociali.
 
-Spearman analizzò molti insiemi di dati nel tentativo di trovare
-conferma al modello uni-fattoriale: alcuni di questi, tuttavia, non
-risultarono compatibili con il modello dei due fattori. La
-generalizzazione del modello fattoriale al caso in cui sono presenti più
-fattori comuni si deve a Thurstone (1938, 1947). Nel modello di
-Thurstone non viene fatto più riferimento ad un fattore generale che
-influenza tutte le variabili osservate: si ipotizza invece la presenza
-di una molteplicità di fattori comuni i quali determinano le variabili
-osservate. I contributi di Thurstone riguardano alcuni degli aspetti
-fondamentali dell'analisi fattoriale esplorativa, quali il concetto di
-struttura semplice e i fattori obliqui.
+Negli anni '30, Sewall Wright sviluppò una linea di ricerca nella biometria che utilizzava modelli di equazioni simultanee per analizzare schemi di rappresentazione dei nessi di influenza tra variabili, noti come analisi dei percorsi. Negli anni '50, l'analisi fattoriale divenne uno dei metodi di analisi dati più utilizzati in psicologia, soprattutto per la costruzione dei reattivi psicologici, grazie alla diffusione dei centri calcolo. Le tradizioni di ricerca dei modelli di equazioni simultanee e di quelli strutturali rimasero separate fino agli anni '60, quando gli studiosi delle scienze sociali iniziarono a sottolineare i vantaggi della combinazione di entrambi i metodi. La path analysis rappresentava i nessi di influenza tra variabili tramite diagrammi, mentre le equazioni simultanee specificavano sia variabili osservate che latenti. La disponibilità di programmi per computer semplificò la risoluzione simultanea di sistemi di equazioni lineari con variabili latenti, rendendo più facile la diffusione dell'analisi fattoriale confermativa. Negli anni '60, l'approccio confermativo si sviluppò ulteriormente grazie a Karl Jöreskog, orientandosi soprattutto all'esame di ipotesi teoriche.
 
-Thurstone e collaboratori applicarono la teoria dei fattori multipli a
-vari problemi psicometrici (Thurstone, 1931, 1940, 1947, 1948, 1954)
-diventando ben presto il riferimento più importante per lo sviluppo
-delle procedure dell'analisi fattoriale. La centralità della scuola
-statunitense continuò fino alla fine degli anni '60, quando un numero di
-importanti psicometristi europei contribuirono a spostare il focus
-dell'assessment psicologico dall'approccio esplorativo a quello
-confermativo (Jöreskog, 1967, 1969, 1970; Jöreskog & Goldberger, 1972;
-Sörbom, 1974). I contributi statistici di Jöreskog e Sörbom hanno
-contribuito a sviluppare quelli che oggi chiamiamo i modelli di
-equazioni strutturali (Structural Equation Models, SEM), i quali
-costituiscono una delle tecniche più utilizzate per l'analisi dei dati
-nelle discipline psicologiche e sociali.
-
-Un'ulteriore linea di ricerca venne sviluppata nel campo della
-biometria, ad opera di Sewall Wright (1934). In un tale approccio
-vengono utilizzati modelli di equazioni simultanee, che includono però
-solo variabili osservabili, per analizzare particolari schemi di
-rappresentazione dei nessi di influenza tra le variabili noti come
-*analisi dei percorsi* (*path analysis*).
-
-A partire dalla metà degli anni cinquanta, con la diffusione dei centri
-calcolo, l'analisi fattoriale è diventata uno dei metodi di analisi dei
-dati più largamente utilizzati in psicologia e, in particolare, nelle
-ricerche volte alla costruzione dei reattivi psicologici. Le tradizioni
-di ricerca dei modelli di equazioni simultanee con variabili osservate,
-da una parte, e dei modelli di equazioni strutturali con variabili
-osservate e latenti, dall'altra, sono rimaste sostanzialmente
-indipendenti fino agli anni '60 dello scorso secolo, quando metodologi
-delle scienze sociali, come Blalock (1961, 1963), Boudon (1965) e Duncan
-(1966) hanno cominciato a sottolineare i vantaggi derivanti dalla
-possibilità di combinare la semplicità di rappresentare nessi di
-influenza tra le variabili tramite i diagrammi tipici della *path
-analysis*, con il rigore derivante dalla specificazione delle equazioni
-simultanee, in modo tale da includere sia variabili osservate sia
-variabili latenti. La disponibilità di programmi per computer che
-permettono di tradurre in un linguaggio non matematico le complesse
-operazioni matematiche connesse alla risoluzione simultanea di sistemi
-di equazioni lineari con variabili latenti ha poi facilitato enormemente
-la diffusione delle tecniche dell'analisi fattoriale confermativa. A
-partire dalla fine degli anni sessanta, soprattutto grazie a Karl
-Jöreskog, il modello di analisi fattoriale si è ulteriormente raffinato
-e sviluppato verso un approccio confermativo orientato prevalentemente
-all'esame di ipotesi teoriche.
-
-Sebbene l'analisi fattoriale confermativa (CFA) possa essere vista come
-una motivazione per la creazione di modelli di misurazione parsimoniosi,
-tali modelli spesso includono un certo livello di errore di misurazione
-sistematico che deriva dal fatto che gli item sono raramente indicatori
-puri dei corrispondenti costrutti, e quindi ci si può aspettare un certo
-grado di associazione rilevante per il costrutto anche tra item e
-costrutti non target, ma concettualmente associati (Morin et al., 2016).
-Quando tali associazioni restano inespresse nel modello, a causa dei
-vincoli restrittivi dell'approccio CFA (cioè, del fatto che gli item
-possono essere indicatori di un unico fattore), allora i risultati
-dell'analisi possono risultare sistematicamente distorti. In
-particolare, si può osservare una sovrastima delle associazioni tra i
-fattori. Inoltre, i vincoli eccessivamente restrittivi dei modelli CFA
-possono anche minare la bontà di adattamento dei modelli e la validità
-discriminante dei fattori (Marsh et al., 2010, 2014). I contemporanei
-modelli ESEM si pongono l'obiettivo di affrontare questo tipo di
-problemi.
+L'analisi fattoriale confermativa (CFA) è vista come un modo per creare modelli di misurazione parsimoniosi, ma spesso questi modelli includono un certo livello di errore di misurazione sistemico dovuto al fatto che gli item non sono indicatori puri dei corrispondenti costrutti. Ci si può aspettare quindi una certa associazione rilevante per il costrutto anche tra item e costrutti non target ma concettualmente associati. Quando tali associazioni non sono considerate nel modello a causa dei vincoli restrittivi dell'approccio CFA, i risultati dell'analisi possono essere sistematicamente distorti, con una sovrastima delle associazioni tra i fattori. Inoltre, i vincoli eccessivamente restrittivi dei modelli CFA possono minare la bontà di adattamento dei modelli e la validità discriminante dei fattori. Per affrontare questi problemi, i modelli ESEM contemporanei sono stati sviluppati.
 
 ### Fasi dell'analisi fattoriale
 
-Indipendentemente dal software statistico che viene utilizzato e dal
-livello di esperienza del ricercatore, lo sviluppo di un test
-psicometrico inizia con l'analisi fattoriale esplorativa. In essa si
-possono distinguere otto stadi successivi:
+Indipendentemente dal software statistico utilizzato e dal livello di esperienza del ricercatore, lo sviluppo di un test psicometrico inizia con l'analisi fattoriale esplorativa. Tale analisi si compone di otto stadi successivi:
 
-1.  la specificazione del problema,
-2.  la scelta degli item,
-3.  la verifica dell'adeguatezza della matrice di correlazione,
-4.  l'estrazione iniziale dei fattori,
-5.  la rotazione dei fattori,
-6.  l'ulteriore selezione degli item,
-7.  l'interpretazione dei risultati,
-8.  la costruzione di un report della ricerca,
-9.  la validazione dei risultati.
+1.  specificazione del problema,
+2.  scelta degli item,
+3.  verifica dell'adeguatezza della matrice di correlazione,
+4.  estrazione iniziale dei fattori,
+5.  rotazione dei fattori,
+6.  ulteriore selezione degli item,
+7.  interpretazione dei risultati,
+8.  costruzione di un report della ricerca,
+9.  validazione dei risultati.
 
-Queste diverse fasi della costruzione e validazione di un reattivo
-psicologivo verranno discusse nel seguito di queste dispense.
+Nelle seguenti dispense verranno discussi in dettaglio questi diversi stadi della costruzione e validazione di un reattivo psicologico.
+
