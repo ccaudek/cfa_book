@@ -16,8 +16,7 @@ y_i = \mu_i + \lambda_{i} \xi +  1 \cdot \varepsilon_i \qquad i=1, \dots, p,
 (\#eq:mod-unifattoriale)
 \end{equation}
 
-dove $\xi$ rappresenta il fattore comune a tutte le $y_i$, $\varepsilon_i$ sono i fattori specifici o unici di ogni variabile osservata e $\lambda_i$ sono le
-saturazioni (o pesi) fattoriali le quali stabiliscono il peso del
+dove $\xi$ rappresenta il fattore comune a tutte le $y_i$, $\varepsilon_i$ sono i fattori specifici o unici di ogni variabile osservata e $\lambda_i$ sono le saturazioni (o pesi) fattoriali le quali stabiliscono il peso del
 fattore latente su ciascuna variabile osservata.
 
 Il modello di analisi fattoriale e il modello di regressione possono sembrare simili, ma presentano alcune differenze importanti. In primo luogo, sia il fattore comune $\xi$ sia i fattori specifici $\varepsilon_i$ sono inosservabili, il che rende tutto ciò che si trova a destra dell'uguaglianza incognito. In secondo luogo, l'analisi di regressione e l'analisi fattoriale hanno obiettivi diversi. L'analisi di regressione mira a individuare le variabili esplicative, osservabili direttamente, che sono in grado di spiegare la maggior parte della varianza della variabile dipendente. Al contrario, il problema dell'analisi unifattoriale consiste nell'identificare la variabile esplicativa inosservabile che è in grado di spiegare la maggior parte della covarianza tra le variabili osservate.
@@ -29,7 +28,7 @@ y_i -\mu_i = \lambda_i \xi + 1 \cdot \varepsilon_i,
 (\#eq:mod-monofattoriale)
 \end{equation}
 
-dove $\lambda_i$ è il carico o il peso della variabile $i$-esima sul fattore comune e $\varepsilon_i$ rappresenta il fattore specifico della variabile $i$-esima. Si assume che il fattore comune abbia media zero e varianza unitaria, mentre i fattori specifici abbiano media zero, varianza $\psi_{i}$ e siano incorrelati tra loro e con il fattore comune. Nel modello unifattoriale, l'interdipendenza tra le variabili è completamente spiegata dal fattore comune.
+dove $\lambda_i$ è la saturazione o il peso della variabile $i$-esima sul fattore comune e $\varepsilon_i$ rappresenta il fattore specifico della variabile $i$-esima. Si assume che il fattore comune abbia media zero e varianza unitaria, mentre i fattori specifici abbiano media zero, varianza $\psi_{i}$ e siano incorrelati tra loro e con il fattore comune. Nel modello unifattoriale, l'interdipendenza tra le variabili è completamente spiegata dal fattore comune.
 
 Le ipotesi precedenti consentono di ricavare la covarianza tra la variabile osservata $y_i$ e il fattore comune, la varianza della variabile osservata $y_i$ e la covarianza tra due variabili osservate $y_i$ e $y_k$. L'obiettivo della discussione in questo capitolo è appunto quello di analizzare tali grandezze statistiche.
 

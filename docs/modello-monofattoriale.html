@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2023-03-27" />
+<meta name="date" content="2023-03-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -755,8 +755,7 @@ solo fattore comune:</p>
 y_i = \mu_i + \lambda_{i} \xi +  1 \cdot \varepsilon_i \qquad i=1, \dots, p,
 \tag{13.1}
 \end{equation}\]</span></p>
-<p>dove <span class="math inline">\(\xi\)</span> rappresenta il fattore comune a tutte le <span class="math inline">\(y_i\)</span>, <span class="math inline">\(\varepsilon_i\)</span> sono i fattori specifici o unici di ogni variabile osservata e <span class="math inline">\(\lambda_i\)</span> sono le
-saturazioni (o pesi) fattoriali le quali stabiliscono il peso del
+<p>dove <span class="math inline">\(\xi\)</span> rappresenta il fattore comune a tutte le <span class="math inline">\(y_i\)</span>, <span class="math inline">\(\varepsilon_i\)</span> sono i fattori specifici o unici di ogni variabile osservata e <span class="math inline">\(\lambda_i\)</span> sono le saturazioni (o pesi) fattoriali le quali stabiliscono il peso del
 fattore latente su ciascuna variabile osservata.</p>
 <p>Il modello di analisi fattoriale e il modello di regressione possono sembrare simili, ma presentano alcune differenze importanti. In primo luogo, sia il fattore comune <span class="math inline">\(\xi\)</span> sia i fattori specifici <span class="math inline">\(\varepsilon_i\)</span> sono inosservabili, il che rende tutto ciò che si trova a destra dell’uguaglianza incognito. In secondo luogo, l’analisi di regressione e l’analisi fattoriale hanno obiettivi diversi. L’analisi di regressione mira a individuare le variabili esplicative, osservabili direttamente, che sono in grado di spiegare la maggior parte della varianza della variabile dipendente. Al contrario, il problema dell’analisi unifattoriale consiste nell’identificare la variabile esplicativa inosservabile che è in grado di spiegare la maggior parte della covarianza tra le variabili osservate.</p>
 <p>Solitamente, per comodità, si assume che la media delle variabili osservate <span class="math inline">\(y_i\)</span> sia zero, ovvero <span class="math inline">\(\mu_i=0\)</span>. Ciò equivale a considerare gli scarti delle variabili rispetto alle rispettive medie. Il modello unifattoriale assume che le variabili osservate siano il risultato della combinazione lineare di un fattore comune <span class="math inline">\(\xi\)</span> e dei fattori specifici <span class="math inline">\(\varepsilon_i\)</span>, ovvero:</p>
@@ -764,7 +763,7 @@ fattore latente su ciascuna variabile osservata.</p>
 y_i -\mu_i = \lambda_i \xi + 1 \cdot \varepsilon_i,
 \tag{13.2}
 \end{equation}\]</span></p>
-<p>dove <span class="math inline">\(\lambda_i\)</span> è il carico o il peso della variabile <span class="math inline">\(i\)</span>-esima sul fattore comune e <span class="math inline">\(\varepsilon_i\)</span> rappresenta il fattore specifico della variabile <span class="math inline">\(i\)</span>-esima. Si assume che il fattore comune abbia media zero e varianza unitaria, mentre i fattori specifici abbiano media zero, varianza <span class="math inline">\(\psi_{i}\)</span> e siano incorrelati tra loro e con il fattore comune. Nel modello unifattoriale, l’interdipendenza tra le variabili è completamente spiegata dal fattore comune.</p>
+<p>dove <span class="math inline">\(\lambda_i\)</span> è la saturazione o il peso della variabile <span class="math inline">\(i\)</span>-esima sul fattore comune e <span class="math inline">\(\varepsilon_i\)</span> rappresenta il fattore specifico della variabile <span class="math inline">\(i\)</span>-esima. Si assume che il fattore comune abbia media zero e varianza unitaria, mentre i fattori specifici abbiano media zero, varianza <span class="math inline">\(\psi_{i}\)</span> e siano incorrelati tra loro e con il fattore comune. Nel modello unifattoriale, l’interdipendenza tra le variabili è completamente spiegata dal fattore comune.</p>
 <p>Le ipotesi precedenti consentono di ricavare la covarianza tra la variabile osservata <span class="math inline">\(y_i\)</span> e il fattore comune, la varianza della variabile osservata <span class="math inline">\(y_i\)</span> e la covarianza tra due variabili osservate <span class="math inline">\(y_i\)</span> e <span class="math inline">\(y_k\)</span>. L’obiettivo della discussione in questo capitolo è appunto quello di analizzare tali grandezze statistiche.</p>
 </div>
             </section>
