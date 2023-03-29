@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>12.1 Attendibilità | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)</title>
+  <title>13.4 Introduzione a lavaan | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)</title>
   <meta name="description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2022/2023) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
   <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="12.1 Attendibilità | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
+  <meta property="og:title" content="13.4 Introduzione a lavaan | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2022/2023) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
   <meta name="github-repo" content="ccaudek/cfa_book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="12.1 Attendibilità | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
+  <meta name="twitter:title" content="13.4 Introduzione a lavaan | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
   
   <meta name="twitter:description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2022/2023) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="applicazioni-della-ctt.html"/>
-<link rel="next" href="validità.html"/>
+<link rel="prev" href="principio-base-dellanalisi-fattoriale.html"/>
+<link rel="next" href="conclusioni-2.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -392,7 +392,13 @@ div.csl-indent {
 <li class="chapter" data-level="13.3.2" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html#teoria-dei-due-fattori"><i class="fa fa-check"></i><b>13.3.2</b> Teoria dei Due Fattori</a></li>
 <li class="chapter" data-level="13.3.3" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html#annullamento-della-tetrade"><i class="fa fa-check"></i><b>13.3.3</b> Annullamento della tetrade</a></li>
 <li class="chapter" data-level="13.3.4" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html#metodo-del-centroide"><i class="fa fa-check"></i><b>13.3.4</b> Metodo del centroide</a></li>
-<li class="chapter" data-level="13.3.5" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html#introduzione-a-lavaan"><i class="fa fa-check"></i><b>13.3.5</b> Introduzione a <code>lavaan</code></a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="introduzione-a-lavaan.html"><a href="introduzione-a-lavaan.html"><i class="fa fa-check"></i><b>13.4</b> Introduzione a <code>lavaan</code></a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="introduzione-a-lavaan.html"><a href="introduzione-a-lavaan.html#sintassi-del-modello"><i class="fa fa-check"></i><b>13.4.1</b> Sintassi del modello</a></li>
+<li class="chapter" data-level="13.4.2" data-path="introduzione-a-lavaan.html"><a href="introduzione-a-lavaan.html#un-esempio-concreto"><i class="fa fa-check"></i><b>13.4.2</b> Un esempio concreto</a></li>
+<li class="chapter" data-level="13.4.3" data-path="introduzione-a-lavaan.html"><a href="introduzione-a-lavaan.html#diagrammi-di-percorso"><i class="fa fa-check"></i><b>13.4.3</b> Diagrammi di percorso</a></li>
+<li class="chapter" data-level="13.4.4" data-path="introduzione-a-lavaan.html"><a href="introduzione-a-lavaan.html#analisi-fattoriale-esplorativa"><i class="fa fa-check"></i><b>13.4.4</b> Analisi fattoriale esplorativa</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="conclusioni-2.html"><a href="conclusioni-2.html"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
@@ -597,11 +603,11 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="25.1.1" data-path="indicatori-continui.html"><a href="indicatori-continui.html#intercette-degli-item"><i class="fa fa-check"></i><b>25.1.1</b> Intercette degli item</a></li>
 <li class="chapter" data-level="25.1.2" data-path="indicatori-continui.html"><a href="indicatori-continui.html#terminologia"><i class="fa fa-check"></i><b>25.1.2</b> Terminologia</a></li>
-<li class="chapter" data-level="25.1.3" data-path="indicatori-continui.html"><a href="indicatori-continui.html#un-esempio-concreto-3"><i class="fa fa-check"></i><b>25.1.3</b> Un esempio concreto</a></li>
+<li class="chapter" data-level="25.1.3" data-path="indicatori-continui.html"><a href="indicatori-continui.html#un-esempio-concreto-4"><i class="fa fa-check"></i><b>25.1.3</b> Un esempio concreto</a></li>
 </ul></li>
 <li class="chapter" data-level="25.2" data-path="indicatori-a-livello-di-scala-ordinale.html"><a href="indicatori-a-livello-di-scala-ordinale.html"><i class="fa fa-check"></i><b>25.2</b> Indicatori a livello di scala ordinale</a>
 <ul>
-<li class="chapter" data-level="25.2.1" data-path="indicatori-a-livello-di-scala-ordinale.html"><a href="indicatori-a-livello-di-scala-ordinale.html#un-esempio-concreto-4"><i class="fa fa-check"></i><b>25.2.1</b> Un esempio concreto</a></li>
+<li class="chapter" data-level="25.2.1" data-path="indicatori-a-livello-di-scala-ordinale.html"><a href="indicatori-a-livello-di-scala-ordinale.html#un-esempio-concreto-5"><i class="fa fa-check"></i><b>25.2.1</b> Un esempio concreto</a></li>
 <li class="chapter" data-level="25.2.2" data-path="indicatori-a-livello-di-scala-ordinale.html"><a href="indicatori-a-livello-di-scala-ordinale.html#baseline-model"><i class="fa fa-check"></i><b>25.2.2</b> Baseline model</a></li>
 <li class="chapter" data-level="25.2.3" data-path="indicatori-a-livello-di-scala-ordinale.html"><a href="indicatori-a-livello-di-scala-ordinale.html#invarianza-delle-soglie"><i class="fa fa-check"></i><b>25.2.3</b> Invarianza delle soglie</a></li>
 <li class="chapter" data-level="25.2.4" data-path="indicatori-a-livello-di-scala-ordinale.html"><a href="indicatori-a-livello-di-scala-ordinale.html#invarianza-delle-soglie-e-delle-saturazioni-fattoriali"><i class="fa fa-check"></i><b>25.2.4</b> Invarianza delle soglie e delle saturazioni fattoriali</a></li>
@@ -630,7 +636,7 @@ div.csl-indent {
 <li class="chapter" data-level="26.7.2" data-path="misure-di-adeguamento-assoluto.html"><a href="misure-di-adeguamento-assoluto.html#rmrs"><i class="fa fa-check"></i><b>26.7.2</b> RMRS</a></li>
 <li class="chapter" data-level="26.7.3" data-path="misure-di-adeguamento-assoluto.html"><a href="misure-di-adeguamento-assoluto.html#interpretazione-3"><i class="fa fa-check"></i><b>26.7.3</b> Interpretazione</a></li>
 </ul></li>
-<li class="chapter" data-level="26.8" data-path="un-esempio-concreto-5.html"><a href="un-esempio-concreto-5.html"><i class="fa fa-check"></i><b>26.8</b> Un esempio concreto</a></li>
+<li class="chapter" data-level="26.8" data-path="un-esempio-concreto-6.html"><a href="un-esempio-concreto-6.html"><i class="fa fa-check"></i><b>26.8</b> Un esempio concreto</a></li>
 <li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali.html"><a href="commenti-e-considerazioni-finali.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
 </ul></li>
 <li class="chapter" data-level="27" data-path="ch-model-revision.html"><a href="ch-model-revision.html"><i class="fa fa-check"></i><b>27</b> La revisione del modello</a>
@@ -644,14 +650,14 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="28.1" data-path="mtmm-e-cfa.html"><a href="mtmm-e-cfa.html"><i class="fa fa-check"></i><b>28.1</b> MTMM e CFA</a>
 <ul>
-<li class="chapter" data-level="28.1.1" data-path="mtmm-e-cfa.html"><a href="mtmm-e-cfa.html#un-esempio-concreto-6"><i class="fa fa-check"></i><b>28.1.1</b> Un esempio concreto</a></li>
+<li class="chapter" data-level="28.1.1" data-path="mtmm-e-cfa.html"><a href="mtmm-e-cfa.html#un-esempio-concreto-7"><i class="fa fa-check"></i><b>28.1.1</b> Un esempio concreto</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="29" data-path="curve-di-crescita-latente.html"><a href="curve-di-crescita-latente.html"><i class="fa fa-check"></i><b>29</b> Curve di crescita latente</a>
 <ul>
 <li class="chapter" data-level="29.1" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html"><i class="fa fa-check"></i><b>29.1</b> Dati longitudinali</a>
 <ul>
-<li class="chapter" data-level="29.1.1" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#un-esempio-concreto-7"><i class="fa fa-check"></i><b>29.1.1</b> Un esempio concreto</a></li>
+<li class="chapter" data-level="29.1.1" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#un-esempio-concreto-8"><i class="fa fa-check"></i><b>29.1.1</b> Un esempio concreto</a></li>
 <li class="chapter" data-level="29.1.2" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#visualizzare-il-cambiamento"><i class="fa fa-check"></i><b>29.1.2</b> Visualizzare il cambiamento</a></li>
 <li class="chapter" data-level="29.1.3" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#dati-ordinali-vs.-intervalli-temporali"><i class="fa fa-check"></i><b>29.1.3</b> Dati ordinali vs. intervalli temporali</a></li>
 <li class="chapter" data-level="29.1.4" data-path="dati-longitudinali.html"><a href="dati-longitudinali.html#verifica-di-ipotesi"><i class="fa fa-check"></i><b>29.1.4</b> Verifica di ipotesi</a></li>
@@ -674,7 +680,7 @@ div.csl-indent {
 <li class="chapter" data-level="30.1" data-path="dati-non-gaussiani.html"><a href="dati-non-gaussiani.html"><i class="fa fa-check"></i><b>30.1</b> Dati non gaussiani</a></li>
 <li class="chapter" data-level="30.2" data-path="dati-categoriali.html"><a href="dati-categoriali.html"><i class="fa fa-check"></i><b>30.2</b> Dati categoriali</a>
 <ul>
-<li class="chapter" data-level="30.2.1" data-path="dati-categoriali.html"><a href="dati-categoriali.html#un-esempio-concreto-8"><i class="fa fa-check"></i><b>30.2.1</b> Un esempio concreto</a></li>
+<li class="chapter" data-level="30.2.1" data-path="dati-categoriali.html"><a href="dati-categoriali.html#un-esempio-concreto-9"><i class="fa fa-check"></i><b>30.2.1</b> Un esempio concreto</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IV Appendici</b></span></li>
@@ -742,94 +748,577 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="attendibilità" class="section level2 hasAnchor" number="12.1">
-<h2><span class="header-section-number">12.1</span> Attendibilità<a href="attendibilità.html#attendibilità" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Nell’esempio seguente, utilizziamo il set di dati SAPA per dimostrare come calcolare varie stime di coerenza interna in R. Ricordiamo che il data.frame SAPA (<em>Synthetic Aperture Personality Assessment</em>) è costituito da 1525 risposte a 16 item per la valutazione della personalità. Gli item misurano il ragionamento di base, la manipolazione di serie alfanumeriche, il ragionamento con matrici e la capacità di rotazione mentale.</p>
-<p>Carichiamo i dati.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="attendibilità.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;hemp&quot;</span>)</span>
-<span id="cb1-2"><a href="attendibilità.html#cb1-2" tabindex="-1"></a><span class="fu">data</span>(SAPA)</span></code></pre></div>
-<p>Esaminiamo i dati mancanti.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="attendibilità.html#cb2-1" tabindex="-1"></a><span class="fu">num_miss</span>(SAPA)</span>
-<span id="cb2-2"><a href="attendibilità.html#cb2-2" tabindex="-1"></a><span class="co">#&gt;           num_miss perc_miss</span></span>
-<span id="cb2-3"><a href="attendibilità.html#cb2-3" tabindex="-1"></a><span class="co">#&gt; reason.4         2      0.13</span></span>
-<span id="cb2-4"><a href="attendibilità.html#cb2-4" tabindex="-1"></a><span class="co">#&gt; reason.16        1      0.07</span></span>
-<span id="cb2-5"><a href="attendibilità.html#cb2-5" tabindex="-1"></a><span class="co">#&gt; reason.17        2      0.13</span></span>
-<span id="cb2-6"><a href="attendibilità.html#cb2-6" tabindex="-1"></a><span class="co">#&gt; reason.19        2      0.13</span></span>
-<span id="cb2-7"><a href="attendibilità.html#cb2-7" tabindex="-1"></a><span class="co">#&gt; letter.7         1      0.07</span></span>
-<span id="cb2-8"><a href="attendibilità.html#cb2-8" tabindex="-1"></a><span class="co">#&gt; letter.33        2      0.13</span></span>
-<span id="cb2-9"><a href="attendibilità.html#cb2-9" tabindex="-1"></a><span class="co">#&gt; letter.34        2      0.13</span></span>
-<span id="cb2-10"><a href="attendibilità.html#cb2-10" tabindex="-1"></a><span class="co">#&gt; letter.58        0      0.00</span></span>
-<span id="cb2-11"><a href="attendibilità.html#cb2-11" tabindex="-1"></a><span class="co">#&gt; matrix.45        2      0.13</span></span>
-<span id="cb2-12"><a href="attendibilità.html#cb2-12" tabindex="-1"></a><span class="co">#&gt; matrix.46        1      0.07</span></span>
-<span id="cb2-13"><a href="attendibilità.html#cb2-13" tabindex="-1"></a><span class="co">#&gt; matrix.47        2      0.13</span></span>
-<span id="cb2-14"><a href="attendibilità.html#cb2-14" tabindex="-1"></a><span class="co">#&gt; matrix.55        1      0.07</span></span>
-<span id="cb2-15"><a href="attendibilità.html#cb2-15" tabindex="-1"></a><span class="co">#&gt; rotate.3         2      0.13</span></span>
-<span id="cb2-16"><a href="attendibilità.html#cb2-16" tabindex="-1"></a><span class="co">#&gt; rotate.4         2      0.13</span></span>
-<span id="cb2-17"><a href="attendibilità.html#cb2-17" tabindex="-1"></a><span class="co">#&gt; rotate.6         2      0.13</span></span>
-<span id="cb2-18"><a href="attendibilità.html#cb2-18" tabindex="-1"></a><span class="co">#&gt; rotate.8         1      0.07</span></span></code></pre></div>
-<p>Una semplice misura di coerenza interna è la affidabilità <em>split-half</em>. Una stima dell’affidabilità <em>split-half</em> può essere ottenuta dividendo un test in due parti equivalenti, calcolando i punteggi totali delle due parti e correlandoli. Ci sono molti modi per creare la suddivisione (ad esempio, selezionando gli item pari e quelli dispari, oppure in modo casuale, ecc.). Di seguito calcoliamo l’affidabilità <em>split-half</em> selezionando gli item pari e quelli dispari.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="attendibilità.html#cb3-1" tabindex="-1"></a><span class="fu">split_half</span>(SAPA, <span class="at">type =</span> <span class="st">&quot;alternate&quot;</span>)</span>
-<span id="cb3-2"><a href="attendibilità.html#cb3-2" tabindex="-1"></a><span class="co">#&gt; [1] 0.758</span></span></code></pre></div>
-<p>In questo secondo caso, l’affidabilità <em>split-half</em> è calcolata selezionando due sottoinsiemi casuali di item della stessa numerosità.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="attendibilità.html#cb4-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb4-2"><a href="attendibilità.html#cb4-2" tabindex="-1"></a><span class="fu">split_half</span>(SAPA, <span class="at">type =</span> <span class="st">&quot;random&quot;</span>)</span>
-<span id="cb4-3"><a href="attendibilità.html#cb4-3" tabindex="-1"></a><span class="co">#&gt; [1] 0.723</span></span></code></pre></div>
-<p>È noto che la stima dell’affidabilità split-half è distorta verso il basso (R. J. Cohen, Swerdlik e Sturman, 2013). La correzione Spearman-Brown può essere applicata per superare questo problema. Per fare ciò, basta passare l’argomento <code>sb = TRUE</code> alla funzione <code>split_half()</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="attendibilità.html#cb5-1" tabindex="-1"></a><span class="fu">split_half</span>(SAPA, <span class="at">type =</span> <span class="st">&quot;alternate&quot;</span>, <span class="at">sb =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb5-2"><a href="attendibilità.html#cb5-2" tabindex="-1"></a><span class="co">#&gt; [1] 0.8623436</span></span></code></pre></div>
-<p>Dopo aver applicato la correzione di Spearman-Brown, l’affidabilità split-half è ora stimata a 0.862, che è un po’ più alta.</p>
-<p>Data la nostra attuale stima di affidabilità, possiamo anche determinare la lunghezza di un test per ottenere l’affidabilità desiderata. Possiamo farlo usando la funzione <code>test_length()</code> in <code>hemp</code>. Supponendo di volere un’affidabilità di 0.95, possiamo determinare di quanti item dovrebbe essere costituito il test. Nella chiamata a <code>test_length()</code>, specifichiamo <code>r_type = "split"</code> in modo che l’affidabilità attuale venga calcolata utilizzando l’affidabilità split-half con la correzione di Spearman-Brown.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="attendibilità.html#cb6-1" tabindex="-1"></a><span class="fu">test_length</span>(SAPA, <span class="at">r =</span> .<span class="dv">95</span>, <span class="at">r_type =</span> <span class="st">&quot;split&quot;</span>)</span>
-<span id="cb6-2"><a href="attendibilità.html#cb6-2" tabindex="-1"></a><span class="co">#&gt; [1] 49</span></span></code></pre></div>
-<p>Se vogliamo un test con un’affidabilità di 0.95, dato che il nostro test attuale ha un’affidabilità di 0.862 basata su 16 item, avremmo bisogno di un test che consiste di almeno 49 item.</p>
-<p>La misura più comune della consistenza interna è il coefficiente alfa (Cronbach, 1951). Il coefficiente alfa rappresenta la media di tutte le possibili correlazioni split-half. Può essere calcolato utilizzando la funzione <code>coef_alpha()</code> in <code>hemp</code>.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="attendibilità.html#cb7-1" tabindex="-1"></a><span class="fu">coef_alpha</span>(SAPA)</span>
-<span id="cb7-2"><a href="attendibilità.html#cb7-2" tabindex="-1"></a><span class="co">#&gt; [1] 0.841</span></span></code></pre></div>
-<p>Anche se le stime puntuali di affidabilità possono essere utili, è generalmente utile calcolare un intervallo di confidenza. Quando la dimensione del campione è piccola, le ipotesi dei modelli statistici non sono soddisfatte o la distribuzione campionaria di un parametro è sconosciuta, allora il bootstrap può essere utilizzato per costruire una distribuzione campionaria empirica, che possiamo quindi utilizzare per creare intervalli di confidenza (Efron &amp; Tibshirani, 1986 ).</p>
-<p>La nostra motivazione per l’introduzione del bootstrapping è che consente la creazione di intervalli di confidenza e incertezza indipendentemente dal parametro stimato. Pertanto, mentre illustriamo l’uso del bootstrap per il coefficiente alfa, questo può essere facilmente applicato per l’affidabilità split-half di cui sopra, la validità o le statistiche dell’analisi degli item presentati più avanti e in molti altri contesti.
-Per eseguire il bootstrap per il coefficiente alfa, possiamo usare, ad esempio, il pacchetto <code>boot</code> (Canty &amp; Ripley, 2017).</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="attendibilità.html#cb8-1" tabindex="-1"></a><span class="fu">library</span>(boot)</span></code></pre></div>
-<p>Dobbiamo creare una funzione da passare alla funzione <code>boot</code>, che chiamiamo <code>alpha_fun()</code>. Questa funzione accetta due argomenti: un set di dati, chiamato <code>data</code>, e una matrice di indici, chiamata <code>row</code> Questi argomenti vengono quindi passati alla funzione <code>coef_alpha</code>. Ciò consentirà alla funzione <code>boot</code> di eseguire un campionamento con rimpiazzo delle righe di <code>data</code> e creare una distribuzione empirica per il coefficiente alfa.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="attendibilità.html#cb9-1" tabindex="-1"></a>alpha_fun <span class="ot">&lt;-</span> <span class="cf">function</span>(data, row) {</span>
-<span id="cb9-2"><a href="attendibilità.html#cb9-2" tabindex="-1"></a>  <span class="fu">coef_alpha</span>(data[row, ])</span>
-<span id="cb9-3"><a href="attendibilità.html#cb9-3" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="attendibilità.html#cb10-1" tabindex="-1"></a>alpha_boot <span class="ot">&lt;-</span> <span class="fu">boot</span>(SAPA, alpha_fun, <span class="at">R =</span> <span class="fl">1e3</span>)</span>
-<span id="cb10-2"><a href="attendibilità.html#cb10-2" tabindex="-1"></a>alpha_boot</span>
-<span id="cb10-3"><a href="attendibilità.html#cb10-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb10-4"><a href="attendibilità.html#cb10-4" tabindex="-1"></a><span class="co">#&gt; ORDINARY NONPARAMETRIC BOOTSTRAP</span></span>
-<span id="cb10-5"><a href="attendibilità.html#cb10-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb10-6"><a href="attendibilità.html#cb10-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb10-7"><a href="attendibilità.html#cb10-7" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb10-8"><a href="attendibilità.html#cb10-8" tabindex="-1"></a><span class="co">#&gt; boot(data = SAPA, statistic = alpha_fun, R = 1000)</span></span>
-<span id="cb10-9"><a href="attendibilità.html#cb10-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb10-10"><a href="attendibilità.html#cb10-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb10-11"><a href="attendibilità.html#cb10-11" tabindex="-1"></a><span class="co">#&gt; Bootstrap Statistics :</span></span>
-<span id="cb10-12"><a href="attendibilità.html#cb10-12" tabindex="-1"></a><span class="co">#&gt;     original   bias    std. error</span></span>
-<span id="cb10-13"><a href="attendibilità.html#cb10-13" tabindex="-1"></a><span class="co">#&gt; t1*    0.841 -0.00026 0.005432487</span></span></code></pre></div>
-<p>La figura seguente mostra un istogramma e un Q-Q plot della distribuzione empirica per il coefficiente alfa basato sui 1000 campioni.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="attendibilità.html#cb11-1" tabindex="-1"></a><span class="fu">plot</span>(alpha_boot)</span></code></pre></div>
-<p><img src="cfa_files/figure-html/unnamed-chunk-12-1.png" width="576" style="display: block; margin: auto;" /></p>
-<p>Utilizziamo la funzione <code>boot.ci()</code> per calcolare gli intervalli di confidenza al 95% utilizzando gli intervalli <code>norm</code>, <code>basic</code> e <code>perc</code>. In breve, gli intervalli <code>basic</code> e <code>perc</code> fanno meno assunzioni rispetto agli intervalli <code>norm</code> (ovvero, nessuna assunzione di normalità asintotica). Se la distribuzione empirica si discosta dalla normalità, allora gli intervalli <code>basic</code> e <code>perc</code> sono una scelta migliore.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="attendibilità.html#cb12-1" tabindex="-1"></a><span class="fu">boot.ci</span>(alpha_boot, <span class="at">type =</span> <span class="fu">c</span>(<span class="st">&quot;norm&quot;</span>, <span class="st">&quot;basic&quot;</span>, <span class="st">&quot;perc&quot;</span>))</span>
-<span id="cb12-2"><a href="attendibilità.html#cb12-2" tabindex="-1"></a><span class="co">#&gt; BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS</span></span>
-<span id="cb12-3"><a href="attendibilità.html#cb12-3" tabindex="-1"></a><span class="co">#&gt; Based on 1000 bootstrap replicates</span></span>
-<span id="cb12-4"><a href="attendibilità.html#cb12-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb12-5"><a href="attendibilità.html#cb12-5" tabindex="-1"></a><span class="co">#&gt; CALL : </span></span>
-<span id="cb12-6"><a href="attendibilità.html#cb12-6" tabindex="-1"></a><span class="co">#&gt; boot.ci(boot.out = alpha_boot, type = c(&quot;norm&quot;, &quot;basic&quot;, &quot;perc&quot;))</span></span>
-<span id="cb12-7"><a href="attendibilità.html#cb12-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb12-8"><a href="attendibilità.html#cb12-8" tabindex="-1"></a><span class="co">#&gt; Intervals : </span></span>
-<span id="cb12-9"><a href="attendibilità.html#cb12-9" tabindex="-1"></a><span class="co">#&gt; Level      Normal              Basic              Percentile     </span></span>
-<span id="cb12-10"><a href="attendibilità.html#cb12-10" tabindex="-1"></a><span class="co">#&gt; 95%   ( 0.8306,  0.8519 )   ( 0.8310,  0.8520 )   ( 0.8300,  0.8510 )  </span></span>
-<span id="cb12-11"><a href="attendibilità.html#cb12-11" tabindex="-1"></a><span class="co">#&gt; Calculations and Intervals on Original Scale</span></span></code></pre></div>
-<p>Si può concludere che per la maggior parte degli scopi l’attendibilità sembra essere sufficientemente alta da non richiedere l’onere aggiuntivo per i rispondenti di aumentare la lunghezza dello strumento.</p>
+<div id="introduzione-a-lavaan" class="section level2 hasAnchor" number="13.4">
+<h2><span class="header-section-number">13.4</span> Introduzione a <code>lavaan</code><a href="introduzione-a-lavaan.html#introduzione-a-lavaan" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="sintassi-del-modello" class="section level3 hasAnchor" number="13.4.1">
+<h3><span class="header-section-number">13.4.1</span> Sintassi del modello<a href="introduzione-a-lavaan.html#sintassi-del-modello" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Al cuore del pacchetto lavaan si trova la “sintassi del modello”. La sintassi del modello è una descrizione del modello da stimare. In questa sezione, spieghiamo brevemente gli elementi della sintassi del modello lavaan.</p>
+<p>Nell’ambiente R, una formula di regressione ha la seguente forma:</p>
+<pre><code>y ~ x1 + x2 + x3 + x4</code></pre>
+<p>In questa formula, la tilde (“~”) è l’operatore di regressione. Sul lato sinistro dell’operatore, abbiamo la variabile dipendente (y), e sul lato destro abbiamo le variabili indipendenti, separate dall’operatore “+” . In lavaan, un modello tipico è semplicemente un insieme (o sistema) di formule di regressione, in cui alcune variabili (che iniziano con una ‘f’ qui sotto) possono essere latenti. Ad esempio:</p>
+<pre><code>y ~ f1 + f2 + x1 + x2
+f1 ~ f2 + f3
+f2 ~ f3 + x1 + x2</code></pre>
+<p>Se abbiamo variabili latenti in una qualsiasi delle formule di regressione, dobbiamo “definirle” elencando i loro indicatori (manifesti o latenti). Lo facciamo utilizzando l’operatore speciale “=~”, che può essere letto come “è misurato da”. Ad esempio, per definire le tre variabili latenti f1, f2 e f3, possiamo usare qualcosa del genere:</p>
+<pre><code>f1 =~ y1 + y2 + y3
+f2 =~ y4 + y5 + y6
+f3 =~ y7 + y8 + y9 + y10</code></pre>
+<p>Inoltre, le varianze e le covarianze sono specificate utilizzando un operatore “doppia tilde”, ad esempio:</p>
+<pre><code>y1 ~~ y1 # varianza
+y1 ~~ y2 # covarianza
+f1 ~~ f2 # covarianza</code></pre>
+<p>E infine, le intercette per le variabili osservate e latenti sono semplici formule di regressione con solo una intercetta (esplicitamente indicato dal numero “1”) come unico predittore:</p>
+<pre><code>y1 ~ 1
+f1 ~ 1</code></pre>
+<p>Utilizzando questi quattro tipi di formule, è possibile descrivere una vasta gamma di modelli di variabili latenti. L’attuale insieme di tipi di formula è riassunto nella tabella sottostante.</p>
+<table>
+<thead>
+<tr class="header">
+<th>tipo di formula</th>
+<th>operatore</th>
+<th>mnemonic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>definizione variabile latente</td>
+<td>=~</td>
+<td>è misurato da</td>
+</tr>
+<tr class="even">
+<td>regressione</td>
+<td>~</td>
+<td>viene regredito su</td>
+</tr>
+<tr class="odd">
+<td>(co)varianza (residuale)</td>
+<td>~~</td>
+<td>è correlato con</td>
+</tr>
+<tr class="even">
+<td>intercetta</td>
+<td>~ 1</td>
+<td>intercetta</td>
+</tr>
+</tbody>
+</table>
+<p>Una sintassi completa del modello lavaan è semplicemente una combinazione di questi tipi di formule, racchiusi tra virgolette singole. Ad esempio:</p>
+<pre><code>my_model &lt;- &#39; 
+  # regressions
+  y1 + y2 ~ f1 + f2 + x1 + x2
+  f1 ~ f2 + f3
+  f2 ~ f3 + x1 + x2
+
+  # latent variable definitions 
+  f1 =~ y1 + y2 + y3 
+  f2 =~ y4 + y5 + y6 
+  f3 =~ y7 + y8 + y9
+  
+  # variances and covariances 
+  y1 ~~ y1 
+  y1 ~~ y2 
+  f1 ~~ f2
+
+  # intercepts 
+  y1 ~ 1 
+  f1 ~ 1
+&#39;</code></pre>
+<p>Per adattare il modello ai dati usiamo la seguente sintassi.</p>
+<pre><code>fit &lt;- cfa(model = my_model, data = my_data)</code></pre>
+</div>
+<div id="un-esempio-concreto" class="section level3 hasAnchor" number="13.4.2">
+<h3><span class="header-section-number">13.4.2</span> Un esempio concreto<a href="introduzione-a-lavaan.html#un-esempio-concreto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Analizziamo nuovamente i dati di Spearman che abbiamo esaminato in precedenza usando <code>lavaan</code>. La matrice completa dei dati di Spearman è messa a disposizione da <span class="citation">Kan, Maas, and Levine (<a href="#ref-kan2019extending">2019</a>)</span>. Iniziamo a caricare i pacchetti necessari:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="introduzione-a-lavaan.html#cb15-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;lavaan&quot;</span>)</span>
+<span id="cb15-2"><a href="introduzione-a-lavaan.html#cb15-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;semPlot&quot;</span>)</span>
+<span id="cb15-3"><a href="introduzione-a-lavaan.html#cb15-3" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;knitr&quot;</span>)</span>
+<span id="cb15-4"><a href="introduzione-a-lavaan.html#cb15-4" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;kableExtra&quot;</span>)</span>
+<span id="cb15-5"><a href="introduzione-a-lavaan.html#cb15-5" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;tidyr&quot;</span>)</span>
+<span id="cb15-6"><a href="introduzione-a-lavaan.html#cb15-6" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;corrplot&quot;</span>)</span></code></pre></div>
+<p>Specifichiamo il nome delle variabili manifeste</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="introduzione-a-lavaan.html#cb16-1" tabindex="-1"></a>varnames <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb16-2"><a href="introduzione-a-lavaan.html#cb16-2" tabindex="-1"></a>  <span class="st">&quot;Classics&quot;</span>, <span class="st">&quot;French&quot;</span>, <span class="st">&quot;English&quot;</span>, <span class="st">&quot;Math&quot;</span>, <span class="st">&quot;Pitch&quot;</span>, <span class="st">&quot;Music&quot;</span></span>
+<span id="cb16-3"><a href="introduzione-a-lavaan.html#cb16-3" tabindex="-1"></a>)</span></code></pre></div>
+<p>e il loro numero</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="introduzione-a-lavaan.html#cb17-1" tabindex="-1"></a>ny <span class="ot">&lt;-</span> <span class="fu">length</span>(varnames)</span></code></pre></div>
+<p>Creiamo la matrice di correlazione:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="introduzione-a-lavaan.html#cb18-1" tabindex="-1"></a>spearman_cor_mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb18-2"><a href="introduzione-a-lavaan.html#cb18-2" tabindex="-1"></a>  <span class="fu">c</span>(</span>
+<span id="cb18-3"><a href="introduzione-a-lavaan.html#cb18-3" tabindex="-1"></a>    <span class="fl">1.00</span>, .<span class="dv">83</span>, .<span class="dv">78</span>, .<span class="dv">70</span>, .<span class="dv">66</span>, .<span class="dv">63</span>,</span>
+<span id="cb18-4"><a href="introduzione-a-lavaan.html#cb18-4" tabindex="-1"></a>    .<span class="dv">83</span>, <span class="fl">1.00</span>, .<span class="dv">67</span>, .<span class="dv">67</span>, .<span class="dv">65</span>, .<span class="dv">57</span>,</span>
+<span id="cb18-5"><a href="introduzione-a-lavaan.html#cb18-5" tabindex="-1"></a>    .<span class="dv">78</span>, .<span class="dv">67</span>, <span class="fl">1.00</span>, .<span class="dv">64</span>, .<span class="dv">54</span>, .<span class="dv">51</span>,</span>
+<span id="cb18-6"><a href="introduzione-a-lavaan.html#cb18-6" tabindex="-1"></a>    .<span class="dv">70</span>, .<span class="dv">67</span>, .<span class="dv">64</span>, <span class="fl">1.00</span>, .<span class="dv">45</span>, .<span class="dv">51</span>,</span>
+<span id="cb18-7"><a href="introduzione-a-lavaan.html#cb18-7" tabindex="-1"></a>    .<span class="dv">66</span>, .<span class="dv">65</span>, .<span class="dv">54</span>, .<span class="dv">45</span>, <span class="fl">1.00</span>, .<span class="dv">40</span>,</span>
+<span id="cb18-8"><a href="introduzione-a-lavaan.html#cb18-8" tabindex="-1"></a>    .<span class="dv">63</span>, .<span class="dv">57</span>, .<span class="dv">51</span>, .<span class="dv">51</span>, .<span class="dv">40</span>, <span class="fl">1.00</span></span>
+<span id="cb18-9"><a href="introduzione-a-lavaan.html#cb18-9" tabindex="-1"></a>  ),</span>
+<span id="cb18-10"><a href="introduzione-a-lavaan.html#cb18-10" tabindex="-1"></a>  ny, ny,</span>
+<span id="cb18-11"><a href="introduzione-a-lavaan.html#cb18-11" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb18-12"><a href="introduzione-a-lavaan.html#cb18-12" tabindex="-1"></a>  <span class="at">dimnames =</span> <span class="fu">list</span>(varnames, varnames)</span>
+<span id="cb18-13"><a href="introduzione-a-lavaan.html#cb18-13" tabindex="-1"></a>)</span></code></pre></div>
+<p>Specifichiamo l’ampiezza campionaria:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="introduzione-a-lavaan.html#cb19-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">33</span></span></code></pre></div>
+<p>Definiamo il modello unifattoriale in <code>lavaan</code>. L’operatore <code>=~</code> si può leggere dicendo che la variabile latente a sinistra dell’operatore viene identificata dalle variabili manifeste elencate a destra dell’operatore e separate dal segno <code>+</code>. Per il caso presente, il modello dei due fattori di Spearman può essere specificato come segue.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="introduzione-a-lavaan.html#cb20-1" tabindex="-1"></a>spearman_mod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb20-2"><a href="introduzione-a-lavaan.html#cb20-2" tabindex="-1"></a><span class="st">  g =~ Classics + French + English + Math + Pitch + Music</span></span>
+<span id="cb20-3"><a href="introduzione-a-lavaan.html#cb20-3" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<p>Adattiamo il modello ai dati con la funzione <code>cfa()</code>:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="introduzione-a-lavaan.html#cb21-1" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> lavaan<span class="sc">::</span><span class="fu">cfa</span>(</span>
+<span id="cb21-2"><a href="introduzione-a-lavaan.html#cb21-2" tabindex="-1"></a>  spearman_mod,</span>
+<span id="cb21-3"><a href="introduzione-a-lavaan.html#cb21-3" tabindex="-1"></a>  <span class="at">sample.cov =</span> spearman_cor_mat,</span>
+<span id="cb21-4"><a href="introduzione-a-lavaan.html#cb21-4" tabindex="-1"></a>  <span class="at">sample.nobs =</span> n,</span>
+<span id="cb21-5"><a href="introduzione-a-lavaan.html#cb21-5" tabindex="-1"></a>  <span class="at">std.lv =</span> <span class="cn">TRUE</span></span>
+<span id="cb21-6"><a href="introduzione-a-lavaan.html#cb21-6" tabindex="-1"></a>)</span></code></pre></div>
+<p>La funzione cfa() è una funzione dedicata per adattare modelli di analisi fattoriale confermativa. Il primo argomento è il modello specificato dall’utente. Il secondo argomento è il dataset che contiene le variabili osservate. L’argomento <code>std.lv = TRUE</code> specifica che imponiamo una varianza pari a 1 a tutte le variabili latenti comuni (nel caso presente, solo una). Ciò consente di stimare le saturazioni fattoriali.</p>
+<p>Una volta adattato il modello, la funzione summary() ci consente di esaminare la soluzione ottenuta:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="introduzione-a-lavaan.html#cb22-1" tabindex="-1"></a><span class="fu">summary</span>(</span>
+<span id="cb22-2"><a href="introduzione-a-lavaan.html#cb22-2" tabindex="-1"></a>  fit1,</span>
+<span id="cb22-3"><a href="introduzione-a-lavaan.html#cb22-3" tabindex="-1"></a>  <span class="at">fit.measures =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb22-4"><a href="introduzione-a-lavaan.html#cb22-4" tabindex="-1"></a>  <span class="at">standardized =</span> <span class="cn">TRUE</span></span>
+<span id="cb22-5"><a href="introduzione-a-lavaan.html#cb22-5" tabindex="-1"></a>)</span>
+<span id="cb22-6"><a href="introduzione-a-lavaan.html#cb22-6" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6.15 ended normally after 23 iterations</span></span>
+<span id="cb22-7"><a href="introduzione-a-lavaan.html#cb22-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb22-8"><a href="introduzione-a-lavaan.html#cb22-8" tabindex="-1"></a><span class="co">#&gt;   Estimator                                         ML</span></span>
+<span id="cb22-9"><a href="introduzione-a-lavaan.html#cb22-9" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
+<span id="cb22-10"><a href="introduzione-a-lavaan.html#cb22-10" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                        12</span></span>
+<span id="cb22-11"><a href="introduzione-a-lavaan.html#cb22-11" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb22-12"><a href="introduzione-a-lavaan.html#cb22-12" tabindex="-1"></a><span class="co">#&gt;   Number of observations                            33</span></span>
+<span id="cb22-13"><a href="introduzione-a-lavaan.html#cb22-13" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb22-14"><a href="introduzione-a-lavaan.html#cb22-14" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
+<span id="cb22-15"><a href="introduzione-a-lavaan.html#cb22-15" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
+<span id="cb22-16"><a href="introduzione-a-lavaan.html#cb22-16" tabindex="-1"></a><span class="co">#&gt;   Test statistic                                 2.913</span></span>
+<span id="cb22-17"><a href="introduzione-a-lavaan.html#cb22-17" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                 9</span></span>
+<span id="cb22-18"><a href="introduzione-a-lavaan.html#cb22-18" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                           0.968</span></span>
+<span id="cb22-19"><a href="introduzione-a-lavaan.html#cb22-19" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb22-20"><a href="introduzione-a-lavaan.html#cb22-20" tabindex="-1"></a><span class="co">#&gt; Model Test Baseline Model:</span></span>
+<span id="cb22-21"><a href="introduzione-a-lavaan.html#cb22-21" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb22-22"><a href="introduzione-a-lavaan.html#cb22-22" tabindex="-1"></a><span class="co">#&gt;   Test statistic                               133.625</span></span>
+<span id="cb22-23"><a href="introduzione-a-lavaan.html#cb22-23" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                15</span></span>
+<span id="cb22-24"><a href="introduzione-a-lavaan.html#cb22-24" tabindex="-1"></a><span class="co">#&gt;   P-value                                        0.000</span></span>
+<span id="cb22-25"><a href="introduzione-a-lavaan.html#cb22-25" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb22-26"><a href="introduzione-a-lavaan.html#cb22-26" tabindex="-1"></a><span class="co">#&gt; User Model versus Baseline Model:</span></span>
+<span id="cb22-27"><a href="introduzione-a-lavaan.html#cb22-27" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb22-28"><a href="introduzione-a-lavaan.html#cb22-28" tabindex="-1"></a><span class="co">#&gt;   Comparative Fit Index (CFI)                    1.000</span></span>
+<span id="cb22-29"><a href="introduzione-a-lavaan.html#cb22-29" tabindex="-1"></a><span class="co">#&gt;   Tucker-Lewis Index (TLI)                       1.086</span></span>
+<span id="cb22-30"><a href="introduzione-a-lavaan.html#cb22-30" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb22-31"><a href="introduzione-a-lavaan.html#cb22-31" tabindex="-1"></a><span class="co">#&gt; Loglikelihood and Information Criteria:</span></span>
+<span id="cb22-32"><a href="introduzione-a-lavaan.html#cb22-32" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb22-33"><a href="introduzione-a-lavaan.html#cb22-33" tabindex="-1"></a><span class="co">#&gt;   Loglikelihood user model (H0)               -212.547</span></span>
+<span id="cb22-34"><a href="introduzione-a-lavaan.html#cb22-34" tabindex="-1"></a><span class="co">#&gt;   Loglikelihood unrestricted model (H1)       -211.091</span></span>
+<span id="cb22-35"><a href="introduzione-a-lavaan.html#cb22-35" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
+<span id="cb22-36"><a href="introduzione-a-lavaan.html#cb22-36" tabindex="-1"></a><span class="co">#&gt;   Akaike (AIC)                                 449.094</span></span>
+<span id="cb22-37"><a href="introduzione-a-lavaan.html#cb22-37" tabindex="-1"></a><span class="co">#&gt;   Bayesian (BIC)                               467.052</span></span>
+<span id="cb22-38"><a href="introduzione-a-lavaan.html#cb22-38" tabindex="-1"></a><span class="co">#&gt;   Sample-size adjusted Bayesian (SABIC)        429.622</span></span>
+<span id="cb22-39"><a href="introduzione-a-lavaan.html#cb22-39" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb22-40"><a href="introduzione-a-lavaan.html#cb22-40" tabindex="-1"></a><span class="co">#&gt; Root Mean Square Error of Approximation:</span></span>
+<span id="cb22-41"><a href="introduzione-a-lavaan.html#cb22-41" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb22-42"><a href="introduzione-a-lavaan.html#cb22-42" tabindex="-1"></a><span class="co">#&gt;   RMSEA                                          0.000</span></span>
+<span id="cb22-43"><a href="introduzione-a-lavaan.html#cb22-43" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - lower         0.000</span></span>
+<span id="cb22-44"><a href="introduzione-a-lavaan.html#cb22-44" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - upper         0.000</span></span>
+<span id="cb22-45"><a href="introduzione-a-lavaan.html#cb22-45" tabindex="-1"></a><span class="co">#&gt;   P-value H_0: RMSEA &lt;= 0.050                    0.976</span></span>
+<span id="cb22-46"><a href="introduzione-a-lavaan.html#cb22-46" tabindex="-1"></a><span class="co">#&gt;   P-value H_0: RMSEA &gt;= 0.080                    0.016</span></span>
+<span id="cb22-47"><a href="introduzione-a-lavaan.html#cb22-47" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb22-48"><a href="introduzione-a-lavaan.html#cb22-48" tabindex="-1"></a><span class="co">#&gt; Standardized Root Mean Square Residual:</span></span>
+<span id="cb22-49"><a href="introduzione-a-lavaan.html#cb22-49" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb22-50"><a href="introduzione-a-lavaan.html#cb22-50" tabindex="-1"></a><span class="co">#&gt;   SRMR                                           0.025</span></span>
+<span id="cb22-51"><a href="introduzione-a-lavaan.html#cb22-51" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb22-52"><a href="introduzione-a-lavaan.html#cb22-52" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
+<span id="cb22-53"><a href="introduzione-a-lavaan.html#cb22-53" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb22-54"><a href="introduzione-a-lavaan.html#cb22-54" tabindex="-1"></a><span class="co">#&gt;   Standard errors                             Standard</span></span>
+<span id="cb22-55"><a href="introduzione-a-lavaan.html#cb22-55" tabindex="-1"></a><span class="co">#&gt;   Information                                 Expected</span></span>
+<span id="cb22-56"><a href="introduzione-a-lavaan.html#cb22-56" tabindex="-1"></a><span class="co">#&gt;   Information saturated (h1) model          Structured</span></span>
+<span id="cb22-57"><a href="introduzione-a-lavaan.html#cb22-57" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb22-58"><a href="introduzione-a-lavaan.html#cb22-58" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
+<span id="cb22-59"><a href="introduzione-a-lavaan.html#cb22-59" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all</span></span>
+<span id="cb22-60"><a href="introduzione-a-lavaan.html#cb22-60" tabindex="-1"></a><span class="co">#&gt;   g =~                                                                  </span></span>
+<span id="cb22-61"><a href="introduzione-a-lavaan.html#cb22-61" tabindex="-1"></a><span class="co">#&gt;     Classics          0.942    0.129    7.314    0.000    0.942    0.956</span></span>
+<span id="cb22-62"><a href="introduzione-a-lavaan.html#cb22-62" tabindex="-1"></a><span class="co">#&gt;     French            0.857    0.137    6.239    0.000    0.857    0.871</span></span>
+<span id="cb22-63"><a href="introduzione-a-lavaan.html#cb22-63" tabindex="-1"></a><span class="co">#&gt;     English           0.795    0.143    5.545    0.000    0.795    0.807</span></span>
+<span id="cb22-64"><a href="introduzione-a-lavaan.html#cb22-64" tabindex="-1"></a><span class="co">#&gt;     Math              0.732    0.149    4.923    0.000    0.732    0.743</span></span>
+<span id="cb22-65"><a href="introduzione-a-lavaan.html#cb22-65" tabindex="-1"></a><span class="co">#&gt;     Pitch             0.678    0.153    4.438    0.000    0.678    0.689</span></span>
+<span id="cb22-66"><a href="introduzione-a-lavaan.html#cb22-66" tabindex="-1"></a><span class="co">#&gt;     Music             0.643    0.155    4.142    0.000    0.643    0.653</span></span>
+<span id="cb22-67"><a href="introduzione-a-lavaan.html#cb22-67" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb22-68"><a href="introduzione-a-lavaan.html#cb22-68" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
+<span id="cb22-69"><a href="introduzione-a-lavaan.html#cb22-69" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all</span></span>
+<span id="cb22-70"><a href="introduzione-a-lavaan.html#cb22-70" tabindex="-1"></a><span class="co">#&gt;    .Classics          0.083    0.051    1.629    0.103    0.083    0.086</span></span>
+<span id="cb22-71"><a href="introduzione-a-lavaan.html#cb22-71" tabindex="-1"></a><span class="co">#&gt;    .French            0.234    0.072    3.244    0.001    0.234    0.242</span></span>
+<span id="cb22-72"><a href="introduzione-a-lavaan.html#cb22-72" tabindex="-1"></a><span class="co">#&gt;    .English           0.338    0.094    3.610    0.000    0.338    0.349</span></span>
+<span id="cb22-73"><a href="introduzione-a-lavaan.html#cb22-73" tabindex="-1"></a><span class="co">#&gt;    .Math              0.434    0.115    3.773    0.000    0.434    0.447</span></span>
+<span id="cb22-74"><a href="introduzione-a-lavaan.html#cb22-74" tabindex="-1"></a><span class="co">#&gt;    .Pitch             0.510    0.132    3.855    0.000    0.510    0.526</span></span>
+<span id="cb22-75"><a href="introduzione-a-lavaan.html#cb22-75" tabindex="-1"></a><span class="co">#&gt;    .Music             0.556    0.143    3.893    0.000    0.556    0.573</span></span>
+<span id="cb22-76"><a href="introduzione-a-lavaan.html#cb22-76" tabindex="-1"></a><span class="co">#&gt;     g                 1.000                               1.000    1.000</span></span></code></pre></div>
+<p>L’output consiste in tre parti. Le prime nove righe sono chiamate intestazione. L’intestazione contiene le seguenti informazioni:</p>
+<ul>
+<li>il numero di versione di lavaan</li>
+<li>se l’ottimizzazione è terminata normalmente o meno e quante iterazioni sono state necessarie</li>
+<li>lo stimatore utilizzato (qui: ML, per la massima verosimiglianza)</li>
+<li>l’ottimizzatore utilizzato per trovare i valori dei parametri di adattamento migliori per questo stimatore (qui: NLMINB)</li>
+<li>il numero di parametri del modello (qui: 12)</li>
+<li>il numero di osservazioni che sono state effettivamente utilizzate nell’analisi (qui: 33)</li>
+<li>una sezione chiamata “Model Test User Model”: che fornisce una statistica di test, i gradi di libertà e un valore p per il modello specificato dall’utente.</li>
+</ul>
+<p>La sezione successiva contiene ulteriori misure di adattamento e viene mostrata solo se si utilizza l’argomento opzionale fit.measures = TRUE. Inizia con la riga Model Test Baseline Model: e termina con il valore per l’SRMR. L’ultima sezione contiene le stime dei parametri. Inizia con informazioni (tecniche) sul metodo utilizzato per calcolare gli errori standard. Quindi, vengono elencati tutti i parametri liberi (e fissati) inclusi nel modello. Di solito, prima vengono mostrate le variabili latenti, seguite dalle covarianze e dalle varianze (residui). La prima colonna (Stima) contiene il valore del parametro (stimato o fisso) per ogni parametro del modello; la seconda colonna (Std.err) contiene l’errore standard per ogni parametro stimato; la terza colonna (Z-value) contiene la statistica di Wald (che viene semplicemente ottenuta dividendo il valore del parametro per il suo errore standard), e l’ultima colonna (P(&gt;|z|)) contiene il valore p per testare l’ipotesi nulla che il valore del parametro sia uguale a zero nella popolazione.</p>
+<p>Si noti che nella sezione Varianze: c’è un punto prima dei nomi delle variabili osservate. Ciò perché sono variabili dipendenti (o endogene) (predette dalle variabili latenti) e quindi il valore della varianza stampato in output è una stima della varianza residua: la varianza rimanente che non è spiegata dal/i predittore/i. Al contrario, non c’è un punto prima dei nomi delle variabili latenti, perché in questo modello sono variabili esogene. I valori delle varianze qui sono le varianze totali stimate delle variabili latenti.</p>
+<p>È possibile semplificare l’output dalla funzione <code>summary()</code> in maniera tale da stampare solo la tabella completa delle stime dei parametri e degli errori standard. Qui usiamo <code>coef(fit1)</code>.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="introduzione-a-lavaan.html#cb23-1" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">round</span>(<span class="fu">coef</span>(fit1), <span class="dv">2</span>), <span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">format =</span> <span class="st">&quot;markdown&quot;</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">g=~Classics</td>
+<td align="right">0.94</td>
+</tr>
+<tr class="even">
+<td align="left">g=~French</td>
+<td align="right">0.86</td>
+</tr>
+<tr class="odd">
+<td align="left">g=~English</td>
+<td align="right">0.79</td>
+</tr>
+<tr class="even">
+<td align="left">g=~Math</td>
+<td align="right">0.73</td>
+</tr>
+<tr class="odd">
+<td align="left">g=~Pitch</td>
+<td align="right">0.68</td>
+</tr>
+<tr class="even">
+<td align="left">g=~Music</td>
+<td align="right">0.64</td>
+</tr>
+<tr class="odd">
+<td align="left">Classics~~Classics</td>
+<td align="right">0.08</td>
+</tr>
+<tr class="even">
+<td align="left">French~~French</td>
+<td align="right">0.23</td>
+</tr>
+<tr class="odd">
+<td align="left">English~~English</td>
+<td align="right">0.34</td>
+</tr>
+<tr class="even">
+<td align="left">Math~~Math</td>
+<td align="right">0.43</td>
+</tr>
+<tr class="odd">
+<td align="left">Pitch~~Pitch</td>
+<td align="right">0.51</td>
+</tr>
+<tr class="even">
+<td align="left">Music~~Music</td>
+<td align="right">0.56</td>
+</tr>
+</tbody>
+</table>
+<p>Senza usare <code>kable</code>, l’output diventa il seguente.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="introduzione-a-lavaan.html#cb24-1" tabindex="-1"></a><span class="fu">parameterEstimates</span>(fit1, <span class="at">standardized =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb24-2"><a href="introduzione-a-lavaan.html#cb24-2" tabindex="-1"></a><span class="co">#&gt;         lhs op      rhs   est    se     z pvalue ci.lower ci.upper std.lv</span></span>
+<span id="cb24-3"><a href="introduzione-a-lavaan.html#cb24-3" tabindex="-1"></a><span class="co">#&gt; 1         g =~ Classics 0.942 0.129 7.314  0.000    0.689    1.194  0.942</span></span>
+<span id="cb24-4"><a href="introduzione-a-lavaan.html#cb24-4" tabindex="-1"></a><span class="co">#&gt; 2         g =~   French 0.857 0.137 6.239  0.000    0.588    1.127  0.857</span></span>
+<span id="cb24-5"><a href="introduzione-a-lavaan.html#cb24-5" tabindex="-1"></a><span class="co">#&gt; 3         g =~  English 0.795 0.143 5.545  0.000    0.514    1.076  0.795</span></span>
+<span id="cb24-6"><a href="introduzione-a-lavaan.html#cb24-6" tabindex="-1"></a><span class="co">#&gt; 4         g =~     Math 0.732 0.149 4.923  0.000    0.441    1.024  0.732</span></span>
+<span id="cb24-7"><a href="introduzione-a-lavaan.html#cb24-7" tabindex="-1"></a><span class="co">#&gt; 5         g =~    Pitch 0.678 0.153 4.438  0.000    0.379    0.978  0.678</span></span>
+<span id="cb24-8"><a href="introduzione-a-lavaan.html#cb24-8" tabindex="-1"></a><span class="co">#&gt; 6         g =~    Music 0.643 0.155 4.142  0.000    0.339    0.948  0.643</span></span>
+<span id="cb24-9"><a href="introduzione-a-lavaan.html#cb24-9" tabindex="-1"></a><span class="co">#&gt; 7  Classics ~~ Classics 0.083 0.051 1.629  0.103   -0.017    0.183  0.083</span></span>
+<span id="cb24-10"><a href="introduzione-a-lavaan.html#cb24-10" tabindex="-1"></a><span class="co">#&gt; 8    French ~~   French 0.234 0.072 3.244  0.001    0.093    0.376  0.234</span></span>
+<span id="cb24-11"><a href="introduzione-a-lavaan.html#cb24-11" tabindex="-1"></a><span class="co">#&gt; 9   English ~~  English 0.338 0.094 3.610  0.000    0.154    0.522  0.338</span></span>
+<span id="cb24-12"><a href="introduzione-a-lavaan.html#cb24-12" tabindex="-1"></a><span class="co">#&gt; 10     Math ~~     Math 0.434 0.115 3.773  0.000    0.208    0.659  0.434</span></span>
+<span id="cb24-13"><a href="introduzione-a-lavaan.html#cb24-13" tabindex="-1"></a><span class="co">#&gt; 11    Pitch ~~    Pitch 0.510 0.132 3.855  0.000    0.251    0.769  0.510</span></span>
+<span id="cb24-14"><a href="introduzione-a-lavaan.html#cb24-14" tabindex="-1"></a><span class="co">#&gt; 12    Music ~~    Music 0.556 0.143 3.893  0.000    0.276    0.836  0.556</span></span>
+<span id="cb24-15"><a href="introduzione-a-lavaan.html#cb24-15" tabindex="-1"></a><span class="co">#&gt; 13        g ~~        g 1.000 0.000    NA     NA    1.000    1.000  1.000</span></span>
+<span id="cb24-16"><a href="introduzione-a-lavaan.html#cb24-16" tabindex="-1"></a><span class="co">#&gt;    std.all std.nox</span></span>
+<span id="cb24-17"><a href="introduzione-a-lavaan.html#cb24-17" tabindex="-1"></a><span class="co">#&gt; 1    0.956   0.956</span></span>
+<span id="cb24-18"><a href="introduzione-a-lavaan.html#cb24-18" tabindex="-1"></a><span class="co">#&gt; 2    0.871   0.871</span></span>
+<span id="cb24-19"><a href="introduzione-a-lavaan.html#cb24-19" tabindex="-1"></a><span class="co">#&gt; 3    0.807   0.807</span></span>
+<span id="cb24-20"><a href="introduzione-a-lavaan.html#cb24-20" tabindex="-1"></a><span class="co">#&gt; 4    0.743   0.743</span></span>
+<span id="cb24-21"><a href="introduzione-a-lavaan.html#cb24-21" tabindex="-1"></a><span class="co">#&gt; 5    0.689   0.689</span></span>
+<span id="cb24-22"><a href="introduzione-a-lavaan.html#cb24-22" tabindex="-1"></a><span class="co">#&gt; 6    0.653   0.653</span></span>
+<span id="cb24-23"><a href="introduzione-a-lavaan.html#cb24-23" tabindex="-1"></a><span class="co">#&gt; 7    0.086   0.086</span></span>
+<span id="cb24-24"><a href="introduzione-a-lavaan.html#cb24-24" tabindex="-1"></a><span class="co">#&gt; 8    0.242   0.242</span></span>
+<span id="cb24-25"><a href="introduzione-a-lavaan.html#cb24-25" tabindex="-1"></a><span class="co">#&gt; 9    0.349   0.349</span></span>
+<span id="cb24-26"><a href="introduzione-a-lavaan.html#cb24-26" tabindex="-1"></a><span class="co">#&gt; 10   0.447   0.447</span></span>
+<span id="cb24-27"><a href="introduzione-a-lavaan.html#cb24-27" tabindex="-1"></a><span class="co">#&gt; 11   0.526   0.526</span></span>
+<span id="cb24-28"><a href="introduzione-a-lavaan.html#cb24-28" tabindex="-1"></a><span class="co">#&gt; 12   0.573   0.573</span></span>
+<span id="cb24-29"><a href="introduzione-a-lavaan.html#cb24-29" tabindex="-1"></a><span class="co">#&gt; 13   1.000   1.000</span></span></code></pre></div>
+<p>Usando invece <code>kable</code> con opportuni parametri, otteniamo:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="introduzione-a-lavaan.html#cb25-1" tabindex="-1"></a><span class="fu">parameterEstimates</span>(fit1, <span class="at">standardized =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="introduzione-a-lavaan.html#cb25-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(op <span class="sc">==</span> <span class="st">&quot;=~&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="introduzione-a-lavaan.html#cb25-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb25-4"><a href="introduzione-a-lavaan.html#cb25-4" tabindex="-1"></a>    <span class="st">&quot;Latent Factor&quot;</span> <span class="ot">=</span> lhs,</span>
+<span id="cb25-5"><a href="introduzione-a-lavaan.html#cb25-5" tabindex="-1"></a>    <span class="at">Indicator =</span> rhs,</span>
+<span id="cb25-6"><a href="introduzione-a-lavaan.html#cb25-6" tabindex="-1"></a>    <span class="at">B =</span> est,</span>
+<span id="cb25-7"><a href="introduzione-a-lavaan.html#cb25-7" tabindex="-1"></a>    <span class="at">SE =</span> se,</span>
+<span id="cb25-8"><a href="introduzione-a-lavaan.html#cb25-8" tabindex="-1"></a>    <span class="at">Z =</span> z,</span>
+<span id="cb25-9"><a href="introduzione-a-lavaan.html#cb25-9" tabindex="-1"></a>    <span class="st">&quot;p-value&quot;</span> <span class="ot">=</span> pvalue,</span>
+<span id="cb25-10"><a href="introduzione-a-lavaan.html#cb25-10" tabindex="-1"></a>    <span class="at">Beta =</span> std.all</span>
+<span id="cb25-11"><a href="introduzione-a-lavaan.html#cb25-11" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb25-12"><a href="introduzione-a-lavaan.html#cb25-12" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb25-13"><a href="introduzione-a-lavaan.html#cb25-13" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">format =</span> <span class="st">&quot;markdown&quot;</span>,</span>
+<span id="cb25-14"><a href="introduzione-a-lavaan.html#cb25-14" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Factor Loadings&quot;</span></span>
+<span id="cb25-15"><a href="introduzione-a-lavaan.html#cb25-15" tabindex="-1"></a>  )</span></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-19">TABELLA 13.1: </span>Factor Loadings</caption>
+<thead>
+<tr class="header">
+<th align="left">Latent Factor</th>
+<th align="left">Indicator</th>
+<th align="right">B</th>
+<th align="right">SE</th>
+<th align="right">Z</th>
+<th align="right">p-value</th>
+<th align="right">Beta</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">g</td>
+<td align="left">Classics</td>
+<td align="right">0.942</td>
+<td align="right">0.129</td>
+<td align="right">7.314</td>
+<td align="right">0</td>
+<td align="right">0.956</td>
+</tr>
+<tr class="even">
+<td align="left">g</td>
+<td align="left">French</td>
+<td align="right">0.857</td>
+<td align="right">0.137</td>
+<td align="right">6.239</td>
+<td align="right">0</td>
+<td align="right">0.871</td>
+</tr>
+<tr class="odd">
+<td align="left">g</td>
+<td align="left">English</td>
+<td align="right">0.795</td>
+<td align="right">0.143</td>
+<td align="right">5.545</td>
+<td align="right">0</td>
+<td align="right">0.807</td>
+</tr>
+<tr class="even">
+<td align="left">g</td>
+<td align="left">Math</td>
+<td align="right">0.732</td>
+<td align="right">0.149</td>
+<td align="right">4.923</td>
+<td align="right">0</td>
+<td align="right">0.743</td>
+</tr>
+<tr class="odd">
+<td align="left">g</td>
+<td align="left">Pitch</td>
+<td align="right">0.678</td>
+<td align="right">0.153</td>
+<td align="right">4.438</td>
+<td align="right">0</td>
+<td align="right">0.689</td>
+</tr>
+<tr class="even">
+<td align="left">g</td>
+<td align="left">Music</td>
+<td align="right">0.643</td>
+<td align="right">0.155</td>
+<td align="right">4.142</td>
+<td align="right">0</td>
+<td align="right">0.653</td>
+</tr>
+</tbody>
+</table>
+<p>Esaminiamo la matrice delle correlazioni residue:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="introduzione-a-lavaan.html#cb26-1" tabindex="-1"></a>cor_table <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit1, <span class="at">type =</span> <span class="st">&quot;cor&quot;</span>)<span class="sc">$</span>cov</span>
+<span id="cb26-2"><a href="introduzione-a-lavaan.html#cb26-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb26-3"><a href="introduzione-a-lavaan.html#cb26-3" tabindex="-1"></a>  cor_table,</span>
+<span id="cb26-4"><a href="introduzione-a-lavaan.html#cb26-4" tabindex="-1"></a>  <span class="at">digits =</span> <span class="dv">3</span>,</span>
+<span id="cb26-5"><a href="introduzione-a-lavaan.html#cb26-5" tabindex="-1"></a>  <span class="at">format =</span> <span class="st">&quot;markdown&quot;</span>,</span>
+<span id="cb26-6"><a href="introduzione-a-lavaan.html#cb26-6" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span></span>
+<span id="cb26-7"><a href="introduzione-a-lavaan.html#cb26-7" tabindex="-1"></a>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Classics</th>
+<th align="right">French</th>
+<th align="right">English</th>
+<th align="right">Math</th>
+<th align="right">Pitch</th>
+<th align="right">Music</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Classics</td>
+<td align="right">0.000</td>
+<td align="right">-0.003</td>
+<td align="right">0.008</td>
+<td align="right">-0.011</td>
+<td align="right">0.001</td>
+<td align="right">0.005</td>
+</tr>
+<tr class="even">
+<td align="left">French</td>
+<td align="right">-0.003</td>
+<td align="right">0.000</td>
+<td align="right">-0.033</td>
+<td align="right">0.023</td>
+<td align="right">0.050</td>
+<td align="right">0.001</td>
+</tr>
+<tr class="odd">
+<td align="left">English</td>
+<td align="right">0.008</td>
+<td align="right">-0.033</td>
+<td align="right">0.000</td>
+<td align="right">0.040</td>
+<td align="right">-0.016</td>
+<td align="right">-0.017</td>
+</tr>
+<tr class="even">
+<td align="left">Math</td>
+<td align="right">-0.011</td>
+<td align="right">0.023</td>
+<td align="right">0.040</td>
+<td align="right">0.000</td>
+<td align="right">-0.062</td>
+<td align="right">0.024</td>
+</tr>
+<tr class="odd">
+<td align="left">Pitch</td>
+<td align="right">0.001</td>
+<td align="right">0.050</td>
+<td align="right">-0.016</td>
+<td align="right">-0.062</td>
+<td align="right">0.000</td>
+<td align="right">-0.050</td>
+</tr>
+<tr class="even">
+<td align="left">Music</td>
+<td align="right">0.005</td>
+<td align="right">0.001</td>
+<td align="right">-0.017</td>
+<td align="right">0.024</td>
+<td align="right">-0.050</td>
+<td align="right">0.000</td>
+</tr>
+</tbody>
+</table>
+<p>Creiamo un qq-plot dei residui:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="introduzione-a-lavaan.html#cb27-1" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit1, <span class="at">type =</span> <span class="st">&quot;cor&quot;</span>)<span class="sc">$</span>cov</span>
+<span id="cb27-2"><a href="introduzione-a-lavaan.html#cb27-2" tabindex="-1"></a>res1[<span class="fu">upper.tri</span>(res1, <span class="at">diag =</span> <span class="cn">TRUE</span>)] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb27-3"><a href="introduzione-a-lavaan.html#cb27-3" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(res1)</span>
+<span id="cb27-4"><a href="introduzione-a-lavaan.html#cb27-4" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> v1[<span class="sc">!</span><span class="fu">is.na</span>(v1)]</span>
+<span id="cb27-5"><a href="introduzione-a-lavaan.html#cb27-5" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="introduzione-a-lavaan.html#cb27-6" tabindex="-1"></a><span class="fu">tibble</span>(v2) <span class="sc">%&gt;%</span></span>
+<span id="cb27-7"><a href="introduzione-a-lavaan.html#cb27-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> v2)) <span class="sc">+</span></span>
+<span id="cb27-8"><a href="introduzione-a-lavaan.html#cb27-8" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span></span>
+<span id="cb27-9"><a href="introduzione-a-lavaan.html#cb27-9" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>()</span></code></pre></div>
+<p><img src="cfa_files/figure-html/unnamed-chunk-21-1.png" width="576" style="display: block; margin: auto;" /></p>
+</div>
+<div id="diagrammi-di-percorso" class="section level3 hasAnchor" number="13.4.3">
+<h3><span class="header-section-number">13.4.3</span> Diagrammi di percorso<a href="introduzione-a-lavaan.html#diagrammi-di-percorso" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Il pacchetto <code>semPlot</code> consente di disegnare diagrammi di percorso per vari modelli SEM. La funzione <code>semPaths</code> prende in input un oggetto creato da <code>lavaan</code> e disegna il diagramma, con diverse opzioni disponibili. Il diagramma prodotto controlla le dimensioni dei caratteri/etichette, la visualizzazione dei residui e il colore dei percorsi/coefficienti. Sono disponibili queste e molte altre opzioni di controllo.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="introduzione-a-lavaan.html#cb28-1" tabindex="-1"></a><span class="fu">semPaths</span>(</span>
+<span id="cb28-2"><a href="introduzione-a-lavaan.html#cb28-2" tabindex="-1"></a>  fit1,</span>
+<span id="cb28-3"><a href="introduzione-a-lavaan.html#cb28-3" tabindex="-1"></a>  <span class="st">&quot;std&quot;</span>,</span>
+<span id="cb28-4"><a href="introduzione-a-lavaan.html#cb28-4" tabindex="-1"></a>  <span class="at">posCol =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>),</span>
+<span id="cb28-5"><a href="introduzione-a-lavaan.html#cb28-5" tabindex="-1"></a>  <span class="at">edge.label.cex =</span> <span class="fl">1.2</span>,</span>
+<span id="cb28-6"><a href="introduzione-a-lavaan.html#cb28-6" tabindex="-1"></a>  <span class="at">sizeMan =</span> <span class="dv">7</span></span>
+<span id="cb28-7"><a href="introduzione-a-lavaan.html#cb28-7" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="cfa_files/figure-html/unnamed-chunk-22-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Il calcolo delle saturazioni fattoriali con il metodo del centroide aveva prodotto il seguente risultato:</p>
+<ul>
+<li>classici (Cls): 0.97</li>
+<li>inglese (Eng): 0.84</li>
+<li>matematica (Mth): 0.73</li>
+<li>pitch discrimination (Ptc): 0.65</li>
+</ul>
+<p>Si noti la somiglianza con i valori ottenuti mediante il metodo di massima verosimiglianza riportati nella figura.</p>
+</div>
+<div id="analisi-fattoriale-esplorativa" class="section level3 hasAnchor" number="13.4.4">
+<h3><span class="header-section-number">13.4.4</span> Analisi fattoriale esplorativa<a href="introduzione-a-lavaan.html#analisi-fattoriale-esplorativa" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Quando abbiamo un’unica variabile latente, l’analisi fattoriale confermativa si riduce al caso dell’analisi fattoriale esplorativa. Esaminiamo qui sotto la sintassi per l’analisi fattoriale esplorativa in <code>lavaan</code>.</p>
+<p>Specifichiamo il modello.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="introduzione-a-lavaan.html#cb29-1" tabindex="-1"></a>efa_model <span class="ot">&lt;-</span> <span class="st">&#39;</span></span>
+<span id="cb29-2"><a href="introduzione-a-lavaan.html#cb29-2" tabindex="-1"></a><span class="st">    efa(&quot;efa&quot;)*g =~ Classics + French + English + Math + Pitch + Music</span></span>
+<span id="cb29-3"><a href="introduzione-a-lavaan.html#cb29-3" tabindex="-1"></a><span class="st">&#39;</span></span></code></pre></div>
+<p>Adattiamo il modello ai dati.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="introduzione-a-lavaan.html#cb30-1" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> lavaan<span class="sc">::</span><span class="fu">cfa</span>(</span>
+<span id="cb30-2"><a href="introduzione-a-lavaan.html#cb30-2" tabindex="-1"></a>  efa_model,</span>
+<span id="cb30-3"><a href="introduzione-a-lavaan.html#cb30-3" tabindex="-1"></a>  <span class="at">sample.cov =</span> spearman_cor_mat,</span>
+<span id="cb30-4"><a href="introduzione-a-lavaan.html#cb30-4" tabindex="-1"></a>  <span class="at">sample.nobs =</span> n,</span>
+<span id="cb30-5"><a href="introduzione-a-lavaan.html#cb30-5" tabindex="-1"></a>  <span class="at">std.lv =</span> <span class="cn">TRUE</span></span>
+<span id="cb30-6"><a href="introduzione-a-lavaan.html#cb30-6" tabindex="-1"></a>)</span></code></pre></div>
+<p>Esaminiamo la soluzione ottenuta.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="introduzione-a-lavaan.html#cb31-1" tabindex="-1"></a><span class="fu">summary</span>(fit2, <span class="at">standardized =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb31-2"><a href="introduzione-a-lavaan.html#cb31-2" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6.15 ended normally after 3 iterations</span></span>
+<span id="cb31-3"><a href="introduzione-a-lavaan.html#cb31-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-4"><a href="introduzione-a-lavaan.html#cb31-4" tabindex="-1"></a><span class="co">#&gt;   Estimator                                         ML</span></span>
+<span id="cb31-5"><a href="introduzione-a-lavaan.html#cb31-5" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
+<span id="cb31-6"><a href="introduzione-a-lavaan.html#cb31-6" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                        12</span></span>
+<span id="cb31-7"><a href="introduzione-a-lavaan.html#cb31-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-8"><a href="introduzione-a-lavaan.html#cb31-8" tabindex="-1"></a><span class="co">#&gt;   Rotation method                       GEOMIN OBLIQUE</span></span>
+<span id="cb31-9"><a href="introduzione-a-lavaan.html#cb31-9" tabindex="-1"></a><span class="co">#&gt;   Geomin epsilon                                 0.001</span></span>
+<span id="cb31-10"><a href="introduzione-a-lavaan.html#cb31-10" tabindex="-1"></a><span class="co">#&gt;   Rotation algorithm (rstarts)                GPA (30)</span></span>
+<span id="cb31-11"><a href="introduzione-a-lavaan.html#cb31-11" tabindex="-1"></a><span class="co">#&gt;   Standardized metric                             TRUE</span></span>
+<span id="cb31-12"><a href="introduzione-a-lavaan.html#cb31-12" tabindex="-1"></a><span class="co">#&gt;   Row weights                                     None</span></span>
+<span id="cb31-13"><a href="introduzione-a-lavaan.html#cb31-13" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-14"><a href="introduzione-a-lavaan.html#cb31-14" tabindex="-1"></a><span class="co">#&gt;   Number of observations                            33</span></span>
+<span id="cb31-15"><a href="introduzione-a-lavaan.html#cb31-15" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-16"><a href="introduzione-a-lavaan.html#cb31-16" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
+<span id="cb31-17"><a href="introduzione-a-lavaan.html#cb31-17" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
+<span id="cb31-18"><a href="introduzione-a-lavaan.html#cb31-18" tabindex="-1"></a><span class="co">#&gt;   Test statistic                                 2.913</span></span>
+<span id="cb31-19"><a href="introduzione-a-lavaan.html#cb31-19" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                 9</span></span>
+<span id="cb31-20"><a href="introduzione-a-lavaan.html#cb31-20" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                           0.968</span></span>
+<span id="cb31-21"><a href="introduzione-a-lavaan.html#cb31-21" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-22"><a href="introduzione-a-lavaan.html#cb31-22" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
+<span id="cb31-23"><a href="introduzione-a-lavaan.html#cb31-23" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-24"><a href="introduzione-a-lavaan.html#cb31-24" tabindex="-1"></a><span class="co">#&gt;   Standard errors                             Standard</span></span>
+<span id="cb31-25"><a href="introduzione-a-lavaan.html#cb31-25" tabindex="-1"></a><span class="co">#&gt;   Information                                 Expected</span></span>
+<span id="cb31-26"><a href="introduzione-a-lavaan.html#cb31-26" tabindex="-1"></a><span class="co">#&gt;   Information saturated (h1) model          Structured</span></span>
+<span id="cb31-27"><a href="introduzione-a-lavaan.html#cb31-27" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-28"><a href="introduzione-a-lavaan.html#cb31-28" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
+<span id="cb31-29"><a href="introduzione-a-lavaan.html#cb31-29" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all</span></span>
+<span id="cb31-30"><a href="introduzione-a-lavaan.html#cb31-30" tabindex="-1"></a><span class="co">#&gt;   g =~ efa                                                              </span></span>
+<span id="cb31-31"><a href="introduzione-a-lavaan.html#cb31-31" tabindex="-1"></a><span class="co">#&gt;     Classics          0.942    0.129    7.314    0.000    0.942    0.956</span></span>
+<span id="cb31-32"><a href="introduzione-a-lavaan.html#cb31-32" tabindex="-1"></a><span class="co">#&gt;     French            0.857    0.137    6.239    0.000    0.857    0.871</span></span>
+<span id="cb31-33"><a href="introduzione-a-lavaan.html#cb31-33" tabindex="-1"></a><span class="co">#&gt;     English           0.795    0.143    5.545    0.000    0.795    0.807</span></span>
+<span id="cb31-34"><a href="introduzione-a-lavaan.html#cb31-34" tabindex="-1"></a><span class="co">#&gt;     Math              0.732    0.149    4.923    0.000    0.732    0.743</span></span>
+<span id="cb31-35"><a href="introduzione-a-lavaan.html#cb31-35" tabindex="-1"></a><span class="co">#&gt;     Pitch             0.678    0.153    4.438    0.000    0.678    0.689</span></span>
+<span id="cb31-36"><a href="introduzione-a-lavaan.html#cb31-36" tabindex="-1"></a><span class="co">#&gt;     Music             0.643    0.155    4.142    0.000    0.643    0.653</span></span>
+<span id="cb31-37"><a href="introduzione-a-lavaan.html#cb31-37" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-38"><a href="introduzione-a-lavaan.html#cb31-38" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
+<span id="cb31-39"><a href="introduzione-a-lavaan.html#cb31-39" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all</span></span>
+<span id="cb31-40"><a href="introduzione-a-lavaan.html#cb31-40" tabindex="-1"></a><span class="co">#&gt;    .Classics          0.083    0.051    1.629    0.103    0.083    0.086</span></span>
+<span id="cb31-41"><a href="introduzione-a-lavaan.html#cb31-41" tabindex="-1"></a><span class="co">#&gt;    .French            0.234    0.072    3.244    0.001    0.234    0.242</span></span>
+<span id="cb31-42"><a href="introduzione-a-lavaan.html#cb31-42" tabindex="-1"></a><span class="co">#&gt;    .English           0.338    0.094    3.610    0.000    0.338    0.349</span></span>
+<span id="cb31-43"><a href="introduzione-a-lavaan.html#cb31-43" tabindex="-1"></a><span class="co">#&gt;    .Math              0.434    0.115    3.773    0.000    0.434    0.447</span></span>
+<span id="cb31-44"><a href="introduzione-a-lavaan.html#cb31-44" tabindex="-1"></a><span class="co">#&gt;    .Pitch             0.510    0.132    3.855    0.000    0.510    0.526</span></span>
+<span id="cb31-45"><a href="introduzione-a-lavaan.html#cb31-45" tabindex="-1"></a><span class="co">#&gt;    .Music             0.556    0.143    3.893    0.000    0.556    0.573</span></span>
+<span id="cb31-46"><a href="introduzione-a-lavaan.html#cb31-46" tabindex="-1"></a><span class="co">#&gt;     g                 1.000                               1.000    1.000</span></span></code></pre></div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-kan2019extending" class="csl-entry">
+Kan, Kees-Jan, Han LJ van der Maas, and Stephen Z Levine. 2019. <span>“Extending Psychometric Network Analysis: Empirical Evidence Against g in Favor of Mutualism?”</span> <em>Intelligence</em> 73: 52–62.
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="applicazioni-della-ctt.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="validità.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="principio-base-dellanalisi-fattoriale.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="conclusioni-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -860,7 +1349,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ccaudek/ds4psy/edit/master/040_exercises_ctt.Rmd",
+"link": "https://github.com/ccaudek/ds4psy/edit/master/055_analisi_fattoriale_1.Rmd",
 "text": "Edit"
 },
 "history": {

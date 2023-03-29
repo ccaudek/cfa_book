@@ -376,9 +376,92 @@ $$
 
 <!-- Il calcolo delle saturazioni fattoriali con il metodo del centroide aveva prodotto il risultato: $\boldsymbol{\hat{\Lambda}}'= (0.97, 0.84, 0.73, 0.65)$. Si noti che i due metodi producono risultati simili. -->
 
-### Introduzione a `lavaan`
+## Introduzione a `lavaan`
 
-Analizziamo ora nuovamente gli stessi dati usando un metodo di stima moderno (massima verosimiglianza), mediante le funzioni del pacchetto `lavaan`. La matrice completa dei dati di Spearman è messa a disposizione da @kan2019extending. Iniziamo a caricare i pacchetti necessari:
+### Sintassi del modello
+
+Al cuore del pacchetto lavaan si trova la "sintassi del modello". La sintassi del modello è una descrizione del modello da stimare. In questa sezione, spieghiamo brevemente gli elementi della sintassi del modello lavaan. 
+
+Nell'ambiente R, una formula di regressione ha la seguente forma:
+
+```
+y ~ x1 + x2 + x3 + x4
+```
+
+In questa formula, la tilde ("~") è l'operatore di regressione. Sul lato sinistro dell'operatore, abbiamo la variabile dipendente (y), e sul lato destro abbiamo le variabili indipendenti, separate dall'operatore "+" . In lavaan, un modello tipico è semplicemente un insieme (o sistema) di formule di regressione, in cui alcune variabili (che iniziano con una 'f' qui sotto) possono essere latenti. Ad esempio:
+
+```
+y ~ f1 + f2 + x1 + x2
+f1 ~ f2 + f3
+f2 ~ f3 + x1 + x2
+```
+
+Se abbiamo variabili latenti in una qualsiasi delle formule di regressione, dobbiamo "definirle" elencando i loro indicatori (manifesti o latenti). Lo facciamo utilizzando l'operatore speciale "=~", che può essere letto come "è misurato da". Ad esempio, per definire le tre variabili latenti f1, f2 e f3, possiamo usare qualcosa del genere:
+
+```
+f1 =~ y1 + y2 + y3
+f2 =~ y4 + y5 + y6
+f3 =~ y7 + y8 + y9 + y10
+```
+
+Inoltre, le varianze e le covarianze sono specificate utilizzando un operatore "doppia tilde", ad esempio:
+
+```
+y1 ~~ y1 # varianza
+y1 ~~ y2 # covarianza
+f1 ~~ f2 # covarianza
+```
+
+E infine, le intercette per le variabili osservate e latenti sono semplici formule di regressione con solo una intercetta (esplicitamente indicato dal numero "1") come unico predittore:
+
+```
+y1 ~ 1
+f1 ~ 1
+```
+
+Utilizzando questi quattro tipi di formule, è possibile descrivere una vasta gamma di modelli di variabili latenti. L'attuale insieme di tipi di formula è riassunto nella tabella sottostante.
+
+| tipo di formula | operatore |  mnemonic |
+| --------------- | --------- | --------- |
+| definizione variabile latente | =~ | è misurato da |
+| regressione | ~ | viene regredito su |
+| (co)varianza (residuale) | ~~  |è correlato con |
+| intercetta | ~ 1 | intercetta |
+
+Una sintassi completa del modello lavaan è semplicemente una combinazione di questi tipi di formule, racchiusi tra virgolette singole. Ad esempio:
+
+```
+my_model <- ' 
+  # regressions
+  y1 + y2 ~ f1 + f2 + x1 + x2
+  f1 ~ f2 + f3
+  f2 ~ f3 + x1 + x2
+
+  # latent variable definitions 
+  f1 =~ y1 + y2 + y3 
+  f2 =~ y4 + y5 + y6 
+  f3 =~ y7 + y8 + y9
+  
+  # variances and covariances 
+  y1 ~~ y1 
+  y1 ~~ y2 
+  f1 ~~ f2
+
+  # intercepts 
+  y1 ~ 1 
+  f1 ~ 1
+'
+```
+
+Per adattare il modello ai dati usiamo la seguente sintassi.
+
+```
+fit <- cfa(model = my_model, data = my_data)
+```
+
+### Un esempio concreto
+
+Analizziamo nuovamente i dati di Spearman che abbiamo esaminato in precedenza usando `lavaan`. La matrice completa dei dati di Spearman è messa a disposizione da @kan2019extending. Iniziamo a caricare i pacchetti necessari:
 
 ```{r}
 library("lavaan")
@@ -403,7 +486,7 @@ e il loro numero
 ny <- length (varnames)
 ```
 
-Leggiamo la matrice di correlazione:
+Creiamo la matrice di correlazione:
 
 ```{r}
 spearman_cor_mat <- matrix(
@@ -427,27 +510,7 @@ Specifichiamo l'ampiezza campionaria:
 n <- 33
 ```
 
-Esaminiamo la sintassi usata da `lavaan` a livello degli item:
-
-```{r, eval=FALSE}
-# Regression
-y ~ f1 + f2 + x1 + x2
-f1 ~ f2 + f3
-f2 ~ f3 + x1 + x2
-# Latent variables
-f1 =~ y1 + y2 + y3
-f2 =~ y4 + y5 + y6
-f3 =~ y7 + y8 + y9 + y10
-# Variances and covariances
-y1 ~~ y1
-y1 ~~ y2
-f1 ~~ f2
-# Intercepts
-y1 ~ 1
-f1 ~ 1
-```
-
-Definiamo il modello unifattoriale in `lavaan`. L'operatore `=~` si può leggere dicendo che la variabile latente a sinistra dell'operatore viene identificata dalle variabili manifeste elencate a destra dell'operatore e separate dal segno `+`:
+Definiamo il modello unifattoriale in `lavaan`. L'operatore `=~` si può leggere dicendo che la variabile latente a sinistra dell'operatore viene identificata dalle variabili manifeste elencate a destra dell'operatore e separate dal segno `+`. Per il caso presente, il modello dei due fattori di Spearman può essere specificato come segue.
 
 ```{r}
 spearman_mod <- "
@@ -466,7 +529,9 @@ fit1 <- lavaan::cfa(
 )
 ```
 
-L'argomento `std.lv = TRUE` specifica che imponiamo una varianza pari a 1 a tutte le variabili latenti comuni (nel caso presente, solo una). Ciò consente di  stimare le saturazioni fattoriali. Possiamo esaminare la soluzione ottenuta con la seguente istruzione:
+La funzione cfa() è una funzione dedicata per adattare modelli di analisi fattoriale confermativa. Il primo argomento è il modello specificato dall'utente. Il secondo argomento è il dataset che contiene le variabili osservate. L'argomento `std.lv = TRUE` specifica che imponiamo una varianza pari a 1 a tutte le variabili latenti comuni (nel caso presente, solo una). Ciò consente di  stimare le saturazioni fattoriali.
+
+Una volta adattato il modello, la funzione summary() ci consente di esaminare la soluzione ottenuta:
 
 ```{r}
 summary(
@@ -476,19 +541,33 @@ summary(
 )
 ```
 
-È possibile semplificare l'output dalla funzione `summary()` in maniera tale da stampare solo la tabella completa delle stime dei parametri e degli errori standard, ecc.
+L'output consiste in tre parti. Le prime nove righe sono chiamate intestazione. L'intestazione contiene le seguenti informazioni:
+
+- il numero di versione di lavaan
+- se l'ottimizzazione è terminata normalmente o meno e quante iterazioni sono state necessarie
+- lo stimatore utilizzato (qui: ML, per la massima verosimiglianza)
+- l'ottimizzatore utilizzato per trovare i valori dei parametri di adattamento migliori per questo stimatore (qui: NLMINB)
+- il numero di parametri del modello (qui: 12)
+- il numero di osservazioni che sono state effettivamente utilizzate nell'analisi (qui: 33)
+- una sezione chiamata "Model Test User Model": che fornisce una statistica di test, i gradi di libertà e un valore p per il modello specificato dall'utente.
+
+La sezione successiva contiene ulteriori misure di adattamento e viene mostrata solo se si utilizza l'argomento opzionale fit.measures = TRUE. Inizia con la riga Model Test Baseline Model: e termina con il valore per l'SRMR. L'ultima sezione contiene le stime dei parametri. Inizia con informazioni (tecniche) sul metodo utilizzato per calcolare gli errori standard. Quindi, vengono elencati tutti i parametri liberi (e fissati) inclusi nel modello. Di solito, prima vengono mostrate le variabili latenti, seguite dalle covarianze e dalle varianze (residui). La prima colonna (Stima) contiene il valore del parametro (stimato o fisso) per ogni parametro del modello; la seconda colonna (Std.err) contiene l'errore standard per ogni parametro stimato; la terza colonna (Z-value) contiene la statistica di Wald (che viene semplicemente ottenuta dividendo il valore del parametro per il suo errore standard), e l'ultima colonna (P(>|z|)) contiene il valore p per testare l'ipotesi nulla che il valore del parametro sia uguale a zero nella popolazione.
+
+Si noti che nella sezione Varianze: c'è un punto prima dei nomi delle variabili osservate. Ciò perché sono variabili dipendenti (o endogene) (predette dalle variabili latenti) e quindi il valore della varianza stampato in output è una stima della varianza residua: la varianza rimanente che non è spiegata dal/i predittore/i. Al contrario, non c'è un punto prima dei nomi delle variabili latenti, perché in questo modello sono variabili esogene. I valori delle varianze qui sono le varianze totali stimate delle variabili latenti.
+
+È possibile semplificare l'output dalla funzione `summary()` in maniera tale da stampare solo la tabella completa delle stime dei parametri e degli errori standard. Qui usiamo `coef(fit1)`.
 
 ```{r}
-kable(coef(fit1), booktabs = TRUE, format = "markdown")
+kable(round(coef(fit1), 2), booktabs = TRUE, format = "markdown")
 ```
 
-Anziché stampare direttamente la tabella dei parametri, è meglio riformattarla con `kable` quando utilizziamo RMarkdown. Senza usare `kable`, l'output diventa:
+Senza usare `kable`, l'output diventa il seguente.
 
 ```{r}
 parameterEstimates(fit1, standardized = TRUE)
 ```
 
-Se invece usiamo `kable`, con gli opportuni parametri, otteniamo:
+Usando invece `kable` con opportuni parametri, otteniamo:
 
 ```{r}
 parameterEstimates(fit1, standardized = TRUE) %>%
@@ -531,21 +610,9 @@ tibble(v2) %>%
   stat_qq_line()
 ```
 
-Il pacchetto `semPlot` consente di disegnare diagrammi di percorso per vari modelli SEM. La funzione `semPaths` prende in input un oggetto creato da `lavaan` e disegna il diagramma, con diverse opzioni disponibili. Il diagramma qui prodotto controlla le dimensioni dei caratteri/etichette, la visualizzazione dei residui e il colore dei percorsi/coefficienti. Sono disponibili queste e molte altre opzioni di controllo. 
+### Diagrammi di percorso
 
-```{r}
-semPaths(
-  fit1,
-  residuals = FALSE,
-  sizeMan = 7,
-  "std",
-  posCol = c("black"),
-  edge.label.cex = 1.2,
-  layout = "circle2"
-)
-```
-
-In una versione alternativa del diagramma di percorso aggiungiamo anche le specificità:
+Il pacchetto `semPlot` consente di disegnare diagrammi di percorso per vari modelli SEM. La funzione `semPaths` prende in input un oggetto creato da `lavaan` e disegna il diagramma, con diverse opzioni disponibili. Il diagramma prodotto controlla le dimensioni dei caratteri/etichette, la visualizzazione dei residui e il colore dei percorsi/coefficienti. Sono disponibili queste e molte altre opzioni di controllo. 
 
 ```{r}
 semPaths(
@@ -557,7 +624,45 @@ semPaths(
   )
 ```
 
-Il calcolo delle saturazioni fattoriali con il metodo del centroide aveva prodotto il risultato: $\boldsymbol{\hat{\Lambda}}'= (0.97, 0.84, 0.73, 0.65)$. Si noti la somiglianza con i valori ottenuti mediante il metodo di massima verosimiglianza. 
+Il calcolo delle saturazioni fattoriali con il metodo del centroide aveva prodotto il seguente risultato: 
+
+- classici (Cls): 0.97
+- inglese (Eng): 0.84
+- matematica (Mth): 0.73
+- pitch discrimination (Ptc): 0.65
+
+Si noti la somiglianza con i valori ottenuti mediante il metodo di massima verosimiglianza riportati nella figura.
+
+
+### Analisi fattoriale esplorativa
+
+Quando abbiamo un'unica variabile latente, l'analisi fattoriale confermativa si riduce al caso dell'analisi fattoriale esplorativa. Esaminiamo qui sotto la sintassi per l'analisi fattoriale esplorativa in `lavaan`. 
+
+Specifichiamo il modello.
+
+```{r}
+efa_model <- '
+    efa("efa")*g =~ Classics + French + English + Math + Pitch + Music
+'
+```
+
+Adattiamo il modello ai dati.
+
+```{r}
+fit2 <- lavaan::cfa(
+  efa_model,
+  sample.cov = spearman_cor_mat,
+  sample.nobs = n,
+  std.lv = TRUE
+)
+```
+
+Esaminiamo la soluzione ottenuta.
+
+```{r}
+summary(fit2, standardized = TRUE)
+```
+
 
 ## Conclusioni {-}
 

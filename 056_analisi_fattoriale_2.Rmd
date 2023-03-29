@@ -190,7 +190,7 @@ $$
 \mathbb{E}(Y_i)\mathbb{E}(Y_k)=\mathbb{E}(Y_i Y_k)
 $$
 
-è uguale al prodotto delle corrispondenti saturazioni fattoriali.
+è uguale al prodotto delle corrispondenti saturazioni fattoriali:
 
 \begin{equation}
 \begin{aligned}
@@ -198,7 +198,7 @@ $$
   & =\mathbb{E}[(\lambda_i \xi + \delta_i)(\lambda_k \xi +  \delta_k)]\notag\\
   &=\mathbb{E}(\lambda_i\lambda_k\xi^2 + \lambda_i  \xi \delta_k + \lambda_k \delta_i \xi + \delta_i \delta_k)\notag\\
   &=\lambda_i\lambda_k\underbrace{\mathbb{E}(\xi^2)}_{\mathbb{V}(\xi)=1}+\lambda_i\underbrace{\mathbb{E}(\xi \delta_k)}_{\mbox{Cov}(\xi, \delta_k) =0}+\notag\\ \;&+\lambda_k\underbrace{\mathbb{E}(\delta_i \xi)}_{\mbox{Cov}(\delta_i, \xi) =0} +\underbrace{\mathbb{E}(\delta_i \delta_k)}_{\mbox{Cov}(\delta_i, \delta_k)=0}\notag\\
-  &=\lambda_i\lambda_k
+  &=\lambda_i\lambda_k.
 \end{aligned}
 \end{equation}
 
@@ -341,10 +341,9 @@ precedente, ovvero:
 \end{equation}
 :::
 
-### Un caso concreto
+## Un esempio concreto
 
-Applichiamo ora il risultato precedente ad un caso concreto. Consideriamo i dati utilizzati nella validazione italiana del *Cognitive Style Questionnaire - Short Form* (CSQ-SF, Meins et al. 2012). Il CSQ-SF viene utilizzato per misurare la vulnerabilità all'ansia e alla depressione. È costituito da cinque sottoscale:
-*Internality*, *Globality*, *Stability*, *Negative consequences* e *Self-worth*. 
+Applichiamo ora il risultato precedente ad un caso concreto. Consideriamo i dati utilizzati nella validazione italiana del *Cognitive Style Questionnaire - Short Form* (CSQ-SF, Meins et al. 2012). Il CSQ-SF viene utilizzato per misurare la vulnerabilità all'ansia e alla depressione. È costituito da cinque sottoscale: *Internality*, *Globality*, *Stability*, *Negative consequences* e *Self-worth*. 
 
 Leggiamo i dati in $\textsf{R}$:
 
@@ -370,6 +369,8 @@ Esaminiamo la matrice di correlazione:
 ```{r}
 psych::pairs.panels(csq)
 ```
+
+La sottoscala di *Internality* è problematica, come messo anche in evidenza dall'autore del test. La consideriamo comunque in questa analisi statistica.
 
 Specifichiamo il modello unifattoriale nella sintassi di `lavaan`:
 
@@ -397,6 +398,12 @@ summary(
   standardized = TRUE,
   fit.measures = TRUE
 )
+```
+
+Esaminiamo solo le stime dei parametri del modello:
+
+```{r}
+parameterEstimates(fit)
 ```
 
 Recuperiamo le specificità:
@@ -445,6 +452,105 @@ Utilizzando $\Omega$ otteniamo:
 sigma * sqrt(1- rel[2])
 ```
 
-Si noti come il risultato sia quasi identico a quello trovato con la formula della TCT.
+Si noti come il risultato sia molto simile a quello trovato con la formula della TCT.
 
+
+### Correlazioni osservate e riprodotte
+
+Le correlazioni riprodotte dal modello si ottengono nel modo seguente dall'oggetto `fit`.
+
+```{r}
+cor_mat <- lavInspect(fit, "cor.ov")
+cor_mat
+```
+
+Abbiamo visto come il modello unifattoriale predice che la correlazione tra due variabili manifeste sia il prodotto delle rispettive correlazioni fattoriali. Estraiamo le saturazioni fattoriali.
+
+```{r}
+l <- inspect(fit, what="std")$lambda
+l
+```
+
+Per esempio, se consideriamo `I` e `G`, la correlazione predetta dal modello fattoriale tra queste due sottoscale è data dal prodotto delle rispettive saturazioni fattoriali.
+
+```{r}
+l[1] * l[2]
+```
+
+La matrice di correlazioni riprodotte riportata sopra mostra il risultato di questo prodotto per ciascuna coppia di variabili manifeste.
+
+```{r}
+l %*% t(l) |> round(3)
+```
+
+### Scomposizione della varianza
+
+Consideriamo la variabile manifesta `W`. Calcoliamo la varianza.
+
+```{r}
+var(csq$W)
+```
+
+La varianza *riprodotta* di questa variabile, secondo il modello fattoriale, dovrebbe esere uguale alla somma di due componenti: la varianza predetta dall'effetto causale del fattore latente e la varianza residua.  La varianza predetta dall'effetto causale del fattore latente è uguale alla saturazione elevata al quadrato:
+
+```{r}
+(-11.598)^2
+```
+
+Calcolo ora la proporzione di varianza residua normalizzando rispetto alla varianza osservata (non a quella riprodotta dal modello):
+
+```{r}
+1 - (-11.598)^2 / var(csq$W)
+```
+
+Il valore così ottenuto è molto simile al valore della varianza residua di `W`. 
+
+Ripeto i calcoli per la variabile `G`
+
+```{r}
+1 - (-11.322)^2 / var(csq$G)
+```
+
+e per la variabile `I`
+
+```{r}
+1 - (0.725)^2 / var(csq$I)
+```
+
+In tutti i casi, i valori ottenuti sono molto simili alle varianze residue ipotizzate dal modello unifattoriale.
+
+
+### Correlazione tra variabili manifeste e fattore comune
+
+Un modo per verificare il fatto che, nel modello unifattoriale, la saturazione fattoriale della $i$-esima variabile manifesta è uguale alla correlazione tra i punteggi osservati sulla i$-esima variabile manifesta e il fattore latente è quella di calcolare le correlazioni tra le variabili manifeste e i punteggi fattoriali. I punteggi fattoriali rappresentano una *stima* del punteggio "vero", ovvero del punteggio che ciascun rispondente otterrebbe in assenza di errori di misurazione. Vedremo in seguito come si possono stimare i punteggi fattoriali. Per ora ci limitiamo a calcolarli usando `lavaan`.
+
+```{r}
+head(lavPredict(fit))
+```
+
+Abbiamo un punteggio diverso per ciascuno dei 540 individui che appartengono al campione di dati esaminato.
+
+```{r}
+dim(lavPredict(fit))
+```
+
+Calcoliamo ora le correlazioni tra i valori osservati su ciascuna delle cinque scale del CSQ e le stime dei punteggi veri.
+
+```{r}
+c(
+  cor(csq$I, lavPredict(fit)),
+  cor(csq$G, lavPredict(fit)),
+  cor(csq$S, lavPredict(fit)),
+  cor(csq$N, lavPredict(fit)),
+  cor(csq$W, lavPredict(fit))
+) |> 
+  round(3)
+
+```
+
+Si noti che i valori ottenui sono molto simili ai valori delle saturazioni fattoriali. La piccola differenza tra le correlazioni ottenute e i valori delle saturazioni fattoriali dipende dal fatto che abbiamo *stimato* i punteggi fattoriali.
+
+```{r}
+inspect(fit, what="std")$lambda
+```
 

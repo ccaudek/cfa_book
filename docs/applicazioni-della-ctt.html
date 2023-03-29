@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>12.1 Attendibilità | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)</title>
+  <title>Capitolo 12 Applicazioni della CTT | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)</title>
   <meta name="description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2022/2023) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
   <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="12.1 Attendibilità | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
+  <meta property="og:title" content="Capitolo 12 Applicazioni della CTT | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2022/2023) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
   <meta name="github-repo" content="ccaudek/cfa_book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="12.1 Attendibilità | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
+  <meta name="twitter:title" content="Capitolo 12 Applicazioni della CTT | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
   
   <meta name="twitter:description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2022/2023) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="applicazioni-della-ctt.html"/>
-<link rel="next" href="validità.html"/>
+<link rel="prev" href="conclusioni-1.html"/>
+<link rel="next" href="attendibilità.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -742,94 +742,23 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="attendibilità" class="section level2 hasAnchor" number="12.1">
-<h2><span class="header-section-number">12.1</span> Attendibilità<a href="attendibilità.html#attendibilità" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Nell’esempio seguente, utilizziamo il set di dati SAPA per dimostrare come calcolare varie stime di coerenza interna in R. Ricordiamo che il data.frame SAPA (<em>Synthetic Aperture Personality Assessment</em>) è costituito da 1525 risposte a 16 item per la valutazione della personalità. Gli item misurano il ragionamento di base, la manipolazione di serie alfanumeriche, il ragionamento con matrici e la capacità di rotazione mentale.</p>
-<p>Carichiamo i dati.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="attendibilità.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;hemp&quot;</span>)</span>
-<span id="cb1-2"><a href="attendibilità.html#cb1-2" tabindex="-1"></a><span class="fu">data</span>(SAPA)</span></code></pre></div>
-<p>Esaminiamo i dati mancanti.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="attendibilità.html#cb2-1" tabindex="-1"></a><span class="fu">num_miss</span>(SAPA)</span>
-<span id="cb2-2"><a href="attendibilità.html#cb2-2" tabindex="-1"></a><span class="co">#&gt;           num_miss perc_miss</span></span>
-<span id="cb2-3"><a href="attendibilità.html#cb2-3" tabindex="-1"></a><span class="co">#&gt; reason.4         2      0.13</span></span>
-<span id="cb2-4"><a href="attendibilità.html#cb2-4" tabindex="-1"></a><span class="co">#&gt; reason.16        1      0.07</span></span>
-<span id="cb2-5"><a href="attendibilità.html#cb2-5" tabindex="-1"></a><span class="co">#&gt; reason.17        2      0.13</span></span>
-<span id="cb2-6"><a href="attendibilità.html#cb2-6" tabindex="-1"></a><span class="co">#&gt; reason.19        2      0.13</span></span>
-<span id="cb2-7"><a href="attendibilità.html#cb2-7" tabindex="-1"></a><span class="co">#&gt; letter.7         1      0.07</span></span>
-<span id="cb2-8"><a href="attendibilità.html#cb2-8" tabindex="-1"></a><span class="co">#&gt; letter.33        2      0.13</span></span>
-<span id="cb2-9"><a href="attendibilità.html#cb2-9" tabindex="-1"></a><span class="co">#&gt; letter.34        2      0.13</span></span>
-<span id="cb2-10"><a href="attendibilità.html#cb2-10" tabindex="-1"></a><span class="co">#&gt; letter.58        0      0.00</span></span>
-<span id="cb2-11"><a href="attendibilità.html#cb2-11" tabindex="-1"></a><span class="co">#&gt; matrix.45        2      0.13</span></span>
-<span id="cb2-12"><a href="attendibilità.html#cb2-12" tabindex="-1"></a><span class="co">#&gt; matrix.46        1      0.07</span></span>
-<span id="cb2-13"><a href="attendibilità.html#cb2-13" tabindex="-1"></a><span class="co">#&gt; matrix.47        2      0.13</span></span>
-<span id="cb2-14"><a href="attendibilità.html#cb2-14" tabindex="-1"></a><span class="co">#&gt; matrix.55        1      0.07</span></span>
-<span id="cb2-15"><a href="attendibilità.html#cb2-15" tabindex="-1"></a><span class="co">#&gt; rotate.3         2      0.13</span></span>
-<span id="cb2-16"><a href="attendibilità.html#cb2-16" tabindex="-1"></a><span class="co">#&gt; rotate.4         2      0.13</span></span>
-<span id="cb2-17"><a href="attendibilità.html#cb2-17" tabindex="-1"></a><span class="co">#&gt; rotate.6         2      0.13</span></span>
-<span id="cb2-18"><a href="attendibilità.html#cb2-18" tabindex="-1"></a><span class="co">#&gt; rotate.8         1      0.07</span></span></code></pre></div>
-<p>Una semplice misura di coerenza interna è la affidabilità <em>split-half</em>. Una stima dell’affidabilità <em>split-half</em> può essere ottenuta dividendo un test in due parti equivalenti, calcolando i punteggi totali delle due parti e correlandoli. Ci sono molti modi per creare la suddivisione (ad esempio, selezionando gli item pari e quelli dispari, oppure in modo casuale, ecc.). Di seguito calcoliamo l’affidabilità <em>split-half</em> selezionando gli item pari e quelli dispari.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="attendibilità.html#cb3-1" tabindex="-1"></a><span class="fu">split_half</span>(SAPA, <span class="at">type =</span> <span class="st">&quot;alternate&quot;</span>)</span>
-<span id="cb3-2"><a href="attendibilità.html#cb3-2" tabindex="-1"></a><span class="co">#&gt; [1] 0.758</span></span></code></pre></div>
-<p>In questo secondo caso, l’affidabilità <em>split-half</em> è calcolata selezionando due sottoinsiemi casuali di item della stessa numerosità.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="attendibilità.html#cb4-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb4-2"><a href="attendibilità.html#cb4-2" tabindex="-1"></a><span class="fu">split_half</span>(SAPA, <span class="at">type =</span> <span class="st">&quot;random&quot;</span>)</span>
-<span id="cb4-3"><a href="attendibilità.html#cb4-3" tabindex="-1"></a><span class="co">#&gt; [1] 0.723</span></span></code></pre></div>
-<p>È noto che la stima dell’affidabilità split-half è distorta verso il basso (R. J. Cohen, Swerdlik e Sturman, 2013). La correzione Spearman-Brown può essere applicata per superare questo problema. Per fare ciò, basta passare l’argomento <code>sb = TRUE</code> alla funzione <code>split_half()</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="attendibilità.html#cb5-1" tabindex="-1"></a><span class="fu">split_half</span>(SAPA, <span class="at">type =</span> <span class="st">&quot;alternate&quot;</span>, <span class="at">sb =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb5-2"><a href="attendibilità.html#cb5-2" tabindex="-1"></a><span class="co">#&gt; [1] 0.8623436</span></span></code></pre></div>
-<p>Dopo aver applicato la correzione di Spearman-Brown, l’affidabilità split-half è ora stimata a 0.862, che è un po’ più alta.</p>
-<p>Data la nostra attuale stima di affidabilità, possiamo anche determinare la lunghezza di un test per ottenere l’affidabilità desiderata. Possiamo farlo usando la funzione <code>test_length()</code> in <code>hemp</code>. Supponendo di volere un’affidabilità di 0.95, possiamo determinare di quanti item dovrebbe essere costituito il test. Nella chiamata a <code>test_length()</code>, specifichiamo <code>r_type = "split"</code> in modo che l’affidabilità attuale venga calcolata utilizzando l’affidabilità split-half con la correzione di Spearman-Brown.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="attendibilità.html#cb6-1" tabindex="-1"></a><span class="fu">test_length</span>(SAPA, <span class="at">r =</span> .<span class="dv">95</span>, <span class="at">r_type =</span> <span class="st">&quot;split&quot;</span>)</span>
-<span id="cb6-2"><a href="attendibilità.html#cb6-2" tabindex="-1"></a><span class="co">#&gt; [1] 49</span></span></code></pre></div>
-<p>Se vogliamo un test con un’affidabilità di 0.95, dato che il nostro test attuale ha un’affidabilità di 0.862 basata su 16 item, avremmo bisogno di un test che consiste di almeno 49 item.</p>
-<p>La misura più comune della consistenza interna è il coefficiente alfa (Cronbach, 1951). Il coefficiente alfa rappresenta la media di tutte le possibili correlazioni split-half. Può essere calcolato utilizzando la funzione <code>coef_alpha()</code> in <code>hemp</code>.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="attendibilità.html#cb7-1" tabindex="-1"></a><span class="fu">coef_alpha</span>(SAPA)</span>
-<span id="cb7-2"><a href="attendibilità.html#cb7-2" tabindex="-1"></a><span class="co">#&gt; [1] 0.841</span></span></code></pre></div>
-<p>Anche se le stime puntuali di affidabilità possono essere utili, è generalmente utile calcolare un intervallo di confidenza. Quando la dimensione del campione è piccola, le ipotesi dei modelli statistici non sono soddisfatte o la distribuzione campionaria di un parametro è sconosciuta, allora il bootstrap può essere utilizzato per costruire una distribuzione campionaria empirica, che possiamo quindi utilizzare per creare intervalli di confidenza (Efron &amp; Tibshirani, 1986 ).</p>
-<p>La nostra motivazione per l’introduzione del bootstrapping è che consente la creazione di intervalli di confidenza e incertezza indipendentemente dal parametro stimato. Pertanto, mentre illustriamo l’uso del bootstrap per il coefficiente alfa, questo può essere facilmente applicato per l’affidabilità split-half di cui sopra, la validità o le statistiche dell’analisi degli item presentati più avanti e in molti altri contesti.
-Per eseguire il bootstrap per il coefficiente alfa, possiamo usare, ad esempio, il pacchetto <code>boot</code> (Canty &amp; Ripley, 2017).</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="attendibilità.html#cb8-1" tabindex="-1"></a><span class="fu">library</span>(boot)</span></code></pre></div>
-<p>Dobbiamo creare una funzione da passare alla funzione <code>boot</code>, che chiamiamo <code>alpha_fun()</code>. Questa funzione accetta due argomenti: un set di dati, chiamato <code>data</code>, e una matrice di indici, chiamata <code>row</code> Questi argomenti vengono quindi passati alla funzione <code>coef_alpha</code>. Ciò consentirà alla funzione <code>boot</code> di eseguire un campionamento con rimpiazzo delle righe di <code>data</code> e creare una distribuzione empirica per il coefficiente alfa.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="attendibilità.html#cb9-1" tabindex="-1"></a>alpha_fun <span class="ot">&lt;-</span> <span class="cf">function</span>(data, row) {</span>
-<span id="cb9-2"><a href="attendibilità.html#cb9-2" tabindex="-1"></a>  <span class="fu">coef_alpha</span>(data[row, ])</span>
-<span id="cb9-3"><a href="attendibilità.html#cb9-3" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="attendibilità.html#cb10-1" tabindex="-1"></a>alpha_boot <span class="ot">&lt;-</span> <span class="fu">boot</span>(SAPA, alpha_fun, <span class="at">R =</span> <span class="fl">1e3</span>)</span>
-<span id="cb10-2"><a href="attendibilità.html#cb10-2" tabindex="-1"></a>alpha_boot</span>
-<span id="cb10-3"><a href="attendibilità.html#cb10-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb10-4"><a href="attendibilità.html#cb10-4" tabindex="-1"></a><span class="co">#&gt; ORDINARY NONPARAMETRIC BOOTSTRAP</span></span>
-<span id="cb10-5"><a href="attendibilità.html#cb10-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb10-6"><a href="attendibilità.html#cb10-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb10-7"><a href="attendibilità.html#cb10-7" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb10-8"><a href="attendibilità.html#cb10-8" tabindex="-1"></a><span class="co">#&gt; boot(data = SAPA, statistic = alpha_fun, R = 1000)</span></span>
-<span id="cb10-9"><a href="attendibilità.html#cb10-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb10-10"><a href="attendibilità.html#cb10-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb10-11"><a href="attendibilità.html#cb10-11" tabindex="-1"></a><span class="co">#&gt; Bootstrap Statistics :</span></span>
-<span id="cb10-12"><a href="attendibilità.html#cb10-12" tabindex="-1"></a><span class="co">#&gt;     original   bias    std. error</span></span>
-<span id="cb10-13"><a href="attendibilità.html#cb10-13" tabindex="-1"></a><span class="co">#&gt; t1*    0.841 -0.00026 0.005432487</span></span></code></pre></div>
-<p>La figura seguente mostra un istogramma e un Q-Q plot della distribuzione empirica per il coefficiente alfa basato sui 1000 campioni.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="attendibilità.html#cb11-1" tabindex="-1"></a><span class="fu">plot</span>(alpha_boot)</span></code></pre></div>
-<p><img src="cfa_files/figure-html/unnamed-chunk-12-1.png" width="576" style="display: block; margin: auto;" /></p>
-<p>Utilizziamo la funzione <code>boot.ci()</code> per calcolare gli intervalli di confidenza al 95% utilizzando gli intervalli <code>norm</code>, <code>basic</code> e <code>perc</code>. In breve, gli intervalli <code>basic</code> e <code>perc</code> fanno meno assunzioni rispetto agli intervalli <code>norm</code> (ovvero, nessuna assunzione di normalità asintotica). Se la distribuzione empirica si discosta dalla normalità, allora gli intervalli <code>basic</code> e <code>perc</code> sono una scelta migliore.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="attendibilità.html#cb12-1" tabindex="-1"></a><span class="fu">boot.ci</span>(alpha_boot, <span class="at">type =</span> <span class="fu">c</span>(<span class="st">&quot;norm&quot;</span>, <span class="st">&quot;basic&quot;</span>, <span class="st">&quot;perc&quot;</span>))</span>
-<span id="cb12-2"><a href="attendibilità.html#cb12-2" tabindex="-1"></a><span class="co">#&gt; BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS</span></span>
-<span id="cb12-3"><a href="attendibilità.html#cb12-3" tabindex="-1"></a><span class="co">#&gt; Based on 1000 bootstrap replicates</span></span>
-<span id="cb12-4"><a href="attendibilità.html#cb12-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb12-5"><a href="attendibilità.html#cb12-5" tabindex="-1"></a><span class="co">#&gt; CALL : </span></span>
-<span id="cb12-6"><a href="attendibilità.html#cb12-6" tabindex="-1"></a><span class="co">#&gt; boot.ci(boot.out = alpha_boot, type = c(&quot;norm&quot;, &quot;basic&quot;, &quot;perc&quot;))</span></span>
-<span id="cb12-7"><a href="attendibilità.html#cb12-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb12-8"><a href="attendibilità.html#cb12-8" tabindex="-1"></a><span class="co">#&gt; Intervals : </span></span>
-<span id="cb12-9"><a href="attendibilità.html#cb12-9" tabindex="-1"></a><span class="co">#&gt; Level      Normal              Basic              Percentile     </span></span>
-<span id="cb12-10"><a href="attendibilità.html#cb12-10" tabindex="-1"></a><span class="co">#&gt; 95%   ( 0.8306,  0.8519 )   ( 0.8310,  0.8520 )   ( 0.8300,  0.8510 )  </span></span>
-<span id="cb12-11"><a href="attendibilità.html#cb12-11" tabindex="-1"></a><span class="co">#&gt; Calculations and Intervals on Original Scale</span></span></code></pre></div>
-<p>Si può concludere che per la maggior parte degli scopi l’attendibilità sembra essere sufficientemente alta da non richiedere l’onere aggiuntivo per i rispondenti di aumentare la lunghezza dello strumento.</p>
+<div id="applicazioni-della-ctt" class="section level1 hasAnchor" number="12">
+<h1><span class="header-section-number">Capitolo 12</span> Applicazioni della CTT<a href="applicazioni-della-ctt.html#applicazioni-della-ctt" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Le applicazioni della CTT discusse in questo capitolo sono presentate da <span class="citation">Desjardins and Bulut (<a href="#ref-desjardins2018handbook">2018</a>)</span>. Tuttavia, i fondamenti teorici delle applicazioni qui considerate saranno spiegati nei capitoli successivi. In questo capitolo, ci limiteremo ad utilizzare le funzioni e i dati contenuti nel pacchetto <code>hemp</code>.</p>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-desjardins2018handbook" class="csl-entry">
+Desjardins, Christopher D, and Okan Bulut. 2018. <em>Handbook of Educational Measurement and Psychometrics Using r</em>. CRC Press.
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="applicazioni-della-ctt.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="validità.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="conclusioni-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="attendibilità.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
