@@ -288,7 +288,7 @@ lambda[1, 1] * lambda[2, 1] + lambda[1, 2] * lambda[2, 2]
 e corrisponde da vicino alla correlazione osservata 0.767.
 
 L'intera matrice di correlazioni riprodotte è
-$\boldsymbol{\Lambda} \boldsymbol{\Lambda}^{\ensuremath{\mathsf{T}}} + \boldsymbol{\psi}$:
+$\boldsymbol{\Lambda} \boldsymbol{\Lambda}^{\mathsf{T}} + \boldsymbol{\psi}$:
 
 ```{r}
 Rr <- lambda %*% t(lambda) + diag(fit_efa$uniq)

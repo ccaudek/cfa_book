@@ -554,3 +554,4 @@ Si noti che i valori ottenui sono molto simili ai valori delle saturazioni fatto
 inspect(fit, what="std")$lambda
 ```
 
+
