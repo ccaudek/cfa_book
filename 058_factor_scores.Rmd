@@ -42,7 +42,7 @@ ruotata possono essere descritti nel modo seguente.
 
 4.  Tenendo presente il dominio di indagine, le teorie di riferimento ed
     eventuali risultati precedenti, si cerca di stabilire quale sia il
-    tratto, caratteristica, aspetto ...che queste variabili abbiano in
+    tratto, caratteristica o aspetto che queste variabili abbiano in
     comune, in modo da poter in modo da poter "nominare" il fattore che
     definisce questo tratto comune. In questo processo interpretativo
     gli item con le saturazioni maggiori contribuiscono in misura
@@ -359,3 +359,6 @@ Una volta stimati i coefficienti $\hat{\textbf{B}}$, i punteggi fattoriali si ca
 dove $\textbf{y}$ è la matrice delle variabili osservate standardizzate $(Y-\bar{Y})/s$.
 
 
+::: {.exercise}
+Si utilizzino i dati `dass21.txt` che corrispondono alla somministrazione del test DASS-21 a 334 partecipanti. Lo schema di codifica si può trovare seguendo questo [link](https://maic.qld.gov.au/wp-content/uploads/2016/07/DASS-21.pdf). Ci si focalizzi sulla sottoscala Stress del DASS-21. Si trovino i punteggi fattoriali usando la funzione `factanal()` e si replichi il risultato seguendo la procedura delineata sopra.
+:::

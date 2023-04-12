@@ -104,22 +104,7 @@ $i=1\dots,p$.
 
 ### Interpretazione dei parametri del modello
 
-Quale esempio, consideriamo il caso di $p=5$ variabili osservabili e
-$m=2$ fattori ortogonali. Se le variabili manifeste sono 'centrate'
-(ovvero, se a ciascuna di esse sottraiamo la rispettiva media), allora
-il modello multifattoriale diventa +
-
-\begin{equation}
-\begin{aligned}
-  Y_1 &= \lambda_{11} \xi_1 + \lambda_{12} \xi_2 + \delta_1,\notag\\
-  Y_2 &= \lambda_{21} \xi_1 + \lambda_{22} \xi_2 + \delta_2,\notag\\
-  Y_3 &= \lambda_{31} \xi_1 + \lambda_{32} \xi_2 + \delta_3,\notag\\
-  Y_4 &= \lambda_{41} \xi_1 + \lambda_{42} \xi_2 + \delta_4,\notag\\
-  Y_5 &= \lambda_{51} \xi_1 + \lambda_{52} \xi_2 + \delta_5.\notag
-\end{aligned}
-\end{equation}
-
-### Covarianza tra variabili e fattori
+#### Covarianza tra variabili e fattori
 
 Nell'ipotesi che le variabili $Y_i$ abbiano media nulla, la covarianza
 tra $Y_i$ e $\xi_j$ è uguale alla saturazione fattoriale $\lambda_{ij}$:
@@ -150,7 +135,7 @@ $$
 r_{ij} = \lambda_{ij}. 
 $$
 
-### Espressione fattoriale della varianza
+#### Espressione fattoriale della varianza
 
 Come nel modello monofattoriale, la varianza delle variabili manifeste
 si decompone in una componente dovuta ai fattori comuni, chiamata
@@ -197,11 +182,24 @@ variabilità della $Y_i$ spiegata dai fattori comuni; il secondo addendo
 è invece definito varianza specifica (o unicità) poiché esprime la parte
 di variabilità della $Y_i$ non spiegata dai fattori comuni.
 
-### Espressione fattoriale della covarianza
+#### Espressione fattoriale della covarianza
 
-Per semplificare, consideriamo il caso particolare esaminato prima,
-ovvero quello con $p=5$ variabili osservabili e $m=2$ fattori
-ortogonali. Nell'ipotesi che le variabili $Y_i$ abbiano media nulla, la
+Quale esempio, consideriamo il caso di $p=5$ variabili osservabili e
+$m=2$ fattori ortogonali. Se le variabili manifeste sono 'centrate'
+(ovvero, se a ciascuna di esse sottraiamo la rispettiva media), allora
+il modello multifattoriale diventa 
+
+\begin{equation}
+\begin{aligned}
+  Y_1 &= \lambda_{11} \xi_1 + \lambda_{12} \xi_2 + \delta_1,\notag\\
+  Y_2 &= \lambda_{21} \xi_1 + \lambda_{22} \xi_2 + \delta_2,\notag\\
+  Y_3 &= \lambda_{31} \xi_1 + \lambda_{32} \xi_2 + \delta_3,\notag\\
+  Y_4 &= \lambda_{41} \xi_1 + \lambda_{42} \xi_2 + \delta_4,\notag\\
+  Y_5 &= \lambda_{51} \xi_1 + \lambda_{52} \xi_2 + \delta_5.\notag
+\end{aligned}
+\end{equation}
+
+Nell'ipotesi che le variabili $Y_i$ abbiano media nulla, la
 covarianza tra $Y_1$ e $Y_2$, ad esempio, è uguale a: 
 
 \begin{equation}
@@ -573,7 +571,7 @@ $$
 \boldsymbol{\Sigma} =\boldsymbol{\Lambda} \boldsymbol{\Phi} \boldsymbol{\Lambda}^{\mathsf{T}} + \boldsymbol{\Psi}. 
 $$
 
-Le corrispondenti istruzioni $\textsf{R}$ sono:
+In $\textsf{R}$ scriviamo:
 
 ```{r}
 R_hat <- lambda %*% Phi %*% t(lambda) + Psi
@@ -588,8 +586,9 @@ Le correlazioni residue sono:
   round(3)
 ```
 
-Per fare un esempio, calcoliamo la correlazione predetta dal modello tra le
-variabili $Y_1$ e $Y_2$:
+Questo risultato riproduce ciò che abbiamo trovato estraendo la matrice di correlazioni residue dall'oggetto creato dal `lavaan::cfa` mediante l'istruzione `residuals(fit2_cfa, type = "cor")$cov`.
+
+Per fare un esempio relativo alla correlazione tra due indicatori, calcoliamo la correlazione predetta dal modello tra le variabili $Y_1$ e $Y_2$:
 
 ```{r}
 lambda[1, 1] * lambda[2, 1] + lambda[1, 2] * lambda[2, 2] +
@@ -621,23 +620,34 @@ La matrice dei residui standardizzati è
 ```{r}
 resid(fit2_cfa, type = "standardized")$cov
 ```
+
+I valori precedenti possono essere considerati come punti *z*, dove i valori con un valore assoluto maggiore di 2 possono essere ritenuti problematici. Tuttavia, è importante considerare che in questo modo si stanno eseguendo molteplici confronti, pertanto, si dovrebbe considerare l'opportunità di applicare una qualche forma di correzione per i confronti multipli.
 :::
 
 ## EFA con `lavaan`
 
 Una funzionalità sperimentale di `lavaan` (ancora non ufficiale) è quella che consente di svolgere l'analisi fattoriale esplorativa con la funzione `efa()`. Consideriamo nuovamente i dati di @brown2015confirmatory, ovvero otto misure di personalità raccolte su un campione di 250 pazienti che hanno concluso un programma di psicoterapia.
 
+Definiamo un modello ad un solo fattore comune.
+
 ```{r}
 # 1-factor model
 f1 <- '
 efa("efa")*f1 =~ N1 + N2 + N3 + N4 + E1 + E2 + E3 + E4
 '
+```
+
+Definiamo un modello con due fattori comuni.
+
+```{r}
 # 2-factor model
 f2 <- '
 efa("efa")*f1 +
 efa("efa")*f2 =~ N1 + N2 + N3 + N4 + E1 + E2 + E3 + E4
 '
 ```
+
+Adattiamo ai dati il modello ad un fattore comune.
 
 ```{r}
 efa_f1 <-
@@ -649,6 +659,8 @@ efa_f1 <-
   )
 ```
 
+Esaminiamo la soluzione ottenuta.
+
 ```{r}
 summary(
   efa_f1, 
@@ -658,6 +670,7 @@ summary(
 )
 ```
 
+Adattiamo ai dati il modello a due fattori comuni.
 
 ```{r}
 efa_f2 <-
@@ -669,6 +682,8 @@ efa_f2 <-
   )
 ```
 
+Esaminiamo la soluzione ottenuta.
+
 ```{r}
 summary(
   efa_f2, 
@@ -678,13 +693,19 @@ summary(
 )
 ```
 
+Anche se abbiamo introdotto finora soltanto la misura di bontà di adattamento del chi-quadrato, aggiungiamo qui il calcolo di altre misure di bontà di adattamento che discuteremo in seguito.
+
 ```{r}
 # define the fit measures
 fit_measures_robust <- c(
   "chisq", "df", "pvalue", 
   "cfi", "rmsea", "srmr"
 )
+```
 
+Confrontiamo le misure di bontà di adattamento del modello che ipotizza un solo fattore comune e il modello che ipotizza la presenza di due fattori comuni.
+
+```{r}
 # collect them for each model
 rbind(
   fitmeasures(efa_f1, fit_measures_robust),
@@ -700,5 +721,10 @@ rbind(
   mutate_at(vars(cfi:srmr), ~ round(., digits = 3))
 ```
 
-I risultati mostrano come la funzione `efa()` sia effettivamente in grado di distinguere in maniera chiara tra i due fattori. Il confronto tra modelli mostra la superiorità del modello a due fattori.
+L'evidenza empirica supporta la superiorità del modello a due fattori rispetto a quello ad un solo fattore comune. In particolare, l'analisi fattoriale esplorativa svolta mediante la funzione `efa()` evidenzia la capacità del modello a due fattori di fornire una descrizione adeguata della struttura dei dati e di distinguere in modo sensato tra i due fattori ipotizzati.
+
+
+::: {.exercise}
+Si utilizzino i dati `dass21.txt` che corrispondono alla somministrazione del test DASS-21 a 334 partecipanti. Lo schema di codifica si può trovare seguendo questo [link](https://maic.qld.gov.au/wp-content/uploads/2016/07/DASS-21.pdf). Si adatti ai dati un modello a tre fattori usando l'analisi fattoriale esplorativa con la funzione `lavaan::efa()`. Usando le saturazioni fattoriali e la matrice di inter-correlazioni fattoriali, si trovi la matrice di correlazioni riprodotta dal modello. Senza usare l'albebra matriciale, si trovi la correlazione predetta tra gli indicatori DASS-1 e DASS-2.
+:::
 

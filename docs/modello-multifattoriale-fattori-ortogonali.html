@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2023-03-29" />
+<meta name="date" content="2023-04-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -424,9 +424,6 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="15.1.1" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html#assunzioni-del-modello-multifattoriale"><i class="fa fa-check"></i><b>15.1.1</b> Assunzioni del modello multifattoriale</a></li>
 <li class="chapter" data-level="15.1.2" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html#interpretazione-dei-parametri-del-modello"><i class="fa fa-check"></i><b>15.1.2</b> Interpretazione dei parametri del modello</a></li>
-<li class="chapter" data-level="15.1.3" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html#covarianza-tra-variabili-e-fattori"><i class="fa fa-check"></i><b>15.1.3</b> Covarianza tra variabili e fattori</a></li>
-<li class="chapter" data-level="15.1.4" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html#espressione-fattoriale-della-varianza-1"><i class="fa fa-check"></i><b>15.1.4</b> Espressione fattoriale della varianza</a></li>
-<li class="chapter" data-level="15.1.5" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html#espressione-fattoriale-della-covarianza"><i class="fa fa-check"></i><b>15.1.5</b> Espressione fattoriale della covarianza</a></li>
 </ul></li>
 <li class="chapter" data-level="15.2" data-path="modello-fattoriale-fattori-obliqui.html"><a href="modello-fattoriale-fattori-obliqui.html"><i class="fa fa-check"></i><b>15.2</b> Modello fattoriale: Fattori obliqui</a>
 <ul>
@@ -837,22 +834,8 @@ specifici siano linearmente incorrelati con i fattori comuni, ovvero
 </div>
 <div id="interpretazione-dei-parametri-del-modello" class="section level3 hasAnchor" number="15.1.2">
 <h3><span class="header-section-number">15.1.2</span> Interpretazione dei parametri del modello<a href="modello-multifattoriale-fattori-ortogonali.html#interpretazione-dei-parametri-del-modello" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Quale esempio, consideriamo il caso di <span class="math inline">\(p=5\)</span> variabili osservabili e
-<span class="math inline">\(m=2\)</span> fattori ortogonali. Se le variabili manifeste sono ‘centrate’
-(ovvero, se a ciascuna di esse sottraiamo la rispettiva media), allora
-il modello multifattoriale diventa +</p>
-<p><span class="math display">\[\begin{equation}
-\begin{aligned}
-  Y_1 &amp;= \lambda_{11} \xi_1 + \lambda_{12} \xi_2 + \delta_1,\notag\\
-  Y_2 &amp;= \lambda_{21} \xi_1 + \lambda_{22} \xi_2 + \delta_2,\notag\\
-  Y_3 &amp;= \lambda_{31} \xi_1 + \lambda_{32} \xi_2 + \delta_3,\notag\\
-  Y_4 &amp;= \lambda_{41} \xi_1 + \lambda_{42} \xi_2 + \delta_4,\notag\\
-  Y_5 &amp;= \lambda_{51} \xi_1 + \lambda_{52} \xi_2 + \delta_5.\notag
-\end{aligned}
-\end{equation}\]</span></p>
-</div>
-<div id="covarianza-tra-variabili-e-fattori" class="section level3 hasAnchor" number="15.1.3">
-<h3><span class="header-section-number">15.1.3</span> Covarianza tra variabili e fattori<a href="modello-multifattoriale-fattori-ortogonali.html#covarianza-tra-variabili-e-fattori" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="covarianza-tra-variabili-e-fattori" class="section level4 hasAnchor" number="15.1.2.1">
+<h4><span class="header-section-number">15.1.2.1</span> Covarianza tra variabili e fattori<a href="modello-multifattoriale-fattori-ortogonali.html#covarianza-tra-variabili-e-fattori" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Nell’ipotesi che le variabili <span class="math inline">\(Y_i\)</span> abbiano media nulla, la covarianza
 tra <span class="math inline">\(Y_i\)</span> e <span class="math inline">\(\xi_j\)</span> è uguale alla saturazione fattoriale <span class="math inline">\(\lambda_{ij}\)</span>:</p>
 <p><span class="math display">\[
@@ -877,8 +860,8 @@ tra <span class="math inline">\(Y_i\)</span> e <span class="math inline">\(\xi_j
 r_{ij} = \lambda_{ij}.
 \]</span></p>
 </div>
-<div id="espressione-fattoriale-della-varianza-1" class="section level3 hasAnchor" number="15.1.4">
-<h3><span class="header-section-number">15.1.4</span> Espressione fattoriale della varianza<a href="modello-multifattoriale-fattori-ortogonali.html#espressione-fattoriale-della-varianza-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="espressione-fattoriale-della-varianza-1" class="section level4 hasAnchor" number="15.1.2.2">
+<h4><span class="header-section-number">15.1.2.2</span> Espressione fattoriale della varianza<a href="modello-multifattoriale-fattori-ortogonali.html#espressione-fattoriale-della-varianza-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Come nel modello monofattoriale, la varianza delle variabili manifeste
 si decompone in una componente dovuta ai fattori comuni, chiamata
 <em>comunalità</em>, e in una componente specifica alle <span class="math inline">\(Y_i\)</span>, chiamata
@@ -919,11 +902,22 @@ variabilità della <span class="math inline">\(Y_i\)</span> spiegata dai fattori
 è invece definito varianza specifica (o unicità) poiché esprime la parte
 di variabilità della <span class="math inline">\(Y_i\)</span> non spiegata dai fattori comuni.</p>
 </div>
-<div id="espressione-fattoriale-della-covarianza" class="section level3 hasAnchor" number="15.1.5">
-<h3><span class="header-section-number">15.1.5</span> Espressione fattoriale della covarianza<a href="modello-multifattoriale-fattori-ortogonali.html#espressione-fattoriale-della-covarianza" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Per semplificare, consideriamo il caso particolare esaminato prima,
-ovvero quello con <span class="math inline">\(p=5\)</span> variabili osservabili e <span class="math inline">\(m=2\)</span> fattori
-ortogonali. Nell’ipotesi che le variabili <span class="math inline">\(Y_i\)</span> abbiano media nulla, la
+<div id="espressione-fattoriale-della-covarianza" class="section level4 hasAnchor" number="15.1.2.3">
+<h4><span class="header-section-number">15.1.2.3</span> Espressione fattoriale della covarianza<a href="modello-multifattoriale-fattori-ortogonali.html#espressione-fattoriale-della-covarianza" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Quale esempio, consideriamo il caso di <span class="math inline">\(p=5\)</span> variabili osservabili e
+<span class="math inline">\(m=2\)</span> fattori ortogonali. Se le variabili manifeste sono ‘centrate’
+(ovvero, se a ciascuna di esse sottraiamo la rispettiva media), allora
+il modello multifattoriale diventa</p>
+<p><span class="math display">\[\begin{equation}
+\begin{aligned}
+  Y_1 &amp;= \lambda_{11} \xi_1 + \lambda_{12} \xi_2 + \delta_1,\notag\\
+  Y_2 &amp;= \lambda_{21} \xi_1 + \lambda_{22} \xi_2 + \delta_2,\notag\\
+  Y_3 &amp;= \lambda_{31} \xi_1 + \lambda_{32} \xi_2 + \delta_3,\notag\\
+  Y_4 &amp;= \lambda_{41} \xi_1 + \lambda_{42} \xi_2 + \delta_4,\notag\\
+  Y_5 &amp;= \lambda_{51} \xi_1 + \lambda_{52} \xi_2 + \delta_5.\notag
+\end{aligned}
+\end{equation}\]</span></p>
+<p>Nell’ipotesi che le variabili <span class="math inline">\(Y_i\)</span> abbiano media nulla, la
 covarianza tra <span class="math inline">\(Y_1\)</span> e <span class="math inline">\(Y_2\)</span>, ad esempio, è uguale a:</p>
 <p><span class="math display">\[\begin{equation}
 \begin{aligned}
@@ -1273,6 +1267,7 @@ correlazioni osservate è uguale a:</p>
 </tbody>
 </table>
 <p>rivela che il modello ipotizzato dall’analisi fattoriale confermativa non è adeguato.</p>
+</div>
 </div>
 </div>
 </div>

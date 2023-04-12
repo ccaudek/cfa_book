@@ -23,7 +23,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2023-03-29" />
+<meta name="date" content="2023-04-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -424,9 +424,6 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="15.1.1" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html#assunzioni-del-modello-multifattoriale"><i class="fa fa-check"></i><b>15.1.1</b> Assunzioni del modello multifattoriale</a></li>
 <li class="chapter" data-level="15.1.2" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html#interpretazione-dei-parametri-del-modello"><i class="fa fa-check"></i><b>15.1.2</b> Interpretazione dei parametri del modello</a></li>
-<li class="chapter" data-level="15.1.3" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html#covarianza-tra-variabili-e-fattori"><i class="fa fa-check"></i><b>15.1.3</b> Covarianza tra variabili e fattori</a></li>
-<li class="chapter" data-level="15.1.4" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html#espressione-fattoriale-della-varianza-1"><i class="fa fa-check"></i><b>15.1.4</b> Espressione fattoriale della varianza</a></li>
-<li class="chapter" data-level="15.1.5" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html#espressione-fattoriale-della-covarianza"><i class="fa fa-check"></i><b>15.1.5</b> Espressione fattoriale della covarianza</a></li>
 </ul></li>
 <li class="chapter" data-level="15.2" data-path="modello-fattoriale-fattori-obliqui.html"><a href="modello-fattoriale-fattori-obliqui.html"><i class="fa fa-check"></i><b>15.2</b> Modello fattoriale: Fattori obliqui</a>
 <ul>
@@ -754,263 +751,273 @@ div.csl-indent {
 <div id="efa-con-lavaan" class="section level2 hasAnchor" number="15.3">
 <h2><span class="header-section-number">15.3</span> EFA con <code>lavaan</code><a href="efa-con-lavaan.html#efa-con-lavaan" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Una funzionalità sperimentale di <code>lavaan</code> (ancora non ufficiale) è quella che consente di svolgere l’analisi fattoriale esplorativa con la funzione <code>efa()</code>. Consideriamo nuovamente i dati di <span class="citation">Brown (<a href="#ref-brown2015confirmatory">2015</a>)</span>, ovvero otto misure di personalità raccolte su un campione di 250 pazienti che hanno concluso un programma di psicoterapia.</p>
+<p>Definiamo un modello ad un solo fattore comune.</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="efa-con-lavaan.html#cb26-1" tabindex="-1"></a><span class="co"># 1-factor model</span></span>
 <span id="cb26-2"><a href="efa-con-lavaan.html#cb26-2" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="st">&#39;</span></span>
 <span id="cb26-3"><a href="efa-con-lavaan.html#cb26-3" tabindex="-1"></a><span class="st">efa(&quot;efa&quot;)*f1 =~ N1 + N2 + N3 + N4 + E1 + E2 + E3 + E4</span></span>
-<span id="cb26-4"><a href="efa-con-lavaan.html#cb26-4" tabindex="-1"></a><span class="st">&#39;</span></span>
-<span id="cb26-5"><a href="efa-con-lavaan.html#cb26-5" tabindex="-1"></a><span class="co"># 2-factor model</span></span>
-<span id="cb26-6"><a href="efa-con-lavaan.html#cb26-6" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> <span class="st">&#39;</span></span>
-<span id="cb26-7"><a href="efa-con-lavaan.html#cb26-7" tabindex="-1"></a><span class="st">efa(&quot;efa&quot;)*f1 +</span></span>
-<span id="cb26-8"><a href="efa-con-lavaan.html#cb26-8" tabindex="-1"></a><span class="st">efa(&quot;efa&quot;)*f2 =~ N1 + N2 + N3 + N4 + E1 + E2 + E3 + E4</span></span>
-<span id="cb26-9"><a href="efa-con-lavaan.html#cb26-9" tabindex="-1"></a><span class="st">&#39;</span></span></code></pre></div>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="efa-con-lavaan.html#cb27-1" tabindex="-1"></a>efa_f1 <span class="ot">&lt;-</span></span>
-<span id="cb27-2"><a href="efa-con-lavaan.html#cb27-2" tabindex="-1"></a>  <span class="fu">cfa</span>(</span>
-<span id="cb27-3"><a href="efa-con-lavaan.html#cb27-3" tabindex="-1"></a>    <span class="at">model =</span> f1,</span>
-<span id="cb27-4"><a href="efa-con-lavaan.html#cb27-4" tabindex="-1"></a>    <span class="at">sample.cov =</span> psychot_cor_mat,</span>
-<span id="cb27-5"><a href="efa-con-lavaan.html#cb27-5" tabindex="-1"></a>    <span class="at">sample.nobs =</span> <span class="dv">250</span>,</span>
-<span id="cb27-6"><a href="efa-con-lavaan.html#cb27-6" tabindex="-1"></a>    <span class="at">rotation =</span> <span class="st">&quot;oblimin&quot;</span></span>
-<span id="cb27-7"><a href="efa-con-lavaan.html#cb27-7" tabindex="-1"></a>  )</span></code></pre></div>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="efa-con-lavaan.html#cb28-1" tabindex="-1"></a><span class="fu">summary</span>(</span>
-<span id="cb28-2"><a href="efa-con-lavaan.html#cb28-2" tabindex="-1"></a>  efa_f1,</span>
-<span id="cb28-3"><a href="efa-con-lavaan.html#cb28-3" tabindex="-1"></a>  <span class="at">fit.measures =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb28-4"><a href="efa-con-lavaan.html#cb28-4" tabindex="-1"></a>  <span class="at">standardized =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb28-5"><a href="efa-con-lavaan.html#cb28-5" tabindex="-1"></a>  <span class="at">rsquare =</span> <span class="cn">TRUE</span></span>
-<span id="cb28-6"><a href="efa-con-lavaan.html#cb28-6" tabindex="-1"></a>)</span>
-<span id="cb28-7"><a href="efa-con-lavaan.html#cb28-7" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6.15 ended normally after 2 iterations</span></span>
-<span id="cb28-8"><a href="efa-con-lavaan.html#cb28-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb28-9"><a href="efa-con-lavaan.html#cb28-9" tabindex="-1"></a><span class="co">#&gt;   Estimator                                         ML</span></span>
-<span id="cb28-10"><a href="efa-con-lavaan.html#cb28-10" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
-<span id="cb28-11"><a href="efa-con-lavaan.html#cb28-11" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                        16</span></span>
-<span id="cb28-12"><a href="efa-con-lavaan.html#cb28-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb28-13"><a href="efa-con-lavaan.html#cb28-13" tabindex="-1"></a><span class="co">#&gt;   Rotation method                      OBLIMIN OBLIQUE</span></span>
-<span id="cb28-14"><a href="efa-con-lavaan.html#cb28-14" tabindex="-1"></a><span class="co">#&gt;   Oblimin gamma                                      0</span></span>
-<span id="cb28-15"><a href="efa-con-lavaan.html#cb28-15" tabindex="-1"></a><span class="co">#&gt;   Rotation algorithm (rstarts)                GPA (30)</span></span>
-<span id="cb28-16"><a href="efa-con-lavaan.html#cb28-16" tabindex="-1"></a><span class="co">#&gt;   Standardized metric                             TRUE</span></span>
-<span id="cb28-17"><a href="efa-con-lavaan.html#cb28-17" tabindex="-1"></a><span class="co">#&gt;   Row weights                                     None</span></span>
-<span id="cb28-18"><a href="efa-con-lavaan.html#cb28-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb28-19"><a href="efa-con-lavaan.html#cb28-19" tabindex="-1"></a><span class="co">#&gt;   Number of observations                           250</span></span>
-<span id="cb28-20"><a href="efa-con-lavaan.html#cb28-20" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb28-21"><a href="efa-con-lavaan.html#cb28-21" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
-<span id="cb28-22"><a href="efa-con-lavaan.html#cb28-22" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb28-23"><a href="efa-con-lavaan.html#cb28-23" tabindex="-1"></a><span class="co">#&gt;   Test statistic                               375.327</span></span>
-<span id="cb28-24"><a href="efa-con-lavaan.html#cb28-24" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                20</span></span>
-<span id="cb28-25"><a href="efa-con-lavaan.html#cb28-25" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                           0.000</span></span>
-<span id="cb28-26"><a href="efa-con-lavaan.html#cb28-26" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb28-27"><a href="efa-con-lavaan.html#cb28-27" tabindex="-1"></a><span class="co">#&gt; Model Test Baseline Model:</span></span>
-<span id="cb28-28"><a href="efa-con-lavaan.html#cb28-28" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb28-29"><a href="efa-con-lavaan.html#cb28-29" tabindex="-1"></a><span class="co">#&gt;   Test statistic                              1253.791</span></span>
-<span id="cb28-30"><a href="efa-con-lavaan.html#cb28-30" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                28</span></span>
-<span id="cb28-31"><a href="efa-con-lavaan.html#cb28-31" tabindex="-1"></a><span class="co">#&gt;   P-value                                        0.000</span></span>
-<span id="cb28-32"><a href="efa-con-lavaan.html#cb28-32" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb28-33"><a href="efa-con-lavaan.html#cb28-33" tabindex="-1"></a><span class="co">#&gt; User Model versus Baseline Model:</span></span>
-<span id="cb28-34"><a href="efa-con-lavaan.html#cb28-34" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb28-35"><a href="efa-con-lavaan.html#cb28-35" tabindex="-1"></a><span class="co">#&gt;   Comparative Fit Index (CFI)                    0.710</span></span>
-<span id="cb28-36"><a href="efa-con-lavaan.html#cb28-36" tabindex="-1"></a><span class="co">#&gt;   Tucker-Lewis Index (TLI)                       0.594</span></span>
-<span id="cb28-37"><a href="efa-con-lavaan.html#cb28-37" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb28-38"><a href="efa-con-lavaan.html#cb28-38" tabindex="-1"></a><span class="co">#&gt; Loglikelihood and Information Criteria:</span></span>
-<span id="cb28-39"><a href="efa-con-lavaan.html#cb28-39" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb28-40"><a href="efa-con-lavaan.html#cb28-40" tabindex="-1"></a><span class="co">#&gt;   Loglikelihood user model (H0)              -2394.637</span></span>
-<span id="cb28-41"><a href="efa-con-lavaan.html#cb28-41" tabindex="-1"></a><span class="co">#&gt;   Loglikelihood unrestricted model (H1)      -2206.974</span></span>
-<span id="cb28-42"><a href="efa-con-lavaan.html#cb28-42" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb28-43"><a href="efa-con-lavaan.html#cb28-43" tabindex="-1"></a><span class="co">#&gt;   Akaike (AIC)                                4821.275</span></span>
-<span id="cb28-44"><a href="efa-con-lavaan.html#cb28-44" tabindex="-1"></a><span class="co">#&gt;   Bayesian (BIC)                              4877.618</span></span>
-<span id="cb28-45"><a href="efa-con-lavaan.html#cb28-45" tabindex="-1"></a><span class="co">#&gt;   Sample-size adjusted Bayesian (SABIC)       4826.897</span></span>
-<span id="cb28-46"><a href="efa-con-lavaan.html#cb28-46" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb28-47"><a href="efa-con-lavaan.html#cb28-47" tabindex="-1"></a><span class="co">#&gt; Root Mean Square Error of Approximation:</span></span>
-<span id="cb28-48"><a href="efa-con-lavaan.html#cb28-48" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb28-49"><a href="efa-con-lavaan.html#cb28-49" tabindex="-1"></a><span class="co">#&gt;   RMSEA                                          0.267</span></span>
-<span id="cb28-50"><a href="efa-con-lavaan.html#cb28-50" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - lower         0.243</span></span>
-<span id="cb28-51"><a href="efa-con-lavaan.html#cb28-51" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - upper         0.291</span></span>
-<span id="cb28-52"><a href="efa-con-lavaan.html#cb28-52" tabindex="-1"></a><span class="co">#&gt;   P-value H_0: RMSEA &lt;= 0.050                    0.000</span></span>
-<span id="cb28-53"><a href="efa-con-lavaan.html#cb28-53" tabindex="-1"></a><span class="co">#&gt;   P-value H_0: RMSEA &gt;= 0.080                    1.000</span></span>
-<span id="cb28-54"><a href="efa-con-lavaan.html#cb28-54" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb28-55"><a href="efa-con-lavaan.html#cb28-55" tabindex="-1"></a><span class="co">#&gt; Standardized Root Mean Square Residual:</span></span>
-<span id="cb28-56"><a href="efa-con-lavaan.html#cb28-56" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb28-57"><a href="efa-con-lavaan.html#cb28-57" tabindex="-1"></a><span class="co">#&gt;   SRMR                                           0.187</span></span>
-<span id="cb28-58"><a href="efa-con-lavaan.html#cb28-58" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb28-59"><a href="efa-con-lavaan.html#cb28-59" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
-<span id="cb28-60"><a href="efa-con-lavaan.html#cb28-60" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb28-61"><a href="efa-con-lavaan.html#cb28-61" tabindex="-1"></a><span class="co">#&gt;   Standard errors                             Standard</span></span>
-<span id="cb28-62"><a href="efa-con-lavaan.html#cb28-62" tabindex="-1"></a><span class="co">#&gt;   Information                                 Expected</span></span>
-<span id="cb28-63"><a href="efa-con-lavaan.html#cb28-63" tabindex="-1"></a><span class="co">#&gt;   Information saturated (h1) model          Structured</span></span>
-<span id="cb28-64"><a href="efa-con-lavaan.html#cb28-64" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb28-65"><a href="efa-con-lavaan.html#cb28-65" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
-<span id="cb28-66"><a href="efa-con-lavaan.html#cb28-66" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all</span></span>
-<span id="cb28-67"><a href="efa-con-lavaan.html#cb28-67" tabindex="-1"></a><span class="co">#&gt;   f1 =~ efa                                                             </span></span>
-<span id="cb28-68"><a href="efa-con-lavaan.html#cb28-68" tabindex="-1"></a><span class="co">#&gt;     N1                0.879    0.051   17.333    0.000    0.879    0.880</span></span>
-<span id="cb28-69"><a href="efa-con-lavaan.html#cb28-69" tabindex="-1"></a><span class="co">#&gt;     N2                0.841    0.052   16.154    0.000    0.841    0.842</span></span>
-<span id="cb28-70"><a href="efa-con-lavaan.html#cb28-70" tabindex="-1"></a><span class="co">#&gt;     N3                0.841    0.052   16.175    0.000    0.841    0.843</span></span>
-<span id="cb28-71"><a href="efa-con-lavaan.html#cb28-71" tabindex="-1"></a><span class="co">#&gt;     N4                0.870    0.051   17.065    0.000    0.870    0.872</span></span>
-<span id="cb28-72"><a href="efa-con-lavaan.html#cb28-72" tabindex="-1"></a><span class="co">#&gt;     E1               -0.438    0.062   -7.041    0.000   -0.438   -0.439</span></span>
-<span id="cb28-73"><a href="efa-con-lavaan.html#cb28-73" tabindex="-1"></a><span class="co">#&gt;     E2               -0.398    0.063   -6.327    0.000   -0.398   -0.398</span></span>
-<span id="cb28-74"><a href="efa-con-lavaan.html#cb28-74" tabindex="-1"></a><span class="co">#&gt;     E3               -0.398    0.063   -6.342    0.000   -0.398   -0.399</span></span>
-<span id="cb28-75"><a href="efa-con-lavaan.html#cb28-75" tabindex="-1"></a><span class="co">#&gt;     E4               -0.364    0.063   -5.746    0.000   -0.364   -0.364</span></span>
-<span id="cb28-76"><a href="efa-con-lavaan.html#cb28-76" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb28-77"><a href="efa-con-lavaan.html#cb28-77" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
-<span id="cb28-78"><a href="efa-con-lavaan.html#cb28-78" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all</span></span>
-<span id="cb28-79"><a href="efa-con-lavaan.html#cb28-79" tabindex="-1"></a><span class="co">#&gt;    .N1                0.224    0.028    7.915    0.000    0.224    0.225</span></span>
-<span id="cb28-80"><a href="efa-con-lavaan.html#cb28-80" tabindex="-1"></a><span class="co">#&gt;    .N2                0.289    0.033    8.880    0.000    0.289    0.290</span></span>
-<span id="cb28-81"><a href="efa-con-lavaan.html#cb28-81" tabindex="-1"></a><span class="co">#&gt;    .N3                0.288    0.032    8.866    0.000    0.288    0.289</span></span>
-<span id="cb28-82"><a href="efa-con-lavaan.html#cb28-82" tabindex="-1"></a><span class="co">#&gt;    .N4                0.239    0.029    8.174    0.000    0.239    0.240</span></span>
-<span id="cb28-83"><a href="efa-con-lavaan.html#cb28-83" tabindex="-1"></a><span class="co">#&gt;    .E1                0.804    0.073   10.963    0.000    0.804    0.807</span></span>
-<span id="cb28-84"><a href="efa-con-lavaan.html#cb28-84" tabindex="-1"></a><span class="co">#&gt;    .E2                0.838    0.076   11.008    0.000    0.838    0.841</span></span>
-<span id="cb28-85"><a href="efa-con-lavaan.html#cb28-85" tabindex="-1"></a><span class="co">#&gt;    .E3                0.837    0.076   11.007    0.000    0.837    0.841</span></span>
-<span id="cb28-86"><a href="efa-con-lavaan.html#cb28-86" tabindex="-1"></a><span class="co">#&gt;    .E4                0.864    0.078   11.041    0.000    0.864    0.867</span></span>
-<span id="cb28-87"><a href="efa-con-lavaan.html#cb28-87" tabindex="-1"></a><span class="co">#&gt;     f1                1.000                               1.000    1.000</span></span>
-<span id="cb28-88"><a href="efa-con-lavaan.html#cb28-88" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb28-89"><a href="efa-con-lavaan.html#cb28-89" tabindex="-1"></a><span class="co">#&gt; R-Square:</span></span>
-<span id="cb28-90"><a href="efa-con-lavaan.html#cb28-90" tabindex="-1"></a><span class="co">#&gt;                    Estimate</span></span>
-<span id="cb28-91"><a href="efa-con-lavaan.html#cb28-91" tabindex="-1"></a><span class="co">#&gt;     N1                0.775</span></span>
-<span id="cb28-92"><a href="efa-con-lavaan.html#cb28-92" tabindex="-1"></a><span class="co">#&gt;     N2                0.710</span></span>
-<span id="cb28-93"><a href="efa-con-lavaan.html#cb28-93" tabindex="-1"></a><span class="co">#&gt;     N3                0.711</span></span>
-<span id="cb28-94"><a href="efa-con-lavaan.html#cb28-94" tabindex="-1"></a><span class="co">#&gt;     N4                0.760</span></span>
-<span id="cb28-95"><a href="efa-con-lavaan.html#cb28-95" tabindex="-1"></a><span class="co">#&gt;     E1                0.193</span></span>
-<span id="cb28-96"><a href="efa-con-lavaan.html#cb28-96" tabindex="-1"></a><span class="co">#&gt;     E2                0.159</span></span>
-<span id="cb28-97"><a href="efa-con-lavaan.html#cb28-97" tabindex="-1"></a><span class="co">#&gt;     E3                0.159</span></span>
-<span id="cb28-98"><a href="efa-con-lavaan.html#cb28-98" tabindex="-1"></a><span class="co">#&gt;     E4                0.133</span></span></code></pre></div>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="efa-con-lavaan.html#cb29-1" tabindex="-1"></a>efa_f2 <span class="ot">&lt;-</span></span>
-<span id="cb29-2"><a href="efa-con-lavaan.html#cb29-2" tabindex="-1"></a>  <span class="fu">cfa</span>(</span>
-<span id="cb29-3"><a href="efa-con-lavaan.html#cb29-3" tabindex="-1"></a>    <span class="at">model =</span> f2,</span>
-<span id="cb29-4"><a href="efa-con-lavaan.html#cb29-4" tabindex="-1"></a>    <span class="at">sample.cov =</span> psychot_cor_mat,</span>
-<span id="cb29-5"><a href="efa-con-lavaan.html#cb29-5" tabindex="-1"></a>    <span class="at">sample.nobs =</span> <span class="dv">250</span>,</span>
-<span id="cb29-6"><a href="efa-con-lavaan.html#cb29-6" tabindex="-1"></a>    <span class="at">rotation =</span> <span class="st">&quot;oblimin&quot;</span></span>
-<span id="cb29-7"><a href="efa-con-lavaan.html#cb29-7" tabindex="-1"></a>  )</span></code></pre></div>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="efa-con-lavaan.html#cb30-1" tabindex="-1"></a><span class="fu">summary</span>(</span>
-<span id="cb30-2"><a href="efa-con-lavaan.html#cb30-2" tabindex="-1"></a>  efa_f2,</span>
-<span id="cb30-3"><a href="efa-con-lavaan.html#cb30-3" tabindex="-1"></a>  <span class="at">fit.measures =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb30-4"><a href="efa-con-lavaan.html#cb30-4" tabindex="-1"></a>  <span class="at">standardized =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb30-5"><a href="efa-con-lavaan.html#cb30-5" tabindex="-1"></a>  <span class="at">rsquare =</span> <span class="cn">TRUE</span></span>
-<span id="cb30-6"><a href="efa-con-lavaan.html#cb30-6" tabindex="-1"></a>)</span>
-<span id="cb30-7"><a href="efa-con-lavaan.html#cb30-7" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6.15 ended normally after 1 iteration</span></span>
-<span id="cb30-8"><a href="efa-con-lavaan.html#cb30-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-9"><a href="efa-con-lavaan.html#cb30-9" tabindex="-1"></a><span class="co">#&gt;   Estimator                                         ML</span></span>
-<span id="cb30-10"><a href="efa-con-lavaan.html#cb30-10" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
-<span id="cb30-11"><a href="efa-con-lavaan.html#cb30-11" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                        23</span></span>
-<span id="cb30-12"><a href="efa-con-lavaan.html#cb30-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-13"><a href="efa-con-lavaan.html#cb30-13" tabindex="-1"></a><span class="co">#&gt;   Rotation method                      OBLIMIN OBLIQUE</span></span>
-<span id="cb30-14"><a href="efa-con-lavaan.html#cb30-14" tabindex="-1"></a><span class="co">#&gt;   Oblimin gamma                                      0</span></span>
-<span id="cb30-15"><a href="efa-con-lavaan.html#cb30-15" tabindex="-1"></a><span class="co">#&gt;   Rotation algorithm (rstarts)                GPA (30)</span></span>
-<span id="cb30-16"><a href="efa-con-lavaan.html#cb30-16" tabindex="-1"></a><span class="co">#&gt;   Standardized metric                             TRUE</span></span>
-<span id="cb30-17"><a href="efa-con-lavaan.html#cb30-17" tabindex="-1"></a><span class="co">#&gt;   Row weights                                     None</span></span>
-<span id="cb30-18"><a href="efa-con-lavaan.html#cb30-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-19"><a href="efa-con-lavaan.html#cb30-19" tabindex="-1"></a><span class="co">#&gt;   Number of observations                           250</span></span>
-<span id="cb30-20"><a href="efa-con-lavaan.html#cb30-20" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-21"><a href="efa-con-lavaan.html#cb30-21" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
-<span id="cb30-22"><a href="efa-con-lavaan.html#cb30-22" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb30-23"><a href="efa-con-lavaan.html#cb30-23" tabindex="-1"></a><span class="co">#&gt;   Test statistic                                 9.811</span></span>
-<span id="cb30-24"><a href="efa-con-lavaan.html#cb30-24" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                13</span></span>
-<span id="cb30-25"><a href="efa-con-lavaan.html#cb30-25" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                           0.709</span></span>
-<span id="cb30-26"><a href="efa-con-lavaan.html#cb30-26" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-27"><a href="efa-con-lavaan.html#cb30-27" tabindex="-1"></a><span class="co">#&gt; Model Test Baseline Model:</span></span>
-<span id="cb30-28"><a href="efa-con-lavaan.html#cb30-28" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-29"><a href="efa-con-lavaan.html#cb30-29" tabindex="-1"></a><span class="co">#&gt;   Test statistic                              1253.791</span></span>
-<span id="cb30-30"><a href="efa-con-lavaan.html#cb30-30" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                28</span></span>
-<span id="cb30-31"><a href="efa-con-lavaan.html#cb30-31" tabindex="-1"></a><span class="co">#&gt;   P-value                                        0.000</span></span>
-<span id="cb30-32"><a href="efa-con-lavaan.html#cb30-32" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-33"><a href="efa-con-lavaan.html#cb30-33" tabindex="-1"></a><span class="co">#&gt; User Model versus Baseline Model:</span></span>
-<span id="cb30-34"><a href="efa-con-lavaan.html#cb30-34" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-35"><a href="efa-con-lavaan.html#cb30-35" tabindex="-1"></a><span class="co">#&gt;   Comparative Fit Index (CFI)                    1.000</span></span>
-<span id="cb30-36"><a href="efa-con-lavaan.html#cb30-36" tabindex="-1"></a><span class="co">#&gt;   Tucker-Lewis Index (TLI)                       1.006</span></span>
-<span id="cb30-37"><a href="efa-con-lavaan.html#cb30-37" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-38"><a href="efa-con-lavaan.html#cb30-38" tabindex="-1"></a><span class="co">#&gt; Loglikelihood and Information Criteria:</span></span>
-<span id="cb30-39"><a href="efa-con-lavaan.html#cb30-39" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-40"><a href="efa-con-lavaan.html#cb30-40" tabindex="-1"></a><span class="co">#&gt;   Loglikelihood user model (H0)              -2211.879</span></span>
-<span id="cb30-41"><a href="efa-con-lavaan.html#cb30-41" tabindex="-1"></a><span class="co">#&gt;   Loglikelihood unrestricted model (H1)      -2206.974</span></span>
-<span id="cb30-42"><a href="efa-con-lavaan.html#cb30-42" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
-<span id="cb30-43"><a href="efa-con-lavaan.html#cb30-43" tabindex="-1"></a><span class="co">#&gt;   Akaike (AIC)                                4469.758</span></span>
-<span id="cb30-44"><a href="efa-con-lavaan.html#cb30-44" tabindex="-1"></a><span class="co">#&gt;   Bayesian (BIC)                              4550.752</span></span>
-<span id="cb30-45"><a href="efa-con-lavaan.html#cb30-45" tabindex="-1"></a><span class="co">#&gt;   Sample-size adjusted Bayesian (SABIC)       4477.840</span></span>
-<span id="cb30-46"><a href="efa-con-lavaan.html#cb30-46" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-47"><a href="efa-con-lavaan.html#cb30-47" tabindex="-1"></a><span class="co">#&gt; Root Mean Square Error of Approximation:</span></span>
-<span id="cb30-48"><a href="efa-con-lavaan.html#cb30-48" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-49"><a href="efa-con-lavaan.html#cb30-49" tabindex="-1"></a><span class="co">#&gt;   RMSEA                                          0.000</span></span>
-<span id="cb30-50"><a href="efa-con-lavaan.html#cb30-50" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - lower         0.000</span></span>
-<span id="cb30-51"><a href="efa-con-lavaan.html#cb30-51" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - upper         0.048</span></span>
-<span id="cb30-52"><a href="efa-con-lavaan.html#cb30-52" tabindex="-1"></a><span class="co">#&gt;   P-value H_0: RMSEA &lt;= 0.050                    0.957</span></span>
-<span id="cb30-53"><a href="efa-con-lavaan.html#cb30-53" tabindex="-1"></a><span class="co">#&gt;   P-value H_0: RMSEA &gt;= 0.080                    0.001</span></span>
-<span id="cb30-54"><a href="efa-con-lavaan.html#cb30-54" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-55"><a href="efa-con-lavaan.html#cb30-55" tabindex="-1"></a><span class="co">#&gt; Standardized Root Mean Square Residual:</span></span>
-<span id="cb30-56"><a href="efa-con-lavaan.html#cb30-56" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-57"><a href="efa-con-lavaan.html#cb30-57" tabindex="-1"></a><span class="co">#&gt;   SRMR                                           0.010</span></span>
-<span id="cb30-58"><a href="efa-con-lavaan.html#cb30-58" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-59"><a href="efa-con-lavaan.html#cb30-59" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
-<span id="cb30-60"><a href="efa-con-lavaan.html#cb30-60" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-61"><a href="efa-con-lavaan.html#cb30-61" tabindex="-1"></a><span class="co">#&gt;   Standard errors                             Standard</span></span>
-<span id="cb30-62"><a href="efa-con-lavaan.html#cb30-62" tabindex="-1"></a><span class="co">#&gt;   Information                                 Expected</span></span>
-<span id="cb30-63"><a href="efa-con-lavaan.html#cb30-63" tabindex="-1"></a><span class="co">#&gt;   Information saturated (h1) model          Structured</span></span>
-<span id="cb30-64"><a href="efa-con-lavaan.html#cb30-64" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-65"><a href="efa-con-lavaan.html#cb30-65" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
-<span id="cb30-66"><a href="efa-con-lavaan.html#cb30-66" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all</span></span>
-<span id="cb30-67"><a href="efa-con-lavaan.html#cb30-67" tabindex="-1"></a><span class="co">#&gt;   f1 =~ efa                                                             </span></span>
-<span id="cb30-68"><a href="efa-con-lavaan.html#cb30-68" tabindex="-1"></a><span class="co">#&gt;     N1                0.874    0.053   16.592    0.000    0.874    0.876</span></span>
-<span id="cb30-69"><a href="efa-con-lavaan.html#cb30-69" tabindex="-1"></a><span class="co">#&gt;     N2                0.851    0.055   15.551    0.000    0.851    0.853</span></span>
-<span id="cb30-70"><a href="efa-con-lavaan.html#cb30-70" tabindex="-1"></a><span class="co">#&gt;     N3                0.826    0.054   15.179    0.000    0.826    0.828</span></span>
-<span id="cb30-71"><a href="efa-con-lavaan.html#cb30-71" tabindex="-1"></a><span class="co">#&gt;     N4                0.896    0.053   16.802    0.000    0.896    0.898</span></span>
-<span id="cb30-72"><a href="efa-con-lavaan.html#cb30-72" tabindex="-1"></a><span class="co">#&gt;     E1               -0.046    0.040   -1.138    0.255   -0.046   -0.046</span></span>
-<span id="cb30-73"><a href="efa-con-lavaan.html#cb30-73" tabindex="-1"></a><span class="co">#&gt;     E2                0.035    0.034    1.030    0.303    0.035    0.035</span></span>
-<span id="cb30-74"><a href="efa-con-lavaan.html#cb30-74" tabindex="-1"></a><span class="co">#&gt;     E3                0.000    0.040    0.010    0.992    0.000    0.000</span></span>
-<span id="cb30-75"><a href="efa-con-lavaan.html#cb30-75" tabindex="-1"></a><span class="co">#&gt;     E4               -0.006    0.049   -0.131    0.896   -0.006   -0.006</span></span>
-<span id="cb30-76"><a href="efa-con-lavaan.html#cb30-76" tabindex="-1"></a><span class="co">#&gt;   f2 =~ efa                                                             </span></span>
-<span id="cb30-77"><a href="efa-con-lavaan.html#cb30-77" tabindex="-1"></a><span class="co">#&gt;     N1               -0.017    0.032   -0.539    0.590   -0.017   -0.017</span></span>
-<span id="cb30-78"><a href="efa-con-lavaan.html#cb30-78" tabindex="-1"></a><span class="co">#&gt;     N2                0.011    0.035    0.322    0.748    0.011    0.011</span></span>
-<span id="cb30-79"><a href="efa-con-lavaan.html#cb30-79" tabindex="-1"></a><span class="co">#&gt;     N3               -0.035    0.036   -0.949    0.343   -0.035   -0.035</span></span>
-<span id="cb30-80"><a href="efa-con-lavaan.html#cb30-80" tabindex="-1"></a><span class="co">#&gt;     N4                0.031    0.031    0.994    0.320    0.031    0.031</span></span>
-<span id="cb30-81"><a href="efa-con-lavaan.html#cb30-81" tabindex="-1"></a><span class="co">#&gt;     E1                0.776    0.059   13.125    0.000    0.776    0.778</span></span>
-<span id="cb30-82"><a href="efa-con-lavaan.html#cb30-82" tabindex="-1"></a><span class="co">#&gt;     E2                0.854    0.058   14.677    0.000    0.854    0.855</span></span>
-<span id="cb30-83"><a href="efa-con-lavaan.html#cb30-83" tabindex="-1"></a><span class="co">#&gt;     E3                0.785    0.060   13.106    0.000    0.785    0.787</span></span>
-<span id="cb30-84"><a href="efa-con-lavaan.html#cb30-84" tabindex="-1"></a><span class="co">#&gt;     E4                0.695    0.063   10.955    0.000    0.695    0.697</span></span>
-<span id="cb30-85"><a href="efa-con-lavaan.html#cb30-85" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-86"><a href="efa-con-lavaan.html#cb30-86" tabindex="-1"></a><span class="co">#&gt; Covariances:</span></span>
-<span id="cb30-87"><a href="efa-con-lavaan.html#cb30-87" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all</span></span>
-<span id="cb30-88"><a href="efa-con-lavaan.html#cb30-88" tabindex="-1"></a><span class="co">#&gt;   f1 ~~                                                                 </span></span>
-<span id="cb30-89"><a href="efa-con-lavaan.html#cb30-89" tabindex="-1"></a><span class="co">#&gt;     f2               -0.432    0.059   -7.345    0.000   -0.432   -0.432</span></span>
-<span id="cb30-90"><a href="efa-con-lavaan.html#cb30-90" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-91"><a href="efa-con-lavaan.html#cb30-91" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
-<span id="cb30-92"><a href="efa-con-lavaan.html#cb30-92" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all</span></span>
-<span id="cb30-93"><a href="efa-con-lavaan.html#cb30-93" tabindex="-1"></a><span class="co">#&gt;    .N1                0.218    0.028    7.790    0.000    0.218    0.219</span></span>
-<span id="cb30-94"><a href="efa-con-lavaan.html#cb30-94" tabindex="-1"></a><span class="co">#&gt;    .N2                0.279    0.032    8.693    0.000    0.279    0.280</span></span>
-<span id="cb30-95"><a href="efa-con-lavaan.html#cb30-95" tabindex="-1"></a><span class="co">#&gt;    .N3                0.287    0.032    8.907    0.000    0.287    0.289</span></span>
-<span id="cb30-96"><a href="efa-con-lavaan.html#cb30-96" tabindex="-1"></a><span class="co">#&gt;    .N4                0.216    0.029    7.578    0.000    0.216    0.217</span></span>
-<span id="cb30-97"><a href="efa-con-lavaan.html#cb30-97" tabindex="-1"></a><span class="co">#&gt;    .E1                0.361    0.044    8.226    0.000    0.361    0.362</span></span>
-<span id="cb30-98"><a href="efa-con-lavaan.html#cb30-98" tabindex="-1"></a><span class="co">#&gt;    .E2                0.292    0.043    6.787    0.000    0.292    0.293</span></span>
-<span id="cb30-99"><a href="efa-con-lavaan.html#cb30-99" tabindex="-1"></a><span class="co">#&gt;    .E3                0.379    0.046    8.315    0.000    0.379    0.381</span></span>
-<span id="cb30-100"><a href="efa-con-lavaan.html#cb30-100" tabindex="-1"></a><span class="co">#&gt;    .E4                0.509    0.053    9.554    0.000    0.509    0.511</span></span>
-<span id="cb30-101"><a href="efa-con-lavaan.html#cb30-101" tabindex="-1"></a><span class="co">#&gt;     f1                1.000                               1.000    1.000</span></span>
-<span id="cb30-102"><a href="efa-con-lavaan.html#cb30-102" tabindex="-1"></a><span class="co">#&gt;     f2                1.000                               1.000    1.000</span></span>
-<span id="cb30-103"><a href="efa-con-lavaan.html#cb30-103" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-104"><a href="efa-con-lavaan.html#cb30-104" tabindex="-1"></a><span class="co">#&gt; R-Square:</span></span>
-<span id="cb30-105"><a href="efa-con-lavaan.html#cb30-105" tabindex="-1"></a><span class="co">#&gt;                    Estimate</span></span>
-<span id="cb30-106"><a href="efa-con-lavaan.html#cb30-106" tabindex="-1"></a><span class="co">#&gt;     N1                0.781</span></span>
-<span id="cb30-107"><a href="efa-con-lavaan.html#cb30-107" tabindex="-1"></a><span class="co">#&gt;     N2                0.720</span></span>
-<span id="cb30-108"><a href="efa-con-lavaan.html#cb30-108" tabindex="-1"></a><span class="co">#&gt;     N3                0.711</span></span>
-<span id="cb30-109"><a href="efa-con-lavaan.html#cb30-109" tabindex="-1"></a><span class="co">#&gt;     N4                0.783</span></span>
-<span id="cb30-110"><a href="efa-con-lavaan.html#cb30-110" tabindex="-1"></a><span class="co">#&gt;     E1                0.638</span></span>
-<span id="cb30-111"><a href="efa-con-lavaan.html#cb30-111" tabindex="-1"></a><span class="co">#&gt;     E2                0.707</span></span>
-<span id="cb30-112"><a href="efa-con-lavaan.html#cb30-112" tabindex="-1"></a><span class="co">#&gt;     E3                0.619</span></span>
-<span id="cb30-113"><a href="efa-con-lavaan.html#cb30-113" tabindex="-1"></a><span class="co">#&gt;     E4                0.489</span></span></code></pre></div>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="efa-con-lavaan.html#cb31-1" tabindex="-1"></a><span class="co"># define the fit measures</span></span>
-<span id="cb31-2"><a href="efa-con-lavaan.html#cb31-2" tabindex="-1"></a>fit_measures_robust <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb31-3"><a href="efa-con-lavaan.html#cb31-3" tabindex="-1"></a>  <span class="st">&quot;chisq&quot;</span>, <span class="st">&quot;df&quot;</span>, <span class="st">&quot;pvalue&quot;</span>,</span>
-<span id="cb31-4"><a href="efa-con-lavaan.html#cb31-4" tabindex="-1"></a>  <span class="st">&quot;cfi&quot;</span>, <span class="st">&quot;rmsea&quot;</span>, <span class="st">&quot;srmr&quot;</span></span>
-<span id="cb31-5"><a href="efa-con-lavaan.html#cb31-5" tabindex="-1"></a>)</span>
-<span id="cb31-6"><a href="efa-con-lavaan.html#cb31-6" tabindex="-1"></a></span>
-<span id="cb31-7"><a href="efa-con-lavaan.html#cb31-7" tabindex="-1"></a><span class="co"># collect them for each model</span></span>
-<span id="cb31-8"><a href="efa-con-lavaan.html#cb31-8" tabindex="-1"></a><span class="fu">rbind</span>(</span>
-<span id="cb31-9"><a href="efa-con-lavaan.html#cb31-9" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(efa_f1, fit_measures_robust),</span>
-<span id="cb31-10"><a href="efa-con-lavaan.html#cb31-10" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(efa_f2, fit_measures_robust)</span>
-<span id="cb31-11"><a href="efa-con-lavaan.html#cb31-11" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb31-12"><a href="efa-con-lavaan.html#cb31-12" tabindex="-1"></a>  <span class="co"># wrangle</span></span>
-<span id="cb31-13"><a href="efa-con-lavaan.html#cb31-13" tabindex="-1"></a>  <span class="fu">data.frame</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb31-14"><a href="efa-con-lavaan.html#cb31-14" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb31-15"><a href="efa-con-lavaan.html#cb31-15" tabindex="-1"></a>    <span class="at">chisq =</span> <span class="fu">round</span>(chisq, <span class="at">digits =</span> <span class="dv">0</span>),</span>
-<span id="cb31-16"><a href="efa-con-lavaan.html#cb31-16" tabindex="-1"></a>    <span class="at">df =</span> <span class="fu">as.integer</span>(df),</span>
-<span id="cb31-17"><a href="efa-con-lavaan.html#cb31-17" tabindex="-1"></a>    <span class="at">pvalue =</span> <span class="fu">ifelse</span>(pvalue <span class="sc">==</span> <span class="dv">0</span>, <span class="st">&quot;&lt; .001&quot;</span>, pvalue)</span>
-<span id="cb31-18"><a href="efa-con-lavaan.html#cb31-18" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb31-19"><a href="efa-con-lavaan.html#cb31-19" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(cfi<span class="sc">:</span>srmr), <span class="sc">~</span> <span class="fu">round</span>(., <span class="at">digits =</span> <span class="dv">3</span>))</span>
-<span id="cb31-20"><a href="efa-con-lavaan.html#cb31-20" tabindex="-1"></a><span class="co">#&gt;   chisq df            pvalue  cfi rmsea  srmr</span></span>
-<span id="cb31-21"><a href="efa-con-lavaan.html#cb31-21" tabindex="-1"></a><span class="co">#&gt; 1   375 20            &lt; .001 0.71 0.267 0.187</span></span>
-<span id="cb31-22"><a href="efa-con-lavaan.html#cb31-22" tabindex="-1"></a><span class="co">#&gt; 2    10 13 0.709310449320062 1.00 0.000 0.010</span></span></code></pre></div>
-<p>I risultati mostrano come la funzione <code>efa()</code> sia effettivamente in grado di distinguere in maniera chiara tra i due fattori. Il confronto tra modelli mostra la superiorità del modello a due fattori.</p>
+<span id="cb26-4"><a href="efa-con-lavaan.html#cb26-4" tabindex="-1"></a><span class="st">&#39;</span></span></code></pre></div>
+<p>Definiamo un modello con due fattori comuni.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="efa-con-lavaan.html#cb27-1" tabindex="-1"></a><span class="co"># 2-factor model</span></span>
+<span id="cb27-2"><a href="efa-con-lavaan.html#cb27-2" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> <span class="st">&#39;</span></span>
+<span id="cb27-3"><a href="efa-con-lavaan.html#cb27-3" tabindex="-1"></a><span class="st">efa(&quot;efa&quot;)*f1 +</span></span>
+<span id="cb27-4"><a href="efa-con-lavaan.html#cb27-4" tabindex="-1"></a><span class="st">efa(&quot;efa&quot;)*f2 =~ N1 + N2 + N3 + N4 + E1 + E2 + E3 + E4</span></span>
+<span id="cb27-5"><a href="efa-con-lavaan.html#cb27-5" tabindex="-1"></a><span class="st">&#39;</span></span></code></pre></div>
+<p>Adattiamo ai dati il modello ad un fattore comune.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="efa-con-lavaan.html#cb28-1" tabindex="-1"></a>efa_f1 <span class="ot">&lt;-</span></span>
+<span id="cb28-2"><a href="efa-con-lavaan.html#cb28-2" tabindex="-1"></a>  <span class="fu">cfa</span>(</span>
+<span id="cb28-3"><a href="efa-con-lavaan.html#cb28-3" tabindex="-1"></a>    <span class="at">model =</span> f1,</span>
+<span id="cb28-4"><a href="efa-con-lavaan.html#cb28-4" tabindex="-1"></a>    <span class="at">sample.cov =</span> psychot_cor_mat,</span>
+<span id="cb28-5"><a href="efa-con-lavaan.html#cb28-5" tabindex="-1"></a>    <span class="at">sample.nobs =</span> <span class="dv">250</span>,</span>
+<span id="cb28-6"><a href="efa-con-lavaan.html#cb28-6" tabindex="-1"></a>    <span class="at">rotation =</span> <span class="st">&quot;oblimin&quot;</span></span>
+<span id="cb28-7"><a href="efa-con-lavaan.html#cb28-7" tabindex="-1"></a>  )</span></code></pre></div>
+<p>Esaminiamo la soluzione ottenuta.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="efa-con-lavaan.html#cb29-1" tabindex="-1"></a><span class="fu">summary</span>(</span>
+<span id="cb29-2"><a href="efa-con-lavaan.html#cb29-2" tabindex="-1"></a>  efa_f1,</span>
+<span id="cb29-3"><a href="efa-con-lavaan.html#cb29-3" tabindex="-1"></a>  <span class="at">fit.measures =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb29-4"><a href="efa-con-lavaan.html#cb29-4" tabindex="-1"></a>  <span class="at">standardized =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb29-5"><a href="efa-con-lavaan.html#cb29-5" tabindex="-1"></a>  <span class="at">rsquare =</span> <span class="cn">TRUE</span></span>
+<span id="cb29-6"><a href="efa-con-lavaan.html#cb29-6" tabindex="-1"></a>)</span>
+<span id="cb29-7"><a href="efa-con-lavaan.html#cb29-7" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6.15 ended normally after 2 iterations</span></span>
+<span id="cb29-8"><a href="efa-con-lavaan.html#cb29-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb29-9"><a href="efa-con-lavaan.html#cb29-9" tabindex="-1"></a><span class="co">#&gt;   Estimator                                         ML</span></span>
+<span id="cb29-10"><a href="efa-con-lavaan.html#cb29-10" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
+<span id="cb29-11"><a href="efa-con-lavaan.html#cb29-11" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                        16</span></span>
+<span id="cb29-12"><a href="efa-con-lavaan.html#cb29-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb29-13"><a href="efa-con-lavaan.html#cb29-13" tabindex="-1"></a><span class="co">#&gt;   Rotation method                      OBLIMIN OBLIQUE</span></span>
+<span id="cb29-14"><a href="efa-con-lavaan.html#cb29-14" tabindex="-1"></a><span class="co">#&gt;   Oblimin gamma                                      0</span></span>
+<span id="cb29-15"><a href="efa-con-lavaan.html#cb29-15" tabindex="-1"></a><span class="co">#&gt;   Rotation algorithm (rstarts)                GPA (30)</span></span>
+<span id="cb29-16"><a href="efa-con-lavaan.html#cb29-16" tabindex="-1"></a><span class="co">#&gt;   Standardized metric                             TRUE</span></span>
+<span id="cb29-17"><a href="efa-con-lavaan.html#cb29-17" tabindex="-1"></a><span class="co">#&gt;   Row weights                                     None</span></span>
+<span id="cb29-18"><a href="efa-con-lavaan.html#cb29-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb29-19"><a href="efa-con-lavaan.html#cb29-19" tabindex="-1"></a><span class="co">#&gt;   Number of observations                           250</span></span>
+<span id="cb29-20"><a href="efa-con-lavaan.html#cb29-20" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb29-21"><a href="efa-con-lavaan.html#cb29-21" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
+<span id="cb29-22"><a href="efa-con-lavaan.html#cb29-22" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
+<span id="cb29-23"><a href="efa-con-lavaan.html#cb29-23" tabindex="-1"></a><span class="co">#&gt;   Test statistic                               375.327</span></span>
+<span id="cb29-24"><a href="efa-con-lavaan.html#cb29-24" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                20</span></span>
+<span id="cb29-25"><a href="efa-con-lavaan.html#cb29-25" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                           0.000</span></span>
+<span id="cb29-26"><a href="efa-con-lavaan.html#cb29-26" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb29-27"><a href="efa-con-lavaan.html#cb29-27" tabindex="-1"></a><span class="co">#&gt; Model Test Baseline Model:</span></span>
+<span id="cb29-28"><a href="efa-con-lavaan.html#cb29-28" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb29-29"><a href="efa-con-lavaan.html#cb29-29" tabindex="-1"></a><span class="co">#&gt;   Test statistic                              1253.791</span></span>
+<span id="cb29-30"><a href="efa-con-lavaan.html#cb29-30" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                28</span></span>
+<span id="cb29-31"><a href="efa-con-lavaan.html#cb29-31" tabindex="-1"></a><span class="co">#&gt;   P-value                                        0.000</span></span>
+<span id="cb29-32"><a href="efa-con-lavaan.html#cb29-32" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb29-33"><a href="efa-con-lavaan.html#cb29-33" tabindex="-1"></a><span class="co">#&gt; User Model versus Baseline Model:</span></span>
+<span id="cb29-34"><a href="efa-con-lavaan.html#cb29-34" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb29-35"><a href="efa-con-lavaan.html#cb29-35" tabindex="-1"></a><span class="co">#&gt;   Comparative Fit Index (CFI)                    0.710</span></span>
+<span id="cb29-36"><a href="efa-con-lavaan.html#cb29-36" tabindex="-1"></a><span class="co">#&gt;   Tucker-Lewis Index (TLI)                       0.594</span></span>
+<span id="cb29-37"><a href="efa-con-lavaan.html#cb29-37" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb29-38"><a href="efa-con-lavaan.html#cb29-38" tabindex="-1"></a><span class="co">#&gt; Loglikelihood and Information Criteria:</span></span>
+<span id="cb29-39"><a href="efa-con-lavaan.html#cb29-39" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb29-40"><a href="efa-con-lavaan.html#cb29-40" tabindex="-1"></a><span class="co">#&gt;   Loglikelihood user model (H0)              -2394.637</span></span>
+<span id="cb29-41"><a href="efa-con-lavaan.html#cb29-41" tabindex="-1"></a><span class="co">#&gt;   Loglikelihood unrestricted model (H1)      -2206.974</span></span>
+<span id="cb29-42"><a href="efa-con-lavaan.html#cb29-42" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
+<span id="cb29-43"><a href="efa-con-lavaan.html#cb29-43" tabindex="-1"></a><span class="co">#&gt;   Akaike (AIC)                                4821.275</span></span>
+<span id="cb29-44"><a href="efa-con-lavaan.html#cb29-44" tabindex="-1"></a><span class="co">#&gt;   Bayesian (BIC)                              4877.618</span></span>
+<span id="cb29-45"><a href="efa-con-lavaan.html#cb29-45" tabindex="-1"></a><span class="co">#&gt;   Sample-size adjusted Bayesian (SABIC)       4826.897</span></span>
+<span id="cb29-46"><a href="efa-con-lavaan.html#cb29-46" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb29-47"><a href="efa-con-lavaan.html#cb29-47" tabindex="-1"></a><span class="co">#&gt; Root Mean Square Error of Approximation:</span></span>
+<span id="cb29-48"><a href="efa-con-lavaan.html#cb29-48" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb29-49"><a href="efa-con-lavaan.html#cb29-49" tabindex="-1"></a><span class="co">#&gt;   RMSEA                                          0.267</span></span>
+<span id="cb29-50"><a href="efa-con-lavaan.html#cb29-50" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - lower         0.243</span></span>
+<span id="cb29-51"><a href="efa-con-lavaan.html#cb29-51" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - upper         0.291</span></span>
+<span id="cb29-52"><a href="efa-con-lavaan.html#cb29-52" tabindex="-1"></a><span class="co">#&gt;   P-value H_0: RMSEA &lt;= 0.050                    0.000</span></span>
+<span id="cb29-53"><a href="efa-con-lavaan.html#cb29-53" tabindex="-1"></a><span class="co">#&gt;   P-value H_0: RMSEA &gt;= 0.080                    1.000</span></span>
+<span id="cb29-54"><a href="efa-con-lavaan.html#cb29-54" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb29-55"><a href="efa-con-lavaan.html#cb29-55" tabindex="-1"></a><span class="co">#&gt; Standardized Root Mean Square Residual:</span></span>
+<span id="cb29-56"><a href="efa-con-lavaan.html#cb29-56" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb29-57"><a href="efa-con-lavaan.html#cb29-57" tabindex="-1"></a><span class="co">#&gt;   SRMR                                           0.187</span></span>
+<span id="cb29-58"><a href="efa-con-lavaan.html#cb29-58" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb29-59"><a href="efa-con-lavaan.html#cb29-59" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
+<span id="cb29-60"><a href="efa-con-lavaan.html#cb29-60" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb29-61"><a href="efa-con-lavaan.html#cb29-61" tabindex="-1"></a><span class="co">#&gt;   Standard errors                             Standard</span></span>
+<span id="cb29-62"><a href="efa-con-lavaan.html#cb29-62" tabindex="-1"></a><span class="co">#&gt;   Information                                 Expected</span></span>
+<span id="cb29-63"><a href="efa-con-lavaan.html#cb29-63" tabindex="-1"></a><span class="co">#&gt;   Information saturated (h1) model          Structured</span></span>
+<span id="cb29-64"><a href="efa-con-lavaan.html#cb29-64" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb29-65"><a href="efa-con-lavaan.html#cb29-65" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
+<span id="cb29-66"><a href="efa-con-lavaan.html#cb29-66" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all</span></span>
+<span id="cb29-67"><a href="efa-con-lavaan.html#cb29-67" tabindex="-1"></a><span class="co">#&gt;   f1 =~ efa                                                             </span></span>
+<span id="cb29-68"><a href="efa-con-lavaan.html#cb29-68" tabindex="-1"></a><span class="co">#&gt;     N1                0.879    0.051   17.333    0.000    0.879    0.880</span></span>
+<span id="cb29-69"><a href="efa-con-lavaan.html#cb29-69" tabindex="-1"></a><span class="co">#&gt;     N2                0.841    0.052   16.154    0.000    0.841    0.842</span></span>
+<span id="cb29-70"><a href="efa-con-lavaan.html#cb29-70" tabindex="-1"></a><span class="co">#&gt;     N3                0.841    0.052   16.175    0.000    0.841    0.843</span></span>
+<span id="cb29-71"><a href="efa-con-lavaan.html#cb29-71" tabindex="-1"></a><span class="co">#&gt;     N4                0.870    0.051   17.065    0.000    0.870    0.872</span></span>
+<span id="cb29-72"><a href="efa-con-lavaan.html#cb29-72" tabindex="-1"></a><span class="co">#&gt;     E1               -0.438    0.062   -7.041    0.000   -0.438   -0.439</span></span>
+<span id="cb29-73"><a href="efa-con-lavaan.html#cb29-73" tabindex="-1"></a><span class="co">#&gt;     E2               -0.398    0.063   -6.327    0.000   -0.398   -0.398</span></span>
+<span id="cb29-74"><a href="efa-con-lavaan.html#cb29-74" tabindex="-1"></a><span class="co">#&gt;     E3               -0.398    0.063   -6.342    0.000   -0.398   -0.399</span></span>
+<span id="cb29-75"><a href="efa-con-lavaan.html#cb29-75" tabindex="-1"></a><span class="co">#&gt;     E4               -0.364    0.063   -5.746    0.000   -0.364   -0.364</span></span>
+<span id="cb29-76"><a href="efa-con-lavaan.html#cb29-76" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb29-77"><a href="efa-con-lavaan.html#cb29-77" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
+<span id="cb29-78"><a href="efa-con-lavaan.html#cb29-78" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all</span></span>
+<span id="cb29-79"><a href="efa-con-lavaan.html#cb29-79" tabindex="-1"></a><span class="co">#&gt;    .N1                0.224    0.028    7.915    0.000    0.224    0.225</span></span>
+<span id="cb29-80"><a href="efa-con-lavaan.html#cb29-80" tabindex="-1"></a><span class="co">#&gt;    .N2                0.289    0.033    8.880    0.000    0.289    0.290</span></span>
+<span id="cb29-81"><a href="efa-con-lavaan.html#cb29-81" tabindex="-1"></a><span class="co">#&gt;    .N3                0.288    0.032    8.866    0.000    0.288    0.289</span></span>
+<span id="cb29-82"><a href="efa-con-lavaan.html#cb29-82" tabindex="-1"></a><span class="co">#&gt;    .N4                0.239    0.029    8.174    0.000    0.239    0.240</span></span>
+<span id="cb29-83"><a href="efa-con-lavaan.html#cb29-83" tabindex="-1"></a><span class="co">#&gt;    .E1                0.804    0.073   10.963    0.000    0.804    0.807</span></span>
+<span id="cb29-84"><a href="efa-con-lavaan.html#cb29-84" tabindex="-1"></a><span class="co">#&gt;    .E2                0.838    0.076   11.008    0.000    0.838    0.841</span></span>
+<span id="cb29-85"><a href="efa-con-lavaan.html#cb29-85" tabindex="-1"></a><span class="co">#&gt;    .E3                0.837    0.076   11.007    0.000    0.837    0.841</span></span>
+<span id="cb29-86"><a href="efa-con-lavaan.html#cb29-86" tabindex="-1"></a><span class="co">#&gt;    .E4                0.864    0.078   11.041    0.000    0.864    0.867</span></span>
+<span id="cb29-87"><a href="efa-con-lavaan.html#cb29-87" tabindex="-1"></a><span class="co">#&gt;     f1                1.000                               1.000    1.000</span></span>
+<span id="cb29-88"><a href="efa-con-lavaan.html#cb29-88" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb29-89"><a href="efa-con-lavaan.html#cb29-89" tabindex="-1"></a><span class="co">#&gt; R-Square:</span></span>
+<span id="cb29-90"><a href="efa-con-lavaan.html#cb29-90" tabindex="-1"></a><span class="co">#&gt;                    Estimate</span></span>
+<span id="cb29-91"><a href="efa-con-lavaan.html#cb29-91" tabindex="-1"></a><span class="co">#&gt;     N1                0.775</span></span>
+<span id="cb29-92"><a href="efa-con-lavaan.html#cb29-92" tabindex="-1"></a><span class="co">#&gt;     N2                0.710</span></span>
+<span id="cb29-93"><a href="efa-con-lavaan.html#cb29-93" tabindex="-1"></a><span class="co">#&gt;     N3                0.711</span></span>
+<span id="cb29-94"><a href="efa-con-lavaan.html#cb29-94" tabindex="-1"></a><span class="co">#&gt;     N4                0.760</span></span>
+<span id="cb29-95"><a href="efa-con-lavaan.html#cb29-95" tabindex="-1"></a><span class="co">#&gt;     E1                0.193</span></span>
+<span id="cb29-96"><a href="efa-con-lavaan.html#cb29-96" tabindex="-1"></a><span class="co">#&gt;     E2                0.159</span></span>
+<span id="cb29-97"><a href="efa-con-lavaan.html#cb29-97" tabindex="-1"></a><span class="co">#&gt;     E3                0.159</span></span>
+<span id="cb29-98"><a href="efa-con-lavaan.html#cb29-98" tabindex="-1"></a><span class="co">#&gt;     E4                0.133</span></span></code></pre></div>
+<p>Adattiamo ai dati il modello a due fattori comuni.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="efa-con-lavaan.html#cb30-1" tabindex="-1"></a>efa_f2 <span class="ot">&lt;-</span></span>
+<span id="cb30-2"><a href="efa-con-lavaan.html#cb30-2" tabindex="-1"></a>  <span class="fu">cfa</span>(</span>
+<span id="cb30-3"><a href="efa-con-lavaan.html#cb30-3" tabindex="-1"></a>    <span class="at">model =</span> f2,</span>
+<span id="cb30-4"><a href="efa-con-lavaan.html#cb30-4" tabindex="-1"></a>    <span class="at">sample.cov =</span> psychot_cor_mat,</span>
+<span id="cb30-5"><a href="efa-con-lavaan.html#cb30-5" tabindex="-1"></a>    <span class="at">sample.nobs =</span> <span class="dv">250</span>,</span>
+<span id="cb30-6"><a href="efa-con-lavaan.html#cb30-6" tabindex="-1"></a>    <span class="at">rotation =</span> <span class="st">&quot;oblimin&quot;</span></span>
+<span id="cb30-7"><a href="efa-con-lavaan.html#cb30-7" tabindex="-1"></a>  )</span></code></pre></div>
+<p>Esaminiamo la soluzione ottenuta.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="efa-con-lavaan.html#cb31-1" tabindex="-1"></a><span class="fu">summary</span>(</span>
+<span id="cb31-2"><a href="efa-con-lavaan.html#cb31-2" tabindex="-1"></a>  efa_f2,</span>
+<span id="cb31-3"><a href="efa-con-lavaan.html#cb31-3" tabindex="-1"></a>  <span class="at">fit.measures =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb31-4"><a href="efa-con-lavaan.html#cb31-4" tabindex="-1"></a>  <span class="at">standardized =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb31-5"><a href="efa-con-lavaan.html#cb31-5" tabindex="-1"></a>  <span class="at">rsquare =</span> <span class="cn">TRUE</span></span>
+<span id="cb31-6"><a href="efa-con-lavaan.html#cb31-6" tabindex="-1"></a>)</span>
+<span id="cb31-7"><a href="efa-con-lavaan.html#cb31-7" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6.15 ended normally after 1 iteration</span></span>
+<span id="cb31-8"><a href="efa-con-lavaan.html#cb31-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-9"><a href="efa-con-lavaan.html#cb31-9" tabindex="-1"></a><span class="co">#&gt;   Estimator                                         ML</span></span>
+<span id="cb31-10"><a href="efa-con-lavaan.html#cb31-10" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
+<span id="cb31-11"><a href="efa-con-lavaan.html#cb31-11" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                        23</span></span>
+<span id="cb31-12"><a href="efa-con-lavaan.html#cb31-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-13"><a href="efa-con-lavaan.html#cb31-13" tabindex="-1"></a><span class="co">#&gt;   Rotation method                      OBLIMIN OBLIQUE</span></span>
+<span id="cb31-14"><a href="efa-con-lavaan.html#cb31-14" tabindex="-1"></a><span class="co">#&gt;   Oblimin gamma                                      0</span></span>
+<span id="cb31-15"><a href="efa-con-lavaan.html#cb31-15" tabindex="-1"></a><span class="co">#&gt;   Rotation algorithm (rstarts)                GPA (30)</span></span>
+<span id="cb31-16"><a href="efa-con-lavaan.html#cb31-16" tabindex="-1"></a><span class="co">#&gt;   Standardized metric                             TRUE</span></span>
+<span id="cb31-17"><a href="efa-con-lavaan.html#cb31-17" tabindex="-1"></a><span class="co">#&gt;   Row weights                                     None</span></span>
+<span id="cb31-18"><a href="efa-con-lavaan.html#cb31-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-19"><a href="efa-con-lavaan.html#cb31-19" tabindex="-1"></a><span class="co">#&gt;   Number of observations                           250</span></span>
+<span id="cb31-20"><a href="efa-con-lavaan.html#cb31-20" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-21"><a href="efa-con-lavaan.html#cb31-21" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
+<span id="cb31-22"><a href="efa-con-lavaan.html#cb31-22" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
+<span id="cb31-23"><a href="efa-con-lavaan.html#cb31-23" tabindex="-1"></a><span class="co">#&gt;   Test statistic                                 9.811</span></span>
+<span id="cb31-24"><a href="efa-con-lavaan.html#cb31-24" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                13</span></span>
+<span id="cb31-25"><a href="efa-con-lavaan.html#cb31-25" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                           0.709</span></span>
+<span id="cb31-26"><a href="efa-con-lavaan.html#cb31-26" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-27"><a href="efa-con-lavaan.html#cb31-27" tabindex="-1"></a><span class="co">#&gt; Model Test Baseline Model:</span></span>
+<span id="cb31-28"><a href="efa-con-lavaan.html#cb31-28" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-29"><a href="efa-con-lavaan.html#cb31-29" tabindex="-1"></a><span class="co">#&gt;   Test statistic                              1253.791</span></span>
+<span id="cb31-30"><a href="efa-con-lavaan.html#cb31-30" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                28</span></span>
+<span id="cb31-31"><a href="efa-con-lavaan.html#cb31-31" tabindex="-1"></a><span class="co">#&gt;   P-value                                        0.000</span></span>
+<span id="cb31-32"><a href="efa-con-lavaan.html#cb31-32" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-33"><a href="efa-con-lavaan.html#cb31-33" tabindex="-1"></a><span class="co">#&gt; User Model versus Baseline Model:</span></span>
+<span id="cb31-34"><a href="efa-con-lavaan.html#cb31-34" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-35"><a href="efa-con-lavaan.html#cb31-35" tabindex="-1"></a><span class="co">#&gt;   Comparative Fit Index (CFI)                    1.000</span></span>
+<span id="cb31-36"><a href="efa-con-lavaan.html#cb31-36" tabindex="-1"></a><span class="co">#&gt;   Tucker-Lewis Index (TLI)                       1.006</span></span>
+<span id="cb31-37"><a href="efa-con-lavaan.html#cb31-37" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-38"><a href="efa-con-lavaan.html#cb31-38" tabindex="-1"></a><span class="co">#&gt; Loglikelihood and Information Criteria:</span></span>
+<span id="cb31-39"><a href="efa-con-lavaan.html#cb31-39" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-40"><a href="efa-con-lavaan.html#cb31-40" tabindex="-1"></a><span class="co">#&gt;   Loglikelihood user model (H0)              -2211.879</span></span>
+<span id="cb31-41"><a href="efa-con-lavaan.html#cb31-41" tabindex="-1"></a><span class="co">#&gt;   Loglikelihood unrestricted model (H1)      -2206.974</span></span>
+<span id="cb31-42"><a href="efa-con-lavaan.html#cb31-42" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
+<span id="cb31-43"><a href="efa-con-lavaan.html#cb31-43" tabindex="-1"></a><span class="co">#&gt;   Akaike (AIC)                                4469.758</span></span>
+<span id="cb31-44"><a href="efa-con-lavaan.html#cb31-44" tabindex="-1"></a><span class="co">#&gt;   Bayesian (BIC)                              4550.752</span></span>
+<span id="cb31-45"><a href="efa-con-lavaan.html#cb31-45" tabindex="-1"></a><span class="co">#&gt;   Sample-size adjusted Bayesian (SABIC)       4477.840</span></span>
+<span id="cb31-46"><a href="efa-con-lavaan.html#cb31-46" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-47"><a href="efa-con-lavaan.html#cb31-47" tabindex="-1"></a><span class="co">#&gt; Root Mean Square Error of Approximation:</span></span>
+<span id="cb31-48"><a href="efa-con-lavaan.html#cb31-48" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-49"><a href="efa-con-lavaan.html#cb31-49" tabindex="-1"></a><span class="co">#&gt;   RMSEA                                          0.000</span></span>
+<span id="cb31-50"><a href="efa-con-lavaan.html#cb31-50" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - lower         0.000</span></span>
+<span id="cb31-51"><a href="efa-con-lavaan.html#cb31-51" tabindex="-1"></a><span class="co">#&gt;   90 Percent confidence interval - upper         0.048</span></span>
+<span id="cb31-52"><a href="efa-con-lavaan.html#cb31-52" tabindex="-1"></a><span class="co">#&gt;   P-value H_0: RMSEA &lt;= 0.050                    0.957</span></span>
+<span id="cb31-53"><a href="efa-con-lavaan.html#cb31-53" tabindex="-1"></a><span class="co">#&gt;   P-value H_0: RMSEA &gt;= 0.080                    0.001</span></span>
+<span id="cb31-54"><a href="efa-con-lavaan.html#cb31-54" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-55"><a href="efa-con-lavaan.html#cb31-55" tabindex="-1"></a><span class="co">#&gt; Standardized Root Mean Square Residual:</span></span>
+<span id="cb31-56"><a href="efa-con-lavaan.html#cb31-56" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-57"><a href="efa-con-lavaan.html#cb31-57" tabindex="-1"></a><span class="co">#&gt;   SRMR                                           0.010</span></span>
+<span id="cb31-58"><a href="efa-con-lavaan.html#cb31-58" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-59"><a href="efa-con-lavaan.html#cb31-59" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
+<span id="cb31-60"><a href="efa-con-lavaan.html#cb31-60" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-61"><a href="efa-con-lavaan.html#cb31-61" tabindex="-1"></a><span class="co">#&gt;   Standard errors                             Standard</span></span>
+<span id="cb31-62"><a href="efa-con-lavaan.html#cb31-62" tabindex="-1"></a><span class="co">#&gt;   Information                                 Expected</span></span>
+<span id="cb31-63"><a href="efa-con-lavaan.html#cb31-63" tabindex="-1"></a><span class="co">#&gt;   Information saturated (h1) model          Structured</span></span>
+<span id="cb31-64"><a href="efa-con-lavaan.html#cb31-64" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-65"><a href="efa-con-lavaan.html#cb31-65" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
+<span id="cb31-66"><a href="efa-con-lavaan.html#cb31-66" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all</span></span>
+<span id="cb31-67"><a href="efa-con-lavaan.html#cb31-67" tabindex="-1"></a><span class="co">#&gt;   f1 =~ efa                                                             </span></span>
+<span id="cb31-68"><a href="efa-con-lavaan.html#cb31-68" tabindex="-1"></a><span class="co">#&gt;     N1                0.874    0.053   16.592    0.000    0.874    0.876</span></span>
+<span id="cb31-69"><a href="efa-con-lavaan.html#cb31-69" tabindex="-1"></a><span class="co">#&gt;     N2                0.851    0.055   15.551    0.000    0.851    0.853</span></span>
+<span id="cb31-70"><a href="efa-con-lavaan.html#cb31-70" tabindex="-1"></a><span class="co">#&gt;     N3                0.826    0.054   15.179    0.000    0.826    0.828</span></span>
+<span id="cb31-71"><a href="efa-con-lavaan.html#cb31-71" tabindex="-1"></a><span class="co">#&gt;     N4                0.896    0.053   16.802    0.000    0.896    0.898</span></span>
+<span id="cb31-72"><a href="efa-con-lavaan.html#cb31-72" tabindex="-1"></a><span class="co">#&gt;     E1               -0.046    0.040   -1.138    0.255   -0.046   -0.046</span></span>
+<span id="cb31-73"><a href="efa-con-lavaan.html#cb31-73" tabindex="-1"></a><span class="co">#&gt;     E2                0.035    0.034    1.030    0.303    0.035    0.035</span></span>
+<span id="cb31-74"><a href="efa-con-lavaan.html#cb31-74" tabindex="-1"></a><span class="co">#&gt;     E3                0.000    0.040    0.010    0.992    0.000    0.000</span></span>
+<span id="cb31-75"><a href="efa-con-lavaan.html#cb31-75" tabindex="-1"></a><span class="co">#&gt;     E4               -0.006    0.049   -0.131    0.896   -0.006   -0.006</span></span>
+<span id="cb31-76"><a href="efa-con-lavaan.html#cb31-76" tabindex="-1"></a><span class="co">#&gt;   f2 =~ efa                                                             </span></span>
+<span id="cb31-77"><a href="efa-con-lavaan.html#cb31-77" tabindex="-1"></a><span class="co">#&gt;     N1               -0.017    0.032   -0.539    0.590   -0.017   -0.017</span></span>
+<span id="cb31-78"><a href="efa-con-lavaan.html#cb31-78" tabindex="-1"></a><span class="co">#&gt;     N2                0.011    0.035    0.322    0.748    0.011    0.011</span></span>
+<span id="cb31-79"><a href="efa-con-lavaan.html#cb31-79" tabindex="-1"></a><span class="co">#&gt;     N3               -0.035    0.036   -0.949    0.343   -0.035   -0.035</span></span>
+<span id="cb31-80"><a href="efa-con-lavaan.html#cb31-80" tabindex="-1"></a><span class="co">#&gt;     N4                0.031    0.031    0.994    0.320    0.031    0.031</span></span>
+<span id="cb31-81"><a href="efa-con-lavaan.html#cb31-81" tabindex="-1"></a><span class="co">#&gt;     E1                0.776    0.059   13.125    0.000    0.776    0.778</span></span>
+<span id="cb31-82"><a href="efa-con-lavaan.html#cb31-82" tabindex="-1"></a><span class="co">#&gt;     E2                0.854    0.058   14.677    0.000    0.854    0.855</span></span>
+<span id="cb31-83"><a href="efa-con-lavaan.html#cb31-83" tabindex="-1"></a><span class="co">#&gt;     E3                0.785    0.060   13.106    0.000    0.785    0.787</span></span>
+<span id="cb31-84"><a href="efa-con-lavaan.html#cb31-84" tabindex="-1"></a><span class="co">#&gt;     E4                0.695    0.063   10.955    0.000    0.695    0.697</span></span>
+<span id="cb31-85"><a href="efa-con-lavaan.html#cb31-85" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-86"><a href="efa-con-lavaan.html#cb31-86" tabindex="-1"></a><span class="co">#&gt; Covariances:</span></span>
+<span id="cb31-87"><a href="efa-con-lavaan.html#cb31-87" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all</span></span>
+<span id="cb31-88"><a href="efa-con-lavaan.html#cb31-88" tabindex="-1"></a><span class="co">#&gt;   f1 ~~                                                                 </span></span>
+<span id="cb31-89"><a href="efa-con-lavaan.html#cb31-89" tabindex="-1"></a><span class="co">#&gt;     f2               -0.432    0.059   -7.345    0.000   -0.432   -0.432</span></span>
+<span id="cb31-90"><a href="efa-con-lavaan.html#cb31-90" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-91"><a href="efa-con-lavaan.html#cb31-91" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
+<span id="cb31-92"><a href="efa-con-lavaan.html#cb31-92" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all</span></span>
+<span id="cb31-93"><a href="efa-con-lavaan.html#cb31-93" tabindex="-1"></a><span class="co">#&gt;    .N1                0.218    0.028    7.790    0.000    0.218    0.219</span></span>
+<span id="cb31-94"><a href="efa-con-lavaan.html#cb31-94" tabindex="-1"></a><span class="co">#&gt;    .N2                0.279    0.032    8.693    0.000    0.279    0.280</span></span>
+<span id="cb31-95"><a href="efa-con-lavaan.html#cb31-95" tabindex="-1"></a><span class="co">#&gt;    .N3                0.287    0.032    8.907    0.000    0.287    0.289</span></span>
+<span id="cb31-96"><a href="efa-con-lavaan.html#cb31-96" tabindex="-1"></a><span class="co">#&gt;    .N4                0.216    0.029    7.578    0.000    0.216    0.217</span></span>
+<span id="cb31-97"><a href="efa-con-lavaan.html#cb31-97" tabindex="-1"></a><span class="co">#&gt;    .E1                0.361    0.044    8.226    0.000    0.361    0.362</span></span>
+<span id="cb31-98"><a href="efa-con-lavaan.html#cb31-98" tabindex="-1"></a><span class="co">#&gt;    .E2                0.292    0.043    6.787    0.000    0.292    0.293</span></span>
+<span id="cb31-99"><a href="efa-con-lavaan.html#cb31-99" tabindex="-1"></a><span class="co">#&gt;    .E3                0.379    0.046    8.315    0.000    0.379    0.381</span></span>
+<span id="cb31-100"><a href="efa-con-lavaan.html#cb31-100" tabindex="-1"></a><span class="co">#&gt;    .E4                0.509    0.053    9.554    0.000    0.509    0.511</span></span>
+<span id="cb31-101"><a href="efa-con-lavaan.html#cb31-101" tabindex="-1"></a><span class="co">#&gt;     f1                1.000                               1.000    1.000</span></span>
+<span id="cb31-102"><a href="efa-con-lavaan.html#cb31-102" tabindex="-1"></a><span class="co">#&gt;     f2                1.000                               1.000    1.000</span></span>
+<span id="cb31-103"><a href="efa-con-lavaan.html#cb31-103" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-104"><a href="efa-con-lavaan.html#cb31-104" tabindex="-1"></a><span class="co">#&gt; R-Square:</span></span>
+<span id="cb31-105"><a href="efa-con-lavaan.html#cb31-105" tabindex="-1"></a><span class="co">#&gt;                    Estimate</span></span>
+<span id="cb31-106"><a href="efa-con-lavaan.html#cb31-106" tabindex="-1"></a><span class="co">#&gt;     N1                0.781</span></span>
+<span id="cb31-107"><a href="efa-con-lavaan.html#cb31-107" tabindex="-1"></a><span class="co">#&gt;     N2                0.720</span></span>
+<span id="cb31-108"><a href="efa-con-lavaan.html#cb31-108" tabindex="-1"></a><span class="co">#&gt;     N3                0.711</span></span>
+<span id="cb31-109"><a href="efa-con-lavaan.html#cb31-109" tabindex="-1"></a><span class="co">#&gt;     N4                0.783</span></span>
+<span id="cb31-110"><a href="efa-con-lavaan.html#cb31-110" tabindex="-1"></a><span class="co">#&gt;     E1                0.638</span></span>
+<span id="cb31-111"><a href="efa-con-lavaan.html#cb31-111" tabindex="-1"></a><span class="co">#&gt;     E2                0.707</span></span>
+<span id="cb31-112"><a href="efa-con-lavaan.html#cb31-112" tabindex="-1"></a><span class="co">#&gt;     E3                0.619</span></span>
+<span id="cb31-113"><a href="efa-con-lavaan.html#cb31-113" tabindex="-1"></a><span class="co">#&gt;     E4                0.489</span></span></code></pre></div>
+<p>Anche se abbiamo introdotto finora soltanto la misura di bontà di adattamento del chi-quadrato, aggiungiamo qui il calcolo di altre misure di bontà di adattamento che discuteremo in seguito.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="efa-con-lavaan.html#cb32-1" tabindex="-1"></a><span class="co"># define the fit measures</span></span>
+<span id="cb32-2"><a href="efa-con-lavaan.html#cb32-2" tabindex="-1"></a>fit_measures_robust <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb32-3"><a href="efa-con-lavaan.html#cb32-3" tabindex="-1"></a>  <span class="st">&quot;chisq&quot;</span>, <span class="st">&quot;df&quot;</span>, <span class="st">&quot;pvalue&quot;</span>,</span>
+<span id="cb32-4"><a href="efa-con-lavaan.html#cb32-4" tabindex="-1"></a>  <span class="st">&quot;cfi&quot;</span>, <span class="st">&quot;rmsea&quot;</span>, <span class="st">&quot;srmr&quot;</span></span>
+<span id="cb32-5"><a href="efa-con-lavaan.html#cb32-5" tabindex="-1"></a>)</span></code></pre></div>
+<p>Confrontiamo le misure di bontà di adattamento del modello che ipotizza un solo fattore comune e il modello che ipotizza la presenza di due fattori comuni.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="efa-con-lavaan.html#cb33-1" tabindex="-1"></a><span class="co"># collect them for each model</span></span>
+<span id="cb33-2"><a href="efa-con-lavaan.html#cb33-2" tabindex="-1"></a><span class="fu">rbind</span>(</span>
+<span id="cb33-3"><a href="efa-con-lavaan.html#cb33-3" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(efa_f1, fit_measures_robust),</span>
+<span id="cb33-4"><a href="efa-con-lavaan.html#cb33-4" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(efa_f2, fit_measures_robust)</span>
+<span id="cb33-5"><a href="efa-con-lavaan.html#cb33-5" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb33-6"><a href="efa-con-lavaan.html#cb33-6" tabindex="-1"></a>  <span class="co"># wrangle</span></span>
+<span id="cb33-7"><a href="efa-con-lavaan.html#cb33-7" tabindex="-1"></a>  <span class="fu">data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb33-8"><a href="efa-con-lavaan.html#cb33-8" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb33-9"><a href="efa-con-lavaan.html#cb33-9" tabindex="-1"></a>    <span class="at">chisq =</span> <span class="fu">round</span>(chisq, <span class="at">digits =</span> <span class="dv">0</span>),</span>
+<span id="cb33-10"><a href="efa-con-lavaan.html#cb33-10" tabindex="-1"></a>    <span class="at">df =</span> <span class="fu">as.integer</span>(df),</span>
+<span id="cb33-11"><a href="efa-con-lavaan.html#cb33-11" tabindex="-1"></a>    <span class="at">pvalue =</span> <span class="fu">ifelse</span>(pvalue <span class="sc">==</span> <span class="dv">0</span>, <span class="st">&quot;&lt; .001&quot;</span>, pvalue)</span>
+<span id="cb33-12"><a href="efa-con-lavaan.html#cb33-12" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb33-13"><a href="efa-con-lavaan.html#cb33-13" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(cfi<span class="sc">:</span>srmr), <span class="sc">~</span> <span class="fu">round</span>(., <span class="at">digits =</span> <span class="dv">3</span>))</span>
+<span id="cb33-14"><a href="efa-con-lavaan.html#cb33-14" tabindex="-1"></a><span class="co">#&gt;   chisq df            pvalue  cfi rmsea  srmr</span></span>
+<span id="cb33-15"><a href="efa-con-lavaan.html#cb33-15" tabindex="-1"></a><span class="co">#&gt; 1   375 20            &lt; .001 0.71 0.267 0.187</span></span>
+<span id="cb33-16"><a href="efa-con-lavaan.html#cb33-16" tabindex="-1"></a><span class="co">#&gt; 2    10 13 0.709310449320062 1.00 0.000 0.010</span></span></code></pre></div>
+<p>L’evidenza empirica supporta la superiorità del modello a due fattori rispetto a quello ad un solo fattore comune. In particolare, l’analisi fattoriale esplorativa svolta mediante la funzione <code>efa()</code> evidenzia la capacità del modello a due fattori di fornire una descrizione adeguata della struttura dei dati e di distinguere in modo sensato tra i due fattori ipotizzati.</p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-5" class="exercise"><strong>Esercizio 15.5  </strong></span>Si utilizzino i dati <code>dass21.txt</code> che corrispondono alla somministrazione del test DASS-21 a 334 partecipanti. Lo schema di codifica si può trovare seguendo questo <a href="https://maic.qld.gov.au/wp-content/uploads/2016/07/DASS-21.pdf">link</a>. Si adatti ai dati un modello a tre fattori usando l’analisi fattoriale esplorativa con la funzione <code>lavaan::efa()</code>. Usando le saturazioni fattoriali e la matrice di inter-correlazioni fattoriali, si trovi la matrice di correlazioni riprodotta dal modello. Senza usare l’albebra matriciale, si trovi la correlazione predetta tra gli indicatori DASS-1 e DASS-2.</p>
+</div>
 
 </div>
 <!-- </div> -->
