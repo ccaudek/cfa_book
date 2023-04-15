@@ -3,11 +3,17 @@
 ```{r, include = FALSE}
 source("_common.R")
 library("psych")
+library("lavaan")
 ```
 
+In questo capitolo verrà affrontato il problema di misurare l'attendibilità di uno strumento usando la tecnica dell'analisi fattoriale. Verranno distinti tre diversi modelli che descrivono le relazioni tra gli indicatori e il fattore comune latente (modello congenerico, tau-equivalente, parallelo) e verranno forniti tre diversi indici per descrivere l'attendibilità quale coerenza interna, a seconda del modello ipotizzato: l'indice omega di McDonald, l'indice alpha di Cronbach e l'indice rho che deriva dalla formula "profetica" di Spearman-Brown. Vedremo che l'uso dell'indice alpha di Cronbach è giustificato solo se certe specifiche condizioni sono soddisfatte -- e questo succede piuttosto raramente nei dati empirici. Per questa ragione vedremo che, in generale, è più opportuno usare l'indice omega di McDonald quale misura di consistenza interna.
+
+Un secondo tema importante che verrà affrontato sarà quello dell'uso del punteggio totale del test quale misura del costrutto latente. Questa è una pratica largamente usata, ma solo in parte giustificata. Esamineremo a questo proposito le considerazioni di McNeish e Wolf (2020).
+
+## Teoria classica dei test e analisi fattoriale
+
 McDonald (2013) mostra come la teoria classica dei test possa essere
-messa in relazione con il modello dell'analisi fattoriale. La figura \@ref(fig:factmod1)
- descrive nei termini del modello fattoriale la relazione che intercorre tra i punteggi $Y$ ottenuti dalla somministrazione di un test con cinque item e i punteggi veri.
+messa in relazione con il modello dell'analisi fattoriale. La figura \@ref(fig:factmod1) descrive nei termini del modello fattoriale la relazione che intercorre tra i punteggi $Y$ ottenuti dalla somministrazione di un test con cinque item e i punteggi veri.
 
 ```{r factmod1, echo=FALSE, fig.cap="Modello fattoriale che mette in relazione i punteggi osservati e i punteggi veri.", out.width = '80%'}
 knitr::include_graphics("images/factmod1.png")
@@ -661,12 +667,197 @@ test diventa pari a
 (p * ro_1) / ((p - 1) * ro_1 + 1)
 ```
 
-#### Attenuazione
+## Punteggio totale e modello fattoriale parallelo
 
-All'aumentare dell'errore di misurazione, la correlazione tra due
-variabili tende a diminuire. L'errore di misurazione, dunque, "maschera"
-l'associazione esistente tra le variabili. Tale fenomeno va sotto il
-nome di *attenuazione*.
+McNeish e Wolf (2020) richiamano l'attenzione sul fatto che usare il punteggio totale quale misura di un costrutto è possibile solo quando i dati soddisfano i vincoli di un modello fattoriale parallelo.
+
+Consideriamo l'esempio seguente, nel quale McNeish e Wolf (2020) esaminano i dati "classici" di Holzinger and Swineford (1939), i quali si riferiscono ai seguenti item:
+
+- Paragraph comprehension
+- Sentence completion
+- Word definitions
+- Speeded addition
+- Speeded dot counting
+- Discrimination between curved and straight letters
+
+Leggiamo i dati in R.
+
+```{r}
+d <- rio::import(
+  "data/1_Factor_Parallel.csv"
+)
+```
+
+McNeish e Wolf (2020) sottolineano il fatto che il punteggio totale 
+
+$$
+\text{Punteggio totale} = \text{Item 1 + Item 2 + Item 3 + Item 4 + Item 5 + Item 6}
+$$
+
+rappresenta l'idea che ciasun item fornisca la stessa quantità di informazione relativamente alla misura del costrutto. Ciò può essere specificato da un modello fattoriale nel quale le saturazioni fattoriali degli item sono tutte uguali a 1. Questo corrisponde al modello parallelo che abbiamo discusso in precedenza. In tali circostanze, i punteggi fattoriali del test risultano perfettamente associati al punteggio totale (correlazione uguale a 1). Dunque, se tale modello fattoriale è giustificato dai dati, questo giustifica l'uso del punteggio totale del test quale misura del costrutto.
+
+È facile verificare tali affermazioni.  Implementiamo il modello parallelo.
+
+```{r}
+m_parallel <-
+  "
+  # all loadings are fixed to one
+  f1 =~ 1*X4 + 1*X5 + 1*X6 + 1*X7 + 1*X8 + 1*X9
+  
+  # all residual variances constrained to same value
+  X4 ~~ theta*X4
+  X5 ~~ theta*X5
+  X6 ~~ theta*X6
+  X7 ~~ theta*X7
+  X8 ~~ theta*X8
+  X9 ~~ theta*X9
+"
+```
+
+Adattiamo il modello parallelo ai dati forniti dagli autori.
+
+```{r}
+fit_parallel <- sem(m_parallel, data=d)
+```
+
+Calcoliamo il punteggio totale.
+
+```{r}
+d$ts <- with(
+  d,
+  X4 + X5 + X6 + X7 + X8 + X9
+)
+```
+
+Calcoliamo i punteggi fattoriali.
+
+```{r}
+scores <- lavPredict(fit_parallel, method="regression")
+d$scores <- as.numeric(scores)
+```
+
+Un diagramma a dispersione tra il punteggio totale e i punteggi fattoriali conferma che i due sono perfettamente associati. Quindi, usare il punteggio totale o i punteggi fattoriali è equivalente.
+
+```{r}
+d |> 
+  ggplot(aes(x=ts, y=scores)) + 
+  geom_point()
+```
+
+Tuttavia, questa conclusione è valida solo se il modello parallelo è giustificato per i dati.  Se esaminiamo l'output di lavaan vediamo che, nel caso presente, questo non è vero.
+
+```{r}
+#report output with fit measures and standardized estimates
+summary(fit_parallel, fit.measures=TRUE, standardized=TRUE)
+```
+
+Dunque, per questi dati, il punteggio totale può ovviamente essere calcolato. Ma *non fornisce una misura adeguata del costrutto*. Dunque, il punteggio totale non dovrebbe essere usato nel caso dei dati ottenuti con questo test.
+
+Gli autori adattano ai dati un modello congenerico.
+
+```{r}
+m_congeneric <- 
+'
+  #all loadings are uniquely estimated
+  f1 =~ NA*X4 + X5 + X6 + X7 + X8 + X9
+  #constrain factor variance to 1
+  f1 ~~ 1*f1
+'
+```
+
+```{r}
+# Fit above model
+fit_congeneric <- sem(m_congeneric, data=d)
+```
+
+```{r}
+parameterEstimates(fit_congeneric, standardized = TRUE) %>%
+  dplyr::filter(op == "=~") %>%
+  dplyr::select(
+    "Latent Factor" = lhs,
+    Indicator = rhs,
+    B = est,
+    SE = se,
+    Z = z,
+    "p-value" = pvalue,
+    Beta = std.all
+  ) %>%
+  knitr::kable(
+    digits = 3, booktabs = TRUE, format = "markdown",
+    caption = "Factor Loadings"
+  )
+```
+
+Si noti che le saturazioni fattoriali standardizzate sono molto diverse tra loro, suggerendo che il punteggio del costrutto si relaziona in modo diverso con ciascun item e che sarebbe inappropriato stimare il punteggio del costrutto assegnando un peso unitario agli item.
+
+McNeish e Wolf (2020) calcolano poi i punteggi fattoriali del modello congenerico.
+
+```{r}
+scores_cong <- lavPredict(fit_congeneric, method="regression")
+d$scores_cong <- as.numeric(scores_cong)
+```
+
+Il grafico seguente mostra la relazione tra i punteggi fattoriali e il punteggio totale.
+
+```{r}
+d |> 
+  ggplot(aes(x=ts, y=scores_cong)) + 
+  geom_point()
+```
+
+Nel caso presente, il coefficiente di determinazione tra punteggio totale e punteggi fattoriali è 0.77.
+
+```{r}
+cor(d$ts, d$scores_cong)^2
+```
+
+Secondo gli autori, ciò significa che due persone con un punteggio totale identico potrebbero avere punteggi di modello congenerico potenzialmente diversi perché hanno raggiunto il loro particolare punteggio totale approvando item diversi. Poiché il modello congenerico assegna pesi diversi agli item, ciascun item contribuisce in modo diverso al punteggio fattoriale del modello congenerico, il che non è vero per il punteggio totale. 
+
+Si noti che, per i dati di Holzinger and Swineford (1939), neppure un modello congenerico ad un fattore si dimostra adeguato.
+
+```{r}
+summary(fit_congeneric, fit.measures=TRUE, standardized=TRUE)
+```
+
+Trascurando le considerazioni sulla struttura fattoriale e esaminando, per esempio, unicamente il coefficiente omega, finiamo per trovare una risposta accettabile, ma sbagliata.
+
+```{r}
+psych::omega(d[, 1:6])
+```
+
+
+È invece necessario ipotizzare un modello congenerico a due fattori.
+
+```{r}
+m2f_cong <- '
+  # all loadings are uniquely estimated on each factor
+  f1 =~ NA*X4 + X5 + X6
+  f2 =~ NA*X7 + X8 + X9
+  
+  # constrain factor variancse to 1
+  f1 ~~ 1*f1
+  f2 ~~ 1*f2
+  
+  # estimate factor covariance
+  f1 ~~ f2
+'
+```
+
+```{r}
+# Fit above model
+fit_2f_congeneric <- sem(m2f_cong, data=d)
+```
+
+Solo questo modello fornisce un adattamento adeguato ai dati.
+
+```{r}
+summary(fit_2f_congeneric, fit.measures=TRUE, standardized=TRUE)
+```
+
+
+## Attenuazione
+
+Un altro tema importante associato alla discussione sulla struttura fattoriale e l'attenibilità è quello dell'attenuazione. All'aumentare dell'errore di misurazione, la correlazione tra due variabili tende a diminuire. L'errore di misurazione, dunque, "maschera" l'associazione esistente tra le variabili. Tale fenomeno va sotto il nome di *attenuazione*.
 
 Lord e Novick (1967) notano che, volendo determinare la relazione
 esistente tra due costrutti, uno psicologo può costruire opportune scale
@@ -696,7 +887,7 @@ Inoltre, può essere dimostrato che la correlazione tra i punteggi di un test e 
 (\#eq:3-9-7)
 \end{equation}
 
-#### Correlazioni disattenuate
+### Correlazioni disattenuate
 
 Le \@ref(eq:3-9-6) e \@ref(eq:3-9-7)  consentono di calcolare le cosiddette
 *correlazioni disattenuate*. L'idea è che le correlazioni tra i punteggi
