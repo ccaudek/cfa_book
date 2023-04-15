@@ -403,6 +403,173 @@ Questa è la ragione per cui la discutiamo qui.
 
 ::: exercise
 
+In questo primo esempio, l'analisi dei percorsi verrà utilizzata per testare un
+modello a priori che si basa sul quadro teorico della *Self Determination Theory* (SDT; Deci & Ryan, 2000), una delle principali teorie della motivazione umana. Questo modello concettuale applicherà la SDT per esaminare i principali determinanti psicologici e comportamentali dei sintomi bulimici in un campione di giovani donne adulte. Più specificamente, esamineremo come l'appagamento (soddisfazione) e l'esaurimento (frustrazione) delle risorse psicologiche essenziali, o bisogni psicologici (ad esempio, per l'autonomia, la competenza e la relazionalità), possono prevedere in modo differenziale i sintomi bulimici nelle donne attraverso due mediatori chiave, l'approvazione degli ideali culturali sulla magrezza e inflessibilità delle opinioni sul proprio corpo. Secondo la SDT, i bisogni psicologici influenzano la capacità di un individuo di autoregolarsi e far fronte alle richieste della vita quotidiana e possono rendere gli individui vulnerabili al malessere psicologico se i bisogni psicologici vengono frustrati
+(Vansteenkiste & Ryan, 2013). La frustrazione dei bisogni può essere
+psicologicamente più depauperante della mancanza di soddisfazione dei bisogni. 
+
+Gli individui i cui bisogni vengono frustrati possono impegnarsi in attività malsane e comportamenti compensatori al fine di riconquistare una soddisfazione dei bisogni a breve termine. La frustrazione dei bisogni rende gli individui più vulnerabili agli ideali culturali, in quanto le risorse personali per rifiutare questi ideali sono esaurite (Pelletier & Dion, 2007).
+
+Il modello che verrà testato propone che le donne i cui bisogni psicologici sono frustrati avalleranno ideali sociali più problematici sulla magrezza rispetto alle donne i cui bisogni psicologici sono soddisfatti. La frustrazione dei bisogni sarà anche predittiva dell'inflessibilità degli schemi corporei, poiché è stato dimostrato che la frustrazione dei bisogni porta a disturbi dell'immagine corporea e a comportamenti alimentari patologici (Boone, Vansteenkiste, Soenens, Van der Kaap-Deeder e Verstuyf, 2014). Il modello propone inoltre che una maggiore approvazione degli ideali culturali sulla sarà predittiva di una maggiore inflessibilità sugli schemi corporei che, di per sé, è predittiva dei sintomi bulimici.
+
+Il campione include 192 partecipanti, in maggioranza donne, di età media 21.2 anni (SD = 6.89). Sono stati somministrati i seguenti strumenti:
+
+- Body Image-Acceptance and Action Questionnaire (Sandoz, Wilson, Merwin, & Kellum, 2013), per misurare l'inflessibilità relativa alla propria immagine corporea,
+- Endorsement of Society’s Beliefs Related to Thinness and Obesity (Boyer, 1991), per valutare l'internalizzazione degli ideali di magrezza, 
+- Basic Psychological Needs Satisfaction and Frustration Scale (Chen et al., 2015), per misurare la soddisfazione e la frustrazione dei bisogni,
+. Eating Disorders Inventory-2 – Bulimic Symptomology Subscale (Garner, 1991), per misurare i sintomi bulimici.
+
+I dati sono i seguenti.
+
+```{r}
+upper <- '
+  1 0.44 -0.41 0.55 0.63
+  1 -0.37 0.45 0.44
+  1 -0.71 -0.39
+  1 0.47
+  1
+'
+```
+
+```{r}
+# BFLX – Body Inflexibility,
+# END – Endorsement of Societal Beliefs about Thinness and Obesity,
+# MNS – Mean Need Satisfaction, 
+# MNF – Mean Need Frustration, 
+# BULS – Bulimic Symptoms
+dat_cov <- lavaan::getCov(
+  upper,
+  lower = FALSE,
+  names = c("BFLX", "END", "MNS", "MNF", "BULS")
+)
+```
+
+Un primo modello di mediazione considera BFLX quale variabile endogena, MNF quale variable esogena e END quale mediatore. Usando Mplus, Barbeau, Boileau, Sarr &  Smith (2019) trovano i seguenti coefficienti di percorso: $a$ = 0.37, $b$ = =.29, e $c$ = 0.34. 
+
+Svolgiamo l'analisi con `lavaan`. Definiamo il modello.
+
+```{r}
+mod <- '
+  # direct effect
+  BFLX ~ c*MNF
+  # mediator
+  BFLX ~ b*END
+  END ~ a*MNF
+  
+  # indirect effect (a*b)
+  ab := a*b
+  # total effect
+  total := c + (a*b)
+'
+```
+
+Adattiamo il modello ai dati.
+
+```{r}
+fit <- sem(
+  mod,
+  sample.cov = dat_cov,
+  sample.nobs = 192
+)
+```
+
+Esaminiamo i risultati
+
+```{r}
+summary(fit, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)
+```
+
+Generiamo un diagramma di percorso.
+
+```{r}
+semPaths(
+  fit,
+  "std",
+  posCol = c("black"),
+  edge.label.cex = 1.2,
+  sizeMan = 7
+)
+```
+
+I coefficienti di percorso sono simili, ma non identici, a quelli trovati con Mplus. 
+
+L'effetto diretto di MNF (Need Frustration) su  BFLX (Body Inflexibility) è uguale a 0.44.  Ma l'effetto totale è $0.44 + 0.45*0.24 = 0.55$. L'effetto di mediazione è uguale a $0.45*0.24 = 0.109$. L'outout di lavaan fornisce anche gli errori standard e il test che tali effetti siano uguali a zero.
+
+Le correlazioni tra le variabili sono esprimibili nei termini dei coefficienti di percorso.  Per esempio la correlazionetra BFLX e MNF è
+
+```{r}
+.44 + .45*.24
+```
+
+La correlazione tra BFLX e END è
+
+```{r}
+.24 + .44*.45
+```
+
+L'output di lavaan fornisce anche la porzione di varianza che viene spiegata dalle variabili esogene per le due variabili endogene nel modello.
+
+Per esempio, la varianza spiegata di `END` è
+
+```{r}
+0.45^2
+```
+come riportato dall'output di lavaan.  
+
+:::
+
+::: exercise
+Continuiamo con l'esempio precedente, discusso da Barbeau, Boileau, Sarr &  Smith (2019) e esaminiamo ora un modello di path analisi più complesso (Fig. 4 di Barbeau et al., 2019). Usando la sintassi di lavaan, il modello diventa
+
+```{r}
+# BFLX – Body Inflexibility,
+# END – Endorsement of Societal Beliefs about Thinness and Obesity,
+# MNS – Mean Need Satisfaction, 
+# MNF – Mean Need Frustration, 
+# BULS – Bulimic Symptoms
+mod <- "
+  BULS ~ MNF + BFLX
+  BFLX ~ END + MNF
+  END ~ MNS + MNF
+"
+```
+
+Adattiamo il modello ai dati.
+
+```{r}
+fit <- sem(
+  mod,
+  sample.cov = dat_cov,
+  sample.nobs = 192
+)
+```
+
+Esaminiamo la soluzione ottenuta.
+
+```{r}
+summary(fit, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)
+```
+
+Generiamo il diagramma di percorso.
+
+```{r}
+semPaths(
+  fit,
+  "std",
+  posCol = c("black"),
+  edge.label.cex = 1.2,
+  sizeMan = 7
+)
+```
+
+Anche in questo caso i coefficienti di percorso sono simili, ma non identici, a quelli riportati da Barbeau et al. (2019). Gli autori riportano una varianza spiegata di END pari a 0.209; con lavaan si ottiene 0.208.  Per BFLX gli autori riportano 0.292; lavaan ottiene 0.349. Per BULS gli autori riportano 0.478; con lavaan si ottiene 0.419. 
+
+
+:::
+
+
+::: exercise
+
 Weiss,  Forkus,  Contractor, e Schick (2018) esaminano con una path analisi la relazione tra la difficiltà di regolare le emozioni positive e l'abuso di alcol e di sostanze. 
 
 - La difficoltà di regolare le emozioni positive viene misurata con la  *Difficulties in Emotion Regulation Scale – Positive* (DERS-P; Weiss, Gratz, & Lavender, 2015), che comprende le sottoscale di Acceptance, Impulse, e Goals.
