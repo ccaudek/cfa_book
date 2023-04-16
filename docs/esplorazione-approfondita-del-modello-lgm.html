@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>29.1 Modelli a crescita latente e modelli misti | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)</title>
+  <title>29.3 Esplorazione approfondita del modello LGM | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)</title>
   <meta name="description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2022/2023) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
   <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="29.1 Modelli a crescita latente e modelli misti | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
+  <meta property="og:title" content="29.3 Esplorazione approfondita del modello LGM | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2022/2023) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
   <meta name="github-repo" content="ccaudek/cfa_book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="29.1 Modelli a crescita latente e modelli misti | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
+  <meta name="twitter:title" content="29.3 Esplorazione approfondita del modello LGM | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
   
   <meta name="twitter:description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2022/2023) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="curve-di-crescita-latente.html"/>
-<link rel="next" href="modello-di-crescita-latente.html"/>
+<link rel="prev" href="modello-di-crescita-latente.html"/>
+<link rel="next" href="crescita-non-lineare.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -741,414 +741,534 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="modelli-a-crescita-latente-e-modelli-misti" class="section level2 hasAnchor" number="29.1">
-<h2><span class="header-section-number">29.1</span> Modelli a crescita latente e modelli misti<a href="modelli-a-crescita-latente-e-modelli-misti.html#modelli-a-crescita-latente-e-modelli-misti" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>I modelli di crescita latente (LGM) sono un caso speciale di analisi fattoriale confermativa (CFA) e corrispondono a un modello CFA a due fattori in cui le saturazioni fattoriali sono fissate a valori predefiniti. Nella loro forma più semplice, i modelli LGM sono equivalenti ai modelli a effetti misti nell’analisi di regressione. Pertanto, descrivere i modelli misti ci aiuterà a comprendere meglio i modelli LGM.</p>
-<div id="modelli-misti" class="section level3 hasAnchor" number="29.1.1">
-<h3><span class="header-section-number">29.1.1</span> Modelli misti<a href="modelli-a-crescita-latente-e-modelli-misti.html#modelli-misti" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Il modello lineare standard presuppone l’indipendenza delle osservazioni. Tuttavia, i modelli misti considerano la presenza di cluster di osservazioni, come ad esempio misure ripetute per lo stesso individuo nel tempo.</p>
-<p>Per gestire la correlazione tra le osservazioni raggruppate, si possono utilizzare i modelli a effetti misti. Questi modelli sono impiegati quando si hanno dati raccolti da più cluster, ognuno con caratteristiche uniche ma anche condivise. Un esempio comune di modello misto è quello utilizzato per analizzare dati longitudinali. In questo caso, il modello può includere un effetto fisso per il tempo e un effetto casuale per ogni unità.</p>
-<p>I modelli misti rappresentano un compromesso tra la modellizzazione pooled e quella separata. La modellizzazione pooled combina tutti i dati in un unico dataset, ma può portare a una perdita di informazioni sulle differenze tra i gruppi di osservazioni. La modellizzazione separata adatta un modello per ogni gruppo di osservazioni, ma può portare a problemi di sovrapparametrizzazione e scarsa generalizzazione ai nuovi dati.</p>
-<p>I modelli misti risolvono questi problemi combinando la modellizzazione pooled e quella separata. In questo modo, il modello tiene conto delle differenze tra i gruppi di dati e sfrutta l’informazione comune per migliorare la precisione delle stime dei parametri.</p>
-<p>Il caso seguente descrive un modello misto una struttura di raggruppamento annidata. I cluster che producono gli effetti casuali non devono necessariamente essere gerarchici, tuttavia utilizziamo qui una tale rappresentazione per semplicità.</p>
-<p><span class="math display" id="eq:lgm-1">\[
-\begin{equation}
-y_{k} = \alpha + \beta \cdot x_{k} + \varepsilon_{k}, \quad k = 1, \dots, K,
-\tag{29.1}
-\end{equation}
+<div id="esplorazione-approfondita-del-modello-lgm" class="section level2 hasAnchor" number="29.3">
+<h2><span class="header-section-number">29.3</span> Esplorazione approfondita del modello LGM<a href="esplorazione-approfondita-del-modello-lgm.html#esplorazione-approfondita-del-modello-lgm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Consideriamo ora un secondo esempio che ci consentirà di approfondire la nostra conoscenza dei modelli LGM. L’esempio che discuteremo utilizza un campione di dati artificiali chiamato <code>Demo.growth</code> in cui si ipotizza che un determinato punteggio venga misurato su quattro punti temporali. I dati sono i seguenti:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="esplorazione-approfondita-del-modello-lgm.html#cb15-1" tabindex="-1"></a><span class="fu">data</span>(Demo.growth)</span>
+<span id="cb15-2"><a href="esplorazione-approfondita-del-modello-lgm.html#cb15-2" tabindex="-1"></a><span class="fu">glimpse</span>(Demo.growth)</span>
+<span id="cb15-3"><a href="esplorazione-approfondita-del-modello-lgm.html#cb15-3" tabindex="-1"></a><span class="co">#&gt; Rows: 400</span></span>
+<span id="cb15-4"><a href="esplorazione-approfondita-del-modello-lgm.html#cb15-4" tabindex="-1"></a><span class="co">#&gt; Columns: 10</span></span>
+<span id="cb15-5"><a href="esplorazione-approfondita-del-modello-lgm.html#cb15-5" tabindex="-1"></a><span class="co">#&gt; $ t1 &lt;dbl&gt; 1.7256454, -1.9841595, 0.3195183, 0.7769485, 0.4489440, -1.7469951,…</span></span>
+<span id="cb15-6"><a href="esplorazione-approfondita-del-modello-lgm.html#cb15-6" tabindex="-1"></a><span class="co">#&gt; $ t2 &lt;dbl&gt; 2.1424005, -4.4006027, -1.2691171, 3.5313707, -0.7727747, -0.996340…</span></span>
+<span id="cb15-7"><a href="esplorazione-approfondita-del-modello-lgm.html#cb15-7" tabindex="-1"></a><span class="co">#&gt; $ t3 &lt;dbl&gt; 2.77317167, -6.01655626, 1.56001603, 3.13821140, -1.50351504, -0.82…</span></span>
+<span id="cb15-8"><a href="esplorazione-approfondita-del-modello-lgm.html#cb15-8" tabindex="-1"></a><span class="co">#&gt; $ t4 &lt;dbl&gt; 2.51595586, -7.02961801, 2.86852958, 5.36374139, 0.07846742, 0.5669…</span></span>
+<span id="cb15-9"><a href="esplorazione-approfondita-del-modello-lgm.html#cb15-9" tabindex="-1"></a><span class="co">#&gt; $ x1 &lt;dbl&gt; -1.1641026, -1.7454025, 0.9202112, 2.3595236, -1.0887077, -0.513516…</span></span>
+<span id="cb15-10"><a href="esplorazione-approfondita-del-modello-lgm.html#cb15-10" tabindex="-1"></a><span class="co">#&gt; $ x2 &lt;dbl&gt; 0.17422932, -1.57686022, -0.14181802, 0.70796813, -1.00999772, -0.1…</span></span>
+<span id="cb15-11"><a href="esplorazione-approfondita-del-modello-lgm.html#cb15-11" tabindex="-1"></a><span class="co">#&gt; $ c1 &lt;dbl&gt; -0.02767765, -2.03196724, 0.05237496, 0.01911429, 0.65243274, -0.04…</span></span>
+<span id="cb15-12"><a href="esplorazione-approfondita-del-modello-lgm.html#cb15-12" tabindex="-1"></a><span class="co">#&gt; $ c2 &lt;dbl&gt; 0.55492337, 0.12533477, -1.25774075, 0.64738300, 0.73091476, -0.416…</span></span>
+<span id="cb15-13"><a href="esplorazione-approfondita-del-modello-lgm.html#cb15-13" tabindex="-1"></a><span class="co">#&gt; $ c3 &lt;dbl&gt; 0.254478433, -1.564232274, -1.803390895, -0.432379510, -0.753781573…</span></span>
+<span id="cb15-14"><a href="esplorazione-approfondita-del-modello-lgm.html#cb15-14" tabindex="-1"></a><span class="co">#&gt; $ c4 &lt;dbl&gt; -1.00639541, 1.22926875, -0.32725761, -1.03239779, -0.02745598, 0.5…</span></span></code></pre></div>
+<p>La variabile dipendente è rappresentata dalle quattro colonne chiamate <code>t1</code>, <code>t2</code>, <code>t3</code> e <code>t4</code> che corrispondono alla serie temporale con quattro misurazioni per ciascun soggetto.</p>
+<p>Trasformiamo i dati in formato <code>long</code>:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="esplorazione-approfondita-del-modello-lgm.html#cb16-1" tabindex="-1"></a>demo_growth_long <span class="ot">&lt;-</span> Demo.growth <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="esplorazione-approfondita-del-modello-lgm.html#cb16-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(t1, t2, t3, t4) <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="esplorazione-approfondita-del-modello-lgm.html#cb16-3" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb16-4"><a href="esplorazione-approfondita-del-modello-lgm.html#cb16-4" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">&quot;t&quot;</span>),</span>
+<span id="cb16-5"><a href="esplorazione-approfondita-del-modello-lgm.html#cb16-5" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;t&quot;</span>,</span>
+<span id="cb16-6"><a href="esplorazione-approfondita-del-modello-lgm.html#cb16-6" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;y&quot;</span></span>
+<span id="cb16-7"><a href="esplorazione-approfondita-del-modello-lgm.html#cb16-7" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb16-8"><a href="esplorazione-approfondita-del-modello-lgm.html#cb16-8" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
+<span id="cb16-9"><a href="esplorazione-approfondita-del-modello-lgm.html#cb16-9" tabindex="-1"></a>demo_growth_long<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">400</span>)</span>
+<span id="cb16-10"><a href="esplorazione-approfondita-del-modello-lgm.html#cb16-10" tabindex="-1"></a>demo_growth_long<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>, <span class="at">each =</span> <span class="dv">4</span>)</span></code></pre></div>
+<p>Esaminiamo un campione casuale di 9 soggetti. È presente una notevole variazione da soggetto a soggetto:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="esplorazione-approfondita-del-modello-lgm.html#cb17-1" tabindex="-1"></a>id_sel <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>, <span class="dv">9</span>)</span>
+<span id="cb17-2"><a href="esplorazione-approfondita-del-modello-lgm.html#cb17-2" tabindex="-1"></a>d <span class="ot">&lt;-</span> demo_growth_long[demo_growth_long<span class="sc">$</span>id <span class="sc">%in%</span> id_sel, ]</span>
+<span id="cb17-3"><a href="esplorazione-approfondita-del-modello-lgm.html#cb17-3" tabindex="-1"></a>d <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a href="esplorazione-approfondita-del-modello-lgm.html#cb17-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb17-5"><a href="esplorazione-approfondita-del-modello-lgm.html#cb17-5" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb17-6"><a href="esplorazione-approfondita-del-modello-lgm.html#cb17-6" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>id)</span></code></pre></div>
+<p><img src="cfa_files/figure-html/unnamed-chunk-10-1.png" width="576" style="display: block; margin: auto;" />
+Notiamo che una funzione lineare è appropriata per rendere conto della variazione temporale della variabile risposta:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="esplorazione-approfondita-del-modello-lgm.html#cb18-1" tabindex="-1"></a>d <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="esplorazione-approfondita-del-modello-lgm.html#cb18-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb18-3"><a href="esplorazione-approfondita-del-modello-lgm.html#cb18-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb18-4"><a href="esplorazione-approfondita-del-modello-lgm.html#cb18-4" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb18-5"><a href="esplorazione-approfondita-del-modello-lgm.html#cb18-5" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>id)</span></code></pre></div>
+<p><img src="cfa_files/figure-html/unnamed-chunk-11-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Complessivamente, i dati suggeriscono un andamento crescente della variabile risposta in funzione del tempo:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="esplorazione-approfondita-del-modello-lgm.html#cb19-1" tabindex="-1"></a>demo_growth_long <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="esplorazione-approfondita-del-modello-lgm.html#cb19-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(time, y, <span class="at">group =</span> id)) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="esplorazione-approfondita-del-modello-lgm.html#cb19-3" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span> <span class="co"># add individual line with transparency</span></span>
+<span id="cb19-4"><a href="esplorazione-approfondita-del-modello-lgm.html#cb19-4" tabindex="-1"></a>  <span class="fu">stat_summary</span>( <span class="co"># add average line</span></span>
+<span id="cb19-5"><a href="esplorazione-approfondita-del-modello-lgm.html#cb19-5" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">group =</span> <span class="dv">1</span>),</span>
+<span id="cb19-6"><a href="esplorazione-approfondita-del-modello-lgm.html#cb19-6" tabindex="-1"></a>    <span class="at">fun =</span> mean,</span>
+<span id="cb19-7"><a href="esplorazione-approfondita-del-modello-lgm.html#cb19-7" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">&quot;line&quot;</span>,</span>
+<span id="cb19-8"><a href="esplorazione-approfondita-del-modello-lgm.html#cb19-8" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">1.5</span>,</span>
+<span id="cb19-9"><a href="esplorazione-approfondita-del-modello-lgm.html#cb19-9" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;black&quot;</span></span>
+<span id="cb19-10"><a href="esplorazione-approfondita-del-modello-lgm.html#cb19-10" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb19-11"><a href="esplorazione-approfondita-del-modello-lgm.html#cb19-11" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Time&quot;</span>, <span class="at">y =</span> <span class="st">&quot;y&quot;</span>)</span></code></pre></div>
+<p><img src="cfa_files/figure-html/unnamed-chunk-12-1.png" width="576" style="display: block; margin: auto;" /></p>
+<!-- Per adattare a questi dati un modello lineare di crescita, specifichiamo il seguente modello a variabili latenti -->
+<!-- $$ -->
+<!-- y_j = \alpha_0 + \alpha_1 \lambda_j + \zeta_{00} + \zeta_{11} \lambda_j + \epsilon_j, -->
+<!-- $$ -->
+<!-- dove  -->
+<!-- - $y_j$ è la variabile di interesse che cambia nel tempo, con $j = 0, \dots, 3$. -->
+<!-- - $\alpha_0$ rappresenta l'intercetta della retta di regressione al tempo $t = 0$ (il punto di partenza della linea nera sopra). -->
+<!-- - $\alpha_1 \lambda_j$ è il tasso medio di crescita nel tempo (la pendenza della linea nera nel grafico sopra). Qui $\lambda_j$ è solo l'indice dei punti temporali considerati (0, 1, 2, 3). -->
+<!-- - $\zeta_{00}$ è la varianza tra i soggetti nel punto $t = 0$. -->
+<!-- - $\zeta_{11} \lambda_j$ è la varianza del tasso di crescita tra i soggetti. -->
+<!-- - $\epsilon_j$ è la varianza di ciascun soggetto attorno alla sua retta di regressione. -->
+<!-- Tali relazioni statistiche vengono rappresentate dal modello di equazioni strutturali della figura \@ref(fig:growth01).  -->
+<!-- ```{r growth01, echo=FALSE, fig.cap="Modello di crescita latente.", out.width = '90%'} -->
+<!-- knitr::include_graphics("images/lgm.png") -->
+<!-- ``` -->
+<p>Abbiamo visto come un modello lineare di crescita latente corrisponde ad un modello fattoriale con due variabili latenti: un fattore (<span class="math inline">\(\eta_0\)</span>) che specifica il “punteggio vero” delle intercette individuali e un fattore (<span class="math inline">\(\eta_1\)</span>) che speficita il “punteggio vero” delle pendenze delle rette di regressione per i singoli individui. Nella sintassi <code>lavaan</code> il modello LGM diventa:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="esplorazione-approfondita-del-modello-lgm.html#cb20-1" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb20-2"><a href="esplorazione-approfondita-del-modello-lgm.html#cb20-2" tabindex="-1"></a><span class="st"> i =~ 1*t1 + 1*t2 + 1*t3 + 1*t4</span></span>
+<span id="cb20-3"><a href="esplorazione-approfondita-del-modello-lgm.html#cb20-3" tabindex="-1"></a><span class="st"> s =~ 0*t1 + 1*t2 + 2*t3 + 3*t4</span></span>
+<span id="cb20-4"><a href="esplorazione-approfondita-del-modello-lgm.html#cb20-4" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<p>Si noti che, per il fattore <span class="math inline">\(\eta_0\)</span> (che rappresenta le intercette), i valori delle saturazioni fattoriali sono fissate a 1 – questo è il motivo per cui <span class="math inline">\(\alpha_0\)</span> e <span class="math inline">\(\zeta_{00}\)</span> compaiono da soli nell’equazione precedente: in maniera esplicita sono <span class="math inline">\(1 \cdot \alpha_0\)</span> e <span class="math inline">\(1 \cdot \zeta_{00}\)</span>.</p>
+<p>Le saturazioni per il fattore <span class="math inline">\(\eta_1\)</span> (che specifica le pendenze delle funzioni lineari) sono fissate ai valori che descrivono la variazione temporale: qui i valori <span class="math inline">\(\lambda_j\)</span> da 0 a 3.</p>
+<p>Il modello include anche la correlazione tra <span class="math inline">\(\eta_0\)</span> e <span class="math inline">\(\eta_1\)</span>, rappresentata dalla doppia freccia <span class="math inline">\(\zeta_{01}\)</span>. Se <span class="math inline">\(\zeta_{01} &gt; 0\)</span>, questo significa che, con il passare del tempo, i partecipanti tendono a diventare sempre più diversi tra loro; un’interpretazione opposta si ha se <span class="math inline">\(\zeta_{01}&lt; 0\)</span>.</p>
+<p>Adattiamo il modello ai dati:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-1" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">growth</span>(model, <span class="at">data =</span> Demo.growth)</span>
+<span id="cb21-2"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-2" tabindex="-1"></a><span class="fu">summary</span>(fit)</span>
+<span id="cb21-3"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-3" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6.15 ended normally after 29 iterations</span></span>
+<span id="cb21-4"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb21-5"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-5" tabindex="-1"></a><span class="co">#&gt;   Estimator                                         ML</span></span>
+<span id="cb21-6"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-6" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
+<span id="cb21-7"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-7" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                         9</span></span>
+<span id="cb21-8"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb21-9"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-9" tabindex="-1"></a><span class="co">#&gt;   Number of observations                           400</span></span>
+<span id="cb21-10"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb21-11"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-11" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
+<span id="cb21-12"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-12" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
+<span id="cb21-13"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-13" tabindex="-1"></a><span class="co">#&gt;   Test statistic                                 8.069</span></span>
+<span id="cb21-14"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-14" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                 5</span></span>
+<span id="cb21-15"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-15" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                           0.152</span></span>
+<span id="cb21-16"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-16" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb21-17"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-17" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
+<span id="cb21-18"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb21-19"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-19" tabindex="-1"></a><span class="co">#&gt;   Standard errors                             Standard</span></span>
+<span id="cb21-20"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-20" tabindex="-1"></a><span class="co">#&gt;   Information                                 Expected</span></span>
+<span id="cb21-21"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-21" tabindex="-1"></a><span class="co">#&gt;   Information saturated (h1) model          Structured</span></span>
+<span id="cb21-22"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-22" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb21-23"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-23" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
+<span id="cb21-24"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-24" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb21-25"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-25" tabindex="-1"></a><span class="co">#&gt;   i =~                                                </span></span>
+<span id="cb21-26"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-26" tabindex="-1"></a><span class="co">#&gt;     t1                1.000                           </span></span>
+<span id="cb21-27"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-27" tabindex="-1"></a><span class="co">#&gt;     t2                1.000                           </span></span>
+<span id="cb21-28"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-28" tabindex="-1"></a><span class="co">#&gt;     t3                1.000                           </span></span>
+<span id="cb21-29"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-29" tabindex="-1"></a><span class="co">#&gt;     t4                1.000                           </span></span>
+<span id="cb21-30"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-30" tabindex="-1"></a><span class="co">#&gt;   s =~                                                </span></span>
+<span id="cb21-31"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-31" tabindex="-1"></a><span class="co">#&gt;     t1                0.000                           </span></span>
+<span id="cb21-32"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-32" tabindex="-1"></a><span class="co">#&gt;     t2                1.000                           </span></span>
+<span id="cb21-33"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-33" tabindex="-1"></a><span class="co">#&gt;     t3                2.000                           </span></span>
+<span id="cb21-34"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-34" tabindex="-1"></a><span class="co">#&gt;     t4                3.000                           </span></span>
+<span id="cb21-35"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-35" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb21-36"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-36" tabindex="-1"></a><span class="co">#&gt; Covariances:</span></span>
+<span id="cb21-37"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-37" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb21-38"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-38" tabindex="-1"></a><span class="co">#&gt;   i ~~                                                </span></span>
+<span id="cb21-39"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-39" tabindex="-1"></a><span class="co">#&gt;     s                 0.618    0.071    8.686    0.000</span></span>
+<span id="cb21-40"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-40" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb21-41"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-41" tabindex="-1"></a><span class="co">#&gt; Intercepts:</span></span>
+<span id="cb21-42"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-42" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb21-43"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-43" tabindex="-1"></a><span class="co">#&gt;    .t1                0.000                           </span></span>
+<span id="cb21-44"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-44" tabindex="-1"></a><span class="co">#&gt;    .t2                0.000                           </span></span>
+<span id="cb21-45"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-45" tabindex="-1"></a><span class="co">#&gt;    .t3                0.000                           </span></span>
+<span id="cb21-46"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-46" tabindex="-1"></a><span class="co">#&gt;    .t4                0.000                           </span></span>
+<span id="cb21-47"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-47" tabindex="-1"></a><span class="co">#&gt;     i                 0.615    0.077    8.007    0.000</span></span>
+<span id="cb21-48"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-48" tabindex="-1"></a><span class="co">#&gt;     s                 1.006    0.042   24.076    0.000</span></span>
+<span id="cb21-49"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-49" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb21-50"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-50" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
+<span id="cb21-51"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-51" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb21-52"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-52" tabindex="-1"></a><span class="co">#&gt;    .t1                0.595    0.086    6.944    0.000</span></span>
+<span id="cb21-53"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-53" tabindex="-1"></a><span class="co">#&gt;    .t2                0.676    0.061   11.061    0.000</span></span>
+<span id="cb21-54"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-54" tabindex="-1"></a><span class="co">#&gt;    .t3                0.635    0.072    8.761    0.000</span></span>
+<span id="cb21-55"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-55" tabindex="-1"></a><span class="co">#&gt;    .t4                0.508    0.124    4.090    0.000</span></span>
+<span id="cb21-56"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-56" tabindex="-1"></a><span class="co">#&gt;     i                 1.932    0.173   11.194    0.000</span></span>
+<span id="cb21-57"><a href="esplorazione-approfondita-del-modello-lgm.html#cb21-57" tabindex="-1"></a><span class="co">#&gt;     s                 0.587    0.052   11.336    0.000</span></span></code></pre></div>
+<p>Esaminiamo il path diagram.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="esplorazione-approfondita-del-modello-lgm.html#cb22-1" tabindex="-1"></a><span class="fu">semPaths</span>(</span>
+<span id="cb22-2"><a href="esplorazione-approfondita-del-modello-lgm.html#cb22-2" tabindex="-1"></a>  fit,</span>
+<span id="cb22-3"><a href="esplorazione-approfondita-del-modello-lgm.html#cb22-3" tabindex="-1"></a>  <span class="at">layout =</span> <span class="st">&quot;tree&quot;</span>,</span>
+<span id="cb22-4"><a href="esplorazione-approfondita-del-modello-lgm.html#cb22-4" tabindex="-1"></a>  <span class="at">intercepts =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb22-5"><a href="esplorazione-approfondita-del-modello-lgm.html#cb22-5" tabindex="-1"></a>  <span class="at">posCol =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>),</span>
+<span id="cb22-6"><a href="esplorazione-approfondita-del-modello-lgm.html#cb22-6" tabindex="-1"></a>  <span class="at">edge.label.cex =</span> <span class="fl">0.00001</span>,</span>
+<span id="cb22-7"><a href="esplorazione-approfondita-del-modello-lgm.html#cb22-7" tabindex="-1"></a>  <span class="at">sizeMan =</span> <span class="dv">7</span>,</span>
+<span id="cb22-8"><a href="esplorazione-approfondita-del-modello-lgm.html#cb22-8" tabindex="-1"></a>  <span class="at">what =</span> <span class="st">&quot;path&quot;</span>,</span>
+<span id="cb22-9"><a href="esplorazione-approfondita-del-modello-lgm.html#cb22-9" tabindex="-1"></a>  <span class="at">optimizeLatRes =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb22-10"><a href="esplorazione-approfondita-del-modello-lgm.html#cb22-10" tabindex="-1"></a>  <span class="at">residuals =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb22-11"><a href="esplorazione-approfondita-del-modello-lgm.html#cb22-11" tabindex="-1"></a>  <span class="at">style =</span> <span class="st">&quot;lisrel&quot;</span></span>
+<span id="cb22-12"><a href="esplorazione-approfondita-del-modello-lgm.html#cb22-12" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="cfa_files/figure-html/unnamed-chunk-15-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Ci sono 6 tipi di parametri di interesse:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="esplorazione-approfondita-del-modello-lgm.html#cb23-1" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">coef</span>(fit), <span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">format =</span> <span class="st">&quot;markdown&quot;</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">t1~~t1</td>
+<td align="right">0.5952890</td>
+</tr>
+<tr class="even">
+<td align="left">t2~~t2</td>
+<td align="right">0.6760337</td>
+</tr>
+<tr class="odd">
+<td align="left">t3~~t3</td>
+<td align="right">0.6348906</td>
+</tr>
+<tr class="even">
+<td align="left">t4~~t4</td>
+<td align="right">0.5076449</td>
+</tr>
+<tr class="odd">
+<td align="left">i~~i</td>
+<td align="right">1.9319804</td>
+</tr>
+<tr class="even">
+<td align="left">s~~s</td>
+<td align="right">0.5869142</td>
+</tr>
+<tr class="odd">
+<td align="left">i~~s</td>
+<td align="right">0.6178630</td>
+</tr>
+<tr class="even">
+<td align="left">i~1</td>
+<td align="right">0.6146957</td>
+</tr>
+<tr class="odd">
+<td align="left">s~1</td>
+<td align="right">1.0062943</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>l’intercetta <span class="math inline">\(i\)</span> = 0.615 è il valore atteso della variabile risposta al momento <span class="math inline">\(t_0\)</span>;</li>
+<li>la pendenza <span class="math inline">\(s\)</span> = 1.006 è il tasso di cambiamento medio della variabile risposta nel tempo. Ad ogni successivo momento temporale, il valore medio della variabile risposta aumenta in media di 1.006 punti;</li>
+<li>varianza <span class="math inline">\(i\)</span> = 1.932 misura la variazione tra i soggetti al momento <span class="math inline">\(t_0\)</span> (ci dice quanto sono diverse le intercette delle rette di regressione tra i soggetti);</li>
+<li>varianza <span class="math inline">\(s\)</span> = 0.587 misura la variazione del tasso di crescita tra i soggetti (ci dice quanto sono diverse le pendenze delle rette di regressione tra i soggetti);</li>
+<li>varianze <code>t1</code>, …, <code>t4</code>: i valori da 0.595 a 0.508 descrivono la variazione tra i soggetti in ciascun momento del tempo;</li>
+<li>la covarianza tra <code>i</code> e <code>s</code> = 0.618 ci dice che i valori della variabile risposta diventano via via più diversi nel tempo tra i rispondenti (un valore negativo avrebbe l’interpretazione opposta).</li>
+</ul>
+<p>Le stime dell’intercetta e della pendenza della funzione di crescita per ciascun partecipante si ottengono nel modo seguente:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="esplorazione-approfondita-del-modello-lgm.html#cb24-1" tabindex="-1"></a>rand_eff <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">lavPredict</span>(fit))</span>
+<span id="cb24-2"><a href="esplorazione-approfondita-del-modello-lgm.html#cb24-2" tabindex="-1"></a><span class="fu">head</span>(rand_eff)</span>
+<span id="cb24-3"><a href="esplorazione-approfondita-del-modello-lgm.html#cb24-3" tabindex="-1"></a><span class="co">#&gt;            i           s</span></span>
+<span id="cb24-4"><a href="esplorazione-approfondita-del-modello-lgm.html#cb24-4" tabindex="-1"></a><span class="co">#&gt; 1  1.2275557  0.60278312</span></span>
+<span id="cb24-5"><a href="esplorazione-approfondita-del-modello-lgm.html#cb24-5" tabindex="-1"></a><span class="co">#&gt; 2 -2.6795847 -1.38498215</span></span>
+<span id="cb24-6"><a href="esplorazione-approfondita-del-modello-lgm.html#cb24-6" tabindex="-1"></a><span class="co">#&gt; 3 -0.2955058  0.88828376</span></span>
+<span id="cb24-7"><a href="esplorazione-approfondita-del-modello-lgm.html#cb24-7" tabindex="-1"></a><span class="co">#&gt; 4  1.1576419  1.34051395</span></span>
+<span id="cb24-8"><a href="esplorazione-approfondita-del-modello-lgm.html#cb24-8" tabindex="-1"></a><span class="co">#&gt; 5 -0.4355522  0.03193498</span></span>
+<span id="cb24-9"><a href="esplorazione-approfondita-del-modello-lgm.html#cb24-9" tabindex="-1"></a><span class="co">#&gt; 6 -1.3121802  0.50258530</span></span></code></pre></div>
+<p>Istogrammi delle stime individuali dell’intercetta e della pendenza della curva di crescita si ottengono nel modo seguente:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="esplorazione-approfondita-del-modello-lgm.html#cb25-1" tabindex="-1"></a>gi <span class="ot">&lt;-</span> rand_eff <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="esplorazione-approfondita-del-modello-lgm.html#cb25-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> i)) <span class="sc">+</span></span>
+<span id="cb25-3"><a href="esplorazione-approfondita-del-modello-lgm.html#cb25-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
+<span id="cb25-4"><a href="esplorazione-approfondita-del-modello-lgm.html#cb25-4" tabindex="-1"></a>gh <span class="ot">&lt;-</span> rand_eff <span class="sc">%&gt;%</span></span>
+<span id="cb25-5"><a href="esplorazione-approfondita-del-modello-lgm.html#cb25-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> s)) <span class="sc">+</span></span>
+<span id="cb25-6"><a href="esplorazione-approfondita-del-modello-lgm.html#cb25-6" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
+<span id="cb25-7"><a href="esplorazione-approfondita-del-modello-lgm.html#cb25-7" tabindex="-1"></a>gi <span class="sc">+</span> gh</span></code></pre></div>
+<p><img src="cfa_files/figure-html/unnamed-chunk-18-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div id="visualizzare-il-cambiamento" class="section level3 hasAnchor" number="29.3.1">
+<h3><span class="header-section-number">29.3.1</span> Visualizzare il cambiamento<a href="esplorazione-approfondita-del-modello-lgm.html#visualizzare-il-cambiamento" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>È utile visualizzare i punteggi previsti dal modello. A tal fine, useremo qui la funzione <code>predict()</code> per creare un nuovo oggetto <span class="math inline">\(\mathsf{R}\)</span> che contiene i punteggi previsti a livello individuale per l’intercetta e la pendenza.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="esplorazione-approfondita-del-modello-lgm.html#cb26-1" tabindex="-1"></a>pred_lgm <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit)</span>
+<span id="cb26-2"><a href="esplorazione-approfondita-del-modello-lgm.html#cb26-2" tabindex="-1"></a><span class="fu">head</span>(pred_lgm)</span>
+<span id="cb26-3"><a href="esplorazione-approfondita-del-modello-lgm.html#cb26-3" tabindex="-1"></a><span class="co">#&gt;               i           s</span></span>
+<span id="cb26-4"><a href="esplorazione-approfondita-del-modello-lgm.html#cb26-4" tabindex="-1"></a><span class="co">#&gt; [1,]  1.2275557  0.60278312</span></span>
+<span id="cb26-5"><a href="esplorazione-approfondita-del-modello-lgm.html#cb26-5" tabindex="-1"></a><span class="co">#&gt; [2,] -2.6795847 -1.38498215</span></span>
+<span id="cb26-6"><a href="esplorazione-approfondita-del-modello-lgm.html#cb26-6" tabindex="-1"></a><span class="co">#&gt; [3,] -0.2955058  0.88828376</span></span>
+<span id="cb26-7"><a href="esplorazione-approfondita-del-modello-lgm.html#cb26-7" tabindex="-1"></a><span class="co">#&gt; [4,]  1.1576419  1.34051395</span></span>
+<span id="cb26-8"><a href="esplorazione-approfondita-del-modello-lgm.html#cb26-8" tabindex="-1"></a><span class="co">#&gt; [5,] -0.4355522  0.03193498</span></span>
+<span id="cb26-9"><a href="esplorazione-approfondita-del-modello-lgm.html#cb26-9" tabindex="-1"></a><span class="co">#&gt; [6,] -1.3121802  0.50258530</span></span></code></pre></div>
+<p>Questi sono i valori previsti dal modello per ciascun partecipante. Se calcoliamo la media di queste variabili otteniamo gli stessi risultati che sono stati riportati sopra:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="esplorazione-approfondita-del-modello-lgm.html#cb27-1" tabindex="-1"></a><span class="co"># average of the intercepts (first column)</span></span>
+<span id="cb27-2"><a href="esplorazione-approfondita-del-modello-lgm.html#cb27-2" tabindex="-1"></a><span class="fu">mean</span>(pred_lgm[, <span class="dv">1</span>])</span>
+<span id="cb27-3"><a href="esplorazione-approfondita-del-modello-lgm.html#cb27-3" tabindex="-1"></a><span class="co">#&gt; [1] 0.6146957</span></span>
+<span id="cb27-4"><a href="esplorazione-approfondita-del-modello-lgm.html#cb27-4" tabindex="-1"></a><span class="co"># average of the slope (second column)</span></span>
+<span id="cb27-5"><a href="esplorazione-approfondita-del-modello-lgm.html#cb27-5" tabindex="-1"></a><span class="fu">mean</span>(pred_lgm[, <span class="dv">2</span>])</span>
+<span id="cb27-6"><a href="esplorazione-approfondita-del-modello-lgm.html#cb27-6" tabindex="-1"></a><span class="co">#&gt; [1] 1.006294</span></span></code></pre></div>
+<p>Il cambiamento nel tempo previsto dal modello per il soggetto <span class="math inline">\(j\)</span>-esimo è</p>
+<p><span class="math display">\[
+y_j = \eta_0 + \lambda_j \eta_1.
 \]</span></p>
-<p>dove gli <span class="math inline">\(\{\varepsilon_k\}\)</span> sono variabili casuali indipendenti e identicamente distribuite con varianza costante <span class="math inline">\(\sigma^2\)</span>.</p>
-<p>Nel caso delle misure ripetute viene violata l’assunzione che i dati siano variabili casuali indipendenti. Un modo per modellizzare una variabile casuale organizzata in maniera gerarchica è quello di assumere che ciascun ragruppamento sia dotato di una sua specifica intercetta.</p>
-<p><span class="math display" id="eq:lgm-2">\[
-\begin{equation}
-y_{ij} = \alpha_i + \beta \cdot x_{ij} + \varepsilon_{ij}, \quad i = 1, \dots, N, j = 1, \dots, n_i.
-\tag{29.2}
-\end{equation}
-\]</span></p>
-<p>Si noti che abbiamo usato due indici: <span class="math inline">\(i\)</span> corrisponde all’<span class="math inline">\(i\)</span>-esimo ragruppamento, <span class="math inline">\(j\)</span> corrisponde alla osservazione <span class="math inline">\(j\)</span>-esima nell’<span class="math inline">\(i\)</span>-esimo ragruppamento, <span class="math inline">\(n_i\)</span> è il numero di osservazioni nell’<span class="math inline">\(i\)</span>-esimo ragruppamento e <span class="math inline">\(\alpha_i\)</span> è l’intercetta specifica al ragruppamento <span class="math inline">\(i\)</span>-esimo. Il numero totale di osservazioni è <span class="math inline">\(K = \sum_{i=1}^N n_i\)</span>. Per quel che riguarda gli errori <span class="math inline">\(\{\varepsilon_{ij}\}\)</span> assumiamo come in precedenza che siano iid con varianza <span class="math inline">\(\sigma^2\)</span>.</p>
-<p>Il modello per dati ragruppati è più complesso del modello tradizionale e si riduce ad esso nel caso speciale nel quale <span class="math inline">\(\alpha_i = \alpha\)</span>.</p>
-<p>L’assunzione centrale dei modelli misti è che le intercette <span class="math inline">\(\{\alpha_i, i = 1, \dots, N\}\)</span> siano variabili casuali che appartengono ad una popolazione che può essere descritta dalla seguente equazione:</p>
-<p><span class="math display" id="eq:lgm-3">\[
-\begin{equation}
-\alpha_i = \alpha + b_i,
-\tag{29.3}
-\end{equation}
-\]</span></p>
-<p>dove <span class="math inline">\(\alpha\)</span> è l’intercetta della popolazione e <span class="math inline">\(b_i\)</span> è l’effetto casuale, ovvero la deviazione di ciascun ragruppamento dal valore medio della popolazione.</p>
-<p>Sostituendo l’eq. <a href="modelli-a-crescita-latente-e-modelli-misti.html#eq:lgm-3">(29.3)</a> nella <a href="modelli-a-crescita-latente-e-modelli-misti.html#eq:lgm-2">(29.2)</a> otteniamo il modello ad effetti misti:</p>
-<p><span class="math display" id="eq:lgm-4">\[
-\begin{equation}
-y_{ij} = \alpha + b_i + \beta \cdot x_{ij} + \varepsilon_{ij}, \quad i = 1, \dots, N, j = 1, \dots, n_i,
-\tag{29.4}
-\end{equation}
-\]</span></p>
-<p>ovvero</p>
-<p><span class="math display" id="eq:lgm-5">\[
-\begin{equation}
-y_{ij} = \alpha + \beta \cdot x_{ij} + \eta_{ij}, \quad i = 1, \dots, N, j = 1, \dots, n_i,
-\tag{29.5}
-\end{equation}
-\]</span></p>
-<p>dove <span class="math inline">\(\eta_{ij} = \varepsilon_{ij} + b_i\)</span>. Questo è un modello gerarchico, ovvero un modello ad intercetta casuale.</p>
-<p>In pratica, ciò che abbiamo ottenuto è un modello di regressione standard con una fonte aggiuntiva di varianza. In un modello misto ci sono dunque due fonti della varianza: la variazione all’interno di ciascun ragruppamento, <span class="math inline">\(\sigma^2\)</span> e la variazione tra ragruppamenti, <span class="math inline">\(\sigma_b^2\)</span>. Ricordiamo che, invece, nel modello classico abbiamo un’unica fonte della varianza.</p>
-<p>Nel modello misto, le osservazioni all’interno di ciascun ragruppamento sono tra loro correlate con una correlazione uguale a</p>
-<p><span class="math display" id="eq:lgm-6">\[
-\begin{equation}
-\rho = \frac{\mathbb{V}(b_i)}{\mathbb{V}(b_i + \varepsilon_{ij})} = \frac{\sigma_b^2}{\sigma^2 + \sigma_b^2}.
-\tag{29.6}
-\end{equation}
-\]</span></p>
-<p>Dalla <a href="modelli-a-crescita-latente-e-modelli-misti.html#eq:lgm-6">(29.6)</a> risulta che maggiore è la variazione tra i ragruppamenti, maggiore è la correlazione tra le osservazioni all’interno di ciascun ragruppamento. Se <span class="math inline">\(\sigma_b^2 = 0\)</span>, la correlazione è 0, <span class="math inline">\(\alpha_i = \alpha\)</span> e il modello si riduce a quello della regressione classica.</p>
-<p>Questa è solo una rappresentazione possibile dei modelli misti, in quanto è anche possibile consentire alla pendenza di variare, avere effetti casuali da più fonti di raggruppamento, aggiungere covariate a livello di ragruppamento, consentire alle intercette casuali e alle pendenze di correlare tra loro, ecc.</p>
-<p>Come abbiamo visto in precedenza, le variabili latenti sono assunte come distribuite normalmente, di solito con media zero e con una varianza stimata. Anche gli effetti casuali nei modelli misti lo sono e attraverso questo parallelo possiamo pensare agli effetti casuali come a delle variabili latenti (e viceversa).</p>
+<p>Il cambiamento previsto per tutti i soggetti può essere visualizzato nel modo seguente:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="esplorazione-approfondita-del-modello-lgm.html#cb28-1" tabindex="-1"></a><span class="co"># create long data for each individual</span></span>
+<span id="cb28-2"><a href="esplorazione-approfondita-del-modello-lgm.html#cb28-2" tabindex="-1"></a>pred_lgm_long <span class="ot">&lt;-</span> <span class="fu">map</span>(</span>
+<span id="cb28-3"><a href="esplorazione-approfondita-del-modello-lgm.html#cb28-3" tabindex="-1"></a>  <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>, <span class="co"># loop over time</span></span>
+<span id="cb28-4"><a href="esplorazione-approfondita-del-modello-lgm.html#cb28-4" tabindex="-1"></a>  <span class="cf">function</span>(x) pred_lgm[, <span class="dv">1</span>] <span class="sc">+</span> x <span class="sc">*</span> pred_lgm[, <span class="dv">2</span>]</span>
+<span id="cb28-5"><a href="esplorazione-approfondita-del-modello-lgm.html#cb28-5" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb28-6"><a href="esplorazione-approfondita-del-modello-lgm.html#cb28-6" tabindex="-1"></a>  <span class="fu">reduce</span>(cbind) <span class="sc">%&gt;%</span> <span class="co"># bring together the wave predictions</span></span>
+<span id="cb28-7"><a href="esplorazione-approfondita-del-modello-lgm.html#cb28-7" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> <span class="co"># make data frame</span></span>
+<span id="cb28-8"><a href="esplorazione-approfondita-del-modello-lgm.html#cb28-8" tabindex="-1"></a>  <span class="fu">setNames</span>(<span class="fu">str_c</span>(<span class="st">&quot;time&quot;</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>)) <span class="sc">%&gt;%</span> <span class="co"># give names to variables</span></span>
+<span id="cb28-9"><a href="esplorazione-approfondita-del-modello-lgm.html#cb28-9" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span> <span class="co"># make unique id</span></span>
+<span id="cb28-10"><a href="esplorazione-approfondita-del-modello-lgm.html#cb28-10" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="sc">-</span>id, <span class="at">key =</span> time, <span class="at">value =</span> pred) <span class="co"># make long format</span></span>
+<span id="cb28-11"><a href="esplorazione-approfondita-del-modello-lgm.html#cb28-11" tabindex="-1"></a><span class="co"># make graph</span></span>
+<span id="cb28-12"><a href="esplorazione-approfondita-del-modello-lgm.html#cb28-12" tabindex="-1"></a>pred_lgm_long <span class="sc">%&gt;%</span></span>
+<span id="cb28-13"><a href="esplorazione-approfondita-del-modello-lgm.html#cb28-13" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(time, pred, <span class="at">group =</span> id)) <span class="sc">+</span> <span class="co"># what variables to plot?</span></span>
+<span id="cb28-14"><a href="esplorazione-approfondita-del-modello-lgm.html#cb28-14" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span> <span class="co"># add a transparent line for each person</span></span>
+<span id="cb28-15"><a href="esplorazione-approfondita-del-modello-lgm.html#cb28-15" tabindex="-1"></a>  <span class="fu">stat_summary</span>( <span class="co"># add average line</span></span>
+<span id="cb28-16"><a href="esplorazione-approfondita-del-modello-lgm.html#cb28-16" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">group =</span> <span class="dv">1</span>),</span>
+<span id="cb28-17"><a href="esplorazione-approfondita-del-modello-lgm.html#cb28-17" tabindex="-1"></a>    <span class="at">fun =</span> mean,</span>
+<span id="cb28-18"><a href="esplorazione-approfondita-del-modello-lgm.html#cb28-18" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">&quot;line&quot;</span>,</span>
+<span id="cb28-19"><a href="esplorazione-approfondita-del-modello-lgm.html#cb28-19" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">1.5</span>,</span>
+<span id="cb28-20"><a href="esplorazione-approfondita-del-modello-lgm.html#cb28-20" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;black&quot;</span></span>
+<span id="cb28-21"><a href="esplorazione-approfondita-del-modello-lgm.html#cb28-21" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb28-22"><a href="esplorazione-approfondita-del-modello-lgm.html#cb28-22" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;y&quot;</span>, <span class="at">x =</span> <span class="st">&quot;time&quot;</span>)</span></code></pre></div>
+<p><img src="cfa_files/figure-html/unnamed-chunk-21-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>La linea nera più spessa rappresenta l’intercetta media e la pendenza media della curva di crescita del modello LGM. Ogni individuo ha una sua specifica intercetta e uno specifico tasso di cambiamento e questa diversità è catturata nelle componenti di varianza del modello.</p>
 </div>
-<div id="simulare-effetti-casuali" class="section level3 hasAnchor" number="29.1.2">
-<h3><span class="header-section-number">29.1.2</span> Simulare effetti casuali<a href="modelli-a-crescita-latente-e-modelli-misti.html#simulare-effetti-casuali" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Possiamo fornire una dimostrazione del funzionamento dei modelli misti con una simulazione. Ciò ci permetterà di meglio comprendere i modelli a crescita latente. Simuleremo dei dati bilanciati, con punteggi su quattro rilevazioni temporali per 500 individui (soggetti). Esamineremo il tasso di crescita (‘growth’) e consentiremo la presenza di intercette e pendenze specifiche per i diversi soggetti.</p>
-<p>Le istruzioni seguenti generano i dati (per i nostri scopi, non è importante capire i dettagli di questa porzione di codice).</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb1-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
-<span id="cb1-2"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb1-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">500</span></span>
-<span id="cb1-3"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb1-3" tabindex="-1"></a>timepoints <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb1-4"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb1-4" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">times =</span> n)</span>
-<span id="cb1-5"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb1-5" tabindex="-1"></a>subject <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>n, <span class="at">each =</span> <span class="dv">4</span>)</span>
-<span id="cb1-6"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb1-6" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb1-7" tabindex="-1"></a>intercept <span class="ot">&lt;-</span> .<span class="dv">5</span></span>
-<span id="cb1-8"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb1-8" tabindex="-1"></a>slope <span class="ot">&lt;-</span> .<span class="dv">25</span></span>
-<span id="cb1-9"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb1-9" tabindex="-1"></a>randomEffectsCorr <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, .<span class="dv">2</span>, .<span class="dv">2</span>, <span class="dv">1</span>), <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb1-10"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb1-10" tabindex="-1"></a>randomEffects <span class="ot">&lt;-</span> MASS<span class="sc">::</span><span class="fu">mvrnorm</span>(</span>
-<span id="cb1-11"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb1-11" tabindex="-1"></a>  n,</span>
-<span id="cb1-12"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb1-12" tabindex="-1"></a>  <span class="at">mu =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">Sigma =</span> randomEffectsCorr, <span class="at">empirical =</span> T</span>
-<span id="cb1-13"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb1-13" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-14"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb1-14" tabindex="-1"></a>  <span class="fu">data.frame</span>()</span>
-<span id="cb1-15"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb1-15" tabindex="-1"></a><span class="fu">colnames</span>(randomEffects) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Int&quot;</span>, <span class="st">&quot;Slope&quot;</span>)</span></code></pre></div>
-<p>La simulazione comprende gli effetti ‘fissi’, ovvero l’intercetta e la pendenza della regressione standard, impostati rispettivamente a 0.5 e 0.25. Verrà simulata una correlazione di 0.2 tra intercetta e pendenza specifiche per ciascun soggetto. Per questa ragione, i dati verranno estratti da una distribuzione normale multivariata. Porremo uguale a 1 la varianza per entrambi gli effetti.</p>
-<p>Esaminiamo i dati ottenuti.</p>
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<div id="dati-ordinali-vs.-intervalli-temporali" class="section level3 hasAnchor" number="29.3.2">
+<h3><span class="header-section-number">29.3.2</span> Dati ordinali vs. intervalli temporali<a href="esplorazione-approfondita-del-modello-lgm.html#dati-ordinali-vs.-intervalli-temporali" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La specificazione <code>s =~ 0*t1 + 1*t2 + 2*t3 + 3*t4</code> assume che il tempo sia misurato per intervalli costanti. Questa sintassi può essere usata anche quando il tempo è misurato su una scala a livello ordinale, ovvero quando supponiamo diverse rilevazioni temporali e ci chiediamo cosa succede passando da una alla successiva, senza specificare precisamente qual è la distanza temporale tra le varie rilevazioni. In alternativa è possibile specificare in termini assoluti il tempo trascorso tra le diverse rilevazioni temporali – questo è possibile solo se tali distanze temporali sono costanti tra i vari soggetti. Ad esempio, se passano 2, 3 e 9 mesi dalla prima rilevazione, avremo il seguente modello.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="esplorazione-approfondita-del-modello-lgm.html#cb29-1" tabindex="-1"></a>model_a <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb29-2"><a href="esplorazione-approfondita-del-modello-lgm.html#cb29-2" tabindex="-1"></a><span class="st"> i =~ 1*t1 + 1*t2 + 1*t3 + 1*t4</span></span>
+<span id="cb29-3"><a href="esplorazione-approfondita-del-modello-lgm.html#cb29-3" tabindex="-1"></a><span class="st"> s =~ 0*t1 + 2*t2 + 6*t3 + 9*t4</span></span>
+<span id="cb29-4"><a href="esplorazione-approfondita-del-modello-lgm.html#cb29-4" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<p>La scelta di utilizzare il tempo su scala ordinale rispetto a quello assoluto non cambia il numero di parametri del modello o i gradi di libertà. Tuttavia la media dei punteggi fattoriali che rappresentano l’intercetta e la pendenza può cambiare e l’interpretazione di questi termini cambierà di conseguenza.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="esplorazione-approfondita-del-modello-lgm.html#cb30-1" tabindex="-1"></a>fit_a <span class="ot">&lt;-</span> <span class="fu">growth</span>(model_a, <span class="at">data =</span> Demo.growth)</span>
+<span id="cb30-2"><a href="esplorazione-approfondita-del-modello-lgm.html#cb30-2" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">coef</span>(fit_a), <span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">format =</span> <span class="st">&quot;markdown&quot;</span>)</span></code></pre></div>
+<table>
 <thead>
-<tr>
-<th style="text-align:right;">
-Subject
-</th>
-<th style="text-align:right;">
-time
-</th>
-<th style="text-align:right;">
-Int
-</th>
-<th style="text-align:right;">
-Slope
-</th>
+<tr class="header">
+<th align="left"></th>
+<th align="right">x</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
--1.3323
-</td>
-<td style="text-align:right;">
--0.9548
-</td>
+<tr class="odd">
+<td align="left">t1~~t1</td>
+<td align="right">0.75840584</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
--1.3323
-</td>
-<td style="text-align:right;">
--0.9548
-</td>
+<tr class="even">
+<td align="left">t2~~t2</td>
+<td align="right">0.80990552</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
--1.3323
-</td>
-<td style="text-align:right;">
--0.9548
-</td>
+<tr class="odd">
+<td align="left">t3~~t3</td>
+<td align="right">0.63209463</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
--1.3323
-</td>
-<td style="text-align:right;">
--0.9548
-</td>
+<tr class="even">
+<td align="left">t4~~t4</td>
+<td align="right">0.49864811</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
--2.1262
-</td>
-<td style="text-align:right;">
--1.7814
-</td>
+<tr class="odd">
+<td align="left">i~~i</td>
+<td align="right">2.04046924</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
--2.1262
-</td>
-<td style="text-align:right;">
--1.7814
-</td>
+<tr class="even">
+<td align="left">s~~s</td>
+<td align="right">0.05802979</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
--2.1262
-</td>
-<td style="text-align:right;">
--1.7814
-</td>
+<tr class="odd">
+<td align="left">i~~s</td>
+<td align="right">0.23300623</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
--2.1262
-</td>
-<td style="text-align:right;">
--1.7814
-</td>
+<tr class="even">
+<td align="left">i~1</td>
+<td align="right">0.76120704</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0.4606
-</td>
-<td style="text-align:right;">
-0.3040
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.4606
-</td>
-<td style="text-align:right;">
-0.3040
-</td>
+<tr class="odd">
+<td align="left">s~1</td>
+<td align="right">0.31906615</td>
 </tr>
 </tbody>
 </table>
-<p>Per ottenere una variabile target, sommiamo semplicemente gli effetti casuali così ottenuti all’intercetta complessiva e facciamo lo stesso per le pendenze. Sommeremo ai dati un rumore gaussiano con deviazione standard uguale a <span class="math inline">\(\sigma\)</span> = 0.5.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb2-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
-<span id="cb2-2"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb2-2" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> .<span class="dv">5</span></span>
-<span id="cb2-3"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb2-3" tabindex="-1"></a>y1 <span class="ot">&lt;-</span> (intercept <span class="sc">+</span> randomEffects<span class="sc">$</span>Int[subject]) <span class="sc">+</span> <span class="co"># random intercepts</span></span>
-<span id="cb2-4"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb2-4" tabindex="-1"></a>  (slope <span class="sc">+</span> randomEffects<span class="sc">$</span>Slope[subject]) <span class="sc">*</span> time <span class="sc">+</span> <span class="co"># random slopes</span></span>
-<span id="cb2-5"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb2-5" tabindex="-1"></a>  <span class="fu">rnorm</span>(n <span class="sc">*</span> timepoints, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> sigma)</span>
-<span id="cb2-6"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb2-6" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb2-7" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(subject, time, y1)</span></code></pre></div>
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<p>Mentre in precedenza l’interpretazione era che la media della variabile risposta aumenta in media 1.006 punti passando da una rilevazione temporale alla successiva, nel caso della presente specificazione temporale in mesi possiamo dire che media della variabile risposta aumenta in media 0.319 punti dopo l’incremento temporale di un mese.</p>
+</div>
+<div id="verifica-di-ipotesi" class="section level3 hasAnchor" number="29.3.3">
+<h3><span class="header-section-number">29.3.3</span> Verifica di ipotesi<a href="esplorazione-approfondita-del-modello-lgm.html#verifica-di-ipotesi" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>È anche possibile utilizzare le funzionalità di <code>lavaan</code> per verificare specifiche ipotesi di interesse relative ai dati longitudinali. Ad esempio, una possibile domanda riguarda l’uguaglianza degli errori nel tempo. Tale domanda può essere affrontata introducendo dei vincoli nella specificazione del modello LGM (come abbiamo anche visto in precedenza) e, successivamente, confrontando la bontà dell’adattamento del modello vincolato e del modello generale.</p>
+<p>Il modello vincolato è</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="esplorazione-approfondita-del-modello-lgm.html#cb31-1" tabindex="-1"></a>model_eqerr <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb31-2"><a href="esplorazione-approfondita-del-modello-lgm.html#cb31-2" tabindex="-1"></a><span class="st"> i =~ 1*t1 + 1*t2 + 1*t3 + 1*t4</span></span>
+<span id="cb31-3"><a href="esplorazione-approfondita-del-modello-lgm.html#cb31-3" tabindex="-1"></a><span class="st"> s =~ 0*t1 + 1*t2 + 2*t3 + 3*t4</span></span>
+<span id="cb31-4"><a href="esplorazione-approfondita-del-modello-lgm.html#cb31-4" tabindex="-1"></a><span class="st"> t1 ~~ a*t1</span></span>
+<span id="cb31-5"><a href="esplorazione-approfondita-del-modello-lgm.html#cb31-5" tabindex="-1"></a><span class="st"> t2 ~~ a*t2</span></span>
+<span id="cb31-6"><a href="esplorazione-approfondita-del-modello-lgm.html#cb31-6" tabindex="-1"></a><span class="st"> t3 ~~ a*t3</span></span>
+<span id="cb31-7"><a href="esplorazione-approfondita-del-modello-lgm.html#cb31-7" tabindex="-1"></a><span class="st"> t4 ~~ a*t4</span></span>
+<span id="cb31-8"><a href="esplorazione-approfondita-del-modello-lgm.html#cb31-8" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<p>Adattiamo il modello vincolato:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="esplorazione-approfondita-del-modello-lgm.html#cb32-1" tabindex="-1"></a>fit_eqerr <span class="ot">&lt;-</span> <span class="fu">growth</span>(model_eqerr, <span class="at">data =</span> Demo.growth)</span></code></pre></div>
+<p>Confrontiamo il modello vincolato con il modello libero:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="esplorazione-approfondita-del-modello-lgm.html#cb33-1" tabindex="-1"></a><span class="fu">anova</span>(fit, fit_eqerr)</span>
+<span id="cb33-2"><a href="esplorazione-approfondita-del-modello-lgm.html#cb33-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb33-3"><a href="esplorazione-approfondita-del-modello-lgm.html#cb33-3" tabindex="-1"></a><span class="co">#&gt; Chi-Squared Difference Test</span></span>
+<span id="cb33-4"><a href="esplorazione-approfondita-del-modello-lgm.html#cb33-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb33-5"><a href="esplorazione-approfondita-del-modello-lgm.html#cb33-5" tabindex="-1"></a><span class="co">#&gt;           Df    AIC    BIC  Chisq Chisq diff RMSEA Df diff Pr(&gt;Chisq)</span></span>
+<span id="cb33-6"><a href="esplorazione-approfondita-del-modello-lgm.html#cb33-6" tabindex="-1"></a><span class="co">#&gt; fit        5 5528.1 5564.0 8.0687                                    </span></span>
+<span id="cb33-7"><a href="esplorazione-approfondita-del-modello-lgm.html#cb33-7" tabindex="-1"></a><span class="co">#&gt; fit_eqerr  8 5523.7 5547.7 9.6779     1.6091     0       3     0.6573</span></span></code></pre></div>
+<p>Il test del rapporto di verosimiglianza (<em>likelihood ratio</em>) eseguito dalla funzione <code>anova()</code> produce un <span class="math inline">\(p\)</span>-valore di 0.6573. Ciò significa che, per i dati esaminati, non emerge una decremento nella bontà dell’adattamento degna di nota se passiamo dal modello libero al modello vincolato. Per questi dati, dunque, sembra ragionevole assumere l’equaglianza della varianza degli errori nel tempo.</p>
+</div>
+<div id="leffetto-delle-covariate" class="section level3 hasAnchor" number="29.3.4">
+<h3><span class="header-section-number">29.3.4</span> L’effetto delle covariate<a href="esplorazione-approfondita-del-modello-lgm.html#leffetto-delle-covariate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Un modello leggermente più complesso aggiunge due regressori (<code>x1</code> e <code>x2</code>) che influenzano i fattori di crescita latenti. Inoltre, è stata aggiunta al modello una covariata <code>c</code> variabile nel tempo che influenza la misura del risultato (la variabile dipendente) nei quattro punti temporali.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="esplorazione-approfondita-del-modello-lgm.html#cb34-1" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb34-2"><a href="esplorazione-approfondita-del-modello-lgm.html#cb34-2" tabindex="-1"></a><span class="st">  # intercept and slope with fixed coefficients</span></span>
+<span id="cb34-3"><a href="esplorazione-approfondita-del-modello-lgm.html#cb34-3" tabindex="-1"></a><span class="st">    i =~ 1*t1 + 1*t2 + 1*t3 + 1*t4</span></span>
+<span id="cb34-4"><a href="esplorazione-approfondita-del-modello-lgm.html#cb34-4" tabindex="-1"></a><span class="st">    s =~ 0*t1 + 1*t2 + 2*t3 + 3*t4</span></span>
+<span id="cb34-5"><a href="esplorazione-approfondita-del-modello-lgm.html#cb34-5" tabindex="-1"></a><span class="st">  # regressions</span></span>
+<span id="cb34-6"><a href="esplorazione-approfondita-del-modello-lgm.html#cb34-6" tabindex="-1"></a><span class="st">    i ~ x1 + x2</span></span>
+<span id="cb34-7"><a href="esplorazione-approfondita-del-modello-lgm.html#cb34-7" tabindex="-1"></a><span class="st">    s ~ x1 + x2</span></span>
+<span id="cb34-8"><a href="esplorazione-approfondita-del-modello-lgm.html#cb34-8" tabindex="-1"></a><span class="st">  # time-varying covariates</span></span>
+<span id="cb34-9"><a href="esplorazione-approfondita-del-modello-lgm.html#cb34-9" tabindex="-1"></a><span class="st">    t1 ~ c1</span></span>
+<span id="cb34-10"><a href="esplorazione-approfondita-del-modello-lgm.html#cb34-10" tabindex="-1"></a><span class="st">    t2 ~ c2</span></span>
+<span id="cb34-11"><a href="esplorazione-approfondita-del-modello-lgm.html#cb34-11" tabindex="-1"></a><span class="st">    t3 ~ c3</span></span>
+<span id="cb34-12"><a href="esplorazione-approfondita-del-modello-lgm.html#cb34-12" tabindex="-1"></a><span class="st">    t4 ~ c4</span></span>
+<span id="cb34-13"><a href="esplorazione-approfondita-del-modello-lgm.html#cb34-13" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-1" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">growth</span>(model2, <span class="at">data =</span> Demo.growth)</span>
+<span id="cb35-2"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-2" tabindex="-1"></a><span class="fu">summary</span>(fit2)</span>
+<span id="cb35-3"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-3" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6.15 ended normally after 31 iterations</span></span>
+<span id="cb35-4"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb35-5"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-5" tabindex="-1"></a><span class="co">#&gt;   Estimator                                         ML</span></span>
+<span id="cb35-6"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-6" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
+<span id="cb35-7"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-7" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                        17</span></span>
+<span id="cb35-8"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb35-9"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-9" tabindex="-1"></a><span class="co">#&gt;   Number of observations                           400</span></span>
+<span id="cb35-10"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb35-11"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-11" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
+<span id="cb35-12"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-12" tabindex="-1"></a><span class="co">#&gt;                                                       </span></span>
+<span id="cb35-13"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-13" tabindex="-1"></a><span class="co">#&gt;   Test statistic                                26.059</span></span>
+<span id="cb35-14"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-14" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                21</span></span>
+<span id="cb35-15"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-15" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                           0.204</span></span>
+<span id="cb35-16"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-16" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb35-17"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-17" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
+<span id="cb35-18"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb35-19"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-19" tabindex="-1"></a><span class="co">#&gt;   Standard errors                             Standard</span></span>
+<span id="cb35-20"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-20" tabindex="-1"></a><span class="co">#&gt;   Information                                 Expected</span></span>
+<span id="cb35-21"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-21" tabindex="-1"></a><span class="co">#&gt;   Information saturated (h1) model          Structured</span></span>
+<span id="cb35-22"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-22" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb35-23"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-23" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
+<span id="cb35-24"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-24" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb35-25"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-25" tabindex="-1"></a><span class="co">#&gt;   i =~                                                </span></span>
+<span id="cb35-26"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-26" tabindex="-1"></a><span class="co">#&gt;     t1                1.000                           </span></span>
+<span id="cb35-27"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-27" tabindex="-1"></a><span class="co">#&gt;     t2                1.000                           </span></span>
+<span id="cb35-28"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-28" tabindex="-1"></a><span class="co">#&gt;     t3                1.000                           </span></span>
+<span id="cb35-29"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-29" tabindex="-1"></a><span class="co">#&gt;     t4                1.000                           </span></span>
+<span id="cb35-30"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-30" tabindex="-1"></a><span class="co">#&gt;   s =~                                                </span></span>
+<span id="cb35-31"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-31" tabindex="-1"></a><span class="co">#&gt;     t1                0.000                           </span></span>
+<span id="cb35-32"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-32" tabindex="-1"></a><span class="co">#&gt;     t2                1.000                           </span></span>
+<span id="cb35-33"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-33" tabindex="-1"></a><span class="co">#&gt;     t3                2.000                           </span></span>
+<span id="cb35-34"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-34" tabindex="-1"></a><span class="co">#&gt;     t4                3.000                           </span></span>
+<span id="cb35-35"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-35" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb35-36"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-36" tabindex="-1"></a><span class="co">#&gt; Regressions:</span></span>
+<span id="cb35-37"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-37" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb35-38"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-38" tabindex="-1"></a><span class="co">#&gt;   i ~                                                 </span></span>
+<span id="cb35-39"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-39" tabindex="-1"></a><span class="co">#&gt;     x1                0.608    0.060   10.134    0.000</span></span>
+<span id="cb35-40"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-40" tabindex="-1"></a><span class="co">#&gt;     x2                0.604    0.064    9.412    0.000</span></span>
+<span id="cb35-41"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-41" tabindex="-1"></a><span class="co">#&gt;   s ~                                                 </span></span>
+<span id="cb35-42"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-42" tabindex="-1"></a><span class="co">#&gt;     x1                0.262    0.029    9.198    0.000</span></span>
+<span id="cb35-43"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-43" tabindex="-1"></a><span class="co">#&gt;     x2                0.522    0.031   17.083    0.000</span></span>
+<span id="cb35-44"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-44" tabindex="-1"></a><span class="co">#&gt;   t1 ~                                                </span></span>
+<span id="cb35-45"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-45" tabindex="-1"></a><span class="co">#&gt;     c1                0.143    0.050    2.883    0.004</span></span>
+<span id="cb35-46"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-46" tabindex="-1"></a><span class="co">#&gt;   t2 ~                                                </span></span>
+<span id="cb35-47"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-47" tabindex="-1"></a><span class="co">#&gt;     c2                0.289    0.046    6.295    0.000</span></span>
+<span id="cb35-48"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-48" tabindex="-1"></a><span class="co">#&gt;   t3 ~                                                </span></span>
+<span id="cb35-49"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-49" tabindex="-1"></a><span class="co">#&gt;     c3                0.328    0.044    7.361    0.000</span></span>
+<span id="cb35-50"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-50" tabindex="-1"></a><span class="co">#&gt;   t4 ~                                                </span></span>
+<span id="cb35-51"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-51" tabindex="-1"></a><span class="co">#&gt;     c4                0.330    0.058    5.655    0.000</span></span>
+<span id="cb35-52"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-52" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb35-53"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-53" tabindex="-1"></a><span class="co">#&gt; Covariances:</span></span>
+<span id="cb35-54"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-54" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb35-55"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-55" tabindex="-1"></a><span class="co">#&gt;  .i ~~                                                </span></span>
+<span id="cb35-56"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-56" tabindex="-1"></a><span class="co">#&gt;    .s                 0.075    0.040    1.855    0.064</span></span>
+<span id="cb35-57"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-57" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb35-58"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-58" tabindex="-1"></a><span class="co">#&gt; Intercepts:</span></span>
+<span id="cb35-59"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-59" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb35-60"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-60" tabindex="-1"></a><span class="co">#&gt;    .t1                0.000                           </span></span>
+<span id="cb35-61"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-61" tabindex="-1"></a><span class="co">#&gt;    .t2                0.000                           </span></span>
+<span id="cb35-62"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-62" tabindex="-1"></a><span class="co">#&gt;    .t3                0.000                           </span></span>
+<span id="cb35-63"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-63" tabindex="-1"></a><span class="co">#&gt;    .t4                0.000                           </span></span>
+<span id="cb35-64"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-64" tabindex="-1"></a><span class="co">#&gt;    .i                 0.580    0.062    9.368    0.000</span></span>
+<span id="cb35-65"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-65" tabindex="-1"></a><span class="co">#&gt;    .s                 0.958    0.029   32.552    0.000</span></span>
+<span id="cb35-66"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-66" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb35-67"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-67" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
+<span id="cb35-68"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-68" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
+<span id="cb35-69"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-69" tabindex="-1"></a><span class="co">#&gt;    .t1                0.580    0.080    7.230    0.000</span></span>
+<span id="cb35-70"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-70" tabindex="-1"></a><span class="co">#&gt;    .t2                0.596    0.054   10.969    0.000</span></span>
+<span id="cb35-71"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-71" tabindex="-1"></a><span class="co">#&gt;    .t3                0.481    0.055    8.745    0.000</span></span>
+<span id="cb35-72"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-72" tabindex="-1"></a><span class="co">#&gt;    .t4                0.535    0.098    5.466    0.000</span></span>
+<span id="cb35-73"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-73" tabindex="-1"></a><span class="co">#&gt;    .i                 1.079    0.112    9.609    0.000</span></span>
+<span id="cb35-74"><a href="esplorazione-approfondita-del-modello-lgm.html#cb35-74" tabindex="-1"></a><span class="co">#&gt;    .s                 0.224    0.027    8.429    0.000</span></span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="esplorazione-approfondita-del-modello-lgm.html#cb36-1" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">coef</span>(fit2), <span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">format =</span> <span class="st">&quot;markdown&quot;</span>)</span></code></pre></div>
+<table>
 <thead>
-<tr>
-<th style="text-align:right;">
-subject
-</th>
-<th style="text-align:right;">
-time
-</th>
-<th style="text-align:right;">
-y1
-</th>
+<tr class="header">
+<th align="left"></th>
+<th align="right">x</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
--0.5395
-</td>
+<tr class="odd">
+<td align="left">i~x1</td>
+<td align="right">0.60838657</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
--1.1824
-</td>
+<tr class="even">
+<td align="left">i~x2</td>
+<td align="right">0.60410683</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
--2.2966
-</td>
+<tr class="odd">
+<td align="left">s~x1</td>
+<td align="right">0.26223932</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
--3.1735
-</td>
+<tr class="even">
+<td align="left">s~x2</td>
+<td align="right">0.52173009</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
--1.3232
-</td>
+<tr class="odd">
+<td align="left">t1~c1</td>
+<td align="right">0.14335610</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
--4.0665
-</td>
+<tr class="even">
+<td align="left">t2~c2</td>
+<td align="right">0.28900400</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
--4.3738
-</td>
+<tr class="odd">
+<td align="left">t3~c3</td>
+<td align="right">0.32753750</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
--6.3583
-</td>
+<tr class="even">
+<td align="left">t4~c4</td>
+<td align="right">0.33049483</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0.8185
-</td>
+<tr class="odd">
+<td align="left">t1~~t1</td>
+<td align="right">0.57982241</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1.0549
-</td>
+<tr class="even">
+<td align="left">t2~~t2</td>
+<td align="right">0.59559342</td>
+</tr>
+<tr class="odd">
+<td align="left">t3~~t3</td>
+<td align="right">0.48141221</td>
+</tr>
+<tr class="even">
+<td align="left">t4~~t4</td>
+<td align="right">0.53520654</td>
+</tr>
+<tr class="odd">
+<td align="left">i~~i</td>
+<td align="right">1.07945768</td>
+</tr>
+<tr class="even">
+<td align="left">s~~s</td>
+<td align="right">0.22376291</td>
+</tr>
+<tr class="odd">
+<td align="left">i~~s</td>
+<td align="right">0.07475324</td>
+</tr>
+<tr class="even">
+<td align="left">i~1</td>
+<td align="right">0.58023837</td>
+</tr>
+<tr class="odd">
+<td align="left">s~1</td>
+<td align="right">0.95757971</td>
 </tr>
 </tbody>
 </table>
-<p>Il grafico seguente mostra le rette di regressione per ciascuno dei 500 soggetti.</p>
-<p><img src="cfa_files/figure-html/spaghetti-1.png" width="576" style="display: block; margin: auto;" /></p>
-<p>Adattiamo ai dati un modello misto utilizzando la funzione <code>lmer</code> del pacchetto <code>lme4</code>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-1" tabindex="-1"></a>mix_mod <span class="ot">&lt;-</span> <span class="fu">lmer</span>(y1 <span class="sc">~</span> time <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> time <span class="sc">|</span> subject), <span class="at">data =</span> d)</span>
-<span id="cb3-2"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-2" tabindex="-1"></a><span class="fu">summary</span>(mix_mod)</span>
-<span id="cb3-3"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-3" tabindex="-1"></a><span class="co">#&gt; Linear mixed model fit by REML [&#39;lmerMod&#39;]</span></span>
-<span id="cb3-4"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-4" tabindex="-1"></a><span class="co">#&gt; Formula: y1 ~ time + (1 + time | subject)</span></span>
-<span id="cb3-5"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-5" tabindex="-1"></a><span class="co">#&gt;    Data: d</span></span>
-<span id="cb3-6"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-7"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-7" tabindex="-1"></a><span class="co">#&gt; REML criterion at convergence: 5881.3</span></span>
-<span id="cb3-8"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-9"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-9" tabindex="-1"></a><span class="co">#&gt; Scaled residuals: </span></span>
-<span id="cb3-10"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-10" tabindex="-1"></a><span class="co">#&gt;      Min       1Q   Median       3Q      Max </span></span>
-<span id="cb3-11"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-11" tabindex="-1"></a><span class="co">#&gt; -3.03499 -0.46249  0.00414  0.48241  2.74992 </span></span>
-<span id="cb3-12"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-13"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-13" tabindex="-1"></a><span class="co">#&gt; Random effects:</span></span>
-<span id="cb3-14"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-14" tabindex="-1"></a><span class="co">#&gt;  Groups   Name        Variance Std.Dev. Corr</span></span>
-<span id="cb3-15"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-15" tabindex="-1"></a><span class="co">#&gt;  subject  (Intercept) 1.0245   1.0122       </span></span>
-<span id="cb3-16"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-16" tabindex="-1"></a><span class="co">#&gt;           time        1.0301   1.0149   0.15</span></span>
-<span id="cb3-17"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-17" tabindex="-1"></a><span class="co">#&gt;  Residual             0.2412   0.4911       </span></span>
-<span id="cb3-18"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-18" tabindex="-1"></a><span class="co">#&gt; Number of obs: 2000, groups:  subject, 500</span></span>
-<span id="cb3-19"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-19" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-20"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-20" tabindex="-1"></a><span class="co">#&gt; Fixed effects:</span></span>
-<span id="cb3-21"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-21" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value</span></span>
-<span id="cb3-22"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-22" tabindex="-1"></a><span class="co">#&gt; (Intercept)  0.50159    0.04885  10.267</span></span>
-<span id="cb3-23"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-23" tabindex="-1"></a><span class="co">#&gt; time         0.25157    0.04644   5.417</span></span>
-<span id="cb3-24"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-24" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-25"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-25" tabindex="-1"></a><span class="co">#&gt; Correlation of Fixed Effects:</span></span>
-<span id="cb3-26"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-26" tabindex="-1"></a><span class="co">#&gt;      (Intr)</span></span>
-<span id="cb3-27"><a href="modelli-a-crescita-latente-e-modelli-misti.html#cb3-27" tabindex="-1"></a><span class="co">#&gt; time 0.072</span></span></code></pre></div>
-<p>Gli effetti fissi che abbiamo ottenuto (<span class="math inline">\(\alpha\)</span> = 0.50159, <span class="math inline">\(\beta\)</span> = 0.25157) sono simili ai valori che abbiamo impostato per l’intercetta e la pendenza complessiva. Le varianze degli effetti casuali stimati (<span class="math inline">\(1.0122^2\)</span>, <span class="math inline">\(1.0149^2\)</span>) sono molto simili al valore impostato di 1, la correlazione (0.15) è simile al valore impostato di 0.2 e la deviazione standard dei residui (0.4911) è simile al valore impostato di 0.5.</p>
+<p>I risultati mostrano che le due covariate <span class="math inline">\(x\)</span> influenzano sia l’intercetta sia la pendenza della curva di crescita. Inoltre, vi sono evidenze di un effetto della covariata <code>c</code>.</p>
 </div>
 </div>
             </section>
@@ -1156,8 +1276,8 @@ y1
           </div>
         </div>
       </div>
-<a href="curve-di-crescita-latente.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="modello-di-crescita-latente.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="modello-di-crescita-latente.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="crescita-non-lineare.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

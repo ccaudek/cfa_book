@@ -25,13 +25,21 @@ Supponiamo che la variabile misurata rappresenti una qualche dimensione psicolog
 - in che misura la $y$ durante nella prima rilevazione temporale varia tra i partecipanti?
 - in che misura la $y$ nella prima rilevazione temporale dipende dall'effetto di qualche altra variabile $x$?
 
-Queste sono alcune delle domande a cui si può rispondere usando i modelli LGM.
+Queste sono alcune delle domande a cui si può rispondere usando i modelli LGM. In questo capitolo verranno introdotti i modelli misti e verrà fatto un confronto tra modelli misti e modelli LGM.
 
 ## Modelli a crescita latente e modelli misti
 
-Nella loro forma più semplice i modelli LGM sono equivalenti a quelli che, nel contesto dell'analisi di regressione, si chiamano modelli a effetti misti (mixed-effects models). Il modello lineare standard assume osservazioni indipendenti, mentre la caratteristica fondamentale dei modelli mixed-effects è il fatto che le osservazioni sono ragruppate in cluster -- per esempio, possiamo avere misure ripetute per lo stesso individuo.
+I modelli di crescita latente (LGM) sono un caso speciale di analisi fattoriale confermativa (CFA) e corrispondono a un modello CFA a due fattori in cui le saturazioni fattoriali sono fissate a valori predefiniti. Nella loro forma più semplice, i modelli LGM sono equivalenti ai modelli a effetti misti nell’analisi di regressione. Pertanto, descrivere i modelli misti ci aiuterà a comprendere meglio i modelli LGM.
 
-Un modo per affrontare problemi di correlazione tra osservazioni raggruppate è utilizzare i modelli a effetti misti. Questi modelli combinano effetti fissi, ovvero coefficienti di regressione standard, con effetti casuali che consentono a ciascun gruppo di avere un effetto unico. Questo effetto unico è considerato una deviazione casuale dall’intercetta e dalle pendenze complessive. I modelli misti rappresentano un equilibrio tra ignorare completamente gli effetti unici dei gruppi e sovra-enfatizzarli eseguendo regressioni separate per ogni gruppo.
+### Modelli misti
+
+Il modello lineare standard presuppone l’indipendenza delle osservazioni. Tuttavia, i modelli misti considerano la presenza di cluster di osservazioni, come ad esempio misure ripetute per lo stesso individuo nel tempo.
+
+Per gestire la correlazione tra le osservazioni raggruppate, si possono utilizzare i modelli a effetti misti. Questi modelli sono impiegati quando si hanno dati raccolti da più cluster, ognuno con caratteristiche uniche ma anche condivise. Un esempio comune di modello misto è quello utilizzato per analizzare dati longitudinali. In questo caso, il modello può includere un effetto fisso per il tempo e un effetto casuale per ogni unità.
+
+I modelli misti rappresentano un compromesso tra la modellizzazione pooled e quella separata. La modellizzazione pooled combina tutti i dati in un unico dataset, ma può portare a una perdita di informazioni sulle differenze tra i gruppi di osservazioni. La modellizzazione separata adatta un modello per ogni gruppo di osservazioni, ma può portare a problemi di sovrapparametrizzazione e scarsa generalizzazione ai nuovi dati.
+
+I modelli misti risolvono questi problemi combinando la modellizzazione pooled e quella separata. In questo modo, il modello tiene conto delle differenze tra i gruppi di dati e sfrutta l’informazione comune per migliorare la precisione delle stime dei parametri.
 
 Il caso seguente descrive un modello misto una struttura di raggruppamento annidata. I cluster che producono gli effetti casuali non devono necessariamente essere gerarchici, tuttavia utilizziamo qui una tale rappresentazione per semplicità.
 
@@ -105,7 +113,7 @@ Questa è solo una rappresentazione possibile dei modelli misti, in quanto è an
 
 Come abbiamo visto in precedenza, le variabili latenti sono assunte come distribuite normalmente, di solito con media zero e con una varianza stimata. Anche gli effetti casuali nei modelli misti lo sono e attraverso questo parallelo possiamo pensare agli effetti casuali come a delle variabili latenti (e viceversa). 
 
-## Simulare effetti casuali
+### Simulare effetti casuali
 
 Possiamo fornire una dimostrazione del funzionamento dei modelli misti con una simulazione. Ciò ci permetterà di meglio comprendere i modelli a crescita latente. Simuleremo dei dati bilanciati, con punteggi su quattro rilevazioni temporali per 500 individui (soggetti). Esamineremo il tasso di crescita ('growth') e consentiremo la presenza di intercette e pendenze specifiche per i diversi soggetti.
 
@@ -308,23 +316,23 @@ In entrambi i casi, la varianza residua è uguale a 0.241 e la correlazione tra 
 
 Inoltre, le stime dei coefficienti casuali del modello misto sono identiche a quelle delle variabili latenti. 
 
-```{r compareRandomeffects, echo=FALSE}
-ranef_latent = data.frame(coef(mix_mod)[[1]], lavPredict(growth_curve_model)) %>% 
-  rename(Int_mix = X.Intercept.,
-         Slope_mix = time,
-         Int_lgc = i,
-         Slope_lgc = s)
-ranef_latent %>%   
-  round(2) %>% 
-  head
+```{r compareRandomeffects}
+ranef_latent <- data.frame(
+  coef(mix_mod)[[1]], lavPredict(growth_curve_model)
+) %>%
+  rename(
+    Int_mix = X.Intercept.,
+    Slope_mix = time,
+    Int_lgc = i,
+    Slope_lgc = s
+  )
+ranef_latent %>%
+  round(2) %>%
+  head()
 ```
 
 
-## Dati longitudinali
 
-
-
-I modelli LGM sono dunque un caso speciale di CFA e, nello specifico, corrispondono un modello CFA a due fattori in cui le saturazioni fattoriali sono fissate a valori predefiniti.
 
 <!-- - le saturazioni sul fattore che specifica le intercette delle funzioni individuali di crescita sono tutte fissate a 1;  -->
 <!-- - le saturazioni sul fattore che specifica le pendenze delle funzioni individuali di crescita sono fissate in modo tale da corrispondere ai diversi momenti del tempo, laddove la saturazione in corrispondenza del momento $t_0$ è uguale a 0 e la progressione procede con incrementi di 1 (ovvero, $0, 1, \dots, t-1$).  -->
@@ -339,8 +347,7 @@ I modelli LGM sono dunque un caso speciale di CFA e, nello specifico, corrispond
 <!-- Si noti che, per disegno, $\tau_i = 0$. -->
 
 
-
-### Esplorazione approfondita del modello LGM
+## Esplorazione approfondita del modello LGM
 
 Consideriamo ora un secondo esempio che ci consentirà di approfondire la nostra conoscenza dei modelli LGM. L'esempio che discuteremo utilizza un campione di dati artificiali chiamato `Demo.growth` in cui si ipotizza che un determinato punteggio venga misurato su quattro punti temporali. I dati sono i seguenti:
 
