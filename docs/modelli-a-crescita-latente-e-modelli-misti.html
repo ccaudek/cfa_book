@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>29.6 Parallel Process Model | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)</title>
+  <title>29.1 Modelli a crescita latente e modelli misti | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)</title>
   <meta name="description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2022/2023) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
   <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="29.6 Parallel Process Model | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
+  <meta property="og:title" content="29.1 Modelli a crescita latente e modelli misti | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2022/2023) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
   <meta name="github-repo" content="ccaudek/cfa_book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="29.6 Parallel Process Model | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
+  <meta name="twitter:title" content="29.1 Modelli a crescita latente e modelli misti | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
   
   <meta name="twitter:description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2022/2023) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="crescita-non-lineare.html"/>
-<link rel="next" href="dati-non-gaussiani-e-categoriali.html"/>
+<link rel="prev" href="curve-di-crescita-latente.html"/>
+<link rel="next" href="simulare-effetti-casuali.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -739,210 +739,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="parallel-process-model" class="section level2 hasAnchor" number="29.6">
-<h2><span class="header-section-number">29.6</span> Parallel Process Model<a href="parallel-process-model.html#parallel-process-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Esaminiamo ora un modello che include sia i termini lineari che quadratici (quando richiesti) delle variabili <code>x</code> e <code>y</code>.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="parallel-process-model.html#cb54-1" tabindex="-1"></a>full_model <span class="ot">&lt;-</span></span>
-<span id="cb54-2"><a href="parallel-process-model.html#cb54-2" tabindex="-1"></a>  <span class="st">&quot;</span></span>
-<span id="cb54-3"><a href="parallel-process-model.html#cb54-3" tabindex="-1"></a><span class="st">  # intercept &amp; slope growth terms for X</span></span>
-<span id="cb54-4"><a href="parallel-process-model.html#cb54-4" tabindex="-1"></a><span class="st">  iX =~ 1*x1 + 1*x2 + 1*x3 + 1*x4</span></span>
-<span id="cb54-5"><a href="parallel-process-model.html#cb54-5" tabindex="-1"></a><span class="st">  sX =~ 0*x1 + 1*x2 + 2*x3 + 3*x4</span></span>
-<span id="cb54-6"><a href="parallel-process-model.html#cb54-6" tabindex="-1"></a></span>
-<span id="cb54-7"><a href="parallel-process-model.html#cb54-7" tabindex="-1"></a><span class="st">  # intercept, slope, &amp; quadratic terms for Y</span></span>
-<span id="cb54-8"><a href="parallel-process-model.html#cb54-8" tabindex="-1"></a><span class="st">  iY =~ 1*y1 + 1*y2 + 1*y3 + 1*y4</span></span>
-<span id="cb54-9"><a href="parallel-process-model.html#cb54-9" tabindex="-1"></a><span class="st">  sY =~ 0*y1 + 1*y2 + 2*y3 + 3*y4</span></span>
-<span id="cb54-10"><a href="parallel-process-model.html#cb54-10" tabindex="-1"></a><span class="st">  qY =~ 0*y1 + 1*y2 + 4*y3 + 9*y4</span></span>
-<span id="cb54-11"><a href="parallel-process-model.html#cb54-11" tabindex="-1"></a></span>
-<span id="cb54-12"><a href="parallel-process-model.html#cb54-12" tabindex="-1"></a><span class="st">  # regress growth terms on predictor</span></span>
-<span id="cb54-13"><a href="parallel-process-model.html#cb54-13" tabindex="-1"></a><span class="st">  qY + iY + sX + iX ~ predictor</span></span>
-<span id="cb54-14"><a href="parallel-process-model.html#cb54-14" tabindex="-1"></a><span class="st">  sY ~ a1*predictor</span></span>
-<span id="cb54-15"><a href="parallel-process-model.html#cb54-15" tabindex="-1"></a></span>
-<span id="cb54-16"><a href="parallel-process-model.html#cb54-16" tabindex="-1"></a><span class="st">  # regress outcome on growth terms</span></span>
-<span id="cb54-17"><a href="parallel-process-model.html#cb54-17" tabindex="-1"></a><span class="st">  outcome ~ iX + sX + iY + b1*sY + qY</span></span>
-<span id="cb54-18"><a href="parallel-process-model.html#cb54-18" tabindex="-1"></a></span>
-<span id="cb54-19"><a href="parallel-process-model.html#cb54-19" tabindex="-1"></a><span class="st">  # testing indirect effect</span></span>
-<span id="cb54-20"><a href="parallel-process-model.html#cb54-20" tabindex="-1"></a><span class="st">  # predictor --&gt; sY --&gt; outcome</span></span>
-<span id="cb54-21"><a href="parallel-process-model.html#cb54-21" tabindex="-1"></a><span class="st">  predictor_sY_outcome := a1*b1</span></span>
-<span id="cb54-22"><a href="parallel-process-model.html#cb54-22" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
-<p>Adattiamo il modello ai dati.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="parallel-process-model.html#cb55-1" tabindex="-1"></a>full_fit <span class="ot">&lt;-</span></span>
-<span id="cb55-2"><a href="parallel-process-model.html#cb55-2" tabindex="-1"></a>  <span class="fu">growth</span>(</span>
-<span id="cb55-3"><a href="parallel-process-model.html#cb55-3" tabindex="-1"></a>    <span class="at">model =</span> full_model,</span>
-<span id="cb55-4"><a href="parallel-process-model.html#cb55-4" tabindex="-1"></a>    <span class="at">estimator =</span> <span class="st">&quot;MLR&quot;</span>,</span>
-<span id="cb55-5"><a href="parallel-process-model.html#cb55-5" tabindex="-1"></a>    <span class="at">data =</span> sim_growth_dat</span>
-<span id="cb55-6"><a href="parallel-process-model.html#cb55-6" tabindex="-1"></a>  )</span></code></pre></div>
-<p>Esaminiamo il path diagram.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="parallel-process-model.html#cb56-1" tabindex="-1"></a><span class="fu">semPaths</span>(</span>
-<span id="cb56-2"><a href="parallel-process-model.html#cb56-2" tabindex="-1"></a>  full_fit,</span>
-<span id="cb56-3"><a href="parallel-process-model.html#cb56-3" tabindex="-1"></a>  <span class="at">layout =</span> <span class="st">&quot;tree&quot;</span>,</span>
-<span id="cb56-4"><a href="parallel-process-model.html#cb56-4" tabindex="-1"></a>  <span class="at">intercepts =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb56-5"><a href="parallel-process-model.html#cb56-5" tabindex="-1"></a>  <span class="at">posCol =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>),</span>
-<span id="cb56-6"><a href="parallel-process-model.html#cb56-6" tabindex="-1"></a>  <span class="at">edge.label.cex =</span> <span class="fl">0.00001</span>,</span>
-<span id="cb56-7"><a href="parallel-process-model.html#cb56-7" tabindex="-1"></a>  <span class="at">sizeMan =</span> <span class="dv">7</span>,</span>
-<span id="cb56-8"><a href="parallel-process-model.html#cb56-8" tabindex="-1"></a>  <span class="at">what =</span> <span class="st">&quot;path&quot;</span>,</span>
-<span id="cb56-9"><a href="parallel-process-model.html#cb56-9" tabindex="-1"></a>  <span class="at">optimizeLatRes =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb56-10"><a href="parallel-process-model.html#cb56-10" tabindex="-1"></a>  <span class="at">residuals =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb56-11"><a href="parallel-process-model.html#cb56-11" tabindex="-1"></a>  <span class="at">style =</span> <span class="st">&quot;lisrel&quot;</span></span>
-<span id="cb56-12"><a href="parallel-process-model.html#cb56-12" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="cfa_files/figure-html/unnamed-chunk-49-1.png" width="576" style="display: block; margin: auto;" /></p>
-<p>Valutiamo l’adattamento.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="parallel-process-model.html#cb57-1" tabindex="-1"></a>full_fit_stats <span class="ot">&lt;-</span></span>
-<span id="cb57-2"><a href="parallel-process-model.html#cb57-2" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(</span>
-<span id="cb57-3"><a href="parallel-process-model.html#cb57-3" tabindex="-1"></a>    full_fit,</span>
-<span id="cb57-4"><a href="parallel-process-model.html#cb57-4" tabindex="-1"></a>    selected_fit_stats</span>
-<span id="cb57-5"><a href="parallel-process-model.html#cb57-5" tabindex="-1"></a>  )</span>
-<span id="cb57-6"><a href="parallel-process-model.html#cb57-6" tabindex="-1"></a></span>
-<span id="cb57-7"><a href="parallel-process-model.html#cb57-7" tabindex="-1"></a><span class="fu">round</span>(full_fit_stats, <span class="dv">2</span>)</span>
-<span id="cb57-8"><a href="parallel-process-model.html#cb57-8" tabindex="-1"></a><span class="co">#&gt;        chisq.scaled           df.scaled       pvalue.scaled          cfi.scaled </span></span>
-<span id="cb57-9"><a href="parallel-process-model.html#cb57-9" tabindex="-1"></a><span class="co">#&gt;               28.23               34.00                0.75                1.00 </span></span>
-<span id="cb57-10"><a href="parallel-process-model.html#cb57-10" tabindex="-1"></a><span class="co">#&gt;        rmsea.scaled rmsea.pvalue.scaled                srmr </span></span>
-<span id="cb57-11"><a href="parallel-process-model.html#cb57-11" tabindex="-1"></a><span class="co">#&gt;                0.00                1.00                0.03</span></span></code></pre></div>
-<p>Si ottiene un ottimo adattamento del modello ai dati (il che non è sorprendente, in quanto i dati sono stati simulati in base a tale modello).</p>
-<div id="interpretazione-4" class="section level3 hasAnchor" number="29.6.1">
-<h3><span class="header-section-number">29.6.1</span> Interpretazione<a href="parallel-process-model.html#interpretazione-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Dato che il modello si adatta bene ai dati, interpretiamo i risultati ottenuti.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="parallel-process-model.html#cb58-1" tabindex="-1"></a><span class="fu">summary</span>(full_fit)</span>
-<span id="cb58-2"><a href="parallel-process-model.html#cb58-2" tabindex="-1"></a><span class="co">#&gt; lavaan 0.6.15 ended normally after 65 iterations</span></span>
-<span id="cb58-3"><a href="parallel-process-model.html#cb58-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb58-4"><a href="parallel-process-model.html#cb58-4" tabindex="-1"></a><span class="co">#&gt;   Estimator                                         ML</span></span>
-<span id="cb58-5"><a href="parallel-process-model.html#cb58-5" tabindex="-1"></a><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
-<span id="cb58-6"><a href="parallel-process-model.html#cb58-6" tabindex="-1"></a><span class="co">#&gt;   Number of model parameters                        29</span></span>
-<span id="cb58-7"><a href="parallel-process-model.html#cb58-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb58-8"><a href="parallel-process-model.html#cb58-8" tabindex="-1"></a><span class="co">#&gt;   Number of observations                           500</span></span>
-<span id="cb58-9"><a href="parallel-process-model.html#cb58-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb58-10"><a href="parallel-process-model.html#cb58-10" tabindex="-1"></a><span class="co">#&gt; Model Test User Model:</span></span>
-<span id="cb58-11"><a href="parallel-process-model.html#cb58-11" tabindex="-1"></a><span class="co">#&gt;                                               Standard      Scaled</span></span>
-<span id="cb58-12"><a href="parallel-process-model.html#cb58-12" tabindex="-1"></a><span class="co">#&gt;   Test Statistic                                28.456      28.233</span></span>
-<span id="cb58-13"><a href="parallel-process-model.html#cb58-13" tabindex="-1"></a><span class="co">#&gt;   Degrees of freedom                                34          34</span></span>
-<span id="cb58-14"><a href="parallel-process-model.html#cb58-14" tabindex="-1"></a><span class="co">#&gt;   P-value (Chi-square)                           0.736       0.746</span></span>
-<span id="cb58-15"><a href="parallel-process-model.html#cb58-15" tabindex="-1"></a><span class="co">#&gt;   Scaling correction factor                                  1.008</span></span>
-<span id="cb58-16"><a href="parallel-process-model.html#cb58-16" tabindex="-1"></a><span class="co">#&gt;     Yuan-Bentler correction (Mplus variant)                       </span></span>
-<span id="cb58-17"><a href="parallel-process-model.html#cb58-17" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb58-18"><a href="parallel-process-model.html#cb58-18" tabindex="-1"></a><span class="co">#&gt; Parameter Estimates:</span></span>
-<span id="cb58-19"><a href="parallel-process-model.html#cb58-19" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb58-20"><a href="parallel-process-model.html#cb58-20" tabindex="-1"></a><span class="co">#&gt;   Standard errors                             Sandwich</span></span>
-<span id="cb58-21"><a href="parallel-process-model.html#cb58-21" tabindex="-1"></a><span class="co">#&gt;   Information bread                           Observed</span></span>
-<span id="cb58-22"><a href="parallel-process-model.html#cb58-22" tabindex="-1"></a><span class="co">#&gt;   Observed information based on                Hessian</span></span>
-<span id="cb58-23"><a href="parallel-process-model.html#cb58-23" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb58-24"><a href="parallel-process-model.html#cb58-24" tabindex="-1"></a><span class="co">#&gt; Latent Variables:</span></span>
-<span id="cb58-25"><a href="parallel-process-model.html#cb58-25" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb58-26"><a href="parallel-process-model.html#cb58-26" tabindex="-1"></a><span class="co">#&gt;   iX =~                                               </span></span>
-<span id="cb58-27"><a href="parallel-process-model.html#cb58-27" tabindex="-1"></a><span class="co">#&gt;     x1                1.000                           </span></span>
-<span id="cb58-28"><a href="parallel-process-model.html#cb58-28" tabindex="-1"></a><span class="co">#&gt;     x2                1.000                           </span></span>
-<span id="cb58-29"><a href="parallel-process-model.html#cb58-29" tabindex="-1"></a><span class="co">#&gt;     x3                1.000                           </span></span>
-<span id="cb58-30"><a href="parallel-process-model.html#cb58-30" tabindex="-1"></a><span class="co">#&gt;     x4                1.000                           </span></span>
-<span id="cb58-31"><a href="parallel-process-model.html#cb58-31" tabindex="-1"></a><span class="co">#&gt;   sX =~                                               </span></span>
-<span id="cb58-32"><a href="parallel-process-model.html#cb58-32" tabindex="-1"></a><span class="co">#&gt;     x1                0.000                           </span></span>
-<span id="cb58-33"><a href="parallel-process-model.html#cb58-33" tabindex="-1"></a><span class="co">#&gt;     x2                1.000                           </span></span>
-<span id="cb58-34"><a href="parallel-process-model.html#cb58-34" tabindex="-1"></a><span class="co">#&gt;     x3                2.000                           </span></span>
-<span id="cb58-35"><a href="parallel-process-model.html#cb58-35" tabindex="-1"></a><span class="co">#&gt;     x4                3.000                           </span></span>
-<span id="cb58-36"><a href="parallel-process-model.html#cb58-36" tabindex="-1"></a><span class="co">#&gt;   iY =~                                               </span></span>
-<span id="cb58-37"><a href="parallel-process-model.html#cb58-37" tabindex="-1"></a><span class="co">#&gt;     y1                1.000                           </span></span>
-<span id="cb58-38"><a href="parallel-process-model.html#cb58-38" tabindex="-1"></a><span class="co">#&gt;     y2                1.000                           </span></span>
-<span id="cb58-39"><a href="parallel-process-model.html#cb58-39" tabindex="-1"></a><span class="co">#&gt;     y3                1.000                           </span></span>
-<span id="cb58-40"><a href="parallel-process-model.html#cb58-40" tabindex="-1"></a><span class="co">#&gt;     y4                1.000                           </span></span>
-<span id="cb58-41"><a href="parallel-process-model.html#cb58-41" tabindex="-1"></a><span class="co">#&gt;   sY =~                                               </span></span>
-<span id="cb58-42"><a href="parallel-process-model.html#cb58-42" tabindex="-1"></a><span class="co">#&gt;     y1                0.000                           </span></span>
-<span id="cb58-43"><a href="parallel-process-model.html#cb58-43" tabindex="-1"></a><span class="co">#&gt;     y2                1.000                           </span></span>
-<span id="cb58-44"><a href="parallel-process-model.html#cb58-44" tabindex="-1"></a><span class="co">#&gt;     y3                2.000                           </span></span>
-<span id="cb58-45"><a href="parallel-process-model.html#cb58-45" tabindex="-1"></a><span class="co">#&gt;     y4                3.000                           </span></span>
-<span id="cb58-46"><a href="parallel-process-model.html#cb58-46" tabindex="-1"></a><span class="co">#&gt;   qY =~                                               </span></span>
-<span id="cb58-47"><a href="parallel-process-model.html#cb58-47" tabindex="-1"></a><span class="co">#&gt;     y1                0.000                           </span></span>
-<span id="cb58-48"><a href="parallel-process-model.html#cb58-48" tabindex="-1"></a><span class="co">#&gt;     y2                1.000                           </span></span>
-<span id="cb58-49"><a href="parallel-process-model.html#cb58-49" tabindex="-1"></a><span class="co">#&gt;     y3                4.000                           </span></span>
-<span id="cb58-50"><a href="parallel-process-model.html#cb58-50" tabindex="-1"></a><span class="co">#&gt;     y4                9.000                           </span></span>
-<span id="cb58-51"><a href="parallel-process-model.html#cb58-51" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb58-52"><a href="parallel-process-model.html#cb58-52" tabindex="-1"></a><span class="co">#&gt; Regressions:</span></span>
-<span id="cb58-53"><a href="parallel-process-model.html#cb58-53" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb58-54"><a href="parallel-process-model.html#cb58-54" tabindex="-1"></a><span class="co">#&gt;   qY ~                                                </span></span>
-<span id="cb58-55"><a href="parallel-process-model.html#cb58-55" tabindex="-1"></a><span class="co">#&gt;     predictor         0.041    0.048    0.850    0.395</span></span>
-<span id="cb58-56"><a href="parallel-process-model.html#cb58-56" tabindex="-1"></a><span class="co">#&gt;   iY ~                                                </span></span>
-<span id="cb58-57"><a href="parallel-process-model.html#cb58-57" tabindex="-1"></a><span class="co">#&gt;     predictor         0.034    0.060    0.564    0.573</span></span>
-<span id="cb58-58"><a href="parallel-process-model.html#cb58-58" tabindex="-1"></a><span class="co">#&gt;   sX ~                                                </span></span>
-<span id="cb58-59"><a href="parallel-process-model.html#cb58-59" tabindex="-1"></a><span class="co">#&gt;     predictor         0.008    0.051    0.161    0.872</span></span>
-<span id="cb58-60"><a href="parallel-process-model.html#cb58-60" tabindex="-1"></a><span class="co">#&gt;   iX ~                                                </span></span>
-<span id="cb58-61"><a href="parallel-process-model.html#cb58-61" tabindex="-1"></a><span class="co">#&gt;     predictor         0.067    0.060    1.119    0.263</span></span>
-<span id="cb58-62"><a href="parallel-process-model.html#cb58-62" tabindex="-1"></a><span class="co">#&gt;   sY ~                                                </span></span>
-<span id="cb58-63"><a href="parallel-process-model.html#cb58-63" tabindex="-1"></a><span class="co">#&gt;     predictor (a1)    2.022    0.079   25.545    0.000</span></span>
-<span id="cb58-64"><a href="parallel-process-model.html#cb58-64" tabindex="-1"></a><span class="co">#&gt;   outcome ~                                           </span></span>
-<span id="cb58-65"><a href="parallel-process-model.html#cb58-65" tabindex="-1"></a><span class="co">#&gt;     iX                1.994    0.145   13.755    0.000</span></span>
-<span id="cb58-66"><a href="parallel-process-model.html#cb58-66" tabindex="-1"></a><span class="co">#&gt;     sX               -0.017    0.146   -0.115    0.908</span></span>
-<span id="cb58-67"><a href="parallel-process-model.html#cb58-67" tabindex="-1"></a><span class="co">#&gt;     iY               -0.028    0.186   -0.149    0.881</span></span>
-<span id="cb58-68"><a href="parallel-process-model.html#cb58-68" tabindex="-1"></a><span class="co">#&gt;     sY        (b1)    2.973    0.104   28.596    0.000</span></span>
-<span id="cb58-69"><a href="parallel-process-model.html#cb58-69" tabindex="-1"></a><span class="co">#&gt;     qY               -0.242    0.161   -1.510    0.131</span></span>
-<span id="cb58-70"><a href="parallel-process-model.html#cb58-70" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb58-71"><a href="parallel-process-model.html#cb58-71" tabindex="-1"></a><span class="co">#&gt; Intercepts:</span></span>
-<span id="cb58-72"><a href="parallel-process-model.html#cb58-72" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb58-73"><a href="parallel-process-model.html#cb58-73" tabindex="-1"></a><span class="co">#&gt;    .x1                0.000                           </span></span>
-<span id="cb58-74"><a href="parallel-process-model.html#cb58-74" tabindex="-1"></a><span class="co">#&gt;    .x2                0.000                           </span></span>
-<span id="cb58-75"><a href="parallel-process-model.html#cb58-75" tabindex="-1"></a><span class="co">#&gt;    .x3                0.000                           </span></span>
-<span id="cb58-76"><a href="parallel-process-model.html#cb58-76" tabindex="-1"></a><span class="co">#&gt;    .x4                0.000                           </span></span>
-<span id="cb58-77"><a href="parallel-process-model.html#cb58-77" tabindex="-1"></a><span class="co">#&gt;    .y1                0.000                           </span></span>
-<span id="cb58-78"><a href="parallel-process-model.html#cb58-78" tabindex="-1"></a><span class="co">#&gt;    .y2                0.000                           </span></span>
-<span id="cb58-79"><a href="parallel-process-model.html#cb58-79" tabindex="-1"></a><span class="co">#&gt;    .y3                0.000                           </span></span>
-<span id="cb58-80"><a href="parallel-process-model.html#cb58-80" tabindex="-1"></a><span class="co">#&gt;    .y4                0.000                           </span></span>
-<span id="cb58-81"><a href="parallel-process-model.html#cb58-81" tabindex="-1"></a><span class="co">#&gt;    .outcome           0.000                           </span></span>
-<span id="cb58-82"><a href="parallel-process-model.html#cb58-82" tabindex="-1"></a><span class="co">#&gt;    .iX                1.976    0.059   33.700    0.000</span></span>
-<span id="cb58-83"><a href="parallel-process-model.html#cb58-83" tabindex="-1"></a><span class="co">#&gt;    .sX                0.991    0.051   19.350    0.000</span></span>
-<span id="cb58-84"><a href="parallel-process-model.html#cb58-84" tabindex="-1"></a><span class="co">#&gt;    .iY                0.031    0.061    0.508    0.611</span></span>
-<span id="cb58-85"><a href="parallel-process-model.html#cb58-85" tabindex="-1"></a><span class="co">#&gt;    .sY               -1.153    0.082  -14.019    0.000</span></span>
-<span id="cb58-86"><a href="parallel-process-model.html#cb58-86" tabindex="-1"></a><span class="co">#&gt;    .qY               -1.548    0.048  -32.151    0.000</span></span>
-<span id="cb58-87"><a href="parallel-process-model.html#cb58-87" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb58-88"><a href="parallel-process-model.html#cb58-88" tabindex="-1"></a><span class="co">#&gt; Variances:</span></span>
-<span id="cb58-89"><a href="parallel-process-model.html#cb58-89" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb58-90"><a href="parallel-process-model.html#cb58-90" tabindex="-1"></a><span class="co">#&gt;    .x1                1.067    0.099   10.777    0.000</span></span>
-<span id="cb58-91"><a href="parallel-process-model.html#cb58-91" tabindex="-1"></a><span class="co">#&gt;    .x2                0.885    0.069   12.924    0.000</span></span>
-<span id="cb58-92"><a href="parallel-process-model.html#cb58-92" tabindex="-1"></a><span class="co">#&gt;    .x3                0.983    0.104    9.492    0.000</span></span>
-<span id="cb58-93"><a href="parallel-process-model.html#cb58-93" tabindex="-1"></a><span class="co">#&gt;    .x4                1.113    0.197    5.646    0.000</span></span>
-<span id="cb58-94"><a href="parallel-process-model.html#cb58-94" tabindex="-1"></a><span class="co">#&gt;    .y1                0.961    0.107    8.991    0.000</span></span>
-<span id="cb58-95"><a href="parallel-process-model.html#cb58-95" tabindex="-1"></a><span class="co">#&gt;    .y2                0.868    0.083   10.470    0.000</span></span>
-<span id="cb58-96"><a href="parallel-process-model.html#cb58-96" tabindex="-1"></a><span class="co">#&gt;    .y3                0.996    0.179    5.557    0.000</span></span>
-<span id="cb58-97"><a href="parallel-process-model.html#cb58-97" tabindex="-1"></a><span class="co">#&gt;    .y4                2.467    0.949    2.601    0.009</span></span>
-<span id="cb58-98"><a href="parallel-process-model.html#cb58-98" tabindex="-1"></a><span class="co">#&gt;    .outcome           0.814    0.927    0.878    0.380</span></span>
-<span id="cb58-99"><a href="parallel-process-model.html#cb58-99" tabindex="-1"></a><span class="co">#&gt;    .iX                1.043    0.100   10.444    0.000</span></span>
-<span id="cb58-100"><a href="parallel-process-model.html#cb58-100" tabindex="-1"></a><span class="co">#&gt;    .sX                1.094    0.076   14.393    0.000</span></span>
-<span id="cb58-101"><a href="parallel-process-model.html#cb58-101" tabindex="-1"></a><span class="co">#&gt;    .iY                1.040    0.108    9.595    0.000</span></span>
-<span id="cb58-102"><a href="parallel-process-model.html#cb58-102" tabindex="-1"></a><span class="co">#&gt;    .sY                1.131    0.125    9.078    0.000</span></span>
-<span id="cb58-103"><a href="parallel-process-model.html#cb58-103" tabindex="-1"></a><span class="co">#&gt;    .qY                0.927    0.068   13.684    0.000</span></span>
-<span id="cb58-104"><a href="parallel-process-model.html#cb58-104" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb58-105"><a href="parallel-process-model.html#cb58-105" tabindex="-1"></a><span class="co">#&gt; Defined Parameters:</span></span>
-<span id="cb58-106"><a href="parallel-process-model.html#cb58-106" tabindex="-1"></a><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span id="cb58-107"><a href="parallel-process-model.html#cb58-107" tabindex="-1"></a><span class="co">#&gt;     predctr_sY_tcm    6.011    0.159   37.874    0.000</span></span></code></pre></div>
-<p>Tra i coefficienti di regressione, quando viene considerata la variabile di esito (<code>outcome</code>), vi sono solo due risultati con <span class="math inline">\(p &lt; .05\)</span>: quelli relativi a <code>iX</code> e <code>sY</code>. Ciò significa che il modello offre evidenze di una associazione tra <code>iX</code> e <code>sY</code> e la variabile di esito. La grandezza dei coefficienti suggerisce che <code>sY</code> ha un impatto maggiore su <code>outcome</code> rispetto a <code>iX</code>. In altre parole, sia i livelli iniziali della <code>x</code>, sia il tasso lineare di cambiamento della <code>y</code> predicono <code>outcome</code>. L’effetto è positivo per entrambe le variabili: livelli maggiori dei valori <code>x</code> nella prima rilevazione temporale e tassi di cambiamento più rapidi nella <code>y</code> portano entrambi un aumento nel valore atteso di <code>outcome</code>.</p>
-<p>L’esempio discusso include anche la covariata <code>predictor</code>, la quale è invariante nel tempo. Poiché vi sono evidenze di un’associazione tra <code>predictor</code> e <code>sY</code>, e poiché vi sono evidenze di un’associazione tra <code>sY</code> e <code>outcome</code>, è ragionevole esaminare con più attenzione un tale effetto di mediazione.</p>
-<p>Per testare gli effetti indiretti è consigliato usare la tecnica di bootstrapping, in quanto gli intervalli di confidenza ottenuti con questa tecnica risultano più affidabili di quelli ottenibili mediante tecniche parametriche basate su ipotesi distributive stringenti relative alle distribuzioni dei parametri.</p>
-<p>Il bootstrapping è una tecnica statistica di ricampionamento con reimmissione spesso usata per la costruzione di intervalli di confidenza delle stime degli effetti indiretti. Il bootstrapping produce intervalli di confidenza più affidabili rispetto a quelli che possono essere ottenuti usando metodi parametrici. Per velocizzare la simulazione, esaminiamo qui solo 500 bootstrap samples (in generale, è meglio usare un numero di simulazioni molto maggiore).</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="parallel-process-model.html#cb59-1" tabindex="-1"></a>final_fit_boot <span class="ot">&lt;-</span></span>
-<span id="cb59-2"><a href="parallel-process-model.html#cb59-2" tabindex="-1"></a>  <span class="fu">growth</span>(full_fit,</span>
-<span id="cb59-3"><a href="parallel-process-model.html#cb59-3" tabindex="-1"></a>    <span class="at">data =</span> sim_growth_dat,</span>
-<span id="cb59-4"><a href="parallel-process-model.html#cb59-4" tabindex="-1"></a>    <span class="at">estimator =</span> <span class="st">&quot;ML&quot;</span>,</span>
-<span id="cb59-5"><a href="parallel-process-model.html#cb59-5" tabindex="-1"></a>    <span class="at">meanstructure =</span> T,</span>
-<span id="cb59-6"><a href="parallel-process-model.html#cb59-6" tabindex="-1"></a>    <span class="at">se =</span> <span class="st">&quot;bootstrap&quot;</span>,</span>
-<span id="cb59-7"><a href="parallel-process-model.html#cb59-7" tabindex="-1"></a>    <span class="at">bootstrap =</span> <span class="dv">500</span>, <span class="co"># ~5000 better</span></span>
-<span id="cb59-8"><a href="parallel-process-model.html#cb59-8" tabindex="-1"></a>    <span class="at">parallel =</span> <span class="st">&quot;multicore&quot;</span></span>
-<span id="cb59-9"><a href="parallel-process-model.html#cb59-9" tabindex="-1"></a>  )</span>
-<span id="cb59-10"><a href="parallel-process-model.html#cb59-10" tabindex="-1"></a></span>
-<span id="cb59-11"><a href="parallel-process-model.html#cb59-11" tabindex="-1"></a><span class="fu">parameterEstimates</span>(</span>
-<span id="cb59-12"><a href="parallel-process-model.html#cb59-12" tabindex="-1"></a>  final_fit_boot,</span>
-<span id="cb59-13"><a href="parallel-process-model.html#cb59-13" tabindex="-1"></a>  <span class="at">level =</span> .<span class="dv">95</span>,</span>
-<span id="cb59-14"><a href="parallel-process-model.html#cb59-14" tabindex="-1"></a>  <span class="at">boot.ci.type =</span> <span class="st">&quot;bca.simple&quot;</span>,</span>
-<span id="cb59-15"><a href="parallel-process-model.html#cb59-15" tabindex="-1"></a>  <span class="at">stand =</span> <span class="cn">TRUE</span></span>
-<span id="cb59-16"><a href="parallel-process-model.html#cb59-16" tabindex="-1"></a>)[<span class="dv">61</span>, <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">10</span>)]</span>
-<span id="cb59-17"><a href="parallel-process-model.html#cb59-17" tabindex="-1"></a><span class="co">#&gt;                   label   est ci.lower ci.upper</span></span>
-<span id="cb59-18"><a href="parallel-process-model.html#cb59-18" tabindex="-1"></a><span class="co">#&gt; 61 predictor_sY_outcome 6.011     5.68    6.325</span></span></code></pre></div>
-<p>Possiamo dunque concludere che il livello della <code>y</code> nella prima rilevazione temporale funge da mediazione tra <code>predictor</code> e <code>outcome</code>, con un effetto non standardizzato pari a 6.01, 95% bootstrap CI [5.71, 6.34].</p>
-<p>In questo tutorial, dunque, abbiamo visto come sia possibile valutare se un predittore influenza la variazione temporale di un costrutto. Abbiamo anche verificato la presenza di un effetto indiretto e abbiamo quantificato l’entità di tale effetto.</p>
-
+<div id="modelli-a-crescita-latente-e-modelli-misti" class="section level2 hasAnchor" number="29.1">
+<h2><span class="header-section-number">29.1</span> Modelli a crescita latente e modelli misti<a href="modelli-a-crescita-latente-e-modelli-misti.html#modelli-a-crescita-latente-e-modelli-misti" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Nella loro forma più semplice i modelli LGM sono equivalenti a quelli che, nel contesto dell’analisi di regressione, si chiamano modelli a effetti misti (mixed-effects models). Il modello lineare standard assume osservazioni indipendenti, mentre la caratteristica fondamentale dei modelli mixed-effects è il fatto che le osservazioni sono ragruppate in cluster – per esempio, possiamo avere misure ripetute per lo stesso individuo.</p>
+<p>Un modo per affrontare problemi di correlazione tra osservazioni raggruppate è utilizzare i modelli a effetti misti. Questi modelli combinano effetti fissi, ovvero coefficienti di regressione standard, con effetti casuali che consentono a ciascun gruppo di avere un effetto unico. Questo effetto unico è considerato una deviazione casuale dall’intercetta e dalle pendenze complessive. I modelli misti rappresentano un equilibrio tra ignorare completamente gli effetti unici dei gruppi e sovra-enfatizzarli eseguendo regressioni separate per ogni gruppo.</p>
+<p>Il caso seguente descrive un modello misto una struttura di raggruppamento annidata. I cluster che producono gli effetti casuali non devono necessariamente essere gerarchici, tuttavia utilizziamo qui una tale rappresentazione per semplicità.</p>
+<p><span class="math display" id="eq:lgm-1">\[
+\begin{equation}
+y_{k} = \alpha + \beta \cdot x_{k} + \varepsilon_{k}, \quad k = 1, \dots, K,
+\tag{29.1}
+\end{equation}
+\]</span></p>
+<p>dove gli <span class="math inline">\(\{\varepsilon_k\}\)</span> sono variabili casuali indipendenti e identicamente distribuite con varianza costante <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>Nel caso delle misure ripetute viene violata l’assunzione che i dati siano variabili casuali indipendenti. Un modo per modellizzare una variabile casuale organizzata in maniera gerarchica è quello di assumere che ciascun ragruppamento sia dotato di una sua specifica intercetta.</p>
+<p><span class="math display" id="eq:lgm-2">\[
+\begin{equation}
+y_{ij} = \alpha_i + \beta \cdot x_{ij} + \varepsilon_{ij}, \quad i = 1, \dots, N, j = 1, \dots, n_i.
+\tag{29.2}
+\end{equation}
+\]</span></p>
+<p>Si noti che abbiamo usato due indici: <span class="math inline">\(i\)</span> corrisponde all’<span class="math inline">\(i\)</span>-esimo ragruppamento, <span class="math inline">\(j\)</span> corrisponde alla osservazione <span class="math inline">\(j\)</span>-esima nell’<span class="math inline">\(i\)</span>-esimo ragruppamento, <span class="math inline">\(n_i\)</span> è il numero di osservazioni nell’<span class="math inline">\(i\)</span>-esimo ragruppamento e <span class="math inline">\(\alpha_i\)</span> è l’intercetta specifica al ragruppamento <span class="math inline">\(i\)</span>-esimo. Il numero totale di osservazioni è <span class="math inline">\(K = \sum_{i=1}^N n_i\)</span>. Per quel che riguarda gli errori <span class="math inline">\(\{\varepsilon_{ij}\}\)</span> assumiamo come in precedenza che siano iid con varianza <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>Il modello per dati ragruppati è più complesso del modello tradizionale e si riduce ad esso nel caso speciale nel quale <span class="math inline">\(\alpha_i = \alpha\)</span>.</p>
+<p>L’assunzione centrale dei modelli misti è che le intercette <span class="math inline">\(\{\alpha_i, i = 1, \dots, N\}\)</span> siano variabili casuali che appartengono ad una popolazione che può essere descritta dalla seguente equazione:</p>
+<p><span class="math display" id="eq:lgm-3">\[
+\begin{equation}
+\alpha_i = \alpha + b_i,
+\tag{29.3}
+\end{equation}
+\]</span></p>
+<p>dove <span class="math inline">\(\alpha\)</span> è l’intercetta della popolazione e <span class="math inline">\(b_i\)</span> è l’effetto casuale, ovvero la deviazione di ciascun ragruppamento dal valore medio della popolazione.</p>
+<p>Sostituendo l’eq. <a href="modelli-a-crescita-latente-e-modelli-misti.html#eq:lgm-3">(29.3)</a> nella <a href="modelli-a-crescita-latente-e-modelli-misti.html#eq:lgm-2">(29.2)</a> otteniamo il modello ad effetti misti:</p>
+<p><span class="math display" id="eq:lgm-4">\[
+\begin{equation}
+y_{ij} = \alpha + b_i + \beta \cdot x_{ij} + \varepsilon_{ij}, \quad i = 1, \dots, N, j = 1, \dots, n_i,
+\tag{29.4}
+\end{equation}
+\]</span></p>
+<p>ovvero</p>
+<p><span class="math display" id="eq:lgm-5">\[
+\begin{equation}
+y_{ij} = \alpha + \beta \cdot x_{ij} + \eta_{ij}, \quad i = 1, \dots, N, j = 1, \dots, n_i,
+\tag{29.5}
+\end{equation}
+\]</span></p>
+<p>dove <span class="math inline">\(\eta_{ij} = \varepsilon_{ij} + b_i\)</span>. Questo è un modello gerarchico, ovvero un modello ad intercetta casuale.</p>
+<p>In pratica, ciò che abbiamo ottenuto è un modello di regressione standard con una fonte aggiuntiva di varianza. In un modello misto ci sono dunque due fonti della varianza: la variazione all’interno di ciascun ragruppamento, <span class="math inline">\(\sigma^2\)</span> e la variazione tra ragruppamenti, <span class="math inline">\(\sigma_b^2\)</span>. Ricordiamo che, invece, nel modello classico abbiamo un’unica fonte della varianza.</p>
+<p>Nel modello misto, le osservazioni all’interno di ciascun ragruppamento sono tra loro correlate con una correlazione uguale a</p>
+<p><span class="math display" id="eq:lgm-6">\[
+\begin{equation}
+\rho = \frac{\mathbb{V}(b_i)}{\mathbb{V}(b_i + \varepsilon_{ij})} = \frac{\sigma_b^2}{\sigma^2 + \sigma_b^2}.
+\tag{29.6}
+\end{equation}
+\]</span></p>
+<p>Dalla <a href="modelli-a-crescita-latente-e-modelli-misti.html#eq:lgm-6">(29.6)</a> risulta che maggiore è la variazione tra i ragruppamenti, maggiore è la correlazione tra le osservazioni all’interno di ciascun ragruppamento. Se <span class="math inline">\(\sigma_b^2 = 0\)</span>, la correlazione è 0, <span class="math inline">\(\alpha_i = \alpha\)</span> e il modello si riduce a quello della regressione classica.</p>
+<p>Questa è solo una rappresentazione possibile dei modelli misti, in quanto è anche possibile consentire alla pendenza di variare, avere effetti casuali da più fonti di raggruppamento, aggiungere covariate a livello di ragruppamento, consentire alle intercette casuali e alle pendenze di correlare tra loro, ecc.</p>
+<p>Come abbiamo visto in precedenza, le variabili latenti sono assunte come distribuite normalmente, di solito con media zero e con una varianza stimata. Anche gli effetti casuali nei modelli misti lo sono e attraverso questo parallelo possiamo pensare agli effetti casuali come a delle variabili latenti (e viceversa).</p>
 </div>
-</div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="crescita-non-lineare.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="dati-non-gaussiani-e-categoriali.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="curve-di-crescita-latente.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="simulare-effetti-casuali.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
