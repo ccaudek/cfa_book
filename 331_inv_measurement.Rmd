@@ -1,0 +1,631 @@
+# Invarianza di misurazione
+
+In questo capitolo, esaminiamo come il modello a fattore comune possa essere utilizzato nell’analisi dei dati longitudinali per studiare i cambiamenti nei fattori comuni attraverso l’uso di modelli di crescita latente. Ci concentriamo sui fattori comuni misurati da variabili osservate con punteggio continuo. La modellizzazione del cambiamento nei fattori comuni è un’estensione logica delle nostre precedenti discussioni nel framework di modellizzazione delle equazioni strutturali, dove i dati sono organizzati in forma multivariata (wide).
+
+Un concetto chiave quando si studia il cambiamento nelle variabili latenti è stabilire una metrica comune per le variabili latenti nel tempo. A differenza delle variabili osservate analizzate nei capitoli precedenti, le variabili latenti non hanno una scala intrinseca e longitudinalmente è necessario che quella scala sia la stessa nel tempo. Questo viene tipicamente fatto testando l’invarianza fattoriale. L’invarianza fattoriale corrisponde al concetto per cui la variabile latente stia misurando lo stesso costrutto nel tempo, in modo che una differenza di un’unità nel punteggio del fattore in un momento significhi la stessa cosa in tutti i momenti.
+
+In questo tutorial, introduciamo il test di invarianza di misura nel contesto di un modello a fattore longitudinale e come un modello di crescita latente di secondo ordine possa essere utilizzato per descrivere il cambiamento in un fattore latente.
+
+Questo tutorial segue l’esempio fornito nel Capitolo 14 @grimm2016growth. Utilizzando dati con tre misurazioni temporali succesive dall’ECLS-K, testiamo l’invarianza fattoriale e quindi utilizziamo un modello di crescita di secondo ordine per descrivere il cambiamento nei punteggi del fattore nel tempo.
+
+## Invarianza fattoriale longitudinale
+
+L’invarianza fattoriale longitudinale si riferisce all’equivalenza di alcuni parametri del modello a fattore comune nel tempo. Avere una struttura fattoriale invariante è un aspetto importante dell’utilizzo dell’analisi fattoriale come strumento di indagine scientifica. I fattori non hanno un'unità di misura o un significato intrinseco; la loro interpretazione deriva dalle loro relazioni con l’insieme delle variabili osservate. Se un fattore deve essere trattato come lo stesso in diverse occasioni temporali di misurazione, l’associazione di quel fattore con altre variabili deve rimanere costante nel tempo. Poiché tutti i parametri coinvolti nell’analisi dei fattori hanno il loro proprio significato intrinseco, quali parametri vengono mantenuti costanti nel tempo influisce su come interpretiamo il cambiamento nei fattori comuni.
+
+Il test di invarianza fattoriale è una procedura multi-step che spesso comporta l’adattamento di quattro modelli con un numero crescente di vincoli. I quattro modelli sono: (1) il modello di invarianza configurale, (2) il modello di invarianza debole, (3) il modello di invarianza forte e (4) il modello di invarianza rigorosa. Ognuno di questi modelli e le loro interpretazioni vengono discussi di seguito.
+
+Il modello di invarianza configurale richiede che il numero di fattori e la struttura delle saturazioni fattoriali siano uguali nelle diverse occasioni di misurazione. Altre caratteristiche come le varianze dei fattori e le medie dei fattori possono variare. I fattori estratti in ogni occasione possono essere interpretati in modo simile, ma non possono essere considerati come misure di costrutti identici o sulla stessa scala. Le differenze longitudinali nelle medie osservate, nelle varianze e nelle covarianze potrebbero essere dovute a cambiamenti nelle variabili osservate indipendenti dai fattori.
+
+I modelli di invarianza configurale sono usati come punto di partenza per confrontare altri modelli con vincoli maggiori. Questi modelli presuppongono che lo stesso numero di fattori sia presente in ogni occasione di misurazione, ma questa ipotesi potrebbe non essere vera. I fattori possono cambiare nel tempo e non essere rilevabili in certe occasioni. I ricercatori dovrebbero verificare che le ipotesi dell’invarianza configurale siano soddisfatte prima di procedere con i successivi test di invarianza.
+
+L’invarianza fattoriale debole è il modello meno vincolato tra i tre modelli di invarianza metrica descritti da Meredith (1993). Questo modello richiede che la matrice delle saturazioni fattoriali sia uguale in tutte le rilevazioni temporali, ma non impone altre restrizioni. Poiché la matrice delle saturazioni fattoriali definisce le covarianze tra le variabili osservate, l’invarianza fattoriale debole crea strutture di covarianza proporzionali nel tempo. La grandezza delle covarianze può aumentare o diminuire con la varianza dei fattori comuni, ma questo aumento o diminuzione influisce su tutte le covarianze delle variabili osservate in egual misura. Le intercette delle variabili osservate rimangono libere di variare nelle diverse occasioni temporali, quindi i cambiamenti longitudinali nelle medie delle variabili osservate non sono spiegati dal fattore(i) comune(i). Mentre il fattore(i) comune(i) è sufficientemente invariante per testare le regressioni o le covarianze tra i fattori e ulteriori variabili, i test del cambiamento longitudinale nei fattori richiedono una forma più forte di invarianza.
+
+L’invarianza forte fornisce un livello più elevato di invarianza di misura vincolando le intercette delle variabili osservate ad essere uguali nelle diverse occasioni di misurazione e consentendo al contempo al vettore delle medie delle variabili latenti di variare nel tempo. Ciò significa che tutti i cambiamenti longitudinali nelle medie e covarianze delle variabili osservate dipendono dalle medie, varianze e covarianze tra i fattori comuni. In altre parole, i cambiamenti nelle variabili osservate sono causati da cambiamenti nei fattori comuni, il che consente l’analisi del cambiamento nel fattore comune. Poiché tutti i cambiamenti a livello medio nelle variabili osservate sono attribuibili ai fattori, l’invarianza forte è sufficiente per assumere che la scala della variabile latente non differisca nelle diverse occasioni di misurazione.
+
+L’invarianza fattoriale rigorosa è il modello di fattore longitudinale con i vincoli più forti. Oltre ai vincoli sulle saturazioni fattoriali e sulle intercette delle variabili osservate, questo modello richiede che le varianze uniche siano uguali nelle diverse occasioni di misurazione. In questo modello, tutti i cambiamenti longitudinali nelle medie osservate, nelle varianze e nelle covarianze sono attribuiti ai cambiamenti nei fattori comuni nel tempo.
+
+## Un esempio concreto
+
+Questo tutorial segue l’esempio del Capitolo 14 di @grimm2016growth. Utilizzando dati relativi a 3 misurazioni dell’ECLS-K, testiamo l’invarianza fattoriale e poi usiamo un modello di crescita latente di secondo ordine per descrivere il cambiamento nei punteggi fattoriali nel tempo.
+
+Carichiamo i pacchetti necessari.
+
+```{r, include = FALSE}
+source("_common.R")
+library("lavaan")
+library("semPlot")
+library("knitr")
+library("markdown")
+library("patchwork")
+library("psych")
+library("DT")
+library("kableExtra")
+library("lme4")
+library("corrplot")
+set.seed(12345)
+```
+
+Leggiamo i dati.
+
+```{r}
+filepath <- "https://raw.githubusercontent.com/LRI-2/Data/main/GrowthModeling/ECLS_Science.dat"
+# read in the text data file using the url() function
+dat <- read.table(file = url(filepath), na.strings = ".")
+
+names(dat) <- c(
+  "id", "s_g3", "r_g3", "m_g3", "s_g5", "r_g5", "m_g5", "s_g8",
+  "r_g8", "m_g8", "st_g3", "rt_g3", "mt_g3", "st_g5", "rt_g5",
+  "mt_g5", "st_g8", "rt_g8", "mt_g8"
+)
+
+# selecting only the variables of interest
+dat <- dat[, c(
+  "id", "s_g3", "r_g3", "m_g3", "s_g5", "r_g5", "m_g5", "s_g8",
+  "r_g8", "m_g8"
+)]
+head(dat, 10)
+```
+
+Otteniamo le statistiche descrittive.
+
+```{r}
+psych::describe(dat[, -1]) #-1 to remove the id column
+```
+
+Calcoliamo le correlazioni.
+
+```{r}
+round(cor(dat[, -1], use = "pairwise.complete"), 2)
+```
+
+```{r}
+corrplot(cor(dat[, -1], use = "pairwise.complete"), order = "original", tl.col = "black", tl.cex = .75)
+```
+
+
+### Modello di invarianza configurale
+
+Il modello di invarianza configurale impone pochi vincoli sulla struttura del fattore nel tempo. L’unico vincolo è che il numero di fattori e la struttura delle saturazioni fattoriali siano uguali nelle diverse occasioni di misurazione. Definiamo un fattore “rendimento accademico” per ciascuna delle 3 occasioni, utilizzando le variabili di matematica, scienze e lettura relative a quella misurazione temporale.
+
+Anche se il fattore comune può essere interpretato in modo simile in ciascuna occasione di misurazione (ad esempio, chiamato “rendimento accademico”), questo modello non impone o assume che i fattori specifici per il tempo misurino lo stesso costrutto o che siano misurati sulla stessa scala.
+
+Definiamo il modello nella sintassi di lavaan.
+
+```{r}
+configural_invar <- " #opening quote
+#factor loadings
+  eta1 =~ lambda_S*s_g3+ #for identification
+          lambda_R3*r_g3+
+          lambda_M3*m_g3
+  eta2 =~ lambda_S*s_g5+ #for identification
+          lambda_R5*r_g5+
+          lambda_M5*m_g5
+  eta3 =~ lambda_S*s_g8+ #for identification
+          lambda_R8*r_g8+
+          lambda_M8*m_g8
+
+#latent variable variances
+   eta1~~1*eta1 #for scaling
+   eta2~~eta2
+   eta3~~eta3
+
+#latent variable covariances
+   eta1~~eta2
+   eta1~~eta3
+   eta2~~eta3
+
+#unique variances
+   s_g3~~s_g3
+   s_g5~~s_g5
+   s_g8~~s_g8
+   r_g3~~r_g3
+   r_g5~~r_g5
+   r_g8~~r_g8
+   m_g3~~m_g3
+   m_g5~~m_g5
+   m_g8~~m_g8
+#unique covariances
+   s_g3~~s_g5
+   s_g3~~s_g8
+   s_g5~~s_g8
+   r_g3~~r_g5
+   r_g3~~r_g8
+   r_g5~~r_g8
+   m_g3~~m_g5
+   m_g3~~m_g8
+   m_g5~~m_g8
+
+#latent variable intercepts
+   eta1~0*1 #for scaling
+   eta2~1
+   eta3~1
+
+#observed variable intercepts
+   s_g3~tau_S*1
+   s_g5~tau_S*1
+   s_g8~tau_S*1
+   r_g3~tau_R3*1
+   r_g5~tau_R5*1
+   r_g8~tau_R8*1
+   m_g3~tau_M3*1
+   m_g5~tau_M5*1
+   m_g8~tau_M8*1
+" # closing quote
+```
+
+Adattiamo il modello ai dati.
+
+```{r}
+fit_configural <- lavaan(configural_invar, data = dat, mimic = "mplus")
+```
+
+Esaminiamo la soluzione.
+
+```{r}
+summary(fit_configural, fit.measures = TRUE)
+```
+
+Generiamo il diagramma di percorso.
+
+```{r}
+semPaths(fit_configural,
+  what = "est",
+  sizeLat = 7, sizeMan = 7, edge.label.cex = .75
+)
+```
+
+### Modello di invarianza debole
+
+Il modello di invarianza debole impone che la matrice di saturazioni fattoriali sia identica in tutte le occasioni di misurazione. Questo implica che le strutture di covarianza nel tempo siano proporzionali. Tuttavia, il modello permette che le intercette delle variabili osservate possano variare nel tempo e quindi non consente di esaminare il cambiamento longitudinale del fattore.
+
+Definiamo il modello usando la sintassi di lavaan.
+
+```{r}
+weak_invar <- " #opening quote
+#factor loadings
+  eta1 =~ lambda_S*s_g3+ #removed time-specific subscripts
+          lambda_R*r_g3+
+          lambda_M*m_g3
+  eta2 =~ lambda_S*s_g5+
+          lambda_R*r_g5+
+          lambda_M*m_g5
+  eta3 =~ lambda_S*s_g8+
+          lambda_R*r_g8+
+          lambda_M*m_g8
+
+#latent variable variances
+   eta1~~1*eta1
+   eta2~~eta2
+   eta3~~eta3
+
+#latent variable covariances
+   eta1~~eta2
+   eta1~~eta3
+   eta2~~eta3
+
+#unique variances
+   s_g3~~s_g3
+   s_g5~~s_g5
+   s_g8~~s_g8
+   r_g3~~r_g3
+   r_g5~~r_g5
+   r_g8~~r_g8
+   m_g3~~m_g3
+   m_g5~~m_g5
+   m_g8~~m_g8
+#unique covariances
+   s_g3~~s_g5
+   s_g3~~s_g8
+   s_g5~~s_g8
+   r_g3~~r_g5
+   r_g3~~r_g8
+   r_g5~~r_g8
+   m_g3~~m_g5
+   m_g3~~m_g8
+   m_g5~~m_g8
+
+#latent variable intercepts
+   eta1~0*1
+   eta2~1
+   eta3~1
+
+#observed variable intercepts
+   s_g3~tau_S*1
+   s_g5~tau_S*1
+   s_g8~tau_S*1
+   r_g3~tau_R3*1
+   r_g5~tau_R5*1
+   r_g8~tau_R8*1
+   m_g3~tau_M3*1
+   m_g5~tau_M5*1
+   m_g8~tau_M8*1
+" # closing quote
+```
+
+Adattiamo il modello ai dati.
+
+```{r}
+fit_weak <- lavaan(weak_invar, data = dat, mimic = "mplus")
+```
+
+Esaminiamo la soluzione.
+
+```{r}
+summary(fit_weak, fit.measures = TRUE)
+```
+
+Generiamo diagramma di percorso.
+
+```{r}
+semPaths(fit_weak,
+  what = "est",
+  sizeLat = 7, sizeMan = 7, edge.label.cex = .75
+)
+```
+
+### Modello di invarianza forte
+
+
+Il modello di invarianza forte impone che le intercette delle variabili osservate siano uguali nel tempo, mentre le medie delle variabili latenti possono variare nelle diverse occasioni. Poiché tutti i cambiamenti nelle medie delle variabili osservate sono attribuiti ai fattori, la scala delle variabili latenti è uguale nelle diverse occasioni di misurazione.
+
+Scriviamo il modello nella sintassi di lavaan.
+
+```{r}
+strong_invar <- " #opening quote
+#factor loadings
+  eta1 =~ lambda_S*s_g3+ #removed time-specific subscripts
+          lambda_R*r_g3+
+          lambda_M*m_g3
+  eta2 =~ lambda_S*s_g5+
+          lambda_R*r_g5+
+          lambda_M*m_g5
+  eta3 =~ lambda_S*s_g8+
+          lambda_R*r_g8+
+          lambda_M*m_g8
+
+#latent variable variances
+   eta1~~1*eta1
+   eta2~~eta2
+   eta3~~eta3
+
+#latent variable covariances
+   eta1~~eta2
+   eta1~~eta3
+   eta2~~eta3
+
+#unique variances
+   s_g3~~s_g3
+   s_g5~~s_g5
+   s_g8~~s_g8
+   r_g3~~r_g3
+   r_g5~~r_g5
+   r_g8~~r_g8
+   m_g3~~m_g3
+   m_g5~~m_g5
+   m_g8~~m_g8
+#unique covariances
+   s_g3~~s_g5
+   s_g3~~s_g8
+   s_g5~~s_g8
+   r_g3~~r_g5
+   r_g3~~r_g8
+   r_g5~~r_g8
+   m_g3~~m_g5
+   m_g3~~m_g8
+   m_g5~~m_g8
+
+#latent variable intercepts
+   eta1~0*1
+   eta2~1
+   eta3~1
+
+#observed variable intercepts
+   s_g3~tau_S*1 #removed time-specific subscripts
+   s_g5~tau_S*1
+   s_g8~tau_S*1
+   r_g3~tau_R*1
+   r_g5~tau_R*1
+   r_g8~tau_R*1
+   m_g3~tau_M*1
+   m_g5~tau_M*1
+   m_g8~tau_M*1
+" # closing quote
+```
+
+Adattiamo il modello ai dati.
+
+```{r}
+fit_strong <- lavaan(strong_invar, data = dat, mimic = "mplus")
+```
+
+Esaminiamo la soluzione.
+
+```{r}
+summary(fit_strong, fit.measures = TRUE)
+```
+
+Generiamo il diagramma di percorso.
+
+```{r}
+semPaths(fit_strong,
+  what = "est",
+  sizeLat = 7, sizeMan = 7, edge.label.cex = .75
+)
+```
+
+### Invarianza stretta
+
+Il modello di invarianza rigorosa impone vincoli aggiuntivi sulle saturazioni fattoriali, sulle intercette delle variabili osservate e sulle varianze uniche. Quando l’invarianza fattoriale rigorosa è soddisfatta, i cambiamenti longitudinali nelle medie osservate, nelle varianze e nelle covarianze ci informano sui cambiamenti longitudinali dei fattori.
+
+Definiamo il modello con la sintassi di lavaan.
+
+```{r}
+strict_invar <- " #opening quote
+#factor loadings
+  eta1 =~ lambda_S*s_g3+ #removed time-specific subscripts
+          lambda_R*r_g3+
+          lambda_M*m_g3
+  eta2 =~ lambda_S*s_g5+
+          lambda_R*r_g5+
+          lambda_M*m_g5
+  eta3 =~ lambda_S*s_g8+
+          lambda_R*r_g8+
+          lambda_M*m_g8
+
+#latent variable variances
+   eta1~~1*eta1
+   eta2~~eta2
+   eta3~~eta3
+
+#latent variable covariances
+   eta1~~eta2
+   eta1~~eta3
+   eta2~~eta3
+
+#unique variances
+   s_g3~~theta_S*s_g3 #adding constraints with names
+   s_g5~~theta_S*s_g5
+   s_g8~~theta_S*s_g8
+   r_g3~~theta_R*r_g3
+   r_g5~~theta_R*r_g5
+   r_g8~~theta_R*r_g8
+   m_g3~~theta_M*m_g3
+   m_g5~~theta_M*m_g5
+   m_g8~~theta_M*m_g8
+#unique covariances
+   s_g3~~s_g5
+   s_g3~~s_g8
+   s_g5~~s_g8
+   r_g3~~r_g5
+   r_g3~~r_g8
+   r_g5~~r_g8
+   m_g3~~m_g5
+   m_g3~~m_g8
+   m_g5~~m_g8
+
+#latent variable intercepts
+   eta1~0*1
+   eta2~1
+   eta3~1
+
+#observed variable intercepts
+   s_g3~tau_S*1 #removed time-specific subscripts
+   s_g5~tau_S*1
+   s_g8~tau_S*1
+   r_g3~tau_R*1
+   r_g5~tau_R*1
+   r_g8~tau_R*1
+   m_g3~tau_M*1
+   m_g5~tau_M*1
+   m_g8~tau_M*1
+" # closing quote
+```
+
+Adattiamo il modello ai dati.
+
+```{r}
+fit_strict <- lavaan(strict_invar, data = dat, mimic = "mplus")
+```
+
+Esaminiamo la soluzione ottenuta.
+
+```{r}
+summary(fit_strict, fit.measures = TRUE)
+```
+
+Generiamo il diagramma di percorso.
+
+```{r}
+semPaths(fit_strict,
+  what = "est",
+  sizeLat = 7, sizeMan = 7, edge.label.cex = .75
+)
+```
+
+## Confronto tra modelli
+
+È possibile valutare il tipo di invarianza fattoriale longitudinale giustificata dai dati mediante un confronto tra modelli.
+
+```{r}
+round(cbind(
+  configural = inspect(fit_configural, "fit.measures"),
+  weak = inspect(fit_weak, "fit.measures"),
+  strong = inspect(fit_strong, "fit.measures"),
+  strict = inspect(fit_strict, "fit.measures")
+), 3)
+```
+
+```{r}
+# Chi-square difference test for nested models
+anova(fit_configural, fit_weak)
+```
+
+```{r}
+anova(fit_weak, fit_strong)
+```
+
+```{r}
+anova(fit_strong, fit_strict)
+```
+
+Nel caso presente, solo l'invarianza configurale è giustificata dal test di verosimiglianze. L'esame degli indici di bontà di adattamento, comunque, suggerisce che l'invarianza debole sembra giustificata per questi dati. @grimm2016growth concludono invece che anche l'invarianza forte è giustificata per questi dati.
+
+## Second-Order Growth Model
+
+Una volta che abbiamo dimostrato che l’invarianza forte o rigorosa è supportata per il modello di crescita latente, possiamo esaminare i cambiamenti nei punteggi  fattoriali.
+
+In questo esempio, imponiamo l’invarianza fattoriale rigorosa e modelliamo il cambiamento nei punteggi fattoriali del rendimento accademico dei bambini utilizzando un Second-Order Growth Model. Si noti che devono essere apportate alcune altre modifiche per l’identificazione e la scala. 
+
+
+```{r}
+growth_strict_invar <- " #opening quote
+#factor loadings
+  eta1 =~ 15.176*s_g3+ #constrained for identification and scaling
+          lambda_R*r_g3+
+          lambda_M*m_g3
+  eta2 =~ 15.176*s_g5+
+          lambda_R*r_g5+
+          lambda_M*m_g5
+  eta3 =~ 15.176*s_g8+
+          lambda_R*r_g8+
+          lambda_M*m_g8
+
+#latent variable variances
+   eta1~~psi*eta1
+   eta2~~psi*eta2
+   eta3~~psi*eta3
+
+#latent variable covariances
+   eta1~~0*eta2 #constrained to zero
+   eta1~~0*eta3
+   eta2~~0*eta3
+
+#unique variances
+   s_g3~~theta_S*s_g3 #adding constraints with names
+   s_g5~~theta_S*s_g5
+   s_g8~~theta_S*s_g8
+   r_g3~~theta_R*r_g3
+   r_g5~~theta_R*r_g5
+   r_g8~~theta_R*r_g8
+   m_g3~~theta_M*m_g3
+   m_g5~~theta_M*m_g5
+   m_g8~~theta_M*m_g8
+#unique covariances
+   s_g3~~s_g5
+   s_g3~~s_g8
+   s_g5~~s_g8
+   r_g3~~r_g5
+   r_g3~~r_g8
+   r_g5~~r_g8
+   m_g3~~m_g5
+   m_g3~~m_g8
+   m_g5~~m_g8
+
+#latent variable intercepts
+   eta1~0*1  #fixed to zero
+   eta2~0*1
+   eta3~0*1
+
+#observed variable intercepts
+   s_g3~tau_S*1 #removed time-specific subscripts
+   s_g5~tau_S*1
+   s_g8~tau_S*1
+   r_g3~tau_R*1
+   r_g5~tau_R*1
+   r_g8~tau_R*1
+   m_g3~tau_M*1
+   m_g5~tau_M*1
+   m_g8~tau_M*1
+
+#second-order latent basis growth
+  #growth factors
+   xi_1 =~ 1*eta1+ #intercept factor
+           1*eta2+
+           1*eta3
+   xi_2 =~ 0*eta1  #latent basis slope factor
+           +start(0.5)*eta2
+           +1*eta3
+  #factor variances & covariance
+    xi_1~~start(.8)*xi_1
+    xi_2~~start(.5)*xi_2
+    xi_1~~start(0)*xi_2
+  #factor intercepts
+    xi_1~0*1
+    xi_2~1
+" # closing quote
+```
+
+Adattiamo il modello ai dati.
+
+```{r}
+fit_growth <- lavaan(growth_strict_invar, data = dat, mimic = "mplus")
+```
+
+Esaminiamo la soluzione.
+
+```{r}
+summary(fit_growth, fit.measures = TRUE)
+```
+
+Generiamo il diagramma di percorso.
+
+```{r}
+semPaths(fit_growth,
+  what = "est",
+  sizeLat = 7, sizeMan = 7, edge.label.cex = .75
+)
+```
+
+## Traiettorie di sviluppo
+
+Possiamo visualizzare le traiettorie previste dei punteggi fattoriali nel modo seguente.
+
+```{r}
+# extract predicted factor scores
+pred <- as.data.frame(lavPredict(fit_growth))
+
+# define function to fit factor trajectories
+fit.line <- function(xi1, xi2, t) {
+  xi1 + xi2 * t
+}
+time <- c(0, .524, 1)
+
+# fit trajectories using estimated factor scores
+out <- NULL
+temp <- NULL
+for (i in 1:nrow(pred)) {
+  temp <- fit.line(pred$xi_1[i], pred$xi_2[i], time)
+  out <- rbind(out, temp)
+}
+out <- as.data.frame(out)
+colnames(out) <- c("pred3", "pred5", "pred8")
+out$ID <- dat$id
+
+# reshape estimated scores to long format (for plotting)
+outlong <- reshape(out,
+  varying = c("pred3", "pred5", "pred8"),
+  timevar = "grade",
+  idvar = "ID",
+  direction = "long", sep = ""
+)
+outlong <- outlong[order(outlong$ID, outlong$grade), ]
+
+# fit average trajectory (for plotting)
+avg <- as.data.frame(fit.line(0, 1.947, time))
+avg$grade <- c(3, 5, 8)
+avg$ID <- 1
+colnames(avg) <- c("fit", "grade", "ID")
+
+# plot predicted common factor trajectories (average in red)
+ggplot(data = outlong, aes(x = grade, y = pred, group = ID)) +
+  ggtitle("Predicted Trajectories: Second Order Growth Model") +
+  xlab("Grade") +
+  ylab("Predicted Academic Achievement Factor Score") +
+  geom_line() +
+  geom_line(data = avg, aes(x = grade, y = fit, group = ID), color = "red", size = 2)
+```
+
+
+## Conclusione
+
+Utilizzando più indicatori all’interno del framework di analisi dei fattori longitudinali, possiamo descrivere il cambiamento con maggiore precisione. Questo perché siamo in grado di filtrare il rumore di misura utilizzando un modello di misura multivariato. In questo modo, possiamo espandere le possibilità di indagine e studio delle differenze interindividuali nel cambiamento intra-individuale.

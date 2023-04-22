@@ -1,0 +1,349 @@
+# Modelli di crescita latenti a gruppi multipli
+
+Nel capitolo precedente abbiamo esaminato i modelli di crescita con covariate invarianti nel tempo. Ora considereremo un quadro alternativo per esaminare le differenze tra le persone nel cambiamento: il confronto tra gruppi (McArdle, 1989; McArdle & Hamagami, 1996). I modelli di crescita con covariate invarianti nel tempo sono utili per studiare le differenze nelle traiettorie medie di crescita ma hanno una utilità limitata per esaminare le differenze in altri aspetti del processo di cambiamento intra-persona e le differenze tra le persone in quel processo. Senza estensione, tali modelli di covariate invarianti nel tempo non ci dicono nulla sulle differenze nelle varianze e covarianze tra i fattori di crescita, la variabilità residua e la struttura dei cambiamenti intra-persona. In questo capitolo illustriamo come il confronto tra gruppi possa essere utilizzato per esaminare le differenze in qualsiasi aspetto del modello di crescita. Questa flessibilità può fornire ulteriori informazioni su come e perché gli individui differiscono nel loro sviluppo.
+
+Carichiamo i pacchetti necessari.
+
+```{r, include = FALSE}
+source("_common.R")
+library("lavaan")
+library("semPlot")
+library("knitr")
+library("markdown")
+library("patchwork")
+library("psych")
+library("DT")
+library("kableExtra")
+library("lme4")
+set.seed(12345)
+```
+
+Per i nostri esempi, utilizziamo i punteggi di rendimento in matematica dai dati  NLSY-CYA [si veda @grimm2016growth]. Iniziamo a leggere i dati.
+
+```{r}
+# set filepath for data file
+filepath <- "https://raw.githubusercontent.com/LRI-2/Data/main/GrowthModeling/nlsy_math_long_R.dat"
+# read in the text data file using the url() function
+dat <- read.table(
+  file = url(filepath),
+  na.strings = "."
+) # indicates the missing data designator
+# copy data with new name
+nlsy_math_long <- dat
+
+# Add names the columns of the data set
+names(nlsy_math_long) <- c(
+  "id", "female", "lb_wght",
+  "anti_k1", "math", "grade",
+  "occ", "age", "men",
+  "spring", "anti"
+)
+
+# reducing to variables of interest
+nlsy_math_long <- nlsy_math_long[, c("id", "grade", "math", "lb_wght")]
+
+# adding another dummy code variable for normal birth weight that coded the opposite of the low brithweight variable.
+nlsy_math_long$nb_wght <- 1 - nlsy_math_long$lb_wght
+
+# view the first few observations in the data set
+head(nlsy_math_long, 10)
+```
+
+Esaminiamo le curve di crescita nei due gruppi.
+
+
+```{r}
+# intraindividual change trajetories
+ggplot(
+  data = nlsy_math_long, # data set
+  aes(x = grade, y = math, group = id)
+) + # setting variables
+  geom_point(size = .5) + # adding points to plot
+  geom_line() + # adding lines to plot
+  theme_bw() + # changing style/background
+  # setting the x-axis with breaks and labels
+  scale_x_continuous(
+    limits = c(2, 8),
+    breaks = c(2, 3, 4, 5, 6, 7, 8),
+    name = "Grade at Testing"
+  ) +
+  # setting the y-axis with limits breaks and labels
+  scale_y_continuous(
+    limits = c(10, 90),
+    breaks = c(10, 30, 50, 70, 90),
+    name = "PIAT Mathematics"
+  ) +
+  facet_wrap(~lb_wght)
+```
+
+Per semplicità, carichiamo di nuovo i dati già trasformati in formato wide.
+
+```{r}
+# set filepath for data file
+filepath <- "https://raw.githubusercontent.com/LRI-2/Data/main/GrowthModeling/nlsy_math_wide_R.dat"
+# read in the text data file using the url() function
+dat <- read.table(
+  file = url(filepath),
+  na.strings = "."
+) # indicates the missing data designator
+# copy data with new name
+nlsy_math_wide <- dat
+
+# Give the variable names
+names(nlsy_math_wide) <- c(
+  "id", "female", "lb_wght", "anti_k1",
+  "math2", "math3", "math4", "math5", "math6", "math7", "math8",
+  "age2", "age3", "age4", "age5", "age6", "age7", "age8",
+  "men2", "men3", "men4", "men5", "men6", "men7", "men8",
+  "spring2", "spring3", "spring4", "spring5", "spring6", "spring7", "spring8",
+  "anti2", "anti3", "anti4", "anti5", "anti6", "anti7", "anti8"
+)
+
+# view the first few observations (and columns) in the data set
+head(nlsy_math_wide[, 1:11], 10)
+```
+
+## Invarianza tra gruppi
+
+Definiamo il modello di crescita latente per i due gruppi.
+
+```{r}
+# writing out linear growth model in full SEM way
+mg_math_lavaan_model <- "
+  # latent variable definitions
+      #intercept (note intercept is a reserved term)
+      eta_1 =~ 1*math2
+      eta_1 =~ 1*math3
+      eta_1 =~ 1*math4
+      eta_1 =~ 1*math5
+      eta_1 =~ 1*math6
+      eta_1 =~ 1*math7
+      eta_1 =~ 1*math8
+
+      #linear slope
+      eta_2 =~ 0*math2
+      eta_2 =~ 1*math3
+      eta_2 =~ 2*math4
+      eta_2 =~ 3*math5
+      eta_2 =~ 4*math6
+      eta_2 =~ 5*math7
+      eta_2 =~ 6*math8
+
+  # factor variances
+      eta_1 ~~ eta_1
+      eta_2 ~~ eta_2
+
+  # covariances among factors
+      eta_1 ~~ eta_2
+
+  # factor means
+      eta_1 ~ start(35)*1
+      eta_2 ~ start(4)*1
+
+  # manifest variances (made equivalent by naming theta)
+      math2 ~~ theta*math2
+      math3 ~~ theta*math3
+      math4 ~~ theta*math4
+      math5 ~~ theta*math5
+      math6 ~~ theta*math6
+      math7 ~~ theta*math7
+      math8 ~~ theta*math8
+  # manifest means (fixed at zero)
+      math2 ~ 0*1
+      math3 ~ 0*1
+      math4 ~ 0*1
+      math5 ~ 0*1
+      math6 ~ 0*1
+      math7 ~ 0*1
+      math8 ~ 0*1
+" # end of model definition
+```
+
+Adattiamo il modello ai dati specificando la separazione delle osservazioni in due gruppi e introducendo i vincoli di eguaglianza tra gruppi sulle saturazioni fattoriali, le medie, le varianze, le covarianze, e i residui. In questo modello, sostanzialmente, non c'è alcune differenza tra gruppi.
+
+```{r}
+mg_math_lavaan_fitM1 <- sem(mg_math_lavaan_model,
+  data = nlsy_math_wide,
+  meanstructure = TRUE,
+  estimator = "ML",
+  missing = "fiml",
+  group = "lb_wght", # to separate groups
+  group.equal = c(
+    "loadings", # for constraints
+    "means",
+    "lv.variances",
+    "lv.covariances",
+    "residuals"
+  )
+)
+```
+
+Esaminiamo il risultato
+
+```{r}
+summary(mg_math_lavaan_fitM1, fit.measures = TRUE)
+```
+
+Creiamo il diagramma di percorso.
+
+
+```{r}
+semPaths(mg_math_lavaan_fitM1, what = "path", whatLabels = "par")
+```
+
+## Vincoli sulle medie
+
+Trasformiamo ora il modello restrittivo specificato in precedenza allentando via via i vincoli che abbiamo introdotto. In questo modello rendiamo possibile la differenza tra le medie nei due gruppi.
+
+```{r}
+mg_math_lavaan_fitM2 <- sem(mg_math_lavaan_model,
+  data = nlsy_math_wide,
+  meanstructure = TRUE,
+  estimator = "ML",
+  missing = "fiml",
+  group = "lb_wght", # to separate groups
+  group.equal = c(
+    "loadings", # for constraints
+    # "means", commented out so can differ
+    "lv.variances",
+    "lv.covariances",
+    "residuals"
+  )
+)
+```
+
+Esaminiamo il risultato.
+
+```{r}
+summary(mg_math_lavaan_fitM2, fit.measures = TRUE)
+```
+
+Eseguiamo il confronto tra i due modelli.
+
+```{r}
+anova(mg_math_lavaan_fitM1, mg_math_lavaan_fitM2)
+```
+
+Non vi è evidenza che consentire una differenza tra medie tra gruppi migliori l'adattamento del modello.
+
+
+## Vincoli sulle varianze/covarianze
+
+Nel modello M3 consentiamo che anche le varianza e le covarianza differiscano tra gruppi, oltre alle medie.
+
+```{r}
+mg_math_lavaan_fitM3 <- sem(mg_math_lavaan_model,
+  data = nlsy_math_wide,
+  meanstructure = TRUE,
+  estimator = "ML",
+  missing = "fiml",
+  group = "lb_wght", # to separate groups
+  group.equal = c(
+    "loadings", # for constraints
+    # "means", commented out so can differ
+    # "lv.variances",
+    # "lv.covariances",
+    "residuals"
+  )
+)
+```
+
+Esaminiamo i risultati.
+
+```{r}
+summary(mg_math_lavaan_fitM3, fit.measures = TRUE)
+```
+
+Confrontiamo il modello M2 con il modello M3.
+
+```{r}
+anova(mg_math_lavaan_fitM2, mg_math_lavaan_fitM3)
+```
+
+Non ci sono evidenze che una differenza nelle varianze e nelle covarianze tra gruppi migliori la bontà dell'adattamento del modello ai dati.
+
+## Vincoli sui residui
+
+Esaminiamo ora il vincolo sulle covarianze residue. Iniziamo a specificare il modello in una nuova forma.
+
+```{r}
+mg_math_lavaan_model4 <- "
+  # latent variable definitions
+      #intercept (note intercept is a reserved term)
+      eta_1 =~ 1*math2
+      eta_1 =~ 1*math3
+      eta_1 =~ 1*math4
+      eta_1 =~ 1*math5
+      eta_1 =~ 1*math6
+      eta_1 =~ 1*math7
+      eta_1 =~ 1*math8
+
+      #linear slope
+      eta_2 =~ 0*math2
+      eta_2 =~ 1*math3
+      eta_2 =~ 2*math4
+      eta_2 =~ 3*math5
+      eta_2 =~ 4*math6
+      eta_2 =~ 5*math7
+      eta_2 =~ 6*math8
+
+  # factor variances
+      eta_1 ~~ start(60)*eta_1
+      eta_2 ~~ start(.75)*eta_2
+
+  # covariances among factors
+      eta_1 ~~ eta_2
+
+  # factor means
+      eta_1 ~ start(35)*1
+      eta_2 ~ start(4)*1
+
+  # manifest variances (made equivalent by naming theta)
+      math2 ~~ c(theta1,theta2)*math2
+      math3 ~~ c(theta1,theta2)*math3
+      math4 ~~ c(theta1,theta2)*math4
+      math5 ~~ c(theta1,theta2)*math5
+      math6 ~~ c(theta1,theta2)*math6
+      math7 ~~ c(theta1,theta2)*math7
+      math8 ~~ c(theta1,theta2)*math8
+  # manifest means (fixed at zero)
+      math2 ~ 0*1
+      math3 ~ 0*1
+      math4 ~ 0*1
+      math5 ~ 0*1
+      math6 ~ 0*1
+      math7 ~ 0*1
+      math8 ~ 0*1
+" # end of model definition
+```
+
+Adattiamo il modello ai dati.
+
+```{r}
+mg_math_lavaan_fitM4 <- sem(mg_math_lavaan_model4,
+  data = nlsy_math_wide,
+  meanstructure = TRUE,
+  estimator = "ML",
+  missing = "fiml",
+  group = "lb_wght", # to separate groups
+  group.equal = c("loadings")
+) # for constraints
+```
+
+Esaminiamo i risulati.
+
+```{r}
+summary(mg_math_lavaan_fitM4, fit.measures = TRUE)
+```
+
+Facciamo un confronto tra la bontà di adattamento del modello M3 e del modello M4.
+
+```{r}
+anova(mg_math_lavaan_fitM3, mg_math_lavaan_fitM4)
+```
+
+Anche in questo caso non otteniamo un risultato che fornisce evidenza di differenze tra i due gruppi.
+
+## Conclusioni
+
+In conclusione, possiamo dire che le evidenze presenti suggeriscono che i modelli di crescita latente per di due gruppi hanno parametri uguali per ciò che concerne le saturazioni fattoriali, le medie, le varianze, le covarianze, e i residui. 

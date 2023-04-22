@@ -1,0 +1,296 @@
+# Covariate indipendenti dal tempo
+
+Partendo dai modelli di crescita lineare descritti nei capitoli precedenti, ci chiediamo se le differenze individuali nelle traiettorie di cambiamento siano associate ad altre variabili. Questo capitolo introduce modelli che esaminano se la variabilità nell’intercetta e nella pendenza del modello di crescita lineare può essere spiegata da covariate invarianti nel tempo. Queste sono variabili a livello di persona che non cambiano nel tempo, come il genere, le condizioni sperimentali e lo stato socio-economico. Nel contesto dei modelli a crescita latente, tali variabili vengono considerate come variabili indipendenti in un modello di regressione multipla in cui l’intercetta e la pendenza del modello di crescita lineare sono le variabili dipendenti. Le covariate invarianti nel tempo possono essere continue, ordinali o categoriche.
+
+Studiando come le differenze individuali nell’intercetta e nella pendenza sono correlate ad altre variabili a livello della persona, possiamo comprendere le possibili ragioni per cui gli individui cambiano in modi diversi. Tuttavia, i risultati di questi modelli non forniscono ulteriori inferenze sulla causalità rispetto ai tipici modelli di regressione. Gli utenti dovrebbero essere cauti quando discutono tali effetti e tenere presente se la covariata invariante nel tempo è stata assegnata in maniera casuale nel contesto di un protocollo sperimentale, oppure se i dati provengono da ricerche osservazionali.
+
+```{r, include = FALSE}
+source("_common.R")
+library("lavaan")
+library("semPlot")
+library("knitr")
+library("markdown")
+library("patchwork")
+library("psych")
+library("DT")
+library("kableExtra")
+library("lme4")
+set.seed(12345)
+```
+
+Per questo esempio considereremo i dati di prestazione matematica dal data set NLSY-CYA Long Data [si veda @grimm2016growth]. Iniziamo a leggere i dati.
+
+```{r}
+# set filepath for data file
+filepath <- "https://raw.githubusercontent.com/LRI-2/Data/main/GrowthModeling/nlsy_math_long_R.dat"
+# read in the text data file using the url() function
+dat <- read.table(
+  file = url(filepath),
+  na.strings = "."
+) # indicates the missing data designator
+# copy data with new name
+nlsy_math_long <- dat
+
+# Add names the columns of the data set
+names(nlsy_math_long) <- c(
+  "id", "female", "lb_wght",
+  "anti_k1", "math", "grade",
+  "occ", "age", "men",
+  "spring", "anti"
+)
+
+# view the first few observations in the data set
+head(nlsy_math_long, 10)
+```
+
+```{r}
+# intraindividual change trajetories
+ggplot(
+  data = nlsy_math_long, # data set
+  aes(x = grade, y = math, group = id)
+) + # setting variables
+  geom_point(size = .5) + # adding points to plot
+  geom_line(aes(linetype = factor(lb_wght), alpha = anti_k1)) + # adding lines to plot
+  theme_bw() + # changing style/background
+  # setting the x-axis with breaks and labels
+  scale_x_continuous(
+    limits = c(2, 8),
+    breaks = c(2, 3, 4, 5, 6, 7, 8),
+    name = "Grade at Testing"
+  ) +
+  # setting the y-axis with limits breaks and labels
+  scale_y_continuous(
+    limits = c(10, 90),
+    breaks = c(10, 30, 50, 70, 90),
+    name = "PIAT Mathematics"
+  )
+```
+
+Per semplicità, leggiamo gli stessi dati in formato wide da un file.
+
+```{r}
+# set filepath for data file
+filepath <- "https://raw.githubusercontent.com/LRI-2/Data/main/GrowthModeling/nlsy_math_wide_R.dat"
+# read in the text data file using the url() function
+dat <- read.table(
+  file = url(filepath),
+  na.strings = "."
+) # indicates the missing data designator
+# copy data with new name
+nlsy_math_wide <- dat
+
+# Give the variable names
+names(nlsy_math_wide) <- c(
+  "id", "female", "lb_wght", "anti_k1",
+  "math2", "math3", "math4", "math5", "math6", "math7", "math8",
+  "age2", "age3", "age4", "age5", "age6", "age7", "age8",
+  "men2", "men3", "men4", "men5", "men6", "men7", "men8",
+  "spring2", "spring3", "spring4", "spring5", "spring6", "spring7", "spring8",
+  "anti2", "anti3", "anti4", "anti5", "anti6", "anti7", "anti8"
+)
+
+
+# view the first few observations (and columns) in the data set
+head(nlsy_math_wide[, 1:11], 10)
+```
+
+Specifichiamo il modello SEM.
+
+```{r}
+#writing out linear growth model with tic in full SEM way 
+lg_math_tic_lavaan_model <- '
+    #latent variable definitions
+            #intercept
+              eta1 =~ 1*math2+
+                      1*math3+
+                      1*math4+
+                      1*math5+
+                      1*math6+
+                      1*math7+
+                      1*math8
+            #linear slope
+              eta2 =~ 0*math2+
+                      1*math3+
+                      2*math4+
+                      3*math5+
+                      4*math6+
+                      5*math7+
+                      6*math8
+
+          #factor variances
+            eta1 ~~ eta1
+            eta2 ~~ eta2
+
+          #factor covariance
+            eta1 ~~ eta2
+
+          #manifest variances (set equal by naming theta)
+            math2 ~~ theta*math2
+            math3 ~~ theta*math3
+            math4 ~~ theta*math4
+            math5 ~~ theta*math5
+            math6 ~~ theta*math6
+            math7 ~~ theta*math7
+            math8 ~~ theta*math8
+
+          #latent means (freely estimated)
+            eta1 ~ 1
+            eta2 ~ 1
+
+          #manifest means (fixed to zero)
+            math2 ~ 0*1
+            math3 ~ 0*1
+            math4 ~ 0*1
+            math5 ~ 0*1
+            math6 ~ 0*1
+            math7 ~ 0*1
+            math8 ~ 0*1
+
+        #Time invariant covaraite
+          #regression of time-invariant covariate on intercept and slope factors
+            eta1~lb_wght+anti_k1
+            eta2~lb_wght+anti_k1
+
+        #variance of TIV covariates
+            lb_wght ~~ lb_wght
+            anti_k1 ~~ anti_k1
+
+        #covariance of TIV covaraites
+            lb_wght ~~ anti_k1
+
+        #means of TIV covariates (freely estimated)
+            lb_wght ~ 1
+            anti_k1 ~ 1
+' #end of model definition
+```
+
+Adattiamo il modello ai dati.
+
+```{r}
+lg_math_tic_lavaan_fit <- sem(lg_math_tic_lavaan_model,
+  data = nlsy_math_wide,
+  meanstructure = TRUE,
+  estimator = "ML",
+  missing = "fiml"
+)
+```
+
+Esaminiamo la soluzione ottenuta.
+
+```{r}
+summary(lg_math_tic_lavaan_fit, fit.measures=TRUE)
+```
+
+Creiamo un diagramma di percorso.
+
+```{r}
+semPaths(lg_math_tic_lavaan_fit,what = "path", whatLabels = "par")
+```
+
+### Valutare il contributo delle covariate
+
+Per valutare se le covariate considerate forniscono un contributo sostanziale al modello confronteremo il modello precedente con un modello vincolato in cui l'effetto delle covariate viene fissato come uguale a zero.
+
+```{r}
+#writing out linear growth model with tic in full SEM way 
+lg_math_ticZERO_lavaan_model <- '
+    #latent variable definitions
+            #intercept
+              eta1 =~ 1*math2+
+                      1*math3+
+                      1*math4+
+                      1*math5+
+                      1*math6+
+                      1*math7+
+                      1*math8
+            #linear slope
+              eta2 =~ 0*math2+
+                      1*math3+
+                      2*math4+
+                      3*math5+
+                      4*math6+
+                      5*math7+
+                      6*math8
+
+          #factor variances
+            eta1 ~~ eta1
+            eta2 ~~ eta2
+
+          #factor covariance
+            eta1 ~~ eta2
+
+          #manifest variances (set equal by naming theta)
+            math2 ~~ theta*math2
+            math3 ~~ theta*math3
+            math4 ~~ theta*math4
+            math5 ~~ theta*math5
+            math6 ~~ theta*math6
+            math7 ~~ theta*math7
+            math8 ~~ theta*math8
+
+          #latent means (freely estimated)
+            eta1 ~ 1
+            eta2 ~ 1
+
+          #manifest means (fixed to zero)
+            math2 ~ 0*1
+            math3 ~ 0*1
+            math4 ~ 0*1
+            math5 ~ 0*1
+            math6 ~ 0*1
+            math7 ~ 0*1
+            math8 ~ 0*1
+
+        #Time invariant covaraite
+          #regression of time-invariant covariate on intercept and slope factors
+          #FIXED to 0
+            eta1~0*lb_wght+0*anti_k1
+            eta2~0*lb_wght+0*anti_k1
+
+        #variance of TIV covariates
+            lb_wght ~~ lb_wght
+            anti_k1 ~~ anti_k1
+
+        #covariance of TIV covaraites
+            lb_wght ~~ anti_k1
+
+        #means of TIV covariates (freely estimated)
+            lb_wght ~ 1
+            anti_k1 ~ 1
+' #end of model definition
+```
+
+Adattiamo il modello ai dati.
+
+```{r}
+lg_math_ticZERO_lavaan_fit <- sem(lg_math_ticZERO_lavaan_model,
+  data = nlsy_math_wide,
+  meanstructure = TRUE,
+  estimator = "ML",
+  missing = "fiml"
+)
+```
+
+Esaminiamo il risultato ottenuto.
+
+```{r}
+summary(lg_math_ticZERO_lavaan_fit, fit.measures=TRUE)
+```
+
+Generiamo il diagramma di percorso.
+
+```{r}
+semPaths(lg_math_ticZERO_lavaan_fit,what = "path", whatLabels = "par")
+```
+
+Eseguiamo il confronto tra i due modelli mediante il test del rapporto tra verosimiglianze.
+
+```{r}
+anova(lg_math_tic_lavaan_fit,lg_math_ticZERO_lavaan_fit)
+```
+
+Il valore-p associato alla statistica chi-quadrato relativa alla differenza tra i due modelli è piccolo. Questo significa che i vincoli aggiuntivi hanno impattato in maniera sostanziale la bontà di adattamento del modello ai dati. Da ciò concludiamo che le covariate forniscono un contributo utile al modello.
+
+
+
+

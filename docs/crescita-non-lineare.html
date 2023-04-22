@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>29.4 Crescita non lineare | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)</title>
+  <title>38.2 Crescita non lineare | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)</title>
   <meta name="description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2022/2023) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
   <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="29.4 Crescita non lineare | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
+  <meta property="og:title" content="38.2 Crescita non lineare | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2022/2023) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
   <meta name="github-repo" content="ccaudek/cfa_book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="29.4 Crescita non lineare | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
+  <meta name="twitter:title" content="38.2 Crescita non lineare | Appunti di Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213)" />
   
   <meta name="twitter:description" content="This document contains the materials of the lessons of Costruzione e validazione di strumenti di misura dell’efficacia dell’intervento psicologico in neuropsicologia – B020881 (B213) (2022/2023) aimed at students of the second year of the Degree Course Laurea Magistrale in Psicologia (LM-51) of the University of Florence, Italy." />
   
@@ -23,15 +23,15 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2023-04-16" />
+<meta name="date" content="2023-04-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="esplorazione-approfondita-del-modello-lgm.html"/>
-<link rel="next" href="parallel-process-model.html"/>
+<link rel="prev" href="leffetto-delle-covariate.html"/>
+<link rel="next" href="stimatore.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -52,10 +52,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 
 <style type="text/css">
@@ -123,6 +119,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
@@ -354,371 +372,418 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.1" data-path="attendibilità.html"><a href="attendibilità.html"><i class="fa fa-check"></i><b>12.1</b> Attendibilità</a></li>
 <li class="chapter" data-level="12.2" data-path="validità.html"><a href="validità.html"><i class="fa fa-check"></i><b>12.2</b> Validità</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path=""><a href="#part-lanalisi-fattoriale"><i class="fa fa-check"></i>(PART) L’analisi fattoriale</a>
+<li class="part"><span><b>IV L’analisi fattoriale</b></span></li>
+<li class="chapter" data-level="13" data-path="utilizzo-e-costruzione-di-test-psicometrici.html"><a href="utilizzo-e-costruzione-di-test-psicometrici.html"><i class="fa fa-check"></i><b>13</b> Utilizzo e costruzione di test psicometrici</a>
 <ul>
-<li class="chapter" data-level="12.3" data-path="caratteristiche-dellanalisi-fattoriale.html"><a href="caratteristiche-dellanalisi-fattoriale.html"><i class="fa fa-check"></i><b>12.3</b> Caratteristiche dell’analisi fattoriale</a>
+<li class="chapter" data-level="13.1" data-path="caratteristiche-dellanalisi-fattoriale.html"><a href="caratteristiche-dellanalisi-fattoriale.html"><i class="fa fa-check"></i><b>13.1</b> Caratteristiche dell’analisi fattoriale</a>
 <ul>
-<li class="chapter" data-level="12.3.1" data-path="caratteristiche-dellanalisi-fattoriale.html"><a href="caratteristiche-dellanalisi-fattoriale.html#lanalisi-fattoriale-esplorativa-e-confermativa"><i class="fa fa-check"></i><b>12.3.1</b> L’analisi fattoriale esplorativa e confermativa</a></li>
-<li class="chapter" data-level="12.3.2" data-path="caratteristiche-dellanalisi-fattoriale.html"><a href="caratteristiche-dellanalisi-fattoriale.html#assunzioni-dellanalisi-fattoriale"><i class="fa fa-check"></i><b>12.3.2</b> Assunzioni dell’analisi fattoriale</a></li>
-<li class="chapter" data-level="12.3.3" data-path="caratteristiche-dellanalisi-fattoriale.html"><a href="caratteristiche-dellanalisi-fattoriale.html#sviluppo-storico-dellanalisi-fattoriale"><i class="fa fa-check"></i><b>12.3.3</b> Sviluppo storico dell’analisi fattoriale</a></li>
-<li class="chapter" data-level="12.3.4" data-path="caratteristiche-dellanalisi-fattoriale.html"><a href="caratteristiche-dellanalisi-fattoriale.html#fasi-dellanalisi-fattoriale"><i class="fa fa-check"></i><b>12.3.4</b> Fasi dell’analisi fattoriale</a></li>
+<li class="chapter" data-level="13.1.1" data-path="caratteristiche-dellanalisi-fattoriale.html"><a href="caratteristiche-dellanalisi-fattoriale.html#lanalisi-fattoriale-esplorativa-e-confermativa"><i class="fa fa-check"></i><b>13.1.1</b> L’analisi fattoriale esplorativa e confermativa</a></li>
+<li class="chapter" data-level="13.1.2" data-path="caratteristiche-dellanalisi-fattoriale.html"><a href="caratteristiche-dellanalisi-fattoriale.html#assunzioni-dellanalisi-fattoriale"><i class="fa fa-check"></i><b>13.1.2</b> Assunzioni dell’analisi fattoriale</a></li>
+<li class="chapter" data-level="13.1.3" data-path="caratteristiche-dellanalisi-fattoriale.html"><a href="caratteristiche-dellanalisi-fattoriale.html#sviluppo-storico-dellanalisi-fattoriale"><i class="fa fa-check"></i><b>13.1.3</b> Sviluppo storico dell’analisi fattoriale</a></li>
+<li class="chapter" data-level="13.1.4" data-path="caratteristiche-dellanalisi-fattoriale.html"><a href="caratteristiche-dellanalisi-fattoriale.html#fasi-dellanalisi-fattoriale"><i class="fa fa-check"></i><b>13.1.4</b> Fasi dell’analisi fattoriale</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="il-modello-unifattoriale.html"><a href="il-modello-unifattoriale.html"><i class="fa fa-check"></i><b>13</b> Il modello unifattoriale</a>
+<li class="chapter" data-level="14" data-path="il-modello-unifattoriale.html"><a href="il-modello-unifattoriale.html"><i class="fa fa-check"></i><b>14</b> Il modello unifattoriale</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="modello-monofattoriale.html"><a href="modello-monofattoriale.html"><i class="fa fa-check"></i><b>13.1</b> Modello monofattoriale</a></li>
-<li class="chapter" data-level="13.2" data-path="correlazione-parziale.html"><a href="correlazione-parziale.html"><i class="fa fa-check"></i><b>13.2</b> Correlazione parziale</a></li>
-<li class="chapter" data-level="13.3" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html"><i class="fa fa-check"></i><b>13.3</b> Principio base dell’analisi fattoriale</a>
+<li class="chapter" data-level="14.1" data-path="modello-monofattoriale.html"><a href="modello-monofattoriale.html"><i class="fa fa-check"></i><b>14.1</b> Modello monofattoriale</a></li>
+<li class="chapter" data-level="14.2" data-path="correlazione-parziale.html"><a href="correlazione-parziale.html"><i class="fa fa-check"></i><b>14.2</b> Correlazione parziale</a></li>
+<li class="chapter" data-level="14.3" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html"><i class="fa fa-check"></i><b>14.3</b> Principio base dell’analisi fattoriale</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html#vincoli-sulle-correlazioni"><i class="fa fa-check"></i><b>13.3.1</b> Vincoli sulle correlazioni</a></li>
-<li class="chapter" data-level="13.3.2" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html#teoria-dei-due-fattori"><i class="fa fa-check"></i><b>13.3.2</b> Teoria dei Due Fattori</a></li>
-<li class="chapter" data-level="13.3.3" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html#annullamento-della-tetrade"><i class="fa fa-check"></i><b>13.3.3</b> Annullamento della tetrade</a></li>
-<li class="chapter" data-level="13.3.4" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html#metodo-del-centroide"><i class="fa fa-check"></i><b>13.3.4</b> Metodo del centroide</a></li>
+<li class="chapter" data-level="14.3.1" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html#vincoli-sulle-correlazioni"><i class="fa fa-check"></i><b>14.3.1</b> Vincoli sulle correlazioni</a></li>
+<li class="chapter" data-level="14.3.2" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html#teoria-dei-due-fattori"><i class="fa fa-check"></i><b>14.3.2</b> Teoria dei Due Fattori</a></li>
+<li class="chapter" data-level="14.3.3" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html#annullamento-della-tetrade"><i class="fa fa-check"></i><b>14.3.3</b> Annullamento della tetrade</a></li>
+<li class="chapter" data-level="14.3.4" data-path="principio-base-dellanalisi-fattoriale.html"><a href="principio-base-dellanalisi-fattoriale.html#metodo-del-centroide"><i class="fa fa-check"></i><b>14.3.4</b> Metodo del centroide</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="introduzione-a-lavaan.html"><a href="introduzione-a-lavaan.html"><i class="fa fa-check"></i><b>13.4</b> Introduzione a <code>lavaan</code></a>
+<li class="chapter" data-level="14.4" data-path="introduzione-a-lavaan.html"><a href="introduzione-a-lavaan.html"><i class="fa fa-check"></i><b>14.4</b> Introduzione a <code>lavaan</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="introduzione-a-lavaan.html"><a href="introduzione-a-lavaan.html#sintassi-del-modello"><i class="fa fa-check"></i><b>13.4.1</b> Sintassi del modello</a></li>
-<li class="chapter" data-level="13.4.2" data-path="introduzione-a-lavaan.html"><a href="introduzione-a-lavaan.html#un-esempio-concreto"><i class="fa fa-check"></i><b>13.4.2</b> Un esempio concreto</a></li>
-<li class="chapter" data-level="13.4.3" data-path="introduzione-a-lavaan.html"><a href="introduzione-a-lavaan.html#diagrammi-di-percorso"><i class="fa fa-check"></i><b>13.4.3</b> Diagrammi di percorso</a></li>
-<li class="chapter" data-level="13.4.4" data-path="introduzione-a-lavaan.html"><a href="introduzione-a-lavaan.html#analisi-fattoriale-esplorativa"><i class="fa fa-check"></i><b>13.4.4</b> Analisi fattoriale esplorativa</a></li>
+<li class="chapter" data-level="14.4.1" data-path="introduzione-a-lavaan.html"><a href="introduzione-a-lavaan.html#sintassi-del-modello"><i class="fa fa-check"></i><b>14.4.1</b> Sintassi del modello</a></li>
+<li class="chapter" data-level="14.4.2" data-path="introduzione-a-lavaan.html"><a href="introduzione-a-lavaan.html#un-esempio-concreto"><i class="fa fa-check"></i><b>14.4.2</b> Un esempio concreto</a></li>
+<li class="chapter" data-level="14.4.3" data-path="introduzione-a-lavaan.html"><a href="introduzione-a-lavaan.html#diagrammi-di-percorso"><i class="fa fa-check"></i><b>14.4.3</b> Diagrammi di percorso</a></li>
+<li class="chapter" data-level="14.4.4" data-path="introduzione-a-lavaan.html"><a href="introduzione-a-lavaan.html#analisi-fattoriale-esplorativa"><i class="fa fa-check"></i><b>14.4.4</b> Analisi fattoriale esplorativa</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="conclusioni-2.html"><a href="conclusioni-2.html"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="il-modello-statistico-dellanalisi-fattoriale.html"><a href="il-modello-statistico-dellanalisi-fattoriale.html"><i class="fa fa-check"></i><b>14</b> Il modello statistico dell’analisi fattoriale</a>
+<li class="chapter" data-level="15" data-path="il-modello-statistico-dellanalisi-fattoriale.html"><a href="il-modello-statistico-dellanalisi-fattoriale.html"><i class="fa fa-check"></i><b>15</b> Il modello statistico dell’analisi fattoriale</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="modello-monofattoriale-1.html"><a href="modello-monofattoriale-1.html"><i class="fa fa-check"></i><b>14.1</b> Modello monofattoriale</a></li>
-<li class="chapter" data-level="14.2" data-path="covarianza-tra-un-indicatore-e-il-fattore-comune.html"><a href="covarianza-tra-un-indicatore-e-il-fattore-comune.html"><i class="fa fa-check"></i><b>14.2</b> Covarianza tra un indicatore e il fattore comune</a></li>
-<li class="chapter" data-level="14.3" data-path="espressione-fattoriale-della-varianza.html"><a href="espressione-fattoriale-della-varianza.html"><i class="fa fa-check"></i><b>14.3</b> Espressione fattoriale della varianza</a></li>
-<li class="chapter" data-level="14.4" data-path="covarianza-tra-due-variabili-manifeste.html"><a href="covarianza-tra-due-variabili-manifeste.html"><i class="fa fa-check"></i><b>14.4</b> Covarianza tra due variabili manifeste</a></li>
-<li class="chapter" data-level="14.5" data-path="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html"><i class="fa fa-check"></i><b>14.5</b> Correlazioni osservate e correlazioni riprodotte dal modello</a></li>
-<li class="chapter" data-level="14.6" data-path="bontà-di-adattamento-del-modello-ai-dati.html"><a href="bontà-di-adattamento-del-modello-ai-dati.html"><i class="fa fa-check"></i><b>14.6</b> Bontà di adattamento del modello ai dati</a></li>
-<li class="chapter" data-level="14.7" data-path="lerrore-standard-della-misurazione-e-il-modello-fattoriale.html"><a href="lerrore-standard-della-misurazione-e-il-modello-fattoriale.html"><i class="fa fa-check"></i><b>14.7</b> L’errore standard della misurazione e il modello fattoriale</a></li>
-<li class="chapter" data-level="14.8" data-path="un-esempio-concreto-1.html"><a href="un-esempio-concreto-1.html"><i class="fa fa-check"></i><b>14.8</b> Un esempio concreto</a>
+<li class="chapter" data-level="15.1" data-path="modello-monofattoriale-1.html"><a href="modello-monofattoriale-1.html"><i class="fa fa-check"></i><b>15.1</b> Modello monofattoriale</a></li>
+<li class="chapter" data-level="15.2" data-path="covarianza-tra-un-indicatore-e-il-fattore-comune.html"><a href="covarianza-tra-un-indicatore-e-il-fattore-comune.html"><i class="fa fa-check"></i><b>15.2</b> Covarianza tra un indicatore e il fattore comune</a></li>
+<li class="chapter" data-level="15.3" data-path="espressione-fattoriale-della-varianza.html"><a href="espressione-fattoriale-della-varianza.html"><i class="fa fa-check"></i><b>15.3</b> Espressione fattoriale della varianza</a></li>
+<li class="chapter" data-level="15.4" data-path="covarianza-tra-due-variabili-manifeste.html"><a href="covarianza-tra-due-variabili-manifeste.html"><i class="fa fa-check"></i><b>15.4</b> Covarianza tra due variabili manifeste</a></li>
+<li class="chapter" data-level="15.5" data-path="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html"><a href="correlazioni-osservate-e-correlazioni-riprodotte-dal-modello.html"><i class="fa fa-check"></i><b>15.5</b> Correlazioni osservate e correlazioni riprodotte dal modello</a></li>
+<li class="chapter" data-level="15.6" data-path="bontà-di-adattamento-del-modello-ai-dati.html"><a href="bontà-di-adattamento-del-modello-ai-dati.html"><i class="fa fa-check"></i><b>15.6</b> Bontà di adattamento del modello ai dati</a></li>
+<li class="chapter" data-level="15.7" data-path="lerrore-standard-della-misurazione-e-il-modello-fattoriale.html"><a href="lerrore-standard-della-misurazione-e-il-modello-fattoriale.html"><i class="fa fa-check"></i><b>15.7</b> L’errore standard della misurazione e il modello fattoriale</a></li>
+<li class="chapter" data-level="15.8" data-path="un-esempio-concreto-1.html"><a href="un-esempio-concreto-1.html"><i class="fa fa-check"></i><b>15.8</b> Un esempio concreto</a>
 <ul>
-<li class="chapter" data-level="14.8.1" data-path="un-esempio-concreto-1.html"><a href="un-esempio-concreto-1.html#correlazioni-osservate-e-riprodotte"><i class="fa fa-check"></i><b>14.8.1</b> Correlazioni osservate e riprodotte</a></li>
-<li class="chapter" data-level="14.8.2" data-path="un-esempio-concreto-1.html"><a href="un-esempio-concreto-1.html#scomposizione-della-varianza"><i class="fa fa-check"></i><b>14.8.2</b> Scomposizione della varianza</a></li>
-<li class="chapter" data-level="14.8.3" data-path="un-esempio-concreto-1.html"><a href="un-esempio-concreto-1.html#correlazione-tra-variabili-manifeste-e-fattore-comune"><i class="fa fa-check"></i><b>14.8.3</b> Correlazione tra variabili manifeste e fattore comune</a></li>
+<li class="chapter" data-level="15.8.1" data-path="un-esempio-concreto-1.html"><a href="un-esempio-concreto-1.html#correlazioni-osservate-e-riprodotte"><i class="fa fa-check"></i><b>15.8.1</b> Correlazioni osservate e riprodotte</a></li>
+<li class="chapter" data-level="15.8.2" data-path="un-esempio-concreto-1.html"><a href="un-esempio-concreto-1.html#scomposizione-della-varianza"><i class="fa fa-check"></i><b>15.8.2</b> Scomposizione della varianza</a></li>
+<li class="chapter" data-level="15.8.3" data-path="un-esempio-concreto-1.html"><a href="un-esempio-concreto-1.html#correlazione-tra-variabili-manifeste-e-fattore-comune"><i class="fa fa-check"></i><b>15.8.3</b> Correlazione tra variabili manifeste e fattore comune</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="il-modello-multifattoriale.html"><a href="il-modello-multifattoriale.html"><i class="fa fa-check"></i><b>15</b> Il modello multifattoriale</a>
+<li class="chapter" data-level="16" data-path="il-modello-multifattoriale.html"><a href="il-modello-multifattoriale.html"><i class="fa fa-check"></i><b>16</b> Il modello multifattoriale</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html"><i class="fa fa-check"></i><b>15.1</b> Modello multifattoriale: fattori ortogonali</a>
+<li class="chapter" data-level="16.1" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html"><i class="fa fa-check"></i><b>16.1</b> Modello multifattoriale: fattori ortogonali</a>
 <ul>
-<li class="chapter" data-level="15.1.1" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html#assunzioni-del-modello-multifattoriale"><i class="fa fa-check"></i><b>15.1.1</b> Assunzioni del modello multifattoriale</a></li>
-<li class="chapter" data-level="15.1.2" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html#interpretazione-dei-parametri-del-modello"><i class="fa fa-check"></i><b>15.1.2</b> Interpretazione dei parametri del modello</a></li>
+<li class="chapter" data-level="16.1.1" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html#assunzioni-del-modello-multifattoriale"><i class="fa fa-check"></i><b>16.1.1</b> Assunzioni del modello multifattoriale</a></li>
+<li class="chapter" data-level="16.1.2" data-path="modello-multifattoriale-fattori-ortogonali.html"><a href="modello-multifattoriale-fattori-ortogonali.html#interpretazione-dei-parametri-del-modello"><i class="fa fa-check"></i><b>16.1.2</b> Interpretazione dei parametri del modello</a></li>
 </ul></li>
-<li class="chapter" data-level="15.2" data-path="modello-fattoriale-fattori-obliqui.html"><a href="modello-fattoriale-fattori-obliqui.html"><i class="fa fa-check"></i><b>15.2</b> Modello fattoriale: Fattori obliqui</a>
+<li class="chapter" data-level="16.2" data-path="modello-fattoriale-fattori-obliqui.html"><a href="modello-fattoriale-fattori-obliqui.html"><i class="fa fa-check"></i><b>16.2</b> Modello fattoriale: Fattori obliqui</a>
 <ul>
-<li class="chapter" data-level="15.2.1" data-path="modello-fattoriale-fattori-obliqui.html"><a href="modello-fattoriale-fattori-obliqui.html#covarianza-teorica-tra-variabili-e-fattori"><i class="fa fa-check"></i><b>15.2.1</b> Covarianza teorica tra variabili e fattori</a></li>
-<li class="chapter" data-level="15.2.2" data-path="modello-fattoriale-fattori-obliqui.html"><a href="modello-fattoriale-fattori-obliqui.html#espressione-fattoriale-della-varianza-2"><i class="fa fa-check"></i><b>15.2.2</b> Espressione fattoriale della varianza</a></li>
-<li class="chapter" data-level="15.2.3" data-path="modello-fattoriale-fattori-obliqui.html"><a href="modello-fattoriale-fattori-obliqui.html#covarianza-teorica-tra-due-variabili"><i class="fa fa-check"></i><b>15.2.3</b> Covarianza teorica tra due variabili</a></li>
+<li class="chapter" data-level="16.2.1" data-path="modello-fattoriale-fattori-obliqui.html"><a href="modello-fattoriale-fattori-obliqui.html#covarianza-teorica-tra-variabili-e-fattori"><i class="fa fa-check"></i><b>16.2.1</b> Covarianza teorica tra variabili e fattori</a></li>
+<li class="chapter" data-level="16.2.2" data-path="modello-fattoriale-fattori-obliqui.html"><a href="modello-fattoriale-fattori-obliqui.html#espressione-fattoriale-della-varianza-2"><i class="fa fa-check"></i><b>16.2.2</b> Espressione fattoriale della varianza</a></li>
+<li class="chapter" data-level="16.2.3" data-path="modello-fattoriale-fattori-obliqui.html"><a href="modello-fattoriale-fattori-obliqui.html#covarianza-teorica-tra-due-variabili"><i class="fa fa-check"></i><b>16.2.3</b> Covarianza teorica tra due variabili</a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="efa-con-lavaan.html"><a href="efa-con-lavaan.html"><i class="fa fa-check"></i><b>15.3</b> EFA con <code>lavaan</code></a></li>
+<li class="chapter" data-level="16.3" data-path="efa-con-lavaan.html"><a href="efa-con-lavaan.html"><i class="fa fa-check"></i><b>16.3</b> EFA con <code>lavaan</code></a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="i-punteggi-fattoriali.html"><a href="i-punteggi-fattoriali.html"><i class="fa fa-check"></i><b>16</b> I punteggi fattoriali</a>
+<li class="chapter" data-level="17" data-path="i-punteggi-fattoriali.html"><a href="i-punteggi-fattoriali.html"><i class="fa fa-check"></i><b>17</b> I punteggi fattoriali</a>
 <ul>
-<li class="chapter" data-level="16.0.1" data-path="i-punteggi-fattoriali.html"><a href="i-punteggi-fattoriali.html#esempio-di-interpretazione"><i class="fa fa-check"></i><b>16.0.1</b> Esempio di interpretazione</a></li>
-<li class="chapter" data-level="16.1" data-path="punteggi-fattoriali.html"><a href="punteggi-fattoriali.html"><i class="fa fa-check"></i><b>16.1</b> Punteggi fattoriali</a>
+<li class="chapter" data-level="17.0.1" data-path="i-punteggi-fattoriali.html"><a href="i-punteggi-fattoriali.html#esempio-di-interpretazione"><i class="fa fa-check"></i><b>17.0.1</b> Esempio di interpretazione</a></li>
+<li class="chapter" data-level="17.1" data-path="punteggi-fattoriali.html"><a href="punteggi-fattoriali.html"><i class="fa fa-check"></i><b>17.1</b> Punteggi fattoriali</a>
 <ul>
-<li class="chapter" data-level="16.1.1" data-path="punteggi-fattoriali.html"><a href="punteggi-fattoriali.html#stima-dei-punteggi-fattoriali"><i class="fa fa-check"></i><b>16.1.1</b> Stima dei punteggi fattoriali</a></li>
-<li class="chapter" data-level="16.1.2" data-path="punteggi-fattoriali.html"><a href="punteggi-fattoriali.html#dimostrazione-di-thurstone"><i class="fa fa-check"></i><b>16.1.2</b> Dimostrazione di Thurstone</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="17" data-path="visualizzare-il-modelli-di-equazioni-strutturali.html"><a href="visualizzare-il-modelli-di-equazioni-strutturali.html"><i class="fa fa-check"></i><b>17</b> Visualizzare il modelli di equazioni strutturali</a>
-<ul>
-<li class="chapter" data-level="17.1" data-path="path-diagram.html"><a href="path-diagram.html"><i class="fa fa-check"></i><b>17.1</b> Path diagram</a></li>
-<li class="chapter" data-level="17.2" data-path="path-analysis-e-regressione-multipla.html"><a href="path-analysis-e-regressione-multipla.html"><i class="fa fa-check"></i><b>17.2</b> Path analysis e regressione multipla</a></li>
-<li class="chapter" data-level="17.3" data-path="effetti-diretti-e-indiretti.html"><a href="effetti-diretti-e-indiretti.html"><i class="fa fa-check"></i><b>17.3</b> Effetti diretti e indiretti</a></li>
-<li class="chapter" data-level="17.4" data-path="le-regole-di-wright.html"><a href="le-regole-di-wright.html"><i class="fa fa-check"></i><b>17.4</b> Le regole di Wright</a>
-<ul>
-<li class="chapter" data-level="17.4.1" data-path="le-regole-di-wright.html"><a href="le-regole-di-wright.html#scomposizione-delle-correlazioni-covarianze"><i class="fa fa-check"></i><b>17.4.1</b> Scomposizione delle correlazioni (covarianze)</a></li>
-<li class="chapter" data-level="17.4.2" data-path="le-regole-di-wright.html"><a href="le-regole-di-wright.html#scomposizione-della-varianza-1"><i class="fa fa-check"></i><b>17.4.2</b> Scomposizione della varianza</a></li>
-</ul></li>
-<li class="chapter" data-level="17.5" data-path="come-calcolare-i-coefficienti-di-percorso.html"><a href="come-calcolare-i-coefficienti-di-percorso.html"><i class="fa fa-check"></i><b>17.5</b> Come calcolare i coefficienti di percorso?</a></li>
-<li class="chapter" data-level="17.6" data-path="path-analysis-con-lavaan.html"><a href="path-analysis-con-lavaan.html"><i class="fa fa-check"></i><b>17.6</b> Path analysis con <code>lavaan</code></a></li>
-<li class="chapter" data-level="17.7" data-path="oltre-la-regressione-multipla.html"><a href="oltre-la-regressione-multipla.html"><i class="fa fa-check"></i><b>17.7</b> Oltre la regressione multipla</a></li>
-</ul></li>
-<li class="chapter" data-level="18" data-path="attendibilità-e-modello-fattoriale.html"><a href="attendibilità-e-modello-fattoriale.html"><i class="fa fa-check"></i><b>18</b> Attendibilità e modello fattoriale</a>
-<ul>
-<li class="chapter" data-level="18.1" data-path="teoria-classica-dei-test-e-analisi-fattoriale.html"><a href="teoria-classica-dei-test-e-analisi-fattoriale.html"><i class="fa fa-check"></i><b>18.1</b> Teoria classica dei test e analisi fattoriale</a></li>
-<li class="chapter" data-level="18.2" data-path="modello-fattoriale-e-ctt.html"><a href="modello-fattoriale-e-ctt.html"><i class="fa fa-check"></i><b>18.2</b> Modello fattoriale e CTT</a></li>
-<li class="chapter" data-level="18.3" data-path="classi-di-modelli.html"><a href="classi-di-modelli.html"><i class="fa fa-check"></i><b>18.3</b> Classi di modelli</a>
-<ul>
-<li class="chapter" data-level="18.3.1" data-path="classi-di-modelli.html"><a href="classi-di-modelli.html#indicatori-congenerici"><i class="fa fa-check"></i><b>18.3.1</b> Indicatori congenerici</a></li>
-<li class="chapter" data-level="18.3.2" data-path="classi-di-modelli.html"><a href="classi-di-modelli.html#indicatori-tau-equivalenti"><i class="fa fa-check"></i><b>18.3.2</b> Indicatori tau-equivalenti</a></li>
-<li class="chapter" data-level="18.3.3" data-path="classi-di-modelli.html"><a href="classi-di-modelli.html#indicatori-paralleli"><i class="fa fa-check"></i><b>18.3.3</b> Indicatori paralleli</a></li>
-<li class="chapter" data-level="18.3.4" data-path="classi-di-modelli.html"><a href="classi-di-modelli.html#indicatori-strettamente-paralleli"><i class="fa fa-check"></i><b>18.3.4</b> Indicatori strettamente paralleli</a></li>
-</ul></li>
-<li class="chapter" data-level="18.4" data-path="metodo-dei-minimi-quadrati-non-pesati.html"><a href="metodo-dei-minimi-quadrati-non-pesati.html"><i class="fa fa-check"></i><b>18.4</b> Metodo dei minimi quadrati non pesati</a></li>
-<li class="chapter" data-level="18.5" data-path="varianza-del-punteggio-totale-di-un-test.html"><a href="varianza-del-punteggio-totale-di-un-test.html"><i class="fa fa-check"></i><b>18.5</b> Varianza del punteggio totale di un test</a></li>
-<li class="chapter" data-level="18.6" data-path="stima-dellattendibilità.html"><a href="stima-dellattendibilità.html"><i class="fa fa-check"></i><b>18.6</b> Stima dell’attendibilità</a>
-<ul>
-<li class="chapter" data-level="18.6.1" data-path="stima-dellattendibilità.html"><a href="stima-dellattendibilità.html#coefficiente-omega"><i class="fa fa-check"></i><b>18.6.1</b> Coefficiente omega</a></li>
-<li class="chapter" data-level="18.6.2" data-path="stima-dellattendibilità.html"><a href="stima-dellattendibilità.html#coefficiente-alpha-di-cronbach"><i class="fa fa-check"></i><b>18.6.2</b> Coefficiente <span class="math inline">\(\alpha\)</span> di Cronbach</a></li>
-<li class="chapter" data-level="18.6.3" data-path="stima-dellattendibilità.html"><a href="stima-dellattendibilità.html#la-formula-profetica-di-spearman-brown"><i class="fa fa-check"></i><b>18.6.3</b> La formula “profetica” di Spearman-Brown</a></li>
-</ul></li>
-<li class="chapter" data-level="18.7" data-path="punteggio-totale-e-modello-fattoriale-parallelo.html"><a href="punteggio-totale-e-modello-fattoriale-parallelo.html"><i class="fa fa-check"></i><b>18.7</b> Punteggio totale e modello fattoriale parallelo</a></li>
-<li class="chapter" data-level="18.8" data-path="attenuazione-1.html"><a href="attenuazione-1.html"><i class="fa fa-check"></i><b>18.8</b> Attenuazione</a>
-<ul>
-<li class="chapter" data-level="18.8.1" data-path="attenuazione-1.html"><a href="attenuazione-1.html#correlazioni-disattenuate"><i class="fa fa-check"></i><b>18.8.1</b> Correlazioni disattenuate</a></li>
-</ul></li>
-<li class="chapter" data-level="18.9" data-path="attendibilità-e-scala-di-misura.html"><a href="attendibilità-e-scala-di-misura.html"><i class="fa fa-check"></i><b>18.9</b> Attendibilità e scala di misura</a></li>
-<li class="chapter" data-level="18.10" data-path="quale-indice-usare.html"><a href="quale-indice-usare.html"><i class="fa fa-check"></i><b>18.10</b> Quale indice usare?</a></li>
-</ul></li>
-<li class="chapter" data-level="19" data-path="cfa-confronto-tra-modelli.html"><a href="cfa-confronto-tra-modelli.html"><i class="fa fa-check"></i><b>19</b> CFA: confronto tra modelli</a>
-<ul>
-<li class="chapter" data-level="19.1" data-path="modello-congenerico.html"><a href="modello-congenerico.html"><i class="fa fa-check"></i><b>19.1</b> Modello congenerico</a></li>
-<li class="chapter" data-level="19.2" data-path="modello-tau-equivalente.html"><a href="modello-tau-equivalente.html"><i class="fa fa-check"></i><b>19.2</b> Modello tau-equivalente</a></li>
-<li class="chapter" data-level="19.3" data-path="modello-parallelo.html"><a href="modello-parallelo.html"><i class="fa fa-check"></i><b>19.3</b> Modello parallelo</a></li>
-<li class="chapter" data-level="19.4" data-path="il-test-del-chi2.html"><a href="il-test-del-chi2.html"><i class="fa fa-check"></i><b>19.4</b> Il test del <span class="math inline">\(\chi^2\)</span></a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path=""><a href="#part-costruzione-di-strumenti-psicometrici"><i class="fa fa-check"></i>(PART) Costruzione di strumenti psicometrici</a>
-<ul>
-<li class="chapter" data-level="19.4.1" data-path="il-test-del-chi2.html"><a href="il-test-del-chi2.html#test-orientati-al-criterio"><i class="fa fa-check"></i><b>19.4.1</b> Test orientati al criterio</a></li>
-<li class="chapter" data-level="19.4.2" data-path="il-test-del-chi2.html"><a href="il-test-del-chi2.html#test-basati-sulla-norma"><i class="fa fa-check"></i><b>19.4.2</b> Test basati sulla norma</a></li>
-<li class="chapter" data-level="19.5" data-path="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><a href="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><i class="fa fa-check"></i><b>19.5</b> Variabili latenti e sviluppo di uno strumento psicometrico</a>
-<ul>
-<li class="chapter" data-level="19.5.1" data-path="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><a href="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html#chiarificazione-del-costrutto-di-interesse"><i class="fa fa-check"></i><b>19.5.1</b> Chiarificazione del costrutto di interesse</a></li>
-<li class="chapter" data-level="19.5.2" data-path="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><a href="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html#operazionalizzazione-del-costrutto-di-interesse"><i class="fa fa-check"></i><b>19.5.2</b> Operazionalizzazione del costrutto di interesse</a></li>
-<li class="chapter" data-level="19.5.3" data-path="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><a href="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html#rassegna-della-letteratura-rilevante"><i class="fa fa-check"></i><b>19.5.3</b> Rassegna della letteratura rilevante</a></li>
-<li class="chapter" data-level="19.5.4" data-path="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><a href="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html#analisi-concettuale-del-costrutto"><i class="fa fa-check"></i><b>19.5.4</b> Analisi concettuale del costrutto</a></li>
-<li class="chapter" data-level="19.5.5" data-path="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><a href="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html#metodi-di-ricerca-qualitativi"><i class="fa fa-check"></i><b>19.5.5</b> Metodi di ricerca qualitativi</a></li>
-</ul></li>
-<li class="chapter" data-level="19.6" data-path="lo-sviluppo-dello-strumento.html"><a href="lo-sviluppo-dello-strumento.html"><i class="fa fa-check"></i><b>19.6</b> Lo sviluppo dello strumento</a>
-<ul>
-<li class="chapter" data-level="19.6.1" data-path="lo-sviluppo-dello-strumento.html"><a href="lo-sviluppo-dello-strumento.html#formato"><i class="fa fa-check"></i><b>19.6.1</b> Formato</a></li>
-<li class="chapter" data-level="19.6.2" data-path="lo-sviluppo-dello-strumento.html"><a href="lo-sviluppo-dello-strumento.html#composizione-tipografica"><i class="fa fa-check"></i><b>19.6.2</b> Composizione tipografica</a></li>
-<li class="chapter" data-level="19.6.3" data-path="lo-sviluppo-dello-strumento.html"><a href="lo-sviluppo-dello-strumento.html#istruzioni-ai-soggetti"><i class="fa fa-check"></i><b>19.6.3</b> Istruzioni ai soggetti</a></li>
-<li class="chapter" data-level="19.6.4" data-path="lo-sviluppo-dello-strumento.html"><a href="lo-sviluppo-dello-strumento.html#la-costruzione-degli-item"><i class="fa fa-check"></i><b>19.6.4</b> La costruzione degli item</a></li>
-</ul></li>
-<li class="chapter" data-level="19.7" data-path="numero-delle-opzioni-di-risposta.html"><a href="numero-delle-opzioni-di-risposta.html"><i class="fa fa-check"></i><b>19.7</b> Numero delle opzioni di risposta</a>
-<ul>
-<li class="chapter" data-level="19.7.1" data-path="numero-delle-opzioni-di-risposta.html"><a href="numero-delle-opzioni-di-risposta.html#item-a-codifica-inversa"><i class="fa fa-check"></i><b>19.7.1</b> Item a codifica inversa</a></li>
-</ul></li>
-<li class="chapter" data-level="19.8" data-path="numero-di-item.html"><a href="numero-di-item.html"><i class="fa fa-check"></i><b>19.8</b> Numero di item</a></li>
-<li class="chapter" data-level="19.9" data-path="numero-di-soggetti.html"><a href="numero-di-soggetti.html"><i class="fa fa-check"></i><b>19.9</b> Numero di soggetti</a></li>
-</ul></li>
-<li class="chapter" data-level="20" data-path="valutazione-della-matrice-di-correlazione.html"><a href="valutazione-della-matrice-di-correlazione.html"><i class="fa fa-check"></i><b>20</b> Valutazione della matrice di correlazione</a>
-<ul>
-<li class="chapter" data-level="20.1" data-path="ispezione-visiva-della-matrice-di-correlazione.html"><a href="ispezione-visiva-della-matrice-di-correlazione.html"><i class="fa fa-check"></i><b>20.1</b> Ispezione visiva della matrice di correlazione</a></li>
-<li class="chapter" data-level="20.2" data-path="sfericità-di-bartlett.html"><a href="sfericità-di-bartlett.html"><i class="fa fa-check"></i><b>20.2</b> Sfericità di Bartlett</a></li>
-<li class="chapter" data-level="20.3" data-path="test-di-adeguatezza-campionaria-di-kaiser-meyer-olkin.html"><a href="test-di-adeguatezza-campionaria-di-kaiser-meyer-olkin.html"><i class="fa fa-check"></i><b>20.3</b> Test di adeguatezza campionaria di Kaiser-Meyer-Olkin</a>
-<ul>
-<li class="chapter" data-level="20.3.1" data-path="test-di-adeguatezza-campionaria-di-kaiser-meyer-olkin.html"><a href="test-di-adeguatezza-campionaria-di-kaiser-meyer-olkin.html#matrice-anti-immagine"><i class="fa fa-check"></i><b>20.3.1</b> Matrice anti-immagine</a></li>
+<li class="chapter" data-level="17.1.1" data-path="punteggi-fattoriali.html"><a href="punteggi-fattoriali.html#stima-dei-punteggi-fattoriali"><i class="fa fa-check"></i><b>17.1.1</b> Stima dei punteggi fattoriali</a></li>
+<li class="chapter" data-level="17.1.2" data-path="punteggi-fattoriali.html"><a href="punteggi-fattoriali.html#dimostrazione-di-thurstone"><i class="fa fa-check"></i><b>17.1.2</b> Dimostrazione di Thurstone</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="ch-estrazione.html"><a href="ch-estrazione.html"><i class="fa fa-check"></i><b>21</b> L’estrazione dei fattori</a>
+<li class="chapter" data-level="18" data-path="visualizzare-il-modelli-di-equazioni-strutturali.html"><a href="visualizzare-il-modelli-di-equazioni-strutturali.html"><i class="fa fa-check"></i><b>18</b> Visualizzare il modelli di equazioni strutturali</a>
 <ul>
-<li class="chapter" data-level="21.1" data-path="motivazione-2.html"><a href="motivazione-2.html"><i class="fa fa-check"></i><b>21.1</b> Motivazione</a></li>
-<li class="chapter" data-level="21.2" data-path="metodo-delle-componenti-principali.html"><a href="metodo-delle-componenti-principali.html"><i class="fa fa-check"></i><b>21.2</b> Metodo delle componenti principali</a></li>
-<li class="chapter" data-level="21.3" data-path="metodo-dei-fattori-principali.html"><a href="metodo-dei-fattori-principali.html"><i class="fa fa-check"></i><b>21.3</b> Metodo dei fattori principali</a></li>
-<li class="chapter" data-level="21.4" data-path="metodo-dei-fattori-principali-iterato.html"><a href="metodo-dei-fattori-principali-iterato.html"><i class="fa fa-check"></i><b>21.4</b> Metodo dei fattori principali iterato</a>
+<li class="chapter" data-level="18.1" data-path="path-diagram.html"><a href="path-diagram.html"><i class="fa fa-check"></i><b>18.1</b> Path diagram</a></li>
+<li class="chapter" data-level="18.2" data-path="path-analysis-e-regressione-multipla.html"><a href="path-analysis-e-regressione-multipla.html"><i class="fa fa-check"></i><b>18.2</b> Path analysis e regressione multipla</a></li>
+<li class="chapter" data-level="18.3" data-path="effetti-diretti-e-indiretti.html"><a href="effetti-diretti-e-indiretti.html"><i class="fa fa-check"></i><b>18.3</b> Effetti diretti e indiretti</a></li>
+<li class="chapter" data-level="18.4" data-path="le-regole-di-wright.html"><a href="le-regole-di-wright.html"><i class="fa fa-check"></i><b>18.4</b> Le regole di Wright</a>
 <ul>
-<li class="chapter" data-level="21.4.1" data-path="metodo-dei-fattori-principali-iterato.html"><a href="metodo-dei-fattori-principali-iterato.html#casi-di-heywood"><i class="fa fa-check"></i><b>21.4.1</b> Casi di Heywood</a></li>
+<li class="chapter" data-level="18.4.1" data-path="le-regole-di-wright.html"><a href="le-regole-di-wright.html#scomposizione-delle-correlazioni-covarianze"><i class="fa fa-check"></i><b>18.4.1</b> Scomposizione delle correlazioni (covarianze)</a></li>
+<li class="chapter" data-level="18.4.2" data-path="le-regole-di-wright.html"><a href="le-regole-di-wright.html#scomposizione-della-varianza-1"><i class="fa fa-check"></i><b>18.4.2</b> Scomposizione della varianza</a></li>
 </ul></li>
-<li class="chapter" data-level="21.5" data-path="metodo-di-massima-verosimiglianza.html"><a href="metodo-di-massima-verosimiglianza.html"><i class="fa fa-check"></i><b>21.5</b> Metodo di massima verosimiglianza</a></li>
+<li class="chapter" data-level="18.5" data-path="come-calcolare-i-coefficienti-di-percorso.html"><a href="come-calcolare-i-coefficienti-di-percorso.html"><i class="fa fa-check"></i><b>18.5</b> Come calcolare i coefficienti di percorso?</a></li>
+<li class="chapter" data-level="18.6" data-path="path-analysis-con-lavaan.html"><a href="path-analysis-con-lavaan.html"><i class="fa fa-check"></i><b>18.6</b> Path analysis con <code>lavaan</code></a></li>
+<li class="chapter" data-level="18.7" data-path="oltre-la-regressione-multipla.html"><a href="oltre-la-regressione-multipla.html"><i class="fa fa-check"></i><b>18.7</b> Oltre la regressione multipla</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="il-numero-dei-fattori.html"><a href="il-numero-dei-fattori.html"><i class="fa fa-check"></i><b>22</b> Il numero dei fattori</a>
+<li class="chapter" data-level="19" data-path="attendibilità-e-modello-fattoriale.html"><a href="attendibilità-e-modello-fattoriale.html"><i class="fa fa-check"></i><b>19</b> Attendibilità e modello fattoriale</a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="quota-di-varianza-spiegata.html"><a href="quota-di-varianza-spiegata.html"><i class="fa fa-check"></i><b>22.1</b> Quota di varianza spiegata</a></li>
-<li class="chapter" data-level="22.2" data-path="valore-medio-degli-autovalori.html"><a href="valore-medio-degli-autovalori.html"><i class="fa fa-check"></i><b>22.2</b> Valore medio degli autovalori</a></li>
-<li class="chapter" data-level="22.3" data-path="scree-test.html"><a href="scree-test.html"><i class="fa fa-check"></i><b>22.3</b> Scree test</a></li>
-<li class="chapter" data-level="22.4" data-path="parallel-analysis.html"><a href="parallel-analysis.html"><i class="fa fa-check"></i><b>22.4</b> Parallel analysis</a></li>
-<li class="chapter" data-level="22.5" data-path="test-di-bontà-di-adattamento.html"><a href="test-di-bontà-di-adattamento.html"><i class="fa fa-check"></i><b>22.5</b> Test di bontà di adattamento</a></li>
+<li class="chapter" data-level="19.1" data-path="teoria-classica-dei-test-e-analisi-fattoriale.html"><a href="teoria-classica-dei-test-e-analisi-fattoriale.html"><i class="fa fa-check"></i><b>19.1</b> Teoria classica dei test e analisi fattoriale</a></li>
+<li class="chapter" data-level="19.2" data-path="modello-fattoriale-e-ctt.html"><a href="modello-fattoriale-e-ctt.html"><i class="fa fa-check"></i><b>19.2</b> Modello fattoriale e CTT</a></li>
+<li class="chapter" data-level="19.3" data-path="classi-di-modelli.html"><a href="classi-di-modelli.html"><i class="fa fa-check"></i><b>19.3</b> Classi di modelli</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="classi-di-modelli.html"><a href="classi-di-modelli.html#indicatori-congenerici"><i class="fa fa-check"></i><b>19.3.1</b> Indicatori congenerici</a></li>
+<li class="chapter" data-level="19.3.2" data-path="classi-di-modelli.html"><a href="classi-di-modelli.html#indicatori-tau-equivalenti"><i class="fa fa-check"></i><b>19.3.2</b> Indicatori tau-equivalenti</a></li>
+<li class="chapter" data-level="19.3.3" data-path="classi-di-modelli.html"><a href="classi-di-modelli.html#indicatori-paralleli"><i class="fa fa-check"></i><b>19.3.3</b> Indicatori paralleli</a></li>
+<li class="chapter" data-level="19.3.4" data-path="classi-di-modelli.html"><a href="classi-di-modelli.html#indicatori-strettamente-paralleli"><i class="fa fa-check"></i><b>19.3.4</b> Indicatori strettamente paralleli</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="la-rotazione-fattoriale.html"><a href="la-rotazione-fattoriale.html"><i class="fa fa-check"></i><b>23</b> La rotazione fattoriale</a>
+<li class="chapter" data-level="19.4" data-path="metodo-dei-minimi-quadrati-non-pesati.html"><a href="metodo-dei-minimi-quadrati-non-pesati.html"><i class="fa fa-check"></i><b>19.4</b> Metodo dei minimi quadrati non pesati</a></li>
+<li class="chapter" data-level="19.5" data-path="varianza-del-punteggio-totale-di-un-test.html"><a href="varianza-del-punteggio-totale-di-un-test.html"><i class="fa fa-check"></i><b>19.5</b> Varianza del punteggio totale di un test</a></li>
+<li class="chapter" data-level="19.6" data-path="stima-dellattendibilità.html"><a href="stima-dellattendibilità.html"><i class="fa fa-check"></i><b>19.6</b> Stima dell’attendibilità</a>
 <ul>
-<li class="chapter" data-level="23.1" data-path="indeterminatezza-della-soluzione-fattoriale.html"><a href="indeterminatezza-della-soluzione-fattoriale.html"><i class="fa fa-check"></i><b>23.1</b> Indeterminatezza della soluzione fattoriale</a></li>
-<li class="chapter" data-level="23.2" data-path="parsimonia-e-semplicità.html"><a href="parsimonia-e-semplicità.html"><i class="fa fa-check"></i><b>23.2</b> Parsimonia e semplicità</a>
-<ul>
-<li class="chapter" data-level="23.2.1" data-path="parsimonia-e-semplicità.html"><a href="parsimonia-e-semplicità.html#il-criterio-della-struttura-semplice"><i class="fa fa-check"></i><b>23.2.1</b> Il criterio della “struttura semplice”</a></li>
+<li class="chapter" data-level="19.6.1" data-path="stima-dellattendibilità.html"><a href="stima-dellattendibilità.html#coefficiente-omega"><i class="fa fa-check"></i><b>19.6.1</b> Coefficiente omega</a></li>
+<li class="chapter" data-level="19.6.2" data-path="stima-dellattendibilità.html"><a href="stima-dellattendibilità.html#coefficiente-alpha-di-cronbach"><i class="fa fa-check"></i><b>19.6.2</b> Coefficiente <span class="math inline">\(\alpha\)</span> di Cronbach</a></li>
+<li class="chapter" data-level="19.6.3" data-path="stima-dellattendibilità.html"><a href="stima-dellattendibilità.html#la-formula-profetica-di-spearman-brown"><i class="fa fa-check"></i><b>19.6.3</b> La formula “profetica” di Spearman-Brown</a></li>
 </ul></li>
-<li class="chapter" data-level="23.3" data-path="rotazione-nello-spazio-geometrico.html"><a href="rotazione-nello-spazio-geometrico.html"><i class="fa fa-check"></i><b>23.3</b> Rotazione nello spazio geometrico</a>
+<li class="chapter" data-level="19.7" data-path="punteggio-totale-e-modello-fattoriale-parallelo.html"><a href="punteggio-totale-e-modello-fattoriale-parallelo.html"><i class="fa fa-check"></i><b>19.7</b> Punteggio totale e modello fattoriale parallelo</a></li>
+<li class="chapter" data-level="19.8" data-path="attenuazione-1.html"><a href="attenuazione-1.html"><i class="fa fa-check"></i><b>19.8</b> Attenuazione</a>
 <ul>
-<li class="chapter" data-level="23.3.1" data-path="rotazione-nello-spazio-geometrico.html"><a href="rotazione-nello-spazio-geometrico.html#rotazione-ortogonale"><i class="fa fa-check"></i><b>23.3.1</b> Rotazione ortogonale</a></li>
-<li class="chapter" data-level="23.3.2" data-path="rotazione-nello-spazio-geometrico.html"><a href="rotazione-nello-spazio-geometrico.html#vincoli-alla-rotazione"><i class="fa fa-check"></i><b>23.3.2</b> Vincoli alla rotazione</a></li>
-<li class="chapter" data-level="23.3.3" data-path="rotazione-nello-spazio-geometrico.html"><a href="rotazione-nello-spazio-geometrico.html#metodo-grafico"><i class="fa fa-check"></i><b>23.3.3</b> Metodo grafico</a></li>
-<li class="chapter" data-level="23.3.4" data-path="rotazione-nello-spazio-geometrico.html"><a href="rotazione-nello-spazio-geometrico.html#medodi-di-rotazione-ortogonale"><i class="fa fa-check"></i><b>23.3.4</b> Medodi di rotazione ortogonale</a></li>
-<li class="chapter" data-level="23.3.5" data-path="rotazione-nello-spazio-geometrico.html"><a href="rotazione-nello-spazio-geometrico.html#metodi-di-rotazione-obliqua"><i class="fa fa-check"></i><b>23.3.5</b> Metodi di rotazione obliqua</a></li>
+<li class="chapter" data-level="19.8.1" data-path="attenuazione-1.html"><a href="attenuazione-1.html#correlazioni-disattenuate"><i class="fa fa-check"></i><b>19.8.1</b> Correlazioni disattenuate</a></li>
 </ul></li>
-<li class="chapter" data-level="23.4" data-path="matrice-dei-pesi-fattoriali-e-matrice-di-struttura.html"><a href="matrice-dei-pesi-fattoriali-e-matrice-di-struttura.html"><i class="fa fa-check"></i><b>23.4</b> Matrice dei pesi fattoriali e matrice di struttura</a></li>
-<li class="chapter" data-level="23.5" data-path="esempio-con-semtools.html"><a href="esempio-con-semtools.html"><i class="fa fa-check"></i><b>23.5</b> Esempio con <code>semTools</code></a>
-<ul>
-<li class="chapter" data-level="23.5.1" data-path="esempio-con-semtools.html"><a href="esempio-con-semtools.html#orthogonal-varimax"><i class="fa fa-check"></i><b>23.5.1</b> Orthogonal varimax</a></li>
-<li class="chapter" data-level="23.5.2" data-path="esempio-con-semtools.html"><a href="esempio-con-semtools.html#orthogonal-quartimin"><i class="fa fa-check"></i><b>23.5.2</b> Orthogonal Quartimin</a></li>
-<li class="chapter" data-level="23.5.3" data-path="esempio-con-semtools.html"><a href="esempio-con-semtools.html#oblique-quartimin"><i class="fa fa-check"></i><b>23.5.3</b> Oblique Quartimin</a></li>
-<li class="chapter" data-level="23.5.4" data-path="esempio-con-semtools.html"><a href="esempio-con-semtools.html#orthogonal-geomin"><i class="fa fa-check"></i><b>23.5.4</b> Orthogonal Geomin</a></li>
-<li class="chapter" data-level="23.5.5" data-path="esempio-con-semtools.html"><a href="esempio-con-semtools.html#oblique-geomin"><i class="fa fa-check"></i><b>23.5.5</b> Oblique Geomin</a></li>
+<li class="chapter" data-level="19.9" data-path="attendibilità-e-scala-di-misura.html"><a href="attendibilità-e-scala-di-misura.html"><i class="fa fa-check"></i><b>19.9</b> Attendibilità e scala di misura</a></li>
+<li class="chapter" data-level="19.10" data-path="quale-indice-usare.html"><a href="quale-indice-usare.html"><i class="fa fa-check"></i><b>19.10</b> Quale indice usare?</a></li>
 </ul></li>
-<li class="chapter" data-level="23.6" data-path="interpretazione-2.html"><a href="interpretazione-2.html"><i class="fa fa-check"></i><b>23.6</b> Interpretazione</a></li>
+<li class="chapter" data-level="20" data-path="cfa-confronto-tra-modelli.html"><a href="cfa-confronto-tra-modelli.html"><i class="fa fa-check"></i><b>20</b> CFA: confronto tra modelli</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="modello-congenerico.html"><a href="modello-congenerico.html"><i class="fa fa-check"></i><b>20.1</b> Modello congenerico</a></li>
+<li class="chapter" data-level="20.2" data-path="modello-tau-equivalente.html"><a href="modello-tau-equivalente.html"><i class="fa fa-check"></i><b>20.2</b> Modello tau-equivalente</a></li>
+<li class="chapter" data-level="20.3" data-path="modello-parallelo.html"><a href="modello-parallelo.html"><i class="fa fa-check"></i><b>20.3</b> Modello parallelo</a></li>
+<li class="chapter" data-level="20.4" data-path="il-test-del-chi2.html"><a href="il-test-del-chi2.html"><i class="fa fa-check"></i><b>20.4</b> Il test del <span class="math inline">\(\chi^2\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="come-valutare-e-rifinire-la-soluzione-fattoriale.html"><a href="come-valutare-e-rifinire-la-soluzione-fattoriale.html"><i class="fa fa-check"></i><b>24</b> Come valutare e rifinire la soluzione fattoriale</a>
+<li class="part"><span><b>V Costruzione di strumenti psicometrici</b></span></li>
+<li class="chapter" data-level="21" data-path="tipologie-dei-test-psicometrici.html"><a href="tipologie-dei-test-psicometrici.html"><i class="fa fa-check"></i><b>21</b> Tipologie dei test psicometrici</a>
 <ul>
-<li class="chapter" data-level="24.1" data-path="valutazione-della-matrice-pattern.html"><a href="valutazione-della-matrice-pattern.html"><i class="fa fa-check"></i><b>24.1</b> Valutazione della matrice pattern</a>
+<li class="chapter" data-level="21.0.1" data-path="tipologie-dei-test-psicometrici.html"><a href="tipologie-dei-test-psicometrici.html#test-orientati-al-criterio"><i class="fa fa-check"></i><b>21.0.1</b> Test orientati al criterio</a></li>
+<li class="chapter" data-level="21.0.2" data-path="tipologie-dei-test-psicometrici.html"><a href="tipologie-dei-test-psicometrici.html#test-basati-sulla-norma"><i class="fa fa-check"></i><b>21.0.2</b> Test basati sulla norma</a></li>
+<li class="chapter" data-level="21.1" data-path="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><a href="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><i class="fa fa-check"></i><b>21.1</b> Variabili latenti e sviluppo di uno strumento psicometrico</a>
 <ul>
-<li class="chapter" data-level="24.1.1" data-path="valutazione-della-matrice-pattern.html"><a href="valutazione-della-matrice-pattern.html#item-con-basse-saturazioni-su-tutti-i-fattori"><i class="fa fa-check"></i><b>24.1.1</b> Item con basse saturazioni su tutti i fattori</a></li>
-<li class="chapter" data-level="24.1.2" data-path="valutazione-della-matrice-pattern.html"><a href="valutazione-della-matrice-pattern.html#item-con-saturazioni-evevate-su-più-di-un-fattore"><i class="fa fa-check"></i><b>24.1.2</b> Item con saturazioni evevate su più di un fattore</a></li>
+<li class="chapter" data-level="21.1.1" data-path="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><a href="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html#chiarificazione-del-costrutto-di-interesse"><i class="fa fa-check"></i><b>21.1.1</b> Chiarificazione del costrutto di interesse</a></li>
+<li class="chapter" data-level="21.1.2" data-path="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><a href="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html#operazionalizzazione-del-costrutto-di-interesse"><i class="fa fa-check"></i><b>21.1.2</b> Operazionalizzazione del costrutto di interesse</a></li>
+<li class="chapter" data-level="21.1.3" data-path="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><a href="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html#rassegna-della-letteratura-rilevante"><i class="fa fa-check"></i><b>21.1.3</b> Rassegna della letteratura rilevante</a></li>
+<li class="chapter" data-level="21.1.4" data-path="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><a href="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html#analisi-concettuale-del-costrutto"><i class="fa fa-check"></i><b>21.1.4</b> Analisi concettuale del costrutto</a></li>
+<li class="chapter" data-level="21.1.5" data-path="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html"><a href="variabili-latenti-e-sviluppo-di-uno-strumento-psicometrico.html#metodi-di-ricerca-qualitativi"><i class="fa fa-check"></i><b>21.1.5</b> Metodi di ricerca qualitativi</a></li>
 </ul></li>
-<li class="chapter" data-level="24.2" data-path="valutazione-dellattendibilità.html"><a href="valutazione-dellattendibilità.html"><i class="fa fa-check"></i><b>24.2</b> Valutazione dell’attendibilità</a>
+<li class="chapter" data-level="21.2" data-path="lo-sviluppo-dello-strumento.html"><a href="lo-sviluppo-dello-strumento.html"><i class="fa fa-check"></i><b>21.2</b> Lo sviluppo dello strumento</a>
 <ul>
-<li class="chapter" data-level="24.2.1" data-path="valutazione-dellattendibilità.html"><a href="valutazione-dellattendibilità.html#consistenza-interna"><i class="fa fa-check"></i><b>24.2.1</b> Consistenza interna</a></li>
-<li class="chapter" data-level="24.2.2" data-path="valutazione-dellattendibilità.html"><a href="valutazione-dellattendibilità.html#stabilità-temporale"><i class="fa fa-check"></i><b>24.2.2</b> Stabilità temporale</a></li>
-<li class="chapter" data-level="24.2.3" data-path="valutazione-dellattendibilità.html"><a href="valutazione-dellattendibilità.html#equivalenza"><i class="fa fa-check"></i><b>24.2.3</b> Equivalenza</a></li>
+<li class="chapter" data-level="21.2.1" data-path="lo-sviluppo-dello-strumento.html"><a href="lo-sviluppo-dello-strumento.html#formato"><i class="fa fa-check"></i><b>21.2.1</b> Formato</a></li>
+<li class="chapter" data-level="21.2.2" data-path="lo-sviluppo-dello-strumento.html"><a href="lo-sviluppo-dello-strumento.html#composizione-tipografica"><i class="fa fa-check"></i><b>21.2.2</b> Composizione tipografica</a></li>
+<li class="chapter" data-level="21.2.3" data-path="lo-sviluppo-dello-strumento.html"><a href="lo-sviluppo-dello-strumento.html#istruzioni-ai-soggetti"><i class="fa fa-check"></i><b>21.2.3</b> Istruzioni ai soggetti</a></li>
+<li class="chapter" data-level="21.2.4" data-path="lo-sviluppo-dello-strumento.html"><a href="lo-sviluppo-dello-strumento.html#la-costruzione-degli-item"><i class="fa fa-check"></i><b>21.2.4</b> La costruzione degli item</a></li>
 </ul></li>
-<li class="chapter" data-level="24.3" data-path="selezione-di-un-sottoinsieme-di-item.html"><a href="selezione-di-un-sottoinsieme-di-item.html"><i class="fa fa-check"></i><b>24.3</b> Selezione di un sottoinsieme di item</a>
+<li class="chapter" data-level="21.3" data-path="numero-delle-opzioni-di-risposta.html"><a href="numero-delle-opzioni-di-risposta.html"><i class="fa fa-check"></i><b>21.3</b> Numero delle opzioni di risposta</a>
 <ul>
-<li class="chapter" data-level="24.3.1" data-path="selezione-di-un-sottoinsieme-di-item.html"><a href="selezione-di-un-sottoinsieme-di-item.html#attendibilità-e-numero-di-item"><i class="fa fa-check"></i><b>24.3.1</b> Attendibilità e numero di item</a></li>
-<li class="chapter" data-level="24.3.2" data-path="selezione-di-un-sottoinsieme-di-item.html"><a href="selezione-di-un-sottoinsieme-di-item.html#numero-di-item-e-affidabilità"><i class="fa fa-check"></i><b>24.3.2</b> Numero di item e affidabilità</a></li>
+<li class="chapter" data-level="21.3.1" data-path="numero-delle-opzioni-di-risposta.html"><a href="numero-delle-opzioni-di-risposta.html#item-a-codifica-inversa"><i class="fa fa-check"></i><b>21.3.1</b> Item a codifica inversa</a></li>
 </ul></li>
-<li class="chapter" data-level="24.4" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html"><i class="fa fa-check"></i><b>24.4</b> Analisi degli item</a>
-<ul>
-<li class="chapter" data-level="24.4.1" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#difficoltà-degli-item"><i class="fa fa-check"></i><b>24.4.1</b> Difficoltà degli item</a></li>
-<li class="chapter" data-level="24.4.2" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#correzione-per-guessing"><i class="fa fa-check"></i><b>24.4.2</b> Correzione per guessing</a></li>
-<li class="chapter" data-level="24.4.3" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#discriminatività"><i class="fa fa-check"></i><b>24.4.3</b> Discriminatività</a></li>
-<li class="chapter" data-level="24.4.4" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#potere-discriminante-dellitem-e-analisi-fattoriale"><i class="fa fa-check"></i><b>24.4.4</b> Potere discriminante dell’item e analisi fattoriale</a></li>
-<li class="chapter" data-level="24.4.5" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#punteggio-sullitem-e-punteggio-totale"><i class="fa fa-check"></i><b>24.4.5</b> Punteggio sull’item e punteggio totale</a></li>
-<li class="chapter" data-level="24.4.6" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#relazioni-tra-coppie-di-item"><i class="fa fa-check"></i><b>24.4.6</b> Relazioni tra coppie di item</a></li>
-<li class="chapter" data-level="24.4.7" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#ridondanza"><i class="fa fa-check"></i><b>24.4.7</b> Ridondanza</a></li>
-<li class="chapter" data-level="24.4.8" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#massimizzazione-della-varianza-del-punteggio-totale"><i class="fa fa-check"></i><b>24.4.8</b> Massimizzazione della varianza del punteggio totale</a></li>
-<li class="chapter" data-level="24.4.9" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#indice-di-affidabilità-dellitem"><i class="fa fa-check"></i><b>24.4.9</b> Indice di affidabilità dell’item</a></li>
-<li class="chapter" data-level="24.4.10" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#indice-di-validità-dellitem"><i class="fa fa-check"></i><b>24.4.10</b> Indice di validità dell’item</a></li>
-<li class="chapter" data-level="24.4.11" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#distrattori"><i class="fa fa-check"></i><b>24.4.11</b> Distrattori</a></li>
+<li class="chapter" data-level="21.4" data-path="numero-di-item.html"><a href="numero-di-item.html"><i class="fa fa-check"></i><b>21.4</b> Numero di item</a></li>
+<li class="chapter" data-level="21.5" data-path="numero-di-soggetti.html"><a href="numero-di-soggetti.html"><i class="fa fa-check"></i><b>21.5</b> Numero di soggetti</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="25" data-path="ch-factorial-invariance.html"><a href="ch-factorial-invariance.html"><i class="fa fa-check"></i><b>25</b> Invarianza di misura</a>
+<li class="chapter" data-level="22" data-path="valutazione-della-matrice-di-correlazione.html"><a href="valutazione-della-matrice-di-correlazione.html"><i class="fa fa-check"></i><b>22</b> Valutazione della matrice di correlazione</a>
 <ul>
-<li class="chapter" data-level="25.1" data-path="indicatori-continui.html"><a href="indicatori-continui.html"><i class="fa fa-check"></i><b>25.1</b> Indicatori continui</a>
+<li class="chapter" data-level="22.1" data-path="ispezione-visiva-della-matrice-di-correlazione.html"><a href="ispezione-visiva-della-matrice-di-correlazione.html"><i class="fa fa-check"></i><b>22.1</b> Ispezione visiva della matrice di correlazione</a></li>
+<li class="chapter" data-level="22.2" data-path="sfericità-di-bartlett.html"><a href="sfericità-di-bartlett.html"><i class="fa fa-check"></i><b>22.2</b> Sfericità di Bartlett</a></li>
+<li class="chapter" data-level="22.3" data-path="test-di-adeguatezza-campionaria-di-kaiser-meyer-olkin.html"><a href="test-di-adeguatezza-campionaria-di-kaiser-meyer-olkin.html"><i class="fa fa-check"></i><b>22.3</b> Test di adeguatezza campionaria di Kaiser-Meyer-Olkin</a>
 <ul>
-<li class="chapter" data-level="25.1.1" data-path="indicatori-continui.html"><a href="indicatori-continui.html#intercette-degli-item"><i class="fa fa-check"></i><b>25.1.1</b> Intercette degli item</a></li>
-<li class="chapter" data-level="25.1.2" data-path="indicatori-continui.html"><a href="indicatori-continui.html#terminologia"><i class="fa fa-check"></i><b>25.1.2</b> Terminologia</a></li>
-<li class="chapter" data-level="25.1.3" data-path="indicatori-continui.html"><a href="indicatori-continui.html#un-esempio-concreto-5"><i class="fa fa-check"></i><b>25.1.3</b> Un esempio concreto</a></li>
-</ul></li>
-<li class="chapter" data-level="25.2" data-path="indicatori-a-livello-di-scala-ordinale.html"><a href="indicatori-a-livello-di-scala-ordinale.html"><i class="fa fa-check"></i><b>25.2</b> Indicatori a livello di scala ordinale</a>
-<ul>
-<li class="chapter" data-level="25.2.1" data-path="indicatori-a-livello-di-scala-ordinale.html"><a href="indicatori-a-livello-di-scala-ordinale.html#un-esempio-concreto-6"><i class="fa fa-check"></i><b>25.2.1</b> Un esempio concreto</a></li>
-<li class="chapter" data-level="25.2.2" data-path="indicatori-a-livello-di-scala-ordinale.html"><a href="indicatori-a-livello-di-scala-ordinale.html#baseline-model"><i class="fa fa-check"></i><b>25.2.2</b> Baseline model</a></li>
-<li class="chapter" data-level="25.2.3" data-path="indicatori-a-livello-di-scala-ordinale.html"><a href="indicatori-a-livello-di-scala-ordinale.html#invarianza-delle-soglie"><i class="fa fa-check"></i><b>25.2.3</b> Invarianza delle soglie</a></li>
-<li class="chapter" data-level="25.2.4" data-path="indicatori-a-livello-di-scala-ordinale.html"><a href="indicatori-a-livello-di-scala-ordinale.html#invarianza-delle-soglie-e-delle-saturazioni-fattoriali"><i class="fa fa-check"></i><b>25.2.4</b> Invarianza delle soglie e delle saturazioni fattoriali</a></li>
+<li class="chapter" data-level="22.3.1" data-path="test-di-adeguatezza-campionaria-di-kaiser-meyer-olkin.html"><a href="test-di-adeguatezza-campionaria-di-kaiser-meyer-olkin.html#matrice-anti-immagine"><i class="fa fa-check"></i><b>22.3.1</b> Matrice anti-immagine</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="ch-goodness-of-fit.html"><a href="ch-goodness-of-fit.html"><i class="fa fa-check"></i><b>26</b> Indici di bontà dell’adattamento</a>
+<li class="chapter" data-level="23" data-path="ch-estrazione.html"><a href="ch-estrazione.html"><i class="fa fa-check"></i><b>23</b> L’estrazione dei fattori</a>
 <ul>
-<li class="chapter" data-level="26.1" data-path="stima-del-modello.html"><a href="stima-del-modello.html"><i class="fa fa-check"></i><b>26.1</b> Stima del modello</a></li>
-<li class="chapter" data-level="26.2" data-path="massima-verosimiglianza.html"><a href="massima-verosimiglianza.html"><i class="fa fa-check"></i><b>26.2</b> Massima verosimiglianza</a></li>
-<li class="chapter" data-level="26.3" data-path="identificabilità-del-modello.html"><a href="identificabilità-del-modello.html"><i class="fa fa-check"></i><b>26.3</b> Identificabilità del modello</a></li>
-<li class="chapter" data-level="26.4" data-path="bontà-delladattamento.html"><a href="bontà-delladattamento.html"><i class="fa fa-check"></i><b>26.4</b> Bontà dell’adattamento</a>
+<li class="chapter" data-level="23.1" data-path="motivazione-2.html"><a href="motivazione-2.html"><i class="fa fa-check"></i><b>23.1</b> Motivazione</a></li>
+<li class="chapter" data-level="23.2" data-path="metodo-delle-componenti-principali.html"><a href="metodo-delle-componenti-principali.html"><i class="fa fa-check"></i><b>23.2</b> Metodo delle componenti principali</a></li>
+<li class="chapter" data-level="23.3" data-path="metodo-dei-fattori-principali.html"><a href="metodo-dei-fattori-principali.html"><i class="fa fa-check"></i><b>23.3</b> Metodo dei fattori principali</a></li>
+<li class="chapter" data-level="23.4" data-path="metodo-dei-fattori-principali-iterato.html"><a href="metodo-dei-fattori-principali-iterato.html"><i class="fa fa-check"></i><b>23.4</b> Metodo dei fattori principali iterato</a>
 <ul>
-<li class="chapter" data-level="26.4.1" data-path="bontà-delladattamento.html"><a href="bontà-delladattamento.html#chi-quadrato"><i class="fa fa-check"></i><b>26.4.1</b> Chi quadrato</a></li>
+<li class="chapter" data-level="23.4.1" data-path="metodo-dei-fattori-principali-iterato.html"><a href="metodo-dei-fattori-principali-iterato.html#casi-di-heywood"><i class="fa fa-check"></i><b>23.4.1</b> Casi di Heywood</a></li>
 </ul></li>
-<li class="chapter" data-level="26.5" data-path="misure-di-adeguamento-per-il-confronto.html"><a href="misure-di-adeguamento-per-il-confronto.html"><i class="fa fa-check"></i><b>26.5</b> Misure di adeguamento per il confronto</a>
-<ul>
-<li class="chapter" data-level="26.5.1" data-path="misure-di-adeguamento-per-il-confronto.html"><a href="misure-di-adeguamento-per-il-confronto.html#cfi"><i class="fa fa-check"></i><b>26.5.1</b> CFI</a></li>
+<li class="chapter" data-level="23.5" data-path="metodo-di-massima-verosimiglianza.html"><a href="metodo-di-massima-verosimiglianza.html"><i class="fa fa-check"></i><b>23.5</b> Metodo di massima verosimiglianza</a></li>
 </ul></li>
-<li class="chapter" data-level="26.6" data-path="misure-di-adeguamento-parsimonioso.html"><a href="misure-di-adeguamento-parsimonioso.html"><i class="fa fa-check"></i><b>26.6</b> Misure di adeguamento parsimonioso</a>
+<li class="chapter" data-level="24" data-path="il-numero-dei-fattori.html"><a href="il-numero-dei-fattori.html"><i class="fa fa-check"></i><b>24</b> Il numero dei fattori</a>
 <ul>
-<li class="chapter" data-level="26.6.1" data-path="misure-di-adeguamento-parsimonioso.html"><a href="misure-di-adeguamento-parsimonioso.html#tli"><i class="fa fa-check"></i><b>26.6.1</b> TLI</a></li>
+<li class="chapter" data-level="24.1" data-path="quota-di-varianza-spiegata.html"><a href="quota-di-varianza-spiegata.html"><i class="fa fa-check"></i><b>24.1</b> Quota di varianza spiegata</a></li>
+<li class="chapter" data-level="24.2" data-path="valore-medio-degli-autovalori.html"><a href="valore-medio-degli-autovalori.html"><i class="fa fa-check"></i><b>24.2</b> Valore medio degli autovalori</a></li>
+<li class="chapter" data-level="24.3" data-path="scree-test.html"><a href="scree-test.html"><i class="fa fa-check"></i><b>24.3</b> Scree test</a></li>
+<li class="chapter" data-level="24.4" data-path="parallel-analysis.html"><a href="parallel-analysis.html"><i class="fa fa-check"></i><b>24.4</b> Parallel analysis</a></li>
+<li class="chapter" data-level="24.5" data-path="test-di-bontà-di-adattamento.html"><a href="test-di-bontà-di-adattamento.html"><i class="fa fa-check"></i><b>24.5</b> Test di bontà di adattamento</a></li>
 </ul></li>
-<li class="chapter" data-level="26.7" data-path="misure-di-adeguamento-assoluto.html"><a href="misure-di-adeguamento-assoluto.html"><i class="fa fa-check"></i><b>26.7</b> Misure di adeguamento assoluto</a>
+<li class="chapter" data-level="25" data-path="la-rotazione-fattoriale.html"><a href="la-rotazione-fattoriale.html"><i class="fa fa-check"></i><b>25</b> La rotazione fattoriale</a>
 <ul>
-<li class="chapter" data-level="26.7.1" data-path="misure-di-adeguamento-assoluto.html"><a href="misure-di-adeguamento-assoluto.html#rmsea"><i class="fa fa-check"></i><b>26.7.1</b> RMSEA</a></li>
-<li class="chapter" data-level="26.7.2" data-path="misure-di-adeguamento-assoluto.html"><a href="misure-di-adeguamento-assoluto.html#rmrs"><i class="fa fa-check"></i><b>26.7.2</b> RMRS</a></li>
-<li class="chapter" data-level="26.7.3" data-path="misure-di-adeguamento-assoluto.html"><a href="misure-di-adeguamento-assoluto.html#interpretazione-3"><i class="fa fa-check"></i><b>26.7.3</b> Interpretazione</a></li>
+<li class="chapter" data-level="25.1" data-path="indeterminatezza-della-soluzione-fattoriale.html"><a href="indeterminatezza-della-soluzione-fattoriale.html"><i class="fa fa-check"></i><b>25.1</b> Indeterminatezza della soluzione fattoriale</a></li>
+<li class="chapter" data-level="25.2" data-path="parsimonia-e-semplicità.html"><a href="parsimonia-e-semplicità.html"><i class="fa fa-check"></i><b>25.2</b> Parsimonia e semplicità</a>
+<ul>
+<li class="chapter" data-level="25.2.1" data-path="parsimonia-e-semplicità.html"><a href="parsimonia-e-semplicità.html#il-criterio-della-struttura-semplice"><i class="fa fa-check"></i><b>25.2.1</b> Il criterio della “struttura semplice”</a></li>
 </ul></li>
-<li class="chapter" data-level="26.8" data-path="un-esempio-concreto-7.html"><a href="un-esempio-concreto-7.html"><i class="fa fa-check"></i><b>26.8</b> Un esempio concreto</a></li>
+<li class="chapter" data-level="25.3" data-path="rotazione-nello-spazio-geometrico.html"><a href="rotazione-nello-spazio-geometrico.html"><i class="fa fa-check"></i><b>25.3</b> Rotazione nello spazio geometrico</a>
+<ul>
+<li class="chapter" data-level="25.3.1" data-path="rotazione-nello-spazio-geometrico.html"><a href="rotazione-nello-spazio-geometrico.html#rotazione-ortogonale"><i class="fa fa-check"></i><b>25.3.1</b> Rotazione ortogonale</a></li>
+<li class="chapter" data-level="25.3.2" data-path="rotazione-nello-spazio-geometrico.html"><a href="rotazione-nello-spazio-geometrico.html#vincoli-alla-rotazione"><i class="fa fa-check"></i><b>25.3.2</b> Vincoli alla rotazione</a></li>
+<li class="chapter" data-level="25.3.3" data-path="rotazione-nello-spazio-geometrico.html"><a href="rotazione-nello-spazio-geometrico.html#metodo-grafico"><i class="fa fa-check"></i><b>25.3.3</b> Metodo grafico</a></li>
+<li class="chapter" data-level="25.3.4" data-path="rotazione-nello-spazio-geometrico.html"><a href="rotazione-nello-spazio-geometrico.html#medodi-di-rotazione-ortogonale"><i class="fa fa-check"></i><b>25.3.4</b> Medodi di rotazione ortogonale</a></li>
+<li class="chapter" data-level="25.3.5" data-path="rotazione-nello-spazio-geometrico.html"><a href="rotazione-nello-spazio-geometrico.html#metodi-di-rotazione-obliqua"><i class="fa fa-check"></i><b>25.3.5</b> Metodi di rotazione obliqua</a></li>
+</ul></li>
+<li class="chapter" data-level="25.4" data-path="matrice-dei-pesi-fattoriali-e-matrice-di-struttura.html"><a href="matrice-dei-pesi-fattoriali-e-matrice-di-struttura.html"><i class="fa fa-check"></i><b>25.4</b> Matrice dei pesi fattoriali e matrice di struttura</a></li>
+<li class="chapter" data-level="25.5" data-path="esempio-con-semtools.html"><a href="esempio-con-semtools.html"><i class="fa fa-check"></i><b>25.5</b> Esempio con <code>semTools</code></a>
+<ul>
+<li class="chapter" data-level="25.5.1" data-path="esempio-con-semtools.html"><a href="esempio-con-semtools.html#orthogonal-varimax"><i class="fa fa-check"></i><b>25.5.1</b> Orthogonal varimax</a></li>
+<li class="chapter" data-level="25.5.2" data-path="esempio-con-semtools.html"><a href="esempio-con-semtools.html#orthogonal-quartimin"><i class="fa fa-check"></i><b>25.5.2</b> Orthogonal Quartimin</a></li>
+<li class="chapter" data-level="25.5.3" data-path="esempio-con-semtools.html"><a href="esempio-con-semtools.html#oblique-quartimin"><i class="fa fa-check"></i><b>25.5.3</b> Oblique Quartimin</a></li>
+<li class="chapter" data-level="25.5.4" data-path="esempio-con-semtools.html"><a href="esempio-con-semtools.html#orthogonal-geomin"><i class="fa fa-check"></i><b>25.5.4</b> Orthogonal Geomin</a></li>
+<li class="chapter" data-level="25.5.5" data-path="esempio-con-semtools.html"><a href="esempio-con-semtools.html#oblique-geomin"><i class="fa fa-check"></i><b>25.5.5</b> Oblique Geomin</a></li>
+</ul></li>
+<li class="chapter" data-level="25.6" data-path="interpretazione-2.html"><a href="interpretazione-2.html"><i class="fa fa-check"></i><b>25.6</b> Interpretazione</a></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="come-valutare-e-rifinire-la-soluzione-fattoriale.html"><a href="come-valutare-e-rifinire-la-soluzione-fattoriale.html"><i class="fa fa-check"></i><b>26</b> Come valutare e rifinire la soluzione fattoriale</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="valutazione-della-matrice-pattern.html"><a href="valutazione-della-matrice-pattern.html"><i class="fa fa-check"></i><b>26.1</b> Valutazione della matrice pattern</a>
+<ul>
+<li class="chapter" data-level="26.1.1" data-path="valutazione-della-matrice-pattern.html"><a href="valutazione-della-matrice-pattern.html#item-con-basse-saturazioni-su-tutti-i-fattori"><i class="fa fa-check"></i><b>26.1.1</b> Item con basse saturazioni su tutti i fattori</a></li>
+<li class="chapter" data-level="26.1.2" data-path="valutazione-della-matrice-pattern.html"><a href="valutazione-della-matrice-pattern.html#item-con-saturazioni-evevate-su-più-di-un-fattore"><i class="fa fa-check"></i><b>26.1.2</b> Item con saturazioni evevate su più di un fattore</a></li>
+</ul></li>
+<li class="chapter" data-level="26.2" data-path="valutazione-dellattendibilità.html"><a href="valutazione-dellattendibilità.html"><i class="fa fa-check"></i><b>26.2</b> Valutazione dell’attendibilità</a>
+<ul>
+<li class="chapter" data-level="26.2.1" data-path="valutazione-dellattendibilità.html"><a href="valutazione-dellattendibilità.html#consistenza-interna"><i class="fa fa-check"></i><b>26.2.1</b> Consistenza interna</a></li>
+<li class="chapter" data-level="26.2.2" data-path="valutazione-dellattendibilità.html"><a href="valutazione-dellattendibilità.html#stabilità-temporale"><i class="fa fa-check"></i><b>26.2.2</b> Stabilità temporale</a></li>
+<li class="chapter" data-level="26.2.3" data-path="valutazione-dellattendibilità.html"><a href="valutazione-dellattendibilità.html#equivalenza"><i class="fa fa-check"></i><b>26.2.3</b> Equivalenza</a></li>
+</ul></li>
+<li class="chapter" data-level="26.3" data-path="selezione-di-un-sottoinsieme-di-item.html"><a href="selezione-di-un-sottoinsieme-di-item.html"><i class="fa fa-check"></i><b>26.3</b> Selezione di un sottoinsieme di item</a>
+<ul>
+<li class="chapter" data-level="26.3.1" data-path="selezione-di-un-sottoinsieme-di-item.html"><a href="selezione-di-un-sottoinsieme-di-item.html#attendibilità-e-numero-di-item"><i class="fa fa-check"></i><b>26.3.1</b> Attendibilità e numero di item</a></li>
+<li class="chapter" data-level="26.3.2" data-path="selezione-di-un-sottoinsieme-di-item.html"><a href="selezione-di-un-sottoinsieme-di-item.html#numero-di-item-e-affidabilità"><i class="fa fa-check"></i><b>26.3.2</b> Numero di item e affidabilità</a></li>
+</ul></li>
+<li class="chapter" data-level="26.4" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html"><i class="fa fa-check"></i><b>26.4</b> Analisi degli item</a>
+<ul>
+<li class="chapter" data-level="26.4.1" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#difficoltà-degli-item"><i class="fa fa-check"></i><b>26.4.1</b> Difficoltà degli item</a></li>
+<li class="chapter" data-level="26.4.2" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#correzione-per-guessing"><i class="fa fa-check"></i><b>26.4.2</b> Correzione per guessing</a></li>
+<li class="chapter" data-level="26.4.3" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#discriminatività"><i class="fa fa-check"></i><b>26.4.3</b> Discriminatività</a></li>
+<li class="chapter" data-level="26.4.4" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#potere-discriminante-dellitem-e-analisi-fattoriale"><i class="fa fa-check"></i><b>26.4.4</b> Potere discriminante dell’item e analisi fattoriale</a></li>
+<li class="chapter" data-level="26.4.5" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#punteggio-sullitem-e-punteggio-totale"><i class="fa fa-check"></i><b>26.4.5</b> Punteggio sull’item e punteggio totale</a></li>
+<li class="chapter" data-level="26.4.6" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#relazioni-tra-coppie-di-item"><i class="fa fa-check"></i><b>26.4.6</b> Relazioni tra coppie di item</a></li>
+<li class="chapter" data-level="26.4.7" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#ridondanza"><i class="fa fa-check"></i><b>26.4.7</b> Ridondanza</a></li>
+<li class="chapter" data-level="26.4.8" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#massimizzazione-della-varianza-del-punteggio-totale"><i class="fa fa-check"></i><b>26.4.8</b> Massimizzazione della varianza del punteggio totale</a></li>
+<li class="chapter" data-level="26.4.9" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#indice-di-affidabilità-dellitem"><i class="fa fa-check"></i><b>26.4.9</b> Indice di affidabilità dell’item</a></li>
+<li class="chapter" data-level="26.4.10" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#indice-di-validità-dellitem"><i class="fa fa-check"></i><b>26.4.10</b> Indice di validità dell’item</a></li>
+<li class="chapter" data-level="26.4.11" data-path="analisi-degli-item.html"><a href="analisi-degli-item.html#distrattori"><i class="fa fa-check"></i><b>26.4.11</b> Distrattori</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="ch-factorial-invariance.html"><a href="ch-factorial-invariance.html"><i class="fa fa-check"></i><b>27</b> Invarianza di misura</a>
+<ul>
+<li class="chapter" data-level="27.1" data-path="indicatori-continui.html"><a href="indicatori-continui.html"><i class="fa fa-check"></i><b>27.1</b> Indicatori continui</a>
+<ul>
+<li class="chapter" data-level="27.1.1" data-path="indicatori-continui.html"><a href="indicatori-continui.html#intercette-degli-item"><i class="fa fa-check"></i><b>27.1.1</b> Intercette degli item</a></li>
+<li class="chapter" data-level="27.1.2" data-path="indicatori-continui.html"><a href="indicatori-continui.html#terminologia"><i class="fa fa-check"></i><b>27.1.2</b> Terminologia</a></li>
+<li class="chapter" data-level="27.1.3" data-path="indicatori-continui.html"><a href="indicatori-continui.html#un-esempio-concreto-5"><i class="fa fa-check"></i><b>27.1.3</b> Un esempio concreto</a></li>
+</ul></li>
+<li class="chapter" data-level="27.2" data-path="indicatori-a-livello-di-scala-ordinale.html"><a href="indicatori-a-livello-di-scala-ordinale.html"><i class="fa fa-check"></i><b>27.2</b> Indicatori a livello di scala ordinale</a>
+<ul>
+<li class="chapter" data-level="27.2.1" data-path="indicatori-a-livello-di-scala-ordinale.html"><a href="indicatori-a-livello-di-scala-ordinale.html#un-esempio-concreto-6"><i class="fa fa-check"></i><b>27.2.1</b> Un esempio concreto</a></li>
+<li class="chapter" data-level="27.2.2" data-path="indicatori-a-livello-di-scala-ordinale.html"><a href="indicatori-a-livello-di-scala-ordinale.html#baseline-model"><i class="fa fa-check"></i><b>27.2.2</b> Baseline model</a></li>
+<li class="chapter" data-level="27.2.3" data-path="indicatori-a-livello-di-scala-ordinale.html"><a href="indicatori-a-livello-di-scala-ordinale.html#invarianza-delle-soglie"><i class="fa fa-check"></i><b>27.2.3</b> Invarianza delle soglie</a></li>
+<li class="chapter" data-level="27.2.4" data-path="indicatori-a-livello-di-scala-ordinale.html"><a href="indicatori-a-livello-di-scala-ordinale.html#invarianza-delle-soglie-e-delle-saturazioni-fattoriali"><i class="fa fa-check"></i><b>27.2.4</b> Invarianza delle soglie e delle saturazioni fattoriali</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="ch-goodness-of-fit.html"><a href="ch-goodness-of-fit.html"><i class="fa fa-check"></i><b>28</b> Indici di bontà dell’adattamento</a>
+<ul>
+<li class="chapter" data-level="28.1" data-path="stima-del-modello.html"><a href="stima-del-modello.html"><i class="fa fa-check"></i><b>28.1</b> Stima del modello</a></li>
+<li class="chapter" data-level="28.2" data-path="massima-verosimiglianza.html"><a href="massima-verosimiglianza.html"><i class="fa fa-check"></i><b>28.2</b> Massima verosimiglianza</a></li>
+<li class="chapter" data-level="28.3" data-path="identificabilità-del-modello.html"><a href="identificabilità-del-modello.html"><i class="fa fa-check"></i><b>28.3</b> Identificabilità del modello</a></li>
+<li class="chapter" data-level="28.4" data-path="bontà-delladattamento.html"><a href="bontà-delladattamento.html"><i class="fa fa-check"></i><b>28.4</b> Bontà dell’adattamento</a>
+<ul>
+<li class="chapter" data-level="28.4.1" data-path="bontà-delladattamento.html"><a href="bontà-delladattamento.html#chi-quadrato"><i class="fa fa-check"></i><b>28.4.1</b> Chi quadrato</a></li>
+</ul></li>
+<li class="chapter" data-level="28.5" data-path="misure-di-adeguamento-per-il-confronto.html"><a href="misure-di-adeguamento-per-il-confronto.html"><i class="fa fa-check"></i><b>28.5</b> Misure di adeguamento per il confronto</a>
+<ul>
+<li class="chapter" data-level="28.5.1" data-path="misure-di-adeguamento-per-il-confronto.html"><a href="misure-di-adeguamento-per-il-confronto.html#cfi"><i class="fa fa-check"></i><b>28.5.1</b> CFI</a></li>
+</ul></li>
+<li class="chapter" data-level="28.6" data-path="misure-di-adeguamento-parsimonioso.html"><a href="misure-di-adeguamento-parsimonioso.html"><i class="fa fa-check"></i><b>28.6</b> Misure di adeguamento parsimonioso</a>
+<ul>
+<li class="chapter" data-level="28.6.1" data-path="misure-di-adeguamento-parsimonioso.html"><a href="misure-di-adeguamento-parsimonioso.html#tli"><i class="fa fa-check"></i><b>28.6.1</b> TLI</a></li>
+</ul></li>
+<li class="chapter" data-level="28.7" data-path="misure-di-adeguamento-assoluto.html"><a href="misure-di-adeguamento-assoluto.html"><i class="fa fa-check"></i><b>28.7</b> Misure di adeguamento assoluto</a>
+<ul>
+<li class="chapter" data-level="28.7.1" data-path="misure-di-adeguamento-assoluto.html"><a href="misure-di-adeguamento-assoluto.html#rmsea"><i class="fa fa-check"></i><b>28.7.1</b> RMSEA</a></li>
+<li class="chapter" data-level="28.7.2" data-path="misure-di-adeguamento-assoluto.html"><a href="misure-di-adeguamento-assoluto.html#rmrs"><i class="fa fa-check"></i><b>28.7.2</b> RMRS</a></li>
+<li class="chapter" data-level="28.7.3" data-path="misure-di-adeguamento-assoluto.html"><a href="misure-di-adeguamento-assoluto.html#interpretazione-3"><i class="fa fa-check"></i><b>28.7.3</b> Interpretazione</a></li>
+</ul></li>
+<li class="chapter" data-level="28.8" data-path="un-esempio-concreto-7.html"><a href="un-esempio-concreto-7.html"><i class="fa fa-check"></i><b>28.8</b> Un esempio concreto</a></li>
 <li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali.html"><a href="commenti-e-considerazioni-finali.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="ch-model-revision.html"><a href="ch-model-revision.html"><i class="fa fa-check"></i><b>27</b> La revisione del modello</a>
+<li class="chapter" data-level="29" data-path="ch-model-revision.html"><a href="ch-model-revision.html"><i class="fa fa-check"></i><b>29</b> La revisione del modello</a>
 <ul>
-<li class="chapter" data-level="27.1" data-path="un-numero-di-fattori-troppo-piccolo.html"><a href="un-numero-di-fattori-troppo-piccolo.html"><i class="fa fa-check"></i><b>27.1</b> Un numero di fattori troppo piccolo</a></li>
-<li class="chapter" data-level="27.2" data-path="specificazione-errata-delle-relazioni-tra-indicatori-e-fattori-latenti.html"><a href="specificazione-errata-delle-relazioni-tra-indicatori-e-fattori-latenti.html"><i class="fa fa-check"></i><b>27.2</b> Specificazione errata delle relazioni tra indicatori e fattori latenti</a></li>
-<li class="chapter" data-level="27.3" data-path="saturazione-sul-fattore-sbagliato.html"><a href="saturazione-sul-fattore-sbagliato.html"><i class="fa fa-check"></i><b>27.3</b> Saturazione sul fattore sbagliato</a></li>
+<li class="chapter" data-level="29.1" data-path="un-numero-di-fattori-troppo-piccolo.html"><a href="un-numero-di-fattori-troppo-piccolo.html"><i class="fa fa-check"></i><b>29.1</b> Un numero di fattori troppo piccolo</a></li>
+<li class="chapter" data-level="29.2" data-path="specificazione-errata-delle-relazioni-tra-indicatori-e-fattori-latenti.html"><a href="specificazione-errata-delle-relazioni-tra-indicatori-e-fattori-latenti.html"><i class="fa fa-check"></i><b>29.2</b> Specificazione errata delle relazioni tra indicatori e fattori latenti</a></li>
+<li class="chapter" data-level="29.3" data-path="saturazione-sul-fattore-sbagliato.html"><a href="saturazione-sul-fattore-sbagliato.html"><i class="fa fa-check"></i><b>29.3</b> Saturazione sul fattore sbagliato</a></li>
 <li class="chapter" data-level="" data-path="commenti-e-considerazioni-finali-1.html"><a href="commenti-e-considerazioni-finali-1.html"><i class="fa fa-check"></i>Commenti e considerazioni finali</a></li>
 </ul></li>
-<li class="chapter" data-level="28" data-path="ch-mmm.html"><a href="ch-mmm.html"><i class="fa fa-check"></i><b>28</b> CFA per matrici multi-tratto multi-metodo</a>
+<li class="chapter" data-level="30" data-path="ch-mmm.html"><a href="ch-mmm.html"><i class="fa fa-check"></i><b>30</b> CFA per matrici multi-tratto multi-metodo</a>
 <ul>
-<li class="chapter" data-level="28.1" data-path="mtmm-e-cfa.html"><a href="mtmm-e-cfa.html"><i class="fa fa-check"></i><b>28.1</b> MTMM e CFA</a>
+<li class="chapter" data-level="30.1" data-path="mtmm-e-cfa.html"><a href="mtmm-e-cfa.html"><i class="fa fa-check"></i><b>30.1</b> MTMM e CFA</a>
 <ul>
-<li class="chapter" data-level="28.1.1" data-path="mtmm-e-cfa.html"><a href="mtmm-e-cfa.html#un-esempio-concreto-8"><i class="fa fa-check"></i><b>28.1.1</b> Un esempio concreto</a></li>
+<li class="chapter" data-level="30.1.1" data-path="mtmm-e-cfa.html"><a href="mtmm-e-cfa.html#un-esempio-concreto-8"><i class="fa fa-check"></i><b>30.1.1</b> Un esempio concreto</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="29" data-path="curve-di-crescita-latente.html"><a href="curve-di-crescita-latente.html"><i class="fa fa-check"></i><b>29</b> Curve di crescita latente</a>
+<li class="chapter" data-level="31" data-path="curve-di-crescita-latente.html"><a href="curve-di-crescita-latente.html"><i class="fa fa-check"></i><b>31</b> Curve di crescita latente</a>
 <ul>
-<li class="chapter" data-level="29.1" data-path="modelli-a-crescita-latente-e-modelli-misti.html"><a href="modelli-a-crescita-latente-e-modelli-misti.html"><i class="fa fa-check"></i><b>29.1</b> Modelli a crescita latente e modelli misti</a>
+<li class="chapter" data-level="31.1" data-path="preliminari.html"><a href="preliminari.html"><i class="fa fa-check"></i><b>31.1</b> Preliminari</a>
 <ul>
-<li class="chapter" data-level="29.1.1" data-path="modelli-a-crescita-latente-e-modelli-misti.html"><a href="modelli-a-crescita-latente-e-modelli-misti.html#modelli-misti"><i class="fa fa-check"></i><b>29.1.1</b> Modelli misti</a></li>
-<li class="chapter" data-level="29.1.2" data-path="modelli-a-crescita-latente-e-modelli-misti.html"><a href="modelli-a-crescita-latente-e-modelli-misti.html#simulare-effetti-casuali"><i class="fa fa-check"></i><b>29.1.2</b> Simulare effetti casuali</a></li>
-</ul></li>
-<li class="chapter" data-level="29.2" data-path="modello-di-crescita-latente.html"><a href="modello-di-crescita-latente.html"><i class="fa fa-check"></i><b>29.2</b> Modello di crescita latente</a></li>
-<li class="chapter" data-level="29.3" data-path="esplorazione-approfondita-del-modello-lgm.html"><a href="esplorazione-approfondita-del-modello-lgm.html"><i class="fa fa-check"></i><b>29.3</b> Esplorazione approfondita del modello LGM</a>
-<ul>
-<li class="chapter" data-level="29.3.1" data-path="esplorazione-approfondita-del-modello-lgm.html"><a href="esplorazione-approfondita-del-modello-lgm.html#visualizzare-il-cambiamento"><i class="fa fa-check"></i><b>29.3.1</b> Visualizzare il cambiamento</a></li>
-<li class="chapter" data-level="29.3.2" data-path="esplorazione-approfondita-del-modello-lgm.html"><a href="esplorazione-approfondita-del-modello-lgm.html#dati-ordinali-vs.-intervalli-temporali"><i class="fa fa-check"></i><b>29.3.2</b> Dati ordinali vs. intervalli temporali</a></li>
-<li class="chapter" data-level="29.3.3" data-path="esplorazione-approfondita-del-modello-lgm.html"><a href="esplorazione-approfondita-del-modello-lgm.html#verifica-di-ipotesi"><i class="fa fa-check"></i><b>29.3.3</b> Verifica di ipotesi</a></li>
-<li class="chapter" data-level="29.3.4" data-path="esplorazione-approfondita-del-modello-lgm.html"><a href="esplorazione-approfondita-del-modello-lgm.html#leffetto-delle-covariate"><i class="fa fa-check"></i><b>29.3.4</b> L’effetto delle covariate</a></li>
-</ul></li>
-<li class="chapter" data-level="29.4" data-path="crescita-non-lineare.html"><a href="crescita-non-lineare.html"><i class="fa fa-check"></i><b>29.4</b> Crescita non lineare</a>
-<ul>
-<li class="chapter" data-level="29.4.1" data-path="crescita-non-lineare.html"><a href="crescita-non-lineare.html#stimatore"><i class="fa fa-check"></i><b>29.4.1</b> Stimatore</a></li>
-<li class="chapter" data-level="29.4.2" data-path="crescita-non-lineare.html"><a href="crescita-non-lineare.html#assenza-di-crescita"><i class="fa fa-check"></i><b>29.4.2</b> Assenza di crescita</a></li>
-<li class="chapter" data-level="29.4.3" data-path="crescita-non-lineare.html"><a href="crescita-non-lineare.html#crescita-lineare"><i class="fa fa-check"></i><b>29.4.3</b> Crescita lineare</a></li>
-<li class="chapter" data-level="29.4.4" data-path="crescita-non-lineare.html"><a href="crescita-non-lineare.html#crescita-quadratica"><i class="fa fa-check"></i><b>29.4.4</b> Crescita quadratica</a></li>
-</ul></li>
-<li class="chapter" data-level="29.5" data-path="parallel-process-model.html"><a href="parallel-process-model.html"><i class="fa fa-check"></i><b>29.5</b> Parallel Process Model</a>
-<ul>
-<li class="chapter" data-level="29.5.1" data-path="parallel-process-model.html"><a href="parallel-process-model.html#interpretazione-4"><i class="fa fa-check"></i><b>29.5.1</b> Interpretazione</a></li>
+<li class="chapter" data-level="31.1.1" data-path="preliminari.html"><a href="preliminari.html#strutture-dei-dati"><i class="fa fa-check"></i><b>31.1.1</b> Strutture dei dati</a></li>
+<li class="chapter" data-level="31.1.2" data-path="preliminari.html"><a href="preliminari.html#visualizzazione-di-dati-longitudinali"><i class="fa fa-check"></i><b>31.1.2</b> Visualizzazione di dati longitudinali</a></li>
+<li class="chapter" data-level="31.1.3" data-path="preliminari.html"><a href="preliminari.html#data-screening"><i class="fa fa-check"></i><b>31.1.3</b> Data screening</a></li>
+<li class="chapter" data-level="31.1.4" data-path="preliminari.html"><a href="preliminari.html#attendibilità-1"><i class="fa fa-check"></i><b>31.1.4</b> Attendibilità</a></li>
+<li class="chapter" data-level="31.1.5" data-path="preliminari.html"><a href="preliminari.html#invarianza-di-misurazione"><i class="fa fa-check"></i><b>31.1.5</b> Invarianza di misurazione</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="30" data-path="dati-non-gaussiani-e-categoriali.html"><a href="dati-non-gaussiani-e-categoriali.html"><i class="fa fa-check"></i><b>30</b> Dati non gaussiani e categoriali</a>
+<li class="chapter" data-level="32" data-path="curve-di-crescita-latente-1.html"><a href="curve-di-crescita-latente-1.html"><i class="fa fa-check"></i><b>32</b> Curve di crescita latente</a>
 <ul>
-<li class="chapter" data-level="30.1" data-path="dati-non-gaussiani.html"><a href="dati-non-gaussiani.html"><i class="fa fa-check"></i><b>30.1</b> Dati non gaussiani</a></li>
-<li class="chapter" data-level="30.2" data-path="dati-categoriali.html"><a href="dati-categoriali.html"><i class="fa fa-check"></i><b>30.2</b> Dati categoriali</a>
+<li class="chapter" data-level="32.1" data-path="modello-lgm-come-modello-di-equazioni-strutturali.html"><a href="modello-lgm-come-modello-di-equazioni-strutturali.html"><i class="fa fa-check"></i><b>32.1</b> Modello LGM come modello di equazioni strutturali</a></li>
+<li class="chapter" data-level="32.2" data-path="una-applicazione-concreta.html"><a href="una-applicazione-concreta.html"><i class="fa fa-check"></i><b>32.2</b> Una applicazione concreta</a></li>
+<li class="chapter" data-level="32.3" data-path="modello-di-assenza-di-crescita.html"><a href="modello-di-assenza-di-crescita.html"><i class="fa fa-check"></i><b>32.3</b> Modello di assenza di crescita</a></li>
+<li class="chapter" data-level="32.4" data-path="modello-di-crescita-lineare.html"><a href="modello-di-crescita-lineare.html"><i class="fa fa-check"></i><b>32.4</b> Modello di crescita lineare</a></li>
+<li class="chapter" data-level="32.5" data-path="considerazioni-conclusive-1.html"><a href="considerazioni-conclusive-1.html"><i class="fa fa-check"></i><b>32.5</b> Considerazioni conclusive</a></li>
+</ul></li>
+<li class="chapter" data-level="33" data-path="il-tempo-su-una-metrica-continua.html"><a href="il-tempo-su-una-metrica-continua.html"><i class="fa fa-check"></i><b>33</b> Il tempo su una metrica continua</a>
 <ul>
-<li class="chapter" data-level="30.2.1" data-path="dati-categoriali.html"><a href="dati-categoriali.html#un-esempio-concreto-9"><i class="fa fa-check"></i><b>30.2.1</b> Un esempio concreto</a></li>
+<li class="chapter" data-level="33.1" data-path="una-applicazione-concreta-1.html"><a href="una-applicazione-concreta-1.html"><i class="fa fa-check"></i><b>33.1</b> Una applicazione concreta</a></li>
+</ul></li>
+<li class="chapter" data-level="34" data-path="covariate-indipendenti-dal-tempo.html"><a href="covariate-indipendenti-dal-tempo.html"><i class="fa fa-check"></i><b>34</b> Covariate indipendenti dal tempo</a>
+<ul>
+<li class="chapter" data-level="34.0.1" data-path="covariate-indipendenti-dal-tempo.html"><a href="covariate-indipendenti-dal-tempo.html#valutare-il-contributo-delle-covariate"><i class="fa fa-check"></i><b>34.0.1</b> Valutare il contributo delle covariate</a></li>
+</ul></li>
+<li class="chapter" data-level="35" data-path="modelli-di-crescita-latenti-a-gruppi-multipli.html"><a href="modelli-di-crescita-latenti-a-gruppi-multipli.html"><i class="fa fa-check"></i><b>35</b> Modelli di crescita latenti a gruppi multipli</a>
+<ul>
+<li class="chapter" data-level="35.1" data-path="invarianza-tra-gruppi.html"><a href="invarianza-tra-gruppi.html"><i class="fa fa-check"></i><b>35.1</b> Invarianza tra gruppi</a></li>
+<li class="chapter" data-level="35.2" data-path="vincoli-sulle-medie.html"><a href="vincoli-sulle-medie.html"><i class="fa fa-check"></i><b>35.2</b> Vincoli sulle medie</a></li>
+<li class="chapter" data-level="35.3" data-path="vincoli-sulle-varianzecovarianze.html"><a href="vincoli-sulle-varianzecovarianze.html"><i class="fa fa-check"></i><b>35.3</b> Vincoli sulle varianze/covarianze</a></li>
+<li class="chapter" data-level="35.4" data-path="vincoli-sui-residui.html"><a href="vincoli-sui-residui.html"><i class="fa fa-check"></i><b>35.4</b> Vincoli sui residui</a></li>
+<li class="chapter" data-level="35.5" data-path="conclusioni-3.html"><a href="conclusioni-3.html"><i class="fa fa-check"></i><b>35.5</b> Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="36" data-path="modelli-di-crescita-latenti-bivariati.html"><a href="modelli-di-crescita-latenti-bivariati.html"><i class="fa fa-check"></i><b>36</b> Modelli di crescita latenti bivariati</a>
+<ul>
+<li class="chapter" data-level="36.1" data-path="conclusione.html"><a href="conclusione.html"><i class="fa fa-check"></i><b>36.1</b> Conclusione</a></li>
+</ul></li>
+<li class="chapter" data-level="37" data-path="invarianza-di-misurazione-1.html"><a href="invarianza-di-misurazione-1.html"><i class="fa fa-check"></i><b>37</b> Invarianza di misurazione</a>
+<ul>
+<li class="chapter" data-level="37.1" data-path="invarianza-fattoriale-longitudinale.html"><a href="invarianza-fattoriale-longitudinale.html"><i class="fa fa-check"></i><b>37.1</b> Invarianza fattoriale longitudinale</a></li>
+<li class="chapter" data-level="37.2" data-path="un-esempio-concreto-9.html"><a href="un-esempio-concreto-9.html"><i class="fa fa-check"></i><b>37.2</b> Un esempio concreto</a>
+<ul>
+<li class="chapter" data-level="37.2.1" data-path="un-esempio-concreto-9.html"><a href="un-esempio-concreto-9.html#modello-di-invarianza-configurale"><i class="fa fa-check"></i><b>37.2.1</b> Modello di invarianza configurale</a></li>
+<li class="chapter" data-level="37.2.2" data-path="un-esempio-concreto-9.html"><a href="un-esempio-concreto-9.html#modello-di-invarianza-debole"><i class="fa fa-check"></i><b>37.2.2</b> Modello di invarianza debole</a></li>
+<li class="chapter" data-level="37.2.3" data-path="un-esempio-concreto-9.html"><a href="un-esempio-concreto-9.html#modello-di-invarianza-forte"><i class="fa fa-check"></i><b>37.2.3</b> Modello di invarianza forte</a></li>
+<li class="chapter" data-level="37.2.4" data-path="un-esempio-concreto-9.html"><a href="un-esempio-concreto-9.html#invarianza-stretta"><i class="fa fa-check"></i><b>37.2.4</b> Invarianza stretta</a></li>
+</ul></li>
+<li class="chapter" data-level="37.3" data-path="confronto-tra-modelli.html"><a href="confronto-tra-modelli.html"><i class="fa fa-check"></i><b>37.3</b> Confronto tra modelli</a></li>
+<li class="chapter" data-level="37.4" data-path="second-order-growth-model.html"><a href="second-order-growth-model.html"><i class="fa fa-check"></i><b>37.4</b> Second-Order Growth Model</a></li>
+<li class="chapter" data-level="37.5" data-path="traiettorie-di-sviluppo.html"><a href="traiettorie-di-sviluppo.html"><i class="fa fa-check"></i><b>37.5</b> Traiettorie di sviluppo</a></li>
+<li class="chapter" data-level="37.6" data-path="conclusione-1.html"><a href="conclusione-1.html"><i class="fa fa-check"></i><b>37.6</b> Conclusione</a></li>
+</ul></li>
+<li class="chapter" data-level="38" data-path="unapplicazione-concreta.html"><a href="unapplicazione-concreta.html"><i class="fa fa-check"></i><b>38</b> Un’applicazione concreta</a>
+<ul>
+<li class="chapter" data-level="38.0.1" data-path="unapplicazione-concreta.html"><a href="unapplicazione-concreta.html#visualizzare-il-cambiamento"><i class="fa fa-check"></i><b>38.0.1</b> Visualizzare il cambiamento</a></li>
+<li class="chapter" data-level="38.0.2" data-path="unapplicazione-concreta.html"><a href="unapplicazione-concreta.html#dati-ordinali-vs.-intervalli-temporali"><i class="fa fa-check"></i><b>38.0.2</b> Dati ordinali vs. intervalli temporali</a></li>
+<li class="chapter" data-level="38.0.3" data-path="unapplicazione-concreta.html"><a href="unapplicazione-concreta.html#verifica-di-ipotesi"><i class="fa fa-check"></i><b>38.0.3</b> Verifica di ipotesi</a></li>
+<li class="chapter" data-level="38.1" data-path="leffetto-delle-covariate.html"><a href="leffetto-delle-covariate.html"><i class="fa fa-check"></i><b>38.1</b> L’effetto delle covariate</a></li>
+<li class="chapter" data-level="38.2" data-path="crescita-non-lineare.html"><a href="crescita-non-lineare.html"><i class="fa fa-check"></i><b>38.2</b> Crescita non lineare</a></li>
+<li class="chapter" data-level="38.3" data-path="stimatore.html"><a href="stimatore.html"><i class="fa fa-check"></i><b>38.3</b> Stimatore</a></li>
+<li class="chapter" data-level="38.4" data-path="assenza-di-crescita.html"><a href="assenza-di-crescita.html"><i class="fa fa-check"></i><b>38.4</b> Assenza di crescita</a>
+<ul>
+<li class="chapter" data-level="38.4.1" data-path="assenza-di-crescita.html"><a href="assenza-di-crescita.html#crescita-lineare"><i class="fa fa-check"></i><b>38.4.1</b> Crescita lineare</a></li>
+</ul></li>
+<li class="chapter" data-level="38.5" data-path="crescita-quadratica.html"><a href="crescita-quadratica.html"><i class="fa fa-check"></i><b>38.5</b> Crescita quadratica</a></li>
+<li class="chapter" data-level="38.6" data-path="parallel-process-model.html"><a href="parallel-process-model.html"><i class="fa fa-check"></i><b>38.6</b> Parallel Process Model</a></li>
+<li class="chapter" data-level="38.7" data-path="interpretazione-4.html"><a href="interpretazione-4.html"><i class="fa fa-check"></i><b>38.7</b> Interpretazione</a></li>
+<li class="chapter" data-level="38.8" data-path="conclusioni-4.html"><a href="conclusioni-4.html"><i class="fa fa-check"></i><b>38.8</b> Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="39" data-path="dati-non-gaussiani-e-categoriali.html"><a href="dati-non-gaussiani-e-categoriali.html"><i class="fa fa-check"></i><b>39</b> Dati non gaussiani e categoriali</a>
+<ul>
+<li class="chapter" data-level="39.1" data-path="dati-non-gaussiani.html"><a href="dati-non-gaussiani.html"><i class="fa fa-check"></i><b>39.1</b> Dati non gaussiani</a></li>
+<li class="chapter" data-level="39.2" data-path="dati-categoriali.html"><a href="dati-categoriali.html"><i class="fa fa-check"></i><b>39.2</b> Dati categoriali</a>
+<ul>
+<li class="chapter" data-level="39.2.1" data-path="dati-categoriali.html"><a href="dati-categoriali.html#un-esempio-concreto-10"><i class="fa fa-check"></i><b>39.2.1</b> Un esempio concreto</a></li>
 </ul></li>
 </ul></li>
-<li class="part"><span><b>IV Appendici</b></span></li>
+<li class="part"><span><b>VI Appendici</b></span></li>
 <li class="appendix"><span><b>Appendici</b></span></li>
-<li class="chapter" data-level="A" data-path="elementi-di-algebra-lineare.html"><a href="elementi-di-algebra-lineare.html"><i class="fa fa-check"></i><b>A</b> Elementi di algebra lineare</a>
+<li class="chapter" data-level="A" data-path="simbologia-di-base.html"><a href="simbologia-di-base.html"><i class="fa fa-check"></i><b>A</b> Simbologia di base</a></li>
+<li class="chapter" data-level="B" data-path="elementi-di-algebra-lineare.html"><a href="elementi-di-algebra-lineare.html"><i class="fa fa-check"></i><b>B</b> Elementi di algebra lineare</a>
 <ul>
-<li class="chapter" data-level="A.1" data-path="vettori-1.html"><a href="vettori-1.html"><i class="fa fa-check"></i><b>A.1</b> Vettori</a>
+<li class="chapter" data-level="B.1" data-path="vettori-1.html"><a href="vettori-1.html"><i class="fa fa-check"></i><b>B.1</b> Vettori</a>
 <ul>
-<li class="chapter" data-level="A.1.1" data-path="vettori-1.html"><a href="vettori-1.html#vettori-nello-spazio-euclideo"><i class="fa fa-check"></i><b>A.1.1</b> Vettori nello spazio euclideo</a></li>
-<li class="chapter" data-level="A.1.2" data-path="vettori-1.html"><a href="vettori-1.html#somma-e-differenza-di-vettori"><i class="fa fa-check"></i><b>A.1.2</b> Somma e differenza di vettori</a></li>
-<li class="chapter" data-level="A.1.3" data-path="vettori-1.html"><a href="vettori-1.html#moltiplicazione-scalare"><i class="fa fa-check"></i><b>A.1.3</b> Moltiplicazione scalare</a></li>
-<li class="chapter" data-level="A.1.4" data-path="vettori-1.html"><a href="vettori-1.html#combinazione-lineare"><i class="fa fa-check"></i><b>A.1.4</b> Combinazione lineare</a></li>
-<li class="chapter" data-level="A.1.5" data-path="vettori-1.html"><a href="vettori-1.html#vettore-0-e-vettore-1"><i class="fa fa-check"></i><b>A.1.5</b> Vettore 0 e vettore 1</a></li>
-<li class="chapter" data-level="A.1.6" data-path="vettori-1.html"><a href="vettori-1.html#ortogonalità-tra-vettori"><i class="fa fa-check"></i><b>A.1.6</b> Ortogonalità tra vettori</a></li>
-<li class="chapter" data-level="A.1.7" data-path="vettori-1.html"><a href="vettori-1.html#trasposta-di-un-vettore"><i class="fa fa-check"></i><b>A.1.7</b> Trasposta di un vettore</a></li>
-<li class="chapter" data-level="A.1.8" data-path="vettori-1.html"><a href="vettori-1.html#norma-o-lunghezza-di-un-vettore"><i class="fa fa-check"></i><b>A.1.8</b> Norma o lunghezza di un vettore</a></li>
+<li class="chapter" data-level="B.1.1" data-path="vettori-1.html"><a href="vettori-1.html#vettori-nello-spazio-euclideo"><i class="fa fa-check"></i><b>B.1.1</b> Vettori nello spazio euclideo</a></li>
+<li class="chapter" data-level="B.1.2" data-path="vettori-1.html"><a href="vettori-1.html#somma-e-differenza-di-vettori"><i class="fa fa-check"></i><b>B.1.2</b> Somma e differenza di vettori</a></li>
+<li class="chapter" data-level="B.1.3" data-path="vettori-1.html"><a href="vettori-1.html#moltiplicazione-scalare"><i class="fa fa-check"></i><b>B.1.3</b> Moltiplicazione scalare</a></li>
+<li class="chapter" data-level="B.1.4" data-path="vettori-1.html"><a href="vettori-1.html#combinazione-lineare"><i class="fa fa-check"></i><b>B.1.4</b> Combinazione lineare</a></li>
+<li class="chapter" data-level="B.1.5" data-path="vettori-1.html"><a href="vettori-1.html#vettore-0-e-vettore-1"><i class="fa fa-check"></i><b>B.1.5</b> Vettore 0 e vettore 1</a></li>
+<li class="chapter" data-level="B.1.6" data-path="vettori-1.html"><a href="vettori-1.html#ortogonalità-tra-vettori"><i class="fa fa-check"></i><b>B.1.6</b> Ortogonalità tra vettori</a></li>
+<li class="chapter" data-level="B.1.7" data-path="vettori-1.html"><a href="vettori-1.html#trasposta-di-un-vettore"><i class="fa fa-check"></i><b>B.1.7</b> Trasposta di un vettore</a></li>
+<li class="chapter" data-level="B.1.8" data-path="vettori-1.html"><a href="vettori-1.html#norma-o-lunghezza-di-un-vettore"><i class="fa fa-check"></i><b>B.1.8</b> Norma o lunghezza di un vettore</a></li>
 </ul></li>
-<li class="chapter" data-level="A.2" data-path="matrici-1.html"><a href="matrici-1.html"><i class="fa fa-check"></i><b>A.2</b> Matrici</a>
+<li class="chapter" data-level="B.2" data-path="matrici-1.html"><a href="matrici-1.html"><i class="fa fa-check"></i><b>B.2</b> Matrici</a>
 <ul>
-<li class="chapter" data-level="A.2.1" data-path="matrici-1.html"><a href="matrici-1.html#dimensioni-della-matrice"><i class="fa fa-check"></i><b>A.2.1</b> Dimensioni della matrice</a></li>
-<li class="chapter" data-level="A.2.2" data-path="matrici-1.html"><a href="matrici-1.html#matrice-trasposta"><i class="fa fa-check"></i><b>A.2.2</b> Matrice trasposta</a></li>
-<li class="chapter" data-level="A.2.3" data-path="matrici-1.html"><a href="matrici-1.html#matrice-simmetrica"><i class="fa fa-check"></i><b>A.2.3</b> Matrice simmetrica</a></li>
-<li class="chapter" data-level="A.2.4" data-path="matrici-1.html"><a href="matrici-1.html#matrice-quadrata-o-rettangolare"><i class="fa fa-check"></i><b>A.2.4</b> Matrice quadrata o rettangolare</a></li>
-<li class="chapter" data-level="A.2.5" data-path="matrici-1.html"><a href="matrici-1.html#diagonale-principale"><i class="fa fa-check"></i><b>A.2.5</b> Diagonale principale</a></li>
-<li class="chapter" data-level="A.2.6" data-path="matrici-1.html"><a href="matrici-1.html#matrice-diagonale"><i class="fa fa-check"></i><b>A.2.6</b> Matrice diagonale</a></li>
-<li class="chapter" data-level="A.2.7" data-path="matrici-1.html"><a href="matrici-1.html#matrice-identità"><i class="fa fa-check"></i><b>A.2.7</b> Matrice identità</a></li>
-<li class="chapter" data-level="A.2.8" data-path="matrici-1.html"><a href="matrici-1.html#matrici-diagonali-e-triangolari"><i class="fa fa-check"></i><b>A.2.8</b> Matrici diagonali e triangolari</a></li>
-<li class="chapter" data-level="A.2.9" data-path="matrici-1.html"><a href="matrici-1.html#somma-e-sottrazione"><i class="fa fa-check"></i><b>A.2.9</b> Somma e sottrazione</a></li>
-<li class="chapter" data-level="A.2.10" data-path="matrici-1.html"><a href="matrici-1.html#moltiplicazione-di-scalari-e-matrici"><i class="fa fa-check"></i><b>A.2.10</b> Moltiplicazione di scalari e matrici</a></li>
-<li class="chapter" data-level="A.2.11" data-path="matrici-1.html"><a href="matrici-1.html#proprietà-della-somma-e-differenza"><i class="fa fa-check"></i><b>A.2.11</b> Proprietà della somma e differenza</a></li>
-<li class="chapter" data-level="A.2.12" data-path="matrici-1.html"><a href="matrici-1.html#prodotto-di-matrici"><i class="fa fa-check"></i><b>A.2.12</b> Prodotto di matrici</a></li>
-<li class="chapter" data-level="A.2.13" data-path="matrici-1.html"><a href="matrici-1.html#proprietà-del-prodotto-di-matrici"><i class="fa fa-check"></i><b>A.2.13</b> Proprietà del prodotto di matrici</a></li>
-<li class="chapter" data-level="A.2.14" data-path="matrici-1.html"><a href="matrici-1.html#casi-particolari"><i class="fa fa-check"></i><b>A.2.14</b> Casi particolari</a></li>
-<li class="chapter" data-level="A.2.15" data-path="matrici-1.html"><a href="matrici-1.html#operazioni-tra-vettori"><i class="fa fa-check"></i><b>A.2.15</b> Operazioni tra vettori</a></li>
-<li class="chapter" data-level="A.2.16" data-path="matrici-1.html"><a href="matrici-1.html#prodotto-interno"><i class="fa fa-check"></i><b>A.2.16</b> Prodotto interno</a></li>
-<li class="chapter" data-level="A.2.17" data-path="matrici-1.html"><a href="matrici-1.html#prodotto-esterno"><i class="fa fa-check"></i><b>A.2.17</b> Prodotto esterno</a></li>
-<li class="chapter" data-level="A.2.18" data-path="matrici-1.html"><a href="matrici-1.html#traccia-di-una-matrice"><i class="fa fa-check"></i><b>A.2.18</b> Traccia di una matrice</a></li>
-<li class="chapter" data-level="A.2.19" data-path="matrici-1.html"><a href="matrici-1.html#rango-di-una-matrice"><i class="fa fa-check"></i><b>A.2.19</b> Rango di una matrice</a></li>
-<li class="chapter" data-level="A.2.20" data-path="matrici-1.html"><a href="matrici-1.html#matrice-inversa"><i class="fa fa-check"></i><b>A.2.20</b> Matrice inversa</a></li>
-<li class="chapter" data-level="A.2.21" data-path="matrici-1.html"><a href="matrici-1.html#determinante-di-una-matrice"><i class="fa fa-check"></i><b>A.2.21</b> Determinante di una matrice</a></li>
-<li class="chapter" data-level="A.2.22" data-path="matrici-1.html"><a href="matrici-1.html#determinante-e-inversa"><i class="fa fa-check"></i><b>A.2.22</b> Determinante e inversa</a></li>
-<li class="chapter" data-level="A.2.23" data-path="matrici-1.html"><a href="matrici-1.html#proprietà-del-determinante"><i class="fa fa-check"></i><b>A.2.23</b> Proprietà del determinante</a></li>
-<li class="chapter" data-level="A.2.24" data-path="matrici-1.html"><a href="matrici-1.html#radici-e-vettori-latenti"><i class="fa fa-check"></i><b>A.2.24</b> Radici e vettori latenti</a></li>
-<li class="chapter" data-level="A.2.25" data-path="matrici-1.html"><a href="matrici-1.html#scomposizione-spettrale-di-una-matrice"><i class="fa fa-check"></i><b>A.2.25</b> Scomposizione spettrale di una matrice</a></li>
-<li class="chapter" data-level="A.2.26" data-path="matrici-1.html"><a href="matrici-1.html#autovalori-e-determinante"><i class="fa fa-check"></i><b>A.2.26</b> Autovalori e determinante</a></li>
+<li class="chapter" data-level="B.2.1" data-path="matrici-1.html"><a href="matrici-1.html#dimensioni-della-matrice"><i class="fa fa-check"></i><b>B.2.1</b> Dimensioni della matrice</a></li>
+<li class="chapter" data-level="B.2.2" data-path="matrici-1.html"><a href="matrici-1.html#matrice-trasposta"><i class="fa fa-check"></i><b>B.2.2</b> Matrice trasposta</a></li>
+<li class="chapter" data-level="B.2.3" data-path="matrici-1.html"><a href="matrici-1.html#matrice-simmetrica"><i class="fa fa-check"></i><b>B.2.3</b> Matrice simmetrica</a></li>
+<li class="chapter" data-level="B.2.4" data-path="matrici-1.html"><a href="matrici-1.html#matrice-quadrata-o-rettangolare"><i class="fa fa-check"></i><b>B.2.4</b> Matrice quadrata o rettangolare</a></li>
+<li class="chapter" data-level="B.2.5" data-path="matrici-1.html"><a href="matrici-1.html#diagonale-principale"><i class="fa fa-check"></i><b>B.2.5</b> Diagonale principale</a></li>
+<li class="chapter" data-level="B.2.6" data-path="matrici-1.html"><a href="matrici-1.html#matrice-diagonale"><i class="fa fa-check"></i><b>B.2.6</b> Matrice diagonale</a></li>
+<li class="chapter" data-level="B.2.7" data-path="matrici-1.html"><a href="matrici-1.html#matrice-identità"><i class="fa fa-check"></i><b>B.2.7</b> Matrice identità</a></li>
+<li class="chapter" data-level="B.2.8" data-path="matrici-1.html"><a href="matrici-1.html#matrici-diagonali-e-triangolari"><i class="fa fa-check"></i><b>B.2.8</b> Matrici diagonali e triangolari</a></li>
+<li class="chapter" data-level="B.2.9" data-path="matrici-1.html"><a href="matrici-1.html#somma-e-sottrazione"><i class="fa fa-check"></i><b>B.2.9</b> Somma e sottrazione</a></li>
+<li class="chapter" data-level="B.2.10" data-path="matrici-1.html"><a href="matrici-1.html#moltiplicazione-di-scalari-e-matrici"><i class="fa fa-check"></i><b>B.2.10</b> Moltiplicazione di scalari e matrici</a></li>
+<li class="chapter" data-level="B.2.11" data-path="matrici-1.html"><a href="matrici-1.html#proprietà-della-somma-e-differenza"><i class="fa fa-check"></i><b>B.2.11</b> Proprietà della somma e differenza</a></li>
+<li class="chapter" data-level="B.2.12" data-path="matrici-1.html"><a href="matrici-1.html#prodotto-di-matrici"><i class="fa fa-check"></i><b>B.2.12</b> Prodotto di matrici</a></li>
+<li class="chapter" data-level="B.2.13" data-path="matrici-1.html"><a href="matrici-1.html#proprietà-del-prodotto-di-matrici"><i class="fa fa-check"></i><b>B.2.13</b> Proprietà del prodotto di matrici</a></li>
+<li class="chapter" data-level="B.2.14" data-path="matrici-1.html"><a href="matrici-1.html#casi-particolari"><i class="fa fa-check"></i><b>B.2.14</b> Casi particolari</a></li>
+<li class="chapter" data-level="B.2.15" data-path="matrici-1.html"><a href="matrici-1.html#operazioni-tra-vettori"><i class="fa fa-check"></i><b>B.2.15</b> Operazioni tra vettori</a></li>
+<li class="chapter" data-level="B.2.16" data-path="matrici-1.html"><a href="matrici-1.html#prodotto-interno"><i class="fa fa-check"></i><b>B.2.16</b> Prodotto interno</a></li>
+<li class="chapter" data-level="B.2.17" data-path="matrici-1.html"><a href="matrici-1.html#prodotto-esterno"><i class="fa fa-check"></i><b>B.2.17</b> Prodotto esterno</a></li>
+<li class="chapter" data-level="B.2.18" data-path="matrici-1.html"><a href="matrici-1.html#traccia-di-una-matrice"><i class="fa fa-check"></i><b>B.2.18</b> Traccia di una matrice</a></li>
+<li class="chapter" data-level="B.2.19" data-path="matrici-1.html"><a href="matrici-1.html#rango-di-una-matrice"><i class="fa fa-check"></i><b>B.2.19</b> Rango di una matrice</a></li>
+<li class="chapter" data-level="B.2.20" data-path="matrici-1.html"><a href="matrici-1.html#matrice-inversa"><i class="fa fa-check"></i><b>B.2.20</b> Matrice inversa</a></li>
+<li class="chapter" data-level="B.2.21" data-path="matrici-1.html"><a href="matrici-1.html#determinante-di-una-matrice"><i class="fa fa-check"></i><b>B.2.21</b> Determinante di una matrice</a></li>
+<li class="chapter" data-level="B.2.22" data-path="matrici-1.html"><a href="matrici-1.html#determinante-e-inversa"><i class="fa fa-check"></i><b>B.2.22</b> Determinante e inversa</a></li>
+<li class="chapter" data-level="B.2.23" data-path="matrici-1.html"><a href="matrici-1.html#proprietà-del-determinante"><i class="fa fa-check"></i><b>B.2.23</b> Proprietà del determinante</a></li>
+<li class="chapter" data-level="B.2.24" data-path="matrici-1.html"><a href="matrici-1.html#radici-e-vettori-latenti"><i class="fa fa-check"></i><b>B.2.24</b> Radici e vettori latenti</a></li>
+<li class="chapter" data-level="B.2.25" data-path="matrici-1.html"><a href="matrici-1.html#scomposizione-spettrale-di-una-matrice"><i class="fa fa-check"></i><b>B.2.25</b> Scomposizione spettrale di una matrice</a></li>
+<li class="chapter" data-level="B.2.26" data-path="matrici-1.html"><a href="matrici-1.html#autovalori-e-determinante"><i class="fa fa-check"></i><b>B.2.26</b> Autovalori e determinante</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -741,367 +806,143 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="crescita-non-lineare" class="section level2 hasAnchor" number="29.4">
-<h2><span class="header-section-number">29.4</span> Crescita non lineare<a href="crescita-non-lineare.html#crescita-non-lineare" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="crescita-non-lineare" class="section level2 hasAnchor" number="38.2">
+<h2><span class="header-section-number">38.2</span> Crescita non lineare<a href="crescita-non-lineare.html#crescita-non-lineare" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Ripetiamo la procedura di analisi descritta sopra introducendo un cambiamento relativo alla descrizione del cambiamento: verrà considerato un modello nel quale la crescita non è lineare.</p>
 <p>Nelle analisi seguenti useremo i seguenti indici di bontà di adattamento.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="crescita-non-lineare.html#cb37-1" tabindex="-1"></a>selected_fit_stats <span class="ot">&lt;-</span></span>
-<span id="cb37-2"><a href="crescita-non-lineare.html#cb37-2" tabindex="-1"></a>  <span class="fu">c</span>(</span>
-<span id="cb37-3"><a href="crescita-non-lineare.html#cb37-3" tabindex="-1"></a>    <span class="st">&quot;chisq.scaled&quot;</span>,</span>
-<span id="cb37-4"><a href="crescita-non-lineare.html#cb37-4" tabindex="-1"></a>    <span class="st">&quot;df.scaled&quot;</span>, <span class="do">## must be &gt;0 to test G.O.F.</span></span>
-<span id="cb37-5"><a href="crescita-non-lineare.html#cb37-5" tabindex="-1"></a>    <span class="st">&quot;pvalue.scaled&quot;</span>, <span class="do">## ideally n.s.</span></span>
-<span id="cb37-6"><a href="crescita-non-lineare.html#cb37-6" tabindex="-1"></a>    <span class="st">&quot;cfi.scaled&quot;</span>, <span class="do">## ideally ≥ 0.95</span></span>
-<span id="cb37-7"><a href="crescita-non-lineare.html#cb37-7" tabindex="-1"></a>    <span class="st">&quot;rmsea.scaled&quot;</span>, <span class="do">## ideally ≤ 0.05</span></span>
-<span id="cb37-8"><a href="crescita-non-lineare.html#cb37-8" tabindex="-1"></a>    <span class="st">&quot;rmsea.pvalue.scaled&quot;</span>, <span class="do">## ideally n.s.</span></span>
-<span id="cb37-9"><a href="crescita-non-lineare.html#cb37-9" tabindex="-1"></a>    <span class="st">&quot;srmr&quot;</span> <span class="do">## ideally &lt; 0.08</span></span>
-<span id="cb37-10"><a href="crescita-non-lineare.html#cb37-10" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb652"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb652-1"><a href="crescita-non-lineare.html#cb652-1" tabindex="-1"></a>selected_fit_stats <span class="ot">&lt;-</span></span>
+<span id="cb652-2"><a href="crescita-non-lineare.html#cb652-2" tabindex="-1"></a>  <span class="fu">c</span>(</span>
+<span id="cb652-3"><a href="crescita-non-lineare.html#cb652-3" tabindex="-1"></a>    <span class="st">&quot;chisq.scaled&quot;</span>,</span>
+<span id="cb652-4"><a href="crescita-non-lineare.html#cb652-4" tabindex="-1"></a>    <span class="st">&quot;df.scaled&quot;</span>, <span class="do">## must be &gt;0 to test G.O.F.</span></span>
+<span id="cb652-5"><a href="crescita-non-lineare.html#cb652-5" tabindex="-1"></a>    <span class="st">&quot;pvalue.scaled&quot;</span>, <span class="do">## ideally n.s.</span></span>
+<span id="cb652-6"><a href="crescita-non-lineare.html#cb652-6" tabindex="-1"></a>    <span class="st">&quot;cfi.scaled&quot;</span>, <span class="do">## ideally ≥ 0.95</span></span>
+<span id="cb652-7"><a href="crescita-non-lineare.html#cb652-7" tabindex="-1"></a>    <span class="st">&quot;rmsea.scaled&quot;</span>, <span class="do">## ideally ≤ 0.05</span></span>
+<span id="cb652-8"><a href="crescita-non-lineare.html#cb652-8" tabindex="-1"></a>    <span class="st">&quot;rmsea.pvalue.scaled&quot;</span>, <span class="do">## ideally n.s.</span></span>
+<span id="cb652-9"><a href="crescita-non-lineare.html#cb652-9" tabindex="-1"></a>    <span class="st">&quot;srmr&quot;</span> <span class="do">## ideally &lt; 0.08</span></span>
+<span id="cb652-10"><a href="crescita-non-lineare.html#cb652-10" tabindex="-1"></a>  )</span></code></pre></div>
 <p>Supponiamo che la popolazione possa essere descritta dal seguente modello.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="crescita-non-lineare.html#cb38-1" tabindex="-1"></a>growth_mod <span class="ot">&lt;-</span></span>
-<span id="cb38-2"><a href="crescita-non-lineare.html#cb38-2" tabindex="-1"></a>  <span class="st">&quot;</span></span>
-<span id="cb38-3"><a href="crescita-non-lineare.html#cb38-3" tabindex="-1"></a><span class="st">  ## intercept &amp; slope growth terms for X</span></span>
-<span id="cb38-4"><a href="crescita-non-lineare.html#cb38-4" tabindex="-1"></a><span class="st">  iX =~ 1*x1 + 1*x2 + 1*x3 + 1*x4</span></span>
-<span id="cb38-5"><a href="crescita-non-lineare.html#cb38-5" tabindex="-1"></a><span class="st">  sX =~ 0*x1 + 1*x2 + 2*x3 + 3*x4</span></span>
-<span id="cb38-6"><a href="crescita-non-lineare.html#cb38-6" tabindex="-1"></a></span>
-<span id="cb38-7"><a href="crescita-non-lineare.html#cb38-7" tabindex="-1"></a><span class="st">  ## intercept, slope, &amp; quadratic terms for Y</span></span>
-<span id="cb38-8"><a href="crescita-non-lineare.html#cb38-8" tabindex="-1"></a><span class="st">  iY =~ 1*y1 + 1*y2 + 1*y3 + 1*y4</span></span>
-<span id="cb38-9"><a href="crescita-non-lineare.html#cb38-9" tabindex="-1"></a><span class="st">  sY =~ 0*y1 + 1*y2 + 2*y3 + 3*y4</span></span>
-<span id="cb38-10"><a href="crescita-non-lineare.html#cb38-10" tabindex="-1"></a><span class="st">  qY =~ 0*y1 + 1*y2 + 4*y3 + 9*y4</span></span>
-<span id="cb38-11"><a href="crescita-non-lineare.html#cb38-11" tabindex="-1"></a></span>
-<span id="cb38-12"><a href="crescita-non-lineare.html#cb38-12" tabindex="-1"></a><span class="st">  ## set variances</span></span>
-<span id="cb38-13"><a href="crescita-non-lineare.html#cb38-13" tabindex="-1"></a></span>
-<span id="cb38-14"><a href="crescita-non-lineare.html#cb38-14" tabindex="-1"></a><span class="st">  y4 ~~ 2*y4</span></span>
-<span id="cb38-15"><a href="crescita-non-lineare.html#cb38-15" tabindex="-1"></a><span class="st">  x4 ~~ 1*x4</span></span>
-<span id="cb38-16"><a href="crescita-non-lineare.html#cb38-16" tabindex="-1"></a></span>
-<span id="cb38-17"><a href="crescita-non-lineare.html#cb38-17" tabindex="-1"></a><span class="st">  ## set latent means/intercepts</span></span>
-<span id="cb38-18"><a href="crescita-non-lineare.html#cb38-18" tabindex="-1"></a><span class="st">  iX ~ 2*1</span></span>
-<span id="cb38-19"><a href="crescita-non-lineare.html#cb38-19" tabindex="-1"></a><span class="st">  sX ~ 1*1</span></span>
-<span id="cb38-20"><a href="crescita-non-lineare.html#cb38-20" tabindex="-1"></a><span class="st">  sY ~ -1*1</span></span>
-<span id="cb38-21"><a href="crescita-non-lineare.html#cb38-21" tabindex="-1"></a><span class="st">  qY ~ -1.5*1</span></span>
-<span id="cb38-22"><a href="crescita-non-lineare.html#cb38-22" tabindex="-1"></a></span>
-<span id="cb38-23"><a href="crescita-non-lineare.html#cb38-23" tabindex="-1"></a><span class="st">  sY ~ 2*predictor</span></span>
-<span id="cb38-24"><a href="crescita-non-lineare.html#cb38-24" tabindex="-1"></a></span>
-<span id="cb38-25"><a href="crescita-non-lineare.html#cb38-25" tabindex="-1"></a><span class="st">  outcome ~ 2*iX + 3*sY</span></span>
-<span id="cb38-26"><a href="crescita-non-lineare.html#cb38-26" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb653-1"><a href="crescita-non-lineare.html#cb653-1" tabindex="-1"></a>growth_mod <span class="ot">&lt;-</span></span>
+<span id="cb653-2"><a href="crescita-non-lineare.html#cb653-2" tabindex="-1"></a>  <span class="st">&quot;</span></span>
+<span id="cb653-3"><a href="crescita-non-lineare.html#cb653-3" tabindex="-1"></a><span class="st">  ## intercept &amp; slope growth terms for X</span></span>
+<span id="cb653-4"><a href="crescita-non-lineare.html#cb653-4" tabindex="-1"></a><span class="st">  iX =~ 1*x1 + 1*x2 + 1*x3 + 1*x4</span></span>
+<span id="cb653-5"><a href="crescita-non-lineare.html#cb653-5" tabindex="-1"></a><span class="st">  sX =~ 0*x1 + 1*x2 + 2*x3 + 3*x4</span></span>
+<span id="cb653-6"><a href="crescita-non-lineare.html#cb653-6" tabindex="-1"></a></span>
+<span id="cb653-7"><a href="crescita-non-lineare.html#cb653-7" tabindex="-1"></a><span class="st">  ## intercept, slope, &amp; quadratic terms for Y</span></span>
+<span id="cb653-8"><a href="crescita-non-lineare.html#cb653-8" tabindex="-1"></a><span class="st">  iY =~ 1*y1 + 1*y2 + 1*y3 + 1*y4</span></span>
+<span id="cb653-9"><a href="crescita-non-lineare.html#cb653-9" tabindex="-1"></a><span class="st">  sY =~ 0*y1 + 1*y2 + 2*y3 + 3*y4</span></span>
+<span id="cb653-10"><a href="crescita-non-lineare.html#cb653-10" tabindex="-1"></a><span class="st">  qY =~ 0*y1 + 1*y2 + 4*y3 + 9*y4</span></span>
+<span id="cb653-11"><a href="crescita-non-lineare.html#cb653-11" tabindex="-1"></a></span>
+<span id="cb653-12"><a href="crescita-non-lineare.html#cb653-12" tabindex="-1"></a><span class="st">  ## set variances</span></span>
+<span id="cb653-13"><a href="crescita-non-lineare.html#cb653-13" tabindex="-1"></a></span>
+<span id="cb653-14"><a href="crescita-non-lineare.html#cb653-14" tabindex="-1"></a><span class="st">  y4 ~~ 2*y4</span></span>
+<span id="cb653-15"><a href="crescita-non-lineare.html#cb653-15" tabindex="-1"></a><span class="st">  x4 ~~ 1*x4</span></span>
+<span id="cb653-16"><a href="crescita-non-lineare.html#cb653-16" tabindex="-1"></a></span>
+<span id="cb653-17"><a href="crescita-non-lineare.html#cb653-17" tabindex="-1"></a><span class="st">  ## set latent means/intercepts</span></span>
+<span id="cb653-18"><a href="crescita-non-lineare.html#cb653-18" tabindex="-1"></a><span class="st">  iX ~ 2*1</span></span>
+<span id="cb653-19"><a href="crescita-non-lineare.html#cb653-19" tabindex="-1"></a><span class="st">  sX ~ 1*1</span></span>
+<span id="cb653-20"><a href="crescita-non-lineare.html#cb653-20" tabindex="-1"></a><span class="st">  sY ~ -1*1</span></span>
+<span id="cb653-21"><a href="crescita-non-lineare.html#cb653-21" tabindex="-1"></a><span class="st">  qY ~ -1.5*1</span></span>
+<span id="cb653-22"><a href="crescita-non-lineare.html#cb653-22" tabindex="-1"></a></span>
+<span id="cb653-23"><a href="crescita-non-lineare.html#cb653-23" tabindex="-1"></a><span class="st">  sY ~ 2*predictor</span></span>
+<span id="cb653-24"><a href="crescita-non-lineare.html#cb653-24" tabindex="-1"></a></span>
+<span id="cb653-25"><a href="crescita-non-lineare.html#cb653-25" tabindex="-1"></a><span class="st">  outcome ~ 2*iX + 3*sY</span></span>
+<span id="cb653-26"><a href="crescita-non-lineare.html#cb653-26" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
 <p>È possibile usare la funzione <code>simulateData()</code> di <code>lavaan</code> per simulare un campione di dati estratto da una popolazione definita come abbiamo fatto sopra. La simulazione include due variabili misurate in quattro punti temporali.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="crescita-non-lineare.html#cb39-1" tabindex="-1"></a>sim_growth_dat <span class="ot">&lt;-</span> lavaan<span class="sc">::</span><span class="fu">simulateData</span>(</span>
-<span id="cb39-2"><a href="crescita-non-lineare.html#cb39-2" tabindex="-1"></a>  <span class="at">model =</span> growth_mod,</span>
-<span id="cb39-3"><a href="crescita-non-lineare.html#cb39-3" tabindex="-1"></a>  <span class="at">model.type =</span> <span class="st">&quot;growth&quot;</span>,</span>
-<span id="cb39-4"><a href="crescita-non-lineare.html#cb39-4" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">82020</span>,</span>
-<span id="cb39-5"><a href="crescita-non-lineare.html#cb39-5" tabindex="-1"></a>  <span class="at">orthogonal =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb39-6"><a href="crescita-non-lineare.html#cb39-6" tabindex="-1"></a>  <span class="at">auto.cov.y =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb39-7"><a href="crescita-non-lineare.html#cb39-7" tabindex="-1"></a>  <span class="at">auto.var =</span> <span class="cn">TRUE</span></span>
-<span id="cb39-8"><a href="crescita-non-lineare.html#cb39-8" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb654"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb654-1"><a href="crescita-non-lineare.html#cb654-1" tabindex="-1"></a>sim_growth_dat <span class="ot">&lt;-</span> lavaan<span class="sc">::</span><span class="fu">simulateData</span>(</span>
+<span id="cb654-2"><a href="crescita-non-lineare.html#cb654-2" tabindex="-1"></a>  <span class="at">model =</span> growth_mod,</span>
+<span id="cb654-3"><a href="crescita-non-lineare.html#cb654-3" tabindex="-1"></a>  <span class="at">model.type =</span> <span class="st">&quot;growth&quot;</span>,</span>
+<span id="cb654-4"><a href="crescita-non-lineare.html#cb654-4" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">82020</span>,</span>
+<span id="cb654-5"><a href="crescita-non-lineare.html#cb654-5" tabindex="-1"></a>  <span class="at">orthogonal =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb654-6"><a href="crescita-non-lineare.html#cb654-6" tabindex="-1"></a>  <span class="at">auto.cov.y =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb654-7"><a href="crescita-non-lineare.html#cb654-7" tabindex="-1"></a>  <span class="at">auto.var =</span> <span class="cn">TRUE</span></span>
+<span id="cb654-8"><a href="crescita-non-lineare.html#cb654-8" tabindex="-1"></a>)</span></code></pre></div>
 <p>Le variabili sono chiamate <code>x1</code>, <code>x2</code>, <code>x3</code>, <code>x4</code>, per la misurazione di <code>x</code> ai tempi 1, 2, 3, 4. Lo stesso per la <code>y</code>.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="crescita-non-lineare.html#cb40-1" tabindex="-1"></a><span class="fu">head</span>(sim_growth_dat)</span>
-<span id="cb40-2"><a href="crescita-non-lineare.html#cb40-2" tabindex="-1"></a><span class="co">#&gt;         x1       x2        x3          x4          y1        y2         y3</span></span>
-<span id="cb40-3"><a href="crescita-non-lineare.html#cb40-3" tabindex="-1"></a><span class="co">#&gt; 1 1.033229 2.746064 4.9423623  8.41058044  3.36324415 -1.196550 -11.103494</span></span>
-<span id="cb40-4"><a href="crescita-non-lineare.html#cb40-4" tabindex="-1"></a><span class="co">#&gt; 2 3.192802 3.057675 0.7965786  0.84592869 -1.60039704 -5.970381 -10.399366</span></span>
-<span id="cb40-5"><a href="crescita-non-lineare.html#cb40-5" tabindex="-1"></a><span class="co">#&gt; 3 3.758457 4.712351 5.6308218  4.76577291  2.58001675 -3.272134 -11.312994</span></span>
-<span id="cb40-6"><a href="crescita-non-lineare.html#cb40-6" tabindex="-1"></a><span class="co">#&gt; 4 2.700514 4.921257 6.7116263 10.13354061  0.03886676  0.510869  -5.937016</span></span>
-<span id="cb40-7"><a href="crescita-non-lineare.html#cb40-7" tabindex="-1"></a><span class="co">#&gt; 5 1.259807 1.526301 1.6663799 -0.09959486  0.53939838 -4.274106 -12.968362</span></span>
-<span id="cb40-8"><a href="crescita-non-lineare.html#cb40-8" tabindex="-1"></a><span class="co">#&gt; 6 2.547125 5.426192 4.9463195  8.48790397  2.18069542  1.590009  -2.253218</span></span>
-<span id="cb40-9"><a href="crescita-non-lineare.html#cb40-9" tabindex="-1"></a><span class="co">#&gt;           y4   outcome  predictor</span></span>
-<span id="cb40-10"><a href="crescita-non-lineare.html#cb40-10" tabindex="-1"></a><span class="co">#&gt; 1 -31.509255  2.161186 -0.4893276</span></span>
-<span id="cb40-11"><a href="crescita-non-lineare.html#cb40-11" tabindex="-1"></a><span class="co">#&gt; 2 -19.908088  5.089750  0.5199749</span></span>
-<span id="cb40-12"><a href="crescita-non-lineare.html#cb40-12" tabindex="-1"></a><span class="co">#&gt; 3 -26.681111  3.173129 -0.5938816</span></span>
-<span id="cb40-13"><a href="crescita-non-lineare.html#cb40-13" tabindex="-1"></a><span class="co">#&gt; 4  -7.836099  1.035215 -0.7813707</span></span>
-<span id="cb40-14"><a href="crescita-non-lineare.html#cb40-14" tabindex="-1"></a><span class="co">#&gt; 5 -22.595311 -4.352557 -0.7067630</span></span>
-<span id="cb40-15"><a href="crescita-non-lineare.html#cb40-15" tabindex="-1"></a><span class="co">#&gt; 6  -8.892786  3.277985 -1.2978592</span></span></code></pre></div>
+<div class="sourceCode" id="cb655"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb655-1"><a href="crescita-non-lineare.html#cb655-1" tabindex="-1"></a><span class="fu">head</span>(sim_growth_dat)</span>
+<span id="cb655-2"><a href="crescita-non-lineare.html#cb655-2" tabindex="-1"></a><span class="co">#&gt;         x1       x2        x3          x4          y1        y2         y3</span></span>
+<span id="cb655-3"><a href="crescita-non-lineare.html#cb655-3" tabindex="-1"></a><span class="co">#&gt; 1 1.033229 2.746064 4.9423623  8.41058044  3.36324415 -1.196550 -11.103494</span></span>
+<span id="cb655-4"><a href="crescita-non-lineare.html#cb655-4" tabindex="-1"></a><span class="co">#&gt; 2 3.192802 3.057675 0.7965786  0.84592869 -1.60039704 -5.970381 -10.399366</span></span>
+<span id="cb655-5"><a href="crescita-non-lineare.html#cb655-5" tabindex="-1"></a><span class="co">#&gt; 3 3.758457 4.712351 5.6308218  4.76577291  2.58001675 -3.272134 -11.312994</span></span>
+<span id="cb655-6"><a href="crescita-non-lineare.html#cb655-6" tabindex="-1"></a><span class="co">#&gt; 4 2.700514 4.921257 6.7116263 10.13354061  0.03886676  0.510869  -5.937016</span></span>
+<span id="cb655-7"><a href="crescita-non-lineare.html#cb655-7" tabindex="-1"></a><span class="co">#&gt; 5 1.259807 1.526301 1.6663799 -0.09959486  0.53939838 -4.274106 -12.968362</span></span>
+<span id="cb655-8"><a href="crescita-non-lineare.html#cb655-8" tabindex="-1"></a><span class="co">#&gt; 6 2.547125 5.426192 4.9463195  8.48790397  2.18069542  1.590009  -2.253218</span></span>
+<span id="cb655-9"><a href="crescita-non-lineare.html#cb655-9" tabindex="-1"></a><span class="co">#&gt;           y4   outcome  predictor</span></span>
+<span id="cb655-10"><a href="crescita-non-lineare.html#cb655-10" tabindex="-1"></a><span class="co">#&gt; 1 -31.509255  2.161186 -0.4893276</span></span>
+<span id="cb655-11"><a href="crescita-non-lineare.html#cb655-11" tabindex="-1"></a><span class="co">#&gt; 2 -19.908088  5.089750  0.5199749</span></span>
+<span id="cb655-12"><a href="crescita-non-lineare.html#cb655-12" tabindex="-1"></a><span class="co">#&gt; 3 -26.681111  3.173129 -0.5938816</span></span>
+<span id="cb655-13"><a href="crescita-non-lineare.html#cb655-13" tabindex="-1"></a><span class="co">#&gt; 4  -7.836099  1.035215 -0.7813707</span></span>
+<span id="cb655-14"><a href="crescita-non-lineare.html#cb655-14" tabindex="-1"></a><span class="co">#&gt; 5 -22.595311 -4.352557 -0.7067630</span></span>
+<span id="cb655-15"><a href="crescita-non-lineare.html#cb655-15" tabindex="-1"></a><span class="co">#&gt; 6  -8.892786  3.277985 -1.2978592</span></span></code></pre></div>
 <p>Aggiungo qui un codice identificativo per ciascun partecipante.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="crescita-non-lineare.html#cb41-1" tabindex="-1"></a>sim_growth_dat<span class="sc">$</span>participant_n <span class="ot">&lt;-</span></span>
-<span id="cb41-2"><a href="crescita-non-lineare.html#cb41-2" tabindex="-1"></a>  <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(sim_growth_dat)</span></code></pre></div>
+<div class="sourceCode" id="cb656"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb656-1"><a href="crescita-non-lineare.html#cb656-1" tabindex="-1"></a>sim_growth_dat<span class="sc">$</span>participant_n <span class="ot">&lt;-</span></span>
+<span id="cb656-2"><a href="crescita-non-lineare.html#cb656-2" tabindex="-1"></a>  <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(sim_growth_dat)</span></code></pre></div>
 <p>Nei dati simulati, la variabile <code>x</code> cambia linearmente nel tempo e la variabile <code>y</code> cambia seguendo un andamento quadratico. Esaminiamo i dati con un grafico.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="crescita-non-lineare.html#cb42-1" tabindex="-1"></a>x_plot <span class="ot">&lt;-</span></span>
-<span id="cb42-2"><a href="crescita-non-lineare.html#cb42-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(sim_growth_dat,</span>
-<span id="cb42-3"><a href="crescita-non-lineare.html#cb42-3" tabindex="-1"></a>    <span class="at">cols =</span> x1<span class="sc">:</span>x4,</span>
-<span id="cb42-4"><a href="crescita-non-lineare.html#cb42-4" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;x&quot;</span>,</span>
-<span id="cb42-5"><a href="crescita-non-lineare.html#cb42-5" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">&quot;x&quot;</span></span>
-<span id="cb42-6"><a href="crescita-non-lineare.html#cb42-6" tabindex="-1"></a>  )</span>
-<span id="cb42-7"><a href="crescita-non-lineare.html#cb42-7" tabindex="-1"></a></span>
-<span id="cb42-8"><a href="crescita-non-lineare.html#cb42-8" tabindex="-1"></a>individual_x_trajectories <span class="ot">&lt;-</span></span>
-<span id="cb42-9"><a href="crescita-non-lineare.html#cb42-9" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb42-10"><a href="crescita-non-lineare.html#cb42-10" tabindex="-1"></a>    x_plot,</span>
-<span id="cb42-11"><a href="crescita-non-lineare.html#cb42-11" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
-<span id="cb42-12"><a href="crescita-non-lineare.html#cb42-12" tabindex="-1"></a>      <span class="at">x =</span> <span class="fu">as.numeric</span>(x),</span>
-<span id="cb42-13"><a href="crescita-non-lineare.html#cb42-13" tabindex="-1"></a>      <span class="at">y =</span> value,</span>
-<span id="cb42-14"><a href="crescita-non-lineare.html#cb42-14" tabindex="-1"></a>      <span class="at">group =</span> participant_n,</span>
-<span id="cb42-15"><a href="crescita-non-lineare.html#cb42-15" tabindex="-1"></a>      <span class="at">color =</span> participant_n</span>
-<span id="cb42-16"><a href="crescita-non-lineare.html#cb42-16" tabindex="-1"></a>    )</span>
-<span id="cb42-17"><a href="crescita-non-lineare.html#cb42-17" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb42-18"><a href="crescita-non-lineare.html#cb42-18" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb42-19"><a href="crescita-non-lineare.html#cb42-19" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb42-20"><a href="crescita-non-lineare.html#cb42-20" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Observed Trajectories of x&quot;</span>,</span>
-<span id="cb42-21"><a href="crescita-non-lineare.html#cb42-21" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Timepoint&quot;</span>,</span>
-<span id="cb42-22"><a href="crescita-non-lineare.html#cb42-22" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;x&quot;</span></span>
-<span id="cb42-23"><a href="crescita-non-lineare.html#cb42-23" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb42-24"><a href="crescita-non-lineare.html#cb42-24" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">1</span>, <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb42-25"><a href="crescita-non-lineare.html#cb42-25" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb42-26"><a href="crescita-non-lineare.html#cb42-26" tabindex="-1"></a></span>
-<span id="cb42-27"><a href="crescita-non-lineare.html#cb42-27" tabindex="-1"></a>individual_x_trajectories</span></code></pre></div>
-<p><img src="cfa_files/figure-html/unnamed-chunk-35-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb657"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb657-1"><a href="crescita-non-lineare.html#cb657-1" tabindex="-1"></a>x_plot <span class="ot">&lt;-</span></span>
+<span id="cb657-2"><a href="crescita-non-lineare.html#cb657-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(sim_growth_dat,</span>
+<span id="cb657-3"><a href="crescita-non-lineare.html#cb657-3" tabindex="-1"></a>    <span class="at">cols =</span> x1<span class="sc">:</span>x4,</span>
+<span id="cb657-4"><a href="crescita-non-lineare.html#cb657-4" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;x&quot;</span>,</span>
+<span id="cb657-5"><a href="crescita-non-lineare.html#cb657-5" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">&quot;x&quot;</span></span>
+<span id="cb657-6"><a href="crescita-non-lineare.html#cb657-6" tabindex="-1"></a>  )</span>
+<span id="cb657-7"><a href="crescita-non-lineare.html#cb657-7" tabindex="-1"></a></span>
+<span id="cb657-8"><a href="crescita-non-lineare.html#cb657-8" tabindex="-1"></a>individual_x_trajectories <span class="ot">&lt;-</span></span>
+<span id="cb657-9"><a href="crescita-non-lineare.html#cb657-9" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb657-10"><a href="crescita-non-lineare.html#cb657-10" tabindex="-1"></a>    x_plot,</span>
+<span id="cb657-11"><a href="crescita-non-lineare.html#cb657-11" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb657-12"><a href="crescita-non-lineare.html#cb657-12" tabindex="-1"></a>      <span class="at">x =</span> <span class="fu">as.numeric</span>(x),</span>
+<span id="cb657-13"><a href="crescita-non-lineare.html#cb657-13" tabindex="-1"></a>      <span class="at">y =</span> value,</span>
+<span id="cb657-14"><a href="crescita-non-lineare.html#cb657-14" tabindex="-1"></a>      <span class="at">group =</span> participant_n,</span>
+<span id="cb657-15"><a href="crescita-non-lineare.html#cb657-15" tabindex="-1"></a>      <span class="at">color =</span> participant_n</span>
+<span id="cb657-16"><a href="crescita-non-lineare.html#cb657-16" tabindex="-1"></a>    )</span>
+<span id="cb657-17"><a href="crescita-non-lineare.html#cb657-17" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb657-18"><a href="crescita-non-lineare.html#cb657-18" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb657-19"><a href="crescita-non-lineare.html#cb657-19" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb657-20"><a href="crescita-non-lineare.html#cb657-20" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Observed Trajectories of x&quot;</span>,</span>
+<span id="cb657-21"><a href="crescita-non-lineare.html#cb657-21" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Timepoint&quot;</span>,</span>
+<span id="cb657-22"><a href="crescita-non-lineare.html#cb657-22" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;x&quot;</span></span>
+<span id="cb657-23"><a href="crescita-non-lineare.html#cb657-23" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb657-24"><a href="crescita-non-lineare.html#cb657-24" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">1</span>, <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb657-25"><a href="crescita-non-lineare.html#cb657-25" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb657-26"><a href="crescita-non-lineare.html#cb657-26" tabindex="-1"></a></span>
+<span id="cb657-27"><a href="crescita-non-lineare.html#cb657-27" tabindex="-1"></a>individual_x_trajectories</span></code></pre></div>
+<p><img src="cfa_files/figure-html/unnamed-chunk-683-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Su può vedere che la variabile <code>x</code> segue una crescita lineare, ma un modello quadratico molto “debole” potrebbe adattarsi meglio ai dati, quindi sarà necessario controllare se in effetti questo è vero.</p>
 <p>Esaminiamo ora la variabile <code>y</code>.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="crescita-non-lineare.html#cb43-1" tabindex="-1"></a>y_plot <span class="ot">&lt;-</span></span>
-<span id="cb43-2"><a href="crescita-non-lineare.html#cb43-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(sim_growth_dat,</span>
-<span id="cb43-3"><a href="crescita-non-lineare.html#cb43-3" tabindex="-1"></a>    <span class="at">cols =</span> y1<span class="sc">:</span>y4,</span>
-<span id="cb43-4"><a href="crescita-non-lineare.html#cb43-4" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;y&quot;</span>,</span>
-<span id="cb43-5"><a href="crescita-non-lineare.html#cb43-5" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">&quot;y&quot;</span></span>
-<span id="cb43-6"><a href="crescita-non-lineare.html#cb43-6" tabindex="-1"></a>  )</span>
-<span id="cb43-7"><a href="crescita-non-lineare.html#cb43-7" tabindex="-1"></a></span>
-<span id="cb43-8"><a href="crescita-non-lineare.html#cb43-8" tabindex="-1"></a>individual_y_trajectories <span class="ot">&lt;-</span></span>
-<span id="cb43-9"><a href="crescita-non-lineare.html#cb43-9" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb43-10"><a href="crescita-non-lineare.html#cb43-10" tabindex="-1"></a>    y_plot,</span>
-<span id="cb43-11"><a href="crescita-non-lineare.html#cb43-11" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
-<span id="cb43-12"><a href="crescita-non-lineare.html#cb43-12" tabindex="-1"></a>      <span class="at">x =</span> <span class="fu">as.numeric</span>(y),</span>
-<span id="cb43-13"><a href="crescita-non-lineare.html#cb43-13" tabindex="-1"></a>      <span class="at">y =</span> value,</span>
-<span id="cb43-14"><a href="crescita-non-lineare.html#cb43-14" tabindex="-1"></a>      <span class="at">group =</span> participant_n,</span>
-<span id="cb43-15"><a href="crescita-non-lineare.html#cb43-15" tabindex="-1"></a>      <span class="at">color =</span> participant_n</span>
-<span id="cb43-16"><a href="crescita-non-lineare.html#cb43-16" tabindex="-1"></a>    )</span>
-<span id="cb43-17"><a href="crescita-non-lineare.html#cb43-17" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb43-18"><a href="crescita-non-lineare.html#cb43-18" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb43-19"><a href="crescita-non-lineare.html#cb43-19" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb43-20"><a href="crescita-non-lineare.html#cb43-20" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Observed trajectories of y&quot;</span>,</span>
-<span id="cb43-21"><a href="crescita-non-lineare.html#cb43-21" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Timepoint&quot;</span>,</span>
-<span id="cb43-22"><a href="crescita-non-lineare.html#cb43-22" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;y&quot;</span></span>
-<span id="cb43-23"><a href="crescita-non-lineare.html#cb43-23" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb43-24"><a href="crescita-non-lineare.html#cb43-24" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">1</span>, <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb43-25"><a href="crescita-non-lineare.html#cb43-25" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb43-26"><a href="crescita-non-lineare.html#cb43-26" tabindex="-1"></a></span>
-<span id="cb43-27"><a href="crescita-non-lineare.html#cb43-27" tabindex="-1"></a>individual_y_trajectories</span></code></pre></div>
-<p><img src="cfa_files/figure-html/unnamed-chunk-36-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="crescita-non-lineare.html#cb658-1" tabindex="-1"></a>y_plot <span class="ot">&lt;-</span></span>
+<span id="cb658-2"><a href="crescita-non-lineare.html#cb658-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(sim_growth_dat,</span>
+<span id="cb658-3"><a href="crescita-non-lineare.html#cb658-3" tabindex="-1"></a>    <span class="at">cols =</span> y1<span class="sc">:</span>y4,</span>
+<span id="cb658-4"><a href="crescita-non-lineare.html#cb658-4" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;y&quot;</span>,</span>
+<span id="cb658-5"><a href="crescita-non-lineare.html#cb658-5" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">&quot;y&quot;</span></span>
+<span id="cb658-6"><a href="crescita-non-lineare.html#cb658-6" tabindex="-1"></a>  )</span>
+<span id="cb658-7"><a href="crescita-non-lineare.html#cb658-7" tabindex="-1"></a></span>
+<span id="cb658-8"><a href="crescita-non-lineare.html#cb658-8" tabindex="-1"></a>individual_y_trajectories <span class="ot">&lt;-</span></span>
+<span id="cb658-9"><a href="crescita-non-lineare.html#cb658-9" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb658-10"><a href="crescita-non-lineare.html#cb658-10" tabindex="-1"></a>    y_plot,</span>
+<span id="cb658-11"><a href="crescita-non-lineare.html#cb658-11" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb658-12"><a href="crescita-non-lineare.html#cb658-12" tabindex="-1"></a>      <span class="at">x =</span> <span class="fu">as.numeric</span>(y),</span>
+<span id="cb658-13"><a href="crescita-non-lineare.html#cb658-13" tabindex="-1"></a>      <span class="at">y =</span> value,</span>
+<span id="cb658-14"><a href="crescita-non-lineare.html#cb658-14" tabindex="-1"></a>      <span class="at">group =</span> participant_n,</span>
+<span id="cb658-15"><a href="crescita-non-lineare.html#cb658-15" tabindex="-1"></a>      <span class="at">color =</span> participant_n</span>
+<span id="cb658-16"><a href="crescita-non-lineare.html#cb658-16" tabindex="-1"></a>    )</span>
+<span id="cb658-17"><a href="crescita-non-lineare.html#cb658-17" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb658-18"><a href="crescita-non-lineare.html#cb658-18" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb658-19"><a href="crescita-non-lineare.html#cb658-19" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb658-20"><a href="crescita-non-lineare.html#cb658-20" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Observed trajectories of y&quot;</span>,</span>
+<span id="cb658-21"><a href="crescita-non-lineare.html#cb658-21" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Timepoint&quot;</span>,</span>
+<span id="cb658-22"><a href="crescita-non-lineare.html#cb658-22" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;y&quot;</span></span>
+<span id="cb658-23"><a href="crescita-non-lineare.html#cb658-23" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb658-24"><a href="crescita-non-lineare.html#cb658-24" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">1</span>, <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb658-25"><a href="crescita-non-lineare.html#cb658-25" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb658-26"><a href="crescita-non-lineare.html#cb658-26" tabindex="-1"></a></span>
+<span id="cb658-27"><a href="crescita-non-lineare.html#cb658-27" tabindex="-1"></a>individual_y_trajectories</span></code></pre></div>
+<p><img src="cfa_files/figure-html/unnamed-chunk-684-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>È chiaro che la <code>y</code> diminuisce in media con il tempo, ma c’è anche molta variabilità in ciò che accade nei singoli casi. Per questi dati, sia un modello lineare sia un modello quadratico sembrano appropriati per descrivere il cambiamento nei dati, anche se un modello quadratico sembra più appropriato.</p>
-<div id="stimatore" class="section level3 hasAnchor" number="29.4.1">
-<h3><span class="header-section-number">29.4.1</span> Stimatore<a href="crescita-non-lineare.html#stimatore" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Tutti i dati utilizzati sono continui, quindi si potrebbe usare la stima della massima verosimiglianza (stimatore = ML). Tuttavia, quando possibile, è preferibile usare la variante “robusta” di questo stimatore allo scopo di rendere conto della possibile non normalità dei dati (stimatore = MLR).</p>
-</div>
-<div id="assenza-di-crescita" class="section level3 hasAnchor" number="29.4.2">
-<h3><span class="header-section-number">29.4.2</span> Assenza di crescita<a href="crescita-non-lineare.html#assenza-di-crescita" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Iniziamo con un modello per la <code>x</code> che assume che non vi sia variazione in funzione del tempo.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="crescita-non-lineare.html#cb44-1" tabindex="-1"></a>int_x_mod <span class="ot">&lt;-</span></span>
-<span id="cb44-2"><a href="crescita-non-lineare.html#cb44-2" tabindex="-1"></a>  <span class="st">&quot;</span></span>
-<span id="cb44-3"><a href="crescita-non-lineare.html#cb44-3" tabindex="-1"></a><span class="st">  iX =~ 1*x1 + 1*x2 + 1*x3 + 1*x4</span></span>
-<span id="cb44-4"><a href="crescita-non-lineare.html#cb44-4" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
-<p>Adattiamo il modello ai dati ed esaminiamo i risultati.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="crescita-non-lineare.html#cb45-1" tabindex="-1"></a>int_x_fit <span class="ot">&lt;-</span></span>
-<span id="cb45-2"><a href="crescita-non-lineare.html#cb45-2" tabindex="-1"></a>  <span class="fu">growth</span>(</span>
-<span id="cb45-3"><a href="crescita-non-lineare.html#cb45-3" tabindex="-1"></a>    <span class="at">model =</span> int_x_mod,</span>
-<span id="cb45-4"><a href="crescita-non-lineare.html#cb45-4" tabindex="-1"></a>    <span class="at">estimator =</span> <span class="st">&quot;MLR&quot;</span>,</span>
-<span id="cb45-5"><a href="crescita-non-lineare.html#cb45-5" tabindex="-1"></a>    <span class="at">data =</span> sim_growth_dat</span>
-<span id="cb45-6"><a href="crescita-non-lineare.html#cb45-6" tabindex="-1"></a>  )</span>
-<span id="cb45-7"><a href="crescita-non-lineare.html#cb45-7" tabindex="-1"></a></span>
-<span id="cb45-8"><a href="crescita-non-lineare.html#cb45-8" tabindex="-1"></a>int_x_fit_stats <span class="ot">&lt;-</span></span>
-<span id="cb45-9"><a href="crescita-non-lineare.html#cb45-9" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(</span>
-<span id="cb45-10"><a href="crescita-non-lineare.html#cb45-10" tabindex="-1"></a>    int_x_fit,</span>
-<span id="cb45-11"><a href="crescita-non-lineare.html#cb45-11" tabindex="-1"></a>    selected_fit_stats</span>
-<span id="cb45-12"><a href="crescita-non-lineare.html#cb45-12" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb45-13"><a href="crescita-non-lineare.html#cb45-13" tabindex="-1"></a>  <span class="fu">data.frame</span>()</span>
-<span id="cb45-14"><a href="crescita-non-lineare.html#cb45-14" tabindex="-1"></a></span>
-<span id="cb45-15"><a href="crescita-non-lineare.html#cb45-15" tabindex="-1"></a><span class="fu">round</span>(int_x_fit_stats, <span class="dv">2</span>)</span>
-<span id="cb45-16"><a href="crescita-non-lineare.html#cb45-16" tabindex="-1"></a><span class="co">#&gt;                           .</span></span>
-<span id="cb45-17"><a href="crescita-non-lineare.html#cb45-17" tabindex="-1"></a><span class="co">#&gt; chisq.scaled        1192.66</span></span>
-<span id="cb45-18"><a href="crescita-non-lineare.html#cb45-18" tabindex="-1"></a><span class="co">#&gt; df.scaled              8.00</span></span>
-<span id="cb45-19"><a href="crescita-non-lineare.html#cb45-19" tabindex="-1"></a><span class="co">#&gt; pvalue.scaled          0.00</span></span>
-<span id="cb45-20"><a href="crescita-non-lineare.html#cb45-20" tabindex="-1"></a><span class="co">#&gt; cfi.scaled             0.02</span></span>
-<span id="cb45-21"><a href="crescita-non-lineare.html#cb45-21" tabindex="-1"></a><span class="co">#&gt; rmsea.scaled           0.54</span></span>
-<span id="cb45-22"><a href="crescita-non-lineare.html#cb45-22" tabindex="-1"></a><span class="co">#&gt; rmsea.pvalue.scaled    0.00</span></span>
-<span id="cb45-23"><a href="crescita-non-lineare.html#cb45-23" tabindex="-1"></a><span class="co">#&gt; srmr                   0.63</span></span></code></pre></div>
-<p>È chiaro che il modello di assenza di crescita non spiega i dati <code>x</code>. Consideriamo la variabile <code>y</code>. Anche in questo caso prendiamo in considerazione un modello di assenza di variazione nel tempo.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="crescita-non-lineare.html#cb46-1" tabindex="-1"></a>int_y_mod <span class="ot">&lt;-</span></span>
-<span id="cb46-2"><a href="crescita-non-lineare.html#cb46-2" tabindex="-1"></a>  <span class="st">&quot;</span></span>
-<span id="cb46-3"><a href="crescita-non-lineare.html#cb46-3" tabindex="-1"></a><span class="st">  iY =~ 1*y1 + 1*y2 + 1*y3 + 1*y4</span></span>
-<span id="cb46-4"><a href="crescita-non-lineare.html#cb46-4" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb46-5"><a href="crescita-non-lineare.html#cb46-5" tabindex="-1"></a></span>
-<span id="cb46-6"><a href="crescita-non-lineare.html#cb46-6" tabindex="-1"></a>int_y_fit <span class="ot">&lt;-</span></span>
-<span id="cb46-7"><a href="crescita-non-lineare.html#cb46-7" tabindex="-1"></a>  <span class="fu">growth</span>(</span>
-<span id="cb46-8"><a href="crescita-non-lineare.html#cb46-8" tabindex="-1"></a>    <span class="at">model =</span> int_y_mod,</span>
-<span id="cb46-9"><a href="crescita-non-lineare.html#cb46-9" tabindex="-1"></a>    <span class="at">estimator =</span> <span class="st">&quot;MLR&quot;</span>,</span>
-<span id="cb46-10"><a href="crescita-non-lineare.html#cb46-10" tabindex="-1"></a>    <span class="at">data =</span> sim_growth_dat</span>
-<span id="cb46-11"><a href="crescita-non-lineare.html#cb46-11" tabindex="-1"></a>  )</span>
-<span id="cb46-12"><a href="crescita-non-lineare.html#cb46-12" tabindex="-1"></a></span>
-<span id="cb46-13"><a href="crescita-non-lineare.html#cb46-13" tabindex="-1"></a>int_y_fit_stats <span class="ot">&lt;-</span></span>
-<span id="cb46-14"><a href="crescita-non-lineare.html#cb46-14" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(</span>
-<span id="cb46-15"><a href="crescita-non-lineare.html#cb46-15" tabindex="-1"></a>    int_y_fit,</span>
-<span id="cb46-16"><a href="crescita-non-lineare.html#cb46-16" tabindex="-1"></a>    selected_fit_stats</span>
-<span id="cb46-17"><a href="crescita-non-lineare.html#cb46-17" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb46-18"><a href="crescita-non-lineare.html#cb46-18" tabindex="-1"></a>  <span class="fu">data.frame</span>()</span>
-<span id="cb46-19"><a href="crescita-non-lineare.html#cb46-19" tabindex="-1"></a></span>
-<span id="cb46-20"><a href="crescita-non-lineare.html#cb46-20" tabindex="-1"></a><span class="fu">round</span>(int_y_fit_stats, <span class="dv">2</span>)</span>
-<span id="cb46-21"><a href="crescita-non-lineare.html#cb46-21" tabindex="-1"></a><span class="co">#&gt;                           .</span></span>
-<span id="cb46-22"><a href="crescita-non-lineare.html#cb46-22" tabindex="-1"></a><span class="co">#&gt; chisq.scaled        3136.54</span></span>
-<span id="cb46-23"><a href="crescita-non-lineare.html#cb46-23" tabindex="-1"></a><span class="co">#&gt; df.scaled              8.00</span></span>
-<span id="cb46-24"><a href="crescita-non-lineare.html#cb46-24" tabindex="-1"></a><span class="co">#&gt; pvalue.scaled          0.00</span></span>
-<span id="cb46-25"><a href="crescita-non-lineare.html#cb46-25" tabindex="-1"></a><span class="co">#&gt; cfi.scaled             0.00</span></span>
-<span id="cb46-26"><a href="crescita-non-lineare.html#cb46-26" tabindex="-1"></a><span class="co">#&gt; rmsea.scaled           0.88</span></span>
-<span id="cb46-27"><a href="crescita-non-lineare.html#cb46-27" tabindex="-1"></a><span class="co">#&gt; rmsea.pvalue.scaled    0.00</span></span>
-<span id="cb46-28"><a href="crescita-non-lineare.html#cb46-28" tabindex="-1"></a><span class="co">#&gt; srmr                   0.98</span></span></code></pre></div>
-<p>Il modello di assenza di crescita non è adeguato neppure per la variabile <code>y</code>.</p>
-</div>
-<div id="crescita-lineare" class="section level3 hasAnchor" number="29.4.3">
-<h3><span class="header-section-number">29.4.3</span> Crescita lineare<a href="crescita-non-lineare.html#crescita-lineare" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Esaminiamo ora un modello di crescita lineare per la <code>x</code>.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="crescita-non-lineare.html#cb47-1" tabindex="-1"></a>linear_x_mod <span class="ot">&lt;-</span></span>
-<span id="cb47-2"><a href="crescita-non-lineare.html#cb47-2" tabindex="-1"></a>  <span class="st">&quot;</span></span>
-<span id="cb47-3"><a href="crescita-non-lineare.html#cb47-3" tabindex="-1"></a><span class="st">iX =~ 1*x1 + 1*x2 + 1*x3 + 1*x4</span></span>
-<span id="cb47-4"><a href="crescita-non-lineare.html#cb47-4" tabindex="-1"></a><span class="st">sX =~ 0*x1 + 1*x2 + 2*x3 + 3*x4</span></span>
-<span id="cb47-5"><a href="crescita-non-lineare.html#cb47-5" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb47-6"><a href="crescita-non-lineare.html#cb47-6" tabindex="-1"></a></span>
-<span id="cb47-7"><a href="crescita-non-lineare.html#cb47-7" tabindex="-1"></a>linear_x_fit <span class="ot">&lt;-</span></span>
-<span id="cb47-8"><a href="crescita-non-lineare.html#cb47-8" tabindex="-1"></a>  <span class="fu">growth</span>(</span>
-<span id="cb47-9"><a href="crescita-non-lineare.html#cb47-9" tabindex="-1"></a>    <span class="at">model =</span> linear_x_mod,</span>
-<span id="cb47-10"><a href="crescita-non-lineare.html#cb47-10" tabindex="-1"></a>    <span class="at">estimator =</span> <span class="st">&quot;MLR&quot;</span>,</span>
-<span id="cb47-11"><a href="crescita-non-lineare.html#cb47-11" tabindex="-1"></a>    <span class="at">data =</span> sim_growth_dat</span>
-<span id="cb47-12"><a href="crescita-non-lineare.html#cb47-12" tabindex="-1"></a>  )</span>
-<span id="cb47-13"><a href="crescita-non-lineare.html#cb47-13" tabindex="-1"></a></span>
-<span id="cb47-14"><a href="crescita-non-lineare.html#cb47-14" tabindex="-1"></a>linear_x_fit_stats <span class="ot">&lt;-</span></span>
-<span id="cb47-15"><a href="crescita-non-lineare.html#cb47-15" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(</span>
-<span id="cb47-16"><a href="crescita-non-lineare.html#cb47-16" tabindex="-1"></a>    linear_x_fit,</span>
-<span id="cb47-17"><a href="crescita-non-lineare.html#cb47-17" tabindex="-1"></a>    selected_fit_stats</span>
-<span id="cb47-18"><a href="crescita-non-lineare.html#cb47-18" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb47-19"><a href="crescita-non-lineare.html#cb47-19" tabindex="-1"></a>  <span class="fu">data.frame</span>()</span>
-<span id="cb47-20"><a href="crescita-non-lineare.html#cb47-20" tabindex="-1"></a></span>
-<span id="cb47-21"><a href="crescita-non-lineare.html#cb47-21" tabindex="-1"></a><span class="fu">round</span>(linear_x_fit_stats, <span class="dv">2</span>)</span>
-<span id="cb47-22"><a href="crescita-non-lineare.html#cb47-22" tabindex="-1"></a><span class="co">#&gt;                        .</span></span>
-<span id="cb47-23"><a href="crescita-non-lineare.html#cb47-23" tabindex="-1"></a><span class="co">#&gt; chisq.scaled        4.03</span></span>
-<span id="cb47-24"><a href="crescita-non-lineare.html#cb47-24" tabindex="-1"></a><span class="co">#&gt; df.scaled           5.00</span></span>
-<span id="cb47-25"><a href="crescita-non-lineare.html#cb47-25" tabindex="-1"></a><span class="co">#&gt; pvalue.scaled       0.54</span></span>
-<span id="cb47-26"><a href="crescita-non-lineare.html#cb47-26" tabindex="-1"></a><span class="co">#&gt; cfi.scaled          1.00</span></span>
-<span id="cb47-27"><a href="crescita-non-lineare.html#cb47-27" tabindex="-1"></a><span class="co">#&gt; rmsea.scaled        0.00</span></span>
-<span id="cb47-28"><a href="crescita-non-lineare.html#cb47-28" tabindex="-1"></a><span class="co">#&gt; rmsea.pvalue.scaled 0.92</span></span>
-<span id="cb47-29"><a href="crescita-non-lineare.html#cb47-29" tabindex="-1"></a><span class="co">#&gt; srmr                0.02</span></span></code></pre></div>
-<p>Il modello di crescita lineare per la <code>x</code> fornisce un buon adattamento ai dati rispetto a tutti gli indici. Questo è ciò che ci aspettavamo esaminando il grafico dei dati.</p>
-<p>Esaminiamo un modello di crescita lineare per la <code>y</code>.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="crescita-non-lineare.html#cb48-1" tabindex="-1"></a>linear_y_mod <span class="ot">&lt;-</span></span>
-<span id="cb48-2"><a href="crescita-non-lineare.html#cb48-2" tabindex="-1"></a>  <span class="st">&quot;</span></span>
-<span id="cb48-3"><a href="crescita-non-lineare.html#cb48-3" tabindex="-1"></a><span class="st">  iY =~ 1*y1 + 1*y2 + 1*y3 + 1*y4</span></span>
-<span id="cb48-4"><a href="crescita-non-lineare.html#cb48-4" tabindex="-1"></a><span class="st">  sY =~ 0*y1 + 1*y2 + 2*y3 + 3*y4</span></span>
-<span id="cb48-5"><a href="crescita-non-lineare.html#cb48-5" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb48-6"><a href="crescita-non-lineare.html#cb48-6" tabindex="-1"></a></span>
-<span id="cb48-7"><a href="crescita-non-lineare.html#cb48-7" tabindex="-1"></a>linear_y_fit <span class="ot">&lt;-</span></span>
-<span id="cb48-8"><a href="crescita-non-lineare.html#cb48-8" tabindex="-1"></a>  <span class="fu">growth</span>(</span>
-<span id="cb48-9"><a href="crescita-non-lineare.html#cb48-9" tabindex="-1"></a>    <span class="at">model =</span> linear_y_mod,</span>
-<span id="cb48-10"><a href="crescita-non-lineare.html#cb48-10" tabindex="-1"></a>    <span class="at">estimator =</span> <span class="st">&quot;MLR&quot;</span>,</span>
-<span id="cb48-11"><a href="crescita-non-lineare.html#cb48-11" tabindex="-1"></a>    <span class="at">data =</span> sim_growth_dat</span>
-<span id="cb48-12"><a href="crescita-non-lineare.html#cb48-12" tabindex="-1"></a>  )</span>
-<span id="cb48-13"><a href="crescita-non-lineare.html#cb48-13" tabindex="-1"></a></span>
-<span id="cb48-14"><a href="crescita-non-lineare.html#cb48-14" tabindex="-1"></a>linear_y_fit_stats <span class="ot">&lt;-</span></span>
-<span id="cb48-15"><a href="crescita-non-lineare.html#cb48-15" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(</span>
-<span id="cb48-16"><a href="crescita-non-lineare.html#cb48-16" tabindex="-1"></a>    linear_y_fit,</span>
-<span id="cb48-17"><a href="crescita-non-lineare.html#cb48-17" tabindex="-1"></a>    selected_fit_stats</span>
-<span id="cb48-18"><a href="crescita-non-lineare.html#cb48-18" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb48-19"><a href="crescita-non-lineare.html#cb48-19" tabindex="-1"></a>  <span class="fu">data.frame</span>()</span>
-<span id="cb48-20"><a href="crescita-non-lineare.html#cb48-20" tabindex="-1"></a></span>
-<span id="cb48-21"><a href="crescita-non-lineare.html#cb48-21" tabindex="-1"></a><span class="fu">round</span>(linear_y_fit_stats, <span class="dv">2</span>)</span>
-<span id="cb48-22"><a href="crescita-non-lineare.html#cb48-22" tabindex="-1"></a><span class="co">#&gt;                          .</span></span>
-<span id="cb48-23"><a href="crescita-non-lineare.html#cb48-23" tabindex="-1"></a><span class="co">#&gt; chisq.scaled        842.85</span></span>
-<span id="cb48-24"><a href="crescita-non-lineare.html#cb48-24" tabindex="-1"></a><span class="co">#&gt; df.scaled             5.00</span></span>
-<span id="cb48-25"><a href="crescita-non-lineare.html#cb48-25" tabindex="-1"></a><span class="co">#&gt; pvalue.scaled         0.00</span></span>
-<span id="cb48-26"><a href="crescita-non-lineare.html#cb48-26" tabindex="-1"></a><span class="co">#&gt; cfi.scaled            0.61</span></span>
-<span id="cb48-27"><a href="crescita-non-lineare.html#cb48-27" tabindex="-1"></a><span class="co">#&gt; rmsea.scaled          0.58</span></span>
-<span id="cb48-28"><a href="crescita-non-lineare.html#cb48-28" tabindex="-1"></a><span class="co">#&gt; rmsea.pvalue.scaled   0.00</span></span>
-<span id="cb48-29"><a href="crescita-non-lineare.html#cb48-29" tabindex="-1"></a><span class="co">#&gt; srmr                  0.55</span></span></code></pre></div>
-<p>Il modello lineare è inadeguato per la <code>y</code> rispetto a tutti gli indici considerati.</p>
-</div>
-<div id="crescita-quadratica" class="section level3 hasAnchor" number="29.4.4">
-<h3><span class="header-section-number">29.4.4</span> Crescita quadratica<a href="crescita-non-lineare.html#crescita-quadratica" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>I termini quadratici descrivono il tasso medio di <em>variazione della pendenza</em> tra le diverse rilevazioni temporali. Nei modelli SEM, una tale caratteristica viene detta “crescita quadratica”. Consideriamo dunque un modello di crescita quadratica per la <code>x</code>.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="crescita-non-lineare.html#cb49-1" tabindex="-1"></a>quad_x_mod <span class="ot">&lt;-</span></span>
-<span id="cb49-2"><a href="crescita-non-lineare.html#cb49-2" tabindex="-1"></a>  <span class="st">&quot;</span></span>
-<span id="cb49-3"><a href="crescita-non-lineare.html#cb49-3" tabindex="-1"></a><span class="st">  iX =~ 1*x1 + 1*x2 + 1*x3 + 1*x4</span></span>
-<span id="cb49-4"><a href="crescita-non-lineare.html#cb49-4" tabindex="-1"></a><span class="st">  sX =~ 0*x1 + 1*x2 + 2*x3 + 3*x4</span></span>
-<span id="cb49-5"><a href="crescita-non-lineare.html#cb49-5" tabindex="-1"></a><span class="st">  qX =~ 0*x1 + 1*x2 + 4*x3 + 9*x4</span></span>
-<span id="cb49-6"><a href="crescita-non-lineare.html#cb49-6" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb49-7"><a href="crescita-non-lineare.html#cb49-7" tabindex="-1"></a></span>
-<span id="cb49-8"><a href="crescita-non-lineare.html#cb49-8" tabindex="-1"></a>quad_x_fit <span class="ot">&lt;-</span></span>
-<span id="cb49-9"><a href="crescita-non-lineare.html#cb49-9" tabindex="-1"></a>  <span class="fu">growth</span>(</span>
-<span id="cb49-10"><a href="crescita-non-lineare.html#cb49-10" tabindex="-1"></a>    <span class="at">model =</span> quad_x_mod,</span>
-<span id="cb49-11"><a href="crescita-non-lineare.html#cb49-11" tabindex="-1"></a>    <span class="at">estimator =</span> <span class="st">&quot;MLR&quot;</span>,</span>
-<span id="cb49-12"><a href="crescita-non-lineare.html#cb49-12" tabindex="-1"></a>    <span class="at">data =</span> sim_growth_dat</span>
-<span id="cb49-13"><a href="crescita-non-lineare.html#cb49-13" tabindex="-1"></a>  )</span>
-<span id="cb49-14"><a href="crescita-non-lineare.html#cb49-14" tabindex="-1"></a></span>
-<span id="cb49-15"><a href="crescita-non-lineare.html#cb49-15" tabindex="-1"></a>quad_x_fit_stats <span class="ot">&lt;-</span></span>
-<span id="cb49-16"><a href="crescita-non-lineare.html#cb49-16" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(</span>
-<span id="cb49-17"><a href="crescita-non-lineare.html#cb49-17" tabindex="-1"></a>    quad_x_fit,</span>
-<span id="cb49-18"><a href="crescita-non-lineare.html#cb49-18" tabindex="-1"></a>    selected_fit_stats</span>
-<span id="cb49-19"><a href="crescita-non-lineare.html#cb49-19" tabindex="-1"></a>  )</span>
-<span id="cb49-20"><a href="crescita-non-lineare.html#cb49-20" tabindex="-1"></a></span>
-<span id="cb49-21"><a href="crescita-non-lineare.html#cb49-21" tabindex="-1"></a><span class="fu">round</span>(quad_x_fit_stats, <span class="dv">2</span>)</span>
-<span id="cb49-22"><a href="crescita-non-lineare.html#cb49-22" tabindex="-1"></a><span class="co">#&gt;        chisq.scaled           df.scaled       pvalue.scaled          cfi.scaled </span></span>
-<span id="cb49-23"><a href="crescita-non-lineare.html#cb49-23" tabindex="-1"></a><span class="co">#&gt;                0.02                1.00                0.89                1.00 </span></span>
-<span id="cb49-24"><a href="crescita-non-lineare.html#cb49-24" tabindex="-1"></a><span class="co">#&gt;        rmsea.scaled rmsea.pvalue.scaled                srmr </span></span>
-<span id="cb49-25"><a href="crescita-non-lineare.html#cb49-25" tabindex="-1"></a><span class="co">#&gt;                0.00                0.94                0.00</span></span></code></pre></div>
-<p>Qui abbiamo un problema interessante, poiché la <code>x</code> si adatta bene sia a un modello lineare sia a uno quadratico. Abbiamo però un caso di Heywood: la varianza stimata della variabile <code>x4</code> è negativa.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="crescita-non-lineare.html#cb50-1" tabindex="-1"></a><span class="fu">lavInspect</span>(quad_x_fit, <span class="st">&quot;est&quot;</span>)<span class="sc">$</span>theta</span>
-<span id="cb50-2"><a href="crescita-non-lineare.html#cb50-2" tabindex="-1"></a><span class="co">#&gt;        x1     x2     x3     x4</span></span>
-<span id="cb50-3"><a href="crescita-non-lineare.html#cb50-3" tabindex="-1"></a><span class="co">#&gt; x1  1.171                     </span></span>
-<span id="cb50-4"><a href="crescita-non-lineare.html#cb50-4" tabindex="-1"></a><span class="co">#&gt; x2  0.000  0.718              </span></span>
-<span id="cb50-5"><a href="crescita-non-lineare.html#cb50-5" tabindex="-1"></a><span class="co">#&gt; x3  0.000  0.000  1.213       </span></span>
-<span id="cb50-6"><a href="crescita-non-lineare.html#cb50-6" tabindex="-1"></a><span class="co">#&gt; x4  0.000  0.000  0.000 -0.064</span></span></code></pre></div>
-<p>Questo è ovviamente un problema, in quanto il modello non sembra adeguato per i dati. È possibile introdurre dei vincoli sui parametri per poi valutare se, evitando il caso di Heywood, l’adattamento si mantiene a livelli adeguati. Tuttavia, per i fini di questo tutorial, ignoreremo il caso di Heywood e proseguiremo nell’analisi.</p>
-<p>Quando si hanno due modelli nidificati (nel nostro caso, modelli lineari e quadratici), possiamo confrontare formalmente l’adattamento relativo dei due modelli con il test del rapporto di verosimiglianza (LRT). L’ipotesi nulla è che non vi sia alcuna differenza nella covarianza spiegata dai due modelli. Se la covarianza spiegata è equivalente, preferiamo il modello più semplice.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="crescita-non-lineare.html#cb51-1" tabindex="-1"></a><span class="fu">lavTestLRT</span>(linear_x_fit, quad_x_fit)</span>
-<span id="cb51-2"><a href="crescita-non-lineare.html#cb51-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb51-3"><a href="crescita-non-lineare.html#cb51-3" tabindex="-1"></a><span class="co">#&gt; Scaled Chi-Squared Difference Test (method = &quot;satorra.bentler.2001&quot;)</span></span>
-<span id="cb51-4"><a href="crescita-non-lineare.html#cb51-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb51-5"><a href="crescita-non-lineare.html#cb51-5" tabindex="-1"></a><span class="co">#&gt; lavaan </span><span class="al">NOTE</span><span class="co">:</span></span>
-<span id="cb51-6"><a href="crescita-non-lineare.html#cb51-6" tabindex="-1"></a><span class="co">#&gt;     The &quot;Chisq&quot; column contains standard test statistics, not the</span></span>
-<span id="cb51-7"><a href="crescita-non-lineare.html#cb51-7" tabindex="-1"></a><span class="co">#&gt;     robust test that should be reported per model. A robust difference</span></span>
-<span id="cb51-8"><a href="crescita-non-lineare.html#cb51-8" tabindex="-1"></a><span class="co">#&gt;     test is a function of two standard (not robust) statistics.</span></span>
-<span id="cb51-9"><a href="crescita-non-lineare.html#cb51-9" tabindex="-1"></a><span class="co">#&gt;  </span></span>
-<span id="cb51-10"><a href="crescita-non-lineare.html#cb51-10" tabindex="-1"></a><span class="co">#&gt;              Df    AIC    BIC  Chisq Chisq diff Df diff Pr(&gt;Chisq)</span></span>
-<span id="cb51-11"><a href="crescita-non-lineare.html#cb51-11" tabindex="-1"></a><span class="co">#&gt; quad_x_fit    1 7570.4 7625.2 0.0200                              </span></span>
-<span id="cb51-12"><a href="crescita-non-lineare.html#cb51-12" tabindex="-1"></a><span class="co">#&gt; linear_x_fit  5 7566.4 7604.3 4.0675     4.0026       4     0.4056</span></span></code></pre></div>
-<p>Qui, un p-value <span class="math inline">\(&gt; 0.05\)</span> (ovvero, nessuna evidenza di perdita di adattamento) ci dice che il modello lineare (ovvero, quello più semplice) è da preferire.</p>
-<p>Esaminiamo la <code>y</code>.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="crescita-non-lineare.html#cb52-1" tabindex="-1"></a>quad_y_mod <span class="ot">&lt;-</span></span>
-<span id="cb52-2"><a href="crescita-non-lineare.html#cb52-2" tabindex="-1"></a>  <span class="st">&quot;</span></span>
-<span id="cb52-3"><a href="crescita-non-lineare.html#cb52-3" tabindex="-1"></a><span class="st">  iY =~ 1*y1 + 1*y2 + 1*y3 + 1*y4</span></span>
-<span id="cb52-4"><a href="crescita-non-lineare.html#cb52-4" tabindex="-1"></a><span class="st">  sY =~ 0*y1 + 1*y2 + 2*y3 + 3*y4</span></span>
-<span id="cb52-5"><a href="crescita-non-lineare.html#cb52-5" tabindex="-1"></a><span class="st">  qY =~ 0*y1 + 1*y2 + 4*y3 + 9*y4</span></span>
-<span id="cb52-6"><a href="crescita-non-lineare.html#cb52-6" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb52-7"><a href="crescita-non-lineare.html#cb52-7" tabindex="-1"></a></span>
-<span id="cb52-8"><a href="crescita-non-lineare.html#cb52-8" tabindex="-1"></a>quad_y_fit <span class="ot">&lt;-</span></span>
-<span id="cb52-9"><a href="crescita-non-lineare.html#cb52-9" tabindex="-1"></a>  <span class="fu">growth</span>(</span>
-<span id="cb52-10"><a href="crescita-non-lineare.html#cb52-10" tabindex="-1"></a>    <span class="at">model =</span> quad_y_mod,</span>
-<span id="cb52-11"><a href="crescita-non-lineare.html#cb52-11" tabindex="-1"></a>    <span class="at">estimator =</span> <span class="st">&quot;MLR&quot;</span>,</span>
-<span id="cb52-12"><a href="crescita-non-lineare.html#cb52-12" tabindex="-1"></a>    <span class="at">data =</span> sim_growth_dat</span>
-<span id="cb52-13"><a href="crescita-non-lineare.html#cb52-13" tabindex="-1"></a>  )</span>
-<span id="cb52-14"><a href="crescita-non-lineare.html#cb52-14" tabindex="-1"></a></span>
-<span id="cb52-15"><a href="crescita-non-lineare.html#cb52-15" tabindex="-1"></a>quad_y_fit_stats <span class="ot">&lt;-</span></span>
-<span id="cb52-16"><a href="crescita-non-lineare.html#cb52-16" tabindex="-1"></a>  <span class="fu">fitmeasures</span>(</span>
-<span id="cb52-17"><a href="crescita-non-lineare.html#cb52-17" tabindex="-1"></a>    quad_y_fit,</span>
-<span id="cb52-18"><a href="crescita-non-lineare.html#cb52-18" tabindex="-1"></a>    selected_fit_stats</span>
-<span id="cb52-19"><a href="crescita-non-lineare.html#cb52-19" tabindex="-1"></a>  )</span>
-<span id="cb52-20"><a href="crescita-non-lineare.html#cb52-20" tabindex="-1"></a></span>
-<span id="cb52-21"><a href="crescita-non-lineare.html#cb52-21" tabindex="-1"></a>quad_y_fit_stats</span>
-<span id="cb52-22"><a href="crescita-non-lineare.html#cb52-22" tabindex="-1"></a><span class="co">#&gt;        chisq.scaled           df.scaled       pvalue.scaled          cfi.scaled </span></span>
-<span id="cb52-23"><a href="crescita-non-lineare.html#cb52-23" tabindex="-1"></a><span class="co">#&gt;               0.190               1.000               0.663               1.000 </span></span>
-<span id="cb52-24"><a href="crescita-non-lineare.html#cb52-24" tabindex="-1"></a><span class="co">#&gt;        rmsea.scaled rmsea.pvalue.scaled                srmr </span></span>
-<span id="cb52-25"><a href="crescita-non-lineare.html#cb52-25" tabindex="-1"></a><span class="co">#&gt;               0.000               0.813               0.001</span></span></code></pre></div>
-<p>Gli indici di bontà di adattamento sono eccellenti.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="crescita-non-lineare.html#cb53-1" tabindex="-1"></a><span class="fu">lavTestLRT</span>(linear_y_fit, quad_y_fit)</span>
-<span id="cb53-2"><a href="crescita-non-lineare.html#cb53-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb53-3"><a href="crescita-non-lineare.html#cb53-3" tabindex="-1"></a><span class="co">#&gt; Scaled Chi-Squared Difference Test (method = &quot;satorra.bentler.2001&quot;)</span></span>
-<span id="cb53-4"><a href="crescita-non-lineare.html#cb53-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb53-5"><a href="crescita-non-lineare.html#cb53-5" tabindex="-1"></a><span class="co">#&gt; lavaan </span><span class="al">NOTE</span><span class="co">:</span></span>
-<span id="cb53-6"><a href="crescita-non-lineare.html#cb53-6" tabindex="-1"></a><span class="co">#&gt;     The &quot;Chisq&quot; column contains standard test statistics, not the</span></span>
-<span id="cb53-7"><a href="crescita-non-lineare.html#cb53-7" tabindex="-1"></a><span class="co">#&gt;     robust test that should be reported per model. A robust difference</span></span>
-<span id="cb53-8"><a href="crescita-non-lineare.html#cb53-8" tabindex="-1"></a><span class="co">#&gt;     test is a function of two standard (not robust) statistics.</span></span>
-<span id="cb53-9"><a href="crescita-non-lineare.html#cb53-9" tabindex="-1"></a><span class="co">#&gt;  </span></span>
-<span id="cb53-10"><a href="crescita-non-lineare.html#cb53-10" tabindex="-1"></a><span class="co">#&gt;              Df     AIC     BIC    Chisq Chisq diff Df diff Pr(&gt;Chisq)    </span></span>
-<span id="cb53-11"><a href="crescita-non-lineare.html#cb53-11" tabindex="-1"></a><span class="co">#&gt; quad_y_fit    1  9301.7  9356.5   0.1901                                  </span></span>
-<span id="cb53-12"><a href="crescita-non-lineare.html#cb53-12" tabindex="-1"></a><span class="co">#&gt; linear_y_fit  5 10194.9 10232.9 901.4270     829.59       4  &lt; 2.2e-16 ***</span></span>
-<span id="cb53-13"><a href="crescita-non-lineare.html#cb53-13" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb53-14"><a href="crescita-non-lineare.html#cb53-14" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
-<p>Il test del rapporto di verosimiglianza ci dice che, per la <code>y</code>, il modello quadratico è sicuramente da preferire al modello lineare.</p>
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="esplorazione-approfondita-del-modello-lgm.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="parallel-process-model.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="leffetto-delle-covariate.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="stimatore.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
